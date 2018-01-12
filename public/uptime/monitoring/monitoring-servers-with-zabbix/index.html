@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Monitoring Servers with Zabbix</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Zabbix">
+        <meta name="keywords" content="zabbix,  server monitoring,  monitoring,  server monitor">
+        
+        <meta property="og:title" content="Monitoring Servers with Zabbix">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/monitoring/monitoring-servers-with-zabbix/">
+        <meta property="og:description" content="Zabbix">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/monitoring/monitoring-servers-with-zabbix/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/monitoring/">Server Monitoring</a>
+  
+</li>
+
+
+<li>
+  
+  Monitoring Servers with Zabbix
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Monitoring Servers with Zabbix</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2012-08-20T00:00:00Z">Monday, August 20, 2012</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fmonitoring-servers-with-zabbix%2f&via=linode&text=Monitoring%20Servers%20with%20Zabbix" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fmonitoring-servers-with-zabbix%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fmonitoring-servers-with-zabbix%2f&t=Monitoring%20Servers%20with%20Zabbix" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/monitoring/monitoring-servers-with-zabbix.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/monitoring/monitoring-servers-with-zabbix.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Zabbix is an open source software application that can monitor servers, networks, and applications. You can use Zabbix with any of our plans, and it works on every Linux distribution we offer. Full hardware and software requirements can be found on the <a href="http://www.zabbix.com/requirements.php">Zabbix requirements page</a>.</p>
+
+<h1 id="deciding-how-to-install-zabbix">Deciding How to Install Zabbix</h1>
+
+<p>There are two ways to install Zabbix. You can compile and install Zabbix from source, or you can install Zabbix packages, if your distribution supports it.</p>
+
+<p>Installing the packages is faster and makes things easier to maintain, but the installed version might be older than what&rsquo;s available on the Zabbix website. Compiling and installing from source is a longer process, but it works on every distribution, and you&rsquo;ll get the latest version of Zabbix.</p>
+
+<h3 id="installing-packages">Installing Packages</h3>
+
+<p>If you&rsquo;re running Ubuntu or Debian and would like to install the Zabbix packages, follow these instructions:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Other distributions may also have packages for Zabbix. Check the distribution&rsquo;s website for more information.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Install Zabbix server by entering the following command:</p>
+
+<pre><code>sudo apt-get install zabbix-server-mysql
+</code></pre></li>
+
+<li><p>Install the Zabbix web interface by entering the following command:</p>
+
+<pre><code>sudo apt-get install zabbix-frontend-php
+</code></pre></li>
+
+<li><p>Install the Zabbix agent by entering the following command:</p>
+
+<pre><code>sudo apt-get install zabbix-agent
+</code></pre></li>
+</ol>
+
+<p>Zabbix is now installed and running on your Linode.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you install the Zabbix packages, you do not need to follow the rest of the instructions in this guide.</div>
+</blockquote>
+
+
+<h3 id="compiling-and-installing-from-source">Compiling and Installing from Source</h3>
+
+<p>If you decide not install the Zabbix packages, or your distribution does not support it, use the instructions in the rest of this guide to compile and install Zabbix from source.</p>
+
+<h1 id="prerequisites">Prerequisites</h1>
+
+<p>You&rsquo;ll need to install some software before you actually install Zabbix itself. It requires a database backend, and in this example we&rsquo;ll use MySQL, but you can also use PostgreSQL, SQLite, Oracle, or IBM DB2. Other mandatory requirements are a C compiler and GNU Make. Optionally, you can also include NET-SNMP for SNMP support, lksemel to enable Jabber messaging, and/or Libcurl to enable the WEB monitoring module.</p>
+
+<h3 id="adding-a-new-user">Adding a New User</h3>
+
+<p>You&rsquo;ll also want to create a new user to run Zabbix. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Create a new user by entering the following command:</p>
+
+<pre><code>sudo adduser zabbix
+</code></pre></li>
+
+<li><p>Add the <code>zabbix</code> user to the admin group by entering the following command:</p>
+
+<pre><code>sudo usermod -a -G sudo zabbix
+</code></pre></li>
+
+<li><p>Start acting as the <code>zabbix</code> user by entering the following command:</p>
+
+<pre><code>su - zabbix
+</code></pre></li>
+</ol>
+
+<p>You have successfully added the <code>zabbix</code> user.</p>
+
+<h3 id="configuring-mysql">Configuring MySQL</h3>
+
+<p>You&rsquo;ll first want to install MySQL on your Linode and create a MySQL user for Zabbix. Here&rsquo;s how:</p>
+
+<ol>
+<li>If you haven&rsquo;t already, install and configure MySQL on your Linode. See the <a href="/docs/databases/mysql">MySQL reference manuals</a> for more information.</li>
+
+<li><p>Log in to MySQL by entering the following command:</p>
+
+<pre><code>mysql -uroot -p
+</code></pre></li>
+
+<li><p>Enter the password for the MySQL root user.</p></li>
+
+<li><p>Create a database for Zabbix by entering the following command:</p>
+
+<pre><code>create database zabbix;
+</code></pre></li>
+
+<li><p>Create a MySQL zabbix user to the access the new database by entering the following command, replacing <code>Password</code> with a password:</p>
+
+<pre><code>grant all privileges on zabbix.* to zabbix@localhost identified by 'Password';
+</code></pre></li>
+
+<li><p>Log out of MySQL by entering the following command:</p>
+
+<pre><code>quit;
+</code></pre></li>
+</ol>
+
+<p>You have configured MySQL for Zabbix.</p>
+
+<h3 id="installing-apache-and-php">Installing Apache and PHP</h3>
+
+<p>Zabbix requires Apache and PHP to be installed. Here&rsquo;s how to install them:</p>
+
+<ol>
+<li><p>Install Apache by entering the following command:</p>
+
+<pre><code>sudo apt-get install apache2
+</code></pre></li>
+
+<li><p>Install PHP and the required modules by entering the following command:</p>
+
+<pre><code>sudo apt-get install php5 php-pear php5-suhosin php5-gd php5-curl php5-mysql
+</code></pre></li>
+
+<li><p>Install other required libraries by entering the following command:</p>
+
+<pre><code>sudo apt-get install libmysqlclient-dev libcurl3-gnutls libcurl3-gnutls-dev
+</code></pre></li>
+
+<li><p>Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see <a href="/docs/websites/hosting-a-website#configure-name-based-virtual-hosts">Configuring Name-based Virtual Hosts</a>.</p></li>
+</ol>
+
+<p>The required applications, modules, and libraries have been installed on your Linode.</p>
+
+<h3 id="configuring-php">Configuring PHP</h3>
+
+<p>Now you&rsquo;ll want to make some adjustments to your <code>php.ini</code> file for Zabbix. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Open the <code>php.ini</code> file for editing by entering the following command:</p>
+
+<pre><code>sudo nano /etc/php5/apache2/php.ini
+</code></pre></li>
+
+<li><p>Verify that the following settings are set in the <code>php.ini</code> file.</p></li>
+</ol>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php5/apache2/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">memory_limit</span> <span class="o">=</span> <span class="s">128M</span>
+<span class="na">post_max_size</span> <span class="o">=</span> <span class="s">32M</span>
+<span class="na">upload_max_filesize</span> <span class="o">=</span> <span class="s">16M</span>
+<span class="na">max_execution_time</span> <span class="o">=</span> <span class="s">600</span>
+<span class="na">max_input_time</span> <span class="o">=</span> <span class="s">600</span>
+<span class="na">date.timezone</span> <span class="o">=</span> <span class="s">America/New_York</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can <a href="http://php.net/manual/en/timezones.php">use this webpage</a> to find the correct date.timezone value.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Save the changes by restarting Apache. Enter the following command:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre></li>
+</ol>
+
+<p>PHP is now configured for Zabbix.</p>
+
+<h3 id="installing-a-compiler">Installing a Compiler</h3>
+
+<p>You&rsquo;ll need a C compiler and <code>make</code> to install Zabbix. If your Linode is running <strong>Ubuntu or Debian</strong>, use these instructions:</p>
+
+<ol>
+<li><p>Install <code>make</code> by entering the following command:</p>
+
+<pre><code>sudo apt-get install make
+</code></pre></li>
+
+<li><p>Install the C compiler by entering the following command:</p>
+
+<pre><code>sudo apt-get install gcc
+</code></pre></li>
+</ol>
+
+<p>You have installed the C compiler and <code>make</code> on your Linode.</p>
+
+<h1 id="zabbix-server">Zabbix Server</h1>
+
+<p>Now that all of the Zabbix prerequisites are ready, we can start installing.</p>
+
+<h3 id="downloading-and-unpacking">Downloading and Unpacking</h3>
+
+<p>Let&rsquo;s start by downloading and unpacking Zabbix. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Find the latest version of Zabbix on the <a href="http://www.zabbix.com/download.php">Zabbix download page</a>. Log in to your Linode and enter the following command, replacing the link with the latest version available on the Zabbix download page:</p>
+
+<pre><code>wget http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/2.0.1/zabbix-2.0.1.tar.gz/download
+</code></pre></li>
+
+<li><p>Once we have the latest package downloaded, we&rsquo;ll need to unpack it by entering the following command:</p>
+
+<pre><code>tar -xzf download
+</code></pre></li>
+</ol>
+
+<p>You have successfully downloaded and unpacked Zabbix.</p>
+
+<h3 id="configuring-mysql-1">Configuring MySQL</h3>
+
+<p>Populate your Xabbix database by entering the following commands, one by one. Replace <code>Password</code> with the Zabbix MySQL user password:</p>
+
+<pre><code>mysql -D zabbix -uzabbix -pPassword &lt; /home/zabbix/zabbix-2.0.1/database/mysql/schema.sql
+mysql -D zabbix -uzabbix -pPassword &lt; /home/zabbix/zabbix-2.0.1/database/mysql/data.sql
+mysql -D zabbix -uzabbix -pPassword &lt; /home/zabbix/zabbix-2.0.1/database/mysql/images.sql
+</code></pre>
+
+<p>You have successfully configured MySQL for Zabbix server.</p>
+
+<h3 id="compiling-and-installing">Compiling and Installing</h3>
+
+<p>Now we&rsquo;re ready to compile and install Zabbix server. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Change to the Zabbix directory by entering the following command:</p>
+
+<pre><code>cd zabbix-2.0.1
+</code></pre></li>
+
+<li><p>Enter the following command to compile Zabbix:</p>
+
+<pre><code>./configure --enable-server --with-mysql  --with-libcurl
+</code></pre></li>
+
+<li><p>When the configuration completes, you can make and install Zabbix by entering the following command:</p>
+
+<pre><code>sudo make install
+</code></pre></li>
+
+<li><p>You&rsquo;ll also need to configure and make the agent binaries. Enter the following command to compile these statically so you don&rsquo;t have to download the entire Zabbix package to each monitored host to compile them:</p>
+
+<pre><code>./configure --enable-agent --enable-static
+</code></pre></li>
+
+<li><p>Enter the following command to install Zabbix:</p>
+
+<pre><code>sudo make install
+</code></pre></li>
+</ol>
+
+<p>You have successfully compiled and installed Zabbix.</p>
+
+<h3 id="creating-the-configuration-and-log-file">Creating the Configuration and Log File</h3>
+
+<p>Now you&rsquo;ll need to create a configuration file for the Zabbix server in your /etc/zabbix directory. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Create a new directory in <code>/etc</code> by entering the following command:</p>
+
+<pre><code>sudo mkdir /etc/zabbix
+</code></pre></li>
+
+<li><p>Create the configuration file by entering the following command:</p>
+
+<pre><code>sudo touch /etc/zabbix/zabbix_server.conf
+</code></pre></li>
+
+<li><p>Change the owner by entering the following command:</p>
+
+<pre><code>sudo chown -R zabbix:zabbix /etc/zabbix
+</code></pre></li>
+
+<li><p>Create the log file by entering the following command:</p>
+
+<pre><code>sudo touch /var/log/zabbix.log
+</code></pre></li>
+
+<li><p>Change the owner of the log file by entering the following command:</p>
+
+<pre><code>sudo chown zabbix:zabbix /var/log/zabbix.log
+</code></pre></li>
+
+<li><p>Open the Zabbix configuration file for editing by entering the following command:</p>
+
+<pre><code>sudo nano /etc/zabbix/zabbix_server.conf
+</code></pre></li>
+
+<li><p>Add the following to the <code>zabbix_server.conf</code> file. At this point, it only requires your database connection details, though we will also be adding a Zabbix server log as well.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/zabbix/zabbix_server.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">DBName</span> <span class="o">=</span> zabbix <span class="nv">DBPassword</span> <span class="o">=</span> YourZabbixMySQLpassword <span class="nv">DBUser</span> <span class="o">=</span> zabbix <span class="nv">LogFile</span> <span class="o">=</span> /var/log/zabbix.log</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>A full list of configuration parameters for <code>zabbix_server.conf</code> are <a href="http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_server">available here</a>.</div>
+</blockquote>
+</li>
+
+<li><p>Close and save the file by pressing Control X and then Y.</p></li>
+</ol>
+
+<p>You have successfully created the configuration file.</p>
+
+<h3 id="setting-zabbix-to-start-automatically-at-boot">Setting Zabbix to Start Automatically at Boot</h3>
+
+<p>To ensure that Zabbix starts every time you reboot your Linode, you&rsquo;ll need to copy the Zabbix <code>init.d</code> scripts to the appropriate directory and set the correct permissions. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Copy the scripts by entering the following commands, one by one:</p>
+
+<pre><code>sudo cp /home/zabbix/zabbix-2.0.1/misc/init.d/debian/zabbix-server /etc/init.d
+sudo cp /home/zabbix/zabbix-2.0.1/misc/init.d/debian/zabbix-agent /etc/init.d
+</code></pre></li>
+
+<li><p>Change the permissions by entering the following commands, one by one:</p>
+
+<pre><code>sudo chmod 755 /etc/init.d/zabbix-server
+sudo chmod 755 /etc/init.d/zabbix-agent
+</code></pre></li>
+
+<li><p>Set Zabbix to start when the machine boots by entering the following commands, one by one:</p>
+
+<pre><code>sudo update-rc.d zabbix-server defaults
+sudo update-rc.d zabbix-agent defaults
+</code></pre></li>
+</ol>
+
+<p>Now the Zabbix server and agent will automatically start every time you boot your Linode.</p>
+
+<h3 id="starting-zabbix">Starting Zabbix</h3>
+
+<p>Now you can start the Zabbix server and agent by entering the following commands, one by one:</p>
+
+<pre><code>sudo /etc/init.d/zabbix-server start
+sudo /etc/init.d/zabbix-agent start
+</code></pre>
+
+<p>Zabbix is now running on your Linode! To verify, enter the following command:</p>
+
+<pre><code>ps -aux | grep zabbix
+</code></pre>
+
+<h1 id="zabbix-agent">Zabbix Agent</h1>
+
+<p>The Zabbix Agent (<code>zabbix_agentd</code>) is placed on the client servers you want to monitor.</p>
+
+<h3 id="creating-a-new-user">Creating a New User</h3>
+
+<p>First, you&rsquo;ll want to create a <code>zabbix user</code> on the client system. Enter the following command to create the user:</p>
+
+<pre><code>adduser zabbix
+</code></pre>
+
+<p>The user has been created.</p>
+
+<h3 id="installing-and-configuring">Installing and Configuring</h3>
+
+<p>Now you&rsquo;ll want to create directories for the Zabbix files on your client server. You&rsquo;ll also need to copy some files to the new directories. Here&rsquo;s how to do it:</p>
+
+<ol>
+<li><p>Create the directories by entering the following commands, one by one:</p>
+
+<pre><code>mkdir /opt/zabbix
+mkdir /opt/zabbix/sbin
+mkdir /opt/zabbix/bin
+mkdir /etc/zabbix
+</code></pre></li>
+
+<li><p>Next, you&rsquo;ll want to copy over the necessary files. There are 3 files to copy, as shown below. Place <code>zabbix_agentd</code> into <code>/opt/zabbix/sbin</code> on your client server. The <code>zabbix_get</code> and <code>zabbix_send</code> files go into <code>/opt/zabbix/bin</code>:</p>
+
+<pre><code>/usr/local/zabbix/sbin/zabbix_agentd
+/usr/local/zabbix/bin/zabbix_get
+/usr/local/zabbix/bin/zabbix_send
+</code></pre></li>
+
+<li><p>Verify that those files are owned by the <code>zabbix</code> user by entering the following command:</p>
+
+<pre><code>chown -R zabbix:zabbix /opt/zabbix
+</code></pre></li>
+
+<li><p>Create an agent configuration file by entering the following command:</p>
+
+<pre><code>touch /etc/zabbix/zabbix_agentd.conf
+</code></pre></li>
+
+<li><p>Verify that the file is owned by the <code>zabbix</code> user by entering the following command:</p>
+
+<pre><code>chown -R zabbix:zabbix /etc/zabbix/zabbix_agentd.conf
+</code></pre></li>
+
+<li><p>Open the configuration for editing by entering the following command:</p>
+
+<pre><code>nano /etc/zabbix/zabbix_agentd.conf
+</code></pre></li>
+
+<li><p>The only option that is required is the <code>Server</code> parameter, which is the IP address of your Zabbix monitoring server. Copy and paste the following line into the configuration file, replacing <code>12.34.56.78</code> with the IP address of your Zabbix monitoring server.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/zabbix/zabbix_agentd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">Server</span> <span class="o">=</span> <span class="m">12</span>.34.56.78</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>A full listing of supported parameters, as well as their default values, is available in <a href="http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_agentd">the Zabbix manual</a>.</div>
+</blockquote>
+</li>
+
+<li><p>Open the <code>/etc/services</code> file for editing by entering the following command:</p>
+
+<pre><code>nano /etc/services
+</code></pre></li>
+
+<li><p>Copy and paste the following lines into the <code>/etc/services</code> file:</p>
+
+<pre><code>zabbix_agent 10050/tcp
+zabbix_trap 10051/tcp
+</code></pre></li>
+</ol>
+
+<p>You have successfully installed and configured the agent.</p>
+
+<h3 id="starting-the-agent">Starting the Agent</h3>
+
+<p>Once you have your files copied and the configuration file in place, start the agent by entering the following command:</p>
+
+<pre><code>/usr/local/zabbix/sbin/zabbix_agentd
+</code></pre>
+
+<p>The agent is now running.</p>
+
+<h1 id="zabbix-web-interface">Zabbix Web Interface</h1>
+
+<p>Zabbix also has a front-end component that you&rsquo;ll want to install. These instructions show you how.</p>
+
+<h3 id="copying-files">Copying Files</h3>
+
+<p>The Zabbix frontend is written in PHP. You&rsquo;ll want to copy the front-end files to your web server&rsquo;s public directory. Here&rsquo;s how to create a subdirectory and copy the Zabbix front-end files to it:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>We assume that you followed the Hosting a Website guide. If you&rsquo;re using a different DocumentRoot directive than /home/example_user/public/example.com/public for your virtual host, you&rsquo;ll need to update the path to correctly reflect your DocumentRoot.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Change to your virtual host directory by entering the following command, replacing <code>example_user</code> with your username and <code>example.com</code> with your domain name:</p>
+
+<pre><code>cd /home/example_user/public/example.com/public
+</code></pre></li>
+
+<li><p>Create a new directory by entering the following command:</p>
+
+<pre><code>sudo mkdir zabbix
+</code></pre></li>
+
+<li><p>Change to the Zabbix directory by entering the following command:</p>
+
+<pre><code>cd /home/zabbix/zabbix-2.0.1/frontends/php
+</code></pre></li>
+
+<li><p>Copy the files by entering the following command, replacing <code>example_user</code> with your username and <code>example.com</code> with your domain name:</p>
+
+<pre><code>sudo cp -a . /home/example_user/public/example.com/public/zabbix
+</code></pre></li>
+</ol>
+
+<p>You have successfully copied the files.</p>
+
+<h3 id="completing-the-installation">Completing the Installation</h3>
+
+<p>You&rsquo;ll need to complete the installation of the Zabbix web interface with your web browser. Here&rsquo;s how:</p>
+
+<ol>
+<li>Open up a browser and point it to <a href="http://YourLinodeIP/zabbix">http://YourLinodeIP/zabbix</a> to continue with the installation, where <code>YourLinodeIP</code> is the IP address of your Linode.</li>
+<li>The introduction page appears, as shown below. Click <strong>Next</strong> to continue.</li>
+</ol>
+
+<p><a href="/docs/assets/1086-new_zabbix_1.png"><img src="/docs/assets/1086-new_zabbix_1.png" alt="Zabbix installer." /></a></p>
+
+<ol>
+<li>Correct any prerequisite errors, as shown below. Click <strong>Next</strong> to continue.</li>
+</ol>
+
+<p><a href="/docs/assets/1087-new_zabbix_2.png"><img src="/docs/assets/1087-new_zabbix_2.png" alt="Zabbix installer." /></a></p>
+
+<ol>
+<li>Configure the connection to your Zabbix database, as shown below. After you&rsquo;ve entered the information for the MySQL database, click <strong>Next</strong> to continue.</li>
+</ol>
+
+<p><a href="/docs/assets/1088-new_zabbix_3.png"><img src="/docs/assets/1088-new_zabbix_3.png" alt="Zabbix installer." /></a></p>
+
+<ol>
+<li>Enter the details for your Zabbix server, as shown below. Click <strong>Next</strong> to continue.</li>
+</ol>
+
+<p><a href="/docs/assets/1090-new_zabbix_5.png"><img src="/docs/assets/1090-new_zabbix_5.png" alt="Zabbix installer." /></a></p>
+
+<ol>
+<li>Check your pre-install summary, as shown below. Click <strong>Next</strong> to continue.</li>
+</ol>
+
+<p><a href="/docs/assets/1091-new_zabbix_6.png"><img src="/docs/assets/1091-new_zabbix_6.png" alt="Zabbix installer." /></a></p>
+
+<ol>
+<li>Download your Zabbix configuration file, as shown below. Click <strong>Next</strong> to continue.</li>
+</ol>
+
+<p><a href="/docs/assets/1092-new_zabbix_7.png"><img src="/docs/assets/1092-new_zabbix_7.png" alt="Zabbix installer." /></a></p>
+
+<ol>
+<li>Once you&rsquo;ve updated your Zabbix configuration file to the specified location, click <strong>Retry</strong>.</li>
+<li>If the configuration file is found, click <strong>Finish</strong>.</li>
+</ol>
+
+<p><a href="/docs/assets/1093-new_zabbix_8.png"><img src="/docs/assets/1093-new_zabbix_8.png" alt="Zabbix installer." /></a></p>
+
+<p>After you&rsquo;ve finished the front-end installation, you&rsquo;ll be forwarded to the Zabbix login page. The default username is <code>Admin</code>, the default password is <code>zabbix</code>.</p>
+
+<h1 id="monitoring-a-host">Monitoring a Host</h1>
+
+<p>Now you have the Zabbix server and web admin installed, and you just set up the <code>zabbix_agentd</code> on your first monitored host. Now you can add that host to your web admin so you can actually monitor it. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Log into your web admin by entering the following URL in your web browser, replacing <code>YourZabbixServerIP</code> with your Linode&rsquo;s IP address:</p>
+
+<pre><code>http://YourZabbixServerIP/zabbix
+</code></pre></li>
+
+<li><p>Click the <strong>Configuration</strong> tab, then the <strong>Hosts</strong> menu item, then the <strong>Create Host</strong> button. The screen shown below appears.</p></li>
+</ol>
+
+<p><a href="/docs/assets/859-AddHost.png"><img src="/docs/assets/1073-zabbix-9-small.png" alt="Zabbix add host screen." /></a></p>
+
+<ol>
+<li>Enter a name for the host in the <strong>Name</strong> field. This will be displayed on your server list.</li>
+<li>Add the IP address of your monitored host to the <strong>IP Address</strong> field.</li>
+<li>Click the <strong>Add</strong> button in the top right corner under the <strong>Linked Templates</strong> section.</li>
+<li>The template you&rsquo;ll want to use for a Linux server is <code>Template_Linux</code>.</li>
+<li>Once you have your server information added and your template linked, click <strong>Save</strong>.</li>
+</ol>
+
+<p>You have successfully added the monitored host.</p>
+
+<h3 id="using-graphs">Using Graphs</h3>
+
+<p>If you would like the base graphs for your new monitored host, you can copy those from the Zabbix server. Here&rsquo;s how:</p>
+
+<ol>
+<li>Click on the <strong>Hosts</strong> tab under <strong>Configuration</strong>, then click the <strong>Graphs</strong> link on the <strong>Zabbix server</strong> line.</li>
+<li>Select the graphs you&rsquo;d like to copy over and click <strong>Go</strong> button.</li>
+<li>On the next screen, you&rsquo;ll be able to select where to copy those graphs, whether to a Host Group or just a single Host, as shown below.</li>
+</ol>
+
+<p><a href="/docs/assets/860-CopyGraphs.png"><img src="/docs/assets/860-CopyGraphs.png" alt="Zabbix copy graphs screen." /></a></p>
+
+<p>Note that the <a href="http://www.zabbix.com/documentation/2.0">Zabbix manual</a> has complete documentation on setting up the various actions and operations Zabbix can perform.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.zabbix.com">Zabbix Home Page</a></li>
+<li><a href="http://www.zabbix.com/documentation/2.0">Zabbix 2.0 Documentation</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6/">Pflogsumm for Postfix Monitoring on CentOS 6</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#deciding-how-to-install-zabbix">Deciding How to Install Zabbix</a>
+<ul>
+<li>
+<ul>
+<li><a href="#installing-packages">Installing Packages</a></li>
+<li><a href="#compiling-and-installing-from-source">Compiling and Installing from Source</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#prerequisites">Prerequisites</a>
+<ul>
+<li>
+<ul>
+<li><a href="#adding-a-new-user">Adding a New User</a></li>
+<li><a href="#configuring-mysql">Configuring MySQL</a></li>
+<li><a href="#installing-apache-and-php">Installing Apache and PHP</a></li>
+<li><a href="#configuring-php">Configuring PHP</a></li>
+<li><a href="#installing-a-compiler">Installing a Compiler</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zabbix-server">Zabbix Server</a>
+<ul>
+<li>
+<ul>
+<li><a href="#downloading-and-unpacking">Downloading and Unpacking</a></li>
+<li><a href="#configuring-mysql-1">Configuring MySQL</a></li>
+<li><a href="#compiling-and-installing">Compiling and Installing</a></li>
+<li><a href="#creating-the-configuration-and-log-file">Creating the Configuration and Log File</a></li>
+<li><a href="#setting-zabbix-to-start-automatically-at-boot">Setting Zabbix to Start Automatically at Boot</a></li>
+<li><a href="#starting-zabbix">Starting Zabbix</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zabbix-agent">Zabbix Agent</a>
+<ul>
+<li>
+<ul>
+<li><a href="#creating-a-new-user">Creating a New User</a></li>
+<li><a href="#installing-and-configuring">Installing and Configuring</a></li>
+<li><a href="#starting-the-agent">Starting the Agent</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zabbix-web-interface">Zabbix Web Interface</a>
+<ul>
+<li>
+<ul>
+<li><a href="#copying-files">Copying Files</a></li>
+<li><a href="#completing-the-installation">Completing the Installation</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#monitoring-a-host">Monitoring a Host</a>
+<ul>
+<li>
+<ul>
+<li><a href="#using-graphs">Using Graphs</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

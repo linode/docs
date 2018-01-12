@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Using the PostgreSQL relational database server with Ubuntu 8.04 (Hardy).">
+        <meta name="keywords" content="postgresql, postgresql database, postgresql on ubuntu, relational database">
+        
+        <meta property="og:title" content="Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/postgresql/ubuntu-8-04-hardy/">
+        <meta property="og:description" content="Using the PostgreSQL relational database server with Ubuntu 8.04 (Hardy).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/postgresql/ubuntu-8-04-hardy/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/postgresql/">PostgreSQL</a>
+  
+</li>
+
+
+<li>
+  
+  Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-04-29T00:00:00Z">Friday, April 29, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fubuntu-8-04-hardy%2f&via=linode&text=Use%20PostgreSQL%20Relational%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fubuntu-8-04-hardy%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fubuntu-8-04-hardy%2f&t=Use%20PostgreSQL%20Relational%20Databases%20on%20Ubuntu%208.04%20%28Hardy%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/postgresql/ubuntu-8-04-hardy.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/postgresql/ubuntu-8-04-hardy.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>The <a href="http://www.postgresql.org/">PostgreSQL</a> relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 8.04 LTS (Hardy). We assume you&rsquo;ve followed the steps detailed in our <a href="/docs/getting-started/">getting started guide</a>, and that you&rsquo;re logged into your Linode as root via SSH.</p>
+
+<h1 id="installing-postgresql">Installing PostgreSQL</h1>
+
+<p>Make sure your package repositories and installed programs are up to date by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre>
+
+<p>Issue the following command to install PostgreSQL and required dependencies:</p>
+
+<pre><code>apt-get install postgresql
+</code></pre>
+
+<p>The current version of the database server will be installed, along with several supporting packages.</p>
+
+<h1 id="configuring-postgresql">Configuring PostgreSQL</h1>
+
+<h3 id="creating-a-database">Creating a Database</h3>
+
+<p>Switch to the &ldquo;postgres&rdquo; user and create a database by issuing the following commands:</p>
+
+<pre><code>su - postgres
+createdb mytestdb
+</code></pre>
+
+<p>Connect to the test database by issuing the following command:</p>
+
+<pre><code>psql mytestdb
+</code></pre>
+
+<p>You should see output similar to the following:</p>
+
+<pre><code>postgres@archimedes:~$ psql mytestdb
+Welcome to psql 8.3.7, the PostgreSQL interactive terminal.
+
+Type:  \copyright for distribution terms
+       \h for help with SQL commands
+       \? for help with psql commands
+       \g or terminate with semicolon to execute query
+       \q to quit
+
+mytestdb=#
+</code></pre>
+
+<p>This is the PostgreSQL client shell; you may use it to issue SQL statements. To see a list of available commands, use the following command in the shell:</p>
+
+<pre><code>\h
+</code></pre>
+
+<p>You may find more information on a specific command by adding it after the <code>\h</code> command.</p>
+
+<h3 id="creating-tables">Creating Tables</h3>
+
+<p>To create a table in your test database called &ldquo;employees&rdquo;, issue the following command:</p>
+
+<pre><code>CREATE TABLE employees (employee_id int, first_name varchar, last_name varchar);
+</code></pre>
+
+<p>To insert a record into the table, you would issue a statement like this:</p>
+
+<pre><code>INSERT INTO employees VALUES (1, 'Jack', 'Sprat');
+</code></pre>
+
+<p>To see the contents of the &ldquo;employees&rdquo; table, you would issue a SELECT statement similar to the following:</p>
+
+<pre><code>SELECT * FROM employees;
+</code></pre>
+
+<p>This would produce output similar to the following:</p>
+
+<pre><code>mytestdb=# SELECT * FROM employees;
+ employee_id | first_name | last_name
+-------------+------------+-----------
+           1 | Jack       | Sprat
+(1 row)
+</code></pre>
+
+<p>To exit the <code>psql</code> shell, issue this command:</p>
+
+<pre><code>\q
+</code></pre>
+
+<h3 id="creating-postgresql-users-roles">Creating PostgreSQL Users (Roles)</h3>
+
+<p>PostgreSQL refers to users as &ldquo;roles&rdquo;, which may have different privileges on your databases. If a user is classified as a &ldquo;superuser&rdquo; it will have administrative access to the database system. To add a new user to PostgreSQL, issue the following command as the &ldquo;postgres&rdquo; user:</p>
+
+<pre><code>createuser alison --pwprompt
+</code></pre>
+
+<p>You will be asked to specify several values for the new user. To delete this user, issue the following command:</p>
+
+<pre><code>dropuser alison
+</code></pre>
+
+<p>By default, PostgreSQL uses <code>ident</code> authentication. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a program (local scripts, CGI/FastCGI processes owned by separate users, etc). However, you may wish to change this behavior to require passwords. To do so, edit the file <code>/etc/postgresql/8.4/main/pg_hba.conf</code> as root or the postgres user. Find the following line:</p>
+
+<pre><code>local   all   all   ident sameuser
+</code></pre>
+
+<p>Change it to the following to use password authentication:</p>
+
+<pre><code>local   all   all   md5
+</code></pre>
+
+<p>To grant all privileges on the table &ldquo;employees&rdquo; to a user named &ldquo;alison&rdquo;, issue the following commands:</p>
+
+<pre><code>psql mytestdb
+
+GRANT ALL ON employees TO alison;
+</code></pre>
+
+<p>To use the database &ldquo;mytestdb&rdquo; as &ldquo;alison&rdquo;, issue the following command:</p>
+
+<pre><code>psql -U alison -W mytestdb
+</code></pre>
+
+<p>You will be prompted to enter the password for the &ldquo;alison&rdquo; user and given <code>psql</code> shell access to the database.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<h1 id="more-information-1">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.postgresql.org/docs/">PostgreSQL Online Documentation</a></li>
+<li><a href="http://www.rootr.net/man/man/psql/1">psql manual page</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/postgresql/ubuntu-9-04-jaunty/">Use PostgreSQL Relational Databases on Ubuntu 9.04 (Jaunty) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/">How to Install PostgreSQL on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-12-04/">Use PostgreSQL Relational Databases on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/ubuntu-10-10-maverick/">Use PostgreSQL Relational Databases on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/ubuntu-10-04-lucid/">Use PostgreSQL Relational Databases on Ubuntu 10.04 LTS (Lucid) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#installing-postgresql">Installing PostgreSQL</a></li>
+<li><a href="#configuring-postgresql">Configuring PostgreSQL</a>
+<ul>
+<li>
+<ul>
+<li><a href="#creating-a-database">Creating a Database</a></li>
+<li><a href="#creating-tables">Creating Tables</a></li>
+<li><a href="#creating-postgresql-users-roles">Creating PostgreSQL Users (Roles)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#more-information">More Information</a></li>
+<li><a href="#more-information-1">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

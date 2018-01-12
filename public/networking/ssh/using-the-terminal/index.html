@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using the Terminal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Accomplishing system administration tasks from a command prompt.">
+        <meta name="keywords" content="Linux terminal, terminal HOWTO, Linode terminal tutorial">
+        
+        <meta property="og:title" content="Using the Terminal">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/ssh/using-the-terminal/">
+        <meta property="og:description" content="Accomplishing system administration tasks from a command prompt.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/ssh/using-the-terminal/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/ssh/">SSH: Connect to Your Linode</a>
+  
+</li>
+
+
+<li>
+  
+  Using the Terminal
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using the Terminal</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-02-15T00:00:00Z">Wednesday, February 15, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2fusing-the-terminal%2f&via=linode&text=Using%20the%20Terminal" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2fusing-the-terminal%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2fusing-the-terminal%2f&t=Using%20the%20Terminal" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/ssh/using-the-terminal.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/ssh/using-the-terminal.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The shell, also known as the &ldquo;command line interface&rdquo; or &ldquo;CLI&rdquo;&ldquo;, is the primary method for interacting with remote Linux servers. The shell is a rich interface for manipulating your files, managing your system, and scripting common tasks. If you use Linux on your local machine you are likely already familiar with the terminal; Mac OS X users may be familiar with the command line from Terminal.app.</p>
+
+<p><img src="/docs/assets/using-the-terminal.png" alt="Using the Terminal" title="Using the Terminal" /></p>
+
+<p>This document provides an overview of common operations and actions in the terminal environment, with some helpful hints for making your terminal experience more successful and rewarding. When you open a terminal either locally or over SSH, you&rsquo;ll be greeted with a message and presented with a prompt. Depending on your system&rsquo;s configuration, the prompt will end with either a dollar sign (<code>$</code>) for regular users and a hash (<code>#</code>) for root. We&rsquo;re now ready to begin this guide.</p>
+
+<h2 id="the-structure-of-commands">The Structure of Commands</h2>
+
+<p>Most shell commands follow a similar format. They begin with the name of the command (which we can think of as a verb), then have an optional series of modifiers or flags that specific particular functions (adjectives,) and (if necessary) have some sort of object that the command is to affect. If you need help figuring out how a command works, generally sending the command with a <code>--help</code> flag will provide information on how to use the command.</p>
+
+<h2 id="file-system-navigation">File System Navigation</h2>
+
+<p>One of the primary functions of the shell is providing a interface to the file system. These commands allow us to move, rename, and copy files on our system.</p>
+
+<h3 id="listing-directories">Listing Directories</h3>
+
+<p>To list directories use the <code>ls</code> command. If the directory is empty, ls will execute and close without any output. <code>ls</code> (like all commands) assumes that the object (directory) is the current directory unless otherwise specified. To get a list of the <code>/etc/init.d/</code> directory, you would use the command:</p>
+
+<pre><code>ls /etc/init.d/
+</code></pre>
+
+<p>To list all of the files in the current directory, including hidden files (such as those beginning with a <code>.</code>) use the <code>-a</code> flag for all files.</p>
+
+<p>To generate a list with more information about the files, the long flag, <code>-l</code> may be used. This provides information on file sizes, permissions, and last modified times (with either -a or the standard output). You may further modify the long output with an -h flag to convert the file size information from raw bytes to human-readable numbers (in KB, MB, GB, etc) for easier comprehension. This command might look like:</p>
+
+<pre><code>ls -lha
+</code></pre>
+
+<h3 id="navigating-directories">Navigating Directories</h3>
+
+<p>You probably noticed in the output of <code>ls -a</code> and <code>ls -lha</code> directories named <code>.</code> and <code>..</code>. These &ldquo;directories&rdquo; represent the current (<code>.</code>) location and the parent (<code>..</code>) directories. You can use these shortcuts to specify relative paths, both in commands like <code>ls</code> and in other commands we have yet to discuss. To move your current location to a different directory we use the <code>cd</code> command (think &ldquo;change directory&rdquo;). To change to the <code>/etc/</code> directory use the following command:</p>
+
+<pre><code>cd /etc/
+</code></pre>
+
+<p>You can also use various shortcuts to navigate the file system tree. If you&rsquo;re in your home directory (as a normal user, <code>~/</code>) to switch to the <code>/home</code> directory (where all user directories are stored) use the following command:</p>
+
+<pre><code>cd ../
+</code></pre>
+
+<p>From the <code>/home</code> directory, using <code>cd ../</code> will get you to the top level of your file system (<code>/</code>). Similarly, if you were to use <code>cd ../jack/</code> from the <code>~/</code> directory, you would be placed in the <code>/home/jack</code> directory.</p>
+
+<p>Using <code>cd ./jack</code> in the <code>/home</code> directory, however, will also place you in the <code>/home/jack</code> directory, as the <code>.</code> indicates the working or current directory (use <code>pwd</code> to print the working directory in the terminal).</p>
+
+<p>The relative paths work to specify files and directories for all commands.</p>
+
+<h3 id="creating-and-removing-directories">Creating and Removing Directories</h3>
+
+<p>To create a new empty directory, use the make directory command <code>mkdir</code>, as in the following example which creates a new directory called <code>website/</code> underneath the current user&rsquo;s home directory (<code>~/</code>):</p>
+
+<pre><code>mkdir ~/website/
+</code></pre>
+
+<p>If you need to create a new directory hierarchy, (a new directory within another new directory,) use the <code>-p</code> flag to make parent directories as needed. For example:</p>
+
+<pre><code>mkdir -p ~/website/litchfield/public_www/
+</code></pre>
+
+<p>This would create the <code>public_www/</code> directory, inside of the <code>litchfield/</code> directory, inside of the <code>website/</code> directory in the current user&rsquo;s home directory, even if these directories didn&rsquo;t exist before the command was issued.</p>
+
+<p>To remove directories, use the <code>rmdir</code> command. Be aware that this only works if the directory specified is empty.</p>
+
+<h3 id="creating-and-removing-files">Creating and Removing files</h3>
+
+<p>If you want to create a file without writing any content to it you can use the <code>touch</code> command. You can also safely use <code>touch</code> on existing files, which resets the &ldquo;last edited&rdquo; value of touched files to the time when the command was issued.</p>
+
+<p>To remove files use the <code>rm</code> command. Note that the <code>rm</code> command is permanent and <em>cannot</em> be undone. If you want to remove a directory that is non-empty use the <code>rm -r</code> command.</p>
+
+<h3 id="copying-files">Copying Files</h3>
+
+<p>To copy files use the <code>cp</code> command, followed by the original file and the location where you want to copy the file to. To copy your <code>/etc/hosts</code> file to your home directory in a file named <code>etc.hosts.backup</code> you would use the following command:</p>
+
+<pre><code>cp /etc/hosts ~/etc.hosts.backup
+</code></pre>
+
+<p><em>Note:</em> The current user&rsquo;s home directory is abbreviated by the system as <code>~/</code>.</p>
+
+<p>By default, <code>cp</code> will not copy directories and contents of directories, if you need to copy contents of a directory into another directory, you need to use the -R flag (case sensitive; for recursive). To copy the contents of <code>~/website-files/</code> to <code>~/website-backups/</code> :</p>
+
+<pre><code>cp -R ~/website-files/* ~/website-backups/
+</code></pre>
+
+<h3 id="renaming-and-moving-files-and-directories">Renaming and Moving Files and Directories</h3>
+
+<p>The <code>mv</code> command handles all moving and renaming operations on files and directories. Its syntax is the same as <code>cp</code> (though directory moves are recursive by nature). Therefore, to move <code>~/etc.hosts.backup</code> to <code>~/backups/etc.hosts</code> use the following command:</p>
+
+<pre><code>mv ~/etc.hosts.backup ~/backup/etc.hosts
+</code></pre>
+
+<h2 id="text-manipulation">Text Manipulation</h2>
+
+<p>Linux, like all UNIX-derived systems uses text files to manage configuration and content. As a result the terminal provides many tools for editing and manipulating text and text files.</p>
+
+<h3 id="nano-text-editor">Nano Text Editor</h3>
+
+<p>If you just need a basic text editor, try the <code>nano</code> editor, which comes installed by default on nearly every Linux distribution. Run the command <code>nano</code> to open a blank file for editing, or you can specify a file name in the current directly like:</p>
+
+<pre><code>nano my-new-file-in-nano.txt
+</code></pre>
+
+<p>You can specify a file in another directory; to edit <code>/var/www/index.html</code> use the following command:</p>
+
+<pre><code>nano /var/www/index.html
+</code></pre>
+
+<p>Using nano is fairly straightforward once you have a file open,. Available commands are listed at the bottom of the terminal window. <code>^X</code> (Control-X) exits nano, for example.</p>
+
+<h3 id="redirecting-streams">Redirecting Streams</h3>
+
+<p>When you run a command on the terminal its output is generally printed for you before a new prompt. While this is often the preferred behavior sometimes a directory listing is too long, or not sorted correctly by default. The shell lets us direct the output from one command to another until we have output that is useful to us. We will take a complex command and then break it down into more useful parts:</p>
+
+<pre><code>ls /usr/bin/ | grep ^py.* &gt; ~/python-bins.txt
+</code></pre>
+
+<p>This command:</p>
+
+<ol>
+<li>Generates a list of the files in <code>/usr/bin/</code> (with the <code>ls /usr/bin/</code> command.)</li>
+<li>Sends the output of <code>ls</code> to the <code>grep</code> command (with the <code>|</code> or &ldquo;pipe&rdquo; operator.)</li>
+<li>Searches the output of <code>ls</code> with <code>grep</code>, which looks for all files that begin with the letters <code>py</code> (a common prefix for programs written in the Python programming language.)</li>
+<li>Sends the output of <code>grep</code> to a file located in the current user&rsquo;s home directory (<code>~/</code>) named <code>python-bins.txt</code> (with the <code>&gt;</code> operator.)</li>
+</ol>
+
+<p>If the file specified at the end of the <code>&gt;</code> operator has contents, <code>&gt;</code> will overwrite that content. To append the output of a command to the end of an existing file use the append operator, which is <code>&gt;&gt;</code>.</p>
+
+<h3 id="searching-text">Searching Text</h3>
+
+<p>In the above example we searched a stream with the <code>grep</code> tool, which provides a very powerful interface for searching and filtering the contents of text streams and files. For example to &ldquo;grep&rdquo; the contents of the <code>/etc/hosts</code> file for &ldquo;127.0.0.1&rdquo; use the following command:</p>
+
+<pre><code>grep &quot;127.0.0.1&quot; /etc/hosts
+</code></pre>
+
+<p>Note that <code>grep</code> expects the search &ldquo;patterns&rdquo; to be basic regular expression (a pattern matching syntax). <code>grep</code> is very powerful and its full is beyond the scope of this document. Please refer to the manual page for more information (enter <code>man grep</code>.)</p>
+
+<h3 id="the-echo-command">The Echo Command</h3>
+
+<p>The <code>echo</code> command is useful for repeating stated contents directly. This doesn&rsquo;t see much use as a simple command, but is useful in scripts and when combined with streams. For example:</p>
+
+<pre><code>echo &quot;Get Milk and Yogurt&quot; &gt;&gt; shopping-list.txt
+</code></pre>
+
+<p>This command appends the string &ldquo;Get Milk and Yogurt&rdquo; to the end of the <code>shopping-list.txt</code> file.</p>
+
+<p>You can also embed commands in echo statements, as in the following command:</p>
+
+<pre><code>echo &quot;I received a call on `date`&quot; &gt;&gt; phone-log.txt
+</code></pre>
+
+<p>This will append <code>I received a call on Fri Jan 22 12:04:23 EST 2010</code> to the end of the <code>phone-log.txt</code> file. <code>date</code> will output the current date and time, and the output format of this command is controlled by the system&rsquo;s locale settings.</p>
+
+<h3 id="viewing-text-in-a-pager">Viewing Text in a Pager</h3>
+
+<p>There are a number of &ldquo;pager&rdquo; applications which you might find useful. Pagers take input from a file, and provide a mechanism to scroll, search, and review content without flooding your terminal with output. The most common pagers are <code>more</code> and <code>less</code>. You can open your <code>~/.bashrc</code> file in <code>less</code>, for example, with the following command:</p>
+
+<pre><code>less ~/.bashrc
+</code></pre>
+
+<p>There&rsquo;s also a <code>cat</code> command that reads the content of a file onto standard output line for line. It may also be used to send the contents of a file to a command that doesn&rsquo;t provide an option to read directly from files. Additionally, the command <code>tac</code> sends the contents of a file to standard output (your screen by default) in reverse.</p>
+
+<h2 id="system-monitoring">System Monitoring</h2>
+
+<p>The terminal can also be useful for monitoring the current status of your server, and there are a number of default and optional applications which can help you monitor your system load.</p>
+
+<p>The command <code>ps</code> lists active processes by Process ID (PID) numbers. You can use the <code>ps -A</code> command (including the &ldquo;-A&rdquo; flag) to list all currently running processes, including inactive processes.</p>
+
+<p>The <code>top</code> command, which is installed by default on all systems, provides a regularly refreshed list of processes and resource utilization information. You may also wish to consider installing the <code>htop</code> application (with your system&rsquo;s <a href="/docs/using-linux/package-management/">package management</a> tool), which provides more coherent output.</p>
+
+<p>The <code>df</code> command, which is native to all systems, provides a metric of your current disk usage including free and unused space. You can use the <code>df -h</code> command (including the &ldquo;-h&rdquo; flag) to list your current space in megabytes and gigabytes, which is easier to read than flat kilobytes. You can also use the command <code>df -i</code> to view the number of iNodes your disk has used and remain available. An iNode is how the filesystem keeps track of files, and is directly related to the number of files that can be created.</p>
+
+<p>The <code>du</code> command, also native to all systems, checks which directories are using the most space. There are a number of useful flags which you can use with this command, the first of which the <code>du -h</code> command will show the disk usage of every file in your current directory and as a whole in megabytes. Another especially useful flag, &ldquo;&ndash;max-depth&rdquo;, allows you to specify how many directories deep the command should iterate through. For example, to obtain a list of the biggest directories which are contained in your filesystem you would use the command <code>du -h --max-depth 1 /</code>.</p>
+
+<p>You may also wish to consider installing the <code>ncdu</code> application (with your system&rsquo;s <a href="/docs/using-linux/package-management/">package management</a> tool), which provides the file size using a curses-based file browser.</p>
+
+<p>For more information about monitoring the internals of your Linode, you can refer to the <a href="/docs/tools-reference/linux-system-administration-basics#system-diagnostics">System Diagnostics</a> guide.</p>
+
+<h2 id="the-terminal-environment">The Terminal Environment</h2>
+
+<p>The above guide covers only the smallest corner of even the &ldquo;core&rdquo; group of commands. We feel the best way to become accustomed to the terminal environment is to actually use the terminal. As you become more familiar and comfortable with the terminal, you will discover additional commands and functionality.</p>
+
+<p>If you can&rsquo;t remember an option or flag for a specific command, you can quickly find it by issuing the core command with the <code>--help</code> flag to get a quick overview of the syntax for that command. This section covers some basic functionality for the shell environment that is common on most contemporary UNIX systems: <code>bash</code>.</p>
+
+<h3 id="tab-completion">Tab Completion</h3>
+
+<p>By default, <code>bash</code> provides tab completion for commands and executables in your <code>PATH</code> as well as for files and directories. Type the first few letters of a file name or command and then hit the &ldquo;tab&rdquo; key, and the shell will complete the command if it can. If there is more than one possible completion, <code>bash</code> will complete as many characters as it can; if there are still more than one possibility you can hit &ldquo;tab&rdquo; a second time, and <code>bash</code> will provide a list of possible completions.</p>
+
+<h3 id="gnu-screen">GNU Screen</h3>
+
+<p>This program may not be installed by default. It is a &ldquo;terminal multiplexer&rdquo; and is sometimes described as a &ldquo;window manager&rdquo; for the terminal. Start it with the command <code>screen</code> and after hitting return to dismiss the splash screen you will be brought to a terminal <em>inside</em> of screen.</p>
+
+<p>Now, if you issue Control-a Control-c (commonly notated <code>C-a C-c</code>;, you don&rsquo;t need to release the control in between depressing the a and c keys) you will now have two terminal sessions running inside of screen. You can use C-a C-a to toggle between your current screen session and your last visited screen session. Screen terminals are assigned a number on creation and you can access a specific one with <code>C-a #</code>. To access a list of commonly used screen key bindings send <code>C-a ?</code></p>
+
+<p>The best part about screen sessions, however, is the fact that they are persistent beyond a single console session. This means you can connect to a remote server, start a screen session, issue a command that takes a while to execute, and the command will finish in screen even if you lose connectivity to the remote server. You may reconnect to the screen session with <code>screen -r</code>.</p>
+
+<p>If you&rsquo;re running more than one screen session, you can use <code>screen -ls</code> to generate a list of the current screen sessions. If you want to connect to an already connected screen session, use the <code>screen -x</code> command which is useful for screen sharing and remote collaboration. If you want to connect to a screen that is attached to another session, use the <code>screen -DRR</code> command.</p>
+
+<p>Screen is very powerful, and we encourage you to use it if you&rsquo;re having problems with connectivity to maintain a session without interruption.</p>
+
+<h3 id="task-management">Task Management</h3>
+
+<p>The shell is capable of accepting more than one command at a time. If you append an ampersand (<code>&amp;</code>) to the end of a command, the task is sent to the background, and you are provided with a prompt immediately. You can thus use the ampersand to string together a collection of commands to be issued all at once, while you work. Note that background tasks will still generate output, which might be confusing at first.</p>
+
+<p>If you append double ampersands (<code>&amp;&amp;</code>) to the end of a command, the shell will wait until the preceding command completes successfully before executing the next command. You can use this functionality to string together a series of commands that depend on the previous commands&rsquo; success.</p>
+
+<h3 id="command-history">Command History</h3>
+
+<p><code>bash</code> saves a history of recently issued commands in a <code>~/.history/</code> file. You can access these commands with the arrow keys, or with <code>C-p</code> and <code>C-n</code> (Control-), if you need to go back and use or reuse a past command.</p>
+
+<h3 id="emacs-key-bindings">Emacs Key Bindings</h3>
+
+<p>In general, the <code>bash</code> terminal provides emacs-like key bindings for navigation. In addition to <code>C-n</code> and <code>C-p</code> to access next and previous commands in the history the following key binding make it easier to navigate the text in the bash-terminal (<code>C-</code> refers to a Control- modifer, and <code>M-</code> refers to a &ldquo;meta&rdquo; or Alt- modifier):</p>
+
+<ul>
+<li><code>C-a</code> Cursor to the beginning of the line (<code>C-a a</code> in screen)</li>
+<li><code>C-e</code> Cursor to the end of the line</li>
+<li><code>C-f</code> Move cursor forward one character</li>
+<li><code>C-b</code> Move cursor back one character</li>
+<li><code>M-f</code> Move cursor forward one word</li>
+<li><code>M-b</code> Move cursor back one word</li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://en.flossmanuals.net/gnulinux/index.php">Command Line at FLOSS Manuals</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#the-structure-of-commands">The Structure of Commands</a></li>
+<li><a href="#file-system-navigation">File System Navigation</a>
+<ul>
+<li><a href="#listing-directories">Listing Directories</a></li>
+<li><a href="#navigating-directories">Navigating Directories</a></li>
+<li><a href="#creating-and-removing-directories">Creating and Removing Directories</a></li>
+<li><a href="#creating-and-removing-files">Creating and Removing files</a></li>
+<li><a href="#copying-files">Copying Files</a></li>
+<li><a href="#renaming-and-moving-files-and-directories">Renaming and Moving Files and Directories</a></li>
+</ul></li>
+<li><a href="#text-manipulation">Text Manipulation</a>
+<ul>
+<li><a href="#nano-text-editor">Nano Text Editor</a></li>
+<li><a href="#redirecting-streams">Redirecting Streams</a></li>
+<li><a href="#searching-text">Searching Text</a></li>
+<li><a href="#the-echo-command">The Echo Command</a></li>
+<li><a href="#viewing-text-in-a-pager">Viewing Text in a Pager</a></li>
+</ul></li>
+<li><a href="#system-monitoring">System Monitoring</a></li>
+<li><a href="#the-terminal-environment">The Terminal Environment</a>
+<ul>
+<li><a href="#tab-completion">Tab Completion</a></li>
+<li><a href="#gnu-screen">GNU Screen</a></li>
+<li><a href="#task-management">Task Management</a></li>
+<li><a href="#command-history">Command History</a></li>
+<li><a href="#emacs-key-bindings">Emacs Key Bindings</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use Advanced OpenSSH Features to Harden Access to Your Linode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Tips to improve the security of your SSH server">
+        <meta name="keywords" content="SSH, secure shell, Ubuntu, CentOS, security, 2FA, server, Linux">
+        
+        <meta property="og:title" content="Use Advanced OpenSSH Features to Harden Access to Your Linode">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/advanced-ssh-server-security/">
+        <meta property="og:description" content="Tips to improve the security of your SSH server">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/advanced-ssh-server-security/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Use Advanced OpenSSH Features to Harden Access to Your Linode
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use Advanced OpenSSH Features to Harden Access to Your Linode</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-04-07T00:00:00Z">Friday, April 7, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/damasosanoja">Damaso Sanoja
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fadvanced-ssh-server-security%2f&via=linode&text=Use%20Advanced%20OpenSSH%20Features%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fadvanced-ssh-server-security%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fadvanced-ssh-server-security%2f&t=Use%20Advanced%20OpenSSH%20Features%20to%20Harden%20Access%20to%20Your%20Linode" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/advanced-ssh-server-security.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/advanced-ssh-server-security.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>There&rsquo;s a good chance you&rsquo;ve been using SSH (Secure Shell) to access your Linode from your computer. Although SSH is a secure protocol, most system compromises are a result of human error or failure to take advantage of the security features offered. In this guide, we&rsquo;ll cover a few key features provided by OpenSSH.</p>
+
+<p><img src="/docs/assets/advanced-ssh-server-security.png" alt="Use Advanced OpenSSH Features to Harden Access to Your Linode" title="Use Advanced OpenSSH Features to Harden Access to Your Linode" /></p>
+
+<p><a href="http://www.openssh.com/">OpenSSH</a> is a suite of connectivity tools that sysadmins use daily to access remote servers. From a security point of view, it&rsquo;s the &lsquo;front door&rsquo; for remote logins so it is extremely important to harden SSH as much as possible. The aim of this guide is to build upon our <a href="/docs/security/securing-your-server/">Securing Your Server</a> guide with easy steps that can be implemented in just a few minutes.</p>
+
+<p><strong>Assumptions:</strong></p>
+
+<ul>
+<li>You&rsquo;ll be deploying a server open to the internet <sup>24</sup>&frasl;<sub>7</sub>.</li>
+<li>Your primary concern is security over simplicity or convenience. Be aware that in most cases, more security implies less convenience.</li>
+</ul>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Complete the <a href="/docs/getting-started">Getting Started</a> guide.</p></li>
+
+<li><p>Follow the <a href="/docs/security/securing-your-server/">Securing Your Server</a> guide to create a standard user account, harden SSH access, create a basic firewall rule set and remove unnecessary network services.</p></li>
+
+<li><p>Log in to your Linode via SSH and check for updates using the corresponding package manager: <code>apt</code> (Ubuntu/Debian) or <code>yum</code> (RHEL/CentOS) .</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+sudo yum update
+</code></pre></li>
+
+<li><p>Make a backup of your server&rsquo;s <code>sshd_config</code> file.</p>
+
+<pre><code>sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.BACKUP
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="use-a-stronger-diffie-hellman-algorithm">Use a Stronger Diffie-Hellman Algorithm</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman</a> is the name of an asymmetric algorithm used to securely exchange cryptographic keys over public channels (like the Internet). OpenSSH uses the D-H algorithm to generate keys from a configuration file located at <code>/etc/ssh/moduli</code>. Several IT news outlets have reported the possibility that nations may have broken commonly used primes, which mean they could read encrypted traffic transmitted over &ldquo;secure&rdquo; channels.</p>
+
+<p>Protecting your server against that threat is fairly simple, just edit the <code>/etc/ssh/moduli</code> file and comment the lines where the fifth field is 1023 or 1535 (which denotes the size). This forces the algorithm to use keys from Group 14 (2048-bit or more). Higher groups mean more secure keys that are less likely to be broken in near future, but also require additional time to compute.</p>
+
+<p><img src="/docs/assets/diffie_hellman_screenshot.png" alt="Enforcing a stronger Diffie-Hellman algorithm" /></p>
+
+<h3 id="optional-generate-your-own-keys">Optional: Generate Your Own Keys</h3>
+
+<p>The <code>/etc/ssh/moduli</code> file ships with OpenSSH, so assuming two servers have the same version of OpenSSH, their default <code>moduli</code> files will be identical. This does <em>not</em> mean they are insecure; because Diffie-Hellman is an asymmetric algorithm, the keys it generates are incredibly difficult to crack when generated from sufficiently large primes. That being said, if you want to take the extra time to do so, you may generate new Diffie-Hellman parameters yourself:</p>
+
+<pre><code>ssh-keygen -G &quot;${HOME}/moduli&quot; -b 2048
+sudo ssh-keygen -T /etc/ssh/moduli -f &quot;${HOME}/moduli&quot;
+rm &quot;${HOME}/moduli&quot;
+</code></pre>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Before running these commands on a production server, be aware that depending on the size of the keys you&rsquo;re generating, this will use significant CPU power and may take anywhere from a minute to several hours.</div>
+</blockquote>
+
+
+<p>This sequence of commands generates a new file containing thousands of candidate primes for the Diffie-Hellman algorithm. Next, it tests the candidates and adds suitable primes to your <code>moduli</code> file. Note that these keys append to your existing ones; they do not overwrite the file, so it is still possible that your SSH connection will use a precomputed prime in its key exchange. As stated above, however, this is not a vulnerability.</p>
+
+<p>In our example, we generated Diffie-Hellman parameters with 2048 bits. This is generally considered secure, but you are welcome to modify this value to generate larger prime candidates.</p>
+
+<p>Remember to restart the SSH service after making these changes, whether you edited the file or generated your own:</p>
+
+<pre><code>sudo systemctl restart ssh
+</code></pre>
+
+<p>For more detailed information on how to decide whether to edit the existing file or generate your own, please refer to <a href="https://tools.ietf.org/html/rfc4419#section-7">RFC4419</a>.</p>
+
+<h2 id="ssh-access-control">SSH Access Control</h2>
+
+<p>Ideally, you should limit the number of users with server access to a bare minimum. Fortunately, OpenSSH Access Control Directives bring an excellent mechanism to set permissions and establish restrictions to users and groups that connect to your server.</p>
+
+<p>There are four directives available executed in sequential order:</p>
+
+<p><code>DenyUsers</code>: block listed users from SSH service.
+<code>AllowUsers</code>: login is allowed only for users listed in this directive.
+<code>DenyGroups</code>: similar to <code>DenyUsers</code>, any user who belongs to this group(s) is blocked.
+<code>AllowGroups</code>: only users part of this group(s) can access the SSH service.</p>
+
+<p>The default behavior of SSH is to allow <em>any</em> user to log in to the server, but this can be changed by adding access control directives to your <code>/etc/ssh/sshd_config</code> file. The following examples shows how to filter who can access the service:</p>
+
+<h3 id="selectively-deny-users">Selectively Deny Users</h3>
+
+<p><code>DenyUsers phpadmin tempuser dbuser@198.51.100.0</code> - The users <code>phpadmin</code> and <code>tempuser</code> have no SSH access at all, but the user <code>dbuser</code> is only blocked if is connecting from the specific IP address of 198.51.100.0.</p>
+
+<h3 id="selectively-allow-users">Selectively Allow Users</h3>
+
+<p><code>AllowUsers superadmin megauser@yourdomain.tld dbadmin@198.51.100.0</code> - only the users <code>superadmin</code>, <code>megauser</code> and <code>dbadmin</code> have SSH access, but <code>megauser</code> and <code>dbadmin</code> can only connect from specific domains/IP addresses. On the other hand, <code>superadmin</code> has the ability to connect from any computer.</p>
+
+<h3 id="custom-rules-example">Custom Rules Example</h3>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/ssh/sshd_config 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">DenyUsers</span> adam ben clark@198.51.100.0/24
+
+<span class="nb">AllowUsers</span> clark dan@192.168.5.200 eva</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Let&rsquo;s look at these rules in more detail. In the first line, Adam and Ben are blocked from accessing the server via SSH under any circumstances. Clark is not able to connect from a specific range of IP addresses, specified by <code>198.51.100.0/24</code>. In the second line, only Clark, Dan, and Eva will have SSH access. However, Clark&rsquo;s previous restriction from the <code>DenyUsers</code> line applies and Dan is <em>only</em> able to connect from one specific IP address. Eva is the only one who is able to connect via SSH from any computer.</p>
+
+<p>Remember to restart your SSH service after changes have been made:</p>
+
+<pre><code>sudo systemctl restart ssh
+</code></pre>
+
+<h2 id="use-a-strong-password-for-your-key-pair">Use a Strong Password for your Key-pair</h2>
+
+<p>In the <a href="/docs/security/securing-your-server/">Securing Your Server</a> guide, you&rsquo;re encouraged to use SSH Key Pair Authentication. This is not optional if you are serious about security. But what about remote users that connect to the server with their laptops, which are susceptible to be stolen or lost? Here is where protecting your private key with a strong password or passphrase comes in, at least to gain time before changing the server keys. A strong password shouldn&rsquo;t be dictionary based. If security is your main concern, the convenience of an easy to remember password isn&rsquo;t adequate. <a href="https://www.openssl.org/">OpenSSL</a> offers an easy way to generate pseudo-random passwords:</p>
+
+<pre><code>openssl rand -base64 32
+</code></pre>
+
+<p>The command will generate a 44 character long, base64-encoded password like this:</p>
+
+<pre><code>C4b7Yep8HGQFeG6kbnpEtrm+bg0+958xf1f85PU3/e0=
+</code></pre>
+
+<p>This kind of password is very hard to crack, but has the obvious disadvantage of being inconvenient each time you log to your server. The recommended method is to use a good password manager, because using a plain-text file for this dilutes the purpose of using the password in the first place.</p>
+
+<p>To add the generated password to your existing private key:</p>
+
+<pre><code>ssh-keygen -p -f ~/.ssh/id_rsa
+</code></pre>
+
+<p>This assumes you keep your client&rsquo;s private SSH key in its default location, <code>~/.ssh/id_rsa</code>. You can modify the file location as needed and use the same command to change your password in the future.</p>
+
+<p>An alternative to this method is the use of a <a href="https://en.wikipedia.org/wiki/OpenPGP_card">GPG smartcard</a> or <a href="https://www.yubico.com/products/yubikey-hardware/">YubiKey</a> which should be stored in a different place from your laptop. You can find more information about this implementation in the guide <a href="/docs/security/gpg-key-for-ssh-authentication/">How to use a GPG key for SSH authentication</a></p>
+
+<h2 id="chroot-users">Chroot Users</h2>
+
+<p>OpenSSH has a useful directive called <code>ChrootDirectory</code> that can be used in <code>sshd_config</code> to &lsquo;jail&rsquo; a user into any directory, similar to the behavior of <code>chroot_local=YES</code> in an FTP server. This allows sysadmins to implement an additional layer of security for those users that don&rsquo;t need access to all of a server&rsquo;s resources.</p>
+
+<p>However, this strategy involves a time-consuming process to configure the jailed user. For the purposes of this guide we&rsquo;ll setup a bare environment with some basic commands available for a user we&rsquo;ll create called <code>restricted-user</code>.</p>
+
+<ol>
+<li><p>Create a jail directory in any desired location for <code>restricted-user</code>:</p>
+
+<pre><code>sudo mkdir -p /home/chroot/restricted-user
+</code></pre></li>
+
+<li><p>Create the required <code>/dev</code> nodes using <code>mknod</code>:</p>
+
+<pre><code>sudo mkdir -p /home/chroot/restricted-user/dev/
+sudo mknod -m 666 /home/chroot/restricted-user/dev/null c 1 3
+sudo mknod -m 666 /home/chroot/restricted-user/dev/tty c 5 0
+sudo mknod -m 666 /home/chroot/restricted-user/dev/zero c 1 5
+sudo mknod -m 666 /home/chroot/restricted-user/dev/random c 1 8
+</code></pre></li>
+
+<li><p>Establish permissions as needed for the jail. In this example, we&rsquo;ll give ownership to <code>root</code>:</p>
+
+<pre><code>sudo chown root:root /home/chroot/restricted-user
+sudo chmod 0755 /home/chroot/restricted-user
+</code></pre></li>
+
+<li><p>Create the remaining directories needed by <code>restricted-user</code>:</p>
+
+<pre><code>sudo mkdir -p /home/chroot/restricted-user/bin /home/chroot/restricted-user/lib/ /home/chroot/restricted-user/lib64/ /home/chroot/restricted-user/lib/x86_64-linux-gnu/ /home/chroot/restricted-user/etc/
+</code></pre></li>
+
+<li><p>Install the <code>bash</code> shell into the jail:</p>
+
+<pre><code>sudo cp -v /bin/bash /home/chroot/restricted-user/bin
+</code></pre></li>
+
+<li><p>For each binary copied into the jail, we need to determine which shared libraries are needed. This is done through the <code>ldd</code> command:</p>
+
+<pre><code>sudo ldd /bin/bash
+</code></pre></li>
+
+<li><p>Manually copy each library from the output to the corresponding location in our <code>restricted-user</code> directory. This is necessary because our user won&rsquo;t have access outside its own jail.</p>
+
+<pre><code>cp -v /lib/x86_64-linux-gnu/{libncurses.so.5,libtinfo.so.5,libdl.so.2,libc.so.6} /home/chroot/restricted-user/lib/
+cp -v /lib64/ld-linux-x86-64.so.2 /home/chroot/restricted-user/lib64/
+cp -va /lib/x86_64-linux-gnu/libnss_files* /home/chroot/restricted-user/lib/x86_64-linux-gnu/
+</code></pre></li>
+
+<li><p>Next, create the <code>restricted-user</code>. You may use a different name for your user if you like:</p>
+
+<pre><code>sudo adduser restricted-user
+</code></pre></li>
+
+<li><p>Copy user information to the jail:</p>
+
+<pre><code>sudo cp -vf /etc/{passwd,group} /home/chroot/restricted-user/etc/
+</code></pre></li>
+
+<li><p>Finally, edit your <code>/etc/ssh/sshd_config</code> file to configure your new user:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/ssh/sshd_config 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Match</span> <span class="k">User</span> restricted-user
+<span class="nb">ChrootDirectory</span> <span class="sx">/home/chroot/restricted-user</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Restart your SSH service to apply these changes.</p>
+
+<pre><code>sudo systemctl restart sshd
+</code></pre></li>
+</ol>
+
+<p>Keep in mind that our restricted user can&rsquo;t use any command or binary that is not manually installed in its jail environment. The complete process to setup a user for specific tasks is overwhelming but has the advantage that anything outside the jail is protected in the event that the user is compromised.</p>
+
+<h2 id="regularly-update-your-revoked-keys-list">Regularly Update your Revoked Keys List</h2>
+
+<p>There are cases where you want to revoke specific public keys to prevent attempts to log in with them. For example, if you rotate your SSH keys every few months, you may want to disable them from being used in the future. OpenSSH has a directive to do just that: <code>RevokedKeys</code>. Simply edit your <code>/etc/ssh/sshd_config</code> and add the desired location for revoked keys list:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/ssh/sshd_config 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">RevokedKeys</span> <span class="sx">/etc/ssh/revoked_keys</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The list should contain one key per line in plain text format. Remember to restart your SSH service each time you add a new key to the file.</p>
+
+<h2 id="reduce-timeout-interval-and-login-grace-time">Reduce Timeout Interval and Login Grace Time</h2>
+
+<p>Unattended SSH sessions are a major security risk. Leaving a remote connection open may allow unauthorized users the power to do whatever they like with your server. After all, you&rsquo;re already logged. The idle time interval comes in useful to prevent this situation, all you need is to configure two directives:</p>
+
+<p><code>ClientAliveInterval</code> set the time in seconds before the server sends a message requesting a client response. Default is 0, which means the server won&rsquo;t request a client response (the session can last forever).
+<code>ClientAliveCountMax</code> specifies the number of client alive messages sent by the server before closing the connection if no response is returned.  The default is 3.</p>
+
+<p>For example, if you decide to limit an idle SSH connection to 2 minutes before disconnecting the client, you can configure it as follows:</p>
+
+<pre><code>ClientAliveInterval 40
+ClientAliveCountMax 3
+</code></pre>
+
+<p>This sends 3 messages to your client (every 40 seconds) requesting some action, after 120 seconds without response the user will be logged out. An alternative configuration could be:</p>
+
+<pre><code>ClientAliveInterval 120
+ClientAliveCountMax 0
+</code></pre>
+
+<p>With these settings, if no messages are sent, the server will disconnect any SSH session after 2 minutes of inactivity.</p>
+
+<p>To apply any combination that suits your needs just edit your server&rsquo;s <code>/etc/ssh/sshd_config</code> and restart your SSH daemon afterwards.</p>
+
+<h2 id="use-a-warning-banner">Use a Warning Banner</h2>
+
+<p>This step will not harden your server security, but your legal-conscientious-parameters. In some locations, the simple fact of warning unauthorized users of the consequences of their actions is determinant for taking legal action. To display a warning banner each time a user logs to your server, add the following line to the <code>/etc/ssh/sshd_config</code> configuration:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/ssh/sshd_config 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Banner</span> <span class="sx">/location/of/WarningMessage</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The value <code>/location/of/WarningMessage</code> is the path to your banner text file. The following banner example was taken from <a href="https://help.ubuntu.com/community/SSH/OpenSSH/Configuring">Ubuntu&rsquo;s Community Help page</a> for OpenSSH:</p>
+
+<pre><code>***************************************************************************
+                            NOTICE TO USERS
+
+This computer system is the private property of its owner, whether
+individual, corporate or government.  It is for authorized use only.
+Users (authorized or unauthorized) have no explicit or implicit
+expectation of privacy.
+
+Any or all uses of this system and all files on this system may be
+intercepted, monitored, recorded, copied, audited, inspected, and
+disclosed to your employer, to authorized site, government, and law
+enforcement personnel, as well as authorized officials of government
+agencies, both domestic and foreign.
+
+By using this system, the user consents to such interception, monitoring,
+recording, copying, auditing, inspection, and disclosure at the
+discretion of such personnel or officials.  Unauthorized or improper use
+of this system may result in civil and criminal penalties and
+administrative or disciplinary action, as appropriate. By continuing to
+use this system you indicate your awareness of and consent to these terms
+and conditions of use. LOG OFF IMMEDIATELY if you do not agree to the
+conditions stated in this warning.
+
+****************************************************************************
+</code></pre>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.openssh.com/">OpenSSH</a></li>
+
+<li><a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/firewalls/introduction-to-firewalld-on-centos/">Introduction to FirewallD on CentOS</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/how-to-install-mysql-on-centos-7/">How to Install MySQL on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mariadb/how-to-install-mariadb-on-centos-7/">How to Install MariaDB on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/package-mirrors/">Package Mirrors</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/how-to-install-mysql-on-centos-6/">How to Install MySQL on CentOS 6</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="http://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#use-a-stronger-diffie-hellman-algorithm">Use a Stronger Diffie-Hellman Algorithm</a>
+<ul>
+<li><a href="#optional-generate-your-own-keys">Optional: Generate Your Own Keys</a></li>
+</ul></li>
+<li><a href="#ssh-access-control">SSH Access Control</a>
+<ul>
+<li><a href="#selectively-deny-users">Selectively Deny Users</a></li>
+<li><a href="#selectively-allow-users">Selectively Allow Users</a></li>
+<li><a href="#custom-rules-example">Custom Rules Example</a></li>
+</ul></li>
+<li><a href="#use-a-strong-password-for-your-key-pair">Use a Strong Password for your Key-pair</a></li>
+<li><a href="#chroot-users">Chroot Users</a></li>
+<li><a href="#regularly-update-your-revoked-keys-list">Regularly Update your Revoked Keys List</a></li>
+<li><a href="#reduce-timeout-interval-and-login-grace-time">Reduce Timeout Interval and Login Grace Time</a></li>
+<li><a href="#use-a-warning-banner">Use a Warning Banner</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

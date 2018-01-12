@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Longview App for Apache</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Longview App for Apache">
+        <meta name="keywords" content="Longview,  Apache,  statistics,  mod\_status">
+        
+        <meta property="og:title" content="Longview App for Apache">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/longview/longview-app-for-apache/">
+        <meta property="og:description" content="Longview App for Apache">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/longview/longview-app-for-apache/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/longview/">Longview Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Longview App for Apache
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Longview App for Apache</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-01-06T00:00:00Z">Monday, January 6, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview-app-for-apache%2f&via=linode&text=Longview%20App%20for%20Apache" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview-app-for-apache%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview-app-for-apache%2f&t=Longview%20App%20for%20Apache" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/longview/longview-app-for-apache.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/longview/longview-app-for-apache.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Longview for Apache is a Longview App. The Longview Apache tab appears in the Linode Manager when Longview detects that you have Apache installed on your Linode. With the Longview Apache App, you&rsquo;ll be able to view statistics for Apache on your Linode. It can help you keep track of Apache&rsquo;s settings, workers and requests, system resource consumption, and other information.</p>
+
+<h2 id="installing">Installing</h2>
+
+<p>Prerequisites:</p>
+
+<ul>
+<li>Install and start <a href="/docs/web-servers/apache">Apache</a></li>
+<li>Install the <a href="/docs/platform/longview/longview/#installing-the-client">Longview client</a></li>
+</ul>
+
+<h3 id="debian-and-ubuntu-automatic-configuration">Debian and Ubuntu Automatic Configuration</h3>
+
+<p>If Apache is installed and running when you install the Longview client, the Apache App should enable and configure itself automatically.</p>
+
+<p>If you already have Longview installed, and later want to install Apache and enable the Longview App for it, you can run Longview through its automatic configuration sequence again. In most cases, it will find everything it needs to get the Apache App started. And don&rsquo;t worry - your old Longview data will stay safe. To run the automatic Longview configuration, first make sure that Apache is running, and then run the following command on your Linode via SSH:</p>
+
+<pre><code>dpkg-reconfigure -phigh linode-longview
+</code></pre>
+
+<p>For most people, Longview should be able to configure itself automatically, and you will receive output something like this:</p>
+
+<pre><code>[ ok ] Stopping Longview Agent: longview.
+Checking Apache configuration...
+Found Apache status page at http://127.0.0.1/server-status?auto (default URL)
+[ ok ] Starting Longview Agent: longview.
+update-rc.d: using dependency based boot sequencing
+</code></pre>
+
+<p>Once you see this successful message, the Longview Apache App should automatically start collecting Apache data. Refresh the Longview Apache tab in the Linode Manager to start viewing your stats.</p>
+
+<p>If you receive a failure message or the popup shown below, you should visit the <a href="#troubleshooting">Troubleshooting</a> section at the end of this article.</p>
+
+<p><a href="/docs/assets/1451-longview_apache_popup_crop.png"><img src="/docs/assets/1451-longview_apache_popup_crop.png" alt="Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \&lt;Yes\&gt; \&lt;No\&gt;" /></a></p>
+
+<h3 id="manual-configuration-all-distributions">Manual Configuration (All Distributions)</h3>
+
+<p>To enable the Apache Longview app manually, follow these steps on your Linode via SSH:</p>
+
+<ol>
+<li><p>Make sure <strong>mod_status</strong> is enabled for Apache (it should be by default). You can follow the <a href="http://httpd.apache.org/docs/2.2/mod/mod_status.html">apache.org</a> instructions at the link. Or, on Debian and Ubuntu systems, run this command:</p>
+
+<pre><code>sudo a2enmod status
+</code></pre></li>
+
+<li><p>Your <code>httpd.conf</code> file (or the file where you enabled mod_status; <code>status.conf</code> is another common location) should look like the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		httpd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;IfModule mod_status.c&gt;
+    ExtendedStatus On
+    &lt;Location /server-status&gt;
+        SetHandler server-status
+        Order deny,allow
+        Deny from all
+        Allow from <span class="m">127</span>.0.0.1
+    &lt;/Location&gt;
+&lt;/IfModule&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Edit <code>/etc/linode/longview.d/Apache.conf</code> to look like the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/linode/longview.d/Apache.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">location http://127.0.0.1/server-status?auto</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Restart Apache:</p>
+
+<p>Debian and Ubuntu:</p>
+
+<pre><code>service apache2 restart
+</code></pre>
+
+<p>CentOS and Fedora:</p>
+
+<pre><code>apachectl restart
+</code></pre></li>
+
+<li><p>Restart Longview:</p>
+
+<pre><code>service longview restart
+</code></pre></li>
+
+<li><p>Refresh the Longview Apache tab in the Linode Manager.</p></li>
+</ol>
+
+<p>You should now be able to see Longview data for Apache. If that&rsquo;s not the case, proceed to the <a href="#troubleshooting">Troubleshooting</a> section at the end of this article.</p>
+
+<h2 id="viewing-statistics">Viewing Statistics</h2>
+
+<p>To see the output for the Longview Apache App:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com/">Linode Manager</a>.</li>
+<li>Select the <strong>Longview</strong> tab.</li>
+<li>Select the <strong>Apache</strong> tab.</li>
+</ol>
+
+<p>Click the image for a full-size view.</p>
+
+<p><a href="/docs/assets/1452-longview_apache_stats.png"><img src="/docs/assets/1453-longview_apache_stats_sm.png" alt="The Longview Apache App." /></a></p>
+
+<p>You&rsquo;ll see the current version of Apache listed on the upper right.</p>
+
+<p>Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about <a href="/docs/platform/longview/longview#using-the-interface">navigating the Longview interface</a>. The next sections cover the Longview Apache App in detail.</p>
+
+<h3 id="requests">Requests</h3>
+
+<p>The <strong>Requests</strong> graph shows the total number of requests Apache handled at the selected time. This is every HTTP and HTTPS request to your Linode.</p>
+
+<h3 id="throughput">Throughput</h3>
+
+<p>The <strong>Throughput</strong> graph shows the amount of data that Apache sent and received via web requests at the time selected.</p>
+
+<h3 id="workers">Workers</h3>
+
+<p>The <strong>Workers</strong> graph shows all of the Apache workers at the selected time. The workers are broken down by state:</p>
+
+<ul>
+<li>Waiting</li>
+<li>Starting</li>
+<li>Reading</li>
+<li>Sending</li>
+<li>Keepalive</li>
+<li>DNS Lookup</li>
+<li>Closing</li>
+<li>Logging</li>
+<li>Finishing</li>
+<li>Cleanup</li>
+</ul>
+
+<h3 id="cpu">CPU</h3>
+
+<p>The <strong>CPU</strong> graph shows the percentage of your Linode&rsquo;s CPU being used by Apache at the selected time. If you want to see the total CPU use instead, check the <a href="/docs/platform/longview/longview#overview-tab">Overview tab</a>.</p>
+
+<h3 id="memory">Memory</h3>
+
+<p>The <strong>Memory</strong> graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode&rsquo;s total memory use instead, check the <a href="/docs/platform/longview/longview#overview-tab">Overview tab</a>.</p>
+
+<h3 id="disk-io">Disk IO</h3>
+
+<p>The <strong>Disk IO</strong> graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the <a href="/docs/platform/longview/longview#disks-tab">Disks tab</a>.</p>
+
+<h3 id="process-count">Process Count</h3>
+
+<p>The <strong>Process Count</strong> graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the <a href="/docs/platform/longview/longview#process-explorer-tab">Process Explorer tab</a>.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>If you don&rsquo;t see Longview data for Apache, you&rsquo;ll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the <code>/var/log/linode/longview.log</code> file for errors as well. You should also compare your mod_status configuration file (typically <code>httpd.conf</code> or <code>status.conf</code>) to the example shown in Step 2 of the <a href="#manual-configuration-all-distributions">Manual Configuration (All Distributions)</a> section of this article.</p>
+
+<p>By default Longview uses port 80 for its automatic configuration. In the event you are experiencing problems you may need to edit the <code>/etc/apache2/ports.conf</code> file to use port 8080 or another non-standard port.</p>
+
+<h3 id="autoconfigure-mod-status-popup">Autoconfigure Mod_Status Popup</h3>
+
+<p>If you run the <a href="#debian-and-ubuntu-automatic-configuration">automatic Longview configuration tool</a>, and get the popup message shown below:</p>
+
+<p><a href="/docs/assets/1451-longview_apache_popup_crop.png"><img src="/docs/assets/1451-longview_apache_popup_crop.png" alt="Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \&lt;Yes\&gt; \&lt;No\&gt;" /></a></p>
+
+<p>This indicates that Longview can&rsquo;t locate the Apache status page. In turn, this could indicate that either:</p>
+
+<ol>
+<li><p>The status page is in an unusual and unspecified location.</p></li>
+
+<li><p><code>mod_status</code> isn&rsquo;t enabled.</p></li>
+
+<li><p>An Apache virtual host setting is interfering with requests to the status page.</p></li>
+
+<li><p>Apache itself is misconfigured.</p></li>
+</ol>
+
+<p>If you choose:</p>
+
+<ul>
+<li><strong>&lt;No&gt;</strong>: the Longview tool will quit, and you can do a <a href="#manual-configuration-all-distributions">manual configuration</a>. This is the safer option.</li>
+
+<li><p><strong>&lt;Yes&gt;</strong>: the Longview tool will attempt to enable mod_status, set the status page location, and restart Apache. This option is easier, but has the potential to disrupt your current Apache configuration. If you choose yes, and the configuration is successful, you should see output like the following:</p>
+
+<pre><code>[ ok ] Stopping Longview Agent: longview.
+Checking Apache configuration...
+Enabling module status.
+To activate the new configuration, you need to run:
+  service apache2 restart
+[....] Reloading web server config: . ok
+Apache mod_status enabled
+[ ok ] Starting Longview Agent: longview.
+update-rc.d: using dependency based boot sequencing
+</code></pre></li>
+</ul>
+
+<p>Refresh the Longview Apache tab in the Linode Manager to verify that it&rsquo;s working now.</p>
+
+<p>If instead you receive a failure message, such as:</p>
+
+<pre><code>[FAIL] Reloading web server config: apache2 failed!
+</code></pre>
+
+<p>You will need to double-check your Apache installation, and then do a <a href="#manual-configuration-all-distributions">manual configuration</a>.</p>
+
+<h3 id="unable-to-access-local-server-status-for-apache">Unable to Access Local Server Status for Apache</h3>
+
+<p>More specifically, the error will state <code>Unable to access local server status for Apache at &lt;http://example.com/example?auto&gt;: &lt;error&gt;:</code>. This error occurs when either:</p>
+
+<ol>
+<li><p>Apache&rsquo;s <code>mod_status</code> setting is disabled or has been changed from the default location.</p></li>
+
+<li><p>An Apache virtual host configuration is interfering with web requests to the <code>mod_status</code> location.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This error occurs when Longview attempts to check the status page <code>location</code> listed in <code>/etc/linode/longview.d/Apache.conf</code>, or the default page at <code>127.0.0.1/server-status?auto</code>, but receives a non-200 HTTP response code. Basically, it means that the status page Longview is expecting is not being returned by the server.</div>
+</blockquote>
+
+
+<p>To fix this, follow these steps:</p>
+
+<ol>
+<li><p>Make sure Apache is running:</p>
+
+<p>Debian and Ubuntu:</p>
+
+<pre><code>service apache2 restart
+</code></pre>
+
+<p>CentOS and Fedora:</p>
+
+<pre><code>apachectl restart
+</code></pre></li>
+
+<li><p>Make sure <code>mod_status</code> is enabled. See the <a href="http://httpd.apache.org/docs/2.2/mod/mod_status.html#enable">Apache website</a> for details. You can also check the output of the following command:</p>
+
+<pre><code>apachectl -M | grep status
+</code></pre></li>
+
+<li><p>Check the location for <code>mod_status</code>. The default location on Debian and Ubuntu systems is <code>http://127.0.0.1/server-status?auto</code> on localhost. In the Apache configuration file (typically <code>httpd.conf</code> or <code>status.conf</code>), this is designated with the lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		httpd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;Location /server-status&gt;
+    SetHandler server-status</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>SetHandler server-status</code> line indicates that this is the location block for mod_status. The location line itself sets the location.</p>
+
+<h5 id="on-cpanel-whm">On cPanel/WHM</h5>
+
+<p>To direct Longview to the cPanel customized status page, edit the <code>location</code> line in <code>/etc/linode/longview.d/Apache.conf</code> to match the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/linode/longview.d/Apache.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">location http://localhost/whm-server-status?auto</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview Apache tab in the Linode Manager to verify that it&rsquo;s working now.</p></li>
+
+<li><p>If you&rsquo;re not using the default location, you need to create a new file, <code>/etc/linode/longview.d/Apache.conf</code>, and set the <code>location</code> variable to match what you set in the Apache configuration file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/linode/longview.d/Apache.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">location http://127.0.0.1/custom/location/path</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Determine if an Apache virtual host configuration is interfering with requests to the mod_status location. Use a tool like <code>curl</code> or <code>wget</code> to request the server status location:</p>
+
+<pre><code>curl http://127.0.0.1/server-status?auto
+</code></pre>
+
+<p>Observe the output. If the output looks like something other than a simple status page, then you&rsquo;ll have to fix your Apache virtual host configuration.</p></li>
+
+<li><p>Restart Longview:</p>
+
+<pre><code>service longview restart
+</code></pre></li>
+
+<li><p>Refresh the Longview Apache tab in the Linode Manager to verify that it&rsquo;s working now.</p></li>
+</ol>
+
+<h3 id="the-apache-status-page-doesn-t-look-right">The Apache Status Page Doesn&rsquo;t Look Right</h3>
+
+<p>More specifically, the error will state <code>The Apache status page doesn't look right. Check &lt;http://example.com/example?auto&gt; and investigate any redirects for misconfiguration.</code> This error occurs when Longview is able to reach the <code>mod_status</code> page, but doesn&rsquo;t receive the expected content.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This error occurs when Longview attempts to check the status page, and receives a 200 HTTP response code, but can&rsquo;t scrape the expected status content from the page. That is, the page exists on your Linode, but it doesn&rsquo;t have the right content. If, for example, Longview was to check your website&rsquo;s home page, you would get this error.</div>
+</blockquote>
+
+
+<p>To resolve this issue, follow these steps:</p>
+
+<ol>
+<li>Visit the URL shown in the error. See if it directs or redirects you to a page that isn&rsquo;t the Apache status page.</li>
+
+<li><p>Update your Apache and Longview settings so that they specify the same location:</p>
+
+<ul>
+<li>The <strong>&lt;Location &gt;</strong> line in <code>httpd.conf</code> or <code>status.conf</code></li>
+<li>The <strong>location</strong> line in <code>/etc/linode/longview.d/Apache.conf</code></li>
+</ul>
+
+<p>If neither of these is set, the default location of <code>http://127.0.0.1/server-status?auto</code> on localhost will be used.</p></li>
+
+<li><p>Make sure there aren&rsquo;t any Apache redirects or other settings that are affecting this page.</p></li>
+
+<li><p>Restart Longview:</p>
+
+<pre><code>service longview restart
+</code></pre></li>
+
+<li><p>Refresh the Longview Apache tab in the Linode Manager to verify that it&rsquo;s working now.</p></li>
+</ol>
+
+<h3 id="missing-graphs-enable-extendedstatus">Missing Graphs: Enable ExtendedStatus</h3>
+
+<p>If some of your Apache graphs are missing, you may see the error <code>Enable ExtendedStatus in your Apache configuration for throughput and request graphs.</code></p>
+
+<p>This indicates that you need to add the following line to your Apache configuration file (typically <code>httpd.conf</code> or <code>status.conf</code>) in the <code>&lt;IfModule mod_status.c&gt;</code> section:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		httpd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ExtendedStatus On</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>When you&rsquo;ve finished modifying the configuration file, restart Apache:</p>
+
+<p>Debian and Ubuntu:</p>
+
+<pre><code>service apache2 restart
+</code></pre>
+
+<p>CentOS and Fedora:</p>
+
+<pre><code>apachectl restart
+</code></pre>
+
+<h3 id="apache-tab-is-missing">Apache Tab is Missing</h3>
+
+<p>If the Longview Apache tab is missing entirely, this indicates that Apache is either not installed, or has stopped. If you restart Apache, you will be able to see the tab again and view all of your old data.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://news.cpanel.com/category/products/">cPanel Products News</a></li>
+
+<li><a href="https://news.cpanel.com/category/security/">cPanel Security News</a></li>
+
+<li><a href="http://cb.vu/unixtoolbox.xhtml">Unix Toolbox</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/longview/longview-app-for-mysql/">Longview App for MySQL</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/longview/longview-app-for-nginx/">Longview App for Nginx</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#installing">Installing</a>
+<ul>
+<li><a href="#debian-and-ubuntu-automatic-configuration">Debian and Ubuntu Automatic Configuration</a></li>
+<li><a href="#manual-configuration-all-distributions">Manual Configuration (All Distributions)</a></li>
+</ul></li>
+<li><a href="#viewing-statistics">Viewing Statistics</a>
+<ul>
+<li><a href="#requests">Requests</a></li>
+<li><a href="#throughput">Throughput</a></li>
+<li><a href="#workers">Workers</a></li>
+<li><a href="#cpu">CPU</a></li>
+<li><a href="#memory">Memory</a></li>
+<li><a href="#disk-io">Disk IO</a></li>
+<li><a href="#process-count">Process Count</a></li>
+</ul></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#autoconfigure-mod-status-popup">Autoconfigure Mod_Status Popup</a></li>
+<li><a href="#unable-to-access-local-server-status-for-apache">Unable to Access Local Server Status for Apache</a>
+<ul>
+<li>
+<ul>
+<li><a href="#on-cpanel-whm">On cPanel/WHM</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#the-apache-status-page-doesn-t-look-right">The Apache Status Page Doesn&rsquo;t Look Right</a></li>
+<li><a href="#missing-graphs-enable-extendedstatus">Missing Graphs: Enable ExtendedStatus</a></li>
+<li><a href="#apache-tab-is-missing">Apache Tab is Missing</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

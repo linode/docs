@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Upgrade to Ubuntu 10.04 LTS (Lucid)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.04 LTS.">
+        <meta name="keywords" content="ubuntu upgrade, distro upgrade, linux upgrade howto">
+        
+        <meta property="og:title" content="How to Upgrade to Ubuntu 10.04 LTS (Lucid)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/upgrading/how-to-upgrade-to-ubuntu-10-04-lts-lucid/">
+        <meta property="og:description" content="How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.04 LTS.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/upgrading/how-to-upgrade-to-ubuntu-10-04-lts-lucid/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/upgrading/">Upgrading</a>
+  
+</li>
+
+
+<li>
+  
+  How to Upgrade to Ubuntu 10.04 LTS (Lucid)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Upgrade to Ubuntu 10.04 LTS (Lucid)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-10-01T00:00:00Z">Tuesday, October 1, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fupgrading%2fhow-to-upgrade-to-ubuntu-10-04-lts-lucid%2f&via=linode&text=How%20to%20Upgrade%20to%20Ubuntu%2010.04%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fupgrading%2fhow-to-upgrade-to-ubuntu-10-04-lts-lucid%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fupgrading%2fhow-to-upgrade-to-ubuntu-10-04-lts-lucid%2f&t=How%20to%20Upgrade%20to%20Ubuntu%2010.04%20LTS%20%28Lucid%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/upgrading/how-to-upgrade-to-ubuntu-10-04-lts-lucid.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/upgrading/how-to-upgrade-to-ubuntu-10-04-lts-lucid.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>This guide explains how to upgrade your Linode to Ubuntu 10.04 LTS (Lucid). As with any task involving major system changes, you are strongly encouraged to make backups of your data before proceeding. You should be logged in as root for these procedures.</p>
+
+<p>Ubuntu recommends waiting until the &ldquo;.1&rdquo; release of any version increment before upgrading production systems. Additionally, Ubuntu only officially supports upgrades between LTS releases. However, you may follow the steps below to upgrade your system if you&rsquo;re willing to handle any potential snags that may occur.</p>
+
+<p><strong>Important:</strong> You must change your Linode&rsquo;s configuration profile to use the &ldquo;Latest 3.0&rdquo; kernel for the appropriate architecture before proceeding.</p>
+
+<h1 id="upgrade-instructions">Upgrade Instructions</h1>
+
+<p>You should stop as many services as possible before upgrading your system. This should include web server deaemons (Apache, nginx, etc), database servers (PostgreSQL, MySQL, etc), and any other non-critical services.</p>
+
+<p>If you are running Ubuntu 8.04 or 9.10, edit your <code>/etc/fstab</code> file to include the following line (see later notes on Ubuntu 9.04).</p>
+
+<dl class="file-excerpt">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/etc/fstab</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote>
+<p>dev /dev devtmpfs rw 0 0</p>
+</blockquote>
+
+<p>Issue the following commands to update your existing packages:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<p>Issue the following command to install the <code>screen</code> utility and the update manager program:</p>
+
+<pre><code>apt-get install screen update-manager-core
+</code></pre>
+
+<p>Edit the <code>/etc/update-manager/release-upgrades</code> file, setting &ldquo;Prompt=normal&rdquo; as shown below. Please note that if you are running Ubuntu 9.04, you will be upgraded to Ubuntu 9.10 instead of Ubuntu 10.04; afterward, you may upgrade to Ubuntu 10.04 by repeating the <code>do-release-upgrade</code> process.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/etc/update-manager/release-upgrades</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote>
+<p>Prompt=normal</p>
+</blockquote>
+
+<p>Start a screen session and issue the upgrade command:</p>
+
+<pre><code>screen
+do-release-upgrade --proposed
+</code></pre>
+
+<p>If you&rsquo;re logged in via SSH, you will receive the following warning:</p>
+
+<pre><code>Continue running under SSH?
+
+This session appears to be running under ssh. It is not recommended
+to perform a upgrade over ssh currently because in case of failure it
+is harder to recover.
+
+If you continue, an additional ssh daemon will be started at port
+'9004'.
+Do you want to continue?
+
+Continue [yN]
+</code></pre>
+
+<p>Enter &ldquo;y&rdquo; to continue. If something goes wrong and your SSH session is interrupted, you should be able to connect to your Linode via the additional SSH daemon by connecting to port 9004 with your SSH client. If you need to do this, you may resume your screen session by issuing the following command at your Linode&rsquo;s root shell prompt:</p>
+
+<pre><code>screen -Dr
+</code></pre>
+
+<p>At the end of the upgrade process, you&rsquo;ll see this message:</p>
+
+<pre><code>System upgrade is complete.
+
+Restart required
+
+To finish the upgrade, a restart is required.
+If you select 'y' the system will be restarted.
+
+Continue [yN]
+</code></pre>
+
+<p>Enter &ldquo;n&rdquo; to avoid rebooting from the console. Reboot your Linode using the &ldquo;Reboot&rdquo; button on the dashboard of the Linode Manager. When your Linode boots up again, you may notice messages on the console regarding <code>ureadahead</code> and <code>plymouthd</code> being killed; these are not a cause for concern. You can prevent such messages from appearing again by issuing the following commands:</p>
+
+<pre><code>cd /etc/init
+for i in plymouth* ureadahead*; do mv ${i} ${i}.disabled; done
+</code></pre>
+
+<p>If you were running Ubuntu 9.04 previously and have gone through this guide once, you&rsquo;re now running Ubuntu 9.10. You&rsquo;ll need to repeat these steps (making sure to modify <code>/etc/fstab</code> as indicated above) to complete your upgrade to Ubuntu 10.04.</p>
+
+<h1 id="fixing-a-broken-system">Fixing a Broken System</h1>
+
+<p>If you&rsquo;ve already attempted to upgrade but your Linode is failing to boot properly, you&rsquo;ll need to start by creating a <a href="/docs/troubleshooting/finnix-rescue-mode">Finnix rescue profile</a>. In that profile, set your Ubuntu disk to attach to <code>xvda</code>. Boot into Finnix and issue the following command to open your Linode&rsquo;s <code>fstab</code> file for editing:</p>
+
+<pre><code>mount /dev/xvda
+nano /media/xvda/etc/fstab
+</code></pre>
+
+<p>Add the following line to your file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/media/xvda/etc/fstab</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote>
+<p>dev /dev devtmpfs rw 0 0</p>
+</blockquote>
+
+<p>Save the file by entering <code>Ctrl+x</code> and agreeing to the changes. You may now reboot your Linode from the Linode Manager dashboard using its normal configuration profile.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;re still having problems, verify that <code>Automount devtmpfs</code> is turned on.</div>
+</blockquote>
+
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/upgrading/how-to-upgrade-to-ubuntu-10-10-maverick/">How to Upgrade to Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#upgrade-instructions">Upgrade Instructions</a></li>
+<li><a href="#fixing-a-broken-system">Fixing a Broken System</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

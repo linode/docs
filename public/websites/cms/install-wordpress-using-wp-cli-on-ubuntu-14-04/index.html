@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install WordPress Using WP-CLI on Ubuntu 14.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install WordPress Using WP-CLI on Ubuntu 14.04">
+        <meta name="keywords" content="install WP-CLI, ubuntu, wordpress, apache, bash completion, plugin, WP-CLI, themes">
+        
+        <meta property="og:title" content="Install WordPress Using WP-CLI on Ubuntu 14.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/">
+        <meta property="og:description" content="Install WordPress Using WP-CLI on Ubuntu 14.04">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/cms/">Control Panels &amp; Content Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  Install WordPress Using WP-CLI on Ubuntu 14.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install WordPress Using WP-CLI on Ubuntu 14.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-02-15T00:00:00Z">Wednesday, February 15, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/navjotjsingh">Navjot Singh
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2finstall-wordpress-using-wp-cli-on-ubuntu-14-04%2f&via=linode&text=Install%20WordPress%20Using%20WP-CLI%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2finstall-wordpress-using-wp-cli-on-ubuntu-14-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2finstall-wordpress-using-wp-cli-on-ubuntu-14-04%2f&t=Install%20WordPress%20Using%20WP-CLI%20on%20Ubuntu%2014.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>Everyone is probably familiar with WordPress and its renowned 5-minute install routine. It&rsquo;s simple and works without fuss. But when you have multiple sites to manage, repeating the same routine can waste plenty of time which you could have used elsewhere.</p>
+
+<p><img src="/docs/assets/install-wordpress-using-wpcli-on-ubuntu-14-04.png" alt="Install WordPress Using WP-CLI on Ubuntu 14.04" title="Install WordPress Using WP-CLI on Ubuntu 14.04" /></p>
+
+<p>This is where WP-CLI, a powerful command line tool with which you can manage WordPress, can help. This tutorial covers how to install WP-CLI and how to perform some common, practical tasks using it.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>This guide is written for Ubuntu 14.04. Before moving ahead, make sure you have completed the following guides:</p>
+
+<ul>
+<li><a href="/docs/getting-started">Getting Started with Linode</a></li>
+<li><a href="/docs/security/securing-your-server">Securing your Server</a></li>
+<li><a href="/docs/websites/lamp/lamp-on-ubuntu-14-04">How to Install a LAMP Stack on Ubuntu 14.04</a></li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="install-wp-cli">Install WP-CLI</h2>
+
+<ol>
+<li><p>WP-CLI is available as a PHP Archive file (.phar). You can download it using either <code>wget</code> or <code>curl</code> commands:</p>
+
+<pre><code>curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+</code></pre>
+
+<p><strong>Or</strong></p>
+
+<pre><code>wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+</code></pre></li>
+
+<li><p>You need to make this .phar file executable and move it to <code>/usr/local/bin</code> so that it can be run directly:</p>
+
+<pre><code>chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
+</code></pre></li>
+
+<li><p>Check if it is installed properly:</p>
+
+<pre><code>wp --info
+</code></pre>
+
+<p>You should see a similar output like that displayed below, which means you can proceed:</p>
+
+<pre><code>PHP binary: /usr/bin/php5
+PHP version:    5.6.11-1ubuntu3.1
+php.ini used:   /etc/php5/cli/php.ini
+WP-CLI root dir:    phar://wp-cli.phar
+WP-CLI global config:
+WP-CLI project config:
+WP-CLI version: 0.21.1
+</code></pre></li>
+</ol>
+
+<p>You can use the above three steps for upgrading WP-CLI as well.</p>
+
+<h3 id="activate-bash-completion">Activate Bash Completion</h3>
+
+<p>The bash completion feature of WP-CLI allows you to see all the available commands on the fly.</p>
+
+<ol>
+<li><p>Download the bash script in your home directory:</p>
+
+<pre><code>cd ~/
+wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
+</code></pre></li>
+
+<li><p>Edit the <code>.bashrc</code> file so that it is loaded by the shell every time you login. Open the file and add the following line in the editor:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/.bashrc 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> /home/<span class="nv">$USER</span>/wp-completion.bash</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Run the following command to reload the bash profile:</p>
+
+<pre><code>source ~/.bashrc
+</code></pre></li>
+</ol>
+
+<p>That&rsquo;s it. Bash completion is now enabled. To test it, type <code>wp theme</code> (include the trailing space) and press <strong>Tab</strong> twice. You will see the list of available commands with <code>wp theme</code> again on the prompt.</p>
+
+<h2 id="basics-of-wp-cli">Basics of WP-CLI</h2>
+
+<p>Before moving on, let&rsquo;s learn some basics of how WP-CLI works. This will help you feel comfortable with the upcoming steps.</p>
+
+<p>So far, we have seen WP-CLI accessed through the main command, <code>wp</code>. You can follow the main command with nested subcommands. For example, we have a command to download WordPress, which is:</p>
+
+<pre><code>wp core download
+</code></pre>
+
+<p>Here <code>wp</code> is the main command while <code>core</code> and <code>download</code> are its nested subcommands. Nesting subcommands can extend one or two levels.</p>
+
+<p>WP-CLI also comes with a detailed help section, which displays all the commands you might need. To access help:</p>
+
+<pre><code>wp help
+</code></pre>
+
+<p>The output should resemble:</p>
+
+<pre><code>wp
+
+DESCRIPTION
+
+Manage WordPress through the command-line.
+
+SYNOPSIS
+
+wp &lt;command&gt;
+
+SUBCOMMANDS
+
+cache               Manage the object cache.
+cap                 Manage user capabilities.
+cli                 Get information about WP-CLI itself.
+comment             Manage comments.
+core                Download, install, update and otherwise manage WordPress proper.
+cron                Manage WP-Cron events and schedules.
+db                  Perform basic database operations.
+eval                Execute arbitrary PHP code after loading WordPress.
+eval-file           Load and execute a PHP file after loading WordPress.
+:
+</code></pre>
+
+<p><code>:</code> is a prompt that, with subcommands, can help you navigate through this help menu. Up and down arrow keys will let you scroll through the entire help command list. Typing <code>q</code> will exit the help menu. For additional details on how to further navigate through the complete help section, you can always type <code>h</code> at the above prompt.</p>
+
+<p>You can use the enabled bash completion to demonstrate WP-CLI&rsquo;s readily available command list. Simply type <code>wp</code> and press tab twice. You will see the list of available commands. Now, type <code>wp core</code> and press tab twice. You will see a list of commands that can be used with <code>core</code>. This double tabbing after a command can be repeated for any primary or subcommand.</p>
+
+<h2 id="install-wordpress">Install WordPress</h2>
+
+<h3 id="setting-up-database">Setting up Database</h3>
+
+<ol>
+<li><p>Before you proceed, you need to setup a database. Log in to the MySQL server, replacing <code>user</code> with your MySQL username:</p>
+
+<pre><code>mysql -u user -p
+</code></pre></li>
+
+<li><p>Create a database:</p>
+
+<pre><code>create database wordpress;
+</code></pre></li>
+
+<li><p>Grant required privileges to the database for the mysql user to which WordPress will permit database access. Replace <code>user</code> and <code>password</code> with those of the permitted mysql user:</p>
+
+<pre><code>grant all on wordpress.* to 'user' identified by 'password';
+</code></pre></li>
+
+<li><p>Type <code>quit</code> to exit the MySQL command line.</p></li>
+</ol>
+
+<h3 id="main-install">Main Install</h3>
+
+<ol>
+<li><p>Move to the Apache <code>example.com</code> directory:</p>
+
+<pre><code>cd /var/www/html/example.com
+</code></pre></li>
+
+<li><p>Change the ownership of the <code>public_html</code> directory. Apache comes with its own usergroup <code>www-data</code>. As a recommended practice, you should change the ownership of your installation directory to this group. You also need to add your <code>username</code> to the group, and enable group write permissions to perform any commands in the directory:</p>
+
+<pre><code>sudo chown -R www-data public_html
+sudo usermod -aG www-data username
+sudo chmod -R g+w public_html
+</code></pre></li>
+
+<li><p>Next, download the WordPress files. Here, you need to use the prefix <code>sudo -u www-data</code> for running WP-CLI commands under <code>www-data</code> group. You would need to use this every time you run a command which requires WP-CLI to write to the directory, like installing or upgrading:</p>
+
+<pre><code>wp core download
+</code></pre></li>
+
+<li><p>Create a wp-config.php file:</p>
+
+<pre><code>wp core config --dbname=wordpress --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
+</code></pre>
+
+<p><code>dbhost</code> and <code>dbprefix</code> are entirely optional and can be omitted unless you need to change their default values.</p></li>
+
+<li><p>Run the installation:</p>
+
+<pre><code>wp core install --url=&quot;http://example.com&quot; --title=&quot;Blog Title&quot; --admin_user=&quot;adminuser&quot; --admin_password=&quot;password&quot; --admin_email=&quot;email@domain.com&quot;
+</code></pre></li>
+</ol>
+
+<p>Your WordPress blog is now ready for use.</p>
+
+<h2 id="common-commands">Common Commands</h2>
+
+<h3 id="install-and-update-plugins">Install and Update Plugins</h3>
+
+<p>Let&rsquo;s say you want to install the Yoast SEO plugin. Your first step will be to find the plugin slug. In this case, slug is the last part of a permalink url which describes the plugin directory. For example, a plugin is available at <a href="http://wordpress.org/plugins/plugin-dir/">http://wordpress.org/plugins/plugin-dir/</a>. Here, <code>plugin-dir</code> is the slug of the plugin. You install the plugin under the same directory on your blog at <a href="http://example.com/wp-content/plugins/plugin-dir/">http://example.com/wp-content/plugins/plugin-dir/</a>. Since this slug is unique to every plugin, you can search for the slug of any plugin using WP-CLI and then install it:</p>
+
+<pre><code>wp plugin search yoast
+</code></pre>
+
+<p>You will get an output similar to this.</p>
+
+<pre><code>Success: Showing 10 of 259 plugins.
++---------------------------------+----------------------------------+--------+
+| name                            | slug                             | rating |
++---------------------------------+----------------------------------+--------+
+| Yoast SEO                       | wordpress-seo                    | 90     |
+| SO Clean Up Yoast SEO           | so-clean-up-wp-seo               | 96     |
+| All Meta Stats Yoast SEO Addon  | all-meta-stats-yoast-seo-addon   | 100    |
+| Google Analytics by Yoast       | google-analytics-for-wordpress   | 80     |
+| Import Settings into WordPress  | yoast-seo-settings-xml-csv-impor | 0      |
+| SEO by Yoast                    | t                                |        |
+| Surbma - Yoast Breadcrumb Short | surbma-yoast-breadcrumb-shortcod | 84     |
+| code                            | e                                |        |
+| Meta Box Yoast SEO              | meta-box-yoast-seo               | 0      |
+| Keyword Stats Addon for Yoast S | keyword-stats-addon-for-yoast-se | 100    |
+| EO                              | o                                |        |
+| Meta Description Stats Addon fo | meta-description-stats-addon-for | 100    |
+| r Yoast SEO                     | -yoast-seo                       |        |
+| Title Stats Addon for Yoast SEO | title-stats-addon-for-yoast-seo  | 100    |
++---------------------------------+----------------------------------+--------+
+</code></pre>
+
+<p>You can see more than 10 plugins per page by modifying the command:</p>
+
+<pre><code>wp plugin search yoast --per-page=20
+</code></pre>
+
+<p>Now that you know the slug of the plugin you want to install (wordpress-seo), copy it to your command and activate it:</p>
+
+<pre><code>wp plugin install wordpress-seo
+wp plugin activate wordpress-seo
+</code></pre>
+
+<p>To update any plugin, you can use:</p>
+
+<pre><code>wp plugin update wordpress-seo
+</code></pre>
+
+<p>Or, to update all plugins, you can use:</p>
+
+<pre><code>wp plugin update --all
+</code></pre>
+
+<p>Or, to list all the installed plugins on your blog, you can use:</p>
+
+<pre><code>wp plugin list
+</code></pre>
+
+<p>To uninstall a plugin, you use:</p>
+
+<pre><code>wp plugin uninstall wordpress-seo
+</code></pre>
+
+<h3 id="install-and-update-themes">Install and Update Themes</h3>
+
+<p>The procedure for installing and activating a theme is nearly identical to that of the plugin. Just swap <code>plugin</code> for <code>theme</code> in all the commands.</p>
+
+<p>So, to search for the theme, you can use:</p>
+
+<pre><code>wp theme search twentytwelve
+</code></pre>
+
+<p>To install and activate, you can use:</p>
+
+<pre><code>wp theme install twentytwelve
+wp theme activate twentytwelve
+</code></pre>
+
+<p>To update one or all themes, you can use:</p>
+
+<pre><code>wp theme update twentytwelve
+wp theme update --all
+</code></pre>
+
+<p>To list all the themes in a tabular form, you can use:</p>
+
+<pre><code>wp theme list
+</code></pre>
+
+<p>To uninstall a theme, you can use:</p>
+
+<pre><code>wp theme uninstall twentytwelve
+</code></pre>
+
+<h3 id="update-wordpress">Update WordPress</h3>
+
+<p>You can update your blog through the following commands:</p>
+
+<pre><code>wp core update
+wp core update-db
+</code></pre>
+
+<p>The first command updates the files. The second one completes the database upgrade.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Congratulations! You have installed and can now further configure WP-CLI. These commands are just the tip of the iceberg about how you can manage WordPress from the command line. Write or edit posts, perform database queries, manage user capabilities, manage cron events, import or export content, manage attachments and even manage multi-site installations are all now available to you through a few, quick and practical keystrokes. You have refined WordPress management and conserved valuable time. Sweet!</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://wp-cli.org/commands/">WP-CLI Commands</a></li>
+
+<li><a href="https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands">WP-CLI Community Commands</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-on-ubuntu-14-04/">Apache Web Server on Ubuntu 14.04 LTS</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/turbocharge-wordpress-search-with-solr/">Turbocharge Your WordPress Search Using Solr</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/ssl-apache2-debian-ubuntu/">SSL Certificates with Apache on Debian &amp; Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-ubuntu-12-04/">Apache Web Server on Ubuntu 12.04 LTS (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/">LAMP Server on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#install-wp-cli">Install WP-CLI</a>
+<ul>
+<li><a href="#activate-bash-completion">Activate Bash Completion</a></li>
+</ul></li>
+<li><a href="#basics-of-wp-cli">Basics of WP-CLI</a></li>
+<li><a href="#install-wordpress">Install WordPress</a>
+<ul>
+<li><a href="#setting-up-database">Setting up Database</a></li>
+<li><a href="#main-install">Main Install</a></li>
+</ul></li>
+<li><a href="#common-commands">Common Commands</a>
+<ul>
+<li><a href="#install-and-update-plugins">Install and Update Plugins</a></li>
+<li><a href="#install-and-update-themes">Install and Update Themes</a></li>
+<li><a href="#update-wordpress">Update WordPress</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

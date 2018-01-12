@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>GitHub Beginner&#39;s Guide</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="The Linode Guides &amp; Tutorials GitHub guide.">
+        <meta name="keywords" content="GitHub guide,  write for us,  article submissions, linode guides and tutorials">
+        
+        <meta property="og:title" content="GitHub Beginner&#39;s Guide">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/github-guide/">
+        <meta property="og:description" content="The Linode Guides &amp; Tutorials GitHub guide.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/github-guide/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  GitHub Beginner&#39;s Guide
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">GitHub Beginner&#39;s Guide</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-12-02T00:00:00Z">Wednesday, December 2, 2015</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fgithub-guide%2f&via=linode&text=GitHub%20Beginner%26%2339%3bs%20Guide" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fgithub-guide%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fgithub-guide%2f&t=GitHub%20Beginner%27s%20Guide" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/github-guide.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/github-guide.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Linode Guides and Tutorials manages bounty guides through the use of GitHub. In the interest of making submissions as easy as possible, this tutorial will walk you through submitting a new guide on our <a href="https://github.com/linode/docs">public GitHub</a>.</p>
+
+<p><img src="/docs/assets/github-beginners-guide.png" alt="GitHub Beginner's Guide" title="GitHub Beginner's Guide" /></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<p>This guide assumes that you&rsquo;ve signed up for a <a href="https://www.github.com">GitHub Account</a>, and that you&rsquo;ve followed the sections for installing and configuring Git on your local machine contained within our <a href="/docs/development/version-control/how-to-install-git-on-mac-and-windows/">Git Source Control Management</a> guide.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you are following these instructions on a Windows system, all commands will need to be run via the <a href="http://git-scm.com/downloads">Git Bash console</a>.</div>
+</blockquote>
+
+
+<h2 id="submitting-new-guides-or-changes-with-git">Submitting New Guides or Changes with Git</h2>
+
+<h3 id="placing-your-ssh-key-on-github">Placing Your SSH Key on GitHub</h3>
+
+<ol>
+<li><p>If you have not done so already, generate an SSH key on your local system:</p>
+
+<pre><code>ssh-keygen
+</code></pre></li>
+
+<li><p>View the contents of the newly-created public key file:</p>
+
+<pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre></li>
+
+<li><p>In a browser window, select your user account icon in the upper right-hand corner of the screen, then click <strong>Settings</strong>. Your user account icon may look different than the one below:</p>
+
+<p><a href="/docs/assets/github-settings.png"><img src="/docs/assets/github-settings.png" alt="GitHub Settings" /></a></p></li>
+
+<li><p>Select the <strong>SSH keys</strong> option from the <strong>Personal settings</strong> menu, then click the <strong>Add SSH key</strong> button:</p>
+
+<p><a href="/docs/assets/github-ssh-key.png"><img src="/docs/assets/github-ssh-key.png" alt="SSH key settings" /></a></p></li>
+
+<li><p>Copy the contents of your public key file from your terminal window, and paste them into the <strong>Key</strong> text box.  Add a descriptive title for your key in the <strong>Title</strong> text box:</p>
+
+<p><a href="/docs/assets/github-load-key.png"><img src="/docs/assets/github-load-key.png" alt="Add Key" /></a></p></li>
+</ol>
+
+<h3 id="setting-up-your-repository">Setting Up Your Repository</h3>
+
+<p>In order to edit or create documents for Linode Guides and Tutorials, you will need to fork your own version of the Linode Docs repository on GitHub.</p>
+
+<ol>
+<li><p>Navigate to the <a href="http://www.github.com/linode/docs">Linode Docs</a> GitHub repository.</p></li>
+
+<li><p>Click <strong>Fork</strong> in the upper right-hand corner of your screen to create your own version of the repository.</p></li>
+
+<li><p>Once the fork process has completed, visit the <strong>docs</strong> repository under your repository list on the GitHub homepage:</p>
+
+<p><a href="/docs/assets/github-your-repository.png"><img src="/docs/assets/github-your-repository.png" alt="Your repository on GitHub" /></a></p></li>
+
+<li><p>Clone your forked branch to your local machine by copying the clone URL, and appending it to the following command.  We recommend cloning via SSH for this particular step.  This command will create a local copy of your cloned repository that you can work with directly in the directory where the command is run:</p>
+
+<p><a href="/docs/assets/github-clone-url.png"><img src="/docs/assets/github-clone-url.png" alt="GitHub Clone URL" /></a></p>
+
+<pre><code>git clone &lt;insert clone URL&gt;
+</code></pre>
+
+<p>You will need to accept the host identification key on your first connection.</p></li>
+
+<li><p>Move to the cloned directory and configure the Linode Docs repository as your upstream repository:</p>
+
+<pre><code>cd docs
+git remote add upstream https://github.com/linode/docs
+</code></pre></li>
+</ol>
+
+<h3 id="creating-your-branch">Creating Your Branch</h3>
+
+<p>Once you&rsquo;ve cloned a local copy of your repository, you will need to make a branch to store your new guide.  Branches allow you to work on multiple guide changes without creating issues within your pull requests.</p>
+
+<ol>
+<li><p>Verify that you are in the master branch:</p>
+
+<pre><code>git status
+</code></pre>
+
+<p>You should receive output similar to that show below:</p>
+
+<pre><code>On branch master
+Your branch is up-to-date with 'origin/master'.
+
+nothing to commit, working directory clean
+</code></pre></li>
+
+<li><p>Check out a new branch with a descriptive title matching the guide that you are editing or creating:</p>
+
+<pre><code>git checkout -b guide-title
+</code></pre></li>
+
+<li><p>Rerun the <code>git status</code> command to confirm that you have been moved to the new branch.  You should receive output maching the following:</p>
+
+<pre><code>On branch guide-title
+nothing to commit, working directory clean
+</code></pre></li>
+
+<li><p>Using your preferred text editor, you should now be able to edit and create documents within your new branch:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The folder structure within the repository&rsquo;s <code>docs</code> folder matches the structure used by the Linode Guides and Tutorials website.  Please ensure that your guides are located in the appropriate directory within that file structure.  If you have any questions regarding the folder structure or where your new guide should be located, please email <a href="mailto:contribute@linode.com">contribute@linode.com</a> for more information.</div>
+</blockquote>
+</li>
+
+<li><p>Once you have completed composing or making edits to a guide, you can use the <code>git status</code> command to view the status of your changes.  You should receive output resembling the following:</p>
+
+<pre><code>Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+        guide-title.md
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</code></pre></li>
+
+<li><p>Add your guide to the list of files to be committed with the &lsquo;git add&rsquo; command:</p>
+
+<pre><code>git add guide-title.md
+</code></pre></li>
+
+<li><p>Commit your file to officially make it part of your changes.  Utilize the <code>-m</code> flag with the <code>git commit</code> command to add a commit message.  Commit messages will need to be encased in quotation marks, as shown below:</p>
+
+<pre><code>git commit -m &quot;First draft of guide&quot;
+</code></pre>
+
+<p>You should receive output resembling the following:</p>
+
+<pre><code>[guide-title 40b1932] First draft of guide
+  1 file changed, 1 insertion(+)
+  Create mode 100644 docs/guide-title.md
+</code></pre></li>
+
+<li><p>Push your guide to GitHub.  You will need to replace <code>guide-title</code> below with the name of your branch:</p>
+
+<pre><code>git push origin guide-title
+</code></pre></li>
+</ol>
+
+<h3 id="submitting-your-first-pull-request">Submitting Your First Pull Request</h3>
+
+<p>Now that you&rsquo;ve completed the composition of your guide, it&rsquo;s time to make your first <em>pull request</em> (PR) on GitHub.</p>
+
+<ol>
+<li><p>Within the GitHub web interface, navigate to your fork of the <strong>linode/docs</strong> repository:</p>
+
+<p><a href="/docs/assets/github-your-repository.png"><img src="/docs/assets/github-your-repository.png" alt="GitHub - Your Repository" /></a></p></li>
+
+<li><p>Select the branch containing your changes:</p>
+
+<p><a href="/docs/assets/github-switch-branches.png"><img src="/docs/assets/github-switch-branches.png" alt="GitHub - Switch Branches" /></a></p></li>
+
+<li><p>Select the <strong>Pull Request</strong> option to generate your first PR:</p>
+
+<p><a href="/docs/assets/github-pull-request.png"><img src="/docs/assets/github-pull-request.png" alt="GitHub - Pull Request" /></a></p></li>
+
+<li><p>Ensure that your pull request is being submitted against the <strong>Base fork: linode/docs</strong>, and the <strong>Base: master</strong>.  Enter the title of your guide, along with a brief description, and click the <strong>Create Pull Request</strong> button:</p>
+
+<p><a href="/docs/assets/github-pull-request2.png"><img src="/docs/assets/github-pull-request2.png" alt="GitHub - Pull Request Submission" /></a></p></li>
+</ol>
+
+<p>Congratulations! Your guide has been submitted as a pull request against the Linode Docs repository!</p>
+
+<h3 id="commenting-and-editing-your-pr">Commenting and Editing Your PR</h3>
+
+<p>Once you have submitted your first pull request, you will likely receive communication from the Linode Guides and Tutorials team as your PR is run through our tech and copy editing processes.  You can respond to this feedback directly from your PR page:</p>
+
+<p><a href="/docs/assets/github-pr-comments.png"><img src="/docs/assets/github-pr-comments.png" alt="GitHub - Pull Request Comment" /></a></p>
+
+<p>If you need to edit your PR, you can make changes to your locally saved branch, then upload the changes by following steps 5-8 of the <a href="/docs/github-guide#creating-your-branch">Creating Your Branch</a> section of this guide.</p>
+
+<h3 id="managing-multiple-branches">Managing Multiple Branches</h3>
+
+<p>If you are working on multiple guide submissions or changes, you will need to utilize multiple branches to keep your changes separate from each other.</p>
+
+<ol>
+<li><p>To avoid merge conflicts, switch to your master branch and pull in the latest changes from the Linode Docs master branch:</p>
+
+<pre><code>git checkout master
+git fetch upstream
+</code></pre></li>
+
+<li><p>Create and switch to a new branch to store your new changes:</p>
+
+<pre><code>git checkout -b guide-title-2
+</code></pre>
+
+<p>You should receive output resembling the following:</p>
+
+<pre><code>Switched to a new branch 'guide-title-2'
+</code></pre></li>
+
+<li><p>To confirm what branch you are currently using, run <code>git status</code>. The output should resemble the following:</p>
+
+<pre><code>On branch guide-title-2
+nothing to commit, working directory clean
+</code></pre></li>
+
+<li><p>To list all of your available branches, utilize the <code>git branch</code> command.  This will list all of your branches, and highlight your active branch:</p>
+
+<pre><code>git branch
+</code></pre></li>
+
+<li><p>Once you have completed working with a branch, you can remove your local copy of that branch by switching to a different branch, such as master, and using the <code>-d</code> flag to remove the unused branch:</p>
+
+<pre><code>git checkout master
+git branch -d guide-title-2
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Git will warn you if you attempt to delete a branch with unmerged changes.  If you wish to remove a branch with unmerged changes, you can force removal by substituting the <code>-D</code> flag.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="reporting-issues-with-existing-guides">Reporting Issues with Existing Guides</h2>
+
+<p>If you wish to report an issue with an existing guide, you can do so by navigating to the Linode Docs repository, and clicking on the <strong>Issues</strong> link.  You can then open a new issue and provide descriptions of the problems you are encountering so that our team can address it. When opening a new issue, be sure to include a link to the guide where the problem is located. However, if you&rsquo;ve already found a fix we encourage you to submit the fix to <a href="https://github.com/linode/docs">our GitHub repository</a>.</p>
+
+            
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#submitting-new-guides-or-changes-with-git">Submitting New Guides or Changes with Git</a>
+<ul>
+<li><a href="#placing-your-ssh-key-on-github">Placing Your SSH Key on GitHub</a></li>
+<li><a href="#setting-up-your-repository">Setting Up Your Repository</a></li>
+<li><a href="#creating-your-branch">Creating Your Branch</a></li>
+<li><a href="#submitting-your-first-pull-request">Submitting Your First Pull Request</a></li>
+<li><a href="#commenting-and-editing-your-pr">Commenting and Editing Your PR</a></li>
+<li><a href="#managing-multiple-branches">Managing Multiple Branches</a></li>
+</ul></li>
+<li><a href="#reporting-issues-with-existing-guides">Reporting Issues with Existing Guides</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

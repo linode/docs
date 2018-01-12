@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use Fail2ban to Secure Your Server</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to set up Fail2Ban, a log-parsing application, to monitor system logs and detect automated attacks on your Linode.">
+        <meta name="keywords" content="fail2ban, ip whitelisting, jail.local">
+        
+        <meta property="og:title" content="Use Fail2ban to Secure Your Server">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/using-fail2ban-for-security/">
+        <meta property="og:description" content="Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attach through email. This guide helps you set up Fail2ban to thwart automated system attacks and further secure your server.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/using-fail2ban-for-security/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Use Fail2ban to Secure Your Server
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use Fail2ban to Secure Your Server</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-08-23T00:00:00Z">Wednesday, August 23, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fusing-fail2ban-for-security%2f&via=linode&text=Use%20Fail2ban%20to%20Secure%20Your%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fusing-fail2ban-for-security%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fusing-fail2ban-for-security%2f&t=Use%20Fail2ban%20to%20Secure%20Your%20Server" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/using-fail2ban-for-security.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/using-fail2ban-for-security.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<h2 id="what-is-fail2ban">What is Fail2Ban</h2>
+
+<p>Fail2ban is a log-parsing application that monitors system logs for symptoms of an automated attack on your Linode. When an attempted compromise is located, using the defined parameters, Fail2ban will add a new rule to iptables to block the IP address of the attacker, either for a set amount of time or permanently. Fail2ban can also alert you through email that an attack is occurring.</p>
+
+<p><img src="/docs/assets/fail2ban_tg.png" alt="Using Fail2ban to secure your server" title="Using Fail2ban to secure your server" /></p>
+
+<p>Fail2ban is primarily focused on SSH attacks, although it can be further configured to work for any service that uses log files and can be subject to a compromise.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps required in this guide require root privileges. Be sure to run the steps below as <strong>root</strong> or with the <code>sudo</code> prefix. For more information on privileges, see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Fail2ban is intended to be used in conjunction with an already-hardened server and should not be used as a replacement for secure firewall rules.</div>
+</blockquote>
+
+
+<h2 id="install-fail2ban">Install Fail2ban</h2>
+
+<p>Follow the <a href="/docs/getting-started">Getting Started</a> guide to configure your basic server. You may also want to review the <a href="/docs/security/securing-your-server">Securing Your Server</a> guide before beginning.</p>
+
+<h3 id="centos-7">CentOS 7</h3>
+
+<ol>
+<li><p>Ensure your system is up to date and install the EPEL repository:</p>
+
+<pre><code>yum update &amp;&amp; yum install epel-release
+</code></pre></li>
+
+<li><p>Install Fail2Ban:</p>
+
+<pre><code>yum install fail2ban
+</code></pre></li>
+
+<li><p>Install Sendmail if you additionally would like email support. Sendmail is not required to use Fail2Ban.:</p>
+
+<pre><code>yum install sendmail
+</code></pre></li>
+
+<li><p>Start and enable Fail2ban and, if needed, Sendmail:</p>
+
+<pre><code>systemctl start fail2ban
+systemctl enable fail2ban
+systemctl start sendmail
+systemctl enable sendmail
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>Should you encounter the error that there is &ldquo;<em>no directory /var/run/fail2ban to contain the socket file /var/run/fail2ban/fail2ban.sock</em>&rdquo;, create the directory manually:</p>
+
+<p>&lsquo;mkdir /var/run/fail2ban&rsquo;</p>
+</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="debian">Debian</h3>
+
+<ol>
+<li><p>Ensure your system is up to date:</p>
+
+<pre><code>apt-get update &amp;&amp; apt-get upgrade -y
+</code></pre></li>
+
+<li><p>Install Fail2ban:</p>
+
+<pre><code>apt-get install fail2ban
+</code></pre>
+
+<p>The service will automatically start.</p></li>
+
+<li><p>(Optional) If you would like email support, install Sendmail:</p>
+
+<pre><code>apt-get install sendmail-bin sendmail
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The current version of Sendmail in Debian Jessie has an <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=293017">upstream bug</a> which causes the following errors when installing <code>sendmail-bin</code>. The installation will hang for a minute, but then complete.
+Creating /etc/mail/sendmail.cf&hellip;
+ERROR: FEATURE() should be before MAILER() MAILER(<code>local') must appear after FEATURE(</code>always_add_domain&rsquo;)
+ERROR: FEATURE() should be before MAILER() MAILER(<code>local') must appear after FEATURE(</code>allmasquerade&rsquo;)</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="fedora">Fedora</h3>
+
+<ol>
+<li><p>Update your system:</p>
+
+<pre><code>dnf update
+</code></pre></li>
+
+<li><p>Install Fail2ban:</p>
+
+<pre><code>dnf install fail2ban
+</code></pre></li>
+
+<li><p>(Optional) If you would like email support, install Sendmail:</p>
+
+<pre><code>dnf install sendmail
+</code></pre></li>
+
+<li><p>Start and enable Fail2ban and, if needed, Sendmail:</p>
+
+<pre><code>systemctl start fail2ban
+systemctl enable fail2ban
+systemctl start sendmail
+systemctl enable sendmail
+</code></pre></li>
+</ol>
+
+<h3 id="ubuntu">Ubuntu</h3>
+
+<ol>
+<li><p>Ensure your system is up to date:</p>
+
+<pre><code>apt-get update &amp;&amp; apt-get upgrade -y
+</code></pre></li>
+
+<li><p>Install Fail2ban:</p>
+
+<pre><code>apt-get install fail2ban
+</code></pre>
+
+<p>The service will automatically start.</p></li>
+
+<li><p>(Optional) If you would like email support, install Sendmail:</p>
+
+<pre><code>apt-get install sendmail
+</code></pre></li>
+
+<li><p>Allow SSH access through UFW and then enable the firewall:</p>
+
+<pre><code>ufw allow ssh
+ufw enable
+</code></pre></li>
+</ol>
+
+<h2 id="configure-fail2ban">Configure Fail2ban</h2>
+
+<p>Fail2ban reads <code>.conf</code> configuration files first, then <code>.local</code> files override any settings. Because of this, all changes to the configuration are generally done in <code>.local</code> files, leaving the <code>.conf</code> files untouched.</p>
+
+<h3 id="configure-fail2ban-local">Configure fail2ban.local</h3>
+
+<ol>
+<li><p><code>fail2ban.conf</code> contains the default configuration profile. The default settings will give you a reasonable working setup. If you want to make any changes, it&rsquo;s best to do it in a separate file, <code>fail2ban.local</code>, which overrides <code>fail2ban.conf</code>. Rename a copy <code>fail2ban.conf</code> to <code>fail2ban.local</code>.</p>
+
+<pre><code>cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
+</code></pre></li>
+
+<li><p>From here, you can opt to edit the definitions in <code>fail2ban.local</code> to match your desired configuration. The values that can be changed are:</p>
+
+<ul>
+<li><code>loglevel</code>: The level of detail that Fail2ban&rsquo;s logs provide can be set to 1 (error), 2 (warn), 3 (info), or 4 (debug).</li>
+<li><code>logtarget</code>: Logs actions into a specific file. The default value of <code>/var/log/fail2ban.log</code> puts all logging into the defined file. Alternately, you can change the value to:
+
+<ul>
+<li><code>STDOUT</code>: output any data</li>
+<li><code>STDERR</code>: output any errors</li>
+<li><code>SYSLOG</code>: message-based logging</li>
+<li><code>FILE</code>: output to a file</li>
+</ul></li>
+<li><code>socket</code>: The location of the socket file.</li>
+<li><code>pidfile</code>: The location of the PID file.</li>
+</ul></li>
+</ol>
+
+<h2 id="configure-jail-local-settings">Configure jail.local Settings</h2>
+
+<ol>
+<li><p>The <code>jail.conf</code> file will enable Fail2ban for SSH by default for Debian and Ubuntu, but not CentOS. All other protocols and configurations (HTTP, FTP, etc.) are commented out. If you want to change this, create a <code>jail.local</code> for editing:</p>
+
+<pre><code>cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+</code></pre></li>
+
+<li><p><strong>If using CentOS or Fedora</strong> you will need to change the <code>backend</code> option in <code>jail.local</code> from <em>auto</em> to <em>systemd</em>. This is not necessary on Debian 8 or Ubuntu 16.04, even though both use systemd as well.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/fail2ban/jail.local 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c"># &#34;backend&#34; specifies the backend used to get files modification.</span>
+<span class="c"># Available options are &#34;pyinotify&#34;, &#34;gamin&#34;, &#34;polling&#34;, &#34;systemd&#34; and &#34;auto&#34;.</span>
+<span class="c"># This option can be overridden in each jail as well.</span>
+
+. . .
+
+<span class="nb">backend</span> = systemd</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>No jails are enabled by default in CentOS 7. For example, to enable the SSH daemon jail, uncomment the following lines in <code>jail.local</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/fail2ban/jail.local 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">[sshd]</span>
+<span class="nb">enabled</span> = true</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<h3 id="whitelist-ip">Whitelist IP</h3>
+
+<p>To ignore specific IPs, add them to the <code>ignoreip</code> line. By default, this command will not ban the localhost. If you work from a single IP address often, it may be beneficial to add it to the ignore list:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/fail2ban/jail.local 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">[DEFAULT]</span>
+
+<span class="c"># &#34;ignoreip&#34; can be an IP address, a CIDR mask or a DNS host. Fail2ban will not</span>
+<span class="c"># ban a host which matches an address in this list. Several addresses can be</span>
+<span class="c"># defined using space separator.</span>
+<span class="nb">ignoreip</span> = <span class="m">127.0.0.1/8</span> <span class="m">123.45.67.89</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you wish to whitelist IPs only for certain jails, this can be done with the <code>fail2ban-client</code> command. Replace <code>JAIL</code> with the name of your jail, and <code>123.45.67.89</code> with the IP you wish to whitelist.</p>
+
+<pre><code>fail2ban-client set JAIL addignoreip 123.45.67.89
+</code></pre>
+
+<h3 id="ban-time-and-retry-amount">Ban Time and Retry Amount</h3>
+
+<p>Set <code>bantime</code>, <code>findtime</code>, and <code>maxretry</code> to define the circumstances and the length of time of a ban:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/fail2ban/jail.local 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c"># &#34;bantime&#34; is the number of seconds that a host is banned.</span>
+<span class="nb">bantime</span>  = <span class="m">600</span>
+
+<span class="c"># A host is banned if it has generated &#34;maxretry&#34; during the last &#34;findtime&#34;</span>
+<span class="c"># seconds.</span>
+<span class="nb">findtime</span> = <span class="m">600</span>
+<span class="nb">maxretry</span> = <span class="m">3</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<ul>
+<li><p><code>bantime</code>: The length of time in seconds for which an IP is banned. If set to a negative number, the ban will be permanent. The default value of <code>600</code> is set to ban an IP for a 10-minute duration.</p></li>
+
+<li><p><code>findtime</code>: The length of time between login attempts before a ban is set. For example, if Fail2ban is set to ban an IP after five (5) failed log-in attempts, those 5 attempts must occur within the set 10-minute <code>findtime</code> limit. The <code>findtime</code> value should be a set number of seconds.</p></li>
+
+<li><p><code>maxretry</code>: How many attempts can be made to access the server from a single IP before a ban is imposed. The default is set to 3.</p></li>
+</ul>
+
+<h3 id="email-alerts">Email Alerts</h3>
+
+<p>To receive email when fail2ban is triggered, adjust the email settings:</p>
+
+<ul>
+<li><p><code>destemail</code>:  The email address where you would like to receive the emails.</p></li>
+
+<li><p><code>sendername</code>: The name under which the email shows up.</p></li>
+
+<li><p><code>sender</code>: The email address from which Fail2ban will send emails.</p></li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If unsure of what to put under <code>sender</code>, run the command <code>sendmail -t user@email.com</code>, replacing <code>user@email.com</code> with your email address. Check your email (including spam folders, if needed) and review the sender email. This address can be used for the above configuration.</div>
+</blockquote>
+
+
+<p>You will also need to adjust the <code>action</code> setting, which defines what actions occur when the threshold for ban is met. The default, <code>%(action_)s</code>, only bans the user. <code>%(action_mw)s</code> will ban and send an email with a WhoIs report; while <code>%(action_mwl)s</code> will ban and send an email with the WhoIs report and all relevant lines in the log file. This can also be changed on a jail-specific basis.</p>
+
+<h3 id="other-jail-configuration">Other Jail Configuration</h3>
+
+<p>Beyond the basic settings address above, <code>jail.local</code> also contains various jail configurations for a number of common services, including SSH. By default, only SSH is enabled.</p>
+
+<p>An average jail configuration will resemble the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/fail2ban/jail.local 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>ssh<span class="o">]</span>
+
+<span class="nv">enabled</span>  <span class="o">=</span> <span class="nb">true</span>
+<span class="nv">port</span>     <span class="o">=</span> ssh
+<span class="nv">filter</span>   <span class="o">=</span> sshd
+<span class="nv">logpath</span>  <span class="o">=</span> /var/log/auth.log
+<span class="nv">maxretry</span> <span class="o">=</span> <span class="m">6</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<ul>
+<li><code>enabled</code>: Determines whether or not the filter is turned on.</li>
+<li><code>port</code>: The port Fail2ban should be referencing in regards to the service. If using the default port, then the service name can be placed here. If using a non-traditional port, this should be the port number. For example, if you moved your SSH port to 3456, you would replace <code>ssh</code> with <code>3456</code>.</li>
+<li><code>filter</code>: The name of the file located in <code>/etc/fail2ban/filter.d</code> that contains the failregex information used to parse log files appropriately. The <code>.conf</code> suffix need not be included.</li>
+<li><code>logpath</code>: Gives the location of the service&rsquo;s logs.</li>
+<li><code>maxretry</code>: Will override the global <code>maxretry</code> for the defined service. <code>findtime</code> and <code>bantime</code> can also be added.</li>
+<li><code>action</code>: This can be added as an additional setting, if the default action is not suitable for the jail. Additional actions can be found in the <code>action.d</code> folder.</li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Jails can also be configured as individual <code>.conf</code> files placed in the <code>jail.d</code> directory. The format will remain the same.</div>
+</blockquote>
+
+
+<h2 id="failregexs">Failregexs</h2>
+
+<p>Although Fail2ban comes with a number of filters, you may want to further customize these filters or create your own to suit your needs. Fail2ban uses <em>regular expressions</em> (<em>regex</em>) to parse log files, looking for instances of attempted break-ins and password failures. Fail2ban uses Python&rsquo;s regex extensions.</p>
+
+<p>The best way to understand how failregex works is to write one. Although we do not advise having Fail2ban monitor your Wordpress&rsquo;s <code>access.log</code> on heavily-trafficked websites due to CPU concerns, it provides an instance of an easy-to-understand log file that you can use to learn about the creation of any failregex.</p>
+
+<h3 id="write-a-regex-for-fail2ban">Write a Regex for Fail2ban</h3>
+
+<ol>
+<li><p>Navigate to your website&rsquo;s <code>access.log</code> (generally located at <code>/var/www/example.com/logs/access.log</code>) and find a failed login attempt. It will resemble:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/www/example.com/logs/access.log 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource">123.45.67.89 - - [01/Oct/2015:12:46:34 -0400] &#34;POST /wp-login.php HTTP/1.1&#34; 200 1906 &#34;http://example.com/wp-login.php&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:40.0) Gecko/20100101 Firefox/40.0&#34;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Note that you will only need to track up to the <code>200</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/www/example.com/logs/access.log 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource">123.45.67.89 - - [01/Oct/2015:12:46:34 -0400] &#34;POST /wp-login.php HTTP/1.1&#34; 200</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>The IP address from where the failed attempt originated will always be defined as <code>&lt;HOST&gt;</code>. The subsequent few characters are unchanging and can be input as literals:</p>
+
+<pre><code>&lt;HOST&gt; - - \[
+</code></pre>
+
+<p>The <code>\</code> before the <code>[</code> denotes that the square bracket is to be read literally.</p></li>
+
+<li><p>The next section, the date of the login attempt, can be written as grouped expressions using regex expressions. The first portion, <code>01</code> in this example, can be written as <code>(\d{2})</code>: The parentheses group the expression, while <code>\d</code> looks for any numerical digits. <code>{2}</code> notes that the expression is looking for two digits in a row, i.e., the day of the month.</p>
+
+<p>Thus far, you should have:</p>
+
+<pre><code>&lt;HOST&gt; - - \[(\d{2})
+</code></pre>
+
+<p>The following forward slash will then be called with a literal forward slash, followed by <code>\w{3}</code> which looks for a series of <code>3</code> apha-numeric characters (i.e., A-Z, 0-9, any case). The following forward slash should also be literal:</p>
+
+<pre><code>&lt;HOST&gt; - - \[(\d{2})/\w{3}/
+</code></pre>
+
+<p>The section for the year should be written similar to the day, but without the need for a capture group, and for four consecutive characters (and a literal colon):</p>
+
+<pre><code>&lt;HOST&gt; - - \[(\d{2})/\w{3}/\d{4}:
+</code></pre></li>
+
+<li><p>The next sequence is a series of two-digit numbers that make up the time. Because we defined the day of the month as a two-digit number in a capture group (the parentheses), we can backreference it using <code>\1</code> (since it is the <em>first</em> capture group). Again, the colons will be literals:</p>
+
+<pre><code>&lt;HOST&gt; - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1
+</code></pre>
+
+<p>If you do not want to use backreferences this can also be written as:</p>
+
+<pre><code>&lt;HOST&gt; - - \[\d{2}/\w{3}/\d{4}:\d{2}:\d{2}:\d{2}
+</code></pre></li>
+
+<li><p>The <code>-0400</code> segment should be written similarly to the year, with the additional literal <code>-</code>: <code>-\d{4}</code>. Finally, you can close the square bracket (escaping with a backslash first), and finish the rest with the literal string:</p>
+
+<pre><code>&lt;HOST&gt; - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1 -\d{4}\] &quot;POST /wp-login.php HTTP/1.1&quot; 200
+</code></pre>
+
+<p>Or:</p>
+
+<pre><code>&lt;HOST&gt; - - \[\d{2}/\w{3}/\d{4}:\d{2}:\d{2}:\d{2} -\d{4}\] &quot;POST /wp-login.php HTTP/1.1&quot; 200
+</code></pre></li>
+</ol>
+
+<h3 id="apply-the-failregex">Apply the Failregex</h3>
+
+<p>With the failregex created, it then needs to be added to a filter.</p>
+
+<ol>
+<li><p>Navigate to Fail2ban&rsquo;s <code>filter.d</code> directory:</p>
+
+<pre><code>cd /etc/fail2ban/filter.d
+</code></pre></li>
+
+<li><p>Create a file called <code>wordpress.conf</code>, and add your failregex:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/fail2ban/filter.d/wordpress.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c"># Fail2Ban filter for WordPress</span>
+<span class="c">#</span>
+<span class="c">#</span>
+
+<span class="err">[Definition]</span>
+
+<span class="nb">failregex</span> = &lt;HOST&gt; - - \[(\d{2})/\w{3}/\d{4}:\<span class="m">1</span>:\<span class="m">1</span>:\<span class="m">1</span> -\d{4}\] <span class="s2">&#34;POST /wp-login.php HTTP/1.1&#34;</span> <span class="m">200</span>
+<span class="nb">ignoreregex</span> =</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Save and quit.</p></li>
+
+<li><p>Add a WordPress section to <code>jail.local</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/fail2ban/jail.local 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">[wordpress]</span>
+<span class="nb">enabled</span>  = true
+<span class="nb">filter</span>   = wordpress
+<span class="nb">logpath</span>  = <span class="sx">/var/www/html/andromeda/logs/access.log</span>
+<span class="nb">port</span>     = <span class="m">80</span>,443</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This will use the default ban and email action. Other actions can be defined by adding an <code>action =</code> line.</p>
+
+<p>Save and exit, then restart Fail2ban.</p></li>
+</ol>
+
+<h2 id="use-the-fail2ban-client">Use the Fail2ban Client</h2>
+
+<p>Fail2ban provides a command <code>fail2ban-client</code> that can be used to run Fail2ban from the command line:</p>
+
+<pre><code>fail2ban-client COMMAND
+</code></pre>
+
+<ul>
+<li><code>start</code>: Starts the Fail2ban server and jails.</li>
+<li><code>reload</code>: Reloads Fail2ban&rsquo;s configuration files.</li>
+<li><code>reload JAIL</code>: Replaces <code>JAIL</code> with the name of a Fail2ban jail; this will reload the jail.</li>
+<li><code>stop</code>: Terminates the server.</li>
+<li><code>status</code>: Will show the status of the server, and enable jails.</li>
+<li><code>status JAIL</code>: Will show the status of the jail, including any currently-banned IPs.</li>
+</ul>
+
+<p>For example, to check that the Fail2Ban is running and the SSHd jail is enabled, run:</p>
+
+<pre><code>fail2ban-client status
+</code></pre>
+
+<p>The output should be:</p>
+
+<pre><code>Status
+|- Number of jail:      1
+`- Jail list:   sshd
+</code></pre>
+
+<p>For additional information about <code>fail2ban-client</code> commands, see the <a href="http://www.fail2ban.org/wiki/index.php/Commands">Fail2ban wiki</a>.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/configuration-management/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/">Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-fail2ban">What is Fail2Ban</a></li>
+<li><a href="#install-fail2ban">Install Fail2ban</a>
+<ul>
+<li><a href="#centos-7">CentOS 7</a></li>
+<li><a href="#debian">Debian</a></li>
+<li><a href="#fedora">Fedora</a></li>
+<li><a href="#ubuntu">Ubuntu</a></li>
+</ul></li>
+<li><a href="#configure-fail2ban">Configure Fail2ban</a>
+<ul>
+<li><a href="#configure-fail2ban-local">Configure fail2ban.local</a></li>
+</ul></li>
+<li><a href="#configure-jail-local-settings">Configure jail.local Settings</a>
+<ul>
+<li><a href="#whitelist-ip">Whitelist IP</a></li>
+<li><a href="#ban-time-and-retry-amount">Ban Time and Retry Amount</a></li>
+<li><a href="#email-alerts">Email Alerts</a></li>
+<li><a href="#other-jail-configuration">Other Jail Configuration</a></li>
+</ul></li>
+<li><a href="#failregexs">Failregexs</a>
+<ul>
+<li><a href="#write-a-regex-for-fail2ban">Write a Regex for Fail2ban</a></li>
+<li><a href="#apply-the-failregex">Apply the Failregex</a></li>
+</ul></li>
+<li><a href="#use-the-fail2ban-client">Use the Fail2ban Client</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

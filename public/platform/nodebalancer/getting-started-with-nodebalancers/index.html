@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Getting Started with NodeBalancers</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Using a NodeBalancer to begin managing a simple web application.">
+        <meta name="keywords" content="nodebalancers, nodebalancer, load balancers, load balancer, load balancing, high availability, ha">
+        
+        <meta property="og:title" content="Getting Started with NodeBalancers">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/">
+        <meta property="og:description" content="Using a NodeBalancer to begin managing a simple web application.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/nodebalancer/">NodeBalancers</a>
+  
+</li>
+
+
+<li>
+  
+  Getting Started with NodeBalancers
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Getting Started with NodeBalancers</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-12-18T00:00:00Z">Friday, December 18, 2015</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fnodebalancer%2fgetting-started-with-nodebalancers%2f&via=linode&text=Getting%20Started%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fnodebalancer%2fgetting-started-with-nodebalancers%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fnodebalancer%2fgetting-started-with-nodebalancers%2f&t=Getting%20Started%20with%20NodeBalancers" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/nodebalancer/getting-started-with-nodebalancers.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/nodebalancer/getting-started-with-nodebalancers.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Nearly all applications that are built using Linodes can benefit from load balancing, and load balancing itself is the key to expanding an application to larger numbers of users. Linode now provides NodeBalancers, which can ease the deployment and administration of a load balancer.</p>
+
+<p>NodeBalancers are built for high availability and designed to be &ldquo;set and forgotten&rdquo;. The most difficult part of transitioning to a NodeBalancer is simply making sure your application works well in the new environment. In this guide, we will examine a common use case: using a NodeBalancer to load balance a website and prepare it for scaling to thousands of users.</p>
+
+<p>This guide provides a high-level overview of transitioning to a NodeBalancer, but it&rsquo;s outside this page&rsquo;s scope to explain each application a NodeBalancer could balance. For more information on various applications that might be useful behind NodeBalancer, see the rest of Linode Guides &amp; Tutorials.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>A NodeBalancer listens on a public IP address for incoming connections, then uses configurable rules to select a backend node (out of one or more) to which to send the connection. In HTTP mode, NodeBalancers can reach into the incoming web request and make decisions based on it.</p>
+
+<p>A NodeBalancer allows the incoming load to your application to be spread over any number of Linodes. This, however, comes with new challenges: many web applications have sessions that do not exist outside of the backend node. For this reason, NodeBalancers allow you to specify that the same client should land on the same backend Linode.</p>
+
+<p>As an example, this guide will start with a typical, simple web application.</p>
+
+<p><img src="/docs/assets/806-starting-point.png" alt="The web application when the guide starts." /></p>
+
+<p>There are a few drawbacks to making this application scale, namely that any modifications require updating DNS (which takes time) or inflicting users with downtime. NodeBalancers can bring administrative ease to this application by becoming its front face.</p>
+
+<p><img src="/docs/assets/807-first-step.png" alt="Diagram after putting NodeBalancer in charge of the web application." /></p>
+
+<p>Now, backend Linodes can be added or removed to the work load seamlessly, without end users noticing any downtime.</p>
+
+<p><img src="/docs/assets/808-scaling.png" alt="Diagram after adding a second web server node." /></p>
+
+<p>Additionally, NodeBalancer will watch each backend for failure, rerouting users to working backends transparently and without any manual intervention.</p>
+
+<h2 id="configuring-a-nodebalancer">Configuring a NodeBalancer</h2>
+
+<p>Sticking with the simple web application example above, the backend Linode currently powering it must have a private IP address. If it does not, add one now and configure the Linode for <a href="/docs/networking/configuring-static-ip-interfaces/">static networking</a> &ndash; this will also be a good opportunity to do the same for the database server, since private network traffic is unbilled. Reboot if necessary, and configure your web application to respond on the private IP address, if it is not already.</p>
+
+<ol>
+<li><p>Visit the NodeBalancers tab in the Linode Manager.</p>
+
+<p><a href="/docs/assets/770-nodebalancer-tab.png"><img src="/docs/assets/796-1.png" alt="The NodeBalancer tab." /></a></p></li>
+
+<li><p>For the example web application, only one NodeBalancer is needed. Add one in the same datacenter that your backend Linodes are located in. Once purchased, you will be able to see the public IP address that has been assigned to your NodeBalancer.</p>
+
+<p><a href="/docs/assets/772-nodebalancer-added.png"><img src="/docs/assets/797-2.png" alt="The NodeBalancer has been added." /></a></p></li>
+
+<li><p>Now choose <strong>Create Configuration</strong>. A NodeBalancer is configured using ports, and let&rsquo;s say our example web application uses only one: port 80 for regular HTTP traffic.</p>
+
+<p><a href="/docs/assets/774-add-port.png"><img src="/docs/assets/798-3.png" alt="Adding a port configuration to a NodeBalancer." /></a></p>
+
+<p><strong>HTTP</strong></p>
+
+<p>For the traditional web application, the settings in the screenshot above are a good start. HTTP cookie stickiness is preferred so that the same client will always land on the same backend &ndash; for a simple web application that keeps sessions in memory, this is necessary to avoid session errors on clients.</p>
+
+<p><strong>HTTPS</strong></p>
+
+<p>If you select the HTTPS protocol, two new fields will appear where you can add your SSL certificate, chained certificates (if applicable) and a private key (which must not have passphrase protection).</p>
+
+<p>Once you have configured your certificates, you must then choose a general security and compatibility level for your NodeBalancer&rsquo;s TLS cipher suite pools. If you must support users accessing your application with older browsers such as Internet Explorer 6-8, you can select the <strong>Legacy</strong> option. However, bear in mind that by gaining backwards compatibility, your NodeBalancer will use weaker SSL/TLS cipher suites.</p>
+
+<p>For all other implementations, the default <strong>Recommended</strong> cipher suite option should be used. You can see the cipher suites available with each option in our <a href="/docs/platform/nodebalancer/nodebalancer-reference-guide#tls-cipher-suites">NodeBalancer Reference Guide</a>.</p>
+
+<p><a href="/docs/assets/ssl-cipher-suite.png"><img src="/docs/assets/ssl-cipher-suite-resized.png" alt="SSL Cipher Suite" /></a></p></li>
+</ol>
+
+<p>Every ten seconds, NodeBalancer will request the root of the web application and look for a valid response code. With our example setup, there is only one backend node (which we will add shortly); if the backend goes down, NodeBalancer will serve a plain 503 Service Unavailable error page. This is more desirable than refusing connections or making browsers wait for a timeout.</p>
+
+<h2 id="adding-a-backend">Adding a Backend</h2>
+
+<ol>
+<li><p>Now we must add the single backend node to the NodeBalancer&rsquo;s configuration. Point this at the private IP address of your web server Linode.</p>
+
+<p><a href="/docs/assets/776-backend.png"><img src="/docs/assets/799-4.png" alt="Adding a backend node to a NodeBalancer." /></a></p>
+
+<p>These configuration changes will take a few moments to be reflected by your NodeBalancer. If everything is configured on your backend correctly, once the changes have gone through, the <strong>Status</strong> column will update from <strong>Unknown</strong> to <strong>UP</strong>.</p>
+
+<p><a href="/docs/assets/778-backend-up.png"><img src="/docs/assets/800-5.png" alt="The backend node has been added, and is now status UP." /></a></p>
+
+<p>If the backend status reports <strong>DOWN</strong>, check to make sure that your web application is configured to respond on the Linode&rsquo;s private IP address. There might be a virtual host mismatch as well &ndash; check the notes in the next section.</p></li>
+
+<li><p>Now that the backend is up, go directly to your NodeBalancer&rsquo;s IP address in a browser. You should see your web application as the NodeBalancer proxies the traffic through.</p>
+
+<p><a href="/docs/assets/780-success.png"><img src="/docs/assets/801-6.png" alt="Viewing the NodeBalancer-driven web site in a browser." /></a></p></li>
+</ol>
+
+<h3 id="a-note-about-virtual-hosts">A Note about Virtual Hosts</h3>
+
+<p>You might not see the web application that you expect when you go directly to the NodeBalancer&rsquo;s IP address. This is due to virtual hosts, and is not an issue unique to NodeBalancers. In the default configurations of many web servers, an application might only be configured to respond for certain hostnames. This can impact testing NodeBalancers as well as the behavior of their health checks.</p>
+
+<p>It is important to configure the &ldquo;default&rdquo; virtual host in your web server to point at something useful. NodeBalancer will pass the Host header from a browser untouched, so virtual hosts will work entirely normally once you are pointing a domain at the NodeBalancer. It is only mentioned here because testing NodeBalancers can demonstrate quirks in a web server&rsquo;s configuration, particularly when browsing by the NodeBalancer&rsquo;s IP address.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Health checks are transmitted with a Host header (in HTTP/1.0 mode).</div>
+</blockquote>
+
+
+<h2 id="putting-the-nodebalancer-in-charge">Putting the NodeBalancer in Charge</h2>
+
+<p>Your NodeBalancer is now working and is able to pass traffic to your web application. It is important to note at this point that configuring the NodeBalancer has not impacted your application&rsquo;s normal operations at all &ndash; you can test NodeBalancer without your users ever knowing. The only exception to this would be when adding a private IP address, if necessary.</p>
+
+<p>Once you are satisfied that NodeBalancer is working normally, you can switch your web application&rsquo;s traffic over to it through DNS.</p>
+
+<ol>
+<li><p>On the NodeBalancer&rsquo;s overview, you can see its IP address as well as a hostname that resolves to that IP address. Take note of the IP address, to use in the A record for your domain.</p></li>
+
+<li><p>Edit or create an A record for <code>www.example.org</code>, pointing to your NodeBalancer&rsquo;s IP address.</p>
+
+<p><a href="/docs/assets/nodebalancer-a-record.png"><img src="/docs/assets/nodebalancer-a-record_small.png" alt="Adding an A Record." /></a></p>
+
+<p>Also add an AAAA record for the IPv6 address.</p>
+
+<p><a href="/docs/assets/786-dns-aaaa.png"><img src="/docs/assets/804-9.png" alt="Adding an AAAA record for the NodeBalancer." /></a></p></li>
+</ol>
+
+<p>Once the DNS changes propagate, traffic will begin flowing through the NodeBalancer. At this point, you will want to wait at least 24 hours for all caches to catch up to the NodeBalancer before proceeding.</p>
+
+<h1 id="additional-nodebalancers-and-features">Additional NodeBalancers and Features</h1>
+
+<p>On another Linode, make an exact copy of your current web server. The Linode backups service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply repeat the steps for <a href="/docs/platform/nodebalancer/getting-started-with-nodebalancers#adding-a-backend">Adding a Backend</a> to add it to the NodeBalancer configuration.</p>
+
+<p><a href="/docs/assets/788-another-backend.png"><img src="/docs/assets/805-10.png" alt="Adding another backend to the NodeBalancer's configuration." /></a></p>
+
+<p>Once the configuration is sent to the backend, users will be transparently balanced over the two Linodes and each will be monitored for health. This configuration is very easy to work with, as upgrades can be rolled out to each backend without disrupting service and backends can be taken in and out of rotation at will.</p>
+
+<p>This is just the beginning; NodeBalancers are extremely flexible and cater to a lot of needs. From here, the API can be used to add many backends. Multiple ports on one backend can be balanced for speciality setups. Additionally, new tools like <em>memcached</em> can be introduced to the application to allow session stickiness to become irrelevant.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/">How to Use HAProxy for Load Balancing</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/nodebalancer/nodebalancer-reference-guide/">NodeBalancer Reference Guide</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/">Use Nginx as a Front-end Proxy and Software Load Balancer</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/introduction-to-high-availability/">Introduction to High Availability</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/host-a-website-with-high-availability/">Host a Website with High Availability</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#configuring-a-nodebalancer">Configuring a NodeBalancer</a></li>
+<li><a href="#adding-a-backend">Adding a Backend</a>
+<ul>
+<li><a href="#a-note-about-virtual-hosts">A Note about Virtual Hosts</a></li>
+</ul></li>
+<li><a href="#putting-the-nodebalancer-in-charge">Putting the NodeBalancer in Charge</a></li>
+</ul></li>
+<li><a href="#additional-nodebalancers-and-features">Additional NodeBalancers and Features</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

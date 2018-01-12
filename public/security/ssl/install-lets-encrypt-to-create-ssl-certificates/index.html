@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Let&#39;s Encrypt to Create SSL Certificates</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Let&#39;s Encrypt is an SSL certificate authority managed by the Internet Security Research Group. It utilizes the Automated Certificate Management Environment to automatically deploy browser-trusted SSL certificates to anyone for free.">
+        <meta name="keywords" content="ACME,HTTPS,Let&#39;s, Encrypt,SSL,SSL, certificates">
+        
+        <meta property="og:title" content="Install Let&#39;s Encrypt to Create SSL Certificates">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/">
+        <meta property="og:description" content="Let&#39;s Encrypt is an SSL certificate authority managed by the Internet Security Research Group. It utilizes the Automated Certificate Management Environment to automatically deploy browser-trusted SSL certificates to anyone for free.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/ssl/">SSL Certificates</a>
+  
+</li>
+
+
+<li>
+  
+  Install Let&#39;s Encrypt to Create SSL Certificates
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Let&#39;s Encrypt to Create SSL Certificates</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-09-29T00:00:00Z">Thursday, September 29, 2016</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/seanthewebber">Sean Webber
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fssl%2finstall-lets-encrypt-to-create-ssl-certificates%2f&via=linode&text=Install%20Let%26%2339%3bs%20Encrypt%20to%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fssl%2finstall-lets-encrypt-to-create-ssl-certificates%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fssl%2finstall-lets-encrypt-to-create-ssl-certificates%2f&t=Install%20Let%27s%20Encrypt%20to%20Create%20SSL%20Certificates" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg" alt="Let's Encrypt" /></p>
+
+<p><a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a> is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the <a href="https://github.com/ietf-wg-acme/acme/">Automated Certificate Management Environment</a> (ACME) to automatically deploy free SSL certificates that are trusted by nearly all major browsers.</p>
+
+<p>This tutorial will cover the following:</p>
+
+<ul>
+<li>Installing the Let&rsquo;s Encrypt ACME client.</li>
+<li>Obtaining Let&rsquo;s Encrypt certificates.</li>
+<li>Required attention and maintenance.</li>
+<li>Technical details about Let&rsquo;s Encrypt and certificates issued by it.</li>
+</ul>
+
+<h2 id="before-you-begin">Before you Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Complete the steps in our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide to create a standard user account, harden SSH access, and remove unnecessary network services.</p></li>
+
+<li><p>Update your server&rsquo;s software packages:</p>
+
+<p><strong>CentOS</strong></p>
+
+<pre><code>sudo yum update &amp;&amp; sudo yum upgrade
+</code></pre>
+
+<p><strong>Debian / Ubuntu</strong></p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="download-and-install-let-s-encrypt">Download and Install Let&rsquo;s Encrypt</h2>
+
+<ol>
+<li><p>Install the <code>git</code> package:</p>
+
+<p><strong>CentOS</strong></p>
+
+<pre><code>sudo yum install git
+</code></pre>
+
+<p><strong>Debian / Ubuntu</strong></p>
+
+<pre><code>sudo apt-get install git
+</code></pre></li>
+
+<li><p>Download a clone of Let&rsquo;s Encrypt from the <a href="https://github.com/letsencrypt/letsencrypt">official GitHub repository</a>. <code>/opt</code> is a common installation directory for third-party packages, so let&rsquo;s install the clone to <code>/opt/letsencrypt</code>:</p>
+
+<pre><code>sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
+</code></pre></li>
+
+<li><p>Navigate to the new <code>/opt/letsencrypt</code> directory:</p>
+
+<pre><code>cd /opt/letsencrypt
+</code></pre></li>
+</ol>
+
+<h2 id="create-an-ssl-certificate">Create an SSL Certificate</h2>
+
+<p>Let&rsquo;s Encrypt automatically performs Domain Validation (DV) using a series of <em>challenges</em>. The Certificate Authority (CA) uses challenges to verify the authenticity of your computer&rsquo;s domain. Once your Linode has been validated, the CA will issue SSL certificates to you.</p>
+
+<ol>
+<li><p>Run Let&rsquo;s Encrypt with the <code>--standalone</code> parameter. For each additional domain name requiring a certificate, add <code>-d example.com</code> to the end of the command.</p>
+
+<pre><code>sudo -H ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Let&rsquo;s Encrypt <strong>does not</strong> deploy wildcard certificates. Each subdomain requires its own certificate.</div>
+</blockquote>
+</li>
+
+<li><p>Specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices if necessary. Press <strong>TAB</strong> followed by <strong>ENTER</strong> or <strong>RETURN</strong> to save.</p>
+
+<p><img src="/docs/assets/lets-encrypt-recovery-email-prompt.png" alt="Let's Encrypt admin email prompt" /></p></li>
+
+<li><p>Agree to the Terms of Service.</p>
+
+<p><img src="/docs/assets/lets-encrypt-agree-tos-prompt.png" alt="Let's Encrypt Terms of Service prompt" /></p></li>
+
+<li><p>If all goes well, a message similar to the one below will appear. Its appearance means Let&rsquo;s Encrypt has approved and issued your certificates.</p>
+
+<pre><code>IMPORTANT NOTES:
+- If you lose your account credentials, you can recover them through
+  e-mails sent to somebody@example.com.
+- Congratulations! Your certificate and chain have been saved at
+  /etc/letsencrypt/live/example.com/fullchain.pem. Your
+  cert will expire on 2016-03-31. To obtain a new version of the
+  certificate in the future, simply run Let's Encrypt again.
+- Your account credentials have been saved in your Let's Encrypt
+  configuration directory at /etc/letsencrypt. You should make a
+  secure backup of this folder now. This configuration directory will
+  also contain certificates and private keys obtained by Let's
+  Encrypt, so making regular backups of this folder is ideal.
+- If you like Let's Encrypt, please consider supporting our work by
+
+  Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+  Donating to EFF:                    https://eff.org/donate-le
+</code></pre></li>
+</ol>
+
+<h3 id="let-s-encrypt-certificate-directory-structure">Let&rsquo;s Encrypt Certificate Directory Structure</h3>
+
+<ol>
+<li><p>List the <code>/etc/letsencrypt/live</code> directory:</p>
+
+<pre><code>sudo ls /etc/letsencrypt/live
+</code></pre></li>
+
+<li><p>Each domain name you specified in <a href="#create-an-ssl-certificate">Step 1</a> of the <strong>Create an SSL Certificate</strong> section has its own directory. List any of these domain name directories:</p>
+
+<pre><code>sudo ls /etc/letsencrypt/live/example.com
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>cert.pem
+chain.pem
+fullchain.pem
+privkey.pem
+</code></pre></li>
+
+<li><p>Each key (<code>.pem</code>) file serves a different purpose:</p>
+
+<ul>
+<li><strong>cert.pem</strong>: server certificate only.</li>
+<li><strong>chain.pem</strong>: root and intermediate certificates only.</li>
+<li><strong>fullchain.pem</strong>: combination of server, root and intermediate certificates (replaces <code>cert.pem</code> and <code>chain.pem</code>).</li>
+<li><strong>privkey.pem</strong>: private key (do <strong>not</strong> share this with anyone!).</li>
+</ul>
+
+<p>Let&rsquo;s Encrypt issues certificates from intermediate certificate authorities. Intermediate certificates have been cross-signed by <a href="https://www.identrust.com/">Identrust</a>, which ensures compatibility between the end certificate and all major browsers. Refer to Let&rsquo;s Encrypt&rsquo;s <a href="https://letsencrypt.org/certificates/">certificates</a> page for more information.</p></li>
+
+<li><p>For good measure, display the file status of <code>fullchain.pem</code>:</p>
+
+<pre><code>sudo stat /etc/letsencrypt/live/example.com/fullchain.pem
+</code></pre>
+
+<p>Output excerpt:</p>
+
+<pre><code>File: ‘live/example.com/cert.pem’ -&gt; ‘../../archive/example.com/cert1.pem’
+</code></pre>
+
+<p>Notice how this file points to a different file, as do all four of the files listed in Step 3. They are <em>symbolic links</em> to the actual certificate files located in the <code>/etc/letsencrypt/archive</code> directory.</p></li>
+
+<li><p>If you forget to renew a domain name&rsquo;s certificate, Let&rsquo;s Encrypt will remove its directory (and symbolic links) from <code>/etc/letsencrypt/live</code>. However, the directory (and symbolic links) will be retained in the <code>/etc/letsencrypt/archive</code> and <code>/etc/letsencrypt/keys</code> directories for your future reference.</p></li>
+</ol>
+
+<h2 id="maintenance">Maintenance</h2>
+
+<h3 id="renew-ssl-certificates">Renew SSL Certificates</h3>
+
+<ol>
+<li><p>Return to the <code>/opt/letsencrypt</code> directory:</p>
+
+<pre><code>cd /opt/letsencrypt
+</code></pre></li>
+
+<li><p>Execute the command you used in <a href="#create-an-ssl-certificate">Step 1</a> of the <strong>Create an SSL Certificate</strong> section, adding the <code>--renew-by-default</code> parameter:</p>
+
+<pre><code>sudo -H ./letsencrypt-auto certonly --standalone --renew-by-default -d example.com -d www.example.com
+</code></pre></li>
+
+<li><p>After a few moments, a confirmation similar to the one below should appear:</p>
+
+<div class="file">
+<pre><code>IMPORTANT NOTES:
+- Congratulations! Your certificate and chain have been saved at
+  /etc/letsencrypt/live/example.com/fullchain.pem. Your
+  cert will expire on 2016-03-31. To obtain a new version of the
+  certificate in the future, simply run Let's Encrypt again.
+- If you like Let's Encrypt, please consider supporting our work by:
+
+  Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+  Donating to EFF:                    https://eff.org/donate-le
+</code></pre>
+
+</div>
+
+<p>Let&rsquo;s Encrypt has refreshed the lifespan of your certificates; in this example, March 31st, 2016 is the new expiration date.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Let&rsquo;s Encrypt certificates have a 90-day lifespan before they expire. <a href="https://letsencrypt.org/2015/11/09/why-90-days.html">According to Let&rsquo;s Encrypt</a>, this encourages automation and minimizes damage from key compromises. You can renew your certificates anytime during their lifespan.</div>
+</blockquote>
+
+
+<h3 id="automatically-renew-ssl-certificates-optional">Automatically Renew SSL Certificates (Optional)</h3>
+
+<p>We also recommend automating your certificate renewal since it can be easy to lose track of expiration dates, especially if you have them for several different domains. This will prevent your certificates from expiring, and can be accomplished with <code>cron</code>.</p>
+
+<ol>
+<li><p>Before we execute the following command, let&rsquo;s break it down and make some modifications:</p>
+
+<pre><code>echo '@monthly root /opt/letsencrypt/letsencrypt-auto certonly --quiet --standalone --renew-by-default -d example.com -d www.example.com &gt;&gt; /var/log/letsencrypt/letsencrypt-auto-update.log' | sudo tee --append /etc/crontab
+</code></pre>
+
+<ul>
+<li><strong>@monthly</strong>: for simplicity, this command will execute at midnight on the first day of every month</li>
+<li><strong>root</strong>: run the command as the <strong>root</strong> user</li>
+<li><strong>/opt/letsencrypt/letsencrypt-auto certonly &ndash;quiet &ndash;standalone &ndash;renew-by-default -d example.com -d www.example.com</strong>: <code>letsencrypt-auto</code> renewal command. Again, add <code>-d example.com</code> for each domain name you need to renew</li>
+<li><strong>&gt;&gt; /var/log/letsencrypt/letsencrypt-auto-update.log</strong>: record the <em>standard output</em> and <em>standard error</em> to a log file named <code>letsencrypt-auto-update.log</code></li>
+<li><strong>tee &ndash;append /etc/crontab</strong>: save the new cron job to the <code>/etc/crontab</code> file</li>
+</ul>
+
+<p>The above settings will be effective in most cases, but for more information about available cron job options, refer to the <a href="https://help.ubuntu.com/community/CronHowto">Ubuntu Community Cron How-to</a> or the <a href="https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s2-autotasks-cron-configuring.html">CentOS Cron Documentation</a>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The automatic renewal process requires access to port <code>443</code>, which would most likely be bound to your web server. You can configure your cron tasks to temporarily stop the web server, or use one of several methods documented <a href="https://letsencrypt.readthedocs.io/en/latest/using.html#webroot">here</a>.</div>
+</blockquote>
+</li>
+
+<li><p>Execute your modified command to add the cron job to your Linode.</p></li>
+</ol>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Once Let&rsquo;s Encrypt supports auto-renewal natively, open the <code>/etc/crontab</code> file and manually remove this entry to avoid future renewal conflicts.</div>
+</blockquote>
+
+
+<h3 id="update-let-s-encrypt">Update Let&rsquo;s Encrypt</h3>
+
+<ol>
+<li><p>Return to the <code>/opt/letsencrypt</code> directory:</p>
+
+<pre><code>cd /opt/letsencrypt
+</code></pre></li>
+
+<li><p>Download any changes made to Let&rsquo;s Encrypt since you last cloned or pulled the repository, effectively updating it:</p>
+
+<pre><code>sudo git pull
+</code></pre></li>
+</ol>
+
+<h3 id="automatically-update-let-s-encrypt-optional">Automatically Update Let&rsquo;s Encrypt (Optional)</h3>
+
+<p>You can also use <code>cron</code> to keep the <code>letsencrypt-auto</code> client up to date. The <code>@weekly</code> parameter will issue a <code>git pull</code> command in the <code>/opt/letsencrypt</code> directory every Sunday at midnight.</p>
+
+<pre><code>echo '@weekly root cd /opt/letsencrypt &amp;&amp; git pull &gt;&gt; /var/log/letsencrypt/letsencrypt-auto-update.log' | sudo tee --append /etc/crontab
+</code></pre>
+
+<p>To change the update frequency, choose a different parameter, for example, <code>@hourly</code>, <code>@daily</code>, or <code>@monthly</code>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Now that you have installed Let&rsquo;s Encrypt and obtained your free SSL certificates, you can configure any package that supports commercial or self-signed SSL certificates to use them.</p>
+
+<ul>
+<li><a href="https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql">Email with Postfix, Dovecot, and MySQL</a></li>
+<li><a href="https://www.linode.com/docs/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx">How to Provide Encrypted Access to Resources Using SSL Certificates on Nginx</a></li>
+<li><a href="https://www.linode.com/docs/security/ssl/ssl-apache2-debian-ubuntu">SSL Certificates with Apache on Debian &amp; Ubuntu</a></li>
+</ul>
+
+            
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before you Begin</a></li>
+<li><a href="#download-and-install-let-s-encrypt">Download and Install Let&rsquo;s Encrypt</a></li>
+<li><a href="#create-an-ssl-certificate">Create an SSL Certificate</a>
+<ul>
+<li><a href="#let-s-encrypt-certificate-directory-structure">Let&rsquo;s Encrypt Certificate Directory Structure</a></li>
+</ul></li>
+<li><a href="#maintenance">Maintenance</a>
+<ul>
+<li><a href="#renew-ssl-certificates">Renew SSL Certificates</a></li>
+<li><a href="#automatically-renew-ssl-certificates-optional">Automatically Renew SSL Certificates (Optional)</a></li>
+<li><a href="#update-let-s-encrypt">Update Let&rsquo;s Encrypt</a></li>
+<li><a href="#automatically-update-let-s-encrypt-optional">Automatically Update Let&rsquo;s Encrypt (Optional)</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

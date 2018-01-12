@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Nginx SSL and TLS Deployment Best Practices</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide details best practices for deploying SSL and TLS in conjunction with nginx.">
+        <meta name="keywords" content="nginx, ssl, tls">
+        
+        <meta property="og:title" content="Nginx SSL and TLS Deployment Best Practices">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/">
+        <meta property="og:description" content="This guide details best practices for deploying SSL and TLS in conjunction with nginx.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/nginx/">Nginx</a>
+  
+</li>
+
+
+<li>
+  
+  Nginx SSL and TLS Deployment Best Practices
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Nginx SSL and TLS Deployment Best Practices</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-08-18T00:00:00Z">Thursday, August 18, 2016</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/capecodrailfan">Ryan Laverdiere
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fnginx-ssl-and-tls-deployment-best-practices%2f&via=linode&text=Nginx%20SSL%20and%20TLS%20Deployment%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fnginx-ssl-and-tls-deployment-best-practices%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fnginx-ssl-and-tls-deployment-best-practices%2f&t=Nginx%20SSL%20and%20TLS%20Deployment%20Best%20Practices" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>This guide is intended to inform you of some additional configuration options that nginx uses when serving HTTPS. While these features help optimize nginx for SSL and TLS, this is by no means a complete guide to securing nginx or your Linode. The best way to ensure your server remains secure is to not only configure it properly, but to follow best security practices at all times. This guide is intended to be one of many steps toward creating the most secure environment possible.</p>
+
+<h2 id="before-you-begin">Before you Begin</h2>
+
+<ol>
+<li><p>This guide is a continuation of our tutorial on how to <a href="/docs/websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie">install nginx and a StartSSL certificate on Debian 8 (Jessie)</a>. The principles here can be adapted to an SSL/TLS deployment on any system, but at a minimum, you will need a Linode with the latest stable version of nginx and an SSL certificate installed.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>apt-get update &amp;&amp; apt-get upgrade
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The commands in this guide are written for a root user. If you&rsquo;re following along as a non-root user, commands that require elevated privileges should prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<p>For more information, please review our guides on <a href="/docs/websites/nginx/how-to-configure-nginx">basic nginx configuration</a>, <a href="/docs/security/linux-security-basics">Linux security basics</a> and <a href="/docs/security/securing-your-server">securing your server</a>.</p>
+
+<h2 id="disable-nginx-server-tokens">Disable nginx Server Tokens</h2>
+
+<p>By default, nginx will share its version number with anyone who connects to your server. For example, if a directory is not found, nginx will return a 404 error that includes its version number. Disabling server tokens makes it more difficult to determine the version of nginx running on your Linode, and therefore more difficult to implement version-specific exploits.</p>
+
+<p><a href="/docs/assets/404_Not_Found.jpg"><img src="/docs/assets/404_Not_Found.jpg" alt="404 With nginx Version Number" /></a></p>
+
+<ol>
+<li><p>To disable <code>server_tokens</code>, open your <code>/etc/nginx/nginx.conf</code> file. Inside of the <code>http</code> block, append or uncomment the following line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">server_tokens       off<span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save your changes and restart nginx.</p>
+
+<pre><code>systemctl restart nginx
+</code></pre></li>
+</ol>
+
+<p>After restarting, direct your web browser to a directory of your server that does not exist, and nginx will no longer share its version number.</p>
+
+<p><a href="/docs/assets/404_Not_Found_Server_Tokens_Off.jpg"><img src="/docs/assets/404_Not_Found_Server_Tokens_Off.jpg" alt="404 With Server Tokens Disabled" /></a></p>
+
+<h2 id="enable-http-2-support">Enable HTTP/2 Support</h2>
+
+<p>In September 2010, Google released the SPDY protocol for all versions of Chrome 6. SPDY is currently being phased out in favor of HTTP/2. Support for SPDY in Chrome was removed in May 2016. SPDY is supported only in nginx 1.8.x or older, whereas versions beginning with 1.9.5 are beginning to support HTTP/2. To check your nginx version:</p>
+
+<pre><code>nginx -v
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you installed nginx from source without modifying your environment variables, invoke the full path to the binary:</p>
+
+<p>/opt/nginx/sbin/nginx -v</p>
+</div>
+</blockquote>
+
+
+<p>HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. Traditionally, when a user accessed a web page, a separate HTTP connection was established to load each resource (e.g. HTML, CSS, JavaScript, or images). HTTP/2 allows concurrent requests on a single connection to download assests in parallel. The server also compresses assets before sending them to the client, which requires less bandwdith.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Chrome has deprecated Next Protocol Negotiation (NPN) and now requires Application-Layer Protocol Negotiation (ALPN) for HTTP/2 compatibility. However, ALPN requires OpenSSL 1.0.2+. Many distributions, such as Debian 8 (Jessie) do not include this package in their repositories. If you intend to enable HTTP/2, you will need to use a version of nginx compiled with OpenSSL 1.0.2+. See our instructions on <a href="/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/#install-and-compile-nginx-from-source">compiling nginx from source</a> for more information.</div>
+</blockquote>
+
+
+<ol>
+<li><p>To enable HTTP/2, open your nginx SSL virtual host configuration file. Depending on how you installed nginx, this could be located at <code>/etc/nginx/sites-enabled/default</code> or at <code>/etc/nginx/conf.d/example_ssl.conf</code>. Look for the <code>listen</code> line within the &ldquo;SSL Configuration&rdquo; section. Uncomment the following line if necessary and add <code>http2</code> to the end before the semicolon.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/conf.d/example_ssl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">listen</span>       <span class="m">443</span> ssl http2;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save your changes and restart nginx.</p>
+
+<pre><code>systemctl restart nginx
+</code></pre></li>
+
+<li><p>Open a web browser and navigate to <a href="https://tools.keycdn.com/http2-test">the KeyCDN HTTP/2 Test</a>, enter your Linode&rsquo;s domain name or hostname in the text box and click &ldquo;Test.&rdquo; Optionally, uncheck the Public checkbox if you do not want your results displayed publicly. This free tool will check your server and let you know if HTTP/2 and ALPN are enabled and functioning correctly.</p>
+
+<p>If HTTP/2 is functioning properly, your report should look like this:</p>
+
+<p><a href="/docs/assets/HTTP2_Report.jpg"><img src="/docs/assets/HTTP2_Report.jpg" alt="HTTP/2 Report" /></a></p></li>
+</ol>
+
+<h2 id="redirect-http-traffic-to-https">Redirect HTTP Traffic to HTTPS</h2>
+
+<p>Google is now ranking websites that accept encrypted HTTPS connections higher in search results, so redirecting HTTP requests to HTTPS is one possible way to increase your page rank. Before following these steps, however, be sure to research compatibility issues that may arise with older browsers.</p>
+
+<ol>
+<li><p>Open your HTTP nginx virtual host configuration file, which can be located at <code>/etc/nginx/conf.d/default.conf</code>, <code>/etc/nginx/nginx.conf</code> or <code>/etc/nginx/sites-enabled/default</code> depending on how you installed nginx. Change <code>example.com</code> to match your Linode&rsquo;s domain name or hostname:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/conf.d/default.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">server_name</span> example.com</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Append the following line below the <code>server_name</code> line.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/conf.d/default.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">rewrite</span>        ^ https://$server_name$request_uri? permanent;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Comment out (place <code>#</code> in front of) all other lines so your configuration looks like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/conf.d/default.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">server</span> {
+    <span class="nb">listen</span>       <span class="m">80</span>;
+    <span class="nb">server_name</span>  example.com;
+    <span class="nb">rewrite</span>      ^ https://$server_name$request_uri? permanent;
+<span class="err">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save your changes and restart nginx.</p>
+
+<pre><code>systemctl restart nginx
+</code></pre></li>
+
+<li><p>Navigate to your Linode&rsquo;s domain name in your browser, specifying <code>http://</code>. You should now be redirected to HTTPS.</p></li>
+</ol>
+
+<h2 id="ocsp-stapling">OCSP Stapling</h2>
+
+<p>The <em>Online Certificate Status Protocol</em> (OCSP) was created to speed up the process that operating systems and browsers use to check for certificate revocation. For instance, when you use Internet Explorer or Google Chrome on a Windows machine, Windows is configured by default to check for certificate revocation. Prior to OCSP, your operating system or browser would download a <em>certificate revocation list</em> (CRL). CRLs have grown so large that browser vendors are now creating their own CRLs and distributing them to users.</p>
+
+<p>The problem with OCSP is that a certificate authority can now track users as they move from website to website with certificates provided by the same vendor or certificate authority. To prevent this, you can enable OCSP stapling.</p>
+
+<p>When OCSP stapling is enabled, nginx on your Linode will make an OCSP request for the client. The response recieved from the OCSP server is added to nginx&rsquo;s reponse to the user. This eliminates the need for the user to connect to an OCSP server to check the revocation status of your server certificate.</p>
+
+<p>Before enabling OCSP stapling you will need to have a file on your system that stores the CA certificates used to sign the server certificate. This section assumes that you have followed our guide on <a href="/docs/websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie">how to install nginx and a StartSSL certificate</a>. If you have not, complete Steps 1-3 in the <a href="/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/#gather-additional-required-certificate-files">Gather Additional Required Certificate Files</a> section of that guide before proceeding here.</p>
+
+<ol>
+<li><p>Open your HTTPS nginx virtual host configuration file, which can be located at <code>/etc/nginx/conf.d/example_ssl.conf</code> or <code>/etc/nginx/sites-enabled/default</code> depending on how you installed and configured nginx. Add the following lines inside the <code>server</code> block:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/conf.d/example_ssl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">ssl_stapling</span> <span class="k">on</span>;
+<span class="nb">ssl_stapling_verify</span> <span class="k">on</span>;
+<span class="nb">ssl_trusted_certificate</span> <span class="sx">/etc/ssl/nginx/ca.pem</span>;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save your changes and restart nginx.</p>
+
+<pre><code>systemctl restart nginx
+</code></pre></li>
+
+<li><p>In a web browser, navigate to the <a href="https://www.ssllabs.com/ssltest/">Qualys SSL Labs SSL Server Test</a>. Enter the domain name or hostname of your Linode and click &ldquo;Submit&rdquo;. Optionally, you may uncheck the checkbox to prevent your test from being shown publicly.</p>
+
+<p>Once the test is complete, scroll down to the &ldquo;Protocol Details&rdquo; section. Look for the &ldquo;OCSP stapling&rdquo; line. If nginx is configured correctly, this test will return &ldquo;Yes.&rdquo;</p>
+
+<p><a href="/docs/assets/OCSP_Stapling_SSL_Test.jpg"><img src="/docs/assets/OCSP_Stapling_SSL_Test.jpg" alt="SSL Server Test OCSP" /></a></p></li>
+</ol>
+
+<h2 id="http-strict-transport-security-hsts">HTTP Strict Transport Security (HSTS)</h2>
+
+<p>Google Chrome, Mozilla Firefox, Opera, and Safari currently honor HSTS headers. HSTS is used to force browsers to only connect using secure encrypted connections. This means your site will no longer be accessible over HTTP. When HSTS is enabled and a valid HSTS header is stored in a users browser cache, the user will be unable to access your site if presented with a self-signed, expired, or SSL certificate issued by an untrusted certificate authority. The user will also be unable to bypass any certificate warnings unless your HSTS header expires or the browser cache is cleared.</p>
+
+<p>With all traffic being redirected from HTTP to HTTPS, you may want to allow users to only connect using HTTPS. Before enabling HSTS, be sure that you understand the potential impact on compatibility with older browsers.</p>
+
+<p><strong>Do not follow these steps if you want users to be able to access your site over HTTP!</strong></p>
+
+<ol>
+<li><p>Open up your nginx HTTPS virtual host configuration file. This may be located at <code>/etc/nginx/sites-enabled/default</code> or at <code>/etc/nginx/conf.d/example_ssl.conf</code>. Append the following line inside your <code>server</code> block:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/conf.d/example_ssl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">add_header</span> Strict-Transport-Security <span class="s2">&#34;max-age=31536000; includeSubdomains&#34;</span>;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>max-age</code> attribute sets the expiration date for this header in seconds; in the above configuration, the header will expire after 1 year. You can configure this to be longer or shorter if you choose, but a period of less than 180 days is considered too short for the Qualys test. The <code>includeSubdomains</code> argument enforces HSTS on all subdomains.</p></li>
+
+<li><p>Save your changes and restart nginx.</p>
+
+<pre><code>systemctl restart nginx
+</code></pre></li>
+
+<li><p>Navigate to the <a href="https://www.ssllabs.com/ssltest/">Qualys SSL Labs SSL Server Test</a>. Enter the domain name or hostname of your Linode and click &ldquo;Submit.&rdquo; Optionally, you may uncheck the checkbox to not show your results on the boards.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;ve already conducted a test from one of the above sections, use the <strong>Clear cache</strong> link to initiate a new scan.</div>
+</blockquote>
+
+
+<p>Once the test is complete, scroll down to the &ldquo;Protocol Details&rdquo; section. Look for the &ldquo;Strict Transport Security (HSTS)&rdquo; line. If nginx is configured correctly this test will return &ldquo;Yes.&rdquo;</p>
+
+<p><a href="/docs/assets/HSTS_SSL_Test.jpg"><img src="/docs/assets/HSTS_SSL_Test.jpg" alt="SSL Server Test HSTS" /></a></p></li>
+</ol>
+
+<h2 id="disable-content-sniffing">Disable Content Sniffing</h2>
+
+<p>Content sniffing allows browsers to inspect a byte stream in order to &ldquo;guess&rdquo; the file format of its contents. It is generally used to help sites that do not correctly identify the MIME type of their web content, but it also presents a vulnerability to cross-site scripting and other attacks. To disable content sniffing, add the following line to your nginx SSL configuration file in the <code>server</code> block:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/nginx/conf.d/example_ssl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">add_header</span> X-Content-Type-Options nosniff;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<h2 id="disable-or-limit-embedding">Disable or Limit Embedding</h2>
+
+<p>The HTTPS header <code>X-Frame-Options</code> can specify whether a page is able to be rendered in a frame, iframe, or object. If left unset, your site&rsquo;s content may be embedded into other sites&rsquo; HTML code in a clickjacking attack. To disable the embedding of your content, add the following line to your SSL configuration file in the <code>server</code> block:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/nginx/conf.d/example_ssl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">add_header</span> X-Frame-Options DENY;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>If you&rsquo;d like to limit embedding rather than disabling it altogether, you can replace <code>DENY</code> with <code>SAMEORIGIN</code>. This will allow you to use your page in a frame as long as the site attempting to do so is the same one serving your page.</p>
+
+<h2 id="create-a-custom-diffie-hellman-key-exchange">Create a Custom Diffie-Hellman Key Exchange</h2>
+
+<p>We&rsquo;re using a 4096-bit RSA private key to sign the Diffie-Hellman key exchange, but the default parameters for Diffie-Hellman only specify 1024 bits, often making it the weakest link in the SSL cipher suite. We should generate our own custom parameters for the key exchange to provide greater security.</p>
+
+<ol>
+<li><p>Navigate to your <code>certs</code> directory:</p>
+
+<pre><code>cd /etc/ssl/certs
+</code></pre></li>
+
+<li><p>Create custom parameters for the TLS handshake. Here we will use a 4096-bit key for high security:</p>
+
+<pre><code>openssl dhparam -out dhparam.pem 4096
+</code></pre></li>
+
+<li><p>Specify the new parameter by adding the following line to your nginx SSL configuration file in the <code>server</code> block:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/nginx/conf.d/example_ssl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">ssl_dhparam</span> <span class="sx">/etc/ssl/certs/dhparam.pem</span>;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Save your changes and restart nginx:</p>
+
+<pre><code>systemctl restart nginx
+</code></pre></li>
+</ol>
+
+<h2 id="test-your-configuration">Test Your Configuration</h2>
+
+<p>If you have been following along, starting with the guide on installing the latest version of nginx for Debian Wheezy or Jessie and getting a StartSSL certificate, your <code>/etc/nginx/conf.d/example_ssl.conf</code> should now look similar to this:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/nginx/conf.d/example_ssl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c"># HTTPS server</span>
+<span class="c">#</span>
+<span class="nb">server</span> {
+    <span class="nb">listen</span>       <span class="m">443</span> ssl http2;
+
+    <span class="nb">add_header</span>   Strict-Transport-Security <span class="s2">&#34;max-age=31536000; includeSubdomains&#34;</span>;
+    <span class="nb">add_header</span>   X-Content-Type-Options nosniff;
+    <span class="nb">add_header</span>   X-Frame-Options DENY;
+
+    <span class="nb">server_name</span>  example.com;
+
+    <span class="nb">ssl_certificate</span>      <span class="sx">/etc/ssl/nginx/nginx.crt</span>;
+    <span class="nb">ssl_certificate_key</span>  <span class="sx">/etc/ssl/nginx/server.key</span>;
+
+    <span class="nb">ssl_session_cache</span> shared:SSL:10m;
+    <span class="nb">ssl_session_timeout</span>  <span class="m">5</span>m;
+
+    <span class="nb">ssl_ciphers</span>  <span class="s2">&#34;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH !RC4&#34;</span>;
+    <span class="nb">ssl_prefer_server_ciphers</span>   <span class="k">on</span>;
+
+    <span class="nb">ssl_protocols</span> TLSv1 TLSv1.1 TLSv1.2;
+
+    <span class="nb">ssl_stapling</span> <span class="k">on</span>;
+    <span class="nb">ssl_stapling_verify</span> <span class="k">on</span>;
+    <span class="nb">ssl_trusted_certificate</span> <span class="sx">/etc/nginx/ca.pem</span>;
+
+    <span class="nb">ssl_dhparam</span> <span class="sx">/etc/ssl/certs/dhparam.pem</span>;
+
+    <span class="nb">location</span> / {
+        <span class="nb">root</span>   <span class="sx">/usr/share/nginx/html</span>;
+        <span class="nb">index</span>  index.html index.htm;
+    <span class="err">}</span>
+<span class="err">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Now that you&rsquo;ve optimized nginx for SSL and TLS, you can test your configuration at <a href="https://www.ssllabs.com/ssltest/">Qualys SSL Labs SSL Server Test</a>. This configuration should earn you a grade of &ldquo;A+.&rdquo; If you are getting a lesser rating, check your configuration for errors. Additionally, check that your site is enabled and returning a 200 HTTP response code, as that may also affect your rating. This information can be found in the &ldquo;Miscellaneous&rdquo; section at the bottom of your SSL Server Test report.</p>
+
+<p>Again, the best way to ensure security is by following best practices at all times, not simply relying on your configuration, so be sure to monitor for updates and apply them to your server as needed. With proper maintenance, your server will remain secure and safe from attack.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.ssllabs.com/ssltest/">Qualys SSL Labs SSL Server Test</a></li>
+
+<li><a href="https://tools.keycdn.com/http2-test">KeyCDN HTTP/2 Test</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/ssl/enable-ssl-for-https-configuration-on-nginx/">Enable SSL for HTTPS Configuration on nginx</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/">Monitor an nginx Web Server Using the Elastic Stack on Centos 7</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/">How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/">How to Install and Configure Redmine on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-16-04/">How to Install a LEMP (Linux, Nginx, MySQL, PHP) Stack on Ubuntu 16.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="http://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before you Begin</a></li>
+<li><a href="#disable-nginx-server-tokens">Disable nginx Server Tokens</a></li>
+<li><a href="#enable-http-2-support">Enable HTTP/2 Support</a></li>
+<li><a href="#redirect-http-traffic-to-https">Redirect HTTP Traffic to HTTPS</a></li>
+<li><a href="#ocsp-stapling">OCSP Stapling</a></li>
+<li><a href="#http-strict-transport-security-hsts">HTTP Strict Transport Security (HSTS)</a></li>
+<li><a href="#disable-content-sniffing">Disable Content Sniffing</a></li>
+<li><a href="#disable-or-limit-embedding">Disable or Limit Embedding</a></li>
+<li><a href="#create-a-custom-diffie-hellman-key-exchange">Create a Custom Diffie-Hellman Key Exchange</a></li>
+<li><a href="#test-your-configuration">Test Your Configuration</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

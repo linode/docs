@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Secure Your Server</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide covers basic best practices for securing a production server, including setting up user accounts,  configuring a firewall, securing SSH, and disabling unused network services.">
+        <meta name="keywords" content="security, secure, firewall, ssh, add user, quick start">
+        
+        <meta property="og:title" content="How to Secure Your Server">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/securing-your-server/">
+        <meta property="og:description" content="This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring a firewall, securing SSH, and disabling unused network services.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/securing-your-server/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  How to Secure Your Server
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Secure Your Server</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-12-14T00:00:00Z">Thursday, December 14, 2017</time> by Jared Kobos</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fsecuring-your-server%2f&via=linode&text=How%20to%20Secure%20Your%20Server" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fsecuring-your-server%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fsecuring-your-server%2f&t=How%20to%20Secure%20Your%20Server" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/securing-your-server.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/securing-your-server.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>In the <a href="/docs/getting-started">Getting Started</a> guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it&rsquo;s time to harden your Linode against unauthorized access.</p>
+
+<p><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/971o40zba8?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+<script src="//fast.wistia.net/assets/external/E-v1.js" async></script></p>
+
+<h2 id="update-your-system-frequently">Update Your System&ndash;Frequently</h2>
+
+<p>Keeping your software up to date is the single biggest security precaution you can take for any operating system. Software updates range from critical vulnerability patches to minor bug fixes, and many software vulnerabilities are actually patched by the time they become public.</p>
+
+<h3 id="automatic-security-updates">Automatic Security Updates</h3>
+
+<p>There are arguments for and against automatic updates on servers. <a href="https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F">Fedora&rsquo;s Wiki</a> has a good breakdown of the pros and cons, but the risk of automatic updates will be minimal if you limit them to security updates. Not all package managers make that easy or possible, though.</p>
+
+<p>The practicality of automatic updates is something you must judge for yourself because it comes down to what <em>you</em> do with your Linode. Bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment that replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.</p>
+
+<ul>
+<li><p>CentOS uses <em><a href="https://fedoraproject.org/wiki/AutoUpdates#Fedora_21_or_earlier_versions">yum-cron</a></em> for automatic updates.</p></li>
+
+<li><p>Debian and Ubuntu use <em><a href="https://help.ubuntu.com/lts/serverguide/automatic-updates.html">unattended upgrades</a></em>.</p></li>
+
+<li><p>Fedora uses <em><a href="https://dnf.readthedocs.org/en/latest/automatic.html">dnf-automatic</a></em>.</p></li>
+</ul>
+
+<h2 id="add-a-limited-user-account">Add a Limited User Account</h2>
+
+<p>Up to this point, you have accessed your Linode as the <code>root</code> user, which has unlimited privileges and can execute <em>any</em> command&ndash;even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using <code>sudo</code> to temporarily elevate your limited user&rsquo;s privileges so you can administer your server.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Not all Linux distributions include <code>sudo</code> on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output <code>sudo: command not found</code>, install sudo before continuing.</div>
+</blockquote>
+
+
+<p>To add a new user, first <a href="/docs/getting-started#log-in-for-the-first-time">log in to your Linode</a> via SSH.</p>
+
+<h3 id="centos-fedora">CentOS / Fedora</h3>
+
+<ol>
+<li><p>Create the user, replacing <code>example_user</code> with your desired username, and assign a password:</p>
+
+<pre><code>useradd example_user &amp;&amp; passwd example_user
+</code></pre></li>
+
+<li><p>Add the user to the <code>wheel</code> group for sudo privileges:</p>
+
+<pre><code>usermod -aG wheel example_user
+</code></pre>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>In CentOS 6 a wheel group is disabled by default for sudo access. You must to configure it manually. Type from root: <code>/usr/sbin/visudo</code>. Then find the line <code># %wheel</code> and uncomment this line. To began typing in vi, press <code>a</code>. To save and exit press <code>Escape</code>, then type <code>:w</code>(press enter), <code>:q</code>(press enter)</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="ubuntu">Ubuntu</h3>
+
+<ol>
+<li><p>Create the user, replacing <code>example_user</code> with your desired username. You&rsquo;ll then be asked to assign the user a password:</p>
+
+<pre><code>adduser example_user
+</code></pre></li>
+
+<li><p>Add the user to the <code>sudo</code> group so you&rsquo;ll have administrative privileges:</p>
+
+<pre><code>adduser example_user sudo
+</code></pre></li>
+</ol>
+
+<h3 id="debian">Debian</h3>
+
+<ol>
+<li><p>Debian does not include <code>sudo</code> by default so it must be installed:</p>
+
+<pre><code>apt install sudo
+</code></pre></li>
+
+<li><p>Create the user, replacing <code>example_user</code> with your desired username. You&rsquo;ll then be asked to assign the user a password:</p>
+
+<pre><code>adduser example_user
+</code></pre></li>
+
+<li><p>Add the user to the <code>sudo</code> group so you&rsquo;ll have administrative privileges:</p>
+
+<pre><code>adduser example_user sudo
+</code></pre></li>
+
+<li><p>After creating your limited user, disconnect from your Linode:</p>
+
+<pre><code>exit
+</code></pre></li>
+
+<li><p>Log back in as your new user. Replace <code>example_user</code> with your username, and the example IP address with your Linode&rsquo;s IP address:</p>
+
+<pre><code>ssh example_user@203.0.113.10
+</code></pre></li>
+</ol>
+
+<p>Now you can administer your Linode from your new user account instead of <code>root</code>. Nearly all superuser commands can be executed with <code>sudo</code> (example: <code>sudo iptables -L -nv</code>) and those commands will be logged to <code>/var/log/auth.log</code>.</p>
+
+<h2 id="harden-ssh-access">Harden SSH Access</h2>
+
+<p>By default, password authentication is used to connect to your Linode via SSH. A cryptographic key-pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we&rsquo;ll create a key-pair and configure the Linode to not accept passwords for SSH logins.</p>
+
+<h3 id="create-an-authentication-key-pair">Create an Authentication Key-pair</h3>
+
+<ol>
+<li><p>This is done on your local computer, <strong>not</strong> your Linode, and will create a 4096-bit RSA key-pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that it cannot be used without entering the passphrase, unless you save it to your local desktop&rsquo;s keychain manager. We suggest you use the key-pair with a passphrase, but you can leave this field blank if you don&rsquo;t want to use one.</p>
+
+<p><strong>Linux / OS X</strong></p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>If you&rsquo;ve already created an RSA key-pair, this command will overwrite it, potentially locking you out of other systems. If you&rsquo;ve already created a key-pair, skip this step. To check for existing keys, run <code>ls ~/.ssh/id_rsa*</code>.</div>
+</blockquote>
+
+
+<pre><code>ssh-keygen -b 4096
+</code></pre>
+
+<p>Press <strong>Enter</strong> to use the default names <code>id_rsa</code> and <code>id_rsa.pub</code> in <code>/home/your_username/.ssh</code> before entering your passphrase.</p>
+
+<p><strong>Windows</strong></p>
+
+<p>This can be done using PuTTY as outlined in our guide: <a href="/docs/security/use-public-key-authentication-with-ssh#windows-operating-system">Use Public Key Authentication with SSH</a>.</p></li>
+
+<li><p>Upload the public key to your Linode. Replace <code>example_user</code> with the name of the user you plan to administer the server as, and <code>203.0.113.10</code> with your Linode&rsquo;s IP address.</p>
+
+<p><strong>Linux</strong></p>
+
+<p>From your local computer:</p>
+
+<pre><code>ssh-copy-id example_user@203.0.113.10
+</code></pre>
+
+<p><strong>OS X</strong></p>
+
+<p>On your Linode (while signed in as your limited user):</p>
+
+<pre><code>mkdir -p ~/.ssh &amp;&amp; sudo chmod -R 700 ~/.ssh/
+</code></pre>
+
+<p>From your local computer:</p>
+
+<pre><code>scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><code>ssh-copy-id</code> is available in <a href="http://brew.sh/">Homebrew</a> if you prefer it over SCP. Install with <code>brew install ssh-copy-id</code>.</div>
+</blockquote>
+
+
+<p><strong>Windows</strong></p>
+
+<ul>
+<li><strong>Option 1</strong>: This can be done using <a href="http://winscp.net/">WinSCP</a>. In the login window, enter your Linode&rsquo;s public IP address as the hostname, and your non-root username and password. Click <em>Login</em> to connect.</li>
+</ul>
+
+<p>Once WinSCP has connected, you&rsquo;ll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you&rsquo;ve saved your public key, select the public key file, and click <em>Upload</em> in the toolbar above.</p>
+
+<p>You&rsquo;ll be prompted to enter a path where you&rsquo;d like to place the file on your Linode. Upload the file to <code>/home/example_user/.ssh/authorized_keys</code>, replacing <code>example_user</code> with your username.</p>
+
+<ul>
+<li><p><strong>Option 2:</strong> Copy the public key directly from the PuTTY key generator into the terminal emulator connected to your Linode (as a non-root user):</p>
+
+<p>mkdir ~/.ssh; nano ~/.ssh/authorized_keys</p></li>
+</ul>
+
+<p>The above command will open a blank file called <code>authorized_keys</code> in a text editor. Copy the public key into the text file, making sure it is copied as a single line exactly as it was generated by PuTTY. Press <strong>CTRL+X</strong>, then <strong>Y</strong>, then <strong>Enter</strong> to save the file.</p>
+
+<p>Finally, you&rsquo;ll want to set permissions for the public key directory and the key file itself:</p>
+
+<pre><code>sudo chmod 700 -R ~/.ssh &amp;&amp; chmod 600 ~/.ssh/authorized_keys
+</code></pre>
+
+<p>These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on <a href="/docs/tools-reference/modify-file-permissions-with-chmod">how to modify file permissions</a>.</p></li>
+
+<li><p>Now exit and log back into your Linode. If you specified a passphrase for your private key, you&rsquo;ll need to enter it.</p></li>
+</ol>
+
+<h3 id="ssh-daemon-options">SSH Daemon Options</h3>
+
+<ol>
+<li><p><strong>Disallow root logins over SSH.</strong> This requires all SSH connections be by non-root users. Once a limited user account is connected, administrative privileges are accessible either by using <code>sudo</code> or changing to a root shell using <code>su -</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/ssh/sshd_config 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c"># Authentication:</span>
+...
+<span class="nb">PermitRootLogin</span> no</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p><strong>Disable SSH password authentication.</strong> This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line <code>PasswordAuthentication</code> may need to be added, or uncommented by removing the leading <code>#</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/ssh/sshd_config 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c"># Change to no to disable tunnelled clear text passwords</span>
+<span class="nb">PasswordAuthentication</span> no</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.</div>
+</blockquote>
+</li>
+
+<li><p><strong>Listen on only one internet protocol.</strong> The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. <em>This does not disable the protocol system-wide, it is only for the SSH daemon.</em></p>
+
+<p>Use the option:</p>
+
+<ul>
+<li><code>AddressFamily inet</code> to listen only on IPv4.</li>
+<li><code>AddressFamily inet6</code> to listen only on IPv6.</li>
+</ul>
+
+<p>The <code>AddressFamily</code> option is usually not in the <code>sshd_config</code> file by default. Add it to the end of the file:</p>
+
+<pre><code>echo 'AddressFamily inet' | sudo tee -a /etc/ssh/sshd_config
+</code></pre></li>
+
+<li><p>Restart the SSH service to load the new configuration.</p>
+
+<p>If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)</p>
+
+<pre><code>sudo systemctl restart sshd
+</code></pre>
+
+<p>If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):</p>
+
+<pre><code>sudo service ssh restart
+</code></pre></li>
+</ol>
+
+<h3 id="use-fail2ban-for-ssh-login-protection">Use Fail2Ban for SSH Login Protection</h3>
+
+<p><a href="http://www.fail2ban.org/wiki/index.php/Main_Page"><em>Fail2Ban</em></a> is an application that bans IP addresses from logging into your server after too many failed login attempts. Since legitimate logins usually take no more than three tries to succeed (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.</p>
+
+<p>Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrent for any server since the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.</p>
+
+<p>For complete instructions on installing and configuring Fail2Ban, see our guide: <a href="/docs/security/using-fail2ban-for-security/">Securing Your Server with Fail2ban</a>.</p>
+
+<h2 id="remove-unused-network-facing-services">Remove Unused Network-Facing Services</h2>
+
+<p>Most Linux distributions install with running network services which listen for incoming connections from the internet, the loopback interface, or a combination of both. Network-facing services which are not needed should be removed from the system to reduce the attack surface of both running processes and installed packages.</p>
+
+<h3 id="determine-running-services">Determine Running Services</h3>
+
+<p>To see your Linode&rsquo;s running network services:</p>
+
+<pre><code>sudo ss -atpu
+</code></pre>
+
+<p>The following is an example of the output given by <code>ss</code>, and shows that the SSH daemon (sshd) is listening and connected. Note that because distributions run different services by default, your output will differ.</p>
+
+<pre><code><div class="file">
+Netid State   Recv-Q Send-Q   Local Address:Port   Peer Address:Port
+tcp   LISTEN     0      128               *:ssh               <em>:</em>        users:((&ldquo;sshd&rdquo;,pid=3675,fd=3))
+tcp   ESTAB      0      208     203.0.113.1:ssh    198.51.100.2:54820    users:((&ldquo;sshd&rdquo;,pid=3698,fd=3))
+tcp   LISTEN     0      128              :::ssh              :::*        users:((&ldquo;sshd&rdquo;,pid=3675,fd=4))
+</div>
+</code></pre>
+
+<h4 id="tcp">TCP</h4>
+
+<p>See the <strong>Peer Address:Port</strong> column of the <code>ss</code> readout. The process <code>sshd</code> is listening on <code>*:*</code>, which translates into any incoming IPv4 address to any port, and over any network interface. The next line shows an established SSH connection from IP address 198.51.100.2 via ephemeral port 54820. The last line, <code>:::*</code> denotes the <code>sshd</code> process listening for any incoming SSH connections over IPv6 to any port, and again over any network interface.</p>
+
+<h4 id="udp">UDP</h4>
+
+<p>UDP sockets are <em><a href="https://en.wikipedia.org/wiki/Stateless_protocol">stateless</a></em>, meaning they are either open or closed and every process&rsquo;s connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as <em>LISTEN</em>, <em>ESTABLISHED</em> and <em>CLOSE_WAIT</em>. The <code>ss</code> output above shows no UDP connections.</p>
+
+<h3 id="determine-which-services-to-remove">Determine Which Services to Remove</h3>
+
+<p>A basic TCP and UDP <a href="https://nmap.org/">nmap</a> scan of your Linode without a firewall enabled would show SSH and possibly other services listening for incoming connections. By <a href="#configure-a-firewall">configuring a firewall</a> you can filter those ports to your requirements. Ideally, the unused services should be disabled.</p>
+
+<p>You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, <a href="/docs/security/securing-your-server/#create-an-authentication-key-pair">RSA keys</a> and <a href="/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection">Fail2Ban</a> can help protect SSH. System services like <code>chronyd</code>, <code>systemd-resolved</code>, and <code>dnsmasq</code> are usually listening on localhost and only occasionally contacting the outside world. Services like this are part of your operating system and will cause problems if removed and not properly substituted.</p>
+
+<p>However, some services are unnecessary and should be removed unless you have a specific need for them. Some examples could be <a href="https://www.exim.org/">Exim</a>, <a href="https://httpd.apache.org/">Apache</a> and <a href="https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call">RPC</a>.</p>
+
+<h3 id="uninstall-the-listening-services">Uninstall the Listening Services</h3>
+
+<p>How to remove the offending packages will differ depending on your distribution&rsquo;s package manager.</p>
+
+<p><strong>Arch</strong></p>
+
+<pre><code>sudo pacman -Rs package_name
+</code></pre>
+
+<p><strong>CentOS</strong></p>
+
+<pre><code>sudo yum remove package_name
+</code></pre>
+
+<p><strong>Debian / Ubuntu</strong></p>
+
+<pre><code>sudo apt purge package_name
+</code></pre>
+
+<p><strong>Fedora</strong></p>
+
+<pre><code>sudo dnf remove package_name
+</code></pre>
+
+<p>Run <code>ss -atup</code> again to verify that the unwanted services are no longer running.</p>
+
+<h2 id="configure-a-firewall">Configure a Firewall</h2>
+
+<p>Using a <em>firewall</em> to block unwanted inbound traffic to your Linode provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:</p>
+
+<ul>
+<li><p><a href="/docs/security/firewalls/control-network-traffic-with-iptables">Iptables</a> is the controller for netfilter, the Linux kernel&rsquo;s packet filtering framework. Iptables is included in most Linux distributions by default.</p></li>
+
+<li><p><a href="/docs/security/firewalls/introduction-to-firewalld-on-centos">FirewallD</a> is the iptables controller available for the CentOS / Fedora family of distributions.</p></li>
+
+<li><p><a href="/docs/security/firewalls/configure-firewall-with-ufw">UFW</a> provides an iptables frontend for Debian and Ubuntu.</p></li>
+</ul>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using <a href="https://linode.com/docs/security/ossec-ids-debian-7">intrusion detection</a> or installing a form of <a href="https://en.wikipedia.org/wiki/Access_control#Access_Control">access control</a>.</p>
+
+<p>Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from <a href="/docs/migrate-to-linode/migrate-from-shared-hosting">migration from shared hosting</a> to <a href="/docs/security/linode-manager-security-controls">enabling two-factor authentication</a> to <a href="/docs/websites/hosting-a-website">hosting a website</a>.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/firewalls/introduction-to-firewalld-on-centos/">Introduction to FirewallD on CentOS</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/protecting-your-linode-using-tcp-wrappers/">Protecting Your Linode with TCP Wrappers</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/set-up-a-streisand-gateway/">How to Set Up a Streisand Gateway</a></li>
+    
+    
+    
+    <li><a href="/docs/security/how-to-use-yubikey-for-two-factor-ssh-authentication/">How to use a YubiKey for Two-Factor Secure Shell Authentication</a></li>
+    
+    
+    
+    <li><a href="/docs/security/advanced-ssh-server-security/">Use Advanced OpenSSH Features to Harden Access to Your Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#update-your-system-frequently">Update Your System&ndash;Frequently</a>
+<ul>
+<li><a href="#automatic-security-updates">Automatic Security Updates</a></li>
+</ul></li>
+<li><a href="#add-a-limited-user-account">Add a Limited User Account</a>
+<ul>
+<li><a href="#centos-fedora">CentOS / Fedora</a></li>
+<li><a href="#ubuntu">Ubuntu</a></li>
+<li><a href="#debian">Debian</a></li>
+</ul></li>
+<li><a href="#harden-ssh-access">Harden SSH Access</a>
+<ul>
+<li><a href="#create-an-authentication-key-pair">Create an Authentication Key-pair</a></li>
+<li><a href="#ssh-daemon-options">SSH Daemon Options</a></li>
+<li><a href="#use-fail2ban-for-ssh-login-protection">Use Fail2Ban for SSH Login Protection</a></li>
+</ul></li>
+<li><a href="#remove-unused-network-facing-services">Remove Unused Network-Facing Services</a>
+<ul>
+<li><a href="#determine-running-services">Determine Running Services</a>
+<ul>
+<li><a href="#tcp">TCP</a></li>
+<li><a href="#udp">UDP</a></li>
+</ul></li>
+<li><a href="#determine-which-services-to-remove">Determine Which Services to Remove</a></li>
+<li><a href="#uninstall-the-listening-services">Uninstall the Listening Services</a></li>
+</ul></li>
+<li><a href="#configure-a-firewall">Configure a Firewall</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Manage a Fedora 14 Linode with ISPConfig</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Installing and configuring the ISPConfig control panel to maintain your Linode.">
+        <meta name="keywords" content="ispconfig, control panel, cpanel, plesk, gui">
+        
+        <meta property="og:title" content="Manage a Fedora 14 Linode with ISPConfig">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/cms/manage-a-fedora-14-vps-with-ispconfig/">
+        <meta property="og:description" content="Installing and configuring the ISPConfig control panel to maintain your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/cms/manage-a-fedora-14-vps-with-ispconfig/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/cms/">Control Panels &amp; Content Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  Manage a Fedora 14 Linode with ISPConfig
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Manage a Fedora 14 Linode with ISPConfig</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-10-03T00:00:00Z">Thursday, October 3, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fmanage-a-fedora-14-vps-with-ispconfig%2f&via=linode&text=Manage%20a%20Fedora%2014%20Linode%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fmanage-a-fedora-14-vps-with-ispconfig%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fmanage-a-fedora-14-vps-with-ispconfig%2f&t=Manage%20a%20Fedora%2014%20Linode%20with%20ISPConfig" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/cms/manage-a-fedora-14-vps-with-ispconfig.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/cms/manage-a-fedora-14-vps-with-ispconfig.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.</p>
+
+<p>This guide assumes you are installing this on a freshly deployed system. If you feel that you will not need certain features that are mentioned in this document, please feel free to exclude them from your setup.</p>
+
+<h1 id="prepare-your-system">Prepare Your System</h1>
+
+<p>Set your system&rsquo;s host name by issuing the following commands:</p>
+
+<pre><code>echo &quot;HOSTNAME=example&quot; &gt;&gt; /etc/sysconfig/network
+hostname &quot;example&quot;
+</code></pre>
+
+<p>Configure your <code>/etc/hosts</code> file to include your Linode&rsquo;s fully qualified domain name (FQDN) and localhost are set up in your <code>/etc/hosts</code> file. You can use the following example file, modifying the entries to suit your setup (12.34.56.78 should be replaced with your Linode&rsquo;s IP address):</p>
+
+<dl class="file">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/etc/hosts</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote>
+<p>127.0.0.1 localhost.localdomain localhost 12.34.56.78 hostname.example.com hostname</p>
+</blockquote>
+
+<p>It is essential that you set these values before proceeding with the installation of ISPConfig.</p>
+
+<p>Begin the installation process by ensuring that your package lists and packages are up to date by issuing the following commands:</p>
+
+<pre><code>yum update
+</code></pre>
+
+<p>Before you can install some components for ISPConfig, you will need to install some development packages. Issue the following commands:</p>
+
+<pre><code>yum groupinstall 'Development Tools'
+yum groupinstall 'Development Libraries'
+</code></pre>
+
+<h1 id="install-postfix-courier-mysql-and-dependencies">Install Postfix, Courier, MySQL, and Dependencies</h1>
+
+<p>In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the <a href="/docs/databases/mysql/">MySQL documentation</a>. You will need to read the documentation for detailed installation instructions.</p>
+
+<p>Issue the following command:</p>
+
+<pre><code>yum install gcc postfix mysql-server getmail mysql-devel cyrus-sasl
+</code></pre>
+
+<p>Issue the following commands to ensure MySQL runs when your Linode boots and start the MySQL service:</p>
+
+<pre><code>/sbin/chkconfig --levels 235 mysqld on
+service mysqld start
+</code></pre>
+
+<p>Issue the following commands to start saslauthd when your Linode boots and start the saslauth daemon:</p>
+
+<pre><code>/sbin/chkconfig --levels 235 saslauthd on
+service saslauthd start
+</code></pre>
+
+<p>After installing MySQL, it&rsquo;s recommended that you run <code>mysql_secure_installation</code>, a program that helps secure MySQL. While running <code>mysql_secure_installation</code>, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:</p>
+
+<pre><code>mysql_secure_installation
+</code></pre>
+
+<h1 id="install-amavisd-new-and-spamassassin">Install Amavisd-new and SpamAssassin</h1>
+
+<p>The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the <a href="/docs/troubleshooting/troubleshooting-memory-and-networking-issues/#reducing-spamassassin-memory-consumption">low memory settings</a>. Using amavisd-new should help alleviate some of these potential issues.</p>
+
+<pre><code>yum install amavisd-new spamassassin unzip bzip2 perl-DBD-mysql
+</code></pre>
+
+<h1 id="install-apache-php-phpmyadmin-fcgi-suexec-pear-and-mcrypt">Install Apache, PHP, phpMyAdmin, FCGI, suExec, Pear, and mcrypt</h1>
+
+<p>The following command will install the Apache web server and some other applications and their dependencies. If you have already installed the LAMP stack, you will not need to install Apache again. However, you will need the other packages for other aspects of the ISPConfig installation.</p>
+
+<pre><code>yum install ntp httpd php php-mysql php-devel php-mbstring rpm-build openssl-devel cyrus-sasl-devel pkgconfig zlib-devel phpMyAdmin pcre-devel openldap-devel postgresql-devel expect libtool-ltdl-devel openldap-servers libtool gdbm-devel pam-devel gamin-devel php-gd php-imap php-ldap php-mysql php-odbc php-pear php-xml php-xmlrpc php-eaccelerator php-mbstring php-mcrypt php-mssql php-snmp php-soap php-tidy curl curl-devel perl-libwww-perl ImageMagick libxml2 libxml2-devel mod_fcgid php-cli httpd-devel
+</code></pre>
+
+<p>Make sure Apache starts on boot:</p>
+
+<pre><code>/sbin/chkconfig --levels 235 httpd on
+</code></pre>
+
+<h1 id="install-vlogger-and-webalizer">Install Vlogger and Webalizer</h1>
+
+<p>Vlogger is a tool that logs information regarding Apache. Webalizer can then be used to analyze these logs and generate statistics. This step is completely optional, but you may find these tools useful for seeing website traffic.</p>
+
+<pre><code>yum install webalizer perl-DateTime-Format-HTTP perl-DateTime-Format-Builder
+
+cd /tmp
+wget http://n0rp.chemlab.org/vlogger/vlogger-1.3.tar.gz
+tar xvfz vlogger-1.3.tar.gz
+mv vlogger-1.3/vlogger /usr/sbin/
+rm -rf vlogger*
+</code></pre>
+
+<p>More information on Webalizer can be found in our <a href="/docs/web-applications/analytics/webalizer/">Webalizer documentation</a>.</p>
+
+<h1 id="install-fail2ban">Install fail2ban</h1>
+
+<p>Installing fail2ban is entirely optional, however ISPConfig can manage this service and show you the log output from it:</p>
+
+<pre><code>yum install fail2ban
+</code></pre>
+
+<p>More information regarding fail2ban can be found in our <a href="/docs/security/using-fail2ban-for-security/">fail2ban guide</a>.</p>
+
+<h1 id="installing-ispconfig">Installing ISPConfig</h1>
+
+<p>You are now ready to extract and install ISPConfig. To do this, issue the following commands:</p>
+
+<pre><code>cd /tmp
+wget http://downloads.sourceforge.net/ispconfig/ISPConfig-3.0.3.tar.gz?use_mirror=
+tar -xvf ISPConfig-3.0.3.tar.gz
+cd ispconfig3_install/install
+php -q install.php
+</code></pre>
+
+<p>This script will configure services that you installed above to be monitored and controlled by ISPConfig. You will be asked a series of questions; in most cases the default answers will suffice. If you have configured services on your system in a manner that differs from the default, edit the answers accordingly.</p>
+
+<p>You will now need to restart Apache. Issue the following command:</p>
+
+<pre><code>/etc/init.d/httpd restart
+</code></pre>
+
+<p>Once it has completed, you may log into the control panel. By default, ISPConfig runs on port 8080, so you may find it at <code>http://12.34.56.78:8080/</code>. Replace <code>12.34.56.78</code> with your Linode&rsquo;s IP. The default login uses &ldquo;admin&rdquo; as the username and &ldquo;admin&rdquo; as the password. You will want to change these to prevent someone from accessing your system.</p>
+
+<p>Congratulations! You now have ISPConfig installed on your Fedora 14 Linode. You are highly encouraged to see the links in the &ldquo;More Information&rdquo; section to help you install extra applications that may help you manage your system better.</p>
+
+<h1 id="monitor-for-software-updates-and-security-notices">Monitor for Software Updates and Security Notices</h1>
+
+<p>When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.</p>
+
+<p>Please monitor the ISPConfig Newsletter and project forums to ensure that you are aware of all updates to the software and can upgrade appropriately or apply patches and recompile as needed:</p>
+
+<ul>
+<li><a href="http://newsletter.howtoforge.com/ispconfig/user/login.php">ISPConfig Newsletter</a></li>
+<li><a href="http://www.howtoforge.com/forums/forumdisplay.php?f=33">ISPConfig Project Forums</a></li>
+</ul>
+
+<p>When upstream sources offer new releases, repeat the instructions for installing the ISPConfig software as needed. These practices are crucial for the ongoing security and functioning of your system.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.ispconfig.org/">ISPConfig Home Page</a></li>
+<li><a href="http://www.ispconfig.org/page/en/support.html">ISPConfig Support</a></li>
+<li><a href="http://www.ispconfig.org/page/en/community.html">ISPConfig Community</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/cms/manage-a-debian-6-squeeze-vps-with-ispconfig/">Manage a Debian 6 (Squeeze) Linode with ISPConfig - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/">Manage an Ubuntu 10.10 (Maverick) Linode with ISPConfig - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/manage-a-fedora-13-vps-with-ispconfig/">Manage a Fedora 13 Linode with ISPConfig - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/manage-an-ubuntu-10-04-lucid-vps-with-ispconfig/">Manage an Ubuntu 10.04 (Lucid) Linode with ISPConfig - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/">Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#prepare-your-system">Prepare Your System</a></li>
+<li><a href="#install-postfix-courier-mysql-and-dependencies">Install Postfix, Courier, MySQL, and Dependencies</a></li>
+<li><a href="#install-amavisd-new-and-spamassassin">Install Amavisd-new and SpamAssassin</a></li>
+<li><a href="#install-apache-php-phpmyadmin-fcgi-suexec-pear-and-mcrypt">Install Apache, PHP, phpMyAdmin, FCGI, suExec, Pear, and mcrypt</a></li>
+<li><a href="#install-vlogger-and-webalizer">Install Vlogger and Webalizer</a></li>
+<li><a href="#install-fail2ban">Install fail2ban</a></li>
+<li><a href="#installing-ispconfig">Installing ISPConfig</a></li>
+<li><a href="#monitor-for-software-updates-and-security-notices">Monitor for Software Updates and Security Notices</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

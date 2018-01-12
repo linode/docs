@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Installing McMyAdmin for Minecraft on Debian</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="McMyAdmin is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8.">
+        <meta name="keywords" content="minecraft, mcmyadmin, debian, debian jessie, debian wheezy, jessie, wheezy, debian 7, debian 8">
+        
+        <meta property="og:title" content="Installing McMyAdmin for Minecraft on Debian">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/game-servers/minecraft-with-mcmyadmin-on-debian/">
+        <meta property="og:description" content="McMyAdmin is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/game-servers/minecraft-with-mcmyadmin-on-debian/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/game-servers/">Game Servers</a>
+  
+</li>
+
+
+<li>
+  
+  Installing McMyAdmin for Minecraft on Debian
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Installing McMyAdmin for Minecraft on Debian</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-02-03T00:00:00Z">Wednesday, February 3, 2016</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fminecraft-with-mcmyadmin-on-debian%2f&via=linode&text=Installing%20McMyAdmin%20for%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fminecraft-with-mcmyadmin-on-debian%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fminecraft-with-mcmyadmin-on-debian%2f&t=Installing%20McMyAdmin%20for%20Minecraft%20on%20Debian" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/game-servers/minecraft-with-mcmyadmin-on-debian.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/game-servers/minecraft-with-mcmyadmin-on-debian.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><a href="https://mcmyadmin.com/">McMyAdmin</a> is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8. Be aware that to actually play on a Minecraft server you must also have the game client from <a href="https://minecraft.net/">minecraft.net</a>.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services. Do <strong>not</strong> follow the <em>Configure a Firewall</em> section yet&ndash;this guide includes firewall rules specifcally for a Minecraft server.</p></li>
+
+<li><p>Update your system.</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<h2 id="configure-a-firewall">Configure a Firewall</h2>
+
+<p>Now see <a href="/docs/security/securing-your-server/">Securing Your Server</a> again and complete the section on iptables for your Linux distribution <strong>using the rulesets below</strong>:</p>
+
+<p><strong>IPv4</strong></p>
+
+<pre><code><dl class="file-excerpt">
+<dt>
+
+
+		iptables 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">*filter
+
+<span class="c1"># Allow all loopback (lo0) traffic and reject traffic
+</span><span class="c1"># to localhost that does not originate from lo0.
+</span><span class="c1"></span>-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s <span class="m">127</span>.0.0.0/8 -j REJECT
+
+<span class="c1"># Allow ping.
+</span><span class="c1"></span>-A INPUT -p icmp -m state --state NEW --icmp-type <span class="m">8</span> -j ACCEPT
+
+<span class="c1"># Allow SSH connections.
+</span><span class="c1"></span>-A INPUT -p tcp -m state --state NEW --dport <span class="m">22</span> -j ACCEPT
+
+<span class="c1"># Allow connections from other Minecraft players.
+</span><span class="c1"></span>-A INPUT -p tcp -m state --state NEW --dport <span class="m">25565</span> -j ACCEPT
+
+<span class="c1"># Allow web access to McMyAdmin.
+</span><span class="c1"></span>-A INPUT -p tcp -m state --state NEW --dport <span class="m">8080</span> -j ACCEPT
+
+<span class="c1"># Allow inbound traffic from established connections.
+</span><span class="c1"># This includes ICMP error returns.
+</span><span class="c1"></span>-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+<span class="c1"># Log what was incoming but denied (optional but useful).
+</span><span class="c1"></span>-A INPUT -m limit --limit <span class="m">3</span>/min -j LOG --log-prefix <span class="s2">&#34;iptables_INPUT_denied: &#34;</span> --log-level <span class="m">7</span>
+
+<span class="c1"># Reject all other inbound.
+</span><span class="c1"></span>-A INPUT -j REJECT
+-A FORWARD -j REJECT
+
+COMMIT</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+</code></pre>
+
+<p><strong>IPv6</strong></p>
+
+<p>By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availability, thus including players whose ISPs or hardware don&rsquo;t support IPv6.</p>
+
+<p>If you choose <em>not</em> to use IPv6 on your Minecraft server, then it needs only basic IPv6 firewall rules.</p>
+
+<pre><code><dl class="file-excerpt">
+<dt>
+
+
+		iptables 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">*filter
+
+<span class="c1"># Allow all loopback (lo0) traffic and reject traffic
+</span><span class="c1"># to localhost that does not originate from lo0.
+</span><span class="c1"></span>-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s ::1/128 -j REJECT
+
+<span class="c1"># Allow ICMP
+</span><span class="c1"></span>-A INPUT -p icmpv6 -j ACCEPT
+
+<span class="c1"># Allow inbound traffic from established connections.
+</span><span class="c1"></span>-A INPUT -m state --state ESTABLISHED -j ACCEPT
+
+<span class="c1"># Reject all other inbound.
+</span><span class="c1"></span>-A INPUT -j REJECT
+-A FORWARD -j REJECT
+
+COMMIT</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+</code></pre>
+
+<h2 id="install-prerequisite-software">Install Prerequisite Software</h2>
+
+<ol>
+<li><p>Install the Java Runtime Environment, OpenJDK:</p>
+
+<pre><code>sudo apt-get install openjdk-7-jre
+</code></pre></li>
+
+<li><p><a href="http://www.mono-project.com/">Mono</a>. CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian&rsquo;s repositories.</p>
+
+<pre><code>cd /usr/local
+sudo wget http://mcmyadmin.com/Downloads/etc.zip
+sudo unzip etc.zip; sudo rm etc.zip
+</code></pre></li>
+</ol>
+
+<h2 id="install-and-start-mcmyadmin">Install and Start McMyAdmin</h2>
+
+<p>This section should be completed as your standard user, <strong>not</strong> as root. McMyAdmin will then install to <code>/home/username</code>.</p>
+
+<ol>
+<li><p>Create the installation directory and change location to it.</p>
+
+<pre><code>mkdir ~/mcmyadmin &amp;&amp; cd ~/mcmyadmin
+</code></pre></li>
+
+<li><p>Download the McMyAdmin installer. You will want to double check its <a href="https://www.mcmyadmin.com/#/download">Download</a> page to be sure you&rsquo;re grabbing the latest version.</p>
+
+<pre><code>wget http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip
+</code></pre></li>
+
+<li><p>Extract the archive and delete the original zip file.</p>
+
+<pre><code>unzip MCMA2_glibc26_2.zip; rm MCMA2_glibc26_2.zip
+</code></pre></li>
+
+<li><p>Start the initial configuration of McMyAdmin. Replace <code>PASSWORD</code> with a strong password which you want for admin access to McMyAdmin&rsquo;s web interface.</p>
+
+<pre><code>./MCMA2_Linux_x86_64 -setpass PASSWORD -configonly
+</code></pre>
+
+<p>This will return the output:</p>
+
+<pre><code>The updater will download and install McMyAdmin to the current directory:
+/home/your_user/mcmyadmin).
+
+Continue? [y/n] :
+</code></pre>
+
+<p>Answer <code>y</code>. The installer will run and return you to the command prompt. If everything is as it should be, the only warning you&rsquo;ll see will be for a missing configuration file. As the output says, that would be normal since McMyAdmin was just started for the first time.</p></li>
+
+<li><p>Install screen, if it is not already installed.</p>
+
+<pre><code>sudo apt-get install screen
+</code></pre></li>
+
+<li><p>Start a screen session for the McMyAdmin client.</p>
+
+<pre><code>screen -S mcma
+</code></pre></li>
+
+<li><p>Change into the McMyAdmin installation directory and start the program.</p>
+
+<pre><code>cd ~/mcmyadmin; ./MCMA2_Linux_x86_64
+</code></pre>
+
+<p>If successful, the last three lines of the output will be:</p>
+
+<pre><code>Notice  : McMyAdmin has started and is ready for use.
+Notice  : This is the first time McMyAdmin has been started.
+Notice  : You must complete the first-start wizard via the web interface.
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>To exit McMyAdmin and return to the command line, enter <code>/quit</code>.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="managing-your-minecraft-server">Managing your Minecraft Server</h2>
+
+<ol>
+<li><p>Browse to the McMyAdmin web interface by visiting <code>http://YourLinodeIP:8080</code>.</p></li>
+
+<li><p>Log in with the username <code>admin</code> and the password that you provided in the installation step.</p>
+
+<p><img src="/docs/assets/mcmyadmin-login-page.png" alt="McMyAdmin Login Page" /></p></li>
+
+<li><p>Once the initial configuration steps are completed, select your settings and then switch to the status page.</p>
+
+<p><img src="/docs/assets/mcmyadmin-config-page.png" alt="McMyAdmin Configuration Page" /></p></li>
+
+<li><p>Select <em>Start Server</em> and accept the Minecraft Server EULA.</p>
+
+<p><img src="/docs/assets/mymyadmin-status-page.png" alt="McMyAdmin Status Page" /></p>
+
+<p><img src="/docs/assets/mcmyadmin-server-running.png" alt="McMyAdmin Server Started" /></p></li>
+</ol>
+
+<p>Congratulations, you now have McMyAdmin running on your Minecraft server!</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://mcmyadmin.com/">McMyAdmin Home Page</a></li>
+
+<li><a href="http://wiki.cubecoders.com/wiki/3/mcmyadmin-settings-reference">McMyAdmin Settings Reference</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/nginx/install-nginx-web-server-on-debian-8/">Install Nginx Web Server on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/security/upgrading/upgrade-to-debian-8-jessie/">Upgrading to Debian 8 (Jessie)</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/">How to Install Nginx on Debian 7 (Wheezy)</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-debian-7/">Apache Web Server on Debian 7 (Wheezy)</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8/">Install ntopng for Network Monitoring on Debian 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#configure-a-firewall">Configure a Firewall</a></li>
+<li><a href="#install-prerequisite-software">Install Prerequisite Software</a></li>
+<li><a href="#install-and-start-mcmyadmin">Install and Start McMyAdmin</a></li>
+<li><a href="#managing-your-minecraft-server">Managing your Minecraft Server</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

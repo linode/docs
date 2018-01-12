@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Hosting a Website</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Our guide to hosting a website on your Linode.">
+        <meta name="keywords" content="linode guide, hosting a website, website, linode quickstart guide">
+        
+        <meta property="og:title" content="Hosting a Website">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/hosting-a-website/">
+        <meta property="og:description" content="Our guide to hosting a website on your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/hosting-a-website/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Hosting a Website
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Hosting a Website</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-01-18T00:00:00Z">Wednesday, January 18, 2017</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fhosting-a-website%2f&via=linode&text=Hosting%20a%20Website" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fhosting-a-website%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fhosting-a-website%2f&t=Hosting%20a%20Website" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/hosting-a-website.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/hosting-a-website.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Now that you&rsquo;ve installed Linux and secured your Linode, it&rsquo;s time to start <em>doing</em> stuff with it. In this guide, you&rsquo;ll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!</p>
+
+<p><strong>Debian 8</strong> and <strong>Ubuntu 14.04 LTS</strong> are the <a href="/docs/getting-started#deploy-an-image">Linux distributions</a> used in this guide. If you&rsquo;d like to use <strong>Ubuntu 16.04 LTS</strong>, refer to the distribution-specific guide on configuring a <a href="/docs/websites/lamp/install-lamp-on-ubuntu-16-04">LAMP Stack</a>, and then continue to the <a href="#upload-files">upload files</a> section.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn&rsquo;t belong in that category, you&rsquo;ll need to assess your requirements and install custom packages tailored for your particular requirements.</p>
+
+<p>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</p>
+</div>
+</blockquote>
+
+
+<p><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/f067hwymxy?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+<script src="//fast.wistia.net/assets/external/E-v1.js" async></script></p>
+
+<h2 id="web-server">Web Server</h2>
+
+<p>Hosting a website starts with installing a <em>web server</em>, an application on your Linode that delivers content through the Internet. This section will help you get started with <em>Apache</em>, the world&rsquo;s most popular web server. For more information about Apache and other web servers, see our <a href="/docs/web-servers">web server reference manuals</a>.</p>
+
+<h3 id="install-apache">Install Apache</h3>
+
+<p>Check for and install all system updates, and install Apache on your Linode:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+sudo apt-get install apache2
+</code></pre>
+
+<p>Your Linode will download, install, and start the Apache web server.</p>
+
+<h3 id="optimize-apache-for-a-linode-2gb">Optimize Apache for a Linode 2GB</h3>
+
+<p>Installing Apache is easy, but if you leave it running with the default settings, your server could run out of memory. That&rsquo;s why it&rsquo;s important to optimize Apache <em>before</em> you start hosting a website on your Linode.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>These guidelines are designed to optimize Apache for a <strong>Linode 2GB</strong>, but you can use this information for any size Linode. These values are based on the amount of memory available, so if you have a Linode 4GB, multiply all of the values by 2 and use those numbers for your settings.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Just to be safe, make a copy of Apache&rsquo;s configuration file. You can restore the duplicate (<code>apache2.backup.conf</code>) if anything happens to the configuration file.</p>
+
+<pre><code>sudo cp /etc/apache2/apache2.conf /etc/apache2/apache2.backup.conf
+</code></pre></li>
+
+<li><p>Open Apache&rsquo;s configuration file for editing:</p>
+
+<pre><code>sudo nano /etc/apache2/apache2.conf
+</code></pre>
+
+<p>This will open the file in <code>nano</code>, but you may use whatever text editor you are comfortable with.</p></li>
+
+<li><p>Make sure that the following values are set:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In Ubuntu 14.04, you will need to append the module section noted below to the end of your <code>apache2.conf</code> file:</div>
+</blockquote>
+
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/apache2.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">KeepAlive</span> <span class="k">Off</span>
+
+   ...
+
+   <span class="nt">&lt;IfModule</span> <span class="s">mpm_prefork_module</span><span class="nt">&gt;</span>
+       <span class="nb">StartServers</span> <span class="m">4</span>
+       <span class="nb">MinSpareServers</span> <span class="m">20</span>
+       <span class="nb">MaxSpareServers</span> <span class="m">40</span>
+       <span class="nb">MaxClients</span> <span class="m">200</span>
+       <span class="nb">MaxRequestsPerChild</span> <span class="m">4500</span>
+   <span class="nt">&lt;/IfModule</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save the changes to Apache&rsquo;s configuration file. If you are using <code>nano</code>, do this by pressing <strong>CTRL+X</strong> and then pressing <strong>Y</strong>. Press <strong>ENTER</strong> to confirm.</p></li>
+
+<li><p>Restart Apache to incorporate the new settings:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre></li>
+</ol>
+
+<p>Good work! You&rsquo;ve successfully optimized Apache for your Linode, increasing performance and implementing safeguards to prevent excessive resource consumption. You&rsquo;re almost ready to host websites with Apache.</p>
+
+<h3 id="configure-name-based-virtual-hosts">Configure Name-based Virtual Hosts</h3>
+
+<p>Now that Apache is optimized for performance, it&rsquo;s time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you&rsquo;ll use <em>name-based virtual hosts</em> to host websites in your home directory.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You should <em>not</em> be logged in as <code>root</code> while executing these commands. To learn how to create a new user account and log in as that user, see <a href="/docs/securing-your-server#sph_adding-a-new-user">Adding a New User</a>.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Disable the default Apache virtual host:</p>
+
+<pre><code>sudo a2dissite *default
+</code></pre></li>
+
+<li><p>Navigate to your /var/www/html directory:</p>
+
+<pre><code>cd /var/www/html
+</code></pre></li>
+
+<li><p>Create a folder to hold your website, replacing <code>example.com</code> with your domain name:</p>
+
+<pre><code>sudo mkdir example.com
+</code></pre></li>
+
+<li><p>Create a set of folders inside the folder you&rsquo;ve just created to store your website&rsquo;s files, logs, and backups. Enter the following commands, replacing <code>example.com</code> with your domain name:</p>
+
+<pre><code>sudo mkdir -p example.com/public_html
+sudo mkdir -p example.com/log
+sudo mkdir -p example.com/backups
+</code></pre></li>
+
+<li><p>Create the virtual host file for your website. Replace the <code>example.com</code> in <code>example.com.conf</code> with your domain name:</p>
+
+<pre><code>sudo nano /etc/apache2/sites-available/example.com.conf
+</code></pre>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>The file name <em>must</em> end with <code>.conf</code> in Apache versions 2.4 and later, which is the default version in Ubuntu 14.04. The <code>.conf</code> extension is backwards-compatible with earlier versions.</div>
+</blockquote>
+</li>
+
+<li><p>Now it&rsquo;s time to create a configuration for your virtual host. We&rsquo;ve created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace all instances of <code>example.com</code> with your domain name.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="c"># domain: example.com</span>
+<span class="c"># public: /var/www/html/example.com/public_html/</span>
+
+<span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+  <span class="c"># Admin email, Server Name (domain name), and any aliases</span>
+  <span class="nb">ServerAdmin</span> webmaster@example.com
+  <span class="nb">ServerName</span>  example.com
+  <span class="nb">ServerAlias</span> www.example.com
+
+  <span class="c"># Index file and Document Root (where the public files are located)</span>
+  <span class="nb">DirectoryIndex</span> index.html index.php
+  <span class="nb">DocumentRoot</span> <span class="sx">/var/www/html/example.com/public_html</span>
+  <span class="c"># Log file locations</span>
+  <span class="nb">LogLevel</span> <span class="k">warn</span>
+  <span class="nb">ErrorLog</span>  <span class="sx">/var/www/html/example.com/log/error.log</span>
+  <span class="nb">CustomLog</span> <span class="sx">/var/www/html/example.com/log/access.log</span> combined
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save the changes to the virtual host configuration file by pressing <strong>CTRL+X</strong> and then pressing <strong>Y</strong>. Press <strong>ENTER</strong> to confirm.</p></li>
+
+<li><p>Enable your new website, replacing <code>example.com</code> with your domain name:</p>
+
+<pre><code>sudo a2ensite example.com.conf
+</code></pre>
+
+<p>This creates a symbolic link to your <code>example.com.conf</code> file in the appropriate directory for active virtual hosts.</p></li>
+
+<li><p>The previous command will alert you that you need to restart Apache to save the changes. Restart to apply your new configuration:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre></li>
+
+<li><p>Repeat steps 1-9 for any other websites you want to host on your Linode.</p></li>
+</ol>
+
+<p>Congratulations! You&rsquo;ve configured Apache to host one or more websites on your Linode. After you <a href="#upload-files">upload files</a> and <a href="#add-dns-records">add DNS records</a> later in this guide, your websites will be accessible to the outside world.</p>
+
+<h2 id="database">Database</h2>
+
+<p>Databases store data in a structured and easily accessible manner, serving as the foundation for hundreds of web and server applications. A variety of open source database platforms exist to meet the needs of applications running on your Linode. This section will help you get started with <em>MySQL</em>, one of the most popular database platforms. For more information about MySQL and other databases, see our <a href="/docs/databases">database reference guides</a>.</p>
+
+<h3 id="install-mysql">Install MySQL</h3>
+
+<ol>
+<li><p>Install MySQL. Your Linode will download, install, and start the MySQL database server.</p>
+
+<pre><code>sudo apt-get install mysql-server
+</code></pre></li>
+
+<li><p>You will be prompted to enter a password for the MySQL root user. This is not related to the root user for your Linode, so be sure to choose a different password for security purposes.</p></li>
+
+<li><p>Secure MySQL using the <code>mysql_secure_installation</code> utility:</p>
+
+<pre><code>sudo mysql_secure_installation
+</code></pre></li>
+
+<li><p>The <code>mysql_secure_installation</code> utility appears. Follow the instructions to remove anonymous user accounts, disable remote root login, and remove the test database.</p></li>
+</ol>
+
+<p>That&rsquo;s it! MySQL is now installed and running on your Linode.</p>
+
+<h3 id="optimize-mysql-for-a-linode-2gb">Optimize MySQL for a Linode 2GB</h3>
+
+<p>MySQL consumes a lot of memory when using the default configuration. To set resource constraints, you&rsquo;ll need to edit the MySQL configuration file.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>These guidelines are designed to optimize MySQL 5.5 and up for a <strong>Linode 2GB</strong>, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Open the MySQL configuration file for editing:</p>
+
+<pre><code>sudo nano /etc/mysql/my.cnf
+</code></pre></li>
+
+<li><p>Comment out all lines beginning with <code>key_buffer</code>. This is a deprecated setting and we&rsquo;ll use the correct option instead.</p></li>
+
+<li><p>Edit following values:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mysql/my.cnf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">max_allowed_packet</span> = <span class="m">1</span>M
+<span class="nb">thread_stack</span> = <span class="m">128</span>K
+
+...
+
+<span class="nb">max_connections</span> = <span class="m">75</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In MySQL 5.6 and above, you may need to add these lines as one block with <code>[mysqld]</code> at the top. In earlier MySQL versions, there may be multiple entries for a single option so be sure to edit both lines.</div>
+</blockquote>
+</li>
+
+<li><p>Add the following lines to the end of <code>my.cnf</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mysql/my.cnf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">table_open_cache</span> = <span class="m">32</span>M
+<span class="nb">key_buffer_size</span> = <span class="m">32</span>M</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save the changes to MySQL&rsquo;s configuration file by pressing <strong>CTRL+X</strong> and then pressing <strong>Y</strong> and hitting <strong>ENTER</strong> to save.</p></li>
+
+<li><p>Restart MySQL to save the changes:</p>
+
+<pre><code>sudo service mysql restart
+</code></pre></li>
+</ol>
+
+<p>Now that you&rsquo;ve edited the MySQL configuration file, you&rsquo;re ready to start creating and importing databases.</p>
+
+<h3 id="create-a-database">Create a Database</h3>
+
+<p>The first thing you&rsquo;ll need to do in MySQL is create a <em>database</em>. (If you already have a database that you&rsquo;d like to import, skip to the section <a href="#import-a-database">Import a Database</a>.)</p>
+
+<ol>
+<li><p>Log in using the MySQL root password:</p>
+
+<pre><code>mysql -u root -p
+</code></pre></li>
+
+<li><p>Create a database, replacing <code>exampleDB</code> with your own database name:</p>
+
+<pre><code>CREATE DATABASE exampleDB;
+</code></pre></li>
+
+<li><p>Create a new user in MySQL and then grant that user permission to access the new database, replacing <code>example_user</code> with your username, and <code>password</code> with your password:</p>
+
+<pre><code>GRANT ALL ON exampleDB.* TO 'example_user' IDENTIFIED BY 'password';
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>MySQL usernames and passwords are only used by scripts connecting to the database. They do not need to represent actual user accounts on the system.</div>
+</blockquote>
+</li>
+
+<li><p>Tell MySQL to reload the grant tables:</p>
+
+<pre><code>FLUSH PRIVILEGES;
+</code></pre></li>
+
+<li><p>Now that you&rsquo;ve created the database and granted a user permissions to the database, you can exit MySQL:</p>
+
+<pre><code>quit
+</code></pre></li>
+</ol>
+
+<p>Now you have a new database that you can use for your website. If you don&rsquo;t need to import a database, go ahead and skip to <a href="#php">PHP</a>.</p>
+
+<h3 id="import-a-database">Import a Database</h3>
+
+<p>If you have an existing website, you may want to import an existing database in to MySQL. It&rsquo;s easy, and it allows you to have an established website up and running on your Linode in a matter of minutes.</p>
+
+<ol>
+<li><p>Upload the database file to your Linode. See the instructions in the <a href="#upload-files">Upload Files</a> section.</p></li>
+
+<li><p>Import the database, replacing <code>username</code> with your MySQL username and <code>database_name</code> with the database name you want to import to. You will be prompted for your MySQL password:</p>
+
+<pre><code>mysql -u username -p database_name &lt; FILE.sql
+</code></pre></li>
+</ol>
+
+<p>Your database will be imported in to MySQL.</p>
+
+<h2 id="php">PHP</h2>
+
+<p>PHP is a general-purpose scripting language that allows you to produce dynamic and interactive webpages. Many popular web applications and content management systems, like WordPress and Drupal, are written in PHP. To develop or host websites using PHP, you must first install the base package and a couple of modules.</p>
+
+<h3 id="install-php">Install PHP</h3>
+
+<ol>
+<li><p>Install the base PHP package:</p>
+
+<pre><code>sudo apt-get install php5 php-pear
+</code></pre></li>
+
+<li><p>Add the MySQL support extension for PHP:</p>
+
+<pre><code>sudo apt-get install php5-mysql
+</code></pre></li>
+</ol>
+
+<h3 id="optimize-php-for-a-linode-2gb">Optimize PHP for a Linode 2GB</h3>
+
+<p>After you install PHP, you&rsquo;ll need to enable logging and tune PHP for better performance. The setting you&rsquo;ll want to pay the most attention to is <code>memory_limit</code>, which controls how much memory is allocated to PHP.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>These guidelines are designed to optimize PHP for a Linode 2GB, but you can use this information as a starting point for any size Linode. If you have a larger Linode, you could increase the memory limit to a larger value, like 256M.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Open the PHP configuration files:</p>
+
+<pre><code>sudo nano /etc/php5/apache2/php.ini
+</code></pre></li>
+
+<li><p>Verify that the following values are set. All of the lines listed below should be uncommented. Be sure to remove any semicolons (<code>;</code>) at the beginning of the lines.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php5/apache2/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">max_execution_time</span> <span class="o">=</span> <span class="s">30</span>
+<span class="na">memory_limit</span> <span class="o">=</span> <span class="s">128M</span>
+<span class="na">error_reporting</span> <span class="o">=</span> <span class="s">E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR</span>
+<span class="na">display_errors</span> <span class="o">=</span> <span class="s">Off</span>
+<span class="na">log_errors</span> <span class="o">=</span> <span class="s">On</span>
+<span class="na">error_log</span> <span class="o">=</span> <span class="s">/var/log/php/error.log</span>
+<span class="na">register_globals</span> <span class="o">=</span> <span class="s">Off</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The 128M setting for <code>memory_limit</code> is a general guideline. While this value should be sufficient for most websites, larger websites and some web applications may require 256 megabytes or more.</div>
+</blockquote>
+</li>
+
+<li><p>Save the changes by pressing <code>Control-x</code> and then pressing <code>y</code>. Hit <code>Enter</code> to confirm the changes.</p></li>
+
+<li><p>Create the <code>/var/log/php/</code> directory for the PHP error log:</p>
+
+<pre><code>sudo mkdir -p /var/log/php
+</code></pre></li>
+
+<li><p>Change the owner of the <code>/var/log/php/</code> directory to <code>www-data</code>, the user under which PHP runs:</p>
+
+<pre><code>sudo chown www-data /var/log/php
+</code></pre></li>
+
+<li><p>Restart Apache to load the PHP module:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre></li>
+</ol>
+
+<p>Congratulations! PHP is now installed on your Linode and configured for optimal performance.</p>
+
+<h2 id="upload-files">Upload Files</h2>
+
+<p>You&rsquo;ve successfully installed Apache, MySQL, and PHP. Now it&rsquo;s time to upload a website to your Linode. This is one of the last steps before you &ldquo;flip the switch&rdquo; and publish your website on the Internet.</p>
+
+<ol>
+<li><p>If you haven&rsquo;t done so already, download and install an SFTP capable client on your computer. We recommend using the <a href="/docs/tools-reference/file-transfer/filezilla">FileZilla</a> SFTP client.</p></li>
+
+<li><p>Follow the instructions in the guide listed above to connect to your Linode.</p></li>
+
+<li><p>Upload your website&rsquo;s files to the <code>/var/www/html/example.com/public_html</code> directory. Replace <code>example.com</code> with your domain name.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you configured multiple name-based virtual hosts, don&rsquo;t forget to upload the files for the other websites to their respective directories.</div>
+</blockquote>
+</li>
+</ol>
+
+<p>If you&rsquo;re using a content management system like WordPress or Drupal, you may need to configure the appropriate settings file to point the content management system at the MySQL database.</p>
+
+<h2 id="test-your-website">Test your Website</h2>
+
+<p>It&rsquo;s a good idea to test your website(s) before you add the DNS records. This is your last chance to check everything and make sure that it looks good before it goes live.</p>
+
+<ol>
+<li><p>Enter your Linode&rsquo;s IP address in a web browser (e.g., type <code>http://192.0.2.0</code> in the address bar, replacing the example IP address with your own). Your website should load in the web browser.</p></li>
+
+<li><p>If you plan on hosting multiple websites, you can test the virtual hosts by editing the <code>hosts</code> file on your local computer. Check out the <a href="/docs/networking/dns/previewing-websites-without-dns">Previewing Websites Without DNS</a> guide for more information.</p></li>
+
+<li><p>Test the name-based virtual hosts by entering the domain names in the address bar of the web browser on your desktop computer. Your websites should load in the web browser.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Remember to remove the entries for the name-based virtual hosts from your <code>hosts</code> file when you&rsquo;re ready to test the DNS records.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="add-dns-records">Add DNS Records</h2>
+
+<p>Now you need to point your domain name(s) at your Linode. This process can take a while, so please allow up to 24 hours for DNS changes to be reflected throughout the Internet.</p>
+
+<ol>
+<li><p>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</p></li>
+
+<li><p>Click the <strong>DNS Manager</strong> tab.</p></li>
+
+<li><p>Select the <strong>Add a domain zone</strong> link. The form shown below appears.</p>
+
+<p><a href="/docs/assets/909-hosting-1.png"><img src="/docs/assets/910-hosting-1-small.png" alt="Create a domain zone" /></a></p></li>
+
+<li><p>In the <strong>Domain</strong> field, enter your website&rsquo;s domain name in the <strong>Domain</strong> field.</p></li>
+
+<li><p>In the <strong>SOA Email</strong> field, enter the administrative contact email address for your domain.</p></li>
+
+<li><p>Select the <strong>Yes, insert a few records to get me started</strong> button.</p></li>
+
+<li><p>Click <strong>Add a Master Zone</strong>. Several DNS records will be created for your domain, as shown below.</p>
+
+<p><a href="/docs/assets/912-hosting-2.png"><img src="/docs/assets/911-hosting-2-small.png" alt="The DNS records created for the domain" /></a></p></li>
+
+<li><p>Through your domain registrar (where you bought the domain), make sure that your domain name is set to use Linode&rsquo;s DNS. Use your domain name registrar&rsquo;s interface to set the name servers for your domain to the following:</p>
+
+<ul>
+<li><code>ns1.linode.com</code></li>
+<li><code>ns2.linode.com</code></li>
+<li><code>ns3.linode.com</code></li>
+<li><code>ns4.linode.com</code></li>
+<li><code>ns5.linode.com</code></li>
+</ul></li>
+
+<li><p>Repeat steps 1-8 for each name-based virtual host you created earlier.</p></li>
+</ol>
+
+<p>You&rsquo;ve now added DNS records for your website(s). Remember, DNS changes can take up to 48 hours to propagate through the Internet. Be patient! Once the DNS changes are completed, you will be able to access your website by typing the domain name in to your browser&rsquo;s address bar.</p>
+
+<h2 id="setting-reverse-dns">Setting Reverse DNS</h2>
+
+<p>You&rsquo;re almost finished! The last step is setting reverse DNS for your domain name.</p>
+
+<ol>
+<li><p>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</p></li>
+
+<li><p>Click the <strong>Linodes</strong> tab.</p></li>
+
+<li><p>Select your Linode.</p></li>
+
+<li><p>Click the <strong>Remote Access</strong> tab.</p></li>
+
+<li><p>Select the <strong>Reverse DNS</strong> link, as shown below.</p>
+
+<p><a href="/docs/assets/951-hosting-3-1.png"><img src="/docs/assets/951-hosting-3-1.png" alt="Select Reverse DNS link" /></a></p></li>
+
+<li><p>Enter the domain in the <strong>Hostname</strong> field, as shown below.</p>
+
+<p><a href="/docs/assets/915-hosting-4.png"><img src="/docs/assets/914-hosting-4-small.png" alt="Enter domain in Hostname field" /></a></p></li>
+
+<li><p>Click <strong>Look up</strong>. A message appears, indicating that a match has been found.</p></li>
+
+<li><p>Click <strong>Yes</strong>.</p></li>
+</ol>
+
+<p>You have set up reverse DNS for your domain name.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/nodejs/how-to-install-nodejs/">How to Install Node.js</a></li>
+    
+    
+    
+    <li><a href="/docs/development/nodejs/how-to-install-nodejs-and-nginx-on-debian/">How to Install Node.js and Nginx on Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/email/running-a-mail-server/">Running a Mail Server</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/introduction-to-high-availability/">Introduction to High Availability</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#web-server">Web Server</a>
+<ul>
+<li><a href="#install-apache">Install Apache</a></li>
+<li><a href="#optimize-apache-for-a-linode-2gb">Optimize Apache for a Linode 2GB</a></li>
+<li><a href="#configure-name-based-virtual-hosts">Configure Name-based Virtual Hosts</a></li>
+</ul></li>
+<li><a href="#database">Database</a>
+<ul>
+<li><a href="#install-mysql">Install MySQL</a></li>
+<li><a href="#optimize-mysql-for-a-linode-2gb">Optimize MySQL for a Linode 2GB</a></li>
+<li><a href="#create-a-database">Create a Database</a></li>
+<li><a href="#import-a-database">Import a Database</a></li>
+</ul></li>
+<li><a href="#php">PHP</a>
+<ul>
+<li><a href="#install-php">Install PHP</a></li>
+<li><a href="#optimize-php-for-a-linode-2gb">Optimize PHP for a Linode 2GB</a></li>
+</ul></li>
+<li><a href="#upload-files">Upload Files</a></li>
+<li><a href="#test-your-website">Test your Website</a></li>
+<li><a href="#add-dns-records">Add DNS Records</a></li>
+<li><a href="#setting-reverse-dns">Setting Reverse DNS</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

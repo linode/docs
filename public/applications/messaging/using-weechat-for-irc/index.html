@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using WeeChat for Internet Relay Chat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use WeeChat and GNU Screen to create and maintain connections to IRC networks">
+        <meta name="keywords" content="weechat, irc, oftc, real time, chat">
+        
+        <meta property="og:title" content="Using WeeChat for Internet Relay Chat">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/messaging/using-weechat-for-irc/">
+        <meta property="og:description" content="Use WeeChat and GNU Screen to create and maintain connections to IRC networks">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/messaging/using-weechat-for-irc/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/messaging/">Messaging &amp; Chat</a>
+  
+</li>
+
+
+<li>
+  
+  Using WeeChat for Internet Relay Chat
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using WeeChat for Internet Relay Chat</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-03-10T00:00:00Z">Thursday, March 10, 2016</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Samuel Damashek
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2fusing-weechat-for-irc%2f&via=linode&text=Using%20WeeChat%20for%20Internet%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2fusing-weechat-for-irc%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2fusing-weechat-for-irc%2f&t=Using%20WeeChat%20for%20Internet%20Relay%20Chat" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/messaging/using-weechat-for-irc.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/messaging/using-weechat-for-irc.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><a href="https://weechat.org/">WeeChat</a> is a multi-platform, terminal-based Internet Relay Chat (IRC) client written in C. Weechat is intended to be flexible and extensible, and thus has all sorts of plugins written in different languages including Python, Perl, and Ruby.</p>
+
+<p>Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as <a href="https://www.gnu.org/software/screen/">Screen</a> or <a href="https://tmux.github.io/">tmux</a>.</p>
+
+<p>WeeChat is usually run in a terminal emulator. It may be run either on your computer, a Linode instance, or any computer running a supported platform. If you run WeeChat on your Linode, you can access WeeChat at any time from any system simply by connecting via SSH and attaching to your Screen or tmux instance. This guide assumes you have read <a href="/docs/networking/ssh/using-the-terminal">Using The Terminal</a> and <a href="/docs/tools-reference/linux-system-administration-basics">Linux System Administration Basics</a>, along with the <a href="/docs/getting-started/">Getting Started Guide</a>.</p>
+
+<h2 id="what-is-irc">What is IRC?</h2>
+
+<p>Internet Relay Chat (IRC) is a protocol that is used to create IRC &ldquo;networks,&rdquo; sets of IRC servers that can be connected to using IRC clients. Networks are usually independent. Inside a network, there are many channels which can be joined by users. Usually anybody can create a channel. Channels are usually prefixed with hash signs (<strong>#</strong>), and sometimes contain multiple hash signs to represent different types of channels. Individual users can also chat with each other privately using private messages. Many Linode customers use IRC to get technical help and exchange knowledge.</p>
+
+<p>The official Linode channel is <strong>#linode</strong> on the OFTC network (<strong>irc.oftc.net</strong>).</p>
+
+<p>On IRC, users are classified by four characteristics:</p>
+
+<ul>
+<li>Nickname, a unique user-chosen string which is shown as their handle.</li>
+<li>Username, a separate string from the nickname which is provided by the user. Does not have to be unique.</li>
+<li>Host, the IP or hostname from which a user is connecting.</li>
+<li>Real Name, an optional argument containing your name (spaces are allowed)</li>
+</ul>
+
+<p>A user is often represented as <code>nickname!username@host</code>.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services. Also follow the section to create a firewall, but omit the lines for ports 80 and 443 as these are not needed for a WeeChat server.</p></li>
+
+<li><p>Update your system:</p>
+
+<p><strong>CentOS</strong></p>
+
+<pre><code>sudo yum update
+</code></pre>
+
+<p><strong>Debian / Ubuntu</strong></p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="using-gnu-screen">Using GNU Screen</h2>
+
+<p>GNU Screen allows you to start WeeChat and leave it running, even if you disconnect from your Linode. We recommend running WeeChat in Screen, so our instructions include Screen-specific commands. For more information, see <a href="/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions">Using GNU Screen to Manage Persistent Terminal Sessions</a>.</p>
+
+<h2 id="installing-weechat">Installing WeeChat</h2>
+
+<p>Below are instructions for installing WeeChat and Screen on different Linux distributions and operating systems.</p>
+
+<h3 id="arch-linux">Arch Linux</h3>
+
+<pre><code>sudo pacman -S weechat screen
+</code></pre>
+
+<h3 id="centos">CentOS</h3>
+
+<pre><code>sudo yum install weechat screen
+</code></pre>
+
+<h3 id="debian-ubuntu">Debian / Ubuntu</h3>
+
+<p>WeeChat provides repositories for various Debian and Ubuntu releases. See <a href="https://weechat.org/download/debian/">their downloads page</a> for the repo addresses. The repo address for your version should look similar to <code>https://weechat.org/distribution version sid main</code>. Debian and Ubuntu both include Screen by default.</p>
+
+<p>Using the address you found above, create a file so that your system knows where to check for the correct version of WeeChat, substituting the actual repo address for <code>address</code>:</p>
+
+<pre><code>echo &quot;address&quot; | sudo tee /etc/apt/sources.list.d/weechat.list
+</code></pre>
+
+<p>You are now ready to install WeeChat:</p>
+
+<pre><code>sudo apt-get install weechat
+</code></pre>
+
+<h3 id="fedora">Fedora</h3>
+
+<pre><code>sudo dnf install weechat screen
+</code></pre>
+
+<h3 id="mac-os-x-homebrew">Mac OS X (HomeBrew)</h3>
+
+<pre><code>brew update
+brew install screen
+brew install weechat
+</code></pre>
+
+<h3 id="mac-os-x-macports">Mac OS X (MacPorts)</h3>
+
+<pre><code>port install screen
+port install weechat
+</code></pre>
+
+<h3 id="windows-cygwin">Windows (Cygwin)</h3>
+
+<ol>
+<li><p>Install Cygwin. Ensure that subversion and wget are marked to be included during the installation process</p></li>
+
+<li><p>Install apt-cyg with the following commands</p>
+
+<pre><code>svn --force export http://apt-cyg.googlecode.com/svn/trunk/ /bin/
+chmod +x /bin/apt-cyg
+</code></pre></li>
+
+<li><p>Install WeeChat using the apt-cyg package</p>
+
+<pre><code>apt-cyg install weechat
+</code></pre></li>
+</ol>
+
+<h2 id="running-weechat">Running WeeChat</h2>
+
+<p>To start WeeChat in a screen on most systems (including Debian 7), run:</p>
+
+<pre><code>screen weechat-curses
+</code></pre>
+
+<p>You should now see the WeeChat chat window. If you don&rsquo;t, try running <code>screen weechat</code> instead of <code>screen weechat-curses</code>.</p>
+
+<p>When you first launch WeeChat, it automatically creates a configuration file in <code>~/.weechat</code>.</p>
+
+<h2 id="using-weechat">Using WeeChat</h2>
+
+<h3 id="adding-and-connecting-to-a-server">Adding and Connecting to a Server</h3>
+
+<p>To add a server (in this case the OFTC network), you will use the <code>/server</code> command.</p>
+
+<pre><code>/server add oftc irc.oftc.net/6697 -ssl -autoconnect
+</code></pre>
+
+<p>This adds a server named &ldquo;oftc&rdquo; with hostname &ldquo;irc.oftc.net&rdquo; connecting on port 6697. WeeChat will connect using SSL and will automatically connect when you start WeeChat. Once you define the server, you can run:</p>
+
+<pre><code>/connect oftc
+</code></pre>
+
+<p>This will tell WeeChat to connect to the server you just set up.</p>
+
+<p>To disconnect, run:</p>
+
+<pre><code>/disconnect oftc
+</code></pre>
+
+<h3 id="joining-and-parting-channels">Joining and Parting Channels</h3>
+
+<p>To join a channel, run:</p>
+
+<pre><code>/join channel
+</code></pre>
+
+<p>For example, <code>/join #linode</code>.</p>
+
+<p>Make sure to run join/part commands in the proper server window. You can use <strong>ALT+X</strong> to switch server windows.</p>
+
+<p>To part, or leave, a channel, run:</p>
+
+<pre><code>/part channel
+</code></pre>
+
+<p>For example, <code>/part #linode</code>.</p>
+
+<h3 id="switching-channels-buffers">Switching Channels/Buffers</h3>
+
+<p>If you have mouse support enabled and also have installed buffers.pl (see the WeeChat Commands section below), then you can simply click on buffers you have joined then type messages in the bottom bar. Pressing <strong>Enter</strong> will submit your message.</p>
+
+<p>Otherwise, you can use <code>/buffer</code> to switch between buffers by number or name. For example, <code>/buffer 1</code> will switch to buffer 1, while <code>/buffer #linode</code> will switch to the #linode buffer.
+You can also press <strong>ALT+number</strong> (<strong>ESC+number</strong> on a Mac), where &ldquo;number&rdquo; is 1-9, to switch to that buffer number. <strong>ALT+4</strong> (<strong>ESC+4</strong> on a Mac) will switch to buffer 4.</p>
+
+<!--- My friend tells me that you have to use Esc instead of Alt. For example, Option-4 would give him ¢.
+Pressing `Ctrl-N` will switch to the next buffer, and `Ctrl-P` will switch to the previous buffer. You can also use `/buffer +1` to go to the next buffer, or `/buffer -1` to go to the previous buffer.
+-->
+
+<h3 id="sending-private-messages">Sending Private Messages</h3>
+
+<p>To send a private message to a nickname, run:</p>
+
+<pre><code>/msg nick message
+</code></pre>
+
+<p>For example, to send the message &ldquo;Have you heard about Linode?&rdquo; to someone with the nickname <code>friend</code>, run:</p>
+
+<pre><code>/msg friend Have you heard about Linode?
+</code></pre>
+
+<p>You can also open a buffer for a nickname with <code>/query</code>. This will create a new buffer which you can send and receive messages in to and from a user. For example, <code>/query friend</code> will open a conversation with &ldquo;friend&rdquo;.</p>
+
+<h3 id="changing-your-nickname">Changing your Nickname</h3>
+
+<p>To change your nickname after you have connected, run:</p>
+
+<pre><code>/nick newnickname
+</code></pre>
+
+<p>Note that this will only work if the new nickname is not already in use.</p>
+
+<h3 id="quitting-weechat">Quitting WeeChat</h3>
+
+<p>To quit WeeChat completely, run:</p>
+
+<pre><code>/quit
+</code></pre>
+
+<h2 id="configuring-weechat">Configuring WeeChat</h2>
+
+<p>You usually will not have to directly edit any WeeChat configuration files. Most configuration is done through WeeChat commands.</p>
+
+<h3 id="installing-plugins">Installing Plugins</h3>
+
+<p>WeeChat has a plugins system which allows you to install different modifications to WeeChat for different use-cases and user preference. In WeeChat versions 0.3.9 and above, a script management system is included. <code>/script</code> will open up a list of available and installed scripts. From there, you can follow the instructions to install scripts interactively, or install a script using <code>/script install</code> followed by the script name.</p>
+
+<h3 id="weechat-commands">WeeChat Commands</h3>
+
+<p>All WeeChat commands begin with a <strong>/</strong>. Every channel in WeeChat is a <em>buffer</em>. Servers are also buffers. By default, WeeChat does not include a list of buffers, but you may install a plugin that does. The buffers.pl plugin is recommended and displays a list of buffers on the left of the screen. This allows you to see what channels and servers you are in without having to remember special commands.</p>
+
+<pre><code>/script install buffers.pl
+</code></pre>
+
+<p><code>/mouse enable</code> will enable mouse support, which allows you to scroll as well as click buffers to change channels and servers.</p>
+
+<p>A list of basic commands is below.</p>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>/help</code></td>
+<td>Lists commands, if a command is given then shows command usage and description</td>
+</tr>
+
+<tr>
+<td><code>/join</code></td>
+<td>Joins a channel</td>
+</tr>
+
+<tr>
+<td><code>/close</code></td>
+<td>Closes a buffer, parting the channel if you are in it</td>
+</tr>
+
+<tr>
+<td><code>/quit</code></td>
+<td>Quit WeeChat</td>
+</tr>
+
+<tr>
+<td><code>/msg</code></td>
+<td>Send a message to a nick (or channel)</td>
+</tr>
+
+<tr>
+<td><code>/query</code></td>
+<td>Opens a private buffer with a nick</td>
+</tr>
+
+<tr>
+<td><code>/ban</code></td>
+<td>Ban a user from a channel</td>
+</tr>
+
+<tr>
+<td><code>/unban</code></td>
+<td>Unban a user from a channel</td>
+</tr>
+
+<tr>
+<td><code>/kick</code></td>
+<td>Kick a user from a channel</td>
+</tr>
+
+<tr>
+<td><code>/kickban</code></td>
+<td>Kick and ban a user from a channel</td>
+</tr>
+
+<tr>
+<td><code>/part</code></td>
+<td>Parts a channel but does not close the buffers</td>
+</tr>
+
+<tr>
+<td><code>/topic</code></td>
+<td>Sets channel topic</td>
+</tr>
+
+<tr>
+<td><code>/whois</code></td>
+<td>Shows information about a user</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="setting-default-channels">Setting Default Channels</h3>
+
+<p>WeeChat uses the <code>/set</code> command to manipulate WeeChat settings. It allows you to change many different attributes about WeeChat, including appearance and functionality.</p>
+
+<p>You can tell WeeChat to automatically connect to some channels when it connects to a server using the <code>irc.server.name.autojoin</code> setting substituting the server to which you are connected for <code>name</code>. In the above configuration, we connected to <code>oftc</code>. This setting should be a comma separated list of channels to join. For example, if I want to join #linode when I connect to the oftc network, I would run:</p>
+
+<pre><code>/set irc.server.oftc.autojoin &quot;#linode&quot;
+</code></pre>
+
+<p>Then, whenever I connect to the <code>oftc</code> server, I will automatically join #linode.</p>
+
+<h3 id="setting-default-nickname-username-and-real-name">Setting Default Nickname, Username, and Real Name</h3>
+
+<p>Setting the default nickname, username, and real name is just as simple. To set your default nickname, run:</p>
+
+<pre><code>/set irc.server_default.nicks &quot;nickname&quot;
+</code></pre>
+
+<p>You can also specify backup nicknames in case the one you want is taken when you connect.</p>
+
+<pre><code>/set irc.server_default.nicks &quot;nickname,othernickname&quot;
+</code></pre>
+
+<p>Setting the default username:</p>
+
+<pre><code>/set irc.server_default.username &quot;username&quot;
+</code></pre>
+
+<p>Setting the default real name:</p>
+
+<pre><code>/set irc.server_default.realname &quot;realname&quot;
+</code></pre>
+
+<h2 id="accessing-your-weechat-instance">Accessing your WeeChat instance</h2>
+
+<p>If you ran WeeChat in a screen as specified above, you have the ability to detach from your WeeChat instance and to reattach later. To detach from the screen, press <strong>CTRL+A</strong>, then <strong>D</strong>. To reattach to your screen, run <strong>screen -r</strong>. You can reattach to your screen even if you have logged out from your Linode instance and connected later.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.weechat.org/">WeeChat Home Page</a></li>
+
+<li><a href="http://www.gnu.org/software/screen/">GNU Screen</a></li>
+
+<li><a href="/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions">Screen for Persistent Terminal Sessions</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/messaging/advanced-irssi-usage/">Advanced Irssi Usage</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/using-irssi-for-internet-relay-chat/">Using Irssi for Internet Relay Chat</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/install-teamspeak/">Install a TeamSpeak Server on Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-irc">What is IRC?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#using-gnu-screen">Using GNU Screen</a></li>
+<li><a href="#installing-weechat">Installing WeeChat</a>
+<ul>
+<li><a href="#arch-linux">Arch Linux</a></li>
+<li><a href="#centos">CentOS</a></li>
+<li><a href="#debian-ubuntu">Debian / Ubuntu</a></li>
+<li><a href="#fedora">Fedora</a></li>
+<li><a href="#mac-os-x-homebrew">Mac OS X (HomeBrew)</a></li>
+<li><a href="#mac-os-x-macports">Mac OS X (MacPorts)</a></li>
+<li><a href="#windows-cygwin">Windows (Cygwin)</a></li>
+</ul></li>
+<li><a href="#running-weechat">Running WeeChat</a></li>
+<li><a href="#using-weechat">Using WeeChat</a>
+<ul>
+<li><a href="#adding-and-connecting-to-a-server">Adding and Connecting to a Server</a></li>
+<li><a href="#joining-and-parting-channels">Joining and Parting Channels</a></li>
+<li><a href="#switching-channels-buffers">Switching Channels/Buffers</a></li>
+<li><a href="#sending-private-messages">Sending Private Messages</a></li>
+<li><a href="#changing-your-nickname">Changing your Nickname</a></li>
+<li><a href="#quitting-weechat">Quitting WeeChat</a></li>
+</ul></li>
+<li><a href="#configuring-weechat">Configuring WeeChat</a>
+<ul>
+<li><a href="#installing-plugins">Installing Plugins</a></li>
+<li><a href="#weechat-commands">WeeChat Commands</a></li>
+<li><a href="#setting-default-channels">Setting Default Channels</a></li>
+<li><a href="#setting-default-nickname-username-and-real-name">Setting Default Nickname, Username, and Real Name</a></li>
+</ul></li>
+<li><a href="#accessing-your-weechat-instance">Accessing your WeeChat instance</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

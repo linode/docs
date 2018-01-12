@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>SSH Connections Using PuTTY on Windows</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Accessing remote servers with PuTTY, a free and open source SSH client for Windows and UNIX systems.">
+        <meta name="keywords" content="putty, putty ssh, windows ssh client">
+        
+        <meta property="og:title" content="SSH Connections Using PuTTY on Windows">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/ssh/ssh-connections-using-putty-on-windows/">
+        <meta property="og:description" content="Accessing remote servers with PuTTY, a free and open source SSH client for Windows and UNIX systems.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/ssh/ssh-connections-using-putty-on-windows/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/ssh/">SSH: Connect to Your Linode</a>
+  
+</li>
+
+
+<li>
+  
+  SSH Connections Using PuTTY on Windows
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">SSH Connections Using PuTTY on Windows</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-09T00:00:00Z">Monday, October 9, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2fssh-connections-using-putty-on-windows%2f&via=linode&text=SSH%20Connections%20Using%20PuTTY%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2fssh-connections-using-putty-on-windows%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2fssh-connections-using-putty-on-windows%2f&t=SSH%20Connections%20Using%20PuTTY%20on%20Windows" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/ssh/ssh-connections-using-putty-on-windows.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/ssh/ssh-connections-using-putty-on-windows.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/using-putty.png" alt="Using PuTTY" title="Using PuTTY" /></p>
+
+<p>PuTTY is a free and open source SSH client for Windows and UNIX systems. It provides easy connectivity to any server running an SSH daemon so you can work as if you were logged into a console session on the remote system.</p>
+
+<h2 id="install-putty-and-connect-to-a-remote-host">Install PuTTY and Connect to a Remote Host</h2>
+
+<ol>
+<li><p>Download and run the PuTTY installer from <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">here</a>.</p></li>
+
+<li><p>When you open PuTTY, you&rsquo;ll be shown the configuration menu.</p>
+
+<p><img src="/docs/assets/putty-configuration-window.png" alt="PuTTY session configuration" /></p>
+
+<p>Enter your Linode&rsquo;s hostname or IP address. The default port for SSH is <strong>22</strong>. If your remote server&rsquo;s SSH daemon is running on a different port, you&rsquo;ll need to specify it in the <strong>Session</strong> category.</p></li>
+
+<li><p>Click <strong>Open</strong> to start an SSH session. If you have never previously logged into this system with PuTTY (we&rsquo;ll assume here you have not), you will see a message alerting you that the server&rsquo;s SSH key fingerprint is new, and asking if you want to proceed.</p>
+
+<p><strong>Do not click anything yet! You first need to verify the fingerprint.</strong></p>
+
+<p><img src="/docs/assets/putty-verify-host-ssh-key-fingerprint.png" alt="PuTTY verify SSH fingerprint" /></p></li>
+
+<li><p>Use <a href="/docs/networking/using-the-linode-shell-lish">Lish</a> to log in to your Linode. Use the command below to query OpenSSH for your Linode&rsquo;s SSH fingerprint:</p>
+
+<pre><code>ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
+</code></pre>
+
+<p>The output will look similar to this:</p>
+
+<pre><code>256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For the fingerprint of an RSA key instead of elliptical curve, use: <code>ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub</code>.</div>
+</blockquote>
+</li>
+
+<li><p>Compare the output from Step 4 above to what PuTTY is showing in the alert message in Step 3. <strong>The two fingerprints should match.</strong></p></li>
+
+<li><p>If the fingerprints match, then click <strong>Yes</strong> on the PuTTY message to connect to your Linode and cache that host fingerprint.</p>
+
+<p><strong>If the fingerprints do not match, do not connect to the server!</strong> You won&rsquo;t receive further warnings unless the key presented to PuTTY changes for some reason; typically, this should only happen if you reinstall the remote server&rsquo;s operating system. If you should receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.</p></li>
+</ol>
+
+<h2 id="port-forwarding-ssh-tunnels-with-putty">Port Forwarding (SSH Tunnels) with PuTTY</h2>
+
+<p>SSH tunnels allow you to access network services running on a remote server though a secure channel. This is useful in cases where the service you wish to access doesn&rsquo;t run over SSL, or you do not wish to allow public access to it. As an example, you can use tunneling to securely access a MySQL server running on a remote server.</p>
+
+<p>To do so:</p>
+
+<ul>
+<li>In PuTTY&rsquo;s configuration window, go to the <strong>Connection</strong> category.</li>
+<li>Go to <strong>SSH</strong>, then <strong>Tunnels</strong>.</li>
+<li>Enter <strong>3306</strong> in the <strong>Source port</strong> field.</li>
+<li>Enter <strong>127.0.0.1:3306</strong> in the <strong>Destination</strong> field.</li>
+
+<li><p>Click <strong>Add</strong>, then click <strong>Open</strong> to log in.</p>
+
+<p><img src="/docs/assets/putty-port-forwarding.png" alt="Tunneling a remote MySQL connection with PuTTY." /></p></li>
+</ul>
+
+<p>Once you&rsquo;ve connected to the remote server with this tunnel configuration, you&rsquo;ll be able to direct your local MySQL client to <code>localhost:3306</code>. Your connection to the remote MySQL server will be encrypted through SSH, allowing you to access your databases without running MySQL on a public IP.</p>
+
+<h2 id="run-remote-graphical-applications-over-ssh">Run Remote Graphical Applications over SSH</h2>
+
+<p>PuTTY can securely run graphical applications hosted on a remote Linux server. You can run virtually any X11 application in this manner, and the connection will be encrypted through SSH, providing a safe means of interacting with remote graphical systems.</p>
+
+<ol>
+<li><p>You wll need an X11 server for Windows. Download and install <a href="http://sourceforge.net/projects/xming/">Xming</a>, a free X server for Windows. Accept the defaults presented by the installer and you&rsquo;ll be running an X11 server when the install process completes.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You will need the <code>xauth</code> package installed on your remote server for X11 forwarding to work correctly. It is installed by default on Debian and ReHat based systems, but may not be for other Linux distributions.</div>
+</blockquote>
+</li>
+
+<li><p>Next, you&rsquo;ll need to tell PuTTY to forward X11 connections to your desktop.</p>
+
+<ul>
+<li>In PuTTY&rsquo;s configuration window, make sure the remote server&rsquo;s hostname or IP, and the correct port, are entered on the <strong>Session</strong> category.</li>
+<li>In the <strong>Connection</strong> category, go to <strong>SSH</strong>, then <strong>X11</strong>.</li>
+<li>Check the box for <strong>Enable X11 forwarding</strong>.</li>
+<li>Enter <strong>localhost:0</strong> in the <strong>X display location</strong> field.</li>
+<li>Click <strong>Open</strong> to log in.</li>
+</ul>
+
+<p><img src="/docs/assets/putty-x11-forwarding.png" alt="Configure X11 forwarding in PuTTY." /></p></li>
+
+<li><p>Once you&rsquo;re logged into the remote server, you may start any graphical application hosted there. The application will be projected onto your local desktop. Here&rsquo;s the <code>xcalc</code> application running on a remote server, visible a Windows desktop:</p>
+
+<p><img src="/docs/assets/162-putty-03-xcalc-running.png" alt="xcalc running in PuTTY." /></p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html">PuTTY Documentation</a></li>
+
+<li><a href="http://www.straightrunning.com/XmingNotes/manual.php">Xming Manual</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#install-putty-and-connect-to-a-remote-host">Install PuTTY and Connect to a Remote Host</a></li>
+<li><a href="#port-forwarding-ssh-tunnels-with-putty">Port Forwarding (SSH Tunnels) with PuTTY</a></li>
+<li><a href="#run-remote-graphical-applications-over-ssh">Run Remote Graphical Applications over SSH</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

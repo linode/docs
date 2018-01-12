@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use vmstat to Monitor System Performance</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use the vmstat tool to monitor your system&#39;s virtual memory usage.">
+        <meta name="keywords" content="virtual memory, memory, linux, ram, usage, troubleshooting.">
+        
+        <meta property="og:title" content="Use vmstat to Monitor System Performance">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance/">
+        <meta property="og:description" content="Use the vmstat tool to monitor your system&#39;s virtual memory usage.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/monitoring/">Server Monitoring</a>
+  
+</li>
+
+
+<li>
+  
+  Use vmstat to Monitor System Performance
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use vmstat to Monitor System Performance</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-04T00:00:00Z">Wednesday, October 4, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fuse-vmstat-to-monitor-system-performance%2f&via=linode&text=Use%20vmstat%20to%20Monitor%20System%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fuse-vmstat-to-monitor-system-performance%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fuse-vmstat-to-monitor-system-performance%2f&t=Use%20vmstat%20to%20Monitor%20System%20Performance" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/use-vmstat-to-monitor-system-performance.jpg" alt="Use vmstat to Monitor System Performance" title="Use vmstat to Monitor System Performance" /></p>
+
+<h2 id="what-is-vmstat">What is vmstat?</h2>
+
+<p><code>vmstat</code> is a tool that collects and reports data about your system&rsquo;s memory, swap, and processor resource utilization in real time. It can be used to determine the root cause of performance and issues related to memory use.</p>
+
+<h2 id="how-to-use-vmstat">How to Use vmstat</h2>
+
+<p>Use the <code>vmstat</code> command to run the program. Consider the following output:</p>
+
+<pre><code>$ vmstat
+procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+ 0  0   3532 148760  50700 1397880    0    0     1     2    6    6  3  1 97  0
+</code></pre>
+
+<p>This data provides an average view of virtual memory and system usage since the last reboot. Often, the following form of the command is used:</p>
+
+<pre><code>vmstat [interval] [count]
+</code></pre>
+
+<p>In this example, the first line of data provides the average since the last boot time. Subsequent reports, until <code>[count]</code> is reached, report data on the current state of the system every <code>[interval]</code> seconds.</p>
+
+<h2 id="vmstat-commands">vmstat Commands</h2>
+
+<p><code>vmstat</code> is often run with an interval of 1 second for a small number of seconds depending on kind of problem the administrator is trying to diagnose. The following example illustrates an interval of one (1) second twenty (20) times:</p>
+
+<pre><code>$ vmstat 1 20
+procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+ 0  0   3996 168488  57100 1368636    0    0     1     2    0    0  3  1 97  0
+ 0  0   3996 168604  57100 1368728    0    0     0     0  144  303  1  0 100  0
+ 0  0   3996 168604  57100 1368984    0    0   256     0  162  464  1  0 99  0
+ 0  0   3996 168604  57100 1368972    0    0     0     0  239  638  3  0 97  0
+ 0  0   3996 168604  57100 1368952    0    0     0     0  242  529  1  1 99  0
+ 0  0   3996 168604  57100 1368952    0    0     0     0  148  430  1  0 99  0
+ 1  0   3996 168604  57100 1368952    0    0     0     0  222  451  6  0 94  0
+ 0  0   3996 168604  57100 1368952    0    0     0     0  141  270  2  0 98  0
+ 0  0   3996 168604  57100 1368952    0    0     0     0  166  450  1  0 99  0
+ 0  0   3996 168604  57100 1368952    0    0     0     0  133  410  0  0 99  0
+ 0  0   3996 168604  57100 1368952    0    0     0     0  196  398  0  0 99  0
+ 0  0   3996 168604  57100 1368952    0    0     0     0  187  510  1  0 100  0
+ 0  0   3996 168604  57108 1368952    0    0     0    16  263  677  2  0 97  1
+ 0  0   3996 168604  57108 1368952    0    0     0     0  205  431  1  0 98  0
+ 0  0   3996 168604  57108 1368964    0    0     0     0  179  467  1  0 98  0
+ 0  0   3996 168604  57108 1368964    0    0     0     0  169  446  2  0 98  0
+ 0  0   3996 168604  57108 1368964    0    0     0     0  202  365  2  0 98  0
+ 0  0   3996 168604  57108 1369208    0    0   256     0  226  458  2  1 96  0
+ 0  0   3996 168604  57108 1369208    0    0     0    40  202  501  2  0 98  0
+ 0  0   3996 168604  57108 1369220    0    0     0     0  154  295  2  0 98  0
+</code></pre>
+
+<p>You may run <code>vmstat</code> without a <code>[count]</code> argument if you want ongoing reports of the system&rsquo;s status in real time. In these cases, intervals of 30 seconds or more may be desirable.</p>
+
+<pre><code>$ vmstat 30
+procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+ 0  0   3996 167868  57108 1369788    0    0     1     2    0    0  3  1 97  0
+ 0  0   3996 167860  57108 1369920    0    0     0     0  274  604  2  0 98  0
+ 0  0   3996 167860  57108 1369928    0    0     0     0  196  481  1  0 98  0
+ 0  0   3996 167860  57116 1369908    0    0     0    12  164  414  1  1 97  1
+ 0  0   3996 167860  57116 1369892    0    0     0     0  168  320  0  0 100  0
+ 0  0   3996 167860  57116 1369884    0    0     0     0  142  398  1  0 99  0
+ 0  0   3996 167860  57116 1369880    0    0     0     0  175  450  1  1 98  0
+^C
+</code></pre>
+
+<p>You may choose to direct this output to a file for logging instead of leaving it running endlessly in a background terminal session. To stop the <code>vmstat</code> process, send the break character (<code>^C</code> or Control+C) as above.</p>
+
+<p>In the default operation, <code>vmstat</code> displays memory statistics in kilobytes. <code>vmstat</code> considers a single kilobyte equal to 1024 bytes. To generate <code>vmstat</code> reports where 1 kilobyte is equal to 1000 bytes, use the following form:</p>
+
+<pre><code>$ vmstat -S k 1 10
+procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+ 0  0   4091 150192  58982 1422041    0    0     1     2    0    0  3  1 97  0
+ 0  0   4091 150183  58982 1422381    0    0   256     0  201  518  1  0 99  0
+ 2  0   4091 150183  58982 1422356    0    0     0     0  638 1356  7  1 92  0
+ 0  0   4091 150183  58982 1422360    0    0     0     0  859 1087  5  2 93  0
+ 0  0   4091 150183  58982 1422331    0    0     0     0  404 1100  2  0 97  0
+ 0  0   4091 150183  58982 1422331    0    0     0     0  281  601  2  0 97  0
+ 0  0   4091 150183  58982 1422327    0    0     0     0  279  468  3  0 97  0
+ 0  0   4091 150183  58982 1422331    0    0     0     0  250  572  3  0 97  0
+ 0  0   4091 150183  58990 1422323    0    0     0    16  280  598  4  0 95  1
+ 0  0   4091 150183  58998 1422319    0    0     0    52  270  451  3  0 96  1
+</code></pre>
+
+<p><code>vmstat</code> can also display reports with memory sizes reported in megabytes. <code>vmstat</code> reports with the argument <code>-S m</code> will consider a single megabyte equal to 1000 kilobytes as follows:</p>
+
+<pre><code>$ vmstat -S m 1 10
+procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+ 0  0      4    169 58   1404    0    0 1     2    0    0  3  1 97  0
+ 0  0      4    169 58   1405    0    0 0     0  194  508  1  0 98  0
+ 0  0      4    169 58   1405    0    0 0     0  154  443  0  0 99  0
+ 0  0      4    169 58   1405    0    0 0     0  192  380  0  0 100  0
+ 0  0      4    169 58   1405    0    0 0     0  287  766  3  0 97  0
+ 1  0      4    169 58   1405    0    0 0     0  222  583  1  1 99  0
+ 0  0      4    169 58   1405    0    0 0    36  166  304  1  0 99  0
+ 0  0      4    169 58   1405    0    0 0     0  189  473  1  0 99  0
+ 0  0      4    169 58   1405    0    0 0     0  164  430  1  0 99  0
+ 0  0      4    169 58   1405    0    0 0     0  186  343  0  0 100  0
+</code></pre>
+
+<p><code>vmstat</code> is also able to display megabytes such that a single megabyte is equal to 1024 kilobytes with the argument <code>-S M</code>. Consider the following example:</p>
+
+<pre><code>$ vmstat -S M 1 10
+procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+ 0  0      3    162 55   1339    0    0 1     2    0    0  3  1 97  0
+ 0  0      3    162 55   1339    0    0 0     0  425  700  1  1 98  0
+ 0  0      3    162 55   1339    0    0 0     0  712  997  1  2 97  0
+ 0  0      3    162 55   1339    0    0 0    20  479 1079  3  0 96  1
+ 0  0      3    162 55   1339    0    0 0     0  264  406  2  0 98  0
+ 0  0      3    162 55   1339    0    0 0     0  273  552  3  0 97  0
+ 0  0      3    162 55   1339    0    0 0     0  218  467  1  0 99  0
+ 0  0      3    162 55   1339    0    0 0     0  250  434  1  0 99  0
+ 0  0      3    162 55   1339    0    0 0     0  200  444  2  0 98  0
+ 0  0      3    162 55   1339    0    0 0     0  313  771  3  1 96  0
+</code></pre>
+
+<h2 id="how-to-interpret-vmstat-output">How to Interpret vmstat Output</h2>
+
+<p><code>vmstat</code> reports describe the current state of a Linux system. Information regarding the running state of a system is useful when diagnosing performance related issues. Often <a href="/docs/platform/support">Linode Support</a> will request <code>vmstat</code> reports in order to more conclusively diagnose some issues; however, with a little background in what all of the data represents, you can interpret this data yourself.</p>
+
+<p>The output of <code>vmstat</code> is displayed in a number of columns. The following sections provide brief overviews of the data reported in each column.</p>
+
+<h3 id="procs">Procs</h3>
+
+<p>The <code>procs</code> data reports the number of processing jobs waiting to run and allows you to determine if there are processes &ldquo;blocking&rdquo; your system from running smoothly.</p>
+
+<p>The <code>r</code> column displays the total number of processes waiting for access to the processor. The <code>b</code> column displays the total number of processes in a &ldquo;sleep&rdquo; state.</p>
+
+<p>These values are often <code>0</code>.</p>
+
+<h3 id="memory">Memory</h3>
+
+<p>The information displayed in the <code>memory</code> section provides the same data about <a href="/docs/tools-reference/linux-system-administration-basics/#check-current-memory-usage">memory usage</a> as the command <code>free -m</code>.</p>
+
+<p>The <code>swapd</code> or &ldquo;swapped&rdquo; column reports how much memory has been swapped out to a swap file or disk. The <code>free</code> column reports the amount of unallocated memory. The <code>buff</code> or &ldquo;buffers&rdquo; column reports the amount of allocated memory in use. The <code>cache</code> column reports the amount of allocated memory that could be swapped to disk or unallocated if the resources are needed for another task.</p>
+
+<h3 id="swap">Swap</h3>
+
+<p>The <code>swap</code> section reports the rate that memory is sent to or retrieved from the swap system. By reporting &ldquo;swapping&rdquo; separately from total disk activity, <code>vmstat</code> allows you to determine how much disk activity is related to the swap system.</p>
+
+<p>The <code>si</code> column reports the amount of memory that is moved from swap to &ldquo;real&rdquo; memory per second. The <code>so</code> column reports the amount of memory that is moved to swap from &ldquo;real&rdquo; memory per second.</p>
+
+<h3 id="i-o">I/O</h3>
+
+<p>The <code>io</code> section reports the amount of input and output activity per second in terms of blocks read and blocks written.</p>
+
+<p>The <code>bi</code> column reports the number of blocks received, or &ldquo;blocks in&rdquo;, from a disk per second. The <code>bo</code> column reports the number of blocks sent, or &ldquo;blocks out&rdquo;, to a disk per second.</p>
+
+<h3 id="system">System</h3>
+
+<p>The <code>system</code> section reports data that reflects the number of system operations per second.</p>
+
+<p>The <code>in</code> column reports the number of system interrupts per second, including interrupts from system clock. The <code>cs</code> column reports the number of context switches that the system makes in order to process all tasks.</p>
+
+<h3 id="cpu">CPU</h3>
+
+<p>The <code>cpu</code> section reports on the use of the system&rsquo;s CPU resources. The columns in this section always add to 100 and reflect &ldquo;percentage of available time&rdquo;.</p>
+
+<p>The <code>us</code> column reports the amount of time that the processor spends on userland tasks, or all non-kernel processes. The <code>sy</code> column reports the amount of time that the processor spends on kernel related tasks. The <code>id</code> column reports the amount of time that the processor spends idle. The <code>wa</code> column reports the amount of time that the processor spends waiting for IO operations to complete before being able to continue processing tasks.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.linuxatemyram.com/">Linux Ate My Ram</a></li>
+
+<li><a href="http://chrisjohnston.org/2009/why-on-linux-am-i-seeing-so-much-ram-usage">Memory Usage on Linux</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/quick-answers/linux/install-selinux-on-ubuntu/">How to Install SELinux on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/how-to-use-wget/">How to Use Wget</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/">Deploy an Image to a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/">Reset the Root Password on your Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/resize-a-linode-disk/">Resize a Linode Disk</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-vmstat">What is vmstat?</a></li>
+<li><a href="#how-to-use-vmstat">How to Use vmstat</a></li>
+<li><a href="#vmstat-commands">vmstat Commands</a></li>
+<li><a href="#how-to-interpret-vmstat-output">How to Interpret vmstat Output</a>
+<ul>
+<li><a href="#procs">Procs</a></li>
+<li><a href="#memory">Memory</a></li>
+<li><a href="#swap">Swap</a></li>
+<li><a href="#i-o">I/O</a></li>
+<li><a href="#system">System</a></li>
+<li><a href="#cpu">CPU</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

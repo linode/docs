@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Apache Configuration Basics</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="An advanced overview of configuration for the Apache web server including virtual hosts and configuration file management">
+        <meta name="keywords" content="configuration, apache, web server, virtual hosting, http">
+        
+        <meta property="og:title" content="Apache Configuration Basics">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/">
+        <meta property="og:description" content="An advanced overview of configuration for the Apache web server including virtual hosts and configuration file management">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/apache-tips-and-tricks/">Apache Tips &amp; Tricks</a>
+  
+</li>
+
+
+<li>
+  
+  Apache Configuration Basics
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Apache Configuration Basics</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-08-22T00:00:00Z">Monday, August 22, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache-tips-and-tricks%2fapache-configuration-basics%2f&via=linode&text=Apache%20Configuration%20Basics" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache-tips-and-tricks%2fapache-configuration-basics%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache-tips-and-tricks%2fapache-configuration-basics%2f&t=Apache%20Configuration%20Basics" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/apache-configuration-basics/Apache_Configuration_Basics_smg.png" alt="Apache Configuration Basics" /></p>
+
+<p>The Apache HTTP web server is in many respects the <em>de facto</em> standard for general purpose HTTP services. Through its large number of modules, it provides flexible support for proxy servers, URL rewriting, and granular access control. Furthermore, web developers often choose Apache for its support of server-side scripting using CGI, FastCGI, and embedded interpreters. These capabilities facilitate the quick and efficient execution of dynamic code. While there are several prominent alternatives to Apache, even within the boundaries of open source, the breadth of Apache usage is unique.</p>
+
+<p>The extraordinary degree of flexibility provided by Apache does not come without some cost; this mostly takes the form of a configuration structure that is sometimes confusing and often complicated. For this reason we&rsquo;ve created this document and a number of other guides that seek to address this complexity and explore some more advanced and <em>optional</em> functionality of the Apache HTTP Sever.</p>
+
+<p>If you&rsquo;re interested in just getting a running web server and installing Apache for the first time, we recommend using the appropriate &ldquo;<a href="/docs/websites/apache/">installing Apache guide</a>&rdquo; for your distribution of Linux. If you need a more full-featured LAMP stack, consider trying the appropriate <a href="/docs/websites/lamp/">LAMP guide</a> for your distribution. This guide assumes that you have a running and up to date Linux system, have successfully installed Apache, and have logged into a shell session with root access.</p>
+
+<h2 id="apache-basics">Apache Basics</h2>
+
+<p>The default configuration of Apache varies significantly between various distributions of Linux. Debian and Ubuntu distributions, as well as Gentoo, refer to Apache as &ldquo;Apache2&rdquo; and place the configuration files in the <code>/etc/apache2/</code> directory. Other distributions, including Fedora, CentOS, and Arch Linux refer to Apache as &ldquo;httpd&rdquo; and store configuration files in <code>/etc/httpd/</code>. Most configuration options do not vary between operating systems, though we encourage you to become familiar with the default configuration of your Apache server. The greatest challenges in configuring Apache are in understanding the distributions&rsquo; standard configurations and their quirks and differences from the Apache upstream.</p>
+
+<p>To administer basic Apache functionality you can use the &ldquo;init&rdquo; scripts, which provide a safe and easy way to start, stop, and restart the server. The init script also allows you to reload the configuration and check on the status of the server. To access these functions, issue the appropriate command:</p>
+
+<pre><code>/etc/init.d/apache2 start
+/etc/init.d/apache2 stop
+/etc/init.d/apache2 restart
+/etc/init.d/apache2 reload
+/etc/init.d/apache2 status
+</code></pre>
+
+<p>If you&rsquo;re using a distribution that refers to Apache as httpd, then the commands are as follows:</p>
+
+<pre><code>/etc/init.d/httpd start
+/etc/init.d/httpd stop
+/etc/init.d/httpd restart
+/etc/init.d/httpd reload
+/etc/init.d/httpd status
+</code></pre>
+
+<p>For some distributions, the path to the script may be <code>/etc/rc.d/init.d/</code> instead of <code>/etc/init.d/</code>.</p>
+
+<p>If you&rsquo;re using <code>mod_disk_cache</code> on Debian-based distributions, the init script contains functionality to control the functionality of the htcache, with the following command:</p>
+
+<pre><code>/etc/init.d/apache2 start-htcacheclean
+/etc/init.d/apache2 stop-htcacheclean
+</code></pre>
+
+<p>There is also additional functionality provided from a command line interface. To check the syntax of your Apache configuration files without needing to restart the server and test, you can issue the following command on Debian and Ubuntu systems:</p>
+
+<pre><code>apache2ctl -t
+</code></pre>
+
+<p>On CentOS and Fedora systems, use the following form:</p>
+
+<pre><code>httpd -t
+</code></pre>
+
+<p>Additionally, the <code>apache2ctl -S</code> or <code>httpd -S</code> commands provide a report on currently running virtual hosts, containing the port that the host is listening on, the name of the virtual host (i.e. the domain), and information about the location of the site&rsquo;s configuration settings including file names and line numbers.</p>
+
+<p>Typically, the &ldquo;master&rdquo; configuration file for Apache is located in the <code>httpd.conf</code> file. In Debian-based distributions, this is located in the <code>apache2.conf</code> file, and the <code>httpd.conf</code> file contains user-specific configuration. In addition to the master file, a number of additional files are included by the master file. To get a list of these files, issue one of the following commands, depending on your distribution:</p>
+
+<pre><code>grep &quot;Include&quot; /etc/apache2/apache2.conf
+grep &quot;Include&quot; /etc/apache2/httpd.conf
+grep &quot;Include&quot; /etc/httpd/httpd.conf
+</code></pre>
+
+<p>Note that the order in which these files are included can affect the behavior of the web server. If later options contradict options set in earlier files, the later options override earlier options. Familiarizing yourself with the existing default configuration can be a helpful learning experience.</p>
+
+<h2 id="configuration-file-organization">Configuration File Organization</h2>
+
+<p>One of the most common use cases for the Apache web server is to use its &ldquo;virtual hosting&rdquo; capabilities, which allow a single instance of Apache to serve numerous websites and subdomains. Because most websites don&rsquo;t tend to use a significant amount of system resources, virtual hosting is often a great way to fully utilize a web server. As a result of this capability, configuration files for virtual hosts can be complex and difficult to organize. There are two major approaches to the solution for this problem.</p>
+
+<h3 id="symbolic-links-and-the-debian-way">Symbolic Links and the Debian Way</h3>
+
+<p>In an effort to increase usability, the Debian project makes it possible for users to mostly avoid editing the &ldquo;base configuration&rdquo; of the web server. As a result, Debian and Ubuntu use a sequence of symbolic links to allow administrators to enable and disable various configuration options without deleting configuration options outright.</p>
+
+<p>If you use an operating system other than Debian or would like to use the &ldquo;sites-enabled&rdquo; organization for your configuration files, make sure that the appropriate line from the following exists in your <code>apache.conf</code> or <code>httpd.conf</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/httpd/httpd.conf or /etc/apache2/apache2.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">Include</span> <span class="sx">/etc/httpd/sites-enabled/</span>
+<span class="nb">Include</span> <span class="sx">/etc/apache2/sites-enabled/</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you haven&rsquo;t yet created this directory, you will need to do so with a command similar to the following: <code>mkdir -p /etc/httpd/sites-enabled/</code>. Now your Apache server will include configuration options specified in any files stored in these directories. To create a link to this directory, issue the following command:</p>
+
+<pre><code>ln -s /etc/httpd/vhosts/example.com /etc/httpd/sites-enabled/example.com
+</code></pre>
+
+<p>The syntax for creating symbolic links is <code>ln -s</code> followed by the &ldquo;target&rdquo; or the original file you are linking, and then the path to the link you wish to create. If you omit the final term, the link name, <code>ln</code> will create a link with the same name as the target file in the current directory. If you remove a link, the original file will be unaffected. Apache will follow multiple layers of symbolic links, though this can become confusing in its own right.</p>
+
+<p>One possible advantage of this is that the configuration files for a virtual host can be kept in close proximity to the other related files for that virtual host. Often all resources related to your virtual host are located in a directory such as <code>/srv/www/example.com/</code>. The <code>DocumentRoot</code>, logs directory, and application support files are located beneath this directory at <code>public_html/</code>, <code>logs/</code>, and <code>application/</code> respectively. Given this organization, you may find it convent to store your virtual host configuration file at <code>/srv/www/example.com/</code>. This makes backing up and moving a virtual host easy, as all files are located in a single directory. If the virtual host configuration file is located at <code>/srv/www/example.com/apache.conf</code> you might create the symbolic link as follows:</p>
+
+<pre><code>ln -s /srv/www/example.com/apache.conf /etc/apache2/sites-available/example.com
+</code></pre>
+
+<p>If you&rsquo;re using a Debian-based distribution, you can use the <code>a2ensite</code> and <code>a2dissite</code> tools to manage virtual host files. You can also manually link your configuration files to <code>/etc/apache2/sites-enabled/example.com</code>. If you aren&rsquo;t using a Debian-based distribution, the symbolic link might look something like the following, although the file names and locations may change somewhat:</p>
+
+<pre><code>ln -s /srv/www/example.com/apache.conf /etc/httpd/conf.d/example.conf
+</code></pre>
+
+<h3 id="create-a-single-virtual-hosts-file">Create a Single Virtual Hosts file</h3>
+
+<p>The Debian approach of keeping a single configuration file for each virtual host can be helpful for managing a number of websites that are not interconnected, or that need to be edited by a number of distinct and non-privileged users. However, there are some situations where having too many individual virtual host files that set the same cluster of configuration options for a group of hosts can cause confusion and increase the maintenance burden.</p>
+
+<p>In these cases, a single file may be the best option for keeping Apache configured properly. This is the preferred organization for virtual host configuration in some distributions, including CentOS, Fedora, and Arch Linux. While you should check the default Apache configuration for your distribution, commonly there is a <code>conf.d/</code> directory where user-created configuration can be stored. If you want to combine a number of virtual host configuration files into a single file, create a <code>vhosts.conf</code> in the <code>conf.d/</code> folder and place all of your configuration options in this file. The <code>conf.d/</code> folder is located within Apache&rsquo;s <code>/etc/</code> directory, either: <code>/etc/apache2/conf.d/</code> or <code>/etc/httpd/conf.d/</code> depending on your distribution.</p>
+
+<p>Both configuration options are functionally equivalent, but offer easier administration in different scenarios. The configuration file organization that you choose depends on the needs of your particular deployment.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="/docs/websites/apache/">Apache Installation</a></li>
+
+<li><a href="/docs/websites/lamp/">LAMP stack guides</a></li>
+
+<li><a href="/docs/troubleshooting/troubleshooting-common-apache-issues/">Troubleshooting Common Issues with Apache</a></li>
+
+<li><a href="http://linode.com/community/">Linode User Community</a></li>
+
+<li><a href="http://httpd.apache.org/docs/2.2/vhosts/">Apache Virtual Host Documentation</a></li>
+
+<li><a href="http://httpd.apache.org/docs/2.2/mod/core.html#virtualhost">Virtual Host Directives</a></li>
+
+<li><a href="http://httpd.apache.org/docs/2.2/programs/apachectl.html">Apache Control Interface</a></li>
+
+<li><a href="http://httpd.apache.org/docs/2.2/programs/httpd.html">HTTP Command</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-on-ubuntu-14-04/">Apache Web Server on Ubuntu 14.04 LTS</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/">Tuning Your Apache Server</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/">Use Nginx as a Front-end Proxy and Software Load Balancer</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/">Rule-based Access Control for Apache</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-access-control/">Apache Access Control</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#apache-basics">Apache Basics</a></li>
+<li><a href="#configuration-file-organization">Configuration File Organization</a>
+<ul>
+<li><a href="#symbolic-links-and-the-debian-way">Symbolic Links and the Debian Way</a></li>
+<li><a href="#create-a-single-virtual-hosts-file">Create a Single Virtual Hosts file</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

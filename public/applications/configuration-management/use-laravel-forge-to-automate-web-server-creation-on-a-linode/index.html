@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use Laravel Forge to Automate Web-Server Creation on a Linode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to use Laravel Forge to automate deployment of your PHP projects on a Linode.">
+        <meta name="keywords" content="content management, web-server automation, laravel, php, wordpress, drupal, cms, joomla, Laravel Forge">
+        
+        <meta property="og:title" content="Use Laravel Forge to Automate Web-Server Creation on a Linode">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/">
+        <meta property="og:description" content="This guide shows how to use Laravel Forge to automate deployment of your PHP projects on a Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/configuration-management/">Configuration Management</a>
+  
+</li>
+
+
+<li>
+  
+  Use Laravel Forge to Automate Web-Server Creation on a Linode
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use Laravel Forge to Automate Web-Server Creation on a Linode</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-20T00:00:00Z">Wednesday, September 20, 2017</time> by Onwuka Gideon</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fuse-laravel-forge-to-automate-web-server-creation-on-a-linode%2f&via=linode&text=Use%20Laravel%20Forge%20to%20Automate%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fuse-laravel-forge-to-automate-web-server-creation-on-a-linode%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fuse-laravel-forge-to-automate-web-server-creation-on-a-linode%2f&t=Use%20Laravel%20Forge%20to%20Automate%20Web-Server%20Creation%20on%20a%20Linode" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/configuration-management/Laravel_Forge.jpg" alt="Laravel Forge Banner" /></p>
+
+<h2 id="what-is-laravel-forge">What is Laravel Forge</h2>
+
+<p><a href="https://forge.laravel.com">Laravel Forge</a> is a tool for deploying and configuring web applications. It was developed by the makers of the <a href="https://laravel.com">Laravel framework</a>, but can be used to automate the deployment of any web application that uses a PHP server.</p>
+
+<p>Creating a fully-functioning web server is normally a complicated and time-consuming process, involving the installation of multiple components such as Nginx, MySQL, and PHP. Laravel Forge automates all of the necessary installation and configuration, allowing you to get your website up and running quickly.</p>
+
+<p>Once your server has been created, deploying updates becomes as simple and painless as pushing to your repository on Github. Also, you can easily manage the configuration of your website though a web interface. Finally, Forge automatically provides advanced security features, such as free SSL certificates (through <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a>) and automatic firewall configuration.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Sign up for a <a href="https://forge.laravel.com/auth/register">Laravel Forge</a> account if you do not have one.</p></li>
+
+<li><p>This guide will require a <a href="https://www.linode.com/">Linode</a> account and an API key. For more detailed instructions, refer to <a href="https://www.linode.com/docs/platform/api/api-key">this guide</a>.</p></li>
+</ol>
+
+<h2 id="link-to-a-source-control-service">Link to a Source Control Service</h2>
+
+<p>If you want to be able to quickly deploy from Github, Gitlab or Bitbucket, you will need to link these sites to your Forge account. From your Forge dashboard, select the <strong>Your Profile</strong> tab.</p>
+
+<ol>
+<li><p>Choose your preferred source control by clicking on the <strong>Source Control</strong> link on the Left.</p>
+
+<p><img src="/docs/assets/configuration-management/linking_source_control.png" alt="Linode API" /></p></li>
+
+<li><p>Click on the source control service you would like to connect to.</p>
+
+<p>Once you link to a source control service, you will be prompted to authorize Laravel Forge. You will then be redirected back to Forge’s website.</p>
+
+<p><img src="/docs/assets/configuration-management/source_control_authorized.png" alt="Linode API" /></p></li>
+</ol>
+
+<h2 id="adding-your-linode-api-key-to-forge">Adding Your Linode API Key to Forge</h2>
+
+<ol>
+<li><p>Open your Laravel Forge Dashboard.</p></li>
+
+<li><p>Click on <strong>Service Providers</strong>.</p></li>
+
+<li><p>Select <strong>Linode</strong> and input your API key.</p></li>
+</ol>
+
+<p><img src="/docs/assets/configuration-management/adding_api_key_to_forge.png" alt="Linode API" /></p>
+
+<h2 id="create-a-server">Create a Server</h2>
+
+<ol>
+<li><p>Click on <strong>Linode</strong>.</p>
+
+<p><img src="/docs/assets/configuration-management/create_a_server.png" alt="Linode API" /></p>
+
+<p>You will then be provided with some options:</p>
+
+<p><strong>Credentials:</strong> Any cloud providers that you have linked to your account.</p>
+
+<p><strong>Name:</strong> A name for your server. You can choose any name you like.</p>
+
+<p><strong>Server Size:</strong> The size of the server.</p>
+
+<p><strong>Region:</strong> The datacenter where you want your server hosted. Choose a location close to where you expect the majority of users to be.</p>
+
+<p><strong>PHP Version:</strong> The installed PHP version.</p>
+
+<p><strong>Database Name:</strong> If your application needs a database, then you can name it here. By default it will be named <code>forge</code>.</p></li>
+
+<li><p>Once you have finished selecting options, click <strong>Create Server</strong>. A pop up will show you the sudo and database passwords that have been automatically generated for you. Be sure to copy these values and store them in a secure place.</p>
+
+<p><img src="/docs/assets/configuration-management/server_credential.png" alt="Linode API" /></p>
+
+<p>Forge will now perform the steps necessary to create and configure a Linode based on the settings you chose earlier.</p></li>
+
+<li><p>A green check in the <strong>Status</strong> column means the server is active. This will take a few seconds.</p>
+
+<p><img src="/docs/assets/configuration-management/active_servers.png" alt="Linode API" /></p></li>
+
+<li><p>Navigate to the public IP address of your Linode in a browser.</p>
+
+<p><img src="/docs/assets/configuration-management/server_set_up_with_php_7_1.png" alt="Linode API" /></p></li>
+
+<li><p>When the setup process has completed, you will receive an email containing details about your new server.</p>
+
+<p><img src="/docs/assets/configuration-management/mail_from_linode_showing_details_created.png" alt="Linode API" /></p></li>
+</ol>
+
+<h2 id="add-a-domain-name">Add a Domain Name</h2>
+
+<p>If you want to use Let&rsquo;s Encrypt to obtain a free SSL certificate for your website, you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your new server.</p>
+
+<ol>
+<li><p>Head back to Laravel Forge account then click on the active server.</p></li>
+
+<li><p>Go to your domain name provider, add an ANAME record for the domain or subdomain, and point it to the public IP address of your server.</p>
+
+<p><img src="/docs/assets/configuration-management/adding_new_domain.png" alt="Linode API" /></p>
+
+<ul>
+<li>Root Domain: This is your domain name.</li>
+<li>Project Type: This is the type of project you are using. If you are building regular PHP, you can choose <code>General PHP/Laravel</code>. Other options include Static, HTML, Symfony, and Symfony (Dev).</li>
+<li>Web Directory: This is the directory from which public files will be served.</li>
+</ul></li>
+
+<li><p>Submit the form by clicking <strong>ADD SITE</strong>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you do not add a domain name, you can still access your server through its public IP address.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="add-a-repository">Add a Repository</h2>
+
+<ol>
+<li><p>Click on your active servers. Under the active site, choose the domain name you added in the previous step.</p>
+
+<p><img src="/docs/assets/configuration-management/adding_repository.gif" alt="Linode API" /></p></li>
+
+<li><p>Click <strong>Apps</strong> on the left-hand side and then select your Git repository.</p>
+
+<p><img src="/docs/assets/configuration-management/adding_git_repository.png" alt="Linode API" /></p></li>
+
+<li><p>Fill in the repository field with your username and repository. Then select the branch you want to use. Click on <strong>INSTALL REPOSITORY.</strong> Observe that the repository field is <code>gitlab_username/repository_name_without_.git</code>. The sample image below shows <code>dongido/transaction-manager</code>:</p>
+
+<p><img src="/docs/assets/configuration-management/git_repository_name.png" alt="Linode API" /></p></li>
+
+<li><p>If you visit the website again, the repository is now copied to your Linode server and everything is set up.</p>
+
+<p><img src="/docs/assets/configuration-management/site_up_and_running.png" alt="Linode API" /></p></li>
+</ol>
+
+<h2 id="quick-deploy">Quick Deploy</h2>
+
+<p>These steps will show how to immediately deploy changes from the source directory to the live site.</p>
+
+<ol>
+<li><p>From the <strong>INSTALL REPOSITORY</strong> menu, toggle <strong>Quick Deploy</strong> to &ldquo;on&rdquo;.</p>
+
+<p><img src="/docs/assets/configuration-management/Laravel_forge_deploy.png" alt="Linode API" /></p></li>
+
+<li><p>Make changes to your project on Github or Gitlab and commit them to the master branch. Your live site will be updated to reflect the changes.</p>
+
+<p><img src="/docs/assets/configuration-management/laravel_forge_sites.png" alt="Linode API" /></p></li>
+</ol>
+
+<h2 id="adding-ssl-to-your-domain-name">Adding SSL to Your Domain Name</h2>
+
+<p>SSL (Secure Sockets Layer) is the standard security technology for establishing an encrypted link between a web server and a browser. To add SSL:</p>
+
+<ol>
+<li><p>Choose your server on Forge.</p></li>
+
+<li><p>Select the domain name of your server.</p></li>
+
+<li><p>Click on <strong>SSL</strong> from the menu on the left.</p>
+
+<p><img src="/docs/assets/configuration-management/laravel_forge_adding_ssl.png" alt="Linode API" /></p>
+
+<p>Laravel Forge comes with LetsEncrypt which help us generate a free SSL certificate.</p></li>
+
+<li><p>If you already have an SSL certificate, click on the Install Existing Certificate. Otherwise, select <strong>LetsEncrypt (Beta)</strong>.</p></li>
+
+<li><p>If you chose to use LetsEncrypt, you will be presented with a button to obtain a certificate. Click on it and allow it to install.</p></li>
+
+<li><p>Activate your new certificate by clicking on the <strong>activate</strong> icon.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://forge.laravel.com">Laravel Forge</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu/">Update and Secure Drupal 8 on Ubuntu or Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/install-and-configure-drupal-8/">Install and Configure Drupal 8</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/">Themes, Modules, &amp; Backups with Drupal Drush on Debian 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/drush-drupal/">Installing &amp; Using Drupal Drush on Debian 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/cms-overview/">Content Management Systems: an Overview</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-laravel-forge">What is Laravel Forge</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#link-to-a-source-control-service">Link to a Source Control Service</a></li>
+<li><a href="#adding-your-linode-api-key-to-forge">Adding Your Linode API Key to Forge</a></li>
+<li><a href="#create-a-server">Create a Server</a></li>
+<li><a href="#add-a-domain-name">Add a Domain Name</a></li>
+<li><a href="#add-a-repository">Add a Repository</a></li>
+<li><a href="#quick-deploy">Quick Deploy</a></li>
+<li><a href="#adding-ssl-to-your-domain-name">Adding SSL to Your Domain Name</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

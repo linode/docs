@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Display Jupyter Notebooks with Jekyll</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Share data analysis and visualizations on Jupyter Notebooks with Jekyll.">
+        <meta name="keywords" content="Jupyter,  ruby,  python,  Jekyll">
+        
+        <meta property="og:title" content="Display Jupyter Notebooks with Jekyll">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/project-management/jupyter-nobook-on-jekyll/">
+        <meta property="og:description" content="Share data analysis and visualizations on Jupyter Notebooks with Jekyll.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/project-management/jupyter-nobook-on-jekyll/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/project-management/">Project Management</a>
+  
+</li>
+
+
+<li>
+  
+  Display Jupyter Notebooks with Jekyll
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Display Jupyter Notebooks with Jekyll</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-06T00:00:00Z">Monday, November 6, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fproject-management%2fjupyter-nobook-on-jekyll%2f&via=linode&text=Display%20Jupyter%20Notebooks%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fproject-management%2fjupyter-nobook-on-jekyll%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fproject-management%2fjupyter-nobook-on-jekyll%2f&t=Display%20Jupyter%20Notebooks%20with%20Jekyll" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/project-management/jupyter-nobook-on-jekyll.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/project-management/jupyter-nobook-on-jekyll.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/jupyter_jekyll.jpg" alt="Jupyter and Jekyll" /></p>
+
+<p>Jekyll is a static site generator written in Ruby with support for blogging and integration with Github pages. This setup makes sharing data analysis and visualizations simple because Github takes care of hosting. Jekyll comes with a variety of themes and plugins so the user does not have to worry about web development.</p>
+
+<p>This guide will take you through the process of installing Jekyll and configuring it to display several types of output from a Jupyter notebook.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the appropriate sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre></li>
+
+<li><p>Install GCC and Make, if they are not already installed on your distribution by default:</p>
+
+<pre><code>sudo apt install gcc make
+</code></pre></li>
+</ol>
+
+<h2 id="install-ruby-and-jekyll">Install Ruby and Jekyll</h2>
+
+<p>Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:</p>
+
+<ul>
+<li>No need to <code>sudo</code> for when installing gems</li>
+<li>Simplifies cases of using multiple sets of gems on the same machine</li>
+<li>Easily switch between different versions of Ruby</li>
+</ul>
+
+<ol>
+<li><p>The <code>software-properties-common</code> package is a convenient way to add new PPAs:</p>
+
+<pre><code>sudo apt install software-properties-common
+</code></pre></li>
+
+<li><p>Add the RVM repository to the PPA list:</p>
+
+<pre><code>sudo apt-add-repository -y ppa:rael-gc/rvm
+</code></pre></li>
+
+<li><p>Update the PPA list of available packages and install RVM:</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt install rvm
+</code></pre></li>
+
+<li><p>After installation, the terminal will show the new group it created. Exit out of the terminal session and SSH back into the Linode:</p>
+
+<pre><code>Creating group 'rvm'
+
+Installing RVM to /usr/share/rvm/
+Installation of RVM in /usr/share/rvm/ is almost complete:
+
+  * First you need to add all users that will be using rvm to 'rvm' group,
+    and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
+
+  * To start using RVM you need to run `source /etc/profile.d/rvm.sh`
+    in all your open shell windows, in rare cases you need to reopen all shell windows.
+</code></pre></li>
+
+<li><p>Install Ruby:</p>
+
+<pre><code>rvm install ruby
+</code></pre></li>
+
+<li><p>Use <code>gem</code> to download Jekyll and Bundler:</p>
+
+<pre><code>gem install jekyll bundler
+</code></pre></li>
+</ol>
+
+<h3 id="create-a-new-blog">Create a New Blog</h3>
+
+<ol>
+<li><p>Create a new blog. This guide will use <code>exampleblog</code>:</p>
+
+<pre><code>jekyll new exampleblog
+</code></pre></li>
+
+<li><p>Navigate into the <code>exampleblog</code> directory. Although Jekyll already has a scaffold for a blog, create an <code>assets</code> folder to store images, CSS, and JS files.</p>
+
+<pre><code>cd exampleblog
+mkdir -p assets/images
+</code></pre>
+
+<p>The directory tree should be similar to:</p>
+
+<pre><code>exampleblog/
+├── 404.html
+├── about.md
+├── assets
+│   └── images
+├── _config.yml
+├── Gemfile
+├── Gemfile.lock
+├── index.md
+└── _posts
+    └── 2017-10-10-welcome-to-jekyll.markdown
+</code></pre></li>
+
+<li><p>Run the Jekyll server. Using a web browser, navigate to your Linode&rsquo;s public IP address (port <code>4000</code>) to preview the site. There should be a default first post.</p>
+
+<pre><code>bundle exec jekyll serve --host=0.0.0.0
+</code></pre>
+
+<p><img src="/docs/assets/jekyll_first_post.png" alt="First Jekyll Post" title="First Jekyll Post" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>After starting the Jekyll server, there will be a new <code>_site</code> folder. Do not store files in this folder as it is rebuilt each time changes are made to the site.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="configure-jupyter-notebook">Configure Jupyter Notebook</h2>
+
+<p>If you do not already have Anaconda with Jupyter installed on your system, this section will guide you through the process of setting up a notebook that will provide sample output, which can then be exported to your Jekyll blog.</p>
+
+<p>The steps in this section can be completed from either your local machine or from the Linode used for your Jekyll blog. If you use a Linode, you can use <a href="https://ngrok.com/">ngrok</a> to view your notebook.</p>
+
+<ol>
+<li><p>If you do not already have Anaconda on your system, download and install it:</p>
+
+<pre><code>curl -O https://repo.continuum.io/archive/Anaconda3-5.0.0.1-Linux-x86_64.sh
+bash Anaconda3-5.0.0.1-Linux-x86_64.sh
+</code></pre>
+
+<p>Follow the prompts to install Anaconda on your system.</p></li>
+
+<li><p>Create an Anaconda environment for Jupyter with R. Replace <code>data-notebooks</code> in the following command with a suitable environment name:</p>
+
+<pre><code>conda create --name data-notebooks
+source activate data-notebooks
+</code></pre></li>
+
+<li><p>Start the Jupyter notebook:</p>
+
+<pre><code>jupyter notebook
+</code></pre></li>
+</ol>
+
+<h2 id="export-jupyter-notebook-as-markdown">Export Jupyter Notebook as Markdown</h2>
+
+<p>This section demonstrates some common features of a Jupyter Notebook that can be rendered as HTML on a Jekyll blog. There are four types of outputs from a Jupyter Notebook cell covered here: MathJex through LaTeX in Markdown, an HTML table, console output, and graphs from a plotting function. The Iris dataset will be used as an example to generate the output in this guide.</p>
+
+<ol>
+<li><p>Open the notebook of interest, or use the code below to create an example notebook. Run all of the relevant cells so that the output you want to display on your Jekyll blog is visible on the page. Navigate to <code>File &gt; Download As &gt; Markdown (.md)</code>. The markdown file will save to the default <code>Downloads</code> folder of the browser.</p>
+
+<p><img src="/docs/assets/jekyll/jupyter_menu.png" alt="Jupyter Menu" title="Jupyter Menu" /></p>
+
+<p>Alternatively, this can be done directly from the command line. In addition to creating <code>example_notebook.md</code>, graphics are also saved in a separate <code>example_notebook_files</code> folder.</p>
+
+<pre><code>jupyter nbconvert --to markdown /path/to/example_notebook.ipynb
+</code></pre></li>
+
+<li><p>The demo code used in this guide is below:</p>
+
+<dl class="file">
+<dt>
+
+
+		example.ipynb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py">\<span class="n">begin</span><span class="p">{</span><span class="n">equation</span><span class="o">*</span><span class="p">}</span>
+\<span class="n">mathbf</span><span class="p">{</span><span class="n">V</span><span class="p">}</span><span class="n">_1</span> \<span class="n">times</span> \<span class="n">mathbf</span><span class="p">{</span><span class="n">V</span><span class="p">}</span><span class="n">_2</span> <span class="o">=</span>  \<span class="n">begin</span><span class="p">{</span><span class="n">vmatrix</span><span class="p">}</span>
+\<span class="n">mathbf</span><span class="p">{</span><span class="n">i</span><span class="p">}</span> <span class="o">&amp;</span> \<span class="n">mathbf</span><span class="p">{</span><span class="n">j</span><span class="p">}</span> <span class="o">&amp;</span> \<span class="n">mathbf</span><span class="p">{</span><span class="n">k</span><span class="p">}</span> \\
+\<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span> <span class="n">X</span><span class="p">}{</span>\<span class="n">partial</span> <span class="n">u</span><span class="p">}</span> <span class="o">&amp;</span>  \<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span> <span class="n">Y</span><span class="p">}{</span>\<span class="n">partial</span> <span class="n">u</span><span class="p">}</span> <span class="o">&amp;</span> <span class="mi">0</span> \\
+\<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span> <span class="n">X</span><span class="p">}{</span>\<span class="n">partial</span> <span class="n">v</span><span class="p">}</span> <span class="o">&amp;</span>  \<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span> <span class="n">Y</span><span class="p">}{</span>\<span class="n">partial</span> <span class="n">v</span><span class="p">}</span> <span class="o">&amp;</span> <span class="mi">0</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">vmatrix</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">equation</span><span class="o">*</span><span class="p">}</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#34;</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s1">&#39;sepal-length&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;sepal-width&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;petal-length&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;petal-width&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+
+<span class="n">iris</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">iris</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;petal-length&#34;</span><span class="p">],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;petal-width&#34;</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;class&#34;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Inside the <code>_posts</code> folder of the Jekyll project, create a new markdown file called <code>YYYY-MM-DD-example-post.md</code>. If the date format is incorrect, the post may not be displayed on the blog:</p>
+
+<pre><code>touch YYYY-MM-DD-example-post.md
+</code></pre></li>
+
+<li><p>The markdown file should begin with three dashes and contain headers which provide information for Jekyll to populate the post with the appropriate page data. The date must be in the format specified. The hours, minutes, seconds, and timezone adjustment are optional:</p>
+
+<dl class="file">
+<dt>
+
+
+		YYYY-MM-DD-example-post.md 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span>layout<span class="p">:</span><span class="w"> </span>post<span class="w">
+</span><span class="w"></span>title<span class="p">:</span><span class="w">  </span><span class="s2">&#34;Awesome Data Visualization&#34;</span><span class="w">
+</span><span class="w"></span>date<span class="p">:</span><span class="w">   </span><span class="ld">2017-10-10 12:07:25 +0000</span><span class="w">
+</span><span class="w"></span>categories<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>data<span class="w">
+</span><span class="w"></span>---</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Copy the contents of the markdown file exported from Jupyter into the new post.</p>
+
+<p>To do this from the command line, use:</p>
+
+<pre><code>cat example_notebook.md | tee -a exampleblog/_posts/YYYY-MM-DD-example-post.md
+</code></pre></li>
+</ol>
+
+<h2 id="modify-markdown-files">Modify Markdown Files</h2>
+
+<p>If you navigate to your Jekyll blog in a browser, you should see a link to the title of the new post (&ldquo;Awesome Data Visualization&rdquo; in the example). However, you will probably notice that much of the output is not properly formatted. There may be characters to escape depending on the contents. Refer to the <a href="https://jekyllrb.com/docs/posts/">Jekyll documentation</a> for more information about escaping characters and formatting blocks.</p>
+
+<p>The following sections show how to adjust and style the tables and images for improved presentation.</p>
+
+<h3 id="extend-default-scss">Extend Default SCSS</h3>
+
+<p>Tabular output in Jupyter is converted to an HTML table. This section covers how to extend theme SCSS in order to stylize tables.</p>
+
+<ol>
+<li><p>In <code>/exampleblog/assets</code>, create a new file called <code>main.scss</code>. This imports the existing minima theme SCSS and adds the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		main.scss 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">---</span>
+<span class="nt">---</span>
+<span class="p">@</span><span class="k">import</span> <span class="s2">&#34;minima&#34;</span><span class="p">;</span>
+
+<span class="nt">p</span><span class="o">,</span> <span class="nt">blockquote</span><span class="o">,</span> <span class="nt">ul</span><span class="o">,</span> <span class="nt">ol</span><span class="o">,</span> <span class="nt">dl</span><span class="o">,</span> <span class="nt">li</span><span class="o">,</span> <span class="nt">table</span><span class="o">,</span> <span class="nt">pre</span> <span class="p">{</span>
+<span class="k">margin</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="nt">table</span> <span class="p">{</span>
+  <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+  <span class="nt">table</span> <span class="nt">tr</span> <span class="p">{</span>
+    <span class="k">border-top</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#cccccc</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">table</span> <span class="nt">tr</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">2n</span><span class="o">)</span> <span class="p">{</span>
+      <span class="k">background-color</span><span class="p">:</span> <span class="mh">#f8f8f8</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nt">table</span> <span class="nt">tr</span> <span class="nt">th</span> <span class="p">{</span>
+      <span class="k">font-weight</span><span class="p">:</span> <span class="kc">bold</span><span class="p">;</span>
+      <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#cccccc</span><span class="p">;</span>
+      <span class="k">text-align</span><span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
+      <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">padding</span><span class="p">:</span> <span class="mi">6</span><span class="kt">px</span> <span class="mi">13</span><span class="kt">px</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">table</span> <span class="nt">tr</span> <span class="nt">td</span> <span class="p">{</span>
+      <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#cccccc</span><span class="p">;</span>
+      <span class="k">text-align</span><span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
+      <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">padding</span><span class="p">:</span> <span class="mi">6</span><span class="kt">px</span> <span class="mi">13</span><span class="kt">px</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">table</span> <span class="nt">tr</span> <span class="nt">th</span> <span class="p">:</span><span class="nd">first-child</span><span class="o">,</span> <span class="nt">table</span> <span class="nt">tr</span> <span class="nt">td</span> <span class="p">:</span><span class="nd">first-child</span> <span class="p">{</span>
+      <span class="k">margin-top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">table</span> <span class="nt">tr</span> <span class="nt">th</span> <span class="p">:</span><span class="nd">last-child</span><span class="o">,</span> <span class="nt">table</span> <span class="nt">tr</span> <span class="nt">td</span> <span class="p">:</span><span class="nd">last-child</span> <span class="p">{</span>
+<span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>The HTML table will have the new styles applied.</p>
+
+<p><img src="/docs/assets/jupyter_table.png" alt="Jupyter Table" title="Jupyter Table" /> <img src="/docs/assets/jekyll/jekyll_table.png" alt="Jekyll Table" title="Jekyll Table" /></p></li>
+</ol>
+
+<h3 id="add-an-image-in-jekyll">Add an Image in Jekyll</h3>
+
+<p>Adding an image through markdown requires having the images stored in the project directory.</p>
+
+<ol>
+<li><p>Move all of the images exported from Jupyter into the <code>/assets/images</code> folder.</p></li>
+
+<li><p>Modify the references to images within the markdown to the appropriate path. Wrap the path in two curly braces and double quotes.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		YYYY-MM-DD-example-post.md 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">!<span class="o">[</span>png<span class="o">]({{</span> <span class="s2">&#34;/assets/images/example_notebook_5_0.png&#34;</span> <span class="o">}})</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Graphs with legends that are in a longer dimension also can be displayed.</p>
+
+<p><img src="/docs/assets/jekyll/jekyll_ggplot.png" alt="GG Plot" title="GG Plot" /></p>
+
+<p>This is just an example. Adding interactive graphs using Javascript libraries is beyond the scope of this guide.</p></li>
+</ol>
+
+<h3 id="use-a-cdn-to-support-mathjax">Use a CDN to Support MathJax</h3>
+
+<p>Content Delivery Networks(CDNs) are a great way to add functionality on a website without downloading additional software. This section will cover how to create a custom header that can be used in posts.</p>
+
+<ol>
+<li><p>In order for Jekyll to convert LaTeX to PNG, a CDN is available through MathJax. Copy the following HTML tag and paste it below the metadata section of <code>YYYY-MM-DD-example-post.md</code>:</p>
+
+<pre><code>&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+
+<li><p>The default Jekyll <strong>minima</strong> theme has the <code>_layouts</code> and <code>_includes</code> directory packaged with the gem. Navigate to this directory by:</p>
+
+<pre><code>cd $(bundle show minima)
+</code></pre>
+
+<p>The directory tree contains other HTML files for integrating Disqus and Google Analytics.</p>
+
+<pre><code>minima-2.1.1/
+├── assets
+│   └── main.scss
+├── _includes
+│   ├── disqus_comments.html
+│   ├── footer.html
+│   ├── google-analytics.html
+│   ├── header.html
+│   ├── head.html
+│   ├── icon-github.html
+│   ├── icon-github.svg
+│   ├── icon-twitter.html
+│   ├── icon-twitter.svg
+│   └── scripts.html
+├── _layouts
+│   ├── default.html
+│   ├── home.html
+│   ├── page.html
+│   └── post.html
+├── LICENSE.txt
+├── README.md
+└── _sass
+    ├── minima
+        │   ├── _base.scss
+            │   ├── _layout.scss
+                │   └── _syntax-highlighting.scss
+                    └── minima.scss
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The default theme is installed as a gem. If there is another <code>_layouts</code> or <code>_includes</code> folder in the project root, those HTML files will override the theme.</div>
+</blockquote>
+</li>
+
+<li><p>Within the <code>_includes</code> directory in the minima theme, create a new <code>scripts.html</code> file. Using Liquid templating, add logic to check for a <code>mathjax</code> header in a post:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		_includes/scripts.html 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">{% if page.mathjax %}
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span> <span class="na">async</span>
+        <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+{% endif %}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Add templating to <code>_layouts/post.html</code> to include <code>scripts.html</code> in posts:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		_layouts/post.html 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">---
+layout: default
+---
+
+<span class="o">{</span>% include scripts.html %<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Edit the header <code>/exampleblog/_posts/YYYY-MM-DD-example-post.md</code> with <code>mathjax: true</code>. Wrap the LaTeX in <code>$$</code> to create a math block. Remember to include the two lines of <code>---</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		YYYY-MM-DD-example-post.md 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span>layout<span class="p">:</span><span class="w"> </span>post<span class="w">
+</span><span class="w"></span>mathjax<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span>title<span class="p">:</span><span class="w">  </span><span class="s2">&#34;Awesome Data Visualization&#34;</span><span class="w">
+</span><span class="w"></span>date<span class="p">:</span><span class="w">   </span><span class="ld">2017-10-10 12:07:25 +0000</span><span class="w">
+</span><span class="w"></span>categories<span class="p">:</span><span class="w"> </span>data<span class="w">
+</span><span class="w"></span>---<span class="w">
+</span><span class="w">
+</span><span class="w"></span>$$<span class="w">
+</span><span class="w"></span>\begin{equation*}<span class="w">
+</span><span class="w"></span>\mathbf{V}_<span class="m">1</span><span class="w"> </span>\times<span class="w"> </span>\mathbf{V}_<span class="m">2</span><span class="w"> </span>=<span class="w">  </span>\begin{vmatrix}<span class="w">
+</span><span class="w"></span>\mathbf{i}<span class="w"> </span>&amp;<span class="w"> </span>\mathbf{j}<span class="w"> </span>&amp;<span class="w"> </span>\mathbf{k}<span class="w"> </span>\\<span class="w">
+</span><span class="w"></span>\frac{\partial<span class="w"> </span>X}{\partial<span class="w"> </span>u}<span class="w"> </span>&amp;<span class="w">  </span>\frac{\partial<span class="w"> </span>Y}{\partial<span class="w"> </span>u}<span class="w"> </span>&amp;<span class="w"> </span><span class="m">0</span><span class="w"> </span>\\<span class="w">
+</span><span class="w"></span>\frac{\partial<span class="w"> </span>X}{\partial<span class="w"> </span>v}<span class="w"> </span>&amp;<span class="w">  </span>\frac{\partial<span class="w"> </span>Y}{\partial<span class="w"> </span>v}<span class="w"> </span>&amp;<span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="w"></span>\end{vmatrix}<span class="w">
+</span><span class="w"></span>\end{equation*}<span class="w">
+</span><span class="w"></span>$$</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>The browser should use MathJax to display output identical to a Jupyter Notebook.</p>
+
+<p><img src="/docs/assets/jupyter_mathjax.png" alt="Jupyter Mathjax" title="Jupyter Mathjax" /> <img src="/docs/assets/jekyll/jekyll_mathjax.png" alt="Jekyll Mathjax" title="Jekyll Mathjax" /></p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://jekyllrb.com/">Jekyll</a></li>
+
+<li><a href="https://www.mathjax.org/">MathJax</a></li>
+
+<li><a href="https://jupyter.org/">Jupyter Notebook</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/ror/ruby-on-rails-nginx-debian-8/">Ruby on Rails with Nginx on Debian 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-ruby-and-jekyll">Install Ruby and Jekyll</a>
+<ul>
+<li><a href="#create-a-new-blog">Create a New Blog</a></li>
+</ul></li>
+<li><a href="#configure-jupyter-notebook">Configure Jupyter Notebook</a></li>
+<li><a href="#export-jupyter-notebook-as-markdown">Export Jupyter Notebook as Markdown</a></li>
+<li><a href="#modify-markdown-files">Modify Markdown Files</a>
+<ul>
+<li><a href="#extend-default-scss">Extend Default SCSS</a></li>
+<li><a href="#add-an-image-in-jekyll">Add an Image in Jekyll</a></li>
+<li><a href="#use-a-cdn-to-support-mathjax">Use a CDN to Support MathJax</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

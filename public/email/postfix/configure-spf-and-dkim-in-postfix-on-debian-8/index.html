@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Configure SPF and DKIM With Postfix on Debian 8</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Configure SPF and DKIM in Postfix on Debian 8.">
+        <meta name="keywords" content="email, postfix, spf, dkim, debian 8, opendkim, dns, dmarc">
+        
+        <meta property="og:title" content="Configure SPF and DKIM With Postfix on Debian 8">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/">
+        <meta property="og:description" content="Configure SPF and DKIM in Postfix on Debian 8.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/postfix/">Postfix</a>
+  
+</li>
+
+
+<li>
+  
+  Configure SPF and DKIM With Postfix on Debian 8
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Configure SPF and DKIM With Postfix on Debian 8</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-03-27T00:00:00Z">Monday, March 27, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/tknarr">Todd Knarr
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2fconfigure-spf-and-dkim-in-postfix-on-debian-8%2f&via=linode&text=Configure%20SPF%20and%20DKIM%20With%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2fconfigure-spf-and-dkim-in-postfix-on-debian-8%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2fconfigure-spf-and-dkim-in-postfix-on-debian-8%2f&t=Configure%20SPF%20and%20DKIM%20With%20Postfix%20on%20Debian%208" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg" alt="SPF and DKIM with Postfix" /></p>
+
+<p><a href="http://www.openspf.org/">SPF (Sender Policy Framework)</a> is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.</p>
+
+<p><a href="http://www.dkim.org/">DKIM (DomainKeys Identified Mail)</a> is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain&rsquo;s public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail has been tampered with in transit.</p>
+
+<p><a href="http://dmarc.org/">DMARC (Domain Message Authentication, Reporting &amp; Conformance)</a> allows you to advertise to mail servers what your domain&rsquo;s policies are regarding mail that fails SPF and/or DKIM validations. It additionally allows you to request reports on failed messages from receiving mail servers.</p>
+
+<p>The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instructions for configuring the SPF policy agent and OpenDKIM into Postfix should work on any distribution after making respective code adjustments for the package tool, and identifying the exact path to the Unix socket file.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps required in this guide require root privileges. Be sure to run the steps below as <strong>root</strong> or with the <code>sudo</code> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div><p>You must already have Postfix installed, configured and working. Refer to the <a href="/docs/email/postfix/">Linode Postfix Guides</a> for assistance.</p>
+
+<p>Publishing an SPF DNS record without having the SPF policy agent configured within Postfix is safe; however, publishing DKIM DNS records without having OpenDKIM working correctly within Postfix can result in your email being discarded by the recipient&rsquo;s email server.</p>
+</div>
+</blockquote>
+
+
+<h2 id="install-dkim-spf-and-postfix">Install DKIM, SPF and Postfix</h2>
+
+<ol>
+<li><p>Install the four required packages:</p>
+
+<pre><code>apt-get install opendkim opendkim-tools postfix-policyd-spf-python postfix-pcre
+</code></pre></li>
+
+<li><p>Add user <code>postfix</code> to the <code>opendkim</code> group so that Postfix can access OpenDKIM&rsquo;s socket when it needs to:</p>
+
+<pre><code>adduser postfix opendkim
+</code></pre></li>
+</ol>
+
+<h2 id="set-up-spf">Set up SPF</h2>
+
+<h3 id="add-spf-records-to-dns">Add SPF records to DNS</h3>
+
+<p>The value in an SPF DNS record will look something like the following examples. The full syntax is at <a href="http://www.openspf.org/SPF_Record_Syntax">the SPF record syntax page</a>.</p>
+
+<p><strong>Example 1</strong>  Allow mail from all hosts listed in the MX records for the domain:</p>
+
+<pre><code>v=spf1 mx -all
+</code></pre>
+
+<p><strong>Example 2</strong>  Allow mail from a specific host:</p>
+
+<pre><code>v=spf1 a:mail.example.com -all
+</code></pre>
+
+<ul>
+<li><p>The <code>v=spf1</code> tag is required and has to be the first tag.</p></li>
+
+<li><p>The last tag, <code>-all</code>, indicates that mail from your domain should only come from servers identified in the SPF string. Anything coming from any other source is forging your domain. An alternative is <code>~all</code>, indicating the same thing but also indicating that mail servers should accept the message and flag it as forged instead of rejecting it outright. <code>-all</code> makes it harder for spammers to forge your domain successfully; it is the recommended setting. <code>~all</code> reduces the chances of email getting lost because an incorrect mail server was used to send mail. <code>~all</code> can be used if you don&rsquo;t want to take chances.</p></li>
+</ul>
+
+<p>The tags between identify eligible servers from which email to your domain can originate.</p>
+
+<ul>
+<li><p><code>mx</code> is a shorthand for all the hosts listed in MX records for your domain. If you&rsquo;ve got a solitary mail server, <code>mx</code> is probably the best option. If you&rsquo;ve got a backup mail server (a second MX record), using <code>mx</code> won&rsquo;t cause any problems. Your backup mail server will be identified as an authorized source for email although it will probably never send any.</p></li>
+
+<li><p>The <code>a</code> tag lets you identify a specific host by name or IP address, letting you specify which hosts are authorized. You&rsquo;d use <code>a</code> if you wanted to prevent the backup mail server from sending outgoing mail or if you wanted to identify hosts other than your own mail server that could send mail from your domain (e.g., putting your ISP&rsquo;s outgoing mail servers in the list so they&rsquo;d be recognized when you had to send mail through them).</p></li>
+</ul>
+
+<p>For now, we&rsquo;re going to stick with the <code>mx</code> version. It&rsquo;s simpler and correct for most basic configurations, including those that handle multiple domains. To add the record, go to your DNS management interface and add a record of type TXT for your domain itself (i.e., a blank hostname) containing this string:</p>
+
+<pre><code>v=spf1 mx -all
+</code></pre>
+
+<p>If you&rsquo;re using Linode&rsquo;s DNS Manager, go to the domain zone page for the selected domain and add a new TXT record. The screen will look something like this once you&rsquo;ve got it filled out:</p>
+
+<p><img src="/docs/assets/Postfix_SPF_TXT_record.png" alt="Linode DNS manager add TXT record" /></p>
+
+<p>If your DNS provider allows it (DNS Manager doesn&rsquo;t), you should also add a record of type SPF, filling it in the same way as you did the TXT record.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The values for the DNS records above - and for the rest of this guide - are done in the style that Linode&rsquo;s DNS Manager needs them to be in. If you&rsquo;re using another provider, that respective system may require the values in a different style. For example freedns.afraid.org requires the values to be written in the style found in BIND zonefiles. Thus, the above SPF record&rsquo;s value would need to be wrapped in double-quotes like this: <code>&quot;v=spf1 mx -all&quot;</code>. You&rsquo;ll need to consult your DNS provider&rsquo;s documentation for the exact style required.</div>
+</blockquote>
+
+
+<h3 id="add-the-spf-policy-agent-to-postfix">Add the SPF policy agent to Postfix</h3>
+
+<p>The Python SPF policy agent adds SPF policy-checking to Postfix. The SPF record for the sender&rsquo;s domain for incoming mail will be checked and, if it exists, mail will be handled accordingly. Perl has its own version, but it lacks the full capabilities of Python policy agent.</p>
+
+<ol>
+<li><p>If you are using SpamAssassin to filter spam, you may want to edit <code>/etc/postfix-policyd-spf-python/policyd-spf.conf</code> to change the <code>HELO_reject</code> and <code>Mail_From_reject</code> settings to <code>False</code>. This edit will cause the SPF policy agent to run its tests and add a message header with the results in it while <em>not</em> rejecting any messages. You may also want to make this change if you want to see the results of the checks but not actually apply them to mail processing. Otherwise, just go with the standard settings.</p></li>
+
+<li><p>Edit <code>/etc/postfix/master.cf</code> and add the following entry at the end:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/master.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource">policyd-spf  unix  -       n       n       -       0       spawn
+    user=policyd-spf argv=/usr/bin/policyd-spf</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Open <code>/etc/postfix/main.cf</code> and add this entry to increase the Postfix policy agent timeout, which will prevent Postfix from aborting the agent if transactions run a bit slowly:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">policyd-</span><span class="nb">spf_time_limit</span> = <span class="m">3600</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Edit the <code>smtpd_recipient_restrictions</code> entry to add a <code>check_policy_service</code> entry:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">smtpd_recipient_restrictions</span> =
+    ...
+    <span class="err">reject_unauth_destination,</span>
+    <span class="nb">check_policy_service</span> unix:private/policyd-spf,
+    ...</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Make sure to add the <code>check_policy_service</code> entry <strong>after</strong> the <code>reject_unauth_destination</code> entry to avoid having your system become an open relay. If <code>reject_unauth_destination</code> is the last item in your restrictions list, add the comma after it and omit the comma at the end of the <code>check_policy_service</code> item above.</p></li>
+
+<li><p>Restart Postfix:</p>
+
+<pre><code>systemctl restart postfix
+</code></pre></li>
+</ol>
+
+<p>You can check the operation of the policy agent by looking at raw headers on incoming email messages for the SPF results header. The header the policy agent adds to messages should look something like this:</p>
+
+<pre><code>Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=text@example.com; receiver=tknarr@silverglass.org
+</code></pre>
+
+<p>This header indicates a successful check against the SPF policy of the sending domain. If you changed the policy agent settings in Step 1 to not reject mail that fails the SPF check, you may see Fail results in this header. You won&rsquo;t see this header on outgoing or local mail.</p>
+
+<p>The SPF policy agent also logs to <code>/var/log/mail.log</code>. In the <code>mail.log</code> file you&rsquo;ll see messages like this from the policy agent:</p>
+
+<pre><code>Jan  7 06:24:44 arachnae policyd-spf[21065]: None; identity=helo; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=test@example.com; receiver=tknarr@silverglass.org
+Jan  7 06:24:44 arachnae policyd-spf[21065]: Pass; identity=mailfrom; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=test@example.com; receiver=tknarr@silverglass.org
+</code></pre>
+
+<p>The first message is a check of the HELO command, in this case indicating that there wasn&rsquo;t any SPF information matching the HELO (which is perfectly OK). The second message is the check against the envelope From address, and indicates the address passed the check and is coming from one of the outgoing mail servers the sender&rsquo;s domain has said should be sending mail for that domain. There may be other statuses in the first field after the colon indicating failure, temporary or permanent errors and so on.</p>
+
+<h2 id="set-up-dkim">Set up DKIM</h2>
+
+<p>DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and adding DNS records.</p>
+
+<h3 id="configure-opendkim">Configure OpenDKIM</h3>
+
+<ol>
+<li><p>The main OpenDKIM configuration file <code>/etc/opendkim.conf</code> needs to look like this:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/opendkim.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c"># This is a basic configuration that can easily be adapted to suit a standard</span>
+<span class="c"># installation. For more advanced options, see opendkim.conf(5) and/or</span>
+<span class="c"># /usr/share/doc/opendkim/examples/opendkim.conf.sample.</span>
+
+<span class="c"># Log to syslog</span>
+<span class="nb">Syslog</span>          yes
+<span class="c"># Required to use local socket with MTAs that access the socket as a non-</span>
+<span class="c"># privileged user (e.g. Postfix)</span>
+<span class="nb">UMask</span>           <span class="m">002</span>
+<span class="c"># OpenDKIM user</span>
+<span class="c"># Remember to add user postfix to group opendkim</span>
+<span class="nb">UserID</span>          opendkim
+
+<span class="c"># Map domains in From addresses to keys used to sign messages</span>
+<span class="nb">KeyTable</span>        <span class="sx">/etc/opendkim/key.table</span>
+<span class="nb">SigningTable</span>        refile:/etc/opendkim/signing.table
+
+<span class="c"># Hosts to ignore when verifying signatures</span>
+<span class="nb">ExternalIgnoreList</span>  <span class="sx">/etc/opendkim/trusted.hosts</span>
+<span class="nb">InternalHosts</span>       <span class="sx">/etc/opendkim/trusted.hosts</span>
+
+<span class="c"># Commonly-used options; the commented-out versions show the defaults.</span>
+<span class="nb">Canonicalization</span>    relaxed/simple
+<span class="nb">Mode</span>            sv
+<span class="nb">SubDomains</span>      no
+<span class="c">#ADSPAction     continue</span>
+<span class="nb">AutoRestart</span>     yes
+<span class="nb">AutoRestartRate</span>     <span class="m">10</span><span class="sx">/1M</span>
+<span class="nb">Background</span>      yes
+<span class="nb">DNSTimeout</span>      <span class="m">5</span>
+<span class="nb">SignatureAlgorithm</span>  rsa-sha256
+
+<span class="c"># Always oversign From (sign using actual From and a null From to prevent</span>
+<span class="c"># malicious signatures header fields (From and/or others) between the signer</span>
+<span class="c"># and the verifier.  From is oversigned by default in the Debian package</span>
+<span class="c"># because it is often the identity key used by reputation systems and thus</span>
+<span class="c"># somewhat security sensitive.</span>
+<span class="nb">OversignHeaders</span>     From</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Edit <code>/etc/opendkim.conf</code> and replace it&rsquo;s contents with the above, or download <a href="/docs/assets/postfix-opendkim.conf.txt">a copy of opendkim.conf</a>, upload it to your server and copy it over <code>/etc/opendkim.conf</code>.</p></li>
+
+<li><p>Ensure that file permissions are set correctly:</p>
+
+<pre><code>chmod u=rw,go=r /etc/opendkim.conf
+</code></pre></li>
+
+<li><p>Create the directories to hold OpenDKIM&rsquo;s data files, assign ownership to the <code>opendkim</code> user, and restrict the file permissions:</p>
+
+<pre><code>mkdir /etc/opendkim
+mkdir /etc/opendkim/keys
+chown -R opendkim:opendkim /etc/opendkim
+chmod go-rw /etc/opendkim/keys
+</code></pre></li>
+
+<li><p>Create the signing table <code>/etc/opendkim/signing.table</code>. It needs to have one line per domain that you handle email for. Each line should look like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/opendkim/signing.table 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">*@example.com   example</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Replace <code>example.com</code> with your domain and <code>example</code> with a short name for the domain. The first field is a pattern that matches e-mail addresses. The second field is a name for the key table entry that should be used to sign mail from that address. For simplicity&rsquo;s sake, we&rsquo;re going to set up one key for all addresses in a domain.</p></li>
+
+<li><p>Create the key table <code>/etc/opendkim/key.table</code>. It needs to have one line per short domain name in the signing table. Each line should look like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/opendkim/key.table 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource">example     example.com:YYYYMM:/etc/opendkim/keys/example.private</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Replace <code>example</code> with the <code>example</code> value you used for the domain in the signing table (make sure to catch the second occurrence at the end, where it&rsquo;s followed by <code>.private</code>). Replace <code>example.com</code> with your domain name and replace the <code>YYYYMM</code> with the current 4-digit year and 2-digit month (this is referred to as the selector). The first field connects the signing and key tables.</p>
+
+<p>The second field is broken down into 3 sections separated by colons.</p>
+
+<ul>
+<li>The first section is the domain name for which the key is used.</li>
+<li>The second section is a selector used when looking up key records in DNS.</li>
+<li>The third section names the file containing the signing key for the domain.</li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The flow for DKIM lookup starts with the sender&rsquo;s address. The signing table is scanned until an entry whose pattern (first item) matches the address is found. Then, the second item&rsquo;s value is used to locate the entry in the key table whose key information will be used. For incoming mail the domain and selector are then used to find the public key TXT record in DNS and that public key is used to validate the signature. For outgoing mail the private key is read from the named file and used to generate the signature on the message.</div>
+</blockquote>
+</li>
+
+<li><p>Create the trusted hosts file <code>/etc/opendkim/trusted.hosts</code>. Its contents need to be:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/opendkim/trusted.hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource">127.0.0.1
+::1
+localhost
+myhostname
+myhostname.example.com
+example.com</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>When creating the file, change <code>myhostname</code> to the name of your server and replace <code>example.com</code> with your own domain name. We&rsquo;re identifying the hosts that users will be submitting mail through and should have outgoing mail signed, which for basic configurations will be your own mail server.</p></li>
+
+<li><p>Make sure the ownership and permissions on <code>/etc/opendkim</code> and it&rsquo;s contents are correct (<code>opendkim</code> should own everything, the <code>keys</code> directory should only be accessible by the owner) by running the following commands:</p>
+
+<pre><code>chown -R opendkim:opendkim /etc/opendkim
+chmod -R go-rwx /etc/opendkim/keys
+</code></pre></li>
+
+<li><p>Generate keys for each domain:</p>
+
+<pre><code>opendkim-genkey -b 2048 -h rsa-sha256 -r -s YYYYMM -d example.com -v
+</code></pre>
+
+<p>Replace <code>YYYYMM</code> with the current year and month as in the key table. This will give you two files, <code>YYYYMM.private</code> containing the key and <code>YYYYMM.txt</code> containing the TXT record you&rsquo;ll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:</p>
+
+<pre><code>mv YYYYMM.private example.private
+mv YYYYMM.txt example.txt
+</code></pre>
+
+<p>Repeat the commands in this step for every entry in the key table. The <code>-b 2048</code> indicates the number of bits in the RSA key pair used for signing and verification. 1024 bits is the minimum, but with modern hardware 2048 bits is safer. (It&rsquo;s possible 4096 bits will be required at some point.)</p></li>
+
+<li><p>Make sure the ownership, permissions and contents on <code>/etc/opendkim</code> are correct by running the following commands:</p>
+
+<pre><code>cd /etc
+chown -R opendkim:opendkim /etc/opendkim
+chmod -R go-rw /etc/opendkim/keys
+</code></pre></li>
+
+<li><p>Check that OpenDKIM starts correctly:</p>
+
+<pre><code>systemctl restart opendkim
+</code></pre>
+
+<p>You should not get error messages, but if you do, use:</p>
+
+<pre><code>systemctl status -l opendkim
+</code></pre>
+
+<p>to get the status and untruncated error messages.</p></li>
+</ol>
+
+<h3 id="set-up-dns">Set up DNS</h3>
+
+<p>As with SPF, DKIM uses TXT records to hold information about the signing key for each domain. Using YYYYMM as above, you need to make a TXT record for the host <code>YYYYMM._domainkey</code> for each domain you handle mail for. Its value can be found in the <code>example.txt</code> file for the domain. Those files look like this:</p>
+
+<dl class="file">
+<dt>
+
+
+		example.txt 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource">201510._domainkey  IN  TXT ( &#34;**v=DKIM1; h=rsa-sha256; k=rsa; s=email; &#34;
+    &#34;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR&#34;
+    &#34;ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB**&#34; )  ; ----- DKIM key 201510 for example.com</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The value inside the parentheses is what you want. Select and copy the entire region from (but not including) the double-quote before <code>v=DKIM1</code> on up to (but not including) the final double-quote before the closing parentheses. Then edit out the double-quotes within the copied text and the whitespace between them. Also change <code>h=rsa-sha256</code> to <code>h=sha256</code>. From the above file the result would be:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		example-copied.txt 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource">v=DKIM1; h=sha256; k=rsa; s=email; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXRZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Paste that into the value for the TXT record.</p>
+
+<p>If you&rsquo;re using Linode&rsquo;s DNS manager, this is what the add TXT record screen will look like when you have it filled out:</p>
+
+<p><img src="/docs/assets/Postfix_DKIM_TXT_record.png" alt="Linode DNS manager add TXT record" /></p>
+
+<p>Repeat this for every domain you handle mail for, using the <code>.txt</code> file for that domain.</p>
+
+<h3 id="test-your-configuration">Test your configuration</h3>
+
+<p>Test the keys for correct signing and verification using the <code>opendkim-testkey</code> command:</p>
+
+<pre><code>opendkim-testkey -d example.com -s YYYYMM
+</code></pre>
+
+<p>If everything is OK you shouldn&rsquo;t get any output. If you want to see more information, add <code>-vvv</code> to the end of the command. That produces verbose debugging output. The last message should be &ldquo;key OK&rdquo;. Just before that you may see a &ldquo;key not secure&rdquo; message. That&rsquo;s normal and doesn&rsquo;t signal an error, it just means your domain isn&rsquo;t set up for DNSSEC yet.</p>
+
+<h3 id="hook-opendkim-into-postfix">Hook OpenDKIM into Postfix</h3>
+
+<ol>
+<li><p>Create the OpenDKIM socket directory in Postfix&rsquo;s work area and make sure it has the correct ownership:</p>
+
+<pre><code>mkdir /var/spool/postfix/opendkim
+chown opendkim:postfix /var/spool/postfix/opendkim
+</code></pre></li>
+
+<li><p>Set the correct socket for Postfix in the OpenDKIM defaults file <code>/etc/default/opendkim</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/default/opendkim 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Command-line options specified here will override the contents of
+</span><span class="c1"># /etc/opendkim.conf. See opendkim(8) for a complete list of options.
+</span><span class="c1">#DAEMON_OPTS=&#34;&#34;
+</span><span class="c1">#
+</span><span class="c1"># Uncomment to specify an alternate socket
+</span><span class="c1"># Note that setting this will override any Socket value in opendkim.conf
+</span><span class="c1"></span><span class="nv">SOCKET</span><span class="o">=</span><span class="s2">&#34;local:/var/spool/postfix/opendkim/opendkim.sock&#34;</span>
+<span class="c1">#SOCKET=&#34;inet:54321&#34; # listen on all interfaces on port 54321
+</span><span class="c1">#SOCKET=&#34;inet:12345@localhost&#34; # listen on loopback on port 12345
+</span><span class="c1"></span>#SOCKET<span class="o">=</span><span class="s2">&#34;inet:12345@192.0.2.1&#34;</span> # listen on <span class="m">192</span>.0.2.1 on port <span class="m">12345</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Uncomment the first SOCKET line and edit it so it matches the uncommented line in the above file. The path to the socket is different from the default because on Debian 8 the Postfix process that handles mail runs in a chroot jail and can&rsquo;t access the normal location.</p></li>
+
+<li><p>Edit <code>/etc/postfix/main.cf</code> and add a section to activate processing of e-mail through the OpenDKIM daemon:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c"># Milter configuration</span>
+<span class="c"># OpenDKIM</span>
+<span class="nb">milter_default_action</span> = accept
+<span class="c"># Postfix ≥ 2.6 milter_protocol = 6, Postfix ≤ 2.5 milter_protocol = 2</span>
+<span class="nb">milter_protocol</span> = <span class="m">6</span>
+<span class="nb">smtpd_milters</span> = local:/opendkim/opendkim.sock
+<span class="nb">non_smtpd_milters</span> = local:/opendkim/opendkim.sock</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You can put this anywhere in the file. The usual practice is to put it after the <code>smtpd_recipient_restrictions</code> entry. You&rsquo;ll notice the path to the socket isn&rsquo;t the same here as it was in the <code>/etc/defaults/opendkim</code> file. That&rsquo;s because of Postfix&rsquo;s chroot jail, the path here is the path within that restricted view of the filesystem instead of within the actual filesystem.</p></li>
+
+<li><p>Restart the OpenDKIM daemon so it sets up the correct socket for Postfix:</p>
+
+<pre><code>systemctl restart opendkim
+</code></pre></li>
+
+<li><p>Restart Postfix so it starts using OpenDKIM when processing mail:</p>
+
+<pre><code>systemctl restart postfix
+</code></pre></li>
+</ol>
+
+<h3 id="verify-that-everything-s-fully-operational">Verify that everything&rsquo;s fully operational</h3>
+
+<p>The easiest way to verify that everything&rsquo;s working is to send a test e-mail to <code>check-auth@verifier.port25.com</code> using an email client configured to submit mail to the submission port on your mail server. It will analyze your message and mail you a report indicating whether your email was signed correctly or not. It also reports on a number of other things such as SPF configuration and SpamAssassin flagging of your domain. If there&rsquo;s a problem, it&rsquo;ll report what the problem was.</p>
+
+<h2 id="optional-set-up-author-domain-signing-practices-adsp"><strong>Optional:</strong> Set up Author Domain Signing Practices (ADSP)</h2>
+
+<p>As a final item, you can add an ADSP policy to your domain saying that all emails from your domain should be DKIM-signed. As usual, it&rsquo;s done with a TXT record for host <code>_adsp._domainkey</code> in your domain with a value of <code>dkim=all</code>. If you&rsquo;re using Linode&rsquo;s DNS Manager, the screen for the new text record will look like this:</p>
+
+<p><img src="/docs/assets/Postfix_ADSP_TXT_record.png" alt="Linode DNS Manager add TXT record" /></p>
+
+<p>You don&rsquo;t need to set this up, but doing so makes it harder for anyone to forge email from your domains because recipient mail servers will see the lack of a DKIM signature and reject the message.</p>
+
+<h2 id="optional-set-up-domain-message-authentication-reporting-conformance-dmarc"><strong>Optional:</strong> Set up Domain Message Authentication, Reporting &amp; Conformance (DMARC)</h2>
+
+<p>The DMARC DNS record can be added to advise mail servers what you think they should do with emails claiming to be from your domain that fail validation with SPF and/or DKIM. DMARC also allows you to request reports about mail that fails to pass one or more validation check.  DMARC should only be set up if you have SPF and DKIM set up and operating successfully. If you add the DMARC DNS record without having both SPF and DKIM in place, messages from your domain will fail validation which may cause them to be discarded or relegated to a spam folder.</p>
+
+<p>The DMARC record is a TXT record for host <code>_dmarc</code> in your domain containing the following recommended values:</p>
+
+<pre><code>v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r
+</code></pre>
+
+<p>This requests mail servers to quarantine (do not discard, but separate from regular messages) any email that fails either SPF or DKIM checks. No reporting is requested. Very few mail servers implement the software to generate reports on failed messages, so it is often unnecessary to request them. If you do wish to request reports, the value would be similar to this example, added as a single string:</p>
+
+<pre><code>v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r;fo=1;rf=afrf;rua=mailto:user@example.com
+</code></pre>
+
+<p>Replace <code>user@example.com</code> in the <code>mailto:</code> URL with your own email or an email address you own dedicated to receiving reports (an address such as <code>dmarc@example.com</code>). This requests aggregated reports in XML showing how many messages fell into each combination of pass and fail results and the mail server addresses sending them. If you&rsquo;re using Linode&rsquo;s DNS Manager, the screen for the new text record will look like this:</p>
+
+<p><img src="/docs/assets/Postfix_DMARC_TXT_record.png" alt="Linode DNS Manager add TXT record" /></p>
+
+<p>DMARC records have a number of available tags and options. These tags are used to control your authentication settings:</p>
+
+<ul>
+<li><code>v</code> specifies the protocol version, in this case <code>DMARC1</code>.</li>
+<li><code>p</code> determines the policy for the root domain, such as &ldquo;example.com.&rdquo; The available options:
+
+<ul>
+<li><code>quarantine</code> instructs that if an email fails validation, the recipient should set it aside for processing.</li>
+<li><code>reject</code> requests that the receiving mail server reject the emails that fail validation.</li>
+<li><code>none</code> requests that the receiver take no action if an email does not pass validation.</li>
+</ul></li>
+<li><code>sp</code> determines the policy for subdomains, such as &ldquo;subdomain.example.com.&rdquo; It takes the same arguments as the <code>p</code> tag.</li>
+<li><code>adkim</code> specifies the alignment mode for DKIM, which determines how strictly DKIM records are validated. The available options are:
+
+<ul>
+<li><code>r</code> relaxed alignment mode, DKIM authentication is less strictly enforced.</li>
+<li><code>s</code> strict alignment mode. Only an exact match with the DKIM entry for the root domain will be seen as validated.</li>
+</ul></li>
+<li><code>aspf</code> determines the alignment mode for SPF verification. It takes the same arguments as <code>adkim</code>.</li>
+</ul>
+
+<p>If you wish to receive authentication failure reports, DMARC provides a number of configuration options. You can use the following tags to customize the formatting of your reports, as well as the criteria for report creation.</p>
+
+<ul>
+<li><code>rua</code> specifies the email address that will receive aggregate reports. This uses the <code>mailto:user@example.com</code> syntax, and accepts multiple addresses separated by commas. Aggregate reports are usually generated once per day.</li>
+<li><code>ruf</code> specifies the email address that will receive detailed authentication failure reports. This takes the same arguments as <code>rua</code>. With this option, each authentication failure would result in a separate report.</li>
+<li><code>fo</code> allows you to specify which failed authentication methods will be reported. One or more of the following options can be used:
+
+<ul>
+<li><code>0</code> will request a report if <em>all</em> authentication methods fail. For example, if an SPF check were to fail but DKIM authentication was successful, a report would not be sent.</li>
+<li><code>1</code> requests a report if <em>any</em> authentication check fails.</li>
+<li><code>d</code> requests a report if a DKIM check fails.</li>
+<li><code>s</code> requests a report if an SPF check fails.</li>
+</ul></li>
+<li><code>rf</code> determines the format used for authentication failure reports. Available options:
+
+<ul>
+<li><code>afrf</code> uses the Abuse Report format as defined by <a href="https://www.ietf.org/rfc/rfc5965.txt">RFC 5965</a>.</li>
+<li><code>iodef</code> uses the Incident Object Description Exchange format as defined by <a href="https://www.ietf.org/rfc/rfc5070.txt">RFC 5070</a>.</li>
+</ul></li>
+</ul>
+
+<h2 id="key-rotation">Key rotation</h2>
+
+<p>The reason the YYYYMM format is used for the selector is that best practice calls for changing the DKIM signing keys every so often (monthly is recommended, and no longer than every 6 months). To do that without disrupting messages in transit, you generate the new keys using a new selector. The process is:</p>
+
+<ol>
+<li><p>Generate new keys as in step 8 of <a href="#configure-opendkim">Configure OpenDKIM</a>. Do this in a scratch directory, not directly in <code>/etc/opendkim/keys</code>. Use the current year and month for the YYYYMM selector value, so it&rsquo;s different from the selector currently in use.</p></li>
+
+<li><p>Use the newly-generated <code>.txt</code> files to add the new keys to DNS as in the DKIM <a href="#set-up-dns">Set Up DNS</a> section, using the new YYYYMM selector in the host names. Don&rsquo;t remove or alter the existing DKIM TXT records. Once this is done, verify the new key data using the following command (replacing example.com, example and YYYYMM with the appropriate values):</p>
+
+<pre><code>opendkim-testkey -d example.com -s YYYYMM -k example.private
+</code></pre>
+
+<p>Add the <code>-vvv</code> switch to get debugging output if you need it to diagnose any problems. Correct any problems before proceeding, beginning to use the new private key file and selector when <code>opendkim-testkey</code> doesn&rsquo;t indicate a successful verification will cause problems with your email including non-receipt of messages.</p></li>
+
+<li><p>Stop Postfix and OpenDKIM with <code>systemctl stop postfix opendkim</code> so that they won&rsquo;t be processing mail while you&rsquo;re changing out keys.</p></li>
+
+<li><p>Copy the newly-generated <code>.private</code> files into place and make sure their ownership and permissions are correct by running these commands from the directory in which you generated the key files:</p>
+
+<pre><code>cp *.private /etc/opendkim/keys/
+chown opendkim:opendkim /etc/opendkim/keys/*
+chmod go-rw /etc/opendkim/keys/*
+</code></pre>
+
+<p>Use the <code>opendkim-testkey</code> command as described above to ensure that your new record is propagated before you continue.</p></li>
+
+<li><p>Edit <code>/etc/opendkim/key.table</code> and change the old YYYYMM values to the new selector, reflecting the current year and month. Save the file.</p></li>
+
+<li><p>Restart OpenDKIM and Postfix by:</p>
+
+<pre><code>systemctl start opendkim
+systemctl start postfix
+</code></pre>
+
+<p>Make sure they both start without any errors.</p></li>
+
+<li><p>After a couple of weeks, all email in transit should either have been delivered or bounced and the old DKIM key information in DNS won&rsquo;t be needed anymore. Delete the old <code>YYYYMM._domainkey</code> TXT records in each of your domains, leaving just the newest ones (most recent year and month). Don&rsquo;t worry if you forget and leave the old keys around longer than planned. There&rsquo;s no security issue. Removing the obsolete records is more a matter of keeping things neat and tidy than anything else.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.openspf.org/">Sender Policy Framework</a></li>
+
+<li><a href="http://www.dkim.org/">DomainKeys Identified Mail</a></li>
+
+<li><a href="http://dmarc.org/">DMARC</a></li>
+
+<li><a href="http://www.opendkim.org/">OpenDKIM</a></li>
+
+<li>The <a href="https://en.wikipedia.org/wiki/Sender_Policy_Framework">Sender Policy Framework</a> and <a href="https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail">DomainKeys Identified Mail</a> Wikipedia pages should not be considered authoritative but do provide helpful discussion and additional references.</li>
+
+<li><a href="http://kitterman.com/dmarc/assistant.html">DMARC Record Assistant</a> provides a web form to generate a DMARC record for you based on your selections.</li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/zimbra/zimbra-on-ubuntu-14-04/">Install Zimbra Open Source Edition on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/email/installing-mail-filtering-for-ubuntu-12-04/">Installing Mail Filtering for Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-12-04-precise-pangolin/">Manage Email Lists with GNU Mailman on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/">Manage Email Lists with GNU Mailman on Debian 6 (Squeeze) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny/">Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#install-dkim-spf-and-postfix">Install DKIM, SPF and Postfix</a></li>
+<li><a href="#set-up-spf">Set up SPF</a>
+<ul>
+<li><a href="#add-spf-records-to-dns">Add SPF records to DNS</a></li>
+<li><a href="#add-the-spf-policy-agent-to-postfix">Add the SPF policy agent to Postfix</a></li>
+</ul></li>
+<li><a href="#set-up-dkim">Set up DKIM</a>
+<ul>
+<li><a href="#configure-opendkim">Configure OpenDKIM</a></li>
+<li><a href="#set-up-dns">Set up DNS</a></li>
+<li><a href="#test-your-configuration">Test your configuration</a></li>
+<li><a href="#hook-opendkim-into-postfix">Hook OpenDKIM into Postfix</a></li>
+<li><a href="#verify-that-everything-s-fully-operational">Verify that everything&rsquo;s fully operational</a></li>
+</ul></li>
+<li><a href="#optional-set-up-author-domain-signing-practices-adsp"><strong>Optional:</strong> Set up Author Domain Signing Practices (ADSP)</a></li>
+<li><a href="#optional-set-up-domain-message-authentication-reporting-conformance-dmarc"><strong>Optional:</strong> Set up Domain Message Authentication, Reporting &amp; Conformance (DMARC)</a></li>
+<li><a href="#key-rotation">Key rotation</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

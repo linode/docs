@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>WSGI using uWSGI and nginx on Ubuntu 10.10 (Maverick)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use uWSGI to deploy Python application servers in conjunction with nginx.">
+        <meta name="keywords" content="uwsgi, wsgi, nginx, python">
+        
+        <meta property="og:title" content="WSGI using uWSGI and nginx on Ubuntu 10.10 (Maverick)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick/">
+        <meta property="og:description" content="Use uWSGI to deploy Python application servers in conjunction with nginx.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/nginx/">Nginx</a>
+  
+</li>
+
+
+<li>
+  
+  WSGI using uWSGI and nginx on Ubuntu 10.10 (Maverick)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">WSGI using uWSGI and nginx on Ubuntu 10.10 (Maverick)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2012-10-08T00:00:00Z">Monday, October 8, 2012</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fwsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick%2f&via=linode&text=WSGI%20using%20uWSGI%20and%20nginx%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fwsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fwsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick%2f&t=WSGI%20using%20uWSGI%20and%20nginx%20on%20Ubuntu%2010.10%20%28Maverick%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.</p>
+
+<h1 id="set-the-hostname">Set the Hostname</h1>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p>
+
+<h1 id="install-uwsgi">Install uWSGI</h1>
+
+<p>Begin by issuing the following command to update your system and install dependencies for uWSGI:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+apt-get install build-essential psmisc python-dev libxml2 libxml2-dev python-setuptools
+</code></pre>
+
+<p>Issue the following sequence of commands to download and compile uWSGI:</p>
+
+<pre><code>cd /opt/
+wget http://projects.unbit.it/downloads/uwsgi-0.9.6.5.tar.gz
+tar -zxvf uwsgi-0.9.6.5.tar.gz
+mv uwsgi-0.9.6.5/ uwsgi/
+cd uwsgi/
+python setup.py install
+</code></pre>
+
+<p>Issue the following command to create a dedicated system user to run the uwsgi processes:</p>
+
+<pre><code>adduser --system --no-create-home --disabled-login --disabled-password --group uwsgi
+</code></pre>
+
+<p>Send the following sequence of commands to set the required file permissions:</p>
+
+<pre><code>chown -R uwsgi:uwsgi /opt/uwsgi
+touch /var/log/uwsgi.log
+chown uwsgi /var/log/uwsgi.log
+</code></pre>
+
+<h1 id="compile-nginx-with-uwsgi-support">Compile nginx with uWSGI Support</h1>
+
+<p>Issue the following commands to download and compile nginx with support for the <code>uwsgi</code> protocol. If you previously installed nginx from Ubuntu packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the <a href="/docs/web-servers/nginx/installation/ubuntu-10-10-maverick">installation guide for nginx</a> for compiling nginx from source:</p>
+
+<pre><code>apt-get install libpcre3-dev build-essential libssl-dev
+cd /opt/
+wget http://nginx.org/download/nginx-1.0.0.tar.gz
+tar -zxvf nginx-1.0.0.tar.gz
+cd /opt/nginx-1.0.0/
+./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_ssl_module
+make
+make install
+adduser --system --no-create-home --disabled-login --disabled-password --group nginx
+cp /opt/uwsgi/nginx/uwsgi_params /opt/nginx/conf/uwsgi_params
+wget -O init-deb.sh http://www.linode.com/docs/assets/688-init-deb.sh
+mv init-deb.sh /etc/init.d/nginx
+chmod +x /etc/init.d/nginx
+/usr/sbin/update-rc.d -f nginx defaults
+/etc/init.d/nginx start
+</code></pre>
+
+<h1 id="configure-uwsgi">Configure uWSGI</h1>
+
+<p>Issue the following command to download an init script to manage the uWSGI process, located at <code>/etc/init.d/uwsgi</code>:</p>
+
+<pre><code>cd /opt/
+wget -O init-deb.sh http://www.linode.com/docs/assets/689-uwsgi-init-deb.sh
+mv /opt/init-deb.sh /etc/init.d/uwsgi
+chmod +x /etc/init.d/uwsgi
+</code></pre>
+
+<p>Create an <code>/etc/default/uwsgi</code> file to specify specific settings for your Python application. The <code>MODULE</code> specifies the name of the Python module that contains your <code>wsgi</code> specification. Consider the following example:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/default/uwsgi 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PYTHONPATH</span><span class="o">=</span>/srv/www/example.com/application
+<span class="nv">MODULE</span><span class="o">=</span>wsgi_configuration_module</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you want to deploy a &ldquo;Hello World&rdquo; application, insert the following code into the <code>/srv/www/example.com/application/wsgi_configuration_module.py</code> file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/srv/www/example.com/application/wsgi\\_configuration\\_module.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;/srv/www/example.com/application&#39;</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;PYTHON_EGG_CACHE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;/srv/www/example.com/.python-egg&#39;</span>
+
+<span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;200 OK&#39;</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;Hello World!&#39;</span>
+
+    <span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="sa"></span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;text/plain&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="sa"></span><span class="s1">&#39;Content-Length&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)))]</span>
+    <span class="n">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">response_headers</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">output</span><span class="p">]</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Issue the following commands to make this init script executable, ensure that uWSGI is restarted following the next reboot sequence, and start the service:</p>
+
+<pre><code>/usr/sbin/update-rc.d -f uwsgi defaults
+/etc/init.d/uwsgi start
+</code></pre>
+
+<h1 id="configure-nginx">Configure nginx</h1>
+
+<p>Create an nginx server configuration that resembles the following for the site where the uWSGI app will be accessible:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		nginx virtual host configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>   <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">www.example.com</span> <span class="s">example.com</span><span class="p">;</span>
+    <span class="kn">access_log</span> <span class="s">/srv/www/example.com/logs/access.log</span><span class="p">;</span>
+    <span class="kn">error_log</span> <span class="s">/srv/www/example.com/logs/error.log</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">include</span>        <span class="s">uwsgi_params</span><span class="p">;</span>
+        <span class="kn">uwsgi_pass</span>     <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9001</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="s">/static</span> <span class="p">{</span>
+        <span class="kn">root</span>   <span class="s">/srv/www/example.com/public_html/static/</span><span class="p">;</span>
+        <span class="kn">index</span>  <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>All requests to URLs ending in <code>/static</code> will be served directly from the <code>/srv/www/example.com/public_html/static</code> directory. Restart the web server by issuing the following command:</p>
+
+<pre><code>/etc/init.d/nginx restart
+</code></pre>
+
+<h1 id="additional-application-servers">Additional Application Servers</h1>
+
+<p>If the Python application you&rsquo;ve deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx&rsquo;s <code>upstream</code> capability. See our documentation of <a href="/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer">proxy and software load balancing with nginx</a> for more information. For a basic example configuration, see the following example:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		nginx configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">upstream</span> <span class="s">uwsgicluster</span> <span class="p">{</span>
+     <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9001</span><span class="p">;</span>
+     <span class="kn">server</span> <span class="n">192.168.100.101</span><span class="p">:</span><span class="mi">9001</span><span class="p">;</span>
+     <span class="kn">server</span> <span class="n">192.168.100.102</span><span class="p">:</span><span class="mi">9001</span><span class="p">;</span>
+     <span class="kn">server</span> <span class="n">192.168.100.103</span><span class="p">:</span><span class="mi">9001</span><span class="p">;</span>
+     <span class="kn">server</span> <span class="n">192.168.100.104</span><span class="p">:</span><span class="mi">9001</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>   <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">www.example.com</span> <span class="s">example.com</span><span class="p">;</span>
+    <span class="kn">access_log</span> <span class="s">/srv/www/example.com/logs/access.log</span><span class="p">;</span>
+    <span class="kn">error_log</span> <span class="s">/srv/www/example.com/logs/error.log</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">include</span>        <span class="s">uwsgi_params</span><span class="p">;</span>
+        <span class="kn">uwsgi_pass</span>     <span class="s">uwsgicluster</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="s">/static</span> <span class="p">{</span>
+        <span class="kn">root</span>   <span class="s">/srv/www/example.com/public_html/static/</span><span class="p">;</span>
+        <span class="kn">index</span>  <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, we create the <code>uwsgicluster</code> upstream, which has five components. One runs on the local interface, and four run on the local network interface of distinct Linodes (the <code>192.168.</code> addresses or the private &ldquo;back end&rdquo; network). The application servers that run on those dedicated application servers are identical to the application servers described above. However, the application server process must be configured to bind to the appropriate network interface to be capable of responding to requests.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="/docs/web-servers/nginx/installation/ubuntu-10-10-maverick">Installing Nginx on Ubuntu 10.10 (Maverick)</a></li>
+<li><a href="/docs/lemp-guides/ubuntu-10-10-maverick/">Deploy a LEMP Server on Ubuntu 10.10 (Maverick)</a></li>
+<li><a href="/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer">Configure nginx Proxy Servers</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/nginx/use-uwsgi-to-deploy-python-apps-with-nginx-on-ubuntu-12-04/">Use uWSGI to deploy Python apps with Nginx on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-debian-6-squeeze/">WSGI using uWSGI and nginx on Debian 6 (Squeeze) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-04-lucid/">WSGI using uWSGI and nginx on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-arch-linux/">WSGI using uWSGI and nginx on Arch Linux - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-14/">WSGI using uWSGI and nginx on Fedora 14 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#install-uwsgi">Install uWSGI</a></li>
+<li><a href="#compile-nginx-with-uwsgi-support">Compile nginx with uWSGI Support</a></li>
+<li><a href="#configure-uwsgi">Configure uWSGI</a></li>
+<li><a href="#configure-nginx">Configure nginx</a></li>
+<li><a href="#additional-application-servers">Additional Application Servers</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Set up tinc, a Peer-to-Peer VPN</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide details how to set up tinc, an open-source, peer-to-peer VPN on your Linode.">
+        <meta name="keywords" content="VPN,  tinc,  Ubuntu,  CentOS,  security">
+        
+        <meta property="og:title" content="How to Set up tinc, a Peer-to-Peer VPN">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/how-to-set-up-tinc-peer-to-peer-vpn/">
+        <meta property="og:description" content="This guide details how to set up tinc, an open-source, peer-to-peer VPN on your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/how-to-set-up-tinc-peer-to-peer-vpn/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  How to Set up tinc, a Peer-to-Peer VPN
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Set up tinc, a Peer-to-Peer VPN</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-20T00:00:00Z">Wednesday, September 20, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Damaso Sanoja
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fhow-to-set-up-tinc-peer-to-peer-vpn%2f&via=linode&text=How%20to%20Set%20up%20tinc%2c%20a%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fhow-to-set-up-tinc-peer-to-peer-vpn%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fhow-to-set-up-tinc-peer-to-peer-vpn%2f&t=How%20to%20Set%20up%20tinc%2c%20a%20Peer-to-Peer%20VPN" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/how-to-set-up-tinc-peer-to-peer-vpn.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/how-to-set-up-tinc-peer-to-peer-vpn.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/tinc.jpg" alt="How to Set up tinc, a Peer-to-Peer VPN" title="How to Set up tinc, a Peer-to-Peer VPN" /></p>
+
+<p>Virtual Private Networks (VPN) are an essential part of any serious network security deployment plan. There are many open-source VPN options but one of them shines above the others: tinc. All VPNs behave as a secure tunnel between two points, but tinc stands out for its &ldquo;Peer-to-Peer&rdquo; design. The design allows tinc users a great deal of flexibility, especially when planning a mesh-type network.</p>
+
+<p>From a clear two-server connection to complex mesh private network, this guide will show you how to configure tinc VPN in three different use-case scenarios.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<p>To complete all of the different configurations in this guide, you will need multiple Linodes. For each Linode, complete the following steps:</p>
+
+<ol>
+<li><p>Complete the <a href="/docs/getting-started">Getting Started</a> guide.</p></li>
+
+<li><p>Follow the <a href="/docs/security/securing-your-server/">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services.</p>
+
+<p>This guide will use <code>sudo</code> wherever possible. Please ensure you have access to privileged user rights.</p></li>
+
+<li><p>Update your packages:</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In order to focus on tinc configuration, three assumptions are made:</p>
+
+<ol>
+<li>There are no active firewalls on any server.</li>
+<li>Each server is connected directly to the Internet (no router or proxy is involved).</li>
+<li>Each server is running the same version of tinc.</li>
+</ol>
+</div>
+</blockquote>
+
+
+<h2 id="basic-setup-two-node-tinc-vpn">Basic Setup: Two Node tinc VPN</h2>
+
+<p>The typical use case for a two-node tinc is web-based invoicing software, where the database should be on a separate server (for security and disaster recovery), and needs to communicate sensitive data to the application server through the internet.
+This is a straightforward setup involving only two instances, an Application Server <em>(appserver)</em> and a Database Server <em>(dbserver)</em>. Each instance will run on a separate Linode:</p>
+
+<p><img src="/docs/assets/tinc-two-node.png" alt="Two Node VPN" /></p>
+
+<h3 id="gather-network-information">Gather Network Information</h3>
+
+<p>Before getting started, it&rsquo;s a good idea to create a &ldquo;cheat-sheet&rdquo; with network information, including the public IPv4 addresses for both servers, desired VPN address for each instance, VPN network name designations, and a tinc-daemon name for each node. The VPN address can be an arbitrary private network IPv4 address, the only rule to follow (if you want to avoid extra routing work) is that they must have the <strong>same network prefix</strong>, just like a typical LAN. VPN and daemon names must be unique and can&rsquo;t contain any spaces or special symbols. For the current use-case the following information will be used for tinc configuration:</p>
+
+<p><img src="/docs/assets/tinc-2-node-cheat-sheet.jpg" alt="Two node VPN cheat-sheet" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Throughout this guide, replace the IP address for each server with the public IP address of the corresponding Linode.</div>
+</blockquote>
+
+
+<h3 id="install-tinc-vpn-on-ubuntu-16-04">Install tinc VPN on Ubuntu 16.04</h3>
+
+<p>Ubuntu 16.04 will be used for all of the Linodes in this guide. Other distros can be used, but the steps to install the latest version of tinc will vary. At the time of this writing the latest stable version of tinc is 1.0.33. Ubuntu&rsquo;s repositories use an older version, so you will have to build from source:</p>
+
+<ol>
+<li><p>Install the necessary dependencies for building tinc:</p>
+
+<pre><code>sudo apt install build-essential automake libssl-dev liblzo2-dev libbz2-dev zlib1g-dev
+</code></pre></li>
+
+<li><p>Get the latest version of tinc from the developer&rsquo;s site:</p>
+
+<pre><code>wget https://tinc-vpn.org/packages/tinc-1.0.33.tar.gz
+</code></pre></li>
+
+<li><p>Extract the archive in a temporary folder:</p>
+
+<pre><code>tar -xf tinc-1.0.33.tar.gz
+</code></pre></li>
+
+<li><p>Compile tinc on your system:</p>
+
+<pre><code>cd tinc-1.0.33
+./configure --prefix=
+make
+sudo make install
+</code></pre></li>
+</ol>
+
+<h3 id="create-vpn-working-directory">Create VPN Working Directory</h3>
+
+<p>You can implement as many tinc networks as you need as long as you create a unique working directory for each one (gaming VPN, backups VPN, etc). The name of the folder must match the designated name for your VPN in this case: <em>linodeVPN</em>. You also need to use the same structure across the servers, which means you need to create the working directory on both:</p>
+
+<pre><code>sudo mkdir -p /etc/tinc/linodeVPN/hosts
+</code></pre>
+
+<h3 id="create-configuration-files">Create Configuration Files</h3>
+
+<p>You will be required to set up a <strong>main</strong> configuration file titled <code>tinc.conf</code> on each server. The default location for this file is the root of the working directory.</p>
+
+<ol>
+<li><p>Let&rsquo;s start with the Application Server file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Name</span> = appserver
+<span class="nb">Device</span> = <span class="sx">/dev/net/tun</span>
+<span class="nb">AddressFamily</span> = ipv4</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<ul>
+<li><code>Name</code> - This is daemon-specific name within the VPN. It should be unique.</li>
+<li><code>Device</code> - Determines the virtual network to use, tinc will automatically detect what kind of device you are using.</li>
+<li><code>AddressFamily</code> - Tell tinc which type of address to use.</li>
+</ul></li>
+
+<li><p>Now you need to generate the database server configuration file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Name</span> = dbserver
+<span class="nb">Device</span> = <span class="sx">/dev/net/tun</span>
+<span class="nb">AddressFamily</span> = ipv4
+<span class="nb">ConnectTo</span> = appserver</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p><code>ConnectTo</code> - This value points to the tinc daemon you want to connect. When it&rsquo;s not present (like in the previous file), tinc enters listening mode and waits for connections.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can customize tinc behavior with many other parameters in the configuration file, for more information visit the <a href="https://www.tinc-vpn.org/documentation/tinc.conf.5">tinc documentation</a>.</div>
+</blockquote>
+</li>
+
+<li><p>Create the <strong>hosts</strong> configuration file. Because tinc is built using a peer-to-peer model each node needs to communicate with the others. The basic host file for the Application Server is:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/hosts/appserver 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Address</span> = <span class="m">11.11.11.11</span>
+<span class="nb">Subnet</span> = <span class="m">192.168.100.209</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Similarly, create a host file for Database Server:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/hosts/dbserver 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Address</span> = <span class="m">22.22.22.22</span>
+<span class="nb">Subnet</span> = <span class="m">192.168.100.130</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Add the public key of each node. tinc can create the key pair using the following command:</p>
+
+<pre><code>sudo tincd -n linodeVPN -K 4096
+</code></pre>
+
+<p>For this example we&rsquo;re using 4096-bit encryption, you can choose a higher level if necessary. Save both keys <code>rsa_key.pub</code> and <code>rsa_key.priv</code> in the root of your working directory <code>/etc/tinc/linodeVPN</code>.</p></li>
+
+<li><p>Next, append the <code>rsa_key.pub</code> at the end of each host file. From the Application server:</p>
+
+<pre><code>sudo bash -c &quot;cat /etc/tinc/linodeVPN/rsa_key.pub &gt;&gt; /etc/tinc/linodeVPN/hosts/appserver&quot;
+</code></pre>
+
+<p>From the database server run a similar command:</p>
+
+<pre><code>sudo bash -c &quot;cat /etc/tinc/linodeVPN/rsa_key.pub &gt;&gt; /etc/tinc/linodeVPN/hosts/dbserver&quot;
+</code></pre></li>
+</ol>
+
+<h3 id="create-vpn-control-scripts">Create VPN Control Scripts</h3>
+
+<p>Control scripts are responsible for setting up virtual interfaces on each server. They&rsquo;re needed on both servers.</p>
+
+<ol>
+<li><p>From the Application server, create the following file to enable the tinc interface:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc-up 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c">#!/bin/sh</span>
+<span class="nb">ip</span> link set $INTERFACE up
+<span class="nb">ip</span> addr add <span class="m">192.168.100.209</span> dev $INTERFACE
+<span class="nb">ip</span> route add <span class="m">192.168.100.0/24</span> dev $INTERFACE</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Create a script to disable the interface:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc-down 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c">#!/bin/sh</span>
+<span class="nb">ip</span> route del <span class="m">192.168.100.0/24</span> dev $INTERFACE
+<span class="nb">ip</span> addr del <span class="m">192.168.100.209</span> dev $INTERFACE
+<span class="nb">ip</span> link set $INTERFACE down</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create a similar set of scripts from the Database server:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc-up 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c">#!/bin/sh</span>
+<span class="nb">ip</span> link set $INTERFACE up
+<span class="nb">ip</span> addr add <span class="m">192.168.100.130</span> dev $INTERFACE
+<span class="nb">ip</span> route add <span class="m">192.168.100.0/24</span> dev $INTERFACE</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<pre><code>And another script to shutdown it:
+</code></pre>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc-down 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c">#!/bin/sh</span>
+<span class="nb">ip</span> route del <span class="m">192.168.100.0/24</span> dev $INTERFACE
+<span class="nb">ip</span> addr del <span class="m">192.168.100.209</span> dev $INTERFACE
+<span class="nb">ip</span> link set $INTERFACE down</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>After creating the control scripts you will need to change the permissions, on both servers, accordingly:</p>
+
+<pre><code>sudo chmod -v +x /etc/tinc/linodeVPN/tinc-{up,down}
+</code></pre></li>
+</ol>
+
+<h3 id="create-tinc-unit-file">Create tinc Unit File</h3>
+
+<p>In order to run tinc as a service on startup, you&rsquo;ll need to set up the proper Unit file for each server. Edit the following file from both the application and database servers.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/systemd/system/tinc.service 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Tinc net linodeVPN
+<span class="nv">After</span><span class="o">=</span>network.target
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>simple
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/etc/tinc/linodeVPN
+<span class="nv">ExecStart</span><span class="o">=</span>/sbin/tincd -n linodeVPN -D -d3
+<span class="nv">ExecReload</span><span class="o">=</span>/sbin/tincd -n linodeVPN -kHUP
+<span class="nv">TimeoutStopSec</span><span class="o">=</span><span class="m">5</span>
+<span class="nv">Restart</span><span class="o">=</span>always
+<span class="nv">RestartSec</span><span class="o">=</span><span class="m">60</span>
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For tinc unit a debug level of &ldquo;3&rdquo; was chosen in the <code>tincd</code> command. This will log all requests from other daemons and include an authentication chain between them. For more information about debug levels please read the <a href="https://www.tinc-vpn.org/documentation/tincd.8">tincd documentation</a>.</div>
+</blockquote>
+
+
+<h3 id="host-files-interchange">Host Files Interchange</h3>
+
+<p>At this point, you have configuration files created on each server. Because of tinc&rsquo;s P2P nature, the last thing you need to do is interchange host files between nodes. There are many ways to accomplish this, for the purposes of this guide we&rsquo;ll use <code>scp</code>.</p>
+
+<p>From <code>appserver</code>:</p>
+
+<pre><code>scp /etc/tinc/linodeVPN/hosts/appserver &lt;user&gt;@&lt;dbserver&gt;:/tmp/
+ssh -t &lt;user&gt;@&lt;dbserver&gt; sudo mv -v /tmp/appserver /etc/tinc/linodeVPN/hosts/
+</code></pre>
+
+<p>From <code>dbserver</code>:</p>
+
+<pre><code>scp /etc/tinc/linodeVPN/hosts/dbserver &lt;user&gt;@&lt;appserver&gt;:/tmp/
+ssh -t &lt;user&gt;@&lt;appserver&gt; sudo mv -v /tmp/dbserver /etc/tinc/linodeVPN/hosts/
+</code></pre>
+
+<h3 id="test-tinc">Test tinc</h3>
+
+<ol>
+<li><p>It&rsquo;s time to test your newly configured VPN. From the application server start the <code>tincd</code> daemon:</p>
+
+<pre><code>sudo tincd -n linodeVPN -D -d3
+</code></pre></li>
+
+<li><p>And now from database server do the same:</p>
+
+<pre><code>sudo tincd -n linodeVPN -D -d3
+</code></pre>
+
+<p>If everything has been configured successfully you should see an output similar to this:</p>
+
+<p><img src="/docs/assets/appserver-dbserver-output.jpg" alt="VPN output" title="VPN output" /></p></li>
+
+<li><p>You can open another terminal (i.e., from <code>appserver</code>) and check the active interfaces:</p>
+
+<pre><code>sudo ip a
+</code></pre>
+
+<p>You should have at least three interfaces, one of them your <code>linodeVPN</code>.</p></li>
+</ol>
+
+<p>Another quick test you can do is to <code>ping</code> the Database Server from the Application Server using its VPN address:</p>
+
+<pre><code>ping 192.168.100.130
+</code></pre>
+
+<p>If you encounter errors during your testing you can add this flag to your daemon command:</p>
+
+<pre><code>sudo tincd -n --logfile[=FILE] linodeVPN -D -d5
+</code></pre>
+
+<h3 id="complete-your-tinc-configuration">Complete Your tinc Configuration</h3>
+
+<p>Once you have your tinc VPN ready you can enable the service on startup:</p>
+
+<pre><code>sudo systemctl enable tinc.service
+</code></pre>
+
+<p>Now you can start, stop, restart, and check the service using common <code>systemd</code> syntax.</p>
+
+<pre><code>sudo systemctl status tinc.service
+</code></pre>
+
+<h2 id="how-to-deploy-a-three-node-tinc-mesh">How to Deploy a Three-Node tinc mesh</h2>
+
+<p>This topology can be considered a variant of the single-node where a high traffic application requires separate instances to scale, resource optimization and faster response (asynchronous processing).</p>
+
+<p><img src="/docs/assets/tinc-three-node.png" alt="Three-Node VPN" title="Three-Node VPN" /></p>
+
+<p>In the interest of showcasing tinc&rsquo;s easy expandability, we&rsquo;ll assume that <strong>LINODE1</strong> and <strong>LINODE2</strong> are the same application server and database server from the previous section.</p>
+
+<p>The &ldquo;cheat-sheet&rdquo; for this topology is:</p>
+
+<p><img src="/docs/assets/tinc-3-node-cheat-sheet.jpg" alt="Three-Node cheat-sheet" title="Three-Node cheat-sheet" /></p>
+
+<ol>
+<li><p>Configure the new webserver (Linode 3). Follow the previously explained steps to install the tinc VPN and create the working directory.</p></li>
+
+<li><p>The main configuration file for this instance would be:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Name</span> = webserver
+<span class="nb">Device</span> = <span class="sx">/dev/net/tun</span>
+<span class="nb">AddressFamily</span> = ipv4
+<span class="nb">ConnectTo</span> = appserver
+<span class="nb">ConnectTo</span> = dbserver</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Edit the host file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/hosts/webserver 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Address</span> = <span class="m">33.33.33.33</span>
+<span class="nb">Subnet</span> = <span class="m">192.168.100.140</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>This time increase the security level on the encryption keys:</p>
+
+<p>sudo tincd -n linodeVPN -K 8192</p></li>
+
+<li><p>Once again, you need to append the public key to the host file:</p>
+
+<pre><code>sudo bash -c &quot;cat /etc/tinc/linodeVPN/rsa_key.pub &gt;&gt; /etc/tinc/linodeVPN/hosts/webserver&quot;
+</code></pre></li>
+
+<li><p>Add control scripts:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc-up 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c">#!/bin/sh</span>
+<span class="nb">ip</span> link set $INTERFACE up
+<span class="nb">ip</span> addr add <span class="m">192.168.100.140</span> dev $INTERFACE
+<span class="nb">ip</span> route add <span class="m">192.168.100.0/24</span> dev $INTERFACE</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc-down 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c">#!/bin/sh</span>
+<span class="nb">ip</span> route del <span class="m">192.168.100.0/24</span> dev $INTERFACE
+<span class="nb">ip</span> addr del <span class="m">192.168.100.140</span> dev $INTERFACE
+<span class="nb">ip</span> link set $INTERFACE down</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Change permissions:</p>
+
+<pre><code>sudo chmod -v +x /etc/tinc/linodeVPN/tinc-{up,down}
+</code></pre></li>
+
+<li><p>The unit file on this server will be identical to the previous servers:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/systemd/system/tinc.service 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">[Unit]</span>
+<span class="err">Description=</span><span class="nb">Tinc</span> net linodeVPN
+<span class="err">After=network</span>.<span class="nb">target</span>
+
+[Service]
+<span class="err">Type=</span><span class="nb">simple</span>
+WorkingDirectory=/etc/tinc/linodeVPN
+<span class="err">ExecStart=/sbin/</span><span class="nb">tincd</span> -n linodeVPN -D -d3
+<span class="err">ExecReload=/sbin/</span><span class="nb">tincd</span> -n linodeVPN -kHUP
+<span class="err">TimeoutStopSec=5</span>
+<span class="err">Restart=</span><span class="nb">always</span>
+RestartSec=60
+
+<span class="err">[Install]</span>
+<span class="err">WantedBy=multi-user</span>.<span class="err">target</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>The last step is to interchange host files between all nodes. You will need to copy application and database servers host files to webserver and webserver&rsquo;s host file to both of them.</p>
+
+<p>From <code>webserver</code>:</p>
+
+<pre><code>scp /etc/tinc/linodeVPN/hosts/webserver &lt;user&gt;@&lt;appserver&gt;:/tmp/
+ssh -t &lt;user&gt;@&lt;appserver&gt; sudo mv -v /tmp/webserver /etc/tinc/linodeVPN/hosts/
+
+scp /etc/tinc/linodeVPN/hosts/webserver &lt;user&gt;@&lt;dbserver&gt;:/tmp/
+ssh -t &lt;user&gt;@&lt;dbserver&gt; sudo mv -v /tmp/webserver /etc/tinc/linodeVPN/hosts/
+</code></pre>
+
+<p>From <code>appserver</code>:</p>
+
+<pre><code>scp /etc/tinc/linodeVPN/hosts/appserver &lt;user&gt;@&lt;webserver&gt;:/tmp/
+ssh -t &lt;user&gt;@&lt;webserver&gt; sudo mv -v /tmp/appserver /etc/tinc/linodeVPN/hosts/
+</code></pre>
+
+<p>From <code>dbserver</code>:</p>
+
+<pre><code>scp /etc/tinc/linodeVPN/hosts/dbserver &lt;user&gt;@&lt;webserver&gt;:/tmp/
+ssh -t &lt;user&gt;@&lt;webserver&gt; sudo mv -v /tmp/dbserver /etc/tinc/linodeVPN/hosts/
+</code></pre></li>
+
+<li><p>Finally, modify the <code>tinc.conf</code> file on <code>appserver</code> and <code>dbserver</code>. The new configuration files need to tell tinc to look for other nodes:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Name</span> = appserver
+<span class="nb">Device</span> = <span class="sx">/dev/net/tun</span>
+<span class="nb">AddressFamily</span> = ipv4
+<span class="nb">ConnectTo</span> = dbserver
+<span class="nb">ConnectTo</span> = webserver</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Name</span> = dbserver
+<span class="nb">Device</span> = <span class="sx">/dev/net/tun</span>
+<span class="nb">AddressFamily</span> = ipv4
+<span class="nb">ConnectTo</span> = appserver
+<span class="nb">ConnectTo</span> = webserver</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Now you can start the tinc service on the webserver:</p>
+
+<pre><code> sudo systemctl enable tinc.service
+ sudo systemctl start tinc.service
+</code></pre></li>
+</ol>
+
+<h2 id="use-tinc-for-centralized-cloud-interconnection">Use tinc for Centralized Cloud Interconnection</h2>
+
+<p>This setup illustrates a use-case where regional branches need to interact with an application running at a headquarters, like a centralized inventory management software.
+In the last use-case, you will configure a VPN with four Linode servers. Each server should be in a different geographic location.</p>
+
+<p><img src="/docs/assets/tinc-four-node.png" alt="Centralized Cloud VPN" title="Centralized Cloud VPN" /></p>
+
+<p>The cheat-sheet in this case is:</p>
+
+<p><img src="/docs/assets/tinc-4-node-cheat-sheet.jpg" alt="Centralized VPN cheat-sheet" title="Centralized VPN cheat-sheet" /></p>
+
+<p>After the previous two sections, you should be familiar with the configuration procedure:</p>
+
+<ol>
+<li>Install tinc VPN on each node.</li>
+<li>Create VPN working directory on each node.</li>
+<li>Create <code>tinc.conf</code> and host files on every node.</li>
+<li>Create VPN control scripts for all tinc instances.</li>
+<li>Create unit files.</li>
+<li>Interchange host files across all nodes.</li>
+<li>Enable tinc unit(s)</li>
+</ol>
+
+<p>The configuration file <code>tinc.conf</code> on Linodes 1, 2, and 3 should point only to Linode HQ (<code>ConnectTo</code>). The configuration file on Linode HQ should define connections with all nodes using the same directive. The corresponding configuration files are:</p>
+
+<p><strong>Linode1:</strong></p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Name</span> = linode1
+<span class="nb">Device</span> = <span class="sx">/dev/net/tun</span>
+<span class="nb">AddressFamily</span> = ipv4
+<span class="nb">ConnectTo</span> = linodeHQ</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p><strong>Linode2:</strong></p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Name</span> = linode2
+<span class="nb">Device</span> = <span class="sx">/dev/net/tun</span>
+<span class="nb">AddressFamily</span> = ipv4
+<span class="nb">ConnectTo</span> = linodeHQ</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p><strong>Linode3:</strong></p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Name</span> = linode3
+<span class="nb">Device</span> = <span class="sx">/dev/net/tun</span>
+<span class="nb">AddressFamily</span> = ipv4
+<span class="nb">ConnectTo</span> = linodeHQ</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p><strong>And finally on the central server:</strong></p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/tinc/linodeVPN/tinc.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Name</span> = linodeHQ
+<span class="nb">Device</span> = <span class="sx">/dev/net/tun</span>
+<span class="nb">AddressFamily</span> = ipv4
+<span class="nb">ConnectTo</span> = linode1
+<span class="nb">ConnectTo</span> = linode2
+<span class="nb">ConnectTo</span> = linode3</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.tinc-vpn.org/">tinc Project</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/">Updating Virtual Host Settings from Apache 2.2 to Apache 2.4</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/vpn-firewall-killswitch-for-linux-and-macos-clients/">iptables Configuration for VPN Killswitch</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/">Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/">Install a LEMP Stack on CentOS 7 with FastCGI</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#basic-setup-two-node-tinc-vpn">Basic Setup: Two Node tinc VPN</a>
+<ul>
+<li><a href="#gather-network-information">Gather Network Information</a></li>
+<li><a href="#install-tinc-vpn-on-ubuntu-16-04">Install tinc VPN on Ubuntu 16.04</a></li>
+<li><a href="#create-vpn-working-directory">Create VPN Working Directory</a></li>
+<li><a href="#create-configuration-files">Create Configuration Files</a></li>
+<li><a href="#create-vpn-control-scripts">Create VPN Control Scripts</a></li>
+<li><a href="#create-tinc-unit-file">Create tinc Unit File</a></li>
+<li><a href="#host-files-interchange">Host Files Interchange</a></li>
+<li><a href="#test-tinc">Test tinc</a></li>
+<li><a href="#complete-your-tinc-configuration">Complete Your tinc Configuration</a></li>
+</ul></li>
+<li><a href="#how-to-deploy-a-three-node-tinc-mesh">How to Deploy a Three-Node tinc mesh</a></li>
+<li><a href="#use-tinc-for-centralized-cloud-interconnection">Use tinc for Centralized Cloud Interconnection</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>High Availability WordPress Hosting</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Configuring a highly available WordPress installation.">
+        <meta name="keywords" content="wordpress, mysql, replication, master-master, high availability">
+        
+        <meta property="og:title" content="High Availability WordPress Hosting">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/cms/high-availability-wordpress/">
+        <meta property="og:description" content="Configuring a highly available WordPress installation.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/cms/high-availability-wordpress/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/cms/">Control Panels &amp; Content Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  High Availability WordPress Hosting
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">High Availability WordPress Hosting</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-01-21T00:00:00Z">Wednesday, January 21, 2015</time> by James Stewart</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fhigh-availability-wordpress%2f&via=linode&text=High%20Availability%20WordPress%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fhigh-availability-wordpress%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fhigh-availability-wordpress%2f&t=High%20Availability%20WordPress%20Hosting" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/cms/high-availability-wordpress.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/cms/high-availability-wordpress.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>This guide configures a high availability WordPress site with a two-Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer front-end.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a <a href="/docs/networking/remote-access#adding-private-ip-addresses">Private IP address</a>. Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode&rsquo;s SSH key in the other&rsquo;s <code>/.ssh/authorized_keys</code> file.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="install-required-software-packages">Install Required Software Packages</h2>
+
+<p>Use the following commands to install Apache, PHP, and MySQL on each of the Linodes:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install apache2 php5 php5-mysql mysql-server mysql-client
+</code></pre>
+
+<h2 id="edit-mysql-s-configuration-to-set-up-master-master-replication">Edit MySQL&rsquo;s Configuration to Set Up Master-Master Replication</h2>
+
+<ol>
+<li><p>Edit the <code>/etc/mysql/my.cnf</code> file on each of the Linodes. Add or modify the following values:</p>
+
+<p><strong>Server 1:</strong></p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mysql/my.cnf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">server_id</span>           = <span class="m">1</span>
+<span class="nb">log_bin</span>             = <span class="sx">/var/log/mysql/mysql-bin.log</span>
+<span class="nb">log_bin_index</span>       = <span class="sx">/var/log/mysql/mysql-bin.log.index</span>
+<span class="nb">relay_log</span>           = <span class="sx">/var/log/mysql/mysql-relay-bin</span>
+<span class="nb">relay_log_index</span>     = <span class="sx">/var/log/mysql/mysql-relay-bin.index</span>
+<span class="nb">expire_logs_days</span>    = <span class="m">10</span>
+<span class="nb">max_binlog_size</span>     = <span class="m">100</span>M
+<span class="nb">log_slave_updates</span>   = <span class="m">1</span>
+<span class="err">auto-increment-</span><span class="nb">increment</span> = <span class="m">2</span>
+<span class="err">auto-increment-</span><span class="nb">offset</span> = <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p><strong>Server 2:</strong></p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mysql/my.cnf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">server_id</span>           = <span class="m">2</span>
+<span class="nb">log_bin</span>             = <span class="sx">/var/log/mysql/mysql-bin.log</span>
+<span class="nb">log_bin_index</span>       = <span class="sx">/var/log/mysql/mysql-bin.log.index</span>
+<span class="nb">relay_log</span>           = <span class="sx">/var/log/mysql/mysql-relay-bin</span>
+<span class="nb">relay_log_index</span>     = <span class="sx">/var/log/mysql/mysql-relay-bin.index</span>
+<span class="nb">expire_logs_days</span>    = <span class="m">10</span>
+<span class="nb">max_binlog_size</span>     = <span class="m">100</span>M
+<span class="nb">log_slave_updates</span>   = <span class="m">1</span>
+<span class="err">auto-increment-</span><span class="nb">increment</span> = <span class="m">2</span>
+<span class="err">auto-increment-</span><span class="nb">offset</span> = <span class="m">2</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>For each of the Linodes, edit the <code>bind-address</code> configuration in order to use the private IP addresses:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mysql/my.cnf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">bind-address    <span class="o">=</span> x.x.x.x</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Once completed, restart the MySQL application:</p>
+
+<pre><code>sudo service mysql restart
+</code></pre></li>
+</ol>
+
+<h2 id="create-replication-users">Create Replication Users</h2>
+
+<ol>
+<li><p>Log in to MySQL on each of the Linodes:</p>
+
+<pre><code>mysql -u root -p
+</code></pre></li>
+
+<li><p>Configure the replication users on each Linode. Replace <code>x.x.x.x</code> with the private IP address of the opposing Linode and <code>password</code> with a strong password:</p>
+
+<pre><code>GRANT REPLICATION SLAVE ON *.* TO 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
+</code></pre></li>
+
+<li><p>Back in the terminal, run the following command to test the configuration. Use the private IP address of the opposing Linode:</p>
+
+<pre><code>mysql -ureplication -p -h x.x.x.x -P 3306
+</code></pre>
+
+<p>This command should connect you to the remote server&rsquo;s MySQL instance.</p></li>
+</ol>
+
+<h2 id="configure-database-replication">Configure Database Replication</h2>
+
+<ol>
+<li><p>While logged into MySQL on Server 1, query the master status:</p>
+
+<pre><code>SHOW MASTER STATUS;
+</code></pre>
+
+<p>Note the file and position values that are displayed:</p>
+
+<pre><code>mysql&gt; SHOW MASTER STATUS;
++------------------+----------+--------------+------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++------------------+----------+--------------+------------------+
+| mysql-bin.000001 |      277 |              |                  |
++------------------+----------+--------------+------------------+
+1 row in set (0.00 sec)
+</code></pre></li>
+
+<li><p>On Server 2, at the MySQL prompt, set up the slave functionality for that database. Replace <code>x.x.x.x</code> with the private IP from the first server. Also replace the values for <code>master_log_file</code> and <code>master_log_pos</code> with the values from the previous step:</p>
+
+<pre><code>SLAVE STOP;
+CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
+SLAVE START;
+</code></pre></li>
+
+<li><p>On Server 2, query the master status. Note the file and position values:</p>
+
+<pre><code>SHOW MASTER STATUS;
+</code></pre></li>
+
+<li><p>Set the slave database status on Server 1, replacing the same values swapped in step 2 with those from the Server 2:</p>
+
+<pre><code>SLAVE STOP;
+CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
+SLAVE START;
+</code></pre></li>
+
+<li><p>Exit MySQL on both of your Linodes:</p>
+
+<pre><code>exit
+</code></pre></li>
+</ol>
+
+<h2 id="configure-apache">Configure Apache</h2>
+
+<p>The steps in this section will need to be performed on <strong>both</strong> of your Linodes.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For the following sections of this guide, replace &ldquo;example.com&rdquo; with your domain name.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Disable the default Apache virtual host by entering the following command:</p>
+
+<pre><code>sudo a2dissite *default
+</code></pre></li>
+
+<li><p>Navigate to your /var/www directory:</p>
+
+<pre><code>cd /var/www
+</code></pre></li>
+
+<li><p>Create a folder to hold your website by entering the following command:</p>
+
+<pre><code>sudo mkdir example.com
+</code></pre></li>
+
+<li><p>Create a set of folders inside the folder you&rsquo;ve just created to store your website&rsquo;s files, logs, and backups:</p>
+
+<pre><code>sudo mkdir example.com/public_html
+sudo mkdir example.com/log
+</code></pre></li>
+
+<li><p>Create the virtual host file for the website:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="c"># domain: example.com</span>
+<span class="c"># public: /var/www/example.com/public_html/</span>
+
+<span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+  <span class="c"># Admin email, Server Name (domain name), and any aliases</span>
+  <span class="nb">ServerAdmin</span> webmaster@example.com
+  <span class="nb">ServerName</span>  www.example.com
+  <span class="nb">ServerAlias</span> example.com
+
+  <span class="c"># Index file and Document Root (where the public files are located)</span>
+  <span class="nb">DirectoryIndex</span> index.html index.php
+  <span class="nb">DocumentRoot</span> <span class="sx">/var/www/example.com/public_html</span>
+  <span class="c"># Log file locations</span>
+  <span class="nb">LogLevel</span> <span class="k">warn</span>
+  <span class="nb">ErrorLog</span>  <span class="sx">/var/www/example.com/log/error.log</span>
+  <span class="nb">CustomLog</span> <span class="sx">/var/www/example.com/log/access.log</span> combined
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>The file name <em>must</em> end with <code>.conf</code> in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The <code>.conf</code> extension is backwards-compatible with earlier versions.</div>
+</blockquote>
+</li>
+
+<li><p>Enable the new website by entering the following command:</p>
+
+<pre><code>sudo a2ensite example.com.conf
+</code></pre></li>
+
+<li><p>Restart Apache:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre></li>
+</ol>
+
+<h2 id="install-wordpress">Install WordPress</h2>
+
+<ol>
+<li><p>On the primary Linode, download and install the latest version of WordPress. Replace any paths listed with the correct path for your configuration:</p>
+
+<pre><code>cd /var/www
+wget https://wordpress.org/latest.tar.gz
+tar -xvf latest.tar.gz
+cp -R wordpress/* /var/www/example.com/public_html
+</code></pre></li>
+
+<li><p>Configure the MySQL database for the new WordPress installation. You&rsquo;ll need to replace <code>wordpressuser</code> and <code>password</code> with your own settings:</p>
+
+<pre><code>mysql -u root -p
+CREATE DATABASE wordpress;
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'password';
+FLUSH PRIVILEGES;
+EXIT
+</code></pre></li>
+
+<li><p>Set permissions on the Document Root directory to enable WordPress to complete its configuration steps:</p>
+
+<pre><code>chmod 777 /var/www/example.com/public_html/
+</code></pre></li>
+
+<li><p>Connect to your Linode&rsquo;s IP address using your web browser, and walk through the configuration steps to fully install WordPress.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>In order to ensure that each of your WordPress instances addresses the local database, you will need to ensure that the Database Host value in this step is set to <code>localhost</code>.  This should be filled in by default.</div>
+</blockquote>
+</li>
+
+<li><p>Configure your WordPress URL and Site Address via the General Settings in the WordPress admin interface. Ensure that your domain is configured in both fields.</p>
+
+<p><a href="/docs/assets/WP-site-address.png"><img src="/docs/assets/WP-site-address-rs.png" alt="WordPressURL" /></a></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>After completing your WordPress installation steps and logging in for the first time, you should reset permissions on your Document Root directory to ensure additional security. You can do so with the following command:</p>
+
+<p>chmod 755 /var/www/example.com/public_html/</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Once the WordPress installation steps have been completed, copy the configurations to your second Linode. Replace <code>x.x.x.x</code> with the second Linode&rsquo;s IP address:</p>
+
+<pre><code>rsync -r /var/www/* x.x.x.x:/var/www/.
+</code></pre></li>
+
+<li><p>Log in to the second Linode and restart Apache:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre></li>
+</ol>
+
+<h2 id="configure-folder-sync-with-lsyncd">Configure Folder Sync With Lsyncd</h2>
+
+<ol>
+<li><p>Install Lsyncd on your primary Linode in the cluster.</p>
+
+<pre><code>sudo apt-get install lsyncd
+</code></pre></li>
+
+<li><p>Create a configuration file in order to perform sync actions.  Replace <code>x.x.x.x</code> with the Private IP address of the second Linode in your cluster.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/lsyncd/lsyncd.conf.lua 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">logfile</span> <span class="o">=</span> <span class="s2">&#34;/var/log/lsyncd.log&#34;</span><span class="p">,</span>
+<span class="n">statusFile</span> <span class="o">=</span> <span class="s2">&#34;/var/log/lsyncd-status.log&#34;</span>
+<span class="p">}</span>
+<span class="n">sync</span><span class="p">{</span>
+<span class="n">default.rsyncssh</span><span class="p">,</span>
+<span class="n">delete</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+<span class="n">insist</span>
+<span class="n">source</span><span class="o">=</span><span class="s2">&#34;/var/www&#34;</span><span class="p">,</span>
+<span class="n">host</span><span class="o">=</span><span class="s2">&#34;x.x.x.x&#34;</span><span class="p">,</span>
+<span class="n">targetdir</span><span class="o">=</span><span class="s2">&#34;/var/www&#34;</span><span class="p">,</span>
+<span class="n">rsync</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">archive</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+<span class="n">perms</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+<span class="n">owner</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+<span class="n">_extra</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;-a&#34;</span><span class="p">},</span>
+<span class="p">},</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+<span class="n">maxProcesses</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+<span class="n">ssh</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Start the Lsyncd daemon:</p>
+
+<pre><code>service lsyncd start
+</code></pre></li>
+
+<li><p>Test that Lsyncd started successfully:</p>
+
+<pre><code>service lsyncd status
+</code></pre>
+
+<p>If this command returns something other than <code>lsyncd is running</code>, double-check your <code>lsyncd.conf.lua</code> file and ensure that the RSA public key is in the right location on the secondary server.</p></li>
+
+<li><p>Test replication by creating a file in your primary Linode&rsquo;s <code>/var/www</code> folder.  You should be able to see that same file in that location on the second Linode within a few seconds.</p></li>
+</ol>
+
+<h2 id="configure-your-nodebalancer">Configure Your Nodebalancer</h2>
+
+<ol>
+<li><p>Visit the NodeBalancers tab in the Linode Manager.</p></li>
+
+<li><p>If you have not done so already, add a NodeBalancer, ensuring that it is in the same datacenter as your back-end Linodes.</p></li>
+
+<li><p>Select your new NodeBalancer and click &ldquo;Create Configuration.&rdquo; Edit your configuration settings as follows:</p>
+
+<pre><code>Port: 80
+Protocol: HTTP
+Algorithm: Least Connections
+Session Stickiness: Table
+Health Check Type: HTTP Valid Status
+</code></pre></li>
+
+<li><p>Once you click the &ldquo;Save Changes&rdquo; button, you will be prompted to add your nodes. Provide a unique label for each one, and enter the private network address and port in the address field for each of the nodes.</p></li>
+
+<li><p>When you have added both of your nodes, ensure that the health checks mark them as up. Once both nodes are showing as up, return to the NodeBalancer&rsquo;s main page and note the IP address listed. You should now be able to navigate to that IP address and view your webpage.</p></li>
+</ol>
+
+<p>In order to test the high-availability functionality, either stop the Apache2/MySQL services on one of your nodes or power them down one at a time. The website should continue to be served without issue even when one of the nodes is marked as down.</p>
+
+<p>Congratulations, you have now configured your high-availability WordPress site!</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/mysql/configure-master-master-mysql-database-replication/">Configure Master-Master MySQL Database Replication</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/">Set Up MariaDB Clusters with Galera Debian and Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/">How to Use HAProxy for Load Balancing</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/">Use Laravel Forge to Automate Web-Server Creation on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/">Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#install-required-software-packages">Install Required Software Packages</a></li>
+<li><a href="#edit-mysql-s-configuration-to-set-up-master-master-replication">Edit MySQL&rsquo;s Configuration to Set Up Master-Master Replication</a></li>
+<li><a href="#create-replication-users">Create Replication Users</a></li>
+<li><a href="#configure-database-replication">Configure Database Replication</a></li>
+<li><a href="#configure-apache">Configure Apache</a></li>
+<li><a href="#install-wordpress">Install WordPress</a></li>
+<li><a href="#configure-folder-sync-with-lsyncd">Configure Folder Sync With Lsyncd</a></li>
+<li><a href="#configure-your-nodebalancer">Configure Your Nodebalancer</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

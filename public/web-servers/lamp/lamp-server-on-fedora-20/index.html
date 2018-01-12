@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>LAMP Server on Fedora 20</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 20">
+        <meta name="keywords" content="fedora, lamp, fedora 20 lamp, lamp server, linux lamp, fedora 20 apache">
+        
+        <meta property="og:title" content="LAMP Server on Fedora 20">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/lamp/lamp-server-on-fedora-20/">
+        <meta property="og:description" content="Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 20">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/lamp/lamp-server-on-fedora-20/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/lamp/">LAMP Guides</a>
+  
+</li>
+
+
+<li>
+  
+  LAMP Server on Fedora 20
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">LAMP Server on Fedora 20</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-04-11T00:00:00Z">Friday, April 11, 2014</time> by Alex Fornuto</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2flamp%2flamp-server-on-fedora-20%2f&via=linode&text=LAMP%20Server%20on%20Fedora%2020" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2flamp%2flamp-server-on-fedora-20%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2flamp%2flamp-server-on-fedora-20%2f&t=LAMP%20Server%20on%20Fedora%2020" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/lamp/lamp-server-on-fedora-20.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/lamp/lamp-server-on-fedora-20.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Fedora 20 system. In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don&rsquo;t feel that you will need MySQL or PHP, please don&rsquo;t feel obligated to install them.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps required in this guide require root privileges. Be sure to run the steps below as <code>root</code> or with the <strong>sudo</strong> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<p>Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.</p>
+
+<h2 id="set-the-hostname">Set the Hostname</h2>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>.</p>
+
+<p>Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -A
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p>
+
+<h2 id="install-and-configure-the-apache-web-server">Install and Configure the Apache Web Server</h2>
+
+<p>The Apache Web Server is a very popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.</p>
+
+<p>Make sure your system is up to date by issuing the following command:</p>
+
+<pre><code>yum update
+</code></pre>
+
+<p>To install the current version of the Apache web server (in the 2.x series) use the following commands:</p>
+
+<pre><code>yum install httpd
+systemctl enable httpd.service
+systemctl start httpd.service
+</code></pre>
+
+<p>The main configuration directives for Apache are contained in the <code>httpd.conf</code> file, which is located at <code>/etc/httpd/conf/httpd.conf</code>. We advise you to make a backup of this file into your home directory, like so:</p>
+
+<pre><code>cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+</code></pre>
+
+<p>By default, all files ending in the <code>.conf</code> extension in <code>/etc/httpd/conf.d/</code> are treated as configuration files, and we recommend placing your non-standard configuration options in files in this directory. Regardless of how you choose to organize your configuration files, making regular backups of known working states is highly recommended.</p>
+
+<p>Edit the main Apache configuration file to add these resource use settings, or create a new .conf file in <code>/etc/httpd/conf.d/</code>. The settings shown below are a good starting point for a <strong>Linode 2GB</strong>.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/httpd/conf/httpd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">KeepAlive</span> <span class="k">Off</span>
+
+<span class="nt">&lt;IfModule</span> <span class="s">prefork.c</span><span class="nt">&gt;</span>
+        <span class="nb">StartServers</span>        <span class="m">4</span>
+        <span class="nb">MinSpareServers</span>     <span class="m">20</span>
+        <span class="nb">MaxSpareServers</span>     <span class="m">40</span>
+        <span class="nb">MaxClients</span>          <span class="m">200</span>
+        <span class="nb">MaxRequestsPerChild</span> <span class="m">4500</span>
+<span class="nt">&lt;/IfModule</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Now we&rsquo;ll configure virtual hosting so that we can host multiple domains (or subdomains) with the server. These websites can be controlled by different users, or by a single user, as you prefer.</p>
+
+<p>Before we get started, we suggest that you combine all configuration on virtual hosting into a single file called <code>vhost.conf</code> located in the <code>/etc/httpd/conf.d/</code> directory. Open this file in your favorite text editor, and we&rsquo;ll begin by setting up name based virtual hosts.</p>
+
+<h3 id="configure-name-based-virtual-hosts">Configure Name-based Virtual Hosts</h3>
+
+<p>There are different ways to set up Virtual Hosts, however we recommend the method below. By default, Apache listens on all IP addresses available to it.</p>
+
+<p>Now we will create virtual host entries for each site that we need to host with this server. Here are two examples for sites at &ldquo;example.com&rdquo; and &ldquo;example.org&rdquo;.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/httpd/conf.d/vhost.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+     <span class="nb">ServerAdmin</span> webmaster@example.com
+     <span class="nb">ServerName</span> example.com
+     <span class="nb">ServerAlias</span> www.example.com
+     <span class="nb">DocumentRoot</span> <span class="sx">/var/www/example.com/public_html/</span>
+     <span class="nb">ErrorLog</span> <span class="sx">/var/www/example.com/logs/error.log</span>
+     <span class="nb">CustomLog</span> <span class="sx">/var/www/example.com/logs/access.log</span> combined
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+     <span class="nb">ServerAdmin</span> webmaster@example.org
+     <span class="nb">ServerName</span> example.org
+     <span class="nb">ServerAlias</span> www.example.org
+     <span class="nb">DocumentRoot</span> <span class="sx">/var/www/example.org/public_html/</span>
+     <span class="nb">ErrorLog</span> <span class="sx">/var/www/example.org/logs/error.log</span>
+     <span class="nb">CustomLog</span> <span class="sx">/var/www/example.org/logs/access.log</span> combined
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Notes regarding this example configuration:</p>
+
+<ul>
+<li>All of the files for the sites that you host will be located in directories that exist underneath <code>/var/www</code>. You can symbolically link these directories into other locations if you need them to exist in other places.</li>
+<li><code>ErrorLog</code> and <code>CustomLog</code> entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the <code>logs</code> directories must be created before you restart Apache.</li>
+</ul>
+
+<p>Before you can use the above configuration, you&rsquo;ll need to create the specified directories. For the above configuration, you can do this with the following commands:</p>
+
+<pre><code>mkdir -p /var/www/example.com/{public_html,logs}
+mkdir -p /var/www/example.org/{public_html,logs}
+</code></pre>
+
+<p>After you&rsquo;ve set up your virtual hosts, issue the following command to reload Apache with your new virtual hosts:</p>
+
+<pre><code>systemctl reload httpd.service
+</code></pre>
+
+<p>Once you have reloaded Apache, you can use the following command to confirm that your Virtual Hosts settings are correct</p>
+
+<blockquote>
+<p>/usr/sbin/httpd -S</p>
+</blockquote>
+
+<p>Assuming that you have configured the DNS for your domain to point to your Linode&rsquo;s IP address, virtual hosting for your domain should now work. Remember that you can create as many virtual hosts with Apache as you need.</p>
+
+<p>Any time you change an option in your <code>vhost.conf</code> file, or any other Apache configuration remember to reload the configuration with the following command:</p>
+
+<pre><code>systemctl reload httpd.service
+</code></pre>
+
+<h2 id="install-and-configure-mysql-database-server">Install and Configure MySQL Database Server</h2>
+
+<p>MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development tool chains. It is used to store data for many popular applications, including WordPress and Drupal.</p>
+
+<h3 id="install-mysql">Install MySQL</h3>
+
+<p>The first step is to install the mysql-server package, which is accomplished by the following command:</p>
+
+<pre><code>yum install mysql-server
+</code></pre>
+
+<p>If you want to run MySQL by default when the system boots, which is a typical setup, execute the following command:</p>
+
+<pre><code>systemctl enable mariadb.service
+</code></pre>
+
+<p>Now you can start the mysql daemon (<code>mysqld</code>) with the following command:</p>
+
+<pre><code>systemctl start mariadb.service
+</code></pre>
+
+<p>MySQL should be ready to configure and run. While you shouldn&rsquo;t need to change the configuration file, note that it is located at <code>/etc/my.cnf</code> for future reference. The default values should be fine for a <strong>Linode 2GB</strong>, but if you decide to adjust them you should first make a backup copy:</p>
+
+<pre><code>cp /etc/my.cnf ~/my.cnf.backup
+</code></pre>
+
+<h3 id="configure-mysql-and-set-up-mysql-databases">Configure MySQL and Set Up MySQL databases</h3>
+
+<p>After installing MySQL, it&rsquo;s recommended that you run <code>mysql_secure_installation</code>, a program that helps secure MySQL. While running <code>mysql_secure_installation</code>, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:</p>
+
+<pre><code>mysql_secure_installation
+</code></pre>
+
+<p>Next, we&rsquo;ll create a database and grant your users permissions to use databases. First, log in to MySQL:</p>
+
+<pre><code>mysql -u root -p
+</code></pre>
+
+<p>Enter MySQL&rsquo;s root password, and you&rsquo;ll be presented with a prompt where you can issue SQL statements to interact with the database.</p>
+
+<p>To create a database and grant your users permissions on it, issue the following command. The semi-colons (<code>;</code> characters) at the end of the lines are crucial for ending the commands. Your command should look like this:</p>
+
+<pre><code>create database lollipop;
+grant all on lollipop.* to 'foreman' identified by '5t1ck';
+</code></pre>
+
+<p>In the example above, <code>lollipop</code> is the name of the database, <code>foreman</code> is the username, and <code>5t1ck</code> password. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system.</p>
+
+<p>With that completed, you&rsquo;ve successfully configured MySQL and you may now pass these database credentials on to your users. To exit the MySQL database administration utility issue the following command:</p>
+
+<pre><code>quit
+</code></pre>
+
+<p>With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.</p>
+
+<h2 id="installing-and-configuring-php">Installing and Configuring PHP</h2>
+
+<p>PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.</p>
+
+<p>Fedora includes packages for installing PHP from the terminal. Issue the following command:</p>
+
+<pre><code>yum install php php-pear
+</code></pre>
+
+<p>Once PHP5 is installed, we&rsquo;ll need to tune the configuration file located in <code>/etc/php.ini</code> to enable more descriptive errors, logging, and better performance. These modifications provide a good starting point if you&rsquo;re unfamiliar with PHP configuration.</p>
+
+<p>Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (<code>;</code> character)):</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">error_reporting</span> <span class="o">=</span> <span class="s">E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR</span>
+<span class="na">display_errors</span> <span class="o">=</span> <span class="s">Off</span>
+<span class="na">log_errors</span> <span class="o">=</span> <span class="s">On</span>
+<span class="na">error_log</span> <span class="o">=</span> <span class="s">/var/log/php/error.log</span>
+<span class="na">max_execution_time</span> <span class="o">=</span> <span class="s">30</span>
+<span class="na">memory_limit</span> <span class="o">=</span> <span class="s">128M</span>
+<span class="na">register_globals</span> <span class="o">=</span> <span class="s">Off</span>
+<span class="na">max_input_time</span> <span class="o">=</span> <span class="s">30</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You will need to create the log directory for PHP and give the Apache user ownership:</p>
+
+<pre><code>mkdir /var/log/php
+chown apache /var/log/php
+</code></pre>
+
+<p>If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:</p>
+
+<pre><code>yum install php-mysql
+</code></pre>
+
+<p>You can test PHP by creating a file with the following contents under your &ldquo;public_html&rdquo; directory:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/example.com/public\\_html/test.php 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="nx">phpinfo</span><span class="p">();</span> <span class="cp">?&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>You will need to restart Apache before php scripts will work:</p>
+
+<pre><code>systemctl restart httpd.service
+</code></pre>
+
+<p>When you view this page in your browser, you should be presented with detailed PHP configuration information.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.fedoraproject.org/">Fedora Home Page</a></li>
+
+<li><a href="http://httpd.apache.org/docs/2.2/">Apache HTTP Server Documentation</a></li>
+
+<li><a href="http://dev.mysql.com/doc/">MySQL Documentation</a></li>
+
+<li><a href="http://www.php.net/docs.php">PHP Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-server-on-fedora-19/">LAMP Server on Fedora 19 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-server-on-debian-7-wheezy/">LAMP Server on Debian 7 (Wheezy)</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-server-on-fedora-15/">LAMP Server on Fedora 15 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-server-on-fedora-14/">LAMP Server on Fedora 14 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-server-on-fedora-13/">LAMP Server on Fedora 13 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#install-and-configure-the-apache-web-server">Install and Configure the Apache Web Server</a>
+<ul>
+<li><a href="#configure-name-based-virtual-hosts">Configure Name-based Virtual Hosts</a></li>
+</ul></li>
+<li><a href="#install-and-configure-mysql-database-server">Install and Configure MySQL Database Server</a>
+<ul>
+<li><a href="#install-mysql">Install MySQL</a></li>
+<li><a href="#configure-mysql-and-set-up-mysql-databases">Configure MySQL and Set Up MySQL databases</a></li>
+</ul></li>
+<li><a href="#installing-and-configuring-php">Installing and Configuring PHP</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

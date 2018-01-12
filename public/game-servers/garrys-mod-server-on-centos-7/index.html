@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Garry&#39;s Mod on CentOS 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="A Garrys Mod Server for CentOS 7.">
+        <meta name="keywords" content="garry&#39;&#39;s mod, centos, centos 7">
+        
+        <meta property="og:title" content="Garry&#39;s Mod on CentOS 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/game-servers/garrys-mod-server-on-centos-7/">
+        <meta property="og:description" content="A Garrys Mod Server for CentOS 7.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/game-servers/garrys-mod-server-on-centos-7/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/game-servers/">Game Servers</a>
+  
+</li>
+
+
+<li>
+  
+  Garry&#39;s Mod on CentOS 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Garry&#39;s Mod on CentOS 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-02-25T00:00:00Z">Thursday, February 25, 2016</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/jmeyer2k">Julian Meyer
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fgarrys-mod-server-on-centos-7%2f&via=linode&text=Garry%26%2339%3bs%20Mod%20on%20CentOS%207" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fgarrys-mod-server-on-centos-7%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fgarrys-mod-server-on-centos-7%2f&t=Garry%27s%20Mod%20on%20CentOS%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/game-servers/garrys-mod-server-on-centos-7.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/game-servers/garrys-mod-server-on-centos-7.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><a href="http://www.garrysmod.com/">Garry&rsquo;s Mod</a> enables complete control and modification of the video game engine, Source Engine. With Garry&rsquo;s Mod, you can create almost any game you want. Setting up a Garry&rsquo;s Mod server is a great way to play with friends over the internet while maintaining control over the server.</p>
+
+<p>This guide shows how to create, maintain, and secure a Garry&rsquo;s Mod server.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>You will need a <a href="http://store.steampowered.com">Steam</a> account and a copy of <a href="http://store.steampowered.com/app/4000/">Garry&rsquo;s Mod</a>.</p></li>
+
+<li><p>Complete our guide: <a href="/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server">Install SteamCMD for a Steam Game Server</a>. This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="prerequisites-for-garry-s-mod">Prerequisites for Garry&rsquo;s Mod</h2>
+
+<p>From the SteamCMD guide, two additional steps are needed specifically for Gmod.</p>
+
+<ol>
+<li><p>Add a firewall rule. This command assumes that you have <strong>only</strong> the firewalld rules in place from the SteamCMD guide. This inserts a rule for port 10999 after the pre-existing rules for SteamCMD.</p>
+
+<pre><code>sudo firewall-cmd --zone=public --add-port=27000 27030/udp --permanent
+</code></pre></li>
+
+<li><p>Install an additonal 32-bit package:</p>
+
+<pre><code>sudo yum install ncurses-libs.i686
+</code></pre></li>
+</ol>
+
+<h2 id="install-garry-s-mod">Install Garry&rsquo;s Mod</h2>
+
+<ol>
+<li><p>Be sure you are in the directory <code>~/Steam</code>, then access the <code>Steam&gt;</code> prompt.</p>
+
+<pre><code>cd ~/Steam &amp;&amp; ./steamcmd.sh
+</code></pre></li>
+
+<li><p>From the SteamCMD prompt, login anonymously:</p>
+
+<pre><code>login anonymous
+</code></pre>
+
+<p>Or log in with your Steam username:</p>
+
+<pre><code>login example_user
+</code></pre></li>
+
+<li><p>Install Gmod to the <code>Steam</code> user&rsquo;s home directory:</p>
+
+<pre><code>force_install_dir ./gmod
+app_update 4020 validate
+</code></pre>
+
+<p>This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:</p>
+
+<pre><code>Success! App '4020' fully installed.
+
+Steam&gt;
+</code></pre></li>
+
+<li><p>Quit SteamCMD:</p>
+
+<pre><code>quit
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>To update Gmod, run the above 4 commands again.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="configure-garry-s-mod">Configure Garry&rsquo;s Mod</h2>
+
+<p>This section configures different aspects of the server, including gamemode and workshop addons.</p>
+
+<h3 id="startup-script">Startup Script</h3>
+
+<ol>
+<li><p>Create a startup script for Gmod with the following contents:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/startgmod.sh 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="nb">cd</span> ./Steam/gmod
+screen -S <span class="s2">&#34;Garry&#39;s Mod Server&#34;</span> ./srcds_run -game garrysmod +maxplayers <span class="m">20</span> +map gm_flatgrass</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>When run, the script will change directories to <code>~/Steam/gmod</code> and execute Garry&rsquo;s Mod in a <a href="/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions">Screen</a> session. The <code>srcds_run</code> binary can take many more arguments which you can see at <a href="https://developer.valvesoftware.com/wiki/Command_Line_Options#Source_Dedicated_Server">Valve&rsquo;s Developer wiki</a>.</p></li>
+
+<li><p>Make the script executable:</p>
+
+<pre><code>chmod +x ~/startgmod.sh
+</code></pre></li>
+</ol>
+
+<h3 id="update-script">Update Script</h3>
+
+<p>The Garry&rsquo;s Mod wiki has instructions to use a script to update Gmod rather than manually through SteamCMD. See under <a href="http://wiki.garrysmod.com/page/Linux_Dedicated_Server_Hosting"><em>Installing Garry&rsquo;s Mod</em></a>.</p>
+
+<h3 id="automatic-startup-after-server-reboots">Automatic Startup After Server Reboots</h3>
+
+<p>This will automatically restart Garry&rsquo;s Mod when your server reboots.</p>
+
+<ol>
+<li><p>Open Crontab (this will open in <code>vim</code>):</p>
+
+<pre><code>crontab -e
+</code></pre></li>
+
+<li><p>Enter the startup command. <strong>Be sure that the binary flags are the same as in your startup script.</strong></p>
+
+<pre><code>@reboot /home/steam/Steam/gmod/srcds_run -game garrysmod +maxplayers 20 +map gm_flatgrass
+</code></pre></li>
+
+<li><p>To exit <code>vim</code>, press <strong>Esc</strong>, then type <strong>:x</strong> and hit <strong>Enter</strong>.</p></li>
+</ol>
+
+<h3 id="server-config-file">Server Config File</h3>
+
+<p>The default <code>server.cfg</code> file is blank, and any configuration options you want to specify for the server must be added. This are optional, but below is a sane starting point.</p>
+
+<dl class="file">
+<dt>
+
+
+		~/Steam/gmod/garrysmod/cfg/server.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">hostname <span class="s2">&#34;server_hostname&#34;</span>
+sv_password <span class="s2">&#34;server_password&#34;</span>
+sv_timeout <span class="m">60</span>
+rcon_password <span class="s2">&#34;rcon_password&#34;</span>
+mp_autoteambalance <span class="m">1</span>
+mp_limitteams <span class="m">1</span>
+writeid
+writeip</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<h3 id="workshop-addons">Workshop Addons</h3>
+
+<ol>
+<li><p>Create a collection of addons you want to install on your server at <a href="http://steamcommunity.com/workshop/browse/?section=collections&amp;appid=4000&amp;p=3">Garry&rsquo;s Mod Collections</a>. You will need to be logged in to Steam.</p></li>
+
+<li><p>Note the collection ID. It is located at the end of the url, denoted by the &lsquo;X&rsquo;s here:</p>
+
+<pre><code>http://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXX
+</code></pre></li>
+
+<li><p>Acquire a Steam API key from the <a href="http://steamcommunity.com/dev/apikey">Steam API Keys</a> page. Note the key.</p></li>
+
+<li><p>Paste the Steam API key and Workshop Collection ID into your startup script. For example:</p>
+
+<pre><code>./srcds_run +maxplayers 20 +gamemode terrortown +map cs_office -authkey YOURKEYGOESHERE +host_workshop_collection 157384458
+</code></pre>
+
+<p>This sets the game for the Trouble in Terrorist Town (TTT) gamemode, but can be changed to your desired gamemode, if you have it downloaded.</p>
+
+<p>For more info on Workshop Addons, see <a href="http://wiki.garrysmod.com/page/Workshop_for_Dedicated_Servers">Workshop for Dedicated Servers</a> in the Garry&rsquo;s Mod wiki.</p></li>
+</ol>
+
+<h2 id="using-the-server">Using the Server</h2>
+
+<ol>
+<li><p>Now that your server is installed and configured, it can be launched by running the <code>startgmod.sh</code> script from your <code>steam</code> user&rsquo;s home directory.</p>
+
+<pre><code>cd ~/ &amp;&amp; ./startgmod.sh
+</code></pre>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>From this point, do not press the <strong>Control+C</strong> keys while in the console unless you want to stop Gmod.</div>
+</blockquote>
+</li>
+
+<li><p>To detach from the screen session running the server console, press these two key combinations in succession:</p>
+
+<p><strong>Control+A</strong><br>
+<strong>Control+D</strong></p></li>
+
+<li><p>To bring the console back, type the following command:</p>
+
+<pre><code>screen -r
+</code></pre></li>
+
+<li><p>To stop the server, bring back the Gmod console and press <strong>CONTROL + C</strong>.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.srcds.com/">SRCDS</a></li>
+
+<li><a href="http://facepunch.com/forum.php">GMod Forums</a></li>
+
+<li><a href="http://wiki.garrysmod.com/page/Main_Page">GMod Wiki</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/voip/install-asterisk-on-centos-7/">How to Install Asterisk on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/websites-with-nginx-on-centos-5/">Websites with Nginx on CentOS 5 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/">Monitor an nginx Web Server Using the Elastic Stack on Centos 7</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/">Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/ecommerce/install-opencart-on-centos-7/">How to Install OpenCart on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#prerequisites-for-garry-s-mod">Prerequisites for Garry&rsquo;s Mod</a></li>
+<li><a href="#install-garry-s-mod">Install Garry&rsquo;s Mod</a></li>
+<li><a href="#configure-garry-s-mod">Configure Garry&rsquo;s Mod</a>
+<ul>
+<li><a href="#startup-script">Startup Script</a></li>
+<li><a href="#update-script">Update Script</a></li>
+<li><a href="#automatic-startup-after-server-reboots">Automatic Startup After Server Reboots</a></li>
+<li><a href="#server-config-file">Server Config File</a></li>
+<li><a href="#workshop-addons">Workshop Addons</a></li>
+</ul></li>
+<li><a href="#using-the-server">Using the Server</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install PostgreSQL on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="A tutorial on installing and configuring the PostgreSQL relational database system on Ubuntu distributions.">
+        <meta name="keywords" content="postgresql, ubuntu 16.04, postgresql database, open source database, relational database">
+        
+        <meta property="og:title" content="How to Install PostgreSQL on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/">
+        <meta property="og:description" content="A tutorial on installing and configuring the PostgreSQL relational database system on Ubuntu distributions.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/postgresql/">PostgreSQL</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install PostgreSQL on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install PostgreSQL on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-05-20T00:00:00Z">Friday, May 20, 2016</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fhow-to-install-postgresql-on-ubuntu-16-04%2f&via=linode&text=How%20to%20Install%20PostgreSQL%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fhow-to-install-postgresql-on-ubuntu-16-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fhow-to-install-postgresql-on-ubuntu-16-04%2f&t=How%20to%20Install%20PostgreSQL%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/how-to-install-postgresql-on-ubuntu-16-04.jpg" alt="How to Install PostgreSQL on Ubuntu 16.04" title="How to Install PostgreSQL on Ubuntu 16.04" /></p>
+
+<h1 id="a-guide-to-installing-postgresql-relational-databases-on-ubuntu-16-04">A Guide to Installing PostgreSQL Relational Databases on Ubuntu 16.04</h1>
+
+<p>The <a href="http://www.postgresql.org/">PostgreSQL</a> relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 16.04 LTS (Xenial Xerus) Linode.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started guide</a> and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server guide</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, visit the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups guide</a> for more information.</div>
+</blockquote>
+
+
+<h2 id="install-postgresql">Install PostgreSQL</h2>
+
+<p>Install PostgreSQL from the Ubuntu package repository:</p>
+
+<pre><code>sudo apt-get install postgresql postgresql-contrib
+</code></pre>
+
+<h2 id="configure-postgresql">Configure PostgreSQL</h2>
+
+<h3 id="modify-the-postgres-users">Modify the Postgres Users</h3>
+
+<p>By default, PostgreSQL will create a Linux user named <code>postgres</code> to access the database software.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>The <code>postgres</code> user should not be used for for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Change the <code>postgres</code> user&rsquo;s Linux password:</p>
+
+<pre><code>sudo passwd postgres
+</code></pre></li>
+
+<li><p>Issue the following commands to set a password for the <code>postgres</code> database user. Be sure to replace <code>newpassword</code> with a strong password and keep it in a secure place.</p>
+
+<pre><code>su - postgres
+psql -d template1 -c &quot;ALTER USER postgres WITH PASSWORD 'newpassword';&quot;
+</code></pre>
+
+<p>Note that this user is distinct from the <code>postgres</code> Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases.</p>
+
+<p>The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the <a href="#secure-local-postgresql-access">Secure Local PostgreSQL Access section</a> for information about changing this setting.</p></li>
+</ol>
+
+<h3 id="create-a-database">Create a Database</h3>
+
+<p>Run the commands in this section as the <code>postgres</code> Linux user.</p>
+
+<ol>
+<li><p>Create a sample database called <code>mytestdb</code>:</p>
+
+<pre><code>createdb mytestdb
+</code></pre></li>
+
+<li><p>Connect to the test database:</p>
+
+<pre><code>psql mytestdb
+</code></pre></li>
+
+<li><p>You will see the following output:</p>
+
+<pre><code>psql (9.5.2)
+Type &quot;help&quot; for help.
+
+mytestdb=#
+</code></pre>
+
+<p>This is the PostgreSQL client shell, in which you can issue SQL commands. To see a list of available commands, use the <code>\h</code> command. You may find more information on a specific command by adding it after <code>\h</code>.</p></li>
+</ol>
+
+<h3 id="create-tables">Create Tables</h3>
+
+<p>This section contains examples which create a test database with an employee&rsquo;s first and last name, assigning each a unique key. When creating your own tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the <a href="#create-a-database">Create a Database</a> section.</p>
+
+<ol>
+<li><p>Create a table called &ldquo;employees&rdquo; in your test database:</p>
+
+<pre><code>CREATE TABLE employees (employee_id int, first_name varchar, last_name varchar);
+</code></pre></li>
+
+<li><p>Insert a record into the table:</p>
+
+<pre><code>INSERT INTO employees VALUES (1, 'John', 'Doe');
+</code></pre></li>
+
+<li><p>View the contents of the &ldquo;employees&rdquo; table:</p>
+
+<pre><code>SELECT * FROM employees;
+</code></pre>
+
+<p>This produces the following output:</p>
+
+<pre><code> employee_id | first_name | last_name
+-------------+------------+-----------
+           1 | John       | Doe
+(1 row)
+</code></pre></li>
+
+<li><p>Exit the PostgreSQL shell by entering the <code>\q</code> command.</p></li>
+</ol>
+
+<h3 id="create-postgresql-roles">Create PostgreSQL Roles</h3>
+
+<p>PostgreSQL grants database access via <em>roles</em> which are used to specify privileges. Roles can be understood as having a similar function to Linux &ldquo;users.&rdquo; In addition, roles may also be created as a set of other roles, similar to a Linux &ldquo;group.&rdquo; PostgreSQL roles apply globally, so you will not need to create the same role twice if you&rsquo;d like to grant it access to more than one database on the same server.</p>
+
+<p>The example commands in this section should be run as the <code>postgres</code> Linux user.</p>
+
+<ol>
+<li><p>Add a new user role, then a password at the prompt:</p>
+
+<pre><code>createuser examplerole --pwprompt
+</code></pre>
+
+<p>If you need to delete a role, you can use the <code>dropuser</code> command in place of <code>createuser</code>.</p></li>
+
+<li><p>Connect to the database:</p>
+
+<pre><code>psql mytestdb
+</code></pre>
+
+<p>You&rsquo;ll be connected as the <code>postgres</code> database user by default.</p></li>
+
+<li><p>From the PostgreSQL shell, enter the following to grant all privileges on the table <code>employees</code> to the user <code>examplerole</code>:</p>
+
+<pre><code>GRANT ALL ON employees TO examplerole;
+</code></pre></li>
+
+<li><p>Exit the PostgreSQL shell by entering <code>\q</code>.</p></li>
+</ol>
+
+<h3 id="secure-local-postgresql-access">Secure Local PostgreSQL Access</h3>
+
+<p>PostgreSQL uses <em>peer authentication</em> by default. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a local program (e.g. scripts, CGI/FastCGI processes owned by separate users, etc.), but for greater security, you may wish to require passwords to access your databases.</p>
+
+<p>Commands in this section should be run as the <code>postgres</code> Linux user unless otherwise specified.</p>
+
+<ol>
+<li><p>Edit the <code>/etc/postgresql/9.5/main/pg_hba.conf</code> file, under the <code># &quot;local&quot; is for Unix domain socket connections only</code> header:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postgresql/9.5/main/pg_hba.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># &#34;local&#34; is for Unix domain socket connections only
+</span><span class="c1"></span><span class="nb">local</span>    all        all             peer</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Replace <code>peer</code> with <code>md5</code> on this line to activate password authentication using an MD5 hash.</p></li>
+
+<li><p>To enable these changes, we need to restart PostgreSQL. However, we did not grant the <code>postgres</code> user sudo privileges for security reasons. Return to the normal user shell:</p>
+
+<pre><code>exit
+</code></pre></li>
+
+<li><p>Restart PostgreSQL and switch back to the <code>postgres</code> user:</p>
+
+<pre><code>sudo service postgresql restart
+su - postgres
+</code></pre></li>
+
+<li><p>As <code>postgres</code>, connect to the test database as the <code>examplerole</code> PostgreSQL user:</p>
+
+<pre><code>psql -U examplerole -W mytestdb
+</code></pre>
+
+<p>You will be prompted to enter the password for the <code>examplerole</code> user and given <code>psql</code> shell access to the database. When using a database, you may check access privileges for each of its tables with the <code>\z</code> command.</p></li>
+</ol>
+
+<h2 id="secure-remote-postgresql-access">Secure Remote PostgreSQL Access</h2>
+
+<p>PostgreSQL listens for connections on <code>localhost</code> and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:</p>
+
+<ul>
+<li><a href="/docs/databases/postgresql/pgadmin-windows">Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows</a></li>
+<li><a href="/docs/databases/postgresql/pgadmin-macos-x">Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X</a></li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.postgresql.org/docs/">PostgreSQL Online Documentation</a></li>
+
+<li><a href="http://www.rootr.net/man/man/psql/1">psql manual page</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-12-04/">Use PostgreSQL Relational Databases on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/ubuntu-10-10-maverick/">Use PostgreSQL Relational Databases on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/ubuntu-10-04-lucid/">Use PostgreSQL Relational Databases on Ubuntu 10.04 LTS (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/">How to Install PostgreSQL Relational Databases on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/ubuntu-9-10-karmic/">Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#a-guide-to-installing-postgresql-relational-databases-on-ubuntu-16-04">A Guide to Installing PostgreSQL Relational Databases on Ubuntu 16.04</a>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-postgresql">Install PostgreSQL</a></li>
+<li><a href="#configure-postgresql">Configure PostgreSQL</a>
+<ul>
+<li><a href="#modify-the-postgres-users">Modify the Postgres Users</a></li>
+<li><a href="#create-a-database">Create a Database</a></li>
+<li><a href="#create-tables">Create Tables</a></li>
+<li><a href="#create-postgresql-roles">Create PostgreSQL Roles</a></li>
+<li><a href="#secure-local-postgresql-access">Secure Local PostgreSQL Access</a></li>
+</ul></li>
+<li><a href="#secure-remote-postgresql-access">Secure Remote PostgreSQL Access</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install iRedmail, Open-Source Mail Server, on Ubuntu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to install your own iRedMail mail server on Linode with Ubuntu.">
+        <meta name="keywords" content="email, mail, iredmail">
+        
+        <meta property="og:title" content="Install iRedmail, Open-Source Mail Server, on Ubuntu">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/iredmail/install-iredmail-on-ubuntu/">
+        <meta property="og:description" content="This guide shows how to install your own iRedMail mail server on Linode with Ubuntu.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/iredmail/install-iredmail-on-ubuntu/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/iredmail/">iRedMail</a>
+  
+</li>
+
+
+<li>
+  
+  Install iRedmail, Open-Source Mail Server, on Ubuntu
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install iRedmail, Open-Source Mail Server, on Ubuntu</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-27T00:00:00Z">Friday, October 27, 2017</time> by James Stewart</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/reichley">Nick Reichley
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2firedmail%2finstall-iredmail-on-ubuntu%2f&via=linode&text=Install%20iRedmail%2c%20Open-Source%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2firedmail%2finstall-iredmail-on-ubuntu%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2firedmail%2finstall-iredmail-on-ubuntu%2f&t=Install%20iRedmail%2c%20Open-Source%20Mail%20Server%2c%20on%20Ubuntu" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/iredmail/install-iredmail-on-ubuntu.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/iredmail/install-iredmail-on-ubuntu.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<h2 id="why-run-a-mail-server">Why Run a Mail Server?</h2>
+
+<p>Running your own mail server has many benefits. It allows you to manage the size of your mailboxes and attachments, run hourly/daily email backups, view mail logs, and gives you the freedom to use any domain name available. The drawback is usually the in-depth and sometimes complicated process of installing all the necessary parts. This guide uses a streamlined process, the iRedMail install script, and should have you up and running your mail server in under 15 minutes.</p>
+
+<p><img src="/docs/assets/iredmail_tg.png" alt="Installing iRedMail on your Linode" title="Installing iRedMail on your Linode" /></p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before beginning this guide you should have:</p>
+
+<ul>
+<li>A domain name.</li>
+<li>An understanding of the <a href="/docs/networking/ssh/using-the-terminal">Linux command line</a>.</li>
+<li>A Linode running Ubuntu 14.04.</li>
+</ul>
+
+<p>This guide assumes you&rsquo;ve followed the Linode <a href="/docs/getting-started">Getting Started</a> documentation If you haven&rsquo;t done so, read through the guide, and return here following the completion of the &ldquo;Setting the Hostname&rdquo; section.</p>
+
+<p>The steps required in this guide require root privileges. Be sure to run the steps below as <code>root</code> or with the <strong>sudo</strong> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</p>
+
+<h3 id="mx-record">MX Record</h3>
+
+<p>A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode&rsquo;s IP address. An example MX record can be found on the Linode <a href="https://www.linode.com/docs/networking/dns/introduction-to-dns-records#mx">Introduction to DNS records</a> page.</p>
+
+<h2 id="install-iredmail">Install iRedMail</h2>
+
+<ol>
+<li><p>Start by making sure your Linode is up-to-date by running the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre></li>
+
+<li><p>Check your hostname to ensure a FQDN with a subdomain:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>iRedMail requires that you have a properly formatted Fully Qualified Domain Name (FQDN). The format is <code>hostname.domain.com</code>. If your hostname is only your domain name, iRedMail will not install properly. Common hostnames for mail servers include <code>mail</code> and <code>mx</code>.</p>
+
+<pre><code>user@hostname:~$ hostname
+mail
+user@hostname:~$ hostname -f
+mail.domain.com
+</code></pre></li>
+
+<li><p>Download the latest release of iRedMail. The current release, as of 16 September 2014, is 0.8.7 and can be downloaded by entering the following:</p>
+
+<pre><code>cd /root/
+wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.8.7.tar.bz2
+</code></pre></li>
+
+<li><p>Uncompress the package and run the script:</p>
+
+<pre><code>tar xjf iRedMail-0.8.7.tar.bz2
+cd iRedMail-0.8.7
+bash iRedMail.sh
+</code></pre>
+
+<p>The remainder of the installation refers to on-screen confirmation of default options and selections. With the exception of the backend and hostname selections, most users will simply confirm the default options and continue the installation.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The next few steps were taken directly from the iRedMail <a href="https://docs.iredmail.org/install.iredmail.on.debian.ubuntu.html">Ubuntu installation steps</a>.</div>
+</blockquote>
+</li>
+
+<li><p>Press &ldquo;enter&rdquo; to say &ldquo;yes&rdquo; to installing iRedMail. NOTE: Ctrl-C will exit the installation process when pressed at any time prior to step #12.</p>
+
+<p><img src="/docs/assets/iredmail-install-confirm.png" alt="iredmail install confirm" /></p></li>
+
+<li><p>Press &ldquo;enter&rdquo; to accept /var/vmail as the default mail storage directory</p>
+
+<p><img src="/docs/assets/mail-storage-dir.png" alt="mail storage dir" /></p></li>
+
+<li><p>Use the &ldquo;up&rdquo; and down arrow keys to highlight your preferred backend. Press &ldquo;space&rdquo; to select your preferred option, then press &ldquo;enter&rdquo;. If you&rsquo;re unsure, choose <code>MySQL</code>.</p>
+
+<p><img src="/docs/assets/choose-backend-db.png" alt="choose backend db" /></p></li>
+
+<li><p>Choose a password for your MySQL root administrator and press &ldquo;enter&rdquo;. Be sure to commit the password to memory or paper.</p>
+
+<p><img src="/docs/assets/mysql-password.png" alt="mysql password" /></p></li>
+
+<li><p>Enter your domain name as the first virtual domain name and press &ldquo;enter&rdquo;.</p>
+
+<p><img src="/docs/assets/virtual-domain-name.png" alt="virtual domain name" /></p></li>
+
+<li><p>By default, iRedMail configures postmaster@yourdomain.com as the default administrator. Enter a password for your iRedMail administrator and press &ldquo;enter&rdquo;.</p>
+
+<p><img src="/docs/assets/admin-password.png" alt="admin password" /></p></li>
+
+<li><p>The next screen lists optional components to be included in your MySQL backend. While none of these are required, We recommend the installation of all components, since the benefits of each add to the function and security of your mail server.</p>
+
+<p><img src="/docs/assets/mysql-backend.png" alt="mysql backend" /></p></li>
+
+<li><p>This step indicates that the configuration is complete, references the location of the SENSITIVE config file and asks (y or n) if you’d like to continue. Type &ldquo;y&rdquo;.</p>
+
+<p><img src="/docs/assets/config-complete.png" alt="config complete" /></p></li>
+
+<li><p>The installer then downloads and installs the appropriate files. After it completes, you will receive a prompt asking whether you would like to use iRedMail’s firewall rules at <code>/etc/default/iptables</code>, and identifies your SSHD port. Type &ldquo;y&rdquo; to accept, or &ldquo;n&rdquo; if you want to configure your firewall manually.</p>
+
+<p><img src="/docs/assets/iredmail-fw-and-ssh-port.png" alt="iredmail fw and ssh port" /></p></li>
+
+<li><p>After typing &ldquo;y&rdquo;, the install screen will ask if you’d like to restart the firewall. Type &ldquo;y&rdquo;.</p>
+
+<p><img src="/docs/assets/restart-firewall.png" alt="restart firewall" /></p></li>
+
+<li><p>The installation is now complete! While the bottom half of the screen is filled with useful URL information and the location of the iRedMail tips file, a couple emails will be waiting in postmaster@yourdomain.com’s inbox.</p>
+
+<p><img src="/docs/assets/install-complete.png" alt="install complete" /></p></li>
+
+<li><p>Reboot the Linode and navigate to <code>https://mail.yourdomain.com/mail</code> and login as “postmaster@yourdomain.com” to retrieve the necessary info.</p></li>
+
+<li><p>As a security precaution, we will remove the config file. This file is no longer needed after a successful iRedMail install, and contains sensitive information (usernames/passwords) about your mail server configuration.</p>
+
+<pre><code>rm /root/iRedMail-0.8.7/config
+</code></pre></li>
+</ol>
+
+<h2 id="add-users">Add Users</h2>
+
+<p>iRedMail is packaged with a mail server account configuration called iRedAdmin. Below are the steps required to add a user/mailbox to your mail server.</p>
+
+<ol>
+<li><p>To access iRedAdmin, navigate to <code>https://yourdomain.com/iredadmin</code> and log in with your postmaster@yourdomain.com user.</p>
+
+<p><img src="/docs/assets/adduser1.png" alt="adduser1" /></p></li>
+
+<li><p>Once the dashboard page loads, navigate to the <code>Add</code> dropdown and select <code>User</code>.</p>
+
+<p><img src="/docs/assets/adduser2.png" alt="adduser2" /></p></li>
+
+<li><p>Fill in the address, password, display name, and mailbox quota blocks then click <strong>Add</strong> will complete the process.</p>
+
+<p><img src="/docs/assets/adduser3.png" alt="adduser3" /></p></li>
+</ol>
+
+<h2 id="certificates-spf-dkim-and-rdns">Certificates, SPF, DKIM, and rDNS</h2>
+
+<p>By default, iRedMail generates a key and self-signed certificate for the mail server, and web server. To avoid other email servers marking email from our server as spam, we&rsquo;re going to install a trusted certificate.</p>
+
+<p>The process of obtaining a trusted certificate is outside the scope of this guide. You can follow the <a href="https://www.linode.com/docs/websites/ssl/obtaining-a-commercial-ssl-certificate">Obtaining a Commercial SSL Certificate</a> guide to obtain a certificate.</p>
+
+<p>The next section assumes you have the .key and .crt (or .pem) file in hand and are ready to go.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Be sure to apply for a certificate covering either your subdomain (mail.yourdomain.com) or a wildcard of your domain so all subdomains are covered).</div>
+</blockquote>
+
+
+<p>After first logging in to the postmaster account, you should have two emails waiting for you. The first is titled &ldquo;Helpful Links iRedMail&rdquo; and the second is titled &ldquo;Details of this iRedMail installation.&rdquo; In the 2nd email, there are various file paths we&rsquo;ll need, since we&rsquo;ll be replacing the SSL certificate and need to know the DKIM public key for our DNS TXT entry. First up, certificate replacement.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For if your certificate issuer uses <code>.pem</code> files instead of <code>.crt</code>, be sure to replace the file extension in the instructions below.</div>
+</blockquote>
+
+
+<h3 id="certificates">Certificates</h3>
+
+<ol>
+<li><p>After moving your certificate and key onto your Linode, make a note of its location. The recommendation is to install in the same directories as the iRedMail default certificate and key. The certificate is located in <code>/etc/ssl/certs/</code> and the key is in <code>/etc/ssl/private/</code>.</p>
+
+<pre><code>mv mail.yourdomain.com.crt /etc/ssl/certs/
+mv mail.yourdomain.com.key /etc/ssl/private/
+</code></pre></li>
+
+<li><p>To replace the certificates used by Apache2, substitute the following paths in <code>default-ssl.conf</code> with the location of your certificate and key:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/default-ssl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">SSLCertificateFile</span> <span class="sx">/etc/ssl/certs/mail.yourdomain.com.crt</span>
+<span class="nb">SSLCertificateKeyFile</span> <span class="sx">/etc/ssl/private/mail.yourdomain.com.key</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>To replace the certificates used by Postfix, substitute the following paths in <code>main.cf</code> with the location of your certificate and key:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">smtpd_tls_cert_file</span> = <span class="sx">/etc/ssl/certs/mail.yourdomain.com.crt</span>
+   <span class="nb">smtpd_tls_key_file</span> = <span class="sx">/etc/ssl/private/mail.yourdomain.com.key</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>To replace the certs used by Postfix, substitute the following paths in <code>dovecot.conf</code> with the location of your certificate and key:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/dovecot.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">ssl_cert</span> = &lt;/etc/ssl/certs/mail.yourdomain.com.crt
+   <span class="nb">ssl_key</span> = &lt;/etc/ssl/private/mail.yourdomain.com.key</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<!-- syntax highlighting fix-->
+
+<ol>
+<li><p>To apply the certificate changes to both your web and mail server, run the following commands:</p>
+
+<pre><code>service apache2 restart
+service dovecot restart
+service postfix restart
+</code></pre>
+
+<p>If you encounter error messages during these commands, go back and confirm the correct paths are in place for your certificates.</p></li>
+</ol>
+
+<h3 id="spf-dkim-and-rdns">SPF, DKIM and rDNS</h3>
+
+<p>This section covers the insertion of SPF and DKIM records in your DNS entry. SPF records allow us to specify the authority to send mail from our domain to specific IP addresses. DKIM records are another way of proving the validity of an email by allowing the receiver to check a public key, or the mail server’s DNS TXT record, against the DKIM key included in every email message sent by your mail server.</p>
+
+<h4 id="spf">SPF</h4>
+
+<ol>
+<li><p>Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF. If you are using Linode&rsquo;s DNS manager, you can leave the name field blank, but other DNS providers may require you to specify @ for the hostname.</p>
+
+<p><a href="/docs/assets/iredmail-spf.png"><img src="/docs/assets/iredmail-spf_preview.png" alt="SPF Record" /></a></p>
+
+<pre><code>hostname  | ip address/url                | record type | ttl
+--------  | ----------------------------- | ----------- | ---
+       @  | v=spf1 ip4:12.34.56.78 -all   | txt         | 1800
+</code></pre></li>
+
+<li><p>For more information, you can check out the <a href="https://code.google.com/p/iredmail/wiki/DNS_SPF">SPF website link</a> recommended by iRedMail.</p></li>
+</ol>
+
+<h4 id="dkim">DKIM</h4>
+
+<ol>
+<li><p>In the same area of your DNS host records, add the following entry to enable DKIM. The IP address/url entry following the “p=“ is your public DKIM key, which can be found in your “Details of this iRedMail installation” email about halfway down under the “DNS record for DKIM support” section. Copy everything BETWEEN the double quotes and place after the “p=“ portion of the dkim._domainkey DNS entry.</p>
+
+<p><a href="/docs/assets/iredmail-dkim.png"><img src="/docs/assets/iredmail-dkim_preview.png" alt="DKIM Record" /></a></p>
+
+<pre><code>hostname        | ip address/url      | record type | ttl
+--------------  | ------------------- | ----------- | ---
+dkim._domainkey | v=DKIM1; p=MIGFdfs… | txt         | 1800
+</code></pre></li>
+
+<li><p>A good way to test your mail server’s DKIM is to enter the following command:</p>
+
+<pre><code>amavisd-new testkeys
+</code></pre>
+
+<p>You should receive <code>=&gt; pass</code> as output.</p></li>
+
+<li><p>For more information on DKIM records, you can check out the <a href="http://wiki.policyd.org/documentation">DKIM website link</a> recommended by iRedMail.</p></li>
+</ol>
+
+<h4 id="rdns">rDNS</h4>
+
+<p>To set your rDNS, check out the <a href="/docs/networking/dns/configure-your-linode-for-reverse-dns/">Setting Reverse DNS</a> section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.</p>
+
+<h3 id="apache-authentication-fix-for-cluebringer-and-awstats-login">Apache Authentication Fix for Cluebringer and AWStats Login</h3>
+
+<p>Cluebringer (a.k.a. PolicyD v2) is a policy server utility for our mail transfer agent, Postfix. It provides a web-based interface (<a href="http://wiki.policyd.org/_detail/policyd_web_gui.png?id=screenshots">example</a>) where you can fine tune policies applied to Postfix. For more info, see the Policy D <a href="http://wiki.policyd.org/documentation">documentation</a>.</p>
+
+<p>AWStats quickly analyzes and displays log files/server activity via a few web-based (or command line) statistical graphs. Using the configuration outlined below, it will display the # of emails sent, the total size of the emails, sender and receiver, time (hourly/daily/monthly), and SMTP error codes. An example can be seen <a href="http://www.awstats.org/awstats.mail.html">here</a>. For more info, see the AWStats <a href="http://www.awstats.org/docs/index.html">documentation</a>.</p>
+
+<p><strong>Due to &ldquo;mod-auth-mysql&rdquo; not working with Apache 2.4, the default installation cannot use the module to log in to Cluebringer or AWStats. Below is the fix, which can also be found in <a href="http://www.iredmail.org/forum/post30654.html#p30654">this</a> iRedMail forum post.</strong></p>
+
+<ol>
+<li><p>Install libaprutil1-dbd-mysql:</p>
+
+<pre><code>apt-get install libaprutil1-dbd-mysql
+</code></pre></li>
+
+<li><p>Enable the two dbd apache modules:</p>
+
+<pre><code>a2enmod dbd authn_dbd
+</code></pre></li>
+
+<li><p>Edit <code>apache2.conf</code> by adding the text block below to the end of the file. Make sure to comment out the existing Auth_MySQL lines at the end of the file.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/conf/apache2.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c">#MySQL auth (mod_dbd, libaprutil1-dbd-mysql)</span>
+<span class="nt">&lt;IfModule</span> <span class="s">mod_dbd.c</span><span class="nt">&gt;</span>
+	    <span class="nb">DBDriver</span> mysql
+<span class="nb">DBDParams</span> <span class="s2">&#34;host=127.0.0.1 dbname=vmail user=vmail pass=(SUBSTITUTE WITH YOUR PASSWORD: see in your iRedMail.tips file)&#34;</span>
+ <span class="nb">DBDMin</span> <span class="m">1</span>
+ <span class="nb">DBDKeep</span> <span class="m">8</span>
+ <span class="nb">DBDMax</span> <span class="m">20</span>
+ <span class="nb">DBDExptime</span> <span class="m">300</span>
+<span class="nt">&lt;/IfModule</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Edit <code>awstats.conf</code> to mirror the example text below, by adding the <code>mod_authn_dbd</code> section and commenting out the <code>Auth_MySQL</code> section.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apache2/conf-available/awstats.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;Directory</span> <span class="s">/usr/lib/cgi-bin/</span><span class="nt">&gt;</span>
+    <span class="nb">DirectoryIndex</span> awstats.pl
+    <span class="nb">Options</span> ExecCGI
+    <span class="nb">AuthType</span> Basic
+    <span class="nb">AuthName</span> <span class="s2">&#34;Authorization Required&#34;</span>
+
+    <span class="c">##############################</span>
+    <span class="c"># mod_auth_mysql (deprecated)#</span>
+    <span class="c">##############################</span>
+    <span class="c"># AuthBasicAuthoritative Off</span>
+    <span class="c"># AuthUserFile /dev/null</span>
+    <span class="c">#</span>
+    <span class="c"># # Database related.</span>
+    <span class="c"># AuthMySQL_Password_Table mailbox</span>
+    <span class="c"># Auth_MySQL_Username_Field username</span>
+    <span class="c"># Auth_MySQL_Password_Field password</span>
+    <span class="c">#</span>
+    <span class="c"># # Password related.</span>
+    <span class="c"># AuthMySQL_Empty_Passwords off</span>
+    <span class="c"># AuthMySQL_Encryption_Types Crypt_MD5</span>
+    <span class="c"># Auth_MySQL_Authoritative On</span>
+    <span class="c"># #AuthMySQLUserCondition &#34;isglobaladmin=1&#34;</span>
+
+    <span class="c">#################</span>
+    <span class="c"># mod_authn_dbd #</span>
+    <span class="c">#################</span>
+    <span class="c"># Password related.</span>
+    <span class="nb">AuthBasicProvider</span> dbd
+    <span class="nb">AuthDBDUserPWQuery</span> <span class="s2">&#34;SELECT password FROM mailbox WHERE mailbox.username=%s&#34;</span>
+
+    <span class="nb">Order</span> allow,deny
+    <span class="nb">Allow</span> from <span class="k">all</span>
+    <span class="nb">Require</span> valid-user
+<span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Edit <code>cluebringer.conf</code> to mirror the example text below, by adding the <code>mod_authn_dbd</code> section and commenting out <code>Auth_MySQL</code> section).</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apache2/conf-available/cluebringer.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;Directory</span> <span class="s">/usr/share/postfix-cluebringer-webui/webui/</span><span class="nt">&gt;</span>
+   <span class="nb">DirectoryIndex</span> index.php
+   <span class="nb">AuthType</span> basic
+   <span class="nb">AuthName</span> <span class="s2">&#34;Authorization Required&#34;</span>
+
+   <span class="c">##############################</span>
+   <span class="c"># mod_auth_mysql (deprecated)#</span>
+   <span class="c">##############################</span>
+   <span class="c"># AuthMYSQL on</span>
+   <span class="c"># AuthBasicAuthoritative Off</span>
+   <span class="c"># AuthUserFile /dev/null</span>
+   <span class="c">#</span>
+   <span class="c"># # Database related.</span>
+   <span class="c"># AuthMySQL_Password_Table mailbox</span>
+   <span class="c"># Auth_MySQL_Username_Field username</span>
+   <span class="c"># Auth_MySQL_Password_Field password</span>
+   <span class="c">#</span>
+   <span class="c"># # Password related.</span>
+   <span class="c"># AuthMySQL_Empty_Passwords off</span>
+   <span class="c"># AuthMySQL_Encryption_Types Crypt_MD5</span>
+   <span class="c"># Auth_MySQL_Authoritative On</span>
+
+		    <span class="c">#################</span>
+   <span class="c"># mod_authn_dbd #</span>
+   <span class="c">#################</span>
+   <span class="c"># Password related.</span>
+   <span class="nb">AuthBasicProvider</span> dbd
+   <span class="nb">AuthDBDUserPWQuery</span> <span class="s2">&#34;SELECT password FROM mailbox WHERE mailbox.username=%s&#34;</span>
+
+   <span class="nb">Order</span> allow,deny
+   <span class="nb">Allow</span> from <span class="k">all</span>
+   <span class="nb">Require</span> valid-user
+        <span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Restart Apache for the changes to take effect, then test them by logging in to either Cluebringer or Awstats.</p>
+
+<pre><code>service apache2 restart
+</code></pre></li>
+</ol>
+
+<h3 id="greylist-a-recommendation">Greylist a Recommendation</h3>
+
+<p>By default, Cluebringer starts with the greylisting feature enabled. While the implementation of greylisting does protect a mail server from receiving spam, there are unintended consequences to its operation. This was tested by sending a few emails from a well-known &ldquo;free&rdquo; email account to my new mail server. Most of the &ldquo;free&rdquo; email SMTP services are provided by SEVERAL SMTP servers that upon receiving the 4XX reply code from your server, since the hostname and IP of the SMTP server isn&rsquo;t &ldquo;known&rdquo;, does retransmit the email. However, usually, the retransmitted email is from either another host or from the same host but from another IP address. The greylisting feature of Cluebringer either severely delayed, or completely denied, a few of the test emails.</p>
+
+<p>For this reason, the author recommends turning this module off. Note, since being disabled, neither <em>delays</em> nor <em>denials</em> of email have been observed on the author&rsquo;s mail server. Additionally, the mail server has yet to receive any spam.</p>
+
+<ol>
+<li><p>Edit the Cluebringer config file (/etc/cluebringer/cluebringer.conf) to disable the Greylisting module.</p></li>
+
+<li><p>Search for the term &ldquo;Greylisting&rdquo; (without the quotation marks).</p></li>
+
+<li><p>Change the &ldquo;1&rdquo; to &ldquo;0&rdquo; to disable.</p></li>
+
+<li><p>Restart Cluebringer to complete the changes.</p>
+
+<pre><code>service postfix-cluebringer restart
+</code></pre></li>
+</ol>
+
+<h2 id="final-test-and-conclusion">Final Test and Conclusion</h2>
+
+<p>As a final test, you can utilize a service such as <a href="http://www.mail-tester.com">Mail Tester</a> to ensure that your records have been configured correctly. If you have followed this guide precisely, you should receive a score of <sup>10</sup>&frasl;<sub>10</sub> on Mail Tester&rsquo;s site. If not, Mail Tester will provide you with a report indicating what portion of your configuration needs improvement.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>While some DNS records update almost instantaneously, updates can take up to 24 hours to propagate. You may receive a lower score on these tests if your records have not yet updated.</div>
+</blockquote>
+
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Familiarize yourself with the various files, configs, and settings listed in the iRedMail emails and website and start adding users to your mail server. Happy Mailing!</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/installing-mail-filtering-for-ubuntu-12-04/">Installing Mail Filtering for Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/">Configure SPF and DKIM With Postfix on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/install-roundcube-on-ubuntu-14-04/">Install Roundcube on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/email-with-postfix-dovecot-and-mariadb-on-centos-7/">Email with Postfix, Dovecot and MariaDB on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-6/">Email with Postfix, Dovecot and MySQL on CentOS 6</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#why-run-a-mail-server">Why Run a Mail Server?</a></li>
+<li><a href="#prerequisites">Prerequisites</a>
+<ul>
+<li><a href="#mx-record">MX Record</a></li>
+</ul></li>
+<li><a href="#install-iredmail">Install iRedMail</a></li>
+<li><a href="#add-users">Add Users</a></li>
+<li><a href="#certificates-spf-dkim-and-rdns">Certificates, SPF, DKIM, and rDNS</a>
+<ul>
+<li><a href="#certificates">Certificates</a></li>
+<li><a href="#spf-dkim-and-rdns">SPF, DKIM and rDNS</a>
+<ul>
+<li><a href="#spf">SPF</a></li>
+<li><a href="#dkim">DKIM</a></li>
+<li><a href="#rdns">rDNS</a></li>
+</ul></li>
+<li><a href="#apache-authentication-fix-for-cluebringer-and-awstats-login">Apache Authentication Fix for Cluebringer and AWStats Login</a></li>
+<li><a href="#greylist-a-recommendation">Greylist a Recommendation</a></li>
+</ul></li>
+<li><a href="#final-test-and-conclusion">Final Test and Conclusion</a>
+<ul>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

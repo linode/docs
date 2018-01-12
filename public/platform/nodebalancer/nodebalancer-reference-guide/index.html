@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>NodeBalancer Reference Guide</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="NodeBalancer Reference Guide">
+        <meta name="keywords" content="load balancing, nodebalancer">
+        
+        <meta property="og:title" content="NodeBalancer Reference Guide">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/nodebalancer/nodebalancer-reference-guide/">
+        <meta property="og:description" content="NodeBalancer Reference Guide">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/nodebalancer/nodebalancer-reference-guide/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/nodebalancer/">NodeBalancers</a>
+  
+</li>
+
+
+<li>
+  
+  NodeBalancer Reference Guide
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">NodeBalancer Reference Guide</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-02-23T00:00:00Z">Thursday, February 23, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fnodebalancer%2fnodebalancer-reference-guide%2f&via=linode&text=NodeBalancer%20Reference%20Guide" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fnodebalancer%2fnodebalancer-reference-guide%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fnodebalancer%2fnodebalancer-reference-guide%2f&t=NodeBalancer%20Reference%20Guide" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/nodebalancer/nodebalancer-reference-guide.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/nodebalancer/nodebalancer-reference-guide.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>This is the NodeBalancer reference guide. Please see the <a href="/docs/platform/nodebalancer/getting-started-with-nodebalancers">NodeBalancer Getting Started Guide</a> for practical examples.</p>
+
+<h2 id="adding-a-nodebalancer">Adding a NodeBalancer</h2>
+
+<p>Click the NodeBalancers tab, and then &ldquo;Add a NodeBalancer&rdquo;. You must choose the same location as your back-end Linodes for a given deployment.</p>
+
+<h2 id="nodebalancer-settings">NodeBalancer Settings</h2>
+
+<p>Here you may adjust the NodeBalancer&rsquo;s display label, along with the &lsquo;Client Connection Throttle.&rsquo; The connection throttle limits the number of  subsequent new connections from the same client IP address.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Each NodeBalancer config adds another port that the NodeBalancer will listen on. For instance, if you wish to balance both port 80 and 81, you&rsquo;ll need to add two configuration profiles to your NodeBalancer.</p>
+
+<h3 id="port">Port</h3>
+
+<p>The public port for this configuration. Ports 1 through 65534 are available for balancing, provided that the port is not already in use by another config.</p>
+
+<h3 id="protocol">Protocol</h3>
+
+<p>You can choose either TCP, HTTP, or HTTPS. HTTP and HTTPS enable some additional options described below.</p>
+
+<p><strong>TCP</strong>: Use TCP mode to balance non-HTTP services.</p>
+
+<p><strong>HTTP:</strong> HTTP KeepAlives are forced off in HTTP mode.</p>
+
+<p><strong>HTTPS:</strong> With HTTPS selected, your NodeBalancer will terminate SSL connections. As with HTTP mode, KeepAlives will be disabled and the client&rsquo;s IP address will be provided in the X-Forwarded-For header.</p>
+
+<p>If <strong>HTTP</strong> or <strong>HTTPS</strong> is selected, the NodeBalancer will add an X-Forwarded-Proto header, with a value of either <code>http</code> or <code>https</code>, to all requests sent to the backend. The header value is based on the type of request (HTTP or HTTPS) originally received by the NodeBalancer.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Note that HTTPS requests (and HTTP requests, for that matter) are terminated on the NodeBalancer itself, and that&rsquo;s where the encryption over a public network ends. NodeBalancers use the HTTP protocol to communicate with your backends over a private network. You should have your backends listen to the NodeBalancer over HTTP, not HTTPS.</div>
+</blockquote>
+
+
+<h3 id="algorithm">Algorithm</h3>
+
+<p>How initial new connections are allocated across the backend Nodes.</p>
+
+<ul>
+<li><strong>Round Robin</strong> - Allocates connections in a weighted circular order across the backend Linodes.</li>
+<li><strong>Least Connections</strong> - Tracks each backend Linode&rsquo;s connection count, and allocates new connections to the node with the least connections.</li>
+<li><strong>Source IP</strong> - Modulates the client&rsquo;s IP to allocate them to the same backend on subsequent requests. This works so long as the set of backend Linodes doesn&rsquo;t change, however Session Stickiness affects this behavior.</li>
+</ul>
+
+<h3 id="session-stickiness">Session Stickiness</h3>
+
+<p>NodeBalancers have the ability for Session Persistence - meaning subsequent requests from the same client will be routed to the same backend Node when possible.</p>
+
+<ul>
+<li><strong>None</strong> - No additional Session Stickiness will be performed.</li>
+<li><strong>Table</strong> - The NodeBalancer itself remembers which backend a given client IP was initially load balanced to (see Algorithm, above), and will route subsequent requests from this IP back to the same backend, regardless of changes to the number of healthy backend nodes. Each entry in the table will expire 30 minutes from the time that it was added. If a backend node goes offline, entries in the table for that node are removed.</li>
+<li><strong>HTTP Cookie</strong> - Requires the configuration protocol be set to HTTP. The NodeBalancer sets a cookie named <code>NB_SRVID</code> identifying the backend a client was initially load balanced to (see Algorithm, above), and will route subsequent requests from this IP back to the same backend, regardless of changes to the number of healthy backend nodes. If a backend node goes offline, the client is balanced to another backend and the cookie is rewritten.</li>
+</ul>
+
+<p>If you need Session Persistence it is our recommendation to utilize both the Source IP algorithm in combination with either Table or HTTP Cookie if possible.</p>
+
+<h3 id="certificate-and-private-key">Certificate and Private Key</h3>
+
+<p>If you select the HTTPS protocol, the <strong>Certificate</strong> and <strong>Private Key</strong> fields will appear.</p>
+
+<p><a href="/docs/assets/1354-nodebalancer_cert.png"><img src="/docs/assets/1354-nodebalancer_cert.png" alt="The NodeBalancer Certificate and Private Key fields." /></a></p>
+
+<p>Copy your certificate into the <strong>Certificate</strong> field. If you have chained certificates, you can copy all of them into the text field, one after the other.</p>
+
+<p>Copy your passphraseless private key into the <strong>Private Key</strong> field.</p>
+
+<p>You can <a href="/docs/security/ssl/obtaining-a-commercial-ssl-certificate">purchase an SSL certificate</a> or <a href="/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate">create your own</a>.</p>
+
+<h3 id="tls-cipher-suites">TLS Cipher Suites</h3>
+
+<p>If your NodeBalancer must support users accessing your application with older browsers such as Internet Explorer 6-8, you should select the <strong>Legacy</strong> option, which sets the following cipher suite profile:</p>
+
+<pre><code>!RC4:HIGH:!aNULL:!MD5
+</code></pre>
+
+<p>However, bear in mind that by gaining backwards compatibility, your NodeBalancer will use weaker SSL/TLS cipher suites. For all other implementations, the default <strong>Recommended</strong> cipher suite option should be used, which includes:</p>
+
+<pre><code>ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA
+</code></pre>
+
+<h2 id="health-checks">Health Checks</h2>
+
+<p>NodeBalancers perform both passive and active health checks against the backend nodes. Nodes that are no longer responding are taken out of rotation.</p>
+
+<h3 id="passive">Passive</h3>
+
+<p>When servicing an incoming request, if a backend node fails to connect, times out, or returns a 5xx response code (excluding 501 and 505), it will be considered unhealthy and taken out of rotation.</p>
+
+<p>Passive health checks can be disabled if you choose:</p>
+
+<ol>
+<li>From the Linode Manager, click the <strong>NodeBalancers</strong> tab.</li>
+<li>Select your NodeBalancer and choose <strong>Edit</strong>.</li>
+<li>Under the <strong>Configurations</strong> section at the top of the page, choose <strong>Edit</strong>.</li>
+<li>Scroll down and uncheck the <strong>Enabled</strong> box under <strong>Passive Checks</strong>. Then click <strong>Save Changes</strong>.</li>
+</ol>
+
+<h3 id="active">Active</h3>
+
+<p>NodeBalancers also proactively check the health of back-end nodes by performing TCP connections or making HTTP requests. The common settings are:</p>
+
+<ul>
+<li><strong>Check Interval</strong> - Seconds between active health check probes.</li>
+<li><strong>Check Timeout</strong> - Seconds to wait before considering the probe a failure. 1-30.</li>
+<li><strong>Check Attempts</strong> - Number of failed probes before taking a node out of rotation. 1-30.</li>
+</ul>
+
+<p>Three different Health Check Types exist:</p>
+
+<ul>
+<li><strong>TCP Connection</strong> - requires a successful TCP handshake with a backend node.</li>
+<li><strong>HTTP Valid Status</strong> - performs an HTTP request on the provided path and requires a 2xx or 3xx response from the backend node.</li>
+<li><strong>HTTP Body Regex</strong> - performs an HTTP request on the provided path and requires the provided PCRE regular expression matches against the request&rsquo;s result body.</li>
+</ul>
+
+<h2 id="nodes">Nodes</h2>
+
+<p>NodeBalancers work over the private network. Backend nodes must have a private IP configured via <a href="/docs/networking/configuring-static-ip-interfaces">static networking</a>.</p>
+
+<p>Once you have established a basic configuration, you will be asked to set up &ldquo;Nodes&rdquo;. Nodes are combinations of addresses and ports that you wish to balance.</p>
+
+<ul>
+<li><strong>Label</strong> - This option allows you to label the Node. You can specify any value here.</li>
+<li><strong>Address</strong> - The address portion of this node corresponds to your Linode&rsquo;s private IP address.</li>
+<li><strong>Weight</strong> - Each of these nodes will also have a weight assigned to it that determines how connections will be balanced to it. Nodes with a higher weight will receive more connections than nodes with a lower weight.</li>
+</ul>
+
+<h3 id="node-status">Node Status</h3>
+
+<p>A Node&rsquo;s status, as seen from the perspective of the NodeBalancer, is indicated via its status field. It either has a value of UP or DOWN. The Last Status Change field also indicates the last time this node&rsquo;s status changed.</p>
+
+<h3 id="node-mode">Node Mode</h3>
+
+<p>Changes to a Node&rsquo;s Mode are applied within 60 seconds.</p>
+
+<ul>
+<li><strong>Accept</strong> - allows the node to accept incoming connections so long as it is healthy.</li>
+<li><strong>Reject</strong> - remove the node from rotation; discontinue health checks on this backend. Existing connections remain active.</li>
+<li><strong>Drain</strong> - will only receive connections from clients whose session stickiness points to this node.</li>
+</ul>
+
+<p>The use-case for Drain would be to set a node to Drain a day or so in advance of taking the node down. That way existing sessions would likely have ended.</p>
+
+<h2 id="x-forwarded-for-header">X-Forwarded-For Header</h2>
+
+<p>NodeBalancers add an X-Forwarded-For (XFF) HTTP header field, which allows your nodes to identify a client&rsquo;s originating IP address. This is useful for logging purposes. Here&rsquo;s an example XFF HTTP header:</p>
+
+<pre><code>X-Forwarded-For: 196.180.44.172
+</code></pre>
+
+<p>You&rsquo;ll need to configure your web server software to use the XFF header.</p>
+
+<h3 id="apache">Apache</h3>
+
+<p>If you&rsquo;re using the Apache web server, you can use the mod_rpaf to replace <code>REMOTE_ADDR</code> with the clent&rsquo;s IP address in the XFF header. After you install the module, you&rsquo;ll need to specify 192.168.255.0/24 as a proxy in <code>httpd.conf</code>.</p>
+
+<h3 id="nginx">Nginx</h3>
+
+<p>If you&rsquo;re using the Nginx web server, you can add the following lines to your Nginx configuration file:</p>
+
+<pre><code>real_ip_header X-Forwarded-For;
+set_real_ip_from 192.168.255.0/24;
+</code></pre>
+
+<p>This will allow Nginx to capture the client&rsquo;s IP address in the logs.</p>
+
+<h2 id="ip-address-range">IP Address Range</h2>
+
+<p>NodeBalancers all have private IP addresses in the <code>192.168.255.0/24</code> range. It&rsquo;s important to note that while their public IP address is persistent, the private IP address <strong>will</strong> change. When configuring a firewall or other network restriction on back-end Linodes, be sure to allow the entire <code>192.168.255.0/24</code> range and not a specific IP address.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/nodebalancer/getting-started-with-nodebalancers/">Getting Started with NodeBalancers</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/">How to Use HAProxy for Load Balancing</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/nodebalancer/nodebalancer-ssl-configuration/">NodeBalancer SSL Configuration</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/">Use Nginx as a Front-end Proxy and Software Load Balancer</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#adding-a-nodebalancer">Adding a NodeBalancer</a></li>
+<li><a href="#nodebalancer-settings">NodeBalancer Settings</a></li>
+<li><a href="#configuration">Configuration</a>
+<ul>
+<li><a href="#port">Port</a></li>
+<li><a href="#protocol">Protocol</a></li>
+<li><a href="#algorithm">Algorithm</a></li>
+<li><a href="#session-stickiness">Session Stickiness</a></li>
+<li><a href="#certificate-and-private-key">Certificate and Private Key</a></li>
+<li><a href="#tls-cipher-suites">TLS Cipher Suites</a></li>
+</ul></li>
+<li><a href="#health-checks">Health Checks</a>
+<ul>
+<li><a href="#passive">Passive</a></li>
+<li><a href="#active">Active</a></li>
+</ul></li>
+<li><a href="#nodes">Nodes</a>
+<ul>
+<li><a href="#node-status">Node Status</a></li>
+<li><a href="#node-mode">Node Mode</a></li>
+</ul></li>
+<li><a href="#x-forwarded-for-header">X-Forwarded-For Header</a>
+<ul>
+<li><a href="#apache">Apache</a></li>
+<li><a href="#nginx">Nginx</a></li>
+</ul></li>
+<li><a href="#ip-address-range">IP Address Range</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

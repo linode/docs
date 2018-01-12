@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>NodeBalancer SSL Configuration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Forcing all connections to use SSL with NodeBalancers.">
+        <meta name="keywords" content="Linode, NodeBalancer, SSL, redirect, load balancing, install, certificate, configuration">
+        
+        <meta property="og:title" content="NodeBalancer SSL Configuration">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/nodebalancer/nodebalancer-ssl-configuration/">
+        <meta property="og:description" content="Forcing all connections to use SSL with NodeBalancers.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/nodebalancer/nodebalancer-ssl-configuration/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/nodebalancer/">NodeBalancers</a>
+  
+</li>
+
+
+<li>
+  
+  NodeBalancer SSL Configuration
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">NodeBalancer SSL Configuration</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-04-06T00:00:00Z">Thursday, April 6, 2017</time> by Nick Brewer</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fnodebalancer%2fnodebalancer-ssl-configuration%2f&via=linode&text=NodeBalancer%20SSL%20Configuration" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fnodebalancer%2fnodebalancer-ssl-configuration%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fnodebalancer%2fnodebalancer-ssl-configuration%2f&t=NodeBalancer%20SSL%20Configuration" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/nodebalancer/nodebalancer-ssl-configuration.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/nodebalancer/nodebalancer-ssl-configuration.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>This guide will help you install an SSL certificate on your NodeBalancer. It includes step-by-step instructions for configuring a NodeBalancer to redirect all web connections over port 443/HTTPS using SSL. The provided directions are designed to work with Apache and Nginx web servers, running on Debian and Red Hat-based distributions.</p>
+
+<p><img src="/docs/assets/NodeBalancer_SSL_Configuration_smg.png" alt="Forcing all connections to use SSL with NodeBalancers." title="Forcing all connections to use SSL with NodeBalancers." /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Throughout this guide we will offer several suggested values for specific configuration settings; some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before you Begin</h2>
+
+<ul>
+<li><p>When first configuring back-end Linodes, you should set them up according to the instructions in our <a href="/docs/getting-started">Getting Started</a> guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on <a href="https://linode.com/docs/security/securing-your-server">Securing Your Server</a></p></li>
+
+<li><p>Install a commercial or self-signed <a href="/docs/security/ssl">SSL certificate</a> using the appropriate guide for your distribution.</p></li>
+
+<li><p>This guide assumes that you have already deployed two or more back-end Linodes and configured them with either a LAMP stack or a LEMP stack. If you have not, please review the following documentation for assistance with configuring your respective stack:</p>
+
+<ul>
+<li><a href="/docs/websites/lamp/">LAMP Stack</a></li>
+<li><a href="/docs/websites/lemp/">LEMP Stack</a></li>
+</ul></li>
+
+<li><p>In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more back-end Linodes that make connections on port 80/HTTP. We recommend that you first verify that your NodeBalancer is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following documentation:</p>
+
+<ul>
+<li><a href="/docs/platform/nodebalancer/getting-started-with-nodebalancers">Getting Started with NodeBalancers</a></li>
+<li><a href="/docs/platform/nodebalancer/nodebalancer-reference-guide">NodeBalancer Reference Guide</a></li>
+</ul></li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide has been written with the assumption that you are logged in as the root user. If you are using a limited user account, you will need to prefix some commands with <code>sudo</code>.</div>
+</blockquote>
+
+
+<h2 id="install-the-ssl-certificate-and-private-key-on-your-nodebalancer">Install the SSL Certificate and Private Key on your NodeBalancer</h2>
+
+<ol>
+<li><p>Go to your NodeBalancer&rsquo;s configuration page. If you select the HTTPS protocol, the <strong>Certificate</strong> and <strong>Private Key</strong> fields will appear.</p>
+
+<p><a href="/docs/assets/nodebalancer-ssl-cert.png"><img src="/docs/assets/nodebalancer-ssl-cert.png" alt="The NodeBalancer SSL Certificate Fields." /></a></p></li>
+
+<li><p>Copy the contents of your SSL certificate into the <strong>Certificate</strong> field. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another.</p></li>
+
+<li><p>Copy your private key into the <strong>Private Key</strong> field. Your private key must not have a passphrase.</p></li>
+
+<li><p>On your NodeBalancer <strong>Configurations</strong> page, select <strong>Create Configuration</strong> to configure each port/protocol that you would like to use, i.e. <code>80</code> and <code>443</code>.</p></li>
+
+<li><p>Under <strong>Edit Configuration,</strong>  once selected, fill out the values in the fields as shown below:</p>
+
+<ul>
+<li><strong>Port</strong>                    443</li>
+<li><strong>Protocol</strong>                HTTPS</li>
+<li><strong>Algorithm</strong>               Round Robin</li>
+<li><strong>Session Stickiness</strong>      None</li>
+<li><strong>Certificate</strong>             Insert your signed SSL Certificate</li>
+<li><strong>Private Key</strong>             Insert your Private Key</li>
+<li><strong>Health Check Type</strong>       HTTP Valid Status</li>
+<li><strong>Check Interval</strong>          5</li>
+<li><strong>Check Timeout</strong>           3</li>
+<li><strong>Check Attempts</strong>          2</li>
+<li><strong>Check HTTP Path</strong>         /</li>
+</ul>
+
+<p>Select <strong>Save Changes</strong> when you&rsquo;re finished.</p></li>
+
+<li><p>Add as many nodes as you require for the port configuration by selecting <strong>Add Node</strong>. Once selected, fill out the values in the fields as shown below, replacing <code>xxx.xxx.xxx.xxx</code> with your Linode&rsquo;s private IP address:</p>
+
+<ul>
+<li><strong>Label</strong>                   Backend Linode 1</li>
+<li><strong>Address</strong>                 xxx.xxx.xxx.xxx:80</li>
+<li><strong>Weight</strong>                  100</li>
+<li><strong>Mode</strong>                    Accept</li>
+</ul>
+
+<p>Select <strong>Save Changes</strong> when you&rsquo;re finished.</p></li>
+</ol>
+
+<h2 id="configure-the-apache-web-server">Configure the Apache Web Server</h2>
+
+<ol>
+<li><p>Enable <code>mod_rewrite</code> so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS:</p>
+
+<pre><code>a2enmod rewrite
+</code></pre>
+
+<p>Or, you can load the module manually by appending the following to your Apache configuration file:</p>
+
+<pre><code>LoadModule rewrite_module modules/mod_rewrite.so
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>Depending on your distribution, this file&rsquo;s location may vary. For example, it can be found at the following paths on Debian and Red Hat based distributions, respectively:</p>
+
+<p>/etc/apache2/apache2.conf</p>
+
+<p>/etc/httpd/httpd.conf</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Edit the Apache virtual host configuration file to establish the rewrite rules necessary to redirect all incoming traffic from port 80/HTTP back to the NodeBalancer on port 443/HTTPS:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+
+     <span class="nb">RewriteEngine</span>    <span class="k">On</span>
+     <span class="nb">RewriteCond</span>      %{HTTP:X-Forwarded-Proto} !https
+     <span class="nb">RewriteRule</span>      ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
+     <span class="nb">LogLevel</span> <span class="k">alert</span> rewrite:trace4  # Adjust log verbosity as required. ex. <span class="m">1</span>-8
+ <span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The rewrite configuration shown above is specific to Apache 2.4 or later. This means that logging gets recorded to Apache&rsquo;s <code>error.log</code> file. To view only the records specific to <code>mod_rewrite</code>, you can pipe the log file through grep:</p>
+
+<pre><code>tail -f error_log|fgrep '[rewrite:'
+</code></pre>
+
+<p>If you are using Apache 2.2, then you will need to replace the <code>LogLevel alert rewrite:trace</code> directive with the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">RewriteLog</span>       <span class="sx">/var/log/apache2/rewrite.log</span>
+<span class="nb">RewriteLogLevel</span>  <span class="m">5</span>  # Adjust log verbosity as required. ex. <span class="m">1</span>-9</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>On Red Hat-based distributions, change the <code>Rewritelog</code> path to <code>/var/log/httpd/rewrite.log</code></div>
+</blockquote>
+</li>
+
+<li><p>Create the <code>RewriteLog</code> as referenced from above:</p>
+
+<ul>
+<li><p>Debian / Ubuntu</p>
+
+<p>touch /var/log/apache2/rewrite.log</p></li>
+
+<li><p>CentOS</p>
+
+<p>touch /var/log/httpd/rewrite.log</p></li>
+</ul></li>
+</ol>
+
+<h2 id="configure-the-nginx-web-server">Configure the Nginx Web Server</h2>
+
+<ol>
+<li><p>Edit the Nginx server block configuration file to establish the rewrite rules to redirect all incoming traffic from port 80/HTTP back to the NodeBalancer on port 443/HTTPS:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>   <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">example.com</span><span class="p">;</span>
+    <span class="kn">access_log</span> <span class="s">/var/log/nginx/access.log</span><span class="p">;</span>
+    <span class="kn">error_log</span> <span class="s">/var/log/nginx/error.log</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Proto</span> <span class="nv">$scheme</span><span class="p">;</span>
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">root</span>   <span class="s">/srv/www/example.com/public_html</span><span class="p">;</span>
+        <span class="kn">index</span>  <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+        <span class="kn">if</span> <span class="s">(</span><span class="nv">$http_x_forwarded_proto</span> <span class="p">=</span> <span class="s">&#34;http&#34;)</span> <span class="p">{</span>
+            <span class="kn">rewrite</span>  <span class="s">^/(.*)</span>$  <span class="s">https://example.com/</span><span class="nv">$1</span> <span class="s">permanent</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In the above configuration, be sure to replace the values of <code>server_name</code> and <code>root</code> with your actual domain and document root, respectively.</p></li>
+
+<li><p>Your configuration should now be complete. After reloading your web server, all requests made to your website that are not sent to port 443 should be redirected back to your Nodebalancer on a secure connection with SSL/TLS.</p></li>
+</ol>
+
+<h2 id="tips-for-troubleshooting">Tips for Troubleshooting</h2>
+
+<ul>
+<li><p>If you have difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you may wish to utilize the <a href="https://www.ssllabs.com/ssltest/">Qualys online SSL Server Test</a></p></li>
+
+<li><p>Every time you make changes to your web server&rsquo;s document root file or other configuration files, be sure to reload the server:</p>
+
+<ul>
+<li><p>For Apache, choose from the following commands, depending on your distribution:</p>
+
+<pre><code>service apache2 reload
+service httpd reload
+systemctl restart apache2
+systemctl restart httpd
+</code></pre></li>
+
+<li><p>For Nginx, choose from the following commands, depending on your distribution:</p>
+
+<pre><code>service nginx reload
+systemctl restart nginx
+</code></pre></li>
+</ul></li>
+
+<li><p>When testing behind a load balancer, using curl with the <code>-I</code> or <code>-L</code> flags can be very helpful when debugging:</p>
+
+<pre><code>curl -I example.com
+curl -L example.com
+</code></pre></li>
+</ul>
+
+<p>The <code>-I</code> or <code>--head</code> options will fetch the HTTP-header only. The <code>-L</code> or <code>--location</code> option will detect and display if the server indicates that the requested page has moved to a different location. This option will make curl repeat the request at the new location. If used together with <code>-I</code>, headers from all requested pages will be displayed. This is particularly useful if your rewrite rules have created an infinite loop and your web page does not load. Refer to the <a href="https://curl.haxx.se/docs/manual.html">man pages</a> for <code>curl</code> for more info.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/how-to-build-your-infrastructure-using-terraform-and-linode/">Using Terraform to Provision Linode Environments</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/">How to Use HAProxy for Load Balancing</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/">Install a Jupyter Notebook Server on a Linode Behind an Apache Reverse Proxy</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/">Use Varnish &amp; nginx to Serve WordPress over SSL &amp; HTTP on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/introduction-to-firewalld-on-centos/">Introduction to FirewallD on CentOS</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before you Begin</a></li>
+<li><a href="#install-the-ssl-certificate-and-private-key-on-your-nodebalancer">Install the SSL Certificate and Private Key on your NodeBalancer</a></li>
+<li><a href="#configure-the-apache-web-server">Configure the Apache Web Server</a></li>
+<li><a href="#configure-the-nginx-web-server">Configure the Nginx Web Server</a></li>
+<li><a href="#tips-for-troubleshooting">Tips for Troubleshooting</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

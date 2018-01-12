@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Yesod, Nginx, and MySQL on Debian 7 (Wheezy)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Installing the web framework Yesod with the server Nginx and MySQL on Debian 7">
+        <meta name="keywords" content="yesod,  nginx,  mysql,  debian 7">
+        
+        <meta property="og:title" content="Yesod, Nginx, and MySQL on Debian 7 (Wheezy)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/">
+        <meta property="og:description" content="Installing the web framework Yesod with the server Nginx and MySQL on Debian 7">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/frameworks/">Web Application Frameworks</a>
+  
+</li>
+
+
+<li>
+  
+  Yesod, Nginx, and MySQL on Debian 7 (Wheezy)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Yesod, Nginx, and MySQL on Debian 7 (Wheezy)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-09-25T00:00:00Z">Thursday, September 25, 2014</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Si-Qi Liu
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fyesod-nginx-mysql-on-debian-7-wheezy%2f&via=linode&text=Yesod%2c%20Nginx%2c%20and%20MySQL%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fyesod-nginx-mysql-on-debian-7-wheezy%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fyesod-nginx-mysql-on-debian-7-wheezy%2f&t=Yesod%2c%20Nginx%2c%20and%20MySQL%20on%20Debian%207%20%28Wheezy%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>Yesod is a web framework based on the purely functional programming language Haskell. It is designed for productive development of type-safe, RESTful, and high performance web applications. This guide describes the required process for deploying Yesod and Nginx web server, MySQL database on Debian 7 (Wheezy).</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before you begin installing and configuring the components described below, please make sure you&rsquo;ve followed our instructions in the <a href="/docs/getting-started">Getting Started</a> guide for setting your hostname. Here&rsquo;s how to check.</p>
+
+<ol>
+<li><p>Enter the following commands to view the hostname:</p>
+
+<pre><code>hostname
+</code></pre></li>
+
+<li><p>And to display the fully qualified domain name (FQDN):</p>
+
+<pre><code>hostname -f
+</code></pre>
+
+<p>If the commands list a previously created hostname, then you can begin the installation.</p></li>
+
+<li><p>Make sure your system is up to date. Issue the following command to update your system&rsquo;s repository database and upgrade the system:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre></li>
+
+<li><p>You also need Nginx and MySQL software. Please refer to <a href="/docs/websites/nginx/websites-with-nginx-on-debian-7-wheezy">Websites with Nginx on Debian 7 (Wheezy)</a> and <a href="/docs/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy">Using MySQL Relational Databases on Debian 7 (Wheezy)</a> for their installation guides.</p></li>
+</ol>
+
+<h2 id="install-required-packages">Install Required Packages</h2>
+
+<p>Since Yesod is built with the Haskell programming language, the Haskell packages are a preliminary install. The web framework Yesod requires two packages from the Haskell platform. The two <code>lib*-dev</code> packages are required by the Haskell module <code>mysql</code>. If you would like to use SQLite, then you don&rsquo;t need to install them.</p>
+
+<pre><code>apt-get install haskell-platform libpcre3-dev libmysqlclient-dev
+</code></pre>
+
+<h2 id="install-yesod">Install Yesod</h2>
+
+<p>Yesod is a large framework, which depends on many of other packages. We will use <em>cabal</em> to manage all of them. Cabal is a package manager for the Haskell community&rsquo;s central package archive <em>Hackage</em>. Because all packages on Hackage are maintained by the community, the dependency relationships are not well protected. So you might meet the so-called <a href="http://www.haskell.org/haskellwiki/Cabal/Survival#What_is_the_difficulty_caused_by_Cabal-install.3F">cabal dependency hell</a> problem.</p>
+
+<p>To avoid this problem, the maintainers of Yesod created a metapackage named <em>yesod-platform</em>. The version numbers of its dependencies are fixed, so you won&rsquo;t meet the &ldquo;cabal hell&rdquo;. On the other hand, fixed version numbers may cause other problems, especially when you also use cabal to manage other large projects (such as pandoc, a Haskell library for converting markup formats). The solution for this problem is very simple: if you have several large projects to manage, create new users for each of them, and then install them into their users&rsquo; home folder.</p>
+
+<ol>
+<li><p>So let&rsquo;s create a new user. We can name it &ldquo;yesod&rdquo;:</p>
+
+<pre><code>sudo adduser yesod
+</code></pre></li>
+
+<li><p>Then switch over to user yesod:</p>
+
+<pre><code>su - yesod
+</code></pre></li>
+
+<li><p>Update cabal:</p>
+
+<pre><code>cabal update
+</code></pre>
+
+<p>Then you will find a new folder <code>.cabal</code> in yesod&rsquo;s home folder. The configuration files for <code>cabal</code>, all programs, all libraries, and all their documents installed by <code>cabal</code> will be placed in this folder. In particular, new programs are installed in <code>$HOME/.cabal/bin</code>. To use them, you can add this folder to yesod&rsquo;s PATH:</p>
+
+<pre><code>echo PATH=\$HOME/.cabal/bin:\$PATH &gt;&gt; .bashrc
+source .bashrc
+</code></pre></li>
+
+<li><p>Upgrade <em>cabal-install</em> first. The <em>cabal-install</em> package offered by the <em>haskell-platform</em> package of Debian 7 doesn&rsquo;t have the &ldquo;sandbox&rdquo; feature, which is very useful for Yesod, so we need to upgrade it:</p>
+
+<pre><code>cabal install cabal-install
+</code></pre></li>
+
+<li><p>Logout and su again, then check whether the new cabal is in use:</p>
+
+<pre><code>exit
+su - yesod
+cabal --version
+</code></pre>
+
+<p>The version should be greater than 1.20.</p></li>
+
+<li><p>Upgrade <em>alex</em> and <em>happy</em>. They are &ldquo;flex&rdquo; and &ldquo;bison&rdquo; for Haskell. The <em>language-javascript</em> package, which is required by Yesod, depends on higher versions of them, so we need to upgrade them:</p>
+
+<pre><code>cabal install alex happy
+</code></pre></li>
+
+<li><p>Now you can install the <code>yesod-platform</code> and <code>yesod-bin</code> packages:</p>
+
+<pre><code>cabal install --reorder-goals --max-backjumps=-1 yesod-platform yesod-bin
+</code></pre>
+
+<p>The <code>yesod-bin</code> package provides scaffolding, devel server, and some simple code generation helpers for your <code>yesod-platform</code>. We will use it in the next section to construct the scaffold for a new site.</p>
+
+<p>The flag <code>--reorder-goals</code> tries to reorder goals according to certain heuristics. It may make backtracking faster. If you don&rsquo;t add this flag, <code>cabal</code> may get into certain &ldquo;bad&rdquo; searching branches, and waste a lot of time and memory here. If your machine doesn&rsquo;t have enough memory, it is even possible that <code>cabal</code> cannot resolve the dependency relation, and give you an error message.</p>
+
+<p>The parameter <code>--max-backjumps</code> set the maximum number of back jumps. The default value is 200. We set it to -1, which means unlimited backtracking. If you don&rsquo;t add this parameter, <code>cabal</code> may fail, if it cannot find a solution within 200 steps of backtracking.</p>
+
+<p>It takes about 20 minutes to build the <code>yesod-platform</code> and <code>yesod-bin</code> packages on a Linode 1G.</p></li>
+</ol>
+
+<h2 id="use-yesod">Use Yesod</h2>
+
+<p>To start development of your Yesod site, first construct a scaffold. In development, a scaffold is a placeholder or example set, which is constructed by the defaults of the framework or compiler chosen. The developer can then overwrite the scaffold site.</p>
+
+<ol>
+<li><p>Initiate Yesod development with the commands:</p>
+
+<pre><code>cd $HOME
+yesod init
+</code></pre>
+
+<p>You will be asked the name of your project, and the database you want to use. You must name the project &ldquo;myblog&rdquo;. This is important later on. And the answer for the second question is &ldquo;mysql&rdquo;.</p></li>
+
+<li><p>Enter the project folder created by <em>Yesod</em>:</p>
+
+<pre><code>cd $HOME/myblog
+</code></pre></li>
+
+<li><p>Then, issue the following command to initialize the sandbox. The sandbox feature ensures that the dependencies of your site are installed <em>into</em> the folder where your site is located, so <em>cabal</em> won&rsquo;t destroy the packages installed in <em>/home/yesod/.cabal</em>. You can develop several sites simultaneously, and you won&rsquo;t need to worry about the &ldquo;cabal dependency hell&rdquo;:</p>
+
+<pre><code>cabal sandbox init
+</code></pre>
+
+<p>This command will generate a configuration file <code>$HOME/myblog/cabal.sandbox.config</code>, and create a local cabal environment in <code>$HOME/myblog/.cabal-sandbox</code>.</p></li>
+
+<li><p>Then install the packages required by your project in the sandbox:</p>
+
+<pre><code> cabal install --enable-tests . --reorder-goals  --max-backjumps=-1 yesod-platform yesod-bin
+</code></pre>
+
+<p>It will compile and install all packages needed by our site &ldquo;myblog&rdquo; into the sandbox created in the last step. You may notice that the &ldquo;sandbox&rdquo; version of <code>yesod-platform</code> may be newer than the one we installed in the last section, because in the sandbox, <code>cabal</code> searches for the solution on a smaller tree, so the result could be better.</p></li>
+</ol>
+
+<p>If you want to construct another site, just go back to <code>$HOME</code> folder, and issue <code>yesod init</code> again. Different sites won&rsquo;t affect each other because of the sandbox mechanism.</p>
+
+<h2 id="working-with-mysql">Working with MySQL</h2>
+
+<p>Before testing the scaffold of your site, you need to create a user and several databases in MySQL. The &ldquo;yesod&rdquo; command has generated a configuration file for MySQL, which is located at <code>$HOME/myblog/config/mysql.yml</code>. Take a look.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		$HOME/myblog/config/mysql.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">Default: <span class="p">&amp;</span>defaults
+  user: myblog
+  password: myblog
+  host: localhost
+  port: <span class="m">3306</span>
+  database: myblog
+  poolsize: <span class="m">10</span>
+
+...
+
+Production:
+  database: myblog_production
+  poolsize: <span class="m">100</span>
+  &lt;&lt;: *defaults</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Your site can be started in different environments such as Development, Testing, Staging and Production, and you can give different configurations for them. The configuration for the four different environments is given in the <code>Default</code> section. You can modify this section, using your own host, port, username, password, database, and so on. If you need different settings in the Production environment, for example, you can write your new settings in the <code>Production</code> section first, and then import the default ones by <code>&lt;&lt;: *defaults</code>.</p>
+
+<p>We don&rsquo;t need to modify this configuration file, it&rsquo;s acceptable as is. So you only need to create a user &ldquo;myblog&rdquo; with password &ldquo;myblog&rdquo;, and four databases &ldquo;myblog&rdquo;, &ldquo;myblog_testing&rdquo;, &ldquo;myblog_staging&rdquo;, and &ldquo;myblog_production&rdquo;. Remember to replace &ldquo;myblog&rdquo; with the name of your project.</p>
+
+<ol>
+<li><p>Issue the following command to login the root account of the mysql database management system:</p>
+
+<pre><code>mysql -u root -p
+</code></pre></li>
+
+<li><p>Create user &ldquo;myblog&rdquo; with password &ldquo;myblog&rdquo;:</p>
+
+<pre><code>create user 'myblog'@'localhost' identified by 'myblog';
+</code></pre></li>
+
+<li><p>Create databases:</p>
+
+<pre><code>create database myblog;
+create database myblog_test;
+create database myblog_staging;
+create database myblog_production;
+</code></pre></li>
+
+<li><p>Don&rsquo;t forget to assign the user to the databases:</p>
+
+<pre><code>grant all privileges on myblog.* to 'myblog'@'localhost';
+grant all privileges on myblog_testing.* to 'myblog'@'localhost';
+grant all privileges on myblog_staging.* to 'myblog'@'localhost';
+grant all privileges on myblog_production.* to 'myblog'@'localhost';
+</code></pre></li>
+
+<li><p>You can exit the mysql database management system now:</p>
+
+<pre><code>exit;
+</code></pre></li>
+
+<li><p>When the MySQL user and databases are ready, you can issue the following command to start the project:</p>
+
+<pre><code>cd $HOME/myblog
+yesod devel
+</code></pre>
+
+<p>Please wait for compilation, then you can see the scaffold of your site at <a href="http://www.yoursite.com:3000/">http://www.yoursite.com:3000/</a>, where <code>www.yoursite.com</code> is your FQDN. To stop it, just press <code>Enter</code>.</p></li>
+</ol>
+
+<p>If your Linode has a firewall, the port <code>3000</code> is probably inaccessible from outside, so you will not be able to see your site at <a href="http://www.yoursite.com:3000/">http://www.yoursite.com:3000/</a>. This port is only for testing or developing, so don&rsquo;t open it on your firewall. Instead, you can set up an SSH tunnel on your Linode, and view your site at <a href="http://localhost:3000/">http://localhost:3000/</a> via this tunnel. Please check <a href="/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/">Setting up an SSH Tunnel with Your Linode for Safe Browsing</a> for more details.</p>
+
+<p>You may have noticed that we haven&rsquo;t configure Nginx yet. In fact, Yesod applications contain an http server called Warp, which is written in Haskell, and has a very fast run-time. Without http servers like Apache or Nginx installed, you can run Yesod applications as standalones. This feature is similar to the Express framework on Node.js.</p>
+
+<p>The initial setup of your first Yesod site has been finished. To start more advanced development of your Yesod site, please read <a href="http://www.yesodweb.com/book/">The Yesod Book</a> for more details.</p>
+
+<h2 id="deploy-to-nginx">Deploy to Nginx</h2>
+
+<p>Warp is a fast http server, but it lacks some advanced features like virtual hosts, load balancers, or SSL proxies, so we need Nginx to serve our site with more flexibility. In this section, we will introduce a method to deploy your site to Nginx.</p>
+
+<h3 id="prepare-yesod">Prepare Yesod</h3>
+
+<ol>
+<li><p>Before deployment, you need to prepare the files to be deployed. Issue the following commands in the folder <code>$HOME/myblog</code>:</p>
+
+<pre><code>cabal clean
+cabal configure
+cabal build
+</code></pre>
+
+<p>You can regard them as <code>make distclean &amp;&amp; ./configure &amp;&amp; make</code>, which is the standard way to build a Unix package from its source. But don&rsquo;t run <code>cabal install</code> here! This command will install your application into its sandbox, which is not what we want.</p></li>
+
+<li><p>After issuing the command <code>cabal build</code>, your application (myblog) is built and placed in <code>$HOME/myblog/dist/build/myblog/</code>. This is the program that we are to deploy. You can move the directory anywhere.</p>
+
+<p>You also need to place the two files <code>$HOME/myblog/config</code> and <code>$HOME/myblog/static</code> into the same directory.</p>
+
+<p>Let&rsquo;s create a folder in <code>/var</code> to deploy those files. You need root privileges to issue the following commands:</p>
+
+<pre><code>mkdir /var/myblog
+chmod 755 /var/myblog/
+chown yesod.yesod /var/myblog
+</code></pre>
+
+<p>Then copy the files:</p>
+
+<pre><code>cp $HOME/myblog/dist/build/myblog/myblog /var/myblog
+cp -R $HOME/myblog/config /var/myblog
+cp -R $HOME/myblog/static /var/myblog
+</code></pre></li>
+
+<li><p>Before starting your site, you need to modify the file <code>/var/myblog/config/settings.yml</code>. This file has the same structure as <code>mysql.yml</code>. There is a <code>Default</code> section and four other sections for various environments. We will only run <code>/var/myblog</code> in the <code>Production</code> environment, so we only need to modify the last three lines of this settings file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/myblog/config/settings.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">Production:
+  approot: <span class="s2">&#34;http://www.yoursite.com&#34;</span>
+  &lt;&lt;: *defaults</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Here <em>www.yoursite.com</em> should be replaced by your FQDN. You can also use other virtual host names here, like <em>myblog.yoursite.com</em>. <strong>Just make sure that it is the same as the one that you will pass to Nginx below during Step 5.</strong></p></li>
+
+<li><p>To start your site, issue the following commands:</p>
+
+<pre><code>cd /var/myblog
+./myblog Production
+</code></pre>
+
+<p>Your site is now online. You can check it at <a href="http://www.yoursite.com:3000/">http://www.yoursite.com:3000/</a> or <a href="http://hostingIP:3000/">http://hostingIP:3000/</a>, if you have set up an SSH tunnel. Note that it doesn&rsquo;t work smoothly yet, because we haven&rsquo;t instructed your site where its static files are. We will do this in the next step. Please press Ctrl-C to stop it now.</p></li>
+
+<li><p>If you want your site running as a daemon, which means in a constant state of running, you can create an init.d script. We have created a simple one, here, for your reference:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/init.d/myblog 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span><span class="lnt">51</span><span class="lnt">52</span><span class="lnt">53</span><span class="lnt">54</span><span class="lnt">55</span><span class="lnt">56</span><span class="lnt">57</span><span class="lnt">58</span><span class="lnt">59</span><span class="lnt">60</span><span class="lnt">61</span><span class="lnt">62</span><span class="lnt">63</span><span class="lnt">64</span><span class="lnt">65</span><span class="lnt">66</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#! /bin/sh
+</span><span class="cp"></span><span class="c1">### BEGIN INIT INFO
+</span><span class="c1"># Provides:          myblog
+</span><span class="c1"># Required-Start:    $network $syslog mysql nginx
+</span><span class="c1"># Required-Stop:     $network $syslog mysql nginx
+</span><span class="c1"># Default-Start:     2 3 4 5
+</span><span class="c1"># Default-Stop:      0 1 6
+</span><span class="c1"># Short-Description: MyBlog
+</span><span class="c1"># Description:       MyBlog: My First Yesod Application
+</span><span class="c1">### END INIT INFO
+</span><span class="c1"></span>
+<span class="nv">PATH</span><span class="o">=</span>/sbin:/bin:/usr/sbin:/usr/bin
+<span class="nv">DESC</span><span class="o">=</span><span class="s2">&#34;MyBlog&#34;</span>
+<span class="nv">NAME</span><span class="o">=</span>myblog
+<span class="nv">MYROOT</span><span class="o">=</span>/var/myblog
+<span class="nv">MYGROUP</span><span class="o">=</span>yesod
+<span class="nv">MYUSER</span><span class="o">=</span>yesod
+<span class="nv">PIDFILE</span><span class="o">=</span>/var/opt/myblog/run/<span class="nv">$NAME</span>.pid
+<span class="nv">LOGFILE</span><span class="o">=</span>/var/opt/myblog/log/<span class="nv">$NAME</span>.log
+<span class="nv">DAEMON</span><span class="o">=</span>/var/myblog/myblog
+<span class="nv">DAEMON_ARGS</span><span class="o">=</span><span class="s2">&#34;Production&#34;</span>
+
+. /lib/lsb/init-functions
+
+<span class="k">case</span> <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> in
+start<span class="o">)</span>
+        log_daemon_msg <span class="s2">&#34;Starting </span><span class="nv">$DESC</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">&#34;</span>
+
+        mkdir -p /var/opt/myblog/run
+        mkdir -p /var/opt/myblog/log
+        chown -R <span class="si">${</span><span class="nv">MYUSER</span><span class="si">}</span>:<span class="si">${</span><span class="nv">MYGROUP</span><span class="si">}</span> /var/opt/myblog
+
+        start-stop-daemon --start --quiet  --background  <span class="se">\
+</span><span class="se"></span>                --make-pidfile --pidfile <span class="nv">$PIDFILE</span>        <span class="se">\
+</span><span class="se"></span>                --chuid <span class="nv">$MYUSER</span>:<span class="nv">$MYGROUP</span> --chdir <span class="nv">$MYROOT</span> <span class="se">\
+</span><span class="se"></span>                --exec /bin/bash -- -c                   <span class="se">\
+</span><span class="se"></span>                <span class="s2">&#34;exec </span><span class="nv">$DAEMON</span><span class="s2"> </span><span class="nv">$DAEMON_ARGS</span><span class="s2"> &gt; </span><span class="nv">$LOGFILE</span><span class="s2">&#34;</span>   <span class="se">\
+</span><span class="se"></span>                <span class="o">||</span> <span class="nb">true</span>
+
+        log_end_msg <span class="nv">$?</span>
+        <span class="p">;;</span>
+stop<span class="o">)</span>
+        log_daemon_msg <span class="s2">&#34;Stopping </span><span class="nv">$DESC</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">&#34;</span>
+
+        start-stop-daemon --stop --quiet          <span class="se">\
+</span><span class="se"></span>                --pidfile <span class="nv">$PIDFILE</span> --exec <span class="nv">$DAEMON</span> <span class="se">\
+</span><span class="se"></span>                <span class="o">||</span> <span class="nb">true</span>
+
+        rm -f <span class="nv">$PIDFILE</span>
+
+        log_end_msg <span class="nv">$?</span>
+        <span class="p">;;</span>
+status<span class="o">)</span>
+        status_of_proc <span class="s2">&#34;</span><span class="nv">$DAEMON</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span> <span class="m">0</span> <span class="o">||</span> <span class="nb">exit</span> <span class="nv">$?</span>
+        <span class="p">;;</span>
+restart<span class="o">)</span>
+        <span class="nv">$0</span> stop
+        <span class="nv">$0</span> start
+        <span class="p">;;</span>
+*<span class="o">)</span>
+        <span class="nb">echo</span> <span class="s2">&#34;Usage: </span><span class="nv">$SCRIPTNAME</span><span class="s2"> {start|stop|status|restart}&#34;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+        <span class="nb">exit</span> <span class="m">3</span>
+        <span class="p">;;</span>
+<span class="k">esac</span>
+
+<span class="nb">exit</span> <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Don&rsquo;t forget to make it executable:</p>
+
+<pre><code>chmod +x /etc/init.d/myblog
+</code></pre>
+
+<p>You can issue the following command to start your site:</p>
+
+<pre><code>service myblog start
+</code></pre>
+
+<p>You can also stop, restart, or query the status of your site by using the corresponding commands. If there is anything wrong, you can check the log file at <code>/var/opt/myblog/log/myblog.log</code>.</p>
+
+<p>If you need your site to run on startup, issue the following command to add it to the default run level of your Debian system:</p>
+
+<pre><code>update-rc.d myblog defaults
+</code></pre></li>
+</ol>
+
+<h3 id="configure-nginx">Configure Nginx.</h3>
+
+<p>Create the file <code>/etc/nginx/sites-available/myblog</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/nginx/sites-available/myblog 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+
+    <span class="kn">server_name</span> <span class="s">www.yoursite.com</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">proxy_pass</span> <span class="s">http://127.0.0.1:3000</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="s">/static</span> <span class="p">{</span>
+        <span class="kn">root</span> <span class="s">/var/myblog</span><span class="p">;</span>
+        <span class="kn">expires</span> <span class="s">max</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The <code>server_name</code> should be your FQDN, or the virtual host name you wrote in <code>/var/myblog/config/settings.yml</code>. The location <code>/static</code> tells Nginx where to find files with url <code>http://server_name/static/*</code>. A highly recommended optimization is to serve static files from a separate domain name, therefore bypassing the cookie transfer overhead. You can find more details on this optimization in the chapter <a href="http://www.yesodweb.com/book/">Deploying your Webapp of The Yesod Book</a>.</p>
+
+<p>Link the above file into <code>/etc/nginx/sites-enabled</code>, and restart <code>nginx</code>:</p>
+
+<pre><code>ln -s /etc/nginx/sites-available/myblog /etc/nginx/sites-enabled
+service nginx restart
+</code></pre>
+
+<p>You can check it at <em><a href="http://www.yoursite.com/">http://www.yoursite.com/</a></em> now.</p>
+
+<p>The installation and configuration of Yesod working with Nginx and MySQL are finished.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.haskell.org/platform/">Haskell Platform</a></li>
+
+<li><a href="http://www.haskell.org/haskellwiki/Cabal-Install">Haskell Wiki for <em>cabal-install</em></a></li>
+
+<li><a href="http://hackage.haskell.org/package/yesod-platform">Information for <em>yesod-platform</em></a></li>
+
+<li><a href="http://www.yesodweb.com/page/quickstart">Yesod Quick Start Guide</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/">Install Seafile with nginx on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/development/ror/use-unicorn-and-nginx-on-ubuntu-14-04/">Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/development/ror/ruby-on-rails-nginx-debian-8/">Ruby on Rails with Nginx on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/installing-squirrelmail-on-debian-7/">Installing SquirrelMail on Debian 7 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql/">Email with Postfix, Dovecot, and MySQL</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#install-required-packages">Install Required Packages</a></li>
+<li><a href="#install-yesod">Install Yesod</a></li>
+<li><a href="#use-yesod">Use Yesod</a></li>
+<li><a href="#working-with-mysql">Working with MySQL</a></li>
+<li><a href="#deploy-to-nginx">Deploy to Nginx</a>
+<ul>
+<li><a href="#prepare-yesod">Prepare Yesod</a></li>
+<li><a href="#configure-nginx">Configure Nginx.</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

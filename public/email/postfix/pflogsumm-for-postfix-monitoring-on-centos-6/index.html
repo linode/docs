@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Pflogsumm for Postfix Monitoring on CentOS 6</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Receive daily emails with Postfix mail server stats from Pflogsumm.">
+        <meta name="keywords" content="pflogsumm,  postfix,  monitoring,  mail server">
+        
+        <meta property="og:title" content="Pflogsumm for Postfix Monitoring on CentOS 6">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6/">
+        <meta property="og:description" content="Receive daily emails with Postfix mail server stats from Pflogsumm.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/postfix/">Postfix</a>
+  
+</li>
+
+
+<li>
+  
+  Pflogsumm for Postfix Monitoring on CentOS 6
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Pflogsumm for Postfix Monitoring on CentOS 6</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-02-05T00:00:00Z">Wednesday, February 5, 2014</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Robert Accettura
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2fpflogsumm-for-postfix-monitoring-on-centos-6%2f&via=linode&text=Pflogsumm%20for%20Postfix%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2fpflogsumm-for-postfix-monitoring-on-centos-6%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2fpflogsumm-for-postfix-monitoring-on-centos-6%2f&t=Pflogsumm%20for%20Postfix%20Monitoring%20on%20CentOS%206" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>Pflogsumm is a simple Perl script that monitors your <a href="/docs/email/postfix">Postfix</a> mail server&rsquo;s activity. This guide will show you how to install Pflogsumm on CentOS 6 and configure it to send you a daily email with your mail server stats.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Make sure these prerequisites are installed:</p>
+
+<ul>
+<li><a href="/docs/email/postfix">Postfix</a></li>
+<li>Perl 5.004</li>
+<li>Perl&rsquo;s Date::Calc module</li>
+</ul>
+
+<p>Perl 5.004 will most likely be installed by default. Run this command to install the <strong>Date::Calc</strong> module:</p>
+
+<pre><code>sudo yum install perl-Date-Calc
+</code></pre>
+
+<p>Finally, you will need to locate your Postfix log. On most CentOS systems, this is <code>/var/log/maillog</code> by default.</p>
+
+<h2 id="installing-pflogsumm">Installing Pflogsumm</h2>
+
+<p>In this section, you will install and configure Pflogsumm.</p>
+
+<ol>
+<li><p>Move to the <code>/usr/local</code> directory:</p>
+
+<pre><code>sudo cd /usr/local/
+</code></pre></li>
+
+<li><p>Use <strong>curl</strong> to download Pflogsumm:</p>
+
+<pre><code>sudo curl -O http://jimsun.linxnet.com/downloads/pflogsumm-1.1.3.tar.gz
+</code></pre></li>
+
+<li><p>Expand the files:</p>
+
+<pre><code>sudo tar -xzf pflogsumm-1.1.3.tar.gz
+</code></pre></li>
+
+<li><p>Rename the Pflogsumm directory:</p>
+
+<pre><code>sudo mv pflogsumm-1.1.3 pflogsumm
+</code></pre></li>
+
+<li><p>Make the Pflogsumm directory executable:</p>
+
+<pre><code>sudo chmod +x pflogsumm/pflogsumm.pl
+</code></pre></li>
+</ol>
+
+<h2 id="testing">Testing</h2>
+
+<p>Test the script by running the following command. Make sure you substitute <strong>/var/log/maillog</strong> with your actual Postfix log location.</p>
+
+<pre><code>sudo perl /usr/local/pflogsumm/pflogsumm.pl /var/log/maillog
+</code></pre>
+
+<p>You will see a large amount of information regarding your mail server, which we&rsquo;ll go over in the next section.</p>
+
+<h2 id="reading-output">Reading Output</h2>
+
+<p>Your report output will contain the following information in an easy-to-read textual format perfect for email:</p>
+
+<ul>
+<li><p>Total number of:</p>
+
+<dl>
+<dd>-   Messages received, delivered, forwarded, deferred, bounced and rejected
+
+<ul>
+<li>Bytes in messages received and delivered</li>
+<li>Sending and Recipient Hosts/Domains</li>
+<li>Senders and Recipients</li>
+<li>Optional SMTPD totals for number of connections, number of hosts/domains connecting, average connect time and total connect time</li>
+</ul></dd>
+</dl></li>
+
+<li><p>Per-Day Traffic Summary (for multi-day logs)</p></li>
+
+<li><p>Per-Hour Traffic (daily average for multi-day logs)</p></li>
+
+<li><p>Optional Per-Hour and Per-Day SMTPD connection summaries</p></li>
+
+<li><p>Sorted in descending order:</p>
+
+<dl>
+<dd><ul>
+<li>Recipient Hosts/Domains by message count, including:
+
+<dl>
+<dd>-   Number of messages sent to recipient host/domain
+
+<ul>
+<li>Number of bytes in messages</li>
+<li>Number of defers</li>
+<li>Average delivery delay</li>
+<li>Maximum delivery delay</li>
+</ul></dd>
+</dl></li>
+</ul>
+
+<ul>
+<li>Sending Hosts/Domains by message and byte count</li>
+<li>Optional Hosts/Domains SMTPD connection summary</li>
+<li>Senders by message count</li>
+<li>Recipients by message count</li>
+<li>Senders by message size</li>
+<li>Recipients by message size with an option to limit these reports to the top nn.</li>
+</ul></dd>
+</dl></li>
+
+<li><p>A Semi-Detailed Summary of:</p>
+
+<dl>
+<dd>-   Messages deferred
+
+<ul>
+<li>Messages bounced</li>
+<li>Messages rejected</li>
+</ul></dd>
+</dl></li>
+
+<li><p>Summaries of warnings, fatal errors, and panics</p></li>
+
+<li><p>Summary of master daemon messages</p></li>
+
+<li><p>Optional detail of messages received, sorted by domain, then sender-in-domain, with a list of recipients-per-message.</p></li>
+
+<li><p>Optional output of &ldquo;mailq&rdquo; run</p></li>
+</ul>
+
+<p>This list was taken from the <a href="http://jimsun.linxnet.com/postfix_contrib.html">Pflogsumm</a> website, where you can read additional information about the output.</p>
+
+<h2 id="scheduling-reports-with-cron">Scheduling Reports with Cron</h2>
+
+<p>Now you&rsquo;ll set up a Cron job to run the Pflogsumm Perl script and send the mail server stats to you as a daily email. This is great for monitoring your mail server. The example below schedules the email for 1:01 PM every day. For details on how to customize the time the email is sent, you should read the <a href="/docs/linux-tools/utilities/cron">Cron</a> article.</p>
+
+<ol>
+<li><p>Open the <strong>root</strong> user&rsquo;s Crontab by running the following command:</p>
+
+<pre><code>sudo crontab -e
+</code></pre></li>
+
+<li><p>Add the following line, being sure to replace <strong>/var/log/maillog</strong> with the mail server location, and &lt;*<em>YOUREMAIL@YOURDOMAIN.TLD</em>&gt;* with the email address where you want to receive the stats. It&rsquo;s usually a good idea to choose an email address that&rsquo;s not on this Postfix server.</p>
+
+<pre><code>root's Crontab
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If this is your first time using Cron, you will have to select your preferred text editor.</div>
+</blockquote>
+</li>
+
+<li><p>Save the changes to your Cron file. For <strong>nano</strong>, this is <code>Ctrl-x y</code>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Non-root users will not have permission to access the mail log.</div>
+</blockquote>
+</li>
+</ol>
+
+<p>You will now receive daily emails with your Postfix mail server stats. It&rsquo;s a great way to keep track of what your server is doing.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://jimsun.linxnet.com/postfix_contrib.html">Pflogsumm</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql/">Email with Postfix, Dovecot, and MySQL</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/monitoring-servers-with-zabbix/">Monitoring Servers with Zabbix - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#installing-pflogsumm">Installing Pflogsumm</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#reading-output">Reading Output</a></li>
+<li><a href="#scheduling-reports-with-cron">Scheduling Reports with Cron</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

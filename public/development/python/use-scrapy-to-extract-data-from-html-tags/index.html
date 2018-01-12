@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use Scrapy to Extract Data From HTML Tags</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="A guide for scraping the web with Python Scrapy.">
+        <meta name="keywords" content="Scrapy, Python, crawling, spider, web scraping">
+        
+        <meta property="og:title" content="Use Scrapy to Extract Data From HTML Tags">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/python/use-scrapy-to-extract-data-from-html-tags/">
+        <meta property="og:description" content="A guide for scraping the web with Python Scrapy.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/python/use-scrapy-to-extract-data-from-html-tags/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/python/">Python</a>
+  
+</li>
+
+
+<li>
+  
+  Use Scrapy to Extract Data From HTML Tags
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use Scrapy to Extract Data From HTML Tags</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-12-04T00:00:00Z">Monday, December 4, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Florent Houbart
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fpython%2fuse-scrapy-to-extract-data-from-html-tags%2f&via=linode&text=Use%20Scrapy%20to%20Extract%20Data%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fpython%2fuse-scrapy-to-extract-data-from-html-tags%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fpython%2fuse-scrapy-to-extract-data-from-html-tags%2f&t=Use%20Scrapy%20to%20Extract%20Data%20From%20HTML%20Tags" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/python/use-scrapy-to-extract-data-from-html-tags.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/python/use-scrapy-to-extract-data-from-html-tags.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>Scrapy is a Python framework for creating web scraping applications. It provides a programming interface to crawl the web by identifying new links, and extracts structured data from the downloaded content.</p>
+
+<p>This guide will provide you with instructions to build a spider which recursively checks all <code>&lt;a&gt;</code> tags of a website and tracks broken links. This guide is written for Python version 3.4 or above, and with Scrapy version 1.4. It will not work on a Python 2 environment.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade -y
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="install-a-python-3-environment">Install a Python 3 Environment</h2>
+
+<p>On most systems, including Debian 9 and CentOS 7, the default Python version is 2.7, and the <code>pip</code> installer need to be installed manually.</p>
+
+<h3 id="on-debian-9-system">On Debian 9 System</h3>
+
+<ol>
+<li><p>Debian 9 is shipped is both Python 3.5 and 2.7, but 2.7 is the default. Change it with:</p>
+
+<pre><code>update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+update-alternatives --install /usr/bin/python python /usr/bin/python3.5 2
+</code></pre></li>
+
+<li><p>Check you are using a Python 3 version:</p>
+
+<pre><code>python --version
+</code></pre></li>
+
+<li><p>Install <code>pip</code>, the Python package installer:</p>
+
+<pre><code>sudo apt install python3-pip
+</code></pre></li>
+</ol>
+
+<h3 id="on-centos-7-system">On CentOS 7 System</h3>
+
+<ol>
+<li><p>On a CentOS system, install Python, PIP and some dependencies from EPEL repositories:</p>
+
+<pre><code>sudo yum install epel-release
+sudo yum install python34 python34-pip gcc python34-devel
+</code></pre></li>
+
+<li><p>Replace the symbolic link <code>/usr/bin/python</code> that link by default to a Python 2 installation to the newly installed Python 3:</p>
+
+<pre><code>sudo rm -f /usr/bin/python
+sudo ln -s /usr/bin/python3 /usr/bin/python
+</code></pre></li>
+
+<li><p>Check you use the proper version with:</p>
+
+<pre><code>python --version
+</code></pre></li>
+</ol>
+
+<h2 id="install-scrapy">Install Scrapy</h2>
+
+<h3 id="system-wide-installation-not-recommended">System-wide Installation (Not recommended)</h3>
+
+<p>System-wide installation is the easiest method, but may conflict with other Python scripts that require different library versions. Use this method only if your system is dedicated to Scrapy:</p>
+
+<pre><code>sudo pip3 install scrapy
+</code></pre>
+
+<h3 id="install-scrapy-inside-a-virtual-environment">Install Scrapy Inside a Virtual Environment</h3>
+
+<p>This is the recommended installation method. Scrapy will be installed in a <code>virtualenv</code> environment to prevent any conflicts with system wide library.</p>
+
+<ol>
+<li><p>On a CentOS system, <code>virtualenv</code> for Python 3 is installed with Python. However, on a Debian 9 it require a few more steps:</p>
+
+<pre><code>sudo apt install python3-venv
+sudo pip3 install wheel
+</code></pre></li>
+
+<li><p>Create your virtual environment:</p>
+
+<pre><code>python -m venv ~/scrapyenv
+</code></pre></li>
+
+<li><p>Activate your virtual environment:</p>
+
+<pre><code>source ~/scrapyenv/bin/activate
+</code></pre>
+
+<p>Your shell prompt will then change to indicate which environment you are using.</p></li>
+
+<li><p>Install Scrapy in the virtual environment. Note that you don&rsquo;t need <code>sudo</code> anymore, the library will be installed only in your newly created virtual environment:</p>
+
+<pre><code>pip3 install scrapy
+</code></pre></li>
+</ol>
+
+<h2 id="create-scrapy-project">Create Scrapy Project</h2>
+
+<p>All the following commands are done inside the virtual environment. If you restart your session, don&rsquo;t forget to reactivate <code>scrapyenv</code>.</p>
+
+<ol>
+<li><p>Create a directory to hold your Scrapy project:</p>
+
+<pre><code>mkdir ~/scrapy
+cd ~/scrapy
+scrapy startproject linkChecker
+</code></pre></li>
+
+<li><p>Go to your new Scrapy project and create a spider. This guide uses a starting URL for scraping <code>http://www.example.com</code>. Adjust it to the web site you want to scrape.</p>
+
+<pre><code>cd linkChecker
+scrapy genspider link_checker www.example.com
+</code></pre>
+
+<p>This will create a file <code>~/scrapy/linkChecker/linkChecker/spiders/link_checker.py</code> with a base spider.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>All path and commands in the below section are relative to the new scrapy project directory <code>~/scrapy/linkChecker</code>.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="run-your-spider">Run Your Spider</h2>
+
+<ol>
+<li><p>Start your spider with:</p>
+
+<pre><code>`scrapy crawl`
+</code></pre>
+
+<p>The Spider registers itself in Scrapy with its name that is defined in the <code>name</code> attribute of your Spider class.</p></li>
+
+<li><p>Start the <code>link_checker</code> Spider:</p>
+
+<pre><code>cd ~/scrapy/linkChecker
+scrapy crawl link_checker
+</code></pre>
+
+<p>The newly created spider does nothing more than downloads the page <code>www.example.com</code>. We will now create the crawling logic.</p></li>
+</ol>
+
+<h2 id="use-the-scrapy-shell">Use the Scrapy Shell</h2>
+
+<p>Scrapy provides two easy ways for extracting content from HTML:</p>
+
+<ul>
+<li><p>The <code>response.css()</code> method get tags with a CSS selector. To retrieve all links in a <code>btn</code> CSS class:</p>
+
+<pre><code>response.css(&quot;a.btn::attr(href)&quot;)
+</code></pre></li>
+
+<li><p>The <code>response.xpath()</code> method gets tags from a XPath query. To retrieve the URLs of all images that are inside a link, use:</p>
+
+<pre><code>response.xpath(&quot;//a/img/@src&quot;)
+</code></pre></li>
+</ul>
+
+<p>You can try your selectors with the interactive Scrapy shell:</p>
+
+<ol>
+<li><p>Run the Scrapy shell on your web page:</p>
+
+<pre><code>scrapy shell &quot;http://www.example.com&quot;
+</code></pre></li>
+
+<li><p>Test some selectors until you get what you want:</p>
+
+<pre><code>response.xpath(&quot;//a/@href&quot;).extract()
+</code></pre></li>
+</ol>
+
+<p>For more information about Selectors, refer to the <a href="https://doc.scrapy.org/en/latest/topics/selectors.html">Scrapy selector documentation</a>.</p>
+
+<h2 id="write-the-crawling-logic">Write the Crawling Logic</h2>
+
+<p>The Spider parses the downloaded pages with the <code>parse(self,response)</code> method. This method returns an <em>iterable</em> of new URLs that will be added to the downloading queue for future crawling and parsing.</p>
+
+<ol>
+<li><p>Edit your <code>linkChecker/spiders/link_checker.py</code> file to extract all the <code>&lt;a&gt;</code> tags and get the <code>href</code> link text. Return the link URL with the <code>yield</code> keyword to add it to the download queue:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		linkChecker/spiders/link_checker.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">LinkCheckerSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;link_checker&#39;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s1">&#39;www.example.com&#39;</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s1">&#39;http://www.example.com/&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="sa"></span><span class="s2">&#34;&#34;&#34; Main function that parses downloaded pages &#34;&#34;&#34;</span>
+        <span class="c1"># Print what the spider is doing</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="c1"># Get all the &lt;a&gt; tags</span>
+        <span class="n">a_selectors</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;//a&#34;</span><span class="p">)</span>
+        <span class="c1"># Loop on each tag</span>
+        <span class="k">for</span> <span class="n">selector</span> <span class="ow">in</span> <span class="n">a_selectors</span><span class="p">:</span>
+            <span class="c1"># Extract the link text</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;text()&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="c1"># Extract the link href</span>
+            <span class="n">link</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;@href&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="c1"># Create a new Request object</span>
+            <span class="n">request</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">follow</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+            <span class="c1"># Return it thanks to a generator</span>
+            <span class="k">yield</span> <span class="n">request</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Run your updated Spider:</p>
+
+<pre><code>scrapy crawl link_checker
+</code></pre>
+
+<p>You will then see the Spider going through all the links. It won&rsquo;t go out of the <em>www.example.com</em> domain because of the <code>allowed_domains</code> attribute. Depending of the size of the site, this may take some time. Stop the process with <code>Ctrl+C</code>.</p></li>
+</ol>
+
+<h3 id="add-request-meta-information">Add Request Meta Information</h3>
+
+<p>The Spider will traverse links in queue recursively. When parsing a downloaded page, it does not have any information about the previously parsed pages such as which page was linking the the new one. To pass more information to the <code>parse</code> method, Scrapy provides a <code>Request.meta()</code> method that attaches some key/value pairs to the request. They are available in the response object in the <code>parse()</code> method.</p>
+
+<p>The meta information is used for two purposes:</p>
+
+<ul>
+<li><p>To make the <code>parse</code> method aware of data coming from the page that triggered the request: the URL of the page (<code>from_url</code>), and the text of the link (<code>from_text</code>)</p></li>
+
+<li><p>To compute the level of recursion in the <code>parse</code> method so the maximum depth of the crawling can be limited.</p></li>
+</ul>
+
+<ol>
+<li><p>Starting with the previous spider, add an attribute to store the maximum depth (<code>maxdepth</code>) and update the <code>parse</code> function to the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		linkChecker/spiders/link_checker.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># Add a maxdepth attribute</span>
+<span class="n">maxdepth</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+    <span class="c1"># Set default meta information for first page</span>
+    <span class="n">from_url</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>
+    <span class="n">from_text</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1"># Extract the meta information from the response, if any</span>
+    <span class="k">if</span> <span class="sa"></span><span class="s1">&#39;from&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">:</span>
+        <span class="n">from_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;from&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="sa"></span><span class="s1">&#39;text&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">:</span>
+        <span class="n">from_text</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="sa"></span><span class="s1">&#39;depth&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">:</span>
+        <span class="n">depth</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;depth&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Update the print logic to show what page contain a link to the</span>
+    <span class="c1"># current page, and what was the text of the link</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">reponse</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;&lt;-&#39;</span><span class="p">,</span> <span class="n">from_url</span><span class="p">,</span> <span class="n">from_text</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="c1"># Browse a tags only if maximum depth has not be reached</span>
+    <span class="k">if</span> <span class="n">depth</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxdepth</span><span class="p">:</span>
+        <span class="n">a_selectors</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;//a&#34;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">selector</span> <span class="ow">in</span> <span class="n">a_selectors</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;text()&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="n">link</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;@href&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="n">request</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">follow</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+            <span class="c1"># Meta information: URL of the current page</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;from&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span>
+            <span class="c1"># Meta information: text of the link</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span>
+            <span class="c1"># Meta information: depth of the link</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;depth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">yield</span> <span class="n">request</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Run the updated spider:</p>
+
+<pre><code>scrapy crawl link_checker
+</code></pre>
+
+<p>Your spider will no longer go deeper than 2 pages and will stop by itself when all the pages are downloaded. The output will show what page linked to the downloaded page and what was the text of link.</p></li>
+</ol>
+
+<h3 id="set-handled-http-status">Set Handled HTTP Status</h3>
+
+<p>By default Scrapy parses only successful HTTP requests; all errors are excluded from parsing. To collect the broken links, the 404 responses must be parsed as well. Create two arrays, <code>valid_url</code> and <code>invalid_url</code>, that will store the valid and the broken links respectively.</p>
+
+<ol>
+<li><p>Set the list of HTTP error status that are parsed in the <code>handle_httpstatus_list</code> spider attribute:</p>
+
+<pre><code>handle_httpstatus_list = [404]
+</code></pre></li>
+
+<li><p>Update the parsing logic to check for HTTP status and populate the good array. The spider now looks like:</p>
+
+<dl class="file">
+<dt>
+
+
+		linkChecker/spiders/link_checker.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="k">class</span> <span class="nc">LinkCheckerSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;link_checker&#34;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s1">&#39;www.example.com&#39;</span><span class="p">]</span>
+    <span class="c1"># Set the HTTP error codes that should be handled</span>
+    <span class="n">handle_httpstatus_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">404</span><span class="p">]</span>
+    <span class="c1"># Initialize array for valid/invalid links</span>
+    <span class="n">valid_url</span><span class="p">,</span> <span class="n">invalid_url</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">maxdepth</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">from_url</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>
+        <span class="n">from_text</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>
+        <span class="n">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="sa"></span><span class="s1">&#39;from&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">:</span> <span class="n">from_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;from&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="sa"></span><span class="s1">&#39;text&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">:</span> <span class="n">from_text</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="sa"></span><span class="s1">&#39;depth&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">:</span> <span class="n">depth</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">met</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;depth&#39;</span><span class="p">]</span>
+
+        <span class="c1"># 404 error, populate the broken links array</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">invalid_url</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="sa"></span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                                     <span class="sa"></span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="n">from_url</span><span class="p">,</span>
+                                     <span class="sa"></span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">from_text</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Populate the working links array</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">valid_url</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="sa"></span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                                   <span class="sa"></span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="n">from_url</span><span class="p">,</span>
+                                   <span class="sa"></span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">from_text</span><span class="p">})</span>
+            <span class="k">if</span> <span class="n">depth</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxdepth</span><span class="p">:</span>
+                <span class="n">a_selectors</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;//a&#34;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">selector</span> <span class="ow">in</span> <span class="n">a_selectors</span><span class="p">:</span>
+                    <span class="n">text</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;text()&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+                    <span class="n">link</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;@href&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+                    <span class="n">request</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">follow</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+                    <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;from&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">;</span>
+                    <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span>
+                    <span class="k">yield</span> <span class="n">request</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Run your updated spider:</p>
+
+<pre><code>scrapy crawl link_checker
+</code></pre>
+
+<p>This should print nothing more than before. The two arrays are populated but never printed to console. A spider has to dump them at the end of the crawling with signal handlers.</p></li>
+</ol>
+
+<h3 id="set-signal-handlers">Set Signal Handlers</h3>
+
+<p>Scrapy lets you add some handlers at various points in the scraping process. Signal handlers are set with the <code>crawler.signals.connect()</code> method and the <code>crawler</code> object being available in the <code>from_crawler()</code> method of the <code>Spider</code> class.</p>
+
+<p>To add a handler at the end of the scraping process to print information about broken links, overwrite the <code>from_crawler</code> method to register a handler for the <code>signals.spider_closed</code> signal:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		linkChecker/spiders/link_checker.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># Overwrite the from_crawler method</span>
+<span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">from_crawler</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">crawler</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># call the parent method to keep things working</span>
+    <span class="n">spider</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">LinkCheckerSpider</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">from_crawler</span><span class="p">(</span><span class="n">crawler</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="c1"># Register the spider_closed handler on spider_closed signal</span>
+    <span class="n">crawler</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">spider</span><span class="o">.</span><span class="n">spider_closed</span><span class="p">,</span> <span class="n">signals</span><span class="o">.</span><span class="n">spider_closed</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">spider</span>
+
+<span class="c1"># This method is the actual handler</span>
+<span class="k">def</span> <span class="nf">spider_closed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Print some pretty message about what has been crawled</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;There are&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valid_url</span><span class="p">),</span> <span class="sa"></span><span class="s1">&#39;working links and&#39;</span><span class="p">,</span>
+          <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">invalid_url</span><span class="p">),</span> <span class="sa"></span><span class="s1">&#39;broken links.&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="c1"># If any, print all the broken links</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">invalid_url</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Broken links are:&#34;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">invalid</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">invalid_url</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">invalid</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>See <a href="https://doc.scrapy.org/en/latest/topics/signals.html">Scrapy Signals documentation</a> for a full list of available Signals.</p>
+
+<p>Run the Spider again, and you will see the detail of the broken links before the Scrapy statistics.</p>
+
+<h3 id="get-start-url-from-command-line">Get Start URL from Command Line</h3>
+
+<p>The starting URL is hardcoded in the source code of your spider. It will be far better if we could set it when starting the spider, without changing the code. The <code>scrapy crawl</code> command line allow passing parameters from the command line that is passed through the <code>__init__()</code> class constructor.</p>
+
+<ol>
+<li><p>Add a <code>__init__()</code> method to our spider with a <code>url</code> parameter:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		linkChecker/spiders/link_checker.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># Add a custom constructor with the url parameter</span>
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;http://www.example.com&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># Don&#39;t forget to call parent constructor</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">LinkCheckerSpider</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="c1"># Set the start_urls to be the one given in url parameters</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="n">url</span><span class="p">]</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Spider arguments are passed with the <code>-a</code> command line flag:</p>
+
+<pre><code>scrapy crawl linkChecker -a url=&quot;http://another_example.com&quot;
+</code></pre></li>
+</ol>
+
+<h2 id="edit-your-project-settings">Edit your Project Settings</h2>
+
+<p>Default Scrapy settings of your spider are defined in <code>settings.py</code> file. Set the maximum download size to 3 MB to prevent Scrapy from downloading big files like video or binaries.</p>
+
+<p>Edit <code>~/scrapy/linkChecker/linkChecker/settings.py</code> and add the following line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		linkChecker/settings.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">DOWNLOAD_MAXSIZE</span> <span class="o">=</span> <span class="mi">3000000</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h2 id="remove-domain-limitation">Remove Domain Limitation</h2>
+
+<p>Our spider has an attribute called <code>allowed_domains</code> to prevent downloading unwanted URLs. Without this attribute, the spider may attempt to traverse the entire web and never complete its task.</p>
+
+<p>If a link in the <em>www.example.com</em> domain to an external domain is broken, it will be undetected because the spider will not crawl it. Delete the <code>allowed_domains</code> attribute to add a custom logic that will download an external domain page, but not recursively browse its links.</p>
+
+<ol>
+<li><p>Add to package for URL and regex management:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span></code></pre></div></li>
+
+<li><p>Add a <code>domain = ''</code> attribute that will hold the main domain. It starts uninitialized and is set at the first download be the actual URL. The actual URL may be different than the starting URL in case of HTTP redirect.</p></li>
+
+<li><p>Remove the <code>allowed_domains</code> attribute</p></li>
+
+<li><p>Initialize the <code>domain</code> attribute in the <code>parse</code> method:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">parsed_uri</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">parsed_uri</span><span class="o">.</span><span class="n">netloc</span></code></pre></div></li>
+
+<li><p>Update the expression to add domain check in addition to depth check for new URLs:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">parsed_uri</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># Apply previous logic to new links</span>
+<span class="k">if</span> <span class="n">parsed_uri</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="ow">and</span> <span class="n">depth</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxdepth</span><span class="p">:</span></code></pre></div></li>
+</ol>
+
+<p>See the full spider in the next section where this code is integrated inside the previous additions.</p>
+
+<h2 id="final-version-of-the-spider">Final Version of the Spider</h2>
+
+<p>Here is the fully functional spider. A few hacks have been added to get the domain of the response and prevent recursive browsing of other domains links. Otherwise, your spider will attempt to parse the whole web!</p>
+
+<dl class="file">
+<dt>
+
+
+		linkChecker/spiders/link_checker.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span><span class="lnt">51</span><span class="lnt">52</span><span class="lnt">53</span><span class="lnt">54</span><span class="lnt">55</span><span class="lnt">56</span><span class="lnt">57</span><span class="lnt">58</span><span class="lnt">59</span><span class="lnt">60</span><span class="lnt">61</span><span class="lnt">62</span><span class="lnt">63</span><span class="lnt">64</span><span class="lnt">65</span><span class="lnt">66</span><span class="lnt">67</span><span class="lnt">68</span><span class="lnt">69</span><span class="lnt">70</span><span class="lnt">71</span><span class="lnt">72</span><span class="lnt">73</span><span class="lnt">74</span><span class="lnt">75</span><span class="lnt">76</span><span class="lnt">77</span><span class="lnt">78</span><span class="lnt">79</span><span class="lnt">80</span><span class="lnt">81</span><span class="lnt">82</span><span class="lnt">83</span><span class="lnt">84</span><span class="lnt">85</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
+
+<span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">scrapy</span> <span class="kn">import</span> <span class="n">signals</span>
+
+
+<span class="k">class</span> <span class="nc">LinkCheckerSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;link_checker&#39;</span>
+    <span class="c1"># Set the HTTP error codes that should be handled</span>
+    <span class="n">handle_httpstatus_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">404</span><span class="p">]</span>
+    <span class="n">valid_url</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">invalid_url</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># Set the maximum depth</span>
+    <span class="n">maxdepth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">domain</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;http://www.example.com&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinkCheckerSpider</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="n">url</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_crawler</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">crawler</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">spider</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">LinkCheckerSpider</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">from_crawler</span><span class="p">(</span><span class="n">crawler</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># Register the spider_closed handler on spider_closed signal</span>
+        <span class="n">crawler</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">spider</span><span class="o">.</span><span class="n">spider_closed</span><span class="p">,</span> <span class="n">signals</span><span class="o">.</span><span class="n">spider_closed</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">spider</span>
+
+    <span class="k">def</span> <span class="nf">spider_closed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa"></span><span class="s2">&#34;&#34;&#34; Handler for spider_closed signal.&#34;&#34;&#34;</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;----------&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;There are&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valid_url</span><span class="p">),</span> <span class="sa"></span><span class="s1">&#39;working links and&#39;</span><span class="p">,</span>
+              <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">invalid_url</span><span class="p">),</span> <span class="sa"></span><span class="s1">&#39;broken links.&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">invalid_url</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;Broken links are:&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">invalid</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">invalid_url</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">invalid</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;----------&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="sa"></span><span class="s2">&#34;&#34;&#34; Main method that parse downloaded pages. &#34;&#34;&#34;</span>
+        <span class="c1"># Set defaults for the first page that won&#39;t have any meta information</span>
+        <span class="n">from_url</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>
+        <span class="n">from_text</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>
+        <span class="n">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="c1"># Extract the meta information from the response, if any</span>
+        <span class="k">if</span> <span class="sa"></span><span class="s1">&#39;from&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">:</span> <span class="n">from_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;from&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="sa"></span><span class="s1">&#39;text&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">:</span> <span class="n">from_text</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="sa"></span><span class="s1">&#39;depth&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">:</span> <span class="n">depth</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;depth&#39;</span><span class="p">]</span>
+
+        <span class="c1"># If first response, update domain (to manage redirect cases)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">parsed_uri</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">parsed_uri</span><span class="o">.</span><span class="n">netloc</span>
+
+        <span class="c1"># 404 error, populate the broken links array</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">invalid_url</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="sa"></span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                                     <span class="sa"></span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="n">from_url</span><span class="p">,</span>
+                                     <span class="sa"></span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">from_text</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Populate the working links array</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">valid_url</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="sa"></span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                                   <span class="sa"></span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="n">from_url</span><span class="p">,</span>
+                                   <span class="sa"></span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">from_text</span><span class="p">})</span>
+            <span class="c1"># Extract domain of current page</span>
+            <span class="n">parsed_uri</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+            <span class="c1"># Parse new links only:</span>
+            <span class="c1">#   - if current page is not an extra domain</span>
+            <span class="c1">#   - and depth is below maximum depth</span>
+            <span class="k">if</span> <span class="n">parsed_uri</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="ow">and</span> <span class="n">depth</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxdepth</span><span class="p">:</span>
+                <span class="c1"># Get all the &lt;a&gt; tags</span>
+                <span class="n">a_selectors</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;//a&#34;</span><span class="p">)</span>
+                <span class="c1"># Loop on each tag</span>
+                <span class="k">for</span> <span class="n">selector</span> <span class="ow">in</span> <span class="n">a_selectors</span><span class="p">:</span>
+                    <span class="c1"># Extract the link text</span>
+                    <span class="n">text</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+                    <span class="c1"># Extract the link href</span>
+                    <span class="n">link</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+                    <span class="c1"># Create a new Request object</span>
+                    <span class="n">request</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">follow</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+                    <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;from&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">;</span>
+                    <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span>
+                    <span class="c1"># Return it thanks to a generator</span>
+                    <span class="k">yield</span> <span class="n">request</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<h2 id="monitor-a-running-spider">Monitor a Running Spider</h2>
+
+<p>Scrapy provides a telnet interface on port 6023 to monitor a running spider. The telnet session is a Python shell where you can execute methods on the exposed Scrapy object.</p>
+
+<ol>
+<li><p>Run your spider in the background:</p>
+
+<pre><code>scrapy crawl link_checker -a url=&quot;http://www.linode.com&quot; &gt; 404.txt &amp;
+</code></pre></li>
+
+<li><p>Connect to the telnet interface:</p>
+
+<pre><code>telnet localhost 6023
+</code></pre></li>
+
+<li><p>Print a report of the Scrapy engine status:</p>
+
+<pre><code>est()
+</code></pre></li>
+
+<li><p>Pause your scraping</p>
+
+<pre><code>engine.pause()
+</code></pre></li>
+
+<li><p>Resume your scraping:</p>
+
+<pre><code>engine.unpause()
+</code></pre></li>
+
+<li><p>Stop your scraping;</p>
+
+<pre><code>engine.stop()
+</code></pre></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://scrapy.org/">Scrapy Project page</a></li>
+
+<li><a href="https://doc.scrapy.org/en/latest/index.html">Official Scrapy Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/project-management/how-to-create-a-private-python-package-repository/">How to Create a Private Python Package Repository</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/forums/install-and-run-askbot-on-ubuntu-16-04/">How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-a-python-3-environment">Install a Python 3 Environment</a>
+<ul>
+<li><a href="#on-debian-9-system">On Debian 9 System</a></li>
+<li><a href="#on-centos-7-system">On CentOS 7 System</a></li>
+</ul></li>
+<li><a href="#install-scrapy">Install Scrapy</a>
+<ul>
+<li><a href="#system-wide-installation-not-recommended">System-wide Installation (Not recommended)</a></li>
+<li><a href="#install-scrapy-inside-a-virtual-environment">Install Scrapy Inside a Virtual Environment</a></li>
+</ul></li>
+<li><a href="#create-scrapy-project">Create Scrapy Project</a></li>
+<li><a href="#run-your-spider">Run Your Spider</a></li>
+<li><a href="#use-the-scrapy-shell">Use the Scrapy Shell</a></li>
+<li><a href="#write-the-crawling-logic">Write the Crawling Logic</a>
+<ul>
+<li><a href="#add-request-meta-information">Add Request Meta Information</a></li>
+<li><a href="#set-handled-http-status">Set Handled HTTP Status</a></li>
+<li><a href="#set-signal-handlers">Set Signal Handlers</a></li>
+<li><a href="#get-start-url-from-command-line">Get Start URL from Command Line</a></li>
+</ul></li>
+<li><a href="#edit-your-project-settings">Edit your Project Settings</a></li>
+<li><a href="#remove-domain-limitation">Remove Domain Limitation</a></li>
+<li><a href="#final-version-of-the-spider">Final Version of the Spider</a></li>
+<li><a href="#monitor-a-running-spider">Monitor a Running Spider</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

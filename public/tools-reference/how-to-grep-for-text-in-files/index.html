@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Grep for Text in Files</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Practical examples for using grep to find strings in text files and streams.">
+        <meta name="keywords" content="grep, search, files, filtering, regular expressions">
+        
+        <meta property="og:title" content="How to Grep for Text in Files">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/how-to-grep-for-text-in-files/">
+        <meta property="og:description" content="“Learn how to use Grep for practical applications including filtering log files and finding strings in text files and streams.”">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/how-to-grep-for-text-in-files/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  How to Grep for Text in Files
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Grep for Text in Files</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-05-04T00:00:00Z">Wednesday, May 4, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fhow-to-grep-for-text-in-files%2f&via=linode&text=How%20to%20Grep%20for%20Text%20in%20Files" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fhow-to-grep-for-text-in-files%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fhow-to-grep-for-text-in-files%2f&t=How%20to%20Grep%20for%20Text%20in%20Files" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/how-to-grep-for-text-in-files.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/how-to-grep-for-text-in-files.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The <code>grep</code> utility provides users of most Unix-like operating systems with a tool to search and filter text using a common regular expression syntax. Indeed, <code>grep</code> is so ubiquitous that the verb &ldquo;to grep&rdquo; has emerged as a synonym for &ldquo;to search.&rdquo; <code>grep</code> is an ideal tool for finding all occurrences of a value in a selection of files, filtering a log file for certain entries, or as part of a script or chain of commands.</p>
+
+<p>This document provides an overview of <code>grep</code> usage, accompanied by a number of practical applications of <code>grep</code>. If you find this guide helpful, please consider our guide to <a href="/docs/using-linux/administration-basics">basic administration practices</a> or the rest of the <a href="/docs/tools-reference/">Tools &amp; Reference section</a>.</p>
+
+<p><img src="/docs/assets/search_and_filter_text_with_grep_smg.png" alt="Using Grep" title="Search and filter text with Grep" /></p>
+
+<h2 id="using-grep">Using Grep</h2>
+
+<p>This <code>grep</code> guide references recent versions of <code>GNU grep</code>, which are included by default in all images provided by Linode. It is also provided as part of the common &ldquo;base&rdquo; selection of packages provided in nearly all distributions of Linux-based operating systems.</p>
+
+<h3 id="the-grep-command">The Grep Command</h3>
+
+<p>A typical <code>grep</code> command takes the following form:</p>
+
+<pre><code>grep &quot;string&quot; ~/threads
+</code></pre>
+
+<p>The <code>grep</code> invocation is followed by a pattern, or a &ldquo;search term,&rdquo; and then optionally by the name of a file. The above sequence will search for the <code>string</code> sequence of characters located in the <code>~/threads</code> file. <code>grep</code> also permits recursive searching throughout directory trees. Issue a command in the following format:</p>
+
+<pre><code>grep -r &quot;string&quot; ~/thread/
+</code></pre>
+
+<p>When used on a specific file, <code>grep</code> only outputs the lines that contain the matching string. When run in recursive mode, grep outputs the full path to the file, followed by a colon, and the contents of the line that matches the pattern. Patterns in grep are, by default, &ldquo;basic regular expressions;&rdquo; however, if you need a more expressive regular expression syntax grep is capable of accepting patterns in alternate formats with the following switches:</p>
+
+<ul>
+<li>Use <code>-E</code> to access the extended regular expression syntax. Equivalent to the deprecated <code>egrep</code> command.</li>
+<li>Use <code>-P</code> to access Perl compatible regular expression syntax.</li>
+</ul>
+
+<p>Grep provides a number of very powerful options to control its output. The most significant of these options are:</p>
+
+<ul>
+<li>Set <code>-o</code> to only output the matching segment of the line, rather than the full contents of the line.</li>
+<li>Set <code>-n</code> to print the line number of where the pattern matches occur.</li>
+<li>Set <code>-C 2</code>, where 2 can be replaced by any number to show, in addition to the matching line, the specified number of &ldquo;context&rdquo; lines.</li>
+</ul>
+
+<p>In addition to reading content from files, <code>grep</code> can read and filter a text feed on standard input. The output of any command or stream can be &ldquo;piped&rdquo; (e.g. with the <code>|</code> operator) to the <code>grep</code> command. Then, <code>grep</code> filters this output according to the match pattern specified and outputs only the matching lines. For instance, given the following command:</p>
+
+<pre><code>ls --help | grep &quot;dired&quot;
+</code></pre>
+
+<p>This filters the output of the <code>ls</code> commands help text and looks for appearances of &ldquo;dired&rdquo;, and outputs them to standard out (the current session). The output resembles:</p>
+
+<pre><code>-D, --dired                generate output designed for Emacs' dired mode
+</code></pre>
+
+<p>The combination of both input possibilities makes <code>grep</code> a powerful tool for interacting with large amounts of textual data.</p>
+
+<h3 id="regular-expression-overview">Regular Expression Overview</h3>
+
+<p>While straight-forward pattern matching is powerful for some filtering tasks, the true power of <code>grep</code> lies in its ability to use regular expressions for complex pattern matching that make it possible to write more expressive patterns. Most characters in regular expressions match with input data literally; however, there are some sequences that carry special significance. If you want to mach these characters literally you can use the escape character <code>\</code> to transform the <em>next</em> character into a literal match. Consider the following characters with special significance in <code>grep</code> substitution scripts:</p>
+
+<ul>
+<li>The <code>.</code> symbol matches any character.</li>
+<li>The <code>*</code> symbol causes the character immediately proceeding character to successfully match to <em>zero</em> or more instances of that character in the data set.</li>
+<li>The <code>+</code> symbol causes the character immediately proceeding character to successfully match to <em>one</em> or more instances of that character in the data set.</li>
+<li>Square brackets, <code>[]</code>, enclose a set of characters, that match against any member of the set of specified characters. When prefaced with a caret, as in <code>[^ABC]</code>, this matches <em>none</em> of the characters specified in the set.</li>
+<li>The <code>|</code> character provides an &ldquo;OR&rdquo; operator, so the sequence <code>^(www|ftp)\.</code> would match a line that began with the characters <code>www</code> or <code>ftp</code>.</li>
+<li>Parenthetical characters, <code>()</code>, allow you to write more complex expressions, particularly in conjunction with the pipe <code>|</code> operator. Parentheses create &ldquo;sub expressions&rdquo; which can be modified in a single group.</li>
+<li>The <code>^</code> character matches the beginning of a line.</li>
+<li>The <code>$</code> character matches the end of a line.</li>
+<li>The <code>\</code> character, as previously stated, escapes the following character for literal matching if it caries additional meaning.</li>
+</ul>
+
+<p>These operators provide only a very limited overview of the capabilities of <code>grep</code>&rsquo;s regular expression syntax. Remember that <code>grep</code> operations are non-destructive, which makes it easy to experiment with matching patterns. Consider the examples that follow as a more practical introduction to this tool.</p>
+
+<h2 id="filtering-logs-with-grep">Filtering Logs with Grep</h2>
+
+<p>One popular use of <code>grep</code> is to extract useful information from system logs. Consider the following examples.</p>
+
+<pre><code>grep -Eoc &quot;^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}.* 200&quot;  /srv/www/example.com/logs/access.log
+</code></pre>
+
+<p>In this command, grep filters an apache access log for a line that begins with an IP address, is followed by a number of characters, a space and then the characters <code>200</code> (where 200 represents the record of a successful HTTP connection). The <code>-c</code> option outputs only a count of the number of matches. To get the output of the IP address of the visitor and the path of the requested file for successful requests, omit the <code>-c</code> option as follows:</p>
+
+<pre><code>grep -Eo &quot;^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}.* 200&quot;  /srv/www/example.com/logs/access.log
+</code></pre>
+
+<p>The squiggly brackets (e.g. <code>{</code> and <code>}</code>) indicate the number of instances of the match. <code>{1,3}</code> requires that the previous character or character class must occur at least once, but no more than three times. The character class <code>[0-9]</code> will successfully match against one or more numeric digits. To generate similar output but report on unsuccessful attempts to access content, use a command that resembles the following:</p>
+
+<pre><code>grep -Eo &quot;^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}.* 404&quot;  /srv/www/example.com/logs/access.log
+</code></pre>
+
+<p>The following variant of the above command generates a list of all IP addresses that have attempted to connect to your web server. Using the <code>-o</code> option, only the matching strings are sent to standard output. This output is filtered through the utility <code>uniq</code> with the &ldquo;pipe&rdquo; operator (e.g. <code>|</code>) to filter out duplicate entries from a single IP address:</p>
+
+<pre><code>grep -Eo &quot;^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}&quot; /srv/www/example.com/logs/access.log | uniq
+</code></pre>
+
+<p>In the next example, you can see an alternate pattern for matching an IP address in a different log. The following command searches the most recent <code>/var/log/auth.log</code> file for invalid login attempts:</p>
+
+<pre><code>grep -Eo &quot;Invalid user.*([0-9]{1,3}\.){3}[0-9]{1,3}&quot; /var/log/auth.log
+</code></pre>
+
+<p>You can split the above command into two layers to output a quick list of IP addresses with failed login attempts to your system:</p>
+
+<pre><code>grep &quot;Invalid user&quot; /var/log/auth.log | grep -Eo &quot;([0-9]{1,3}\.){3}[0-9]{1,3}&quot; | uniq
+</code></pre>
+
+<p>The <code>grep</code> tool, when accepting input from standard output, can filter the output of commands like <code>tail -F</code> to provide real-time monitoring of specific log events. Consider the following command:</p>
+
+<pre><code>tail ~/.procmail/procmail.log -F | grep &quot;Subject&quot;
+</code></pre>
+
+<p>In this case, <code>tail</code> follows the <code>~/procmail/procmail.log</code> file where the <code>procmail</code> mail filtering tool logs filtering. This output is passed to <code>grep</code>, which filters the stream and prints only lines that contain the string <code>Subject</code> and prints those lines.</p>
+
+<p>These examples outline several distinct ways that the <code>grep</code> tool is used to aid in the administration of Linux-based systems. Because grep operations are almost always non-destructive, it is easy to experiment with <code>grep</code> to generate the kind of information you require from text files.</p>
+
+<h2 id="filtering-commands-with-grep">Filtering Commands with Grep</h2>
+
+<p>Beyond its uses in shell scripting and log filtering, <code>grep</code> has many alternate uses. In the following example, <code>grep</code> filters the lengthy <code>tar</code> help text to more efficiently find the options for dealing with <code>bzip</code> files:</p>
+
+<pre><code>tar --help | grep &quot;bzip&quot;
+</code></pre>
+
+<p><code>grep</code> is also useful for filtering the output of <code>ls</code> when listing the contents of directories with a large number of files. Take the following example:</p>
+
+<pre><code>ls /usr/lib | grep &quot;xml&quot;
+</code></pre>
+
+<p>While there may be many files in the <code>/usr/lib</code> directory, the list of files with the string <code>xml</code> in their title may be more useful.</p>
+
+<h2 id="grep-compressed-files-with-zgrep">Grep Compressed Files with zgrep</h2>
+
+<p>The <code>zgrep</code> command functions identically to the grep command above; however, it adds the ability to run grep operations on files that have been compressed with gzip without requiring an extra compression and decompression step. Consider the following command, adapted from above to search an older compressed log:</p>
+
+<pre><code>zgrep -Eo &quot;Invalid user.*([0-9]{1,3}\.){3}[0-9]{1,3}&quot; /var/log/auth.log.2.gz
+</code></pre>
+
+<p><code>zgrep</code> operations take longer than standard <code>grep</code> operations because of the additional overhead of reading the compressed files.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/quick-answers/linux/how-to-use-wget/">How to Use Wget</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/how-to-use-grep/">How to Use the Grep Command</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/configure-firewall-with-ufw/">How to Configure a Firewall with UFW</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/turbocharge-wordpress-search-with-solr/">Turbocharge Your WordPress Search Using Solr</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/control-network-traffic-with-iptables/">Control Network Traffic with iptables</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#using-grep">Using Grep</a>
+<ul>
+<li><a href="#the-grep-command">The Grep Command</a></li>
+<li><a href="#regular-expression-overview">Regular Expression Overview</a></li>
+</ul></li>
+<li><a href="#filtering-logs-with-grep">Filtering Logs with Grep</a></li>
+<li><a href="#filtering-commands-with-grep">Filtering Commands with Grep</a></li>
+<li><a href="#grep-compressed-files-with-zgrep">Grep Compressed Files with zgrep</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

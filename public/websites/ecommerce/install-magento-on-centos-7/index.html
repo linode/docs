@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Magento on CentOS 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install Magento Community Edition on CentOS 7 to manage your e-commerce site.">
+        <meta name="keywords" content="magento, centos, e-commerce, magento centos">
+        
+        <meta property="og:title" content="Install Magento on CentOS 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/ecommerce/install-magento-on-centos-7/">
+        <meta property="og:description" content="Install Magento Community Edition on CentOS 7 to manage your e-commerce site.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/ecommerce/install-magento-on-centos-7/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/ecommerce/">e-Commerce</a>
+  
+</li>
+
+
+<li>
+  
+  Install Magento on CentOS 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Magento on CentOS 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-12-28T00:00:00Z">Wednesday, December 28, 2016</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2finstall-magento-on-centos-7%2f&via=linode&text=Install%20Magento%20on%20CentOS%207" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2finstall-magento-on-centos-7%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2finstall-magento-on-centos-7%2f&t=Install%20Magento%20on%20CentOS%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/ecommerce/install-magento-on-centos-7.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/ecommerce/install-magento-on-centos-7.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>In this guide you&rsquo;ll learn how to install Magento on CentOS 7. Magento Community Edition (CE) is a free, open-source e-commerce platform. It&rsquo;s one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large developer community.</p>
+
+<p><img src="/docs/assets/install-magento-centos-title.png" alt="Install Magento on CentOS 7" title="Install Magento on CentOS 7" /></p>
+
+<p>Considering the resources some Magento plugins demand, we strongly recommend that you have at least a <strong>Linode 4GB</strong>. You&rsquo;ll need to allocate up to 2GB of memory for PHP and Magento to use; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic. For more memory-intensive Magento setups, we recommend using a <a href="https://www.linode.com/pricing#high-memory">high memory Linode</a>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.1.x. If you plan to use data, themes and extensions from an older Magento site, be sure to check for compatibility issues between the two versions since not everything may function as it did in older releases.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache. If you haven&rsquo;t, refer to our <a href="/docs/websites/apache/install-and-configure-apache-on-centos-7">Apache on CentOS 7</a> guide. However, do not install MariaDB or PHP. We will explain how to install compatible versions of those packages in this guide.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo yum update
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="prepare-your-server-for-magento">Prepare Your Server for Magento</h2>
+
+<p>The LAMP stack serves as the basis for a Magento site, but its component parts need to be configured a bit more before installing the Magento software. In this section, we&rsquo;ll explain how to add some extra settings to Apache as well as how to install MySQL 5.7 and PHP 7.</p>
+
+<h3 id="configure-apache">Configure Apache</h3>
+
+<p>Since Magento will be served by Apache, some additional configuration is needed to ensure the application is served properly. In this section, we&rsquo;ll configure Apache for Magento to ensure that styles and other settings display properly in your storefront.</p>
+
+<ol>
+<li><p>Be sure you&rsquo;re using Apache version 2.4:</p>
+
+<pre><code>httpd -v
+</code></pre>
+
+<p>If this shows version 2.2 or another version, upgrade your packages before proceeding.</p></li>
+
+<li><p>Modify the virtual host file for your Magento site to resemble the example below. If you have not previously created a virtual host file, do so now and refer to our <a href="/docs/websites/apache/install-and-configure-apache-on-centos-7">Apache on CentOS 7</a> guide for additional guidance.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/httpd/conf.d/vhost.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;Directory</span> <span class="s">/var/www/html/example.com/public_html</span><span class="nt">&gt;</span>
+    <span class="nb">Require</span> <span class="k">all</span> granted
+<span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span>
+<span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerName</span> example.com
+    <span class="nb">ServerAlias</span> www.example.com
+    <span class="nb">ServerAdmin</span> webmaster@localhost
+    <span class="nb">DocumentRoot</span> <span class="sx">/var/www/html/example.com/public_html</span>
+
+    <span class="nb">ErrorLog</span> <span class="sx">/var/www/html/example.com/logs/error.log</span>
+    <span class="nb">CustomLog</span> <span class="sx">/var/www/html/example.com/logs/access.log</span> combined
+
+    <span class="nt">&lt;Directory</span> <span class="s">/var/www/html/example.com/public_html</span><span class="nt">&gt;</span>
+        <span class="nb">Options</span> Indexes FollowSymLinks MultiViews
+        <span class="nb">AllowOverride</span> <span class="k">All</span>
+    <span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span>
+
+		<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>Directory</code> block inside the <code>Virtual Host</code> block should point to the directory where you plan to install Magento. For simplicity, we will be installing it in our web root, but if you want to put it elsewhere (e.g., a subdirectory of your web root), then modify this setting.</p>
+
+<p>It&rsquo;s important to note the value of <code>AllowOverride</code> as this affects which settings in each directory&rsquo;s <code>.htaccess</code> file will apply and which will be ignored. If you&rsquo;re not sure if the <code>All</code> option is optimal for your site, refer to the <a href="http://httpd.apache.org/docs/current/mod/core.html#allowoverride">Apache documentation</a> for more information on this setting.</p></li>
+
+<li><p>Restart Apache to apply these changes:</p>
+
+<pre><code>sudo systemctl restart httpd
+</code></pre></li>
+</ol>
+
+<h3 id="install-mysql-and-create-a-database-and-user">Install MySQL and Create a Database and User</h3>
+
+<p>As of this guide&rsquo;s publication, Magento 2 is not compatible with MariaDB, which is normally an equivalent replacement for MySQL in CentOS 7. Instead, we&rsquo;ll install MySQL 5.7 from a separate repository.</p>
+
+<ol>
+<li><p>Download and install the MySQL RPM:</p>
+
+<pre><code>sudo wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm -P /tmp/
+sudo yum localinstall /tmp/mysql57-community-release-el7-7.noarch.rpm
+sudo yum update
+sudo yum install mysql-community-server
+</code></pre></li>
+
+<li><p>Start the MySQL daemon:</p>
+
+<pre><code>sudo systemctl start mysqld
+</code></pre></li>
+
+<li><p>When starting MySQL for the first time, a temporary password is generated for root access to the database. Use <code>grep</code> to find it in the log file:</p>
+
+<pre><code>sudo grep 'temporary password' /var/log/mysqld.log
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you previously installed MariaDB or MySQL and set a root password, this installation may not override your existing database credentials. If that&rsquo;s the case, use the root password you set previously.</div>
+</blockquote>
+</li>
+
+<li><p>Secure your MySQL installation and change the root password with the <code>mysql_secure_installation</code> script:</p>
+
+<pre><code>mysql_secure_installation
+</code></pre></li>
+
+<li><p>Log into the MySQL shell as the root user, entering your new password when prompted:</p>
+
+<pre><code>mysql -u root -p
+</code></pre></li>
+
+<li><p>Create a Magento database and user, and set the permissions. In this example, we&rsquo;ll call our database and user <code>magento</code>, Replace <code>P@ssword1</code> with a secure password. You may optionally replace the other values as well:</p>
+
+<pre><code>CREATE DATABASE magento;
+CREATE USER 'magento' IDENTIFIED BY 'P@ssword1';
+GRANT ALL PRIVILEGES ON magento.* TO 'magento';
+</code></pre>
+
+<p>This section assumes that your database is hosted on the same server as your Magento application. If this is not the case, perform these steps and then refer to Magento&rsquo;s guide on using a <a href="http://devdocs.magento.com/guides/v2.0/install-gde/prereq/mysql_remote.html">remote database server</a>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>You may receive an error about the complexity of your password if it is not secure enough. By default, CentOS 7 enables the <code>validate-password</code> plugin for MySQL. For more information, refer to the official <a href="https://dev.mysql.com/doc/refman/5.7/en/validate-password-plugin.html">MySQL documentation</a>.</p>
+
+<p>Don&rsquo;t use an exclamation point (<code>!</code>) in your password. The Magento installation script does not parse them correctly in its command options.</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Exit the MySQL shell:</p>
+
+<pre><code>quit
+</code></pre></li>
+</ol>
+
+<h3 id="install-and-configure-php-7">Install and Configure PHP 7</h3>
+
+<p>Magento is a PHP application, so you will need to install PHP 7 and make some adjustments to its settings.</p>
+
+<ol>
+<li><p>CentOS 7&rsquo;s default repositories include PHP 5.4, which is not compatible with Magento 2. Install the <em>IUS</em> (Inline with Upstream Stable) repository to get PHP 7:</p>
+
+<pre><code>sudo wget http://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-14.ius.centos7.noarch.rpm -P /tmp
+sudo yum localinstall /tmp/ius-release-1.0-14.ius.centos7.noarch.rpm
+sudo yum update
+</code></pre></li>
+
+<li><p>Install PHP 7 and its required extensions from the IUS repository:</p>
+
+<pre><code>sudo yum install php70u php70u-pdo php70u-mysqlnd php70u-opcache php70u-xml php70u-mcrypt php70u-gd php70u-devel php70u-mysql php70u-intl php70u-mbstring php70u-json php70u-iconv
+</code></pre></li>
+
+<li><p>Modify the following settings in your <code>php.ini</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">max_input_time</span> <span class="o">=</span> <span class="m">30</span>
+<span class="nv">memory_limit</span><span class="o">=</span> 2G
+<span class="nv">error_reporting</span> <span class="o">=</span> E_COMPILE_ERROR<span class="p">|</span>E_RECOVERABLE_ERROR<span class="p">|</span>E_ERROR<span class="p">|</span>E_CORE_ERROR
+<span class="nv">error_log</span> <span class="o">=</span> /var/log/php/error.log
+date.timezone <span class="o">=</span> America/New_York</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<p>This sets the time zone for PHP&rsquo;s <code>date()</code> function and imposes a 2GB limit to the amount of memory PHP can use. This value is recommended for a 4GB Linode, but could be increased for a larger server.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The value for <code>date.timezone</code> will vary based on your system&rsquo;s time zone. Refer to the <a href="http://php.net/manual/en/timezones.php">PHP time zone documentation</a> and ensure this value matches the time zone you set when you configured your Linode.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Create the log directory for PHP and give the Apache user ownership:</p>
+
+<p>sudo mkdir /var/log/php
+sudo chown apache /var/log/php</p></li>
+
+<li><p>Because you installed a PHP module for Apache in Step 2, restart the web server to apply the changes and allow Apache to serve PHP pages:</p>
+
+<p>sudo systemctl restart httpd</p></li>
+
+<li><p><strong>Optional</strong>: You may want to take this opportunity to create a <code>phpinfo.php</code> page to ensure that PHP is active and working properly with Apache:</p></li>
+</ol>
+
+<dl class="file">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/var/www/html/example.com/public_html/phpinfo.php</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/www/html/example.com/public_html/phpinfo.php 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="nx">phpinfo</span><span class="p">();</span> <span class="cp">?&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Once you&rsquo;ve visited this page in your browser and confirmed that PHP is working, delete the test page.</p>
+
+<h2 id="install-magento">Install Magento</h2>
+
+<h3 id="download-magento-community-edition">Download Magento Community Edition</h3>
+
+<p>In this section, we&rsquo;ll explain how to get the Magento Community Edition (CE) software on your Linode. There are several ways to do this, but here we&rsquo;ll cover the simplest method.</p>
+
+<ol>
+<li><p>On your local computer, download a copy of Magento from their <a href="https://www.magentocommerce.com/download">official website</a>. Several versions are available, but we recommend downloading the latest release. As of this writing, the latest version is 2.1.2:</p>
+
+<p><img src="/docs/assets/magento-download-screen.png" alt="The Magento download screen" /></p>
+
+<p>Next to your selected version, there will be a dropdown menu that says &ldquo;Select your format.&rdquo; Choose the option ending with the <code>.tar.gz</code> extension and click <strong>Download</strong>. Be sure to note where you saved the downloaded file.</p>
+
+<p><img src="/docs/assets/magento-tar-gz.png" alt="Select the option ending in &quot;.tar.gz&quot;" /></p>
+
+<p>In this step, you&rsquo;ll also be able to download the software with optional sample data. Whether you choose this or the basic version is up to you.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>When choosing a version, refer to Magento&rsquo;s <a href="http://devdocs.magento.com/guides/v2.0/install-gde/prereq/prereq-overview.html">prerequisites</a> to ensure a particular version&rsquo;s compatibility with the components of your LAMP stack. As of this writing, Magento version 2.1.2 is compatible with all package versions covered in this guide.</div>
+</blockquote>
+</li>
+
+<li><p>From your local computer, copy the file to your Linode. Replace <code>/path/on/local/</code> with the path of your downloaded file, <code>user</code> with your standard user account on your Linode, and <code>yourhost</code> with your Linode&rsquo;s hostname or IP address:</p>
+
+<pre><code>scp /path/on/local/Magento-CE-2.*.tar.gz user@yourhost:~/
+</code></pre>
+
+<p>Alternatively, you can use an FTP client, like <a href="/docs/tools-reference/file-transfer/filezilla">Filezilla</a>, if you&rsquo;re running Windows or are otherwise unable to use a command-line tool like <code>scp</code>.</p></li>
+
+<li><p>Log into your Linode via SSH as your standard user account. Navigate to the document root you specified in your virtual host file:</p>
+
+<pre><code>cd /var/www/html/example.com/public_html
+</code></pre>
+
+<p>Extracting the archive directly into your webroot, as you&rsquo;ll do in the next step, will make it accessible as the main page on your domain. For instance, if your domain is <code>example.com</code>, the Magento storefront will display when you visit <code>example.com</code> in your browser.</p>
+
+<p>If you want to run a Magento store as a subsection of your site, move and extract the archive in a directory within your webroot. For instance, if you intend to make your site accessible by visiting <code>example.com/store</code>, create the subdirectory <code>/var/www/html/example.com/public_html/store</code> and navigate to that directory before proceeding to the next step.</p></li>
+
+<li><p>Move the Magento archive into your document root and extract its contents:</p>
+
+<pre><code>sudo mv ~/Magento-CE-2.*.tar.gz .
+sudo tar -xvf Magento-CE-2.*.tar.gz
+</code></pre></li>
+</ol>
+
+<h3 id="configure-users-and-permissions">Configure Users and Permissions</h3>
+
+<ol>
+<li><p>Create a Magento user, which will run the software. For simplicity, call this user <code>magento</code>:</p>
+
+<pre><code>sudo useradd magento
+</code></pre></li>
+
+<li><p>Next, add the Magento user to the web server&rsquo;s user group. For Apache, the default user is <code>apache</code>:</p>
+
+<pre><code>sudo usermod -g apache magento
+</code></pre></li>
+
+<li><p>The commands in this step should be run from your Magento installation directory (where you extracted the archive). If you are not still in that directory, navigate there before proceeding.</p>
+
+<p>Run these commands in order:</p>
+
+<pre><code>sudo find var vendor pub/static pub/media app/etc -type f -exec chmod g+w {} \;
+sudo find var vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} \;
+sudo chown -R magento:apache .
+sudo chmod u+x bin/magento
+</code></pre>
+
+<p>This allows your <code>magento</code> user (and members of the <code>apache</code> group) to write to the various files they need to run and serve Magento on your site.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The first two commands may take some time to run because they are matching various files and directories in your installation folder. It may appear that the system is inactive, but be sure to allow a couple minutes before cancelling the operations. You can always start a new SSH connection, or run these commands in a <a href="/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions">screen</a> session, and use tools like <a href="/docs/uptime/monitoring/top-htop-iotop#additional-top-like-programs">htop &amp; iotop</a> to monitor progress.</div>
+</blockquote>
+</li>
+
+<li><p>Restart Apache:</p>
+
+<pre><code>sudo systemctl restart httpd
+</code></pre></li>
+</ol>
+
+<h3 id="install-magento-ce">Install Magento CE</h3>
+
+<ol>
+<li><p>Switch to the <code>magento</code> user and navigate to the <code>bin</code> directory in your Magento installation folder:</p>
+
+<pre><code>sudo su magento
+cd bin
+</code></pre></li>
+
+<li><p>Run the Magento installation script with the following options:</p>
+
+<pre><code>./magento setup:install --admin-firstname=&quot;John&quot; --admin-lastname=&quot;Doe&quot; --admin-email=&quot;your@email.com&quot; --admin-user=&quot;john&quot; --admin-password=&quot;password1&quot; --db-name=&quot;magento&quot; --db-host=&quot;localhost&quot; --db-user=&quot;magento&quot; --db-password=&quot;P@ssword1&quot;
+</code></pre>
+
+<p>Replace the values in the options as follows:</p>
+
+<ul>
+<li><strong>admin-firstname</strong> / <strong>admin-lastname</strong> - This will set the full name of your admin user. Replace these with your name if you&rsquo;ll be the administrator.</li>
+<li><strong>admin-email</strong> - This is your email for resetting passwords and receiving admin notifications.</li>
+<li><strong>admin-user</strong> / <strong>admin-password</strong> - These are your login credentials for the Magento admin control panel. Be sure to set a secure password here and store it in a safe place. Note that the Magento script requires you to use both letter and number characters in your password, and will return an error if you do not.</li>
+<li><strong>db-name</strong> - This is the name of the database you set up in MySQL. In our example, we called it <code>magento</code>, but if you chose a different value, substitute it here.</li>
+<li><strong>db-host</strong> - If you&rsquo;re running Magento on the same server as its database, use <code>localhost</code> here. If not, this value will be the hostname of the server on which your database lives.</li>
+<li><strong>db-user</strong> - This is the MySQL database user you set up previously. In our example, we called it <code>magento</code> but if you chose a different name, use that here instead.</li>
+<li><strong>db-password</strong> - This will be the password you configured for the <code>magento</code> MySQL user.</li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>These are just a few of the available options to configure your Magento installation. For more information, refer to the <a href="http://devdocs.magento.com/guides/v2.1/install-gde/install/cli/install-cli-install.html">Magento Installation Guide</a> and feel free to use additional options when running the script.</div>
+</blockquote>
+</li>
+
+<li><p>The installation script may take several minutes to run. Once it&rsquo;s finished, you&rsquo;ll see a success message:</p>
+
+<pre><code>[SUCCESS]: Magento installation complete.
+[SUCCESS]: Magento Admin URI: /admin_a61e40
+</code></pre></li>
+
+<li><p>Exit from the <code>magento</code> user:</p>
+
+<pre><code>exit
+</code></pre></li>
+</ol>
+
+<p>Congratulations, you&rsquo;ve successfully installed Magento on your Linode! You can log into your admin panel by entering your domain, followed by the &ldquo;Magento Admin URI&rdquo; displayed above, in a web browser. The <strong>admin-user</strong> and <strong>admin-password</strong> options you specified when running the installation script will be your credentials.</p>
+
+<h2 id="configure-magento">Configure Magento</h2>
+
+<p>The dashboard is functional at this point, but you&rsquo;ve still got work to do before the site is ready to use. In this section, we&rsquo;ll explain how to set up cron jobs and secure the Magento software to be suitable for a live e-commerce site.</p>
+
+<h3 id="set-cron-jobs">Set Cron Jobs</h3>
+
+<p>Magento relies on <a href="/docs/tools-reference/tools/schedule-tasks-with-cron">cron</a> to perform tasks like continuously reindexing your site and generating emails and newsletters. If you logged into your admin panel, you may have noticed an error message saying that cron jobs needed to be set. Fortunately, the cron jobs Magento uses for a base installation are easy to configure.</p>
+
+<ol>
+<li><p>Open the crontab for your <code>magento</code> user. Perform this step as a user with <code>sudo</code> privileges:</p>
+
+<pre><code>sudo crontab -u magento -e
+</code></pre></li>
+
+<li><p>If this is your first time using cron, you may be prompted to select a text editor. If you don&rsquo;t have a preference, select <strong>2</strong> to use nano.</p></li>
+
+<li><p>Add the following lines to the end of the file, substituting your Magento installation directory in each:</p>
+
+<pre><code>* * * * * /bin/php /var/www/html/example.com/public_html/bin/magento cron:run | grep -v &quot;Ran jobs by schedule&quot; &gt;&gt; /var/www/html/example.com/public_html/var/log/magento.cron.log
+* * * * * /bin/php /var/www/html/example.com/public_html/update/cron.php &gt;&gt; /var/www/html/example.com/public_html/var/log/update.cron.log
+* * * * * /bin/php /var/www/html/example.com/public_html/bin/magento setup:cron:run &gt;&gt; /var/www/html/example.com/public_html/var/log/setup.cron.log
+</code></pre>
+
+<p>The first line handles reindexing. The second and third lines are needed by the Component Manager and System Upgrade, respectively. The <code>/bin/php</code> part of each line specifies your PHP binary. If you installed PHP using this guide, you can leave this value as we have shown it, but if you installed PHP by some other method, you can check its location with <code>which php</code> and substitute that value.</p>
+
+<p>When you&rsquo;re done, save and exit the file.</p></li>
+
+<li><p>To verify that the rules have been set properly, log out of your Magento admin and log back in. If everything has been configured correctly, you should no longer see the notification.</p>
+
+<p>If the message persists, wait several minutes before logging back in so that the cron jobs have time to take effect on the system.</p></li>
+</ol>
+
+<p>For more information about setting up cron jobs for development servers and custom Magento modules, refer to the <a href="http://devdocs.magento.com/guides/v2.1/config-guide/cli/config-cli-subcommands-cron.html#config-cli-cron-bkg">Magento Cron Documentation</a>.</p>
+
+<h3 id="configure-x-frame-options">Configure X-Frame Options</h3>
+
+<p>We strongly recommended that you disable the ability to display your Magento storefront in a frame to prevent <a href="https://en.wikipedia.org/wiki/Clickjacking">clickjacking</a> attacks. To do this, modify the following line in your <code>env.php</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/www/html/example.com/public_html/app/etc/env.php 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="x">&#39;x-frame-options&#39; =&gt; &#39;DENY&#39;,</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This prevents attackers from embedding your site in a frame (for example, on a malicious site that mimics your store) in an attempt to intercept payment and other sensitive customer information.</p>
+
+<h3 id="set-directory-permissions">Set Directory Permissions</h3>
+
+<p>At a minimum, you should restrict write access to the <code>app/etc</code> directory before opening the site to customers. Run these commands from within your Magento installation directory:</p>
+
+<pre><code>sudo find app/etc -type f -exec chmod g-w {} \;
+sudo find app/etc -type d -exec chmod g-ws {} \;
+</code></pre>
+
+<p>Depending on whether you install custom themes or extensions, you may need to do additional configuration. This will vary depending on what you have installed. Once you&rsquo;re ready to deploy your site into production mode, refer to <a href="http://devdocs.magento.com/guides/v2.1/config-guide/prod/prod_file-sys-perms.html">Magento&rsquo;s ownership and permissions guide</a> for a more comprehensive set of recommendations.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you need to make additional configuration changes in the future, you&rsquo;ll need to manually add write permissions again before you can do so. For more information, see our guide on <a href="/docs/tools-reference/linux-users-and-groups">Linux users and groups</a>.</div>
+</blockquote>
+
+
+<h3 id="secure-your-site-with-ssl">Secure your Site with SSL</h3>
+
+<p>Secure sockets layer (SSL) certificates are a vital part of e-commerce. They enable encrypted transmission of sensitive data, such as credit card numbers, that can be verified and trusted by clients. In fact, some payment vendors such as PayPal, require SSL certificates to be used for customer transactions.</p>
+
+<p>For instructions on how to use SSL certificates in your store, see our guides on <a href="/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora">obtaining a commercially signed SSL certificate</a> and <a href="/docs/security/ssl/ssl-apache2-centos">using SSL certificates with Apache</a>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>Many payment vendors that require SSL do not support self-signed certificates. Depending on how you handle payments, it is likely you will need to purchase a commercially signed certificate.</p>
+
+<p>When you <a href="/docs/security/ssl/ssl-apache2-centos#configure-apache-to-use-the-ssl-certificate">configure Apache to use the SSL certificate</a>, if you installed Magento in a subdirectory of your site and only want that section to be encrypted, make sure to modify your <code>&lt;VirtualHost *:443&gt;</code> block to match.</p>
+</div>
+</blockquote>
+
+
+<p>Once you&rsquo;ve installed your SSL certificate and configured Apache to serve your site securely, you&rsquo;ll need to configure Magento to use secure URLs.</p>
+
+<ol>
+<li><p>Log into your Magento admin panel using the URL you obtained after running the installation script.</p></li>
+
+<li><p>Click on <strong>Stores</strong> in the sidebar on the left of your screen, and select <strong>Configuration</strong> under the Settings submenu.</p>
+
+<p><img src="/docs/assets/magento-stores-config.png" alt="Go to &quot;Configuration&quot; in the &quot;Stores&quot; menu." /></p></li>
+
+<li><p>On the next screen, you&rsquo;ll see a list of configuration settings including &ldquo;General,&rdquo; &ldquo;Catalog&rdquo; and &ldquo;Customers&rdquo;. Click on <strong>General</strong>, and select <strong>Web</strong> from its submenu.</p>
+
+<p><img src="/docs/assets/magento-general-web.png" alt="Select &quot;Web&quot; from the &quot;General&quot; menu." /></p></li>
+
+<li><p>Select <strong>Base URLs (Secure)</strong>, which will open to display several text fields. Modify the first field, <strong>Secure Base URL</strong>, to use the HTTPS protocol, as opposed to HTTP:</p>
+
+<pre><code>https://example.com
+</code></pre>
+
+<p><img src="/docs/assets/magento-secure-base-url.png" alt="Enter your domain with the HTTPS protocol." /></p>
+
+<p>This assumes that you used <code>/var/www/html/example.com/public_html</code> as your Magento installation directory, as we did in our examples. If you installed Magento in a subdirectory of your web root, you will need to modify that here. For example, if you installed Magento in a folder called <code>/var/www/html/example.com/public_html/magento</code>, you&rsquo;ll need to enter:</p>
+
+<pre><code>https://example.com/magento
+</code></pre></li>
+
+<li><p>Save your configuration.</p></li>
+
+<li><p>To verify that SSL has been configured correctly, visit your domain with the HTTPS protocol in a web browser and navigate to a few links. You should see a green lock icon in your browser&rsquo;s URL bar on each page, confirming that each page you (and your future customers) visit is secure.</p></li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>If you&rsquo;ve followed this guide from the beginning, you should now have a secure, functional installation of Magento. You&rsquo;re now ready to configure your store and start selling products.</p>
+
+<p>You may wish to install extensions to add functionality, or themes to change your site&rsquo;s user experience. If you do, be sure that the extensions and themes you purchase or install are compatible with Magento 2.</p>
+
+<p>You may also want to configure caching with Varnish or other software to increase the speed of your site. For more information on this and other configuration options, see <a href="http://devdocs.magento.com/guides/v2.1/config-guide/bk-config-guide.html">Magento&rsquo;s configuration guide</a>.</p>
+
+<p>Finally, be sure to keep your Magento software and its components up to date. Not only is this important to the security of your site, but it will also allow you to use the latest features and functions Magento has to offer. For more information, refer to the <a href="http://devdocs.magento.com/guides/v2.1/comp-mgr/bk-compman-upgrade-guide.html">Magento upgrade documentation</a>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://docs.magento.com/m2/ce/user_guide/getting-started.html">Magento Documentation</a></li>
+
+<li><a href="https://magento.com/resources">Magento Resources Library</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/ecommerce/install-magento-on-ubuntu-16-04/">Install Magento on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/websites-with-nginx-on-centos-5/">Websites with Nginx on CentOS 5 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/">Monitor an nginx Web Server Using the Elastic Stack on Centos 7</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/">Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/ecommerce/install-opencart-on-centos-7/">How to Install OpenCart on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#prepare-your-server-for-magento">Prepare Your Server for Magento</a>
+<ul>
+<li><a href="#configure-apache">Configure Apache</a></li>
+<li><a href="#install-mysql-and-create-a-database-and-user">Install MySQL and Create a Database and User</a></li>
+<li><a href="#install-and-configure-php-7">Install and Configure PHP 7</a></li>
+</ul></li>
+<li><a href="#install-magento">Install Magento</a>
+<ul>
+<li><a href="#download-magento-community-edition">Download Magento Community Edition</a></li>
+<li><a href="#configure-users-and-permissions">Configure Users and Permissions</a></li>
+<li><a href="#install-magento-ce">Install Magento CE</a></li>
+</ul></li>
+<li><a href="#configure-magento">Configure Magento</a>
+<ul>
+<li><a href="#set-cron-jobs">Set Cron Jobs</a></li>
+<li><a href="#configure-x-frame-options">Configure X-Frame Options</a></li>
+<li><a href="#set-directory-permissions">Set Directory Permissions</a></li>
+<li><a href="#secure-your-site-with-ssl">Secure your Site with SSL</a></li>
+</ul></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Updating Virtual Host Settings from Apache 2.2 to Apache 2.4</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="A step-by-step guide to updating virtual host settings from Apache 2.2 to Apache 2.4">
+        <meta name="keywords" content="Apache 2.2,  Apache 2.4,  Ubuntu,  Debian,  CentOS,  Fedora,  Arch,  Gentoo,  update,  upgrade">
+        
+        <meta property="og:title" content="Updating Virtual Host Settings from Apache 2.2 to Apache 2.4">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/">
+        <meta property="og:description" content="A step-by-step guide to updating virtual host settings from Apache 2.2 to Apache 2.4">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/upgrading/">Upgrading</a>
+  
+</li>
+
+
+<li>
+  
+  Updating Virtual Host Settings from Apache 2.2 to Apache 2.4
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Updating Virtual Host Settings from Apache 2.2 to Apache 2.4</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-03-12T00:00:00Z">Wednesday, March 12, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fupgrading%2fupdating-virtual-host-settings-from-apache-2-2-to-apache-2-4%2f&via=linode&text=Updating%20Virtual%20Host%20Settings%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fupgrading%2fupdating-virtual-host-settings-from-apache-2-2-to-apache-2-4%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fupgrading%2fupdating-virtual-host-settings-from-apache-2-2-to-apache-2-4%2f&t=Updating%20Virtual%20Host%20Settings%20from%20Apache%202.2%20to%20Apache%202.4" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented <a href="/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts">here</a>, from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We&rsquo;ll also discuss changes the new version of Apache makes to the default virtual host and module configuration.</p>
+
+<p><img src="/docs/assets/updating_virtual_host_settings_tg.png" alt="Updating Virtual Host Settings from Apache 2.2 to Apache 2.4" title="Updating Virtual Host Settings from Apache 2.2 to Apache 2.4" /></p>
+
+<p>Before you upgrade, you should make a backup of your main Apache 2.2 configuration file so you don&rsquo;t lose any settings. However, keep in mind that if you try to use it as-is with Apache 2.4, incompatibilities can prevent Apache from starting or running.</p>
+
+<p>This article is not a comprehensive guide to updating from Apache 2.2 to 2.4. For complete information, read the <a href="http://httpd.apache.org/docs/2.4/upgrading.html">apache.org guidelines</a> on the subject.</p>
+
+<h2 id="make-a-backup">Make a Backup</h2>
+
+<p>Make a <a href="/docs/platform/backup-service">backup</a> of your data before upgrading your Apache software. Upgrading can sometimes cause you to lose data, particularly if you had settings in an Apache configuration file that no longer apply in Apache 2.4. If you use Apache modules, this is especially likely.</p>
+
+<p>Even with the simplest Apache setup, you should back up your Apache settings, modules, and other data in case unforeseen issues arise.</p>
+
+<h2 id="virtual-host-settings-updates">Virtual Host Settings Updates</h2>
+
+<p>You will have to make changes to your Apache 2.2 virtual hosts settings to make your websites work again with Apache 2.4. Blindly upgrading from Apache 2.2 to 2.4 will break for these reasons:</p>
+
+<ul>
+<li>Ubuntu and Debian: Virtual host configuration files in the <code>sites-available</code> directory must now use the <code>.conf</code> extension</li>
+
+<li><p>Virtual host configuration files must have the <code>Require all granted</code> line in an appropriate <code>Directory</code> block:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		virtual host configuration file 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;Directory /path/to/public/website/&gt;
+   Require all granted
+&lt;/Directory&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+
+<p>Ubuntu and Debian users will need to make both changes. Users of other distributions will need to make the second change. We&rsquo;ll go into detail on how to make these changes in the next two sections.</p>
+
+<h3 id="ubuntu-and-debian-adding-conf-extensions">Ubuntu and Debian: Adding .conf Extensions</h3>
+
+<p>Follow these instructions at any time to update your virtual host configuration files. This change will work with Apache 2.2, so you can make it ahead of time. You can also do it right after you upgrade to Apache 2.4 to make your sites work again.</p>
+
+<ol>
+<li><p>Use the <code>mv</code> command to rename each virtual host file in your <code>/etc/apache2/sites-available/</code> directory to include the <code>.conf</code> extension:</p>
+
+<pre><code>mv /etc/apache2/sites-available/example.com /etc/apache2/sites-available/example.com.conf
+</code></pre></li>
+
+<li><p>Use the <code>a2ensite</code> command to add the virtual host. Make sure you include the <code>.conf</code> extension:</p>
+
+<pre><code>a2ensite example.com.conf
+</code></pre></li>
+
+<li><p>Use the <code>a2dissite</code> command to disable the old virtual host. Make sure you do not include the <code>.conf</code> extension:</p>
+
+<pre><code>a2dissite example.com
+</code></pre></li>
+
+<li><p>Repeat Steps 1-3 for all of your virtual hosts.</p></li>
+
+<li><p>Reload Apache:</p>
+
+<pre><code>service apache2 reload
+</code></pre></li>
+</ol>
+
+<p>Your sites have now been added to Apache. Now follow the instructions in the next section to make your sites available.</p>
+
+<h3 id="all-distros-permissions">All Distros: Permissions</h3>
+
+<p>If you are utilizing access control rules within your virtual host files, you will need to follow these instructions to update your permissions for Apache 2.4. You cannot add the <code>Require all granted</code> line in Apache 2.2, or you&rsquo;ll get a 500 Internal Server Error. Make this change just after updating to Apache 2.4.</p>
+
+<ol>
+<li><p>Open your website&rsquo;s virtual host configuration file with your favorite text editor. For Ubuntu and Debian, this is typically a file like <code>/etc/apache2/sites-available/example.com.conf</code>. On CentOS and Fedora, this is typically <code>/etc/httpd/conf.d/vhost.conf</code>.</p>
+
+<p>Ubuntu and Debian (replace <strong>example.com.conf</strong> with your own file name):</p>
+
+<pre><code>nano /etc/apache2/sites-available/example.com.conf
+</code></pre>
+
+<p>CentOS and Fedora:</p>
+
+<pre><code>nano /etc/httpd/conf.d/vhost.conf
+</code></pre></li>
+
+<li><p>Within the <code>VirtualHost</code> block for this website, locate or create the <code>Directory</code> block for your website&rsquo;s public directory. Add the line <code>Require all granted</code>. (If the line <code>Require all denied</code> is already there, update it to <code>Require all granted</code>). View a sample file below (replace <strong>/path/to/public/website/</strong> with your website&rsquo;s public directory):</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com.conf or /etc/httpd/conf.d/vhost.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;VirtualHost *:80&gt;
+  ...
+  &lt;Directory /path/to/public/website/&gt;
+     Require all granted
+  &lt;/Directory&gt;
+  ...
+&lt;/VirtualHost&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save your changes.</p></li>
+
+<li><p>Repeat Steps 1-3 for all of your virtual hosts.</p></li>
+
+<li><p>Reload Apache.</p>
+
+<p>Ubuntu and Debian:</p>
+
+<pre><code>service apache2 reload
+</code></pre>
+
+<p>CentOS:</p>
+
+<pre><code>/etc/init.d/httpd reload
+</code></pre>
+
+<p>Fedora:</p>
+
+<pre><code>systemctl reload httpd.service
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For more information on how you can enable or restrict access to your websites with various <code>Require</code> lines, see the <a href="http://httpd.apache.org/docs/current/howto/access.html">Apache website</a>. Most users will want to use the <code>Require all granted</code> line, but there may be exceptions.</div>
+</blockquote>
+</li>
+</ol>
+
+<p>Check your websites. If you have completed these steps correctly, they should now be working again.</p>
+
+<h2 id="default-virtual-host">Default Virtual Host</h2>
+
+<p>If your Apache configuration file is replaced during the upgrade, the location of your default virtual host will change from <code>/var/www</code> to <code>/var/www/html</code>. You may have to disable the default virtual host again, if you don&rsquo;t want it.</p>
+
+<h2 id="module-configurations">Module Configurations</h2>
+
+<p>If you have any Apache module configurations in your main configuration file that are incompatible with Apache 2.4, this can prevent the software from starting or running. In Apache 2.4, module configurations are no longer included in the main Apache configuration file. Instead, they each have their own configuration files, located in the <code>mods-available/</code> or <code>mods-enabled/</code> directories, and named something like <code>module_name.conf</code>.</p>
+
+<p>The <a href="http://httpd.apache.org/docs/2.4/upgrading.html">apache.org upgrade page</a> is a good place to start when checking for incompatible modules.</p>
+
+<h2 id="errors-from-non-updated-settings">Errors From Non-Updated Settings</h2>
+
+<p>The following symptoms may indicate that you need to make the changes to your Apache 2.4 configuration that are described in this article. Note that other causes can also produce these symptoms, so if you didn&rsquo;t recently upgrade from Apache 2.2 to 2.4, you should pursue additional <a href="/docs/web-servers/apache/troubleshooting">troubleshooting</a> avenues.</p>
+
+<p><strong>Symptom:</strong> When you try to visit your website, you see the default <strong>It works!</strong> Apache web page.</p>
+
+<p>Solution: Add the <code>.conf</code> extensions to your virtual host configuration files and re-add your sites, as detailed above. You can also make any desired changes to the Apache default site behavior. If you want to disable the default site, you must do so again.</p>
+
+<p><strong>Symptom:</strong> When you use the Apache <code>a2ensite</code> command, you receive the error <code>Site example.com does not exist!</code></p>
+
+<p>Solution: Make sure you have the <code>.conf</code> extension at the end of your configuration file name, and that you also use the <code>.conf</code> extension with the <code>a2ensite</code> command.</p>
+
+<p><strong>Symptom:</strong> When you try to visit your website, you see a <strong>403 Forbidden</strong> message.</p>
+
+<p>Solution: Add the <code>Require all granted</code> line to each of your virtual host configuration files, as detailed above.</p>
+
+<p><strong>Symptom:</strong> Apache fails to start or run.</p>
+
+<p>Solution: Check for incompatible settings and modules in your Apache configuration files.</p>
+
+<h2 id="apache-upgrade-dates-by-distribution">Apache Upgrade Dates by Distribution</h2>
+
+<p>Different distributions make Apache 2.4 the norm at different times. When you upgrade to one of the distributions in this chart, you will also be upgrading to Apache 2.4 by default.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Distribution</th>
+<th align="center">Version</th>
+<th align="center">Release Date</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Ubuntu</td>
+<td align="center">13.10</td>
+<td align="center">out</td>
+</tr>
+
+<tr>
+<td align="center">Ubuntu</td>
+<td align="center">14.04 LTS</td>
+<td align="center">April 17, 2014</td>
+</tr>
+
+<tr>
+<td align="center">Debian</td>
+<td align="center">8.0</td>
+<td align="center">late 2015 ?</td>
+</tr>
+
+<tr>
+<td align="center">CentOS</td>
+<td align="center">?</td>
+<td align="center">?</td>
+</tr>
+
+<tr>
+<td align="center">Fedora</td>
+<td align="center">19</td>
+<td align="center">out</td>
+</tr>
+
+<tr>
+<td align="center">Fedora</td>
+<td align="center">20</td>
+<td align="center">out</td>
+</tr>
+
+<tr>
+<td align="center">Gentoo</td>
+<td align="center">NA</td>
+<td align="center">?</td>
+</tr>
+
+<tr>
+<td align="center">Arch</td>
+<td align="center">NA</td>
+<td align="center">in the AUR</td>
+</tr>
+</tbody>
+</table>
+
+<p>Use this information to prepare for a smooth upgrade.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://httpd.apache.org/docs/2.4/upgrading.html">apache.org</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/how-to-set-up-tinc-peer-to-peer-vpn/">How to Set up tinc, a Peer-to-Peer VPN</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/">Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/">Install a LEMP Stack on CentOS 7 with FastCGI</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#make-a-backup">Make a Backup</a></li>
+<li><a href="#virtual-host-settings-updates">Virtual Host Settings Updates</a>
+<ul>
+<li><a href="#ubuntu-and-debian-adding-conf-extensions">Ubuntu and Debian: Adding .conf Extensions</a></li>
+<li><a href="#all-distros-permissions">All Distros: Permissions</a></li>
+</ul></li>
+<li><a href="#default-virtual-host">Default Virtual Host</a></li>
+<li><a href="#module-configurations">Module Configurations</a></li>
+<li><a href="#errors-from-non-updated-settings">Errors From Non-Updated Settings</a></li>
+<li><a href="#apache-upgrade-dates-by-distribution">Apache Upgrade Dates by Distribution</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

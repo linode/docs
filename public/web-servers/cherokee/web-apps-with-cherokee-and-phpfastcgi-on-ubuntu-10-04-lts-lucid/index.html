@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Using PHP-FastCGI for dynamic sites under Cherokee on Ubuntu 10.04 LTS (Lucid)">
+        <meta name="keywords" content="cherokee php-fastcgi, cherokee fastcgi, web sever, cherokee ubuntu 10.04, cherokee ubuntu lucid, ubuntu lucid">
+        
+        <meta property="og:title" content="Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/">
+        <meta property="og:description" content="Using PHP-FastCGI for dynamic sites under Cherokee on Ubuntu 10.04 LTS (Lucid)">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/cherokee/">Hosting Websites with Cherokee</a>
+  
+</li>
+
+
+<li>
+  
+  Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-10-07T00:00:00Z">Monday, October 7, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fcherokee%2fweb-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid%2f&via=linode&text=Web%20Apps%20with%20Cherokee%20and%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fcherokee%2fweb-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fcherokee%2fweb-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid%2f&t=Web%20Apps%20with%20Cherokee%20and%20PHP-FastCGI%20on%20Ubuntu%2010.04%20LTS%20%28Lucid%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It&rsquo;s designed to be easy to administer, and includes support for a wide range of common web server functions.</p>
+
+<p>This tutorial explains how to configure Cherokee to serve dynamic content with PHP via FastCGI on Ubuntu 10.04 LTS (Lucid). Please make sure you are logged into your Linode as root via SSH.</p>
+
+<p>This document assumes that you already have a working and up to date Ubuntu 10.04 system. If you have not followed our <a href="/docs/getting-started/">getting started</a> guide, it is recommended that you do so prior to following these instructions.</p>
+
+<h1 id="prerequisites">Prerequisites</h1>
+
+<p>Make sure your repositories and packages are up to date by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<p>If you haven&rsquo;t already installed Cherokee, please follow our <a href="/docs/web-servers/cherokee/installing-cherokee-ubuntu-10-04-lucid">Ubuntu 10.04 Cherokee installation</a> guide before continuing with these instructions.</p>
+
+<h1 id="install-required-packages">Install Required Packages</h1>
+
+<p>Issue the following commands to install support for PHP and FastCGI:</p>
+
+<pre><code>apt-get install php5-cli php5-cgi spawn-fcgi
+</code></pre>
+
+<p>Issue the following sequence of commands to create scripts to control <code>spawn-fcgi</code> and the PHP-FastCGI process, set the permissions for these scripts, ensure that PHP-FastCGI starts as part of the boot process, and start PHP-FastCGI For the first time:</p>
+
+<pre><code>cd /opt/
+wget -O php-fastcgi-deb.sh http://www.linode.com/docs/assets/579-pp-php-fastcgi-deb.sh
+wget -O php-fastcgi-init-deb.sh http://www.linode.com/docs/assets/580-php-fastcgi-init-deb.sh
+mv /opt/php-fastcgi-deb.sh /usr/bin/php-fastcgi
+mv /opt/php-fastcgi-init-deb.sh /etc/init.d/php-fastcgi
+chmod 755 /usr/bin/php-fastcgi
+chmod 755 /etc/init.d/php-fastcgi
+update-rc.d php-fastcgi defaults
+/etc/init.d/php-fastcgi start
+</code></pre>
+
+<h1 id="configure-your-site">Configure Your Site</h1>
+
+<p>Create directories for your site by issuing the following commands. Substitute your domain name for &ldquo;mydomain.com&rdquo; in these commands.</p>
+
+<pre><code>mkdir -p /srv/www/mydomain.com/www/public_html
+mkdir /srv/www/mydomain.com/www/logs
+chown -R www-data:www-data /srv/www/mydomain.com
+</code></pre>
+
+<p>If you haven&rsquo;t already done so, start the Cherokee administration program by issuing the following command. Alternately, you may wish to follow our instructions for <a href="/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/#secure-admin-panel-access">secure Cherokee admin access</a>.</p>
+
+<pre><code>cherokee-admin -b &amp;
+</code></pre>
+
+<p>Navigate to the &ldquo;General&rdquo; page in the admin interface. You may wish to enable SSL support, change the server tokens, or enable graphs.</p>
+
+<p><a href="/docs/assets/239-00-cherokee-ubuntu-10-04-general-settings.png"><img src="/docs/assets/239-00-cherokee-ubuntu-10-04-general-settings.png" alt="General settings in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p>Click the &ldquo;Add New Virtual Server&rdquo; button on the &ldquo;Virtual Servers&rdquo; page.</p>
+
+<p><a href="/docs/assets/240-01-cherokee-ubuntu-10-04-virtual-servers.png"><img src="/docs/assets/240-01-cherokee-ubuntu-10-04-virtual-servers.png" alt="Virtual servers listing in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p>Assign a nickname for your new virtual server and specify its document root:</p>
+
+<p><a href="/docs/assets/241-02-cherokee-ubuntu-10-04-new-virtual-server.png"><img src="/docs/assets/241-02-cherokee-ubuntu-10-04-new-virtual-server.png" alt="New virtual server basic settings in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p><a href="/docs/assets/242-03-cherokee-ubuntu-10-04-virtual-servers.png"><img src="/docs/assets/242-03-cherokee-ubuntu-10-04-virtual-servers.png" alt="New virtual server listing in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p>Click on your new virtual server&rsquo;s nickname in the server list. Specify which files you would like to consider directory indexes on the &ldquo;Basic&rdquo; tab.</p>
+
+<p><a href="/docs/assets/243-04-cherokee-ubuntu-10-04-directory-indexes.png"><img src="/docs/assets/243-04-cherokee-ubuntu-10-04-directory-indexes.png" alt="Configuring directory indexes in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p>On the &ldquo;Host Match&rdquo; tab, enter your base domain name and the domain prefixed by &ldquo;www&rdquo;:</p>
+
+<p><a href="/docs/assets/244-05-cherokee-ubuntu-10-04-host-match.png"><img src="/docs/assets/244-05-cherokee-ubuntu-10-04-host-match.png" alt="Configuring host matching in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p>On the &ldquo;Behavior&rdquo; tab, remove all rules except for the &ldquo;Default&rdquo; rule:</p>
+
+<p><a href="/docs/assets/245-06-cherokee-ubuntu-10-04-behavior.png"><img src="/docs/assets/245-06-cherokee-ubuntu-10-04-behavior.png" alt="Behavior rules list in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p>On the &ldquo;Logging&rdquo; tab, specify the location of your access and error logs:</p>
+
+<p><a href="/docs/assets/246-07-cherokee-ubuntu-10-04-logging.png"><img src="/docs/assets/246-07-cherokee-ubuntu-10-04-logging.png" alt="Logging configuration in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p>Navigate to the &ldquo;Information Source&rdquo; page. Specify a new information source with the following settings:</p>
+
+<p><a href="/docs/assets/247-08-cherokee-ubuntu-10-04-information-sources.png"><img src="/docs/assets/247-08-cherokee-ubuntu-10-04-information-sources.png" alt="PHP-FastCGI information source setttings in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p>Navigate back to the &ldquo;Virtual Servers&rdquo; page. Create an extensions rule for PHP files on the &ldquo;Behavior&rdquo; tab of your virtual server&rsquo;s configuration page.</p>
+
+<p><a href="/docs/assets/248-09-cherokee-ubuntu-10-04-virtual-servers-rule.png"><img src="/docs/assets/248-09-cherokee-ubuntu-10-04-virtual-servers-rule.png" alt="PHP extensions rule in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p>On the &ldquo;Handler&rdquo; tab, specify the following settings for PHP-FastCGI:</p>
+
+<p><a href="/docs/assets/249-10-cherokee-ubuntu-10-04-virtual-servers-handler.png"><img src="/docs/assets/249-10-cherokee-ubuntu-10-04-virtual-servers-handler.png" alt="PHP-FastCGI handler settings in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<p>On the &ldquo;Encoding&rdquo; tab, enable gzip/deflate compression:</p>
+
+<p><a href="/docs/assets/250-11-cherokee-ubuntu-10-04-virtual-servers-encoding.png"><img src="/docs/assets/250-11-cherokee-ubuntu-10-04-virtual-servers-encoding.png" alt="PHP-FastCGI gzip/deflate compression settings in Cherokee admin panel on Ubuntu 10.04 LTS" /></a></p>
+
+<h1 id="test-your-configuration">Test Your Configuration</h1>
+
+<p>Restart Cherokee by clicking the &ldquo;Save&rdquo; button under the left page navigation list. Once Cherokee has restarted, create a test PHP script as follows:</p>
+
+<dl class="file">
+<dt>
+
+
+		/srv/www/mydomain.com/www/public\\_html/test.php 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="nx">phpinfo</span><span class="p">();</span> <span class="cp">?&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Visit &ldquo;/test.php&rdquo; on your site to verfify PHP-FastCGI is operating correctly. You should see the standard PHPInfo page. Congratulations, you&rsquo;ve successfully configured PHP-FastCGI for dynamic content using the Cherokee web server!</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.cherokee-project.com/doc/">Cherokee Web Server Documentation</a></li>
+<li><a href="http://www.fastcgi.com/drupal/">FastCGI Project Information</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/">Websites with the Cherokee Web Server on Ubuntu 10.04 LTS (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/">Web Apps with Cherokee and PHP-FastCGI on Fedora 13 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid/">SSL Certificates with Apache 2 on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-on-centos-6/">Apache Web Server on CentOS 6</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/cherokee/use-cherokee-web-server-on-ubuntu-12-04/">Use Cherokee Web Server on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#install-required-packages">Install Required Packages</a></li>
+<li><a href="#configure-your-site">Configure Your Site</a></li>
+<li><a href="#test-your-configuration">Test Your Configuration</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

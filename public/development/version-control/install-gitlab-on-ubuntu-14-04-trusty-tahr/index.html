@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install GitLab on Ubuntu 14.04 (Trusty Tahr)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install GitLab on an Ubuntu 14.04 (Trusty Tahr).">
+        <meta name="keywords" content="version control, git, gitlab, ruby,  ruby on rails, mysql, postgresql, nginx">
+        
+        <meta property="og:title" content="Install GitLab on Ubuntu 14.04 (Trusty Tahr)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/">
+        <meta property="og:description" content="Install GitLab on an Ubuntu 14.04 (Trusty Tahr).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/version-control/">Version Control</a>
+  
+</li>
+
+
+<li>
+  
+  Install GitLab on Ubuntu 14.04 (Trusty Tahr)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install GitLab on Ubuntu 14.04 (Trusty Tahr)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-06-21T00:00:00Z">Wednesday, June 21, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://twitter.com/bsd_noobz">Nashruddin Amin
+    
+    <i class="fa fa-twitter"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2finstall-gitlab-on-ubuntu-14-04-trusty-tahr%2f&via=linode&text=Install%20GitLab%20on%20Ubuntu%2014.04%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2finstall-gitlab-on-ubuntu-14-04-trusty-tahr%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2finstall-gitlab-on-ubuntu-14-04-trusty-tahr%2f&t=Install%20GitLab%20on%20Ubuntu%2014.04%20%28Trusty%20Tahr%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/install-gitlab-on-ubuntu/Install_GitLab_smg.jpg" alt="Install Gitlab on Ubuntu" /></p>
+
+<p>GitLab is a free git repository management application based on Ruby on Rails. It is an interesting alternative if you want to host your own git repositories, since third-party hosting is not always the best option when writing private or closed-source software.</p>
+
+<p>GitLab provides a <a href="https://www.gitlab.com/downloads/">.deb package</a> which contains GitLab Community Edition and all its dependencies (Ruby, PostgreSQL, Redis, Nginx, Unicorn and other gems) already compiled. Installing this package is <a href="https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md#installation">straightforward</a>. But since it will install its own package dependencies (Nginx, PostgreSQL, etc), this installation method is suitable if the server is dedicated only to managing git repositories. If you want GitLab to use your existing resources (i.e: you already have Nginx and PostgreSQL installed), you need to install GitLab manually.</p>
+
+<p>This guide will help you install and configure GitLab on your Ubuntu 14.04 (Trusty Tahr) Linode. We will be using the latest Ruby and GitLab as of this writing, so check for the latest version. We will assume that you want to install GitLab on <code>git.example.com</code> and you have configured the DNS properly. If you are new to Linux system administration, you might want to consider the <a href="/docs/tools-reference/introduction-to-linux-concepts">Introduction to Linux Concepts guide</a> and <a href="/docs/tools-reference/linux-system-administration-basics">Linux Administration Basics guide</a> guides. Hosting your own software projects could benefit from large amounts of disk space, so consider using our <a href="/docs/platform/how-to-use-block-storage-with-your-linode">Block Storage</a> service with this setup.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="system-requirements">System Requirements</h2>
+
+<p>GitLab is a large and heavy application. To get the most of GitLab, the recommended hardware is as follows:</p>
+
+<ul>
+<li><strong>CPU:</strong> 2 cores to support up to 500 users.</li>
+<li><strong>Memory:</strong> 2 GB to support up to 500 users.</li>
+</ul>
+
+<h2 id="prepare-system-for-deployment">Prepare System for Deployment</h2>
+
+<p>Before beginning with the GitLab installation, make sure that your system&rsquo;s package database is up to date and that all installed software is running the latest version.</p>
+
+<ol>
+<li><p>Update your system by issuing the following commands from your shell:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+</code></pre></li>
+
+<li><p>Also create a git user for GitLab:</p>
+
+<pre><code>sudo adduser --disabled-login --gecos 'GitLab' git
+</code></pre></li>
+</ol>
+
+<h3 id="install-package-dependencies">Install Package Dependencies</h3>
+
+<p>In this section you will install the development tools and the required packages for GitLab.</p>
+
+<ol>
+<li><p>Install the required packages to compile Ruby and native extensions to Ruby gems:</p>
+
+<pre><code>sudo apt-get install build-essential cmake zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate
+</code></pre></li>
+
+<li><p>Install Git:</p>
+
+<pre><code>sudo apt-get install git
+</code></pre></li>
+
+<li><p>In order to receive mail notifications, you need to install a mail server. Issue the following command to install Postfix mail server:</p>
+
+<pre><code>sudo apt-get install postfix
+</code></pre></li>
+</ol>
+
+<p>Select <code>Internet site</code> and enter your hostname to complete the installation. If you need to set up a complete SMTP/IMAP/POP3 server, refer to the <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql">Email with Postfix, Dovecot, and MySQL</a> guide.</p>
+
+<h3 id="install-ruby">Install Ruby</h3>
+
+<p>While GitLab is a Ruby on Rails application, using ruby version managers such as <a href="http://rvm.io/">RVM</a> and <a href="https://github.com/sstephenson/rbenv">rbenv</a> is not supported. For example, GitLab shell is called from OpenSSH and having a version manager can prevent pushing and pulling over SSH. Thus GitLab can only work with system-wide Ruby installation. In addition, GitLab requires Ruby 2.0 or higher while the default version on Ubuntu 14.04 is 1.9.3.</p>
+
+<ol>
+<li><p>Remove the old Ruby if present:</p>
+
+<pre><code>sudo apt-get remove ruby
+</code></pre></li>
+
+<li><p>The current stable Ruby version as of this writing is 2.1.2. To install Ruby, download the source code and compile the package:</p>
+
+<pre><code>mkdir /tmp/ruby &amp;&amp; cd /tmp/ruby
+wget http://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
+tar xvzf ruby-2.1.2.tar.gz
+cd ruby-2.1.2
+./configure --disable-install-rdoc --prefix=/usr/local
+make
+sudo make install
+</code></pre></li>
+
+<li><p>Check if the installation succeed by checking the Ruby version:</p>
+
+<pre><code>ruby -v
+</code></pre></li>
+</ol>
+
+<h3 id="setup-postgresql-database-for-gitlab">Setup PostgreSQL Database for GitLab</h3>
+
+<p>GitLab supports both MySQL and PostgreSQL for the database backend, but the latter is recommended. GitLab requires PostgreSQL version 9.1 or higher since it needs to make use of extensions.</p>
+
+<ol>
+<li><p>Install PostgreSQL if you haven&rsquo;t installed it:</p>
+
+<pre><code>sudo apt-get install postgresql postgresql-client libpq-dev
+</code></pre></li>
+
+<li><p>Create new database and new user by issuing the following commands:</p>
+
+<pre><code>sudo -u postgres createuser --createdb git
+sudo -u postgres createdb --owner=git gitlabhq_production
+</code></pre></li>
+
+<li><p>Try connecting to the new database with the new user and display PostgreSQL version for testing:</p>
+
+<pre><code>sudo -u git -H psql -d gitlabhq_production -c &quot;SELECT VERSION()&quot;
+</code></pre></li>
+</ol>
+
+<p>If everything is ok, you should see the PostgreSQL version displayed on the console like this:</p>
+
+<pre><code>                                                   version
+    ------------------------------------------------------------------------------------------------------
+     PostgreSQL 9.3.4 on x86_64-unknown-linux-gnu, compiled by gcc (Ubuntu 4.8.2-16ubuntu6) 4.8.2, 64-bit
+    (1 row)
+</code></pre>
+
+<h2 id="install-gitlab">Install GitLab</h2>
+
+<p>In this section you will install GitLab and make some configuration changes.</p>
+
+<ol>
+<li><p>We will install GitLab into home directory of the user git. Change the current working directory:</p>
+
+<pre><code>cd /home/git
+</code></pre></li>
+
+<li><p>Download the GitLab source:</p>
+
+<pre><code>sudo -u git -H git clone https://gitlab.com/gitlab-org/gitlab-ce.git -b 6-9-stable gitlab
+cd gitlab
+</code></pre></li>
+</ol>
+
+<p>The command above will download the 6-9-stable branch from the GitLab repository. Feel free to select other stable branches, but never install the master branch on a production server.</p>
+
+<ol>
+<li><p>Create the GitLab config file:</p>
+
+<pre><code>sudo -u git -H cp config/gitlab.yml.example config/gitlab.yml
+</code></pre></li>
+</ol>
+
+<p>Open the file:</p>
+
+<pre><code>    sudo nano config/gitlab.yml
+</code></pre>
+
+<p>You need to change the value of host to the fully-qualified domain of your server. Also set the email_from and support_email to the email addresses intended for GitLab.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/git/gitlab/config/gitlab.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">production: <span class="p">&amp;</span>base
+  gitlab:
+    host: git.example.com
+    port: <span class="m">80</span>
+    https: <span class="nb">false</span>
+    ...
+    email_from: gitlab@example.com
+    ...
+    support_email: support@example.com</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<pre><code> <blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you specified a database name other than <code>gitlabhq_production</code> when creating the PostgreSQL database in the previous section, edit the <code>config/database.yml</code> file to match with your database name.</div>
+</blockquote>
+
+</code></pre>
+
+<ol>
+<li><p>Save and exit the file.</p></li>
+
+<li><p>Make sure GitLab can write to the log/ and tmp/ directories:</p>
+
+<pre><code>sudo chown -R git {log,tmp}
+sudo chmod -R u+rwX {log,tmp,tmp/pids,tmp/sockets,public/uploads}
+</code></pre></li>
+
+<li><p>Create directory for satellites:</p>
+
+<pre><code>sudo -u git -H mkdir /home/git/gitlab-satellites
+sudo chmod u+rwx,g+rx,o-rwx /home/git/gitlab-satellites
+</code></pre></li>
+
+<li><p>Create the Unicorn, Rack attack, and PostgreSQL configuration files:</p>
+
+<pre><code>sudo -u git -H cp config/unicorn.rb.example config/unicorn.rb
+sudo -u git -H cp config/initializers/rack_attack.rb.example config/initializers/rack_attack.rb
+sudo -u git cp config/database.yml.postgresql config/database.yml
+</code></pre></li>
+
+<li><p>Make sure that config/database.yml is readable to git only:</p>
+
+<pre><code>sudo -u git -H chmod o-rwx config/database.yml
+</code></pre></li>
+
+<li><p>Install the gems:</p>
+
+<pre><code>sudo gem install bundler
+sudo -u git -H bundle install --deployment --without development test mysql aws
+</code></pre></li>
+
+<li><p>Install GitLab shell, which is an SSH access and repository management software for GitLab:</p>
+
+<pre><code>sudo -u git -H bundle exec rake gitlab:shell:install[v1.9.4] REDIS_URL=redis://localhost:6379 RAILS_ENV=production
+</code></pre></li>
+
+<li><p>Open the GitLab shell configuration file:</p>
+
+<pre><code>sudo nano /home/git/gitlab-shell/config.yml
+</code></pre></li>
+
+<li><p>Check if the value of <code>gitlab_url</code> matches with the URL of your server.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/git/gitlab-shell/config.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">user: git
+gitlab_url: http://git.example.com/
+http_settings:
+  self_signed_cert: <span class="nb">false</span>
+repos_path: <span class="s2">&#34;/home/git/repositories/&#34;</span>
+auth_file: <span class="s2">&#34;/home/git/.ssh/authorized_keys&#34;</span>
+redis:
+  bin: <span class="s2">&#34;/usr/bin/redis-cli&#34;</span>
+  host: localhost
+  port: <span class="m">6379</span>
+  namespace: resque:gitlab
+log_level: INFO
+audit_usernames: false</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>When you are satisfied with the configuration, save and exit the file.</p></li>
+
+<li><p>Initialize database and activate advanced features:</p>
+
+<pre><code>sudo -u git -H bundle exec rake gitlab:setup RAILS_ENV=production
+</code></pre>
+
+<p>The command will display the following message</p>
+
+<pre><code>This will create the necessary database tables and seed the database.
+You will lose any previous data stored in the database.
+Do you want to continue (yes/no)?
+</code></pre>
+
+<p>Type <strong>yes</strong> and press Enter to continue.</p></li>
+
+<li><p>Install the init script and make GitLab start on boot:</p>
+
+<pre><code>sudo cp lib/support/init.d/gitlab /etc/init.d/gitlab
+sudo update-rc.d gitlab defaults 21
+</code></pre></li>
+
+<li><p>Set up logrotate:</p>
+
+<pre><code>sudo cp lib/support/logrotate/gitlab /etc/logrotate.d/gitlab
+</code></pre></li>
+
+<li><p>Check application status:</p>
+
+<pre><code>sudo -u git -H bundle exec rake gitlab:env:info RAILS_ENV=production
+</code></pre>
+
+<p>Sample output</p>
+
+<pre><code>System information
+System:         Ubuntu 14.04
+Current User:   git
+Using RVM:      no
+Ruby Version:   2.1.2p95
+Gem Version:    2.2.2
+Bundler Version:1.6.3
+Rake Version:   10.3.1
+Sidekiq Version:2.17.0
+
+GitLab information
+Version:        6.9.2
+Revision:       e46b644
+Directory:      /home/git/gitlab
+DB Adapter:     postgresql
+URL:            http://git.example.com
+HTTP Clone URL: http://git.example.com/some-project.git
+SSH Clone URL:  git@git.example.com:some-project.git
+Using LDAP:     no
+Using Omniauth: no
+
+GitLab Shell
+Version:        1.9.4
+Repositories:   /home/git/repositories/
+Hooks:          /home/git/gitlab-shell/hooks/
+Git:            /usr/bin/git
+</code></pre></li>
+
+<li><p>Compile assets:</p>
+
+<pre><code>sudo -u git -H bundle exec rake assets:precompile RAILS_ENV=production
+</code></pre></li>
+
+<li><p>Configure Git global settings for the git user:</p>
+
+<pre><code>sudo -u git -H git config --global user.name &quot;GitLab&quot;
+sudo -u git -H git config --global user.email &quot;gitlab@example.com&quot;
+sudo -u git -H git config --global core.autocrlf input
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Set the value for user.email according to what is set in config/gitlab.yml</div>
+</blockquote>
+</li>
+
+<li><p>Start GitLab:</p>
+
+<pre><code>sudo service gitlab start
+</code></pre></li>
+</ol>
+
+<h2 id="set-up-nginx-virtual-host-for-gitlab">Set Up Nginx Virtual Host for GitLab</h2>
+
+<p>Nginx is the only supported web server for GitLab. In this section, you will create a new virtual host for GitLab and activate the site.</p>
+
+<ol>
+<li><p>Install Nginx if you haven&rsquo;t installed it:</p>
+
+<pre><code>sudo apt-get install nginx
+</code></pre></li>
+
+<li><p>Copy the sample site config:</p>
+
+<pre><code>sudo cp lib/support/nginx/gitlab /etc/nginx/sites-available/gitlab
+</code></pre></li>
+
+<li><p>Open the config file:</p>
+
+<pre><code>sudo nano /etc/nginx/sites-available/gitlab
+</code></pre></li>
+
+<li><p>Modify the value for <code>server_name</code> to the fully-qualified domain name of your server:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/gitlab 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">listen <span class="m">80</span><span class="p">;</span>
+server_name git.example.com<span class="p">;</span>
+server_tokens off<span class="p">;</span>
+root /home/git/gitlab/public<span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Save and exit the file.</p></li>
+
+<li><p>Deactivate the default virtual host</p>
+
+<pre><code>sudo rm /etc/nginx/sites-enabled/default
+</code></pre></li>
+
+<li><p>Activate the site and restart Nginx to take effect</p>
+
+<pre><code>sudo ln -s /etc/nginx/sites-available/gitlab /etc/nginx/sites-enabled/gitlab
+sudo service nginx restart
+</code></pre></li>
+
+<li><p>If Nginx failed to start with the following message</p>
+
+<pre><code>Restarting nginx: nginx: [emerg] could not build the server_names_hash, you should increase server_names_hash_bucket_size: 32
+</code></pre>
+
+<p>Open /etc/nginx/nginx.conf and uncomment the following line</p>
+
+<pre><code>server_names_hash_bucket_size 64;
+</code></pre>
+
+<p>Then restart Nginx.</p></li>
+</ol>
+
+<h2 id="open-gitlab-on-your-browser">Open GitLab on Your Browser</h2>
+
+<p>Double check the application status:</p>
+
+<pre><code>    cd /home/git/gitlab
+    sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production
+</code></pre>
+
+<p>If most of the items are green and some are purple (which is okay since you don&rsquo;t have any git project yet), then you have successfully installing GitLab. Below are the sample output:</p>
+
+<pre><code>    Checking Environment ...
+
+    Git configured for git user? ... yes
+
+    Checking Environment ... Finished
+
+    Checking GitLab Shell ...
+
+    GitLab Shell version &gt;= 1.9.4 ? ... OK (1.9.4)
+    Repo base directory exists? ... yes
+    Repo base directory is a symlink? ... no
+    Repo base owned by git:git? ... yes
+    Repo base access is drwxrws---? ... yes
+    Satellites access is drwxr-x---? ... yes
+    update hook up-to-date? ... yes
+    update hooks in repos are links: ... can't check, you have no projects
+    Running /home/git/gitlab-shell/bin/check
+    Check GitLab API access: OK
+    Check directories and files:
+        /home/git/repositories/: OK
+        /home/git/.ssh/authorized_keys: OK
+    Test redis-cli executable: redis-cli 2.8.4
+    Send ping to redis server: PONG
+    gitlab-shell self-check successful
+
+    Checking GitLab Shell ... Finished
+
+    Checking Sidekiq ...
+
+    Running? ... yes
+    Number of Sidekiq processes ... 1
+
+    Checking Sidekiq ... Finished
+
+    Checking LDAP ...
+
+    LDAP is disabled in config/gitlab.yml
+
+    Checking LDAP ... Finished
+
+    Checking GitLab ...
+
+    Database config exists? ... yes
+    Database is SQLite ... no
+    All migrations up? ... yes
+    Database contains orphaned UsersGroups? ... no
+    GitLab config exists? ... yes
+    GitLab config outdated? ... no
+    Log directory writable? ... yes
+    Tmp directory writable? ... yes
+    Init script exists? ... yes
+    Init script up-to-date? ... yes
+    projects have namespace: ... can't check, you have no projects
+    Projects have satellites? ... can't check, you have no projects
+    Redis version &gt;= 2.0.0? ... yes
+    Your git bin path is &quot;/usr/bin/git&quot;
+    Git version &gt;= 1.7.10 ? ... yes (1.9.1)
+
+    Checking GitLab ... Finished
+</code></pre>
+
+<p>Now you can open <a href="http://git.example.com">http://git.example.com</a> on your browser. GitLab will show you the login page.</p>
+
+<p><img src="/docs/assets/gitlab-login-page-s.png" alt="GitLab Login Page" /></p>
+
+<p>You can login using <strong>root</strong> as the username and <strong>5iveL!fe</strong> for the password.</p>
+
+<h2 id="securing-gitlab">Securing GitLab</h2>
+
+<p>Now that you have GitLab running on your server, you might want to add SSL support to secure your GitLab site. Refer to the <a href="/docs/security/ssl/ssl-certificates-with-nginx">SSL Certificates with Nginx</a> guide to protect your site with SSL.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.gitlab.com/gitlab-ce/">GitLab Community Edition</a></li>
+
+<li><a href="https://www.gitlab.com/documentation/">GitLab Documentation</a></li>
+
+<li><a href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/requirements.md">GitLab Requirements</a></li>
+
+<li><a href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md">GitLab Manual Installation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/version-control/install-gogs-on-debian/">Install Gogs on Debian 9 with nginx and PostgreSQL</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/introduction-to-version-control/">Introduction to Version Control</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/how-to-back-up-your-postgresql-database/">How to Back Up Your PostgreSQL Database</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/">Monitor an nginx Web Server Using the Elastic Stack on Centos 7</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/">How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#system-requirements">System Requirements</a></li>
+<li><a href="#prepare-system-for-deployment">Prepare System for Deployment</a>
+<ul>
+<li><a href="#install-package-dependencies">Install Package Dependencies</a></li>
+<li><a href="#install-ruby">Install Ruby</a></li>
+<li><a href="#setup-postgresql-database-for-gitlab">Setup PostgreSQL Database for GitLab</a></li>
+</ul></li>
+<li><a href="#install-gitlab">Install GitLab</a></li>
+<li><a href="#set-up-nginx-virtual-host-for-gitlab">Set Up Nginx Virtual Host for GitLab</a></li>
+<li><a href="#open-gitlab-on-your-browser">Open GitLab on Your Browser</a></li>
+<li><a href="#securing-gitlab">Securing GitLab</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

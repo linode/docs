@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Optimize MySQL Performance Using MySQLTuner</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This step-by-step guide shows you how to assess your MySQL database performance using MySQLTuner to ensure optimum resource usage.">
+        <meta name="keywords" content="mysql,  mysqltuner,  tune mysql,  resource tuning">
+        
+        <meta property="og:title" content="How to Optimize MySQL Performance Using MySQLTuner">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/">
+        <meta property="og:description" content="This step-by-step guide shows you how to assess your MySQL database performance using MySQLTuner to ensure optimum resource usage.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/mysql/">MySQL</a>
+  
+</li>
+
+
+<li>
+  
+  How to Optimize MySQL Performance Using MySQLTuner
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Optimize MySQL Performance Using MySQLTuner</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-06-27T00:00:00Z">Tuesday, June 27, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fhow-to-optimize-mysql-performance-using-mysqltuner%2f&via=linode&text=How%20to%20Optimize%20MySQL%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fhow-to-optimize-mysql-performance-using-mysqltuner%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fhow-to-optimize-mysql-performance-using-mysqltuner%2f&t=How%20to%20Optimize%20MySQL%20Performance%20Using%20MySQLTuner" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after <a href="/docs/websites/apache-tips-and-tricks/tuning-your-apache-server">tuning Apache</a> to handle larger loads, it is beneficial to tune MySQL to additional connections.</p>
+
+<p><img src="/docs/assets/optimize_mysql_using_mysql_tuner_title_graphic.png" alt="MySQL tuning title graphic" /></p>
+
+<p>Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a <a href="https://www.linode.com/pricing#high-memory">high memory Linode</a> for such setups.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps in this guide require root privileges. Be sure to run the steps below as <strong>root</strong> or with the <code>sudo</code> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="tools-that-can-help-optimize-mysql">Tools That Can Help Optimize MySQL</h2>
+
+<p>In order to determine if your MySQL database needs to be reconfigured, it is best to look at how your resources are performing now. This can be done with the <a href="/docs/uptime/monitoring/top-htop-iotop">top command</a> or with the Linode <a href="/docs/platform/longview/longview">Longview</a> service. At the very least, you should familiarize yourself with the RAM and CPU usage of your server, which can be discovered with these commands:</p>
+
+<pre><code>echo [PID]  [MEM]  [PATH] &amp;&amp;  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
+ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20
+</code></pre>
+
+<h3 id="mysqltuner">MySQLTuner</h3>
+
+<p>The <a href="http://mysqltuner.com/">MySQLTuner</a> script assesses your MySQL installation, and then outputs suggestions for increasing your server&rsquo;s performance and stability.</p>
+
+<ol>
+<li><p>Download and run MySQLTuner:</p>
+
+<pre><code>curl -L http://mysqltuner.pl/ | perl
+</code></pre></li>
+
+<li><p>It outputs your results:</p>
+
+<pre><code> &gt;&gt;  MySQLTuner 1.4.0 - Major Hayden &lt;major@mhtx.net&gt;
+ &gt;&gt;  Bug reports, feature requests, and downloads at http://mysqltuner.com/
+ &gt;&gt;  Run with '--help' for additional options and output filtering
+Please enter your MySQL administrative login: root
+Please enter your MySQL administrative password:
+[OK] Currently running supported MySQL version 5.5.41-0+wheezy1
+[OK] Operating on 64-bit architecture
+
+-------- Storage Engine Statistics -------------------------------------------
+[--] Status: +ARCHIVE +BLACKHOLE +CSV -FEDERATED +InnoDB +MRG_MYISAM
+[--] Data in InnoDB tables: 1M (Tables: 11)
+[--] Data in PERFORMANCE_SCHEMA tables: 0B (Tables: 17)
+[!!] Total fragmented tables: 11
+
+-------- Security Recommendations  -------------------------------------------
+[OK] All database users have passwords assigned
+
+-------- Performance Metrics -------------------------------------------------
+[--] Up for: 47s (113 q [2.404 qps], 42 conn, TX: 19K, RX: 7K)
+[--] Reads / Writes: 100% / 0%
+[--] Total buffers: 192.0M global + 2.7M per thread (151 max threads)
+[OK] Maximum possible memory usage: 597.8M (60% of installed RAM)
+[OK] Slow queries: 0% (0/113)
+[OK] Highest usage of available connections: 0% (1/151)
+[OK] Key buffer size / total MyISAM indexes: 16.0M/99.0K
+[!!] Query cache efficiency: 0.0% (0 cached / 71 selects)
+[OK] Query cache prunes per day: 0
+[OK] Temporary tables created on disk: 25% (54 on disk / 213 total)
+[OK] Thread cache hit rate: 97% (1 created / 42 connections)
+[OK] Table cache hit rate: 24% (52 open / 215 opened)
+[OK] Open file limit used: 4% (48/1K)
+[OK] Table locks acquired immediately: 100% (62 immediate / 62 locks)
+[OK] InnoDB buffer pool / data size: 128.0M/1.2M
+[OK] InnoDB log waits: 0
+-------- Recommendations -----------------------------------------------------
+General recommendations:
+    Run OPTIMIZE TABLE to defragment tables for better performance
+    Enable the slow query log to troubleshoot bad queries
+Variables to adjust:
+    query_cache_limit (&gt; 1M, or use smaller result sets)
+</code></pre>
+
+<p>MySQLTuner offers suggestions regarding how to better the database&rsquo;s performance. If you are wary about updating your database on your own, following MySQLTuner&rsquo;s suggestions is one of the safer ways to improve your database performance.</p></li>
+</ol>
+
+<h2 id="tuning-mysql">Tuning MySQL</h2>
+
+<p>When altering the MySQL configuration, be alert to the changes and how they affect your database. Even when following the instructions of programs such as <a href="#mysqltuner">MySQLTuner</a>, it is best to have some understanding of the process.</p>
+
+<p>The file you are changing is located at <code>/etc/mysql/my.cnf</code>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>Prior to updating the MySQL configuration, create a backup of the <code>my.cnf</code> file:</p>
+
+<p>cp /etc/mysql/my.cnf ~/my.cnf.backup</p>
+
+<p>Best practice suggests that you make small changes, one at a time, and then monitor the server after each change. You should restart MySQL after each change:</p>
+
+<ul>
+<li>For systems without systemd:</li>
+</ul>
+
+<p>systemctl restart mysqld</p>
+
+<ul>
+<li>For distributions which don&rsquo;t use systemd:</li>
+</ul>
+
+<p>service mysql restart</p>
+
+<p>When changing values in the <code>my.cnf</code> file, be sure that the line you are changing hasn&rsquo;t been commented out with the pound (<code>#</code>) prefix.</p>
+</div>
+</blockquote>
+
+
+<h4 id="key-buffer">key_buffer</h4>
+
+<p>Changing the <code>key_buffer</code> allocates more memory to MySQL, which can substantially speed up your databases, assuming you have the memory free. The <code>key_buffer</code> size should generally take up no more than 25 percent of the system memory when using the MyISAM table engine, and up to 70 percent for InnoDB. If the value is set too high, resources are wasted.</p>
+
+<p>According to MySQL&rsquo;s documentation, for servers with 256MB (or more) of RAM with many tables, a setting of 64M is recommended. Servers with 128MB of RAM and fewer tables can be set to 16M, the default value. Websites with even fewer resources and tables can have this value set lower.</p>
+
+<h4 id="max-allowed-packet">max_allowed_packet</h4>
+
+<p>This parameter lets you set the maximum size of a sendable packet. A packet is a single SQL state, a single row being sent to a client, or a log being sent from a master to a slave. If you know that your MySQL server is going to be processing large packets, it is best to increase this to the size of your largest packet. Should this value be set too small, you would receive an error in your error log.</p>
+
+<h4 id="thread-stack">thread_stack</h4>
+
+<p>This value contains the stack size for each thread. MySQL considers the default value of the <code>thread_stack</code> variable sufficient for normal use; however, should an error relating to the <code>thread_stack</code> be logged, this can be increased.</p>
+
+<h4 id="thread-cache-size">thread_cache_size</h4>
+
+<p>If <code>thread_cache_size</code> is &ldquo;turned off&rdquo; (set to 0), then any new connection being made needs a new thread created for it. When the connections disengage the thread is destroyed. Otherwise, this value sets the number of unused threads to store in a cache until they need to be used for a connection. Generally this setting has little affect on performance, unless you are receiving hundreds of connections per minute, at which time this value should be increased so the majority of connections can be made on cached threads.</p>
+
+<h4 id="max-connections">max_connections</h4>
+
+<p>This parameter sets the maximum amount of <em>concurrent</em> connections. It is best to consider the maximum amount of connections you have had in the past before setting this number, so you&rsquo;ll have a buffer between that upper number and the <code>max_connections</code> value. Note, this does not indicate the maximum amount of <em>users</em> on your website at one time; rather it shows the maximum amount of users making <em>requests</em> concurrently.</p>
+
+<h4 id="table-cache">table_cache</h4>
+
+<p>This value should be kept higher than your <code>open_tables</code> value. To determine this value use:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SHOW</span> <span class="n">STATUS</span> <span class="k">LIKE</span> <span class="s1">&#39;open%&#39;</span><span class="p">;</span></code></pre></div>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://dev.mysql.com/doc/index.html">MySQL Documentation Library</a></li>
+
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html">MySQL Tuning Server Parameters</a></li>
+
+<li><a href="http://mysqltuner.com/">MySQLTuner</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/">Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu/">Install and Configure MySQL Workbench on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-on-centos-7/">LAMP on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/development/java-development-wildfly-centos-7/">Java Development with WildFly on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/">Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#tools-that-can-help-optimize-mysql">Tools That Can Help Optimize MySQL</a>
+<ul>
+<li><a href="#mysqltuner">MySQLTuner</a></li>
+</ul></li>
+<li><a href="#tuning-mysql">Tuning MySQL</a>
+<ul>
+<li>
+<ul>
+<li><a href="#key-buffer">key_buffer</a></li>
+<li><a href="#max-allowed-packet">max_allowed_packet</a></li>
+<li><a href="#thread-stack">thread_stack</a></li>
+<li><a href="#thread-cache-size">thread_cache_size</a></li>
+<li><a href="#max-connections">max_connections</a></li>
+<li><a href="#table-cache">table_cache</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

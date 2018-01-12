@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Pritunl VPN Server and Management Panel on Ubuntu 14.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Set up Pritunl, an open source VPN server with an intuitive web interface">
+        <meta name="keywords" content="pritunl, vpn, vpn server, ubuntu, ubuntu 14.04">
+        
+        <meta property="og:title" content="Pritunl VPN Server and Management Panel on Ubuntu 14.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/vpn/pritunl-vpn-ubuntu/">
+        <meta property="og:description" content="Set up Pritunl, an open source VPN server with an intuitive web interface">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/vpn/pritunl-vpn-ubuntu/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/vpn/">VPNs: Virtual Private Networks</a>
+  
+</li>
+
+
+<li>
+  
+  Pritunl VPN Server and Management Panel on Ubuntu 14.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Pritunl VPN Server and Management Panel on Ubuntu 14.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-07-27T00:00:00Z">Monday, July 27, 2015</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/agottschling">Andrew Gottschling
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2fpritunl-vpn-ubuntu%2f&via=linode&text=Pritunl%20VPN%20Server%20and%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2fpritunl-vpn-ubuntu%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2fpritunl-vpn-ubuntu%2f&t=Pritunl%20VPN%20Server%20and%20Management%20Panel%20on%20Ubuntu%2014.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/vpn/pritunl-vpn-ubuntu.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/vpn/pritunl-vpn-ubuntu.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface. This tutorial will show you how to install, configure, and connect to Pritunl VPN.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the sudo command, reference the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Have a Linode running Ubuntu 14.04. Follow the <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/security/securing-your-server">Securing Your Server</a> guides for help configuring the Linode.</p></li>
+
+<li><p>Ensure the Linode is up-to-date:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+
+<li><p>Add Pritunl’s APT repository and update the package lists:</p>
+
+<pre><code>echo &quot;deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse&quot; &gt; /etc/apt/sources.list.d/mongodb-org-3.0.list
+echo &quot;deb http://repo.pritunl.com/stable/apt trusty main&quot; &gt; /etc/apt/sources.list.d/pritunl.list
+</code></pre></li>
+
+<li><p>Add repo keys for apt to validate against</p>
+
+<pre><code>apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7F0CEB10
+apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
+</code></pre></li>
+
+<li><p>Update the package cache</p>
+
+<pre><code>sudo apt-get update
+</code></pre></li>
+
+<li><p>If you have a firewall running on the Linode, add exceptions for Pritunl’s Web UI and server:</p>
+
+<pre><code>sudo iptables -A INPUT -p udp -m udp --sport 9700 --dport 1025:65355 -j ACCEPT
+sudo iptables -A INPUT -p tcp -m tcp --sport 9700 --dport 1025:65355 -j ACCEPT
+sudo iptables -A INPUT -p `your protocol here` -m `your protocol here` --sport `your_port_here` --dport 1025:65355 -j ACCEPT
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;ve configured the firewall according to the <a href="/docs/security/securing-your-server">Securing Your Server</a> guide, be sure to add these port ranges to the <code>/etc/iptables.firewall.rules</code> file.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="install-pritunl">Install Pritunl</h2>
+
+<ol>
+<li><p>Install Pritunl and its required dependencies:</p>
+
+<pre><code>sudo apt-get install python-software-properties pritunl mongodb-org
+</code></pre></li>
+
+<li><p>Start the Pritunl service:</p>
+
+<pre><code>sudo service pritunl start
+</code></pre></li>
+
+<li><p>Open a web browser on your computer, and navigate to <code>https://123.45.67.89:9700</code>, replacing <code>123.45.67.89</code> with your Linode&rsquo;s IP address. You will see a screen similar to this:</p>
+
+<p><a href="/docs/assets/pritunl-db-setup.png"><img src="/docs/assets/pritunl-db-setup-resized.png" alt="Pritunl DB setup screen" /></a></p></li>
+
+<li><p>Connect to the database. The installer has already populated the mongoDB URI. If it looks correct, click <strong>Save</strong>.</p>
+
+<p>Alternatively, you may enter any valid MongoDB URI to use as the database for Pritunl.</p></li>
+</ol>
+
+<h2 id="configuring-pritunl">Configuring Pritunl</h2>
+
+<ol>
+<li><p>Login with the following information:</p>
+
+<ul>
+<li><strong>Username:</strong> <em>pritunl</em></li>
+<li><strong>Password:</strong> <em>pritunl</em></li>
+</ul></li>
+
+<li><p>The Inital Setup form will appear:</p>
+
+<p><img src="/docs/assets/pritunl-setup.png" alt="Pritunl setup screen" /></p>
+
+<p>Fill out the form, and press <strong>Save</strong>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>The SMTP settings are not required and will not do anything without a license.</p>
+
+<p>If you have a license, Click on the <strong>Upgrade to Premium</strong> button on the upper right, and use the form to enter your license.</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Go to the <strong>Users</strong> tab. Here, you will create your organizations and users. Begin by clicking <strong>Add Organization</strong> and entering a name. Next, click <strong>Add User</strong> and add a user to the organization you just created.</p></li>
+
+<li><p>Go to the <strong>Servers</strong> tab. Click <strong>Add server</strong>. You will see a screen like the following:</p>
+
+<p><img src="/docs/assets/pritunl-server-conf.png" alt="Pritunl server setup screen" /></p>
+
+<p>If a firewall is set up, make sure that the <strong>Port</strong> and <strong>Protocol</strong> fields match the firewall exceptions added earlier.</p></li>
+
+<li><p>Click the <strong>Attach Organization</strong> button. Attach the organization to the server.</p></li>
+</ol>
+
+<h2 id="connecting-to-the-server">Connecting to the Server</h2>
+
+<p>To connect to the server, you can use any OpenVPN compatible client. For Android or iOS, you can use the free <strong>OpenVPN Connect</strong> app available in the <a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn">Google Play</a> or <a href="https://itunes.apple.com/us/app/openvpn-connect/id590379981">iOS App Store</a>. For Linux, there is an official client available for Ubuntu. Mac and Windows users can use any OpenVPN client.</p>
+
+<p>To get the keys, there are two options:</p>
+
+<ul>
+<li><p>Next to your username, there is a Online/Offline indicator. Next to that, there are two buttons. One with a link icon, and another with a download icon.</p></li>
+
+<li><p>The download icon will download the keyfiles as a <strong>TAR</strong> file.</p></li>
+</ul>
+
+<p>The link icon will display a link that you can give to your users to download their key. These links are unique to the user, and are temporary and expire after they have been used or within 24 hours, whichever comes first.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/">Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/">Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/email/zimbra/zimbra-on-ubuntu-14-04/">Install Zimbra Open Source Edition on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-on-ubuntu-14-04/">Apache Web Server on Ubuntu 14.04 LTS</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/install-openvpn-access-server-on-linux/">Install OpenVPN Access Server on Linux for Secure Communications</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-pritunl">Install Pritunl</a></li>
+<li><a href="#configuring-pritunl">Configuring Pritunl</a></li>
+<li><a href="#connecting-to-the-server">Connecting to the Server</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

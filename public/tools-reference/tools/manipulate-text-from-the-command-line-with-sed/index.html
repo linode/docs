@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Manipulate Text from the Command Line with sed</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Practical examples for using sed to transform text files and streams.">
+        <meta name="keywords" content="sed, find and replace, regular expression, unix">
+        
+        <meta property="og:title" content="Manipulate Text from the Command Line with sed">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed/">
+        <meta property="og:description" content="Practical examples for using sed to transform text files and streams.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/tools/">Tools</a>
+  
+</li>
+
+
+<li>
+  
+  Manipulate Text from the Command Line with sed
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Manipulate Text from the Command Line with sed</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-03-23T00:00:00Z">Thursday, March 23, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fmanipulate-text-from-the-command-line-with-sed%2f&via=linode&text=Manipulate%20Text%20from%20the%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fmanipulate-text-from-the-command-line-with-sed%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fmanipulate-text-from-the-command-line-with-sed%2f&t=Manipulate%20Text%20from%20the%20Command%20Line%20with%20sed" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The traditional Unix utility <code>sed</code> makes it possible to manipulate strings and streams of text from the command line without using a text editing application. <code>sed</code> is useful in a number of different contexts, including finding and replacing strings of text in a large number of files, manipulating text for <a href="http://linode.com/stackscripts/">Stack Scripts</a> and other kinds of scripts, as well as a component in basic shell scripting.</p>
+
+<p><img src="/docs/assets/manipulate_text_from_the_command_line_with_sed.png" alt="Manipulate Text from the Command Line with sed" title="Manipulate Text from the Command Line with sed" /></p>
+
+<p>This document provides a gentle overview of <code>sed</code> usage, accompanied by a number of practical applications of <code>sed</code>. If you find this guide helpful, please consider our guide to <a href="/docs/using-linux/administration-basics">basic administration practices</a> or the rest of the <a href="/docs/tools-reference/">Tools &amp; Reference section</a>.</p>
+
+<h2 id="using-sed">Using Sed</h2>
+
+<p>In this guide, <code>sed</code> refers to recent versions of &ldquo;GNU sed&rdquo; which are included by default in all images provided by Linode, and as part of the common &ldquo;base&rdquo; selection of packages provided in nearly all distributions of Linux-based operating systems.</p>
+
+<h3 id="the-sed-command">The Sed Command</h3>
+
+<p><code>sed</code> commands take a particular form. Consider the following example:</p>
+
+<pre><code>sed -i -r 's/^(billy|tom)@.*example\.org/\1@example.com/' ~/roster.txt
+</code></pre>
+
+<p>This command begins with the invocation (<code>sed</code>) followed by the <code>-i</code> option. <code>-i</code> allows sed to perform the modification &ldquo;in place&rdquo; on the file specified. The <code>-r</code> option forces <code>sed</code> to use an extended regular syntax. The next argument enclosed in single quotes (e.g. <code>'</code>) specifies the &ldquo;substitution&rdquo; or search and replace function. The final term of a <code>sed</code> command specifies the file object that the substitution function will be applied to.</p>
+
+<p><code>sed</code> can also be used to modify streams of text rather than files, so often a command might take the form of:</p>
+
+<pre><code>cat ~/input-file | sed -r 's/^(billy|tom)@.*example\.org/\1@example.com/' &gt; ~/output-file
+</code></pre>
+
+<p>In this case, the contents of the stream of data which is created by running the <code>cat</code> command on the <code>~/input-file</code> is filtered through the <code>sed</code> operation. The result is written to the <code>~/output-file</code>. Generally, the left-hand side of the pipe would contain some other form of input, but you do not need to <code>cat</code> files into <code>sed</code> as the above command is equivalent to the following:</p>
+
+<pre><code>sed -r 's/^(billy|tom)@.*example\.org/\1@example.com/' ~/input-file &gt; ~/output-file
+</code></pre>
+
+<p>Unless otherwise directed, <code>sed</code> will output the transformed text to standard output.</p>
+
+<h3 id="sed-substitutions">Sed Substitutions</h3>
+
+<p>The basic <code>'s///'</code> form provides the core of <code>sed</code> functionality in common use. The <code>s</code> indicates that the script will perform a substitution. The next character introduces a character to separate the &ldquo;find&rdquo; and &ldquo;replace&rdquo; strings and to terminate the substitution script. By convention the separation characters are <code>/</code> characters, but in cases where you are searching for data that contains <code>/</code> characters, it is possible to use another separating character. Thus, the following two strings are functionally identical:</p>
+
+<pre><code>'s/look for \/ characters/I found several \//'
+'s;look for / characters;I found several /;'
+</code></pre>
+
+<p>Sed uses regular expressions in the &ldquo;search&rdquo; part of the substitution syntax. Most characters in regular expressions match with input data literally; however, there are some sequences that carry special significance. If you want to match these characters literally you can use the escape character <code>\</code> to transform the <em>next</em> character into a literal match. Consider the following characters with special significance in <code>sed</code> substitution scripts:</p>
+
+<ul>
+<li>The <code>.</code> symbol matches any character.</li>
+<li>The <code>*</code> symbol causes the character immediately proceeding this character to successfully match to <em>zero</em> or more instances of that character in the data set.</li>
+<li>The <code>+</code> symbol causes the character immediately proceeding this character to successfully match to <em>one</em> or more instances of that character in the data set.</li>
+<li>Square brackets (<code>[]</code>) enclose a set of characters that match against any member of the set of specified characters. When prefaced with a caret, as in <code>[^abc]</code>, it matches <em>none</em> of the characters specified in the set.</li>
+<li>Parenthetical characters (left <code>(</code> or right <code>)</code>) both allow you to write more complex expressions and also create &ldquo;captures&rdquo; that allow you to use sequences from the matched text in the replacement string. Captured sequences are available in the order that they were captured with <code>\[number]</code> where <code>[number]</code> corresponds to the number of the capture.</li>
+<li>The <code>^</code> character matches the beginning of a line.</li>
+<li>The <code>$</code> character matches the end of a line.</li>
+<li>The <code>\</code> character, as previously stated, escapes the following character for literal matching if it caries additional meaning.</li>
+<li>The <code>|</code> character provides an &ldquo;OR&rdquo; operator, so the sequence <code>^(www|ftp)\.</code> would match a line that began with the characters <code>www</code> or <code>ftp</code>.</li>
+</ul>
+
+<p>While these characters provide the foundation of writing matching patterns, there are other significant characters and powerful matching abstractions. Documenting the full capabilities of the <code>sed</code> regular expression syntax is beyond the scope of this guide; however you can learn more about <code>sed</code> commands using the <code>info sed</code> command.</p>
+
+<h2 id="finding-and-replacing-strings-within-files-using-sed">Finding and Replacing Strings within files Using Sed</h2>
+
+<p>In some cases, the &ldquo;in place&rdquo; substitution with the <code>-i</code> argument provides the desired behavior. However, if you want to test a sed operation, or provide a &ldquo;safety net&rdquo;, consider the following command:</p>
+
+<pre><code>sed -r -i.bak 's/example/example/g' ~/roster.txt
+</code></pre>
+
+<p>In this case, the existing file is copied to <code>~/roster.txt.bak</code> and the replacements are made automatically to <code>~/roster.txt</code>. If you want to reverse the changes, issue a command similar to <code>mv ~/roster.txt.bak ~/roster.txt</code>.</p>
+
+<p>The <code>g</code> option appended to the substitution statement sets a &ldquo;global&rdquo; mode that forces <code>sed</code> to replace multiple instances of the match on the same line.</p>
+
+<h2 id="changing-file-extensions-with-sed">Changing File Extensions with Sed</h2>
+
+<p>It&rsquo;s possible to use <code>sed</code> to modify streams of text in shell scripts. Consider the following bash function:</p>
+
+<dl class="file">
+<dt>
+
+
+		bash function 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">txt2text <span class="o">(){</span>
+    <span class="k">for</span> i in <span class="sb">`</span>ls -1<span class="sb">`</span>
+    <span class="k">do</span>
+        mv <span class="nv">$i</span> <span class="sb">`</span><span class="nb">echo</span> <span class="nv">$i</span> <span class="p">|</span> sed <span class="s1">&#39;s/.*\.txt$/.text/&#39;</span><span class="sb">`</span>
+    <span class="k">done</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>When this function is called, the following operations are performed: for every item <code>i</code> (the file names in the current directory,) the move command (<code>mv</code>) is issued with the existing file name and the old file name filtered through a <code>sed</code> function. The <code>sed</code> function matches for the string of characters <code>.txt</code> at the end of the file name, and replaces that with <code>.text</code>. If the sed script fails to match, the original file name will be output and the move will fail.</p>
+
+<h2 id="deleting-lines-from-files-using-sed">Deleting Lines From Files Using Sed</h2>
+
+<p>Consider the following expression:</p>
+
+<pre><code>sed -i '56d' ~/.ssh/known_hosts
+</code></pre>
+
+<p>In this command, the 56th line of the ssh &ldquo;known hosts&rdquo; file will be deleted. Commands in this form are useful for deleting a host key for a host that has changed from the <code>known_hosts</code> file, as is the case after redeploying a system or moving an IP or domain to a new host.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="/docs/using-linux/administration-basics">Administration Basics</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/">View and Follow the End of Text Files with tail</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/tools/create-file-system-links-with-ln/">Create File System Links with ln</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/using-fetchmail-to-retrieve-email/">Using Fetchmail to Retrieve Email</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#using-sed">Using Sed</a>
+<ul>
+<li><a href="#the-sed-command">The Sed Command</a></li>
+<li><a href="#sed-substitutions">Sed Substitutions</a></li>
+</ul></li>
+<li><a href="#finding-and-replacing-strings-within-files-using-sed">Finding and Replacing Strings within files Using Sed</a></li>
+<li><a href="#changing-file-extensions-with-sed">Changing File Extensions with Sed</a></li>
+<li><a href="#deleting-lines-from-files-using-sed">Deleting Lines From Files Using Sed</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

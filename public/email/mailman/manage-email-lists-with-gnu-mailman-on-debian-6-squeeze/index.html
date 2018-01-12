@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Manage Email Lists with GNU Mailman on Debian 6 (Squeeze)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use the GNU Mailman software to manage email listservs.">
+        <meta name="keywords" content="mailman, listserv, email, postfix">
+        
+        <meta property="og:title" content="Manage Email Lists with GNU Mailman on Debian 6 (Squeeze)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/">
+        <meta property="og:description" content="Use the GNU Mailman software to manage email listservs.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/mailman/">Mailman Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Manage Email Lists with GNU Mailman on Debian 6 (Squeeze)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Manage Email Lists with GNU Mailman on Debian 6 (Squeeze)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-05-23T00:00:00Z">Monday, May 23, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fmailman%2fmanage-email-lists-with-gnu-mailman-on-debian-6-squeeze%2f&via=linode&text=Manage%20Email%20Lists%20with%20GNU%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fmailman%2fmanage-email-lists-with-gnu-mailman-on-debian-6-squeeze%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fmailman%2fmanage-email-lists-with-gnu-mailman-on-debian-6-squeeze%2f&t=Manage%20Email%20Lists%20with%20GNU%20Mailman%20on%20Debian%206%20%28Squeeze%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>GNU Mailman is a commonly used Listserv Management application that allows users to create and manage discussion and announcement email lists. Mailman includes support for numerous features including a web-based administrative interface, multiple domains, lists, and complex moderation and access control tools. The Mailman software is primarily written in the Python programing language and has been a popular choice for managing email lists for more than a decade.</p>
+
+<p>Be sure to review this guide in its entirety before beginning the procedure outlined below. If you have an existing mail system configured before you begin this, take special care to ensure that installing Mailman will not conflict with delivery of existing mail.</p>
+
+<h1 id="set-the-hostname">Set the Hostname</h1>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<h1 id="installing-mailman">Installing Mailman</h1>
+
+<p>Before proceeding with the installation of Mailman, make sure your package repositories and installed programs are up to date by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre>
+
+<p>Mailman can be configured to use a number of different mail transfer agents. We recommend using the postfix MTA, though mailman will work with whatever MTA you have installed. If you do not have any MTA installed, issue the following command to install postfix:</p>
+
+<pre><code>apt-get install postfix
+</code></pre>
+
+<p>During the postfix installation, you will want to select &ldquo;<strong>Internet Site</strong>&rdquo; as the &ldquo;General type of mail configuration.&rdquo; You will also want to set the host or domain name for your server as the system name, (e.g. <code>example.com</code> or similar.) Now install Mailman with the following command:</p>
+
+<pre><code>apt-get install mailman
+</code></pre>
+
+<p>During the Mailman installation, you will be required to specify the languages that you wish your Mailman instance support. Select all required languages before continuing. The installation process will also provide a note regarding the next step of the installation process, which you can accept and allow the installation process to continue.</p>
+
+<h1 id="configure-mailman">Configure Mailman</h1>
+
+<p>Consider the &ldquo;<a href="/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze#configure-virtual-hosting">Configure Virtual Hosting</a>&rdquo; section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a &ldquo;base&rdquo; list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:</p>
+
+<pre><code>newlist mailman
+</code></pre>
+
+<p>During the list creation process, Mailman will prompt you for the administrators email address and an initial mailman password. Mailman will then produce the following output that you will want to include in your <code>/etc/aliases</code> file.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/aliases 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="se">\#\#</span> mailman mailing list mailman: <span class="s2">&#34;|/var/lib/mailman/mail/mailman post mailman&#34;</span> mailman-admin: <span class="s2">&#34;|/var/lib/mailman/mail/mailman admin mailman&#34;</span> mailman-bounces: <span class="s2">&#34;|/var/lib/mailman/mail/mailman bounces mailman&#34;</span> mailman-confirm: <span class="s2">&#34;|/var/lib/mailman/mail/mailman confirm mailman&#34;</span> mailman-join: <span class="s2">&#34;|/var/lib/mailman/mail/mailman join mailman&#34;</span> mailman-leave: <span class="s2">&#34;|/var/lib/mailman/mail/mailman leave mailman&#34;</span> mailman-owner: <span class="s2">&#34;|/var/lib/mailman/mail/mailman owner mailman&#34;</span> mailman-request: <span class="s2">&#34;|/var/lib/mailman/mail/mailman request mailman&#34;</span> mailman-subscribe: <span class="s2">&#34;|/var/lib/mailman/mail/mailman subscribe mailman&#34;</span> mailman-unsubscribe: <span class="s2">&#34;|/var/lib/mailman/mail/mailman unsubscribe mailman&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Replace <code>example.com</code> and <code>lists.example.com</code> with the relevant domains for your instance. Ensure that you have configured the <a href="/docs/dns-guides/introduction-to-dns#mx">MX Records</a> for both domains that you want to receive email with. Additionally, add the following lines to your <code>/etc/postfix/master.cf</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/master.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mailman unix  -       n       n       -       -       pipe
+  <span class="nv">flags</span><span class="o">=</span>FR <span class="nv">user</span><span class="o">=</span>list
+  <span class="nv">argv</span><span class="o">=</span>/var/lib/mailman/bin/postfix-to-mailman.py <span class="si">${</span><span class="nv">nexthop</span><span class="si">}</span> <span class="si">${</span><span class="nv">mailbox</span><span class="si">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>These lines enable postfix to hand off email to Mailman for processing directly. Add the following line to the <code>/etc/postfix/transport</code> file, modifying <code>lists.example.com</code> as needed.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/transport 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span><span class="lnt">51</span><span class="lnt">52</span><span class="lnt">53</span><span class="lnt">54</span><span class="lnt">55</span><span class="lnt">56</span><span class="lnt">57</span><span class="lnt">58</span><span class="lnt">59</span><span class="lnt">60</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">lists.example.com   mailman:
+
+<span class="c1"># Configure Virtual Hosting
+</span><span class="c1"></span>
+
+Finally, modify the <span class="sb">`</span>/etc/mailman/mm_cfg.py<span class="sb">`</span> file to <span class="nb">set</span> the following values. After you<span class="s1">&#39;ve edited the `/etc/postfix/transport` file, and after every successive edit of this file, issue the following command to rebuild postfix&#39;</span>s transport database:
+
+&lt;dl <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;file-excerpt&#34;</span>&gt;
+&lt;dt&gt;
+
+
+		/etc/aliases 
+
+
+&lt;/dt&gt;
+&lt;dd&gt;
+
+
+
+
+&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;highlight&#34;</span>&gt;&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;chroma&#34;</span>&gt;
+&lt;table <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lntable&#34;</span>&gt;&lt;tr&gt;&lt;td <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lntd&#34;</span>&gt;
+&lt;pre <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;chroma&#34;</span>&gt;&lt;code <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;language-bash&#34;</span> data-lang<span class="o">=</span><span class="s2">&#34;bash&#34;</span>&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lnt&#34;</span>&gt;1&lt;/span&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lnt&#34;</span>&gt;2&lt;/span&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lnt&#34;</span>&gt;3&lt;/span&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lnt&#34;</span>&gt;4&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lntd&#34;</span>&gt;
+&lt;pre <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;chroma&#34;</span>&gt;&lt;code <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;language-bash&#34;</span> data-lang<span class="o">=</span><span class="s2">&#34;bash&#34;</span>&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;nv&#34;</span>&gt;relay_domains&lt;/span&gt; &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;o&#34;</span>&gt;<span class="o">=</span>&lt;/span&gt; &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;nv&#34;</span>&gt;<span class="nv">$mydestination</span>&lt;/span&gt;, lists.example.com
+&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;nv&#34;</span>&gt;relay_recipient_maps&lt;/span&gt; &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;o&#34;</span>&gt;<span class="o">=</span>&lt;/span&gt; hash:/var/lib/mailman/data/virtual-mailman
+&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;nv&#34;</span>&gt;transport_maps&lt;/span&gt; &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;o&#34;</span>&gt;<span class="o">=</span>&lt;/span&gt; hash:/etc/postfix/transport
+&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;nv&#34;</span>&gt;mailman_destination_recipient_limit&lt;/span&gt; &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;o&#34;</span>&gt;<span class="o">=</span>&lt;/span&gt; &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;m&#34;</span>&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+
+
+This controls how Mailman processes the mail that it receives from postfix. Continue configuring Mailman by editing following file to update Mailman to interact properly with postfix:
+
+&lt;dl <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;file-excerpt&#34;</span>&gt;
+&lt;dt&gt;
+
+
+		/etc/postfix/master.cf 
+
+
+&lt;/dt&gt;
+&lt;dd&gt;
+
+
+
+
+&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;highlight&#34;</span>&gt;&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;chroma&#34;</span>&gt;
+&lt;table <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lntable&#34;</span>&gt;&lt;tr&gt;&lt;td <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lntd&#34;</span>&gt;
+&lt;pre <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;chroma&#34;</span>&gt;&lt;code <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;language-bash&#34;</span> data-lang<span class="o">=</span><span class="s2">&#34;bash&#34;</span>&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lnt&#34;</span>&gt;1&lt;/span&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lnt&#34;</span>&gt;2&lt;/span&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lnt&#34;</span>&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lntd&#34;</span>&gt;
+&lt;pre <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;chroma&#34;</span>&gt;&lt;code <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;language-bash&#34;</span> data-lang<span class="o">=</span><span class="s2">&#34;bash&#34;</span>&gt;mailman unix  -       n       n       -       -       pipe
+  &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;nv&#34;</span>&gt;flags&lt;/span&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;o&#34;</span>&gt;<span class="o">=</span>&lt;/span&gt;FR &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;nv&#34;</span>&gt;user&lt;/span&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;o&#34;</span>&gt;<span class="o">=</span>&lt;/span&gt;list
+  &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;nv&#34;</span>&gt;argv&lt;/span&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;o&#34;</span>&gt;<span class="o">=</span>&lt;/span&gt;/var/lib/mailman/bin/postfix-to-mailman.py &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;si&#34;</span>&gt;<span class="si">${</span><span class="p">&lt;/span&gt;&lt;span class=</span><span class="s2">&#34;nv&#34;</span><span class="p">&gt;nexthop&lt;/span&gt;&lt;span class=</span><span class="s2">&#34;si&#34;</span><span class="p">&gt;</span><span class="si">}</span>&lt;/span&gt; &lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;si&#34;</span>&gt;<span class="si">${</span><span class="p">&lt;/span&gt;&lt;span class=</span><span class="s2">&#34;nv&#34;</span><span class="p">&gt;mailbox&lt;/span&gt;&lt;span class=</span><span class="s2">&#34;si&#34;</span><span class="p">&gt;</span><span class="si">}</span>&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p><dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/transport 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">lists.example.com   mailman:</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</p>
+
+<p>Ensure that the fields <code>DEFAULT_EMAIL_HOST</code> and <code>DEFAULT_URL_HOST</code> match the sub-domain you are using for lists (e.g. <code>lists.example.com</code>,) as follows:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mailman/mm\\_cfg.py 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#-------------------------------------------------------------
+</span><span class="c1"># Default domain for email addresses of newly created MLs
+</span><span class="c1"></span><span class="nv">DEFAULT_EMAIL_HOST</span> <span class="o">=</span> <span class="s1">&#39;lists.example.com&#39;</span>
+<span class="c1">#-------------------------------------------------------------
+</span><span class="c1"># Default host for web interface of newly created MLs
+</span><span class="c1"></span><span class="nv">DEFAULT_URL_HOST</span>   <span class="o">=</span> <span class="s1">&#39;lists.example.com&#39;</span>
+<span class="c1">#-------------------------------------------------------------
+</span><span class="c1"># Required when setting any of its arguments.
+</span><span class="c1"></span>add_virtualhost<span class="o">(</span>DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mailman/mm\\_cfg.py 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">MTA</span> <span class="o">=</span> <span class="s1">&#39;Postfix&#39;</span>
+<span class="nv">POSTFIX_STYLE_VIRTUAL_DOMAINS</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;lists.example.com&#39;</span><span class="o">]</span>
+<span class="c1"># alias for postmaster, abuse and mailer-daemon
+</span><span class="c1"></span><span class="nv">DEB_LISTMASTER</span> <span class="o">=</span> <span class="s1">&#39;postmaster@example.com&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you need to configure additional domains for use, ensure that you&rsquo;ve made the proper additions to the <code>relay_domains</code> field in the <code>main.cf</code> file and <code>/etc/postfix/transport</code> file. Append an item to the <code>POSTFIX_STYLE_VIRTUAL_DOMAINS</code> line and create additional <code>add_virtualhost</code> calls in the following form for every new domain:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mailman/mm\\_cfg.py 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#-------------------------------------------------------------
+</span><span class="c1"># Default domain for email addresses of newly created MLs
+</span><span class="c1"></span><span class="nv">DEFAULT_EMAIL_HOST</span> <span class="o">=</span> <span class="s1">&#39;lists.example.com&#39;</span>
+<span class="c1">#-------------------------------------------------------------
+</span><span class="c1"># Default host for web interface of newly created MLs
+</span><span class="c1"></span><span class="nv">DEFAULT_URL_HOST</span>   <span class="o">=</span> <span class="s1">&#39;lists.example.com&#39;</span>
+<span class="c1">#-------------------------------------------------------------
+</span><span class="c1"># Required when setting any of its arguments.
+</span><span class="c1"></span>add_virtualhost<span class="o">(</span>DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h1 id="modify-the-following-line-if-it-exists">Modify the following line, if it exists</h1>
+
+<p>POSTFIX_STYLE_VIRTUAL_DOMAINS = [&lsquo;lists.example.com&rsquo;, &lsquo;lists.example.org&rsquo;]</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mailman/mm\\_cfg.py 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">add_virtualhost<span class="o">(</span><span class="s1">&#39;lists.example.org&#39;</span>, <span class="s1">&#39;lists.example.org&#39;</span><span class="o">)</span>
+
+<span class="c1"># Modify the following line, if it exists
+</span><span class="c1"></span><span class="nv">POSTFIX_STYLE_VIRTUAL_DOMAINS</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;lists.example.com&#39;</span>, <span class="s1">&#39;lists.example.org&#39;</span><span class="o">]</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Ensure that your domains have valid MX and <a href="/docs/dns-guides/introduction-to-dns#types-of-dns-records">A Records</a> that point to your Linode. When you&rsquo;ve finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postfix, and start Mailman for the first time:</p>
+
+<pre><code>newlist mailman
+/etc/init.d/postfix restart
+/etc/init.d/mailman start
+</code></pre>
+
+<p>If you created lists using the <code>/etc/aliases</code> method, you will have to recreate those lists by issuing the following commands.:</p>
+
+<pre><code>/var/lib/mailman/bin/genaliases
+postmap /var/lib/mailman/data/virtual-mailman
+</code></pre>
+
+<p>From this point forward, you can create new lists by issuing <code>newlist</code> commands as root. Additionally, all administration and functions of the Mailman lists can be accomplished by way of the web based interface.</p>
+
+<h1 id="configuring-mailman-with-alternate-mail-configurations">Configuring Mailman with Alternate Mail Configurations</h1>
+
+<p>If you wish to deploy Mailman on a system that has an existing mail set up, such as the <a href="/docs/email/postfix/dovecot-mysql-debian-6-squeeze">Postfix with Dovecot and MySQL</a> or the <a href="/docs/email/postfix/dovecot-system-users-debian-6-squeeze">Postfix with Dovecot and System Users</a> configurations described in other documents, consider the following recommendations:</p>
+
+<p>Complete your basic mail configuration according to the appropriate guide before beginning to install and configure Mailman.</p>
+
+<p>It is absolutely crucial that the <code>DEFAULT_EMAIL_HOST</code> and <code>DEFAULT_URL_HOST</code> are <strong>not</strong> served by your previously configured email system. Any additional domains served by mailman by way of the <code>add_virtualhost</code> function must also <strong>not</strong> overlap any domains served by another domain on this host. If these domains overlap there will be collisions, and neither system will function as expected.</p>
+
+<p>In all other respects, as long as you deploy Mailman with virtual hosting on its own domain using Mailman with an existing email solution poses no complications. Congratulations, you now have a fully functional email list management solution!</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.gnu.org/software/mailman/index.html">The Official GNU Mailman Site</a></li>
+<li><a href="http://wiki.list.org/dashboard.action">GNU Mailman Wiki</a></li>
+<li><a href="http://staff.imsa.edu/~ckolar/mailman/">GNU Mailman Documentation</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-12-04-precise-pangolin/">Manage Email Lists with GNU Mailman on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-10-10-maverick/">Manage Email Lists with GNU Mailman on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-10-04-lucid/">Manage Email Lists with GNU Mailman on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic/">Manage Email Lists with GNU Mailman on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-5-lenny/">Manage Email Lists with GNU Mailman on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#installing-mailman">Installing Mailman</a></li>
+<li><a href="#configure-mailman">Configure Mailman</a></li>
+<li><a href="#modify-the-following-line-if-it-exists">Modify the following line, if it exists</a></li>
+<li><a href="#configuring-mailman-with-alternate-mail-configurations">Configuring Mailman with Alternate Mail Configurations</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

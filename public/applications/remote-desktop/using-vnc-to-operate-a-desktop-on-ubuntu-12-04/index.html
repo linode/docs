@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using VNC to Operate a Desktop on Ubuntu 12.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to install and connect to a desktop environment on your Linode">
+        <meta name="keywords" content="vnc, remote desktop, ubuntu, 12.04">
+        
+        <meta property="og:title" content="Using VNC to Operate a Desktop on Ubuntu 12.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/remote-desktop/using-vnc-to-operate-a-desktop-on-ubuntu-12-04/">
+        <meta property="og:description" content="How to install and connect to a desktop environment on your Linode">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/remote-desktop/using-vnc-to-operate-a-desktop-on-ubuntu-12-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/remote-desktop/">Remote Desktop Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Using VNC to Operate a Desktop on Ubuntu 12.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using VNC to Operate a Desktop on Ubuntu 12.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-08-21T00:00:00Z">Thursday, August 21, 2014</time> by James Stewart</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fremote-desktop%2fusing-vnc-to-operate-a-desktop-on-ubuntu-12-04%2f&via=linode&text=Using%20VNC%20to%20Operate%20a%20Desktop%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fremote-desktop%2fusing-vnc-to-operate-a-desktop-on-ubuntu-12-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fremote-desktop%2fusing-vnc-to-operate-a-desktop-on-ubuntu-12-04%2f&t=Using%20VNC%20to%20Operate%20a%20Desktop%20on%20Ubuntu%2012.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/remote-desktop/using-vnc-to-operate-a-desktop-on-ubuntu-12-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/remote-desktop/using-vnc-to-operate-a-desktop-on-ubuntu-12-04.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p><img src="/docs/assets/using-vnc-to-operate-a-desktop-on-ubuntu-1204-title-graphic.jpg" alt="Using VNC to Operate a Desktop on Ubuntu 12.04" title="Using VNC to Operate a Desktop on Ubuntu 12.04" /></p>
+
+<p>This guide details how to install a graphic desktop environment on your Linode running Ubuntu 12.04 and connect to it from your local computer using VNC.</p>
+
+<h2 id="installing-a-desktop-and-vnc-on-your-linode">Installing a Desktop and VNC on your Linode</h2>
+
+<ol>
+<li><p>Before you begin it&rsquo;s good practice to make sure your system is up to date:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+</code></pre></li>
+
+<li><p>Ubuntu has several desktop environments available in its repositories. The following command installs the default desktop, <a href="https://unity.ubuntu.com/">Unity</a>:</p>
+
+<pre><code>sudo apt-get install ubuntu-desktop
+</code></pre></li>
+
+<li><p>Next install the VNC server:</p>
+
+<pre><code>sudo apt-get install vnc4server
+</code></pre></li>
+</ol>
+
+<h2 id="secure-your-vnc-connection">Secure your VNC connection</h2>
+
+<p>The default VNC connection is unencrypted. In order to secure your passwords and data, you will need to tunnel the traffic through an SSH connection to a local port.</p>
+
+<h3 id="mac-os-x-and-linux">Mac OS X and Linux</h3>
+
+<ol>
+<li><p>From your desktop, connect to your Linode with the following command.  Be sure to replace user@example.com with your username and your Linode&rsquo;s hostname or IP address:</p>
+
+<pre><code>ssh -L 5901:127.0.0.1:5901 user@example.com
+</code></pre></li>
+
+<li><p>Launch the VNC server manually to test your connection. You will need to specify a password to use:</p>
+
+<pre><code>vncserver :1
+</code></pre></li>
+
+<li><p>Initiate your connection as per the steps listed in the following section.</p></li>
+</ol>
+
+<h3 id="windows">Windows</h3>
+
+<ol>
+<li><p>Open <a href="/docs/networking/using-putty">PuTTY</a> and navigate under the <code>SSH</code> menu to <code>Tunnels</code>. Add a new forwarded port as shown below, replacing example.com with your Linode&rsquo;s IP address or hostname:</p>
+
+<p><a href="/docs/assets/1648-vnc-putty-1.png"><img src="/docs/assets/1648-vnc-putty-1.png" alt="Adding a forwarded port to PuTTY." /></a></p></li>
+
+<li><p>Return to the &lsquo;Session&rsquo; screen. Enter your Linode&rsquo;s hostname or IP address and a title for your session.  Click save to save your settings for future use, and then click open to initiate your SSH tunnel.</p></li>
+
+<li><p>Launch the VNC server manually to test your connection. You will need to specify a password to use:</p>
+
+<pre><code>vncserver :1
+</code></pre></li>
+
+<li><p>Initiate your connection as per the steps listed in the following section.</p></li>
+</ol>
+
+<h2 id="connecting-to-vnc-from-your-desktop">Connecting to VNC From your Desktop</h2>
+
+<h3 id="mac-os-x-and-windows">Mac OS X and Windows</h3>
+
+<p>While there are many options for OS X and Windows, this guide will use <a href="http://www.realvnc.com/download/viewer/">RealVNC Viewer</a>.</p>
+
+<ol>
+<li><p>After installing and opening the viewer, connect to the localhost through your VNC client :</p>
+
+<p><a href="/docs/assets/1647-vnc-5.png"><img src="/docs/assets/1647-vnc-5.png" alt="Connecting through an SSH tunnel." /></a></p></li>
+
+<li><p>You will be warned that the connection is unencrypted, however if you have followed the steps above for securing your VNC connection, your session will be securely tunneled to your Linode. To proceed, press <strong>Continue</strong>.</p>
+
+<p><a href="/docs/assets/1656-vnc-2-2.png"><img src="/docs/assets/1656-vnc-2-2.png" alt="VNC Security Warning." /></a></p></li>
+
+<li><p>You will be prompted to enter the password you specified when first launching the VNC Server. See <a href="#secure-your-vnc-connection">Secure your VNC Connection</a> if you have not yet started a VNC server on your Linode.</p>
+
+<p><a href="/docs/assets/1638-vnc-3.png"><img src="/docs/assets/1657-vnc-3-2.png" alt="The VNC password prompt." /></a></p></li>
+
+<li><p>After connecting you will be greeted with a terminal emulator window.</p>
+
+<p><a href="/docs/assets/1639-vnc-4.png"><img src="/docs/assets/1646-vnc-4_small.png" alt="VNC connection to a terminal emulator." /></a></p></li>
+</ol>
+
+<p>In the next section we will configure your Linode to launch a full desktop.</p>
+
+<h3 id="linux">Linux</h3>
+
+<p>There are a variety of VNC clients available for Ubuntu desktops. You can find the list <a href="https://help.ubuntu.com/community/VNC/Clients">here</a>. For this guide, we&rsquo;ll be using Remmina, which is installed by default.</p>
+
+<ol>
+<li><p>Open Remmina.</p>
+
+<p><a href="/docs/assets/1640-vnc-ubuntu-1.png"><img src="/docs/assets/1640-vnc-ubuntu-1.png" alt="The Remmina Software." /></a></p></li>
+
+<li><p>Click the button to <code>Create a new remote desktop profile</code>. Name your profile, specify the VNC protocol, and enter localhost :1 in the server field. Be sure to include the<code>:1</code> in the <code>Server</code> section. In the password section fill in the password you specified in <a href="#secure-your-vnc-connection">Secure your VNC connection</a>:</p>
+
+<p><a href="/docs/assets/1641-vnc-ubuntu-2.png"><img src="/docs/assets/1641-vnc-ubuntu-2.png" alt="." /></a></p></li>
+
+<li><p>Press <strong>Connect</strong>.</p>
+
+<p><a href="/docs/assets/1645-vnc-ubuntu-3-1.png"><img src="/docs/assets/1644-vnc-ubuntu-3-1_small.png" alt="An Ubuntu desktop computer connected to an Ubuntu desktop session on a Linode." /></a></p></li>
+</ol>
+
+<p>In the next section we will configure your Linode to launch a full desktop.</p>
+
+<h2 id="configuring-vnc-for-a-full-desktop">Configuring VNC for a Full Desktop</h2>
+
+<p>In the next few steps we&rsquo;ll configure VNC to launch the full Gnome desktop.</p>
+
+<ol>
+<li><p>Once you&rsquo;ve successfully connected, exit the connection. Close the VNC server:</p>
+
+<pre><code>vncserver -kill :1
+</code></pre></li>
+
+<li><p>In your preferred text editor, open the xstartup file in your home folder under the <code>.vnc</code> directory:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/.vnc/xstartup 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="c1"># Uncomment the following two lines for normal desktop:
+</span><span class="c1"># unset SESSION_MANAGER
+</span><span class="c1"># exec /etc/X11/xinit/xinitrc
+</span><span class="c1"></span>
+<span class="o">[</span> -x /etc/vnc/xstartup <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">exec</span> /etc/vnc/xstartup
+<span class="o">[</span> -r <span class="nv">$HOME</span>/.Xresources <span class="o">]</span> <span class="o">&amp;&amp;</span> xrdb <span class="nv">$HOME</span>/.Xresources
+xsetroot -solid grey
+vncconfig -iconic <span class="p">&amp;</span>
+x-terminal-emulator -geometry 80x24+10+10 -ls -title <span class="s2">&#34;</span><span class="nv">$VNCDESKTOP</span><span class="s2"> Desktop&#34;</span> <span class="p">&amp;</span>
+x-window-manager <span class="p">&amp;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Edit the last line of the file, replacing it with the following:</p>
+
+<pre><code>gnome-session &amp;
+</code></pre></li>
+
+<li><p>Save and exit the file. Begin another VNC session:</p>
+
+<pre><code>vncserver :1
+</code></pre>
+
+<p>You should now see the full Ubuntu Desktop:</p>
+
+<p><a href="/docs/assets/1642-vnc-ubuntu-3.png"><img src="/docs/assets/1643-vnc-ubuntu-3_small.png" alt="A VNC connection with a full Ubuntu desktop." /></a></p></li>
+</ol>
+
+<h2 id="starting-vnc-server-on-boot">Starting VNC Server on Boot</h2>
+
+<p>Below we&rsquo;ve outlined optional steps to ensure that the VNC server starts automatically after reboot.</p>
+
+<ol>
+<li><p>Open your crontab. If you&rsquo;ve never edited it before, you may be prompted to choose a text editor:</p>
+
+<pre><code>crontab -e
+no crontab for user - using an empty one
+
+Select an editor.  To change later, run 'select-editor'.
+  1. /bin/ed
+  2. /bin/nano        &lt;---- easiest
+  3. /usr/bin/vim.basic
+  4. /usr/bin/vim.tiny
+
+Choose 1-4 [2]:
+</code></pre></li>
+
+<li><p>Add <code>@reboot         /usr/bin/vncserver :1</code> to the bottom of the file. Your crontab should look like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		crontab 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Edit this file to introduce tasks to be run by cron.
+</span><span class="c1">#
+</span><span class="c1"># Each task to run has to be defined through a single line
+</span><span class="c1"># indicating with different fields when the task will be run
+</span><span class="c1"># and what command to run for the task
+</span><span class="c1">#
+</span><span class="c1"># To define the time you can provide concrete values for
+</span><span class="c1"># minute (m), hour (h), day of month (dom), month (mon),
+</span><span class="c1"># and day of week (dow) or use &#39;*&#39; in these fields (for &#39;any&#39;).
+</span><span class="c1">#
+</span><span class="c1"># Notice that tasks will be started based on the cron&#39;s system
+</span><span class="c1"># daemon&#39;s notion of time and timezones.
+</span><span class="c1">#
+</span><span class="c1"># Output of the crontab jobs (including errors) is sent through
+</span><span class="c1"># email to the user the crontab file belongs to (unless redirected).
+</span><span class="c1">#
+</span><span class="c1"># For example, you can run a backup of all your user accounts
+</span><span class="c1"># at 5 a.m every week with:
+</span><span class="c1"># 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+</span><span class="c1">#
+</span><span class="c1"># For more information see the manual pages of crontab(5) and cron(8)
+</span><span class="c1">#
+</span><span class="c1"># m h dom mon dow command
+</span><span class="c1"></span>
+@reboot /usr/bin/vncserver :1</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save and exit the file. Test by rebooting your Linode and attempting to connect to the VNC server.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://en.wikipedia.org/wiki/Virtual_Network_Computing">Wikipedia</a></li>
+
+<li><a href="https://www.realvnc.com/">RealVNC</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/remote-desktop/install-vnc-on-ubuntu-16-04/">Install VNC on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/email/installing-mail-filtering-for-ubuntu-12-04/">Installing Mail Filtering for Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/squid/squid-http-proxy-ubuntu-12-04/">Creating an HTTP Proxy Using Squid on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/minecraft-on-linode-with-ubuntu-12-04/">Minecraft on Linode with Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/">Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#installing-a-desktop-and-vnc-on-your-linode">Installing a Desktop and VNC on your Linode</a></li>
+<li><a href="#secure-your-vnc-connection">Secure your VNC connection</a>
+<ul>
+<li><a href="#mac-os-x-and-linux">Mac OS X and Linux</a></li>
+<li><a href="#windows">Windows</a></li>
+</ul></li>
+<li><a href="#connecting-to-vnc-from-your-desktop">Connecting to VNC From your Desktop</a>
+<ul>
+<li><a href="#mac-os-x-and-windows">Mac OS X and Windows</a></li>
+<li><a href="#linux">Linux</a></li>
+</ul></li>
+<li><a href="#configuring-vnc-for-a-full-desktop">Configuring VNC for a Full Desktop</a></li>
+<li><a href="#starting-vnc-server-on-boot">Starting VNC Server on Boot</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

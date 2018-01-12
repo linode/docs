@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install FreeBSD on Linode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="FreeBSD is a free and open source operating system based on the Berkeley Software Distribution from the late 1970&#39;s. Today FreeBSD is used all over the world.">
+        <meta name="keywords" content="freebsd, bsd">
+        
+        <meta property="og:title" content="Install FreeBSD on Linode">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/custom-kernels-distros/install-freebsd-on-linode/">
+        <meta property="og:description" content="FreeBSD is a free and open source operating system based on the Berkeley Software Distribution from the late 1970&#39;s. Today FreeBSD is used all over the world.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/custom-kernels-distros/install-freebsd-on-linode/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/custom-kernels-distros/">Run Custom Kernels and Distribution Templates on Linode Instances</a>
+  
+</li>
+
+
+<li>
+  
+  Install FreeBSD on Linode
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install FreeBSD on Linode</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-03-14T00:00:00Z">Monday, March 14, 2016</time> by Rainbow</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-freebsd-on-linode%2f&via=linode&text=Install%20FreeBSD%20on%20Linode" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-freebsd-on-linode%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-freebsd-on-linode%2f&t=Install%20FreeBSD%20on%20Linode" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/custom-kernels-distros/install-freebsd-on-linode.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/custom-kernels-distros/install-freebsd-on-linode.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/install-freebsd-on-linode.png" alt="Install FreeBSD on Linode" title="Install FreeBSD on Linode" /></p>
+
+<h2 id="introduction-to-freebsd">Introduction to FreeBSD</h2>
+
+<p><a href="https://www.freebsd.org/">FreeBSD</a> is a free and open-source operating system based on the <a href="https://en.wikipedia.org/wiki/Berkeley_Software_Distribution">Berkeley Software Distribution</a> originally developed at Berkeley Computer Systems Research Group from the late 1970&rsquo;s. BSD originally started as a series of addon programs and tweaks to Bell Labs UNIX, implementing features and new programs like the venerable <a href="https://en.wikipedia.org/wiki/Vi">vi</a> editor&rsquo;s first release. Today FreeBSD is used all over the world, including in some major video game consoles!</p>
+
+<h2 id="freebsd-vs-linux">FreeBSD vs. Linux</h2>
+
+<p>FreeBSD is often compared to Linux. So what&rsquo;s the difference?</p>
+
+<p>Briefly, Linux is a term used for a group of operating systems that all use the Linux kernel, GNU coreutils and various distribution-specific tools. Linux OS&rsquo;s are offered in <em>distributions</em> and usually released under the GNU General Public License. <a href="https://www.centos.org/">CentOS</a>, <a href="https://www.debian.org/">Debian</a> and <a href="http://www.ubuntu.com/">Ubuntu</a> make up Linode&rsquo;s <em>core distribution</em> offerings, while Arch, Gentoo, OpenSUSE and Slackware are other popular distributions also available with Linode.</p>
+
+<p>Though FreeBSD grew out of the original UNIX codebase, no UNIX code currently remains. Every part of FreeBSD is developed in the same source tree and code is released under the more permissive FreeBSD License as opposed to the GNU GPL&rsquo;s copyleft stance. More information on the differences between these operating systems is available in the FreeBSD <a href="https://www.freebsd.org/doc/en/articles/linux-users/article.html">Quickstart Guide for Linux Users</a>.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>FreeBSD is not officially supported by Linode at this time. This means that the <a href="/docs/platform/backup-service">Linode Backup</a> service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.</div>
+</blockquote>
+
+
+<h2 id="preparing-your-linode">Preparing Your Linode</h2>
+
+<p>Begin by creating the Linode and making some preliminary changes.</p>
+
+<ol>
+<li><p>Create your Linode in your preferred datacenter. For the purposes of this tutorial, we recommend turning <a href="/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog">Lassie</a> <em>off</em> to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the <strong>Settings</strong> tab of the Linode Manager under <strong>Shutdown Watchdog</strong>.</p></li>
+
+<li><p><a href="https://www.linode.com/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk">Create two disk images</a>; both   should be in the RAW format.</p>
+
+<ul>
+<li>The first should be a 1024 MB image labeled <em>Installer</em>.</li>
+<li>The second should use the Linode&rsquo;s remaining space. Label it <em>FreeBSD</em>.</li>
+</ul></li>
+
+<li><p>Create two configuration profiles with the following settings. In each profile, you will need to disable all of the options under <strong>Filesystem/Boot Helpers</strong>.</p>
+
+<p><strong>Installer profile</strong></p>
+
+<ul>
+<li>Label: Installer</li>
+<li>Kernel: Direct Disk</li>
+<li>/dev/sda: FreeBSD disk image.</li>
+<li>/dev/sdb: Installer disk image.</li>
+<li>root / boot device: Standard /dev/sdb</li>
+</ul>
+
+<p><strong>Boot profile</strong></p>
+
+<ul>
+<li>Label: FreeBSD</li>
+<li>Kernel: Direct Disk</li>
+<li>/dev/sda: FreeBSD disk image.</li>
+<li>root / boot device: Standard /dev/sda</li>
+</ul></li>
+
+<li><p>Boot into <strong>Rescue Mode</strong> with the installer disk mounted to <code>/dev/sda</code> and access your Linode using <a href="/docs/networking/using-the-linode-shell-lish/">Lish via SSH</a> from the <strong>Remote Access</strong> tab of the Linode Manager.</p></li>
+
+<li><p>Once in Rescue Mode, run the following command, replacing latest with the latest <code>memstick.img</code> file from the <a href="ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/">FreeBSD download page</a>:</p>
+
+<pre><code>curl $latest | dd of=/dev/sda
+</code></pre>
+
+<p>As of this guide&rsquo;s writing, the latest release is version 10.2. The following command will download the 10.2 release image to your Linode:</p>
+
+<pre><code>curl ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/10.2/FreeBSD-10.2-RELEASE-amd64-memstick.img | dd of=/dev/sda
+</code></pre></li>
+
+<li><p>When the command finishes, reboot into your <strong>Installer profile</strong>.</p></li>
+
+<li><p>Go to the <strong>Remote Access</strong> tab in the Linode Manager. Access your Linode using <a href="/docs/networking/using-the-graphic-shell-glish">Glish</a> to start the installation.</p></li>
+</ol>
+
+<h2 id="installing-freebsd">Installing FreeBSD</h2>
+
+<ol>
+<li><p>The first thing Glish will show you is the FreeBSD welcome screen. Press <strong>Enter</strong> to boot into multi-user mode.</p>
+
+<p><a href="/docs/assets/freebsd-welcome.png"><img src="/docs/assets/freebsd-welcome-small.png" alt="FreeBSD welcome." /></a></p></li>
+
+<li><p>Follow through the prompts to start the installer, choose your keymap and set a hostname if you want one.</p></li>
+
+<li><p>For beginners, we suggest selecting to install 32-bit libraries (lib32) and source code (src). Deselect <em>games</em> if you have no use for them.</p>
+
+<p><a href="/docs/assets/freebsd-optional-components.png"><img src="/docs/assets/freebsd-optional-components-small.png" alt="Choose your packages." /></a></p></li>
+
+<li><p>Choose your partitioning and storage options. We recommend using <em>ZFS (auto)</em> for the filesystem and partitioning setup.</p>
+
+<p><a href="/docs/assets/freebsd-partitioning.png"><img src="/docs/assets/freebsd-partitioning-small.png" alt="FreeBSD partition selection" /></a></p>
+
+<p>Configure any additional ZFS options you may want.</p>
+
+<p><a href="/docs/assets/freebsd-zfs-configuration1.png"><img src="/docs/assets/freebsd-zfs-configuration1-small.png" alt="FreeBSD partition confirmation" /></a></p>
+
+<p>Select the <em>striped</em> disk type, as we&rsquo;re only using a single disk.</p>
+
+<p><a href="/docs/assets/freebsd-zfs-configuration2.png"><img src="/docs/assets/freebsd-zfs-configuration2-small.png" alt="FreeBSD partition confirmation" /></a></p>
+
+<p>Select the <code>da0</code> virtual disk and then confirm that you do want to destroy its contents.</p>
+
+<p><a href="/docs/assets/freebsd-zfs-configuration3.png"><img src="/docs/assets/freebsd-zfs-configuration3-small.png" alt="FreeBSD partition confirmation" /></a></p></li>
+
+<li><p>At this point, the distribution files will extract and install. You&rsquo;ll then be asked to set a <code>root</code> user password.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>SSH logins for <code>root</code> are disabled by default in FreeBSD but standard system users have SSH access.</div>
+</blockquote>
+</li>
+
+<li><p>You&rsquo;ll next be presented with options for configuring networking. For beginners, answer <strong>Yes</strong> when asked if you want to use IPv4 with DHCP and IPv6 with SLAAC.</p>
+
+<p>DHCP and SLAAC will provide the default DNS resolvers. Add or edit these options as needed.</p>
+
+<p><a href="/docs/assets/freebsd-network-configuration.png"><img src="/docs/assets/freebsd-network-configuration-small.png" alt="FreeBSD network configuration" /></a></p></li>
+
+<li><p>Ensure that your clock is set to local time rather than UTC. Choose <strong>No</strong> to set FreeBSD to a timezone of your choice.</p>
+
+<p><a href="/docs/assets/freebsd-timezone.png"><img src="/docs/assets/freebsd-timezone-small.png" alt="FreeBSD Timezone Configuration" /></a></p></li>
+
+<li><p>Select the services that you wish to run on boot. We recommend that beginners use the default choices.</p>
+
+<p><a href="/docs/assets/freebsd-services.png"><img src="/docs/assets/freebsd-services-small.png" alt="FreeBSD Service Configuration" /></a></p></li>
+
+<li><p>Add an additional user for SSH access safer system administration. To give your new user superuser privileges, add the user to the <code>wheel</code> group when asked to invite the user to any other groups. The other fields can be left default.</p>
+
+<p><a href="/docs/assets/freebsd-user-wheel.png"><img src="/docs/assets/freebsd-user-wheel-small.png" alt="FreeBSD Network Configuration" /></a></p></li>
+
+<li><p>At the next prompt, choose to <strong>Apply configuration and exit installer</strong>. You&rsquo;ll then be asked if you&rsquo;d like to drop into a shell before rebooting. Choose <strong>Yes</strong> here.</p>
+
+<p><a href="/docs/assets/freebsd-manual-config.png"><img src="/docs/assets/freebsd-manual-config-small.png" alt="FreeBSD Manual Configuration" /></a></p></li>
+
+<li><p>This final step is required to enable Lish, Glish, and make a few other changes. Use your favorite text editor and insert the following at the bottem of <code>/boot/loader.conf</code>. (FreeBSD ships with <code>ee</code> and <code>nvi</code>, linked as <code>vi</code>)</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/loader.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">boot_multicons</span><span class="o">=</span><span class="s2">&#34;YES&#34;</span>
+<span class="nv">boot_serial</span><span class="o">=</span><span class="s2">&#34;YES&#34;</span>
+<span class="nv">comconsole_speed</span><span class="o">=</span><span class="s2">&#34;115200&#34;</span>
+<span class="nv">console</span><span class="o">=</span><span class="s2">&#34;comconsole,vidconsole&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Exit Glish, return to the Linode Manager and reboot into the FreeBSD profile. You should have full SSH and administrative access as the user you created in Step 9.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.freebsd.org/doc/handbook/">The FreeBSD Handbook</a></li>
+
+<li><a href="/docs/networking/using-the-linode-shell-lish/">Using the Linode Shell (Lish)</a></li>
+
+<li><a href="/docs/networking/using-the-graphic-shell-glish">Using the Graphic Shell (Glish) - BETA</a></li>
+
+<li><a href="https://www.freebsd.org/doc/en/articles/explaining-bsd/comparing-bsd-and-linux.html">FreeBSD Handbook - Comparing BSD and Linux</a></li>
+
+<li><a href="https://www.freebsd.org/doc/handbook/linuxemu.html">FreeBSD Handbook - Linux® Binary Compatibility</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#introduction-to-freebsd">Introduction to FreeBSD</a></li>
+<li><a href="#freebsd-vs-linux">FreeBSD vs. Linux</a></li>
+<li><a href="#preparing-your-linode">Preparing Your Linode</a></li>
+<li><a href="#installing-freebsd">Installing FreeBSD</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

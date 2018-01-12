@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Disks and Configuration Profiles</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Our guide to disks and configuration profiles">
+        <meta name="keywords" content="disks, config profiles">
+        
+        <meta property="og:title" content="Disks and Configuration Profiles">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/disk-images/disk-images-and-configuration-profiles/">
+        <meta property="og:description" content="Our guide to disks and configuration profiles">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/disk-images/disk-images-and-configuration-profiles/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/disk-images/">Disks, Migrations &amp; File Systems</a>
+  
+</li>
+
+
+<li>
+  
+  Disks and Configuration Profiles
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Disks and Configuration Profiles</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-06-19T00:00:00Z">Thursday, June 19, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fdisk-images%2fdisk-images-and-configuration-profiles%2f&via=linode&text=Disks%20and%20Configuration%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fdisk-images%2fdisk-images-and-configuration-profiles%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fdisk-images%2fdisk-images-and-configuration-profiles%2f&t=Disks%20and%20Configuration%20Profiles" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/disk-images/disk-images-and-configuration-profiles.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/disk-images/disk-images-and-configuration-profiles.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The Linode Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>Your Linode plan comes with persistent storage to hold your most important asset - data. This pool of storage can be broken up into individual containers called <em>disks</em>. It&rsquo;s easy to create, delete, resize, duplicate, and even clone disks to different Linodes.</p>
+
+<p>A <em>configuration profile</em> is a boot loader for your Linode. It controls general boot settings, including the disk your Linode will start up from, the disks that will be mounted, and the kernel that will be used. You can create multiple configuration profiles and store them in the Linode Manager.</p>
+
+<p><a href="/docs/assets/1740-disk-images1.png"><img src="/docs/assets/1740-disk-images1.png" alt="Overview of disks and configuration profiles." /></a></p>
+
+<p>The Linode Manager automatically creates a disk and configuration profile when you sign up for an account or create a Linode, but you can manually create as many as you want, provided you have the storage space available. The space for disks is allocated from your Linode plan&rsquo;s storage. You can allocate all available storage to one disk, or you can create multiple disks, as shown in the examples above and below.</p>
+
+<h3 id="finding-your-way-around">Finding Your Way Around</h3>
+
+<p>All of a Linode&rsquo;s disks and configuration profiles are displayed on the Linode&rsquo;s Dashboard. You can add, edit, select, and remove items from this webpage, as shown below.</p>
+
+<p><a href="/docs/assets/978-disk1-1.png"><img src="/docs/assets/977-disk1-2-small.png" alt="Overview of Linode Manager interface." /></a></p>
+
+<ol>
+<li>These are your configuration profiles. Select one and then click <strong>Reboot</strong> to start your Linode with the settings and disks you have specified in the configuration profile.</li>
+<li>Click this link to create a new configuration profile.</li>
+<li>These are your disks. Select one to resize it or duplicate it.</li>
+<li>Click this link to create a new disk with a Linux distribution installed.</li>
+<li>Click this link to create a new blank disk.</li>
+<li>This box indicates how much storage space is allocated to disks. To see how much space inside your disk is currently being used, connect to your Linode via SSH and execute the <code>df -m</code> command.</li>
+</ol>
+
+<h2 id="disks">Disks</h2>
+
+<p>Just like your desktop computer has a physical hard drive that can be partitioned into smaller virtual drives, your Linode plan&rsquo;s storage space can be split in to disks. Disks can be used to store anything, including files, applications, or other Linux distributions. The space allocated to disks reduces your plan&rsquo;s available storage space.</p>
+
+<h3 id="creating-a-disk-with-a-linux-distribution-installed">Creating a Disk with a Linux Distribution Installed</h3>
+
+<p>The Linode Manager makes it easy to create a new disk with a fresh Linux distribution installed. This is a fast and easy way to try out other distributions. Here&rsquo;s how to create a disk with a Linux distribution installed:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>A new configuration profile will automatically be created when you make a disk this way. After the disk is created, you can select the new configuration profile to boot your Linode from the new disk.</div>
+</blockquote>
+
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Select the <strong>Deploy an Image</strong> link. The webpage shown below appears.</li>
+</ol>
+
+<p><a href="/docs/assets/979-disk2.png"><img src="/docs/assets/980-disk2-small.png" alt="Create a new disk with a Linux distribution." /></a></p>
+
+<ol>
+<li>Select a Linux distribution from the <strong>Distribution</strong> menu.</li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can install a customized Linux distribution on your disk by clicking <strong>Deploying using StackScripts</strong>. Some of the most popular StackScripts do things like install Apache, configure a firewall, and set up the WordPress.</div>
+</blockquote>
+
+
+<ol>
+<li>Enter a size for the disk in the <strong>Deployment Disk Size</strong> field. The size must be smaller than the amount of storage space remaining in your Linode plan.</li>
+<li>By default, the new disk is set to use your existing swap disk. If you&rsquo;d like to create a new swap disk, select a size from the <strong>Swap Disk</strong> menu.</li>
+<li>Enter a password for the <code>root</code> user in the <strong>Root Password</strong> field.</li>
+<li>Click <strong>Deploy</strong>.</li>
+</ol>
+
+<p>The disk will be created. Watch the <em>Host Job Queue</em> on the Dashboard to monitor the progress. When the process is complete, the disk will appear on the dashboard.</p>
+
+<h3 id="creating-a-blank-disk">Creating a Blank Disk</h3>
+
+<p>Create a blank disk if you need detachable storage space or want to download and install your own Linux distribution. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Select the <strong>Create a new disk</strong> link. The <em>Edit disk</em> webpage appears, as shown below.</li>
+</ol>
+
+<p><a href="/docs/assets/983-disk3.png"><img src="/docs/assets/982-disk3-small.png" alt="Create a new blank disk." /></a></p>
+
+<ol>
+<li>Enter a name for the disk in the <strong>Label</strong> field.</li>
+<li>By default, <strong>Type</strong> is set to <code>ext4</code>. We recommend that you stick with this setting.</li>
+<li>Enter a size for the disk in the <strong>Deployment Disk Size</strong> field. The size must be smaller than the amount of storage space remaining in your Linode plan.</li>
+<li>Click <strong>Save Changes</strong>.</li>
+</ol>
+
+<p>The disk will be created. Watch the <em>Host Job Queue</em> on the Dashboard to monitor the progress. When the process is complete, the disk will appear on the dashboard. You&rsquo;ll need to create or modify a configuration profile to mount the new disk. For instructions, see <a href="#configuration-profiles">Configuration Profiles</a>.</p>
+
+<h3 id="resizing-a-disk">Resizing a Disk</h3>
+
+<p>Resizing allows you to allocate more storage to a disk so you can store more files, or shrink a disk so you have more storage for the other disks in your account. Here&rsquo;s how to resize a disk:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Click <strong>Shut down</strong> to turn your Linode off. Watch the <em>Host Job Queue</em> for confirmation that the Linode has shut down.</li>
+<li>Select the disk you want to resize. The <em>Edit disk</em> webpage appears.</li>
+<li>In the <strong>New Size</strong> field, enter a different size for the disk in megabytes.</li>
+<li>Click <strong>Save Changes</strong>. The Linode&rsquo;s dashboard appears. Watch the <em>Host Job Queue</em> for confirmation that the disk has been resized.</li>
+<li>Click <strong>Boot</strong> to turn on the Linode.</li>
+</ol>
+
+<p>You have successfully resized the disk.</p>
+
+<h3 id="duplicating-a-disk">Duplicating a Disk</h3>
+
+<p>You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see <a href="#cloning-disks-and-configuration-profiles">Cloning disks and Configuration Profiles</a>.) Here&rsquo;s how to duplicate a disk:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Click <strong>Shut down</strong> to turn your Linode off. Watch the <em>Host Job Queue</em> for confirmation that the Linode has shut down.</li>
+<li>Select the disk you want to duplicate. The <em>Edit disk</em> webpage appears.</li>
+<li>Click <strong>Duplicate Disk</strong>. The Linode&rsquo;s dashboard appears. Watch the <em>Host Job Queue</em> for confirmation that the disk has been duplicated.</li>
+<li>Click <strong>Boot</strong> to turn on the Linode.</li>
+</ol>
+
+<p>The disk will be duplicated. Watch the <em>Host Job Queue</em> on the Dashboard to monitor the progress. When the process is complete, the disk will appear on the dashboard.</p>
+
+<h3 id="removing-a-disk">Removing a Disk</h3>
+
+<p>You can delete a disk to remove it from your Linode and reallocate its storage space to another disk. This action is permanent and cannot be undone. Here&rsquo;s how to delete a disk:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Click <strong>Shut down</strong> to turn your Linode off. Watch the <em>Host Job Queue</em> for confirmation that the Linode has shut down.</li>
+
+<li><p>Select the <strong>Remove</strong> link next to the Linode you want to delete, as shown below. The disk will be deleted. Watch the <em>Host Job Queue</em> for confirmation that the disk has been duplicated.</p>
+
+<p><a href="/docs/assets/986-disk5-1.png"><img src="/docs/assets/987-disk5-1-small.png" alt="Deleting a disk" /></a></p></li>
+
+<li><p>Click <strong>Boot</strong> to turn on the Linode.</p></li>
+</ol>
+
+<p>The disk will be deleted. The storage space the disk was using is now available to other disks.</p>
+
+<h2 id="configuration-profiles">Configuration Profiles</h2>
+
+<p>Linode&rsquo;s configuration profiles are similar to <a href="http://en.wikipedia.org/wiki/GNU_GRUB">GNU GRUB</a>, the Linux boot loader that allows you to select and boot from an operating system installed on your desktop computer. You can create different configuration profiles to build custom boot configurations with disks, kernels, and the operating system&rsquo;s run level.</p>
+
+<h3 id="creating-a-configuration-profile">Creating a Configuration Profile</h3>
+
+<p>Making a new configuration profile allows you to create a new and separate boot configuration for your system. You can specify boot settings and disks to mount. Here&rsquo;s how to create a new configuration profile:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+
+<li><p>Select the <strong>Create a new Configuration Profile</strong> link. The <em>Configuration Profile</em> webpage appears, as shown below.</p>
+
+<p><a href="/docs/assets/createconfprofile.png"><img src="/docs/assets/createconfprofile-small.png" alt="Creating a configuration profile" /></a></p></li>
+
+<li><p>Enter a descriptive name for the configuration profile in the <strong>Label</strong> field. This name appears on the dashboard and will help you differentiate it from other configuration profiles.</p></li>
+
+<li><p>You can enter comments or notes about this configuration profile in the <strong>Notes</strong> field.</p></li>
+
+<li><p>Select a Linux kernel from the <strong>Kernel</strong> menu. We recommend selecting one of the current and latest kernels.</p></li>
+
+<li><p>In the <em>Block Device Assignment</em> section, select a bootable disk, a swap disk (optional), and any other disks that you would like to mount at start up.</p></li>
+
+<li><p>Select a bootable disk from the <strong>root device Standard</strong> menu.</p></li>
+
+<li><p>Leave the settings in the <em>Filesystem/Boot Helpers</em> section alone, unless you have a specific reason to change them.</p></li>
+
+<li><p>Click <strong>Save Changes</strong>.</p></li>
+</ol>
+
+<p>The configuration profile will be created and will appear on the Linode&rsquo;s dashboard.</p>
+
+<h3 id="editing-a-configuration-profile">Editing a Configuration Profile</h3>
+
+<p>You can edit existing configuration profiles to change boot settings, set other disks to mount, and more. Here&rsquo;s how to edit a configuration profile:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Select a configuration profile. The <em>Configuration Profile</em> appears.</li>
+<li>Edit the settings as necessary.</li>
+<li>When finished, click <strong>Save Changes</strong>.</li>
+</ol>
+
+<p>The changes to the configuration profile have been saved. You may need to reboot your Linode to activate the changes.</p>
+
+<h3 id="selecting-and-using-a-configuration-profile">Selecting and Using a Configuration Profile</h3>
+
+<p>You can create and store many different configuration profiles in the Linode Manager, but you can only boot your Linode from one configuration profile at a time. Here&rsquo;s how to select a configuration profile and boot your Linode from it:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+
+<li><p>Click the button to select a configuration profile, as shown below.</p>
+
+<p><a href="/docs/assets/993-disk7-1.png"><img src="/docs/assets/993-disk7-1.png" alt="Selecting a configuration profile" /></a></p></li>
+
+<li><p>Click <strong>Reboot</strong> to restart your Linode using the selected configuration profile.</p></li>
+</ol>
+
+<p>You have successfully selected and booted your Linode from a configuration profile.</p>
+
+<h3 id="removing-a-configuration-profile">Removing a Configuration Profile</h3>
+
+<p>You can remove a configuration profile from the Linode Manager at anytime. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Select the <strong>Remove</strong> link next to the configuration profile you want to remove.</li>
+</ol>
+
+<p>The configuration profile is removed from the dashboard.</p>
+
+<h2 id="cloning-disks-and-configuration-profiles">Cloning Disks and Configuration Profiles</h2>
+
+<p>You can <em>clone</em> disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes, or migrate your Linode to a different datacenter. See our guide on <a href="/docs/migrate-to-linode/disk-images/clone-your-linode">cloning your Linode</a> for more information.</p>
+
+<h2 id="potential-uses">Potential Uses</h2>
+
+<p>If you&rsquo;re wondering how you could use disks and configuration profiles, here are some ideas to get you started:</p>
+
+<ul>
+<li><strong>Duplicate Server Configurations:</strong> It takes time to configure your Linode. Preserve that hard work by <a href="#duplicating-a-disk">duplicating the disk</a> to preserve all of your settings and applications in their current state. If you decide to create another Linode later, you could <a href="#cloning-disks-and-configuration-profiles">clone a saved disk</a> to the new Linode in a matter of minutes, saving yourself hours of work.</li>
+<li><strong>Automate Server Builds:</strong> If you run a large website that requires multiple servers, or if you just love automating things, you&rsquo;ll want to <a href="/docs/platform/automating-server-builds">automate your server builds</a>. You can rapidly spin up multiple servers with exactly the same configuration by creating a <em>golden disk</em> that can be cloned to multiple Linodes.</li>
+<li><strong>Experiment with Distributions:</strong> New to Linux? Take different distributions out for a spin by creating a separate disk for each flavor of Linux. Once you find a distribution you like, you can delete all of the disks except the one with your favorite distribution.</li>
+<li><strong>Create a Software Testing Environment:</strong> If you&rsquo;re a developer, you can create different disks for testing purposes. Every disk can hold a different 32- or 64-bit distribution, and every configuration profile can be set to use a different kernel. Even if you&rsquo;re not a developer, this is ideal for testing open source or proprietary software on different distributions.</li>
+</ul>
+
+<p>There are plenty of other ways you can use disks and configuration profiles. Use your imagination!</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/automating-server-builds/">Automating Server Builds</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#getting-started">Getting Started</a>
+<ul>
+<li><a href="#finding-your-way-around">Finding Your Way Around</a></li>
+</ul></li>
+<li><a href="#disks">Disks</a>
+<ul>
+<li><a href="#creating-a-disk-with-a-linux-distribution-installed">Creating a Disk with a Linux Distribution Installed</a></li>
+<li><a href="#creating-a-blank-disk">Creating a Blank Disk</a></li>
+<li><a href="#resizing-a-disk">Resizing a Disk</a></li>
+<li><a href="#duplicating-a-disk">Duplicating a Disk</a></li>
+<li><a href="#removing-a-disk">Removing a Disk</a></li>
+</ul></li>
+<li><a href="#configuration-profiles">Configuration Profiles</a>
+<ul>
+<li><a href="#creating-a-configuration-profile">Creating a Configuration Profile</a></li>
+<li><a href="#editing-a-configuration-profile">Editing a Configuration Profile</a></li>
+<li><a href="#selecting-and-using-a-configuration-profile">Selecting and Using a Configuration Profile</a></li>
+<li><a href="#removing-a-configuration-profile">Removing a Configuration Profile</a></li>
+</ul></li>
+<li><a href="#cloning-disks-and-configuration-profiles">Cloning Disks and Configuration Profiles</a></li>
+<li><a href="#potential-uses">Potential Uses</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

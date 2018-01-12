@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Run PHP Applications under CGI with Apache on Ubuntu 10.10 (Maverick)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Methods for enabling dynamic content run as individual users with PHP on Ubuntu 10.10 (Maverick).">
+        <meta name="keywords" content="php cgi, php ubuntu 10.10, php ubuntu maverick, php apache, php scripts, dynamic apache, web applications">
+        
+        <meta property="og:title" content="Run PHP Applications under CGI with Apache on Ubuntu 10.10 (Maverick)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-10-maverick/">
+        <meta property="og:description" content="Methods for enabling dynamic content run as individual users with PHP on Ubuntu 10.10 (Maverick).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-10-maverick/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/apache/">Hosting Websites with Apache</a>
+  
+</li>
+
+
+<li>
+  
+  Run PHP Applications under CGI with Apache on Ubuntu 10.10 (Maverick)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Run PHP Applications under CGI with Apache on Ubuntu 10.10 (Maverick)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2012-10-08T00:00:00Z">Monday, October 8, 2012</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache%2frun-php-applications-under-cgi-with-apache-on-ubuntu-10-10-maverick%2f&via=linode&text=Run%20PHP%20Applications%20under%20CGI%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache%2frun-php-applications-under-cgi-with-apache-on-ubuntu-10-10-maverick%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache%2frun-php-applications-under-cgi-with-apache-on-ubuntu-10-10-maverick%2f&t=Run%20PHP%20Applications%20under%20CGI%20with%20Apache%20on%20Ubuntu%2010.10%20%28Maverick%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-10-maverick.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-10-maverick.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>In most cases, we recommend using the <code>mod_php</code> module to run PHP scripts with the <a href="/docs/web-servers/apache/">Apache HTTP server</a>. This embeds a PHP interpreter in the web server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges. When the PHP interpreter is embedded in the web server process, PHP scripts are executed by and with the permissions of the web server&rsquo;s user. In smaller deployments, this is perfectly acceptable, but in larger deployments and operations it can create security risks. While Apache&rsquo;s <code>itk</code> message passing module (mpm) makes it possible to run Apache processes under user processes in a per-virtual host setup, this is incompatible with the embedded interpreter. The <code>itk</code> module is compatible with PHP running as a CGI process.</p>
+
+<p>Additionally, in our experience, <code>mod_php</code> is incompatible with the <code>mod_rails</code> or Phusion Passenger method of running <a href="/docs/frameworks/">Ruby On Rails</a>. In these cases, if you want to run PHP and Rails applications within a single instance of Apache, you must run PHP scripts as CGI processes using the method outlined below.</p>
+
+<p>Before beginning this guide we assume that you&rsquo;ve completed the <a href="/docs/getting-started/">getting started guide</a>. If you are new to Linux server administration, we recommend considering the <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a>, and the article concerning <a href="/docs/using-linux/administration-basics">systems administration basics</a>. If you&rsquo;re interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on <a href="/content/web-servers/apache/">Apache configuration</a>.</p>
+
+<h1 id="set-the-hostname">Set the Hostname</h1>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p>
+
+<h1 id="installing-apache-and-php">Installing Apache and PHP</h1>
+
+<p>Issue the following commands to refresh your system&rsquo;s package database and ensure that all installed packages are up to date and running the latest available bug fixes and security updates:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<p>If you have not already installed the Apache HTTP server, issue the following command to install the packages for Apache:</p>
+
+<pre><code>apt-get install apache2
+</code></pre>
+
+<p>You can now <a href="/docs/web-servers/apache/apache-2-web-server-on-ubuntu-10-10-maverick/#configure-name-based-virtual-hosts">configure virtual hosting</a> in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:</p>
+
+<pre><code>apt-get install php5-cgi
+</code></pre>
+
+<p>When this process completes, we can configure Apache to hand PHP scripts to the CGI process for rendering these scripts.</p>
+
+<h1 id="configure-apache-for-php-cgi">Configure Apache for PHP CGI</h1>
+
+<p>In order to set up Apache to use PHP-CGI on Ubuntu systems, you must enable the <code>mod_actions</code> module. Issue the following command:</p>
+
+<pre><code>a2enmod actions
+</code></pre>
+
+<p>The required directives can be set anywhere in Apache&rsquo;s <a href="/docs/web-servers/apache/configuration/configuration-basics">configuration tree</a>. We recommend creating the <code>php-cgi.conf</code> file in Apache&rsquo;s <code>conf.d/</code> directory and setting these variables there. For Ubuntu systems, this is located at <code>/etc/apache2/conf.d/</code>. You may also choose to place these settings in your <code>/etc/apache2/httpd.conf</code> file. Regardless of their location, the relevant settings are:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Configuration Block 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">ScriptAlias</span> <span class="sx">/local-bin</span> <span class="sx">/usr/bin</span>
+<span class="nb">AddHandler</span> application/x-httpd-php5 php
+<span class="nb">Action</span> application/x-httpd-php5 <span class="sx">/local-bin/php-cgi</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, the path to the <code>php-cgi</code> binary is <code>/usr/bin/php-cgi</code>. All files with the <code>php</code> extension will be handed to the PHP CGI binary.</p>
+
+<p>You may also choose to put these configuration directives within a virtual hosting block. If you <em>do not</em> have <code>mod_php</code> enabled or installed, you can use this to selectively enable PHP for certain virtual hosts. Furthermore, if your deployment requires multiple versions of PHP, you can specify virtual host specific handlers by specifying paths to various versions of <code>php-cgi</code>.</p>
+
+<p>The configuration file for the CGI executable of PHP is located at <code>/etc/php5/cgi/php.ini</code>. You can modify this file to suit the needs of your deployment.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php5/cgi/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">error_reporting</span> <span class="o">=</span> <span class="s">E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR</span>
+<span class="na">display_errors</span> <span class="o">=</span> <span class="s">Off</span>
+<span class="na">log_errors</span> <span class="o">=</span> <span class="s">On</span>
+<span class="na">error_log</span> <span class="o">=</span> <span class="s">/var/log/php.log</span>
+<span class="na">max_execution_time</span> <span class="o">=</span> <span class="s">30</span>
+<span class="na">memory_limit</span> <span class="o">=</span> <span class="s">64M</span>
+<span class="na">register_globals</span> <span class="o">=</span> <span class="s">Off</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:</p>
+
+<pre><code>apt-get install php5-mysql
+</code></pre>
+
+<p>When <code>php-cgi</code> is configured, you can now safely enable the <code>itk</code> message passing module for Apache. The installation process for <code>itk</code> will restart the Apache process. If you choose to use PHP CGI with the default or existing message passing module, then restart Apache by issuing the following command:</p>
+
+<pre><code>/etc/init.d/apache2 restart
+</code></pre>
+
+<h1 id="enabling-the-itk-message-passing-module">Enabling the &ldquo;itk&rdquo; Message Passing Module</h1>
+
+<p>The default Apache configuration uses a message passing module called <code>worker</code> which uses a threaded approach to efficiently handling HTTP requests. An alternative MPM is <code>prefork</code> which does not use threads and is compatible with non-thread-safe libraries. Both the <code>worker</code> and <code>prefork</code> modules require that all requests be handled by a process running under a user with particular permissions. On Ubuntu systems, Apache processes run under the <code>www-data</code> user.</p>
+
+<p>This may not be ideal if you have multiple users running publicly accessible scripts on your server. In some of these cases it is prudent to isolate virtual hosts under specific user accounts using an alternative message passing module, known as <code>itk</code> or <code>mpm-itk</code>. Functionally, <code>mpm-itk</code> is quite similar to <code>prefork</code> however <code>itk</code> can processes requests for each virtual host or each site under a specified user account. This useful in situations where you&rsquo;re hosting a number of distinct sites and you need to isolate sites on the basis of user privileges.</p>
+
+<p>Begin by installing the mpm-itk module:</p>
+
+<pre><code>apt-get install apache2-mpm-itk
+</code></pre>
+
+<p>Now, in the <code>&lt;VirtualHost &gt;</code> entries for your sites (the site-specific files in <code>/etc/apache2/sites-avalible/</code>) add the following sub-block:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Hosting Configuration Block 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;IfModule</span> <span class="s">mpm_itk_module</span><span class="nt">&gt;</span>
+   <span class="nb">AssignUserId</span> webeditor webgroup
+<span class="nt">&lt;/IfModule</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, <code>webeditor</code> is the name of the user of the specific site in question, and <code>webgroup</code> is the name of the user group that &ldquo;owns&rdquo; the web server related files and processes for this host. Remember that you must create the user accounts and groups using the <code>useradd</code> command. Consider our documentation of <a href="/docs/tools-reference/linux-users-and-groups">user groups and permissions</a> for more information about creating the necessary users and groups.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://php.net/">The PHP Homepage</a></li>
+<li><a href="http://httpd.apache.org/docs/2.2/howto/cgi.html">Apache 2.2 CGI documentation</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-fedora-13/">Run PHP Applications under CGI with Apache on Fedora 13 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-04-lts-lucid/">Run PHP Applications under CGI with Apache on Ubuntu 10.04 LTS (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy/">Run PHP Applications under CGI with Apache on Ubuntu 8.04 (Hardy) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-9-10-karmic/">Run PHP Applications under CGI with Apache on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-centos-5/">Run PHP Applications under CGI with Apache on CentOS 5 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#installing-apache-and-php">Installing Apache and PHP</a></li>
+<li><a href="#configure-apache-for-php-cgi">Configure Apache for PHP CGI</a></li>
+<li><a href="#enabling-the-itk-message-passing-module">Enabling the &ldquo;itk&rdquo; Message Passing Module</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

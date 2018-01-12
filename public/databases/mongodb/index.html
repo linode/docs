@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>MongoDB</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="MongoDB is an open source database management system written in C&#43;&#43;. Like other systems such as [CouchDB](/docs/databases/couchdb/), MongoDB seeks to resolve issues that relational database management systems have through document-based management.">
+        <meta name="keywords" content="MongoBD, MongoDB server, Linux MongoDB HOWTO, MongoDB guide, NoSQL">
+        
+        <meta property="og:title" content="MongoDB">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://linode.com/docs/databases/mongodb/">
+        <meta property="og:description" content="MongoDB is an open source database management system written in C&#43;&#43;. Like other systems such as [CouchDB](/docs/databases/couchdb/), MongoDB seeks to resolve issues that relational database management systems have through document-based management.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/mongodb/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section some-space-bottom">
+  <div class="container">
+    <div class="row pad-xs">
+      <div class="col-sm-8">
+        <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  MongoDB
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+      </div>
+      <div class="col-sm-4 library-breadcrumb-search">
+        <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+      </div>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1">
+      <h1 class="text-center">MongoDB</h1>
+      <p class="text-center lead">MongoDB is an open source database management system written in C++. Like other systems such as <a href="/docs/databases/couchdb/">CouchDB</a>, MongoDB seeks to resolve issues that relational database management systems have through document-based management.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="primary">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/install-mongodb-on-centos-7/">Install MongoDB on CentOS 7</a></h4>
+            <p>Install MongoDB for document-oriented data storage on CentOS 7.</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/create-a-mongodb-replica-set/">Create a MongoDB Replica Set</a></h4>
+            <p>Configure a MongoDB Replica Set</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04/">Install MongoDB on Ubuntu 16.04 (Xenial)</a></h4>
+            <p>Install MongoDB for document-oriented data storage on Ubuntu 16.04 (Xenial).</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/creating-a-mongodb-replication-set-on-centos-6-4/">Creating a MongoDB Replication Set on CentOS 6.4</a></h4>
+            <p>Configure a MongoDB ReplSet</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/creating-a-mongodb-replication-set-on-debian-7-wheezy/">Creating a MongoDB Replication Set on Debian 7 (Wheezy)</a></h4>
+            <p>Configure a MongoDB ReplSet (Debian)</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-12-04-precise/">Creating a MongoDB Replication Set on Ubuntu 12.04 (Precise)</a></h4>
+            <p>Configure a MongoDB ReplSet</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-12-04-precise/">Use MongoDB to Store Application Data on Ubuntu 12.04 (Precise)</a></h4>
+            <p>Install MongoDB for use in application development on Ubuntu 12.04 (Precise).</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-14/">Use MongoDB to Store Application Data on Fedora 14</a></h4>
+            <p>Install MongoDB for use in application development on Fedora 14.</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-10-10-maverick/">Use MongoDB to Store Application Data on Ubuntu 10.10 (Maverick)</a></h4>
+            <p>Install MongoDB for use in application development on Ubuntu 10.10 (Maverick)</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/build-database-clusters-with-mongodb/">Build Database Clusters with MongoDB</a></h4>
+            <p>Configure MongoDB for use in clustered environments.</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-13/">Use MongoDB to Store Application Data on Fedora 13</a></h4>
+            <p>Install MongoDB for use in application development on Fedora 13.</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-10-04-lucid/">Use MongoDB to Store Application Data on Ubuntu 10.04 (Lucid)</a></h4>
+            <p>Install MongoDB for use in application development on Ubuntu 10.04 (Lucid).</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-centos-5/">Use MongoDB to Store Application Data on CentOS 5</a></h4>
+            <p>Install MongoDB for use in application development on CentOS 5.</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-9-10-karmic/">Use MongoDB to Store Application Data on Ubuntu 9.10 (Karmic)</a></h4>
+            <p>Install MongoDB for use in application development on Ubuntu 9.10 (Karmic).</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-12/">Use MongoDB to Store Application Data on Fedora 12</a></h4>
+            <p>Install MongoDB for use in application development on Fedora 12.</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-debian-5-lenny/">Use MongoDB to Store Application Data on Debian 5 (Lenny)</a></h4>
+            <p>Install MongoDB for use in application development on Debian 5 (Lenny).</p>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+    </body>
+</html>

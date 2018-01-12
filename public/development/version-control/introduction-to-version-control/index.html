@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Introduction to Version Control</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Our guide to getting starting with version control">
+        <meta name="keywords" content="version control, introduction to version control, git, introduction to git">
+        
+        <meta property="og:title" content="Introduction to Version Control">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/version-control/introduction-to-version-control/">
+        <meta property="og:description" content="Our guide to getting starting with version control">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/version-control/introduction-to-version-control/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/version-control/">Version Control</a>
+  
+</li>
+
+
+<li>
+  
+  Introduction to Version Control
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Introduction to Version Control</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-09-18T00:00:00Z">Wednesday, September 18, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fintroduction-to-version-control%2f&via=linode&text=Introduction%20to%20Version%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fintroduction-to-version-control%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fintroduction-to-version-control%2f&t=Introduction%20to%20Version%20Control" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/version-control/introduction-to-version-control.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/version-control/introduction-to-version-control.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>In the <a href="/docs/hosting-website">Hosting a Website</a> guide, you learned how to host your website by installing and configuring a web server, database, and PHP. Now it&rsquo;s time to implement version control to protect your data and handle code updates smoothly. By the time you reach the end of this guide, you&rsquo;ll know how to use many of the version control methods and tools used by large organizations.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>A <em>version control</em> system is a special application that stores and manages every revision of your files and code. Many developers and organizations use version control to collaborate on source code, manage releases, and roll back to previous versions when bugs are discovered.</p>
+
+<p><a href="/docs/assets/1204-image_versioning_intro_1.jpg"><img src="/docs/assets/1204-image_versioning_intro_1.jpg" alt="Version control overview." /></a></p>
+
+<p>Setting up a version control system is easy. The hard part is learning to use it, and then incorporate it in your daily workflow. This section introduces version control and explains how you can apply it to your own projects. We&rsquo;ll walk you through all of the steps, from evaluating the different version control systems to creating and using a repository.</p>
+
+<h3 id="why-use-version-control">Why Use Version Control?</h3>
+
+<p>If you host a website or web-based application on your Linode, your users rely on your content to be available. You also need to keep your content updated and patched. However, changing your content can result in unforeseen bugs, which in turn can result in downtime. You need a way to protect your code and files through changes, to test updates before they go live, and to roll back to a working version if something goes wrong.</p>
+
+<p>Version control (also referred to as <em>revision control</em> or <em>source control</em>) is a file storage system that tracks every change made to a file and allows you to reverse or roll back those changes. For example, if you were editing a file on your personal computer and decided to delete a section of code, you could use version control to restore that section of code in the future - even weeks or months from now.</p>
+
+<p><a href="/docs/assets/1203-image_versioning_basics_1.jpg"><img src="/docs/assets/1203-image_versioning_basics_1.jpg" alt="A basic form of version control." /></a></p>
+
+<p>Version control is also a great tool for individuals who need to work on the same files at the same time. With version control, they can <em>check out</em> the repository and then <em>commit</em> the changes when they&rsquo;re finished. If two individuals have modified the same file, the version control system can usually <em>merge</em> the changes, unless there&rsquo;s a <em>conflict</em>, in which case the user will need to manually combine the changes or favor one change over the other.</p>
+
+<p>Version control also makes it easy to track changes. You can see who committed code, and why. And if you start working on a new version of your website or application, you can <em>branch</em> a copy of your code to a separate area. (The branch can later be modified back into the <em>truck</em>.) In short, version control is cheap insurance against human errors and unforeseeable disasters. You should be using it!</p>
+
+<h3 id="evaluating-version-control-systems">Evaluating Version Control Systems</h3>
+
+<p>There are several types of open source version control systems available. Each system has its own advantages and disadvantages, so you should do some research before making your selection. Here are three of the most popular:</p>
+
+<ul>
+<li><strong>Git:</strong> Designed and developed by Linus Torvalds for Linux kernel development, Git provides strong support for non-linear and distributed development. It&rsquo;s probably the most popular distributed revision control and source code management system. See the <a href="http://git-scm.com/">Git documentation website</a> for more information. You can also read our guide to <a href="/docs/linux-tools/version-control/git">Git Source Control Management</a>.</li>
+<li><strong>Subversion:</strong> When it emerged in 2000, Subversion operated like <a href="http://cvs.nongnu.org/">CVS</a> and added some of the features that were missing from CVS. It was the undisputed king of version control systems until Git emerged in 2005, and it&rsquo;s still very popular. It&rsquo;s now maintained by the Apache Software Foundation. You can read our guide to <a href="/docs/linux-tools/version-control/svn">Managing Source Code Versions with Subversion</a>.</li>
+<li><strong>Mercurial:</strong> This is another popular version control system that resembles Git. It doesn&rsquo;t enjoy quite as much popularity and community support as Git, but it&rsquo;s still a very capable and accessible system. You can read our guide <a href="/docs/linux-tools/version-control/mercurial">Managing Distributed Version Control with Mercurial</a>.</li>
+</ul>
+
+<p>We&rsquo;ll use Git as an example in this guide. But don&rsquo;t let our decision influence you - there are plenty of other version control systems out there. Feel free to investigate other options if Git, Subversion, or Mercurial don&rsquo;t meet your needs for automating server builds and managing configurations.</p>
+
+<h3 id="example-version-control-workflow">Example Version Control Workflow</h3>
+
+<p>This is the process most developers use to create, stage, and commit files to a Git repository. It could be different than the process you&rsquo;re currently using, but it&rsquo;s important to learn Git&rsquo;s workflow and at least <em>try</em> using it, even if it seems a bit weird at first. Here&rsquo;s how it works:</p>
+
+<ol>
+<li>Create or modify files in your working directory. Once you&rsquo;re satisfied with your changes, use the <code>git add</code> command to move the modified files to the staging area.</li>
+<li>Snapshots of the new and modified files are added to the staging area. Now you can preview the files.</li>
+<li>When you&rsquo;re ready to commit the files to the repository, use the <code>git commit</code> command. The files in the staging area are permanently stored in your Git directory.</li>
+</ol>
+
+<p>An illustrated overview of this process is shown below.</p>
+
+<p><a href="/docs/assets/1205-image_versioning_workflow_1.jpg"><img src="/docs/assets/1205-image_versioning_workflow_1.jpg" alt="An illustration of a sample version control system." /></a></p>
+
+<p>For an added layer of protection, you can store your files in <em>both</em> a local and a remote Git repository. This is ideal for developers who modify files on their local desktop computers and then need to transfer them to a server. Such a setup is beyond the scope of this guide, but the official Git website provides <a href="http://git-scm.com/book/ch2-5.html">some excellent instructions on this topic</a>.</p>
+
+<h2 id="installing-git">Installing Git</h2>
+
+<p>You can install Git on your desktop computer, your Linode, or both. Getting started with Git is easy. All you have to do is install Git on your Linode, create a repository, and make an initial commit. Here&rsquo;s how:</p>
+
+<ol>
+<li>Open a terminal window and <a href="/docs/getting-started#log-in-to-the-linode-manager">log in to your Linode via SSH</a>.</li>
+
+<li><p>Install Git on your Linode by entering the following commands, one by one:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get install git
+</code></pre></li>
+
+<li><p>Set your username and email address by entering the following commands, one by one. Replace the example name and email address with your own. Git uses this information when you commit changes.</p>
+
+<pre><code>git config --global user.name &quot;Jane Smith&quot;
+git config --global user.email jsmith@example.com
+</code></pre></li>
+
+<li><p>Now that Git is installed on your Linode, you&rsquo;ll need to create the repository. Go to your project&rsquo;s directory, and then enter the following command:</p>
+
+<pre><code>git init
+</code></pre></li>
+
+<li><p>The repository (a <code>.git</code> subdirectory) has been created, but nothing has been added to it yet. To start tracking all of the files in your project&rsquo;s directory, enter the following command:</p>
+
+<pre><code>git add *
+</code></pre></li>
+
+<li><p>The files are now being tracked, so you can make the initial commit. Enter the following command:</p>
+
+<pre><code>git commit -m 'initial project version'
+</code></pre></li>
+</ol>
+
+<p>Congratulations! You&rsquo;ve successfully created a Git repository, specified which files should be tracked, and made an initial commit. Next let&rsquo;s look at a version control workflow to get a sense of how you could use Git in a real-life scenario.</p>
+
+<h2 id="environments">Environments</h2>
+
+<p>Now it&rsquo;s time to use what you&rsquo;ve learned about version control and server builds to create different <em>environments</em> for your code. Environments are self-contained sandboxes that can be stored on different computers or the same system. You can create separate environments to store files in different stages of development and production. In this section, you&rsquo;ll learn how to modify files in a development environment, preview the changes in a staging environment, and then deploy all of the changes to a production environment. It&rsquo;s an effective way to make changes and test them <em>before</em> implementing them on a public-facing website.</p>
+
+<h3 id="setting-up">Setting Up</h3>
+
+<p>To get started, you&rsquo;ll need to decide which environments you want to create and then set them up. We recommend creating three different environments, which should be suitable for most individual developers and small organizations. Larger companies will likely want and need several other environments, depending on the established teams and processes. Ideally, the environments you create should correspond to your workflow. For example, if your organization has a dedicated quality control department, you&rsquo;ll probably want to create an additional environment specifically for that department.</p>
+
+<p><a href="/docs/assets/1206-image_workflow_1.jpg"><img src="/docs/assets/1206-image_workflow_1.jpg" alt="An illustration of a sample deployment configuration." /></a></p>
+
+<p>We recommend creating the following environments:</p>
+
+<ul>
+<li><strong>Development:</strong> Use this environment to create new files and modify existing ones. Nobody except you can see the changes, so you can do whatever you want in here.</li>
+<li><strong>Staging:</strong> After you&rsquo;ve finished making the changes, you&rsquo;ll move the files to this environment to preview the changes in a private area. The changes are still hidden from the public at this point, but you can test the website to make sure you didn&rsquo;t break anything.</li>
+<li><strong>Production:</strong> If the changes look good, you can push the modified files to the production website. Now all of the changes are visible to the public.</li>
+</ul>
+
+<p>Put some thought into where you want the files for each environment to reside. For example, if you&rsquo;re a developer working alone, you may want to keep the development environment on your personal desktop computer and the staging and production environments on your Linode. You can also keep all of the environments on a single system.</p>
+
+<p>Ideally, you&rsquo;ll use a version control system to create and maintain separate repositories for each environment. That way, you&rsquo;ll be able to issue commands to push the files from one environment&rsquo;s repository to another. And since different environments will use different data, you should also create different databases for each environment. You can copy the data in the production database down to the staging and development environments.</p>
+
+<h3 id="perfecting-your-workflow">Perfecting Your Workflow</h3>
+
+<p>As with using a version control system, it takes some time and effort to get used to environments. For example, if you&rsquo;re used to modifying the files in your production environment — a risky practice that is definitely not recommended – it may be challenging to learn to use a version control system to deploy modified files from the development environment to your staging and production environments. Stick with it! The rewards are worth it.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="/docs/development/version-control/">Version Control Systems</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/">Install GitLab on Ubuntu 14.04 (Trusty Tahr)</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/">How to Unbundle nginx from Omnibus GitLab for Serving Multiple Websites</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/install-gogs-on-debian/">Install Gogs on Debian 9 with nginx and PostgreSQL</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/">Install a Chef Server Workstation on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/">How to Install Git and Clone a GitHub Repository</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#getting-started">Getting Started</a>
+<ul>
+<li><a href="#why-use-version-control">Why Use Version Control?</a></li>
+<li><a href="#evaluating-version-control-systems">Evaluating Version Control Systems</a></li>
+<li><a href="#example-version-control-workflow">Example Version Control Workflow</a></li>
+</ul></li>
+<li><a href="#installing-git">Installing Git</a></li>
+<li><a href="#environments">Environments</a>
+<ul>
+<li><a href="#setting-up">Setting Up</a></li>
+<li><a href="#perfecting-your-workflow">Perfecting Your Workflow</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

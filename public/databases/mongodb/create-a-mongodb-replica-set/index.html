@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Create a MongoDB Replica Set</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Configure a MongoDB Replica Set">
+        <meta name="keywords" content="mongodb, nosql, clusters, replica set">
+        
+        <meta property="og:title" content="Create a MongoDB Replica Set">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/mongodb/create-a-mongodb-replica-set/">
+        <meta property="og:description" content="Configure a MongoDB Replica Set">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/mongodb/create-a-mongodb-replica-set/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/mongodb/">MongoDB</a>
+  
+</li>
+
+
+<li>
+  
+  Create a MongoDB Replica Set
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Create a MongoDB Replica Set</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-02-27T00:00:00Z">Monday, February 27, 2017</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmongodb%2fcreate-a-mongodb-replica-set%2f&via=linode&text=Create%20a%20MongoDB%20Replica%20Set" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmongodb%2fcreate-a-mongodb-replica-set%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmongodb%2fcreate-a-mongodb-replica-set%2f&t=Create%20a%20MongoDB%20Replica%20Set" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/mongodb/create-a-mongodb-replica-set.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/mongodb/create-a-mongodb-replica-set.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>In this guide, you&rsquo;ll learn how to create a MongoDB <em>replica set</em>. A replica set is a cluster of MongoDB database servers that implements master-slave (primary-secondary) replication. Replica sets also fail over automatically, so if one of the members becomes unavailable, a new primary host is elected and your data is still accessible. When combined with sharded database clusters, replica sets allow you to create scalable, highly available database systems for use with growing datasets.</p>
+
+<p><img src="/docs/assets/create-a-mongodb-replica-set.png" alt="&quot;Create a MongoDB Replica Set&quot;" title="Create a MongoDB Replica Set" /></p>
+
+<p>This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the configuration is done within the MongoDB application, the steps should not vary significantly among other distributions, but additional configuration may be required.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>To create a replica set, you&rsquo;ll need at least three Linodes with MongoDB installed. For information on how to install MongoDB, see the appropriate <a href="/docs/databases/mongodb/">guide</a> for your distribution.</p></li>
+
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting each of your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<p><strong>Ubuntu:</strong></p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre>
+
+<p><strong>CentOS:</strong></p>
+
+<pre><code>sudo yum update
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="configure-networking">Configure Networking</h2>
+
+<p>To allow for consistent replication, each node will need to communicate with all the others in the cluster. For example, in a three node set, data transfer will look like this:</p>
+
+<p><img src="/docs/assets/mongodb-replication-diagram.png" alt="&quot;A three node replica set&quot;" title="A three node replica set" /></p>
+
+<p>There are two major ways to allow the members of your replica set to communicate.</p>
+
+<p>The first method is to use <a href="/docs/networking/remote-access#adding-private-ip-addresses">private IP addresses</a> for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same datacenter.</p>
+
+<p>The second method is to simply use the public IP address assigned to each Linode. You&rsquo;ll need to use this method if your Linodes are located in different datacenters, although this is not recommended because network latency will have a negative impact on replication. If you must use public IP addresses, you should <a href="https://docs.mongodb.com/manual/tutorial/configure-ssl/">configure SSL/TLS encryption</a> for data sent between your hosts, or configure them to communicate over a VPN.</p>
+
+<p>Whether you&rsquo;re using public or private IP addresses to send data, you&rsquo;ll need to secure each Linode with a <a href="/docs/security/firewalls/">firewall</a> before deploying your replica set into production.</p>
+
+<h3 id="configure-hosts-files">Configure Hosts Files</h3>
+
+<p>Each member of your replica set should have a hostname that identifies it as a member of the set. This way, you&rsquo;ll be able to keep your infrastructure organized at scale (for example, if you add more replica sets). In order to simplify the configuration of your replica set, add the following lines to the <code>/etc/hosts</code> file on each member of the replica set:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">192.0.2.1    mongo-repl-1
+192.0.2.2    mongo-repl-2
+192.0.2.3    mongo-repl-3</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you&rsquo;re using more than three Linodes, add all of your hosts at this stage. Replace the hostnames with your actual hostnames, and the IP addresses with the IP addresses of your Linodes.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>These hostnames are only given as examples, but we&rsquo;ll use these names throughout this guide to refer to members of the replica set. When you see one of these names in a command or configuration file, substitute your own hostname if applicable.</div>
+</blockquote>
+
+
+<h2 id="set-up-mongodb-authentication">Set Up MongoDB Authentication</h2>
+
+<p>In this section you&rsquo;ll create a key file that will be used to secure authentication between the members of your replica set. While in this example you&rsquo;ll be using a key file generated with <code>openssl</code>, MongoDB recommends using an <a href="https://docs.mongodb.com/v3.2/core/security-x.509/">X.509 certificate</a> to secure connections between production systems.</p>
+
+<h3 id="generate-a-key-file">Generate a Key file</h3>
+
+<ol>
+<li><p>Issue this command to generate your key file:</p>
+
+<pre><code>openssl rand -base64 756 &gt; mongo-keyfile
+</code></pre>
+
+<p>Once you&rsquo;ve generated the key, copy it to each member of your replica set.</p></li>
+
+<li><p>The rest of the steps in this section should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions. Create the <code>/opt/mongo</code> directory to store your key file:</p>
+
+<pre><code>sudo mkdir /opt/mongo
+</code></pre></li>
+
+<li><p>Assuming that your key file is under the home directory for your user, move it to <code>/opt/mongo</code>, and assign it the correct permissions:</p>
+
+<pre><code>sudo mv ~/mongo-keyfile /opt/mongo
+sudo chmod 400 /opt/mongo/mongo-keyfile
+</code></pre></li>
+
+<li><p>Update the ownership of your key file, so that it belongs to the MongoDB user. Use the appropriate command for your distribution:</p>
+
+<p><strong>Ubuntu / Debian:</strong></p>
+
+<pre><code>sudo chown mongodb:mongodb /opt/mongo/mongo-keyfile
+</code></pre>
+
+<p><strong>CentOS:</strong></p>
+
+<pre><code>sudo chown mongod:mongod /opt/mongo/mongo-keyfile
+</code></pre></li>
+</ol>
+
+<h3 id="create-an-administrative-user">Create an Administrative User</h3>
+
+<ol>
+<li><p>On the Linode that you intend to use as the <em>primary</em> member of your replication set, log in to the <code>mongo</code> shell:</p>
+
+<pre><code>mongo
+</code></pre></li>
+
+<li><p>Connect to the <code>admin</code> database:</p>
+
+<pre><code>use admin
+</code></pre></li>
+
+<li><p>Create an administrative user with <code>root</code> privileges. Replace &ldquo;password&rdquo; with a strong password of your choice:</p>
+
+<pre><code>db.createUser({user: &quot;mongo-admin&quot;, pwd: &quot;password&quot;, roles:[{role: &quot;root&quot;, db: &quot;admin&quot;}]})
+</code></pre></li>
+</ol>
+
+<h2 id="configure-mongodb">Configure MongoDB</h2>
+
+<p>On each of your Linodes, make the following changes to your <code>/etc/mongod.conf</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mongod.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">net:
+  port: 27017
+  bindIp: 127.0.0.1,192.0.2.1
+
+security:
+  keyFile: /opt/mongo/mongo-keyfile
+
+replication:
+  replSetName: rs0</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>port</code> value of 27017 is the default. If you have reason to use a different port you may do so, but the rest of this guide will use the default. The <code>bindIp</code> directive specifies the IP address on which the MongoDB daemon will listen, and since we&rsquo;re connecting several hosts, this should be the IP address that corresponds with the Linode on which you&rsquo;re configuring it (the same address added to the hosts files in the previous section). Leaving the default of <code>127.0.0.1</code> allows you to connect locally as well, which may be useful for testing replication.</p>
+
+<p>Uncomment the <code>security</code> section, and use the <code>keyFile</code> option to direct MongoDB to the key you created previously. Enabling <code>keyFile</code> authentication automatically enables <a href="https://docs.mongodb.com/manual/core/authorization/">role-based access control</a> as well, so you will need to <a href="/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users">create users</a> and assign them privileges to access specific databases.</p>
+
+<p>The <code>replication</code> section needs to be uncommented to be enabled. Directives in this section are what directly affect the configuration of your replica set. The value <code>rs0</code> is the name we&rsquo;re using for our replica set; you can use a different naming convention if you like, but we&rsquo;ll be using <code>rs0</code> throughout this guide.</p>
+
+<p>Once you&rsquo;ve made these changes, restart the <code>mongod</code> service:</p>
+
+<pre><code>sudo systemctl restart mongod
+</code></pre>
+
+<h2 id="start-replication-and-add-members">Start Replication and Add Members</h2>
+
+<ol>
+<li><p>Connect via SSH to the Linode that you intend to use as your <em>primary</em>. Once you&rsquo;re logged in, connect to the MongoDB shell using the <a href="#create-an-administrative-user">administrative user</a> you created previously:</p>
+
+<pre><code>mongo -u mongo-admin -p --authenticationDatabase admin
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If your connection is refused, be sure that the address for localhost (<code>127.0.0.1</code>) is included in your configuration&rsquo;s <code>bindIp</code> value.</div>
+</blockquote>
+</li>
+
+<li><p>From the <code>mongo</code> shell, initiate the replica set:</p>
+
+<pre><code>rs.initiate()
+</code></pre>
+
+<p>This command initiates a replica set with the current host as its only member. This is confirmed by the output, which should resemble the following:</p>
+
+<pre><code><div class="file">
+{
+    &ldquo;info2&rdquo; : &ldquo;no configuration specified. Using a default configuration for the set&rdquo;,
+    &ldquo;me&rdquo; : &ldquo;192.0.2.1:27017&rdquo;,
+    &ldquo;ok&rdquo; : 1
+}
+</div>
+</code></pre></li>
+
+<li><p>While still connected to the <code>mongo</code> shell, add the other hosts to the replica set:</p>
+
+<pre><code>rs.add(&quot;mongo-repl-2&quot;)
+rs.add(&quot;mongo-repl-3&quot;)
+</code></pre>
+
+<p>If you configured other members for your replica set, add them using the same command and the hostnames you set in your <code>/etc/hosts</code> file.</p></li>
+
+<li><p>Once all members have been added, check the configuration of your replica set:</p>
+
+<pre><code>rs.conf()
+</code></pre>
+
+<p>This will display a replica set configuration object with information about each member as well as some metadata about the replica set.</p></li>
+
+<li><p>If you need to do so in the future, you can also check the status of your replica set:</p>
+
+<pre><code>rs.status()
+</code></pre>
+
+<p>This shows the state, uptime, and other data about the set.</p></li>
+</ol>
+
+<h2 id="test-replication">Test Replication</h2>
+
+<p>At this stage, your replica set is fully functional and ready to use. The steps in this section are optional, but if you&rsquo;d like a visual confirmation that your replication is working, you can follow along.</p>
+
+<ol>
+<li><p>Connect to the <code>mongo</code> as the administrative user, on the primary member of your replica set. This is usually the Linode from which you initiated the set, but if you&rsquo;re not sure, you can check the output of <code>rs.status()</code> from any of the members.</p></li>
+
+<li><p>Enter test data:</p>
+
+<pre><code>use exampleDB
+for (var i = 0; i &lt;= 10; i++) db.exampleCollection.insert( { x : i } )
+</code></pre>
+
+<p>The first command creates a database called <code>exampleDB</code>, and the second command generates 20 simple documents, which are then inserted into a collection called <code>exampleCollection</code>.</p></li>
+
+<li><p>If your replica set is configured properly, the data should be present on your secondary members as well as the primary. To test this, connect to the <code>mongo</code> shell with the administrative user on one of your secondary members, and run:</p>
+
+<pre><code>db.getMongo().setSlaveOk()
+</code></pre>
+
+<p>This command enables secondary member read operations on a per-connection basis, so be sure to disconnect before you deploy your replica set into production. By default, read queries are not allowed on secondary members to avoid problems with your application retrieving stale data. This can become an issue when your database is undergoing more complex queries at a higher load, but because of the relatively simple test data we wrote, this is not an issue here.</p>
+
+<p>However, changing the overall read preference can have benefits in some cases. For more information, see the official <a href="https://docs.mongodb.com/v3.2/core/read-preference/">MongoDB documentation</a>.</p></li>
+
+<li><p>Before running the command in the previous step, any read operations, including simple ones like <code>show dbs</code> and <code>show collections</code> would fail with an error. Now that you&rsquo;ve enabled reading, switch to the <code>exampleDB</code> database:</p>
+
+<pre><code>use exampleDB
+</code></pre>
+
+<p>Next, run a <code>find()</code> method with no arguments to show all documents in <code>exampleCollection</code>:</p>
+
+<pre><code>db.exampleCollection.find()
+</code></pre>
+
+<p>If replication is working, you&rsquo;ll see a list of the sample documents we created on the primary host.</p></li>
+
+<li><p>Disconnect from the <code>mongo</code> shell on your secondary member:</p>
+
+<pre><code>quit()
+</code></pre>
+
+<p>If you reconnect on the secondary host in the future, you&rsquo;ll be unable to perform read operations unless you enable it using the command in Step 3.</p></li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Replica sets can be used as standalone components of a high availability system, or as part of a <a href="https://docs.mongodb.com/manual/core/sharded-cluster-shards/">sharded database cluster</a>. For larger datasets, a cluster allows you to distribute data across many database servers or replica sets and route queries to them based on criteria you specify. For more information on how to create a sharded cluster, see our guide on <a href="/docs/databases/mongodb/build-database-clusters-with-mongodb">building database clusters with MongoDB</a>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://docs.mongodb.com/manual/mongo/">Getting Started with the mongo Shell</a></li>
+
+<li><a href="https://docs.mongodb.com/manual/replication/">Replication Introduction</a></li>
+
+<li><a href="https://docs.mongodb.com/manual/tutorial/deploy-geographically-distributed-replica-set/">Geographically Distributed Replica Sets</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/mongodb/creating-a-mongodb-replication-set-on-centos-6-4/">Creating a MongoDB Replication Set on CentOS 6.4 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-12-04-precise/">Creating a MongoDB Replication Set on Ubuntu 12.04 (Precise) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/creating-a-mongodb-replication-set-on-debian-7-wheezy/">Creating a MongoDB Replication Set on Debian 7 (Wheezy) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/build-database-clusters-with-mongodb/">Build Database Clusters with MongoDB</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/install-mongodb-on-centos-7/">Install MongoDB on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#configure-networking">Configure Networking</a>
+<ul>
+<li><a href="#configure-hosts-files">Configure Hosts Files</a></li>
+</ul></li>
+<li><a href="#set-up-mongodb-authentication">Set Up MongoDB Authentication</a>
+<ul>
+<li><a href="#generate-a-key-file">Generate a Key file</a></li>
+<li><a href="#create-an-administrative-user">Create an Administrative User</a></li>
+</ul></li>
+<li><a href="#configure-mongodb">Configure MongoDB</a></li>
+<li><a href="#start-replication-and-add-members">Start Replication and Add Members</a></li>
+<li><a href="#test-replication">Test Replication</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

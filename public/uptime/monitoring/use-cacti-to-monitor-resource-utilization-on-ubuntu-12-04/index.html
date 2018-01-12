@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use Cacti to Monitor Resource Utilization on Ubuntu 12.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Deploy Cacti, a Powerful Server-monitoring Solution That Uses SNMP to Track Resource Usage on Ubuntu 12.04.">
+        <meta name="keywords" content="Cacti, Ubuntu,  Ubuntu 12.04, SNMP, spine, client machine">
+        
+        <meta property="og:title" content="Use Cacti to Monitor Resource Utilization on Ubuntu 12.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/monitoring/use-cacti-to-monitor-resource-utilization-on-ubuntu-12-04/">
+        <meta property="og:description" content="Deploy Cacti, a Powerful Server-monitoring Solution That Uses SNMP to Track Resource Usage on Ubuntu 12.04.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/monitoring/use-cacti-to-monitor-resource-utilization-on-ubuntu-12-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/monitoring/">Server Monitoring</a>
+  
+</li>
+
+
+<li>
+  
+  Use Cacti to Monitor Resource Utilization on Ubuntu 12.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use Cacti to Monitor Resource Utilization on Ubuntu 12.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2012-10-11T00:00:00Z">Thursday, October 11, 2012</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fuse-cacti-to-monitor-resource-utilization-on-ubuntu-12-04%2f&via=linode&text=Use%20Cacti%20to%20Monitor%20Resource%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fuse-cacti-to-monitor-resource-utilization-on-ubuntu-12-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fuse-cacti-to-monitor-resource-utilization-on-ubuntu-12-04%2f&t=Use%20Cacti%20to%20Monitor%20Resource%20Utilization%20on%20Ubuntu%2012.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/monitoring/use-cacti-to-monitor-resource-utilization-on-ubuntu-12-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/monitoring/use-cacti-to-monitor-resource-utilization-on-ubuntu-12-04.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool <a href="http://munin-monitoring.org/">Munin</a> is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for advanced monitoring needs.</p>
+
+<p>For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web-based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug-in framework.</p>
+
+<p>Before installing Cacti we assume that you have followed our <a href="/docs/getting-started/">getting started guide</a>. If you&rsquo;re new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts/">introduction to Linux concepts guide</a>, <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<h3 id="set-the-timezone">Set the Timezone</h3>
+
+<p>Begin by setting the timezone of your server if it isn&rsquo;t already set. Set your server to your timezone or to that of the bulk of your users. If you&rsquo;re unsure which timezone would be best, consider using Universal Coordinated Time (or UTC, ie. Greenwich Mean Time). Keep in mind that Cacti uses the timezone set on the monitoring machine when generating its graphs. Run the following command to set the timezone:</p>
+
+<pre><code>dpkg-reconfigure tzdata
+</code></pre>
+
+<h3 id="enable-the-universe-repositories">Enable the Universe Repositories</h3>
+
+<p>The <code>universe</code> repositories should be enabled on your Linode by default. You can double-check this by editing the <code>/etc/apt/sources.list</code> file, and verifying that lines resemble the following (you may have to uncomment or add the <code>universe</code> lines):</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apt/sources.list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
+</span><span class="c1">## team. Also, please note that software in universe WILL NOT receive any
+</span><span class="c1">## review or updates from the Ubuntu security team.
+</span><span class="c1"></span>deb http://us.archive.ubuntu.com/ubuntu/ precise universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise universe
+deb http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates universe</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>If you had to enable new repositories, issue the following command to update your package lists:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<h3 id="install-dependencies">Install Dependencies</h3>
+
+<p>  Before installing Cacti we must install a few basic dependencies that are critical to the installation of Cacti. Cacti uses the Simple Network Management Protocol (SNMP) to poll the devices it tracks. We&rsquo;ll need to install the <code>snmpd</code> and <code>snmp</code> packages to allow Cacti to use SNMP. Cacti&rsquo;s web interface requires a database, web server, and PHP to be installed. Issue the following command to install these prerequisites:</p>
+
+<pre><code>apt-get install snmpd snmp mysql-server apache2 libapache2-mod-php5 \
+php5-mysql php5-cli php5-snmp
+</code></pre>
+
+<p>You will need to create a password for the <code>root</code> user of your MySQL database during the installation. After the installation completes, be sure to run <code>mysql_secure_installation</code> to disable some of MySQL&rsquo;s less for configuration recommendations.</p>
+
+<p>The above command will additionally install the Apache web server. Consider our documentation on <a href="/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin">installing the Apache HTTP server</a> for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including <a href="/docs/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-12-04-lts-precise-pangolin">Apache with PHP running as a CGI process</a> and with <a href="/docs/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin">nginx</a> running PHP as a FastCGI process.</p>
+
+<h3 id="install-cacti">Install Cacti</h3>
+
+<p>To install the Cacti package from the distribution software repositories, issue the following command:</p>
+
+<pre><code>apt-get install cacti
+</code></pre>
+
+<p>You will be presented with several prompts during this installation. On the &ldquo;libphp-adodb&rdquo; prompt you can safely select &ldquo;Ok&rdquo;. During the &ldquo;Configuring Cacti&rdquo; prompt, make sure to select &ldquo;Apache2&rdquo;. You will be presented with an additional &ldquo;Configuring cacti&rdquo; prompt that will ask if you&rsquo;d like to configure your database with dbconfig-common. Select &ldquo;Yes&rdquo; and continue. On the MySQL prompt, enter the root password you created earlier. On the next screen, either create your own password for cacti&rsquo;s database access, or leave it blank for it to automatically generate one for you.</p>
+
+<p>From here, we&rsquo;ll continue configuring Cacti through the browser. Visit the domain you have pointed at your Linode or your Linode&rsquo;s IP address, and add <code>/cacti</code>. Follow the instructions shown on each page. The default values for each prompt should work for this installation, including the selection of &ldquo;New Installation&rdquo;, &ldquo;NET-SNMP 5.X&rdquo; for the SNMP Utility Version, and &ldquo;RRDTool 1.4.x&rdquo; for the RRDTool Utility Version.</p>
+
+<p>At the login screen, enter <code>admin/admin</code> for the username/password combination. You&rsquo;ll be prompted to change your password on the next screen. Cacti is now installed and ready to be configured.</p>
+
+<h3 id="configure-cacti">Configure Cacti</h3>
+
+<p>At this point Cacti will contain an entry for <code>localhost</code>, which we&rsquo;ll need to modify. Click the &ldquo;Console&rdquo; tab in the top left corner, and select &ldquo;Create Devices for network&rdquo;. Click the &ldquo;Localhost&rdquo; entry to begin making the needed changes. Select the Host Template drop-down and pick the &ldquo;ucd/net SNMP Host&rdquo;. Scroll down to SNMP Options and click the drop down box for SNMP Version, picking &ldquo;Version 2&rdquo;. The default values for SNMP Community, Port, Timeout and Max OIDs should be suitable for now. The &ldquo;Associated Graph Templates&rdquo; section allows you to add additional graphs. Hit &ldquo;Save&rdquo; to keep the changes.</p>
+
+<p>Click &ldquo;Settings&rdquo; under &ldquo;Configuration&rdquo; and set your &ldquo;SNMP Version&rdquo; to &ldquo;Version 2&rdquo; in the drop down box.</p>
+
+<h2 id="configure-client-machines">Configure Client Machines</h2>
+
+<p>This section is optional and for those looking to use Cacti to monitor additional devices. These steps are written for Debian-based distributions, but with modification, they will work on any flavor of Linux. You will need to follow these instructions for each client machine you&rsquo;d like to monitor with Cacti. Client machines need an SNMP daemon in order to serve Cacti information. First, install <code>snmp</code> and <code>snmpd</code> on the client:</p>
+
+<pre><code>apt-get install snmp snmpd
+</code></pre>
+
+<p>Since snmpd binds to localhost by default, we&rsquo;ll need to edit the <code>/etc/snmp/snmpd.conf</code>  file to allow snmpd to serve requests on other interfaces. Please note that  allowing snmpd to run on a public IP address will have security implications,  such as allowing anyone with your IP address to access the snmp daemon running  on your Linode. If you choose to allow snmp to listen on all interfaces, we  strongly recommend <a href="/docs/security/firewalls">implementing firewall rules</a> that  restrict access to only specific ip addresses that you control.</p>
+
+<p>Open the file and find the section labeled <code>Agent Behaviour</code>. Comment out the line that specifies <code>127.0.0.1</code> as the agent address by placing a <code>#</code>  in front of it. Uncomment the other line that defines the agentAddress as all  interfaces. The <code>Agent Behavior</code> section should now resemble the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/snmp/snmpd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#  Listen for connections from the local system only
+</span><span class="c1"># agentAddressudp:127.0.0.1:161
+</span><span class="c1"></span># Listen <span class="k">for</span> connections on all interfaces <span class="o">(</span>both IPv4 <span class="se">\*</span>and<span class="se">\*</span> IPv6<span class="o">)</span> agentAddress udp:161,udp6:<span class="o">[</span>::1<span class="o">]</span>:161</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>After saving your changes to the configuration file, you&rsquo;ll need to reload  settings for snmpd by running the following command:</p>
+
+<p><code>service snmpd reload</code></p>
+
+<p>At this point your machine is ready for polling. Go into the Cacti interface to add the new &ldquo;Device&rdquo;. Under the &ldquo;Console&rdquo; tab, select &ldquo;New Graphs&rdquo; and then &ldquo;Create New Host&rdquo;. Enter the pertinent information in the fields required. Make sure to select &ldquo;Ping&rdquo; for &ldquo;Downed Device Detection&rdquo;. Click the &ldquo;create&rdquo; button to save your configuration. On the &ldquo;save successful&rdquo; screen, select your newly created device and from the drop down next to &ldquo;Choose an Action&rdquo; select &ldquo;Place on a Tree&rdquo; and then click &ldquo;go&rdquo;. Hit &ldquo;yes&rdquo; on the next screen. On the &ldquo;New Graphs&rdquo; screen, you&rsquo;ll be able to create several different types of graphs of your choice. Follow the on-screen instructions to add these graphs to your tree.</p>
+
+<h2 id="use-the-spine-polling-daemon">Use the Spine Polling Daemon</h2>
+
+<p>By default, Cacti uses a PHP script to poll the devices it tracks. &ldquo;Spine&rdquo; is a faster replacement for the default polling script written in C++. Installing Spine is relatively easy and a good idea if you plan on keeping track of many hosts. Begin the Spine installation by running the following command :</p>
+
+<pre><code>apt-get install cacti-spine
+</code></pre>
+
+<p>After the installation completes, go back to the Cacti administrative panel and click &ldquo;Settings&rdquo; under &ldquo;Configuration&rdquo;. Click the &ldquo;Paths&rdquo; tab and check to see that Cacti found your spine binary correctly. Click the &ldquo;Poller&rdquo; tab and choose &ldquo;Spine&rdquo; from the drop-down for &ldquo;Poller Type&rdquo;. Click &ldquo;Save&rdquo; to keep these changes. You are now successfully using Spine.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/uptime/monitoring/monitoring-resource-utilization-with-cacti-on-ubuntu-10-04-lucid/">Monitoring Resource Utilization with Cacti on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/monitoring-resource-utilization-with-cacti-on-debian-5-lenny/">Monitoring Resource Utilization with Cacti on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/security/advanced-ssh-server-security/">Use Advanced OpenSSH Features to Harden Access to Your Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/">Install Odoo 10 on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/install-roundcube-on-ubuntu-14-04/">Install Roundcube on Ubuntu 14.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a>
+<ul>
+<li><a href="#set-the-timezone">Set the Timezone</a></li>
+<li><a href="#enable-the-universe-repositories">Enable the Universe Repositories</a></li>
+<li><a href="#install-dependencies">Install Dependencies</a></li>
+<li><a href="#install-cacti">Install Cacti</a></li>
+<li><a href="#configure-cacti">Configure Cacti</a></li>
+</ul></li>
+<li><a href="#configure-client-machines">Configure Client Machines</a></li>
+<li><a href="#use-the-spine-polling-daemon">Use the Spine Polling Daemon</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

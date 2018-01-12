@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install, Configure, and Run Spark on Top of a Hadoop YARN Cluster</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows you how to install, configure, and run Spark on top of a Hadoop YARN cluster.">
+        <meta name="keywords" content="spark, hadoop, yarn, hdfs">
+        
+        <meta property="og:title" content="Install, Configure, and Run Spark on Top of a Hadoop YARN Cluster">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/">
+        <meta property="og:description" content="This guide shows you how to install, configure, and run Spark on top of a Hadoop YARN cluster.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/hadoop/">Hadoop</a>
+  
+</li>
+
+
+<li>
+  
+  Install, Configure, and Run Spark on Top of a Hadoop YARN Cluster
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install, Configure, and Run Spark on Top of a Hadoop YARN Cluster</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-23T00:00:00Z">Monday, October 23, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Florent Houbart
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fhadoop%2finstall-configure-run-spark-on-top-of-hadoop-yarn-cluster%2f&via=linode&text=Install%2c%20Configure%2c%20and%20Run%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fhadoop%2finstall-configure-run-spark-on-top-of-hadoop-yarn-cluster%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fhadoop%2finstall-configure-run-spark-on-top-of-hadoop-yarn-cluster%2f&t=Install%2c%20Configure%2c%20and%20Run%20Spark%20on%20Top%20of%20a%20Hadoop%20YARN%20Cluster" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<h2 id="what-is-spark">What is Spark?</h2>
+
+<p>Spark is a general purpose cluster computing system. It can deploy and run parallel applications on clusters ranging from a single node to thousands of distributed nodes. Spark was originally designed to run Scala applications, but also supports Java, Python and R.</p>
+
+<p><img src="/docs/assets/spark_hadoop_yarn.jpg" alt="Install, Configure and Run Spark on top of a YARN cluster" title="Install, Configure and Run Spark on top of a YARN cluster" /></p>
+
+<p>Spark can run as a standalone cluster manager, or by taking advantage of dedicated cluster management frameworks like <a href="https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">Apache Hadoop YARN</a> or <a href="http://mesos.apache.org/">Apache Mesos</a>.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Follow our guide on how to <a href="/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster">install and configure a three-node Hadoop cluster</a> to set up your YARN cluster. The master node (HDFS NameNode and YARN ResourceManager) is called <strong>node-master</strong> and the slave nodes (HDFS DataNode and YARN NodeManager) are called <strong>node1</strong> and <strong>node2</strong>.</p>
+
+<p>Run the commands in this guide from <strong>node-master</strong> unless otherwise specified.</p></li>
+
+<li><p>Be sure you have a <code>hadoop</code> user that can access all cluster nodes with SSH keys without a password.</p></li>
+
+<li><p>Note the path of your Hadoop installation. This guide assumes it is installed in <code>/home/hadoop/hadoop</code>. If it is not, adjust the path in the examples accordingly.</p></li>
+
+<li><p>Run <code>jps</code> on each of the nodes to confirm that HDFS and YARN are running. If they are not, start the services with:</p>
+
+<pre><code>start-dfs.sh
+start-yarn.sh
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="download-and-install-spark-binaries">Download and Install Spark Binaries</h2>
+
+<p>Spark binaries are available from the <a href="https://spark.apache.org/downloads.html">Apache Spark download page</a>. Adjust each command below to match the correct version number.</p>
+
+<ol>
+<li><p>Get the download URL from the Spark download page, download it, and uncompress it.</p>
+
+<p>For Spark 2.2.0 with Hadoop 2.7 or later, log on <code>node-master</code> as the <code>hadoop</code> user, and run:</p>
+
+<pre><code>cd /home/hadoop
+wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz
+tar -xvf spark-2.2.0-bin-hadoop2.7.tgz
+mv spark-2.2.0-bin-hadoop2.7 spark
+</code></pre></li>
+
+<li><p>Add the Spark binaries directory to your <code>PATH</code>. Edit <code>/home/hadoop/.profile</code> and add the following line:</p>
+
+<p><strong>For Debian/Ubuntu systems:</strong></p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/hadoop/.profile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">PATH</span><span class="o">=</span>/home/hadoop/spark/bin:<span class="nv">$PATH</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p><strong>For RedHat/Fedora/CentOS systems:</strong></p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/hadoop/.profile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">pathmunge /home/hadoop/spark/bin</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<h2 id="integrate-spark-with-yarn">Integrate Spark with YARN</h2>
+
+<p>To communicate with the YARN Resource Manager, Spark needs to be aware of your Hadoop configuration. This is done via the <code>HADOOP_CONF_DIR</code> environment variable. The <code>SPARK_HOME</code> variable is not mandatory, but is useful when submitting Spark jobs from the command line.</p>
+
+<ol>
+<li><p>Edit the <em>hadoop</em> user profile <code>/home/hadoop/.profile</code> and add the following lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/hadoop/.profile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HADOOP_CONF_DIR</span><span class="o">=</span>/home/hadoop/hadoop/etc/hadoop
+<span class="nb">export</span> <span class="nv">SPARK_HOME</span><span class="o">=</span>/home/hadoop/spark
+<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/home/hadoop/hadoop/lib/native:<span class="nv">$LD_LIBRARY_PATH</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart your session by logging out and logging in again.</p></li>
+
+<li><p>Rename the spark default template config file:</p>
+
+<pre><code>mv $SPARK_HOME/conf/spark-defaults.conf.template $SPARK_HOME/conf/spark-defaults.conf
+</code></pre></li>
+
+<li><p>Edit <code>$SPARK_HOME/conf/spark-defaults.conf</code> and set <code>spark.master</code> to <code>yarn</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		$SPARK_HOME/conf/spark-defaults.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">spark.master    yarn</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<p>Spark is now ready to interact with your YARN cluster.</p>
+
+<h2 id="understand-client-and-cluster-mode">Understand Client and Cluster Mode</h2>
+
+<p>Spark jobs can run on YARN in two modes: <em>cluster</em> mode and <em>client</em> mode. Understanding the difference between the two modes is important for choosing an appropriate memory allocation configuration, and to submit jobs as expected.</p>
+
+<p>A Spark job consists of two parts: Spark Executors that run the actual tasks, and a Spark Driver that schedules the Executors.</p>
+
+<ul>
+<li><p><strong>Cluster</strong> mode: everything runs inside the cluster. You can start a job from your laptop and the job will continue running even if you close your computer. In this mode, the Spark Driver is encapsulated inside the YARN Application Master.</p></li>
+
+<li><p><strong>Client</strong> mode the Spark driver runs on a client, such as your laptop. If the client is shut down, the job fails. Spark Executors still run on the cluster, and to schedule everything, a small YARN Application Master is created.</p></li>
+</ul>
+
+<p>Client mode is well suited for interactive jobs, but applications will fail if the client stops. For long running jobs, cluster mode is more appropriate.</p>
+
+<h2 id="configure-memory-allocation">Configure Memory Allocation</h2>
+
+<p>Allocation of Spark containers to run in YARN containers may fail if memory allocation is not configured properly. For nodes with less than 4G RAM, the default configuration is not adequate and may trigger swapping and poor performance, or even the failure of application initialization due to lack of memory.</p>
+
+<p>Be sure to understand how Hadoop YARN manages memory allocation before editing Spark memory settings so that your changes are compatible with your YARN cluster&rsquo;s limits.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>See the memory allocation section of the <a href="/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster">Install and Configure a 3-Node Hadoop Cluster</a> guide for more details on managing your YARN cluster&rsquo;s memory.</div>
+</blockquote>
+
+
+<h3 id="give-your-yarn-containers-maximum-allowed-memory">Give Your YARN Containers Maximum Allowed Memory</h3>
+
+<p>If the memory requested is above the maximum allowed, YARN will reject creation of the container, and your Spark application won&rsquo;t start.</p>
+
+<ol>
+<li><p>Get the value of <code>yarn.scheduler.maximum-allocation-mb</code> in <code>$HADOOP_CONF_DIR/yarn-site.xml</code>. This is the maximum allowed value, in MB, for a single container.</p></li>
+
+<li><p>Make sure that values for Spark memory allocation, configured in the following section, are below the maximum.</p></li>
+</ol>
+
+<p>This guide will use a sample value of <code>1536</code> for <code>yarn.scheduler.maximum-allocation-mb</code>. If your settings are lower, adjust the samples with your configuration.</p>
+
+<h3 id="configure-the-spark-driver-memory-allocation-in-cluster-mode">Configure the Spark Driver Memory Allocation in Cluster Mode</h3>
+
+<p>In cluster mode, the Spark Driver runs inside YARN Application Master. The amount of memory requested by Spark at initialization is configured either in <code>spark-defaults.conf</code>, or through the command line.</p>
+
+<p><strong>From <code>spark-defaults.conf</code></strong></p>
+
+<ul>
+<li><p>Set the default amount of memory allocated to Spark Driver in cluster mode via <code>spark.driver.memory</code> (this value defaults to <code>1G</code>). To set it to <code>512MB</code>, edit the file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		$SPARK_HOME/conf/spark-defaults.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">spark.driver.memory    512m</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+
+<p><strong>From the Command Line</strong></p>
+
+<ul>
+<li><p>Use the <code>--driver-memory</code> parameter to specify the amount of memory requested by <code>spark-submit</code>. See the following section about application submission for examples.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Values given from the command line will override whatever has been set in <code>spark-defaults.conf</code>.</div>
+</blockquote>
+</li>
+</ul>
+
+<h3 id="configure-the-spark-application-master-memory-allocation-in-client-mode">Configure the Spark Application Master Memory Allocation in Client Mode</h3>
+
+<p>In client mode, the Spark driver will not run on the cluster, so the above configuration will have no effect. A YARN Application Master still needs to be created to schedule the Spark executor, and you can set its memory requirements.</p>
+
+<p>Set the amount of memory allocated to Application Master in client mode with <code>spark.yarn.am.memory</code> (default to <code>512M</code>)</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		$SPARK_HOME/conf/spark-defaults.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">spark.yarn.am.memory    512m</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This value can not be set from the command line.</p>
+
+<h3 id="configure-spark-executors-memory-allocation">Configure Spark Executors&rsquo; Memory Allocation</h3>
+
+<p>The Spark Executors&rsquo; memory allocation is calculated based on two parameters inside <code>$SPARK_HOME/conf/spark-defaults.conf</code>:</p>
+
+<ul>
+<li><code>spark.executor.memory</code>: sets the base memory used in calculation</li>
+<li><code>spark.yarn.executor.memoryOverhead</code>: is added to the base memory. It defaults to 7% of base memory, with a minimum of <code>384MB</code></li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Make sure that Executor requested memory, <strong>including</strong> overhead memory, is below the YARN container maximum size, otherwise the Spark application won&rsquo;t initialize.</div>
+</blockquote>
+
+
+<p>Example: for <code>spark.executor.memory</code> of 1Gb , the required memory is 1024+384=1408MB. For 512MB, the required memory will be 512+384=896MB</p>
+
+<p>To set executor memory to <code>512MB</code>, edit <code>$SPARK_HOME/conf/spark-defaults.conf</code> and add the following line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		$SPARK_HOME/conf/spark-defaults.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">spark.executor.memory          512m</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h2 id="how-to-submit-a-spark-application-to-the-yarn-cluster">How to Submit a Spark Application to the YARN Cluster</h2>
+
+<p>Applications are submitted with the <code>spark-submit</code> command. The Spark installation package contains sample applications, like the parallel calculation of <em>Pi</em>, that you can run to practice starting Spark jobs.</p>
+
+<p>To run the sample <em>Pi</em> calculation, use the following command:</p>
+
+<pre><code>spark-submit --deploy-mode client \
+               --class org.apache.spark.examples.SparkPi \
+               $SPARK_HOME/examples/jars/spark-examples_2.11-2.2.0.jar 10
+</code></pre>
+
+<p>The first parameter, <code>--deploy-mode</code>, specifies which mode to use, <code>client</code> or <code>cluster</code>.</p>
+
+<p>To run the same application in cluster mode, replace <code>--deploy-mode client</code>with <code>--deploy-mode cluster</code>.</p>
+
+<h2 id="monitor-your-spark-applications">Monitor Your Spark Applications</h2>
+
+<p>When you submit a job, Spark Driver automatically starts a web UI on port <code>4040</code> that displays information about the application. However, when execution is finished, the Web UI is dismissed with the application driver and can no longer be accessed.</p>
+
+<p>Spark provides a History Server that collects application logs from HDFS and displays them in a persistent web UI. The following steps will enable log persistance in HDFS:</p>
+
+<ol>
+<li><p>Edit <code>$SPARK_HOME/conf/spark-defaults.conf</code> and add the following lines to enable Spark jobs to log in HDFS:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		$SPARK_HOME/conf/spark-defaults.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">spark.eventLog.enabled  true
+spark.eventLog.dir hdfs://node-master:9000/spark-logs</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Create the log directory in HDFS:</p>
+
+<pre><code>hdfs dfs -mkdir /spark-logs
+</code></pre></li>
+
+<li><p>Configure History Server related properties in <code>$SPARK_HOME/conf/spark-defaults.conf</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		$SPARK_HOME/conf/spark-defaults.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">spark.history.provider            org.apache.spark.deploy.history.FsHistoryProvider
+spark.history.fs.logDirectory     hdfs://node-master:9000/spark-logs
+spark.history.fs.update.interval  10s
+spark.history.ui.port             18080</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You may want to use a different update interval than the default <code>10s</code>. If you specify a bigger interval, you will have some delay between what you see in the History Server and the real time status of your application. If you use a shorter interval, you will increase I/O on the HDFS.</p></li>
+
+<li><p>Run the History Server:</p>
+
+<pre><code>$SPARK_HOME/sbin/start-history-server.sh
+</code></pre></li>
+
+<li><p>Repeat steps from previous section to start a job with <code>spark-submit</code> that will generate some logs in the HDFS:</p></li>
+
+<li><p>Access the History Server by navigating to <a href="http://node-master:18080">http://node-master:18080</a> in a web browser:</p>
+
+<p><img src="/docs/assets/spark/spark-history-server-wide.png" alt="Screenshot of Spark History Server" title="Screenshot of Spark History Server" /></p></li>
+</ol>
+
+<h2 id="run-the-spark-shell">Run the Spark Shell</h2>
+
+<p>The Spark shell provides an interactive way to examine and work with your data.</p>
+
+<ol>
+<li><p>Put some data into HDFS for analysis. This example uses the text of <em>Alice In Wonderland</em> from the Gutenberg project:</p>
+
+<pre><code>cd /home/hadoop
+wget -O alice.txt https://www.gutenberg.org/files/11/11-0.txt
+hdfs dfs -mkdir inputs
+hdfs dfs -put alice.txt inputs
+</code></pre></li>
+
+<li><p>Start the Spark shell:</p>
+
+<pre><code>spark-shell
+
+var input = spark.read.textFile(&quot;inputs/alice.txt&quot;)
+// Count the number of non blank lines
+input.filter(line =&gt; line.length()&gt;0).count()
+</code></pre></li>
+</ol>
+
+<p>The Scala Spark API is beyond the scope of this guide. You can find the official documentation on <a href="https://spark.apache.org/docs/latest/quick-start.html">Official Apache Spark documentation</a>.</p>
+
+<h2 id="where-to-go-next">Where to Go Next ?</h2>
+
+<p>Now that you have a running Spark cluster, you can:</p>
+
+<ul>
+<li>Learn any of the Scala, Java, Python, or R APIs to create Spark applications from the <a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html">Apache Spark Programming Guide</a></li>
+<li>Interact with your data with <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html">Spark SQL</a></li>
+<li>Add machine learning capabilities to your applications with <a href="https://spark.apache.org/mllib/">Apache MLib</a></li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://spark.apache.org/">Apache Spark project page</a></li>
+
+<li><a href="http://hadoop.apache.org/">Apache Hadoop project page</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-spark">What is Spark?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#download-and-install-spark-binaries">Download and Install Spark Binaries</a></li>
+<li><a href="#integrate-spark-with-yarn">Integrate Spark with YARN</a></li>
+<li><a href="#understand-client-and-cluster-mode">Understand Client and Cluster Mode</a></li>
+<li><a href="#configure-memory-allocation">Configure Memory Allocation</a>
+<ul>
+<li><a href="#give-your-yarn-containers-maximum-allowed-memory">Give Your YARN Containers Maximum Allowed Memory</a></li>
+<li><a href="#configure-the-spark-driver-memory-allocation-in-cluster-mode">Configure the Spark Driver Memory Allocation in Cluster Mode</a></li>
+<li><a href="#configure-the-spark-application-master-memory-allocation-in-client-mode">Configure the Spark Application Master Memory Allocation in Client Mode</a></li>
+<li><a href="#configure-spark-executors-memory-allocation">Configure Spark Executors&rsquo; Memory Allocation</a></li>
+</ul></li>
+<li><a href="#how-to-submit-a-spark-application-to-the-yarn-cluster">How to Submit a Spark Application to the YARN Cluster</a></li>
+<li><a href="#monitor-your-spark-applications">Monitor Your Spark Applications</a></li>
+<li><a href="#run-the-spark-shell">Run the Spark Shell</a></li>
+<li><a href="#where-to-go-next">Where to Go Next ?</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

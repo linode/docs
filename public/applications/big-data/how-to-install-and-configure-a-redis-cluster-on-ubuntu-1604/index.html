@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install and Configure a Redis Cluster on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Learn to set up a Redis cluster using three Linode servers and promoting a slave to become a master node with this guide.">
+        <meta name="keywords" content="redis cluster installation, data store, cache, sharding">
+        
+        <meta property="og:title" content="How to Install and Configure a Redis Cluster on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/big-data/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604/">
+        <meta property="og:description" content="Learn to set up a Redis cluster using three Linode servers and promoting a slave to become a master node with this guide.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/big-data/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/big-data/">Big Data</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install and Configure a Redis Cluster on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install and Configure a Redis Cluster on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-08-14T00:00:00Z">Monday, August 14, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fbig-data%2fhow-to-install-and-configure-a-redis-cluster-on-ubuntu-1604%2f&via=linode&text=How%20to%20Install%20and%20Configure%20a%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fbig-data%2fhow-to-install-and-configure-a-redis-cluster-on-ubuntu-1604%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fbig-data%2fhow-to-install-and-configure-a-redis-cluster-on-ubuntu-1604%2f&t=How%20to%20Install%20and%20Configure%20a%20Redis%20Cluster%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/big-data/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/big-data/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/Redis_Cluster.jpg" alt="Redis_banner" /></p>
+
+<p>Redis clusters have grown to be a popular tool for caches, queues, and more because of its potential for scalability and speed. This guide aims to create a cluster using three Linodes to demonstrate sharding. Then, you will promote a slave to a master - insurance, in the event of a failure.</p>
+
+<p>Prior to starting, we recommend you familiarize yourself with the following:</p>
+
+<ul>
+<li><a href="/docs/security/firewalls/configure-firewall-with-ufw">Firewall settings using iptables or ufw</a></li>
+<li><a href="/docs/databases/redis/deploy-redis-on-ubuntu-or-debian">Master/Slave Replication </a></li>
+</ul>
+
+<h2 id="install-redis-on-each-linode">Install Redis on Each Linode</h2>
+
+<p>Depending on your version of Linux, it may be possible to install Redis through a package manager. Only Redis 3.0 and above supports clustering. The steps below are for installation of the latest stable branch of Redis.</p>
+
+<ol>
+<li><p>Install the dependencies:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+sudo apt install make gcc libc6-dev tcl
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Alternatively, you could use <code>build-essential</code> to load the dependencies for Redis.</div>
+</blockquote>
+</li>
+
+<li><p>From the documentation, download the current stable branch, then extract:</p>
+
+<pre><code>wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+sudo make install
+</code></pre></li>
+
+<li><p>Ensure the installation is successful by running:</p>
+
+<pre><code>make test
+</code></pre>
+
+<p>If installation is successful, the console will output:</p>
+
+<blockquote>
+<p>\o/ All tests passed without errors!</p>
+</blockquote></li>
+
+<li><p>Repeat installation for each and every server that will be part of the cluster.</p></li>
+</ol>
+
+<h2 id="configure-master-and-slave-nodes">Configure Master and Slave Nodes</h2>
+
+<p>This guide manually connects each master and slave across three Linodes. Consider using <a href="https://github.com/tmux/tmux">tmux</a> for management of multiple terminal windows.</p>
+
+<p>Although the official documentation recommends creating six nodes, this guide will use the minimum of three nodes with the following topology:</p>
+
+<p><img src="/docs/assets/redis_cluster_3_nodes.png" alt="Figure demonstrating master-slave across three servers" /></p>
+
+<p>This setup uses three Linodes running two instances of Redis server per Linode. You must ensure each host is independent, and then consider using additional nodes if there is a need to maintain uptime requirements.</p>
+
+<ol>
+<li><p>SSH into <strong>server 1</strong>. Navigate to <code>redis-stable/</code> then copy <code>redis.conf</code>. Configuration files in this guide are named consistent with the figure above:</p>
+
+<pre><code>cp redis.conf c_slave.conf
+mv redis.conf a_master.conf
+</code></pre></li>
+
+<li><p>In <code>a_master.conf</code>, comment the <code>bind</code> directive and enable cluster mode. The ports in this example will range from 6379 to 6381.</p>
+
+<dl class="file">
+<dt>
+
+
+		/redis-stable/a_master.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># bind 127.0.0.1
+</span><span class="c1"></span>protected-mode no
+port <span class="m">6379</span>
+pidfile /var/run/redis_6379.pid
+cluster-enabled yes
+cluster-config-file nodes-6379.conf
+cluster-node-timeout <span class="m">15000</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>A node in the Redis cluster requires a defined port and a port higher than 10000. In this instance, TCP ports 6379 and 16379 are both required to be open. Ensure iptables or ufw is configured properly.</div>
+</blockquote>
+</li>
+
+<li><p>In <code>c_slave.conf</code>, the configuration will be similar except for an update of the port number. <code>redis-trib.rb</code> will be used later to configure this into a slave for the appropriate master, rather than the <code>slaveof</code> directive.</p>
+
+<dl class="file">
+<dt>
+
+
+		/redis-stable/c_slave.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># bind 127.00.1
+</span><span class="c1"></span>protected-mode no
+port <span class="m">6381</span>
+pidfile /var/run/redis_6381.pid
+cluster-enabled yes
+cluster-config-file nodes-6381.conf
+cluster-node-timeout <span class="m">15000</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Repeat this process across the remaining two Linodes, taking care to specify the port numbers for all master slave pairs.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Server</th>
+<th align="left">Master</th>
+<th align="left">Slave</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">6379</td>
+<td align="left">6381</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">6380</td>
+<td align="left">6379</td>
+</tr>
+
+<tr>
+<td align="left">3</td>
+<td align="left">6381</td>
+<td align="left">6380</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+
+<h2 id="connect-master-and-slave">Connect Master and Slave</h2>
+
+<p>Master/slave replication can be achieved across three nodes by running two instances of a Redis server on each node.</p>
+
+<ol>
+<li><p>SSH into <strong>server 1</strong> and start the two Redis instances.</p>
+
+<pre><code>redis-server redis-stable/a_master.conf
+redis-server redis-stable/c_slave.conf
+</code></pre></li>
+
+<li><p>Substitute <code>a_master.conf</code> and <code>c_slave.conf</code> with the appropriate configuration file for the remaining two servers. All the master nodes should be starting in cluster mode.</p>
+
+<dl class="file">
+<dt>
+
+
+		Server 1 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">                     _._
+                _.-<span class="sb">``</span>__ <span class="s1">&#39;&#39;</span>-._
+           _.-<span class="sb">``</span>    <span class="sb">`</span>.  <span class="sb">`</span>_.  <span class="s1">&#39;&#39;</span>-._           Redis <span class="m">4</span>.0.1 <span class="o">(</span><span class="m">00000000</span>/0<span class="o">)</span> <span class="m">64</span> bit
+       .-<span class="sb">``</span> .-<span class="sb">```</span>.  <span class="sb">```</span><span class="se">\/</span>    _.,_ <span class="s1">&#39;&#39;</span>-._
+      <span class="o">(</span>    <span class="s1">&#39;      ,       .-`  | `,    )     Running in cluster mode
+</span><span class="s1">      |`-._`-...-` __...-.``-._|&#39;</span><span class="sb">`</span> _.-<span class="s1">&#39;|     Port: 6379
+</span><span class="s1">      |    `-._   `._    /     _.-&#39;</span>    <span class="p">|</span>     PID: <span class="m">10352</span>
+      <span class="sb">`</span>-._    <span class="sb">`</span>-._  <span class="sb">`</span>-./  _.-<span class="s1">&#39;    _.-&#39;</span>
+      <span class="p">|</span><span class="sb">`</span>-._<span class="sb">`</span>-._    <span class="sb">`</span>-.__.-<span class="s1">&#39;    _.-&#39;</span>_.-<span class="s1">&#39;|
+</span><span class="s1">      |    `-._`-._        _.-&#39;</span>_.-<span class="s1">&#39;    |           http://redis.io
+</span><span class="s1">       `-._    `-._`-.__.-&#39;</span>_.-<span class="s1">&#39;    _.-&#39;</span>
+      <span class="p">|</span><span class="sb">`</span>-._<span class="sb">`</span>-._    <span class="sb">`</span>-.__.-<span class="s1">&#39;    _.-&#39;</span>_.-<span class="s1">&#39;|
+</span><span class="s1">      |    `-._`-._        _.-&#39;</span>_.-<span class="s1">&#39;    |
+</span><span class="s1">      `-._    `-._`-.__.-&#39;</span>_.-<span class="s1">&#39;    _.-&#39;</span>
+          <span class="sb">`</span>-._    <span class="sb">`</span>-.__.-<span class="s1">&#39;    _.-&#39;</span>
+              <span class="sb">`</span>-._        _.-<span class="s1">&#39;
+</span><span class="s1">                  `-.__.-&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<h2 id="create-cluster-using-built-in-ruby-script">Create Cluster Using Built-In Ruby Script</h2>
+
+<p>At this point, each Linode hosts two independent master nodes. The Redis installation comes with a Ruby script located in <code>~/redis-stable/src/</code> that can help create and manage a cluster.</p>
+
+<ol>
+<li><p>If Ruby is not already installed, it can be found in your package manager:</p>
+
+<pre><code>sudo apt install ruby
+</code></pre></li>
+
+<li><p>Install the Redis gem:</p>
+
+<pre><code>gem install redis
+</code></pre></li>
+
+<li><p>Navigate to the source directory to run the script.</p>
+
+<pre><code>redis-stable/src/redis-trib.rb create ip.of.server1:6379 ip.of.server2:6380 ip.of.server3:6381
+</code></pre></li>
+
+<li><p>Accept the configuration with three masters. Successful set up of the cluster will return the following message:</p>
+
+<pre><code>&gt;&gt;&gt;Creating cluster
+&gt;&gt;&gt;Performing hash slots allocation on 3 nodes...
+Can I set the above configuration? (type 'yes' to accept): yes
+&gt;&gt;&gt; Nodes configuration updated
+&gt;&gt;&gt; Assign a different config epoch to each node
+&gt;&gt;&gt; Sending CLUSTER MEET messages to join the cluster
+Waiting for the cluster to join.
+[OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+[OK] All 16384 slots covered.
+</code></pre></li>
+
+<li><p>See all the current nodes connected to the cluster by using the <code>redis-cli</code> tool. The <code>-c</code> flag specifies connection to the cluster.</p>
+
+<pre><code>redis-cli -c -h ip.of.server1 -p 6379
+ip.of.server1&gt;CLUSTER NODES
+</code></pre>
+
+<p>This will return a list of nodes currently in the cluster identified by their i.d. and slaves - if any exist. To leave the interface, click on <code>exit</code>.</p>
+
+<pre><code>ip.of.server1&gt;exit
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Redis keywords are not case sensitive. However, they are written as all capitals in this guide for clarity.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="add-slaves">Add Slaves</h2>
+
+<p>The <code>redis-trib</code> tool can also be used to add new nodes to the cluster. Using the remaining three nodes, you can manually add them to the selected master.</p>
+
+<ol>
+<li><p>Connect the slave to a given master using <code>add-note</code> and a specified <code>master_id</code>.</p>
+
+<pre><code>./redis-trib.rb add-node --slave --master-id [master_id_c] ip.of.server1:6381 ip.of.server3:6381
+</code></pre>
+
+<p>The resulting output should be:</p>
+
+<pre><code>&gt;&gt;&gt; Adding node ip.of.server1:6381 to cluster ip.of.server3:6381
+&gt;&gt;&gt; Performing Cluster Check (using node ip.of.server3:6381)
+M: [master_id_c] ip.of.server3:6381
+   slots:10923-16383 (5461 slots) master
+   0 additional replica(s)
+M: [master_id_a] ip.of.server1:6379
+   slots:0-5460 (5461 slots) master
+   0 additional replica(s)
+M: [master_id_b] ip.of.server2:6380
+   slots:5461-10922 (5462 slots) master
+   0 additional replica(s)
+[OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+[OK] All 16384 slots covered.
+&gt;&gt;&gt; Send CLUSTER MEET to node ip.of.server1:6381 to make it join the cluster.
+Waiting for the cluster to join...
+&gt;&gt;&gt; Configure node as replica of ip.of.server3:6381.
+</code></pre></li>
+
+<li><p>Repeat for the remaining two nodes.</p>
+
+<pre><code>./redis-trib.rb add-node --slave --master-id [master_id_a] ip.of.server2:6379 ip.of.server1:6379
+./redis-trib.rb add-node --slave --master-id [master_id_b] ip.of.server3:6380 ip.of.server2:6380
+</code></pre></li>
+</ol>
+
+<h2 id="add-key-value-pairs-and-sharding">Add Key-Value Pairs and Sharding</h2>
+
+<p>The command line interface offers a way to <code>SET</code> and <code>GET</code> keys, in addition to returning information about the cluster. On your local computer, you can connect to any of the master nodes and explore some properties of a Redis cluster.</p>
+
+<ol>
+<li><p>Repeat the installation of Redis on your local computer, if needed. Check that firewall settings allow communicating with the master nodes.</p>
+
+<pre><code>redis-cli -c -h ip.of.server1 -p 6379
+</code></pre></li>
+
+<li><p>Use the <code>CLUSTER INFO</code> command to see information about the state of the cluster such as size, hash slots, and failures, if any.</p>
+
+<pre><code>ip.of.server1:6379&gt;CLUSTER INFO
+cluster_state:ok
+cluster_slots_assigned:16384
+cluster_slots_ok:16384
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:6
+cluster_size:3
+cluster_current_epoch:6
+cluster_my_epoch:1
+cluster_stats_messages_ping_sent:8375
+cluster_stats_messages_pong_sent:9028
+cluster_stats_messages_meet_sent:1
+cluster_stats_messages_sent:17404
+cluster_stats_messages_ping_received:9022
+cluster_stats_messages_pong_received:8376
+cluster_stats_messages_meet_received:6
+cluster_stats_messages_received:17404
+</code></pre></li>
+
+<li><p>To check master/slave replication, <code>INFO replication</code> returns information about the slave.</p>
+
+<pre><code>ip.of.server1:6379&gt;INFO replication
+role:master
+connected_slaves:1
+slave0:ip=ip.of.server1,port=6381,state=online,offset=213355,lag=1
+master_replid:cd2e27cba094f2e7ed38b0313dcd6a979ab29b7a
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:213355
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:197313
+repl_backlog_histlen:16043
+</code></pre></li>
+
+<li><p>To demonstrate sharding, you can set a few example key-value pairs. Setting a key will redirect the value to a hash slot among the three master nodes.</p>
+
+<pre><code>ip.of.server1:6379&gt; SET John Adams
+-&gt; Redirected to slot [6852] located at ip.of.server2:6380
+OK
+ip.of.server2:6380&gt; SET James Madison
+-&gt; Redirected to slot [2237] located at ip.of.server1:6379
+OK
+ip.of.server1:6379&gt; SET Andrew Jackson
+-&gt; Redirected to slot [15768] located at ip.of.server3:6381
+OK
+ip.of.server3:6381&gt; GET John
+-&gt; Redirected to slot [6852] located at ip.of.server2:6380
+&quot;Adams&quot;
+ip.of.server2:6380&gt;
+</code></pre></li>
+</ol>
+
+<h2 id="promote-slave-to-master">Promote Slave to Master</h2>
+
+<p>Based on the current topology, the cluster will remain online if one of the Linodes fails. At that point, you can expect a slave to promote into a master with the data replicated.</p>
+
+<p><img src="/docs/assets/redis_cluster_server_fail.png" alt="Figure demonstrating server3 failure" /></p>
+
+<ol>
+<li><p>Add a key value pair.</p>
+
+<pre><code>ip.of.server1:6379&gt; SET foo bar
+-&gt; Redirected to slot [12182] located at ip.of.server3:6381
+OK
+ip.of.server3:6381&gt; GET foo
+&quot;bar&quot;
+</code></pre>
+
+<p>The key <code>foo</code> is added to a master on <strong>server 3</strong> and replicated to a slave on <strong>server 1</strong>.</p></li>
+
+<li><p>In the event server 3 is down, the slave on <strong>server 1</strong> will become a master and the cluster will remain online.</p>
+
+<pre><code>ip.of.server1:6379&gt; CLUSTER NODES
+[slave_id_b] ip.of.server3:6380@16380 slave,fail [master_id_b] 1502722149010 1502722147000 6 connected
+[slave_id_a] ip.of.server2:6379@16379 slave [master_id_a] 0 1502722242000 5 connected
+[slave_id_c_promoted] ip.of.server1:6381@16381 master - 0 1502722241651 7 connected 10923-16383
+[master_id_b] ip.of.server2:6380@16380 master - 0 1502722242654 2 connected 5461-10922
+[master_id_c] ip.of.server3:6381@16381 master,fail - 1502722149010 1502722145402 3 connected
+[master_id_a] ip.of.server1:6379@16379 myself,master - 0 1502722241000 1 connected 0-5460
+</code></pre></li>
+
+<li><p>A key that was previously located in a hash slot on <strong>server 3</strong>, the key value pair is now stored on <strong>server 1</strong>.</p>
+
+<pre><code>ip.of.server1:6379&gt; GET foo
+-&gt; Redirected to slot [12182] located at ip.of.server1:6381
+&quot;bar&quot;
+</code></pre></li>
+</ol>
+
+<p>Remember to ensure <a href="http://antirez.com/news/96">firewall settings are adequate for all Redis instances</a>. There is supplemental functionality, such as adding additional nodes, creating multiple slaves, or resharding, which are beyond the scope of this document. For more guidance, consult the official Redis documentation for how to implement these features.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://redis.io/">Redis Official Website</a></li>
+
+<li><a href="/docs/databases/redis/install-and-configure-redis-on-centos-7">Install and Configure Redis on CentOS 7</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/">Use Varnish &amp; nginx to Serve WordPress over SSL &amp; HTTP on Debian 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="http://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#install-redis-on-each-linode">Install Redis on Each Linode</a></li>
+<li><a href="#configure-master-and-slave-nodes">Configure Master and Slave Nodes</a></li>
+<li><a href="#connect-master-and-slave">Connect Master and Slave</a></li>
+<li><a href="#create-cluster-using-built-in-ruby-script">Create Cluster Using Built-In Ruby Script</a></li>
+<li><a href="#add-slaves">Add Slaves</a></li>
+<li><a href="#add-key-value-pairs-and-sharding">Add Key-Value Pairs and Sharding</a></li>
+<li><a href="#promote-slave-to-master">Promote Slave to Master</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

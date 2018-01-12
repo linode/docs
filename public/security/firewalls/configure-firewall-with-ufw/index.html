@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Configure a Firewall with UFW</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use UFW (Uncomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux; this guide contains instructions for setting up default rules, adding/removing rules, setting up logging, and some advanced features.">
+        <meta name="keywords" content="ufw, uncomplicated firewall, ubuntu ufw, linux ufw, ufw tutorial, ubuntu firewall, iptables, networking, firewalls, filtering, firewall setup, ubuntu, debian, arch">
+        
+        <meta property="og:title" content="How to Configure a Firewall with UFW">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/firewalls/configure-firewall-with-ufw/">
+        <meta property="og:description" content="Use UFW (Uncomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux; this guide contains instructions for setting up default rules, adding/removing rules, setting up logging, and some advanced features.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/firewalls/configure-firewall-with-ufw/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/firewalls/">Firewalls</a>
+  
+</li>
+
+
+<li>
+  
+  How to Configure a Firewall with UFW
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Configure a Firewall with UFW</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-12-01T00:00:00Z">Tuesday, December 1, 2015</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2ffirewalls%2fconfigure-firewall-with-ufw%2f&via=linode&text=How%20to%20Configure%20a%20Firewall%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2ffirewalls%2fconfigure-firewall-with-ufw%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2ffirewalls%2fconfigure-firewall-with-ufw%2f&t=How%20to%20Configure%20a%20Firewall%20with%20UFW" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/firewalls/configure-firewall-with-ufw.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/firewalls/configure-firewall-with-ufw.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>UFW, or <em>uncomplicated firewall</em>, is a frontend for managing firewall rules in Arch Linux, Debian or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).</p>
+
+<p><img src="/docs/assets/ufw_tg.png" alt="How to Configure a Firewall with UFW" title="How to Configure a Firewall with UFW" /></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services. Do <strong>not</strong> follow the Creating a Firewall section&ndash;this guide is an introduction to using UFW, which is a separate method of controlling a firewall than iptables commands.</p></li>
+
+<li><p>Update your system.</p>
+
+<p><strong>Arch Linux</strong></p>
+
+<pre><code>sudo pacman -Syu
+</code></pre>
+
+<p><strong>Debian / Ubuntu</strong></p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<h2 id="install-ufw">Install UFW</h2>
+
+<p>UFW is included in Ubuntu by default but must be installed in Arch and Debian. Debian will start UFW&rsquo;s systemd unit automatically and enable it to start on reboots, but Arch will not. <em>This is not the same as telling UFW to enable the firewall rules</em>, as enabling UFW with systemd or upstart only tells the init system to switch on the UFW daemon.</p>
+
+<p>By default, UFW&rsquo;s rulesets are blank so it is not enforcing any firewall rules&ndash;even when the daemon is running. Enforcing your firewall ruleset is covered <a href="#enable-the-firewall">further down the page</a>.</p>
+
+<h3 id="arch-linux">Arch Linux</h3>
+
+<ol>
+<li><p>Install UFW:</p>
+
+<pre><code>sudo pacman -S ufw
+</code></pre></li>
+
+<li><p>Start and enable UFW&rsquo;s systemd unit:</p>
+
+<pre><code>sudo systemctl start ufw
+sudo systemctl enable ufw
+</code></pre></li>
+</ol>
+
+<h3 id="debian-ubuntu">Debian / Ubuntu</h3>
+
+<p>Install UFW</p>
+
+<pre><code>sudo apt-get install ufw
+</code></pre>
+
+<h2 id="use-ufw-to-manage-firewall-rules">Use UFW to Manage Firewall Rules</h2>
+
+<h3 id="set-default-rules">Set Default Rules</h3>
+
+<p>Most systems will need a only a small number of ports open for incoming connections, and all remaining ports closed. To start with an easy basis of rules, the <code>ufw default</code> command can be used to set the default response to incoming and outgoing connections. To deny all incoming and allow all outgoing connections, run:</p>
+
+<pre><code>sudo ufw default allow outgoing
+sudo ufw default deny incoming
+</code></pre>
+
+<p>The <code>ufw default</code> command also allows for the use of the <code>reject</code> parameter.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Configuring a default reject or deny rule can lock you out of your Linode unless explicit allow rules are in place.  Ensure that you have configured allow rules for SSH and other critical services as per the section below before applying default deny or reject rules.</div>
+</blockquote>
+
+
+<h3 id="add-rules">Add Rules</h3>
+
+<p>Rules can be added in two ways: By denoting the <strong>port number</strong> or by using the <strong>service name</strong>.</p>
+
+<p>For example, to allow both incoming and outgoing connections on port 22 for SSH, you can run:</p>
+
+<pre><code>sudo ufw allow ssh
+</code></pre>
+
+<p>You can also run:</p>
+
+<pre><code>sudo ufw allow 22
+</code></pre>
+
+<p>Similarly, to <strong>deny</strong> traffic on a certain port (in this example, 111) you would only have to run:</p>
+
+<pre><code>sudo ufw deny 111
+</code></pre>
+
+<p>To farther fine-tune your rules, you can also allow packets based on TCP or UDP. The following will allow TCP packets on port 80:</p>
+
+<pre><code>sudo ufw allow 80/tcp
+sudo ufw allow http/tcp
+</code></pre>
+
+<p>Whereas this will allow UDP packets on 1725:</p>
+
+<pre><code>sudo ufw allow 1725/udp
+</code></pre>
+
+<h3 id="advanced-rules">Advanced Rules</h3>
+
+<p>Along with allowing or denying based solely on port, UFW also allows you to allow/block by IP addresses, subnets, and a IP address/subnet/port combinations.</p>
+
+<p>To allow connections from an IP address:</p>
+
+<pre><code>sudo ufw allow from 123.45.67.89
+</code></pre>
+
+<p>To allow connections from a specific subnet:</p>
+
+<pre><code>sudo ufw allow from 123.45.67.89/24
+</code></pre>
+
+<p>To allow a specific IP address/port combination:</p>
+
+<pre><code>sudo ufw allow from 123.45.67.89 to any port 22 proto tcp
+</code></pre>
+
+<p><code>proto tcp</code> can be removed or switched to <code>proto udp</code> depending upon your needs, and all instances of <code>allow</code> can be changed to <code>deny</code> as needed.</p>
+
+<h3 id="remove-rules">Remove Rules</h3>
+
+<p>To remove a rule, add <code>delete</code> before the rule implementation. If you no longer wished to allow HTTP traffic, you could run:</p>
+
+<pre><code>sudo ufw delete allow 80
+</code></pre>
+
+<p>Deleting also allows the use of service names.</p>
+
+<h2 id="edit-ufw-s-configuration-files">Edit UFW&rsquo;s Configuration Files</h2>
+
+<p>Although simple rules can be added through the command line, there may be a time when more advanced or specific rules need to be added or removed. Prior to running the rules input through the terminal, UFW will run a file, <code>before.rules</code>, that allows loopback, ping, and DHCP. To add to alter these rules edit the <code>/etc/ufw/before.rules</code> file. A <code>before6.rules</code> file is also located in the same directory for IPv6.</p>
+
+<p>An <code>after.rule</code> and an <code>after6.rule</code> file also exists to add any rules that would need to be added after UFW runs your command-line-added rules.</p>
+
+<p>An additional configuration file is located at <code>/etc/default/ufw</code>. From here IPv6 can be disabled or enabled, default rules can be set, and UFW can be set to manage built-in firewall chains.</p>
+
+<h2 id="ufw-status">UFW Status</h2>
+
+<p>You can check the status of UFW at any time with the command: <code>sudo ufw status</code>. This will show a list of all rules, and whether or not UFW is active:</p>
+
+<pre><code>Status: active
+
+To                         Action      From
+--                         ------      ----
+22                         ALLOW       Anywhere
+80/tcp                     ALLOW       Anywhere
+443                        ALLOW       Anywhere
+22 (v6)                    ALLOW       Anywhere (v6)
+80/tcp (v6)                ALLOW       Anywhere (v6)
+443 (v6)                   ALLOW       Anywhere (v6)
+</code></pre>
+
+<h3 id="enable-the-firewall">Enable the Firewall</h3>
+
+<p>With your chosen rules in place, your initial run of <code>ufw status</code> will probably output <code>Status: inactive</code>. To enable UFW and enforce your firewall rules:</p>
+
+<pre><code>sudo ufw enable
+</code></pre>
+
+<p>Similarly, to disable UFW&rsquo;s rules:</p>
+
+<pre><code>sudo ufw disable
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This still leaves the UFW service running and enabled on reboots.</div>
+</blockquote>
+
+
+<h2 id="logging">Logging</h2>
+
+<p>You can enable logging with the command:</p>
+
+<pre><code>sudo ufw logging on
+</code></pre>
+
+<p>Log levels can be set by running <code>sudo ufw logging low|medium|high</code>, selecting either <code>low</code>, <code>medium</code>, or <code>high</code> from the list. The default setting is <code>low</code>.</p>
+
+<p>A normal log entry will resemble the following, and will be located at <code>/var/logs/ufw</code>:</p>
+
+<pre><code>Sep 16 15:08:14 &lt;hostname&gt; kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:00:00:00:00:00:00:00:00:00:00:00:00:00 SRC=123.45.67.89 DST=987.65.43.21 LEN=40 TOS=0x00 PREC=0x00 TTL=249 ID=8475 PROTO=TCP SPT=48247 DPT=22 WINDOW=1024 RES=0x00 SYN URGP=0
+</code></pre>
+
+<p>The initial values list the date, time, and hostname of your Linode. Additional important values include:</p>
+
+<ul>
+<li><p><strong>[UFW BLOCK]:</strong> This location is where the description of the logged event will be located. In this instance, it blocked a connection.</p></li>
+
+<li><p><strong>IN:</strong> If this contains a value, then the event was incoming</p></li>
+
+<li><p><strong>OUT:</strong> If this contain a value, then the event was outgoing</p></li>
+
+<li><p><strong>MAC:</strong> A combination of the destination and source MAC addresses</p></li>
+
+<li><p><strong>SRC:</strong> The IP of the packet source</p></li>
+
+<li><p><strong>DST:</strong> The IP of the packet destination</p></li>
+
+<li><p><strong>LEN:</strong> Packet length</p></li>
+
+<li><p><strong>TTL:</strong> The packet TTL, or <em>time to live</em>. How long it will bounce between routers until it expires, if no destination is found.</p></li>
+
+<li><p><strong>PROTO:</strong> The packet&rsquo;s protocol</p></li>
+
+<li><p><strong>SPT:</strong> The source port of the package</p></li>
+
+<li><p><strong>DPT:</strong> The destination port of the package</p></li>
+
+<li><p><strong>WINDOW:</strong> The size of the packet the sender can receive</p></li>
+
+<li><p><strong>SYN URGP:</strong> Indicated if a three-way handshake is required. <code>0</code> means it is not.</p></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/firewalls/control-network-traffic-with-iptables/">Control Network Traffic with iptables</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/install-openvpn-access-server-on-linux/">Install OpenVPN Access Server on Linux for Secure Communications</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/">Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/how-to-configure-git/">Getting Started with Git</a></li>
+    
+    
+    
+    <li><a href="/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/">Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-ufw">Install UFW</a>
+<ul>
+<li><a href="#arch-linux">Arch Linux</a></li>
+<li><a href="#debian-ubuntu">Debian / Ubuntu</a></li>
+</ul></li>
+<li><a href="#use-ufw-to-manage-firewall-rules">Use UFW to Manage Firewall Rules</a>
+<ul>
+<li><a href="#set-default-rules">Set Default Rules</a></li>
+<li><a href="#add-rules">Add Rules</a></li>
+<li><a href="#advanced-rules">Advanced Rules</a></li>
+<li><a href="#remove-rules">Remove Rules</a></li>
+</ul></li>
+<li><a href="#edit-ufw-s-configuration-files">Edit UFW&rsquo;s Configuration Files</a></li>
+<li><a href="#ufw-status">UFW Status</a>
+<ul>
+<li><a href="#enable-the-firewall">Enable the Firewall</a></li>
+</ul></li>
+<li><a href="#logging">Logging</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

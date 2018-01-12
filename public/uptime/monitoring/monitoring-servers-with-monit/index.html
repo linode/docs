@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Installing Monit for Server Monitoring</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Improve uptime with Monit Server Monitoring. Monit will watch you system around the clock, and respond to out-of-the-norm events by following your instructions.">
+        <meta name="keywords" content="installing Monit for server monitoring">
+        
+        <meta property="og:title" content="Installing Monit for Server Monitoring">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/monitoring/monitoring-servers-with-monit/">
+        <meta property="og:description" content="Improve uptime with Monit Server Monitoring. Monit will watch you system around the clock, and respond to out-of-the-norm events by following your instructions.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/monitoring/monitoring-servers-with-monit/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/monitoring/">Server Monitoring</a>
+  
+</li>
+
+
+<li>
+  
+  Installing Monit for Server Monitoring
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Installing Monit for Server Monitoring</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-10-15T00:00:00Z">Thursday, October 15, 2015</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Bill Bardon
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fmonitoring-servers-with-monit%2f&via=linode&text=Installing%20Monit%20for%20Server%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fmonitoring-servers-with-monit%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fmonitoring-servers-with-monit%2f&t=Installing%20Monit%20for%20Server%20Monitoring" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/monitoring/monitoring-servers-with-monit.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/monitoring/monitoring-servers-with-monit.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it&rsquo;s something you may not do as often as you should.</p>
+
+<p><img src="/docs/assets/monit_tg.png" alt="Installing Monit for Server Monitoring" title="Installing Monit for Server Monitoring" /></p>
+
+<p><a href="https://mmonit.com/">Monit</a> can watch your servers for you. You can tell Monit exactly what you would do if a program stops running, or begins using too much RAM, or another host becomes unreachable. Monit will watch around the clock, and respond to out-of-the-norm events by following your instructions.</p>
+
+<p>With Monit you get:</p>
+
+<ul>
+<li>Automatic process maintenance in a lightweight package.</li>
+<li>Capability to act on out-of-bounds values for CPU, RAM, disk, file size, age and more.</li>
+<li>Monitoring of running services, and the ability to start, kill or restart.</li>
+<li>Automatic email alerts sent at event triggers.</li>
+<li>Web interface for status monitoring.</li>
+<li>Availability from main package repositories.</li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps required in this guide require root privileges. Be sure to run the steps below as <strong>root</strong> or with the <code>sudo</code> prefix. For more information on privileges, see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="installing-monit">Installing Monit</h2>
+
+<p>Update your system and install Monit. Some distros require that Monit be manually enabled and started.</p>
+
+<h3 id="arch">Arch</h3>
+
+<pre><code>sudo pacman -Syu &amp;&amp; sudo pacman -S monit
+sudo systemctl enable monit &amp;&amp; sudo systemctl start monit
+</code></pre>
+
+<h3 id="centos">CentOS</h3>
+
+<p>Monit is available in the <a href="https://fedoraproject.org/wiki/EPEL">EPEL repository</a>.</p>
+
+<pre><code>sudo yum update &amp;&amp; sudo yum install epel-release
+sudo yum update &amp;&amp; sudo yum install monit
+</code></pre>
+
+<p>To enable and start the daemon in CentOS 7:</p>
+
+<pre><code>sudo systemctl enable monit &amp;&amp; sudo systemctl start monit
+</code></pre>
+
+<p>To enable and start the daemon in CentOS 6:</p>
+
+<pre><code>sudo chkconfig monit on &amp;&amp; sudo service monit start
+</code></pre>
+
+<h3 id="debian-ubuntu">Debian / Ubuntu</h3>
+
+<p>Debian and Ubuntu automatically start and enable Monit after installation.</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+sudo apt-get install monit
+</code></pre>
+
+<h3 id="fedora">Fedora</h3>
+
+<pre><code>sudo dnf update &amp;&amp; sudo dnf install monit
+sudo systemctl enable monit &amp;&amp; sudo systemctl start monit
+</code></pre>
+
+<h3 id="restarting-monit">Restarting Monit</h3>
+
+<p>If you&rsquo;re using a Linux distro with systemd (CentOS 7, Debian 8, Fedora 22):</p>
+
+<pre><code>sudo systemctl restart monit
+</code></pre>
+
+<p>If your distro has System V (CentOS 6, Debian 7) or Upstart (Ubuntu 14.04):</p>
+
+<pre><code>sudo service monit restart
+</code></pre>
+
+<h2 id="configure-the-monit-daemon">Configure the Monit Daemon</h2>
+
+<p>Monit&rsquo;s configuration is in the file <code>/etc/monit/monitrc</code>. Open this file now in your favorite text editor. We&rsquo;ll start by setting up the monit process itself.</p>
+
+<h3 id="polling-frequency">Polling Frequency</h3>
+
+<pre><code>set daemon 300
+</code></pre>
+
+<p>This is the interval (in seconds) at which Monit runs its tests. The value you choose will depend on how many tests you define, how quickly you need Monit to act on events, and how much load the tests themselves add to your server. Begin by running Monit at the default setting of two minutes and evaluate its performance. If you change this value, you will need to <a href="#restarting-monit">restart Monit</a>.</p>
+
+<p>Consider setting the testing interval at up to 5 minutes if minimizing a load on your server is more important than instant alerts and responses.</p>
+
+<p>To have Monit delay starting on system boot, include the delay line:</p>
+
+<pre><code>set daemon 300
+    with start delay 240
+</code></pre>
+
+<p>Other processes may take some time to complete their own startup. Including the delay line will prevent Monit from sending alerts that all services are down every time you boot the server.</p>
+
+<h3 id="alerting">Alerting</h3>
+
+<p>Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See <a href="/docs/tools-reference/linux-system-administration-basics#send-email-from-your-server">Linux System Administration Basics - Sending Email From Your Server</a> for help with configuring this.</p>
+
+<p>Specify what server you will send mail through on this line:</p>
+
+<pre><code>set mailserver mail.example.com
+</code></pre>
+
+<p>If you need to specify a port other than the default for SMTP (25), add it following the server name:</p>
+
+<pre><code>set mailserver mail.example.com port 2025
+</code></pre>
+
+<p>You can also specify multiple mail servers by entering more than one server name, separated by comma:</p>
+
+<pre><code>set mailserver mail.example.com, backupmail.example.com
+</code></pre>
+
+<p>Monit will try each server in turn until one succeeds. It will <strong>not</strong> <em>retry</em> if no servers succeed, unless you also configure the event queue. To do this, you specify a directory to store the undelivered messages and how many messages you want to allow to queue up. The config file defaults normally suffice:</p>
+
+<pre><code>set eventqueue
+    basedir /var/lib/monit/events
+    slots 100
+</code></pre>
+
+<p>Enter the email address to which Monit should deliver its alerts:</p>
+
+<pre><code>set alert your.email@example.com
+</code></pre>
+
+<p>If you prefer to receive alerts as text messages, use your cell provider&rsquo;s email-to-text gateway if one is provided. You can find a list of providers at Wikipedia, here: <a href="https://en.wikipedia.org/wiki/SMS_gateway#Use_with_email_clients">Email-to-SMS gateways</a>.</p>
+
+<h3 id="web-service">Web service</h3>
+
+<p>Finally, as far as configuring Monit itself, you can enable the embedded web server to display all your system tests as a web page:</p>
+
+<pre><code>set httpd port 2812
+</code></pre>
+
+<p>If there is no other web server running on your host, Monit can run on port 80 if you specify <code>port 80</code> in the config file.</p>
+
+<p>You can optionally restrict web interface access to just your IP address.</p>
+
+<pre><code>set httpd port 2812
+    allow 10.0.0.1 (your ip address)
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you&rsquo;ll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See <a href="/docs/security/securing-your-server#configure-a-firewall">Securing Your Server - Configuring a Firewall</a>.</div>
+</blockquote>
+
+
+<h2 id="configure-monit-s-checking-actions">Configure Monit&rsquo;s Checking Actions</h2>
+
+<h3 id="system-values">System Values</h3>
+
+<p>Monit can monitor server resource utilization and alert you when your server is under unusual load:</p>
+
+<pre><code>check system mail
+    if loadavg (5min) &gt; 2.0 then alert
+    if memory usage &gt; 85% then alert
+    if cpu usage (user) &gt; 60% then alert
+</code></pre>
+
+<p>Here, Monit has been instructed to alert when the load average, total system memory use or CPU usage exceeds the specified limits. You should set these limits based on your server&rsquo;s normal operating values.</p>
+
+<p>A good way to determine the alert thresholds is to set them low (you will receive frequent alerts) and then adjust them higher if alerts are more frequent than the situation requires. The actual tested values which triggered the alert will be included in the alert message, and you can use these to gauge what is a good threshold limit for your server.</p>
+
+<h3 id="processes">Processes</h3>
+
+<p>Most servers are running a set of critical services that are their reason for existing. If those services are not running and reachable, the server is down for all practical purposes. Monit can check on running processes and stop, start or restart them as needed.</p>
+
+<pre><code>check process apache-server with pidfile /run/apache2.pid
+    if cpu &gt; 95% for 3 cycles then alert
+</code></pre>
+
+<p>For the <code>check process</code> statement, Monit requires an associated .pid file. Many common Linux server programs put a <code>.pid</code> file within the <code>/run</code> directory (<code>/var/run</code> on earlier Debian versions.) You can look for the location of the <code>.pid</code> file in your program&rsquo;s documentation, man page, or init script. In this example, the <code>apache2</code> process uses a file named <code>apache2.pid</code> in the <code>/run</code> directory. The result of this command sequence is that Monit will alert if this Apache process starts to use too much CPU for a minimum of three cycles. With <code>set daemon 300</code> defined in the global configuration, if Apache uses more than 95% CPU for 3 x 300 seconds, or 15 minutes, then Monit will trigger.</p>
+
+<p>You can test more than one parameter in a single check statement. The Apache program spawns children as needed to serve requests. If a large number of requests come in and continue unabated for 25 minutes, the test added here will alert on it.</p>
+
+<pre><code>check process apache-server with pidfile /run/apache2.pid
+    if children &gt; 255 for 5 cycles then alert
+    if cpu usage &gt; 95% for 3 cycles then alert
+</code></pre>
+
+<p>Monit can do more than simply check the resource utilization of a process. It supports a number of protocols for testing the actual connectivity of a service. Among them are DNS, HTTP, IMAP, SMTP, LDAP, and SSH. So, we can ask our Apache server for a response and then act on the result:</p>
+
+<pre><code>check process apache-server with pidfile /run/apache2.pid
+    start program = &quot;systemctl start apache2&quot; with timeout 40 seconds
+    stop program  = &quot;systemctl stop apache2&quot;
+    if children &gt; 255 for 5 cycles then alert
+    if cpu usage &gt; 95% for 3 cycles then alert
+    if failed port 80 protocol http then restart
+</code></pre>
+
+<p>Plenty is happening in the newly added lines of this check statement, including the best feature of Monit: automated process management. In lines 2 and 3, Monit has been programmed on how to start and stop the process being checked. In line 6, Monit has been programmed to use HTTP on port 80 to send a GET request to this running instance of Apache. By default it will send a normal <code>GET &quot;/&quot;</code> request. If Apache returns an HTTP status code of 400 or greater, Monit will alert <em>and</em> restart the process using the commands given.</p>
+
+<p>The commands shown above are systemd compatible for a distribution using systemd (for example, Debian 8). If your server instead uses SysV or Upstart (ex. Debian 7 or Ubuntu 14.04), use these instead:</p>
+
+<pre><code>    start program = &quot;service apache2 start&quot; with timeout 40 seconds
+    stop program  = &quot;service apache2 stop&quot;
+</code></pre>
+
+<h3 id="filesystem">Filesystem</h3>
+
+<p>Monit can check filesystem properties such as whether a file exists, if its size is larger or smaller than specified, and what permissions are assigned. Another useful application is to test the timestamp of log files that should be updating.</p>
+
+<pre><code>check file mail.log with path /var/log/mail.log
+    if timestamp &gt; 10 minutes then alert
+</code></pre>
+
+<p>This mail server is normally busy around the clock. If the mail.log file has not been touched for ten minutes, something is probably wrong and you should be alerted.</p>
+
+<p>You can also use the filesystem monitor to confirm that cron jobs have completed correctly. Add a line in your job script (that will only be reached upon success) to <code>touch &lt;filename&gt;</code>, then have Monit check the file&rsquo;s timestamp age. If it&rsquo;s an hourly job, use a value <code>&gt; 65 minutes</code>. If it&rsquo;s an overnight job, use <code>&gt; 25 hours</code>. The extra margin allows for some variability in job time-to-complete.</p>
+
+<p>So for example, consider a nightly backup script that cron can run in the wee hours. In that script should be a line that only executes after a successful backup:</p>
+
+<pre><code>touch /tmp/backup-ok
+</code></pre>
+
+<p>Then, in <code>/etc/monit/monitrc</code> you&rsquo;d have:</p>
+
+<pre><code>check file nightly-backup with path /tmp/backup-ok
+    if timestamp &gt; 25 hours then alert
+</code></pre>
+
+<p>If the backup does not complete, then the next morning an alert message will be waiting, and the server&rsquo;s Monit web page will show nightly-backup with a red status of &ldquo;Timestamp failed.&rdquo;</p>
+
+<h3 id="remote-hosts">Remote Hosts</h3>
+
+<p>Perhaps you are not a system admin at all; you are a web designer who works with many client sites on different hosts. Wouldn&rsquo;t it be nice to proactively respond to site outages even before a client calls? It is! You can configure Monit to check all your client sites&rsquo; statuses and alert you immediately if they are down:</p>
+
+<pre><code>check host web-server with address www.example.com
+    if failed port 80 protocol http with timeout 30 seconds then alert
+</code></pre>
+
+<p>Monit can test many protocols, not just HTTP:</p>
+
+<pre><code>check host mail-server with address mail.example.com
+    if failed port 143 protocol IMAP with timeout 30 seconds then alert
+    if failed port 587 protocol SMTP with timeout 30 seconds then alert
+    if failed port 22 protocol ssh with timeout 20 seconds then alert
+</code></pre>
+
+<p>If you have more than one server, it&rsquo;s a good idea to have each one monitor another. If you only run Monit on one host, and that host goes completely off-line, Monit will be unable to notify you about the problem. By running a second instance of Monit on another server, you can set up each one to alert if the other one goes off-line.</p>
+
+<p>Note that it is possible to change the alert recipient from the globally-defined address in the <code>set alert</code> statement to another recipient using the <code>noalert</code> keyword.</p>
+
+<pre><code>check host web-server with address www.example.com
+    if failed port 80 protocol http with timeout 30 seconds then alert
+    alert someone.else@example.com
+    noalert your.email@example.com
+</code></pre>
+
+<h2 id="more-monit">More Monit</h2>
+
+<p>Monit is highly configurable and its capabilities go beyond what have been discussed here. If you want to understand Monit more fully, you will find more information in the Monit documentation, linked below. It&rsquo;s lengthy but detailed and well organized.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://mmonit.com/monit/documentation/monit.html">Monit Documentation</a></li>
+
+<li><a href="https://en.wikipedia.org/wiki/SMS_gateway">Email-to-SMS gateways - Wikipedia</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#installing-monit">Installing Monit</a>
+<ul>
+<li><a href="#arch">Arch</a></li>
+<li><a href="#centos">CentOS</a></li>
+<li><a href="#debian-ubuntu">Debian / Ubuntu</a></li>
+<li><a href="#fedora">Fedora</a></li>
+<li><a href="#restarting-monit">Restarting Monit</a></li>
+</ul></li>
+<li><a href="#configure-the-monit-daemon">Configure the Monit Daemon</a>
+<ul>
+<li><a href="#polling-frequency">Polling Frequency</a></li>
+<li><a href="#alerting">Alerting</a></li>
+<li><a href="#web-service">Web service</a></li>
+</ul></li>
+<li><a href="#configure-monit-s-checking-actions">Configure Monit&rsquo;s Checking Actions</a>
+<ul>
+<li><a href="#system-values">System Values</a></li>
+<li><a href="#processes">Processes</a></li>
+<li><a href="#filesystem">Filesystem</a></li>
+<li><a href="#remote-hosts">Remote Hosts</a></li>
+</ul></li>
+<li><a href="#more-monit">More Monit</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install WordPress on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install and optimize the WordPress blogging and content management system on your Linode.">
+        <meta name="keywords" content="install WordPress,  WordPress on Linode,  how to configure WordPress,  Permalink">
+        
+        <meta property="og:title" content="Install WordPress on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/cms/install-wordpress-on-ubuntu-16-04/">
+        <meta property="og:description" content="Install and optimize the WordPress blogging and content management system on your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/cms/install-wordpress-on-ubuntu-16-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/cms/">Control Panels &amp; Content Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  Install WordPress on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install WordPress on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-10-21T00:00:00Z">Friday, October 21, 2016</time> by Edward Angert</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2finstall-wordpress-on-ubuntu-16-04%2f&via=linode&text=Install%20WordPress%20on%20Ubuntu%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2finstall-wordpress-on-ubuntu-16-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2finstall-wordpress-on-ubuntu-16-04%2f&t=Install%20WordPress%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/cms/install-wordpress-on-ubuntu-16-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/cms/install-wordpress-on-ubuntu-16-04.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>In this guide, you&rsquo;ll learn to how to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.</p>
+
+<p><img src="/docs/assets/wordpress-ubuntu-16-04-title.png" alt="Install WordPress on Ubuntu 16.04" title="Install WordPress on Ubuntu 16.04" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</p>
+
+<p>All configuration files should be edited with elevated privileges. Remember to include <code>sudo</code> before running your text editor.</p>
+
+<p>Replace each instance of <code>example.com</code> in this guide with your site&rsquo;s domain name.</p>
+</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ul>
+<li><p>This guide assumes you have followed the <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/security/securing-your-server">Securing Your Server</a> guides, and that your Linode&rsquo;s <a href="/docs/getting-started#setting-the-hostname">hostname is set</a>.</p>
+
+<p>To check your hostname run:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).</p></li>
+
+<li><p>Configure a <a href="/docs/websites/lamp/install-lamp-on-ubuntu-16-04">LAMP</a> or <a href="/docs/websites/lemp/lemp-server-on-ubuntu-16-04">LEMP</a> web stack.</p></li>
+
+<li><p>Make sure MySQL has a database set up for WordPress. If you do not have a WordPress database, create one:</p>
+
+<ol>
+<li><p>Log in to the MySQL command line as the root user:</p>
+
+<pre><code>mysql -u root -p
+</code></pre></li>
+
+<li><p>Create the WordPress database:</p>
+
+<pre><code>CREATE DATABASE wordpress;
+</code></pre></li>
+
+<li><p>Create a user and grant them privileges for the newly created <code>wordpress</code> database, replacing <code>wpuser</code> and <code>password</code> with the username and password you wish to use:</p>
+
+<pre><code>CREATE USER 'wpuser' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser';
+</code></pre></li>
+
+<li><p>Exit MySQL:</p>
+
+<pre><code>quit
+</code></pre></li>
+</ol></li>
+</ul>
+
+<h2 id="install-wordpress">Install WordPress</h2>
+
+<ol>
+<li><p>Create a directory called <code>src</code> under your website&rsquo;s directory to store fresh copies of WordPress&rsquo;s source files. In this guide, the home directory <code>/var/www/html/example.com/</code> is used as an example. Navigate to that new directory:</p>
+
+<pre><code>sudo mkdir /var/www/html/example.com/src/
+cd /var/www/html/example.com/src/
+</code></pre></li>
+
+<li><p>Set your web server&rsquo;s user, <code>www-data</code>, as the owner of your site&rsquo;s home directory:</p>
+
+<pre><code>sudo chown -R www-data:www-data /var/www/html/example.com/
+</code></pre></li>
+
+<li><p>Install the latest version of WordPress and extract it:</p>
+
+<pre><code>sudo wget http://wordpress.org/latest.tar.gz
+sudo -u www-data tar -xvf latest.tar.gz
+</code></pre></li>
+
+<li><p>Rename <code>latest.tar.gz</code> as <code>wordpress</code> followed by the date to store a backup of the original source files. This will be useful if you install new versions in the future and need to revert back to a previous release:</p>
+
+<pre><code>sudo mv latest.tar.gz wordpress-`date &quot;+%Y-%m-%d&quot;`.tar.gz
+</code></pre></li>
+
+<li><p>Create a <code>public_html</code> directory to be the root directory for WordPress. Move the WordPress files to your <code>public_html</code> folder:</p>
+
+<pre><code>sudo mkdir /var/www/html/example.com/public_html/
+sudo mv wordpress/* ../public_html/
+</code></pre></li>
+
+<li><p>Give your web server ownership of the <code>public_html</code> folder:</p>
+
+<pre><code>sudo chown -R www-data:www-data /var/www/html/example.com/public_html
+</code></pre></li>
+</ol>
+
+<h2 id="configure-wordpress">Configure WordPress</h2>
+
+<ol>
+<li><p>Visit your domain in a web browser and follow the steps shown onscreen. Select your preferred language, review the information page and click the <strong>Let&rsquo;s go!</strong> button. Enter the database credentials that were set when you installed MySQL:</p>
+
+<p><img src="/docs/assets/wordpress-setup_small.png" alt="WordPress Installer" /></p>
+
+<p>WordPress will test the credentials and if authentication is successful, prompt you to <strong>Run the install</strong>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If Wordpress doesn&rsquo;t display when you visit your domain, try adding <code>/wp-admin</code> to the end of the URL. This sometimes happens if you previously created an index file in your site&rsquo;s home directory.</div>
+</blockquote>
+</li>
+
+<li><p>Fill out the administration information and click <strong>Install WordPress</strong>.</p>
+
+<p><img src="/docs/assets/wordpress-installation-screen01.png" alt="WordPress Administrative Information" /></p>
+
+<p>Click <strong>Log In</strong>, enter your credentials and proceed to the WordPress Dashboard.</p></li>
+
+<li><p>By default, WordPress will prompt you for FTP credentials when you install new themes or plugins. To bypass this, modify your <code>wp-config.php</code> file by adding the following lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/www/html/example.com/public_html/wp-config.php 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="x">/** Bypass FTP */
+</span><span class="x">define(&#39;FS_METHOD&#39;, &#39;direct&#39;);</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>If you&rsquo;re using Apache, run the following commands to ensure that <code>mod_rewrite</code> is enabled and then restart Apache to apply the changes:</p>
+
+<pre><code>sudo a2enmod rewrite
+sudo systemctl restart apache2
+</code></pre></li>
+
+<li><p>To make changes to your site in the future, you can access the Dashboard of your WordPress site from the web interface by adding <code>/wp-admin</code> to your site&rsquo;s URL: <code>example.com/wp-admin</code>.</p></li>
+</ol>
+
+<p>Congratulations! You have now successfully installed WordPress.</p>
+
+<h2 id="create-wordpress-permalinks-optional">Create WordPress Permalinks (Optional)</h2>
+
+<p><em>Permalink</em> is a portmanteau of the words <em>permanent</em> and <em>link</em>. Permalinks are URLs that are automatically created for specific posts or pages in WordPress so that you or others can link to them. WordPress&rsquo;s default settings assign post numbers as permalinks, meaning a link to a specific post would look like <code>example.com/?p=42</code>. To enforce a &ldquo;prettier&rdquo; permalink format, you&rsquo;ll need to make a few adjustments to Apache or nginx.</p>
+
+<p>For more information on permalinks, visit the <a href="https://codex.wordpress.org/Using_Permalinks">WordPress guide on permalinks</a>.</p>
+
+<p>To configure permalink settings:</p>
+
+<ol>
+<li><p>Log in to the WordPress admin panel through your site&rsquo;s <code>/wp-admin</code> URL.</p></li>
+
+<li><p>Mouseover <strong>Settings</strong> in the menu on the left of your screen, then click <strong>Permalinks</strong>:</p>
+
+<p><img src="/docs/assets/wordpress-settings-permalinks.png" alt="Wordpress Settings Permalinks" /></p></li>
+
+<li><p>Select your preferred permalink style or create your own <em>Custom Structure</em> and click <strong>Save Changes</strong></p></li>
+
+<li><p>Configure your web server to allow WordPress to create the customized URLs using the appropriate section below.</p></li>
+</ol>
+
+<h3 id="configure-wordpress-to-allow-permalinks-on-apache">Configure WordPress to Allow Permalinks on Apache</h3>
+
+<p>Instruct Apache to allow individual sites to update the <code>.htaccess</code> file, by adding the following options to the <em>Directory</em> section in your virtual host configuration:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Directory</span> <span class="s">/var/www/html/example.com/public_html</span><span class="nt">&gt;</span>
+    <span class="nb">Options</span> Indexes FollowSymLinks
+    <span class="nb">AllowOverride</span> <span class="k">All</span>
+    <span class="nb">Require</span> <span class="k">all</span> granted
+<span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Restart Apache to enable the changes:</p>
+
+<pre><code>sudo systemctl restart apache2
+</code></pre>
+
+<h3 id="configure-wordpress-to-allow-permalinks-on-nginx">Configure WordPress to Allow Permalinks on nginx</h3>
+
+<p>Direct nginx to check whether each permalink refers to an existing page. By default, nginx assumes that it doesn&rsquo;t, and returns a server-side 404. Update the following lines in the <code>location / {</code> block in your virtual host configuration:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+    <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+    <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$args</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h2 id="configure-maximum-file-size-upload-setting-to-allow-larger-files">Configure Maximum File Size Upload Setting to Allow Larger Files</h2>
+
+<p>By default, PHP restricts web uploads to under two megabytes. To allow larger file uploads through the web interface, configure the <code>upload_max_filesize</code> setting in <code>php.ini</code>:</p>
+
+<p><strong>Apache</strong>: <code>/etc/php/7.0/apache2/php.ini</code>
+<strong>nginx</strong>: <code>/etc/php/7.0/fpm/php.ini</code></p>
+
+<dl class="file-excerpt">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="p">;</span> Maximum allowed size <span class="k">for</span> uploaded files.
+<span class="p">;</span> http://php.net/upload-max-filesize
+<span class="nv">upload_max_filesize</span> <span class="o">=</span> 2M</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h2 id="install-optional-php-extensions">Install Optional PHP Extensions</h2>
+
+<p>Wordpress, and many of its plugins, use PHP extensions that you&rsquo;ll need to install manually. This section is optional, but it will allow you to access some Wordpress features you may not have with a basic PHP installation.</p>
+
+<ul>
+<li><p>In order to modify photos or images in Wordpress, you&rsquo;ll need the PHP-GD extension. For example, when you upload an image to use as a header, you may need to crop the image to make it fit your page.</p>
+
+<p>To install the GD extension:</p>
+
+<pre><code>sudo apt install php7.0-gd
+</code></pre></li>
+
+<li><p>For full non-English language support and to fix certain character encoding-related bugs, you&rsquo;ll need the multibyte string (MBSTRING) extension.</p>
+
+<p>To install MBSTRING:</p>
+
+<pre><code>sudo apt install php7.0-mbstring
+</code></pre></li>
+
+<li><p>To use XML-RPC to access Wordpress via the mobile app, or to use Jetpack, you&rsquo;ll need <code>php-xmlrpc</code>.  For more information on XML-RPC, visit the <a href="https://codex.wordpress.org/XML-RPC_Support">WordPress guide on XML-RPC</a>. For more information on Jetpack, visit <a href="https://jetpack.com/">Jetpack for Wordpress</a>.</p>
+
+<p>To install the XML-RPC extension:</p>
+
+<pre><code>sudo apt install php7.0-xmlrpc
+</code></pre></li>
+</ul>
+
+<p>These are only a few of the extensions you may find useful. Plenty of other PHP extensions exist and are required for certain plugin features, such as <code>php7.0-curl</code>, <code>php7.0-xml</code>, and <code>php7.0-mcrypt</code>. If you&rsquo;re having issues with a plugin or widget, check its documentation to see if a PHP extension is required.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The package names above assume you&rsquo;re working with PHP version 7.0. If you installed PHP 5 from the Ubuntu repositories, modify the commands to use the <code>php</code> prefix rather than <code>php7.0</code>. For example, instead of installing <code>php7.0-gd</code>, use <code>php-gd</code>.</div>
+</blockquote>
+
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://wordpress.org">WordPress.org</a></li>
+
+<li><a href="http://codex.wordpress.org">WordPress Codex</a></li>
+
+<li><a href="http://wordpress.org/support">WordPress Support</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/cms/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/">Set Up Apache to Run Multiple WordPress Sites on a Single Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/how-to-install-and-configure-wordpress/">How to Install and Configure WordPress - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-wordpress">Install WordPress</a></li>
+<li><a href="#configure-wordpress">Configure WordPress</a></li>
+<li><a href="#create-wordpress-permalinks-optional">Create WordPress Permalinks (Optional)</a>
+<ul>
+<li><a href="#configure-wordpress-to-allow-permalinks-on-apache">Configure WordPress to Allow Permalinks on Apache</a></li>
+<li><a href="#configure-wordpress-to-allow-permalinks-on-nginx">Configure WordPress to Allow Permalinks on nginx</a></li>
+</ul></li>
+<li><a href="#configure-maximum-file-size-upload-setting-to-allow-larger-files">Configure Maximum File Size Upload Setting to Allow Larger Files</a></li>
+<li><a href="#install-optional-php-extensions">Install Optional PHP Extensions</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

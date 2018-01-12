@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Getting Started with SELinux</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide will walk you through the basics of installing and running SELinux.">
+        <meta name="keywords" content="Security-enhanced Linux,  secure open source,  firewall,  SELinux,  getting-started">
+        
+        <meta property="og:title" content="Getting Started with SELinux">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/getting-started-with-selinux/">
+        <meta property="og:description" content="This guide will walk you through the basics of installing and running SELinux.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/getting-started-with-selinux/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Getting Started with SELinux
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Getting Started with SELinux</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-07-21T00:00:00Z">Friday, July 21, 2017</time> by Angel Guarisma</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fgetting-started-with-selinux%2f&via=linode&text=Getting%20Started%20with%20SELinux" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fgetting-started-with-selinux%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fgetting-started-with-selinux%2f&t=Getting%20Started%20with%20SELinux" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/getting-started-with-selinux.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/getting-started-with-selinux.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/selinux/selinux_centos.jpg" alt="SELinuxbanner" /></p>
+
+<p>SELinux is a Mandatory Access Control (MAC) system, developed by the NSA. SELinux was developed as a replacement for Discretionary Access Control (DAC) that ships with most Linux distributions.</p>
+
+<p>The difference between Discretionary Access Controls and Mandatory Access Controls is the means by which users and applications gain access to machines. Traditionally, the command <code>sudo</code> gives a user the ability to heighten permissions to <code>root</code>-level. Root access on a DAC system gives the person or program with root access permission to perform as desired on a machine.</p>
+
+<p>Ideally, the person with root access should be trusted with it. But if security has been compromised, so too has the system. SELinux and MACs resolve this issue by both confining privleged proccesses and automating security policy creation.</p>
+
+<p>SELinux defaults to denying anything that is not explicitly allowed. SELinux has global modes, <code>permissive</code> and <code>enforcing</code>. <code>Permissive</code> mode allows the system to function like a Discretionary Access Control system, while logging every violation to SELinux. The <code>enforcing</code> mode enforces a strict denial of access to anything that isn&rsquo;t explicitly allowed. To explicitly allow certain behavior on a machine, you, as the system administrator, have to write policies that allow it.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on <a href="/docs/quick-answers/linux/how-to-change-selinux-modes">SELinux</a></div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li>This guide requires you to <strong>OWN</strong> the box you are going to use. SELinux is a security-control system; a small misconfiguration could cause your system to be compromised.</li>
+<li>Linode uses a custom kernel by default. This kernel does not support SELinux. If you are using a Linode, switch to a distribution-supplied kernel by using this guide: <a href="https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm">Run a non-custom kernel</a></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>yum update
+</code></pre></li>
+</ol>
+
+<h2 id="install-selinux">Install SELinux</h2>
+
+<p>On CentOS 7 most of the SELinux packages are installed by default. Look to see what packages are installed:</p>
+
+<pre><code>rpm -aq | grep selinux
+</code></pre>
+
+<p>If you are dealing with a freshly installed CentOS 7 Linode, your output should be:</p>
+
+<pre><code>[root@centos ~]# rpm -aq | grep selinux
+libselinux-utils-2.5-6.el7.x86_64
+libselinux-2.5-6.el7.x86_64
+libselinux-python-2.5-6.el7.x86_64
+selinux-policy-3.13.1-102.el7_3.16.noarch
+selinux-policy-targeted-3.13.1-102.el7_3.16.noarch
+</code></pre>
+
+<p>Install the following packages and their associated dependencies:</p>
+
+<pre><code>yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setools setools-console
+</code></pre>
+
+<p>Optionally, install <code>setroubleshoot-server</code> and <code>mctrans</code>. The <code>setroubleshoot-server</code> allows, among many other things, for email notifications to be sent from the server to notify you of any policy violations. The <code>mctrans</code> daemon translates the output of SELinux to human readable text.</p>
+
+<h3 id="selinux-modes">SELinux Modes</h3>
+
+<p>SELinux has two modes: <code>Enforcing</code> and  <code>Permissive</code>:</p>
+
+<ul>
+<li><code>Enforcing</code>: In <code>Enforcing</code> mode, SELinux enforces strict policies on the system. Things that are not allowed, will not be allowed to run under any circumstance.</li>
+<li><code>Permissive</code>: In <code>Permissive</code> mode, your system is <strong>not</strong> protected by SELinux; instead, SELinux just records any violation to a log file.</li>
+</ul>
+
+<p>You can check what mode your system is in by running the <code>getenforce</code> command:</p>
+
+<pre><code>[root@centos ~ ]# getenforce
+Enforcing
+</code></pre>
+
+<p>You can also retrieve even more information using <code>sestatus</code>:</p>
+
+<pre><code>[root@centos ~]# sestatus
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          permissive
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Max kernel policy version:      28
+</code></pre>
+
+<p>You have to set SELinux to <code>permissive</code>, so that you can create policies on your system for SELinux to enforce. After changing SELinux&rsquo;s mode, you have to reboot your system.</p>
+
+<pre><code>[root@centos ~]# setenforce 0
+[root@centos ~]# getenforce
+Permissive
+[root@centos ~]# reboot
+</code></pre>
+
+<p>Now that SELinux is set to <code>Permissive</code>, you can see the log of privacy violations by using:</p>
+
+<pre><code>grep &quot;selinux&quot; /var/log/messages
+</code></pre>
+
+<p>The output will look very similar to this:</p>
+
+<pre><code>[root@centos ~]# grep &quot;selinux&quot; /var/log/messages
+Jun 26 12:27:16 li482-93 yum[4572]: Updated: selinux-policy-3.13.1-102.el7_3.16.noarch
+Jun 26 12:27:38 li482-93 yum[4572]: Updated: selinux-policy-targeted-3.13.1-102.el7_3.16.noarch
+Jun 26 16:38:15 li482-93 systemd: Removed slice system-selinux\x2dpolicy\x2dmigrate\x2dlocal\x2dchanges.slice.
+Jun 26 16:38:15 li482-93 systemd: Stopping system-selinux\x2dpolicy\x2dmigrate\x2dlocal\x2dchanges.slice.
+Jun 26 16:54:46 li482-93 systemd: Removed slice system-selinux\x2dpolicy\x2dmigrate\x2dlocal\x2dchanges.slice.
+Jun 26 16:54:46 li482-93 systemd: Stopping system-selinux\x2dpolicy\x2dmigrate\x2dlocal\x2dchanges.slice.
+Jun 26 16:55:45 li482-93 kernel: EVM: security.selinux
+Jun 26 17:33:43 li482-93 kernel: EVM: security.selinux
+Jun 26 17:36:21 li482-93 kernel: EVM: security.selinux
+</code></pre>
+
+<p>The file that contains the security states of the system is located at <code>/etc/selinux/config</code>, you can edit that file to change the state of the system.</p>
+
+<pre><code>vi /etc/selinux/config
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=permissive
+# SELINUXTYPE= can take one of three two values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted
+</code></pre>
+
+<p>The uncommented lines can be changed to any state. After changing the state of SELinux, <code>reboot</code> the machine for the changes to take effect.</p>
+
+<h3 id="selinux-context">SELinux Context</h3>
+
+<p>Before switching to the <code>enforce</code> state in SELinux, you have to understand contexts, as they pertain to SELinux.</p>
+
+<pre><code>[root@centos ~]# useradd user
+[root@centos ~]# su user
+[user@centos ~]$ cd ~/ &amp;&amp; mkdir test
+[user@centos ~]$ ls -Z
+drwxrwxr-x. user user unconfined_u:object_r:user_home_t:s0 test
+</code></pre>
+
+<p>The output of <code>ls -Z</code> may look familiar, but the <code>-Z</code> context flag prints out the SELinux security context of any file.</p>
+
+<p>SELinux marks every single object on a machine with a <em>context</em>. That means every file, daemon, and process has a context, according to SELinux. The context is broken into three parts: user, role and type. In SELinux, a policy controls which users can get which roles. Each specific role places a constraint on what <code>type</code> of files that user can enter. When a user logs in to a system, a role is assigned, which can be seen in the <code>ls -Z</code> example above: the output <code>unconfined_u</code> is a user role.</p>
+
+<h3 id="selinux-boolean">SELinux Boolean</h3>
+
+<p>An SELinux Boolean is a variable that can be toggled on and off without needing to reload or recompile an SELinux polcy. You can view the list of boolean variables using the <code>getsebool -a</code> command. It&rsquo;s a long list, so you can pipe it through <code>grep</code> to narrow down the results:</p>
+
+<pre><code>[root@centos ~]# getsebool -a | grep xdm
+xdm_bind_vnc_tcp_port --&gt; off
+xdm_exec_bootloader --&gt; off
+xdm_sysadm_login --&gt; off
+xdm_write_home --&gt; off
+</code></pre>
+
+<p>You can change the value of any variable using the <code>setsebool</code> command. If you set the <code>-P</code> flag, the setting will persist through reboots. If you want to permit a service like <a href="https://www.linode.com/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server">openVPN</a> to run unconfined in your system, you have to edit the policies boolean variable:</p>
+
+<pre><code>[root@centos ~]# getsebool -a  | grep &quot;vpn&quot;
+openvpn_can_network_connect --&gt; on
+openvpn_enable_homedirs --&gt; on
+openvpn_run_unconfined --&gt; off
+
+[root@centos ~]# setsebool -P openvpn_run_unconfined ON
+
+[root@centos ~]# getsebool -a  | grep &quot;vpn&quot;
+openvpn_can_network_connect --&gt; on
+openvpn_enable_homedirs --&gt; on
+openvpn_run_unconfined --&gt; on
+</code></pre>
+
+<p>Now, you are able to use OpenVPN <strong>unconfined</strong> or in <strong>permissive</strong> mode on your system, even if it is actively in <strong>enforcing</strong> mode. Set your system to <code>enforce</code>, and let SELinux protect your system.</p>
+
+<pre><code>[root@centos ~]# setenforce 1
+[root@centos ~]# getenforce
+Enforcing
+</code></pre>
+
+<h3 id="next-steps">Next Steps</h3>
+
+<p>SELinux is complicated. Please see the links under <strong>More Information</strong> to gather a deeper understanding of the subject. SELinux can play a critical role in system administration and security, especially once it is mastered.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://opensource.com/business/13/11/selinux-policy-guide">Graphical Guide to Policies</a></li>
+
+<li><a href="https://wiki.gentoo.org/wiki/SELinux">Gentoo SELinux Project</a></li>
+
+<li><a href="https://selinuxproject.org/page/User_Resources">SELinux User Resources</a></li>
+
+<li><a href="https://wiki.centos.org/HowTos/SELinux">CentOS SELinux Wiki</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/license/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-selinux">Install SELinux</a>
+<ul>
+<li><a href="#selinux-modes">SELinux Modes</a></li>
+<li><a href="#selinux-context">SELinux Context</a></li>
+<li><a href="#selinux-boolean">SELinux Boolean</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

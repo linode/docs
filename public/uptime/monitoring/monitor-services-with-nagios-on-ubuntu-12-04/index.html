@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Monitor Services with Nagios on Ubuntu 12.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use Nagios to Monitor Services and Send Status Updates on Ubuntu 12.04 (Precise Pangolin).">
+        <meta name="keywords" content="nagios, monitor services, ubuntu 12.04, smtp, pop3, http, icmp, ssh, notifications, alerts, ">
+        
+        <meta property="og:title" content="Monitor Services with Nagios on Ubuntu 12.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04/">
+        <meta property="og:description" content="Use Nagios to Monitor Services and Send Status Updates on Ubuntu 12.04 (Precise Pangolin).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/monitoring/">Server Monitoring</a>
+  
+</li>
+
+
+<li>
+  
+  Monitor Services with Nagios on Ubuntu 12.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Monitor Services with Nagios on Ubuntu 12.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-04-05T00:00:00Z">Friday, April 5, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fmonitor-services-with-nagios-on-ubuntu-12-04%2f&via=linode&text=Monitor%20Services%20with%20Nagios%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fmonitor-services-with-nagios-on-ubuntu-12-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fmonitor-services-with-nagios-on-ubuntu-12-04%2f&t=Monitor%20Services%20with%20Nagios%20on%20Ubuntu%2012.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Nagios is a monitoring tool that allows you to monitor services on a single server or a pool of servers. It can keep an eye on a broad range of network services, including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.</p>
+
+<h2 id="install-nagios">Install Nagios</h2>
+
+<p>Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the <a href="/docs/getting-started/">Getting Started guide</a>. You also need to have a functioning <a href="/docs/lamp-guides/ubuntu-12-04-precise-pangolin">LAMP stack</a> set up on your Linode.</p>
+
+<p>Now you&rsquo;re ready to install Nagios. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Ensure that your system&rsquo;s package repository and installed packages are up to date by entering the following commands, one by one:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+</code></pre></li>
+
+<li><p>Install Nagios from the Ubuntu repository by entering the following command:</p>
+
+<pre><code>sudo apt-get install -y nagios3
+</code></pre></li>
+
+<li><p>Enter an administrator password to complete the installation.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you do not already have an email server installed on your Linode, Postfix will be installed automatically. The <em>Internet Site</em> configuration will be used by default. You&rsquo;ll also have to enter a mail name for the system.</div>
+</blockquote>
+
+
+<h2 id="access-the-nagios-web-interface">Access the Nagios Web Interface</h2>
+
+<p>You can now access the Nagios web interface for administration and reporting by visiting <code>http://example.com/nagios3/</code>, where <code>example.com</code> refers to your Linode&rsquo;s default virtual host. You may also access this interface by visiting <code>http://12.34.56.78/nagios3/</code>, where <code>12.34.56.78</code> is the IP address of your Linode. You will need to authenticate with the <code>nagiosadmin</code> user you created earlier.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our <a href="/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate">SSL guide</a>.</div>
+</blockquote>
+
+
+<h2 id="configure-notifications">Configure Notifications</h2>
+
+<p>A great deal of the power of Nagios is its ability to send notifications and alerts regarding the status of services and devices. While most of this fine-grained configuration is beyond the scope of this document, we have outlined some basic notifications below.</p>
+
+<h3 id="email-alerts">Email Alerts</h3>
+
+<p>Nagios can send alerts by email, but to receive them you&rsquo;ll need to add your email address to the Nagios configuration file. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Open the Nagios configuration file for editing by entering the following command:</p>
+
+<pre><code>sudo nano /etc/nagios3/conf.d/contacts_nagios2.cfg
+</code></pre></li>
+
+<li><p>Enter your system username and your email address by replacing <code>your_username</code> with your username, and <code>youremail@example.com</code> with your email address.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nagios3/conf.d/contacts\\_nagios2.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">define contact<span class="o">{</span>
+    contact_name your_username
+    service_notification_period 24x7
+    host_notification_period 24x7
+    service_notification_options w,u,c,r,f
+    host_notification_options d,u,r,f
+    service_notification_commands notify-service-by-email
+    host_notification_commands notify-host-by-email
+    email &lt;youremail@example.com&gt;
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>To send email alerts to more than one user, duplicate the <code>define contact</code> section for as many users as you want. Or, to configure notifications to a <a href="/docs/tools-reference/linux-users-and-groups">group</a>, edit the <code>define contactgroup</code> section.</div>
+</blockquote>
+</li>
+
+<li><p>Save the changes to the configuration file by pressing <code>Control + x</code> and then pressing <code>y</code>.</p></li>
+
+<li><p>Restart Nagios to apply the changes:</p>
+
+<pre><code>sudo service nagios3 restart
+</code></pre></li>
+</ol>
+
+<h3 id="irc-notifications">IRC Notifications</h3>
+
+<p>You can also configure Nagios to send notifications to an IRC channel through a bot. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Enter the following command to install the IRC bot:</p>
+
+<pre><code>sudo apt-get install nagircbot
+</code></pre></li>
+
+<li><p>You&rsquo;ll need to provide a few parameters to the IRC bot - such as its nickname and server - in order to use it. To see a list of parameters, enter the following command:</p>
+
+<pre><code>nagircbot -h
+</code></pre></li>
+
+<li><p>To start the Nagios IRC bot, enter the following command:</p>
+
+<pre><code>sudo nagircbot
+</code></pre></li>
+
+<li><p>Now you need to set those parameters. Use the following example as a starting point. Replace <code>irc.example.com</code> with the address of your IRC network, and <code>#example</code> with the name of the IRC channel to which the bot should send notifications. Replace <code>nagircbot</code> with the desired nickname for your bot, and <code>ident</code> and <code>realname</code> with the ident and real name strings for the IRC bot.</p>
+
+<pre><code>nagircbot -f /var/cache/nagios3/status.dat -s irc.example.com:6667 -c \#example -C -n nagircbot -u ident -U realname -I 900
+</code></pre>
+
+<p>In the above example, <code>-f /usr/local/nagios/var/status.dat</code> tells the bot where to get status updates. The <code>-C</code> flag allows the bot to send colored messages to the channel depending on the status of the service. When services are down, red status messages are displayed. These messages turn green when the service has recovered. Warnings are displayed in yellow, but do not typically represent a critical issue.</p>
+
+<p>The <code>-I 900</code> parameter tells the bot to send a status message to the channel every 900 seconds (15 minutes). For example, the bot may send something like <code>Critical: 0, warning: 1, ok: 6, up: 2, down: 0, unreachable: 0, pending: 0</code>, which indicates that there are no critical messages and 1 warning.</p></li>
+</ol>
+
+<h2 id="accept-external-commands">Accept External Commands</h2>
+
+<p>Nagios can accept <em>external commands</em> so that you can acknowledge problems, add comments, and more. Here&rsquo;s how to enable external commands:</p>
+
+<ol>
+<li><p>Open the Nagios configuration file for editing by entering the following command:</p>
+
+<pre><code>sudo nano /etc/nagios3/nagios.cfg
+</code></pre></li>
+
+<li><p>Change the <code>check_external_commands</code> setting to <code>check_external_commands=1</code>.</p></li>
+
+<li><p>Save the changes to the configuration file by pressing <code>Control + x</code> and then pressing <code>y</code>.</p></li>
+
+<li><p>Restart Apache by entering the following command:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre></li>
+
+<li><p>Open the system group file for editing by entering the following command:</p>
+
+<pre><code>sudo nano /etc/group
+</code></pre></li>
+
+<li><p>Change the <code>nagios:x:118</code> setting to <code>nagios:x:118:www-data</code>.</p></li>
+
+<li><p>Save the changes to the configuration file by pressing <code>Control + x</code> and then pressing <code>y</code>.</p></li>
+
+<li><p>Enter the following command to change the permissions of a Nagios configuration file:</p>
+
+<pre><code>sudo chmod g+x /var/lib/nagios3/rw
+</code></pre></li>
+
+<li><p>Enter the following command the change the permissions of the Nagios directory:</p>
+
+<pre><code>sudo chmod g+x /var/lib/nagios3
+</code></pre></li>
+
+<li><p>Restart Nagios by entering the following command:</p>
+
+<pre><code>sudo service nagios3 restart
+</code></pre></li>
+</ol>
+
+<p>Congratulations! External commands are now enabled.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Nagios contains numerous features that are beyond the scope of this document. You are encouraged to explore the resources listed below and the administrative interface for more information regarding the setup and configuration of Nagios.</p>
+
+<p>Congratulations on your new Nagios monitoring and notification system!</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.nagios.org/">Nagios Home Page</a></li>
+
+<li><a href="http://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details">Nagios IRC Bot</a></li>
+
+<li><a href="http://library.nagios.com/">Nagios Library</a></li>
+
+<li><a href="http://nagios.sourceforge.net/docs/3_0/cgisecurity.html">Nagios Security</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/squid/squid-http-proxy-ubuntu-12-04/">Creating an HTTP Proxy Using Squid on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/install-openfire-on-ubuntu-12-04-for-instant-messaging/">Install Openfire on Ubuntu 12.04 for Instant Messaging - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-ubuntu-12-04/">Apache Web Server on Ubuntu 12.04 LTS (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/cherokee/use-cherokee-web-server-on-ubuntu-12-04/">Use Cherokee Web Server on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/security/how-to-use-yubikey-for-two-factor-ssh-authentication/">How to use a YubiKey for Two-Factor Secure Shell Authentication</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#install-nagios">Install Nagios</a></li>
+<li><a href="#access-the-nagios-web-interface">Access the Nagios Web Interface</a></li>
+<li><a href="#configure-notifications">Configure Notifications</a>
+<ul>
+<li><a href="#email-alerts">Email Alerts</a></li>
+<li><a href="#irc-notifications">IRC Notifications</a></li>
+</ul></li>
+<li><a href="#accept-external-commands">Accept External Commands</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

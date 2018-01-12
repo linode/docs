@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Diagnosing Network Issues with MTR</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to create and interpret MTR reports on your Linode or home computer.">
+        <meta name="keywords" content="mtr, traceroute, latency, loss">
+        
+        <meta property="og:title" content="Diagnosing Network Issues with MTR">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/">
+        <meta property="og:description" content="How to create and interpret MTR reports on your Linode or home computer.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/diagnostics/">Diagnosing Network Issues</a>
+  
+</li>
+
+
+<li>
+  
+  Diagnosing Network Issues with MTR
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Diagnosing Network Issues with MTR</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-12-15T00:00:00Z">Monday, December 15, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdiagnostics%2fdiagnosing-network-issues-with-mtr%2f&via=linode&text=Diagnosing%20Network%20Issues%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdiagnostics%2fdiagnosing-network-issues-with-mtr%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdiagnostics%2fdiagnosing-network-issues-with-mtr%2f&t=Diagnosing%20Network%20Issues%20with%20MTR" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/diagnostics/diagnosing-network-issues-with-mtr.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/diagnostics/diagnosing-network-issues-with-mtr.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>MTR is a powerful network diagnostic tool that enables administrators to diagnose and isolate networking errors and provide helpful reports of network status to upstream providers. MTR represents an evolution of the <code>traceroute</code> command by providing a greater data sample, as if augmenting <code>traceroute</code> with <code>ping</code> output. This document provides an in depth overview of MTR, the data it generates, and how to properly interpret and draw conclusions based on the data provided by it.</p>
+
+<p><img src="/docs/assets/diagnosing-network-issues-with-mtr.png" alt="Diagnosing Network Issues with MTR" /></p>
+
+<p>For a basic overview of network diagnostic techniques consider our introduction to <a href="/docs/using-linux/administration-basics#network-diagnostics">network diagnostics</a>. If you suspect that you&rsquo;re having some other issue with your system, you may consider our overview of general <a href="/docs/using-linux/administration-basics#system-diagnostics">system diagnostics</a>. As a matter of course, it is assumed that all Linode deployments will have completed our <a href="/docs/getting-started/">getting started guide</a> prior to beginning with this document.</p>
+
+<h2 id="network-diagnostics-background">Network Diagnostics Background</h2>
+
+<p>Networking diagnostic tools including <code>ping</code>, <code>traceroute</code>, and <code>mtr</code> use &ldquo;ICMP&rdquo; packets to test contention and traffic between two points on the Internet. When a user pings a host on the Internet, a series of ICMP packets are sent to the host, which responds by sending packets in return. The user&rsquo;s client is then able to compute the round trip time between two points on the Internet.</p>
+
+<p>By contrast, tools such as traceroute and MTR send ICMP packets with incrementally increasing TTLs in order to view the route or series of hops that the packet makes between the origin and its destination. The TTL, or time to live, controls how many &ldquo;hops&rdquo; a packet will make before &ldquo;dying&rdquo; and returning to the host. By sending a series of packets and causing them to die and return after one hop, then two, then three, the client machine is able to assemble the route that traffic takes between hosts on the Internet.</p>
+
+<p>Rather than provide a simple outline of the route that traffic takes across the Internet, MTR collects additional information regarding the state, connection, and responsiveness of the intermediate hosts. Because of this additional information, it is recommended that you use MTR whenever possible to provide the most complete overview of the connection between two hosts on the Internet. The following sections outline how to install the MTR software and how to interpret the results provided by this tool.</p>
+
+<h2 id="installing-mtr">Installing MTR</h2>
+
+<h3 id="installing-on-linux">Installing on Linux</h3>
+
+<p>On Debian and Ubuntu systems, issue the following commands to ensure that your system&rsquo;s package repository is up to date, that all installed packages are up to date, and finally to install MTR itself:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+apt-get install mtr-tiny
+</code></pre>
+
+<p>On CentOS and Fedora systems you will want to issue the following commands to update repositories, upgrade installed packages, and install the MTR program:</p>
+
+<pre><code>yum update
+yum install mtr
+</code></pre>
+
+<p>On Arch Linux systems issue the following commands to update the package database and install MTR:</p>
+
+<pre><code>pacman -Syu
+pacman -S mtr
+</code></pre>
+
+<p>You may also want to use MTR to diagnose networking issues from your local workstation. If you&rsquo;re running a Linux system, you can install MTR using the commands above.</p>
+
+<h3 id="installing-on-windows">Installing on Windows</h3>
+
+<p>For Windows there is a port of MTR called &ldquo;WinMTR&rdquo;. You can download this application from the <a href="http://winmtr.net">WinMTR upstream</a>.</p>
+
+<h3 id="installing-on-mac-os-x">Installing on Mac OS X</h3>
+
+<p>If you&rsquo;re running a Mac OS X workstation, you may install MTR with either <a href="http://brew.sh/">Homebrew</a>, or <a href="http://www.macports.org/">MacPorts</a>. To install MTR with Homebrew, run:</p>
+
+<pre><code>brew install mtr
+</code></pre>
+
+<p>To install MTR with MacPorts, run:</p>
+
+<pre><code>port install mtr
+</code></pre>
+
+<h2 id="generating-an-mtr-report">Generating an MTR Report</h2>
+
+<p>Because MTR provides an image of the route traffic takes from one host to another, you can think of it as a directional tool. Furthermore, the route taken between two points on the Internet can vary a great deal based on location and the routers that are located upstream of you. For this reason it is often recommended that you collect MTR reports in <em>both</em> directions for all hosts that are experiencing connectivity issues, or as many hosts as possible.</p>
+
+<p>Linode support will often request &ldquo;mtr reports&rdquo; both <strong>to</strong> and <strong>from</strong> your Linode if you are experiencing networking issues. This is because, from time to time, MTR reports will not point to errors from one direction when there is still packet loss from the opposite direction. Having both reports is helpful as it can aid in the identification of issues and will be needed if a problem must be reported.</p>
+
+<p>For the sake of clarity, when referring to MTR reports this document refers to the host running <code>mtr</code> as the <strong>source host</strong> and the host targeted by the query as the <strong>destination host</strong>.</p>
+
+<h3 id="using-mtr-on-unix-based-systems">Using MTR on Unix-based Systems</h3>
+
+<p>Once installed on Linux or a Mac OS X system, you may generate MTR reports using the following syntax:</p>
+
+<pre><code>mtr -rw [destination_host]
+</code></pre>
+
+<p>For example, to test the route and connection quality of traffic to the destination host <code>example.com</code>, run the following command from the desired source host:</p>
+
+<pre><code>mtr -rw example.com
+</code></pre>
+
+<p>When contacting Linode Support with an issue that may be networking related, the technician may request MTR reports <strong>both to and from your Linode</strong>. An MTR report <strong>to your Linode</strong> would be run while logged in to your home PC (or other PC at your current location). The command may resemble the following:</p>
+
+<pre><code>mtr -rw 87.65.43.21
+</code></pre>
+
+<p>Be sure to replace <code>87.65.43.21</code> with the IP address of your Linode, which is listed on the &ldquo;Remote Access&rdquo; tab of the Linode Manager. At the same time, also collect the MTR report <strong>from your Linode</strong> to your home network. This command may resemble the following:</p>
+
+<pre><code>mtr -rw 12.34.56.78
+</code></pre>
+
+<p>Replace <code>12.34.56.78</code> with the IP address of your home network. If you are unsure of what your home IP address is you may use the first or second host on your outgoing MTR reports (depending on the configuration of your home network). Alternatively, you may use a third party service, such as <a href="http://whatismyip.com/">WhatIsMyIP.com</a>.</p>
+
+<p>If no packet loss seems to be revealed, a support technician may aske you to run a faster interval:</p>
+
+<pre><code>mtr -rwc 50 -i 0.2 -rw 12.34.56.78
+</code></pre>
+
+<p>On some systems, it may require administrative privileges to run when using this flag:</p>
+
+<pre><code>sudo mtr -rwc 50 -i 0.2 -rw 12.34.56.78
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>The flags we are using above (<code>rwc [x] -i [y]</code>) are useful to our support technicians when contacting support about network-related issues.</p>
+
+<p>The <code>r</code> option flag generates the report (short for <code>--report</code>).</p>
+
+<p>The <code>w</code> option flag uses the long-version of the hostname so our technicians and you can see the full hostname of each hop (short for <code>--report-wide</code>).</p>
+
+<p>The <code>c</code> option flag sets how many packets are sent and recorded in the report. When not used, the default will generally be 10, but for faster intervals you may want to set it to 50 or 100. The report can take longer to finish when doing this.</p>
+
+<p>The <code>i</code> option flag runs the report at a faster rate to reveal packet loss that can occur only during network congestion. This flag instructs MTR to send one packet every <em>n</em> seconds. The default is 1 second, so setting it to a few tenths of a second (0.1, 0.2, etc.) is generally helpful.</p>
+</div>
+</blockquote>
+
+
+<h3 id="using-mtr-on-windows-systems">Using MTR on Windows Systems</h3>
+
+<p>Running MTR on Windows uses a GUI. Open WinMTR, type the destination host in the box as prompted, and select the start option to begin generating report data. You&rsquo;ll need to use the Linux version of MTR to generate the MTR report from your Linode. Please refer to the Linux section above for assistance.</p>
+
+<h2 id="reading-mtr-reports">Reading MTR Reports</h2>
+
+<p>Because MTR reports contain a wealth of information, they may be difficult to interpret at first. Consider the following example from a local connection to <code>google.com</code>:</p>
+
+<pre><code>$ mtr --report google.com
+HOST: example                  Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. inner-cake                    0.0%    10    2.8   2.1   1.9   2.8   0.3
+  2. outer-cake                    0.0%    10    3.2   2.6   2.4   3.2   0.3
+  3. 68.85.118.13                  0.0%    10    9.8  12.2   8.7  18.2   3.0
+  4. po-20-ar01.absecon.nj.panjde  0.0%    10   10.2  10.4   8.9  14.2   1.6
+  5. be-30-crs01.audubon.nj.panjd  0.0%    10   10.8  12.2  10.1  16.6   1.7
+  6. pos-0-12-0-0-ar01.plainfield  0.0%    10   13.4  14.6  12.6  21.6   2.6
+  7. pos-0-6-0-0-cr01.newyork.ny.  0.0%    10   15.2  15.3  13.9  18.2   1.3
+  8. pos-0-4-0-0-pe01.111eighthav  0.0%    10   16.5  16.2  14.5  19.3   1.3
+  9. as15169-3.111eighthave.ny.ib  0.0%    10   16.0  17.1  14.2  27.7   3.9
+ 10. 72.14.238.232                 0.0%    10   19.1  22.0  13.9  43.3  11.1
+ 11. 209.85.241.148                0.0%    10   15.1  16.2  14.8  20.2   1.6
+ 12. lga15s02-in-f104.1e100.net    0.0%    10   15.6  16.9  15.2  20.6   1.7
+</code></pre>
+
+<p>The command issued to generate the report is <code>mtr --report google.com</code>. This uses the report option which sends 10 packets to the host <code>google.com</code> and generates the output. Without the <code>--report</code> option, <code>mtr</code> will run continuously in an interactive environment. The interactive mode reflects current round trip times to each host. In most cases, the <code>--report</code> mode provides sufficient data in a useful format.</p>
+
+<p>Following the command, MTR generates its output. Typically, MTR reports take a few seconds to generate. Do not be alarmed if it takes a few moments to complete the report. The report is comprised of a series of hops (12 in this case). &ldquo;Hops&rdquo; are the nodes, or routers, on the Internet that packets transverse to get to their destination. In the above example, packets travel through the &ldquo;inner-cake&rdquo; and &ldquo;outer-cake&rdquo; local network devices and then to &ldquo;68.85.118.13&rdquo;&rdquo; followed by a series of named hosts. The names for the hosts are determined by reverse DNS lookups. If you want to omit the rDNS lookups you can use the <code>--no-dns</code> option, which would produce output similar to the following:</p>
+
+<pre><code>% mtr --no-dns --report google.com
+HOST: deleuze                     Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. 192.168.1.1                   0.0%    10    2.2   2.2   2.0   2.7   0.2
+  2. 68.85.118.13                  0.0%    10    8.6  11.0   8.4  17.8   3.0
+  3. 68.86.210.126                 0.0%    10    9.1  12.1   8.5  24.3   5.2
+  4. 68.86.208.22                  0.0%    10   12.2  15.1  11.7  23.4   4.4
+  5. 68.85.192.86                  0.0%    10   17.2  14.8  13.2  17.2   1.3
+  6. 68.86.90.25                   0.0%    10   14.2  16.4  14.2  20.3   1.9
+  7. 68.86.86.194                  0.0%    10   17.6  16.8  15.5  18.1   0.9
+  8. 75.149.230.194                0.0%    10   15.0  20.1  15.0  33.8   5.6
+  9. 72.14.238.232                 0.0%    10   15.6  18.7  14.1  32.8   5.9
+ 10. 209.85.241.148                0.0%    10   16.3  16.9  14.7  21.2   2.2
+ 11. 66.249.91.104                 0.0%    10   22.2  18.6  14.2  36.0   6.5
+</code></pre>
+
+<p>As a matter of best practice when discussing MTR reports, it is best to refer to any issue in terms of its hop number. Beyond simply seeing the path between servers that packets take to reach their host, MTR provides valuable statistics regarding the durability of that connection in the seven columns that follow. The <code>Loss%</code> column shows the percentage of packet loss at each hop. The <code>Snt</code> column counts the number of packets sent. The <code>--report</code> option will send 10 packets unless specified with <code>--report-cycles=[number-of-packets]</code>, where <code>[number-of-packets]</code> represents the total number of packets that you want to send to the remote host.</p>
+
+<p>The next four columns <code>Last</code>, <code>Avg</code>, <code>Best</code>, and <code>Wrst</code> are all measurements of latency in milliseconds (e.g. <code>ms</code>). <code>Last</code> is the latency of the last packet sent, <code>Avg</code> is average latency of all packets, while <code>Best</code> and <code>Wrst</code> display the best (shortest) and worst (longest) round trip time for a packet to this host. In most cases, the average (<code>Avg</code>) column should be the focus of your attention.</p>
+
+<p>The final column, <code>StDev</code>, provides the standard deviation of the latencies to each host. The higher the standard deviation, the greater the difference is between measurements of latency. Standard deviation allows you to assess if the mean (average) provided represents the true center of the data set, or has been skewed by some sort of phenomena or measurement error. For example, if the standard deviation is high, the latency measurements were inconsistent. While some could have been low (i.e. 25ms), others may have been very high (i.e. 350ms). After averaging the latencies of the 10 packets sent, the average looks normal but may in fact not represent the data very well. If the standard deviation is high, take a look at the best and worst latency measurements to make sure the average is a good representation of the actual latency and not the result of too much fluctuation.</p>
+
+<p>In most circumstances, you may think of the MTR output in three major sections. Depending on configurations, the first 2 or 3 hops often represent the source host&rsquo;s ISP, while the last 2 or 3 hops represent the destination host&rsquo;s ISP. The hops in between are the routers the packet traverses to reach its destination.</p>
+
+<p>For example if MTR is run from your home PC to your Linode, the first 2 or 3 hops belong to <strong>your</strong> ISP. The last 3 hops belong to the datacenter where your Linode resides. Any hops in the middle are intermediate hops. When running MTR locally, if you see an abnormality in the first few hops near the source, contact your local service provider or investigate your local networking configuration. Conversely, if you see abnormalities near the destination you may want to contact the operator of the destination server or network support for that machine (e.g. Linode). Unfortunately, in cases where there are problems on the intermediate hops, both service providers will have limited ability to address those glitches.</p>
+
+<h2 id="analyzing-mtr-reports">Analyzing MTR Reports</h2>
+
+<h3 id="verifying-packet-loss">Verifying Packet Loss</h3>
+
+<p>When analyzing MTR output, you are looking for two things: loss and latency. First, let&rsquo;s talk about loss. If you see a percentage of loss at any particular hop, that may be an indication that there is a problem with that particular router. However, it is common practice among some service providers to rate limit the ICMP traffic that MTR uses. This can give the illusion of packet loss when there is in fact no loss. To determine if the loss you&rsquo;re seeing is real or due to rate limiting, take a look at the subsequent hop. If that hop shows a loss of 0.0%, then you can be pretty sure that you&rsquo;re seeing ICMP rate limiting and not actual loss. See below for an example:</p>
+
+<pre><code>root@localhost:~# mtr --report www.google.com
+HOST: example               Loss%   Snt   Last   Avg  Best  Wrst StDev
+1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
+2. 63.247.64.157                50.0%    10    0.4   1.0   0.4   6.1   1.8
+3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7
+4. aix.pr1.atl.google.com        0.0%    10    6.7   6.8   6.7   6.9   0.1
+5. 72.14.233.56                  0.0%    10    7.2   8.3   7.1  16.4   2.9
+6. 209.85.254.247                0.0%    10   39.1  39.4  39.1  39.7   0.2
+7. 64.233.174.46                 0.0%    10   39.6  40.4  39.4  46.9   2.3
+8. gw-in-f147.1e100.net          0.0%    10   39.6  40.5  39.5  46.7   2.2
+</code></pre>
+
+<p>In this case, the loss reported between hops 1 and 2 is likely due to rate limiting on the second hop. Although traffic to the remaining eight hops all touch the second hop, there is no packet loss. If the loss continues for more than one hop, than it is possible that there is some packet loss or routing issues. Remember that rate limiting and loss can happen concurrently. In this case, take the lowest percentage of loss in a sequence as the actual loss. For instance, consider the following output:</p>
+
+<pre><code>root@localhost:~# mtr --report www.google.com
+HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+1. 63.247.74.43                   0.0%    10    0.3   0.6   0.3   1.2   0.3
+2. 63.247.64.157                  0.0%    10    0.4   1.0   0.4   6.1   1.8
+3. 209.51.130.213                60.0%    10    0.8   2.7   0.8  19.0   5.7
+4. aix.pr1.atl.google.com        60.0%    10    6.7   6.8   6.7   6.9   0.1
+5. 72.14.233.56                  50.0%   10    7.2   8.3   7.1  16.4   2.9
+6. 209.85.254.247                40.0%   10   39.1  39.4  39.1  39.7   0.2
+7. 64.233.174.46                 40.0%   10   39.6  40.4  39.4  46.9   2.3
+8. gw-in-f147.1e100.net          40.0%   10   39.6  40.5  39.5  46.7   2.2
+</code></pre>
+
+<p>In this case, you see 60% loss between hops 2 and 3 as well as between hops 3 and 4. You can assume that the third and fourth hop is likely losing some amount of traffic because no subsequent host reports zero loss. However, some of the loss is due to rate limiting as several of the final hops are only experiencing 40% loss. When different amounts of loss are reported, always trust the reports from later hops.</p>
+
+<p>Some loss can also be explained by problems in the return route. Packets will reach their destination without error, but have a hard time making the return trip. This will be apparent in the report, but may be difficult to deduce from the output of MTR. For this reason it is often best to collect MTR reports in both directions when you&rsquo;re experiencing an issue.</p>
+
+<p>Additionally, resist the temptation to investigate or report all incidences of packet loss in your connections. The Internet protocols are designed to be resilient to some network degradation, and the routes that data takes across the Internet can fluctuate in response to load, brief maintenance events, and other routing issues. If your MTR report shows small amounts of loss in the neighborhood of 10%, there is no cause for real concern as the application layer will compensate for the loss which is likely transient.</p>
+
+<h3 id="understanding-network-latency">Understanding Network Latency</h3>
+
+<p>In addition to helping you assess packet loss, MTR will also help you assess the latency of a connection between your host and the target host. By virtue of physical constraints, latency always increases with the number of hops in a route. However, the increases should be consistent and linear. Unfortunately, latency is often relative and very dependent on the quality of both host&rsquo;s connections and their physical distance. When evaluating MTR reports for potentially problematic connections, consider earlier fully functional reports as context in addition to known connection speeds between other hosts in a given area.</p>
+
+<p>The connection quality may also affect the amount of latency you experience for a particular route. Predictably, dial-up connections will have much higher latency than cable modem connections to the same destination. Consider the following MTR report which shows a high latency:</p>
+
+<pre><code>root@localhost:~# mtr --report www.google.com
+HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
+  2. 63.247.64.157                 0.0%    10    0.4   1.0   0.4   6.1   1.8
+  3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7
+  4. aix.pr1.atl.google.com        0.0%    10  388.0 360.4 342.1 396.7   0.2
+  5. 72.14.233.56                  0.0%    10  390.6 360.4 342.1 396.7   0.2
+  6. 209.85.254.247                0.0%    10  391.6 360.4 342.1 396.7   0.4
+  7. 64.233.174.46                 0.0%    10  391.8 360.4 342.1 396.7   2.1
+  8. gw-in-f147.1e100.net          0.0%    10  392.0 360.4 342.1 396.7   1.2
+</code></pre>
+
+<p>The amount of latency jumps significantly between hops 3 and 4 and remains high. This may point to a network latency issue as round trip times remain high after the fourth hop. From this report, it is impossible to determine the cause although a saturated peering session, a poorly configured router, or a congested link are frequent causes.</p>
+
+<p>Unfortunately, high latency does not always mean a problem with the current route. A report like the one above means that despite some sort of issue with the 4th hop, traffic is still reaching the destination host <em>and</em> returning to the source host. Latency could be caused by a problem with the return route as well. The return route will not be seen in your MTR report, and packets can take completely different routes to and from a particular destination.</p>
+
+<p>In the above example, while there is a large jump in latency between hosts 3 and 4 the latency does not increase unusually in any subsequent hops. From this it is logical to assume that there is some issue with the 4th router.</p>
+
+<p>ICMP rate limiting can also create the appearance of latency, similar to the way that it can create the appearance of packet loss. Consider the following example:</p>
+
+<pre><code>root@localhost:~# mtr --report www.google.com
+HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
+  2. 63.247.64.157                 0.0%    10    0.4   1.0   0.4   6.1   1.8
+  3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7
+  4. aix.pr1.atl.google.com        0.0%    10    6.7   6.8   6.7   6.9   0.1
+  5. 72.14.233.56                  0.0%    10  254.2 250.3 230.1 263.4   2.9
+  6. 209.85.254.247                0.0%    10   39.1  39.4  39.1  39.7   0.2
+  7. 64.233.174.46                 0.0%    10   39.6  40.4  39.4  46.9   2.3
+  8. gw-in-f147.1e100.net          0.0%    10   39.6  40.5  39.5  46.7   2.2
+</code></pre>
+
+<p>At first glance, the latency between hops 4 and 5 draws attention. However after the fifth hop, the latency drops drastically. The actual latency measured here is about 40ms. In cases like this, MTR draws attention to an issue which does not affect the service. Consider the latency to the final hop when evaluating an MTR report.</p>
+
+<h2 id="common-mtr-reports">Common MTR Reports</h2>
+
+<p>Some networking issues are novel and require escalation to the operators of the upstream networks. However, there are a selection of common MTR reports that describe common networking issues. If you&rsquo;re experiencing some sort of networking issue and want to diagnose your problem, consider the following examples.</p>
+
+<h3 id="destination-host-networking-improperly-configured">Destination Host Networking Improperly Configured</h3>
+
+<p>In the next example, it appears that there is 100% loss to a the destination host because of an incorrectly configured router. At first glance it appears that the packets are not reaching the host but this is not the case.</p>
+
+<pre><code>root@localhost:~# mtr --report www.google.com
+HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
+  2. 63.247.64.157                 0.0%    10    0.4   1.0   0.4   6.1   1.8
+  3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7
+  4. aix.pr1.atl.google.com        0.0%    10    6.7   6.8   6.7   6.9   0.1
+  5. 72.14.233.56                  0.0%    10    7.2   8.3   7.1  16.4   2.9
+  6. 209.85.254.247                0.0%    10   39.1  39.4  39.1  39.7   0.2
+  7. 64.233.174.46                 0.0%    10   39.6  40.4  39.4  46.9   2.3
+  8. gw-in-f147.1e100.net         100.0    10    0.0   0.0   0.0   0.0   0.0
+</code></pre>
+
+<p>The traffic does reach the destination host however, the MTR report shows loss because the destination host is not sending a reply. This may be the result of improperly configured networking or firewall (iptables) rules that cause the host to drop ICMP packets.</p>
+
+<p>The way you can tell that the loss is due to a misconfigured host is to look at the hop which shows 100% loss. From previous reports, you see that this is the final hop and that MTR does not try additional hops. While it is difficult to isolate this issue without a baseline measurement, these kinds of errors are quite common.</p>
+
+<h3 id="residential-or-business-router">Residential or Business Router</h3>
+
+<p>Oftentimes residential gateways will cause MTR reports to look a little misleading.</p>
+
+<pre><code>% mtr --no-dns --report google.com
+HOST: deleuze                     Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. 192.168.1.1                   0.0%    10    2.2   2.2   2.0   2.7   0.2
+  2. ???                          100.0    10    8.6  11.0   8.4  17.8   3.0
+  3. 68.86.210.126                 0.0%    10    9.1  12.1   8.5  24.3   5.2
+  4. 68.86.208.22                  0.0%    10   12.2  15.1  11.7  23.4   4.4
+  5. 68.85.192.86                  0.0%    10   17.2  14.8  13.2  17.2   1.3
+  6. 68.86.90.25                   0.0%    10   14.2  16.4  14.2  20.3   1.9
+  7. 68.86.86.194                  0.0%    10   17.6  16.8  15.5  18.1   0.9
+  8. 75.149.230.194                0.0%    10   15.0  20.1  15.0  33.8   5.6
+  9. 72.14.238.232                 0.0%    10   15.6  18.7  14.1  32.8   5.9
+ 10. 209.85.241.148                0.0%    10   16.3  16.9  14.7  21.2   2.2
+ 11. 66.249.91.104                 0.0%    10   22.2  18.6  14.2  36.0   6.5
+</code></pre>
+
+<p>Do not be alarmed by the 100% loss reported. This does not indicate that there is a problem. You can see that there is no loss on subsequent hops.</p>
+
+<h3 id="an-isp-router-is-not-configured-properly">An ISP Router Is Not Configured Properly</h3>
+
+<p>Sometimes a router on the route your packet takes is incorrectly configured and your packets may never reach their destination. Consider the following example:</p>
+
+<pre><code>root@localhost:~# mtr --report www.google.com
+HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
+  2. 63.247.64.157                 0.0%    10    0.4   1.0   0.4   6.1   1.8
+  3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7
+  4. aix.pr1.atl.google.com        0.0%    10    6.7   6.8   6.7   6.9   0.1
+  5. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+  6. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+  7. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+  8. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+  9. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+ 10. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+</code></pre>
+
+<p>The question marks appear when there is no additional route information. The following report displays the same issue:</p>
+
+<pre><code>root@localhost:~# mtr --report www.google.com
+HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+   1. 63.247.74.43                 0.0%    10    0.3   0.6   0.3   1.2   0.3
+   2. 63.247.64.157                0.0%    10    0.4   1.0   0.4   6.1   1.8
+   3. 209.51.130.213               0.0%    10    0.8   2.7   0.8  19.0   5.7
+   4. aix.pr1.atl.google.com       0.0%    10    6.7   6.8   6.7   6.9   0.1
+   5. 172.16.29.45                 0.0%    10    0.0   0.0   0.0   0.0   0.0
+   6. ???                          0.0%    10    0.0   0.0   0.0   0.0   0.0
+   7. ???                          0.0%    10    0.0   0.0   0.0   0.0   0.0
+   8. ???                          0.0%    10    0.0   0.0   0.0   0.0   0.0
+   9. ???                          0.0%    10    0.0   0.0   0.0   0.0   0.0
+  10. ???                          0.0%    10    0.0   0.0   0.0   0.0   0.0
+</code></pre>
+
+<p>Sometimes, a poorly configured router will send packets in a loop. You can see that in the following example:</p>
+
+<pre><code>root@localhost:~# mtr --report www.google.com
+HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
+  2. 63.247.64.157                 0.0%    10    0.4   1.0   0.4   6.1   1.8
+  3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7
+  4. aix.pr1.atl.google.com        0.0%    10    6.7   6.8   6.7   6.9   0.1
+  5. 12.34.56.79                   0.0%    10    0.0   0.0   0.0   0.0   0.0
+  6. 12.34.56.78                   0.0%    10    0.0   0.0   0.0   0.0   0.0
+  7. 12.34.56.79                   0.0%    10    0.0   0.0   0.0   0.0   0.0
+  8. 12.34.56.78                   0.0%    10    0.0   0.0   0.0   0.0   0.0
+  9. 12.34.56.79                   0.0%    10    0.0   0.0   0.0   0.0   0.0
+ 10. 12.34.56.78                   0.0%    10    0.0   0.0   0.0   0.0   0.0
+ 11. 12.34.56.79                   0.0%    10    0.0   0.0   0.0   0.0   0.0
+ 12. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+ 13. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+ 14. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+</code></pre>
+
+<p>All of these reports show that the router at hop 4 is not properly configured. When these situations happen, the only way to resolve the issue is to contact the network administrator&rsquo;s team of operators at the source host.</p>
+
+<h3 id="icmp-rate-limiting">ICMP Rate Limiting</h3>
+
+<p>ICMP rate limiting can cause apparent packet loss as described below. When there is packet loss to one hop that doesn&rsquo;t persist to subsequent hops, the loss is caused by ICMP limiting. See the following example:</p>
+
+<pre><code>root@localhost:~# mtr --report www.google.com
+ HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+   1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
+   2. 63.247.64.157                 0.0%    10    0.4   1.0   0.4   6.1   1.8
+   3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7
+   4. aix.pr1.atl.google.com        0.0%    10    6.7   6.8   6.7   6.9   0.1
+   5. 72.14.233.56                 60.0%    10   27.2  25.3  23.1  26.4   2.9
+   6. 209.85.254.247                0.0%    10   39.1  39.4  39.1  39.7   0.2
+   7. 64.233.174.46                 0.0%    10   39.6  40.4  39.4  46.9   2.3
+   8. gw-in-f147.1e100.net          0.0%    10   39.6  40.5  39.5  46.7   2.2
+</code></pre>
+
+<p>In situations like this there is no cause for concern. Rate limiting is a common practice and it reduces congestion to prioritizes more important traffic.</p>
+
+<h3 id="timeouts">Timeouts</h3>
+
+<p>Timeouts can happen for various reasons. Some routers will discard ICMP and no replies will be shown on the output as timeouts (<code>???</code>). Alternatively there may be a problem with the return route:</p>
+
+<pre><code>root@localhost:~# mtr --report www.google.com
+HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
+  2. 63.247.64.157                 0.0%    10    0.4   1.0   0.4   6.1   1.8
+  3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7
+  4. aix.pr1.atl.google.com        0.0%    10    6.7   6.8   6.7   6.9   0.1
+  5. ???                           0.0%    10    7.2   8.3   7.1  16.4   2.9
+  6. ???                           0.0%    10   39.1  39.4  39.1  39.7   0.2
+  7. 64.233.174.46                 0.0%    10   39.6  40.4  39.4  46.9   2.3
+  8. gw-in-f147.1e100.net          0.0%    10   39.6  40.5  39.5  46.7   2.2
+</code></pre>
+
+<p>Timeouts are not necessarily an indication of packet loss. Packets still reach their destination without significant packet loss or latency. Timeouts may be attributable to routers dropping packets for QoS (quality of service) purposes or there may be some issue with return routes causing the timeouts. This is another false positive.</p>
+
+<h2 id="advanced-mtr-techniques">Advanced MTR techniques</h2>
+
+<p>Newer versions of MTR are now capable of running in TCP mode on a specified TCP port, compared to the default use of the ICMP (ping) protocol. In some instances network degradation will only affect certain ports or misconfigured firewall rules on a router may block a certain protocol. Running MTR over a certain port can show packet loss where the default ICMP report may not.</p>
+
+<p>Running MTR in TCP mode will require super-user privileges on most machines:</p>
+
+<pre><code>sudo mtr -P 80 -i 0.5 -rwc 50 example.com
+sudo mtr -P 22 -i 0.5 -rwc 50 example.com
+</code></pre>
+
+<h2 id="resolving-routing-and-networking-issues-identified-in-your-mtr-report">Resolving Routing and Networking Issues Identified in your MTR report</h2>
+
+<p>A majority of routing issues displayed by MTR reports are temporary. Most issues will clear up by themselves within 24 hours. In most cases, by the time you are able to notice a problem with a route, the Internet service provider&rsquo;s monitoring has already reported the problem and administrators are working to fix the issue. In cases where you are experiencing degraded service for an extended period of time, you may choose to alert a provider of the issues you&rsquo;re experiencing. When contacting a service provider, send MTR reports and any other relevant data you may have. Without usable data, providers have no way to verify or fix problems.</p>
+
+<p>While routing errors and issues account for a percentage of network-related slowness, they are by no means the only cause of degraded performance. Network congestion, particularly over long distances during peak times, can become quite congested. Transatlantic and transpacific traffic can be quite variable and are subject to general network congestion. In these cases, it is recommended that you position hosts and resources as geographically close to their targeted audience as possible.</p>
+
+<p>If you are experiencing connectivity issues and are unable to interpret your MTR report, you may open a support ticket including the output of your report in the &ldquo;Support&rdquo; tab of the Linode Manager and our technicians can help analyze your issue.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.bitwizard.nl/mtr/">The Official MTR Web Site</a></li>
+
+<li><a href="http://www.cisco.com/en/US/products/sw/iosswrel/ps1831/products_tech_note09186a00800a6057.shtml#traceroute">Understanding the Traceroute Command - Cisco Systems</a></li>
+
+<li><a href="http://en.wikipedia.org/wiki/Trace_route">Wikipedia article on traceroute</a></li>
+
+<li><a href="http://www.exit109.com/~jeremy/news/providers/traceroute.html">Traceroute by Exit109.com</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#network-diagnostics-background">Network Diagnostics Background</a></li>
+<li><a href="#installing-mtr">Installing MTR</a>
+<ul>
+<li><a href="#installing-on-linux">Installing on Linux</a></li>
+<li><a href="#installing-on-windows">Installing on Windows</a></li>
+<li><a href="#installing-on-mac-os-x">Installing on Mac OS X</a></li>
+</ul></li>
+<li><a href="#generating-an-mtr-report">Generating an MTR Report</a>
+<ul>
+<li><a href="#using-mtr-on-unix-based-systems">Using MTR on Unix-based Systems</a></li>
+<li><a href="#using-mtr-on-windows-systems">Using MTR on Windows Systems</a></li>
+</ul></li>
+<li><a href="#reading-mtr-reports">Reading MTR Reports</a></li>
+<li><a href="#analyzing-mtr-reports">Analyzing MTR Reports</a>
+<ul>
+<li><a href="#verifying-packet-loss">Verifying Packet Loss</a></li>
+<li><a href="#understanding-network-latency">Understanding Network Latency</a></li>
+</ul></li>
+<li><a href="#common-mtr-reports">Common MTR Reports</a>
+<ul>
+<li><a href="#destination-host-networking-improperly-configured">Destination Host Networking Improperly Configured</a></li>
+<li><a href="#residential-or-business-router">Residential or Business Router</a></li>
+<li><a href="#an-isp-router-is-not-configured-properly">An ISP Router Is Not Configured Properly</a></li>
+<li><a href="#icmp-rate-limiting">ICMP Rate Limiting</a></li>
+<li><a href="#timeouts">Timeouts</a></li>
+</ul></li>
+<li><a href="#advanced-mtr-techniques">Advanced MTR techniques</a></li>
+<li><a href="#resolving-routing-and-networking-issues-identified-in-your-mtr-report">Resolving Routing and Networking Issues Identified in your MTR report</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

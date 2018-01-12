@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Roundcube on Ubuntu 14.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Roundcube is a web-based IMAP email client that offers a user interface similar to Gmail or Hotmail. Email users interact with Roundcube over the internet using a web browser.">
+        <meta name="keywords" content="Roundcube, webmail, email, Ubuntu, Postfix, Dovecot">
+        
+        <meta property="og:title" content="Install Roundcube on Ubuntu 14.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/clients/install-roundcube-on-ubuntu-14-04/">
+        <meta property="og:description" content="Roundcube is a web-based IMAP email client that offers a user interface similar to Gmail or Hotmail. Email users interact with Roundcube over the internet using a web browser.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/clients/install-roundcube-on-ubuntu-14-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/clients/">Email Clients</a>
+  
+</li>
+
+
+<li>
+  
+  Install Roundcube on Ubuntu 14.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Roundcube on Ubuntu 14.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-02-01T00:00:00Z">Monday, February 1, 2016</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/seanthewebber">Sean Webber
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fclients%2finstall-roundcube-on-ubuntu-14-04%2f&via=linode&text=Install%20Roundcube%20on%20Ubuntu%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fclients%2finstall-roundcube-on-ubuntu-14-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fclients%2finstall-roundcube-on-ubuntu-14-04%2f&t=Install%20Roundcube%20on%20Ubuntu%2014.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/clients/install-roundcube-on-ubuntu-14-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/clients/install-roundcube-on-ubuntu-14-04.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/install-roundcube-on-ubuntu-14-04.jpg" alt="Install Roundcube on Ubuntu 14.04" title="Install Roundcube on Ubuntu 14.04" /></p>
+
+<h2 id="what-is-roundcube">What is Roundcube?</h2>
+
+<p>Roundcube is a web-based IMAP email client that offers a user interface similar to Google’s Gmail or Microsoft’s Hotmail. It is a server-side application written in PHP designed to access an email server or service. Email users interact with Roundcube over the internet using a web browser.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>This guide is designed to work with our <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql">Installing Postfix, Dovecot, and MySQL</a> tutorial, but you <strong>can</strong> use a different mail server.</p></li>
+
+<li><p>Configure an <strong>A HOST</strong> or <strong>CNAME</strong> DNS record (a subdomain) to point at your Linode. For this guide, the subdomain <code>webmail</code> will be used. Refer to our <a href="/docs/networking/dns/dns-records-an-introduction/">Introduction to DNS Records</a> guide if you need help creating this record.</p></li>
+
+<li><p>Update your server&rsquo;s software packages:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="linux-apache-mysql-and-php-lamp-stack">Linux, Apache, MySQL and PHP (LAMP) Stack</h2>
+
+<p>This section will cover installing Apache, MySQL, PHP and SSL on your Linode from scratch. If you already have a functioning LAMP stack, skip ahead to the section for <a href="#create-an-apache-virtual-host-with-ssl">Creating an Apache Virtual Host with SSL</a>.</p>
+
+<h3 id="install-lamp-stack-packages">Install LAMP Stack Packages</h3>
+
+<ol>
+<li><p>Install the <code>lamp-server^</code> metapackage, which installs Apache, MySQL, and PHP as dependencies:</p>
+
+<pre><code>sudo apt-get install lamp-server^
+</code></pre></li>
+
+<li><p>During the installation process, you will be asked to choose a password for the <strong>root</strong> MySQL user.</p></li>
+
+<li><p>Secure your new MySQL installation:</p>
+
+<pre><code>sudo mysql_secure_installation
+</code></pre></li>
+
+<li><p>Specify your Linode&rsquo;s time zone in the <code>/etc/php5/apache2/php.ini</code> PHP configuration file. If your server is not using UTC, replace it with your <a href="http://nl1.php.net/manual/en/timezones.php">local timezone listed on PHP.net</a>:</p>
+
+<pre><code>sudo sed -i -e &quot;s/^;date\.timezone =.*$/date\.timezone = 'UTC'/&quot; /etc/php5/apache2/php.ini
+</code></pre></li>
+</ol>
+
+<h3 id="create-an-apache-virtual-host-with-ssl">Create an Apache Virtual Host with SSL</h3>
+
+<p>We will create a new virtual host for Roundcube in this section. This makes a new webroot for Roundcube, separating it from any other webroots on your Linode.</p>
+
+<ol>
+<li><p>Position your Linode&rsquo;s shell prompt within the <code>/etc/apache2/sites-available</code> directory:</p>
+
+<pre><code>cd /etc/apache2/sites-available
+</code></pre></li>
+
+<li><p>Download a copy of our <code>apache2-roundcube.sample.conf</code> virtual host configuration file. Replace instances of <code>webmail.example.com</code> with the desired domain or subdomain of your installation.</p>
+
+<pre><code>sudo wget https://linode.com/docs/assets/apache2-roundcube.sample.conf
+</code></pre></li>
+
+<li><p>Transfer the file&rsquo;s ownership to <strong>root</strong>:</p>
+
+<pre><code>sudo chown root:root apache2-roundcube.sample.conf
+</code></pre></li>
+
+<li><p>Next, change the file&rsquo;s access permissions:</p>
+
+<pre><code>sudo chmod 644 apache2-roundcube.sample.conf
+</code></pre></li>
+
+<li><p>Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A <a href="/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate">self-signed SSL certificate</a> is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a> offers browser trusted, free SSL certificates, but does not support <a href="https://en.wikipedia.org/wiki/Extended_Validation_Certificate">Extended Validatation</a> (EV) or multi-domain (<a href="https://en.wikipedia.org/wiki/Wildcard_certificate">wildcard</a>) certificates. To gain those features, a <a href="/docs/security/ssl/obtaining-a-commercial-ssl-certificate">commercial SSL certificate</a> must be used.</p></li>
+
+<li><p>Once you have your SSL certificate, edit the following options in <code>apache2-roundcube.sample.conf</code> to match your desired configuration:</p>
+
+<ul>
+<li><strong>ServerAdmin:</strong> administrative email address for your Linode (e.x. <code>admin@example.com</code> or <code>webmaster@example.com</code>)</li>
+<li><strong>ServerName:</strong> full domain name of the virtual host (e.x. <code>webmail.example.com</code>)</li>
+<li><strong>ErrorLog (optional):</strong> path to the custom error log file (e.x. <code>/var/log/apache2/webmail.example.com/error.log</code>; uncomment by removing <code>#</code>)</li>
+<li><strong>CustomLog (optional):</strong> path to the custom access log file (e.x. <code>/var/log/apache2/webmail.example.com/access.log</code>; again, uncomment by removing <code>#</code>)</li>
+<li><strong>SSLCertificateFile:</strong> path to the SSL certificate information (<code>.crt</code>) file</li>
+<li><strong>SSLCertificateKeyFile:</strong> path to the SSL certificate private key (<code>.key</code>) file</li>
+</ul>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Make sure the custom directory and desired <code>.log</code> files exist <strong>before</strong> specifying them in your virtual host configuration. Failure to do so will prevent Apache from starting. The files should be owned by the <code>www-data</code> user with <code>644</code> permissions.</div>
+</blockquote>
+</li>
+
+<li><p>Rename your configuration file to match its full domain name:</p>
+
+<pre><code>sudo mv apache2-roundcube.sample.conf webmail.example.com.conf
+</code></pre></li>
+
+<li><p>Lastly, disable the default Apache virtual host <em>unless</em> you plan to use it.</p>
+
+<pre><code>sudo a2dissite 000-default.conf default-ssl.conf
+</code></pre></li>
+</ol>
+
+<h3 id="create-a-mysql-database-and-user">Create a MySQL Database and User</h3>
+
+<ol>
+<li><p>Log into the MySQL command prompt as the <strong>root</strong> user:</p>
+
+<pre><code>mysql -u root -p
+</code></pre></li>
+
+<li><p>Once logged in and the <code>mysql&gt;</code> prompt is shown, create a new MySQL database called <code>roundcubemail</code>:</p>
+
+<pre><code>CREATE DATABASE roundcubemail;
+</code></pre></li>
+
+<li><p>Create a new MySQL user called <code>roundcube</code> and assign it a strong password:</p>
+
+<pre><code>CREATE USER 'roundcube'@'localhost' IDENTIFIED BY 'example_password';
+</code></pre></li>
+
+<li><p>Grant the new <code>roundcube</code> user full access to Roundcube’s database <code>roundcubemail</code>:</p>
+
+<pre><code>GRANT ALL PRIVILEGES ON roundcubemail.* TO 'roundcube'@'localhost';
+</code></pre></li>
+
+<li><p>Flush the MySQL privilege tables to reload them:</p>
+
+<pre><code>FLUSH PRIVILEGES;
+</code></pre></li>
+
+<li><p>Log out of the MySQL command prompt and return to a regular Linux shell prompt:</p>
+
+<pre><code>exit
+</code></pre></li>
+</ol>
+
+<h2 id="final-preparations-for-roundcube">Final Preparations for Roundcube</h2>
+
+<ol>
+<li><p>Install and enable the packages <code>php-pear</code>, <code>php5-intl</code>, and <code>php5-mcrypt</code>:</p>
+
+<pre><code>sudo apt-get install php-pear php5-intl php5-mcrypt &amp;&amp; sudo php5enmod intl mcrypt
+</code></pre></li>
+
+<li><p>Enable the Apache modules <code>deflate</code>, <code>expires</code>, <code>headers</code>, <code>rewrite</code>, and <code>ssl</code>:</p>
+
+<pre><code>sudo a2enmod deflate expires headers rewrite ssl
+</code></pre></li>
+
+<li><p>Additionally, install the PHP PEAR packages <code>Auth_SASL</code>, <code>Net_SMTP</code>, <code>Net_IDNA2-0.1.1</code>, <code>Mail_mime</code>, and <code>Mail_mimeDecode</code>:</p>
+
+<pre><code>sudo pear install Auth_SASL Net_SMTP Net_IDNA2-0.1.1 Mail_mime Mail_mimeDecode
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>PEAR is an acronym for &ldquo;PHP Extension and Application Repository&rdquo;. Common PHP code libraries, written officially or by third parties, can be easily installed and referenced using the <code>pear</code> command.</div>
+</blockquote>
+
+
+<p>PEAR will print an <strong>install ok</strong> confirmation message for each package that it successfully installs. In this case, a complete installation will look similar to this:</p>
+
+<pre><code>install ok: channel://pear.php.net/Auth_SASL-1.0.6
+install ok: channel://pear.php.net/Net_SMTP-1.7.1
+install ok: channel://pear.php.net/Net_IDNA2-0.1.1
+install ok: channel://pear.php.net/Mail_mime-1.10.0
+install ok: channel://pear.php.net/Mail_mimeDecode-1.5.5
+</code></pre></li>
+</ol>
+
+<h2 id="download-and-install-roundcube">Download and Install Roundcube</h2>
+
+<ol>
+<li><p>Make sure your Linode&rsquo;s shell prompt is operating inside your user&rsquo;s home directory. The <code>~/Downloads</code> folder is preferable, but <code>~/</code> is also acceptable.</p>
+
+<pre><code>cd ~/Downloads
+</code></pre></li>
+
+<li><p>Download Roundcube. At the time of this writing, the current stable version is 1.1.4, so it will be used for the rest of this guide.</p>
+
+<pre><code>wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.4/roundcubemail-1.1.4.tar.gz
+</code></pre></li>
+
+<li><p>Decompress and copy Roundcube to the <code>/var/www</code> directory. Again, replace any occurrences of <code>1.1.4</code> in the filename with a newer version number if necessary:</p>
+
+<pre><code>sudo tar -zxvf roundcubemail-1.1.4.tar.gz -C /var/www
+</code></pre></li>
+
+<li><p>Eliminate the version number from Roundcube&rsquo;s directory name. This will make updating easier later:</p>
+
+<pre><code>sudo mv /var/www/roundcubemail-1.1.4 /var/www/roundcube
+</code></pre></li>
+
+<li><p>Transfer ownership of the <code>/var/www/roundcube</code> directory to the <code>www-data</code> user. This will allow Roundcube to save its own configuration file, instead of you having to download it and then manually upload it to your Linode:</p>
+
+<pre><code>sudo chown -R www-data:www-data /var/www/roundcube
+</code></pre></li>
+
+<li><p>Lastly, you should enable Roundcube&rsquo;s automatic cache-cleaning shell script:</p>
+
+<pre><code>echo '0 0 * * * root bash /var/www/roundcube/bin/cleandb.sh &gt;&gt; /dev/null' | sudo tee --append /etc/crontab
+</code></pre>
+
+<p>This utilizes a cron job to run the <code>cleandb.sh</code> shell script included with Roundcube once per day at midnight. Read our <a href="/docs/tools-reference/tools/schedule-tasks-with-cron">Scheduling Tasks with Cron</a> guide to learn about Cron.</p></li>
+</ol>
+
+<h2 id="enable-roundcube-s-apache-virtual-host">Enable Roundcube&rsquo;s Apache Virtual Host</h2>
+
+<ol>
+<li><p>Enable the <code>webmail.example.com</code> virtual host you just wrote in the <strong>Creating an Apache Virtual Host with SSL</strong> section:</p>
+
+<pre><code>sudo a2ensite webmail.example.com.conf
+</code></pre></li>
+
+<li><p>Restart Apache to apply all configuration changes and enable your new virtual host:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre>
+
+<p>The output should be <code>* Restarting web server apache2 ... [ OK ]</code>. If an error is given, use the error messages to troubleshoot your configuration. Missing files, incorrect permissions and typos are common causes for Apache not properly restarting.</p></li>
+</ol>
+
+<h2 id="configure-roundcube">Configure Roundcube</h2>
+
+<ol>
+<li><p>Launch your favorite web browser and navigate to <code>https://webmail.example.com/installer</code>. Again, make sure to replace <code>webmail.example.com</code> with your chosen domain name.</p></li>
+
+<li><p>Begin configuring Roundcube. The first step of Roundcube’s graphical configuration is an <em>environment check</em>. Click on the <strong>NEXT</strong> button at the bottom of the page to continue.</p>
+
+<p><img src="/docs/assets/roundcube_webmail_installer.png" alt="Roundcube Webmail Installer" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Since Roundcube supports six different SQL engines, five <strong>NOT AVAILABLE</strong> warnings will appear under the <strong>Checking available databases</strong> section. MySQL was installed earlier as part of the LAMP stack, so you can ignore these warnings.</div>
+</blockquote>
+</li>
+
+<li><p>Specify your Roundcube configuration options. The list of options below will get you a proper, working configuration, but you can adjust any unmentioned options as you see fit.</p>
+
+<ul>
+<li><strong>General configuration &gt; product_name:</strong> Name of your email service.</li>
+<li><strong>General configuration &gt; support_url:</strong> Where should your users go if they need help? A URL to a web-based contact form or an email address should be used. (e.g. <code>http://example.com/support</code> or <code>mailto:support@example.com</code>)</li>
+<li><strong>General configuration &gt; skin_logo:</strong> Replaces the default Roundcube logo with an image of your choice. The image must be located within the <code>/var/www/roundcube</code> directory and be linked relatively (e.g. <code>skins/larry/logo.png</code>). Recommended image resolution is <code>177px</code> by <code>49px</code>.</li>
+<li><strong>Database setup &gt; db_dsnw &gt; Database password:</strong> Password for the <strong>roundcube</strong> MySQL user you created earlier.</li>
+<li><strong>IMAP Settings &gt; default_host:</strong> Hostname of your IMAP server. Use <code>ssl://localhost</code> to access the local server (i.e. your server) using OpenSSL.</li>
+<li><strong>IMAP Settings &gt; default_port:</strong> TCP port for incoming IMAP connections to your server. Use port <code>993</code> to ensure OpenSSL is used.</li>
+<li><strong>IMAP Settings &gt; username_domain:</strong> What domain name should Roundcube assume all users are part of? This allows users to only have to type in their email username (e.g. <strong>somebody</strong>) instead of their full email address (e.g. <code>somebody@example.com</code>).</li>
+<li><strong>SMTP Settings &gt; smtp_server:</strong> Hostname of your SMTP server. Use <code>ssl://localhost</code> to access the local server (i.e. your server) using OpenSSL.</li>
+<li><strong>SMTP Settings &gt; smtp_port:</strong> TCP port for incoming SMTP connections to your server. Use port <code>587</code> to ensure OpenSSL is used.</li>
+<li><strong>SMTP Settings &gt; smtp_user/smtp_pass:</strong> Click and check the <strong>Use the current IMAP username and password for SMTP authentication</strong> checkbox so that users can send mail without re-typing their user credentials.</li>
+<li><strong>Display settings &amp; user prefs &gt; language:</strong> Allows you to select a default <a href="http://www.faqs.org/rfcs/rfc1766">RFC1766</a>-compliant locale for Roundcube. For a full listing of the supported language codes, run <code>cat /usr/share/i18n/SUPPORTED</code> on your Linode.</li>
+<li><strong>Display settings &amp; user prefs &gt; draft_autosave:</strong> Most users will expect their drafts to be saved almost instantaneously while they type them. While Roundcube does not offer instantaneous draft saving as an option, it can save a user’s draft every minute. Select <code>1 min</code> from the dropdown menu.</li>
+</ul></li>
+
+<li><p>Click on the <strong>CREATE CONFIG</strong> button toward the bottom of the page to save your new configuration. You should see a confirmation message on the corresponding page saying: <strong>The config file was saved successfully into RCMAIL_CONFIG_DIR directory of your Roundcube installation</strong>.</p></li>
+
+<li><p>Complete the configuration by clicking <strong>CONTINUE</strong>.</p>
+
+<p><a href="/docs/assets/roundcube-configuration-saved-successfully.png"><img src="/docs/assets/roundcube-configuration-saved-successfully_small.png" alt="Roundcube configuration saved successfully" /></a></p></li>
+
+<li><p>Lastly, import Roundcube’s MySQL database structure by clicking on the <strong>Initialize database</strong> button.</p>
+
+<p><img src="/docs/assets/roundcube-mysql-database-initialization.png" alt="Roundcube MySQL database initialization" /></p></li>
+</ol>
+
+<h1 id="remove-the-installer-directory">Remove the Installer Directory</h1>
+
+<ol>
+<li><p>Delete the <code>/var/www/roundcube/installer</code> directory, which contains the web page files just used to configure Roundcube:</p>
+
+<pre><code>sudo rm -rf /var/www/roundcube/installer
+</code></pre>
+
+<p>While Roundcube automatically disabled the installer functionality within its configuration file, deleting the installer directory adds another layer of protection against intruders.</p></li>
+</ol>
+
+<h2 id="verify-your-roundcube-installation">Verify your Roundcube Installation</h2>
+
+<ol>
+<li><p>Navigate to <code>https://webmail.example.com</code> and log in using your email account&rsquo;s username and password. If your configuration is functional, Roundcube will allow you to receive, read and send emails from inside and outside of your domain name.</p>
+
+<p><img src="/docs/assets/roundcube-login.png" alt="Roundcube login" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If your email address is <code>somebody@example.com</code>, you only have to enter <strong>somebody</strong> as your username. Roundcube assumes that all users exist at <code>example.com</code>.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="keeping-roundcube-updated">Keeping Roundcube Updated</h2>
+
+<ol>
+<li><p>Compare the <strong>Stable &gt; Complete</strong> package version listed on <a href="http://roundcube.net/download/">Roundcube&rsquo;s download page</a> to the version currently installed on your Linode.</p></li>
+
+<li><p>If a newer version is available, replace any occurrences of <code>1.1.4</code> with the newest version in the command below. This will download Roundcube to your <code>~/Downloads</code> directory:</p>
+
+<pre><code>cd ~/Downloads &amp;&amp; wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.4/roundcubemail-1.1.4.tar.gz
+</code></pre></li>
+
+<li><p>Extract and unzip the tarball (.tar.gz file) to <code>~/Downloads</code>:</p>
+
+<pre><code>tar -zxvf roundcubemail-1.1.4.tar.gz
+</code></pre></li>
+
+<li><p>Begin updating Roundcube by executing the <code>/var/www/roundcube/bin/installto.sh</code> PHP script. If you did not install Roundcube in the <code>/var/www/roundcube</code> directory, replace the trailing directory with that of Roundcube&rsquo;s on your server:</p>
+
+<pre><code>cd roundcubemail-1.1.4
+sudo php bin/installto.sh /var/www/roundcube
+</code></pre></li>
+
+<li><p>Confirm the update by pressing <strong>Y</strong> and then <strong>ENTER</strong>. A successful upgrade will print something similar to this:</p>
+
+<pre><code>Upgrading from 1.1.4. Do you want to continue? (y/N)
+y
+Copying files to target location...sending incremental file list
+
+...
+
+Running update script at target...
+Executing database schema update.
+This instance of Roundcube is up-to-date.
+Have fun!
+All done.
+</code></pre>
+
+<p><strong>All done</strong> means the update was successful; unless you don&rsquo;t see this message, proceed to step six.</p></li>
+
+<li><p>Delete the Roundcube directory and gzipped tarball from <code>~/Downloads</code>:</p>
+
+<pre><code>cd ~/Downloads &amp;&amp; rm -rfd roundcubemail-1.1.4 roundcubemail-1.1.4.tar.gz
+</code></pre></li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Now that you have installed Roundcube, you have your very own free, web-based email client similar to Google’s Gmail or Microsoft’s Hotmail. Users can access their email by navigating to <code>https://webmail.example.com</code>.</p>
+
+<p>From here, you can <a href="http://trac.roundcube.net/wiki/Doc_Plugins">install plugins to add additional functionality</a> and <a href="http://trac.roundcube.net/wiki/Doc_Skins">customize the theme</a> to match your organization’s color scheme.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://roundcube.net/">Roundcube Homepage</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/advanced-ssh-server-security/">Use Advanced OpenSSH Features to Harden Access to Your Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/">Install Odoo 10 on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/">Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/">Configure SPF and DKIM With Postfix on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04/">Install Odoo 9 ERP on Ubuntu 14.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-roundcube">What is Roundcube?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#linux-apache-mysql-and-php-lamp-stack">Linux, Apache, MySQL and PHP (LAMP) Stack</a>
+<ul>
+<li><a href="#install-lamp-stack-packages">Install LAMP Stack Packages</a></li>
+<li><a href="#create-an-apache-virtual-host-with-ssl">Create an Apache Virtual Host with SSL</a></li>
+<li><a href="#create-a-mysql-database-and-user">Create a MySQL Database and User</a></li>
+</ul></li>
+<li><a href="#final-preparations-for-roundcube">Final Preparations for Roundcube</a></li>
+<li><a href="#download-and-install-roundcube">Download and Install Roundcube</a></li>
+<li><a href="#enable-roundcube-s-apache-virtual-host">Enable Roundcube&rsquo;s Apache Virtual Host</a></li>
+<li><a href="#configure-roundcube">Configure Roundcube</a></li>
+</ul></li>
+<li><a href="#remove-the-installer-directory">Remove the Installer Directory</a>
+<ul>
+<li><a href="#verify-your-roundcube-installation">Verify your Roundcube Installation</a></li>
+<li><a href="#keeping-roundcube-updated">Keeping Roundcube Updated</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

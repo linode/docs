@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Django, Apache and mod_python on Ubuntu 8.04 (Hardy)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Installing and configuring the Django web application development framework for Apache on Ubuntu 8.04 (Hardy).">
+        <meta name="keywords" content="django, python, apache, mod\_python, ubuntu, ubuntu 8.04, hardy">
+        
+        <meta property="og:title" content="Django, Apache and mod_python on Ubuntu 8.04 (Hardy)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy/">
+        <meta property="og:description" content="Installing and configuring the Django web application development framework for Apache on Ubuntu 8.04 (Hardy).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/frameworks/">Web Application Frameworks</a>
+  
+</li>
+
+
+<li>
+  
+  Django, Apache and mod_python on Ubuntu 8.04 (Hardy)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Django, Apache and mod_python on Ubuntu 8.04 (Hardy)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-05-17T00:00:00Z">Tuesday, May 17, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fdjango-apache-and-modpython-on-ubuntu-8-04-hardy%2f&via=linode&text=Django%2c%20Apache%20and%20mod_python%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fdjango-apache-and-modpython-on-ubuntu-8-04-hardy%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fdjango-apache-and-modpython-on-ubuntu-8-04-hardy%2f&t=Django%2c%20Apache%20and%20mod_python%20on%20Ubuntu%208.04%20%28Hardy%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper&rsquo;s website division, and as a result the Django framework is very well suited to developing content-centric applications. It&rsquo;s also very flexible in its ability to facilitate many complex content management operations.</p>
+
+<p>This guide provides an introduction to getting started with the Django framework. Although Ubuntu Hardy includes Django packages, these contain a dated version of the Django framework, in the 0.9x series. We&rsquo;ve decided to install the most recent stable release of Django instead. This provides the best possible balance between the stability and support of the Ubuntu-Hardy release, and the most current Django API. In general the Apache, plus mod_python, plus Django is accepted as the idea setup for beginning Django deployments, although the framework is quite flexible with regards to how applications can be deployed. There are many base platforms that you may consider in the future as your needs grow and change.</p>
+
+<p>We assume that you&rsquo;ve completed the <a href="/docs/getting-started/">getting started guide</a> and have a running and up to date Ubuntu 8.04 (Hardy) system. Furthermore, you will want to have a running <a href="/docs/web-servers/apache/installation/ubuntu-8-04-hardy">Apache web server</a> and a functional <a href="/docs/databases/mysql/ubuntu-8-04-hardy">MySQL database</a> installed.</p>
+
+<h1 id="installing-python-dependencies">Installing Python Dependencies</h1>
+
+<p>Make sure your package repositories and installed programs are up to date by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre>
+
+<p>There are a number of packages that we need to install before we can deploy a Django application. The following command will download and install all of these dependencies:</p>
+
+<pre><code>apt-get install libapache2-mod-python python-mysqldb
+</code></pre>
+
+<p>This installs mod_python, which embeds a Python interpreter in the Apache web server (<code>libapache2-mod-python</code>), MySQL database bindings for Python, and version 1.02 of the Django web framework.</p>
+
+<p>You may also want to install the following libraries and tools with apt:</p>
+
+<ul>
+<li><code>python-setuptools</code> - <a href="http://pypi.python.org/pypi/setuptools">Setup Tools</a> provides a method for installing and managing Python packages/modules (&ldquo;eggs&rdquo;). This is helpful if you need to use a Python module that isn&rsquo;t available through <code>apt</code>.</li>
+<li><code>python-psycopg2</code> - Provides an interface for using PostgreSQL in Python, if you prefer PostgreSQL to MySQL. You will also need to install the <code>postgresql</code> server. If you are running PostgreSQL you may not need to install or use MySQL and <code>python-mysqldb</code>.</li>
+<li><code>python-sqlite</code> - Enables Python to access SQLite databases. These create a full-featured database inside a file. While this is often not suitable for high traffic production environments, it is often quite useful for testing and smaller deployments.</li>
+<li><code>python-cjson</code> and <code>python-yaml</code> - These packages provide very efficient Python interfaces for dealing with <a href="http://www.json.org/">JSON</a> and <a href="http://www.yaml.org/">YAML</a> data.</li>
+</ul>
+
+<p>Any of these tools can be installed with <code>apt-get install</code> followed by the package or packages listed above. There are many additional Python-related packages in the operating system repositories. You can search the package database using the <code>apt-cache search python</code> command. If you need more information about a package, use the <code>apt-cache show [package-name]</code> command.</p>
+
+<h1 id="downloading-and-installing-django">Downloading and Installing Django</h1>
+
+<p>Because we&rsquo;re not installing Django from the Ubuntu repository we must download the sources from the <a href="http://www.djangoproject.com/download/">Django project&rsquo;s download page</a>. The current version is version 1.1 and you can download it using <code>wget</code>:</p>
+
+<pre><code>wget http://www.djangoproject.com/download/1.1/tarball/
+</code></pre>
+
+<p>After downloading the tarball, extract it using tar:</p>
+
+<pre><code>tar xzvf Django-1.1.tar.gz
+</code></pre>
+
+<p>Then move (<code>cd</code>) into the newly created <code>Django-1.1</code> directory (or later, if you&rsquo;ve downloaded an alternate version) and use the following command to install Django:</p>
+
+<pre><code>python setup.py install
+</code></pre>
+
+<p>Be sure to run this with root privileges. The setup program will guide you through the remainder of the installation.</p>
+
+<p>We recommend saving your source files and source tarballs for future reference. You might consider downloading and saving files in a <code>/src/</code> or <code>~/src</code> directory.</p>
+
+<h1 id="configuring-apache">Configuring Apache</h1>
+
+<p>With all of the dependencies installed, we must configure Apache for virtual hosting. You will want to insert a <code>&lt;Location &gt;</code> block inside of the virtual hosting block for the domain where you want the Django application to run. The location block looks like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Location</span> <span class="s">&#34;/&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">SetHandler</span> python-program
+    <span class="nb">PythonHandler</span> django.core.handlers.modpython
+    <span class="nb">SetEnv</span> DJANGO_SETTINGS_MODULE mysite.settings
+    <span class="nb">PythonDebug</span> <span class="k">Off</span>
+<span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You will need to change the <code>mysite.settings</code> to correspond to the settings file for your application in the Python path. The Python path is specific to the instance and version of Python that you&rsquo;re using and can be modified in your Python settings. If you want to store your Django application in another location, we&rsquo;ll need to specify a <code>PythonPath</code> variable in the <code>&lt;Location &gt;</code> block above by adding the following line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">PythonPath</span> <span class="s2">&#34;[&#39;/srv/www/brackley.net/application&#39;] + sys.path&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This line will allow mod_python to look for your settings file in the <code>/srv/www/brackley.net/application</code> directory, for an application in the &ldquo;brackley.net&rdquo; virtual host entry.</p>
+
+<p>The <code>&lt;Location &gt;</code> block tells Apache what to do when a request comes in for a given URL location. For instance, if the above block is located in the VirtualHost entry for the <code>example.com</code> domain, then all requests for the URL <code>http://example.com/</code> would be directed to the Django application. In this case you do not need to set a <code>DocumentRoot</code> for this VirtualHost.</p>
+
+<h1 id="hosting-static-content">Hosting Static Content</h1>
+
+<p>If you wanted to have a static page located at the root of the domain and only use Django to power a blog at the URL <code>http://example.com/blog/</code>, the above block would begin with <code>&lt;Location &quot;/blog&quot;&gt;</code>. In this situation, you would need to set up a DocumentRoot to contain the files for the static portion of the site.</p>
+
+<p>Typically, Django applications use a secondary &ldquo;media&rdquo; web server to more efficiently serve static content like images, video, audio, and even static text resources. This permits more effective scaling possibilities. If you need to turn off Django and mod_python for a particular URL, add a second location block, like so:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Location</span> <span class="s">&#34;/files/&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">SetHandler</span> <span class="k">None</span>
+<span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In the above example, this would allow any static content requested with the URL <code>http://example.com/files/</code> to be served without Django interference. An alternate, and potentially easier solution, would use a second VirtualHost for all non-Python content.</p>
+
+<h1 id="hosting-multiple-django-applications">Hosting Multiple Django Applications</h1>
+
+<p>The easiest way to host multiple Django applications with one instance of Apache is to place each application in its own virtual host. If, however, you need to host more than one application within a single VirtualHost entry you&rsquo;ll need specify different locations in <code>&lt;Location &gt;</code> blocks <em>within</em> that VirtualHost entry. Here are two example location blocks that would be inserted in your VirtualHost entry:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Location</span> <span class="s">&#34;/lollipop&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">SetHandler</span> python-program
+    <span class="nb">PythonHandler</span> django.core.handlers.modpython
+    <span class="nb">SetEnv</span> DJANGO_SETTINGS_MODULE lollipop.site.settings
+    <span class="nb">PythonDebug</span> <span class="k">Off</span>
+    <span class="nb">PythonInterpreter</span> lollipop
+<span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;Location</span> <span class="s">&#34;/funnyjoke&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">SetHandler</span> python-program
+    <span class="nb">PythonHandler</span> django.core.handlers.modpython
+    <span class="nb">SetEnv</span> DJANGO_SETTINGS_MODULE funnyjoke.site.settings
+    <span class="nb">PythonDebug</span> <span class="k">Off</span>
+    <span class="nb">PythonInterpreter</span> funnyjoke
+<span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>We&rsquo;ll note that the <code>PythonInterpreter</code> option needs to be set in these situations to avoid confusing mod_python.</p>
+
+<h1 id="using-django">Using Django</h1>
+
+<p>Once you have the base system installed and mod_python configured properly with Django, the majority of your time can be spent developing your application. There are, however, a few concerns of which you should be aware.</p>
+
+<p>Because of the way that mod_python works, it&rsquo;s necessary to restart the web server whenever you update, change, or modify your Django application. This is because of the way that mod_python caches code. To restart Apache, issue the following command:</p>
+
+<pre><code>/etc/init.d/apache2 restart
+</code></pre>
+
+<p>As the site and your Django application begins receiving additional traffic, there are a number of steps you can take to scale your infrastructure with Django to increase performance. Some of these approaches are fairly simple and straightforward, while others may take much longer.</p>
+
+<p>The first step is to separate services onto different servers. If you&rsquo;re having performance issues, move the database (e.g. MySQL or PostgreSQL) onto its own server or even a cluster of database servers. We alluded to this earlier with regard to static files, but it&rsquo;s often easier and more efficient to use a separate high-performance web server like nginx or lighttpd for static content. Such a server may also run on a separate Linode, isolated from the Apache instance running the Django application. Advanced solutions including front end reverse proxies like Squid, or hosting duplicate copies of your application servers and using a round-robin DNS setup, can offer you a great deal of scalability for high-demand situations.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.djangoproject.com/">The Django Project Home Page</a></li>
+<li><a href="http://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01">The Django Project Introductory Tutorial</a></li>
+<li><a href="http://www.djangobook.com/">The Django Book</a></li>
+<li><a href="http://www.djangobook.com/en/2.0/chapter12/">Deploying Django Applications</a></li>
+<li><a href="http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python">Hello World&rdquo; Django Application</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/">Django, Apache and mod_python on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/django-apache-and-modpython-on-ubuntu-9-10-karmic/">Django, Apache and mod_python on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/django-apache-and-modpython-on-centos-5/">Django, Apache and mod_python on CentOS 5 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/django-apache-and-modpython-on-debian-5-lenny/">Django, Apache and mod_python on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/">Apache and mod_wsgi on Ubuntu 14.04 (Trusty Tahr)</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#installing-python-dependencies">Installing Python Dependencies</a></li>
+<li><a href="#downloading-and-installing-django">Downloading and Installing Django</a></li>
+<li><a href="#configuring-apache">Configuring Apache</a></li>
+<li><a href="#hosting-static-content">Hosting Static Content</a></li>
+<li><a href="#hosting-multiple-django-applications">Hosting Multiple Django Applications</a></li>
+<li><a href="#using-django">Using Django</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

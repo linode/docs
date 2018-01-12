@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Add a Custom Search to your Site with Solr</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Index and search your site&#39;s content with Apache Solr, a custom, fast, enterprise-grade, open source search solution.">
+        <meta name="keywords" content="solr, enterprise search, lucene, web search">
+        
+        <meta property="og:title" content="Add a Custom Search to your Site with Solr">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/cms/add-a-custom-search-to-your-site-with-solr/">
+        <meta property="og:description" content="Index and search your site&#39;s content with Apache Solr, a custom, fast, enterprise-grade, open source search solution.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/cms/add-a-custom-search-to-your-site-with-solr/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/cms/">Control Panels &amp; Content Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  Add a Custom Search to your Site with Solr
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Add a Custom Search to your Site with Solr</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-13T00:00:00Z">Wednesday, September 13, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://www.linkedin.com/in/andrew-lescher-87027940">Andrew Lescher
+    
+    <i class="fa fa-linkedin"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fadd-a-custom-search-to-your-site-with-solr%2f&via=linode&text=Add%20a%20Custom%20Search%20to%20your%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fadd-a-custom-search-to-your-site-with-solr%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fadd-a-custom-search-to-your-site-with-solr%2f&t=Add%20a%20Custom%20Search%20to%20your%20Site%20with%20Solr" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/cms/add-a-custom-search-to-your-site-with-solr.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/cms/add-a-custom-search-to-your-site-with-solr.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>Apache Solr is an open source search platform that provides administrators with a customizable and scalable solution for managing online content. Solr can be configured to index all uploaded data, resulting in fast search results, whether used enterprise-wide or with a single website. In addition to a built-in web control interface, developers can also link access via a client API.</p>
+
+<p><img src="/docs/assets/add-search-to-your-site-with-solr.jpg" alt="Add a Custom Search to your Site with Solr" title="Add a Custom Search to your Site with Solr" /></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Complete the <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system and package repositories and install <code>wget</code>.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps in this guide require root privileges. Be sure to run the steps below as <code>root</code> or with the <code>sudo</code> prefix. For more information on privileges, see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="install-java">Install Java</h2>
+
+<ol>
+<li><p>Install Java 8 JDK:</p>
+
+<p><strong>Debian &amp; Ubuntu</strong></p>
+
+<ol>
+<li><p>Add the Java 8 repository, download the GPG key, and install Java 8.</p>
+
+<pre><code>echo &quot;deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main&quot; | tee /etc/apt/sources.list.d/webupd8team-java.list
+echo &quot;deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main&quot; | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+apt update
+apt install oracle-java8-installer
+</code></pre></li>
+
+<li><p>On most systems, the <code>oracle-java8-set-default</code> package will also be downloaded and installed. To verify, run the following command and check for matching output. If your output does not match, continue to Step 3. Otherwise, Java 8 installation is complete:</p>
+
+<pre><code>dpkg --list | grep oracle
+</code></pre></li>
+</ol>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>    ii  oracle-java8-installer        8u144-1~webupd8~0            all          Oracle Java(TM) Development Kit (JDK) 8
+    ii  oracle-java8-set-default      8u144-1~webupd8~0            all          Set Oracle JDK 8 as default Java
+</code></pre>
+
+<ol>
+<li><p>Install the <code>oracle-java8-set-default</code> package:</p>
+
+<pre><code>apt install oracle-java8-set-default
+</code></pre></li>
+</ol></li>
+</ol>
+
+<p><strong>Fedora &amp; RHEL based</strong></p>
+
+<pre><code>    yum install java-1.8.0-openjdk.x86_64
+
+**Arch Linux**
+
+    pacman -S jre8-openjdk
+
+**openSUSE**
+
+    zypper in java-1_8_0-openjdk
+</code></pre>
+
+<ol>
+<li><p>Verify the Java installation:</p>
+
+<pre><code>java -version
+</code></pre>
+
+<p>The output should be similar to:</p>
+
+<pre><code>openjdk version &quot;1.8.0_144&quot;
+OpenJDK Runtime Environment (IcedTea 3.5.1) (suse-13.3-x86_64)
+OpenJDK 64-Bit Server VM (build 25.144-b01, mixed mode)
+</code></pre></li>
+</ol>
+
+<h2 id="download-and-install-apache-solr">Download and Install Apache Solr</h2>
+
+<p>Replace each instance of <code>6.6.1</code> in the examples below with the latest version from the official <a href="https://lucene.apache.org/solr/mirrors-solr-latest-redir.html">Apache Solr website</a>.</p>
+
+<ol>
+<li><p>Navigate to the <code>/opt</code> directory and download Solr:</p>
+
+<pre><code>cd /opt
+wget http://apache.claz.org/lucene/solr/6.6.1/solr-6.6.1.tgz
+</code></pre></li>
+
+<li><p>Extract the Solr installation script from the downloaded archive:</p>
+
+<pre><code>tar xzf solr-6.6.1.tgz solr-6.6.1/bin/install_solr_service.sh --strip-components=2
+</code></pre></li>
+
+<li><p>Execute the Solr installation script. Arch Linux users should skip to the Arch-specific steps below:</p>
+
+<pre><code>bash ./install_solr_service.sh solr-6.6.1.tgz
+</code></pre>
+
+<p><strong>Arch Linux</strong></p>
+
+<ol>
+<li><p>Download the installation script for Arch Linux:</p>
+
+<pre><code>wget https://github.com/Darkstar90/solr-arch-install/blob/master/install_solr_service_arch.sh
+</code></pre></li>
+
+<li><p>Execute the custom Arch Linux installation script:</p>
+
+<pre><code>bash ./install_solr_service_arch.sh solr-6.6.1.tgz
+</code></pre></li>
+</ol></li>
+</ol>
+
+<h2 id="create-a-firewall-rule-for-solr">Create a Firewall Rule for Solr</h2>
+
+<p>Solr listens on port <code>8983</code> by default. Open the port to allow access to the web interface using your preferred firewall manager:</p>
+
+<p><strong>FirewallD</strong></p>
+
+<pre><code>sudo firewall-cmd --zone=public --add-port=8983/tcp --permanent
+sudo firewall-cmd --reload
+</code></pre>
+
+<p><strong>UFW</strong></p>
+
+<pre><code>ufw allow 8983/tcp comment &quot;Solr port&quot;
+</code></pre>
+
+<p><strong>iptables</strong></p>
+
+<pre><code>iptables -A INPUT -p tcp --dport 8983 -j ACCEPT -m comment --comment &quot;Solr port&quot;
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Save your iptables rule using <em>iptables-persistent</em>, otherwise it will be lost on the next reboot.</div>
+</blockquote>
+
+
+<h2 id="access-the-solr-administration-page">Access the Solr Administration Page</h2>
+
+<p>Solr is managed from a web-facing administration page, which can be reached via your Linode&rsquo;s IP address or domain name on port <code>8983</code>.</p>
+
+<p>In a web browser, enter your Linode&rsquo;s IP address or domain name, followed by port <code>8983</code>:</p>
+
+<pre><code>198.51.100.0:8983/solr
+</code></pre>
+
+<h2 id="secure-the-solr-administration-page">Secure the Solr Administration Page</h2>
+
+<p>Set up a password protected login page for the Solr admin page:</p>
+
+<ol>
+<li><p>Navigate to <code>/opt/solr/server/etc</code> and edit the <code>webdefault.xml</code> file. Add the following to the end of the file, before <code>&lt;/web-app&gt;</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/opt/solr/server/etc/webdefault.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;login-config</span><span class="s"></span><span class="nt">&gt;</span>
+      <span class="nt">&lt;auth-method</span><span class="s"></span><span class="nt">&gt;</span><span class="err">BASIC</span><span class="nt">&lt;/auth-method</span><span class="s"></span><span class="nt">&gt;</span>
+      <span class="nt">&lt;realm-name</span><span class="s"></span><span class="nt">&gt;</span><span class="nb">Solr</span> Admin Auth&lt;/realm-name&gt;
+<span class="nt">&lt;/login-config</span><span class="s"></span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;security-constraint</span><span class="s"></span><span class="nt">&gt;</span>
+      <span class="nt">&lt;web-resource-collection</span><span class="s"></span><span class="nt">&gt;</span>
+            <span class="nt">&lt;web-resource-name</span><span class="s"></span><span class="nt">&gt;</span><span class="nb">Solr</span> Admin Auth&lt;/web-resource-name&gt;
+            <span class="nt">&lt;url-pattern</span><span class="s"></span><span class="nt">&gt;</span><span class="err">/*</span><span class="nt">&lt;/url-pattern</span><span class="s"></span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/web-resource-collection</span><span class="s"></span><span class="nt">&gt;</span>
+        <span class="nt">&lt;auth-constraint</span><span class="s"></span><span class="nt">&gt;</span>
+            <span class="nt">&lt;role-name</span><span class="s"></span><span class="nt">&gt;</span><span class="err">user</span><span class="nt">&lt;/role-name</span><span class="s"></span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/auth-constraint</span><span class="s"></span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/security-constraint</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>In the same directory, edit the <code>jetty.xml</code> file and add the following before <code>&lt;/Configure&gt;</code> at the end:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/opt/solr/server/etc/jetty.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;Call</span> <span class="s">name=&#34;addBean&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Arg</span><span class="s"></span><span class="nt">&gt;</span>
+        <span class="nt">&lt;New</span> <span class="s">class=&#34;org.eclipse.jetty.security.HashLoginService&#34;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Set</span> <span class="s">name=&#34;name&#34;</span><span class="nt">&gt;</span><span class="nb">Solr</span> Admin Auth&lt;/Set&gt;
+            <span class="nt">&lt;Set</span> <span class="s">name=&#34;config&#34;</span><span class="nt">&gt;&lt;SystemProperty</span> <span class="s">name=&#34;jetty.home&#34; default=&#34;.&#34;/</span><span class="nt">&gt;</span><span class="err">/etc/realm</span>.<span class="err">properties</span><span class="nt">&lt;/Set</span><span class="s"></span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Set</span> <span class="s">name=&#34;refreshInterval&#34;</span><span class="nt">&gt;</span><span class="err">0</span><span class="nt">&lt;/Set</span><span class="s"></span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/New</span><span class="s"></span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/Arg</span><span class="s"></span><span class="nt">&gt;</span>
+ <span class="nt">&lt;/Call</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Create a <code>realm.properties</code> file in the current directory to add the user login information. Replace the username <code>admin</code> and <code>admin123</code> password with the user and secure password of your choice:</p>
+
+<dl class="file">
+<dt>
+
+
+		/opt/solr/server/etc/realm.properties 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">admin:</span> <span class="err">admin123,user</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Here, <code>admin:</code> assigns a username &ldquo;admin&rdquo; with the password <code>admin123</code>. <code>user</code> attributes this new user to the &ldquo;user&rdquo; role-name set in <code>webdefault.xml</code>.</p></li>
+
+<li><p>Restart the solr service:</p>
+
+<pre><code>systemctl restart solr
+</code></pre></li>
+
+<li><p>You can also use this process to secure other web pages within Solr. For example, if you have two Solr search cores created, <code>core1</code> and <code>core2</code>, you can limit access to both by adding additional <code>&lt;url-pattern&gt;</code> lines to <code>webdefault.xml</code>:</p>
+
+<pre><code>&lt;url-pattern&gt;/core1/*&lt;/url-pattern&gt;
+&lt;url-pattern&gt;/core2/*&lt;/url-pattern&gt;
+</code></pre></li>
+</ol>
+
+<h2 id="where-to-go-from-here">Where to Go From Here</h2>
+
+<p>With Solr installed on your Linode, you are now ready to create search indexes and add data, or integrate it with your web application or website. If you need help with this, the <a href="https://lucene.apache.org/solr/guide/6_6/">Apache Solr Reference Guide</a> page on the Apache Solr website is a great place to start.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://lucene.apache.org/solr/guide/6_6/">Apache Solr Reference Guide</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/cms/turbocharge-wordpress-search-with-solr/">Turbocharge Your WordPress Search Using Solr</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-java">Install Java</a></li>
+<li><a href="#download-and-install-apache-solr">Download and Install Apache Solr</a></li>
+<li><a href="#create-a-firewall-rule-for-solr">Create a Firewall Rule for Solr</a></li>
+<li><a href="#access-the-solr-administration-page">Access the Solr Administration Page</a></li>
+<li><a href="#secure-the-solr-administration-page">Secure the Solr Administration Page</a></li>
+<li><a href="#where-to-go-from-here">Where to Go From Here</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Create a Private Python Package Repository</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This tutorial will show how to create your own private, Python package repository.">
+        <meta name="keywords" content="pip, Python, PyPA, virtualenv, package management">
+        
+        <meta property="og:title" content="How to Create a Private Python Package Repository">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/project-management/how-to-create-a-private-python-package-repository/">
+        <meta property="og:description" content="This tutorial will show how to create your own private, Python package repository.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/project-management/how-to-create-a-private-python-package-repository/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/project-management/">Project Management</a>
+  
+</li>
+
+
+<li>
+  
+  How to Create a Private Python Package Repository
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Create a Private Python Package Repository</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-12T00:00:00Z">Tuesday, September 12, 2017</time> by Sam Foo</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fproject-management%2fhow-to-create-a-private-python-package-repository%2f&via=linode&text=How%20to%20Create%20a%20Private%20Python%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fproject-management%2fhow-to-create-a-private-python-package-repository%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fproject-management%2fhow-to-create-a-private-python-package-repository%2f&t=How%20to%20Create%20a%20Private%20Python%20Package%20Repository" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/project-management/how-to-create-a-private-python-package-repository.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/project-management/how-to-create-a-private-python-package-repository.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/Private_Python_Pack_Repo.jpg" alt="How to Create a Private Python Package Repository" title="How to Create a Private Python Package Repository" /></p>
+
+<h1 id="how-does-python-handle-package-management">How Does Python Handle Package Management?</h1>
+
+<p>Package management in Python is available through a variety of different tools:</p>
+
+<ul>
+<li><p><code>Pip</code> remains one of the most popular choices because it virtually eliminates manual installs and updates of software packages to operating systems. <code>Pip</code> manages full lists of packages and their corresponding version numbers, which fosters precise duplication of entire package groups in a distinct, separate environment.</p></li>
+
+<li><p>PyPI (Python Package Index) is a public repository of user-submitted packages that can be installed using <code>pip install package</code>. This guide breaks down the basic scaffolding of a Python package, then using PyPiServer, creates a private repository by uploading the package to a Linode.</p></li>
+</ul>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s timezone.</p></li>
+
+<li><p>This guide assumes usage of Python 3 and a working installation of <code>pip</code> along with <code>setuptools</code>. Starting with Python 3.4, <code>pip</code> comes with the default installation. On Debian distributions, <code>pip</code> can be installed using the apt package manager with <code>sudo apt install python-pip</code>.</p></li>
+
+<li><p>Apache 2.4 is used in this guide. Older versions may lack identical directives and will have slightly different configurations.</p></li>
+</ol>
+
+<h1 id="minimalist-python-package">Minimalist Python Package</h1>
+
+<p>The basic scaffolding of a Python package is a <code>__init__.py</code> file containing code that interfaces with the user.</p>
+
+<ol>
+<li><p>Create a directory with your intended package name. This guide will use <strong>linode_example</strong>.</p>
+
+<pre><code>mkdir linode_example
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you choose to make your package public, there are additional considerations for deciding on a package name. The official documentation suggests using only lowercase characters - unique to PyPI - and the underscore character to separate words if needed.</div>
+</blockquote>
+</li>
+
+<li><p>Navigate into the newly created directory. Create a file called <code>setup.py</code> and another directory called <strong>linode_example</strong>, containing <code>__init__.py</code>. The directory tree should look like this:</p>
+
+<div class="file">
+linode_example/
+    linode_example/
+        <strong>init</strong>.py
+    setup.py
+    setup.cfg
+    README.md
+</div></li>
+
+<li><p>Edit <code>setup.py</code> to contain basic information about your Python package:</p>
+
+<dl class="file">
+<dt>
+
+
+		linode_example/setup.py 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">from setuptools import setup
+
+setup<span class="o">(</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;linode_example&#39;</span>,
+    <span class="nv">packages</span><span class="o">=[</span><span class="s1">&#39;linode_example&#39;</span><span class="o">]</span>,
+    <span class="nv">description</span><span class="o">=</span><span class="s1">&#39;Hello world enterprise edition&#39;</span>,
+    <span class="nv">version</span><span class="o">=</span><span class="s1">&#39;0.1&#39;</span>,
+    <span class="nv">url</span><span class="o">=</span><span class="s1">&#39;http://github.com/example/linode_example&#39;</span>,
+    <span class="nv">author</span><span class="o">=</span><span class="s1">&#39;Linode&#39;</span>
+    <span class="nv">author_email</span><span class="o">=</span><span class="s1">&#39;docs@linode.com&#39;</span>
+    <span class="nv">keywords</span><span class="o">=[</span><span class="s1">&#39;pip&#39;</span>,<span class="s1">&#39;linode&#39;</span>,<span class="s1">&#39;example&#39;</span><span class="o">]</span>
+    <span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Add an example function to <code>__init__.py</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		linode_example/linode_example/__init__.py 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">def hello_word<span class="o">()</span>:
+    print<span class="o">(</span><span class="s2">&#34;hello world&#34;</span><span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>The <code>setup.cfg</code> file lets PyPI know the README is a markdown file:</p>
+
+<dl class="file">
+<dt>
+
+
+		setup.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>metadata<span class="o">]</span>
+description-file <span class="o">=</span> README.md</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Optionally, add a <code>LICENSE.txt</code> or information to <code>README.md</code>. This is good documentation practices, and helpful if you ever plan to upload the Python package into the public PyPI repository.</p></li>
+
+<li><p>The Python package needs to be compressed before it can be available for download on your server. Compress the package:</p>
+
+<pre><code>python setup.py sdist
+</code></pre>
+
+<p>A <strong>tar.gz</strong> file will be generated in <code>~/linode_example/dist/</code>.</p></li>
+</ol>
+
+<h1 id="install-pypi-server">Install PyPI Server</h1>
+
+<p>Next, set up a server to host a package index. This guide will use <code>pypiserver</code>, a wrapper built on the Bottle framework that makes setting up a package index on a server much easier.</p>
+
+<ol>
+<li><p>Install virtualenv if it&rsquo;s not already installed:</p>
+
+<pre><code>pip install virtualenv
+</code></pre></li>
+
+<li><p>Create a new directory which will be used to hold Python packages as well as files used by Apache. Create a new virtual environment called <code>venv</code> inside this directory, then activate:</p>
+
+<pre><code>mkdir ~/packages
+cd packages
+virtualenv venv
+source venv/bin/activate
+</code></pre></li>
+
+<li><p>Download the package through <code>pip</code> in the newly created virtual environment:</p>
+
+<pre><code>pip install pypiserver
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Alternatively, <a href="https://github.com/pypiserver/pypiserver">download pypiserver from Gitub</a>, then navigate into the downloaded pypiserver directory and install with <code>python setup.py install</code>.</div>
+</blockquote>
+</li>
+
+<li><p>Move <code>linode_example-0.1.tar.gz</code> into <code>~/packages</code>:</p>
+
+<pre><code>mv ~/linode_example/dist/linode_example-0.1.tar.gz ~/packages/
+</code></pre></li>
+
+<li><p>Try the server by running:</p>
+
+<pre><code>pypi-server -p 8080 ~/packages
+</code></pre></li>
+
+<li><p>Currently the server is listening on all IP addresses. In a web browser, navigate to <code>192.0.2.0:8080</code>, where <code>192.0.2.0</code> is the public IP of your Linode. The browser should display:</p>
+
+<p><img src="/docs/assets/pypiserver.png" alt="pypiserver_home" /></p>
+
+<p>You are now able to install the <code>linode_example</code> package by declaring an external url <code>pip install --extra-index-url http://192.0.2.0:8080/simple/ --trusted-host 192.0.2.0 linode_example</code>.</p></li>
+</ol>
+
+<h1 id="authentication-with-apache-and-passlib">Authentication with Apache and passlib</h1>
+
+<ol>
+<li><p>Install Apache and <code>passlib</code> for password-based authentication for uploads. Make sure you are still in your activated virtual environment (<code>(venv)</code> should appear before the terminal prompt) and then execute the following:</p>
+
+<pre><code>sudo apt install apache2
+pip install passlib
+</code></pre></li>
+
+<li><p>Create a password for authentication using <code>htpasswd</code> and move <code>htpasswd.txt</code> into the <code>~/packages</code> directory. Enter the desired password twice:</p>
+
+<pre><code>htpasswd -sc htpasswd.txt example_user
+New password:
+Re-type new password:
+</code></pre></li>
+
+<li><p>Install and enable <code>mod_wsgi</code> in order to allow Bottle, a WSGI framework, to connect with Apache:</p>
+
+<pre><code>sudo apt install libapache2-mod-wsgi
+sudo a2enmod wsgi
+</code></pre></li>
+
+<li><p>Inside the <code>~/packages</code> directory, create a <code>pypiserver.wsgi</code> file that creates an application object to connect between pypiserver and Apache:</p>
+
+<dl class="file">
+<dt>
+
+
+		packages/pypiserver.wsgi 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">import pypiserver
+<span class="nv">PACKAGES</span> <span class="o">=</span> <span class="s1">&#39;/absolute/path/to/packages&#39;</span>
+<span class="nv">HTPASSWD</span> <span class="o">=</span> <span class="s1">&#39;/absolute/path/to/htpasswd.txt&#39;</span>
+<span class="nv">application</span> <span class="o">=</span> pypiserver.app<span class="o">(</span><span class="nv">root</span><span class="o">=</span>PACKAGES, <span class="nv">redirect_to_fallback</span><span class="o">=</span>True, <span class="nv">password_file</span><span class="o">=</span>HTPASSWD<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create a configuration file for the pypiserver located in <code>/etc/apache2/sites-available/</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apache2/sites-available/pypiserver.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;VirtualHost *:80&gt;
+WSGIPassAuthorization On
+WSGIScriptAlias / /absolute/path/to/packages/pypiserver.wsgi
+WSGIDaemonProcess pypiserver python-path<span class="o">=</span>/absolute/path/to/packages:/absolute/path/to/packages/venv/lib/pythonX.X/site-packages
+    LogLevel info
+    &lt;Directory /absolute/path/to/packages&gt;
+        WSGIProcessGroup pypiserver
+        WSGIApplicationGroup %<span class="o">{</span>GLOBAL<span class="o">}</span>
+        Require ip <span class="m">203</span>.0.113.0
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The <code>Require ip 203.0.113.0</code> directive is an example IP restricting access to Apache. To grant open access, replace with <code>Require all granted</code>. For more complex access control rules, consult access control in the <a href="https://httpd.apache.org/docs/2.4/howto/access.html">Apache documentation</a>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Depending on the version of Python and virtual environment path, the <code>WSGIDaemonProcess</code> directive may require a different path.</div>
+</blockquote>
+</li>
+
+<li><p>Give the user <strong>www-data</strong> ownership of the <code>~/packages</code> directory. This will allow uploading from a client using <code>setuptools</code>:</p>
+
+<pre><code>sudo chown -R www-data:www-data packages/
+</code></pre></li>
+
+<li><p>Disable the default site if needed and enable pypiserver:</p>
+
+<pre><code>sudo a2dissite 000-default.conf
+sudo a2ensite pypiserver.conf
+</code></pre></li>
+
+<li><p>Restart Apache:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre>
+
+<p>The repository should be accessible through <code>192.0.2.0</code> by default on port 80, where <code>192.0.2.0</code> is the public of the Linode.</p></li>
+</ol>
+
+<h1 id="download-from-a-client">Download From a Client</h1>
+
+<p>Recall the rather long flags declared with <code>pip</code> in order to download from a specified repository. Creating a configuration file containing the IP of your public server will simplify usage.</p>
+
+<ol>
+<li><p>On the client computer, create a <code>.pip</code> directory in the home directory. Inside this directory, create <code>pip.conf</code> with the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		pip.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>global<span class="o">]</span>
+extra-index-url <span class="o">=</span> http://192.0.2.0:8080/
+trusted-host <span class="o">=</span> <span class="m">192</span>.0.2.0</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Install the <code>linode_example</code> package:</p>
+
+<pre><code>pip install linode_example
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Both the terminal output and showing all packages with <code>pip list</code> will show that the underscore in the package name has transformed into a dash. This is expected because <code>setuptools</code> uses the <code>safe_name</code> utility. For an in-depth discussion about this, <a href="https://mail.python.org/pipermail/distutils-sig/2010-March/015650.html">see this mailing list thread</a>.</div>
+</blockquote>
+</li>
+
+<li><p>Open up a Python shell and try out the new package:</p>
+
+<div class="file">
+<blockquote>
+<blockquote>
+<p>from linode_example import hello_world
+hello_world()
+    hello world</p>
+</blockquote>
+</blockquote>
+
+</div></li>
+</ol>
+
+<h1 id="upload-remotely-using-setuptools">Upload Remotely Using Setuptools</h1>
+
+<p>Although it&rsquo;s possible to use <code>scp</code> to transfer tar.gz files to the repository, there are other tools such as <code>twine</code> and <code>easy_install</code> which can also be used.</p>
+
+<ol>
+<li><p>On a client computer, create a new configuration file in the home directory called <code>.pypirc</code>. The remote repository will be called <code>linode</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		.pypirc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>distutils<span class="o">]</span>
+index-servers <span class="o">=</span>
+  pypi
+  linode
+<span class="o">[</span>pypi<span class="o">]</span>
+username:
+password:
+<span class="o">[</span>linode<span class="o">]</span>
+repository: http://192.0.2.0
+username: example_user
+password: mypassword</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Uploading to the official Python Package Index requires an account, although account information fields can be left blank. Replace <em>example_user</em> and <em>mypassword</em> with credentials defined through <code>htpasswd</code> from earlier.</p></li>
+
+<li><p>To upload from the directory of the Python package:</p>
+
+<pre><code>python setup.py sdist upload -r linode
+</code></pre>
+
+<p>If successful, the console will print the message: <code>Server Response (200): OK</code>.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://pip.readthedocs.io/en/stable/#">pip</a></li>
+
+<li><a href="https://pypiserver.readthedocs.io/en/latest/">pypiserver Documentation</a></li>
+
+<li><a href="https://httpd.apache.org/docs/2.4/">Apache Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/python/use-scrapy-to-extract-data-from-html-tags/">Use Scrapy to Extract Data From HTML Tags</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/forums/install-and-run-askbot-on-ubuntu-16-04/">How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/development/create-a-python-virtualenv-on-ubuntu-1610/">Create a Python Virtual Environment on Ubuntu 16.10 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#how-does-python-handle-package-management">How Does Python Handle Package Management?</a>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+</ul></li>
+<li><a href="#minimalist-python-package">Minimalist Python Package</a></li>
+<li><a href="#install-pypi-server">Install PyPI Server</a></li>
+<li><a href="#authentication-with-apache-and-passlib">Authentication with Apache and passlib</a></li>
+<li><a href="#download-from-a-client">Download From a Client</a></li>
+<li><a href="#upload-remotely-using-setuptools">Upload Remotely Using Setuptools</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

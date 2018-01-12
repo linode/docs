@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Monitor an nginx Web Server Using the Elastic Stack on Centos 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide will demonstrate how to use Elasticsearch, Filebeat, Metricbeat, and Kibana to monitor webserver logs and metrics.">
+        <meta name="keywords" content="nginx, centos, 7,linux, web, server,elasticsearch,filebeat,metricbeat,beats,kibana,elk, stack,elastic, stack">
+        
+        <meta property="og:title" content="Monitor an nginx Web Server Using the Elastic Stack on Centos 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/">
+        <meta property="og:description" content="The Elastic Stack provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install four components of the stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical nginx webserver.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/elasticsearch/">Elasticsearch Guides, Tutorials, and Resources – Linode</a>
+  
+</li>
+
+
+<li>
+  
+  Monitor an nginx Web Server Using the Elastic Stack on Centos 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Monitor an nginx Web Server Using the Elastic Stack on Centos 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-12-13T00:00:00Z">Wednesday, December 13, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://tjll.net">Tyler Langlois
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2felasticsearch%2fmonitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7%2f&via=linode&text=Monitor%20an%20nginx%20Web%20Server%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2felasticsearch%2fmonitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2felasticsearch%2fmonitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7%2f&t=Monitor%20an%20nginx%20Web%20Server%20Using%20the%20Elastic%20Stack%20on%20Centos%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<h2 id="what-is-the-elastic-stack">What is the Elastic Stack?</h2>
+
+<p>The <a href="https://www.elastic.co/">Elastic Stack</a> is a set of open-source tools that aid in analyzing different types of data. Tools such as Filebeat and Metricbeat can collect system and webserver logs and send them to Elasticsearch where the data can be searched, analyzed, and visualized using Kibana as a browser-based application.</p>
+
+<p>This guide will explain how to install different components of the stack in order to monitor a typical webserver. It will use version 6 of each of the tools in the Elastic Stack, which is a recent release featuring additional features and fixes.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Follow the steps in our <a href="/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi">Install a LEMP Stack on CentOS 7 with FastCGI</a> guide to set up a web server stack with nginx on your CentOS host.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo yum update
+</code></pre></li>
+</ol>
+
+<h2 id="install-openjdk-8">Install OpenJDK 8</h2>
+
+<p>Elasticsearch requires recent versions of Java. On CentOS 7, OpenJDK 8 is available for installation from the official repositories.</p>
+
+<ol>
+<li><p>Install the headless OpenJDK package:</p>
+
+<pre><code>sudo yum install -y java-1.8.0-openjdk-headless
+</code></pre></li>
+
+<li><p>Ensure that Java is ready for use by Elasticsearch by checking that the installed version is at least at version 1.8.0:</p>
+
+<pre><code>java -version
+</code></pre>
+
+<p>The installed version should be similar to the following:</p>
+
+<pre><code>openjdk version &quot;1.8.0_151&quot;
+OpenJDK Runtime Environment (build 1.8.0_151-b12)
+OpenJDK 64-Bit Server VM (build 25.151-b12, mixed mode)
+</code></pre></li>
+</ol>
+
+<h2 id="install-elastic-yum-repository">Install Elastic Yum Repository</h2>
+
+<p>The Elastic Yum package repository contains all the necessary packages for the remainder of this tutorial.</p>
+
+<ol>
+<li><p>Trust the Elastic signing key:</p>
+
+<pre><code>sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+</code></pre></li>
+
+<li><p>Create a yum repository configuration to use the Elastic yum repository:
+<dl class="file-excerpt">
+<dt>
+
+
+		elastic.repo 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[elasticsearch-6.x]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">Elastic repository for 6.x packages</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://artifacts.elastic.co/packages/6.x/yum</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://artifacts.elastic.co/GPG-KEY-elasticsearch</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+<span class="na">autorefresh</span><span class="o">=</span><span class="s">1</span>
+<span class="na">type</span><span class="o">=</span><span class="s">rpm-md</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</p></li>
+
+<li><p>Update the <code>yum</code> cache to ensure any new packages become available:</p>
+
+<pre><code>sudo yum update
+</code></pre></li>
+</ol>
+
+<h2 id="install-stack-components">Install Stack Components</h2>
+
+<p>This tutorial will use several parts of the Elastic Stack for log analysis and machine metrics. Before starting, it may be helpful to summarize how each piece will help form the final stack of software:</p>
+
+<ul>
+<li><a href="https://www.elastic.co/products/beats/filebeat"><strong>Filebeat</strong></a> will watch and collect web server access logs from nginx. Filebeat will also manage configuring Elasticsearch to ensure logs are parsed as expected and loaded into the correct indices.</li>
+<li><a href="https://www.elastic.co/products/beats/metricbeat"><strong>Metricbeat</strong></a> will collect system metrics such as CPU, memory, and disk usage, and store this as numerical data in Elasticsearch.</li>
+<li><a href="https://www.elastic.co/"><strong>Elasticsearch</strong></a> will store logs and metrics sent to it from each Beat. Documents are indexed for searching and available over the default Elasticsearch port (9200).</li>
+<li><a href="https://www.elastic.co/products/kibana"><strong>Kibana</strong></a> will connect to Elasticsearch to expose indexed documents in a searchable, browser-based visualization interface.</li>
+</ul>
+
+<h3 id="elasticsearch">Elasticsearch</h3>
+
+<p>In order to provide a datastore for each Beat and Kibana, Elasticsearch must first be installed and configured.</p>
+
+<ol>
+<li><p>Install the <code>elasticsearch</code> package:</p>
+
+<pre><code> sudo yum install -y elasticsearch
+</code></pre></li>
+
+<li><p>Set the JVM heap size to approximately half of your server&rsquo;s available memory. For example, if your server has 1GB of RAM, change the <code>Xms</code> and <code>Xmx</code> values in the <code>/etc/elasticsearch/jvm.options</code> file <code>512m</code>. Leave the other values in this file unchanged:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/elasticsearch/jvm.options 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">-Xms512m<span class="w">
+</span><span class="w"></span>-Xmx512m</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>In order for Filebeat to properly parse and process certain documents, two <em>ingest</em> plugins must be installed for elasticsearch. First, install the <code>ingest-user-agent</code> plugin, which enables Elasticsearch to accurately parse user-agent strings:</p>
+
+<pre><code> sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-user-agent
+</code></pre></li>
+
+<li><p>Next, install the geoip processor plugin. The <code>elasticsearch-plugin</code> command may ask for confirmation to make changes to the <code>/etc/elasticsearch</code> path, which is safe to do:</p>
+
+<pre><code>sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-geoip
+</code></pre></li>
+
+<li><p>Start and enable the <code>elasticsearch</code> service:</p>
+
+<pre><code> sudo systemctl enable elasticsearch
+ sudo systemctl start elasticsearch
+</code></pre></li>
+
+<li><p>Wait a few moments for the service to start, then confirm that the Elasticsearch API is available:</p>
+
+<pre><code> curl localhost:9200
+</code></pre>
+
+<p>Elasticsearch may take some time to start up. If you need to determine whether the service has started successfully or not, you can use the <code>systemctl status elasticsearch</code> command to see the most recent logs. The Elasticsearch REST API should return a JSON response similar to the following:</p>
+
+<pre><code>{
+  &quot;name&quot; : &quot;Q1R2Oz7&quot;,
+  &quot;cluster_name&quot; : &quot;elasticsearch&quot;,
+  &quot;cluster_uuid&quot; : &quot;amcxppmvTkmuApEdTz673A&quot;,
+  &quot;version&quot; : {
+    &quot;number&quot; : &quot;6.0.0&quot;,
+    &quot;build_hash&quot; : &quot;8f0685b&quot;,
+    &quot;build_date&quot; : &quot;2017-11-10T18:41:22.859Z&quot;,
+    &quot;build_snapshot&quot; : false,
+    &quot;lucene_version&quot; : &quot;7.0.1&quot;,
+    &quot;minimum_wire_compatibility_version&quot; : &quot;5.6.0&quot;,
+    &quot;minimum_index_compatibility_version&quot; : &quot;5.0.0&quot;
+  },
+  &quot;tagline&quot; : &quot;You Know, for Search&quot;
+}
+</code></pre></li>
+</ol>
+
+<h3 id="filebeat">Filebeat</h3>
+
+<p>Install the <code>filebeat</code> package:</p>
+
+<pre><code> sudo yum install filebeat
+</code></pre>
+
+<h3 id="metricbeat">Metricbeat</h3>
+
+<p>Install the <code>metricbeat</code> package:</p>
+
+<pre><code> sudo yum install metricbeat
+</code></pre>
+
+<h3 id="kibana">Kibana</h3>
+
+<p>Install the <code>kibana</code> package:</p>
+
+<pre><code> sudo yum install kibana
+</code></pre>
+
+<h2 id="configure-the-stack">Configure The Stack</h2>
+
+<h3 id="elasticsearch-1">Elasticsearch</h3>
+
+<p>By default, Elasticsearch will create five shards and one replica for every index that&rsquo;s created. When deploying to production, these are reasonable settings to use. In this tutorial, only one server is used in the Elasticsearch setup, so multiple shards and replicas are unncessary. Changing these defaults can avoid unecessary overhead.</p>
+
+<ol>
+<li><p>Create a temporary JSON file with an <em>index template</em> that instructs Elasticsearch to set the number of shards to one and number of replicas to zero for all matching index names (in this case, a wildcard <code>*</code>):</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		template.json 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">&#34;template&#34;: &#34;*&#34;,
+&#34;settings&#34;:
+&#34;index&#34;:
+&#34;number_of_shards&#34;: 1,
+&#34;number_of_replicas&#34;: 0</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Use <code>curl</code> to create an index template with these settings that&rsquo;ll be applied to all indices created hereafter:</p>
+
+<pre><code>curl -H'Content-Type: application/json' -XPUT http://localhost:9200/_template/defaults -d @template.json
+</code></pre></li>
+
+<li><p>Elasticsearch should return:</p>
+
+<pre><code>{&quot;acknowledged&quot;:true}
+</code></pre></li>
+</ol>
+
+<h3 id="kibana-1">Kibana</h3>
+
+<p>Enable and start the Kibana service:</p>
+
+<pre><code>sudo systemctl enable kibana
+sudo systemctl start kibana
+</code></pre>
+
+<p>In order to securely access Kibana, this guide will use an SSH tunnel to access the web application. This avoids opening Kibana on a publicly accessible IP address and port.</p>
+
+<p>By default, Kibana will be listening for requests from its local address only. In order to view Kibana in a local browser, issue the following command in a new terminal window:</p>
+
+<pre><code>ssh -L 5601:localhost:5601 username@&lt;Linode public IP&gt; -N
+</code></pre>
+
+<p>Replace <code>username</code> with your Linux user name and <code>&lt;Linode public IP&gt;</code> with the public IP address of your Linode.</p>
+
+<h3 id="filebeat-1">Filebeat</h3>
+
+<p>Filebeat version 6 ships with the ability to use <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html">modules</a> in order to automate how logs are collected, indexed, and visualized. This guide will use the nginx module in order to handle most of the necessary configuration in order to instruct the stack how to process system logs.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Your Linode should already have nginx configured following the <a href="/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi">Install a LEMP Stack on CentOS 7 with FastCGI</a> guide.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Using a text editor, create <code>/etc/filebeat/filebeat.yml</code> and add the following content:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/filebeat/filebeat.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">filebeat.config.modules<span class="p">:</span><span class="w">
+</span><span class="w">    </span>path<span class="p">:</span><span class="w"> </span>${path.config}/modules.d/*.yml<span class="w">
+</span><span class="w">
+</span><span class="w"></span>setup.kibana<span class="p">:</span><span class="w">
+</span><span class="w">    </span>host<span class="p">:</span><span class="w"> </span><span class="s2">&#34;localhost:5601&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>output.elasticsearch<span class="p">:</span><span class="w">
+</span><span class="w">    </span>hosts<span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;localhost:9200&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>setup.dashboards.enabled<span class="p">:</span><span class="w"> </span><span class="kc">true</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>You can enable Filebeat modules by removing <code>.disabled</code> from the file names. Enable the nginx module:</p>
+
+<pre><code>sudo mv /etc/filebeat/modules.d/nginx.yml.disabled /etc/filebeat/modules.d/nginx.yml
+</code></pre></li>
+
+<li><p>Enable and start the <code>filebeat</code> service:</p>
+
+<pre><code>sudo systemctl enable filebeat
+sudo systemctl start filebeat
+</code></pre></li>
+</ol>
+
+<h3 id="metricbeat-1">Metricbeat</h3>
+
+<p>Like Filebeat, Metricbeat also provides a variety of built-in modules to help configure itself to monitor different aspects of the host system automatically. The following steps will configure Metricbeat to use these features and enable the system service.</p>
+
+<ol>
+<li>Create the following Metricbeat configuration:</li>
+</ol>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/metricbeat/metricbeat.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">metricbeat.config.modules<span class="p">:</span><span class="w">
+</span><span class="w">  </span>path<span class="p">:</span><span class="w"> </span>${path.config}/modules.d/*.yml<span class="w">
+</span><span class="w">
+</span><span class="w"></span>setup.kibana<span class="p">:</span><span class="w">
+</span><span class="w">  </span>host<span class="p">:</span><span class="w"> </span><span class="s2">&#34;localhost:5601&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>output.elasticsearch<span class="p">:</span><span class="w">
+</span><span class="w">  </span>hosts<span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;localhost:9200&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>setup.dashboards.enabled<span class="p">:</span><span class="w"> </span><span class="kc">true</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<ol>
+<li><p>Rename the Elasticsearch, Kibana, and nginx module configuration files in order to enable them:</p>
+
+<pre><code>sudo mv /etc/metricbeat/modules.d/elasticsearch.yml.disabled /etc/metricbeat/modules.d/elasticsearch.yml
+sudo mv /etc/metricbeat/modules.d/kibana.yml.disabled /etc/metricbeat/modules.d/kibana.yml
+sudo mv /etc/metricbeat/modules.d/nginx.yml.disabled /etc/metricbeat/modules.d/nginx.yml
+</code></pre></li>
+
+<li><p>Start and enable the <code>metricbeat</code> service:</p>
+
+<pre><code>sudo systemctl enable metricbeat
+sudo systemctl start metricbeat
+</code></pre></li>
+</ol>
+
+<h2 id="creating-and-using-visualizations">Creating and Using Visualizations</h2>
+
+<p>The rest of this guide will use Kibana&rsquo;s browser-based interface in order to view and search machine data.</p>
+
+<ol>
+<li><p>Although Filebeat is now monitoring nginx access and error logs, traffic must be generated to create data to visualize in Kibana. Run the following command in another terminal window or tab in order to generate webserver requests in the background:</p>
+
+<pre><code>while true ; do n=$(( RANDOM % 10 )) ; curl &quot;localhost/?$n&quot; ; sleep $n ; done
+</code></pre>
+
+<p>This process may be terminated by entering <strong>Ctrl-C</strong> at the terminal to exit the request loop at the conclusion of this tutorial.</p></li>
+
+<li><p>Open Kibana by navigating to <code>http://localhost:5601</code> in a browser to access the SSH-forwarded port. The landing page should look similar to the following:</p>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-landing-page.png" alt="Kibana 6 Landing Page" title="Kibana 6 Landing Page" /></p>
+
+<p>The interface asks for a default index pattern, which can be selected from the left sidebar. This will instruct Kibana to use the documents that either Filebeat or Metricbeat have indexed by default when presenting search dashboards. Click on <code>filebeat-*</code> in order to view the Filebeat index pattern.</p></li>
+
+<li><p>From this screen, select the star icon to choose <code>filebeat-*</code> as the default index pattern.</p>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-default-index-pattern.png" alt="Kibana 6 Select Default Index" title="Kibana 6 Select Default Index" /></p></li>
+
+<li><p>Click on &ldquo;Discover&rdquo; from the far left sidebar in order to view logs that are being indexed by Filebeat. A screen similar to the one shown below should appear:</p>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-discover.png" alt="Kibana 6 Discover" title="Kibana 6 Select Discover" /></p></li>
+
+<li><p>From this screen, logs can be easily searched and analyzed. For example, to search the nginx access logs for all requests for <code>/?5</code> that are being generated by the running shell loop in the background, enter the following into the search box and click the magnifying glass or hit <strong>Enter</strong>:</p>
+
+<pre><code>nginx.access.url:&quot;/?5&quot;
+</code></pre>
+
+<p>The interface will perform an Elasticsearch query and show only matching documents.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Throughout this guide, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as &ldquo;Last 15 Minutes&rdquo;). If at any point log entries are no longer visible in the Kibana interface, click this timespan and choose a wider range, such as &ldquo;Last Hour&rdquo; or &ldquo;Last 1 Hour&rdquo; or &ldquo;Last 4 Hours,&rdquo; to see as many logs as possible.</div>
+</blockquote>
+
+
+<h3 id="filebeat-dashboards">Filebeat Dashboards</h3>
+
+<p>In addition to collecting nginx access logs, Filebeat also installs several dashboards into Kibana in order to provide useful default visualizations for your data.</p>
+
+<ol>
+<li><p>From the &ldquo;Discover&rdquo; screen, select the &ldquo;Dashboard&rdquo; item from the sidebar menu.</p>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-dashboard-menu.png" alt="Kibana 6 Dashboards" title="Kibana 6 Dashboards" /></p></li>
+
+<li><p>The following screen will appear, which lists all dashboards available to Kibana.</p>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-dashboard-list.png" alt="Kibana 6 Dashboard List" title="Kibana 6 Dashboard List" /></p></li>
+
+<li><p>In the search box, enter &ldquo;nginx&rdquo; to search for all nginx dashboards. In the list of results, select the dashboard titled &ldquo;[Filebeat Nginx] Access and error logs&rdquo;. The following dashboard will load:</p>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-filebeat-nginx.png" alt="Kibana 6 Filebeat Nginx" title="Kibana 6 Filebeat Nginx" /></p></li>
+
+<li><p>Scroll further down to view the visualizations available in this default dashboard. There are several virtualizations including a geolocation map, response codes by URL, and user-agent summaries. These dashboards can help summarize traffic to a webserver in addition to debugging issues. For example, when the Metricbeat nginx module was enabled, we did not enable the nginx server-status endpoint for use with Metricbeat. This dashboard can help find this misconfiguration.</p></li>
+
+<li><p>To begin, scroll to the &ldquo;Response codes over time&rdquo; visualization in this dashboard. Observe that there are many 404 responses and click on one of the color-coded 404 bars:</p>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-404-filter.png" alt="Kibana 6 Filter by 404" title="Kibana 6 Filter by 404" /></p></li>
+
+<li><p>Scroll to the top of the Kibana interface and click the &ldquo;Apply Now&rdquo; button to filter the access logs only for logs that returned 404 to the user.</p></li>
+</ol>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-404-filter-apply.png" alt="Kibana 6 Apply Filter" title="Kibana 6 Apply Filter" /></p>
+
+<ol>
+<li><p>After applying this filter, scroll down again to view the visualizations for all 404 logs. Observe that &ldquo;Response codes by top URLs&rdquo; visualization indicates that nginx is only returning 404 response codes for the <code>/server-status</code> url:</p>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-404-url.png" alt="Kibana 6 404 URL" title="Kibana 6 404 URL" /></p>
+
+<p>We can now fix the nginx configuration to resolve this error.</p></li>
+</ol>
+
+<h4 id="reconfiguring-nginx">Reconfiguring nginx</h4>
+
+<ol>
+<li><p>Open the <code>/etc/nginx/nginx.conf</code> file and add the following <code>location</code> block in between the <code>include</code> and <code>location /</code> lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">include</span> <span class="n">/etc/nginx/default.d/*.conf</span>;
+
+    <span class="k">location</span> <span class="s">/server-status</span> <span class="p">{</span>
+            <span class="kn">stub_status</span> <span class="no">on</span>
+            <span class="s">access_log</span> <span class="no">off</span><span class="p">;</span>
+            <span class="kn">allow</span> <span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span>
+            <span class="kn">allow</span> <span class="p">::</span><span class="mi">1</span><span class="p">;</span>
+            <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+        <span class="p">}</span>
+
+    <span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>estart nginx:</p>
+
+<pre><code>sudo systemctl restart nginx
+</code></pre></li>
+
+<li><p>Repeat the steps in the preceding section in order to observe response code history. 404 response codes should gradually stop appearing as you perform fresh searches in Kibana to view new logs.</p></li>
+</ol>
+
+<h3 id="metricbeat-2">Metricbeat</h3>
+
+<p>In addition to web server access logs, host metrics can be viewed in Kibana by using visualizations created by Metricbeat.</p>
+
+<ol>
+<li><p>From the left-hand sidebar, select &ldquo;Dashboard&rdquo; and enter &ldquo;metricbeat&rdquo; in the search box to filter for Metricbeat dashboards. Select the dashboard named &ldquo;[Metricbeat System] Overview&rdquo;. A new dashboard should open with visualizations similar to the following:</p>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-metricbeat-overview.png" alt="Kibana 6 Metricbeat Overview" title="Kibana 6 Metricbeat Overview" /></p>
+
+<p>This dashboard provides a high-level overview of host metrics including CPU, memory, disk, and network use. If you install Metricbeat on any additional hosts and send metrics to a central Elasticsearch instance, Kibana provides a centralized monitoring view for a fleet of individual hosts. From this dashboard, select &ldquo;Host Overview&rdquo; from the &ldquo;System Navigation&rdquo; section of the dashboard.</p></li>
+
+<li><p>From this dashboard, scroll down to view all of the host data being collected by Metricbeat. These visualizations provide a wealth of information.</p>
+
+<p><img src="/docs/assets/elastic-stack-centos-7-kibana-metricbeat-host.png" alt="Kibana 6 Metricbeat Host View" title="Kibana 6 Metricbeat Host View" /></p>
+
+<p>These dashboards are a sample of the types of machine metrics collected by Metricbeat. By using the collected metrics for datasets such as load, memory, and process resource usage, useful dashboards can be created for high-level overviews of servers.</p></li>
+</ol>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<p>This tutorial has covered only a portion of the data available for searching and analysis that Filebeat and Metricbeat provide. By drawing upon existing dashboards for examples, additional charts, graphs, and other visualizations can be created to answer specific questions and provide useful dashboards for a variety of purposes.</p>
+
+<p>Comprehensive documentation for each piece of the stack is available from the Elastic web site:</p>
+
+<ul>
+<li>The <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">Elasticsearch reference</a> contains additional information regarding how to operate Elasticsearch, including clustering, managing indices, and more.</li>
+<li><a href="https://www.elastic.co/guide/en/beats/metricbeat/current/index.html">Metricbeat&rsquo;s documentation</a> provides additional information regarding configuration options and modules for other projects such as Apache, MySQL, and more.</li>
+<li>The <a href="https://www.elastic.co/guide/en/beats/filebeat/current/index.html">Filebeat documentation</a> is useful if additional logs need to be collected and processed outside of the logs covered in this tutorial.</li>
+<li><a href="https://www.elastic.co/guide/en/kibana/current/index.html">Kibana&rsquo;s documentation pages</a> provide additional information regarding how to create useful visualizations and dashboards.</li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.elastic.co/guide/index.html">Elastic Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/nginx/websites-with-nginx-on-centos-5/">Websites with Nginx on CentOS 5 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/">Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/">How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/">How to Install and Configure Redmine on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/ecommerce/install-opencart-on-centos-7/">How to Install OpenCart on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-the-elastic-stack">What is the Elastic Stack?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-openjdk-8">Install OpenJDK 8</a></li>
+<li><a href="#install-elastic-yum-repository">Install Elastic Yum Repository</a></li>
+<li><a href="#install-stack-components">Install Stack Components</a>
+<ul>
+<li><a href="#elasticsearch">Elasticsearch</a></li>
+<li><a href="#filebeat">Filebeat</a></li>
+<li><a href="#metricbeat">Metricbeat</a></li>
+<li><a href="#kibana">Kibana</a></li>
+</ul></li>
+<li><a href="#configure-the-stack">Configure The Stack</a>
+<ul>
+<li><a href="#elasticsearch-1">Elasticsearch</a></li>
+<li><a href="#kibana-1">Kibana</a></li>
+<li><a href="#filebeat-1">Filebeat</a></li>
+<li><a href="#metricbeat-1">Metricbeat</a></li>
+</ul></li>
+<li><a href="#creating-and-using-visualizations">Creating and Using Visualizations</a>
+<ul>
+<li><a href="#filebeat-dashboards">Filebeat Dashboards</a>
+<ul>
+<li><a href="#reconfiguring-nginx">Reconfiguring nginx</a></li>
+</ul></li>
+<li><a href="#metricbeat-2">Metricbeat</a></li>
+</ul></li>
+<li><a href="#further-reading">Further Reading</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

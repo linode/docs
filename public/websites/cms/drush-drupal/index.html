@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Installing &amp; Using Drupal Drush on Debian 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="An overview of Drush the Drupal Shell or Command Line Tool">
+        <meta name="keywords" content="drupal, WordPress, joomla, cms, content management system, content management framework,  debian,  ">
+        
+        <meta property="og:title" content="Installing &amp; Using Drupal Drush on Debian 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/cms/drush-drupal/">
+        <meta property="og:description" content="An overview of Drush the Drupal Shell or Command Line Tool">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/cms/drush-drupal/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/cms/">Control Panels &amp; Content Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  Installing &amp; Using Drupal Drush on Debian 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Installing &amp; Using Drupal Drush on Debian 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-11-21T00:00:00Z">Friday, November 21, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fdrush-drupal%2f&via=linode&text=Installing%20%26amp%3b%20Using%20Drupal%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fdrush-drupal%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fdrush-drupal%2f&t=Installing%20%26%20Using%20Drupal%20Drush%20on%20Debian%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/cms/drush-drupal.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/cms/drush-drupal.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Drush is a command line tool for creating, maintaining, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. Drush rhymes with rush or crush. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal and cannot be used with other content management systems.</p>
+
+<p>Both new and experienced Drupal users can benefit from learning Drush. Users that have worked with a command line interface before have an advantage, but Drush is an excellent application for beginners, too.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before installing Drush and Drupal, ensure that the following prerequisites have been met:</p>
+
+<ol>
+<li>Create a new Linode by following our <a href="/docs/getting-started/">Getting Started</a> guide.</li>
+<li>Address security concerns with the <a href="/docs/securing-your-server">Securing Your Server</a> guide.</li>
+<li>Configure a LAMP stack using the <a href="/docs/websites/hosting-a-website">Hosting a Website</a> guide.</li>
+
+<li><p>Make sure that your system is up to date, using:</p>
+
+<p>sudo apt-get update &amp;&amp; sudo apt-get upgrade</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="install-git-composer">Install Git &amp; Composer</h2>
+
+<p>The developers of Drush recommend installation through Composer, a PHP dependency manager. The Drush project is hosted on GitHub and controlled with Git, another necessary app to install.</p>
+
+<ol>
+<li><p>Install Git:</p>
+
+<p>sudo apt-get install git</p></li>
+
+<li><p>Install Composer:</p>
+
+<p>curl -sS <a href="https://getcomposer.org/installer">https://getcomposer.org/installer</a> | php</p></li>
+
+<li><p>Move the composer.phar file to <code>/usr/local/bin/</code>, so that it can be accessed from any directory:</p>
+
+<p>sudo mv composer.phar /usr/local/bin/composer</p></li>
+</ol>
+
+<h2 id="install-drush-for-all-users-on-the-server">Install Drush for All Users on the Server</h2>
+
+<p>Composer is designed to install PHP dependencies on a per-project basis, but the steps below will install a global Drush for all projects.</p>
+
+<ol>
+<li><p>Create a symbolic link between Composer&rsquo;s local bin directory, <code>/usr/local/bin/composer</code>, and the system&rsquo;s bin directory, <code>/usr/bin/</code>:</p>
+
+<p>sudo ln -s /usr/local/bin/composer /usr/bin/composer</p></li>
+
+<li><p>Use Git to download - or clone - the GitHub Drush project into a new directory:</p>
+
+<p>sudo git clone <a href="https://github.com/drush-ops/drush.git">https://github.com/drush-ops/drush.git</a> /usr/local/src/drush</p></li>
+
+<li><p>Change the working directory to the new Drush directory:</p>
+
+<p>cd /usr/local/src/drush</p></li>
+
+<li><p>Use Git to checkout the version of Drush that you wish to use. The release page is at <a href="https://github.com/drush-ops/drush/releases">https://github.com/drush-ops/drush/releases</a>. Below is a partial image of the release page with a red pointer displaying a sample version number.</p>
+
+<p><a href="/docs/assets/drush-release-page-with-arrow.png"><img src="/docs/assets/drush-release-page-with-arrow.png" alt="Drush Release Page." /></a></p>
+
+<p>For a different release, replace the version number in the following command:</p>
+
+<p>sudo git checkout 7.0.0-alpha5</p></li>
+
+<li><p>Create a symbolic link between the Drush directory in <code>/usr/local/src</code> to <code>/usr/bin</code>, so that the Drush command can be called from any directory:</p>
+
+<p>sudo ln -s /usr/local/src/drush/drush /usr/bin/drush</p></li>
+
+<li><p>Now, run the Composer install command:</p>
+
+<p>sudo composer install</p></li>
+
+<li><p>Drush has now been installed for all users on the server. Check for the proper version number:</p>
+
+<p>drush &ndash;version</p></li>
+</ol>
+
+<h2 id="using-drush">Using Drush</h2>
+
+<p>Drush has dozens of commands with hundreds of options. Drush can interface with MySQL, Drupal, Git, and more. To demonstrate using Drush, we will create a Drupal website along with a few other helpful commands.</p>
+
+<ol>
+<li><p>To get started with Drush, run it without any following commands to list the help manual:</p>
+
+<p>drush</p></li>
+
+<li><p>View more detailed documentation for a specific command by typing <code>drush help</code> and then the command, for example:</p>
+
+<p>drush help site-install</p></li>
+
+<li><p>List many of the specs for your server and website with:</p>
+
+<p>drush status</p></li>
+</ol>
+
+<h3 id="create-a-drupal-website-with-drush">Create a Drupal Website with Drush</h3>
+
+<p>Drush can create a Drupal site with half the steps of a normal installation. The <code>drush dl drupal</code> command conveniently chooses the latest, stable installation of Drupal.</p>
+
+<ol>
+<li><p>Install the required PHP graphics library:</p>
+
+<p>sudo apt-get install php5-gd</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If the install process displays a prompt concerning a modified configuration file, choose the &ldquo;keep the local version currently installed&rdquo; option.</div>
+</blockquote>
+</li>
+
+<li><p>Check that the Apache2 rewrite module is enabled:</p>
+
+<p>sudo a2enmod rewrite</p></li>
+
+<li><p>Reload the Apache server software:</p>
+
+<p>sudo service apache2 reload</p></li>
+
+<li><p>Change the working directory to the location of the new website. The previous guides created a <strong>/var/www/<code>example.com</code>/public_html</strong> directory, replacing <strong><code>example.com</code></strong>, and made <strong><code>public_html</code></strong> the document root or the publicly viewable directory.</p>
+
+<p>cd  /var/www/example.com/public_html</p></li>
+
+<li><p>Download Drupal to a folder named drupal:</p>
+
+<p>sudo drush dl drupal &ndash;drupal-project-rename=drupal</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can specify versions of Drupal. For example to install Drupal 8, which is in beta at the time of this publication, use <strong><code>drush dl drupal-8</code></strong>.</div>
+</blockquote>
+</li>
+
+<li><p>Change the working directory to the new &lsquo;drupal&rsquo; folder:</p>
+
+<p>cd drupal</p></li>
+
+<li><p>Now the server is ready for the installation of a Drupal site. Below, provide a MySQL username, password, and database in the mysql://<code>username</code>:<code>password</code>@localhost/<code>databasename</code> link option and the site&rsquo;s name in the &ndash;site-name=<code>example.com</code> option:</p>
+
+<p>sudo drush si standard &ndash;db-url=mysql://username:password@localhost/databasename &ndash;site-name=example.com</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Although MySQL accepts passwords with a special character, for example an exclamation point, the <code>drush si standard</code> command does not. If you have a special character in your MySQL password, you may need to change it.</div>
+</blockquote>
+
+
+<p>After installation is complete, Drush creates a user, named <code>admin</code>, and a random password. An example is pictured below. These credentials are used for the Drupal sign-in page.</p>
+
+<p><a href="/docs/assets/drush-username-password.png"><img src="/docs/assets/drush-username-password.png" alt="Drush Username Password" /></a></p></li>
+
+<li><p>Optionally, if you&rsquo;d like to change the admin&rsquo;s password, we recommend you do so with Drush, rather than sending the password over a non-secure HTTP connection. In the following command, replace <code>newpass</code> with your new password:</p>
+
+<p>sudo drush user-password admin &ndash;password=newpass</p></li>
+</ol>
+
+<h3 id="setting-the-site-s-ownership-and-permissions">Setting the Site&rsquo;s Ownership and Permissions</h3>
+
+<p>In server administration, there are many options for user and group permissions. The directions below create a site owner and a site owner&rsquo;s group. The Apache user, named <strong>www-data</strong>, is added to the site owner&rsquo;s group. Then read, write, and execute permissions are granted to both the site owner and the site owner&rsquo;s group.</p>
+
+<p>To create a new user for the site owner position, review the <a href="/docs/security/securing-your-server#add-a-limited-user-account">Securing Your Server</a> guide.</p>
+
+<ol>
+<li><p>From the <code>drupal</code> directory, change ownership of the site to the chosen owner and that owner&rsquo;s group. Replace <code>exampleuser</code> below with the chosen owner&rsquo;s username:</p>
+
+<p>sudo chown -R exampleuser:exampleuser .</p></li>
+
+<li><p>Add Apache&rsquo;s <strong>www-data</strong> user to the site owner&rsquo;s group:</p>
+
+<p>sudo usermod -a -G exampleuser www-data</p></li>
+
+<li><p>Restart Apache:</p>
+
+<p>sudo service apache2 restart</p></li>
+
+<li><p>Make sure the permissions are set to allow access for the site owner and site owner&rsquo;s group:</p>
+
+<pre><code>sudo chmod -R 770 .
+</code></pre>
+
+<p>Now, <strong>www-data</strong>, <strong>exampleuser</strong>, and any user within the exampleuser group has read, write, and execute permissions for the entire Drupal site directory tree.</p></li>
+
+<li><p>Finally, check the status of the new site:</p>
+
+<pre><code>drush status
+</code></pre>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>File permissions are a constant concern for the system owner or root user. When installing new files, like a module or theme, make sure the Apache user www-data has access rights. Use the command <code>ls -al</code> to list the file permissions within a directory.</div>
+</blockquote>
+</li>
+</ol>
+
+<p>Your site is now available at <strong><code>example.com</code>/drupal</strong> or <strong><code>ipaddress</code>/drupal</strong>. Sign-in with the generated username and password and start delivering content to the world!</p>
+
+<p>When you&rsquo;re ready for the Drupal site to appear as your homepage, move the site to the <strong>/var/www/<code>example.com</code>/</strong> directory and double-check the document root listing in the virtual host file. See Step 5 in the <a href="/docs/web-servers/lamp/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts">Configuring Name Based Virtual Hosts</a> section of our <em>Hosting a Website</em> guide.</p>
+
+<h2 id="additional-options">Additional Options</h2>
+
+<p>There are many ways to set up administration for a website. Below are sections explaining some additional options. It&rsquo;s important to be aware of multi-site setups and additional security measures. The topics below touch on these subjects.</p>
+
+<h3 id="file-ownership-permissions-and-security">File Ownership, Permissions, and Security</h3>
+
+<p>The above setup is designed for ease of use. However, there are setups designed for tighter security and other considerations.</p>
+
+<ul>
+<li>To design your own setup, read Linode&rsquo;s documentation on <a href="/docs/tools-reference/linux-users-and-groups">Linux Users and Groups</a> guide</li>
+<li>For an extremely secure setup, read Drupal&rsquo;s <a href="https://www.drupal.org/node/244924">Securing File Permissions and Ownership</a> guide</li>
+</ul>
+
+<h3 id="multi-site-servers">Multi-site Servers</h3>
+
+<p>To start, add a virtual host file with Apache. Next, build another site including the appropriate MySQL, PHP, and CMS configurations.</p>
+
+<ul>
+<li>To add a virtual host file, read Linode&rsquo;s <a href="/docs/web-servers/lamp/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts">Configure Name-based Virtual Hosts</a> guide</li>
+</ul>
+
+<h3 id="install-drush-for-the-active-user-only">Install Drush for the Active User Only</h3>
+
+<p>You may want to install Drush for only certain users, for example, the <strong>site owner</strong>, <strong>root</strong>, and <strong>www-data</strong>. This may be optimal for a shared-hosting environment. Also, individual users can install their different versions of Drush and even install versions specific to a single project. The commands below should be run as the user in question, without <code>sudo</code>.</p>
+
+<ol>
+<li><p>Modify the user&rsquo;s <code>.bashrc</code> file to add the composer directory to it&rsquo;s path:</p>
+
+<p>nano ~/.bashrc</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/.bashrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.composer/vendor/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Run <strong>source</strong> on <code>.bashrc</code> to enable the changes:</p>
+
+<p>source ~/.bashrc</p></li>
+
+<li><p>Install Drush:</p>
+
+<p>composer global require drush/drush:dev-master</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>To install a different version of Drush, replace <code>drush/drush:dev-master</code> with another version. For example, to install the stable release of Drush 6.x, use <code>drush/drush:6.*</code>. For more information, check out the <a href="https://github.com/drush-ops/drush">Drush GitHub</a> repository.</div>
+</blockquote>
+</li>
+
+<li><p>Check to see that Drush was installed successfully:</p>
+
+<p>drush &ndash;version</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="/docs/security/ssl/">SSL Certificates</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/">Themes, Modules, &amp; Backups with Drupal Drush on Debian 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/cms-overview/">Content Management Systems: an Overview</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/">Use Laravel Forge to Automate Web-Server Creation on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu/">Update and Secure Drupal 8 on Ubuntu or Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/install-and-configure-drupal-8/">Install and Configure Drupal 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#install-git-composer">Install Git &amp; Composer</a></li>
+<li><a href="#install-drush-for-all-users-on-the-server">Install Drush for All Users on the Server</a></li>
+<li><a href="#using-drush">Using Drush</a>
+<ul>
+<li><a href="#create-a-drupal-website-with-drush">Create a Drupal Website with Drush</a></li>
+<li><a href="#setting-the-site-s-ownership-and-permissions">Setting the Site&rsquo;s Ownership and Permissions</a></li>
+</ul></li>
+<li><a href="#additional-options">Additional Options</a>
+<ul>
+<li><a href="#file-ownership-permissions-and-security">File Ownership, Permissions, and Security</a></li>
+<li><a href="#multi-site-servers">Multi-site Servers</a></li>
+<li><a href="#install-drush-for-the-active-user-only">Install Drush for the Active User Only</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

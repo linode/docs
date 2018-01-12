@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Provide Authoritative DNS Services with NSD on Fedora 14</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install and configure NSD to handle DNS queries.">
+        <meta name="keywords" content="NSD, DNS, resolving, Fedora 14, networking">
+        
+        <meta property="og:title" content="Provide Authoritative DNS Services with NSD on Fedora 14">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-fedora-14/">
+        <meta property="og:description" content="Install and configure NSD to handle DNS queries.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-fedora-14/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/dns/">DNS</a>
+  
+</li>
+
+
+<li>
+  
+  Provide Authoritative DNS Services with NSD on Fedora 14
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Provide Authoritative DNS Services with NSD on Fedora 14</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-09-25T00:00:00Z">Wednesday, September 25, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdns%2fprovide-authoritative-dns-services-with-nsd-on-fedora-14%2f&via=linode&text=Provide%20Authoritative%20DNS%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdns%2fprovide-authoritative-dns-services-with-nsd-on-fedora-14%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdns%2fprovide-authoritative-dns-services-with-nsd-on-fedora-14%2f&t=Provide%20Authoritative%20DNS%20Services%20with%20NSD%20on%20Fedora%2014" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-fedora-14.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-fedora-14.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.</p>
+
+<p>Before beginning, you should be familiar with basic <a href="/docs/dns-guides/introduction-to-dns">DNS terminology and records</a>. You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer&rsquo;s <a href="http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html">memory usage calculator</a> to determine the memory requirement for your NSD deployment.</p>
+
+<h1 id="set-the-hostname">Set the Hostname</h1>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<h1 id="install-required-software">Install Required Software</h1>
+
+<p>Ensure that your package repositories are up to date and that you&rsquo;ve installed all available software upgrades by issuing the following commands:</p>
+
+<pre><code>yum update
+</code></pre>
+
+<p>Install NSD and configure the daemon to start on boot with the following commands:</p>
+
+<pre><code>yum install nsd
+chkconfig nsd on
+</code></pre>
+
+<p>Proceed to configure the daemon.</p>
+
+<h1 id="configure-nsd">Configure NSD</h1>
+
+<h3 id="configure-nsd-service">Configure NSD Service</h3>
+
+<p>Edit the <code>nsd.conf</code> file to configure the behavior of the NSD service and the hosted DNS zones. The NSD package provides an example configuration file located at <code>/etc/nsd/nsd.conf</code> that you may reference. Your file should resemble the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nsd/nsd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">server:
+:   logfile: &#34;/var/log/nsd.log&#34; username: nsd</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="host-zones-with-nsd">Host Zones with NSD</h3>
+
+<p>You must specify at least one zone in the <code>/etc/nsd/nsd.conf</code> file before NSD will begin serving DNS records. Refer to the following example configuration for proper syntax.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nsd/nsd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">zone:
+:   name: example.com zonefile: /etc/nsd/example.com.zone
+
+zone:
+:   name: example.org zonefile: /etc/nsd/example.org.zone</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Once zones are added to the <code>nsd.conf</code> file, proceed to create a zone file for each DNS zone.</p>
+
+<h1 id="creating-zone-files">Creating Zone Files</h1>
+
+<p>Each domain has zone file specified in the <code>nsd.conf</code> file. The syntax of an NSD zone file is similar BIND zone files. Refer to the example zone files that follow for syntax, and modify domain names and IP addresses to reflect the needs of your deployment.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nsd/example.com.zone 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">$ORIGIN</span> example.com. <span class="nv">$TTL</span> <span class="m">86400</span>
+
+@ IN SOA ns1.example.com. admin.example.com. <span class="o">(</span>
+:   <span class="m">2010011801</span> <span class="p">;</span> serial number <span class="m">28800</span> <span class="p">;</span> Refresh <span class="m">7200</span> <span class="p">;</span> Retry <span class="m">864000</span> <span class="p">;</span> Expire <span class="m">86400</span> <span class="p">;</span> Min TTL <span class="o">)</span>
+
+NS ns1.example.com.
+:   NS ns2.example.com.
+
+    MX <span class="m">10</span> mail.example.com.
+
+ns1 IN A <span class="m">11</span>.22.33.44 ns2 IN A <span class="m">22</span>.33.44.55 www IN A <span class="m">77</span>.66.55.44 tomato IN A <span class="m">77</span>.66.55.44 mail IN A <span class="m">88</span>.77.66.55 <span class="se">\*</span> IN A <span class="m">77</span>.66.55.44</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nsd/example.org.zone 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">$ORIGIN</span> example.org. <span class="nv">$TTL</span> <span class="m">86400</span>
+
+@ IN SOA ns1.example.org. web-admin.example.org. <span class="o">(</span>
+:   <span class="m">2009011803</span> <span class="p">;</span> serial number <span class="m">28800</span> <span class="p">;</span> Refresh <span class="m">7200</span> <span class="p">;</span> Retry <span class="m">864000</span> <span class="p">;</span> Expire <span class="m">86400</span> <span class="p">;</span> Min TTL <span class="o">)</span>
+
+NS ns1.example.org.
+:   NS ns2.example.org.
+
+    MX <span class="m">10</span> mail.example.org.
+
+ns1 IN A <span class="m">11</span>.22.33.44 ns2 IN A <span class="m">22</span>.33.44.55 www IN A <span class="m">44</span>.33.22.11 paisano IN A <span class="m">44</span>.33.22.11 mail IN A <span class="m">99</span>.88.77.66
+
+pizzapie IN CNAME paisano</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Rebuild the NSD database and restart the daemon with following command sequence:</p>
+
+<pre><code>nsdc rebuild
+/etc/init.d/nsd restart
+</code></pre>
+
+<p>Test the configuration and functionality of the DNS serve using <code>dig</code>, which provides a <a href="/docs/networking/dns/use-dig-to-perform-manual-dns-queries">command line DNS client</a>. Issue the following command to test the DNS server:</p>
+
+<pre><code>dig @localhost www.example.org
+</code></pre>
+
+<p>The output should resemble the following:</p>
+
+<pre><code>; &lt;&lt;&gt;&gt; DiG 9.6.1-P2 &lt;&lt;&gt;&gt; @localhost pizzapie.example.org
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 25199
+;; flags: qr aa rd; QUERY: 1, ANSWER: 2, ORGNAMEITY: 2, ADDITIONAL: 0
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;pizzapie.example.org.  IN  A
+
+;; ANSWER SECTION:
+pizzapie.example.org. 86400 IN  CNAME   paisano.example.org.
+paisano.example.org. 86400  IN  A   44.33.22.11
+
+;; ORGNAMEITY SECTION:
+example.org.    86400   IN  NS  ns1.example.org.
+example.org.    86400   IN  NS  ns2.example.org.
+
+;; Query time: 18 msec
+</code></pre>
+
+<p>Congratulations, you have successfully installed NSD!</p>
+
+<h1 id="adjusting-nsd-for-low-memory-situations">Adjusting NSD for Low-Memory Situations</h1>
+
+<p>If you are running NSD in a low-memory environment, amending the values of the following directives in your <code>/etc/nsd/nsd.conf</code> file will lower your memory and system resource usage.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nsd/nsd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ip4-only: yes tcp-count: <span class="m">10</span> server-count: <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://nlnetlabs.nl/projects/nsd/">NSD Homepage</a></li>
+<li><a href="http://nlnetlabs.nl/projects/nsd/nsd-memsize.html">NSD Memory Usage Calculator</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-debian-6-squeeze/">Provide Authoritative DNS Services with NSD on Debian 6 (Squeeze) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-11-04-natty/">Provide Authoritative DNS Services with NSD on Ubuntu 11.04 (Natty) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-10-10-maverick/">Provide Authoritative DNS Services with NSD on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-10-04-lucid/">Provide Authoritative DNS Services with NSD on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-fedora-13/">Provide Authoritative DNS Services with NSD on Fedora 13 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#install-required-software">Install Required Software</a></li>
+<li><a href="#configure-nsd">Configure NSD</a>
+<ul>
+<li>
+<ul>
+<li><a href="#configure-nsd-service">Configure NSD Service</a></li>
+<li><a href="#host-zones-with-nsd">Host Zones with NSD</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#creating-zone-files">Creating Zone Files</a></li>
+<li><a href="#adjusting-nsd-for-low-memory-situations">Adjusting NSD for Low-Memory Situations</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Apache Tomcat on Ubuntu 10.10 (Maverick)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 10.10 (Maverick).">
+        <meta name="keywords" content="apache tomcat ubuntu 10.10, java, java ubuntu 10.10, java servlets ubuntu maverick, java ubuntu">
+        
+        <meta property="og:title" content="Apache Tomcat on Ubuntu 10.10 (Maverick)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/frameworks/apache-tomcat-on-ubuntu-10-10-maverick/">
+        <meta property="og:description" content="Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 10.10 (Maverick).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/frameworks/apache-tomcat-on-ubuntu-10-10-maverick/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/frameworks/">Web Application Frameworks</a>
+  
+</li>
+
+
+<li>
+  
+  Apache Tomcat on Ubuntu 10.10 (Maverick)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Apache Tomcat on Ubuntu 10.10 (Maverick)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2012-10-08T00:00:00Z">Monday, October 8, 2012</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fapache-tomcat-on-ubuntu-10-10-maverick%2f&via=linode&text=Apache%20Tomcat%20on%20Ubuntu%2010.10%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fapache-tomcat-on-ubuntu-10-10-maverick%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fapache-tomcat-on-ubuntu-10-10-maverick%2f&t=Apache%20Tomcat%20on%20Ubuntu%2010.10%20%28Maverick%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/frameworks/apache-tomcat-on-ubuntu-10-10-maverick.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/frameworks/apache-tomcat-on-ubuntu-10-10-maverick.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You may choose to run applications within Tomcat using either the OpenJDK implementation or the Sun Microsystems/Oracle implementation of the Java development environment.</p>
+
+<p>Before following this guide, ensure that your system is up to date and that you have completed the <a href="/docs/getting-started/">getting started guide</a>. If you are new to Linux server administration, we recommend reviewing our <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and the article concerning <a href="/docs/using-linux/administration-basics">systems administration basics</a>.</p>
+
+<h1 id="set-the-hostname">Set the Hostname</h1>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p>
+
+<h1 id="choose-and-install-java-implementation">Choose and Install Java Implementation</h1>
+
+<p>Make sure your package repositories and installed programs are up to date by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<p>You must choose which implementation of the Java language you wish to use. Note that there is some variance in the implementations of the Java language, and you should install a version that is compatible with the application that you are hoping to run and/or write.</p>
+
+<p>If you choose to run OpenJDK, you can skip the rest of this section, as OpenJDK will be installed as a dependency when you install the <code>tomcat6</code> package; OpenJDK is pulled in by the &ldquo;default-java&rdquo; meta package in Ubuntu.</p>
+
+<p>If you would like to run the Sun Microsystems/Oracle implementation of Java, edit the <code>/etc/apt/sources.list</code> so that it resembles the following example. This will enable access to the &ldquo;partner&rdquo; repository:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apt/sources.list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## main &amp; restricted repositories
+</span><span class="c1"></span>deb http://us.archive.ubuntu.com/ubuntu/ maverick main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ maverick main restricted
+
+deb http://security.ubuntu.com/ubuntu maverick-updates main restricted
+deb-src http://security.ubuntu.com/ubuntu maverick-updates main restricted
+
+deb http://security.ubuntu.com/ubuntu maverick-security main restricted
+deb-src http://security.ubuntu.com/ubuntu maverick-security main restricted
+
+<span class="c1">## universe repositories - uncomment to enable
+</span><span class="c1"></span>deb http://us.archive.ubuntu.com/ubuntu/ maverick universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ maverick universe
+
+deb http://us.archive.ubuntu.com/ubuntu/ maverick-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ maverick-updates universe
+
+deb http://security.ubuntu.com/ubuntu maverick-security universe
+deb-src http://security.ubuntu.com/ubuntu maverick-security universe
+
+<span class="c1">## partner repositories
+</span><span class="c1"></span>deb http://archive.canonical.com/ubuntu maverick partner
+deb-src http://archive.canonical.com/ubuntu maverick partner
+
+deb http://archive.canonical.com/ubuntu maverick-updates partner
+deb-src http://archive.canonical.com/ubuntu maverick-updates partner
+
+deb http://archive.canonical.com/ubuntu maverick-security partner
+deb-src http://archive.canonical.com/ubuntu maverick-security partner</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Issue the following command to update your system&rsquo;s package repositories:</p>
+
+<pre><code>apt-get update
+</code></pre>
+
+<p>Now you are ready to install Sun Java with the following command (after agreeing to the license terms):</p>
+
+<pre><code>apt-get install sun-java6-jdk
+</code></pre>
+
+<h1 id="install-apache-tomcat">Install Apache Tomcat</h1>
+
+<p>To install Tomcat, issue the following command:</p>
+
+<pre><code>apt-get install tomcat6
+</code></pre>
+
+<p>You may also want to install the <code>tomcat6-docs</code>, <code>tomcat6-examples</code>, and <code>tomcat6-admin</code> tools which provide web-based applications that document, test, and allow you to administer Tomcat. You can install all three with the following command:</p>
+
+<pre><code>apt-get install tomcat6-docs tomcat6-examples tomcat6-admin
+</code></pre>
+
+<p>Tomcat should now be totally functional and should start automatically following installation and your next system reboot. If you need to start, stop, or restart Tomcat you can use the following commands:</p>
+
+<pre><code>/etc/init.d/tomcat6 start
+/etc/init.d/tomcat6 stop
+/etc/init.d/tomcat6 restart
+</code></pre>
+
+<h1 id="test-and-use-tomcat">Test and Use Tomcat</h1>
+
+<p>You can test your Tomcat installation by pointing your browser at <code>http://[yourdomain-or-ip-address]:8080/</code>. By default, files are located in the <code>/usr/share/tomcat6</code> directory. To configure the admin area, you&rsquo;ll need to add the following lines to the end of your <code>tomcat-users.xml</code> file, substituting your own username and password. Make sure you keep the &ldquo;manager&rdquo; role.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/tomcat6/tomcat-users.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;role</span> <span class="na">rolename=</span><span class="s">&#34;manager&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;user</span> <span class="na">username=</span><span class="s">&#34;username&#34;</span> <span class="na">password=</span><span class="s">&#34;examplemorris&#34;</span> <span class="na">roles=</span><span class="s">&#34;manager&#34;</span><span class="nt">/&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Issue the following command to restart the Tomcat server, which will allow this change to take effect:</p>
+
+<pre><code>/etc/init.d/tomcat6 restart
+</code></pre>
+
+<p>Congratulations! You know have a working Apache Tomcat installation.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://tomcat.apache.org/">Tomcat Home Page</a></li>
+<li><a href="http://wiki.apache.org/tomcat/FAQ">Tomcat FAQ</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin/">Apache Tomcat on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/apache-tomcat-on-ubuntu-9-10-karmic/">Apache Tomcat on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/apache-tomcat-on-ubuntu-10-04-lucid/">Apache Tomcat on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/">Installing Apache Tomcat on Ubuntu 8.04 LTS (Hardy) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/install-java-on-ubuntu-16-04/">Install Java on Ubuntu 16.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#choose-and-install-java-implementation">Choose and Install Java Implementation</a></li>
+<li><a href="#install-apache-tomcat">Install Apache Tomcat</a></li>
+<li><a href="#test-and-use-tomcat">Test and Use Tomcat</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

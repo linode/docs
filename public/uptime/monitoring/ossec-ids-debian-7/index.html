@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install and Configure OSSEC on Debian 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install and configure OSSEC HIDS on Debian 7">
+        <meta name="keywords" content="IDS,  Intrusion Detection System">
+        
+        <meta property="og:title" content="Install and Configure OSSEC on Debian 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/monitoring/ossec-ids-debian-7/">
+        <meta property="og:description" content="Install and configure OSSEC HIDS on Debian 7">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/monitoring/ossec-ids-debian-7/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/monitoring/">Server Monitoring</a>
+  
+</li>
+
+
+<li>
+  
+  Install and Configure OSSEC on Debian 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install and Configure OSSEC on Debian 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-02-05T00:00:00Z">Thursday, February 5, 2015</time> by James Stewart</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/finid">Sunday Ogwu-Chinuwa
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fossec-ids-debian-7%2f&via=linode&text=Install%20and%20Configure%20OSSEC%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fossec-ids-debian-7%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fossec-ids-debian-7%2f&t=Install%20and%20Configure%20OSSEC%20on%20Debian%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/monitoring/ossec-ids-debian-7.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/monitoring/ossec-ids-debian-7.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>OSSEC is an open-source, host-based intrusion detection system (<strong>HIDS</strong>) that performs log analysis, integrity checking, rootkit detection, time-based alerting, and active response, making it an ideal choice for server monitoring.</p>
+
+<p>When installed and configured, OSSEC will provide a real-time view of what&rsquo;s taking place in your server or servers in a server/agent mode.</p>
+
+<p>This guide covers how to install and configure OSSEC on a single Linode running Debian 7 in such a manner that if a file is modified, added or deleted, OSSEC will notify you by email in real-time. OSSEC can also provide notifications for other acitivies.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ol>
+<li><p>Complete the <a href="/docs/getting-started">Getting Started</a> guide.</p></li>
+
+<li><p>Follow the <a href="/docs/security/securing-your-server/">Securing Your Server</a> guide. It is especially important to create and enable a firewall. On Linux, OSSEC needs an active iptables firewall for its active response feature to work.</p></li>
+
+<li><p>Install <code>inotify-tools</code> and <code>build-essential</code>. OSSEC needs the first for real-time alerts and alerts on file deletions, while the latter is for compiling OSSEC. You can install both packages using:</p>
+
+<pre><code>sudo apt-get install inotify-tools build-essential
+</code></pre></li>
+</ol>
+
+<h2 id="download-and-verify-ossec">Download and Verify OSSEC</h2>
+
+<p>Debian 7 does not have an installation candidate for OSSEC in its repository, so it will need to be downloaded from the project&rsquo;s <a href="http://ossec.github.io/downloads.html">download page</a>.</p>
+
+<ol>
+<li><p>Download the latest OSSEC tarball (2.8.3 at the time of this guide&rsquo;s publication):</p>
+
+<pre><code>wget -U https://bintray.com/artifact/download/ossec/ossec-hids/ossec-hids-2.8.3.tar.gz
+</code></pre></li>
+
+<li><p>Download the checksum file:</p>
+
+<pre><code>wget -U http://ossec.wazuh.com/vm/ossec-vm-2.8.3-checksum.txt
+</code></pre></li>
+
+<li><p>Verify that the downloaded tarball has not been tampered with using the MD5 checksum:</p>
+
+<pre><code>md5sum -c ossec-vm-2.8.3-checksum.txt
+</code></pre>
+
+<p>The expected output is:</p>
+
+<pre><code>ossec-hids-2.8.3.tar.gz: OK
+md5sum: WARNING: 1 line is improperly formatted
+</code></pre></li>
+
+<li><p>Verify the SHA1 checksum:</p>
+
+<pre><code>sha1sum -c ossec-hids-2.8.3-checksum.txt
+</code></pre>
+
+<p>The expected output is:</p>
+
+<pre><code>ossec-hids-2.8.3.tar.gz: OK
+sha1sum: WARNING: 1 line is improperly formatted
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In both outputs, ignore the <strong>WARNING</strong> line. As long as the first line reads <strong>OK</strong>, the file is good.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="install-ossec">Install OSSEC</h2>
+
+<ol>
+<li><p>Untar the file:</p>
+
+<pre><code>tar xf ossec-hids-2.8.3.tar.gz
+</code></pre></li>
+
+<li><p>Change to the newly-created directory, then run the install:</p>
+
+<pre><code>cd ossec-hids-2.8.3
+sudo ./install.sh
+</code></pre></li>
+
+<li><p>Select your language. If your language is the default (English - [en]), press <code>Return</code>; otherwise, type in the 2-letter code for your language from the list of supported languages:</p>
+
+<pre><code>OSSEC HIDS v2.8 Installation Script - http://ossec.github.io/
+
+ You are about to start the installation process of the OSSEC HIDS.
+ You must have a C compiler pre-installed in your system.
+ If you have any questions or comments, please send an e-mail
+ to dcid@ossec.net (or daniel.cid@gmail.com).
+
+  - System: Linux deft 3.18.3-x86_64-linode51
+  - User: root
+  - Host: deft
+
+  -- Press ENTER to continue or Ctrl-C to abort. --
+</code></pre></li>
+
+<li><p>Press <strong>ENTER</strong>. You should now see:</p>
+
+<pre><code>1- What kind of installation do you want (server, agent, local, hybrid or help)?
+
+You have these installation options: server, agent, local, or hybrid.
+
+ ...
+
+1- What kind of installation do you want (server, agent, local, hybrid or help)? local
+</code></pre></li>
+
+<li><p>Choose <strong>local</strong>, which enables OSSEC to monitor the server it has been installed on. Select the defaults for subsequent options. Note that the email you specify has to be a valid one, because all OSSEC alerts will be sent to it. If installation is successful, you should see:</p>
+
+<pre><code>- System is Debian (Ubuntu or derivative).
+- Init script modified to start OSSEC HIDS during boot.
+
+ - Configuration finished properly.
+
+ - To start OSSEC HIDS:
+            /var/ossec/bin/ossec-control start
+
+ - To stop OSSEC HIDS:
+            /var/ossec/bin/ossec-control stop
+
+ - The configuration can be viewed or modified at /var/ossec/etc/ossec.conf
+
+Thanks for using the OSSEC HIDS.
+If you have any question, suggestion or if you find any bug,
+contact us at contact@ossec.net or using our public maillist at
+ossec-list@ossec.net
+( http://www.ossec.net/main/support/ ).
+
+More information can be found at http://www.ossec.net
+
+---  Press ENTER to finish (maybe more information below). ---
+</code></pre>
+
+<p>Press <strong>ENTER</strong> to finish. OSSEC is now installed, and ready to be configured.</p></li>
+</ol>
+
+<h2 id="configure-ossec">Configure OSSEC</h2>
+
+<p>OSSEC is chrooted to the <code>/var/ossec</code> directory, and its configuration file is <code>ossec.conf</code>, in the <code>/var/ossec/etc</code> directory. There are several modifications that you will need to make in <code>ossec.conf</code>, including:</p>
+
+<ul>
+<li><p>Email Settings</p></li>
+
+<li><p>Configure OSSEC to alert on new files</p></li>
+
+<li><p>Directories to monitor</p></li>
+
+<li><p>Files and directories to ignore</p></li>
+
+<li><p>Active response block times</p></li>
+
+<li><p>Rules for new files</p></li>
+</ul>
+
+<p>Use the <code>sudo su</code> command to gain root access to the directory:</p>
+
+<pre><code>sudo su
+</code></pre>
+
+<p>Switch to the <code>/var/ossec/etc</code> directory.</p>
+
+<h3 id="customize-email-settings">Customize Email Settings</h3>
+
+<p>Although you specified an email and OSSEC auto-discovered the SMTP server, there are a few changes that can be made to the email settings.</p>
+
+<ol>
+<li><p>Open <code>ossec.conf</code>. The email settings are at the top of the file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		ossec.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;global&gt;
+  &lt;email_notification&gt;yes&lt;/email_notification&gt;
+  &lt;email_to&gt;loginName@example.com&lt;/email_to&gt;
+  &lt;smtp_server&gt;mail.example.com.&lt;/smtp_server&gt;
+  &lt;email_from&gt;ossecm@hostname&lt;/email_from&gt;
+&lt;/global&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>&lt; email_to &gt;</code> entry is the email specified during installation. That is the address in which OSSEC will send alerts, and can be changed at any time. The <code>&lt; email_from &gt;</code> entry is where OSSEC&rsquo;s alerts will appear to be sent from. If you do not change the default, some SMTP servers will mark the email alerts as spam.</p></li>
+
+<li><p>Modify the <code>&lt; email_from &gt;</code> line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		ossec.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;global&gt;
+  &lt;email_notification&gt;yes&lt;/email_notification&gt;
+  &lt;email_to&gt;loginName@example.com&lt;/email_to&gt;
+  &lt;smtp_server&gt;mail.example.com.&lt;/smtp_server&gt;
+  &lt;email_from&gt;loginName@example.com&lt;/email_from&gt;
+&lt;/global&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The <code>&lt; email_to &gt;</code> and <code>&lt; email_from &gt;</code> values can be the same. If you are running your own mail server and it&rsquo;s on the same server that OSSEC is installed, you may change the <code>&lt; smtp_server &gt;</code> value to <code>localhost</code>.</div>
+</blockquote>
+
+
+<p>After making changes to the email settings, save and close the file.</p></li>
+
+<li><p>Start OSSEC:</p>
+
+<pre><code>/var/ossec/bin/ossec-control start
+</code></pre>
+
+<p>If the current working directory is <code>/var/ossec/etc</code>, you can use:</p>
+
+<pre><code>../bin/ossec-control start
+</code></pre></li>
+
+<li><p>After OSSEC has started, check your inbox for the first alert from OSSEC:</p>
+
+<pre><code>OSSEC HIDS Notification.
+2015 Jan 30 08:22:52
+
+Received From: deft-&gt;ossec-monitord
+Rule: 502 fired (level 3) -&gt; &quot;Ossec server started.&quot;
+Portion of the log(s):
+
+ossec: Ossec started.
+
+ --END OF NOTIFICATION
+</code></pre>
+
+<p>If the email is received, then the settings are working and subsequent alerts will also hit your inbox.</p></li>
+</ol>
+
+<h3 id="configure-ossec-to-alert-on-new-files">Configure OSSEC to Alert on New Files</h3>
+
+<p>By default OSSEC will not send out an alert when a new file is added to the system.</p>
+
+<ol>
+<li><p>Open <code>ossec.conf</code> and scroll  down to the following section:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		ossec.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;syscheck&gt;
+  &lt;!-- Frequency that syscheck is executed - default to every <span class="m">22</span> hours --&gt;
+  &lt;frequency&gt;79200&lt;/frequency&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Modify the file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		ossec.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;syscheck&gt;
+  &lt;!-- Frequency that syscheck is executed - default to every <span class="m">22</span> hours --&gt;
+  &lt;frequency&gt;79200&lt;/frequency&gt;
+
+  &lt;alert_new_files&gt;yes&lt;/alert_new_files&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Note that the <code>&lt; frequency &gt;</code> is the interval that OSSEC performs a system check. During testing, you may reduce that setting to a lower number, like 900. Afterwards, it can be changed back to the default.</p></li>
+</ol>
+
+<h3 id="modify-directories-to-monitor">Modify Directories to Monitor</h3>
+
+<ol>
+<li><p>Open <code>ossec.conf</code>. Below the <code>&lt; frequency &gt;</code> setting is a list of system directories that OSSEC has been configured to monitor:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		ossec.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;!-- Directories to check  <span class="o">(</span>perform all possible verifications<span class="o">)</span> --&gt;
+&lt;directories <span class="nv">check_all</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>&gt;/etc,/usr/bin,/usr/sbin&lt;/directories&gt;
+&lt;directories <span class="nv">check_all</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>&gt;/bin,/sbin&lt;/directories&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>OSSEC can check the home directory and, if hosting a website on the server, monitor the website&rsquo;s data directory. For the specified directories, OSSEC can be configured to report changes in real-time:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		ossec.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;!-- Directories to check  <span class="o">(</span>perform all possible verifications<span class="o">)</span> --&gt;
+&lt;directories <span class="nv">report_changes</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span> <span class="nv">realtime</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span> <span class="nv">check_all</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>&gt;/etc,/usr/bin,/usr/sbin&lt;/directories&gt;
+&lt;directories <span class="nv">report_changes</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span> <span class="nv">realtime</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span> <span class="nv">check_all</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>&gt;/bin,/sbin&lt;/directories&gt;
+&lt;directories <span class="nv">report_changes</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span> <span class="nv">realtime</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span> <span class="nv">check_all</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>&gt;/home/username,/var/www&lt;/directories&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Another directory you may want to configure OSSEC to monitor is <code>/var/ossec</code>, OSSEC&rsquo;s installation directory. However, if monitored, OSSEC <strong>must</strong> be configured to ignore certain directories within <code>/var/ossec</code>, otherwise you risk running out of disk space.</p></li>
+</ol>
+
+<h3 id="modify-files-and-directories-to-ignore">Modify Files and Directories to Ignore</h3>
+
+<p>For a Linux system, the default list of files and directories to ignore are:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		ossec.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;!-- Files/directories to ignore --&gt;
+&lt;ignore&gt;/etc/mtab&lt;/ignore&gt;
+&lt;ignore&gt;/etc/mnttab&lt;/ignore&gt;
+&lt;ignore&gt;/etc/hosts.deny&lt;/ignore&gt;
+&lt;ignore&gt;/etc/mail/statistics&lt;/ignore&gt;
+&lt;ignore&gt;/etc/random-seed&lt;/ignore&gt;
+&lt;ignore&gt;/etc/adjtime&lt;/ignore&gt;
+&lt;ignore&gt;/etc/httpd/logs&lt;/ignore&gt;
+&lt;ignore&gt;/etc/utmpx&lt;/ignore&gt;
+&lt;ignore&gt;/etc/wtmpx&lt;/ignore&gt;
+&lt;ignore&gt;/etc/cups/certs&lt;/ignore&gt;
+&lt;ignore&gt;/etc/dumpdates&lt;/ignore&gt;
+&lt;ignore&gt;/etc/svc/volatile&lt;/ignore&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If OSSEC is configured to monitor <code>/var/ossec</code>, include the additional lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		ossec.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;ignore&gt;/var/ossec/logs&lt;/ignore&gt;
+&lt;ignore&gt;/var/ossec/queue&lt;/ignore&gt;
+&lt;ignore&gt;/var/ossec/var&lt;/ignore&gt;
+&lt;ignore&gt;/var/ossec/tmp&lt;/ignore&gt;
+&lt;ignore&gt;/var/ossec/stats&lt;/ignore&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="modify-active-response-block-times">Modify Active Response Block Times</h3>
+
+<p>OSSEC uses tcpwrappers (<code>host.deny</code>) and iptables to ban any IP addresses that trigger an alert. By default, such IP addresses are blocked for 600 seconds, or 10 minutes. This can be changed to a longer timeframe.</p>
+
+<p>To alter the timeframe of a ban, change the  <code>&lt; timeout &gt;</code> setting to suit. Note that it has to be in <strong>seconds</strong>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		ossec.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;!-- Active Response Config --&gt;
+&lt;active-response&gt;
+
+  &lt;command&gt;host-deny&lt;/command&gt;
+  &lt;location&gt;local&lt;/location&gt;
+  &lt;level&gt;6&lt;/level&gt;
+  &lt;timeout&gt;600&lt;/timeout&gt;
+&lt;/active-response&gt;
+
+
+&lt;active-response&gt;
+
+  &lt;command&gt;firewall-drop&lt;/command&gt;
+  &lt;location&gt;local&lt;/location&gt;
+  &lt;level&gt;6&lt;/level&gt;
+  &lt;timeout&gt;600&lt;/timeout&gt;
+&lt;/active-response&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>After making changes, save and close the file.</p>
+
+<h3 id="modify-rule-for-new-files">Modify Rule for New Files</h3>
+
+<ol>
+<li><p>Move to the <code>/var/ossec/rules</code> directory:</p>
+
+<pre><code>cd /var/ossec/rules
+</code></pre>
+
+<p>The rules are located in a series of XML files and all rule definitions are found in <code>ossec_rules.xml</code>, which should not be modified. All rule modifications must be made in <code>local_rules.xml</code>.</p></li>
+
+<li><p>The rule that fires on new files is rule number <strong>554</strong>. The chunk of code that defines that rule in <code>ossec_rules.xml</code> is:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		ossec_rules.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;rule <span class="nv">id</span><span class="o">=</span><span class="s2">&#34;554&#34;</span> <span class="nv">level</span><span class="o">=</span><span class="s2">&#34;0&#34;</span>&gt;
+  &lt;category&gt;ossec&lt;/category&gt;
+  &lt;decoded_as&gt;syscheck_new_entry&lt;/decoded_as&gt;
+  &lt;description&gt;File added to the system.&lt;/description&gt;
+  &lt;group&gt;syscheck,&lt;/group&gt;
+&lt;/rule&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Since OSSEC does not alert on rules that are <strong>level 0</strong>, that rule has to be modified in <code>local_rules.xml</code> so that OSSEC can fire when a new file is added to the system. The rule modification should be located between the <code>&lt; group &gt; ... &lt; /group &gt;</code> tags:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		local_rules.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;rule <span class="nv">id</span><span class="o">=</span><span class="s2">&#34;554&#34;</span> <span class="nv">level</span><span class="o">=</span><span class="s2">&#34;7&#34;</span> <span class="nv">overwrite</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>&gt;
+  &lt;category&gt;ossec&lt;/category&gt;
+  &lt;decoded_as&gt;syscheck_new_entry&lt;/decoded_as&gt;
+  &lt;description&gt;File added to the system.&lt;/description&gt;
+  &lt;group&gt;syscheck,&lt;/group&gt;
+&lt;/rule&gt;
+
+        &lt;/group&gt; &lt;!-- SYSLOG,LOCAL --&gt;
+
+
+        &lt;!-- EOF --&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save and close the file.</p></li>
+</ol>
+
+<h2 id="restarting-ossec">Restarting OSSEC</h2>
+
+<p>After any modification is made to OSSEC, it has to be restarted:</p>
+
+<pre><code>/var/ossec/bin/ossec-control restart
+</code></pre>
+
+<p>If it restarts with no errors, it will output the following:</p>
+
+<pre><code>Killing ossec-monitord ..
+Killing ossec-logcollector ..
+Killing ossec-syscheckd ..
+Killing ossec-analysisd ..
+Killing ossec-maild ..
+Killing ossec-execd ..
+OSSEC HIDS v2.8 Stopped
+Starting OSSEC HIDS v2.8 (by Trend Micro Inc.)...
+Started ossec-maild...
+Started ossec-execd...
+Started ossec-analysisd...
+Started ossec-logcollector...
+Started ossec-syscheckd...
+Started ossec-monitord...
+Completed.
+</code></pre>
+
+<p>Otherwise, you will receive a configuration error:</p>
+
+<pre><code>Starting OSSEC HIDS v2.8 (by Trend Micro Inc.)...
+ossec-analysisd: Configuration error. Exiting.
+</code></pre>
+
+<p>If this happens, check OSSEC&rsquo;s error log. It is advised to check the error log even if OSSEC restarts successfully, because may contain other errors that don&rsquo;t prevent OSSEC from restarting, but may need your attention. The error log file is <code>ossec.log</code> under the <code>/var/ossec/logs</code> directory.</p>
+
+<h2 id="what-to-expect">What to Expect</h2>
+
+<p>After making any final modifications and restarting OSSEC, you should receive another alert saying that OSSEC has started. If any rule is triggered after that, you will also receive similar alerts in your inbox:</p>
+
+<pre><code>OSSEC HIDS Notification.
+2015 Jan 30 09:57:06
+
+Received From: deft-&gt;syscheck
+Rule: 550 fired (level 7) -&gt; &quot;Integrity checksum changed.&quot;
+Portion of the log(s):
+
+Integrity checksum changed for: '/home/finid/sidebar.php'
+Size changed from '0' to '19'
+What changed:
+0a1
+
+    this is a php file
+
+Old md5sum was: 'd41d8cd98f00b204e9800998ecf8427e'
+New md5sum is : 'df4f22f84b5ceb2c31cbb391883f2c83'
+Old sha1sum was: 'da39a3ee5e6b4b0d3255bfef95601890afd80709'
+New sha1sum is : '297b920c943134074690344a3da83f19483a93ef'
+
+ --END OF NOTIFICATION
+</code></pre>
+
+<hr />
+
+<pre><code>OSSEC HIDS Notification.
+2015 Jan 30 09:26:02
+
+Received From: deft-&gt;netstat -tan |grep LISTEN |grep -v 127.0.0.1 | sort
+Rule: 533 fired (level 7) -&gt; &quot;Listened ports status (netstat) changed (new port opened or closed).&quot;
+Portion of the log(s):
+
+ossec: output: 'netstat -tan |grep LISTEN |grep -v 127.0.0.1 | sort':
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:43157           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN
+tcp6       0      0 :::111                  :::*                    LISTEN
+tcp6       0      0 ::1:25                  :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::53262                :::*                    LISTEN
+Previous output:
+ossec: output: 'netstat -tan |grep LISTEN |grep -v 127.0.0.1 | sort':
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:43157           0.0.0.0:*               LISTEN
+tcp6       0      0 :::111                  :::*                    LISTEN
+tcp6       0      0 ::1:25                  :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 :::53262                :::*                    LISTEN
+
+
+ --END OF NOTIFICATION
+</code></pre>
+
+<hr />
+
+<pre><code>OSSEC HIDS Notification.
+2015 Jan 30 09:57:54
+
+Received From: deft-&gt;syscheck
+Rule: 553 fired (level 7) -&gt; &quot;File deleted. Unable to retrieve checksum.&quot;
+Portion of the log(s):
+
+File '/home/user5/footer.php' was deleted. Unable to retrieve checksum.
+
+ --END OF NOTIFICATION
+</code></pre>
+
+<hr />
+
+<pre><code>OSSEC HIDS Notification.
+2015 Jan 30 09:19:16
+
+Received From: deft-&gt;/var/log/dpkg.log
+Rule: 2902 fired (level 7) -&gt; &quot;New dpkg (Debian Package) installed.&quot;
+Portion of the log(s):
+
+2015-01-30 09:19:14 status installed nginx-common:all 1.2.1-2.2+wheezy3
+
+
+ --END OF NOTIFICATION
+</code></pre>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.ossec.net">http://www.ossec.net/</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#download-and-verify-ossec">Download and Verify OSSEC</a></li>
+<li><a href="#install-ossec">Install OSSEC</a></li>
+<li><a href="#configure-ossec">Configure OSSEC</a>
+<ul>
+<li><a href="#customize-email-settings">Customize Email Settings</a></li>
+<li><a href="#configure-ossec-to-alert-on-new-files">Configure OSSEC to Alert on New Files</a></li>
+<li><a href="#modify-directories-to-monitor">Modify Directories to Monitor</a></li>
+<li><a href="#modify-files-and-directories-to-ignore">Modify Files and Directories to Ignore</a></li>
+<li><a href="#modify-active-response-block-times">Modify Active Response Block Times</a></li>
+<li><a href="#modify-rule-for-new-files">Modify Rule for New Files</a></li>
+</ul></li>
+<li><a href="#restarting-ossec">Restarting OSSEC</a></li>
+<li><a href="#what-to-expect">What to Expect</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

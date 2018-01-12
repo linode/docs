@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using Vagrant to Manage Linode Environments</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use Vagrant to manage development environments and content on Linode.">
+        <meta name="keywords" content="linode, vagrant, content management, management, automation, development, ruby, vagrantfile, api, apache">
+        
+        <meta property="og:title" content="Using Vagrant to Manage Linode Environments">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/configuration-management/vagrant-linode-environments/">
+        <meta property="og:description" content="Use Vagrant to manage development environments and content on Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/configuration-management/vagrant-linode-environments/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/configuration-management/">Configuration Management</a>
+  
+</li>
+
+
+<li>
+  
+  Using Vagrant to Manage Linode Environments
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using Vagrant to Manage Linode Environments</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-06-25T00:00:00Z">Thursday, June 25, 2015</time> by Elle Krout</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fvagrant-linode-environments%2f&via=linode&text=Using%20Vagrant%20to%20Manage%20Linode%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fvagrant-linode-environments%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fvagrant-linode-environments%2f&t=Using%20Vagrant%20to%20Manage%20Linode%20Environments" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/configuration-management/vagrant-linode-environments.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/configuration-management/vagrant-linode-environments.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><a href="http://www.vagrantup.com">Vagrant</a> is a configuration management tool that allows users to create portable and reproducible work environments. Vagrant excels at providing consistent, easy-to-configure servers that can be used to keep development environments consistent across all users. It is easy to both launch and tear down, and can be supplied to any part of a development team that may need an environment but does not have the means to configure one themselves. Often paired with providers such as Puppet, Salt, and Chef, it offers an easy solution to keeping a consistent workflow.</p>
+
+<p>Vagrant can be paired with Linode through the use of the <em>vagrant-linode</em> plugin to spawn and destroy Linode servers as needed. This guide will provide instructions on installing Vagrant, configuring the vagrant-linode plugin, and setting up a basic Apache server for testing.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ol>
+<li><p><a href="https://www.vagrantup.com/downloads.html">Install Vagrant</a> on your local computer or other workspace.</p></li>
+
+<li><p>Generate an API Key. This will be used to create Linodes based upon your Vagrant profile:</p>
+
+<ul>
+<li><p>Log in to the Linode Manager and select <strong>my profile</strong> to the upper right.</p></li>
+
+<li><p>Select the API Keys tab:</p>
+
+<p><a href="/docs/assets/linode-api-vagrant1.png"><img src="/docs/assets/linode-api-vagrant1-small.png" alt="Linode API" /></a></p></li>
+
+<li><p>Enter a label for your API Key and set an expiration time. Then click <strong>Create API Key</strong>.</p></li>
+
+<li><p>Your API Key will be output in a green box. <strong>The key will only be shown once</strong> so be sure to record it for later use:</p>
+
+<p><a href="/docs/assets/linode-api-vagrant2.png"><img src="/docs/assets/linode-api-vagrant2-small.png" alt="Linode API Key Generated" /></a></p></li>
+</ul></li>
+</ol>
+
+<h2 id="install-the-vagrant-linode-plugin">Install the vagrant-linode Plugin</h2>
+
+<ol>
+<li><p>From your workspace, create a directory for your project, and move into that directory:</p>
+
+<pre><code>mkdir ~/vagrant-linode
+cd vagrant-linode
+</code></pre></li>
+
+<li><p>Install the plugin:</p>
+
+<pre><code>vagrant plugin install vagrant-linode
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If using a Mac, it may request to install development tools. Select yes, then re-run the command.</div>
+</blockquote>
+</li>
+
+<li><p>From the <code>vagrant-linode</code> directory, create the Vagrantfile:</p>
+
+<pre><code>touch Vagrantfile
+</code></pre>
+
+<p>The <em>Vagrantfile</em> is used to describe, in code, the type of machine that Vagrant will create. It defines everything from the operating system to the users, to any applications that need to be initially installed to make one consistent work environment.</p></li>
+</ol>
+
+<h2 id="configure-the-vagrantfile">Configure the Vagrantfile</h2>
+
+<ol>
+<li><p>Open the Vagrantfile in your text editor of choice. In Ruby, define what version of Vagrant you are using. The <code>2</code> defines that it is Vagrant 1.1.0 leading up to Vagrant 2.0. <code>1</code> is any version of Vagrant below that:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/vagrant-linode/Vagrantfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>All code will take place between the <code>Vagrant.configure</code> and <code>end</code> lines.</p></li>
+
+<li><p>When creating a <em>guest machine</em> &ndash; the sever that will be created &ndash; Vagrant will create a username, password, and private key to access the machine. The default username and password is <code>vagrant</code>. Define your own parameters for the <code>username</code>, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the <a href="/docs/security/securing-your-server#create-an-authentication-key-pair">Securing Your Server</a> guide:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/vagrant-linode/Vagrantfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+
+  <span class="c1">## SSH Configuration</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">ssh</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;user&#39;</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">ssh</span><span class="o">.</span><span class="n">private_key_path</span> <span class="o">=</span> <span class="s1">&#39;~/.ssh/id_rsa&#39;</span>
+
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>If you choose to do so, you can also define your own password with the <code>config.ssh.password</code> setting.</p></li>
+
+<li><p>Define the Linode provider:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/vagrant-linode/Vagrantfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+
+  <span class="o">...</span>
+
+  <span class="c1"># Global Configuration</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span> <span class="ss">:linode</span> <span class="k">do</span> <span class="o">|</span><span class="n">provider</span><span class="p">,</span> <span class="n">override</span><span class="o">|</span>
+    <span class="n">override</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s1">&#39;linode&#39;</span>
+    <span class="n">override</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_url</span> <span class="o">=</span> <span class="s2">&#34;https://github.com/displague/vagrant-linode/raw/master/box/linode.box&#34;</span>
+    <span class="n">provider</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="s1">&#39;API-KEY&#39;</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Lines 6 defines the provider, and lines 7 and 8 define the <em>box</em>. Boxes are packages that include the basic requirements for a Vagrant environment to function. The supplied box is the <code>linode</code> box, created as part of the plugin. Replace the <code>API-KEY</code> with the key generated <a href="#prerequisites">above</a>.</p></li>
+
+<li><p>Choose your Linode&rsquo;s settings:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/vagrant-linode/Vagrantfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+
+  <span class="o">...</span>
+
+  <span class="c1"># Global Configuration</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span> <span class="ss">:linode</span> <span class="k">do</span> <span class="o">|</span><span class="n">provider</span><span class="p">,</span> <span class="n">override</span><span class="o">|</span>
+
+    <span class="o">...</span>
+
+    <span class="c1">#Linode Settings</span>
+    <span class="n">provider</span><span class="o">.</span><span class="n">distribution</span> <span class="o">=</span> <span class="s1">&#39;Ubuntu 14.04 LTS&#39;</span>
+    <span class="n">provider</span><span class="o">.</span><span class="n">datacenter</span> <span class="o">=</span> <span class="s1">&#39;newark&#39;</span>
+    <span class="n">provider</span><span class="o">.</span><span class="n">plan</span> <span class="o">=</span> <span class="s1">&#39;2048&#39;</span>
+    <span class="n">provider</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;vagrant-ubuntu-lts&#39;</span>
+
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this instance, a 2GB Ubuntu 14.04 LTS Linode is being created in the Newark data center. The <code>provider.label</code> is the name that the Linode will show up as in the Linode Manager.</p>
+
+<p>To see more options regarding the vagrant-linode plugin see the documentation on the plugin&rsquo;s <a href="https://github.com/displague/vagrant-linode">GitHub repository</a>.</p></li>
+</ol>
+
+<h2 id="set-up-the-vagrant-box">Set Up the Vagrant Box</h2>
+
+<p>Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the <a href="/docs/getting-started">Getting Started</a> guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.</p>
+
+<h3 id="configure-the-server">Configure the Server</h3>
+
+<ol>
+<li><p>Create a shell script called <code>setup.sh</code> to configure the Linode&rsquo;s hostname, set the proper timezone, and update the server. Replace <code>vagranttest</code> with your chosen hostname, and <code>EST</code> with your timezone.</p>
+
+<dl class="file">
+<dt>
+
+
+		~/vagrant-linode/setup.sh 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nb">echo</span> <span class="s2">&#34;vagranttest&#34;</span> &gt; /etc/hostname
+hostname -F /etc/hostname
+<span class="nv">ip</span><span class="o">=</span><span class="k">$(</span>ip addr show eth0 <span class="p">|</span> grep -Po <span class="s1">&#39;inet \K[\d.]+&#39;</span><span class="k">)</span>
+<span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$ip</span><span class="s2">   </span><span class="nv">$ip</span><span class="s2"> hostname&#34;</span> &gt;&gt; /etc/hosts
+ln -sf /usr/share/zoneinfo/EST /etc/localtime
+apt-get update <span class="o">&amp;&amp;</span> apt-get upgrade -y</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<ul>
+<li><p>Lines 2 and 3 define the hostname.</p></li>
+
+<li><p>Line 4 sets the variable <code>ip</code> to the Linode&rsquo;s IP address &ndash; since we will not know IP address until Vagrant launches the Linode.</p></li>
+
+<li><p>Line 5 inserts the IP address into the <code>/etc/hosts</code> file to define the fully-qualified domain name.</p>
+
+<ul>
+<li>Line 6 sets the timezone, and the final line updates the server and server packages.</li>
+</ul></li>
+</ul></li>
+
+<li><p>Within the Vagrantfile, call to the shell script you just created by adding the <code>config.vm.provision</code> method:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/vagrant-linode/Vagrantfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+
+<span class="o">...</span>
+
+  <span class="c1"># Shell Scripts</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span> <span class="ss">:shell</span><span class="p">,</span> <span class="ss">path</span><span class="p">:</span> <span class="s2">&#34;setup.sh&#34;</span>
+
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<h3 id="install-apache-and-sync-files">Install Apache and Sync Files</h3>
+
+<ol>
+<li><p>Create an installation script for Apache called <code>apache.sh</code>, and add the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/vagrant-linode/apache.sh 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>apt-get install apache2 -y
+mv /etc/apache2/ports.conf /etc/apache2/ports.conf.backup
+mv /etc/apache2/ports1.conf /etc/apache2/ports.conf
+a2dissite <span class="m">000</span>-default.conf
+a2ensite vhost.conf
+service apache2 reload</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<ul>
+<li><p>Line 2 installs Apache.</p></li>
+
+<li><p>Lines 3 &amp; 4 create a backup of the <code>ports.conf</code> file and replaces it with a file created below.</p></li>
+
+<li><p>Lines 5 &amp; 6 disable the default host file and enable the one we will create below. Apache is then reloaded to take the configuration changes.</p></li>
+</ul></li>
+
+<li><p>Add the shell script provisioner method to your Vagrantfile, under the line that references <code>setup.sh</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/vagrant-linode/Vagrantfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+
+<span class="o">...</span>
+
+  <span class="c1"># Shell Scripts</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span> <span class="ss">:shell</span><span class="p">,</span> <span class="ss">path</span><span class="p">:</span> <span class="s2">&#34;setup.sh&#34;</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span> <span class="ss">:shell</span><span class="p">,</span> <span class="ss">path</span><span class="p">:</span> <span class="s2">&#34;apache.sh&#34;</span>
+
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Create a new directory for Apache configuration files:</p>
+
+<pre><code>mkdir apache2
+</code></pre></li>
+
+<li><p>Because Vagrant is often used for development environments, we want to host Apache on a port other than 80. Create <code>ports1.conf</code>, as referenced in the shell script above. The port will be set to <strong>6789</strong>:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/vagrant-linode/apache2/ports1.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Listen</span> <span class="m">6789</span>
+
+<span class="nt">&lt;IfModule</span> <span class="s">ssl_module</span><span class="nt">&gt;</span>
+        <span class="nb">Listen</span> <span class="m">443</span>
+<span class="nt">&lt;/IfModule</span><span class="s"></span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;IfModule</span> <span class="s">mod_gnutls.c</span><span class="nt">&gt;</span>
+        <span class="nb">Listen</span> <span class="m">443</span>
+<span class="nt">&lt;/IfModule</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create a new directory under <code>apache2</code> called <code>sites-available</code>. Add a VirtualHosts file, <code>vhost.conf</code>, to this new directory:</p>
+
+<pre><code>mkdir sites-available
+</code></pre>
+
+<dl class="file">
+<dt>
+
+
+		~/vagrant-linode/apache2/sites-available/vhost.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;VirtualHost</span> <span class="s">*:6789</span><span class="nt">&gt;</span>
+        <span class="nb">ServerAdmin</span> webmaster@localhost
+        <span class="nb">DocumentRoot</span> <span class="sx">/var/www/html</span>
+        <span class="nb">ErrorLog</span> ${APACHE_LOG_DIR}/error.log
+        <span class="nb">CustomLog</span> ${APACHE_LOG_DIR}/access.log combined
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Return to the Vagrantfile, and use the <code>config.vm.synced_folder</code> method to sync the local directories with directories on the server:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/vagrant-linode/Vagrantfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+
+  <span class="o">...</span>
+
+  <span class="c1"># Synced Folders</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;/vagrant&#39;</span><span class="p">,</span> <span class="ss">disabled</span><span class="p">:</span> <span class="kp">true</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span> <span class="s1">&#39;./apache2&#39;</span><span class="p">,</span> <span class="s1">&#39;/etc/apache2&#39;</span><span class="p">,</span> <span class="ss">disabled</span><span class="p">:</span> <span class="kp">false</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span> <span class="s1">&#39;./webfiles&#39;</span><span class="p">,</span> <span class="s1">&#39;/var/www/html&#39;</span>
+
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<ul>
+<li><p>Line 5 disables syncing for the root folders.</p></li>
+
+<li><p>Line 6 defines the locally-hosted <code>apache2</code> folder (<code>'./apache2'</code>) and links it to the <code>/etc/apache2</code> directory on the Linode. <code>disabled: false</code> ensures that it will sync.</p></li>
+
+<li><p>Line 7 does the same with a yet-to-be-created <code>./webfiles</code> directory that can be used to add any website files before booting the instance.</p></li>
+</ul></li>
+
+<li><p>Create the <code>webfiles</code> folder in your <code>vagrant-linode</code> directory:</p>
+
+<pre><code>mkdir ~/vagrant-linode/webfiles
+</code></pre>
+
+<p>Add to this directory any files you want the Linode to serve over HTTP.</p></li>
+</ol>
+
+<h2 id="boot-an-instance">Boot an Instance</h2>
+
+<p>With the Vagrantfile configured, and scripts and files created, it&rsquo;s now time to create the guest machine and check that it&rsquo;s running properly.</p>
+
+<ol>
+<li><p>From your workstation, boot the instance:</p>
+
+<pre><code>vagrant up
+</code></pre>
+
+<p>It will run through the installation process, sync the directories, and run the shell scripts.</p></li>
+
+<li><p>Log into the newly-created Linode:</p>
+
+<pre><code>vagrant ssh
+</code></pre></li>
+
+<li><p>To ensure that Apache is running properly, check the status:</p>
+
+<pre><code>service apache2 status
+</code></pre>
+
+<p>It should output:</p>
+
+<pre><code> * apache2 is running
+</code></pre></li>
+
+<li><p>To see that the environment is accesible online, check for the IP address:</p>
+
+<pre><code>hostname -i
+</code></pre>
+
+<p>Then go to your chosen web browser and navigate to your ip address with <code>:6789</code> appended to the end. You should see Apache2 Ubuntu Default Page.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you wish to shut down or remove the Linode from your workspace you can do so through one of the following commands:</p>
+
+<ul>
+<li><code>vagrant halt</code> will power down the Linode through the shutdown mechanism. You can then run <code>vagrant up</code> again to power on the Linode.</li>
+<li><code>vagrant destroy</code> will remove the Linode entirely from your account, removing anything that was created during the Vagrant up process or added later to the server.</li>
+</ul>
+</div>
+</blockquote>
+</li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.vagrantup.com">Vagrant</a></li>
+
+<li><a href="https://github.com/displague/vagrant-linode">vagrant-linode Plugin</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/frameworks/sinatra-framework-and-nginx-on-fedora-14/">Sinatra Framework and nginx on Fedora 14 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/">Sinatra Framework and nginx on Debian 6 (Squeeze) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/sinatra-framework-and-nginx-on-debian-5-lenny/">Sinatra Framework and nginx on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache-tips-and-tricks/managing-resources-with-apache-modalias/">Managing Resources with Apache mod_alias - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/use-a-linode-for-web-development-on-remote-devices/">Use a Linode for Web Development on Remote Devices</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#install-the-vagrant-linode-plugin">Install the vagrant-linode Plugin</a></li>
+<li><a href="#configure-the-vagrantfile">Configure the Vagrantfile</a></li>
+<li><a href="#set-up-the-vagrant-box">Set Up the Vagrant Box</a>
+<ul>
+<li><a href="#configure-the-server">Configure the Server</a></li>
+<li><a href="#install-apache-and-sync-files">Install Apache and Sync Files</a></li>
+</ul></li>
+<li><a href="#boot-an-instance">Boot an Instance</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

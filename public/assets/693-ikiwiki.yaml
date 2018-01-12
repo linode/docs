@@ -1,0 +1,277 @@
+# IkiWiki::Setup::Yaml - YAML formatted setup file
+# 
+# Setup file for ikiwiki. Provided as part of Linode Guides & Tutorials [http://www.linode.com/docs]
+# 
+# Edit this file, particularly the referenced domains and the "destdir" specified
+# to suit the needs of your specific deployment
+# 
+# To generate ikiwiki, configure the repository as specified in this
+# document and issue the following command:
+# 
+#     ikiwiki --setup ikiwiki.yaml
+# 
+# Remember to re-run ikiwiki --setup any time you edit this file.
+# 
+
+
+# name of the wiki
+wikiname: example wiki
+# contact email for wiki
+adminemail: username@example.com
+# users who are banned from the wiki
+banned_users: []
+# users who are wiki admins (openid or usernames)
+adminuser:
+  - 
+# where the source of the wiki is located
+srcdir: /home/username/wiki/source
+# where to build the wiki
+destdir: /srv/www/example.com/public_html/
+# base url to the wiki
+url: http://example.com
+# url to the ikiwiki.cgi
+cgiurl: http://example.com/ikiwiki.cgi
+# filename of cgi wrapper to generate
+cgi_wrapper: /srv/www/example.com/public_html/ikiwiki.cgi
+# mode for cgi_wrapper (can safely be made suid)
+cgi_wrappermode: 6755
+# rcs backend to use
+rcs: git
+# plugins to add to the default configuration
+add_plugins:
+  - goodstuff
+  - aggregate
+  - htmlscrubber
+  - toggle
+  - inline
+  - openid
+  - search
+  - lockedit
+# plugins to disable
+disable_plugins:
+  - passwordauth
+  - anonk
+  - cammelcase 
+# additional directory to search for template files
+templatedir: /home/username/wiki/templates/
+# base wiki source location
+underlaydir: /home/username/wiki/basewiki/
+# display verbose messages?
+verbose: 1
+# create output files named page/index.html?
+usedirs: 1
+# use '!'-prefixed preprocessor directives?
+prefix_directives: 1
+# use page/index.mdwn source files
+indexpages: 0
+# enable Discussion pages?
+discussion: 0
+# name of Discussion pages
+discussionpage: Discussion
+# generate HTML5? (experimental)
+html5: 0
+# only send cookies over SSL connections?
+sslcookie: 0
+# extension to use for new pages
+default_pageext: mdwn
+# extension to use for html files
+htmlext: html
+# strftime format string to display date
+timeformat: '%c'
+# UTF-8 locale to use
+locale: ''
+# put user pages below specified page
+userdir: users
+# how many backlinks to show before hiding excess (0 to show all)
+numbacklinks: 0
+# attempt to hardlink source files? (optimisation for large files)
+hardlink: 0
+# force ikiwiki to use a particular umask
+umask: 18
+# group for wrappers to run in
+wrappergroup: username
+# extra library and plugin directory
+libdir: /home/username/wiki/source/.ikiwiki/
+# environment variables
+ENV: {}
+# regexp of normally excluded files to include
+#include: '^\.htaccess$'
+# regexp of files that should be skipped
+#exclude: '^(*\.private|Makefile)$'
+# specifies the characters that are allowed in source filenames
+wiki_file_chars: '-[:alnum:]+/.:_'
+# allow symlinks in the path leading to the srcdir (potentially insecure)
+allow_symlinks_before_srcdir: 1
+
+######################################################################
+# core plugins
+#   (editpage, git, htmlscrubber, inline, link, meta)
+######################################################################
+
+# git plugin
+# git hook to generate
+git_wrapper: /srv/git/wiki.git/hooks/post-update
+# mode for git_wrapper (can safely be made suid)
+git_wrappermode: 06755
+# git pre-receive hook to generate
+#git_test_receive_wrapper: /git/wiki.git/hooks/pre-receive
+# unix users whose commits should be checked by the pre-receive hook
+#untrusted_committers: []
+# gitweb url to show file history ([[file]] substituted)
+historyurl: 'http://git.example.com/?p=wiki.git;a=history;f=[[file]]'
+# gitweb url to show a diff ([[file]], [[sha1_to]], [[sha1_from]], [[sha1_commit]], and [[sha1_parent]] substituted)
+diffurl: 'http://git.example.com/git/?p=wiki.git;a=blobdiff;f=[[file]];h=[[sha1_to]];hp=[[sha1_from]];hb=[[sha1_commit]];hpb=[[sha1_parent]]'
+# where to pull and push changes (set to empty string to disable)
+gitorigin_branch: origin
+# branch that the wiki is stored in
+gitmaster_branch: master
+
+# htmlscrubber plugin
+# PageSpec specifying pages not to scrub
+#htmlscrubber_skip: '!*/Discussion'
+
+# inline plugin
+# enable rss feeds by default?
+rss: 1
+# enable atom feeds by default?
+atom: 1
+# allow rss feeds to be used?
+allowrss: 1
+# allow atom feeds to be used?
+allowatom: 1
+# urls to ping (using XML-RPC) on feed update
+pingurl: []
+
+######################################################################
+# auth plugins
+#   (anonok, blogspam, httpauth, lockedit, moderatedcomments,
+#    opendiscussion, openid, signinedit)
+######################################################################
+
+# anonok plugin
+# PageSpec to limit which pages anonymous users can edit
+anonok_pagespec: '*/discussion'
+
+# blogspam plugin
+# PageSpec of pages to check for spam
+#blogspam_pagespec: postcomment(*)
+# options to send to blogspam server
+#blogspam_options: 'blacklist=1.2.3.4,blacklist=8.7.6.5,max-links=10'
+# blogspam server XML-RPC url
+#blogspam_server: ''
+
+# httpauth plugin
+# url to redirect to when authentication is needed
+#cgiauthurl: http://example.com/wiki/auth/ikiwiki.cgi
+# PageSpec of pages where only httpauth will be used for authentication
+#httpauth_pagespec: '!*/Discussion'
+
+# lockedit plugin
+# PageSpec controlling which pages are locked
+locked_pages: ''
+
+# moderatedcomments plugin
+# PageSpec matching users or comment locations to moderate
+#moderate_pagespec: '*'
+
+######################################################################
+# format plugins
+#   (creole, highlight, hnb, html, mdwn, otl, rawhtml, textile, txt)
+######################################################################
+
+# highlight plugin
+# types of source files to syntax highlight
+#tohighlight: .c .h .cpp .pl .py Makefile:make
+
+# mdwn plugin
+# enable multimarkdown features?
+multimarkdown: 0
+
+######################################################################
+# web plugins
+#   (attachment, comments, editdiff, edittemplate, getsource, google,
+#    mirrorlist, remove, rename, repolist, search, websetup, wmd)
+######################################################################
+
+# attachment plugin
+# enhanced PageSpec specifying what attachments are allowed
+#allowed_attachments: virusfree() and mimetype(image/*) and maxsize(50kb)
+# virus checker program (reads STDIN, returns nonzero if virus found)
+#virus_checker: clamdscan -
+
+# comments plugin
+# PageSpec of pages where comments are allowed
+#comments_pagespec: blog/* and !*/Discussion
+# PageSpec of pages where posting new comments is not allowed
+#comments_closed_pagespec: blog/controversial or blog/flamewar
+# Base name for comments, e.g. "comment_" for pages like "sandbox/comment_12"
+#comments_pagename: ''
+# Interpret directives in comments?
+#comments_allowdirectives: 0
+# Allow anonymous commenters to set an author name?
+#comments_allowauthor: 0
+# commit comments to the VCS
+#comments_commit: 1
+
+# getsource plugin
+# Mime type for returned source.
+#getsource_mimetype: text/plain; charset=utf-8
+
+# mirrorlist plugin
+# list of mirrors
+#mirrorlist: {}
+
+# repolist plugin
+# URIs of repositories containing the wiki's source
+repositories:
+  - http://git.example.com/git/wiki.git
+
+# search plugin
+# path to the omega cgi program
+omega_cgi: /usr/lib/cgi-bin/omega/omega
+
+######################################################################
+# widget plugins
+#   (calendar, color, conditional, cutpaste, date, format, fortune,
+#    graphviz, haiku, img, linkmap, listdirectives, map, more, orphans,
+#    pagecount, pagestats, poll, polygen, postsparkline, progress,
+#    shortcut, sparkline, table, template, teximg, toc, toggle, version)
+######################################################################
+
+######################################################################
+# other plugins
+#   (aggregate, autoindex, brokenlinks, camelcase, ddate, embed, favicon,
+#    goodstuff, htmlbalance, localstyle, pagetemplate, pingee, pinger,
+#    prettydate, recentchanges, recentchangesdiff, relativedate, rsync,
+#    sidebar, smiley, sortnaturally, tag, testpagespec, underlay)
+######################################################################
+
+# aggregate plugin
+# enable aggregation to internal pages?
+aggregateinternal: 1
+# allow aggregation to be triggered via the web?
+aggregate_webtrigger: 0
+
+# pinger plugin
+# how many seconds to try pinging before timing out
+#pinger_timeout: 15
+
+# prettydate plugin
+# format to use to display date
+prettydateformat: '%X, %B %o, %Y'
+
+# recentchanges plugin
+# name of the recentchanges page
+recentchangespage: recentchanges
+# number of changes to track
+recentchangesnum: 100
+
+# sidebar plugin
+# show sidebar page on all pages?
+#global_sidebars: 1
+
+# tag plugin
+# parent page tags are located under
+tagbase: tag
+# autocreate new tag pages?
+tag_autocreate: 1

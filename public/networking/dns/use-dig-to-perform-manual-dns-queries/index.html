@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use dig to Perform Manual DNS Queries</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use the dig utility to perform DNS queries at the command line.">
+        <meta name="keywords" content="dig, dns, troubleshooting, domain names">
+        
+        <meta property="og:title" content="Use dig to Perform Manual DNS Queries">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/dns/use-dig-to-perform-manual-dns-queries/">
+        <meta property="og:description" content="Use the dig utility to perform DNS queries at the command line.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/dns/use-dig-to-perform-manual-dns-queries/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/dns/">DNS</a>
+  
+</li>
+
+
+<li>
+  
+  Use dig to Perform Manual DNS Queries
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use dig to Perform Manual DNS Queries</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-04T00:00:00Z">Wednesday, October 4, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdns%2fuse-dig-to-perform-manual-dns-queries%2f&via=linode&text=Use%20dig%20to%20Perform%20Manual%20DNS%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdns%2fuse-dig-to-perform-manual-dns-queries%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdns%2fuse-dig-to-perform-manual-dns-queries%2f&t=Use%20dig%20to%20Perform%20Manual%20DNS%20Queries" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/dns/use-dig-to-perform-manual-dns-queries.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/dns/use-dig-to-perform-manual-dns-queries.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/use-dig-to-perform-manual-dns-queries.jpg" alt="Use dig to Perform Manual DNS Queries" title="Use dig to Perform Manual DNS Queries" /></p>
+
+<h2 id="what-is-dig">What is dig?</h2>
+
+<p><code>dig</code> is a command line domain name system (DNS) querying utility that allows you to diagnose issues with domain name resolution.</p>
+
+<h2 id="install-dig">Install dig</h2>
+
+<p><code>dig</code> is part of a collection of DNS utilities often packaged with the DNS server &ldquo;BIND&rdquo;. You can install these utilities by issuing the appropriate command for your Linux distribution. For users of Debian and Ubuntu systems, use the following command:</p>
+
+<pre><code>apt-get install dnsutils
+</code></pre>
+
+<p>Users of CentOS and Fedora systems can use the following command:</p>
+
+<pre><code>yum install bind-utils
+</code></pre>
+
+<p>In Arch Linux, use the following command:</p>
+
+<pre><code>pacman -S dnsutils
+</code></pre>
+
+<h2 id="how-to-use-dig">How to Use dig</h2>
+
+<p>Consider the following basic <code>dig</code> output:</p>
+
+<pre><code>$ dig example.com
+
+; &lt;&lt;&gt;&gt; DiG 9.6.1 &lt;&lt;&gt;&gt; example.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 11982
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;example.com.               IN      A
+
+;; ANSWER SECTION:
+example.com.         86400  IN      A       107.92.2.7
+
+;; Query time: 54 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Tue Aug 24 14: 2010
+;; MSG SIZE  rcvd: 57
+</code></pre>
+
+<p>There are a number of aspects of the DNS query that we can see from this output. The query returns a successful result of <code>NOERROR</code> and <code>dig</code> is able to retrieve an &ldquo;A Record&rdquo; for the name <code>example.com</code>, which resolves to the IP address <code>107.92.2.7</code>. <code>dig</code> concludes with a number of data points regarding the query itself including the DNS resolver used (<code>192.168.1.1</code>), the amount of time required to complete the query, and the size of the query response.</p>
+
+<p>To query for a different kind of DNS record, both of the following commands will produce the same output:</p>
+
+<pre><code>$ dig example.com mx
+$ dig mx example.com
+
+; &lt;&lt;&gt;&gt; DiG 9.6.1 &lt;&lt;&gt;&gt; mx example.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 52563
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;example.com.       IN      MX
+
+;; ANSWER SECTION:
+example.com. 86400  IN      MX      10 example.com.
+
+;; Query time: 53 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Tue Aug 24 15:14:05 2010
+;; MSG SIZE  rcvd: 57
+</code></pre>
+
+<p>If you attempt to query a domain that doesn&rsquo;t exist, as is the case with <code>nonextant.example.com</code>, you will see a response that resembles the following:</p>
+
+<pre><code>$ dig nonextant.example.com
+
+; &lt;&lt;&gt;&gt; DiG 9.6.1 &lt;&lt;&gt;&gt; nonextant.example.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NXDOMAIN, id: 53119
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;nonextant.example.com. IN    A
+
+;; AUTHORITY SECTION:
+example.com. 10800  IN      SOA     ns1.linode.com. username.example.com. 2010051349 14400 14400 1209600 86400
+
+;; Query time: 91 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Tue Aug 24 15:19:11 2010
+;; MSG SIZE  rcvd: 100
+</code></pre>
+
+<p>In this example, the query returns the status <code>NXDOMAIN</code> and the <code>SOA</code> or &ldquo;Start of Authority&rdquo; record that describes global values in every authoritative DNS zone. You may also occasionally see records that contain multiple A records. In these cases, multiple hosts are able to respond for a single name. See the following example:</p>
+
+<pre><code>$ dig example.com
+
+; &lt;&lt;&gt;&gt; DiG 9.6.1 &lt;&lt;&gt;&gt; example.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 11982
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;example.com.               IN      A
+
+;; ANSWER SECTION:
+example.com.         86400  IN      A       107.92.2.7
+example.com.         86400  IN      A       107.92.2.9
+example.com.         86400  IN      A       107.92.2.13
+
+;; Query time: 54 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Tue Aug 24 14: 2010
+;; MSG SIZE  rcvd: 57
+</code></pre>
+
+<h2 id="use-dig-to-trace-a-dns-query">Use dig to Trace a DNS Query</h2>
+
+<p>With the <code>+trace</code> option, <code>dig</code> will provide output that allows you follow each successive hierarchical step that the query takes:</p>
+
+<pre><code>dig +trace www.example.com
+
+; &lt;&lt;&gt;&gt; DiG 9.6.1 &lt;&lt;&gt;&gt; +trace www.example.com
+;; global options: +cmd
+.                       305393  IN      NS      m.root-servers.net.
+.                       305393  IN      NS      e.root-servers.net.
+.                       305393  IN      NS      f.root-servers.net.
+.                       305393  IN      NS      l.root-servers.net.
+.                       305393  IN      NS      k.root-servers.net.
+.                       305393  IN      NS      c.root-servers.net.
+.                       305393  IN      NS      i.root-servers.net.
+.                       305393  IN      NS      j.root-servers.net.
+.                       305393  IN      NS      g.root-servers.net.
+.                       305393  IN      NS      h.root-servers.net.
+.                       305393  IN      NS      a.root-servers.net.
+.                       305393  IN      NS      b.root-servers.net.
+.                       305393  IN      NS      d.root-servers.net.
+;; Received 512 bytes from 192.168.1.1#53(192.168.1.1) in 19 ms
+
+com.                    172800  IN      NS      a.gtld-servers.net.
+com.                    172800  IN      NS      b.gtld-servers.net.
+com.                    172800  IN      NS      c.gtld-servers.net.
+com.                    172800  IN      NS      d.gtld-servers.net.
+com.                    172800  IN      NS      e.gtld-servers.net.
+com.                    172800  IN      NS      f.gtld-servers.net.
+com.                    172800  IN      NS      g.gtld-servers.net.
+com.                    172800  IN      NS      h.gtld-servers.net.
+com.                    172800  IN      NS      i.gtld-servers.net.
+com.                    172800  IN      NS      j.gtld-servers.net.
+com.                    172800  IN      NS      k.gtld-servers.net.
+com.                    172800  IN      NS      l.gtld-servers.net.
+com.                    172800  IN      NS      m.gtld-servers.net.
+;; Received 504 bytes from 202.12.27.33#53(m.root-servers.net) in 109 ms
+
+example.com.        172800  IN      NS      ns1.linode.com.
+example.com.        172800  IN      NS      ns2.linode.com.
+example.com.        172800  IN      NS      ns3.linode.com.
+;; Received 150 bytes from 192.52.178.30#53(k.gtld-servers.net) in 106 ms
+
+www.example.com.     86400  IN      A       107.92.2.7
+www.example.com.     86400  IN      NS      ns3.linode.com.
+www.example.com.     86400  IN      NS      ns4.linode.com.
+www.example.com.     86400  IN      NS      ns5.linode.com.
+www.example.com.     86400  IN      NS      ns1.linode.com.
+www.example.com.     86400  IN      NS      ns2.linode.com.
+;; Received 234 bytes from 65.19.178.10#53(ns2.linode.com) in 96 ms
+</code></pre>
+
+<p>This example traces a DNS query for the domain <code>www.example.com</code>. This ultimately resolves to the IP address <code>107.92.2.7</code>. DNS queries start at the end of the domain with the root-level <code>.</code>, and continue from right to left until a DNS server is able to provide an authoritative A record.</p>
+
+<p>DNS traces help you determine if DNS authority has delegated properly and if DNS &ldquo;glue&rdquo; records are leading to an incorrect resolution. DNS traces also provide information on how long queries take to complete and the specific servers that provide intermediate records.</p>
+
+<h2 id="use-dig-to-target-a-specific-dns-server">Use dig to Target a Specific DNS Server</h2>
+
+<p>Any DNS server can publish records for any domain; however, in normal use, DNS servers are only queried for records that have had authority delegated to them. You can use <code>dig</code> to query arbitrary DNS servers for records that they might not have been delegated authority, as in the following example:</p>
+
+<pre><code>$ dig @ns1.linode.com example.com
+
+; &lt;&lt;&gt;&gt; DiG 9.7.1-P2 &lt;&lt;&gt;&gt; @ns1.linode.com example.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 35939
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 5, ADDITIONAL: 5
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;example.com.               IN      A
+
+;; ANSWER SECTION:
+example.com.        86400   IN      A       107.92.2.7
+
+;; AUTHORITY SECTION:
+example.com.        86400   IN      NS      ns3.linode.com.
+example.com.      86400   IN      NS      ns2.linode.com.
+example.com.      86400   IN      NS      ns1.linode.com.
+example.com.      86400   IN      NS      ns5.linode.com.
+example.com.        86400     IN      NS      ns4.linode.com.
+
+;; ADDITIONAL SECTION:
+ns1.linode.com.         86400   IN      A       69.93.127.10
+ns2.linode.com.         86400   IN      A       65.19.178.10
+ns3.linode.com.         86400   IN      A       75.127.96.10
+ns4.linode.com.         86400   IN      A       207.192.70.10
+ns5.linode.com.         86400   IN      A       109.74.194.10
+
+;; Query time: 55 msec
+;; SERVER: 69.93.127.10#53(69.93.127.10)
+;; WHEN: Wed Aug 25 11:30:20 2010
+;; MSG SIZE  rcvd: 234
+</code></pre>
+
+<p>Specify the name of the server that you wish to query as an argument to the <code>dig</code> command formatted as <code>@[server]</code>, where <code>[server]</code> is the name or address of the IP DNS server.</p>
+
+<h2 id="use-dig-to-retrieve-different-record-types">Use dig to Retrieve Different Record Types</h2>
+
+<p>Specify a different type of DNS record by adding that record type (e.g. AAAA, MX, TXT, or SRV) to the <code>dig</code> command. Consider the following example of a query for SRV records:</p>
+
+<pre><code>$ dig srv _jabber._tcp.example.com
+
+; &lt;&lt;&gt;&gt; DiG 9.7.1-P2 &lt;&lt;&gt;&gt; srv _jabber._tcp.example.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 33643
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;_jabber._tcp.example.com.      IN      SRV
+
+;; ANSWER SECTION:
+_jabber._tcp.example.com. 300   IN      SRV     0 0 5269 hostname.example.com
+
+;; Query time: 53 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Wed Aug 25 12:40:13 2010
+;; MSG SIZE  rcvd: 90
+</code></pre>
+
+<h2 id="use-dig-to-generate-condensed-output">Use dig to Generate Condensed Output</h2>
+
+<p>Using the <code>+short</code> modifier after the dig command abbreviates the output of <code>dig</code>:</p>
+
+<pre><code>$ dig example.com +short
+207.192.72.27
+</code></pre>
+
+<p>You can combine the <code>+short</code> modifier with other dig commands to generate output that may be more useful in scripts as follows:</p>
+
+<pre><code>$ dig mx example.com +short
+10 mail.example.com.
+
+$ dig +trace +short example.com
+NS a.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS b.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS d.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS m.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS e.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS f.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS l.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS k.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS c.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS i.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS j.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS g.root-servers.net. from server 192.168.1.1 in 18 ms.
+NS h.root-servers.net. from server 192.168.1.1 in 18 ms.
+A 107.92.2.7 from server ns2.linode.com in 94 ms.
+
+$ dig soa +short example.com
+ns1.linode.com. username.example.com. 2010051349 14400 14400 1209600 86400
+
+$ dig @ns2.linode.com ns +short example.com
+ns5.linode.com.
+ns1.linode.com.
+ns2.linode.com.
+ns3.linode.com.
+ns4.linode.com.
+</code></pre>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/add-caa-dns-records/">Add CAA Records in the Linode Manager</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/">Configure SPF and DKIM With Postfix on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/dns/previewing-websites-without-dns/">Previewing Websites Without DNS</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/longview/longview/">Longview</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-12-04-lts-precise-pangolin/">Use Unbound for Local DNS Resolution on Ubuntu 12.04 LTS (Precise Pangolin) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-dig">What is dig?</a></li>
+<li><a href="#install-dig">Install dig</a></li>
+<li><a href="#how-to-use-dig">How to Use dig</a></li>
+<li><a href="#use-dig-to-trace-a-dns-query">Use dig to Trace a DNS Query</a></li>
+<li><a href="#use-dig-to-target-a-specific-dns-server">Use dig to Target a Specific DNS Server</a></li>
+<li><a href="#use-dig-to-retrieve-different-record-types">Use dig to Retrieve Different Record Types</a></li>
+<li><a href="#use-dig-to-generate-condensed-output">Use dig to Generate Condensed Output</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

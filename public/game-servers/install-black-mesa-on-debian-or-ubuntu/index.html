@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Black Mesa on Debian or Ubuntu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install Black Mesa on Debian or Ubuntu">
+        <meta name="keywords" content="black mesa, steam, steamcmd, sourcemod, metamod">
+        
+        <meta property="og:title" content="Install Black Mesa on Debian or Ubuntu">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/game-servers/install-black-mesa-on-debian-or-ubuntu/">
+        <meta property="og:description" content="Install Black Mesa on Debian or Ubuntu">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/game-servers/install-black-mesa-on-debian-or-ubuntu/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/game-servers/">Game Servers</a>
+  
+</li>
+
+
+<li>
+  
+  Install Black Mesa on Debian or Ubuntu
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Black Mesa on Debian or Ubuntu</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-02-26T00:00:00Z">Friday, February 26, 2016</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/davidebeatrici">Davide Beatrici
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2finstall-black-mesa-on-debian-or-ubuntu%2f&via=linode&text=Install%20Black%20Mesa%20on%20Debian%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2finstall-black-mesa-on-debian-or-ubuntu%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2finstall-black-mesa-on-debian-or-ubuntu%2f&t=Install%20Black%20Mesa%20on%20Debian%20or%20Ubuntu" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/game-servers/install-black-mesa-on-debian-or-ubuntu.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/game-servers/install-black-mesa-on-debian-or-ubuntu.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>This guide will show you how to set up your own <a href="https://blackmesasource.com/">Black Mesa</a> server on a Linode running Debian or Ubuntu.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>You will need a <a href="http://store.steampowered.com">Steam</a> account and a copy of <a href="http://store.steampowered.com/app/362890/">Black Mesa</a>.</p></li>
+
+<li><p>Complete our guide: <a href="/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server">Install SteamCMD for a Steam Game Server</a>. This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="prerequisites-for-black-mesa">Prerequisites for Black Mesa</h2>
+
+<p>From the SteamCMD guide, one additional step is needed specifically for Black Mesa.</p>
+
+<ol>
+<li><p>Add two firewall rules to slightly extend the port range available to the game. This command assumes that you have <strong>only</strong> the iptables rules in place from the SteamCMD guide.</p>
+
+<pre><code>sudo iptables -R INPUT 5 -p udp -m udp --sport 26900:27030 --dport 1025:65355 -j ACCEPT
+sudo iptables -I INPUT 7 -p udp -m udp --dport 26900:27030 -j ACCEPT
+</code></pre></li>
+</ol>
+
+<h2 id="install-black-mesa-dedicated-server">Install Black Mesa, Dedicated Server</h2>
+
+<ol>
+<li><p>Execute SteamCMD:</p>
+
+<pre><code>cd ~/Steam &amp;&amp; ./steamcmd.sh
+</code></pre></li>
+
+<li><p>Login as anonymous:</p>
+
+<pre><code>login anonymous
+</code></pre></li>
+
+<li><p>Download the server:</p>
+
+<pre><code>app_update 346680 validate
+</code></pre></li>
+
+<li><p>Exit from SteamCMD:</p>
+
+<pre><code>quit
+</code></pre></li>
+</ol>
+
+<h2 id="run-black-mesa-dedicated-server">Run Black Mesa, Dedicated Server</h2>
+
+<ol>
+<li><p>Go into the Black Mesa Dedicated Server folder:</p>
+
+<pre><code>cd &quot;steamapps/common/Black Mesa Dedicated Server&quot;
+</code></pre></li>
+
+<li><p>Run the Server:</p>
+
+<pre><code>./srcds_run -game bms +hostname &quot;My Linode&quot; +map gasworks +maxplayers 24
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>The <strong>game</strong> parameter specifies the game&rsquo;s files directory; don&rsquo;t change it. This is the only parameter you can&rsquo;t write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br><br>
+The <strong>hostname</strong> parameter specifies your server&rsquo;s name in the browser list. By default it&rsquo;s specified in server.cfg, so the +hostname parameter is overridden by it.<br><br>
+The <strong>map</strong> parameter specifies the map with which the server needs to start. You must write the name of the map file without the prefix.<br><br>
+The <strong>maxplayers</strong> parameter specifies the maximum number of players allowed to play on the server.<br></p>
+
+<p>You can read the entire list of parameters on the <a href="https://developer.valvesoftware.com/wiki/Command_Line_Options">Valve Wiki</a>.</p>
+</div>
+</blockquote>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>To keep the server running, execute it using <a href="/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions">Screen</a>:</p>
+
+<pre><code>screen ./srcds_run -game bms +map gasworks +maxplayers 24
+</code></pre>
+</div>
+</blockquote>
+
+
+<h2 id="configure-a-black-mesa-dedicated-server">Configure a Black Mesa Dedicated Server</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>At the time of writing this guide, Black Mesa has yet to share with customers any official documentation regarding configurations.</div>
+</blockquote>
+
+
+<h3 id="server-cfg">Server.cfg</h3>
+
+<p>The <strong>server.cfg</strong> file contains the settings of your server. It is not needed because you can start the server every time by specifying desidered values using parameters.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/server.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// Black Mesa server.cfg file
+</span><span class="c1"></span><span class="n">hostname</span> <span class="s">&#34;Black Mesa: Deathmatch&#34;</span> <span class="o">--&gt;</span> <span class="n">Your</span> <span class="n">server</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">name</span><span class="o">.</span>
+<span class="n">mp_timelimit</span> <span class="n">900</span>                  <span class="o">--&gt;</span> <span class="n">Round</span> <span class="n">time</span> <span class="n">limit</span><span class="o">.</span>
+<span class="n">mp_warmup_time</span> <span class="n">30</span>                 <span class="o">--&gt;</span> <span class="n">Time</span> <span class="n">before</span> <span class="n">the</span> <span class="n">match</span> <span class="n">starts</span><span class="o">.</span>
+<span class="c1">// sv_lan 0                       --&gt; LAN Mode. (0 = disabled|1 = enabled).
+</span><span class="c1">// rcon_password                  --&gt; The RCON password to login as admin to send commands to your server while you&#39;re in-game.
+</span><span class="c1">// mp_flashlight 1                --&gt; Flashlight allowed. (0 = disabled|1 = enabled).
+</span><span class="c1">// mp_forcerespawn 0              --&gt; Forced respawn, without the player prompt. (0 = disabled|1 = enabled).
+</span><span class="c1">// mp_friendlyfire 0              --&gt; When enabled, a player can shoot another one of his own team. (0 = disabled|1 = enabled).
+</span><span class="c1">// mp_fraglimit 45                --&gt; The number of kills needed to end the match.
+</span><span class="c1">// sv_logecho 1                   --&gt; Prints logs in the console (0 = disabled|1 = enabled).
+</span><span class="c1"></span><span class="o">//</span> <span class="n">sv_logfile</span> <span class="n">1</span>                   <span class="o">--&gt;</span> <span class="n">Saves</span> <span class="n">the</span> <span class="n">logs</span> <span class="n">to</span> <span class="n">a</span> <span class="nf">file</span> <span class="o">(</span><span class="n">0</span> <span class="o">=</span> <span class="n">disabled</span><span class="o">|</span><span class="n">1</span> <span class="o">=</span> <span class="n">enabled</span><span class="o">).</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>The settings in <strong>server.cfg</strong> will override the ones that you specify (using parameters) when you start the server.</div>
+</blockquote>
+
+
+<h3 id="config-deathmatch-cfg">Config_deathmatch.cfg</h3>
+
+<p>The <strong>config_deathmatch.cfg</strong> file contains the settings of the gamemode. You can edit almost everything in this file.
+It&rsquo;s located at: <code>/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/config_deathmatch.cfg</code></p>
+
+<h3 id="maps">Maps</h3>
+
+<p>Currently, there are 10 official maps in Black Mesa Dedicated Server:
+*   dm_bounce
+*   dm_chopper
+*   dm_crossfire
+*   dm_gasworks
+*   dm_lambdabunker
+*   dm_power
+*   dm_stack
+*   dm_stalkyard
+*   dm_subtransit
+*   dm_undertow</p>
+
+<p>Three additional official maps are available in the Steam Workshop:
+*   <a href="http://steamcommunity.com/sharedfiles/filedetails/?id=432070352">dm_boom</a>
+*   <a href="http://steamcommunity.com/sharedfiles/filedetails/?id=432072942">dm_rail</a>
+*   <a href="http://steamcommunity.com/sharedfiles/filedetails/?id=432074065">dm_shipping</a></p>
+
+<h3 id="custom-maps">Custom Maps</h3>
+
+<ul>
+<li><p>Custom maps in <strong>BSP</strong> format need to be put in the same folder as the official ones: <code>/home/steam/Steam/steamapps/common/Black
+Mesa Dedicated Server/bms/maps/</code>.</p></li>
+
+<li><p>Custom maps in <strong>VPK</strong> format need to be put in the <strong>addons</strong> folder: <code>/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/addons/</code></p></li>
+
+<li><p>Custom maps downloaded from the workshop need to be put in the <strong>workshop</strong> folder:  <code>/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/addons/workshop</code></p></li>
+</ul>
+
+<p>The add-ons to be loaded need to be specified in the <strong>addonlist.txt</strong> file.
+In the following example, maps that were downloaded from workshop to the list are added to <strong>dm_boom</strong> and <strong>dm_shipping</strong>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/addonlist.txt 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource">&#34;AddonList&#34;
+  {
+   &#34;workshop\432070352.vpk&#34;     &#34;1&#34;
+   &#34;workshop\432074065.vpk&#34;     &#34;1&#34;
+  }</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can find more maps in the <a href="http://steamcommunity.com/workshop/browse/?appid=362890&amp;requiredtags[]=Multiplayer">Steam Workshop</a>.</div>
+</blockquote>
+
+
+<h3 id="maps-rotation">Maps Rotation</h3>
+
+<p>When a match ends, the server starts a new one with the next map in the rotation list.
+The map rotation list is in <strong>mapcycle.txt</strong>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/mapcycle.txt 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource">dm_bounce
+dm_gasworks
+dm_lambdabunker
+dm_stalkyard
+dm_subtransit
+dm_undertow
+dm_custom</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>To put a custom map in the rotation, simply write its name; for example: if you have the map <strong>dm_custom.bsp</strong>, you need to write <strong>dm_custom</strong> inside <strong>mapcycle.txt</strong>.</p>
+
+<h2 id="connect-to-your-server">Connect to Your Server</h2>
+
+<ol>
+<li><p>Open Black Mesa, and click on the <strong>PLAY ONLINE</strong> option:</p>
+
+<p><a href="/docs/assets/black_mesa_menu.png"><img src="/docs/assets/black_mesa_menu_small.png" alt="Black Mesa Main Menu." /></a></p></li>
+
+<li><p>Find your server in the server list:</p>
+
+<p><a href="/docs/assets/black_mesa_server_browser.png"><img src="/docs/assets/black_mesa_server_browser_small.png" alt="Black Mesa Server Browser." /></a></p></li>
+
+<li><p>Double click on it to connect:</p>
+
+<p><a href="/docs/assets/black_mesa_ingame.png"><img src="/docs/assets/black_mesa_ingame_small.png" alt="Black Mesa In-Game." /></a></p></li>
+</ol>
+
+<h2 id="extra">Extra</h2>
+
+<h3 id="autostart-with-screen-script">Autostart with screen script</h3>
+
+<p>This script automatically starts a Black Mesa Dedicated Server into a <strong>Screen session</strong>.</p>
+
+<ol>
+<li><p>Go into the <strong>Black Mesa Dedicated Server</strong> folder:</p>
+
+<pre><code>cd &quot;/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/&quot;
+</code></pre></li>
+
+<li><p>Create the file to contain the script:</p>
+
+<dl class="file">
+<dt>
+
+
+		/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/run.sh 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="cp">#!/bin/sh
+</span><span class="cp"></span><span class="nb">cd</span> <span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/Steam/steamapps/common/Black Mesa Dedicated Server&#34;</span>
+screen -S <span class="s2">&#34;BMDS&#34;</span> -d -m
+screen -r <span class="s2">&#34;BMDS&#34;</span> -X stuff <span class="s2">&#34;./srcds_run -game bms +map gasworks +maxplayers 24\n&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Run the script:</p>
+
+<pre><code>./run.sh
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>The <strong>game</strong> parameter specifies the game&rsquo;s files directory, don&rsquo;t change it. This is the only parameter you can&rsquo;t write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br />
+The <strong>hostname</strong> parameter specifies your server&rsquo;s name in the browser list. By default it&rsquo;s specified in server.cfg, so the +hostname parameter is overridden by it.<br />
+The <strong>map</strong> parameter specifies with which map the server needs to start. You must write the name of the map file without the prefix.<br />
+The <strong>maxplayers</strong> parameter specifies the maximum number of players allowed to play on the server.<br /></p>
+
+<p>You can read the entire list of parameters on the <a href="https://developer.valvesoftware.com/wiki/Command_Line_Options">Valve Wiki</a>.</p>
+</div>
+</blockquote>
+
+
+<h3 id="metamod">MetaMod</h3>
+
+<p><strong>MetaMod</strong> is an add-on for servers using Source Engine that works as a &ldquo;base&rdquo; for other plug-ins like <strong>SourceMod</strong>.</p>
+
+<ol>
+<li><p>Go into the <strong>bms</strong> folder:</p>
+
+<pre><code>cd &quot;/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/&quot;
+</code></pre></li>
+
+<li><p>Download <strong>MetaMod</strong>:</p>
+
+<pre><code>wget http://www.metamodsource.net/mmsdrop/1.10/mmsource-1.10.7-git951-linux.tar.gz
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This URL costantly changes as MetaMod is updated. Please check the downloads <a href="http://www.metamodsource.net/snapshots">page</a> for the current URL.</div>
+</blockquote>
+</li>
+
+<li><p>Extract the downloaded archive:</p>
+
+<pre><code>tar -zxvf mmsource-1.10.7-git951-linux.tar.gz
+</code></pre></li>
+
+<li><p>Cleanup:</p>
+
+<pre><code>rm mmsource-1.10.7-git951-linux.tar.gz
+</code></pre></li>
+
+<li><p>Run the server and enter the command <strong>meta list</strong> in the console:</p>
+
+<pre><code>meta list
+No plugins loaded.
+</code></pre></li>
+</ol>
+
+<p>If you get the same output, it means that MetaMod is working.</p>
+
+<h3 id="sourcemod">SourceMod</h3>
+
+<p>It is recommended that you install the <strong>SourceMod</strong> add-on. It provides useful functions, such as <strong>votemap</strong>, <strong>random map cycle</strong>, <strong>bans</strong>, <strong>reserved slots</strong>, <strong>admin system</strong>, and <strong>player commands</strong>; you can customize it as you want.</p>
+
+<ol>
+<li><p>Go into the <strong>bms</strong> folder:</p>
+
+<pre><code>cd &quot;/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/&quot;
+</code></pre></li>
+
+<li><p>Download <strong>SourceMod</strong>:</p>
+
+<pre><code>wget https://www.sourcemod.net/smdrop/1.8/sourcemod-1.8.0-git5829-linux.tar.gz
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This URL constantly changes as SourceMod is updated. Please check the downloads <a href="https://www.sourcemod.net/downloads.php">page</a> for the current URL.</div>
+</blockquote>
+</li>
+
+<li><p>Extract the downloaded archive:</p>
+
+<pre><code>tar -zxvf sourcemod-1.8.0-git5829-linux.tar.gz
+</code></pre></li>
+
+<li><p>Cleanup:</p>
+
+<pre><code>rm sourcemod-1.8.0-git5829-linux.tar.gz
+</code></pre></li>
+
+<li><p>Run the server and enter the command <strong>meta list</strong> in the console:</p>
+
+<pre><code>meta list
+Listing 2 plugins:
+ [01] SourceMod (1.8.0.5829) by AlliedModders LLC
+ [02] SDK Tools (1.8.0.5829) by AlliedModders LLC
+</code></pre></li>
+</ol>
+
+<p>If you get similar output, it means that MetaMod and SourceMod are working.</p>
+
+<p>Now, SourceMod will be automatically loaded by MetaMod when starting the Black Mesa Dedicated Server.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Read the <a href="https://wiki.alliedmods.net/Category:Metamod:Source_Documentation">MetaMod Official Wiki</a> and the <a href="https://wiki.alliedmods.net/index.php/Category:SourceMod_Documentation">SourceMod Official Wiki</a> for info about configurations, plug-ins, files, etc.</div>
+</blockquote>
+
+
+<p>Enjoy!</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.blackmesasource.com/">BlackMesaSource.com</a></li>
+
+<li><a href="http://wiki.blackmesasource.com/">The Official Black Mesa Wiki</a></li>
+
+<li><a href="https://developer.valvesoftware.com/">The Valve Wiki</a></li>
+
+<li><a href="https://www.sourcemod.net">SourceMod.net</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/game-servers/install-steamcmd-for-a-steam-game-server/">Install SteamCMD for a Steam Game Server</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/">Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/install-a-half-life-2-deathmatch-dedicated-server-on-debian-or-ubuntu/">Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/host-a-terraria-server-on-your-linode/">How to Setup a Terraria Linux Server</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/install-dont-starve-together-game-server-on-ubuntu/">Install Don&#39;t Starve Together Game Server on Ubuntu 14.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#prerequisites-for-black-mesa">Prerequisites for Black Mesa</a></li>
+<li><a href="#install-black-mesa-dedicated-server">Install Black Mesa, Dedicated Server</a></li>
+<li><a href="#run-black-mesa-dedicated-server">Run Black Mesa, Dedicated Server</a></li>
+<li><a href="#configure-a-black-mesa-dedicated-server">Configure a Black Mesa Dedicated Server</a>
+<ul>
+<li><a href="#server-cfg">Server.cfg</a></li>
+<li><a href="#config-deathmatch-cfg">Config_deathmatch.cfg</a></li>
+<li><a href="#maps">Maps</a></li>
+<li><a href="#custom-maps">Custom Maps</a></li>
+<li><a href="#maps-rotation">Maps Rotation</a></li>
+</ul></li>
+<li><a href="#connect-to-your-server">Connect to Your Server</a></li>
+<li><a href="#extra">Extra</a>
+<ul>
+<li><a href="#autostart-with-screen-script">Autostart with screen script</a></li>
+<li><a href="#metamod">MetaMod</a></li>
+<li><a href="#sourcemod">SourceMod</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

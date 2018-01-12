@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Deploy Exim as a Send-only Mail Server on Ubuntu 12.04 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Configure Exim to Serve as a Lightweight, Send-only SMTP Server on Ubuntu 12.04 LTS (Precise Pangolin).">
+        <meta name="keywords" content="exim, ubuntu 12.04, send-only email, mail server, linux mail, smtp server">
+        
+        <meta property="og:title" content="Deploy Exim as a Send-only Mail Server on Ubuntu 12.04 ">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/exim/deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04/">
+        <meta property="og:description" content="Configure Exim to Serve as a Lightweight, Send-only SMTP Server on Ubuntu 12.04 LTS (Precise Pangolin).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/exim/deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/exim/">Exim Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Deploy Exim as a Send-only Mail Server on Ubuntu 12.04 
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Deploy Exim as a Send-only Mail Server on Ubuntu 12.04 </h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-01-21T00:00:00Z">Tuesday, January 21, 2014</time> by Alex Fornuto</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fexim%2fdeploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04%2f&via=linode&text=Deploy%20Exim%20as%20a%20Send-only%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fexim%2fdeploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fexim%2fdeploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04%2f&t=Deploy%20Exim%20as%20a%20Send-only%20Mail%20Server%20on%20Ubuntu%2012.04%20" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/exim/deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/exim/deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Many Linux server applications need to send email. Cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.</p>
+
+<p>You&rsquo;ll gain the ability to send mail from <code>localhost</code> through either a traditional &ldquo;sendmail&rdquo; style interface or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other <a href="/docs/email/">email guides</a> for ways to implement such configurations.</p>
+
+<p>We assume that you&rsquo;ve already followed the steps outlined in our <a href="/docs/getting-started/">getting started</a> guide. If you are new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts/">introduction to Linux concepts guide</a>, <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>. Make sure you&rsquo;re logged into your Linode as &ldquo;root&rdquo; via SSH before proceeding.</p>
+
+<h2 id="set-the-hostname">Set the Hostname</h2>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<h2 id="install-required-packages">Install Required Packages</h2>
+
+<p>Make sure you have the &ldquo;universe&rdquo; repositories enabled. Your <code>/etc/apt/sources.list</code> file should resemble this:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apt/sources.list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## main &amp; restricted repositories
+</span><span class="c1"></span>deb http://us.archive.ubuntu.com/ubuntu/ precise main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise main restricted
+
+deb http://security.ubuntu.com/ubuntu precise-security main restricted
+deb-src http://security.ubuntu.com/ubuntu precise-security main restricted
+
+<span class="c1">## universe repositories
+</span><span class="c1"></span>deb http://us.archive.ubuntu.com/ubuntu/ precise universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise universe
+deb http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
+
+deb http://security.ubuntu.com/ubuntu precise-security universe
+deb-src http://security.ubuntu.com/ubuntu precise-security universe</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Issue the following commands to update your package repositories, upgrade your system, and install Exim:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+apt-get install exim4-daemon-light mailutils
+</code></pre>
+
+<h2 id="configure-exim-for-local-mail-service">Configure Exim for Local Mail Service</h2>
+
+<p>Now you&rsquo;re ready to configure Exim for local mail service. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Enter the following command to start Exim configuration:</p>
+
+<pre><code>dpkg-reconfigure exim4-config
+</code></pre></li>
+
+<li><p>You&rsquo;ll be presented with a welcome screen, followed by a screen asking what type mail delivery you&rsquo;d like to support. Select the option for <strong>internet site</strong>, and then select <strong>Ok</strong> to continue.</p></li>
+</ol>
+
+<p><a href="/docs/assets/1153-011-exim4-ubuntu-12-04-general.png"><img src="/docs/assets/1153-011-exim4-ubuntu-12-04-general.png" alt="Exim4 mail delivery type configuration on Ubuntu 12.04 LTS (Precise)." /></a></p>
+
+<ol>
+<li>Enter your system&rsquo;s FQDN (fully qualified domain name) in the <strong>mail name</strong> configuration screen.</li>
+</ol>
+
+<p><a href="/docs/assets/1154-02-exim4-ubuntu-12-04-mail-name.png"><img src="/docs/assets/1154-02-exim4-ubuntu-12-04-mail-name.png" alt="Exim4 system mail name configuration on Ubuntu 12.04 LTS (Precise)." /></a></p>
+
+<ol>
+<li>Enter <code>127.0.0.1 ; ::1</code> when asked which IP address to listen on for SMTP connections.</li>
+</ol>
+
+<p><a href="/docs/assets/1156-03-exim4-ubuntu-12-04-ip-listen.png"><img src="/docs/assets/1156-03-exim4-ubuntu-12-04-ip-listen.png" alt="Exim4 listening IP address configuration on Ubuntu 12.04 LTS (Precise)." /></a></p>
+
+<ol>
+<li>Make sure you list your FQDN, hostname, and localhost entries when you&rsquo;re asked which destinations mail should be accepted for.</li>
+</ol>
+
+<p><a href="/docs/assets/1157-04-exim4-ubuntu-12-04-local-domains.png"><img src="/docs/assets/1157-04-exim4-ubuntu-12-04-local-domains.png" alt="Exim4 mail destination configuration on Ubuntu 12.04 LTS (Precise)." /></a></p>
+
+<ol>
+<li>Leave the relay domains and relay machines fields blank.</li>
+</ol>
+
+<p><a href="/docs/assets/1158-05-exim4-ubuntu-12-04-relay-domains.png"><img src="/docs/assets/1158-05-exim4-ubuntu-12-04-relay-domains.png" alt="Exim4 relay domains configuration on Ubuntu 12.04 LTS (Precise)." /></a></p>
+
+<ol>
+<li>Select <strong>No</strong> when asked whether to keep DNS queries to a minimum.</li>
+</ol>
+
+<p><a href="/docs/assets/1159-06-exim4-ubuntu-12-04-dns-queries.png"><img src="/docs/assets/1159-06-exim4-ubuntu-12-04-dns-queries.png" alt="Exim4 DNS queries configuration on Ubuntu 12.04 LTS (Precise)." /></a></p>
+
+<ol>
+<li>You may select either <strong>mbox</strong> or <strong>Maildir</strong> when asked about the delivery method used for incoming mail. While many utilities use mbox format, Maildir format can make handling individual locally delivered mail messages easier, and is widely supporting by a range of applications.</li>
+</ol>
+
+<p><a href="/docs/assets/1160-07-exim4-ubuntu-12-04-mail-format.png"><img src="/docs/assets/1160-07-exim4-ubuntu-12-04-mail-format.png" alt="Exim4 mail format configuration on Ubuntu 12.04 LTS (Precise)." /></a></p>
+
+<p>​9. Accept the default <strong>non-split</strong> option for your mail configuration file. Enter at least one external email address (choose one that you check frequently) in addition to <code>root</code> when asked to specify postmaster mail recipients.</p>
+
+<p><a href="/docs/assets/1161-08-exim4-ubuntu-12-04-postmater-mail.png"><img src="/docs/assets/1161-08-exim4-ubuntu-12-04-postmater-mail.png" alt="Exim4 postmaster recipient configuration on Ubuntu 12.04 LTS (Precise)." /></a></p>
+
+<h2 id="test-your-mail-configuration">Test Your Mail Configuration</h2>
+
+<p>Issue the following command to send a test email, substituting an external email address for <code>someone@somedomain.com</code>.</p>
+
+<pre><code>echo &quot;This is a test.&quot; | mail -s Testing someone@somedomain.com
+</code></pre>
+
+<p>Congratulations! You&rsquo;ve configured Exim to send email from your Linode.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.exim.org/">Exim Homepage</a></li>
+
+<li><a href="/docs/email/">Email Guides</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/exim/sendonly-mail-server-with-exim-on-ubuntu-11-04-natty/">Send-only Mail Server with Exim on Ubuntu 11.04 (Natty) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/exim/sendonly-mail-server-with-exim-on-ubuntu-10-10-maverick/">Send-only Mail Server with Exim on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/exim/sendonly-mail-server-with-exim-on-ubuntu-10-04-lts-lucid/">Send-only Mail Server with Exim on Ubuntu 10.04 LTS (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/exim/sendonly-mail-server-with-exim-on-debian-5-lenny/">Send-only Mail Server with Exim on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/exim/sendonly-mail-server-with-exim-on-ubuntu-9-10-karmic/">Send-only Mail Server with Exim on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#install-required-packages">Install Required Packages</a></li>
+<li><a href="#configure-exim-for-local-mail-service">Configure Exim for Local Mail Service</a></li>
+<li><a href="#test-your-mail-configuration">Test Your Mail Configuration</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

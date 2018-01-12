@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using rdiff-backup with SSHFS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Automating offsite backups with the open source rdiff-backup package and SSHFS for remote filesystem mounting.">
+        <meta name="keywords" content="rdiff-backup, sshfs, network backup, linux backup">
+        
+        <meta property="og:title" content="Using rdiff-backup with SSHFS">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/backups/using-rdiff-backup-with-sshfs/">
+        <meta property="og:description" content="Automating offsite backups with the open source rdiff-backup package and SSHFS for remote filesystem mounting.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/backups/using-rdiff-backup-with-sshfs/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/backups/">Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Using rdiff-backup with SSHFS
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using rdiff-backup with SSHFS</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-29T00:00:00Z">Wednesday, November 29, 2017</time> by </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fbackups%2fusing-rdiff-backup-with-sshfs%2f&via=linode&text=Using%20rdiff-backup%20with%20SSHFS" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fbackups%2fusing-rdiff-backup-with-sshfs%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fbackups%2fusing-rdiff-backup-with-sshfs%2f&t=Using%20rdiff-backup%20with%20SSHFS" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/backups/using-rdiff-backup-with-sshfs.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/backups/using-rdiff-backup-with-sshfs.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><a href="http://www.nongnu.org/rdiff-backup/docs.html">Rdiff-backup</a> is an open source backup system that performs incremental, differential backups on a wide variety of platforms. Many people use rdiff-backup on both sides of a backup operation, but this can be problematic when different operating systems or rdiff-backup versions are in use.</p>
+
+<p>This guide will show you how to use rdiff-backup with <a href="https://github.com/libfuse/sshfs">SSHFS</a> to pull data to the backup storage server, rather than pushing from the device you wish to back up. This eliminates the need to run rdiff-backup on the server being backed up. It is assumed you have a local machine such as a laptop or home workstation with data you want to back up to a remote server, which will be your Linode.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>Throughout this guide, <em>backup server</em> will be used to indicate the machine (probably your Linode) which will be running rdiff-backup. This is also where all copies of other machines&rsquo; backup data will be stored.</p>
+
+<p>The machines with data being backed up <em>to</em> the backup server, will be referred to as a <em>remote device</em>. Each remote device also must have its own static IP address.</p>
+</div>
+</blockquote>
+
+
+<h2 id="configure-the-backup-server">Configure the Backup Server</h2>
+
+<ol>
+<li><p>SSH in to your backup server.</p></li>
+
+<li><p>Install rdiff-backup and SSHFS. How you do this depends on the Linux distribution running on your backup server, but distributions based on Debian and RedHat use the package names <code>rdiff-backup</code> and <code>sshfs</code>.</p></li>
+
+<li><p>SSH in to your backup server.</p></li>
+
+<li><p>Add a user to run rdiff-backup as, and add that user to the system&rsquo;s <code>fuse</code> user group. The username <code>rdbadmin</code> is used as an example, and backups will be stored in this user&rsquo;s home directory.</p>
+
+<pre><code>adduser rdbadmin
+usermod -aG fuse rdbadmin
+</code></pre></li>
+
+<li><p>Create a directory structure for mounting the remote filesystem and storing backups. You can organize this however you like, but the example will sort backup directories by the hostname of the device its backups corresponds to.</p>
+
+<pre><code>mkdir /home/rdbadmin/mounts/device_hostname
+mkdir /home/rdbadmin/backups/device_hostname
+chown -R rdbadmin:rdbadmin /home/device_hostname
+</code></pre></li>
+</ol>
+
+<h2 id="configure-ssh-access">Configure SSH Access</h2>
+
+<p>Your backup server will be pulling data from remote devices by SSHFS, so SSH must be configured on the remote device or devices to allow access for the rdbadmin user from the backup server.</p>
+
+<ol>
+<li><p>You should still be logged in to the backup server by SSH. Create an SSH keypair for the rdbadmin user. This will create the files <code>~/.ssh/rdbadmin.pub</code> and <code>~/.ssh/rdbadmin</code>:</p>
+
+<pre><code>ssh-keygen -b 4096 -f rdbadmin
+</code></pre></li>
+
+<li><p>Transfer the public key to the remote device to be backed up. Replace the IP address in the example below with that of your device:</p>
+
+<pre><code>ssh-copy-id rdbadmin@203.0.113.10
+</code></pre></li>
+
+<li><p>Add the output of the cat command to the <code>authorized_keys</code> file on the remote device:</p>
+
+<pre><code>ssh user@remote_IP &quot;echo \`cat ~/.ssh/rdbadmin.pub\` &gt;&gt; ~/.ssh/authorized_keys&quot;
+</code></pre></li>
+</ol>
+
+<h2 id="configure-an-sshfs-filesystem-mount">Configure an SSHFS Filesystem Mount</h2>
+
+<ol>
+<li><p>Add the remote device&rsquo;s mount point to the backup server&rsquo;s <em>fstab</em> file. This will allow the rdbadmin user to mount and read the remote filesystem. It will be mounted read-only as a basic safeguard.</p>
+
+<p>You&rsquo;ll need to specify the remote device&rsquo;s login information so change the value for <em>user@remotehost</em> appropriately. Change <em>remote_path</em> to the top-level directory on the remote device you want to create a back up of.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/fstab 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;sshfs#user@remotehost&gt;:/remote_path /home/rdbadmin/device_hostname fuse user,noauto,ro <span class="m">0</span> <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Run a test backup, changing the values where appropriate to match the earlier steps. First witch to the rdbadmin user if you have not already, and mount the remote device&rsquo;s directory to back up. If you don&rsquo;t have any data there yet, create three empty files just so something can move between the servers. Then run the backup.</p>
+
+<pre><code>su - rdbadmin
+mount /home/rdbadmin/mounts/device_hostname
+touch {file1,file2,file3}
+rdiff-backup -v5 /home/rdbadmin/mounts/device_hostname /home/rdbadmin/backups/device_hostname
+</code></pre></li>
+
+<li><p>When the backup completes, examine the contents of <code>/home/rdbadmin/backups/device_hostname</code> on the backup server to make sure everything was copied over correctly.</p></li>
+</ol>
+
+<h2 id="automate-daily-backups">Automate Daily Backups</h2>
+
+<ol>
+<li><p>Create a shell script to mount the remote directory, run rdiff-backup, and unmount the remote directory when finished. Adjust the values for directories to meet your own needs.</p>
+
+<dl class="file">
+<dt>
+
+
+		/home/rdbadmin/backup.sh 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>mount /home/rdbadmin/mounts/device_hostname
+rdiff-backup /home/rdbadmin/mounts/device_hostname /home/rdbadmin/backups/device_hostname
+umount /home/rdbadmin/mounts/device_hostname</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Make the script executable:</p>
+
+<pre><code>chmod +x /home/rdbadmin/backup.sh
+</code></pre></li>
+
+<li><p>Add the following entry to the <code>rdiffbackup</code> user&rsquo;s crontab (edit it with <code>crontab -e</code>) to perform daily backups at 2:00 AM.</p>
+
+<pre><code>00 02 * * * /home/rdbadmin/backup.sh
+</code></pre>
+
+<p>See <code>man cron</code> in a terminal for more information on creating cron jobs.</p></li>
+</ol>
+
+<h2 id="restoring-a-backup">Restoring a Backup</h2>
+
+<ol>
+<li><p>To restore a backup, first mount the restore path:</p>
+
+<pre><code>mount /home/rdbadmin/mounts/device_hostname
+</code></pre></li>
+
+<li><p>Issue a command on the backup server similar to the following, adjusting for your directory paths and needs. This will restore the most recent version of your backup directory to the location the backup was created from above.</p>
+
+<p><strong>Beware that the restore directory will be entirely overwritten.</strong> Take care not to specify a directory that contains anything you wish to keep.</p>
+
+<pre><code>rdiff-backup -r now /home/rdbadmin/backups/device_hostname /home/rdbadmin/mounts/device_hostname
+</code></pre>
+
+<p>Rdiff-backup also supports restoring filesystems as they exist at specific points in time. As another example, you could use the command below to restore the remote host&rsquo;s backed up files as they were ten days ago:</p>
+
+<pre><code>rdiff-backup -r 10D /home/rdbadmin/backups/device_hostname /home/rdbadmin/mounts/device_hostname
+</code></pre></li>
+
+<li><p>When the backup has been restored, unmount the restore path:</p>
+
+<pre><code>umount /home/rdbadmin/mounts/device_hostname
+</code></pre></li>
+</ol>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/ssh/using-sshfs-on-linux/">Using SSHFS To Mount Remote Directories</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#configure-the-backup-server">Configure the Backup Server</a></li>
+<li><a href="#configure-ssh-access">Configure SSH Access</a></li>
+<li><a href="#configure-an-sshfs-filesystem-mount">Configure an SSHFS Filesystem Mount</a></li>
+<li><a href="#automate-daily-backups">Automate Daily Backups</a></li>
+<li><a href="#restoring-a-backup">Restoring a Backup</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

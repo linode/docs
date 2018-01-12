@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use Public Key Authentication with SSH</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Access your Linode via SSH using Public Key Authentication.">
+        <meta name="keywords" content="ssh, pki, ssh keys, secure shell, vpn, tunneling">
+        
+        <meta property="og:title" content="Use Public Key Authentication with SSH">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/use-public-key-authentication-with-ssh/">
+        <meta property="og:description" content="Access your Linode via SSH using Public Key Authentication.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/use-public-key-authentication-with-ssh/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Use Public Key Authentication with SSH
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use Public Key Authentication with SSH</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-03-23T00:00:00Z">Thursday, March 23, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fuse-public-key-authentication-with-ssh%2f&via=linode&text=Use%20Public%20Key%20Authentication%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fuse-public-key-authentication-with-ssh%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fuse-public-key-authentication-with-ssh%2f&t=Use%20Public%20Key%20Authentication%20with%20SSH" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/use-public-key-authentication-with-ssh.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/use-public-key-authentication-with-ssh.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Public key authentication provides SSH users with the convenience of logging in to their Linodes without entering their passwords. SSH keys are also more secure than passwords, because the private key used to secure the connection is never shared. Private keys can also be <em>encrypted</em> so their contents can&rsquo;t be read as easily. While SSH passwords are not required once keys are set up, passwords for <em>decrypting</em> the private keys locally are still required. For added convenience, depending on your local workstation&rsquo;s security, you can add the new password to your local keychain so it&rsquo;s saved after the first login.</p>
+
+<p><img src="/docs/assets/use_public_key_authentication_with_ssh.png" alt="Use Public Key Authentication with SSH" title="Use Public Key Authentication with SSH" /></p>
+
+<h2 id="intro-to-ssh-keys-authentication">Intro to SSH Keys Authentication</h2>
+
+<p>SSH keys come in pairs; a private and a public key. Usually the private key is saved as <code>~/.ssh/id_&lt;type&gt;</code> and the public key is <code>~/.ssh/id_&lt;type&gt;.pub</code>. The type of encryption most often used by default is RSA, so your keys should be named <code>id_rsa</code> and <code>id_rsa.pub</code>. The public key is meant to be handed out freely, and added to servers you wish to connect to in the <code>~/.ssh/authorized_keys</code> file. The private key should be secured on your local machine with strict access rules.</p>
+
+<p>It might be easier to think of SSH keys in terms of a lock and key. The public part is the lock, which can be copied to multiple locations as long as the private component, or key, is not compromised. Since the private key is password-protected when encrypted, it is analogous to keeping a physical key in a lockbox. With this example in mind, using an SSH key works as follows. First, the lockbox/passphrase is opened to obtain the key/private key, which is then used to open the lock/public key and grant access to your Linode.</p>
+
+<h3 id="intro-to-local-encryption">Intro to Local Encryption</h3>
+
+<p>Since private keys need to be kept secret to prevent unauthorized access to your Linode, it is recommended that they be encrypted on your local system. This helps guarantee that only individuals with the encryption passphrase will be able to use the private keys, even if the key itself becomes compromised. A passphrase is only used to unlock the private key <em>locally</em> and is not transmitted in any form to the remote host.</p>
+
+<p>When you create your private key, be sure to make a note of your passphrase, as you will need it for the first login to the remote server.</p>
+
+<h2 id="linux-and-unix-like-operating-systems">Linux and Unix-like Operating Systems</h2>
+
+<p>The process for generating SSH keys and connecting to a remote server from a Linux, Apple OS X, or Unix-like operating system is outlined below.</p>
+
+<h3 id="generating-keys">Generating Keys</h3>
+
+<p>The process for creating keys with a recent version of the OpenSSH package is the same across many different Unix-like operating systems. This includes all Linux distributions provided by Linode, workstations running Linux, and Apple&rsquo;s OS X.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div><p>Be careful when running <code>ssh-keygen</code> if you&rsquo;ve already created and saved keys to the default path, <code>/home/user/.ssh/id_rsa</code>. If you run the command again and do not specify a different path, you may overwrite the private key on your local system. If you overwrite the local private key after using the matching public key to secure your server, you may lose your ability to access your server via SSH.</p>
+
+<p>If you accidentally lock yourself out of your Linode this way, you can use <a href="/docs/networking/using-the-linode-shell-lish">Lish</a> to update your <code>authorized_keys</code> file and regain SSH access.</p>
+</div>
+</blockquote>
+
+
+<ol>
+<li><p>To generate SSH keys for your host, issue the following command on your <em>local system</em>:</p>
+
+<pre><code>ssh-keygen
+</code></pre>
+
+<p><strong>Optional:</strong> to increase the security of your key, increase the size with the <code>-b</code> flag. The minimum value is 768 bytes and the default, if you do not use the flag, is 2048 bytes. We recommend a 4096 byte key:</p>
+
+<pre><code>ssh-keygen -b 4096
+</code></pre></li>
+
+<li><p>Answer all questions when prompted. You can accept the defaults for everything except the passphrase. When you get to the passphrase question, enter a series of letters and numbers for the passphrase twice; once to enter the new passphrase and once to confirm.</p>
+
+<p><strong>Important:</strong> make a note of your passphrase, as you will need it later.</p>
+
+<p>You may accept the defaults for the other questions by pressing <em>Return</em> when prompted:</p>
+
+<pre><code>user@linode: ssh-keygen -b 4096
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/user/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/user/.ssh/id_rsa.
+Your public key has been saved in /home/user/.ssh/id_rsa.pub.
+The key fingerprint is:
+f6:61:a8:27:35:cf:4c:6d:13:22:70:cf:4c:c8:a0:23 user@linode
+</code></pre></li>
+</ol>
+
+<p>The newly-generated SSH keys are located in the <code>~/.ssh/</code> directory. You will find the private key in the <code>~/.ssh/id_rsa</code> file and the public key in the <code>~/.ssh/id_rsa.pub</code> file.</p>
+
+<h3 id="uploading-keys">Uploading Keys</h3>
+
+<p>Please note that the following steps are performed on your remote location/Linode.</p>
+
+<ol>
+<li><p>Before you upload the keys, verify that your <code>.ssh</code> directory exists by using the following command from your home directory (the default directory when you log in):</p>
+
+<pre><code>ls -al
+</code></pre></li>
+
+<li><p>If the <code>.ssh</code> directory is present, proceed to Step 3. If the directory is not present, issue the following command in the <code>/home/user</code> directory to create it:</p>
+
+<pre><code>mkdir .ssh
+</code></pre>
+
+<p>The following steps are performed on your local machine/PC:</p></li>
+
+<li><p>Copy the <em>public key</em> into the <code>~/.ssh/authorized_keys</code> file on the <strong>remote machine</strong>, using the following command. Substitute your own SSH user and host names:</p>
+
+<pre><code>scp ~/.ssh/id_rsa.pub user@example.com:/home/user/.ssh/uploaded_key.pub
+</code></pre></li>
+
+<li><p>Run the following command to copy the key to the <code>authorized_keys</code> file. Substitute your own SSH user and host names:</p>
+
+<pre><code>ssh user@example.com &quot;echo `cat ~/.ssh/uploaded_key.pub` &gt;&gt; ~/.ssh/authorized_keys&quot;
+</code></pre></li>
+</ol>
+
+<h3 id="connecting-to-the-remote-server">Connecting to the Remote Server</h3>
+
+<p>The final part in the SSH key process is to access your Linode with your new private key.</p>
+
+<ol>
+<li>Connect to the remote server.</li>
+
+<li><p>Depending on your desktop environment, a window may appear prompting you for a password. Otherwise, you will be prompted in your terminal. This password is the passphrase you created for the private key encryption.</p>
+
+<p><img src="/docs/assets/1461-SSH-Passphrase.png" alt="Enter your passphrase in the password field." /></p></li>
+
+<li><p>If you&rsquo;re on a private computer, you can check the <strong>Remember password in my keychain</strong> box to save your passphrase. If you are logged on via a public machine, don&rsquo;t check this box, as this would compromise your security and allow access to your Linode.</p></li>
+
+<li><p>Click the <strong>OK</strong> button.</p></li>
+</ol>
+
+<p>You should now be connected to your Linode using the SSH key.</p>
+
+<h2 id="windows-operating-system">Windows Operating System</h2>
+
+<p>Before you can generate an SSH key, you will need to download and install PuTTYgen (puttygen.exe) and PuTTY (putty.exe). These two programs are available for download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">here</a>.</p>
+
+<h3 id="putty-key-generation">PuTTY Key Generation</h3>
+
+<p>When PuTTYgen has finished downloading, it can be run immediately, without installation.</p>
+
+<ol>
+<li><p>Double-click on the downloaded executable program and select <strong>Run</strong>.</p>
+
+<p><img src="/docs/assets/1463-begin-install.png" alt="Beginning the PuTTY key gen install." /></p></li>
+
+<li><p>Read the warning, and then select <strong>Run</strong> to continue.</p>
+
+<p><img src="/docs/assets/1468-warning.png" alt="Ignore installation warning." /></p></li>
+
+<li><p>You will be taken directly to the key generating screen. You can choose at this point to increase the number of bits to <code>4096</code>. Click on the <strong>Generate</strong> button to create the new public/private key pair.</p>
+
+<p><img src="/docs/assets/1464-generate-key.png" alt="Generating the new public/private key pair." /></p></li>
+
+<li><p>Once the keys begin to generate, keep moving your mouse until the entire bar fills with green. The program uses the random input from your mouse to generate a unique key.</p>
+
+<p><img src="/docs/assets/1470-random-generating.png" alt="Move the mouse until the key generating is complete." /></p></li>
+
+<li><p>The public key is now generated and appears in the first window.</p>
+
+<p><img src="/docs/assets/1466-new-public-key.png" alt="The public key has now been created." /></p></li>
+
+<li><p>Before you continue, you will need to copy the newly-created public key to Notepad. Just select the text and copy it to a new  text file. Be sure the file is saved in a location you remember, as you will need it later.</p>
+
+<p><img src="/docs/assets/1476-key-txt-file.png" alt="Copy the public key to a text file." /></p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>When saving the public key, make sure you save it in a plaintext format such as .txt. Other file formats such as .rtf and .doc may add extra characters to the key through encoding, which may prevent your keypair from matching. The public key should be a single line, with no breaks.</div>
+</blockquote>
+</li>
+
+<li><p>Enter a passphrase in the <strong>Key passphrase</strong> text field, and enter it again to confirm. The passphrase can be any string of letters and numbers. The passphrase should be something unique and not easily recognized. <strong>Important:</strong> make a note of your passphrase, as you will need it later.</p>
+
+<p><img src="/docs/assets/1465-new-passphrase.png" alt="Enter a new passphrase." /></p></li>
+
+<li><p>After you have entered your passphrase, click on the <strong>Save private key</strong> button. This will save the private key to your PC.</p>
+
+<p><img src="/docs/assets/1472-private-key-button.png" alt="Click on the Save private key button." /></p></li>
+
+<li><p>Keep the default location and name of the private key file and click on the <strong>Save</strong> button. Note that if you plan on creating multiple keys to connect to different SSH servers, you will need to save each pair of keys for each server with different names to prevent overwriting the key files. Make a note of the name and location of the private key. You&rsquo;ll need it in the next section.</p>
+
+<p><img src="/docs/assets/1474-save-private-key.png" alt="Saving the private key." /></p></li>
+</ol>
+
+<h3 id="connecting-to-the-remote-server-1">Connecting to the Remote Server</h3>
+
+<p>Now it is time to connect to your Linode with the SSH connection you just created.</p>
+
+<ol>
+<li>Launch PuTTY.</li>
+
+<li><p>Under the <strong>Connection</strong> menu, under <strong>SSH</strong>, select <strong>Auth</strong>.</p>
+
+<p><img src="/docs/assets/1462-auth-location.png" alt="Select auth under the SSH submenu under connection." /></p></li>
+
+<li><p>You will need to tell PuTTY the location of the private key. This may be accomplished by either clicking on the <strong>Browse</strong> button and navigating to the private key file, or by typing in the location of the file from Step 10 in the previous section.</p>
+
+<p><img src="/docs/assets/1473-private-key-file-location.png" alt="Enter the private key location." /></p></li>
+
+<li><p>To establish a session, click on <strong>Session</strong> under the <strong>Category</strong> list. Enter the hostname or IP address of your Linode. Note: the SSH radio button is selected by default and the <strong>Port</strong> number field is already filled in.</p>
+
+<p><strong>Optional:</strong>You can either save this connection as the default by clicking on the <strong>Save</strong> button, or by entering a name in the <strong>Saved Sessions</strong> text field, and clicking on the <strong>Save</strong> button.</p>
+
+<p><img src="/docs/assets/1475-saved-session.png" alt="Saving your connection information." /></p></li>
+
+<li><p>Click the <strong>Open</strong> button to establish a connection. You will be prompted to enter your login name and password.</p></li>
+
+<li><p>The combination of commands shown below will create a <code>.ssh</code> directory in your home directory on your Linode, create a blank <code>authorized_keys</code> file inside, and set the access permissions. Enter the following commands at the prompt and press <em>Enter</em>:</p>
+
+<pre><code>mkdir ~/.ssh; touch ~/.ssh/authorized_keys; chmod 700 ~/.ssh
+</code></pre></li>
+
+<li><p>Edit the newly-created file by using a text editor such as nano:</p>
+
+<pre><code>nano ~/.ssh/authorized_keys
+</code></pre></li>
+
+<li><p>Copy the contents of the public key from your workstation to the <code>authorized_keys</code> file. Be sure you save the file on exit. For an additional layer of security, modify the file permissions:</p>
+
+<pre><code>chmod 600 ~/.ssh/authorized_keys
+</code></pre></li>
+
+<li><p>Exit PuTTY, then reconnect and <strong>Load</strong> your saved session. (Or, follow Steps 3 and 4 again to start a new SSH session.) You will be prompted to enter your login name as before. However, this time you will be prompted for your SSH key&rsquo;s passphrase, rather then your Linode user&rsquo;s password. Enter your passphrase and press <em>Enter</em>.</p></li>
+</ol>
+
+<p>Uploading the public key in Windows can also be done using <a href="http://winscp.net/">WinSCP</a>. In the login window, enter your Linode&rsquo;s public IP address as the hostname, and your non-root username and password. Click <em>Login</em> to connect.</p>
+
+<p>Once WinSCP has connected, you&rsquo;ll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you&rsquo;ve saved your public key, select the public key file, and click <em>Upload</em> in the toolbar above.</p>
+
+<p>You&rsquo;ll be prompted to enter a path where you&rsquo;d like to place the file on your Linode. Upload the file to <code>/home/user/.ssh/authorized_keys</code>, replacing <code>user</code> with your username.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div><p>When uploading a public key with WinSCP, make sure you are using a txt formatted file. If your public key is saved in a different format, such as .rtf or .doc, extra formatting characters will be added and your private key will not work properly.</p>
+
+<p>When you create the text file, make sure the public key is a single line of text, exactly as it appears in the PuTTY key generator.</p>
+</div>
+</blockquote>
+
+
+<p>You should now be connected to your Linode using the SSH key.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/vpn/set-up-wireguard-vpn-on-ubuntu/">Set Up WireGuard VPN on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/vpn-firewall-killswitch-for-linux-and-macos-clients/">iptables Configuration for VPN Killswitch</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/set-up-a-streisand-gateway/">How to Set Up a Streisand Gateway</a></li>
+    
+    
+    
+    <li><a href="/docs/security/how-to-use-yubikey-for-two-factor-ssh-authentication/">How to use a YubiKey for Two-Factor Secure Shell Authentication</a></li>
+    
+    
+    
+    <li><a href="/docs/security/advanced-ssh-server-security/">Use Advanced OpenSSH Features to Harden Access to Your Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#intro-to-ssh-keys-authentication">Intro to SSH Keys Authentication</a>
+<ul>
+<li><a href="#intro-to-local-encryption">Intro to Local Encryption</a></li>
+</ul></li>
+<li><a href="#linux-and-unix-like-operating-systems">Linux and Unix-like Operating Systems</a>
+<ul>
+<li><a href="#generating-keys">Generating Keys</a></li>
+<li><a href="#uploading-keys">Uploading Keys</a></li>
+<li><a href="#connecting-to-the-remote-server">Connecting to the Remote Server</a></li>
+</ul></li>
+<li><a href="#windows-operating-system">Windows Operating System</a>
+<ul>
+<li><a href="#putty-key-generation">PuTTY Key Generation</a></li>
+<li><a href="#connecting-to-the-remote-server-1">Connecting to the Remote Server</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

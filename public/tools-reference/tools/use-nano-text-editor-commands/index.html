@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Use Nano Text Editor Commands in Linux</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This tutorial will teach you how to install and use Nano text editor to create and edit files in Linux.">
+        <meta name="keywords" content="nano, editor">
+        
+        <meta property="og:title" content="How to Use Nano Text Editor Commands in Linux">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/tools/use-nano-text-editor-commands/">
+        <meta property="og:description" content="This tutorial will teach you how to install and use Nano text editor to create and edit files in Linux.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/tools/use-nano-text-editor-commands/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/tools/">Tools</a>
+  
+</li>
+
+
+<li>
+  
+  How to Use Nano Text Editor Commands in Linux
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Use Nano Text Editor Commands in Linux</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-11-08T00:00:00Z">Tuesday, November 8, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fuse-nano-text-editor-commands%2f&via=linode&text=How%20to%20Use%20Nano%20Text%20Editor%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fuse-nano-text-editor-commands%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fuse-nano-text-editor-commands%2f&t=How%20to%20Use%20Nano%20Text%20Editor%20Commands%20in%20Linux" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/tools/use-nano-text-editor-commands.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/tools/use-nano-text-editor-commands.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>GNU nano is a popular command line text editor used on many operating systems including Unix-based systems and BSD variants. It is a popular editor for users who may find <code>vi</code> or <code>emacs</code> commands to be non-intuitive.</p>
+
+<p><img src="/docs/assets/using_nano_smg.png" alt="Using Nano" /></p>
+
+<h2 id="nano-set-up-and-basic-commands">Nano Set Up and Basic Commands</h2>
+
+<p>Nano is included with many Linux distributions by default, but some users may need to install it through their distribution&rsquo;s <a href="/docs/using-linux/package-management/">package management</a> tool:</p>
+
+<p>Debian/Ubuntu users can issue the following command to install nano:</p>
+
+<pre><code>apt-get install nano
+</code></pre>
+
+<p>CentOS/Fedora users can issue the following command to install nano:</p>
+
+<pre><code>yum install nano
+</code></pre>
+
+<p>When using nano, control characters (CTRL) are represented by a carat (<code>^</code>). For example, if you wish to cut a line of text, you would use the &ldquo;CTRL&rdquo; key followed by the &ldquo;K&rdquo; key. This sequence of commands is represented as <code>^K</code> in nano. Some commands use the &ldquo;Alt&rdquo; key in order to function, which is represented by the letter &ldquo;M&rdquo;. A command represented as <code>M-R</code> in nano would be performed by pressing the &ldquo;Alt&rdquo; key followed by the &ldquo;R&rdquo; key. Please note that Mac users may need to use the &ldquo;Escape&rdquo; (Esc) key instead of the &ldquo;Alt&rdquo; key to perform these commands.</p>
+
+<h2 id="create-and-open-files">Create and Open Files</h2>
+
+<p>There are different ways to start nano depending on what type of file you wish to edit. Please read through the options below to determine which is best for you.</p>
+
+<h3 id="create-files">Create Files</h3>
+
+<p>Nano can be used to create blank files that are then opened to be edited. To create a new file, issue a command similar to the following:</p>
+
+<pre><code>nano ~/public_html/index.html
+</code></pre>
+
+<p>In the command above, nano is used to create a file called <code>index.html</code> in the <code>~/public_html</code> folder.</p>
+
+<p>You do not need to provide an absolute path for the file you wish to create. If the file already exists, nano will simply open it instead of creating it. If you decide not to save the file after you edit it, no new files are created on the file system.</p>
+
+<h3 id="open-text-files">Open Text Files</h3>
+
+<p>To edit a basic text file (e.g. that end with <code>.txt</code>), you can use <code>nano /path/to/file.txt</code> to open or create a text file in a specific location. If you wanted to open a file located at <code>~/mystuff/plan.txt</code>, you would issue the following command:</p>
+
+<pre><code>nano ~/mystuff/plan.txt
+</code></pre>
+
+<p>To open files at a specific line or column number, open nano with the following arguments:</p>
+
+<pre><code>nano +LINE,COLUMN File
+</code></pre>
+
+<p>omit a number and it assumes column one, line number \$x</p>
+
+<p>To open a file as &ldquo;read only,&rdquo; use the following form:</p>
+
+<pre><code>nano -v myfile
+</code></pre>
+
+<h3 id="open-configuration-files">Open Configuration Files</h3>
+
+<p>When editing files used to configure applications or system utilities, it is important that you start nano with <code>-w</code>.</p>
+
+<pre><code>nano -w /etc/mysql/my.cnf
+</code></pre>
+
+<p>Opening nano in this manner will prevent it from wrapping lines that are too long to fit on your screen, which can create problems if config directives are saved across multiple lines. <code>nano -w</code> is also useful for creating new files that you do not wish to word wrap.</p>
+
+<h2 id="edit-files">Edit Files</h2>
+
+<h3 id="cut-and-paste-lines-of-text">Cut and Paste Lines of Text</h3>
+
+<p>To cut a line of text, use <code>^K</code>. To paste it back, simply move the cursor where you want the text to be placed and use <code>^U</code>. If you would like to cut multiple lines, use a series of <code>^K</code> commands until all lines you wish to cut have been removed. When you go to paste them back with <code>^U</code>, the lines will all be pasted at once.</p>
+
+<h3 id="search-text">Search Text</h3>
+
+<p>To search for text in a document, use <code>^W</code>. When using this command, you will be presented with a number of options to assist you in your search.</p>
+
+<p>If you would like to do a simple word search, you may enter the word to search for at the prompt. This prompt appears by default when you use <code>^W</code>.</p>
+
+<p>Nano also supports a number of other search features that are all listed under the main search menu.</p>
+
+<pre><code>^G Get Help         ^Y First Line       ^T Go To Line       ^W Beg of Par       M-J FullJstify      M-B Backwards
+^C Cancel           ^V Last Line        ^R Replace          ^O End of Par       M-C Case Sens       M-R Regexp
+</code></pre>
+
+<h4 id="regex-searches">Regex Searches</h4>
+
+<p>If you wish to search for text by using a regular expression, you may do so by entering <code>ALT</code>+<code>R</code> (<code>ESC</code>+<code>R</code> on Macs) at the search menu and typing your regex into the prompt.</p>
+
+<h4 id="go-to-line-number">Go to Line Number</h4>
+
+<p>To go to a line number, enter <code>^T</code> at the search prompt and enter the line number that you wish to navigate to.</p>
+
+<h4 id="find-and-replace-text">Find and Replace Text</h4>
+
+<p>At the search menu, enter <code>^R</code>. You will be presented with two prompts. The first prompt will ask you to enter the text you wish to replace. Once you have done so, enter the test you wish to replace the previous text with.</p>
+
+<h3 id="spell-check">Spell Check</h3>
+
+<p>Nano has a built in spell checking feature that relies on the <code>spell</code> package to function. To install this package, issue the appropriate command from below:</p>
+
+<p>Debian/Ubuntu:</p>
+
+<pre><code>apt-get install spell
+</code></pre>
+
+<p>CentOS/Fedora:</p>
+
+<pre><code>yum install spell
+</code></pre>
+
+<p>Once you have installed spell, you may use the spell checking feature by issuing <code>^T</code> while editing a file.</p>
+
+<h2 id="save-and-exit">Save and Exit</h2>
+
+<p>When you&rsquo;re done editing your file, you can save it and exit the program.</p>
+
+<h3 id="save">Save</h3>
+
+<p>To save your work, issue <code>^O</code> or &ldquo;WriteOut&rdquo;. This will save the document and leave nano open for you to continue working.</p>
+
+<h3 id="save-with-backups">Save with Backups</h3>
+
+<p>Nano will allow you to create backups of files that you are editing when you exit. These backups can be placed in a directory that you choose, otherwise these backup files are placed in the same directory as the modified file.</p>
+
+<p>Using the <code>-B</code> option when starting nano will create backups of the file for you, while using the <code>-C</code> option will allow you to specify the directory to place backup files in:</p>
+
+<pre><code>nano -BC ~/backups index.php
+</code></pre>
+
+<p>The command listed above will create a backup copy of <code>index.php</code> in the <code>backups</code> folder in the current user&rsquo;s home directory.</p>
+
+<h3 id="exit">Exit</h3>
+
+<p>Once you&rsquo;re ready to exit, issue <code>^X</code> to exit nano. If you have not saved your work, you will be prompted to save the changes or cancel the exit routine.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/how-to-install-neovim-and-plugins-with-vim-plug/">How to Install NeoVim and Plugins with vim-plug</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/">Use nano to Edit Files in Linux</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#nano-set-up-and-basic-commands">Nano Set Up and Basic Commands</a></li>
+<li><a href="#create-and-open-files">Create and Open Files</a>
+<ul>
+<li><a href="#create-files">Create Files</a></li>
+<li><a href="#open-text-files">Open Text Files</a></li>
+<li><a href="#open-configuration-files">Open Configuration Files</a></li>
+</ul></li>
+<li><a href="#edit-files">Edit Files</a>
+<ul>
+<li><a href="#cut-and-paste-lines-of-text">Cut and Paste Lines of Text</a></li>
+<li><a href="#search-text">Search Text</a>
+<ul>
+<li><a href="#regex-searches">Regex Searches</a></li>
+<li><a href="#go-to-line-number">Go to Line Number</a></li>
+<li><a href="#find-and-replace-text">Find and Replace Text</a></li>
+</ul></li>
+<li><a href="#spell-check">Spell Check</a></li>
+</ul></li>
+<li><a href="#save-and-exit">Save and Exit</a>
+<ul>
+<li><a href="#save">Save</a></li>
+<li><a href="#save-with-backups">Save with Backups</a></li>
+<li><a href="#exit">Exit</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

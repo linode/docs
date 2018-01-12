@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>LEMP Server on Arch Linux</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install a LEMP stack to serve websites and applications on Arch Linux">
+        <meta name="keywords" content="nginx, lemp, php, linux, web applications">
+        
+        <meta property="og:title" content="LEMP Server on Arch Linux">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/lemp/lemp-server-on-arch-linux/">
+        <meta property="og:description" content="Install a LEMP stack to serve websites and applications on Arch Linux">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/lemp/lemp-server-on-arch-linux/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/lemp/">LEMP Guides</a>
+  
+</li>
+
+
+<li>
+  
+  LEMP Server on Arch Linux
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">LEMP Server on Arch Linux</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2012-06-21T00:00:00Z">Thursday, June 21, 2012</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2flemp%2flemp-server-on-arch-linux%2f&via=linode&text=LEMP%20Server%20on%20Arch%20Linux" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2flemp%2flemp-server-on-arch-linux%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2flemp%2flemp-server-on-arch-linux%2f&t=LEMP%20Server%20on%20Arch%20Linux" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/lemp/lemp-server-on-arch-linux.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/lemp/lemp-server-on-arch-linux.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>This document describes a compatible alternative to the &ldquo;LAMP&rdquo; (Linux, Apache, MySQL, and PHP) stack, known as &ldquo;LEMP.&rdquo; The LEMP stack replaces the Apache web server component with nginx (pronounced &ldquo;engine x,&rdquo; providing the &ldquo;E&rdquo; in LEMP,) which can increase the ability of the server to scale in response to demand.</p>
+
+<p>Prior to beginning this guide, please complete the <a href="/docs/getting-started/">getting started guide</a>. If you are new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts/">introduction to Linux concepts guide</a>, <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>.</p>
+
+<h1 id="set-the-hostname">Set the Hostname</h1>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p>
+
+<h1 id="install-the-nginx-web-server">Install the Nginx Web Server</h1>
+
+<p>Before installing the nginx server, issue the following command to ensure that your system has an up to date version of the Arch Linux package repository. Issue the following command to update the package database:</p>
+
+<pre><code>pacman -Sy
+</code></pre>
+
+<p>You can then install the nginx server with the following command:</p>
+
+<pre><code>pacman -S nginx
+</code></pre>
+
+<p>Remember to update your system regularly using the <code>pacman -Su</code> command to take advantage of the latest updates and security fixes. However, when running full system updates, consult the <code>pacman</code> output carefully and follow reports within the <a href="http://archlinux.org/">Arch Linux Community</a> to avoid unintended side effects or conflicts with packages that you have built yourself.</p>
+
+<h1 id="configure-nginx-virtual-hosting">Configure nginx Virtual Hosting</h1>
+
+<p>In the default installation of nginx, the main configuration file is located at <code>/etc/nginx/conf/nginx.conf</code>; however, there are a number of approaches to organizing configuration within nginx. Regardless of the organizational strategy, all virtual host configurations are contained within <code>server</code> configuration blocks that are in turn contained within the <code>http</code> block in the <code>nginx.conf</code> file. Consider the following nginx virtual host configuration:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		nginx server configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>   <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">www.example.com</span> <span class="s">example.com</span><span class="p">;</span>
+    <span class="kn">access_log</span> <span class="s">/srv/http/example.com/logs/access.log</span><span class="p">;</span>
+    <span class="kn">error_log</span> <span class="s">/srv/http/example.com/logs/error.log</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">root</span>   <span class="s">/srv/http/example.com/public</span><span class="p">;</span>
+        <span class="kn">index</span>  <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Create the directories referenced in this configuration by issuing the following commands:</p>
+
+<pre><code>mkdir -p /srv/http/example.com/public
+mkdir -p /srv/http/example.com/logs
+</code></pre>
+
+<p>You may insert the server directives directly into the <code>http</code> section of the <code>/etc/nginx/nginx.conf</code> file, although this may be difficult to manage. You may also replicate the management system created by the Debian/Ubuntu operating systems by creating a <code>site-available/</code> and <code>sites-enabled/</code> directories and inserting the following line into your <code>nginx.conf</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">http</span> <span class="p">{</span>
+<span class="c1"># [...]
+</span><span class="c1"></span>
+<span class="kn">include</span> <span class="s">/etc/nginx/sites-enabled/*</span><span class="p">;</span>
+
+<span class="c1"># [...]
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Modify the include statement to point to the path of your <code>sites-enabled</code> directory. Create site configurations in the <code>sites-available</code> directory and then create symbolic links to these files in the <code>sites-enabled</code> directory. In other circumstances, it may make more sense to create and include a file named <code>/srv/nginx-sites.conf</code> that is included in the <code>nginx.conf</code> file as follows:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">http</span> <span class="p">{</span>
+<span class="c1"># [...]
+</span><span class="c1"></span>
+<span class="kn">include</span> <span class="s">/srv/nginx-sites.conf</span><span class="p">;</span>
+
+<span class="c1"># [...]
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Then, depending on the size and nature of your deployment, place your virtual host configurations either directly in the <code>/srv/nginx-sites.conf</code> file or include statements for server-specific configuration files in the <code>nginx-sites.file</code> format. For more information regarding nginx configuration options, consider our <a href="/docs/websites/nginx/basic-nginx-configuration">overview of nginx configuration</a>.</p>
+
+<p>Once you&rsquo;ve configured and loaded the nginx configuration, restart the web server to implement the new configuration by issuing the following command:</p>
+
+<pre><code>/etc/rc.d/nginx restart
+</code></pre>
+
+<p>You will want to add the <code>nginx</code> daemon to the <code>DAEMONS=()</code> array at the end of the <code>/etc/rc.conf</code> file to ensure that the nginx process starts following then next reboot cycle.</p>
+
+<h1 id="deploy-php-with-fastcgi">Deploy PHP with FastCGI</h1>
+
+<p>If your application includes PHP code you will need to implement the following &ldquo;PHP-FastCGI&rdquo; solution to allow nginx to properly handle and serve pages that contain PHP code. Issue the following sequence of commands to build and install the packages required to run PHP as a FastCGI process:</p>
+
+<pre><code>pacman -S sudo base-devel php-cgi spawn-fcgi
+cd /opt
+wget http://aur.archlinux.org/packages/spawn-fcgi-php/spawn-fcgi-php.tar.gz
+tar -zxvf spawn-fcgi-php.tar.gz
+cd /opt/spawn-fcgi-php
+makepkg --asroot
+pacman -U spawn-fcgi-php*.pkg.*
+</code></pre>
+
+<p>Because you have built these packages from source, you will want to monitor their pages in the Arch User Repository (AUR) so that you&rsquo;ll be able to recompile compile the <a href="http://aur.archlinux.org/packages.php?ID=37439">spawn-fcgi-php</a> package when updates are available.</p>
+
+<p>Issue the following command to start the PHP FastCGI process:</p>
+
+<pre><code>/etc/rc.d/spawn-fcgi-php start
+</code></pre>
+
+<p>In the default configuration, <code>spawn-fcgi-php</code> starts four <code>php-cgi</code> children processes. Test this configuration under normal load, If you find that you want to modify the number of child processes that are spawned, you can modify this value by editing the <code>PHP_FCGI_CHILDREN</code> value in the <code>/etc/conf.d/spawn-fcgi-php.conf</code> file. Additionally, you will want to add the <code>spawn-fcgi-php</code> daemon to the <code>DAEMONS=()</code> array at the end of the <code>/etc/rc.conf</code> file to ensure that the PHP FastCGI daemon starts following then next reboot cycle.</p>
+
+<p>Consider the following nginx virtual host configuration. Modify your configuration to resemble the one below, and ensure that the <code>location ~ \.php$ { }</code> resembles the one in this example:</p>
+
+<dl class="file">
+<dt>
+
+
+		nginx virtual host configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">server_name</span> <span class="s">www.example.com</span> <span class="s">example.com</span><span class="p">;</span>
+    <span class="kn">access_log</span> <span class="s">/srv/http/example.com/logs/access.log</span><span class="p">;</span>
+    <span class="kn">error_log</span> <span class="s">/srv/http/example.com/logs/error.log</span><span class="p">;</span>
+    <span class="kn">root</span> <span class="s">/srv/http/example.com/public_html</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">index</span> <span class="s">index.html</span> <span class="s">index.htm</span> <span class="s">index.php</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+        <span class="kn">include</span> <span class="s">/etc/nginx/fastcgi_params</span><span class="p">;</span>
+        <span class="kn">fastcgi_pass</span>  <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+        <span class="kn">fastcgi_index</span> <span class="s">index.php</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="s">/srv/http/example.com/public_html</span><span class="nv">$fastcgi_script_name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p><strong>Important security note:</strong> If you&rsquo;re planning to run applications that support file uploads (images, for example), the above configuration may expose you to a security risk by allowing arbitrary code execution. The short explanation for this behavior is that a properly crafted URI which ends in &ldquo;.php&rdquo;, in combination with a malicious image file that actually contains valid PHP, can result in the image being processed as PHP. For more information on the specifics of this behavior, you may wish to review the information provided on <a href="https://nealpoole.com/blog/2011/04/setting-up-php-fastcgi-and-nginx-dont-trust-the-tutorials-check-your-configuration/">Neal Poole&rsquo;s blog</a>.</p>
+
+<p>To mitigate this issue, you may wish to modify your configuration to include a <code>try_files</code> directive. Please note that this fix requires nginx and the php-fcgi workers to reside on the same server:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		nginx virtual host configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+    <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+    <span class="kn">include</span> <span class="s">/etc/nginx/fastcgi_params</span><span class="p">;</span>
+    <span class="kn">fastcgi_pass</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+    <span class="kn">fastcgi_index</span> <span class="s">index.php</span><span class="p">;</span>
+    <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="s">/srv/http/example.com/public_html</span><span class="nv">$fastcgi_script_name</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Additionally, it&rsquo;s a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an &ldquo;/images&rdquo; directory.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		nginx virtual host configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+    <span class="kn">include</span> <span class="s">/etc/nginx/fastcgi_params</span><span class="p">;</span>
+    <span class="kn">if</span> <span class="s">(</span><span class="nv">$uri</span> <span class="s">!~</span> <span class="s">&#34;^/images/&#34;)</span> <span class="p">{</span>
+        <span class="kn">fastcgi_pass</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kn">fastcgi_index</span> <span class="s">index.php</span><span class="p">;</span>
+    <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="s">/srv/http/example.com/public_html</span><span class="nv">$fastcgi_script_name</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>When you&rsquo;ve completed the modifications to the configuration, make sure that the virtual host is enabled and issue the following command to restart the web server:</p>
+
+<pre><code>/etc/rc.d/nginx restart
+</code></pre>
+
+<p>Congratulations! You can now deploy PHP scripts with your LEMP stack.</p>
+
+<h1 id="install-mysql-database-server">Install MySQL Database Server</h1>
+
+<p>The MySQL database engine may be the leading open source relational database engine, and is a popular database solution for web-based applications. Issue the following command to install the MySQL server packages:</p>
+
+<pre><code>pacman -S mysql
+</code></pre>
+
+<p>Issue the following command to start the MySQL daemon:</p>
+
+<pre><code>/etc/rc.d/mysqld start
+</code></pre>
+
+<p>Add the <code>mysqld</code> daemon to the <code>DAEMONS=()</code> array at the end of the <code>/etc/rc.conf</code> file to ensure that the MySQL daemon starts following then next reboot cycle. Issue the following command to secure the MySQL instance. Answer all questions as prompted during this process:</p>
+
+<pre><code>mysql_secure_installation
+</code></pre>
+
+<p>Issue the following command to get a root prompt for the MySQL server:</p>
+
+<pre><code>mysql -u root -p
+</code></pre>
+
+<p>Enter the root password created above and then issue the following sequence of commands to create the <code>example</code> and <code>username</code> database users, grant the <code>username</code> user access to the <code>example</code> database, and exit from the database:</p>
+
+<pre><code>CREATE DATABASE example;
+CREATE USER 'username' IDENTIFIED BY 's8723hk2';
+GRANT ALL PRIVILEGES ON example.* TO 'username';
+exit
+</code></pre>
+
+<p>You may now provide the credentials for the <code>example</code> database and the <code>bagman</code> user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:</p>
+
+<pre><code>/etc/rc.d/spawn-fcgi-php restart
+</code></pre>
+
+<p>Congratulations! You now have a fully functional and fully featured LEMP stack for application deployment.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="/docs/websites/nginx/basic-nginx-configuration">Basic nginx Configuration</a></li>
+<li><a href="/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer">Clustered Web Servers and Software Load Balancing with nginx</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/">Install a LEMP Stack on CentOS 7 with FastCGI</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-server-on-debian-7-wheezy/">LEMP Server on Debian 7 (Wheezy)</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-stack-on-debian-8/">Install a LEMP (Linux, Nginx, MariaDB, PHP) Stack on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/">LEMP Server on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-server-on-ubuntu-11-10-oneiric/">LEMP Server on Ubuntu 11.10 (Oneiric) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#install-the-nginx-web-server">Install the Nginx Web Server</a></li>
+<li><a href="#configure-nginx-virtual-hosting">Configure nginx Virtual Hosting</a></li>
+<li><a href="#deploy-php-with-fastcgi">Deploy PHP with FastCGI</a></li>
+<li><a href="#install-mysql-database-server">Install MySQL Database Server</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

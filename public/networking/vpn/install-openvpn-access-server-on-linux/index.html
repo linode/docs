@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install OpenVPN Access Server on Linux for Secure Communications</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.">
+        <meta name="keywords" content="openvpn, networking, vpn, debian, ubuntu, centos, fedora">
+        
+        <meta property="og:title" content="Install OpenVPN Access Server on Linux for Secure Communications">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/vpn/install-openvpn-access-server-on-linux/">
+        <meta property="og:description" content="This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/vpn/install-openvpn-access-server-on-linux/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/vpn/">VPNs: Virtual Private Networks</a>
+  
+</li>
+
+
+<li>
+  
+  Install OpenVPN Access Server on Linux for Secure Communications
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install OpenVPN Access Server on Linux for Secure Communications</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-11T00:00:00Z">Wednesday, October 11, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2finstall-openvpn-access-server-on-linux%2f&via=linode&text=Install%20OpenVPN%20Access%20Server%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2finstall-openvpn-access-server-on-linux%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2finstall-openvpn-access-server-on-linux%2f&t=Install%20OpenVPN%20Access%20Server%20on%20Linux%20for%20Secure%20Communications" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/vpn/install-openvpn-access-server-on-linux.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/vpn/install-openvpn-access-server-on-linux.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<h2 id="what-is-openvpn">What is OpenVPN?</h2>
+
+<p>OpenVPN is a popular software package which creates encrypted tunnels for secure data transfer.  In this guide, you will learn to configure your Linode as a VPN gateway using the OpenVPN Access Server software, and connect your Windows, OSX, or Linux computer to it.</p>
+
+<p>Before installing OpenVPN Access Server, you will need to follow our <a href="/docs/getting-started/">Getting Started</a> guide. We also suggest following our <a href="/docs/security/basics">Securing Your Server</a> guide.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>After securing your server, ensure that TCP port <code>943</code> and UDP port <code>1194</code> are permitted through your firewall in order for the OpenVPN Access Server to function.</div>
+</blockquote>
+
+
+<h2 id="install-openvpn-access-server">Install OpenVPN Access Server</h2>
+
+<ol>
+<li><p>Update the Linode to ensure that you have the latest packages, using your installed package manager.</p></li>
+
+<li><p>Create a new directory for the OpenVPN installer.</p>
+
+<pre><code>mkdir openvpn
+cd openvpn
+</code></pre></li>
+
+<li><p>Download the latest version of <a href="https://openvpn.net/index.php/access-server/download-openvpn-as-sw.html">OpenVPN Access Server</a> for your distribution of choice.  Installation packages are provided for the listed distributions in supported package formats.  Install using the following commands, based on your system&rsquo;s package manager.</p>
+
+<p>Debian based systems (Debian/Ubuntu):</p>
+
+<pre><code>sudo dpkg -i openvpn-as-*.deb
+</code></pre>
+
+<p>RPM based systems(Fedora/CentOS/OpenSuse):</p>
+
+<pre><code>sudo rpm --install openvpn-as-*.rpm
+</code></pre></li>
+
+<li><p>Once the install process is complete, information on accessing the Admin and Client UI will be displayed.</p>
+
+<pre><code>Access Server web UIs are available here:
+Admin  UI: https://192.0.2.1:943/admin
+Client UI: https://192.0.2.1:943/
+</code></pre>
+
+<p>The Admin UI is where you configure the OpenVPN Access Server, while the Client UI is used to download the VPN packages to connect new client computers</p></li>
+
+<li><p>Set the password for the OpenVPN user.</p>
+
+<pre><code>sudo passwd openvpn
+</code></pre></li>
+</ol>
+
+<h2 id="configure-openvpn-client-settings">Configure OpenVPN Client Settings</h2>
+
+<ol>
+<li><p>Connect to the Admin UI address shown at the end of the install process, using the password for your OpenVPN User.</p>
+
+<p><a href="/docs/assets/openvpn-admin-web.png"><img src="/docs/assets/openvpn-admin-web-resize.png" alt="OpenVPN Admin Web Interface." /></a></p></li>
+
+<li><p>Click the <strong>Client Settings</strong> link, and ensure that all options besides &ldquo;Offer server-locked profile&rdquo; are checked.</p>
+
+<p><a href="/docs/assets/openvpn-server-profiles.png"><img src="/docs/assets/openvpn-server-profiles.png" alt="OpenVPN Admin Web Interface." /></a></p></li>
+
+<li><p>Once the changes to the settings have been saved, you will be prompted to update the running server.</p>
+
+<p><a href="/docs/assets/openvpn-update-server.png"><img src="/docs/assets/openvpn-update-server-resize.png" alt="OpenVPN Admin Web Interface." /></a></p></li>
+</ol>
+
+<h3 id="openvpn-user-management">OpenVPN User Management</h3>
+
+<p>You can add additional users to your OpenVPN Access Server to enable auditing of connections to your VPN tunnel, and user level access control.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>OpenVPN Access Server&rsquo;s free edition is limited to two users. If you require additional users for your VPN, you can view pricing details and purchase licenses at <a href="https://openvpn.net/index.php/access-server/pricing.html">OpenVPN&rsquo;s Website</a></div>
+</blockquote>
+
+
+<ol>
+<li><p>From the admin web interface, click the <strong>User Permissions</strong> link under User Management.</p></li>
+
+<li><p>Enter the new username that you wish to add in the <code>New Username</code> field at the bottom of the list.</p>
+
+<p><a href="/docs/assets/openvpn-user-management.png"><img src="/docs/assets/openvpn-user-management-resize.png" alt="OpenVPN Admin User Interface." /></a></p></li>
+
+<li><p>View and configure additional settings for the new user by clicking the <strong>Show</strong> link in the &ldquo;More Settings&rdquo; column.</p>
+
+<p><a href="/docs/assets/openvpn-admin-user-settings.png"><img src="/docs/assets/openvpn-admin-user-settings-resize.png" alt="OpenVPN Admin User Settings." /></a></p></li>
+
+<li><p>Click the <strong>Save Settings</strong> option at the bottom of the page to complete the creation of the new user account.</p></li>
+</ol>
+
+<h3 id="permit-autologin-profiles">Permit Autologin Profiles</h3>
+
+<p>If you wish to configure autologin profiles, you will need to modify your user settings to allow autologin profiles to be displayed on the connections page.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>This configuration type can be useful for connecting other servers to your VPN on startup, or for configuring a system that will always route all of its traffic over the VPN automatically.  Utilizing this type of profile will cause all of your non-local traffic to be routed over the VPN automatically.  If you wish to enable and disable your VPN at will, you will want to utilize User or Server locked profiles instead.</div>
+</blockquote>
+
+
+<ol>
+<li><p>From the OpenVPN Access Server admin web interface, visit the User Permissions link.</p></li>
+
+<li><p>Fill in the check mark next to &ldquo;Allow Auto Login&rdquo; for the required user to enable this profile.</p>
+
+<p><a href="/docs/assets/openvpn-autologin.png"><img src="/docs/assets/openvpn-autologin-resize.png" alt="OpenVPN Autologin." /></a></p></li>
+</ol>
+
+<h2 id="client-software-installation">Client Software Installation</h2>
+
+<h3 id="windows">Windows</h3>
+
+<ol>
+<li><p>Connect to the OpenVPN Access Server Client UI. Click the link to download the OpenVPN Connect software to your computer.</p>
+
+<p><a href="/docs/assets/openvpn-download-page.png"><img src="/docs/assets/openvpn-download-page-resize.png" alt="OpenVPN Admin Web Interface." /></a></p></li>
+
+<li><p>When prompted, click run to kick off the installation process.</p>
+
+<p><a href="/docs/assets/openvpn-windows-installer-1.png"><img src="/docs/assets/openvpn-windows-installer-1-resize.png" alt="Windows Client UI." /></a></p></li>
+
+<li><p>Once the installation has completed, you should be presented with the OpenVPN login window. Your server&rsquo;s IP address should be pre-filled in.  You will need to enter the username and password of your OpenVPN user.</p></li>
+
+<li><p>You can utilize the OpenVPN icon located in your Windows taskbar to view the status of your VPN connection, and disconnect or reconnect to the VPN.</p>
+
+<p><a href="/docs/assets/openvpn-connect-windows-4.png"><img src="/docs/assets/openvpn-connect-windows-4-resize.png" alt="OpenVPN Taskbar Icon." /></a></p></li>
+</ol>
+
+<h3 id="mac-os">Mac OS</h3>
+
+<ol>
+<li><p>Connect to the OpenVPN Access Server Client UI, and click the link to download the OpenVPN Connect Software.</p></li>
+
+<li><p>Once the DMG package has downloaded, a Finder window will open with the Installer package icon.</p>
+
+<p><a href="/docs/assets/openvpn-install-osx-1.png"><img src="/docs/assets/openvpn-install-osx-1-resize.png" alt="DMG Finder Window." /></a></p></li>
+
+<li><p>Double click the OpenVPN Connect installer package. A prompt will open requesting approval to open the package.  Click Open to continue with the installation.</p>
+
+<p><a href="/docs/assets/openvpn-osx-install-2.png"><img src="/docs/assets/openvpn-osx-install-2-resize.png" alt="DMG Finder Window." /></a></p></li>
+
+<li><p>Once the installation process has completed, you will see an OpenVPN icon in your OSX taskbar. Right clicking this icon will bring up the context menu for starting your OpenVPN connection.</p>
+
+<p><a href="/docs/assets/openvpn-osx-install-3.png"><img src="/docs/assets/openvpn-osx-install-3-resize.png" alt="DMG Finder Window." /></a></p></li>
+
+<li><p>Clicking Connect will bring up a window prompting for the OpenVPN username and password. Enter the credentials for your OpenVPN user and click Connect to establish a VPN tunnel.</p>
+
+<p><a href="/docs/assets/openvpn-osx-install-4.png"><img src="/docs/assets/openvpn-osx-install-4-resize.png" alt="DMG Finder Window." /></a></p></li>
+</ol>
+
+<h3 id="openvpn-for-linux">OpenVPN for Linux</h3>
+
+<ol>
+<li><p>Download and install the OpenVPN client software using your distribution&rsquo;s package manager.</p>
+
+<p>Debian/Ubuntu:</p>
+
+<pre><code>sudo apt-get install openvpn
+</code></pre>
+
+<p>Fedora/CentOS:</p>
+
+<pre><code>sudo yum install OpenVPN
+</code></pre></li>
+
+<li><p>Connect to the OpenVPN Access Server Client UI, and download the appropriate profile for your usage.</p>
+
+<p><a href="/docs/assets/openvpn-download-profile-ubuntu.png"><img src="/docs/assets/openvpn-download-profile-ubuntu-resize.png" alt="DMG Finder Window." /></a></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you are connecting a headless machine to your OpenVPN server, such as another Linode, you will need to utilize the wget tool to download the appropriate profile.  You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then utilizing the <a href="/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget">wget</a> tool to download the client profile.</div>
+</blockquote>
+</li>
+
+<li><p>Copy the downloaded profile to your <code>/etc/openvpn</code> folder, and rename it to <code>client.conf</code>. Replace <code>~/Downloads/client.ovpn</code> with the location of your download folder, if necessary.</p>
+
+<pre><code>sudo cp ~/Downloads/client.ovpn /etc/openvpn/client.conf
+</code></pre></li>
+
+<li><p>Start the OpenVPN Tunnel service. Unless you have configured and downloaded an autologin profile, you will be prompted for your OpenVPN user&rsquo;s username and password.</p>
+
+<pre><code>sudo service openvpn start
+</code></pre></li>
+
+<li><p>Run the ifconfig command to view your network connections. Once the VPN interface has come online, a <code>tun0</code> interface will be added to the list.</p>
+
+<pre><code>ip addr
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>After completing this process on any of the listed operating systems, you can utilize a website such as <a href="https://www.whatismyip.com">WhatIsMyIp.com</a> to verify your VPN connectivity. You can also query from the command line with <code>curl ifconfig.me</code> If successful, these steps should return the IP address of your Linode rather than your local IP.</div>
+</blockquote>
+
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/">Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/security/security-patches/patching-glibc-for-the-ghost-vulnerability/">Upgrading glibc for the GHOST Vulnerability</a></li>
+    
+    
+    
+    <li><a href="/docs/security/security-patches/disabling-sslv3-for-poodle/">Disabling SSLv3 for POODLE</a></li>
+    
+    
+    
+    <li><a href="/docs/security/security-patches/patching-bash-for-the-shellshock-vulnerability/">Upgrading Bash for the Shellshock Vulnerability</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/cloud-storage/dropbox/">Installing and Configuring Dropbox</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-openvpn">What is OpenVPN?</a></li>
+<li><a href="#install-openvpn-access-server">Install OpenVPN Access Server</a></li>
+<li><a href="#configure-openvpn-client-settings">Configure OpenVPN Client Settings</a>
+<ul>
+<li><a href="#openvpn-user-management">OpenVPN User Management</a></li>
+<li><a href="#permit-autologin-profiles">Permit Autologin Profiles</a></li>
+</ul></li>
+<li><a href="#client-software-installation">Client Software Installation</a>
+<ul>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#mac-os">Mac OS</a></li>
+<li><a href="#openvpn-for-linux">OpenVPN for Linux</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

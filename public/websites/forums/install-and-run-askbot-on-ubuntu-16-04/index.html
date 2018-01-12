@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to Install and Deploy an AskBot Question and Answer Forum with LetsEncrypt SSL.">
+        <meta name="keywords" content="askbot, Gunicorn, LetsEncrypt, Python, WSGI">
+        
+        <meta property="og:title" content="How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/forums/install-and-run-askbot-on-ubuntu-16-04/">
+        <meta property="og:description" content="This guide shows how to Install and Deploy an AskBot Question and Answer Forum with LetsEncrypt SSL.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/forums/install-and-run-askbot-on-ubuntu-16-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/forums/">Forums</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-22T00:00:00Z">Friday, September 22, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/gopalraha">Gopal Raha
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fforums%2finstall-and-run-askbot-on-ubuntu-16-04%2f&via=linode&text=How%20to%20Install%20and%20Run%20AskBot%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fforums%2finstall-and-run-askbot-on-ubuntu-16-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fforums%2finstall-and-run-askbot-on-ubuntu-16-04%2f&t=How%20to%20Install%20and%20Run%20AskBot%20with%20LetsEncrypt%20SSL%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/forums/install-and-run-askbot-on-ubuntu-16-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/forums/install-and-run-askbot-on-ubuntu-16-04.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/AskBot.jpg" alt="AskBot with LetsEncrypt on Ubuntu" /></p>
+
+<h2 id="what-is-askbot">What is AskBot?</h2>
+
+<p><a href="https://askbot.com">AskBot</a> is an open-source question-and-answer forum written in Django and Python. It provides features similar to StackOverflow, including a karma-based system, voting, and content moderation. It is used by many popular open source communities such as Ask-FedoraProject and Ask-OpenStack.</p>
+
+<p>In this guide, you&rsquo;ll install AskBot and deploy with <strong>Nginx</strong> as a web server, <strong>MySQL</strong> as a database server, <strong>Gunicorn</strong> as a Python WSGI HTTP Server and <strong>LetsEncrypt</strong> as a free SSL certificates provider on your Ubuntu 16.04 Linode.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code> sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+
+<li><p>A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the <a href="/docs/networking/dns/dns-manager-overview#add-records">DNS Manager Overview</a> guide.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Throughout this guide, replace <code>example_user</code> with a non-root user with <code>sudo</code> access. If you’re not familiar with Linux user permissions and the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="install-dependencies-and-create-a-database">Install Dependencies and Create a Database</h2>
+
+<ol>
+<li><p>Install the required packages, including Nginx, MySQL, Python PIP, and LetsEncrypt:</p>
+
+<pre><code>sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
+</code></pre></li>
+
+<li><p>Log in to MySQL as the root user:</p>
+
+<pre><code>sudo mysql -u root -p
+</code></pre></li>
+
+<li><p>When prompted, enter the root password.</p></li>
+
+<li><p>Create a new MySQL user and database. In the example below, <code>askbotdb</code> is the database name, <code>dbuser</code> is the database user, and <code>dbpassword</code> is the database user’s password.</p>
+
+<pre><code>CREATE DATABASE askbotdb CHARACTER SET UTF8;
+CREATE USER dbuser@localhost IDENTIFIED BY 'dbpassword';
+GRANT ALL PRIVILEGES ON askbotdb.* TO dbuser@localhost;
+FLUSH PRIVILEGES;
+</code></pre></li>
+
+<li><p>Exit MySQL:</p>
+
+<pre><code>exit
+</code></pre></li>
+</ol>
+
+<h2 id="install-askbot">Install AskBot</h2>
+
+<ol>
+<li><p>Create a directory to install AskBot. Remember to replace <code>example_user</code> with the name of a non-root user on your Linode:</p>
+
+<pre><code>mkdir -p /home/example_user/askbot
+</code></pre></li>
+
+<li><p>Ensure that <code>pip</code> is the latest version:</p>
+
+<pre><code>sudo pip install --upgrade pip
+</code></pre></li>
+
+<li><p>Use <code>pip</code> to install <code>virtualenv</code>:</p>
+
+<pre><code>sudo pip install virtualenv
+</code></pre></li>
+
+<li><p>Create a Python virtual environment using <code>virtualenv</code>:</p>
+
+<pre><code>virtualenv /home/example_user/askbot/askbotenv
+</code></pre></li>
+
+<li><p>Activate the Python virtual environment:</p>
+
+<pre><code>source /home/example_user/askbot/askbotenv/bin/activate
+</code></pre></li>
+
+<li><p>Install AskBot and its dependencies:</p>
+
+<pre><code>pip install askbot mysqlclient mysql-python gunicorn
+</code></pre></li>
+</ol>
+
+<h2 id="configure-askbot">Configure AskBot</h2>
+
+<ol>
+<li><p>Initialize the AskBot setup files. Use the database name, user, and password that you created earlier:</p>
+
+<pre><code>askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For more detailed information about the arguments to <code>askbot-setup</code>, user the <code>-h</code> flag: <code>askbot-setup –h</code>.</div>
+</blockquote>
+</li>
+
+<li><p>Use <code>collectstatic</code> to place all of the static files (css, javascript, and images) into the AskBot installation directory:</p>
+
+<pre><code> python /home/example_user/askbot/manage.py collectstatic --noinput
+</code></pre></li>
+
+<li><p>When you install or upgrade AskBot, you should run <code>makemigrations</code> and <code>migrate</code>:</p>
+
+<pre><code>python /home/example_user/askbot/manage.py makemigrations
+python /home/example_user/askbot/manage.py migrate
+</code></pre></li>
+
+<li><p>Turn off the Debug mode in <code>settings.py</code> to run AskBot in the production environment:</p>
+
+<pre><code> sed -i &quot;s|DEBUG = True|DEBUG = False|&quot; /home/example_user/askbot/settings.py
+</code></pre></li>
+
+<li><p>Change the URL of the static files from <code>/m/</code> to <code>/static/</code>:</p>
+
+<pre><code> sed -i &quot;s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|&quot; /home/example_user/askbot/settings.py
+</code></pre></li>
+</ol>
+
+<h2 id="deploy-askbot-with-letsencrypt-ssl">Deploy AskBot with LetsEncrypt SSL</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This section requires that you have a Fully Qualified Domain Name (FQDN) that is configured to point to your Linode. In the examples below, replace <code>example.com</code> with your FQDN.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Edit <code>/home/example_user/askbot/wsgi.py</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/example_user/askbot/wsgi.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">import os
+os.environ.setdefault(&#34;DJANGO_SETTINGS_MODULE&#34;, &#34;settings&#34;)
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Create a <code>systemd</code> service for Gunicorn so that it can run as a service. Create the following <code>gunicorn.service</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/systemd/system/gunicorn.service 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=example_user
+Group=www-data
+WorkingDirectory=/home/example_user/askbot
+Environment=&#34;PATH=/home/example_user/askbot/askbotenv/bin&#34;
+ExecStart=/home/example_user/askbot/askbotenv/bin/gunicorn --workers 3 --bind unix:askbot.sock wsgi:application
+
+[Install]
+WantedBy=multi-user.target</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Enable and start the Gunicorn service:</p>
+
+<pre><code>    sudo systemctl start gunicorn
+    sudo systemctl enable gunicorn
+</code></pre></li>
+
+<li><p>Restart nginx and reload the daemon:</p>
+
+<pre><code>    sudo systemctl daemon-reload
+    sudo systemctl restart nginx
+</code></pre></li>
+
+<li><p>Use <a href="/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates">Letsencrypt</a> to obtain an SSL certificate for your domain:</p>
+
+<pre><code>   sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
+</code></pre></li>
+
+<li><p>Remove the default Nginx Server Blocks (Virtual Host) and the default Nginix index file to add new AskBot server blocks:</p>
+
+<pre><code>   sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
+</code></pre></li>
+
+<li><p>Add new <code>askbot</code> Nginx Server Blocks (Virtual Host) to run AskBot in the production environment:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/askbot 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">server {
+        listen 80;
+        server_name example.com www.example.com;
+        return    301 https://$server_name$request_uri;
+}
+
+server {
+        listen 443;
+        server_name example.com www.example.com;
+
+	 ssl on;
+        ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+
+	location ~ /.well-known {
+        allow all;
+        root /var/www/html;
+        }
+
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location /static/ {
+        root /home/example_user/askbot;
+        }
+
+        location /upfiles/ {
+        root /home/example_user/askbot/askbot;
+        }
+
+        location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/example_user/askbot/askbot.sock;
+        }
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Add a symbolic link between nginx server blocks:</p>
+
+<pre><code>sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
+</code></pre></li>
+
+<li><p>The <strong>www-data</strong> group must have access to AskBot installation directory so that nginx can serve static files, media files, and access the socket files. Add the <code>example_user</code> to <strong>www-data</strong> group so that it has the necessary permissions:</p>
+
+<pre><code> sudo usermod -aG www-data example_user
+</code></pre></li>
+
+<li><p>Restart nginx so that the changes take effect:</p>
+
+<pre><code> sudo systemctl restart nginx
+</code></pre></li>
+</ol>
+
+<h2 id="set-up-an-askbot-admin-account">Set Up an AskBot Admin Account</h2>
+
+<ol>
+<li><p>Open a web browser and navigate to your Linode&rsquo;s domain name:</p>
+
+<p><img src="/docs/assets/askbot-1.png" alt="access askbot on web browser" /></p></li>
+
+<li><p>Click on <strong>create a password-protected account</strong> to create an Admin Account:</p>
+
+<p><img src="/docs/assets/askbot-2.png" alt="create an askbot admin account" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The first account created using the above method will be treated as an admin account. Any subsequent accounts will be normal accounts.</div>
+</blockquote>
+</li>
+
+<li><p>Choose an admin username and password:</p>
+
+<p><img src="/docs/assets/askbot-3.png" alt="create a admin username and password" /></p></li>
+
+<li><p>Set your domain name with AskBot using base url settings by clicking <strong>APP_URL</strong>:</p>
+
+<p><img src="/docs/assets/askbot-4.png" alt="set your domain name to askbot base url settings" /></p></li>
+
+<li><p>Add your domain name in the place of Base URL box and click <strong>Save</strong>:</p>
+
+<p><img src="/docs/assets/askbot-5.png" alt="add your domain name to askbot base url settings" /></p></li>
+
+<li><p>AskBot is now ready to run. Access the AskBot admin interface and customize it according to your needs:</p>
+
+<p><img src="/docs/assets/askbot-6.png" alt="final access to askbot forum" /></p></li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>At this point you are ready to begin posting on your forum. For more information about AskBot&rsquo;s configuration options, check out the <a href="https://askbot.org/doc/index.html">AskBot Documentation</a>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://askbot.org/doc/index.html">AskBot Documentation</a></li>
+
+<li><a href="https://askbot.org">AskBot Official Q&amp;A Forum</a></li>
+
+<li><a href="https://askbot.com">AskBot Official Website</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/python/use-scrapy-to-extract-data-from-html-tags/">Use Scrapy to Extract Data From HTML Tags</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/how-to-create-a-private-python-package-repository/">How to Create a Private Python Package Repository</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-askbot">What is AskBot?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-dependencies-and-create-a-database">Install Dependencies and Create a Database</a></li>
+<li><a href="#install-askbot">Install AskBot</a></li>
+<li><a href="#configure-askbot">Configure AskBot</a></li>
+<li><a href="#deploy-askbot-with-letsencrypt-ssl">Deploy AskBot with LetsEncrypt SSL</a></li>
+<li><a href="#set-up-an-askbot-admin-account">Set Up an AskBot Admin Account</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

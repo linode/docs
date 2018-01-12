@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install MySQL Workbench for Database Administration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="MySQL Workbench is a graphical tool for working with MySQL databases in a client/server model. As you explore and manipulate your data using Workbench, you will discover many more features and shortcuts that can make managing your databases easier.">
+        <meta name="keywords" content="MySQL, MySQL Workbench, workbench, administer database">
+        
+        <meta property="og:title" content="Install MySQL Workbench for Database Administration">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/mysql/deploy-mysql-workbench-for-database-administration/">
+        <meta property="og:description" content="MySQL Workbench is a graphical tool for working with MySQL databases in a client/server model. This tutorial will guide you through installing Workbench.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/mysql/deploy-mysql-workbench-for-database-administration/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/mysql/">MySQL</a>
+  
+</li>
+
+
+<li>
+  
+  Install MySQL Workbench for Database Administration
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install MySQL Workbench for Database Administration</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-08-01T00:00:00Z">Tuesday, August 1, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Scott Somner
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fdeploy-mysql-workbench-for-database-administration%2f&via=linode&text=Install%20MySQL%20Workbench%20for%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fdeploy-mysql-workbench-for-database-administration%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fdeploy-mysql-workbench-for-database-administration%2f&t=Install%20MySQL%20Workbench%20for%20Database%20Administration" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/mysql/deploy-mysql-workbench-for-database-administration.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/mysql/deploy-mysql-workbench-for-database-administration.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/deploy-mysql-workbench-for-database-administration.png" alt="Deploy MySQL Workbench for Database Administration" title="Deploy MySQL Workbench for Database Administration" /></p>
+
+<p>This guide will show you how to get started using <a href="https://www.mysql.com/products/workbench/">MySQL Workbench</a>, a graphical tool for working with MySQL databases. Workbench is available for Linux, OS X and Windows, and runs directly on your desktop in a client/server model with your MySQL backend.</p>
+
+<p>MySQL Workbench is a very handy tool for database administration. This guide is only a start to its capabilities. As you explore and manipulate your data using this tool, you&rsquo;ll discover many more features and shortcuts that can make managing your databases that much easier.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li>You will need MySQL installed on your Linode. You can find instructions for this and the recommended prerequisites for your particular Linux distribution in the <a href="/docs/databases/mysql/">MySQL index</a> of our Guides and Tutorials pages.</li>
+</ol>
+
+<h2 id="install-and-configure-mysql-workbench">Install and Configure MySQL Workbench</h2>
+
+<p><strong>OS X / Windows</strong></p>
+
+<p>Download and install MySQL workbench from the <a href="https://www.mysql.com/products/workbench/">downloads page</a> of the MySQL website.</p>
+
+<p><strong>Desktop Linux</strong></p>
+
+<p>There are <code>.deb</code> and <code>.rpm</code> packages available on the Workbench <a href="https://www.mysql.com/products/workbench/">download page</a>. Alternatively, some distributions have MySQL Workbench in their repositories.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The screenshots in this guide were taken in Ubuntu but once Workbench is installed on your system, the subsequent steps should be similar for other plaforms.</div>
+</blockquote>
+
+
+<p>When you start MySQL Workbench, you&rsquo;ll land at the home screen. Once you configure your database servers, as we&rsquo;ll do next, then they&rsquo;ll have shortcuts on the home screen.</p>
+
+<p><a href="/docs/assets/workbenchHome.png"><img src="/docs/assets/workbenchHome-small.png" alt="MySQL Workbench's home screen immediately after installation." /></a></p>
+
+<h3 id="add-mysql-servers">Add MySQL Servers</h3>
+
+<p>The first step after running MySQL Workbench is to add your Linode as a database server. You&rsquo;ll need your MySQL username and password for this step. This is the same username and password you would use to login to phpMyAdmin or other administrative tools. If you just installed MySQL, then your username will be <code>root</code> and the password will be that which you provided when installing MySQL.</p>
+
+<ol>
+<li><p>Click the <strong>+</strong> adjacent to <strong>MySQL Connections</strong> to get the <strong>Setup New Connection</strong> dialog:</p>
+
+<p><a href="/docs/assets/workbenchHome.png"><img src="/docs/assets/workbenchHome-small.png" alt="The New Connection Dialog." /></a></p>
+
+<p>The settings you&rsquo;ll need:</p>
+
+<ul>
+<li><p>Connection Name - This is the name of the connection for your reference only.</p></li>
+
+<li><p>Connection Method - Set this to Standard TCP/IP over SSH.</p></li>
+
+<li><p>SSH Hostname - The IP address of your Linode.  If you use a non-standard port (other than <code>22</code>), add it to the end following a colon (example: <code>203.0.113.0:2222</code>).</p></li>
+
+<li><p>SSH Password - You can store your password for the SSH connection here if you want to.  If you don&rsquo;t provide it, then Workbench will prompt for it each time.</p></li>
+
+<li><p>SSH Key File - If you use an SSH key pair instead of a password, you can point Workbench to your key file through this setting.</p></li>
+
+<li><p>MySQL Hostname - Leave this as <code>127.0.0.1</code>, which indicates the database is running on your Linode.</p></li>
+
+<li><p>MySQL Server Port - Leave this as <code>3306</code> unless you changed the MySQL port number.</p></li>
+
+<li><p>Username - This is the database username.  If you just installed MySQL, this will be <code>root</code>.</p></li>
+
+<li><p>Password - This is the database user&rsquo;s password.  If you don&rsquo;t store it here, then Workbench will prompt for it each time.</p></li>
+
+<li><p>Default Schema - This is the default database to connect to.  It&rsquo;s OK to leave this blank if you haven&rsquo;t created a database yet or don&rsquo;t want one to load by default.</p></li>
+</ul></li>
+
+<li><p>Once you&rsquo;ve configured everything, click <strong>Test Connection</strong>.  If you didn&rsquo;t save your passwords then Workbench will prompt for them.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Pay attention to the <strong>Service</strong> area of each dialog.  Use the appropriate password (SSH or MySQL) or the connection will fail.</div>
+</blockquote>
+
+
+<p><img src="/docs/assets/workbenchPassword.png" alt="The **SSH** password dialog" /></p>
+
+<p><img src="/docs/assets/workbenchDBpassword.png" alt="The **MySQL** password dialog" /></p></li>
+
+<li><p>If all is well, you should get a <strong>Connection Successful</strong> message.</p>
+
+<p><img src="/docs/assets/workbenchGoodConnection.png" alt="Connection Successful!" /></p></li>
+
+<li><p>Click <strong>OK</strong> to clear the message, then click <strong>OK</strong> again to add the connection.  You&rsquo;ll get a shortcut to the new connection on the home screen.</p>
+
+<p><a href="/docs/assets/workbenchHomeWithLinode.png"><img src="/docs/assets/workbenchHomeWithLinode-small.png" alt="Shortcut to your database" /></a></p>
+
+<p>If you have more than one Linode or other servers you administer, you can repeat this process to add all of your database servers.</p></li>
+</ol>
+
+<h3 id="connect-to-mysql">Connect to MySQL</h3>
+
+<p>Click on the shortcut to your Linode. You&rsquo;ll see connection details, then click <strong>Connect</strong>.</p>
+
+<p><a href="/docs/assets/workbenchInfoConnect.png"><img src="/docs/assets/workbenchInfoConnect-small.png" alt="Connection details just before connecting" /></a></p>
+
+<p>Workbench will prompt for passwords again, as needed. Then you&rsquo;ll arrive at the database screen, from where you&rsquo;ll do most of your work.</p>
+
+<p><a href="/docs/assets/workbenchDataScreen.png"><img src="/docs/assets/workbenchDataScreen-small.png" alt="The database screen" /></a></p>
+
+<h3 id="add-users-and-privileges">Add Users and Privileges</h3>
+
+<p>Just like it&rsquo;s a bad idea to use the root account for &ldquo;daily use&rdquo; in the shell, the same idea applies inside MySQL.  Workbench provides the capability to add, edit and manage user privileges.  You can add a user and give assign privileges.</p>
+
+<ol>
+<li><p>Click <strong>Users and Privileges</strong> under the <strong>Management</strong> pane.</p>
+
+<p><a href="/docs/assets/workbenchUsers.png"><img src="/docs/assets/workbenchUsers-small.png" alt="MySQL user management" /></a></p></li>
+
+<li><p>Click <strong>Add Account</strong>.</p></li>
+
+<li><p>Enter a <strong>Login Name</strong> and a <strong>Password</strong>, then confirm the password.</p></li>
+
+<li><p>Click the <strong>Administrative Roles</strong> tab.</p></li>
+
+<li><p>Select a role or assign specific privileges by checking the different boxes.</p></li>
+
+<li><p>Click <strong>Apply</strong>.</p></li>
+</ol>
+
+<p>The user you just created should be able to log in to MySQL via Workbench or any application that supports accessing a MySQL database.</p>
+
+<h3 id="set-mysql-workbench-preferences">Set MySQL Workbench Preferences</h3>
+
+<p>MySQL Workbench is deployed in safe mode by default. This will not allow certain types of queries&ndash;such as updates&ndash;without explicit IDs. To fix this, we need to turn off safe mode.</p>
+
+<ol>
+<li><p>Go to the menu and select <strong>Edit</strong>, then <strong>Preferences</strong>.</p></li>
+
+<li><p>Select the <strong>SQL Queries</strong> tab.</p>
+
+<p><img src="/docs/assets/workbenchSQLqueries.png" alt="The SQL Queries configuration page" /></p></li>
+
+<li><p>Uncheck the line beginning with <strong>&ldquo;Safe Updates&rdquo;.</strong></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In some instances, this may instead be found under <strong>SQL Editor</strong>.</div>
+</blockquote>
+</li>
+
+<li><p>Click <strong>OK</strong>.</p></li>
+
+<li><p>Close the database screen to return to home.</p></li>
+
+<li><p>Reconnect to the database.</p></li>
+</ol>
+
+<h2 id="creating-and-populating-databases">Creating and Populating Databases</h2>
+
+<h3 id="add-a-schema-database">Add a Schema (Database)</h3>
+
+<p>Start by adding a new database that you can work with.</p>
+
+<ol>
+<li><p>Click the <strong>New Schema</strong> button on the toolbar.</p>
+
+<p><img src="/docs/assets/workbenchToolbarNewSchema.png" alt="The new schema button.  Make sure you click the one with a plus, not the one with an i" /></p>
+
+<p><a href="/docs/assets/workbenchNewSchema.png"><img src="/docs/assets/workbenchNewSchema-small.png" alt="The new schema dialog" /></a></p>
+
+<p>You only need a name to create the new database, but you can create an area for comments if you want. Default collation can be left blank, in which case MySQL will use the default.</p></li>
+
+<li><p>Click <strong>Apply</strong>; you&rsquo;ll then get an <strong>Apply SQL Script to Database</strong> dialog. This shows you what commands are actually being sent to MySQL to perform the requested actions.</p>
+
+<p><img src="/docs/assets/workbenchSQL.png" alt="The Apply dialog shows you the commands actually being sent to MySQL" /></p></li>
+
+<li><p>Click <strong>Apply</strong> again and you should get a <strong>SQL Succesful</strong> message.  Then click <strong>Close</strong>.</p>
+
+<p><img src="/docs/assets/workbenchSQLsuccessful.png" alt="Our SQL has been successfully applied!" /></p>
+
+<p>Now you&rsquo;re back at the main database screen, and you see that <strong>phonebook</strong> has been added to the schema list. Double-click on any item in the schema list to switch to that database.</p>
+
+<p><a href="/docs/assets/workbenchSchemaSelected.png"><img src="/docs/assets/workbenchSchemaSelected-small.png" alt="The currently selected database is displayed in bold print" /></a></p></li>
+</ol>
+
+<h3 id="add-a-table">Add a Table</h3>
+
+<p>MySQL stores its information in a table, which resembles a spreadsheet.</p>
+
+<ol>
+<li><p>Click the <strong>Add Table</strong> button.</p>
+
+<p><img src="/docs/assets/workbenchMenuButton.png" alt="The add table button" /></p>
+
+<p>You&rsquo;ll get a screen that looks like this:</p>
+
+<p><a href="/docs/assets/workbenchAddTable.png"><img src="/docs/assets/workbenchAddTable-small.png" alt="Creating a MySQL table" /></a></p>
+
+<p><strong>Name</strong> is the table name you want to add, for example, <strong>employees</strong>.  <strong>Schema</strong> identifies to which database the table should be added. Note that whatever you select in the <strong>Schema</strong> pane becomes the default.</p>
+
+<p><a href="/docs/assets/workbenchSetupTable.png"><img src="/docs/assets/workbenchSetupTable-small.png" alt="Entering field names for the phonebook" /></a></p>
+
+<p>Fields are the columns of a table which hold the information that you want to store. Each table should always have an <em>ID</em> field that is configured as a <strong>Primary Key</strong>.</p></li>
+
+<li><p>Type <strong>ID</strong> under column name and press <strong>ENTER</strong>.</p></li>
+
+<li><p>Check the <strong>PK</strong> checkbox if it hasn&rsquo;t been automatically checked.</p></li>
+
+<li><p>Also, check <strong>Not Null (NN)</strong> and <strong>Auto Increment (AI)</strong>. This step will require the ID field to always have a value and generate a sequential number each time you add new data. Once the ID field is configured, add all other fields you&rsquo;ll need in the table.</p></li>
+
+<li><p>Click directly under <strong>ID</strong> to add a new field.</p></li>
+
+<li><p>Enter <strong>lastName</strong> for the column name.</p></li>
+
+<li><p>Click under <strong>Datatype</strong> and select <strong>VARCHAR()</strong>.</p></li>
+
+<li><p>Click between the parentheses and enter 45. Datatype <strong>VARCHAR</strong> is a string and the number in parentheses is the maximum length. Repeat this process to create the following fields:</p>
+
+<ul>
+<li><p>firstName, a VARCHAR(45)</p></li>
+
+<li><p>phone, a VARCHAR(16)</p></li>
+
+<li><p>email, a VARCHAR(45)</p></li>
+</ul>
+
+<p>Once your preferred fields are set up, click the <strong>Apply</strong> button.  You&rsquo;ll get another <strong>Apply SQL Script To Database</strong> window.  Click <strong>Apply</strong> again and look for the <strong>SQL Successful</strong> message.</p>
+
+<p><img src="/docs/assets/workbenchTableSQL.png" alt="The SQL commands to build the phonebook table" /></p>
+
+<p>Now that your database has a table in it, you can click on the right arrow in the <strong>Schemas</strong> pane to expand the view.  Click the arrow next to <strong>Tables</strong> and you&rsquo;ll see the <strong>employees</strong> table just created.</p></li>
+</ol>
+
+<h3 id="add-data-to-a-table">Add Data to a Table</h3>
+
+<p>The first step to add table data is to open a table.</p>
+
+<ol>
+<li><p>Right click on <strong>employees</strong> and select the top option, <strong>SELECT ROWS - LIMIT 1000</strong>.</p>
+
+<p><img src="/docs/assets/workbenchEmptyTable.png" alt="A blank table ready for data" /></p></li>
+
+<li><p>Double click on <strong>NULL</strong> under <strong>lastName</strong>.  At this point, you can start entering data.  You must press ENTER after each field to exit editing or else the field will revert to its previous value.</p></li>
+
+<li><p>Once all of the data is entered, click the <strong>Apply</strong> button.  Note: If you skip this step, none of the data you entered will be saved in the database.</p></li>
+</ol>
+
+<h2 id="working-with-your-data">Working with Your Data</h2>
+
+<h3 id="run-queries">Run Queries</h3>
+
+<p>You can run a SQL query on a table by entering it at the top of the table view.</p>
+
+<ol>
+<li><p>Click on the text entry area and type:</p>
+
+<pre><code>SELECT * FROM phonebook.employees WHERE `firstName` = 'Bob'
+</code></pre></li>
+
+<li><p>Click on the lightning bolt to run the query.  You should get results like this:</p>
+
+<p><a href="/docs/assets/workbenchSQLresults.png"><img src="/docs/assets/workbenchSQLresults-small.png" alt="Who is named Bob?" /></a></p></li>
+</ol>
+
+<h3 id="export-import-data">Export / Import Data</h3>
+
+<h4 id="to-export">To Export</h4>
+
+<p>Exporting data is handy for backing up database content or moving a database to a new server.  It&rsquo;s always a good idea to export the database prior to any major changes in structure or the installation of a new application, just in case something goes awry or you want to revert to your pre-install state.</p>
+
+<ol>
+<li><p>Click <strong>Data Export</strong> under the <strong>Management</strong> pane.</p>
+
+<p><a href="/docs/assets/workbenchExportSQL.png"><img src="/docs/assets/workbenchExportSQL-small.png" alt="Options for exporting data" /></a></p></li>
+
+<li><p>Check the database(s) you would like to export data from on the left pane.</p></li>
+
+<li><p>Check the table(s) you would like to export data from on the right pane.</p></li>
+
+<li><p>Select <strong>Export to Self-Contained File</strong> &ndash; The <code>.sql</code> file this produces is plain text, so you can explore it with a text editor.</p></li>
+
+<li><p>Click <strong>&hellip;</strong> and enter a file name.</p></li>
+
+<li><p>OPTIONAL - if you only want the table structures and not the data, check <strong>Skip table data</strong>.</p></li>
+
+<li><p>Click <strong>Start Export</strong>.</p></li>
+</ol>
+
+<h4 id="to-import">To Import</h4>
+
+<p>Importing data can restore a backup created with <strong>Data Export</strong> or can load a database sent to you by a co-worker.</p>
+
+<ol>
+<li><p>Click <strong>Data Import / Restore</strong>.</p>
+
+<p><a href="/docs/assets/workbenchImport.png"><img src="/docs/assets/workbenchImport-small.png" alt="Import options" /></a></p></li>
+
+<li><p>Select <strong>Import from Self-Contained File</strong>.</p></li>
+
+<li><p>Click <strong>&hellip;</strong> and locate your <code>.sql</code> file.</p></li>
+
+<li><p>Under <strong>Default Target Schema</strong> select the database where you want this import to go.</p></li>
+
+<li><p>Click <strong>Start Import</strong>.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://dev.mysql.com/doc/workbench/en/">MySQL Workbench Documentation</a></li>
+
+<li><a href="https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html">Resetting MySQL Root Password</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/mysql/how-to-install-mysql-on-centos-7/">How to Install MySQL on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mariadb/how-to-install-mariadb-on-centos-7/">How to Install MariaDB on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/how-to-install-mysql-on-debian-8/">How to Install MySQL on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/cloud-storage/owncloud-debian-7/">Installing and Configuring ownCloud on Debian 7.4</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/how-to-install-mysql-on-centos-6/">How to Install MySQL on CentOS 6</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-and-configure-mysql-workbench">Install and Configure MySQL Workbench</a>
+<ul>
+<li><a href="#add-mysql-servers">Add MySQL Servers</a></li>
+<li><a href="#connect-to-mysql">Connect to MySQL</a></li>
+<li><a href="#add-users-and-privileges">Add Users and Privileges</a></li>
+<li><a href="#set-mysql-workbench-preferences">Set MySQL Workbench Preferences</a></li>
+</ul></li>
+<li><a href="#creating-and-populating-databases">Creating and Populating Databases</a>
+<ul>
+<li><a href="#add-a-schema-database">Add a Schema (Database)</a></li>
+<li><a href="#add-a-table">Add a Table</a></li>
+<li><a href="#add-data-to-a-table">Add Data to a Table</a></li>
+</ul></li>
+<li><a href="#working-with-your-data">Working with Your Data</a>
+<ul>
+<li><a href="#run-queries">Run Queries</a></li>
+<li><a href="#export-import-data">Export / Import Data</a>
+<ul>
+<li><a href="#to-export">To Export</a></li>
+<li><a href="#to-import">To Import</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

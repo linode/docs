@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Seafile with nginx on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Seafile is an open-source cross-platform file hosting tool with server applications for Linux and Windows. We will show you how to install it on Ubuntu 16.04.">
+        <meta name="keywords" content="Seafile,  nginx,  Ubuntu 16.04,  file server,  media,  sharing">
+        
+        <meta property="og:title" content="Install Seafile with nginx on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/">
+        <meta property="og:description" content="Seafile is an open-source cross-platform file hosting tool with server applications for Linux and Windows. We will show you how to install it on Ubuntu 16.04.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/cloud-storage/">Cloud Storage</a>
+  
+</li>
+
+
+<li>
+  
+  Install Seafile with nginx on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Seafile with nginx on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-06-21T00:00:00Z">Wednesday, June 21, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2finstall-seafile-with-nginx-on-ubuntu-1604%2f&via=linode&text=Install%20Seafile%20with%20nginx%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2finstall-seafile-with-nginx-on-ubuntu-1604%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2finstall-seafile-with-nginx-on-ubuntu-1604%2f&t=Install%20Seafile%20with%20nginx%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with nginx or Apache to enable connections over HTTPS.</p>
+
+<p>Seafile has <a href="https://www.seafile.com/en/product/private_server/">two editions</a>: a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with nginx serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our <a href="/docs/platform/how-to-use-block-storage-with-your-linode">Block Storage</a> service with this setup.</p>
+
+<p><img src="/docs/assets/seafile-title-graphic.png" alt="Install Seafile with nginx on Ubuntu 16.04" /></p>
+
+<h2 id="prepare-ubuntu">Prepare Ubuntu</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Linux Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Update the system:</p>
+
+<pre><code>apt update &amp;&amp; apt upgrade
+</code></pre></li>
+
+<li><p>Create a standard user account with root privileges. As an example, we&rsquo;ll call the user <em>sfadmin</em>:</p>
+
+<pre><code>adduser sfadmin
+adduser sfadmin sudo
+</code></pre></li>
+
+<li><p>Log out of your Linode&rsquo;s root user account and back in as <em>sfadmin</em>:</p>
+
+<pre><code>exit
+ssh sfadmin@&lt;your_linode's_ip&gt;
+</code></pre></li>
+
+<li><p>You should now be logged into your Linode as <em>sfadmin</em>. Use our <a href="/docs/security/securing-your-server#harden-ssh-access">Securing Your Server</a> guide to harden SSH access.</p></li>
+
+<li><p>Set up UFW rules. UFW is Ubuntu&rsquo;s iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide <a href="/docs/security/firewalls/configure-firewall-with-ufw">Configure a Firewall with UFW</a>. Set the allow rules for SSH and HTTP(S) access with:</p>
+
+<pre><code>sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw enable
+</code></pre>
+
+<p>Then check the status of your rules and list them numerically:</p>
+
+<pre><code>sudo ufw status numbered
+</code></pre>
+
+<p>The output should be:</p>
+
+<pre><code>Status: active
+
+To                         Action      From
+--                         ------      ----
+[ 1] 22                         ALLOW IN    Anywhere
+[ 2] 80                         ALLOW IN    Anywhere
+[ 3] 443                        ALLOW IN    Anywhere
+[ 4] 22 (v6)                    ALLOW IN    Anywhere (v6)
+[ 5] 80 (v6)                    ALLOW IN    Anywhere (v6)
+[ 6] 443 (v6)                   ALLOW IN    Anywhere (v6)
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you don&rsquo;t want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can delete it. For example, you can delete the rule to allow SSH over IPv6 with <code>sudo ufw delete 4</code>.</div>
+</blockquote>
+</li>
+
+<li><p>Set the Linode&rsquo;s hostname. We&rsquo;ll call it <em>seafile</em> as an example:</p>
+
+<pre><code>sudo hostnamectl set-hostname seafile
+</code></pre></li>
+
+<li><p>Add the new hostname to <code>/etc/hosts</code>. The second line in the file should look like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">127.0.1.1    members.linode.com     seafile</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>On first boot, your Linode&rsquo;s timezone will be set to UTC. Changing this is optional, but if you wish, use:</p>
+
+<pre><code>sudo dpkg-reconfigure tzdata
+</code></pre></li>
+</ol>
+
+<h2 id="install-and-configure-mysql">Install and Configure MySQL</h2>
+
+<ol>
+<li><p>During Installation, you will be asked to assign a password for the root mysql user. Be sure to install the package <code>mysql-server-5.7</code>, not <code>mysql-server</code>. This is because an upstream issue causes problems starting the MySQL service if you install by using the <code>mysql-server</code> package.</p>
+
+<pre><code>sudo apt install mysql-server-5.7
+</code></pre></li>
+
+<li><p>Run the <em>mysql_secure_installation</em> script:</p>
+
+<pre><code>sudo mysql_secure_installation
+</code></pre>
+
+<p>For more info on MySQL, see our guide: <a href="/docs/databases/mysql/install-mysql-on-ubuntu-14-04">Install MySQL on Ubuntu</a></p></li>
+</ol>
+
+<h2 id="create-a-tls-certificate-for-use-with-nginx">Create a TLS Certificate for use with nginx</h2>
+
+<p>If you don&rsquo;t already have an SSL/TLS certificate, you can create one. This certificate will be self-signed, and will cause web browsers to protest about a non-private connection. You should verify the SHA256 fingerprint of the certificate in the browser versus that on the server, and add a permanent exception to the browser to trust this certificate.</p>
+
+<ol>
+<li><p>Change to the location where we&rsquo;ll store the certificate files and create server&rsquo;s certificate with key:</p>
+
+<pre><code>cd /etc/ssl
+sudo openssl genrsa -out privkey.pem 4096
+sudo openssl req -new -x509 -key privkey.pem -out cacert.pem
+</code></pre></li>
+</ol>
+
+<h2 id="install-and-configure-nginx">Install and Configure nginx</h2>
+
+<ol>
+<li><p>Install nginx from Ubuntu&rsquo;s repository:</p>
+
+<pre><code>sudo apt install nginx
+</code></pre></li>
+
+<li><p>Create the site configuration file. The only line you need to change below is <code>server_name</code>. For more HTTPS configuration options, see our guide on <a href="/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices">TLS Best Practices with nginx</a>.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/nginx/sites-available/seafile.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span><span class="lnt">51</span><span class="lnt">52</span><span class="lnt">53</span><span class="lnt">54</span><span class="lnt">55</span><span class="lnt">56</span><span class="lnt">57</span><span class="lnt">58</span><span class="lnt">59</span><span class="lnt">60</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server{</span>
+    <span class="s">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="k">server_name</span> <span class="s">example.com</span><span class="p">;</span>
+    <span class="k">rewrite</span> <span class="s">^</span> <span class="s">https://</span><span class="nv">$http_host$request_uri?</span> <span class="s">permanent</span><span class="p">;</span>
+    <span class="k">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+    <span class="k">}</span>
+ <span class="s">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
+    <span class="kn">ssl</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">ssl_certificate</span> <span class="s">/etc/ssl/cacert.pem</span><span class="p">;</span>
+    <span class="kn">ssl_certificate_key</span> <span class="s">/etc/ssl/privkey.pem</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">example.com</span><span class="p">;</span>
+
+    <span class="kn">ssl_protocols</span> <span class="s">TLSv1</span> <span class="s">TLSv1.1</span> <span class="s">TLSv1.2</span><span class="p">;</span>
+    <span class="kn">add_header</span>   <span class="s">Strict-Transport-Security</span> <span class="s">&#34;max-age=31536000</span><span class="p">;</span> <span class="kn">includeSubdomains&#34;</span><span class="p">;</span>
+    <span class="kn">add_header</span>   <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
+    <span class="kn">add_header</span>   <span class="s">X-Frame-Options</span> <span class="s">DENY</span><span class="p">;</span>
+    <span class="kn">ssl_session_cache</span> <span class="s">shared:SSL:10m</span><span class="p">;</span>
+    <span class="kn">ssl_ciphers</span>  <span class="s">&#34;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH</span> <span class="s">!RC4&#34;</span><span class="p">;</span>
+    <span class="kn">ssl_prefer_server_ciphers</span>   <span class="no">on</span><span class="p">;</span>
+
+    <span class="kn">fastcgi_param</span>   <span class="s">HTTPS</span>               <span class="no">on</span><span class="p">;</span>
+    <span class="kn">fastcgi_param</span>   <span class="s">HTTP_SCHEME</span>         <span class="s">https</span><span class="p">;</span>
+
+  <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">fastcgi_pass</span>    <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8000</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span>   <span class="s">SCRIPT_FILENAME</span>     <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span>   <span class="s">PATH_INFO</span>           <span class="nv">$fastcgi_script_name</span><span class="p">;</span>
+
+        <span class="kn">fastcgi_param</span>    <span class="s">SERVER_PROTOCOL</span>        <span class="nv">$server_protocol</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span>   <span class="s">QUERY_STRING</span>        <span class="nv">$query_string</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span>   <span class="s">REQUEST_METHOD</span>      <span class="nv">$request_method</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span>   <span class="s">CONTENT_TYPE</span>        <span class="nv">$content_type</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span>   <span class="s">CONTENT_LENGTH</span>      <span class="nv">$content_length</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span>    <span class="s">SERVER_ADDR</span>         <span class="nv">$server_addr</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span>    <span class="s">SERVER_PORT</span>         <span class="nv">$server_port</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span>    <span class="s">SERVER_NAME</span>         <span class="nv">$server_name</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span>   <span class="s">REMOTE_ADDR</span>         <span class="nv">$remote_addr</span><span class="p">;</span>
+
+        <span class="kn">access_log</span>      <span class="s">/var/log/nginx/seahub.access.log</span><span class="p">;</span>
+        <span class="kn">error_log</span>       <span class="s">/var/log/nginx/seahub.error.log</span><span class="p">;</span>
+        <span class="kn">fastcgi_read_timeout</span> <span class="mi">36000</span><span class="p">;</span>
+        <span class="kn">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="s">/seafhttp</span> <span class="p">{</span>
+        <span class="kn">rewrite</span> <span class="s">^/seafhttp(.*)</span>$ <span class="nv">$1</span> <span class="s">break</span><span class="p">;</span>
+        <span class="kn">proxy_pass</span> <span class="s">http://127.0.0.1:8082</span><span class="p">;</span>
+        <span class="kn">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kn">proxy_connect_timeout</span>  <span class="s">36000s</span><span class="p">;</span>
+        <span class="kn">proxy_read_timeout</span>  <span class="s">36000s</span><span class="p">;</span>
+        <span class="kn">proxy_send_timeout</span>  <span class="s">36000s</span><span class="p">;</span>
+        <span class="kn">send_timeout</span>  <span class="s">36000s</span><span class="p">;</span>
+        <span class="kn">proxy_request_buffering</span> <span class="no">off</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="s">/media</span> <span class="p">{</span>
+        <span class="kn">root</span> <span class="s">/home/sfadmin/sfroot/seafile-server-latest/seahub</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Disable the default site configuration and enable the one you just created:</p>
+
+<pre><code>sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/seafile.conf /etc/nginx/sites-enabled/seafile.conf
+</code></pre></li>
+
+<li><p>Run the nginx configuration test and restart the web server. If the test fails, it will give you a brief description of what&rsquo;s wrong so you can troubleshoot the problem.</p>
+
+<pre><code>sudo nginx -t
+sudo systemctl restart nginx
+</code></pre></li>
+</ol>
+
+<h2 id="configure-and-install-seafile">Configure and Install Seafile</h2>
+
+<ol>
+<li><p>The <a href="https://manual.seafile.com/deploy/using_mysql.html">Seafile manual</a> advises to use a particular directory structure to ease upgrades. We&rsquo;ll do the same here, but instead of using the example <code>haiwen</code> directory found in the Seafile manual, we&rsquo;ll create a directory called <code>sfroot</code> in the <code>sfadmin</code> home folder.</p>
+
+<pre><code>mkdir ~/sfroot &amp;&amp; cd ~/sfroot
+</code></pre></li>
+
+<li><p>Download the Seafile CE 64 bit Linux server. You&rsquo;ll need to get the exact link from <a href="https://www.seafile.com/en/download/">seafile.com</a>. Once you have the URL, use <code>wget</code> to download it to <em>~/sfadmin/sfroot</em>.</p>
+
+<pre><code>wget &lt;link&gt;
+</code></pre></li>
+
+<li><p>Extract the tarball and move it when finished:</p>
+
+<pre><code>tar -xzvf seafile-server*.tar.gz
+mkdir installed &amp;&amp; mv seafile-server*.tar.gz installed
+</code></pre></li>
+
+<li><p>Install dependency packages for Seafile:</p>
+
+<pre><code>sudo apt install python2.7 libpython2.7 python-setuptools python-imaging python-ldap python-mysqldb python-memcache python-urllib3
+</code></pre></li>
+
+<li><p>Run the installation script:</p>
+
+<pre><code>cd seafile-server-* &amp;&amp; ./setup-seafile-mysql.sh
+</code></pre>
+
+<p>You&rsquo;ll be prompted to answer several questions and choose settings during the installation process. For those that recommend a default, use that.</p></li>
+
+<li><p>Start the server.</p>
+
+<pre><code>./seafile.sh start
+./seahub.sh start-fastcgi
+</code></pre>
+
+<p>The <code>seahub.sh</code> script will set up an admin user account used to log into Seafile. You&rsquo;ll be asked for a login email and to create a password.</p>
+
+<p><a href="/docs/assets/seafile-firststart.png"><img src="/docs/assets/seafile-firststart-small.png" alt="First time starting Seafile" /></a></p></li>
+
+<li><p>Seafile should now be accessible from a web browser using both your Linode&rsquo;s IP address or the <code>server_name</code> you set earlier in nginx&rsquo;s <code>seafile.conf</code> file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you&rsquo;ll see the Seafile login.</p>
+
+<p><a href="/docs/assets/seafile-login.png"><img src="/docs/assets/seafile-login-small.png" alt="Seafile login prompt" /></a></p></li>
+</ol>
+
+<h2 id="automatically-start-seafile-on-sever-bootup">Automatically Start Seafile on Sever Bootup</h2>
+
+<p>The <code>seafile.sh</code> and <code>seahub.sh</code> scripts don&rsquo;t automatically run if your Linode were to reboot.</p>
+
+<ol>
+<li><p>Create the systemd unit files:</p>
+
+<p><dl class="file">
+<dt>
+
+
+		/etc/systemd/system/seafile.service 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Seafile Server
+<span class="nv">After</span><span class="o">=</span>network.target mysql.service
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>oneshot
+<span class="nv">ExecStart</span><span class="o">=</span>/home/sfadmin/sfroot/seafile-server-latest/seafile.sh start
+<span class="nv">ExecStop</span><span class="o">=</span>/home/sfadmin/sfroot/seafile-server-latest/seafile.sh stop
+<span class="nv">RemainAfterExit</span><span class="o">=</span>yes
+<span class="nv">User</span><span class="o">=</span>sfadmin
+<span class="nv">Group</span><span class="o">=</span>sfadmin
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/systemd/system/seahub.service 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Seafile Hub
+<span class="nv">After</span><span class="o">=</span>network.target seafile.service
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>oneshot
+<span class="nv">ExecStart</span><span class="o">=</span>/home/sfadmin/sfroot/seafile-server-latest/seahub.sh start-fastcgi
+<span class="nv">ExecStop</span><span class="o">=</span>/home/sfadmin/sfroot/seafile-server-latest/seahub.sh stop
+<span class="nv">RemainAfterExit</span><span class="o">=</span>yes
+<span class="nv">User</span><span class="o">=</span>sfadmin
+<span class="nv">Group</span><span class="o">=</span>sfadmin
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Then enable the services:</p>
+
+<pre><code>sudo systemctl enable seafile
+sudo systemctl enable seahub
+</code></pre>
+
+<p>You can verify they&rsquo;ve started successfully with:</p>
+
+<pre><code>sudo systemctl status seafile
+sudo systemctl status seahub
+</code></pre></li>
+
+<li><p>Confirm the startup scripts are working by rebooting your Linode. After bootup, both the Seafile and Seahub services should be active when running the status commands in the previous step. You should also still be able to access Seafile with a web browser.</p></li>
+</ol>
+
+<h2 id="updating-seafile">Updating Seafile</h2>
+
+<p>There are various ways to update Seafile depending on if you are upgrading from one milestone to another (version 5 to 6), or upgrading between point releases (5.1.0 to 5.1.1). See the <a href="https://manual.seafile.com/deploy/upgrade.html">Seafile Manual</a> for upgrade instructions that best suit your needs.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://manual.seafile.com/">Seafile Server Manual</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/how-to-use-block-storage-with-your-linode/">How to Use Block Storage with Your Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/development/ror/use-unicorn-and-nginx-on-ubuntu-14-04/">Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/development/ror/ruby-on-rails-nginx-debian-8/">Ruby on Rails with Nginx on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/">Yesod, Nginx, and MySQL on Debian 7 (Wheezy)</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prepare-ubuntu">Prepare Ubuntu</a></li>
+<li><a href="#install-and-configure-mysql">Install and Configure MySQL</a></li>
+<li><a href="#create-a-tls-certificate-for-use-with-nginx">Create a TLS Certificate for use with nginx</a></li>
+<li><a href="#install-and-configure-nginx">Install and Configure nginx</a></li>
+<li><a href="#configure-and-install-seafile">Configure and Install Seafile</a></li>
+<li><a href="#automatically-start-seafile-on-sever-bootup">Automatically Start Seafile on Sever Bootup</a></li>
+<li><a href="#updating-seafile">Updating Seafile</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

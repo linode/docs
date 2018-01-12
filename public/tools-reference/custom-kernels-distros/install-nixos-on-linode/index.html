@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install and Configure NixOS on a Linode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.">
+        <meta name="keywords" content="custom distro, NixOS, advanced Linux, kvm">
+        
+        <meta property="og:title" content="Install and Configure NixOS on a Linode">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/custom-kernels-distros/install-nixos-on-linode/">
+        <meta property="og:description" content="Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/custom-kernels-distros/install-nixos-on-linode/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/custom-kernels-distros/">Run Custom Kernels and Distribution Templates on Linode Instances</a>
+  
+</li>
+
+
+<li>
+  
+  Install and Configure NixOS on a Linode
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install and Configure NixOS on a Linode</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-06-16T00:00:00Z">Friday, June 16, 2017</time> by Andrew Miller</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-nixos-on-linode%2f&via=linode&text=Install%20and%20Configure%20NixOS%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-nixos-on-linode%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-nixos-on-linode%2f&t=Install%20and%20Configure%20NixOS%20on%20a%20Linode" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/custom-kernels-distros/install-nixos-on-linode.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/custom-kernels-distros/install-nixos-on-linode.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/nixos-title.png" alt="How to Install NixOS on Linode" title="How to Install NixOS on Linode" /></p>
+
+<p><a href="https://nixos.org">NixOS</a> is a Linux distribution built on the <a href="https://nixos.org/nix">Nix</a> package manager. Nix focuses on functional programming concepts, such as immutability and determinism, that enable powerful system management techniques.</p>
+
+<p>While Nix can be installed on any Linux system, NixOS takes these ideas a step further by extending them to the entire system, allowing configuration files and active state to be managed as well. This unique approach to system management has many advantages that can make deploying software and application updates easier.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>NixOS is not officially supported by Linode at the time of publishing this guide. Any issues with NixOS on your Linode are outside the scope of Linode Support. In addition, certain Linode tools, such as Network- and Boot-Helpers, will not work with NixOS.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<p>Familiarize yourself with <a href="/docs/networking/using-the-linode-shell-lish">LISH</a> and <a href="/docs/networking/use-the-graphic-shell-glish">GLISH</a> to connect to your Linode. You will use them throughout this guide.</p>
+
+<p>The <a href="https://nixos.org/nixos/manual/">NixOS manual</a> is the main reference for NixOS. It explores the concepts at a high level and serves as a reference for some system configuration concepts. This should have everything you need to know to get started, but there may be some deeper concepts that are not thoroughly addressed. For more in-depth information, visit the <a href="https://nixos.org/nixos/manual/">NixOS</a> and <a href="https://nixos.org/nixpkgs/manual/">Nixpkgs</a> manuals.</p>
+
+<h2 id="prepare-your-linode">Prepare Your Linode</h2>
+
+<h3 id="create-disks-for-nix">Create Disks for Nix</h3>
+
+<p><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk">Create three disk images</a>: One for the installer, one for a swap partition, and one for the root partition. Label them:</p>
+
+<ul>
+<li><strong>Installer</strong>: A type <code>ext4</code> disk, 1024 MB in size.</li>
+<li><strong>Swap</strong>: A <code>swap</code> disk no larger than 512 MB.</li>
+<li><strong>NixOS</strong>: A type <code>ext4</code> disk which takes up all remaining space.</li>
+</ul>
+
+<h3 id="create-configuration-profiles">Create Configuration Profiles</h3>
+
+<p><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles">Create two configuration profiles</a>, one for the installer and one to boot NixOS. For each profile, disable all of the options under <strong>Filesystem/Boot Helpers</strong> and set the <strong>Configuration Profile</strong> to match the following:</p>
+
+<ul>
+<li><p><strong>Installer profile</strong></p>
+
+<ul>
+<li><strong>Label:</strong> Installer</li>
+<li><strong>Kernel:</strong> Direct Disk</li>
+<li><strong>/dev/sda:</strong> <em>NixOS</em></li>
+<li><strong>/dev/sdb:</strong> <em>Swap</em></li>
+<li><strong>/dev/sdc:</strong> <em>Installer</em></li>
+<li><strong>root / boot device:</strong> Standard: /dev/sdc</li>
+</ul></li>
+
+<li><p><strong>Boot profile</strong></p>
+
+<ul>
+<li><strong>Label:</strong> NixOS</li>
+<li><strong>Kernel:</strong> GRUB 2</li>
+<li><strong>/dev/sda:</strong> <em>NixOS</em></li>
+<li><strong>/dev/sdb:</strong> <em>Swap</em></li>
+<li><strong>root / boot device:</strong> Standard: /dev/sda</li>
+</ul></li>
+</ul>
+
+<h3 id="prepare-the-installer">Prepare the Installer</h3>
+
+<p>In your browser, navigate to the <a href="https://nixos.org/nixos/download.html">NixOS download page</a> and copy the URL from the <strong>Minimal installation CD, 64-bit Intel/AMD</strong> link.</p>
+
+<p><a href="/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode">Boot your Linode into rescue mode</a> with the installer disk mounted as <code>/dev/sda</code>. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image copied from the <a href="https://nixos.org/nixos/download.html">NixOS download page</a>. This example installs NixOS 17.03:</p>
+
+<pre><code># Bind the URL you grabbed from the download page to a bash variable
+iso=&lt;URL for nixos download&gt;
+
+# Update SSL certificates to allow HTTPS connections
+update-ca-certificates
+
+# Download the ISO and write it to the installer disk
+curl $iso | dd of=/dev/sda
+</code></pre>
+
+<h2 id="install-nixos">Install NixOS</h2>
+
+<h3 id="boot-the-installer">Boot the Installer</h3>
+
+<p>In your Linode&rsquo;s dashboard, boot into your <em>Installer</em> configuration profile. Since the installer image isn&rsquo;t configured to support SSH or the LISH console, connect to your Linode using <a href="/docs/networking/use-the-graphic-shell-glish">GLISH</a>.</p>
+
+<h3 id="set-up-the-install-environment">Set up the Install Environment</h3>
+
+<p>Mount the NixOS disk to which you are installing the distro as <code>/mnt</code>:</p>
+
+<pre><code>mount /dev/sda /mnt
+</code></pre>
+
+<p>Enable the swap disk you created earlier:</p>
+
+<pre><code>swapon /dev/sdb
+</code></pre>
+
+<p>Generate a starter configuration:</p>
+
+<pre><code>nixos-generate-config --root /mnt
+</code></pre>
+
+<h2 id="configure-nixos">Configure NixOS</h2>
+
+<p>Change to the configuration directory:</p>
+
+<pre><code>cd /mnt/etc/nixos
+</code></pre>
+
+<p>Within this directory there are two files: <code>configuration.nix</code> and <code>hardware-configuration.nix</code>. When realizing its configuration, NixOS only uses <code>configuration.nix</code>. It is common practice to keep a separate Nix file with hardware specific configuration and have the <code>configuration.nix</code> file source its contents.</p>
+
+<h3 id="rewrite-device-identifiers">Rewrite Device Identifiers</h3>
+
+<p>The <code>nixos-generate-config</code> command in the <a href="#set-up-the-install-environment">Set up the Install Environment</a> section generated the configuration from hardware details it gathered automatically. It prefers to use UUIDs to identify disks, but since Linode is a virtual platform you can choose the device identifiers that disks get attached to.</p>
+
+<p>Since you can modify these later, it is better to use the <code>/dev/sdX</code> identifiers (where <code>X</code> is the assigned volume, like <code>sda</code> or <code>sdb</code>) to allow you to easily swap in backup disks without having to boot into rescue mode and rewrite the UUID to match the new disk:</p>
+
+<p>Replace the contents of the <code>filesystems</code> and <code>swapDevices</code> sections with the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/mnt/etc/nixos/hardware-configuration.nix 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">filesystems.<span class="s2">&#34;/&#34;</span> <span class="o">=</span>
+  <span class="o">{</span> <span class="nv">device</span> <span class="o">=</span> <span class="s2">&#34;/dev/sda&#34;</span><span class="p">;</span>
+    <span class="nv">fsType</span> <span class="o">=</span> <span class="s2">&#34;ext4&#34;</span><span class="p">;</span>
+  <span class="o">}</span><span class="p">;</span>
+
+<span class="nv">swapDevices</span> <span class="o">=</span>
+  <span class="o">[</span> <span class="o">{</span> <span class="nv">device</span> <span class="o">=</span> <span class="s2">&#34;/dev/sdb&#34;</span><span class="p">;</span> <span class="o">}</span>
+  <span class="o">]</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="enable-lish">Enable LISH</h3>
+
+<p>The LISH console requires certain kernel and GRUB options to be configured in the hardware configuration. Place these lines anywhere within the curly braces <code>{ }</code> that contain most of the existing configuration. Order doesn&rsquo;t matter for Nix files, so group settings in a way that makes sense to you:</p>
+
+<pre><code>boot.kernelParams = [ &quot;console=ttyS0,19200n8&quot; ];
+boot.loader.grub.extraConfig = ''
+  serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1;
+  terminal_input serial;
+  terminal_output serial
+'';
+</code></pre>
+
+<h3 id="configure-grub">Configure GRUB</h3>
+
+<p>When GRUB detects a partitionless disk, it will warn about the unreliability of blocklists. To force NixOS to ignore the warning and then continue, configure GRUB to use the <code>forceInstall</code> option. GRUB will run from the host machine and will read the GRUB file from the disk, so the GRUB on disk will never be used.</p>
+
+<p>Set the timeout for GRUB to be lengthy enough to accommodate LISH connection delays. The following hardware configuration example sets a 10 second timeout:</p>
+
+<pre><code>boot.loader.grub.device = &quot;nodev&quot;;
+boot.loader.timeout = 10;
+</code></pre>
+
+<h3 id="edit-nixos-configuration">Edit NixOS Configuration</h3>
+
+<p>At the end of the guide, you will create an image from this disk, which will allow us to deploy NixOS on Linode like any other distro. For this purpose it is better to make a general all-purpose image, so you won&rsquo;t make any system-specific configuration changes, like adding users and SSH keys.</p>
+
+<p>Most of these changes bring the NixOS defaults in line with how Linode&rsquo;s standard images work for most distributions. These aren&rsquo;t necessarily best practices, but they make a system that works as expected.</p>
+
+<h3 id="configure-the-ssh-daemon">Configure the SSH daemon</h3>
+
+<p>Root logins via SSH are disabled by default. To access your Linode, enable root login during installation:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/mnt/etc/nixos/configuration.nix 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">services.openssh <span class="o">=</span> <span class="o">{</span>
+  <span class="nb">enable</span> <span class="o">=</span> true<span class="p">;</span>
+  <span class="nv">permitRootLogin</span> <span class="o">=</span> <span class="s2">&#34;yes&#34;</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>After installation, create a user with limited permissions, then set <code>permitRootLogin</code> to <code>&quot;no&quot;</code>.</p>
+
+<h3 id="disable-predictable-interface-names">Disable Predictable Interface Names</h3>
+
+<p>Most of Linode&rsquo;s default images have had systemd&rsquo;s predictable interface names disabled. Because of this, most of <a href="/docs/networking/">Linode&rsquo;s networking guides</a> assume an interface of <code>eth0</code>. Since your Linode runs in a virtual environment and will have a single interface, it won&rsquo;t encounter the issues that predictable interface names were designed to solve. This change is optional, but may help troubleshooting later:</p>
+
+<pre><code>networking.usePredictableInterfaceNames = false;
+</code></pre>
+
+<h3 id="install-diagnostic-tools">Install Diagnostic Tools</h3>
+
+<p>These tools are included on most Linode images, and are frequently used by Linode support when troubleshooting networking and host level issues. Add the following to your configuration to ensure these tools are installed:</p>
+
+<pre><code>environment.systemPackages = with pkgs; [
+    inetutils
+    mtr
+    sysstat
+];
+</code></pre>
+
+<h2 id="run-the-nixos-installer">Run the NixOS Installer</h2>
+
+<p>Install NixOS using the settings you configured:</p>
+
+<pre><code>nixos-install
+</code></pre>
+
+<p>Once complete, the installer will prompt you to set a root password.</p>
+
+<p>NixOS is now installed and can be booted from the <strong>Boot</strong> profile created in <a href="#create-configuration-profiles">Create Configuration Profiles</a>.</p>
+
+<h2 id="create-an-image-of-your-linode">Create an Image of your Linode</h2>
+
+<p>In this optional section, you&rsquo;ll create a deployable disk image of NixOS.</p>
+
+<p><a href="/docs/platform/linode-images"><em>Linode Images</em></a> allows you to take snapshots of your system. These snapshots are limited to 2GB in size. The NixOS installation includes packages that were essential for the installation process, but aren&rsquo;t needed for the running system. These can be removed after installation:</p>
+
+<pre><code>nix-collect-garbage -d
+</code></pre>
+
+<p>The <code>nix-collect-garbage</code> command tells Nix to &ldquo;garbage collect,&rdquo; to remove any packages that the running system isn&rsquo;t depending on. Usually when you upgrade or install packages, Nix will leave old versions intact so that you can easily roll back to them. The <code>nix-collect-garbage</code> command invokes Nix&rsquo;s garbage collector which automatically cleans up old packages.</p>
+
+<p>You may also want to go through and remove any log files that may be in <code>/var/log</code>. While these are usually pretty small, because you are creating an image, it&rsquo;s good to have as blank of a disk as possible:</p>
+
+<pre><code>cd /var/log
+</code></pre>
+
+<p>Create an image of the <strong>NixOS</strong> disk using the <a href="/docs/platform/linode-images#capturing-your-image">Linode Images</a> guide. Label the image according to the release of NixOS you installed. Now that you have created an image, you can select it in the distribution menu whenever you deploy a Linode.</p>
+
+<h2 id="delete-the-installer-disk-and-profile">Delete the Installer Disk and Profile</h2>
+
+<p>Delete the installer disk and profile from your Linode using the <a href="/docs/platform/disk-images/disk-images-and-configuration-profiles#removing-a-configuration-profile">removing a configuration profile</a> section of the Disk Images guide to remove the <strong>Installer</strong> profile.</p>
+
+<p>Remove the <strong>Installer</strong> disk and reclaim the storage that the NixOS installation was using:</p>
+
+<ol>
+<li>Go to your Linode&rsquo;s dashboard and shutdown your Linode.</li>
+<li><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles#removing-a-disk">Remove the <em>Installer</em> disk</a>.</li>
+<li><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles#resizing-a-disk">Resize the <em>NixOS</em> disk</a> to the maximum possible size.</li>
+</ol>
+
+<h2 id="enable-longview-agent-optional">Enable Longview Agent (optional)</h2>
+
+<p>After installation, Longview can be set up for your NixOS instance. Add the following <a href="https://nixos.org/nixos/options.html#longview">options</a> to your <code>/etc/nixos/configuration.nix</code>:</p>
+
+<pre><code>services.longview = {
+  enable = true;
+  apiKey = &quot;01234567-89AB-CDEF-0123456789ABCDEF&quot;;
+};
+</code></pre>
+
+<p>Replace <code>apiKey</code> with the one you got from <a href="https://manager.linode.com/longview/add">Longview</a>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://nixos.org/nixos/manual/">NixOS</a></li>
+
+<li><a href="https://nixos.org/nixpkgs/manual/">Nixpkgs</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/">Install a Custom Distribution on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode/">Install a Custom Distribution on a Xen Linode - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/">Install Alpine Linux on your Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/">Install CoreOS on Your Linode - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/">Run a Distribution-Supplied Kernel on a KVM Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#prepare-your-linode">Prepare Your Linode</a>
+<ul>
+<li><a href="#create-disks-for-nix">Create Disks for Nix</a></li>
+<li><a href="#create-configuration-profiles">Create Configuration Profiles</a></li>
+<li><a href="#prepare-the-installer">Prepare the Installer</a></li>
+</ul></li>
+<li><a href="#install-nixos">Install NixOS</a>
+<ul>
+<li><a href="#boot-the-installer">Boot the Installer</a></li>
+<li><a href="#set-up-the-install-environment">Set up the Install Environment</a></li>
+</ul></li>
+<li><a href="#configure-nixos">Configure NixOS</a>
+<ul>
+<li><a href="#rewrite-device-identifiers">Rewrite Device Identifiers</a></li>
+<li><a href="#enable-lish">Enable LISH</a></li>
+<li><a href="#configure-grub">Configure GRUB</a></li>
+<li><a href="#edit-nixos-configuration">Edit NixOS Configuration</a></li>
+<li><a href="#configure-the-ssh-daemon">Configure the SSH daemon</a></li>
+<li><a href="#disable-predictable-interface-names">Disable Predictable Interface Names</a></li>
+<li><a href="#install-diagnostic-tools">Install Diagnostic Tools</a></li>
+</ul></li>
+<li><a href="#run-the-nixos-installer">Run the NixOS Installer</a></li>
+<li><a href="#create-an-image-of-your-linode">Create an Image of your Linode</a></li>
+<li><a href="#delete-the-installer-disk-and-profile">Delete the Installer Disk and Profile</a></li>
+<li><a href="#enable-longview-agent-optional">Enable Longview Agent (optional)</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

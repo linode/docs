@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Longview</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Our guide to installing and using Linode Longview.">
+        <meta name="keywords" content="system monitoring, longview, troubleshooting">
+        
+        <meta property="og:title" content="Longview">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/longview/longview/">
+        <meta property="og:description" content="Our guide to installing and using Linode Longview.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/longview/longview/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/longview/">Longview Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Longview
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Longview</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-05-26T00:00:00Z">Friday, May 26, 2017</time> by Angel Guarisma</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview%2f&via=linode&text=Longview" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview%2f&t=Longview" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/longview/longview.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/longview/longview.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Longview is our Linux system statistics graphing service. It tracks important metrics for CPU, memory, and network use, both aggregate and per-process, and it provides real-time graphs that can help you pinpoint performance problems. This guide shows you how to start monitoring systems with Longview.</p>
+
+<p><img src="/docs/assets/longview_smg.png" alt="Our guide to installing and using Linode Longview." title="Our guide to installing and using Linode Longview." /></p>
+
+<p>Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. Features include:</p>
+
+<ul>
+<li>Up-to-the-minute information about each system</li>
+<li>Open-source client application</li>
+<li>Zoomable graphs with contextual data</li>
+<li>Process statistics including CPU, memory, and IO usage</li>
+</ul>
+
+<p>To access Longview, log in to the <a href="https://manager.linode.com">Linode Manager</a> and click the <strong>Longview</strong> tab.</p>
+
+<p><a href="/docs/assets/1372-lv_overview_network.png"><img src="/docs/assets/1371-lv_overview_network_sm.png" alt="Linode Longview." /></a></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible.</p></li>
+
+<li><p>This guide uses <code>iptables</code> for firewall configuration. If you followed our <a href="/docs/security/firewalls/configure-firewall-with-ufw">Configure a Firewall with UFW</a> guide, you learned about ufw: a manager for iptables. In this guide we chose to interface directly with <code>iptables</code>, instead of using <code>ufw</code>. You can use both, interchangeably without issue.</p></li>
+</ol>
+
+<h2 id="adding-systems">Adding Systems</h2>
+
+<p>To add a Longview system, first add a system to the Longview interface in the Linode Manager. Then install the Longview client application on your system. At that point, the Longview client application will start transferring your system statistics to Linode&rsquo;s servers.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Longview can monitor any Linux system running a supported distribution - including systems not hosted by Linode.</div>
+</blockquote>
+
+
+<h3 id="supported-distributions">Supported Distributions</h3>
+
+<p>Before adding your system to Longview, you should verify that your Linux distribution is supported. Longview is currently supported on the following distributions:</p>
+
+<ul>
+<li>Ubuntu 10.04, 12.04, 14.04, and 16.04</li>
+<li>Debian 6, 7, and 8</li>
+<li>CentOS 5, 6, and 7</li>
+<li>Fedora 17, 18, and 19</li>
+</ul>
+
+<p>The Longview client may work on other distributions, but at this time we cannot provide support for distributions other than the ones listed here.</p>
+
+<h3 id="installing-the-client">Installing the Client</h3>
+
+<p>To start monitoring a system with Longview, you&rsquo;ll need to add the system to the Longview interface in the Linode Manager and then install the Longview client application. Here&rsquo;s how to add a new system to Longview:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+
+<li><p>Select the <strong>Longview</strong> tab. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1370-lv_overview_mem.png"><img src="/docs/assets/1369-lv_overview_mem_sm.png" alt="Adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Click <strong>Add Client</strong>. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1383-lv_install.png"><img src="/docs/assets/1383-lv_install.png" alt="Adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Copy the Longview installation command to your clipboard.</p></li>
+
+<li><p>Open a terminal window and <a href="/docs/getting-started#log-in-for-the-first-time">log in to your Linode via SSH</a>.</p></li>
+
+<li><p>Paste the Longview installation command into the terminal window, and then press Return. The Longview client will be installed on your system.</p></li>
+</ol>
+
+<p>You have successfully installed the Longview client on your system. Longview will start collecting system-level data immediately. Repeat this process to add additional systems to Longview.</p>
+
+<h3 id="manually-installing-the-client">Manually Installing the Client</h3>
+
+<p>If the installation process described above doesn&rsquo;t work, you&rsquo;ll need to manually install the Longview client. Follow the instructions for your distribution, as described below. You should only attempt to manually install the Longview client if you were unable to complete the instructions in the previous section.</p>
+
+<h4 id="debian-and-ubuntu">Debian and Ubuntu</h4>
+
+<p>If you&rsquo;re running a Debian or Ubuntu distribution, follow these steps to manually install the Longview client on your system:</p>
+
+<ol>
+<li>Open a terminal window and <a href="/docs/getting-started#log-in-for-the-first-time">log in to your Linode via SSH</a>.</li>
+
+<li><p>Find the name of your distribution by entering the following command. For example, if you&rsquo;re running Ubuntu 12.04, the output will be <code>precise</code>. Remember this name - you&rsquo;ll need it later.</p>
+
+<pre><code>lsb_release -sc
+</code></pre></li>
+
+<li><p>Create a file to hold the repository by entering the following command:</p>
+
+<pre><code>sudo nano /etc/apt/sources.list.d/longview.list
+</code></pre></li>
+
+<li><p>Paste the following line into the terminal window, replacing <code>precise</code> with the name of your distribution:</p>
+
+<pre><code>deb http://apt-longview.linode.com/ precise main
+</code></pre></li>
+
+<li><p>Save the changes to the file by pressing <strong>Control-X</strong>, and then <strong>Y</strong>.</p></li>
+
+<li><p>Download the key to your system by entering the following command:</p>
+
+<pre><code>sudo wget https://apt-longview.linode.com/linode.gpg
+</code></pre></li>
+
+<li><p>Move the key by entering the following command:</p>
+
+<pre><code>sudo mv linode.gpg /etc/apt/trusted.gpg.d/linode.gpg
+</code></pre></li>
+
+<li><p>Create a directory for the API key file by entering the following command:</p>
+
+<pre><code>sudo mkdir -p /etc/linode/
+</code></pre></li>
+
+<li><p>Create a file to hold your API key by entering the following command:</p>
+
+<pre><code>sudo nano /etc/linode/longview.key
+</code></pre></li>
+
+<li><p>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</p></li>
+
+<li><p>Select the <strong>Longview</strong> tab.</p></li>
+
+<li><p>Click <strong>Add Client</strong>. The box shown below appears.</p>
+
+<p><a href="/docs/assets/1383-lv_install.png"><img src="/docs/assets/1383-lv_install.png" alt="Manually adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Click <strong>go back</strong> to return to the Linode dashboard.</p></li>
+
+<li><p>Click the <strong>i</strong> button, as shown below.</p>
+
+<p><a href="/docs/assets/1391-lv_overview_swap_i_crop.png"><img src="/docs/assets/1391-lv_overview_swap_i_crop.png" alt="Manually adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Copy the API key to your clipboard, as shown below.</p>
+
+<p><a href="/docs/assets/1380-lv_api.png"><img src="/docs/assets/1379-lv_api_sm.png" alt="Manually adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Back in the terminal window, paste the API key into the <code>longview.key</code> file.</p></li>
+
+<li><p>Save the changes to the file by pressing <strong>Control-X</strong>, and then <strong>Y</strong>.</p></li>
+
+<li><p>Install the Longview client by entering the following commands, one by one:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get install -y linode-longview
+</code></pre></li>
+</ol>
+
+<p>Congratulations! The Longview client is now installed on your Ubuntu or Debian system.</p>
+
+<h4 id="fedora-and-centos">Fedora and CentOS</h4>
+
+<p>If you&rsquo;re running a Fedora or CentOS distribution, follow these steps to manually install the Longview client on your system:</p>
+
+<ol>
+<li>Open a terminal window and <a href="/docs/getting-started#log-in-for-the-first-time">log in to your Linode via SSH</a>.</li>
+
+<li><p>Create a file to hold the repository by entering the following command:</p>
+
+<pre><code>sudo nano /etc/yum.repos.d/longview.repo
+</code></pre></li>
+
+<li><p>Paste the following lines into the terminal window, where <code>DIST</code> is the name of your distribution (e.g., &ldquo;Fedora&rdquo;), and <code>REV</code> is your distribution&rsquo;s version number (e.g., &ldquo;17&rdquo;) :</p>
+
+<pre><code>[longview]
+name=Longview Repo
+baseurl=https://yum-longview.linode.com/DIST/REV/noarch/
+enabled=1
+gpgcheck=1
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can find your distribution&rsquo;s name and version number by entering the following command: <code>cat /etc/redhat-release</code></div>
+</blockquote>
+</li>
+
+<li><p>Save the changes to the file by pressing <strong>Control-X</strong>, and then <strong>Y</strong>.</p></li>
+
+<li><p>Download the key to your system by entering the following command:</p>
+
+<pre><code>sudo wget https://yum-longview.linode.com/linode.key
+</code></pre></li>
+
+<li><p>Import the key by entering the following command:</p>
+
+<pre><code>sudo rpm --import linode.key
+</code></pre></li>
+
+<li><p>Create a directory for the API key file by entering the following command:</p>
+
+<pre><code>sudo mkdir -p /etc/linode/
+</code></pre></li>
+
+<li><p>Create a file to hold your API key by entering the following command:</p>
+
+<pre><code>sudo nano /etc/linode/longview.key
+</code></pre></li>
+
+<li><p>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</p></li>
+
+<li><p>Select the <strong>Longview</strong> tab.</p></li>
+
+<li><p>Click <strong>Add Client</strong>. The box shown below appears.</p>
+
+<p><a href="/docs/assets/longview_agent.png"><img src="/docs/assets/longview_agent.png" alt="Manually adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Click <strong>go back</strong> to return to the Linode dashboard.</p></li>
+
+<li><p>Click the <strong>i</strong> button, as shown below.</p>
+
+<p><a href="/docs/assets/1391-lv_overview_swap_i_crop.png"><img src="/docs/assets/1391-lv_overview_swap_i_crop.png" alt="Manually adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Copy the API key to your clipboard, as shown below.</p>
+
+<p><a href="/docs/assets/1380-lv_api.png"><img src="/docs/assets/1379-lv_api_sm.png" alt="Manually adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Back in the terminal window, paste the API key into the <code>longview.key</code> file.</p></li>
+
+<li><p>Save the changes to the file by pressing <strong>Control-X</strong>, and then <strong>Y</strong>.</p></li>
+
+<li><p>Install the Longview client by entering the following commands, one by one:</p>
+
+<pre><code>sudo yum install -y linode-longview
+</code></pre></li>
+</ol>
+
+<p>Congratulations! The Longview client is now installed on your Fedora or CentOS system.</p>
+
+<h4 id="all-distros">All Distros</h4>
+
+<p>Follow these commands to install Longview on your Linode manually:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+
+<li><p>Select the <strong>Longview</strong> tab. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1370-lv_overview_mem.png"><img src="/docs/assets/1369-lv_overview_mem_sm.png" alt="Adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Click <strong>Add Client</strong>. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1383-lv_install.png"><img src="/docs/assets/1383-lv_install.png" alt="Adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Copy the Longview installation command to your clipboard.</p></li>
+
+<li><p>Open a terminal window and <a href="/docs/getting-started#log-in-for-the-first-time">log in to your Linode via SSH</a>.</p></li>
+
+<li><p>Paste the Longview installation command into the terminal window, and then press Return. The Longview client will be installed on your system.</p></li>
+
+<li><p>View the output as Longview&rsquo;s core dependencies are installed. If you&rsquo;re missing any core dependencies, you&rsquo;ll need to look up the corresponding error and install or reconfigure the appropriate item. On a successful installation, you should see output like the following:</p>
+
+<pre><code>Installing dependencies in to: /opt/linode/longview
+==== Installing Longview core dependencies ====
+Successfully installed URI-1.60
+
+...
+
+Successfully installed DBI-1.630
+29 distributions installed
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you don&rsquo;t have MySQL installed, you&rsquo;ll receive an error about dependencies for Longview-MySQL. You can safely ignore the error if MySQL isn&rsquo;t installed. Here&rsquo;s an example of the output:</p>
+
+<p>==== Installing Longview-MySQL dependencies ==== ! Configure failed for DBD-mysql-4.025. See /root/.cpanm/work/1384896259.21932/build.log for details. ==== Translating Headers ==== /usr/include/syscall.h -&gt; /usr/include/syscall.ph</p>
+
+<p>&hellip;</p>
+</div>
+</blockquote>
+</li>
+</ol>
+
+<p>Congratulations! The Longview client is now installed.</p>
+
+<h3 id="firewall-rules">Firewall Rules</h3>
+
+<p>If your Linode has a firewall, it will need to allow communication with Longview&rsquo;s aggregation host. To do so, you will need to allow traffic destined for &lsquo;longview.linode.com&rsquo; to be routed through your firewall. The following rules should allow your Linode to provide its metrics to the Longview application:</p>
+
+<ol>
+<li><p>You will want to edit your INPUT chain so that traffic is routed to your Linode.</p>
+
+<pre><code>iptables -I INPUT -s longview.linode.com -j ACCEPT
+</code></pre></li>
+
+<li><p>In order for your Linode to provide its metrics to Longview you will want to allow the same address through the OUTPUT chain of your Firewall.</p>
+
+<pre><code>iptables -I OUTPUT -d longview.linode.com -j ACCEPT
+</code></pre></li>
+</ol>
+
+<p>If you followed the instructions for setting up a firewall in our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide, go back to <a href="/docs/security/securing-your-server#step_6">this section</a> to find additional rules for Longview.</p>
+
+<h3 id="labeling-systems">Labeling Systems</h3>
+
+<p>If you plan on monitoring multiple systems with Longview, you should create <em>labels</em> for the systems to differentiate them. This will make them easier to find in the Linode Manager. Here&rsquo;s how to label the systems monitored by Longview:</p>
+
+<ol>
+<li><p>In the Linode Manager, select the <strong>Longview</strong> tab. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1391-lv_overview_swap_i_crop.png"><img src="/docs/assets/1391-lv_overview_swap_i_crop.png" alt="Manually adding a system to Linode Longview." /></a></p></li>
+
+<li><p>Locate the system you want to label, and then click the <strong>i</strong> button. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1386-lv_label.png"><img src="/docs/assets/1385-lv_label_sm.png" alt="Labeling systems in Linode Longview." /></a></p></li>
+
+<li><p>In the <strong>Label</strong> field, enter a name for the system.</p></li>
+
+<li><p>Click <strong>Save Changes</strong>.</p></li>
+</ol>
+
+<p>You have successfully changed the system&rsquo;s Longview label. Repeat this process to change the labels for the other systems you&rsquo;re monitoring with Longview.</p>
+
+<h2 id="viewing-statistics">Viewing Statistics</h2>
+
+<p>Now that the Longview client is installed on your system, you can use Longview to monitor your system&rsquo;s performance. If you&rsquo;ve just installed the client application, please note that the graphs can take a couple of minutes to appear while the Longview systems start collecting data from your system.</p>
+
+<h3 id="overview-tab">Overview Tab</h3>
+
+<p>The <strong>Overview</strong> tab provides all of your system&rsquo;s most important statistics in one place, as shown below. You can see your system&rsquo;s CPU and memory usage, network and disk I/O transfer, and the top processes. The information on the graphs is correlated, so when you move your pointer over one graph, data points are automatically displayed on the other graphs at the same time, making it easy to troubleshoot problems with your system.</p>
+
+<p><a href="/docs/assets/1390-lv_overview_numbered.png"><img src="/docs/assets/1389-lv_overview_numbered_sm.png" alt="The Linode Longview Overview tab." /></a></p>
+
+<ol>
+<li>Percentage of CPU time spent in wait (on disk), in user space, and in kernel space.</li>
+<li>Total amount of RAM memory that is being used, and the amount of memory in cache, in buffers, and in swap.</li>
+<li>Amount of network data that has been transferred to and from your system.</li>
+<li>Basic information about system, including the operating system name and version, processor speed, uptime, and available updates.</li>
+<li>Server load average.</li>
+<li>Top processes on the system. To access detailed information about the processes running on your system, select the <strong>Process Explorer</strong> link to open the <em>Process Explorer</em> tab.</li>
+<li>Disk input/output (I/O). This is the amount of data being read from, or written to, the system&rsquo;s hard disk.</li>
+</ol>
+
+<p>This tab is simply designed to give you a basic idea of what&rsquo;s going on with your system. To see in-depth performance information, you&rsquo;ll need to open the other tabs, as described below.</p>
+
+<h3 id="network-tab">Network Tab</h3>
+
+<p>The <strong>Network</strong> tab allows you to monitor the inbound and outbound traffic to your system, as shown below. The graph at the top of the page shows the combined inbound and outbound data transfer. The other graphs show the data transfer over the IPv4 and IPv6 public and private networks.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you are monitoring a non-Linode system, only a single graph will be shown for each network interface.</div>
+</blockquote>
+
+
+<p><a href="/docs/assets/1406-lv_network.png"><img src="/docs/assets/1387-lv_network_sm.png" alt="The Network tab in Linode Longview." /></a></p>
+
+<p>The data for the IPv4 and IPv6 public and private networks is updated every 5 minutes. To show or hide inbound or outbound traffic, click <strong>Inbound</strong> or <strong>Outbound</strong> in the legend. The graph will be updated to show only the data that is selected.</p>
+
+<h3 id="disks-tab">Disks Tab</h3>
+
+<p>The <strong>Disks</strong> tab displays information about the disks mounted on your system. Select a disk from the left column, and Longview displays the disk&rsquo;s IO, available space, and inodes.</p>
+
+<p><a href="/docs/assets/1382-lv_disks.png"><img src="/docs/assets/1381-lv_disks_sm.png" alt="The Process Explorer tab in Linode Longview." /></a></p>
+
+<p>As with the graphs on the other Longview tabs, you can show or hide the read and write lines on the IO graph by clicking <strong>Read</strong> or <strong>Write</strong>.</p>
+
+<h3 id="process-explorer-tab">Process Explorer Tab</h3>
+
+<p>The <strong>Process Explorer</strong> tab displays all of the processes that were running on your system during the selected time interval, as shown below. Select a process to examine its CPU, memory, and IO consumption.</p>
+
+<p><a href="/docs/assets/1393-lv_processexplorer.png"><img src="/docs/assets/1392-lv_processexplorer_sm.png" alt="The Process Explorer tab in Linode Longview." /></a></p>
+
+<p>If you have a large number of processes running on your system, you can enter the name of the process in the <strong>Filter</strong> field to search for it, or you can click the <strong>More</strong> link at the bottom of the webpage to scroll through all of the processes.</p>
+
+<h3 id="system-tab">System Tab</h3>
+
+<p>The <strong>System</strong> tab provides general background information about your system, as shown below. At the top of the page, you can see statistics about the operating system, processor, and physical RAM. On the bottom half of the page, you can find detailed information about services that are actively listening for a connection, the current active connections to your system, and any available package updates that need to be installed.</p>
+
+<p><a href="/docs/assets/1405-lv_system.png"><img src="/docs/assets/1404-lv_system_sm.png" alt="The System Info tab in Linode Longview: Listening Services." /></a></p>
+
+<p>To inspect the services that are actively waiting for a connection, select the <strong>listening services</strong> link, as shown above. Any processes waiting for a connection will appear in the lower-right corner of the page. This is a good way to verify that your services are running and listening on a particular port.</p>
+
+<p><a href="/docs/assets/1400-lv_system_connections.png"><img src="/docs/assets/1399-lv_system_connections_sm.png" alt="The System Info tab in Linode Longview: Active Connections." /></a></p>
+
+<p>See who&rsquo;s connected to your system by selecting the <strong>active connections</strong> link, as shown above. All users with active connections are displayed.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The <code>root</code> user may also appear in the list if there is an active SSH connection. That&rsquo;s because SSH runs as <code>root</code> before dropping privileges to the non-root account, and it never closes the file handle. This <em>does not</em> necessarily mean that the <code>root</code> user is connected via SSH.</div>
+</blockquote>
+
+
+<p><a href="/docs/assets/1403-lv_updates.png"><img src="/docs/assets/1402-lv_updates_sm.png" alt="The System Info tab in Linode Longview: Available Packages." /></a></p>
+
+<p>If there are updates available for your system&rsquo;s distribution, you can see them by selecting the <strong>available package updates</strong> link, as shown above. The available updates are listed by name, current version number, and new version number. To install the updates, you&rsquo;ll need to log in to your system and <a href="/docs/uptime/monitoring-and-maintaining-your-server/#updating-installed-packages">update the installed packages</a>.</p>
+
+<h2 id="using-the-interface">Using the Interface</h2>
+
+<p>To take full advantage of Longview&rsquo;s features, you&rsquo;ll need to learn how to view more data in the graphs and narrow their focus to a specific period in time. By changing the viewing history, you&rsquo;ll be able to see statistics for a longer period of time. And by zooming in on a graph, you&rsquo;ll narrow the graph&rsquo;s display to a specific point in time.</p>
+
+<h3 id="viewing-history">Viewing History</h3>
+
+<p>By default, Longview displays statistics for the past twelve hours. However, if you&rsquo;ve <a href="#upgrading-to-longview-pro">upgraded to Longview Pro</a>, you can change Longview&rsquo;s <em>viewing history</em> to review your system&rsquo;s statistics for a different time interval, like the previous 24 hours, or the last 30 days. This is a great way to investigate performance issues that occurred in the past. To change the viewing history, select a different interval from the viewing history menu in the top-right corner, as shown below.</p>
+
+<p><a href="/docs/assets/1460-longview_12hrs.png"><img src="/docs/assets/1460-longview_12hrs.png" alt="Viewing history in Linode Longview." /></a></p>
+
+<p>All of the graphs will be updated to display data for the time interval you selected. To reset the time interval and reenable live updating, select <strong>Past 30 minutes (live)</strong> from the viewing history menu.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you have selected a time interval other than <strong>Past 30 minutes (live)</strong>, the graphs will not be automatically updated with new data.</div>
+</blockquote>
+
+
+<h3 id="zooming">Zooming</h3>
+
+<p>Longview allows you to <em>zoom</em> in on graphs to take a close look at a specific time interval. For example, if you saw a major spike in CPU usage that lasted 19 minutes, you could zoom in on that 19 minute interval to see the graphs in more detail. To zoom in, click and drag the pointer to select a specific portion of the graph, as shown below.</p>
+
+<p><img src="/docs/assets/1397-lv_zoom_crop_sm.png" alt="Zooming in Linode Longview." /></p>
+
+<p>All of the graphs will be updated to display data for the time interval you selected. The graphs will stay set to the time interval you selected until you <em>reset the zoom</em>.</p>
+
+<p><a href="/docs/assets/1233-longview29.png"><img src="/docs/assets/1233-longview29.png" alt="Zooming in Linode Longview." /></a></p>
+
+<p>When you&rsquo;re ready to reset the zoom and restore all of the graphics to the default 30 minute time interval, select the <strong>Reset Zoom</strong> link in the top-right corner, as shown above.</p>
+
+<h2 id="upgrading-to-longview-pro">Upgrading to Longview Pro</h2>
+
+<p>The free version of Longview updates every 5 minutes and provides only twelve hours of performance history. Upgrade to Longview Pro to get 60-second data resolution and start saving your entire system history.</p>
+
+<p>Longview Pro is available at a tiered pricing plan. The default level for a new Longview account is <strong>Longview Free</strong>. To change your plan level, follow these instructions:</p>
+
+<ol>
+<li><p>Click the <strong>Longview</strong> tab.</p>
+
+<p><a href="/docs/assets/1372-lv_overview_network.png"><img src="/docs/assets/1371-lv_overview_network_sm.png" alt="Linode Longview." /></a></p></li>
+
+<li><p>At the bottom of the overview page, click the <strong>Subscription options</strong> link. You will be taken to the plan selection page:</p>
+
+<p><a href="/docs/assets/1378-lv_subscription.png"><img src="/docs/assets/1377-lv_subscription_sm.png" alt="The Longview subscription page." /></a></p></li>
+
+<li><p>Select the plan level from the list using the radio buttons. The plan options are as follows:</p>
+
+<ul>
+<li><strong>Longview Free:</strong> Up to 10 clients, free.</li>
+<li><strong>Longview Pro 3 pack:</strong> Up to 3 clients, for \$20 per month.</li>
+<li><strong>Longview Pro 10 pack:</strong> Up to 10 clients, for \$40 per month.</li>
+<li><strong>Longview Pro 40 pack:</strong> Up to 40 clients, for \$100 per month.</li>
+<li><strong>Longview Pro 100 pack:</strong> Up to 100 clients, for \$200 per month.</li>
+</ul></li>
+
+<li><p>Click <strong>Continue &gt;&gt;</strong>.</p></li>
+
+<li><p>Review your order, then click <strong>Complete Order</strong>.</p></li>
+</ol>
+
+<p>Longview will start collecting more than twelve hours of performance data after you upgrade.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>If you&rsquo;re experiencing problems with the Longview client application, please perform the following steps:</p>
+
+<ul>
+<li><a href="#supported-distributions">Check the list of supported Linux distributions</a>.</li>
+<li><a href="/docs/uptime/monitoring-and-maintaining-your-server/#updating-installed-packages">Install all available package updates</a>. Longview requires Perl 5.8 or later.</li>
+<li>Check that your system is <a href="/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates">using the latest kernel</a>. Use a newer kernel if possible. Linux 2.6.18 is supported, but does not include full functionality.</li>
+
+<li><p>Make sure the Longview client is running on your system by entering the following command:</p>
+
+<pre><code>service longview status
+</code></pre></li>
+
+<li><p>If the Longview client is not currently running, start it by entering the following command:</p>
+
+<pre><code>service longview start
+</code></pre></li>
+
+<li><p>Check the Longview log for errors. The log file is located in <code>/var/log/linode/longview.log</code>.</p></li>
+
+<li><p>Start the Longview client in &ldquo;debug&rdquo; mode for increased logging verbosity. Enter the following commands, one by one:</p>
+
+<pre><code>service longview stop
+</code></pre>
+
+<p><strong>Debian/Ubuntu:</strong> :</p>
+
+<pre><code>/etc/init.d/longview debug
+</code></pre>
+
+<p><strong>Fedora/CentOS:</strong> :</p>
+
+<pre><code>/opt/linode/longview/Linode/Longview.pl debug
+</code></pre></li>
+
+<li><p>Verify that the Longview client can communicate with our servers. Add the following line to your <a href="/docs/securing-your-server#configure-a-firewall">firewall rules</a>:</p>
+
+<pre><code>iptables -A OUTPUT -p tcp --dport 443 -d longview.linode.com -j ACCEPT
+</code></pre></li>
+</ul>
+
+<p>If you still need assistance after performing these steps, please open a <a href="/docs/platform/support/#contacting-linode-support">support ticket</a>.</p>
+
+<h2 id="updating-longview">Updating Longview</h2>
+
+<p>Periodically, you will receive notices that a Longview update is available. To update the client, run the following command on your Linode via SSH:</p>
+
+<p>Debian and Ubuntu:</p>
+
+<pre><code>apt-get update
+apt-get install linode-longview
+</code></pre>
+
+<p>Fedora and CentOS:</p>
+
+<pre><code>yum update linode-longview
+</code></pre>
+
+<p>On Debian and Ubuntu systems, you may receive a request to update your <code>init.d</code> script. You should choose <strong>Y</strong> for <strong>Yes</strong>:</p>
+
+<pre><code>Configuration file `/etc/init.d/longview'
+ ==&gt; File on system created by you or by a script.
+ ==&gt; File also in package provided by package maintainer.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+*** longview (Y/I/N/O/D/Z) [default=N] ? y
+</code></pre>
+
+<p>Your Longview client will now be up to date.</p>
+
+<h2 id="disabling-longview">Disabling Longview</h2>
+
+<p>To disable Longview on a system, you&rsquo;ll need to remove it from the Longview interface in the Linode Manager and then uninstall the Longview client application from the system.</p>
+
+<h3 id="removing-systems-from-longview">Removing Systems from Longview</h3>
+
+<p>First, you should remove a system from the Longview interface in the Linode Manager. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>In the Linode Manager, select the <strong>Longview</strong> tab. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1388-lv_overview_mem_x_crop.png"><img src="/docs/assets/1388-lv_overview_mem_x_crop.png" alt="Removing systems from Linode Longview." /></a></p></li>
+
+<li><p>Locate the system you want to label, and then click the <strong>X</strong> button. The Remove Verification webpage appears.</p></li>
+
+<li><p>Click <strong>Remove this system from Longview</strong> to remove the system.</p></li>
+</ol>
+
+<p>The system has been removed from the Longview interface in the Linode Manager. Repeat this process to remove other systems from Longview.</p>
+
+<h3 id="uninstalling-the-longview-client">Uninstalling the Longview Client</h3>
+
+<p>Next, you should remove the Longview client application from the system you want to stop monitoring. Here&rsquo;s how:</p>
+
+<ol>
+<li>Open a terminal window and <a href="/docs/getting-started#log-in-for-the-first-time">log in to your Linode via SSH</a>.</li>
+
+<li><p>If you are using Debian or Ubuntu, enter the following command into the terminal window:</p>
+
+<pre><code>sudo apt-get remove linode-longview
+</code></pre></li>
+
+<li><p>If you are using Fedora or CentOS, enter the following command into the terminal window:</p>
+
+<pre><code>sudo yum remove linode-longview
+</code></pre></li>
+
+<li><p>If you are using another distribution, enter the following command into the terminal window:</p>
+
+<pre><code>sudo rm -rf /opt/linode/longview
+</code></pre></li>
+</ol>
+
+<p>The Longview client application will be removed from your system. This completes the Longview removal process.</p>
+
+<h2 id="longview-apps">Longview Apps</h2>
+
+<p>The Longview Apps extend Longview&rsquo;s statistics reporting to specific services running on your Linode.</p>
+
+<ul>
+<li><a href="/docs/longview/longview-for-apache">Longview App for Apache</a></li>
+<li><a href="/docs/longview/longview-for-nginx">Longview App for Nginx</a></li>
+<li><a href="/docs/longview/longview-for-mysql">Longview App for MySQL</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/troubleshooting/troubleshooting/">Troubleshooting</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/dns/use-dig-to-perform-manual-dns-queries/">Use dig to Perform Manual DNS Queries</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/linux-system-administration-basics/">Linux System Administration Basics</a></li>
+    
+    
+    
+    <li><a href="/docs/troubleshooting/troubleshooting-common-apache-issues/">Troubleshooting Common Apache Issues</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#adding-systems">Adding Systems</a>
+<ul>
+<li><a href="#supported-distributions">Supported Distributions</a></li>
+<li><a href="#installing-the-client">Installing the Client</a></li>
+<li><a href="#manually-installing-the-client">Manually Installing the Client</a>
+<ul>
+<li><a href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
+<li><a href="#fedora-and-centos">Fedora and CentOS</a></li>
+<li><a href="#all-distros">All Distros</a></li>
+</ul></li>
+<li><a href="#firewall-rules">Firewall Rules</a></li>
+<li><a href="#labeling-systems">Labeling Systems</a></li>
+</ul></li>
+<li><a href="#viewing-statistics">Viewing Statistics</a>
+<ul>
+<li><a href="#overview-tab">Overview Tab</a></li>
+<li><a href="#network-tab">Network Tab</a></li>
+<li><a href="#disks-tab">Disks Tab</a></li>
+<li><a href="#process-explorer-tab">Process Explorer Tab</a></li>
+<li><a href="#system-tab">System Tab</a></li>
+</ul></li>
+<li><a href="#using-the-interface">Using the Interface</a>
+<ul>
+<li><a href="#viewing-history">Viewing History</a></li>
+<li><a href="#zooming">Zooming</a></li>
+</ul></li>
+<li><a href="#upgrading-to-longview-pro">Upgrading to Longview Pro</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#updating-longview">Updating Longview</a></li>
+<li><a href="#disabling-longview">Disabling Longview</a>
+<ul>
+<li><a href="#removing-systems-from-longview">Removing Systems from Longview</a></li>
+<li><a href="#uninstalling-the-longview-client">Uninstalling the Longview Client</a></li>
+</ul></li>
+<li><a href="#longview-apps">Longview Apps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

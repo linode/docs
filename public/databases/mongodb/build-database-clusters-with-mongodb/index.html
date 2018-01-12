@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Build Database Clusters with MongoDB</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Configure MongoDB for use in clustered environments.">
+        <meta name="keywords" content="mongodb, nosql, clusters, databases">
+        
+        <meta property="og:title" content="Build Database Clusters with MongoDB">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/mongodb/build-database-clusters-with-mongodb/">
+        <meta property="og:description" content="Configure MongoDB for use in clustered environments.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/mongodb/build-database-clusters-with-mongodb/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/mongodb/">MongoDB</a>
+  
+</li>
+
+
+<li>
+  
+  Build Database Clusters with MongoDB
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Build Database Clusters with MongoDB</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-02-27T00:00:00Z">Monday, February 27, 2017</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmongodb%2fbuild-database-clusters-with-mongodb%2f&via=linode&text=Build%20Database%20Clusters%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmongodb%2fbuild-database-clusters-with-mongodb%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmongodb%2fbuild-database-clusters-with-mongodb%2f&t=Build%20Database%20Clusters%20with%20MongoDB" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/mongodb/build-database-clusters-with-mongodb.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/mongodb/build-database-clusters-with-mongodb.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>MongoDB is a leading non-relational database management system, and a prominent member of the <a href="https://en.wikipedia.org/wiki/NoSQL">NoSQL</a> movement. Rather than using the tables and fixed schemas of a relational database management system (RDBMS), MongoDB uses key-value storage in collection of documents. It also supports a number of options for horizontal scaling in large, production environments. In this guide, we&rsquo;ll explain how to set up a <em>sharded cluster</em> for highly available distributed datasets.</p>
+
+<p><img src="/docs/assets/build-database-clusters-with-mongodb.png" alt="&quot;Build Database Clusters with MongoDB&quot;" title="Build Database Clusters with MongoDB" /></p>
+
+<p>There are two broad categories of scaling strategies for data. <em>Vertical scaling</em> involves adding more resources to a server so that it can handle larger datasets. The upside is that the process is usually as simple as migrating the database, but it often involves downtime and is difficult to automate. <em>Horizontal scaling</em> involves adding more servers to increase the resources, and is generally preferred in configurations that use fast-growing, dynamic datasets. Because it is based on the concept of adding more servers, not more resources on one server, datasets often need to be broken into parts and distributed across the servers. Sharding refers to the breaking up of data into subsets so that it can be stored on separate database servers (a sharded cluster).</p>
+
+<p>The commands and filepaths in this guide are based on those used in Ubuntu 16.04 (Xenial). However, the configuration is the same for any system running MongoDB 3.2. To use this guide with a Linode running CentOS 7, for example, simply adjust the distro-specific commands and configuration files accordingly.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>To follow along with this guide, you will need at least six Linodes. Their functions will be explained in the next section. Follow our guides to <a href="/docs/databases/mongodb/">install MongoDB</a> on each Linode you want to use in your cluster.</p></li>
+
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting the hostname and timezone on each Linode. We recommend choosing hostnames that correspond with each Linode&rsquo;s role in the cluster, explained in the next section.</p></li>
+
+<li><p>Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services for each Linode.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="cluster-architecture">Cluster Architecture</h2>
+
+<p>Before we get started, let&rsquo;s review the components of the setup we&rsquo;ll be creating:</p>
+
+<ul>
+<li><strong>Config Server</strong> - This stores metadata and configuration settings for the rest of the cluster. In this guide, we&rsquo;ll use one config server for simplicity but in production environments, this should be a replica set of at least three Linodes.</li>
+<li><strong>Query Router</strong> - The <code>mongos</code> daemon acts as an interface between the client application and the cluster shards. Since data is distributed among multiple servers, queries need to be routed to the shard where a given piece of information is stored. The query router is run on the application server. In this guide, we&rsquo;ll only be using one query router, although you should put one on each application server in your cluster.</li>
+<li><strong>Shard</strong> - A shard is simply a database server that holds a portion of your data. Items in the database are divided among shards either by range or hashing, which we&rsquo;ll explain later in this guide. For simplicity, we&rsquo;ll use two single-server shards in our example.</li>
+</ul>
+
+<p><img src="/docs/assets/mongodb-cluster-diagram.png" alt="&quot;A sharded MongoDB cluster&quot;" title="A sharded MongoDB cluster" /></p>
+
+<p>The problem in this configuration is that if one of the shard servers experiences downtime, a portion of your data will become unavailable. To avoid this, you can use <a href="https://docs.mongodb.com/manual/reference/replica-configuration/">replica sets</a> for each shard to ensure high availability. For more information, refer to our guide on <a href="/docs/databases/mongodb/create-a-mongodb-replica-set">creating MongoDB replica sets</a>.</p>
+
+<h2 id="configure-hosts-file">Configure Hosts File</h2>
+
+<p>If your Linodes are all located in the same datacenter, we recommend <a href="/docs/networking/remote-access#adding-private-ip-addresses">adding a private IP address</a> for each one and using those here to avoid transmitting data over the public internet. If you don&rsquo;t use private IP addresses, be sure to <a href="https://docs.mongodb.com/manual/tutorial/configure-ssl/">encrypt your data with SSL/TLS</a>.</p>
+
+<p>On each Linode in your cluster, add the following to the <code>/etc/hosts</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="m">192</span>.0.2.1    mongo-config-1
+<span class="m">192</span>.0.2.2    mongo-config-2
+<span class="m">192</span>.0.2.3    mongo-config-3
+<span class="m">192</span>.0.2.4    mongo-query-router
+<span class="m">192</span>.0.2.5    mongo-shard-1
+<span class="m">192</span>.0.2.6    mongo-shard-2</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Replace the IP addresses above with the IP addresses for each Linode. Also substitute the hostnames of the Linodes in your cluster for the hostnames above.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the <a href="/docs/networking/dns/dns-manager-overview">DNS Manager</a>, only support public IP addresses.</div>
+</blockquote>
+
+
+<h2 id="set-up-mongodb-authentication">Set Up MongoDB Authentication</h2>
+
+<p>In this section you&rsquo;ll create a key file that will be used to secure authentication between the members of your replica set. While in this example you&rsquo;ll be using a key file generated with <code>openssl</code>, MongoDB recommends using an <a href="https://docs.mongodb.com/v3.2/core/security-x.509/">X.509 certificate</a> to secure connections between production systems.</p>
+
+<h3 id="create-an-administrative-user">Create an Administrative User</h3>
+
+<ol>
+<li><p>On the Linode that you intend to use as the <em>primary</em> member of your replica set of config servers, log in to the <code>mongo</code> shell:</p>
+
+<pre><code>mongo
+</code></pre></li>
+
+<li><p>Connect to the <code>admin</code> database:</p>
+
+<pre><code>use admin
+</code></pre></li>
+
+<li><p>Create an administrative user with <code>root</code> privileges. Replace &ldquo;password&rdquo; with a strong password of your choice:</p>
+
+<pre><code>db.createUser({user: &quot;mongo-admin&quot;, pwd: &quot;password&quot;, roles:[{role: &quot;root&quot;, db: &quot;admin&quot;}]})
+</code></pre></li>
+</ol>
+
+<h3 id="generate-a-key-file">Generate a Key file</h3>
+
+<ol>
+<li><p>Issue this command to generate your key file:</p>
+
+<pre><code>openssl rand -base64 756 &gt; mongo-keyfile
+</code></pre>
+
+<p>Once you&rsquo;ve generated the key, copy it to each member of your replica set.</p></li>
+
+<li><p>The rest of the steps in this section should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions. Create the <code>/opt/mongo</code> directory to store your key file:</p>
+
+<pre><code>sudo mkdir /opt/mongo
+</code></pre></li>
+
+<li><p>Assuming that your key file is under the home directory for your user, move it to <code>/opt/mongo</code>, and assign it the correct permissions:</p>
+
+<pre><code>sudo mv ~/mongo-keyfile /opt/mongo
+sudo chmod 400 /opt/mongo/mongo-keyfile
+</code></pre></li>
+
+<li><p>Update the ownership of your key file, so that it belongs to the MongoDB user. Use the appropriate command for your distribution:</p>
+
+<p><strong>Ubuntu / Debian:</strong></p>
+
+<pre><code>sudo chown mongodb:mongodb /opt/mongo/mongo-keyfile
+</code></pre>
+
+<p><strong>CentOS:</strong></p>
+
+<pre><code>sudo chown mongod:mongod /opt/mongo/mongo-keyfile
+</code></pre></li>
+
+<li><p>Once you&rsquo;ve added your key file, uncomment the <code>Security</code> section of the <code>/etc/mongod.conf</code> file on each of your Linodes, and add the following value:</p>
+
+<pre><code>security:
+keyFile: /opt/mongo/mongodb-keyfile
+</code></pre>
+
+<p>To apply the change, restart <code>mongod</code>:</p>
+
+<pre><code>sudo systemctl restart mongod
+</code></pre>
+
+<p>You can skip this step on your query router, since you&rsquo;ll create a separate configuration file for it later in this guide. Note that key file authentication automatically enables <a href="https://docs.mongodb.com/manual/core/authorization/">role-based access control</a>, so you will need to <a href="https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users">create users</a> and assign them the necessary privileges to access databases.</p></li>
+</ol>
+
+<h2 id="initialize-config-servers">Initialize Config Servers</h2>
+
+<p>In this section, we&rsquo;ll create a replica set of config servers. The config servers store metadata for the states and organization of your data. This includes information about the locations of data <em>chunks</em>, which is important since the data will be distributed across multiple shards.</p>
+
+<p>Rather than using a single config server, we&rsquo;ll use a replica set to ensure the integrity of the metadata. This enables master-slave (primary-secondary) replication among the three servers and automates failover so that if your primary config server is down, a new one will be elected and requests will continue to be processed.</p>
+
+<p>The steps below should be performed on each config server individually, unless otherwise specified.</p>
+
+<ol>
+<li><p>On each config server, modify the following values in <code>/etc/mongod.conf</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mongod.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">port: <span class="m">27019</span>
+bindIp: <span class="m">192</span>.0.2.1</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>bindIp</code> address should match the IP address you configured for each config server in your hosts file in the previous section. This should be a private IP address unless you&rsquo;ve configured SSL/TLS encryption.</p></li>
+
+<li><p>Uncomment the <code>replication</code> section and add the <code>replSetName</code> directive below it to create a replica set for your config servers:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mongod.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">replication:
+  replSetName: configReplSet</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p><code>configReplSet</code> is the name of the replica set to be configured. This value can be modified, but we recommend using a descriptive name to help you keep track of your replica sets.</p></li>
+
+<li><p>Uncomment the <code>sharding</code> section and configure the host&rsquo;s role in the cluster as a config server:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mongod.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sharding:
+  clusterRole: <span class="s2">&#34;configsvr&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart the <code>mongod</code> service once these changes have been made:</p>
+
+<pre><code>sudo systemctl restart mongod
+</code></pre></li>
+
+<li><p>On <em>one</em> of your config server Linodes, connect to the MongoDB shell over port 27019 with your administrative user:</p>
+
+<pre><code>mongo mongo-config-1:27019 -u mongo-admin -p --authenticationDatabase admin
+</code></pre>
+
+<p>Modify the hostname to match your own if you used a different naming convention than our example. We&rsquo;re connecting to the <code>mongo</code> shell on the first config server in this example, but you can connect to any of the config servers in your cluster since we&rsquo;ll be adding each host from the same connection.</p></li>
+
+<li><p>From the <code>mongo</code> shell, initialize the replica set:</p>
+
+<pre><code>rs.initiate( { _id: &quot;configReplSet&quot;, configsvr: true, members: [ { _id: 0, host: &quot;mongo-config-1:27019&quot; }, { _id: 1, host: &quot;mongo-config-2:27019&quot; }, { _id: 2, host: &quot;mongo-config-3:27019&quot; } ] } )
+</code></pre>
+
+<p>Substitute your own hostnames if applicable. You should see a message indicating the operation succeeded:</p>
+
+<pre><code>{ &quot;ok&quot; : 1 }
+</code></pre></li>
+
+<li><p>Notice that the MongoDB shell prompt has now changed to <code>configReplSet:PRIMARY&gt;</code> or <code>configReplSet:SECONDARY&gt;</code>, depending on which Linode you used to run the previous commands. To further verify that each host has been added to the replica set:</p>
+
+<pre><code>rs.status()
+</code></pre>
+
+<p>If the replica set has been configured properly, you&rsquo;ll see output similar to the following:</p>
+
+<pre><code>configReplSet:SECONDARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;configReplSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2016-11-22T14:11:18.382Z&quot;),
+    &quot;myState&quot; : 1,
+    &quot;term&quot; : NumberLong(1),
+    &quot;configsvr&quot; : true,
+    &quot;heartbeatIntervalMillis&quot; : NumberLong(2000),
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 0,
+            &quot;name&quot; : &quot;mongo-config-1:27019&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 272,
+            &quot;optime&quot; : {
+                &quot;ts&quot; : Timestamp(1479823872, 1),
+                &quot;t&quot; : NumberLong(1)
+            },
+            &quot;optimeDate&quot; : ISODate(&quot;2016-11-22T14:11:12Z&quot;),
+            &quot;infoMessage&quot; : &quot;could not find member to sync from&quot;,
+            &quot;electionTime&quot; : Timestamp(1479823871, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2016-11-22T14:11:11Z&quot;),
+            &quot;configVersion&quot; : 1,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;mongo-config-2:27019&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 17,
+            &quot;optime&quot; : {
+                &quot;ts&quot; : Timestamp(1479823872, 1),
+                &quot;t&quot; : NumberLong(1)
+            },
+            &quot;optimeDate&quot; : ISODate(&quot;2016-11-22T14:11:12Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2016-11-22T14:11:17.758Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2016-11-22T14:11:14.283Z&quot;),
+            &quot;pingMs&quot; : NumberLong(1),
+            &quot;syncingTo&quot; : &quot;mongo-config-1:27019&quot;,
+            &quot;configVersion&quot; : 1
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;mongo-config-3:27019&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 17,
+            &quot;optime&quot; : {
+                &quot;ts&quot; : Timestamp(1479823872, 1),
+                &quot;t&quot; : NumberLong(1)
+            },
+            &quot;optimeDate&quot; : ISODate(&quot;2016-11-22T14:11:12Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2016-11-22T14:11:17.755Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2016-11-22T14:11:14.276Z&quot;),
+            &quot;pingMs&quot; : NumberLong(0),
+            &quot;syncingTo&quot; : &quot;mongo-config-1:27019&quot;,
+            &quot;configVersion&quot; : 1
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+</code></pre></li>
+</ol>
+
+<h2 id="configure-query-router">Configure Query Router</h2>
+
+<p>In this section, we&rsquo;ll set up the MongoDB query router. The query router obtains metadata from the config servers, caches it, and uses that metadata to send read and write queries to the correct shards.</p>
+
+<p>All steps here should be performed from your query router Linode (this will be the same as your application server). Since we&rsquo;re only configuring one query router, we&rsquo;ll only need to do this once. However, it&rsquo;s also possible to use a replica set of query routers. If you&rsquo;re using more than one (i.e., in a high availability setup), perform these steps on each query router Linode.</p>
+
+<ol>
+<li><p>Create a new configuration file called <code>/etc/mongos.conf</code>, and supply the following values:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mongos.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># where to write logging data.
+</span><span class="c1"></span>systemLog:
+destination: file
+logAppend: <span class="nb">true</span>
+path: /var/log/mongodb/mongos.log
+
+<span class="c1"># network interfaces
+</span><span class="c1"></span>net:
+port: <span class="m">27017</span>
+bindIp: <span class="m">192</span>.0.2.4
+
+security:
+keyFile: /opt/mongo/mongodb-keyfile
+
+sharding:
+configDB: configReplSet/mongo-config-1:27019,mongo-config-2:27019,mongo-config-3:27019</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Replace <code>192.0.2.4</code> with your router Linode&rsquo;s private IP address, and save the file.</p></li>
+
+<li><p>Create a new systemd unit file for <code>mongos</code> called <code>/lib/systemd/system/mongos.service</code>, with the following information:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/lib/systemd/system/mongos.service 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Mongo Cluster Router
+<span class="nv">After</span><span class="o">=</span>network.target
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">User</span><span class="o">=</span>mongodb
+<span class="nv">Group</span><span class="o">=</span>mongodb
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/mongos --config /etc/mongos.conf
+<span class="c1"># file size
+</span><span class="c1"></span><span class="nv">LimitFSIZE</span><span class="o">=</span>infinity
+<span class="c1"># cpu time
+</span><span class="c1"></span><span class="nv">LimitCPU</span><span class="o">=</span>infinity
+<span class="c1"># virtual memory size
+</span><span class="c1"></span><span class="nv">LimitAS</span><span class="o">=</span>infinity
+<span class="c1"># open files
+</span><span class="c1"></span><span class="nv">LimitNOFILE</span><span class="o">=</span><span class="m">64000</span>
+<span class="c1"># processes/threads
+</span><span class="c1"></span><span class="nv">LimitNPROC</span><span class="o">=</span><span class="m">64000</span>
+<span class="c1"># total threads (user+kernel)
+</span><span class="c1"></span><span class="nv">TasksMax</span><span class="o">=</span>infinity
+<span class="nv">TasksAccounting</span><span class="o">=</span><span class="nb">false</span>
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Note that the above example uses the <code>mongodb</code> user that MongoDB runs as by default on Ubuntu and Debian. If you&rsquo;re using CentOS, substitute the following values under the <code>Service</code> section of the file:</p>
+
+<pre><code>[Service]
+User=mongod
+Group=mongod
+</code></pre></li>
+
+<li><p>The <code>mongos</code> service needs to obtain data locks that conflicts with <code>mongod</code>, so be sure <code>mongod</code> is stopped before proceeding:</p>
+
+<pre><code>sudo systemctl stop mongod
+</code></pre></li>
+
+<li><p>Enable <code>mongos.service</code> so that it automatically starts on reboot, and then initialize the <code>mongos</code>:</p>
+
+<pre><code>sudo systemctl enable mongos.service
+sudo systemctl start mongos
+</code></pre></li>
+
+<li><p>Confirm that <code>mongos</code> is running:</p>
+
+<pre><code>systemctl status mongos
+</code></pre>
+
+<p>You should see output similar to this:</p>
+
+<pre><code>Loaded: loaded (/lib/systemd/system/mongos.service; enabled; vendor preset: enabled)
+Active: active (running) since Tue 2017-01-31 19:43:05 UTC; 10s ago
+Main PID: 3901 (mongos)
+CGroup: /system.slice/mongos.service
+    └─3901 /usr/bin/mongos --config /etc/mongos.conf
+</code></pre></li>
+</ol>
+
+<h2 id="add-shards-to-the-cluster">Add Shards to the Cluster</h2>
+
+<p>Now that the query router is able to communicate with the config servers, we must enable sharding so that the query router knows which servers will host the distributed data and where any given piece of data is located.</p>
+
+<ol>
+<li><p>Log into <em>each</em> of your shard servers and change the following line in the MongoDB configuration file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mongod.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">bindIp: <span class="m">192</span>.0.2.5</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The IP address in this line should be changed to the address corresponding with the one in your hosts file (since that&rsquo;s where address resolution will take place in our setup). For example, if you&rsquo;re using private IP addresses to connect your shards to the query router, use your private IP address. If you&rsquo;ve configured SSL/TLS encryption and plan to use public IP addresses, use those.</p></li>
+
+<li><p>From <em>one</em> of your shard servers, connect to the query router we configured above:</p>
+
+<pre><code>mongo mongo-query-router:27017 -u mongo-admin -p --authenticationDatabase admin
+</code></pre>
+
+<p>If your query router has a different hostname, subsitute that in the command.</p></li>
+
+<li><p>From the <code>mongos</code> interface, add each shard individually:</p>
+
+<pre><code>sh.addShard( &quot;mongo-shard-1:27017&quot; )
+sh.addShard( &quot;mongo-shard-2:27017&quot; )
+</code></pre>
+
+<p>These steps can all be done from a single <code>mongos</code> connection; you don&rsquo;t need to log into each shard individually and make the connection to add a new shard. If you&rsquo;re using more than two shards, you can use this format to add more shards as well. Be sure to modify the hostnames in the above command if appropriate.</p></li>
+
+<li><p>Optionally, if you configured <a href="/docs/databases/mongodb/create-a-mongodb-replica-set">replica sets</a> for each shard instead of single servers, you can add them at this stage with a similar command:</p>
+
+<pre><code>sh.addShard( &quot;rs0/mongo-repl-1:27017,mongo-repl-2:27017,mongo-repl-3:27017&quot; )
+</code></pre>
+
+<p>In this format, <code>rs0</code> is the name of the replica set for the first shard, <code>mongo-repl-1</code> is the name of the first host in the shard (using port <code>27017</code>), and so on. You&rsquo;ll need to run the above command separately for each individual replica set.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Before adding replica sets as shards, you must first configure the replica sets themselves.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="configure-sharding">Configure Sharding</h2>
+
+<p>At this stage, the components of your cluster are all connected and communicating with one another. The final step is to enable sharding. Enabling sharding takes place in stages due to the organization of data in MongoDB. To understand how data will be distrubuted, let&rsquo;s briefly review the main data structures:</p>
+
+<ul>
+<li><strong>Databases</strong> - The broadest data structure in MongoDB, used to hold groups of related data.</li>
+<li><strong>Collections</strong> - Analogous to tables in traditional relational database systems, collections are the data structures that comprise databases</li>
+<li><strong>Documents</strong> - The most basic unit of data storage in MongoDB. Documents use JSON format for storing data using key-value pairs that can be queried by applications</li>
+</ul>
+
+<h3 id="enable-sharding-at-database-level">Enable Sharding at Database Level</h3>
+
+<p>First, we&rsquo;ll enable sharding at the database level, which means that collections in a given database can be distributed among different shards.</p>
+
+<ol>
+<li><p>Access the <code>mongos</code> shell on your query router. This can be done from any server in your cluster:</p>
+
+<pre><code>mongo mongo-query-router:27017 -u mongo-admin -p --authenticationDatabase admin
+</code></pre>
+
+<p>If applicable, subsitute your own query router&rsquo;s hostname.</p></li>
+
+<li><p>From the <code>mongos</code> shell, create a new database. We&rsquo;ll call ours <code>exampleDB</code>:</p>
+
+<pre><code>use exampleDB
+</code></pre></li>
+
+<li><p>Enable sharding on the new database:</p>
+
+<pre><code>sh.enableSharding(&quot;exampleDB&quot;)
+</code></pre></li>
+
+<li><p>To verify that the sharding was successful, first switch to the <code>config</code> database:</p>
+
+<pre><code>use config
+</code></pre>
+
+<p>Next, run a <code>find()</code> method on your databases:</p>
+
+<pre><code>db.databases.find()
+</code></pre>
+
+<p>This will return a list of all databases with some information about them. In our case, there should be only one entry for the <code>exampleDB</code> database we just created:</p>
+
+<pre><code>{ &quot;_id&quot; : &quot;exampleDB&quot;, &quot;primary&quot; : &quot;shard0001&quot;, &quot;partitioned&quot; : true }
+</code></pre></li>
+</ol>
+
+<h3 id="sharding-strategy">Sharding Strategy</h3>
+
+<p>Before we enable sharding for a collection, we&rsquo;ll need to decide on a <em>sharding strategy</em>. When data is distributed among the shards, MongoDB needs a way to sort it and know which data is on which shard. To do this, it uses a <em>shard key</em>, a designated field in your documents that is used by the <code>mongos</code> query router know where a given piece of data is stored. The two most common sharding strategies are range-based and hash-based.</p>
+
+<p><strong>Range-based sharding</strong> divides your data based on specific ranges of values in the shard key. For example, you may have a collection of customers and associated address. If you use range-based sharding, the ZIP code may be a good choice for the shard key. This would distribute customers in a specified range of ZIP codes on the same shard. This may be a good strategy if your application will be running queries to find customers near each other when planning deliveries, for example. The downside to this is if your customers are not evenly distributed geographically, your data storage may rely too heavily on one shard, so it&rsquo;s important to analyze your data carefully before choosing a shard key. Another important factor to consider is what kinds of queries you&rsquo;ll be running, however. When properly utilized, range-base sharding is generally a better option when your application will be performing many complex read queries.</p>
+
+<p><strong>Hash-based sharding</strong> distributes data by using a hash function on your shard key for a more even distribution of data among the shards. Suppose again that you have a collection of customers and addresses. In a hash-based sharding setup, you may choose a customer ID number, for example, as the shard key. This number is transformed by a hash function, and the results of the hashing are what determines which shard the data is stored on. Hash-based sharding is a good strategy in situations where your application will mostly perform write operations, or if your application needs only to run simple read queries like looking up only a few specific customers at a time.</p>
+
+<p>This is not intended to be a comprehensive guide to choosing a sharding strategy. Before making this decision for a production cluster, be sure to analyze your dataset, computing resources, and the queries your application will run. For more information, refer to <a href="https://docs.mongodb.com/v3.2/sharding/">MongoDB&rsquo;s documentation on sharding</a>.</p>
+
+<h3 id="enable-sharding-at-collection-level">Enable Sharding at Collection Level</h3>
+
+<p>Now that the database is available for sharding and we&rsquo;ve chosen a strategy, we need to enable sharding at the collections level. This allows the documents within a collection to be distributed among your shards. We&rsquo;ll use a hash-based sharding strategy for simplicity.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>It&rsquo;s not always necessary to shard every collection in a database. Depending on what data each collection contains, it may be more efficient to store certain collections in one location since database queries to a single shard are faster. Before sharding a collection, carefully analyze its anticipated contents and the ways it will be used by your application.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Connect to the <code>mongo</code> shell on your query router if you&rsquo;re not already there:</p>
+
+<pre><code>mongo mongo-query-router:27017 -u mongo-admin -p --authenticationDatabase admin
+</code></pre></li>
+
+<li><p>Switch to the <code>exampleDB</code> database we created previously:</p>
+
+<pre><code>use exampleDB
+</code></pre></li>
+
+<li><p>Create a new collection called <code>exampleCollection</code> and hash its <code>_id</code> key. The <code>_id</code> key is already created by default as a basic index for new documents:</p>
+
+<pre><code>db.exampleCollection.ensureIndex( { _id : &quot;hashed&quot; } )
+</code></pre></li>
+
+<li><p>Finally, shard the collection:</p>
+
+<pre><code>sh.shardCollection( &quot;exampleDB.exampleCollection&quot;, { &quot;_id&quot; : &quot;hashed&quot; } )
+</code></pre>
+
+<p>This enables sharding across any shards that you added to your cluster in the <a href="#add-shards-to-the-cluster">Add Shards to the Cluster</a> section.</p></li>
+</ol>
+
+<h2 id="test-your-cluster">Test Your Cluster</h2>
+
+<p>This section is optional. To ensure your data is being distributed evenly in the example database and collection we configured aboved, you can follow these steps to generate some basic test data and see how it is divided among the shards.</p>
+
+<ol>
+<li><p>Connect to the <code>mongo</code> shell on your query router if you&rsquo;re not already there:</p>
+
+<pre><code>mongo mongo-query-router:27017 -u mongo-admin -p --authenticationDatabase admin
+</code></pre></li>
+
+<li><p>Switch to your <code>exampleDB</code> database:</p>
+
+<pre><code>use exampleDB
+</code></pre></li>
+
+<li><p>Run the following code in the <code>mongo</code> shell to generate 500 simple documents and insert them into <code>exampleCollection</code>:</p>
+
+<pre><code>for (var i = 1; i &lt;= 500; i++) db.exampleCollection.insert( { x : i } )
+</code></pre></li>
+
+<li><p>Check your data distribution:</p>
+
+<pre><code>db.exampleCollection.getShardDistribution()
+</code></pre>
+
+<p>This will output information similar to the following:</p>
+
+<pre><code>Shard shard0000 at mongo-shard-1:27017
+ data : 8KiB docs : 265 chunks : 2
+ estimated data per chunk : 4KiB
+ estimated docs per chunk : 132
+
+Shard shard0001 at mongo-shard-2:27017
+ data : 7KiB docs : 235 chunks : 2
+ estimated data per chunk : 3KiB
+ estimated docs per chunk : 117
+
+Totals
+ data : 16KiB docs : 500 chunks : 4
+ Shard shard0000 contains 53% data, 53% docs in cluster, avg obj size on shard : 33B
+ Shard shard0001 contains 47% data, 47% docs in cluster, avg obj size on shard : 33B
+</code></pre>
+
+<p>The sections beginning with <code>Shard</code> give information about each shard in your cluster. Since we only added two shards there are only two sections, but if you add more shards to the cluster, they&rsquo;ll show up here as well. The <code>Totals</code> section provides information about the collection as a whole, including its distribution among the shards. Notice that distribution is not perfectly equal. The hash function does not guarantee absolutely even distribution, but with a carefully chosen shard key it will usually be fairly close.</p></li>
+
+<li><p>When you&rsquo;re finished, delete the test data:</p>
+
+<pre><code>db.dropDatabase()
+</code></pre></li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Before using your cluster in a production environment, it&rsquo;s important to configure a firewall to limit ports 27017 and 27019 to only accept traffic between hosts within your cluster. Additional firewall configuration will likely be needed depending on the other services you&rsquo;re running. For more information, consult our <a href="/docs/security/firewalls/">firewall guides</a>.</p>
+
+<p>You may also want to create a master disk image consisting of a full MongoDB installation and whatever configuration settings your application requires. By doing so, you can use the Linode Manager to dynamically scale your cluster as your data storage needs grow. You may also do this from the <a href="https://www.linode.com/docs/platform/linode-cli/">Linode CLI</a> if you&rsquo;d like to automate the process. For more information, see our guide on <a href="/docs/platform/linode-images">Linode images</a>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://docs.mongodb.com/manual/reference/replica-configuration/">MongoDB Documentation for Replica Sets</a></li>
+
+<li><a href="https://docs.mongodb.com/manual/core/master-slave/">MongoDB Documentation for Master-Slave Replication</a></li>
+
+<li><a href="https://docs.mongodb.com/manual/sharding/">MongoDB Documentation for Sharding</a></li>
+
+<li><a href="https://docs.mongodb.com/manual/sharding/">MongoDB Documentation for Auto Sharding Configuration</a></li>
+
+<li><a href="https://docs.mongodb.com/manual/tutorial/configure-ssl/">Configure MongoDB for SSL/TLS</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/mongodb/creating-a-mongodb-replication-set-on-debian-7-wheezy/">Creating a MongoDB Replication Set on Debian 7 (Wheezy) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-12-04-precise/">Creating a MongoDB Replication Set on Ubuntu 12.04 (Precise) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/creating-a-mongodb-replication-set-on-centos-6-4/">Creating a MongoDB Replication Set on CentOS 6.4 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/create-a-mongodb-replica-set/">Create a MongoDB Replica Set</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/create-a-highly-available-postgresql-cluster-using-patroni-and-haproxy/">Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#cluster-architecture">Cluster Architecture</a></li>
+<li><a href="#configure-hosts-file">Configure Hosts File</a></li>
+<li><a href="#set-up-mongodb-authentication">Set Up MongoDB Authentication</a>
+<ul>
+<li><a href="#create-an-administrative-user">Create an Administrative User</a></li>
+<li><a href="#generate-a-key-file">Generate a Key file</a></li>
+</ul></li>
+<li><a href="#initialize-config-servers">Initialize Config Servers</a></li>
+<li><a href="#configure-query-router">Configure Query Router</a></li>
+<li><a href="#add-shards-to-the-cluster">Add Shards to the Cluster</a></li>
+<li><a href="#configure-sharding">Configure Sharding</a>
+<ul>
+<li><a href="#enable-sharding-at-database-level">Enable Sharding at Database Level</a></li>
+<li><a href="#sharding-strategy">Sharding Strategy</a></li>
+<li><a href="#enable-sharding-at-collection-level">Enable Sharding at Collection Level</a></li>
+</ul></li>
+<li><a href="#test-your-cluster">Test Your Cluster</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

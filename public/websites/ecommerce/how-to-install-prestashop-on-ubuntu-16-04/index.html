@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install PrestaShop on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to install PrestaShop on LAMP (with MariaDB). It also shows how to add a TLS certificate and optimize some of the configurations.">
+        <meta name="keywords" content="prestashop, ecommerce, cms">
+        
+        <meta property="og:title" content="How to Install PrestaShop on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/">
+        <meta property="og:description" content="PrestaShop is a comprehensive ecommerce solution used by thousands of merchants around the world. Use this guide to set it up with TLS on your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/ecommerce/">e-Commerce</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install PrestaShop on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install PrestaShop on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-21T00:00:00Z">Thursday, September 21, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Alexandru Andrei
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2fhow-to-install-prestashop-on-ubuntu-16-04%2f&via=linode&text=How%20to%20Install%20PrestaShop%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2fhow-to-install-prestashop-on-ubuntu-16-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2fhow-to-install-prestashop-on-ubuntu-16-04%2f&t=How%20to%20Install%20PrestaShop%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/PrestaShop.jpg" alt="Prestashop_banner" /></p>
+
+<h2 id="what-is-prestashop">What is PrestaShop?</h2>
+
+<p>If you&rsquo;ve ever thought about opening an online store, you may have felt overwhelmed by variety of free, open-source ecommerce solutions available.  While having so many options means that there is almost certainly an available and effective solution for your particular situation, it can also be confusing for newcomers. One of those options, the subject of this guide, is <a href="https://www.prestashop.com/en">PrestaShop</a>, a comprehensive ecommerce solution used by thousands of merchants around the world.</p>
+
+<p>PrestaShop&rsquo;s ecommerce breadth can make it seem daunting to learn; however, its menus are neatly structured, terms are intuitive, and interface is easily navigable. In addition, customizing your website with PrestaShop&rsquo;s many <em>What You See Is What You Get</em> (WYSIWYG) tools makes for a user-friendly set up, without having to inspect and edit source code. Also, PrestaShop comes with many out-of-the-box features and plug-ins that streamline setup and use.</p>
+
+<p>Installing Prestashop on a remote server is more involved and time-consuming than using cloud hosting, but the rewards are greater: you will have better performance, since you have conserved server resources, and greater flexibility, with the freedom to tweak your settings as you see fit. You won&rsquo;t ever have to wait for a cloud-host support team to change PHP settings for you. Furthermore, <a href="/docs/websites/introduction-to-high-availability">high availability</a>, <a href="/docs/platform/nodebalancer/getting-started-with-nodebalancers">load balancing</a>, advanced <a href="/docs/platform/linode-backup-service">backup schemes</a>, and other features become easily accessible, allowing you to scale your business and increase your site&rsquo;s reliability.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+
+<li><p>In order to obtain a free SSL certificate from <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a>, you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our <a href="/docs/networking/dns/dns-manager-overview">DNS Manager Overview</a> guide for more information.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Throughout this guide, replace <code>example.com</code> with the public IP address or Fully Qualified Domain Name (FQDN) of your Linode.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="server-requirements">Server Requirements</h2>
+
+<p>In most cases, you can start out with an Ubuntu 16.04 instance with 1GB of RAM. As your online store grows, keep an eye on your memory usage; scale to a bigger Linode when necessary. If your business becomes especially large, it may be a good idea to separate your store across at least three servers: one that runs Apache and hosts the PHP code running the ecommerce platform, one for the database, and one for storing static content, like .jpg images.</p>
+
+<h2 id="install-apache-and-mariadb">Install Apache and MariaDB</h2>
+
+<p>This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of MySQL. You can read more about MariaDB and its features <a href="https://mariadb.com/kb/en/the-mariadb-library/mariadb-vs-mysql-features/">here</a>. If you would prefer to use a traditional LAMP stack, please see our guide, <a href="/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04">How to Install a LAMP Stack on Ubuntu 16.04</a>.</p>
+
+<ol>
+<li><p>Install Apache, PHP, and MariaDB:</p>
+
+<pre><code>sudo apt-get install apache2 libapache2-mod-php mariadb-server
+</code></pre></li>
+
+<li><p>Use the following command to secure your MariaDB installation:</p>
+
+<pre><code>sudo mysql_secure_installation
+</code></pre></li>
+</ol>
+
+<p>This script will ask a series of questions. You can leave the first question (for MariaDB&rsquo;s root password blank), then choose &lsquo;n&rsquo; (&ldquo;No&rdquo;) to decline to create a new root password. Answer &lsquo;y&rsquo; (Yes) for the remaining questions.</p>
+
+<h3 id="configure-apache">Configure Apache</h3>
+
+<ol>
+<li><p>The next step is to create a basic configuration file for Apache, telling it where it will find your website files and what your domain name is. Start by copying the default config file to use it as a template:</p>
+
+<pre><code>sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
+</code></pre></li>
+
+<li><p>Edit the configuration file. Uncomment the <code>ServerName</code> line, replace <code>example.com</code> with your Linode&rsquo;s domain name or IP address, and edit the remaining lines as follows:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf">. . .
+<span class="nb">ServerName</span> example.com
+
+<span class="nb">ServerAdmin</span> webmaster@example.com
+<span class="nb">DocumentRoot</span> <span class="sx">/var/www/html/example.com</span>
+. . .</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Create the directory for our website files:</p>
+
+<pre><code>sudo mkdir /var/www/html/example.com
+</code></pre></li>
+
+<li><p>Disable the default configuration file and enable the newly created one:</p>
+
+<pre><code>sudo a2dissite 000-default.conf
+sudo a2ensite example.com.conf
+</code></pre></li>
+
+<li><p>Restart Apache:</p>
+
+<pre><code>sudo systemctl restart apache2.service
+</code></pre></li>
+</ol>
+
+<h3 id="allow-prestashop-to-use-htaccess-files">Allow PrestaShop to Use .htaccess Files</h3>
+
+<p>PrestaShop can make use of <code>.htaccess</code> files. This allows it to automatically adjust Apache&rsquo;s settings and makes it possible to enable advanced features such as &ldquo;pretty links,&rdquo; web page compression, or <strong>https</strong> redirects from the administration backend (PrestaShop&rsquo;s admin page).</p>
+
+<ol>
+<li>Edit the config file to enable .htaccess overrides:</li>
+</ol>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;Directory</span> <span class="s">/var/www/html/example.com</span><span class="nt">&gt;</span>
+    <span class="nb">AllowOverride</span> <span class="k">All</span>
+<span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<h2 id="install-tls-ssl-certificate-to-encrypt-website-traffic">Install TLS (SSL) Certificate to Encrypt Website Traffic</h2>
+
+<p>Obtaining an SSL certificate for your store will help keep your customers&rsquo; data secure, and will avoid Google search ranking penalties for sites that don&rsquo;t use <code>https</code>. It is not possible to complete this step using the public IP address of a Linode; you need to have a FQDN that is already listed in the DNS servers.</p>
+
+<ol>
+<li><p>Check to see if your domain name has propagated to the DNS servers:</p>
+
+<pre><code>dig @8.8.8.8 example.com
+</code></pre>
+
+<p>You should receive a response that looks like this:</p>
+
+<pre><code>example.com        36173   IN  A   203.0.113.10
+</code></pre>
+
+<p>If the <strong>A</strong> value is equal to the IP address of your server, you can continue. Otherwise, check the DNS configuration of your Linode, and then repeat this step after a few minutes.</p></li>
+
+<li><p>Add the official Personal Package Archive (PPA) of the Let&rsquo;s Encrypt Team, update the package repository, and install certbot:</p>
+
+<pre><code>sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install python-certbot-apache
+</code></pre></li>
+
+<li><p>Request and install the TLS certificate:</p>
+
+<pre><code>  sudo certbot --apache
+</code></pre></li>
+
+<li><p>When asked if you want https redirection answer <strong>2</strong>.</p>
+
+<pre><code>Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+-------------------------------------------------------------------------------
+1: No redirect - Make no further changes to the webserver configuration.
+2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
+new sites or if you're confident your site works on HTTPS. You can undo this
+change by editing your web server's configuration.
+-------------------------------------------------------------------------------
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel):
+</code></pre></li>
+
+<li><p>Make sure https is working correctly before continuing. You do this by navigating to <code>https://example.com</code> in your web browser.</p></li>
+
+<li><p>Since certificates expire after 90 days, it&rsquo;s a good idea to set up automatic renewal:</p>
+
+<pre><code>sudo crontab &lt;&lt;&lt; &quot;33 3 * * Sat /usr/bin/certbot renew -q&quot;
+</code></pre></li>
+</ol>
+
+<h2 id="prepare-environment-for-prestashop-and-install-dependencies">Prepare Environment for PrestaShop and Install Dependencies</h2>
+
+<p>Set ownership of <code>/var/www/html/example.com</code> to allow PrestaShop to enable plug-ins, automatic updates, and other features.</p>
+
+<pre><code>sudo chown www-data: /var/www/html/example.com/
+</code></pre>
+
+<p>You can also use:</p>
+
+<pre><code>chown -R www-data *
+chgrp -R www-data *
+</code></pre>
+
+<h3 id="download-and-unzip-prestashop-s-files">Download and Unzip PrestaShop&rsquo;s Files</h3>
+
+<ol>
+<li><p>Change the working directory to where the website&rsquo;s code will be installed:</p>
+
+<pre><code>cd /var/www/html/example.com/
+</code></pre></li>
+
+<li><p>Download the zip archive containing all of the necessary files. At the time of writing this tutorial, the latest version was <code>1.7.2.1</code>. Check this website for the newest version available: <a href="https://www.prestashop.com/en/download">PrestaShop&rsquo;s Download Page</a> and change the link in the following command so that it reflects the current release:</p>
+
+<pre><code>sudo curl -O https://download.prestashop.com/download/releases/prestashop_1.7.2.1.zip
+</code></pre></li>
+
+<li><p>Install the <code>unzip</code> package:</p>
+
+<pre><code>sudo apt-get install unzip
+</code></pre></li>
+
+<li><p>Decompress the zip archive:</p>
+
+<pre><code>sudo unzip prestashop_1.7.2.1.zip
+</code></pre></li>
+</ol>
+
+<h3 id="install-and-configure-prestashop-dependencies">Install and Configure PrestaShop Dependencies</h3>
+
+<ol>
+<li><p>Install PrestaShop&rsquo;s PHP dependencies:</p>
+
+<pre><code>sudo apt-get install php7.0-curl php7.0-gd php7.0-mysql php7.0-zip php7.0-xml php7.0-intl
+</code></pre>
+
+<p>These modules allow PrestaShop to download content, process images, access the database, unzip files, process XML data, and access internationalization functions.</p></li>
+
+<li><p>Enable the Apache <code>rewrite</code> module:</p>
+
+<pre><code>sudo a2enmod rewrite
+</code></pre></li>
+
+<li><p>Restart Apache:</p>
+
+<pre><code>sudo systemctl restart apache2.service
+</code></pre></li>
+
+<li><p>PrestaShop makes use of a SQL database to store information about products, users, categories and so on. Log in as the superuser (root) to MariaDB:</p>
+
+<pre><code>sudo mysql
+</code></pre></li>
+
+<li><p>Create a database and a user with the appropriate permissions. Replace <code>your_database_name</code>, <code>prestashop_user</code> and <code>choose_password</code> below. Record the information for later use.</p>
+
+<pre><code>CREATE DATABASE your_database_name;
+CREATE USER 'prestashop_user'@'localhost' IDENTIFIED BY 'choose_password';
+GRANT ALL ON your_database_name.* TO 'prestashop_user'@'localhost';
+exit
+</code></pre></li>
+</ol>
+
+<h2 id="install-prestashop">Install PrestaShop</h2>
+
+<ol>
+<li><p>Navigate to <code>https://example.com</code> in a browser. Be sure to include the <code>https</code> so your connection is secure.</p>
+
+<p>An install wizard will guide you through the setup process. When prompted, fill in the database credentials you set up earlier. Leave the first field as it is: <strong>127.0.0.1</strong>. The <strong>table prefix</strong> can be left unchanged as well.</p>
+
+<p><img src="/docs/assets/prestashop-ubuntu1604-database-credentials-form.png" alt="Database Credentials Form" /></p></li>
+
+<li><p>Test your connection to the database server.</p></li>
+
+<li><p>After clicking <strong>Next</strong> the installer will create the necessary tables and finalize setting up the store. You will see a page that looks something like this:</p></li>
+</ol>
+
+<p><img src="/docs/assets/prestashop-ubuntu1604-installation-completed.png" alt="PrestaShop Installation Completed" /></p>
+
+<ol>
+<li><p>Remove the <code>install</code> directory and <code>zip</code> archive:</p>
+
+<pre><code>cd /var/www/html/example.com
+sudo rm -r install prestashop_1.7.2.1.zip
+</code></pre></li>
+</ol>
+
+<h2 id="optimize-prestashop-and-enable-tls-ssl">Optimize Prestashop and Enable TLS/SSL</h2>
+
+<ol>
+<li><p>Enable https redirection. In the PrestaShop backend, in the far-left menu, look for <strong>CONFIGURE</strong>. Click on <strong>Shop Parameters</strong> under it.</p>
+
+<p><img src="/docs/assets/prestashop-ubuntu1604-left-side-menu.png" alt="Far-left menu from PrestaShop" /></p>
+
+<p>Choose <strong>YES</strong> for <strong>Enable SSL</strong> and <strong>Enable SSL on all pages</strong>. Scroll down and click <strong>Save</strong>.</p>
+
+<p>If you can&rsquo;t switch on <strong>Enable SSL on all pages</strong>, try again after enabling SSL and saving your settings.</p>
+
+<p><img src="/docs/assets/prestashop-ubuntu1604-SSL-switches.png" alt="SSL switches turned on in settings" /></p></li>
+
+<li><p>Go back to the left menu, and as your mouse pointer hovers on top of <strong>Shop Parameters</strong> you&rsquo;ll see a submenu pop up. Click on <strong>Traffic and SEO</strong>. Scroll down until you find the settings picured below:</p>
+
+<p><img src="/docs/assets/prestashop-ubuntu1604-SEO-and-URL-switches.png" alt="PrestaShop SEO and URL settings" /></p>
+
+<p>Select <strong>YES</strong> for <strong>Friendly URL</strong> and <strong>301 Moved Permanently</strong> for <strong>Redirect to the canonical URL</strong>. Save your settings.</p></li>
+
+<li><p>Out of the box, PrestaShop includes some features that help it render pages faster for your clients. You can access these from the far-left menu. Under <strong>CONFIGURE</strong>, hover over <strong>Advanced Parameters</strong> and click on <strong>Performance</strong> in the submenu that opens up. Select <strong>Recompile templates if the files have been updated</strong> under <strong>Template compilation</strong> and <strong>YES</strong> for <strong>Cache</strong>. This will activate Smarty cache and decrease the need for your server to compile parts of the PHP code, decreasing load times for the frontend. The final settings should look like this:</p>
+
+<p><img src="/docs/assets/prestashop-ubuntu1604-smarty-cache-settings.png" alt="Smarty cache settings" /></p></li>
+
+<li><p>Scroll down until you find <strong>CCC (COMBINE, COMPRESS AND CACHE)</strong>. Switch everything there to <strong>YES</strong>. Save your settings.</p>
+
+<p><img src="/docs/assets/prestashop-ubuntu1604-combine-compress-cache-settings.png" alt="CCC (COMBINE, COMPRESS AND CACHE settings)" /></p></li>
+
+<li><p>Open <code>/etc/php/7.0/apache2/php.ini</code> in a text editor and look for the following three settings:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php/7.0/apache2/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">memory_limit</span> <span class="o">=</span> 128M
+<span class="nv">upload_max_filesize</span> <span class="o">=</span> 2M
+<span class="nv">max_execution_time</span> <span class="o">=</span> <span class="m">30</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Change <code>upload_max_filesize</code> to 10M to enable uploading of larger images. The other two settings don&rsquo;t need to be changed at this point, but if your site&rsquo;s memory usage increases or you install a plug-in whose scripts run slowly, you may want to consider increasing <code>memory_limit</code> or <code>max_execution_time</code>, respectively.</p></li>
+
+<li><p>Restart Apache:</p>
+
+<pre><code>sudo systemctl restart apache2.service
+</code></pre></li>
+</ol>
+
+<h2 id="set-up-mail-delivery">Set Up Mail Delivery</h2>
+
+<p>Setting up mail delivery in PrestaShop is vital because so much happens through email: customer account confirmations, subscriptions, delivery statuses, order confirmations, etc. Although an email server <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql">like this one</a> can be hosted on a Linode, it can be complicated to set up and maintain.</p>
+
+<p>It&rsquo;s also possible to use an all-in-one solution like <a href="/docs/email/how-to-create-an-email-server-with-mail-in-a-box">Mail-in-a-Box</a>, but the easiest approach is to use a dedicated solution like Google&rsquo;s <a href="https://gsuite.google.com/">G Suite</a> or <a href="https://www.fastmail.com/">Fastmail</a>. This way you can focus on maintaining your store and get dependable email service without worrying about the technical details.</p>
+
+<p>Once you have decided on an email provider, configure PrestaShop&rsquo;s email system: in the left menu, under <strong>CONFIGURE</strong>, hover over <strong>Advanced Parameters</strong> and click <strong>E-mail</strong> in the submenu. Once the page loads, look for <strong>Set my own SMTP parameters (for advanced users ONLY)</strong>.</p>
+
+<p><img src="/docs/assets/prestashop-ubuntu1604-email-settings.png" alt="PrestaShop email settings" /></p>
+
+<p>New options will appear further down in the page:</p>
+
+<p><img src="/docs/assets/prestashop-ubuntu1604-email-server-connection-settings.png" alt="Email server connection settings" /></p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Now that you have PrestaShop up and running, you can begin to customize the site to meet the needs of your store. The official PrestaShop site has a list of <a href="https://addons.prestashop.com/en/">modules</a> that can be installed to add features such as online chat, SEO optimization, and product statistics. It is also important to maintain the security of your site. Make sure to frequently update PrestaShop, any installed modules or plug-ins, as well as your Linode system.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/">Use Laravel Forge to Automate Web-Server Creation on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/ecommerce/install-opencart-on-centos-7/">How to Install OpenCart on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu/">Update and Secure Drupal 8 on Ubuntu or Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/install-and-configure-drupal-8/">Install and Configure Drupal 8</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/">Themes, Modules, &amp; Backups with Drupal Drush on Debian 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-prestashop">What is PrestaShop?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#server-requirements">Server Requirements</a></li>
+<li><a href="#install-apache-and-mariadb">Install Apache and MariaDB</a>
+<ul>
+<li><a href="#configure-apache">Configure Apache</a></li>
+<li><a href="#allow-prestashop-to-use-htaccess-files">Allow PrestaShop to Use .htaccess Files</a></li>
+</ul></li>
+<li><a href="#install-tls-ssl-certificate-to-encrypt-website-traffic">Install TLS (SSL) Certificate to Encrypt Website Traffic</a></li>
+<li><a href="#prepare-environment-for-prestashop-and-install-dependencies">Prepare Environment for PrestaShop and Install Dependencies</a>
+<ul>
+<li><a href="#download-and-unzip-prestashop-s-files">Download and Unzip PrestaShop&rsquo;s Files</a></li>
+<li><a href="#install-and-configure-prestashop-dependencies">Install and Configure PrestaShop Dependencies</a></li>
+</ul></li>
+<li><a href="#install-prestashop">Install PrestaShop</a></li>
+<li><a href="#optimize-prestashop-and-enable-tls-ssl">Optimize Prestashop and Enable TLS/SSL</a></li>
+<li><a href="#set-up-mail-delivery">Set Up Mail Delivery</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

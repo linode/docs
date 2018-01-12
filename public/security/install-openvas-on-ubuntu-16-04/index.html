@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install OpenVAS 8 on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install OpenVAS 8 to scan your system for vulnerabilities.">
+        <meta name="keywords" content="openvas, ubuntu, install openvas">
+        
+        <meta property="og:title" content="Install OpenVAS 8 on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/install-openvas-on-ubuntu-16-04/">
+        <meta property="og:description" content="Install OpenVAS 8 to scan your system for vulnerabilities.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/install-openvas-on-ubuntu-16-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Install OpenVAS 8 on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install OpenVAS 8 on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-12-19T00:00:00Z">Monday, December 19, 2016</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2finstall-openvas-on-ubuntu-16-04%2f&via=linode&text=Install%20OpenVAS%208%20on%20Ubuntu%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2finstall-openvas-on-ubuntu-16-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2finstall-openvas-on-ubuntu-16-04%2f&t=Install%20OpenVAS%208%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/install-openvas-on-ubuntu-16-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/install-openvas-on-ubuntu-16-04.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>OpenVAS, the Open Vulnerability Assessment System, is a framework of tools that allow you to scan your system for thousands of known vulnerabilities. This guide will show you how to install OpenVAS 8 on Ubuntu 16.04.</p>
+
+<p><img src="/docs/assets/openvas_title.png" alt="Install OpenVAS 8 on Ubuntu 16.04" title="Install OpenVAS 8 on Ubuntu 16.04" /></p>
+
+<p>OpenVAS consists of:</p>
+
+<ul>
+<li>a database that stores results and configurations;</li>
+<li>a regularly updated feed of Network Vulnerability Tests (NVTs);</li>
+<li>a scanner, which runs the NVTs;</li>
+<li>the Greenbone Security Assistant, a graphical interface that allows you to manage vulnerability scans from a web application.</li>
+</ul>
+
+<p>For more information about the architecture of the software, refer to the <a href="http://www.openvas.org/software.html">OpenVAS website</a>.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>OpenVAS is a powerful security tool that is capable of scanning remote hosts as well as your local machine. This guide is intended to allow you to monitor vulnerabilities on machines that you control or have permission to scan. If you use OpenVAS to scan remote servers owned by others, be sure that you have a full understanding of the responsibilities involved and the potential consequences.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system.</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="install-openvas">Install OpenVAS</h2>
+
+<p>The <code>openvas</code> repository and its packages are not officially supported by Ubuntu. If you&rsquo;d like to review its contents, signing key, and fingerprint before installing OpenVAS, you can do so in the <a href="https://launchpad.net/~mrazavi/+archive/ubuntu/openvas">Ubuntu package archive</a>.</p>
+
+<ol>
+<li><p>Since OpenVAS is not included in the default Ubuntu repositories, install its PPA:</p>
+
+<pre><code>sudo apt install software-properties-common
+sudo add-apt-repository ppa:mrazavi/openvas
+</code></pre>
+
+<p>The first command installs the <code>software-properties-common</code> package, which is required for adding certain repositories. The second command will output a list of instructions for how to install OpenVAS. We&rsquo;ll explain each of these instructions in the following steps. You don&rsquo;t need to explicitly import the GPG key, as it will be added to your keyring automatically with the second command. However, you should verify that your output includes:</p>
+
+<pre><code>gpg: key 4AA450E0: public key &quot;Launchpad PPA for Mohammad Razavi&quot; imported
+</code></pre></li>
+
+<li><p>After adding the repository, update your system packages and install the <code>openvas</code> package:</p>
+
+<pre><code>sudo apt update
+sudo apt install openvas
+</code></pre>
+
+<p>When installing <code>openvas</code>, you&rsquo;ll be prompted to configure a Redis database for application data, such as tasks and configurations. Select <strong>Yes</strong> when asked if you&rsquo;d like to add a socket at <code>/var/run/redis/redis.sock</code>:</p>
+
+<p><a href="/docs/assets/openvas-redis-configuration.png"><img src="/docs/assets/openvas-redis-configuration.png" alt="OpenVAS Redis socket configuration." /></a></p></li>
+
+<li><p>Install the SQLite 3 database package. This is used to store the <a href="https://cve.mitre.org/">Common Vulnerabilities and Exposures (CVE)</a> data we&rsquo;ll obtain in Step 5:</p>
+
+<pre><code>sudo apt install sqlite3
+</code></pre></li>
+
+<li><p>Sync the OpenVAS NVT feed. This allows your installation to access tests for the most current vulnerabilities and exposures:</p>
+
+<pre><code>sudo openvas-nvt-sync
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This feed is maintained by OpenVAS and is updated about once per week. To keep your NVT feed current, we recommend running this command regularly, or setting up a <a href="https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron">cron job</a> to automate the process.</div>
+</blockquote>
+</li>
+
+<li><p>Sync Security Content Automation Protocol (SCAP) and Computer Emergency Readiness Team (CERT) vulnerability data to a local database. The synchronization will take several minutes, and you can monitor its progress in the output:</p>
+
+<pre><code>sudo openvas-scapdata-sync
+sudo openvas-certdata-sync
+</code></pre></li>
+
+<li><p>Restart the OpenVAS scanner and manager:</p>
+
+<pre><code>sudo service openvas-scanner restart
+sudo service openvas-manager restart
+</code></pre></li>
+
+<li><p>Finally, rebuild the OpenVAS database, so the manager can access the NVT data downloaded previously:</p>
+
+<pre><code>sudo openvasmd --rebuild --progress
+</code></pre></li>
+</ol>
+
+<h2 id="configure-openvas">Configure OpenVAS</h2>
+
+<h3 id="remote-access">Remote Access</h3>
+
+<p>To access the Greenbone Security Assistant web interface remotely, you must configure it to listen on your Linode&rsquo;s public IP address. You can do so by editing its configuration file under the <code>/etc/init.d/openvas-gsa</code>, and specifying your public IP address on the <code>DAEMON_ARGS</code> line. Replace <code>198.51.100.221</code> with your Linode&rsquo;s public address:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/init.d/openvas-gsa 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">DAEMON_ARGS</span><span class="o">=</span> --listen <span class="s2">&#34;198.51.100.221&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Save your changes, then restart <code>openvas-gsa</code>:</p>
+
+<pre><code>sudo service openvas-gsa restart
+</code></pre>
+
+<h3 id="user-authentication-for-openvas">User Authentication for OpenVAS</h3>
+
+<p>OpenVAS is now installed, and you&rsquo;re almost ready to start using it to scan for vulnerabilities. However, you should first change the default password to prevent unauthorized access.</p>
+
+<p>From your Linode, replace <code>your_password</code> in the following example with your new password:</p>
+
+<pre><code>sudo openvasmd --user=admin --new-password=your_password
+</code></pre>
+
+<p>This changes the password for the <code>admin</code> user to a value of your choosing. You can also create a new administrative user by replacing <code>new_user</code> in the following command:</p>
+
+<pre><code>sudo openvasmd --create-user=new_user
+</code></pre>
+
+<p>This method creates a random password even if you specify one. To change the password for a newly created user, use the syntax of the first command, substituting the username and your desired password. To create a new guest user without admin privileges, use the <code>gsad</code> (Greenbone Security Assistant Daemon) tool:</p>
+
+<pre><code>sudo gsad --guest-username=new_user --guest-password
+</code></pre>
+
+<p>Replace <code>new_user</code> and <code>your_password</code> with the appropriate values. For a complete list of administrative features available with the OpenVAS CLI, use <code>openvasmd --help</code> and <code>gsad --help</code>.</p>
+
+<h2 id="scan-your-system-with-openvas">Scan Your System with OpenVAS</h2>
+
+<p>Congratulations! OpenVAS is now ready to use. In this section, we&rsquo;ll provide a basic tutorial for both logging into the Greenbone Security Assistant (GSA) web application and running a basic vulnerability scan.</p>
+
+<ol>
+<li><p>On your local computer, navigate to your Linode&rsquo;s IP address or domain name in a web browser. You should be proxied to the GSA Login page.</p>
+
+<p>In most browsers, you will first encounter a security warning. This happens because OpenVAS generates a self-signed SSL certificate upon installation and your host is not recognized as a trusted certificate authority.</p>
+
+<p>To verify the certificate in Chrome:</p>
+
+<ul>
+<li>Click the warning icon next to <code>https://</code> in the URL bar, and choose &ldquo;Details&rdquo; under the message that is displayed.</li>
+<li>In the &ldquo;Security Overview&rdquo; pane, click the &ldquo;View Certificate&rdquo; button.</li>
+<li>A small window will appear with information about the self-signed certificate. Click &ldquo;Details&rdquo; to expand the window and show more information.</li>
+<li>Scroll to the bottom and find the <code>SHA 1</code> Fingerprint.</li>
+<li>On your Linode, run <code>sudo openssl x509 -noout -in /var/lib/openvas/CA/servercert.pem -fingerprint -sha1</code>.</li>
+<li>Compare the two fingerprints. If they match, it&rsquo;s safe to ignore the warning and proceed.</li>
+</ul>
+
+<p>To verify the certificate in Firefox:</p>
+
+<ul>
+<li>Click the &ldquo;Advanced&rdquo; button on the warning page in your browser.</li>
+<li>Additional details will be displayed, including an error code, which will be something like <code>SEC_ERROR_UNKNOWN_ISSUER</code>. Click the error code to view more information.</li>
+<li>A pane will be displayed with the &ldquo;Certificate Chain&rdquo; for your server.</li>
+<li>On your Linode, run <code>cat /var/lib/openvas/CA/servercert.pem</code> and look for the <code>-----BEGIN CERTIFICATE-----</code> line in the output.</li>
+<li>Compare the two certificates to ensure they match. If they do, it&rsquo;s safe to click &ldquo;Add Exception&rdquo; and proceed.</li>
+</ul></li>
+
+<li><p>The next page you see will be a login for the Greenbone Security Assistant, the graphical web interface for the OpenVAS manager. Once the page appears on you screen, enter the credentials for your <code>admin</code> user and click &ldquo;Login.&rdquo;</p>
+
+<p><a href="/docs/assets/openvas-gsa-login.png"><img src="/docs/assets/openvas-gsa-login.png" alt="Greenbone Security Assistant login page." /></a></p></li>
+
+<li><p>The welcome screen will display instructions on how to use the tool. OpenVAS uses &ldquo;Tasks&rdquo; to manage scans, but to start running one right away, simply enter a hostname or IP address in the text box under &ldquo;Quick Start,&rdquo; and then click &ldquo;Start Scan.&rdquo; This schedules a scan of the specified host to start immediately and sets the page contents to refresh every 30 seconds, so you can see the progress in real time.</p>
+
+<p><a href="/docs/assets/openvas-gsa-task-wizard.png"><img src="/docs/assets/openvas-gsa-task-wizard.png" alt="Greenbone Security Assistant Task Wizard." /></a></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The Quick Start screen will not appear on login after you&rsquo;ve scheduled 3 or more tasks. To access this screen at any time, click the &ldquo;Scan Management&rdquo; tab at the top of the screen, select &ldquo;Tasks,&rdquo; and hover over the purple magic wand icon in the top bar. From there, you can select &ldquo;Task Wizard&rdquo; or &ldquo;Advanced Task Wizard&rdquo; to create a new task quickly and easily.</div>
+</blockquote>
+</li>
+
+<li><p>The reports showing results of your tasks can be accessed at any time while the scan is in progress. The time a scan takes to complete will depend on the services running on a host, and may vary significantly. To view the results of a scan, select &ldquo;Scan Management&rdquo; in the top navigation bar, and click &ldquo;Reports.&rdquo;</p>
+
+<p>To view the details of a specific task, click its name under &ldquo;Task.&rdquo; In the example below, it was called &ldquo;Immediate scan of IP localhost&rdquo; when we created it with the Task Wizard:</p>
+
+<p><a href="/docs/assets/openvas-gsa-reports.png"><img src="/docs/assets/openvas-gsa-reports.png" alt="List of reports." /></a></p></li>
+
+<li><p>A &ldquo;Task Details&rdquo; screen will be displayed, showing information such as status, and the number of vulnerabilities detected. To view the details of any vulnerabilities that were found, click the number next to &ldquo;Results.&rdquo; In our example, there were 33:</p>
+
+<p><a href="/docs/assets/openvas-gsa-task-details.png"><img src="/docs/assets/openvas-gsa-task-details.png" alt="Details of the selected task." /></a></p></li>
+
+<li><p>The &ldquo;Results&rdquo; page will list potential vulnerabilities found in the scan. To sort them, click the heading of any column at the top of the page. Note that if you run scans on multiple servers, you&rsquo;ll need to sort the results by host to determine which servers are affected by vulnerabilities.</p>
+
+<p><a href="/docs/assets/openvas-gsa-results.png"><img src="/docs/assets/openvas-gsa-results.png" alt="List of results found by the scan." /></a></p>
+
+<p>To view details of a vulnerability, such as the method of detection, impact to your system, and in some cases a solution, click the name of the vulnerability. In the example below, OpenVAS has detected that we haven&rsquo;t changed the default login credentials, and it tells us how to resolve the issue:</p>
+
+<p><a href="/docs/assets/openvas-gsa-result-details.png"><img src="/docs/assets/openvas-gsa-result-details.png" alt="Details of a vulnerability result." /></a></p>
+
+<p>Once you resolve a vulnerability, return to the &ldquo;Tasks&rdquo; screen, and click the green play button icon under &ldquo;Actions&rdquo; to run the scan again. When the task completes, the vulnerability should no longer be present in your results.</p></li>
+</ol>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>Occasionally, you may receive a <em>502 Bad Gateway</em> error when you try to connect via browser. In most cases, this is caused by one of the OpenVAS daemons stopping.</p>
+
+<p>To check for problems:</p>
+
+<pre><code>sudo netstat -plntu
+</code></pre>
+
+<p>Your output should include the following lines:</p>
+
+<pre><code>Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:9391            0.0.0.0:*               LISTEN      3579/openvassd: Wai
+tcp6       0      0 :::443                  :::*                    LISTEN      7046/gsad
+tcp6       0      0 :::9390                 :::*                    LISTEN      3577/openvasmd
+</code></pre>
+
+<p>These lines represent the OpenVAS scanner, the Greenbone Security Assistant, and the OpenVAS manager, respectively. If one of these lines is not present, simply start the daemon and try to reconnect. For example, if the <code>gsad</code> program is stopped, run <code>sudo service openvas-gsa restart</code>. Here are the names of the relevant daemons, as well as the commands you can use to restart them:</p>
+
+<table>
+<thead>
+<tr>
+<th>Program Name</th>
+<th>Command to Restart</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>openvassd</td>
+<td>sudo service openvas-scanner restart</td>
+</tr>
+
+<tr>
+<td>openvasmd</td>
+<td>sudo service openvas-manager restart</td>
+</tr>
+
+<tr>
+<td>gsad</td>
+<td>sudo service openvas-gsa restart</td>
+</tr>
+</tbody>
+</table>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/">Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/">How to Install and Configure Redmine on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/">Custom Compiled Kernel on Debian &amp; Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/development/install-java-on-ubuntu-16-04/">Install Java on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/install-mongodb-on-centos-7/">Install MongoDB on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-openvas">Install OpenVAS</a></li>
+<li><a href="#configure-openvas">Configure OpenVAS</a>
+<ul>
+<li><a href="#remote-access">Remote Access</a></li>
+<li><a href="#user-authentication-for-openvas">User Authentication for OpenVAS</a></li>
+</ul></li>
+<li><a href="#scan-your-system-with-openvas">Scan Your System with OpenVAS</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

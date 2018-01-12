@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Create an SSH Tunnel for MySQL Remote Access</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide will teach you how to gain remote access to your MySQL Database using an SSH tunnel.">
+        <meta name="keywords" content="MySQL tunnel, MySQL over SSH, SSH tunnel">
+        
+        <meta property="og:title" content="Create an SSH Tunnel for MySQL Remote Access">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/">
+        <meta property="og:description" content="This guide will teach you how to gain remote access to your MySQL Database using an SSH tunnel.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/mysql/">MySQL</a>
+  
+</li>
+
+
+<li>
+  
+  Create an SSH Tunnel for MySQL Remote Access
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Create an SSH Tunnel for MySQL Remote Access</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-08-22T00:00:00Z">Thursday, August 22, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fcreate-an-ssh-tunnel-for-mysql-remote-access%2f&via=linode&text=Create%20an%20SSH%20Tunnel%20for%20MySQL%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fcreate-an-ssh-tunnel-for-mysql-remote-access%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fcreate-an-ssh-tunnel-for-mysql-remote-access%2f&t=Create%20an%20SSH%20Tunnel%20for%20MySQL%20Remote%20Access" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>This guide will show you how to make a secure connection to your remote MySQL or MariaDB server from your local computer, using an <em>SSH tunnel</em>. This is useful if you want to use administration tools on your local computer to do work on your server.</p>
+
+<p><img src="/docs/assets/securely-administer-mysql-with-an-ssh-tunnel.png" alt="Securely Administer MySQL with an SSH Tunnel" /></p>
+
+<p>An SSH tunnel is an encrypted tunnel made through an SSH protocol connection. You can use an SSH tunnel to communicate remotely with the MySQL database.
+After following these instructions, you&rsquo;ll be able to connect to <code>localhost</code> on your workstation using your favorite MySQL management tool. The connection will be securely forwarded to your Linode over the Internet.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><a href="https://mariadb.com/">MariaDB</a> is a fork of MySQL and considered a <a href="https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/">drop-in replacement</a>. Although this guide refers to MySQL, it applies equally to MariaDB as well.</div>
+</blockquote>
+
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+<li><a href="/docs/hosting-website#install-mysql">MySQL</a> is installed.</li>
+<li>MySQL is configured to listen on <code>localhost</code> (127.0.0.1). This is enabled by default.</li>
+</ul>
+
+<h2 id="how-to-access-mysql-remotely-by-creating-an-ssh-tunnel-with-putty">How to Access MySQL Remotely by Creating an SSH Tunnel with PuTTY</h2>
+
+<p>This section will show you how to create an SSH tunnel to MySQL on Windows, using the PuTTY tool.</p>
+
+<h3 id="setting-up-the-tunnel">Setting Up the Tunnel</h3>
+
+<p>First, you need to establish a basic connection to your Linode:</p>
+
+<ol>
+<li>Download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a>.</li>
+<li>Save PuTTY to your desktop.</li>
+
+<li><p>Double-click the PuTTY file to begin - no need to install. You will see the following window:</p>
+
+<p><a href="/docs/assets/361-putty-01-session.png"><img src="/docs/assets/361-putty-01-session.png" alt="The session login screen in PuTTY on Windows." /></a></p></li>
+
+<li><p>Enter the hostname or IP address of your Linode in the <strong>Host Name (or IP address)</strong> field.</p></li>
+
+<li><p>In the left-hand menu, go to <strong>Connection -&gt; SSH -&gt; Tunnels</strong>.</p></li>
+
+<li><p>In the <strong>Source port</strong> field, enter <code>3306</code>.</p></li>
+
+<li><p>In the <strong>Destination</strong> field, enter <code>127.0.0.1:3306</code>. See the final configuration below:</p>
+
+<p><a href="/docs/assets/363-putty-04-mysql-ssh-tunnel.png"><img src="/docs/assets/363-putty-04-mysql-ssh-tunnel.png" alt="Tunneling a remote MySQL connection through SSH with PuTTY on Windows." /></a></p></li>
+
+<li><p>Click <strong>Open</strong> to start the SSH session.</p></li>
+
+<li><p>If you haven&rsquo;t logged in to this system with PuTTY before, you will receive a warning similar to the following. Verify that this server is the one to which you want to connect, then click <strong>Yes</strong>:</p>
+
+<p><a href="/docs/assets/362-putty-02-host-key-warning.png"><img src="/docs/assets/362-putty-02-host-key-warning.png" alt="An unknown host key warning in PuTTY on Windows." /></a></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>This warning appears because PuTTY wants you to verify that the server you&rsquo;re logging in to is who it says it is. It is unlikely, but possible, that someone could be eavesdropping on your connection and posing as your Linode. To verify the server, compare the key fingerprint shown in the PuTTY warning - the string of numbers and letters starting with <strong>ssh-rsa</strong> in the image above - with your Linode&rsquo;s public key fingerprint. To get your Linode&rsquo;s fingerprint, log in to your Linode via the Lish console (see the <strong>Console</strong> tab in the Linode Manager) and executing the following command:</p>
+
+<p><code>ssh-keygen -l -f /etc/ssh/ssh\_host\_rsa\_key.pub</code></p>
+
+<p>The key fingerprints should match. Once you click <strong>Yes</strong>, you won&rsquo;t receive further warnings unless the key presented to PuTTY changes for some reason; typically, this should only happen if you reinstall the remote server&rsquo;s operating system. If you receive this warning again for the same Linode after the key has already been cached, you should not trust the connection and investigate matters further.</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Direct your local MySQL client to <code>localhost:3306</code>. Your connection to the remote MySQL server will be encrypted through SSH, allowing you to access your databases without running MySQL on a public IP.</p></li>
+</ol>
+
+<h2 id="create-a-tunnel-with-mysql-tunnel-on-mac-os-x-or-linux">Create a Tunnel with mysql-tunnel on Mac OS X or Linux</h2>
+
+<p>This section will show you how to create an SSH tunnel to MySQL on Mac OS X or Linux, using the mysql-tunnel tool.</p>
+
+<ol>
+<li><p>Open a command prompt and run the following command to open the SSH tunnel:</p>
+
+<pre><code>ssh -L 127.0.0.1:3306:127.0.0.1:3306 user@example.com -N
+</code></pre>
+
+<p>Replace &lt;<strong>user@example.com*&gt;* with your SSH username and your server&rsquo;s hostname or IP address. The long string of numbers in the command lists the local IP, the local port, the remote IP, and the remote port, separated by colons (</strong>:**).</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you&rsquo;re already running a local copy of MySQL on your workstation, use a different local port (3307 is a common choice). Your new command would look like this:</p>
+
+<p><code>ssh -L 127.0.0.1:3307:127.0.0.1:3306 user@example.com -N</code></p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Direct your local MySQL client to <code>localhost:3306</code>. Your connection to the remote MySQL server will be encrypted through SSH, allowing you to access your databases without running MySQL on a public IP.</p></li>
+
+<li><p>When you&rsquo;re ready to close the connection, issue a <strong>CTRL-C</strong> command or close the command prompt window. This will close the SSH tunnel.</p></li>
+</ol>
+
+<h3 id="persistent-ssh-connections">Persistent SSH Connections</h3>
+
+<p>If you need a persistent SSH tunnel, consider using <a href="http://www.harding.motd.ca/autossh/">autossh</a>. autossh starts and monitors an SSH connection, and restarts it if necessary.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="/docs/networking/using-putty">Using PuTTY</a></li>
+
+<li><a href="http://dev.mysql.com/doc/">MySQL Documentation</a></li>
+
+<li><a href="https://mariadb.com/kb/en/mariadb/documentation/">MariaDB Documentation</a></li>
+
+<li><a href="http://www.harding.motd.ca/autossh/">autossh</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/oracle/securely-administer-oracle-xe-with-an-ssh-tunnel/">Securely Administer Oracle XE with an SSH Tunnel</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#how-to-access-mysql-remotely-by-creating-an-ssh-tunnel-with-putty">How to Access MySQL Remotely by Creating an SSH Tunnel with PuTTY</a>
+<ul>
+<li><a href="#setting-up-the-tunnel">Setting Up the Tunnel</a></li>
+</ul></li>
+<li><a href="#create-a-tunnel-with-mysql-tunnel-on-mac-os-x-or-linux">Create a Tunnel with mysql-tunnel on Mac OS X or Linux</a>
+<ul>
+<li><a href="#persistent-ssh-connections">Persistent SSH Connections</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

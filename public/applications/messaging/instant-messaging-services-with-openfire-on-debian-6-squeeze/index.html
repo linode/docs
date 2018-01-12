@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Instant Messaging Services with Openfire on Debian 6 (Squeeze)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Get started with Openfire on Debian 6 (Squeeze), an open source instant messaging server built on the XMPP/Jabber protocol.">
+        <meta name="keywords" content="openfire debian 6, openfire debian squeeze, openfire linux, linux xmpp, instant messaging, real-time messaging, xmpp server, chat software, linux jabber server">
+        
+        <meta property="og:title" content="Instant Messaging Services with Openfire on Debian 6 (Squeeze)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/messaging/instant-messaging-services-with-openfire-on-debian-6-squeeze/">
+        <meta property="og:description" content="Get started with Openfire on Debian 6 (Squeeze), an open source instant messaging server built on the XMPP/Jabber protocol.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/messaging/instant-messaging-services-with-openfire-on-debian-6-squeeze/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/messaging/">Messaging &amp; Chat</a>
+  
+</li>
+
+
+<li>
+  
+  Instant Messaging Services with Openfire on Debian 6 (Squeeze)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Instant Messaging Services with Openfire on Debian 6 (Squeeze)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-05-17T00:00:00Z">Tuesday, May 17, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2finstant-messaging-services-with-openfire-on-debian-6-squeeze%2f&via=linode&text=Instant%20Messaging%20Services%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2finstant-messaging-services-with-openfire-on-debian-6-squeeze%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2finstant-messaging-services-with-openfire-on-debian-6-squeeze%2f&t=Instant%20Messaging%20Services%20with%20Openfire%20on%20Debian%206%20%28Squeeze%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/messaging/instant-messaging-services-with-openfire-on-debian-6-squeeze.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/messaging/instant-messaging-services-with-openfire-on-debian-6-squeeze.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p><a href="http://www.igniterealtime.org/projects/openfire/">Openfire</a> is an open source real-time collaboration (instant messaging) server, built on the <a href="http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol">XMPP protocol</a> and available for multiple platforms. This guide will help you get started with Openfire on your Debian 6 (Squeeze) Linode.</p>
+
+<p>If you haven&rsquo;t done so already, please follow the steps outlined in our <a href="/docs/getting-started/">getting started</a> guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you&rsquo;re logged into your Linode as root via SSH.</p>
+
+<h1 id="set-the-hostname">Set the Hostname</h1>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p>
+
+<h1 id="install-prerequisites">Install Prerequisites</h1>
+
+<p>Openfire requires a Java runtime engine (JRE). This tutorial uses the version provided by Oracle. Please note that although alternate Java runtime engines are available, Openfire may not work well with them.</p>
+
+<p>Examine your <code>/etc/apt/sources.list</code> file to make sure you have the <code>non-free</code> repository enabled. You can use an editor like <code>nano</code> to edit configuration files through the shell; you would issue the command <code>nano /etc/apt/sources.list</code> to edit this one. Please consult the <a href="http://www.nano-editor.org/dist/v1.2/nano.1.html">nano manual page</a> for information on using the editor. Your file should look similar to the following.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apt/sources.list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">deb http://mirrors.kernel.org/debian/ squeeze main contrib non-free
+deb-src http://mirrors.kernel.org/debian/ squeeze main contrib non-free
+
+deb http://security.debian.org/ squeeze/updates main contrib non-free
+deb-src http://security.debian.org/ squeeze/updates main contrib non-free</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>If you had to add the <code>non-free</code> repository to your sources, issue the following command to update your package database:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<p>Issue the following command to install prerequisite packages on your server:</p>
+
+<pre><code>apt-get install sun-java6-jre
+</code></pre>
+
+<p>The Java6 JRE will be installed, along with a series of dependencies it requires. You will be prompted to accept a licensing agreement for before proceeding.</p>
+
+<h1 id="adjust-firewall-settings">Adjust Firewall Settings</h1>
+
+<p>If you employ a firewall to specify what ports can be accessed on your Linode, please make sure you have the following ports open:</p>
+
+<ul>
+<li>3478 - STUN Service (NAT connectivity)</li>
+<li>3479 - STUN Service (NAT connectivity)</li>
+<li>5222 - Client to Server (standard and encrypted)</li>
+<li>5223 - Client to Server (legacy SSL support)</li>
+<li>5229 - Flash Cross Domain (Flash client support)</li>
+<li>7070 - HTTP Binding (unsecured HTTP connecitons)</li>
+<li>7443 - HTTP Binding (secured HTTP connections)</li>
+<li>7777 - File Transfer Proxy (XMPP file transfers)</li>
+<li>9090 - Admin Console (unsecured)</li>
+<li>9091 - Admin Console (secured)</li>
+</ul>
+
+<p>Additional ports may need to be opened later to support more advanced XMPP services, but these are the ports that Openfire will use by default.</p>
+
+<h1 id="install-openfire">Install Openfire</h1>
+
+<p>Visit the download page for the <a href="http://www.igniterealtime.org/downloads/index.jsp#openfire">Openfire RTC server</a> and click the link for the Debian package. You will be taken to another page, which will start the download to your workstation. You may cancel this download, as a manual download link will be presented that you may copy to your clipboard. Use <code>wget</code> on your Linode to retrieve the package (substitute the link for the current version in the command below). You may need to install <code>wget</code> first using the command <code>apt-get install wget</code>.</p>
+
+<pre><code>wget http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_3.6.4_all.deb
+</code></pre>
+
+<p>Install the software using <code>dpkg</code> as follows:</p>
+
+<pre><code>dpkg -i *openfire*.deb
+</code></pre>
+
+<p>Next, edit the configuration file <code>/etc/openfire/openfire.xml</code>, inserting your Linode&rsquo;s public IP address in the <code>&lt;interface&gt;</code> section, and removing the <code>&lt;!-- --&gt;</code> comment markers that surround this section.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/openfire/openfire.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;interface&gt;</span>12.34.56.78<span class="nt">&lt;/interface&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Restart Openfire with the following command:</p>
+
+<pre><code>/etc/init.d/openfire restart
+</code></pre>
+
+<p>This completes the initial installation steps for Openfire. Next, we&rsquo;ll continue with configuration through a web browser.</p>
+
+<h1 id="configure-openfire">Configure Openfire</h1>
+
+<p>Before proceeding, reboot your Linode. Once it has come back online, direct your browser to its IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode&rsquo;s IP) on port 9090. As an example, if your Linode&rsquo;s IP address were &ldquo;12.34.56.78&rdquo;, you would visit <code>http://12.34.56.78:9090</code> in your web browser. You will be presented with a language selection screen similar to this:</p>
+
+<p><a href="/docs/assets/387-openfire-debian-squeeze-01-language-selection.png"><img src="/docs/assets/387-openfire-debian-squeeze-01-language-selection.png" alt="Language selection in Openfire setup on Debian 6 (Squeeze)." /></a></p>
+
+<p>Next, you&rsquo;ll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: <a href="/docs/dns-guides/configuring-dns-with-the-linode-manager">configuring DNS with the Linode Manager</a>).</p>
+
+<p><a href="/docs/assets/388-openfire-debian-squeeze-02-domain-ports-selection.png"><img src="/docs/assets/388-openfire-debian-squeeze-02-domain-ports-selection.png" alt="Domain and admin ports selection in Openfire setup on Debian 6 (Squeeze)." /></a></p>
+
+<p>You may choose to use Openfire&rsquo;s embedded database for account management, or you may connect to an external database. Most users will want to choose the built-in option.</p>
+
+<p><a href="/docs/assets/389-openfire-debian-squeeze-03-database-selection.png"><img src="/docs/assets/389-openfire-debian-squeeze-03-database-selection.png" alt="Database type selection in Openfire setup on Debian 6 (Squeeze)." /></a></p>
+
+<p>User profiles may be stored in the server database, or they may be pulled from LDAP or Clearspace. Most users will want to choose the default option.</p>
+
+<p><a href="/docs/assets/390-openfire-debian-squeeze-04-profile-settings.png"><img src="/docs/assets/390-openfire-debian-squeeze-04-profile-settings.png" alt="Profile storage selection in Openfire setup on Debian 6 (Squeeze)." /></a></p>
+
+<p>Enter the email address of the default administrative user and select a strong password.</p>
+
+<p><a href="/docs/assets/391-openfire-debian-squeeze-05-admin-account-settings.png"><img src="/docs/assets/391-openfire-debian-squeeze-05-admin-account-settings.png" alt="Administrator account settings in Openfire setup on Debian 6 (Squeeze)." /></a></p>
+
+<p>After the initial web-based configuration is complete, restart the Openfire server before attempting to log in with the default &ldquo;<strong>admin</strong>&rdquo; user account.</p>
+
+<pre><code>/etc/init.d/openfire restart
+</code></pre>
+
+<p>If you&rsquo;re experiencing difficulty using the credentials you just created to log in, please use &ldquo;admin/admin&rdquo; as the username/password. You&rsquo;ll need to update your credentials immediately afterward for security purposes. Congratulations! You&rsquo;ve successfully installed the Openfire RTC server on Debian Linux!</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.igniterealtime.org/projects/openfire/documentation.jsp">Openfire Documentation</a></li>
+<li><a href="http://xmpp.org/">XMPP Standards Foundation</a></li>
+<li><a href="http://xmpp.org/software/clients.shtml">XMPP Software Clients</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-10-04-lts-lucid/">Instant Messaging Services with Openfire on Ubuntu 10.04 LTS (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-9-10-karmic/">Instant Messaging Services with Openfire on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-9-04-jaunty/">Instant Messaging Services with Openfire on Ubuntu 9.04 (Jaunty) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/instant-messaging-services-with-openfire-on-centos-5/">Instant Messaging Services with Openfire on CentOS 5 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/instant-messaging-services-with-openfire-on-debian-5-lenny/">Instant Messaging Services with Openfire on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#install-prerequisites">Install Prerequisites</a></li>
+<li><a href="#adjust-firewall-settings">Adjust Firewall Settings</a></li>
+<li><a href="#install-openfire">Install Openfire</a></li>
+<li><a href="#configure-openfire">Configure Openfire</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

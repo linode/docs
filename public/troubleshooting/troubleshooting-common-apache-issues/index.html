@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Troubleshooting Common Apache Issues</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to identify and solve common configuration problems encountered when using Apache.">
+        <meta name="keywords" content="apache, webserver, httpd, troubleshooting">
+        
+        <meta property="og:title" content="Troubleshooting Common Apache Issues">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/troubleshooting/troubleshooting-common-apache-issues/">
+        <meta property="og:description" content="How to identify and solve common configuration problems encountered when using Apache.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/troubleshooting/troubleshooting-common-apache-issues/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/troubleshooting/">Troubleshooting</a>
+  
+</li>
+
+
+<li>
+  
+  Troubleshooting Common Apache Issues
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Troubleshooting Common Apache Issues</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-04T00:00:00Z">Wednesday, October 4, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftroubleshooting%2ftroubleshooting-common-apache-issues%2f&via=linode&text=Troubleshooting%20Common%20Apache%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftroubleshooting%2ftroubleshooting-common-apache-issues%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftroubleshooting%2ftroubleshooting-common-apache-issues%2f&t=Troubleshooting%20Common%20Apache%20Issues" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/troubleshooting/troubleshooting-common-apache-issues.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/troubleshooting/troubleshooting-common-apache-issues.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/troubleshooting-common-apache-issues.jpg" alt="Troubleshooting Common Apache Issues" title="Troubleshooting Common Apache Issues" /></p>
+
+<p>This article provides troubleshooting guidelines for the <a href="/docs/web-servers/apache/">Apache web server</a>. Apache is a highly customizable tool for serving HTTP traffic. Because it allows for so many different configurations and settings in so many different places, sometimes Apache configuration can befuddle even advanced users.</p>
+
+<p>In this guide, you&rsquo;ll start with some basic troubleshooting steps and then proceed to more advanced techniques that can help you untangle conflicting directives. We recommend starting at the beginning of this guide and going through it in order. By the time you&rsquo;re done, you should be able to debug your Apache installation.</p>
+
+<h2 id="is-apache-running">Is Apache Running?</h2>
+
+<p>First, check whether Apache is running. Follow the process in this <a href="/docs/troubleshooting/troubleshooting/#is-the-web-server-running">Troubleshooting Guide</a>.</p>
+
+<p>If it isn&rsquo;t, go ahead and restart Apache, as explained in the next section.</p>
+
+<p>You may also want to investigate the possibility of <a href="/docs/troubleshooting/troubleshooting-memory-and-networking-issues#diagnosing-and-fixing-memory-issues">memory issues</a>, if Apache is stopping unexpectedly.</p>
+
+<h2 id="restart-apache">Restart Apache</h2>
+
+<p>Even if Apache is running, it can be useful to restart the server. This will let you read the Apache startup message. If you get an error, you can use the text of the error in an online search to help you find more details and solutions. Restarting the server may produce several seconds of downtime.</p>
+
+<p>Debian and Ubuntu:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre>
+
+<p>Fedora and CentOS:</p>
+
+<pre><code>sudo service httpd restart
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>You can use one of the following three commands instead, depending on your Linux distribution:</p>
+
+<p>/etc/init.d/httpd restart</p>
+
+<p>/etc/init.d/apache2 restart</p>
+
+<p>/etc/rc.d/httpd restart</p>
+</div>
+</blockquote>
+
+
+<h2 id="reload-apache">Reload Apache</h2>
+
+<p>Restarting or reloading Apache is also useful if you&rsquo;ve recently made changes to your server, but they don&rsquo;t seem to be taking effect. This is true for changes made directly in the Apache configuration files, as well as for changes you&rsquo;ve made to the configuration for a dynamic language like <code>mod_python</code>, <code>mod_rails</code> (for example, Phusion Passenger, or <code>mod_rack</code>), <code>mod_ruby</code>, etc. These interfaces cache code internally, and do not reread scripts on new requests.</p>
+
+<p>Reloading makes Apache reread its configuration files and incorporate the changes without a full restart, which avoids web server downtime. To reload Apache&rsquo;s configuration, run the following command:</p>
+
+<p>Debian and Ubuntu:</p>
+
+<pre><code>/etc/init.d/apache2 reload
+</code></pre>
+
+<p>Fedora and CentOS:</p>
+
+<pre><code>/etc/init.d/httpd reload
+</code></pre>
+
+<h2 id="check-the-logs">Check the Logs</h2>
+
+<p>The best place to check for Apache errors is the Apache error logs. To view the error logs, we recommend using the <code>tail</code> command with the <code>-f</code> flag, which shows you the most recent part of the log live as it&rsquo;s updated. Example:</p>
+
+<pre><code>tail -f /var/log/apache2/error.log
+</code></pre>
+
+<p>Type <strong>CTRL-C</strong> to exit the live log.</p>
+
+<p>The default error log locations are:</p>
+
+<p><strong>Debian and Ubuntu:</strong> <code>/var/log/apache2/error.log</code></p>
+
+<p><strong>Fedora and CentOS:</strong> <code>/var/log/httpd/error_log</code></p>
+
+<p>The access logs can also help you find specific information about visitors to your server. The default access log locations are:</p>
+
+<p><strong>Debian and Ubuntu:</strong> <code>/var/log/apache2/access.log</code></p>
+
+<p><strong>Fedora and CentOS:</strong> <code>/var/log/httpd/access_log</code></p>
+
+<h2 id="enable-verbose-logs">Enable Verbose Logs</h2>
+
+<p>Sometimes it can be helpful to see extra information from Apache. You can increase the amount of detail shown in the logs by changing the <em>log level</em>.</p>
+
+<ol>
+<li><p>Open your Apache configuration file for editing. The Fedora and CentOS configuration file should be located at <code>/etc/httpd/httpd.conf</code>. This example shows the location of the Debian and Ubuntu configuration file:</p>
+
+<pre><code>sudo nano /etc/apache2/apache2.conf
+</code></pre></li>
+
+<li><p>Locate the <code>LogLevel</code> variable, and update it from the default <code>warn</code> to <code>info</code> or <code>debug</code>. <code>debug</code> will produce the greatest amount of output.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/apache2.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># LogLevel: Control the number of messages logged to the error_log.
+</span><span class="c1"># Possible values include: debug, info, notice, warn, error, crit,
+</span><span class="c1"># alert, emerg.
+</span><span class="c1">#
+</span><span class="c1"></span>LogLevel debug</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart Apache:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre></li>
+
+<li><p>Perform the operation that was giving you trouble, then <a href="#check-the-logs">check the logs</a> for more detailed information and errors.</p></li>
+</ol>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Remember to set the <code>LogLevel</code> back to <code>warn</code> when you&rsquo;re done troubleshooting, or your server may fill up with logs.</div>
+</blockquote>
+
+
+<h2 id="check-apache-configuration-syntax">Check Apache Configuration Syntax</h2>
+
+<p>Apache includes a nice little syntax checking tool. Use it to make sure you aren&rsquo;t missing any brackets in your configuration files (and similar problems).</p>
+
+<p>Debian and Ubuntu:</p>
+
+<pre><code>apache2ctl -t
+</code></pre>
+
+<p>Fedora and CentOS:</p>
+
+<pre><code>httpd -t
+</code></pre>
+
+<h2 id="check-virtual-host-definitions">Check Virtual Host Definitions</h2>
+
+<p>Another helpful Apache tool lets you see all the virtual hosts on the server, their options, and the file names and line numbers of where they are defined. This will help you inventory all the domains that are configured on your host. It will also help you locate the correct file where you should update the configuration details for a domain, if you&rsquo;re not quite sure where you originally put them.</p>
+
+<p>Debian and Ubuntu:</p>
+
+<pre><code>apache2ctl -S
+</code></pre>
+
+<p>Fedora and CentOS:</p>
+
+<pre><code>httpd -S
+</code></pre>
+
+<p>Make sure all your <code>&lt;VirtualHost&gt;</code> directives use IP addresses and port numbers that match the ones defined in the <code>NameVirtualHost</code> directives. For example, if you have set <code>NameVirtualHosts *:80</code>, then the virtual host configuration should begin with <code>&lt;VirtualHost *:80&gt;</code>. If you&rsquo;ve set <code>NameVirtualHosts 123.234.123.234:80</code>, then the virtual host configuration should begin with <code>&lt;VirtualHost 123.234.123.234:80&gt;</code>. If you&rsquo;ve set <code>NameVirtualHosts *</code>, then the virtual host configuration should begin with <code>&lt;VirtualHost *&gt;</code>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can have multiple <code>NameVirtualHost</code> values, which is what you&rsquo;ll need to do if you&rsquo;re running sites on multiple IPs and ports. Just make sure the <code>&lt;VirtualHost&gt;</code> configurations correspond to the configured <code>NameVirtualHost</code> directives.</div>
+</blockquote>
+
+
+<h2 id="troubleshoot-conflicting-directives">Troubleshoot Conflicting Directives</h2>
+
+<p>If you&rsquo;ve modified a configuration option, and you&rsquo;re still not seeing it take effect even after <a href="#restart-apache">reloading the server configuration</a>, it&rsquo;s possible that the new option may have been overridden by a conflicting directive. The main point to remember is that later directives override conflicting earlier ones. So, the directive that is read the <em>latest</em> will always be the one that takes effect.</p>
+
+<p>These points should help clarify the order in which directives are read:</p>
+
+<ul>
+<li>Remember that <em>included files</em> are read at the point of their inclusion, before the rest of the original file is read.</li>
+<li><code>&lt;Directory&gt;</code> settings are read whenever the server starts or is reloaded. <code>.htaccess</code> files, on the other hand, are read before resources are served. As a result, <code>.htaccess</code> files can override directory configurations. To test whether this is occurring, temporarily disable <code>.htaccess</code> files.</li>
+<li><code>&lt;Location&gt;</code> directives are read after <code>&lt;Directory&gt;</code> and <code>&lt;Files&gt;</code> sections, so settings here might override other earlier settings.</li>
+<li>Configuration files are read serially. For example, an option set in the beginning of the <code>apache2.conf</code> or <code>httpd.conf</code> file could be overridden by a setting in the <code>conf.d/</code> file or a virtual host file.</li>
+<li>When an entire directory is included, the files from that directory are included sequentially (alphabetically) based on name.</li>
+<li>Debian and Ubuntu systems have a file called <code>/etc/apache2/ports.conf</code>, where the <code>NameVirtualHost</code> and <code>Listen</code> directives are set. These values determine the IP address or addresses to which Apache binds, and on which port(s) the web server listens for HTTP requests. This can sometimes conflict with settings in other files.</li>
+</ul>
+
+<h2 id="further-troubleshooting">Further Troubleshooting</h2>
+
+<p>If you&rsquo;re continuing to have issues with Apache, we encourage you to make contact with the <a href="https://forum.linode.com/">Linode user community</a>. The Apache web server is <em>very</em> widely deployed, so you&rsquo;ll find a large number of Linode users (and system administrators in general) with Apache experience. So, dive into the Linode <a href="https://www.linode.com/chat/">IRC channel</a> and <a href="http://linode.com/forums/">forums</a>! You&rsquo;ll more than likely find someone who can help you out.</p>
+
+<p>You might want to look at the following Linode guides:</p>
+
+<ul>
+<li>A group of guides for various <a href="/docs/frameworks/">web frameworks</a></li>
+<li>General <a href="/docs/web-servers/apache">Apache HTTP server</a> guides</li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://httpd.apache.org/docs/">Apache documentation</a></li>
+
+<li><a href="http://wiki.apache.org/httpd/">Apache user wiki</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/ssl/ssl-apache2-centos/">SSL Certificates with Apache on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-12-04-precise-pangolin/">Using Apache for Proxy and Clustering Services on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-fedora-14/">Using Apache for Proxy and Clustering Services on Fedora 14 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-10-maverick/">Using Apache for Proxy and Clustering Services on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-04-lucid/">Using Apache for Proxy and Clustering Services on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#is-apache-running">Is Apache Running?</a></li>
+<li><a href="#restart-apache">Restart Apache</a></li>
+<li><a href="#reload-apache">Reload Apache</a></li>
+<li><a href="#check-the-logs">Check the Logs</a></li>
+<li><a href="#enable-verbose-logs">Enable Verbose Logs</a></li>
+<li><a href="#check-apache-configuration-syntax">Check Apache Configuration Syntax</a></li>
+<li><a href="#check-virtual-host-definitions">Check Virtual Host Definitions</a></li>
+<li><a href="#troubleshoot-conflicting-directives">Troubleshoot Conflicting Directives</a></li>
+<li><a href="#further-troubleshooting">Further Troubleshooting</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

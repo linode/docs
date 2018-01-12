@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>KVM Reference</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="KVM Reference explains the differences when going from Xen to KVM virtualization.">
+        <meta name="keywords" content="kvm, kvm reference, virtual machine mode, kvm linode, xen">
+        
+        <meta property="og:title" content="KVM Reference">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/kvm-reference/">
+        <meta property="og:description" content="KVM Reference explains the differences when going from Xen to KVM virtualization.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/kvm-reference/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  KVM Reference
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">KVM Reference</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-09-14T00:00:00Z">Wednesday, September 14, 2016</time> by Alex Fornuto</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fkvm-reference%2f&via=linode&text=KVM%20Reference" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fkvm-reference%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fkvm-reference%2f&t=KVM%20Reference" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/kvm-reference.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/kvm-reference.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Linode&rsquo;s current virtualization stack is built on KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.</p>
+
+<h2 id="what-s-changed">What&rsquo;s Changed?</h2>
+
+<h3 id="block-device-assignment">Block Device Assignment</h3>
+
+<p>Device assignments for Xen Linodes were labeled as:</p>
+
+<ul>
+<li><em>/dev/xvda</em></li>
+<li><em>/dev/xvdb</em></li>
+<li><em>/dev/xvdc</em></li>
+</ul>
+
+<p>KVM Linodes use the &ldquo;<em>sd</em>&rdquo; naming convention:</p>
+
+<ul>
+<li><em>/dev/sda</em></li>
+<li><em>/dev/sdb</em></li>
+<li><em>/dev/sdc</em></li>
+</ul>
+
+<h3 id="console">Console</h3>
+
+<p>On KVM Linodes, the console device moves from <em>hvc0</em> in Xen to <em>ttyS0</em> .</p>
+
+<h3 id="virtual-machine-mode">Virtual Machine Mode</h3>
+
+<p>Virtual machine mode determines whether devices inside your virtual machine are <em>paravirtualized</em> or <em>fully virtualized</em>. The differences are listed below:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="left">Paravirtualization</th>
+<th align="left">Full-virtualization</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Block</td>
+<td align="left">Virtio SCSI</td>
+<td align="left">IDE</td>
+</tr>
+
+<tr>
+<td>Net</td>
+<td align="left">Virtio Net</td>
+<td align="left">e1000</td>
+</tr>
+
+<tr>
+<td>Serial</td>
+<td align="left">ttyS0</td>
+<td align="left">ttyS0</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;re unfamiliar with these distinctions, choose paravirtualization</div>
+</blockquote>
+
+
+<h3 id="custom-kernel-configuration">Custom Kernel Configuration</h3>
+
+<p>If you want to build your own guest kernel, you must include the following modules:</p>
+
+<ul>
+<li>KVM Guest</li>
+<li>Enable Virtio drivers</li>
+<li>IDE support (for full virtualization)</li>
+<li>e1000 support (for full virtualization)</li>
+</ul>
+
+<p>For standard paravirtualized KVM Linodes, add the following to your kernel <code>.config</code> file:</p>
+
+<pre><code>CONFIG_KVM_GUEST=y
+CONFIG_VIRTIO_PCI=y
+CONFIG_VIRTIO_PCI_LEGACY=y
+CONFIG_BLK_DEV_SD=y
+CONFIG_SCSI_VIRTIO=y
+CONFIG_VIRTIO_NET=y
+CONFIG_SERIAL_8250=y
+CONFIG_SERIAL_8250_CONSOLE=y
+</code></pre>
+
+<p>For full virtualization, use the following parameters:</p>
+
+<pre><code>CONFIG_E1000=y
+CONFIG_ATA_PIIX=y
+CONFIG_SERIAL_8250=y
+CONFIG_SERIAL_8250_CONSOLE=y
+</code></pre>
+
+<p>You should also move your block device assignments to be sequential, without skipped block devices.</p>
+
+<h3 id="direct-disk-boot">Direct Disk Boot</h3>
+
+<p>An upgrade to KVM Linode includes the ability to do <strong>Direct Disk</strong> booting. Choosing Direct Disk means we will boot the Linode using the Master Boot Record on your boot device:</p>
+
+<p><a href="/docs/assets/config_direct_disk.png"><img src="/docs/assets/config_direct_disk.png" alt="Direct Disk Boot Mode." /></a></p>
+
+<h2 id="how-to-enable-kvm">How to Enable KVM</h2>
+
+<p>All new Linodes are created as KVM guests. Older Xen Linodes will need to migrate to KVM before receiving other plan upgrades.</p>
+
+<p>If your Linode is currently running on Xen, go to the Linode&rsquo;s Dashboard page. In the bottom right of the sidebar is an &ldquo;Upgrade to KVM&rdquo; link. Click on the link and follow the instructions to upgrade:</p>
+
+<p><a href="/docs/assets/kvm_upgrade_context.png"><img src="/docs/assets/kvm_upgrade_context.png" alt="The KVM Upgrade Button." /></a></p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>There have been a few minor issues reported when upgrading to KVM. If you&rsquo;re using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact <a href="/docs/platform/support">Support</a>.</p>
+
+<h3 id="migration-from-xen">Migration from Xen</h3>
+
+<p>If you are using a kernel other than the one provided by Linode and you migrate from Xen to KVM, you may encounter this error on boot:</p>
+
+<p><img src="/docs/assets/kvm-kernel-error.png" alt="KVM Kernel Boot Error: &quot;This isn't a KVM kernel! Fix your configuration profile.&quot;" title="KVM Kernel Boot Error: &quot;This isn't a KVM kernel! Fix your configuration profile.&quot;" /></p>
+
+<p>This means your Kernel doesn&rsquo;t have the necessary <code>virtio</code> drivers. To resolve:</p>
+
+<ol>
+<li><p>Edit your Linode&rsquo;s configuration profile to use the Linode-supplied kernel.</p></li>
+
+<li><p>Boot your Linode to update the kernel and regenerate <code>initramfs</code>. The steps will differ depending on your distribution. Assuming you&rsquo;re still using Grub 1 (Legacy Grub), refer to the <a href="/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub">Run a Distribution-Supplied Kernel with PV-GRUB</a> guide.</p></li>
+
+<li><p>Update <code>/boot/grub/menu.lst</code> to use your newly built kernel and <code>initramfs</code> file.</p></li>
+
+<li><p>Edit your Linode&rsquo;s configuration profile back to the previous setting.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Remember to check <a href="/docs/networking/use-the-graphic-shell-glish">Glish</a> as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.</div>
+</blockquote>
+
+
+<h3 id="centos-6">CentOS 6</h3>
+
+<p>There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the <a href="/docs/networking/using-the-linode-shell-lish">LISH Console</a> and run:</p>
+
+<pre><code>rm -f /etc/udev/rules.d/70-persistent-net.rules
+</code></pre>
+
+<p>Then, reboot the Linode.</p>
+
+<h3 id="arch-linux">Arch Linux</h3>
+
+<p>An upstream change to persistent device naming in systemd has resulted in broken connectivity for any Linode running Arch Linux on a KVM host. The latest version of systemd (226-1+) uses &ldquo;Predictable Network Interface Names,&rdquo; which prevent the network interface on our platform from being brought online at boot.</p>
+
+<p>You can disable the use of Predictable Network Interface Names with the command below.</p>
+
+<pre><code>ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
+</code></pre>
+
+<p>If you have already upgraded and lost connectivity to your Linode, you will need to use the <a href="/docs/networking/using-the-linode-shell-lish">LISH Console</a> to regain access to your Linode to run this command. Once you&rsquo;ve done so, reboot your system.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-nixos-on-linode/">Install and Configure NixOS on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/">Install a Custom Distribution on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/">Install CoreOS on Your Linode - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/">Run a Distribution-Supplied Kernel on a KVM Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/">Run a Distribution-Supplied Kernel</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-s-changed">What&rsquo;s Changed?</a>
+<ul>
+<li><a href="#block-device-assignment">Block Device Assignment</a></li>
+<li><a href="#console">Console</a></li>
+<li><a href="#virtual-machine-mode">Virtual Machine Mode</a></li>
+<li><a href="#custom-kernel-configuration">Custom Kernel Configuration</a></li>
+<li><a href="#direct-disk-boot">Direct Disk Boot</a></li>
+</ul></li>
+<li><a href="#how-to-enable-kvm">How to Enable KVM</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#migration-from-xen">Migration from Xen</a></li>
+<li><a href="#centos-6">CentOS 6</a></li>
+<li><a href="#arch-linux">Arch Linux</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

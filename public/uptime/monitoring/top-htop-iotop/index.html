@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using top to Monitor Server Performance</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to use top to monitor a server&#39;s performance.">
+        <meta name="keywords" content="top, htop, iotop, monitoring, server monitoring">
+        
+        <meta property="og:title" content="Using top to Monitor Server Performance">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/monitoring/top-htop-iotop/">
+        <meta property="og:description" content="How to use top to monitor a server&#39;s performance.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/monitoring/top-htop-iotop/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/monitoring/">Server Monitoring</a>
+  
+</li>
+
+
+<li>
+  
+  Using top to Monitor Server Performance
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using top to Monitor Server Performance</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-02-19T00:00:00Z">Thursday, February 19, 2015</time> by Elle Krout</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2ftop-htop-iotop%2f&via=linode&text=Using%20top%20to%20Monitor%20Server%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2ftop-htop-iotop%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2ftop-htop-iotop%2f&t=Using%20top%20to%20Monitor%20Server%20Performance" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/monitoring/top-htop-iotop.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/monitoring/top-htop-iotop.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Viewing a server&rsquo;s processor activity in real-time can aid in discovering and diagnosing any problems in CPU and memory usage. The <code>top</code> command is a Linux process manager that can assist with monitoring.</p>
+
+<h2 id="reading-the-screen">Reading the Screen</h2>
+
+<p><a href="/docs/assets/top-full.png"><img src="/docs/assets/top-full-small.png" alt="The top screen" /></a></p>
+
+<p>The <code>top</code> screen contains a variety of information regarding your server, beginning with the server&rsquo;s uptime, load average, and tasks status, located in the header.</p>
+
+<p><img src="/docs/assets/top-top.png" alt="top screen heading" /></p>
+
+<ol>
+<li><p>The first line contains the time, uptime, and load average values for the server. The <strong>load average</strong> is displayed over 1, 5, and 15 minutes to provide a better overall look at the load your server has undertaken. If there is a spike at one minute, but the load at the five- and fifteen-minute marks is maintained at a lower level, then consider a different response compared to when the load is consistently high through all time intervals.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>In order to properly read the load average section, be aware of how many CPU cores the Linode has. If there is one CPU core, then a load average of 1.00 means the server is at its capacity. This number increases to 2.00 on a Linode with 2 CPU cores, 4.00 with 4, etc.</p>
+
+<p>A load of .70 for a Linode with 1 core is generally considered the threshold. Any higher than this, then reconfigure your resources or look into upgrading your plan.</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>A list of <strong>tasks</strong> and their various states.</p></li>
+
+<li><p>The <strong>CPU percentage</strong>, including the user CPU time (<code>us</code>), system CPU time (<code>sy</code>), time spent on low-priority processes (nice time, or <code>ni</code>), idle time (<code>id</code>), time spent in wait for I/O processes (<code>wa</code>), time handling hardware interruptions (<code>hi</code>), time handling software interruptions (<code>si</code>), and time stolen from the virtual machine (steal time, or <code>st</code>).</p></li>
+
+<li><p>The sever&rsquo;s <strong>memory usage</strong> in kilobytes.</p></li>
+
+<li><p>The system&rsquo;s <strong>swap usage</strong> in kilobytes.</p></li>
+</ol>
+
+<p>Following the heading section is a list of processes and related data:</p>
+
+<p><img src="/docs/assets/top-processes.png" alt="Top processes" /></p>
+
+<ul>
+<li><p><strong>PID</strong>: The process ID.</p></li>
+
+<li><p><strong>USER</strong>: The username of the task&rsquo;s owner.</p></li>
+
+<li><p><strong>PR</strong>: The task&rsquo;s priority, ranging from -20 to 19, with -20 being the most important.</p></li>
+
+<li><p><strong>NI</strong>: The <em>nice value</em>, which augments the priority of a task. Negative values increase a task&rsquo;s priority, while positive values decrease it.</p></li>
+
+<li><p><strong>VIRT</strong>: Virtual memory used, virtual memory being the combination of both RAM and swap memory.</p></li>
+
+<li><p><strong>RES</strong>: The resident size of non-swapped, physical memory in kilobytes (unless otherwise noted).</p></li>
+
+<li><p><strong>SHR</strong>: The shared memory size, or memory that could be allocated to other processes.</p></li>
+
+<li><p><strong>S</strong>: The processes status. Can be: Running (<code>R</code>), sleeping and unable to be interrupted (<code>D</code>), sleeping and able to be interrupted (<code>S</code>), traced/stopped (<code>T</code>), or zombie (<code>Z</code>). This ties in with the task list in the header.</p></li>
+
+<li><p><strong>%CPU</strong>: CPU percentage since last <code>top</code> update.</p></li>
+
+<li><p><strong>%MEM</strong>: Memory (RAM) percentage since last <code>top</code> update.</p></li>
+
+<li><p><strong>TIME+</strong>: Cumulative CPU time that the process and children processes have used.</p></li>
+
+<li><p><strong>COMMAND</strong>: Name of process.</p></li>
+</ul>
+
+<h2 id="commands">Commands</h2>
+
+<p>The <code>top</code> command offers a set of additional commands that can be used to enhance its use through sorting and locating information.</p>
+
+<p>There are two types of commands that can be used in conjunction with <code>top</code>: Command-line options, and interactive commands that can be used while in the program.</p>
+
+<h3 id="command-line-options">Command-Line Options</h3>
+
+<p>Command-line options can help organize and filter from the start of the program.</p>
+
+<p>Important commands to know include:</p>
+
+<ul>
+<li><strong><code>-d[interval]</code></strong>: Sets the delay time that <code>top</code> uses to refresh the results.</li>
+<li><strong><code>-i</code></strong>: Toggles whether or not idle processes are shown.</li>
+<li><strong><code>-p[PID,PID]</code></strong>: Allows the user to filter <code>top</code> so only the defined processes are shown.</li>
+<li><strong><code>-u [username]</code></strong>: Filters by user.</li>
+<li><strong><code>-n[limit]</code></strong>: Sets <code>top</code> to run for a set amount of intervals before exiting.</li>
+<li><strong><code>-b</code></strong>: Runs <code>top</code> in batch mode, ideal for log files and for use in conjunction with other programs.</li>
+</ul>
+
+<p>Used alongside one-another, these commands can prove especially useful. For example, if you want to log a set number of processes over a period of time, you can combine batch mode, the process ID filter, the delay setting, and the iteration setting to output the results you are looking for:</p>
+
+<pre><code>top -b -p[PID] -d[interval] -n[limit]
+</code></pre>
+
+<p>For this example, the process ID is 2774, the delay is set to 10 seconds, and the interval is 2 cycles:</p>
+
+<pre><code>top -b -p2774 -d10 -n2
+</code></pre>
+
+<p>Which outputs these results:</p>
+
+<pre><code>top - 15:20:59 up 2 days,  1:14,  1 user,  load average: 0.00, 0.01, 0.05
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni, 99.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:   1012584 total,   507792 used,   504792 free,    24720 buffers
+KiB Swap:   262140 total,        0 used,   262140 free,   245800 cached
+
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 3774 mysql     20   0  356m  51m  10m S   0.0  5.2   1:54.01 mysqld
+
+top - 15:21:04 up 2 days,  1:14,  1 user,  load average: 0.00, 0.01, 0.05
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.2 si,  0.0 st
+KiB Mem:   1012584 total,   507800 used,   504784 free,    24720 buffers
+KiB Swap:   262140 total,        0 used,   262140 free,   245800 cached
+
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 3774 mysql     20   0  356m  51m  10m S   0.2  5.2   1:54.02 mysqld
+</code></pre>
+
+<h3 id="interactive-commands">Interactive Commands</h3>
+
+<p>When run on its own, not in batch mode, <code>top</code> is interactive. You can use commands to filter through or toggle various options, alter settings, and even manipulate tasks.</p>
+
+<p>Although there are a vast number of <code>top</code> commands, some of the more common ones to know include:</p>
+
+<ul>
+<li><strong><code>return</code> or <code>space</code></strong>: Instantly update screen.</li>
+<li><strong><code>d</code> or <code>s</code></strong>: Alter the delay time.</li>
+<li><strong><code>H</code></strong>: Show individual threads for all processes.</li>
+<li><strong><code>i</code></strong>: Toggles whether idle processes will be displayed.</li>
+<li><strong><code>U</code> or <code>u</code></strong>: Filter processes by the owner&rsquo;s username.</li>
+<li><strong><code>1</code></strong>: Toggles between CPUs/CPU cores. When it reads <em>%Cpu(s)</em> all CPUs are being considered. <em>%Cpu</em> followed by a number denotes a single CPU core.</li>
+<li><strong><code>L</code></strong>: Locate string.</li>
+<li><strong><code>&lt;</code>, <code>&gt;</code></strong>: Select sort field (from column names).</li>
+<li><strong><code>k</code></strong>: Kill a process. You will be prompted to enter the PID.</li>
+<li><strong><code>W</code></strong>: Write a configuration file. It will output the location of the file.</li>
+<li><strong><code>h</code></strong>: Open help file.</li>
+<li><strong><code>q</code></strong>: Quit.</li>
+</ul>
+
+<h2 id="additional-top-like-programs">Additional top-like Programs</h2>
+
+<p><code>top</code> can be used in conjunction with other similar programs that either offer different output results or provide a more intuitive experience.</p>
+
+<h3 id="htop">htop</h3>
+
+<p>The <code>htop</code> command is an alternative to <code>top</code>, offering an easier interface featuring color, mouse operation, the ability to scroll through processes (horizontally and vertically). It is overall more intuitive, although providing similar output as the regular <code>top</code> command.</p>
+
+<p>To install:</p>
+
+<ul>
+<li><p>For Debian/Ubuntu:</p>
+
+<pre><code>apt-get install htop
+</code></pre></li>
+
+<li><p>For CentOS/Fedora:</p>
+
+<pre><code>yum install htop
+</code></pre></li>
+</ul>
+
+<p>Run <code>htop</code> by entering:</p>
+
+<pre><code>htop
+</code></pre>
+
+<p>The <code>htop</code> screen runs similar to <code>top</code>, but with scroll and mouse support, and a variety of menus that allow for more intuitive use. When a process is highlighted you can act on that process, such as pressing <code>k</code> (kill). To learn more regarding <code>htop</code> commands, press <code>h</code> to open its help menu.</p>
+
+<h3 id="iotop">iotop</h3>
+
+<p>The <code>iotop</code> command tracks the input/output operations on a per-process basis. <code>iotop</code> must be run as root or with the <code>sudo</code> prefix.</p>
+
+<p>To install:</p>
+
+<ul>
+<li><p>For Debian/Ubuntu:</p>
+
+<pre><code>apt-get install iotop
+</code></pre></li>
+
+<li><p>For CentOS/Fedora:</p>
+
+<pre><code>yum install iotop
+</code></pre></li>
+</ul>
+
+<p>Run <code>iotop</code> by entering:</p>
+
+<pre><code>iotop
+</code></pre>
+
+<p>To focus only on processes running, run it with the <code>--only</code> suffix:</p>
+
+<pre><code>iotop --only
+</code></pre>
+
+<p><code>iotop</code> also shares a number of command line options with <code>top</code> including: <code>-n</code>, <code>-b</code>, <code>-d</code>, <code>-u</code>, and <code>-p</code>, but is not interactive. To learn more about operating iotop, run <code>iotop -h</code> in your terminal.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://hisham.hm/htop/">htop</a></li>
+
+<li><a href="http://guichaz.free.fr/iotop/">iotop</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9/">Install Icinga2 Monitoring on Debian 9</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8/">Install Nagios 4 on Ubuntu and Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/how-to-install-graphite-and-grafana-on-ubuntu-14-04/">Deploy Graphite with Grafana on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring-and-maintaining-your-server/">Monitoring and Maintaining Your Server</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/monitoring-servers-with-munin-on-ubuntu-11-04-natty/">Monitoring Servers with Munin on Ubuntu 11.04 (Natty) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#reading-the-screen">Reading the Screen</a></li>
+<li><a href="#commands">Commands</a>
+<ul>
+<li><a href="#command-line-options">Command-Line Options</a></li>
+<li><a href="#interactive-commands">Interactive Commands</a></li>
+</ul></li>
+<li><a href="#additional-top-like-programs">Additional top-like Programs</a>
+<ul>
+<li><a href="#htop">htop</a></li>
+<li><a href="#iotop">iotop</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

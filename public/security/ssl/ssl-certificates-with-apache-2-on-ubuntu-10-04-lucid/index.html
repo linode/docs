@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>SSL Certificates with Apache 2 on Ubuntu 10.04 (Lucid)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 10.04 (Lucid).">
+        <meta name="keywords" content="apache ssl, ssl ubuntu, web sever, ubuntu, ubuntu lucid, ubuntu 10.04">
+        
+        <meta property="og:title" content="SSL Certificates with Apache 2 on Ubuntu 10.04 (Lucid)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid/">
+        <meta property="og:description" content="Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 10.04 (Lucid).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/ssl/">SSL Certificates</a>
+  
+</li>
+
+
+<li>
+  
+  SSL Certificates with Apache 2 on Ubuntu 10.04 (Lucid)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">SSL Certificates with Apache 2 on Ubuntu 10.04 (Lucid)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-10-04T00:00:00Z">Friday, October 4, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fssl%2fssl-certificates-with-apache-2-on-ubuntu-10-04-lucid%2f&via=linode&text=SSL%20Certificates%20with%20Apache%202%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fssl%2fssl-certificates-with-apache-2-on-ubuntu-10-04-lucid%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fssl%2fssl-certificates-with-apache-2-on-ubuntu-10-04-lucid%2f&t=SSL%20Certificates%20with%20Apache%202%20on%20Ubuntu%2010.04%20%28Lucid%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>This guide will assist you with enabling SSL for websites served under the Apache web server. It is assumed that you&rsquo;ve completed the steps detailed in our <a href="/docs/getting-started/">getting started guide</a>, and that you&rsquo;ve successfully set up Apache for serving virtual hosts as outlined in our <a href="/docs/web-servers/apache/installation/ubuntu-10-04-lucid">Apache 2 on Ubuntu 10.04 LTS (Lucid) guide</a>. These steps should be performed via an SSH session to your Linode as the root user.</p>
+
+<h1 id="use-a-self-signed-ssl-certificate-with-apache">Use a Self-Signed SSL Certificate with Apache</h1>
+
+<p>These instructions will help you generate a generic self-signed certificate, which may be used to provide SSL service for all name-based hosts on your Linode. Please note that self-signed certificates will generate warnings in a visitor&rsquo;s browser; proceed to &ldquo;Installing a Commercial SSL Certificate&rdquo; if you need to set up SSL on a domain using a certificate signed by a commercial SSL provider.</p>
+
+<h3 id="generate-a-self-signed-certificate">Generate a Self-Signed Certificate</h3>
+
+<p>At the shell prompt, issue the following commands to enable SSL for Apache and generate a certificate:</p>
+
+<pre><code>a2enmod ssl
+mkdir /etc/apache2/ssl
+openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/apache2/ssl/apache.pem -keyout /etc/apache2/ssl/apache.key
+</code></pre>
+
+<p>You will be asked for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We&rsquo;ve specified the FQDN (fully qualified domain name) of the Linode for the &ldquo;Common Name&rdquo; entry, as this certificate will be used for generic SSL service.</p>
+
+<pre><code>Generating a 1024 bit RSA private key
+...................................++++++
+..............................++++++
+writing new private key to '/etc/apache2/ssl/apache.pem'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:New Jersey
+Locality Name (eg, city) []:Absecon
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:SoftwareDev, LLC
+Organizational Unit Name (eg, section) []:Web Services
+Common Name (eg, YOUR name) []:archimedes.mydomain.com
+Email Address []:support@mydomain.com
+</code></pre>
+
+<h3 id="configure-apache-to-use-the-self-signed-certificate">Configure Apache to use the Self-Signed Certificate</h3>
+
+<p>Since SSL name-based virtual hosts are still not supported in <code>/etc/apache2/ports.conf</code>, we&rsquo;ll need to add an entry for a specific IP address on your Linode as follows. You may use a single IP to provide self-signed SSL service for multiple vhosts, and the same IP may also be used for multiple non-SSL vhosts (HTTPS uses port 443, while HTTP uses port 80).</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/ports.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">NameVirtualHost</span> <span class="m">12.34.56.78</span>:443</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Replace &ldquo;12.34.56.78&rdquo; with your Linode&rsquo;s IP address. Next, edit the virtual host configuration files for sites which you would like to enable SSL on. For each virtual host, you must add the following stanza (change the values as appropriate for each site). Note that this example essentially reproduces the configuration for a non-SSL site, with the addition of three lines for SSL.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache virtual hosting file 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">12.34.56.78:443</span><span class="nt">&gt;</span>
+     <span class="nb">SSLEngine</span> <span class="k">On</span>
+     <span class="nb">SSLCertificateFile</span> <span class="sx">/etc/apache2/ssl/apache.pem</span>
+     <span class="nb">SSLCertificateKeyFile</span> <span class="sx">/etc/apache2/ssl/apache.key</span>
+
+     <span class="nb">ServerAdmin</span> <span class="k">info</span>@mydomain.com
+     <span class="nb">ServerName</span> www.mydomain.com
+     <span class="nb">DocumentRoot</span> <span class="sx">/srv/www/mydomain.com/public_html/</span>
+     <span class="nb">ErrorLog</span> <span class="sx">/srv/www/mydomain.com/logs/error.log</span>
+     <span class="nb">CustomLog</span> <span class="sx">/srv/www/mydomain.com/logs/access.log</span> combined
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Restart Apache:</p>
+
+<pre><code>/etc/init.d/apache2 restart
+</code></pre>
+
+<p>You should now be able to visit your site with SSL enabled (after accepting your browser&rsquo;s warnings about the certificate).</p>
+
+<h1 id="install-a-commercial-ssl-certificate">Install a Commercial SSL Certificate</h1>
+
+<p>Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address each for SSL-enabled site, although multiple non-SSL sites may also share that IP address. Wildcard SSL certificates are an exception to this rule, as they are signed for multiple hostnames and therefore can be used to provide SSL service for multiple sites using a single IP address.</p>
+
+<h3 id="create-a-certificate-signing-request">Create a Certificate Signing Request</h3>
+
+<p>Issue these commands to create a certificate signing request (CSR) for the site which you&rsquo;d like to use with SSL. Be sure to change &ldquo;www.mydomain.com&rdquo; to reflect the fully qualified domain name (subdomain.domainname.com) of the site you&rsquo;ll be using SSL with. Leave the challenge password blank. This example uses 365 for the days parameter to the command, as it represents a case where the user would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).</p>
+
+<pre><code>mkdir /etc/apache2/ssl
+cd /etc/apache2/ssl
+openssl req -new -days 365 -nodes -keyout www.mydomain.com.key -out www.mydomain.com.csr
+</code></pre>
+
+<p>Enter values appropriate for your organization and domain name. Note that you can ignore the extra attributes.</p>
+
+<pre><code>Generating a 1024 bit RSA private key
+......................................................++++++
+....++++++
+writing new private key to 'www.mydomain.com.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:New Jersey
+Locality Name (eg, city) []:Absecon
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyDomain, LLC
+Organizational Unit Name (eg, section) []:Web Services
+Common Name (eg, YOUR name) []:www.mydomain.com
+Email Address []:support@mydomain.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+</code></pre>
+
+<p>Execute the following command to protect the key:</p>
+
+<pre><code>chmod 400 /etc/apache2/ssl/www.mydomain.com.key
+</code></pre>
+
+<p>Files for your domain will be created in <code>/etc/apache2/ssl</code>. You may now submit the file ending in <code>.csr</code> to a commercial SSL provider for signing. You will receive a signed file after the CA signs the request. Save this file as <code>/etc/apache2/ssl/www.mydomain.com.crt</code>.</p>
+
+<p>Execute the following command to protect the signed certificate:</p>
+
+<pre><code>chmod 400 /etc/apache2/ssl/www.mydomain.com.crt
+</code></pre>
+
+<h3 id="get-the-ca-root-certificate">Get the CA Root Certificate</h3>
+
+<p>Now you&rsquo;ll need to get the root certificate for the CA that you paid to sign your certificate. You may obtain the root certs for various providers from these sites:</p>
+
+<ul>
+<li><a href="https://knowledge.verisign.com/support/ssl-certificates-support/index.html">Verisign</a></li>
+<li><a href="http://www.thawte.com/roots/index.html">Thawte</a></li>
+<li><a href="http://www.globalsign.com/en//">Globalsign</a></li>
+<li><a href="https://support.comodo.com/index.php?_m=downloads&amp;_a=view&amp;parentcategoryid=1&amp;pcid=0&amp;nav=0">Comodo</a></li>
+</ul>
+
+<p>For example, if you download a root cert for Verisign, you would save it to <code>/etc/apache2/ssl/verisign.cer</code>.</p>
+
+<h3 id="configure-apache-to-use-the-signed-ssl-certificate">Configure Apache to use the Signed SSL Certificate</h3>
+
+<p>Next, add an entry to <code>/etc/apache2/ports.conf</code> for the IP address you&rsquo;ll be using to host your SSL-enabled site.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/ports.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">NameVirtualHost</span> <span class="m">12.34.56.78</span>:443</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Replace &ldquo;12.34.56.78&rdquo; with the IP address of your SSL-enabled site. Next, edit the virtual host configuration file for the site you would like to enable SSL on (www.mydomain.com in this example). Add the following stanza to your configuration file. Note that this example essentially reproduces the configuration for the non-SSL version of the site, with the addition of four lines for SSL. This example uses the CA certificate file for a certificate signed by Verisign.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache virtual hosting file 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">12.34.56.78:443</span><span class="nt">&gt;</span>
+     <span class="nb">SSLEngine</span> <span class="k">On</span>
+     <span class="nb">SSLCertificateFile</span> <span class="sx">/etc/apache2/ssl/www.mydomain.com.crt</span>
+     <span class="nb">SSLCertificateKeyFile</span> <span class="sx">/etc/apache2/ssl/www.mydomain.com.key</span>
+     <span class="nb">SSLCACertificateFile</span> <span class="sx">/etc/apache2/ssl/verisign.cer</span>
+
+     <span class="nb">ServerAdmin</span> <span class="k">info</span>@mydomain.com
+     <span class="nb">ServerName</span> www.mydomain.com
+     <span class="nb">DocumentRoot</span> <span class="sx">/srv/www/mydomain.com/public_html/</span>
+     <span class="nb">ErrorLog</span> <span class="sx">/srv/www/mydomain.com/logs/error.log</span>
+     <span class="nb">CustomLog</span> <span class="sx">/srv/www/mydomain.com/logs/access.log</span> combined
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Restart Apache:</p>
+
+<pre><code>/etc/init.d/apache2 restart
+</code></pre>
+
+<p>You should now be able to visit your site with SSL enabled. Congratulations, you&rsquo;ve installed a commercial SSL certificate!</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="/docs/web-servers/apache/installation/ubuntu-10-04-lucid">Install Apache on Ubuntu 10.04 LTS (Lucid)</a></li>
+<li><a href="http://httpd.apache.org/docs/2.0/">Official Apache Documentation</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-10-maverick/">SSL Certificates with Apache 2 on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-9-10-karmic/">SSL Certificates with Apache 2 on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/">Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/">Django, Apache and mod_python on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-04-lucid/">Secure Communications with OpenVPN on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#use-a-self-signed-ssl-certificate-with-apache">Use a Self-Signed SSL Certificate with Apache</a>
+<ul>
+<li>
+<ul>
+<li><a href="#generate-a-self-signed-certificate">Generate a Self-Signed Certificate</a></li>
+<li><a href="#configure-apache-to-use-the-self-signed-certificate">Configure Apache to use the Self-Signed Certificate</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#install-a-commercial-ssl-certificate">Install a Commercial SSL Certificate</a>
+<ul>
+<li>
+<ul>
+<li><a href="#create-a-certificate-signing-request">Create a Certificate Signing Request</a></li>
+<li><a href="#get-the-ca-root-certificate">Get the CA Root Certificate</a></li>
+<li><a href="#configure-apache-to-use-the-signed-ssl-certificate">Configure Apache to use the Signed SSL Certificate</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

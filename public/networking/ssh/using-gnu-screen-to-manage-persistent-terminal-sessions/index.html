@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using GNU Screen to Manage Persistent Terminal Sessions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Using GNU Screen to Manage Persistent Terminal Sessions">
+        <meta name="keywords" content="screen, gnu screen, terminal, console, linux">
+        
+        <meta property="og:title" content="Using GNU Screen to Manage Persistent Terminal Sessions">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/">
+        <meta property="og:description" content="Using GNU Screen to Manage Persistent Terminal Sessions">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/ssh/">SSH: Connect to Your Linode</a>
+  
+</li>
+
+
+<li>
+  
+  Using GNU Screen to Manage Persistent Terminal Sessions
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using GNU Screen to Manage Persistent Terminal Sessions</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-01-13T00:00:00Z">Monday, January 13, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2fusing-gnu-screen-to-manage-persistent-terminal-sessions%2f&via=linode&text=Using%20GNU%20Screen%20to%20Manage%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2fusing-gnu-screen-to-manage-persistent-terminal-sessions%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2fusing-gnu-screen-to-manage-persistent-terminal-sessions%2f&t=Using%20GNU%20Screen%20to%20Manage%20Persistent%20Terminal%20Sessions" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>GNU Screen is a tool which works with a terminal session to allow users to resume a session after they have disconnected. Screen prevents a session from &ldquo;timing out&rdquo; or disconnecting SSH connections or local terminal emulators. A single Screen session has the ability to host multiple sessions or &ldquo;windows.&rdquo; Screen may be used for a variety of tasks such as maintaining persistent IRC sessions and multitasking in a terminal environment.</p>
+
+<p><img src="/docs/assets/gnu-screen.png" alt="Using GNU Screen to Manage Persistent Terminal Sessions" title="Using GNU Screen to Manage Persistent Terminal Sessions" /></p>
+
+<p>Screen runs on any Unix/Linux environment (such as your Linode) and Mac OS X. Before installing and using Screen, it is recommended that you review the <a href="/docs/getting-started/">Getting Started Guide</a>. In addition, if you are unfamiliar with using a terminal environment, you will want to review the <a href="/docs/using-linux/using-the-terminal">Using the Terminal Guide</a>.</p>
+
+<h2 id="installing-gnu-screen">Installing GNU Screen</h2>
+
+<p>The section covers installing Screen on a number of different systems. Examples have been provided to simplify the installation process.</p>
+
+<p>When installing Screen you will need root privileges. The examples provided do not use the root account. If you are using your root login then the sudo before the commands is not necessary. If you need more information regarding sudo, you can review the <a href="/docs/tools-reference/linux-users-and-groups">Linux Users and Groups Guide</a>.</p>
+
+<p>For a Debian or Ubuntu system use the following commands to update, upgrade, and install Screen:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install screen
+</code></pre>
+
+<p>For a CentOS or Fedora system use the following commands to update the system and install Screen:</p>
+
+<pre><code>sudo yum update
+sudo yum install screen
+</code></pre>
+
+<p>For an Arch Linux system, the following commands are used to update and install Screen:</p>
+
+<pre><code>sudo pacman -Sy
+sudo pacman -S screen
+</code></pre>
+
+<p>For a Gentoo system, the following commands are used to update and install Screen:</p>
+
+<pre><code>sudo emerge --sync
+sudo emerge screen
+</code></pre>
+
+<p>By default, Screen is installed on Mac OS X systems and may be used without any other prerequisites.</p>
+
+<h2 id="screen-basics">Screen Basics</h2>
+
+<p>In order to use an application with a Screen session do the following:</p>
+
+<ol>
+<li>Enter the command <code>screen</code> at a terminal prompt.</li>
+<li>Once Screen is running, enter an application or program command, such as <code>irssi</code> or <code>mutt</code>.</li>
+</ol>
+
+<p>Your terminal session will function as usual. To end your current session without impacting any running processes, enter <code>Ctrl+a+d</code> or quit the Terminal application. Once you quit a session, you will be returned to the pre-Screen prompt. The Screen session and applications will continue to run. You may reattach to your session at any time by using the command <code>screen -r</code>.</p>
+
+<h2 id="managing-screen-attachment">Managing Screen Attachment</h2>
+
+<p>Once you issue the <code>screen -r</code> command you will reattach to your last detached session. It is possible to have multiple Screen sessions as well as several detached sessions. A list of detached Screens may appear when you try to reattach to a session. Each session will have a process id or <strong>PID</strong>. So to determine which session to reattach to use the <code>screen -ls</code> command to display all the Screen sessions and their PIDs. Below is a sample of the screen -ls command:</p>
+
+<pre><code>user:~$ screen -r
+There are several suitable screens on:
+25028.pts-19.XXX-serv8  (01/06/2014 08:15:34 PM)    (Attached)
+24658.pts-19.XXX-serv8  (01/06/2014 08:11:38 PM)    (Detached)
+24509.pts-19.XXX-serv8  (01/06/2014 08:10:00 PM)    (Detached)
+18676.pts-5.XXX-serv8   (01/05/2014 08:55:33 PM)    (Attached)
+</code></pre>
+
+<p>To reattach to a Screen session using the PID, use the following syntax:</p>
+
+<pre><code>screen -r &lt;24658&gt;
+</code></pre>
+
+<p>If the Screen you want is already attached but you cannot see it, there are a number of command line arguments for invoking your Screen. Below are the different options:</p>
+
+<ul>
+<li><code>screen -dr</code> - detaches a running Screen from its current session and reattaches the session on the local machine.</li>
+<li><code>screen -x</code> - attaches to a running session without detaching from its current attachment. This argument is especially useful when you and another user are trying to access the same session at the same time.</li>
+<li><code>screen -DDR</code> - detaches a running session from its current attachment and performs a force reattachment. This is useful when the <code>-dr</code> option is unsuccessful.</li>
+<li><code>screen -A</code> - forces a Screen to resize all of its windows to the current window when it attaches.</li>
+<li><code>screen -X [command]</code> - starts a Screen session but instead of loading a shell it will load an arbitrary command. If you create additional Screen windows they will also run this command.</li>
+</ul>
+
+<h2 id="manipulating-screen-sessions">Manipulating Screen Sessions</h2>
+
+<p>Once you attach or reattach to a Screen session, all commands are performed by using <code>Ctrl</code>, the letter <code>a</code>, and another letter or number. (Note the <code>Ctrl</code> and <code>a</code> keys are pressed at the same time.) Below is a list of the Screen commands:</p>
+
+<ul>
+<li><code>Ctrl+a c</code> - Creates a new Screen window. The default Screen number is zero.</li>
+<li><code>Ctrl+a 0-9</code> - Switches between windows 0 through 9.</li>
+<li><code>Ctrl+a x</code> - Locks your terminal window. You will have to enter your password to unlock your terminal session.</li>
+<li><code>Ctrl+a n</code> - Switches to the next window.</li>
+<li><code>Ctrl+a k</code> - Kills the current window. When the command is issued, you will be asked to confirm by entering a <code>y</code> or <code>n</code>.</li>
+<li><code>Ctrl+a A</code> - Will allow you to enter a title for the window.</li>
+<li><code>Ctrl+a d</code> - Detaches from a Screen.</li>
+<li><code>Ctrl+a ?</code> - Will display a list of all the command options available for Screen.</li>
+</ul>
+
+<p>It is important to note that the command options listed above are only a small portion of the available options.</p>
+
+<h2 id="screen-commands-and-customization">Screen Commands and Customization</h2>
+
+<p>There are a number of additional commands that are utilized by Screen. The list of commands is quite extensive, so it is important to note that not all commands will be covered. In addition, Screen may be customized by editing the <code>screenrc</code> file.</p>
+
+<h3 id="using-screen-with-ssh">Using Screen with SSH</h3>
+
+<p>When connecting to a remote session via SSH it is best to connect with Screen at the same time. The syntax is as follows:</p>
+
+<pre><code>ssh -t &lt;user&gt;@&lt;server&gt; screen -r
+</code></pre>
+
+<p>The user name would be the user you connect with and the server is either the IP address or name of your server.</p>
+
+<h3 id="changing-default-screen-behavior">Changing Default Screen Behavior</h3>
+
+<p>To change the default settings of Screen, edit the <code>screenrc</code> file located in <code>/etc/screenrc</code>. The <code>screenrc</code> file may be edited using any text editor. This file is used to set options, bind Screen functions to keys, set terminal capabilities, and to automatically connect to one or more windows at the start of your Screen session. It is strongly recommended that you make a backup copy of the <code>screenrc</code> file before you make any changes.</p>
+
+<p>There are two configuration files contained within your Screen distribution: <code>/etc/screenrc</code> and <code>/etc/etcscreenrc</code>. They contain several useful examples on how to customize Screen. Open the file using your favorite text editor. The command for editing one of these files is:</p>
+
+<pre><code>nano screenrc
+</code></pre>
+
+<p>(Note that you may only have one of these files.) Below is a sample of the <code>screenrc</code> file:</p>
+
+<p><img src="/docs/assets/1497-screenrc-resized.png" alt="Sample screenrc file." /></p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.gnu.org/software/screen/">GNU Screen Home Page</a></li>
+
+<li><a href="http://www.gnu.org/software/screen/manual/html_node/index.html">GNU Screen Manual</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/ssh/persistent-terminal-sessions-with-tmux/">How to Use tmux the Terminal Multiplexer</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/install-selinux-on-ubuntu/">How to Install SELinux on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/how-to-use-wget/">How to Use Wget</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/enable-backups-on-a-linode/">Enable Backups on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/resize-a-linode-disk/">Resize a Linode Disk</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#installing-gnu-screen">Installing GNU Screen</a></li>
+<li><a href="#screen-basics">Screen Basics</a></li>
+<li><a href="#managing-screen-attachment">Managing Screen Attachment</a></li>
+<li><a href="#manipulating-screen-sessions">Manipulating Screen Sessions</a></li>
+<li><a href="#screen-commands-and-customization">Screen Commands and Customization</a>
+<ul>
+<li><a href="#using-screen-with-ssh">Using Screen with SSH</a></li>
+<li><a href="#changing-default-screen-behavior">Changing Default Screen Behavior</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

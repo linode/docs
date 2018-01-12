@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install a Mosh Server as SSH Alternative on Linux</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Mosh is a free alternative to SSH. This guide will teach you how to install and configure Mosh on Linux distributions and your desktop.">
+        <meta name="keywords" content="mosh,  ssh, ">
+        
+        <meta property="og:title" content="Install a Mosh Server as SSH Alternative on Linux">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/ssh/install-mosh-server-as-ssh-alternative-on-linux/">
+        <meta property="og:description" content="Mosh is a free alternative to SSH. This guide will teach you how to install and configure Mosh on Linux distributions and your desktop.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/ssh/install-mosh-server-as-ssh-alternative-on-linux/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/ssh/">SSH: Connect to Your Linode</a>
+  
+</li>
+
+
+<li>
+  
+  Install a Mosh Server as SSH Alternative on Linux
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install a Mosh Server as SSH Alternative on Linux</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-08-18T00:00:00Z">Friday, August 18, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2finstall-mosh-server-as-ssh-alternative-on-linux%2f&via=linode&text=Install%20a%20Mosh%20Server%20as%20SSH%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2finstall-mosh-server-as-ssh-alternative-on-linux%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fssh%2finstall-mosh-server-as-ssh-alternative-on-linux%2f&t=Install%20a%20Mosh%20Server%20as%20SSH%20Alternative%20on%20Linux" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/ssh/install-mosh-server-as-ssh-alternative-on-linux.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/ssh/install-mosh-server-as-ssh-alternative-on-linux.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><a href="http://mosh.mit.edu/">Mosh</a> is a free replacement for SSH that allows roaming and supports intermittent connectivity. Unlike regular SSH connections, Mosh continuously syncs your local and remote sessions to ensure that your client automatically reconnects to the server when you switch between wireless networks or wake your computer from sleep. This guide explains how to install Mosh on your Linode and your personal computer.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Mosh does not support port forwarding or proxying, and you cannot use mosh to copy files or mount remote directories. You&rsquo;ll still need to use SSH for these tasks.</div>
+</blockquote>
+
+
+<h2 id="mosh-ssh-benefits">Mosh SSH Benefits</h2>
+
+<p>There are several benefits of using Mosh to connect to your Linode:</p>
+
+<ul>
+<li><strong>Continuous Connection:</strong> If your network connectivity is interrupted, Mosh will try to reconnect using any available Internet connection.</li>
+<li><strong>Reduced Network Lag:</strong> Unlike SSH, which waits for the server&rsquo;s response before displaying what you typed, Mosh provides instant responses to typing, deleting, and line editing.</li>
+<li><strong>Like SSH, Only Better:</strong> Mosh runs inside regular terminal applications and logs in to the server via SSH.</li>
+</ul>
+
+<p>Ready to get started? Let&rsquo;s go!</p>
+
+<h2 id="preparing-your-firewall">Preparing Your Firewall</h2>
+
+<p>Before installing Mosh, you should verify that your Linode&rsquo;s firewall will allow the Mosh client and server to communicate. If you <a href="/docs/securing-your-server#configure-a-firewall">followed our instructions</a> to create a firewall with <code>iptables</code>, you&rsquo;ll need to edit <code>/etc/iptables.firewall.rules</code> and add another rule to allow the Mosh client to connect to your Linode over UDP ports 60000–61000.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/iptables.firewall.rules 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">-A INPUT -p udp --dport <span class="m">60000</span>:61000 -j ACCEPT</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Activate the new firewall rule by entering the following command:</p>
+
+<pre><code>sudo iptables-restore &lt; /etc/iptables.firewall.rules
+</code></pre>
+
+<p>Mosh can now communicate with your Linode.</p>
+
+<h2 id="install-mosh-on-your-linode">Install Mosh on Your Linode</h2>
+
+<p>First, you need to install Mosh on your Linode. Find the instructions for your Linux distribution below.</p>
+
+<h3 id="ubuntu">Ubuntu</h3>
+
+<p>Install mosh from the developer&rsquo;s PPA repository by entering the following commands, one by one:</p>
+
+<pre><code>sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:keithw/mosh
+sudo apt-get update
+sudo apt-get install mosh
+</code></pre>
+
+<p>Mosh is now installed on your Linode.</p>
+
+<h3 id="debian">Debian</h3>
+
+<p>Mosh is available in Debian&rsquo;s backports repositories. You&rsquo;ll need to add squeeze-backports to your sources.list, update your package information, then install from the backports repository. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Edit <code>/etc/apt/sources.list</code> and add the following line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apt/sources.list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">deb &lt;http://backports.debian.org/debian-backports&gt; squeeze-backports main</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Run <code>apt-get update</code>.</p></li>
+
+<li><p>Install mosh from squeeze-backports by entering the following command:</p>
+
+<pre><code>apt-get -t squeeze-backports install &quot;mosh&quot;
+</code></pre></li>
+</ol>
+
+<p>Mosh is now installed on your Linode.</p>
+
+<h3 id="arch-linux">Arch Linux</h3>
+
+<p>Mosh is available in the Arch Linux repositories. Enter the following command to install it:</p>
+
+<pre><code>pacman -S mosh
+</code></pre>
+
+<p>Mosh is now installed on your Linode.</p>
+
+<h3 id="other-distributions">Other Distributions</h3>
+
+<p>If you have another Linux distribution installed on your Linode, see the <a href="http://mosh.mit.edu/">Mosh website</a> for installation instructions.</p>
+
+<h2 id="install-mosh-on-your-desktop-computer">Install Mosh on Your Desktop Computer</h2>
+
+<p>Now you need to install Mosh on your desktop computer. Find the instructions for your computer&rsquo;s operating system below.</p>
+
+<h3 id="linux">Linux</h3>
+
+<p>Follow the instructions for your distribution listed in the <a href="/docs/networking/ssh/install-mosh-server-as-ssh-alternative-on-linux/#install-mosh-on-your-linode">Installing Mosh on Your Linode</a> section, or see the <a href="http://mosh.mit.edu/">Mosh website</a>.</p>
+
+<h3 id="mac-os-x">Mac OS X</h3>
+
+<p>The easiest way to install Mosh in OS X is to download the installation package from the <a href="http://mosh.mit.edu/">Mosh website</a>.</p>
+
+<p>Or, if you prefer, you can automate the process of downloading, compiling, and installing Mosh with Homebrew. Note that you must already have <a href="http://mxcl.github.com/homebrew/">Homebrew</a> installed.</p>
+
+<pre><code>brew install mobile-shell
+</code></pre>
+
+<p>Mosh is now installed on your computer.</p>
+
+<h3 id="windows">Windows</h3>
+
+<p>There is not currently a native Mosh client available for the Windows operating system. Please see <a href="https://github.com/keithw/mosh/issues/293">this issue</a> for additional information.</p>
+
+<h2 id="connecting-with-mosh">Connecting with Mosh</h2>
+
+<p>The syntax for connecting to a remote server with Mosh is similar to ssh:</p>
+
+<pre><code>mosh yourusername@host.yourdomain.com
+</code></pre>
+
+<p>Mosh will log in to the server via SSH and then connect on a UDP port between 60000 and 61000.</p>
+
+<p>You can also connect to an SSH daemon that is running on an alternate port:</p>
+
+<pre><code>mosh yourusername@host --ssh=&quot;ssh -p 2222&quot;
+</code></pre>
+
+<p>Congratulations! You&rsquo;ve just connected to your server with Mosh!</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/">Set Up Nginx with PageSpeed on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/network-helper/">Network Helper</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/squid/squid-http-proxy-ubuntu-12-04/">Creating an HTTP Proxy Using Squid on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/varnish/getting-started-with-varnish-cache/">Getting Started with Varnish Cache</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/install-openfire-on-ubuntu-12-04-for-instant-messaging/">Install Openfire on Ubuntu 12.04 for Instant Messaging - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#mosh-ssh-benefits">Mosh SSH Benefits</a></li>
+<li><a href="#preparing-your-firewall">Preparing Your Firewall</a></li>
+<li><a href="#install-mosh-on-your-linode">Install Mosh on Your Linode</a>
+<ul>
+<li><a href="#ubuntu">Ubuntu</a></li>
+<li><a href="#debian">Debian</a></li>
+<li><a href="#arch-linux">Arch Linux</a></li>
+<li><a href="#other-distributions">Other Distributions</a></li>
+</ul></li>
+<li><a href="#install-mosh-on-your-desktop-computer">Install Mosh on Your Desktop Computer</a>
+<ul>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#mac-os-x">Mac OS X</a></li>
+<li><a href="#windows">Windows</a></li>
+</ul></li>
+<li><a href="#connecting-with-mosh">Connecting with Mosh</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

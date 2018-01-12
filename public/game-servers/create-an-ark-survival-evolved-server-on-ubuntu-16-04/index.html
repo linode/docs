@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Create an ARK: Survival Evolved Server on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="A basic ARK server installation guide for Ubuntu 16.04">
+        <meta name="keywords" content="ark survival evolved,  ubuntu,  server">
+        
+        <meta property="og:title" content="Create an ARK: Survival Evolved Server on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/">
+        <meta property="og:description" content="A basic ARK server installation guide for Ubuntu 16.04">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/game-servers/">Game Servers</a>
+  
+</li>
+
+
+<li>
+  
+  Create an ARK: Survival Evolved Server on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Create an ARK: Survival Evolved Server on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-12-28T00:00:00Z">Wednesday, December 28, 2016</time> by Nick Brewer</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fcreate-an-ark-survival-evolved-server-on-ubuntu-16-04%2f&via=linode&text=Create%20an%20ARK%3a%20Survival%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fcreate-an-ark-survival-evolved-server-on-ubuntu-16-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fcreate-an-ark-survival-evolved-server-on-ubuntu-16-04%2f&t=Create%20an%20ARK%3a%20Survival%20Evolved%20Server%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>This guide will show you how to set up a personal <a href="http://www.playark.com/">ARK: Survival Evolved</a> server on a Linode running Ubuntu 16.04 LTS (Xenial Xerus).</p>
+
+<p><img src="/docs/assets/ark-survival-evolved.png" alt="Create an ARK: Survival Evolved Server on Ubuntu 16.04" title="Create an ARK: Survival Evolved Server on Ubuntu 16.04" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as <code>root</code> or with the <code>sudo</code> prefix. For more information on privileges, see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>To connect to your ARK server, you must have a copy of the <a href="http://www.playark.com/">ARK</a> game client.</p></li>
+
+<li><p>In keeping with the <a href="http://ark.gamepedia.com/Dedicated_Server_Setup#Hardware">system requirements</a> for an ARK server, we recommend using our <strong>8GB</strong> plan or a <a href="https://www.linode.com/pricing#high-memory">high memory Linode</a> when following these steps.</p></li>
+
+<li><p>Update your Linode&rsquo;s software:</p>
+
+<pre><code>apt-get update &amp;&amp; apt-get upgrade
+</code></pre></li>
+
+<li><p>Install <strong>SteamCMD</strong>, the Steam command line interface:</p>
+
+<pre><code>apt-get install steamcmd
+</code></pre>
+
+<p>During the installation process, you will be prompted to agree to the Steam License Agreement. Select <strong>I Agree</strong> and hit <strong>Ok</strong> to accept the terms of the agreement.</p></li>
+
+<li><p>For security reasons, you&rsquo;ll create a separate <code>ark</code> user to run your server application. Take note of the password you assign:</p>
+
+<pre><code>adduser ark
+</code></pre></li>
+</ol>
+
+<h2 id="adjust-your-system-settings">Adjust Your System Settings</h2>
+
+<ol>
+<li><p>Run the following command to increase the allowed number of open files:</p>
+
+<pre><code>echo &quot;fs.file-max=100000&quot; &gt;&gt; /etc/sysctl.conf &amp;&amp; sysctl -p
+</code></pre></li>
+
+<li><p>Update the hard and soft file limits by running:</p>
+
+<pre><code>echo &quot;* soft nofile 1000000&quot; &gt;&gt; /etc/security/limits.conf
+echo &quot;* hard nofile 1000000&quot; &gt;&gt; /etc/security/limits.conf
+</code></pre></li>
+
+<li><p>Enable PAM limits by issuing this command:</p>
+
+<pre><code>echo &quot;session required pam_limits.so&quot; &gt;&gt; /etc/pam.d/common-session
+</code></pre></li>
+</ol>
+
+<h2 id="install-your-ark-server">Install Your ARK Server</h2>
+
+<ol>
+<li><p>Switch your session to that of the <code>ark</code> user, and create a <code>server</code> directory that will contain your ARK server files:</p>
+
+<pre><code>su - ark
+mkdir server
+</code></pre></li>
+
+<li><p>Create a symlink from <code>/usr/games/steamcmd</code> to <code>steamcmd</code> in the <code>ark</code> user&rsquo;s home directory:</p>
+
+<pre><code>ln -s /usr/games/steamcmd steamcmd
+</code></pre></li>
+
+<li><p>Run <code>steamcmd</code> with the following options to install the ARK server:</p>
+
+<pre><code>steamcmd +login anonymous +force_install_dir /home/ark/server +app_update 376030 +quit
+</code></pre>
+
+<p>This will take several minutes to complete.</p></li>
+</ol>
+
+<h2 id="create-a-systemd-unit-for-your-ark-server">Create a systemd Unit for Your ARK Server</h2>
+
+<p>By creating a systemd unit file for your ARK server, it can be set to start automatically after a reboot.</p>
+
+<ol>
+<li><p>Switch back to your root user session:</p>
+
+<pre><code>su -
+</code></pre></li>
+
+<li><p>Create a new systemd service file and add the following values to it. Fill in the <code>SessionName</code> value on line 12 with the name you&rsquo;ll use to identify your ARK server:</p>
+
+<dl class="file">
+<dt>
+
+
+		/lib/systemd/system/ark.service 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>ARK Survival Evolved
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>simple
+<span class="nv">Restart</span><span class="o">=</span>on-failure
+<span class="nv">RestartSec</span><span class="o">=</span><span class="m">5</span>
+<span class="nv">StartLimitInterval</span><span class="o">=</span>60s
+<span class="nv">StartLimitBurst</span><span class="o">=</span><span class="m">3</span>
+<span class="nv">User</span><span class="o">=</span>ark
+<span class="nv">Group</span><span class="o">=</span>ark
+<span class="nv">ExecStartPre</span><span class="o">=</span>/home/ark/steamcmd +login anonymous +force_install_dir /home/ark/server +app_update <span class="m">376030</span> +quit
+<span class="nv">ExecStart</span><span class="o">=</span>/home/ark/server/ShooterGame/Binaries/Linux/ShooterGameServer TheIsland?listen?SessionName<span class="o">=</span>example -server -log
+<span class="nv">ExecStop</span><span class="o">=</span>killall -TERM srcds_linux
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Save and exit the file.</p></li>
+
+<li><p>Update systemd to apply your changes:</p>
+
+<pre><code>systemctl daemon-reload
+</code></pre></li>
+
+<li><p>Enable your new systemd unit and start your ARK server:</p>
+
+<pre><code>systemctl enable ark.service
+systemctl start ark
+</code></pre></li>
+</ol>
+
+<h2 id="configure-your-ark-server">Configure Your ARK Server</h2>
+
+<p>Once you&rsquo;ve started the server, you can add or remove settings by editing the <code>GameUserSettings.ini</code> file under <code>/home/ark/server/ShooterGame/Saved/Config/LinuxServer</code>. Add the following settings within the <code>[ServerSettings]</code> section of that file, replacing the &ldquo;example&rdquo; passwords with your own:</p>
+
+<dl class="file">
+<dt>
+
+
+		/home/ark/server/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">ServerPassword</span><span class="o">=</span>example
+<span class="nv">ServerAdminPassword</span><span class="o">=</span>example</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p><code>ServerPassword</code> determines the password that users will be required to enter when connecting to your server. You can omit this line to allow access without a password. <code>ServerAdminPassword</code> specifies the administrative password that will be used when issuing <a href="http://ark.gamepedia.com/Console_Commands">game commands</a>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you choose to use the <code>ServerPassword</code> option, when connecting to the server you will need to click on <strong>Show Password Protected</strong>, or manually add the server to your favorites list. Both options are shown in the next section.</div>
+</blockquote>
+
+
+<p>A number of options can be configured within this file - for more information take a look at the <a href="http://ark.gamepedia.com/Server_Configuration#GameUserSettings.ini">Server Configuration</a> section of the ARK wiki.</p>
+
+<h2 id="connect-the-game-client-to-your-ark-server">Connect the Game Client to Your ARK Server</h2>
+
+<p>You can connect to your new ARK server using two different methods. Because the game is currently in pre-release and under heavy development, some functionality may change or work intermittently. While finding your server from within the game itself is often easier, it&rsquo;s not always reliable (as of this guide&rsquo;s publication), so we&rsquo;ll also go over how to add it to your favorite servers in the Steam client.</p>
+
+<h3 id="in-game-server-list">In-Game Server List</h3>
+
+<ol>
+<li><p>On your local computer, open the ARK: Survival Evolved game client. Click on <strong>JOIN ARK</strong>:</p>
+
+<p><a href="/docs/assets/ark-menu.png" title="The ARK: Survival Evolved Main Menu"><img src="/docs/assets/ark-menu-small.png" alt="The ARK: Survival Evolved Main Menu" title="The ARK: Survival Evolved Main Menu" /></a></p></li>
+
+<li><p>As the server list populates, you can filter the results using the <strong>Server Name Filter</strong> field (1). You must also select <em>UnOfficial</em> from the <strong>Server Filter</strong> field (2). If you&rsquo;ve password-protected your ARK server, you must also check the <strong>Show Password Protected</strong> box (3):</p>
+
+<p><a href="/docs/assets/ark-server-list.png" title="The ARK: Survival Evolved Server List"><img src="/docs/assets/ark-server-list-small.png" alt="The ARK: Survival Evolved Server List" title="The ARK: Survival Evolved Server List" /></a></p></li>
+
+<li><p>Select your server, and click <strong>Join</strong>. If your server is password-protected, you&rsquo;ll be prompted to enter the password.</p></li>
+</ol>
+
+<h3 id="steam-server-favorites">Steam Server Favorites</h3>
+
+<ol>
+<li><p>Open the Steam application on your local machine, select the <strong>File</strong> (or <strong>View</strong> on OS X) menu and navigate to <strong>Servers</strong>.</p></li>
+
+<li><p>Under <strong>FAVORITES</strong> select <strong>ADD A SERVER</strong> and direct Steam to connect to your Linode&rsquo;s IP address or domain name:</p>
+
+<p><a href="/docs/assets/ark-add-server.png"><img src="/docs/assets/ark-add-server-small.png" alt="Steam Add Server" /></a></p></li>
+
+<li><p>Once Steam identifies your ARK server, it should appear in the <strong>SERVERS</strong> list. Choose your server and hit <strong>CONNECT</strong>:</p>
+
+<p><a href="/docs/assets/ark-servers.png"><img src="/docs/assets/ark-servers-small.png" alt="Steam Servers" /></a></p>
+
+<p>Alternately, you can select <strong>Favorites</strong> from the <strong>Server Filter</strong> in the in-game server list:</p>
+
+<p><a href="/docs/assets/ark-favorites-list.png" title="ARK: Survival Evolved Favorites List"><img src="/docs/assets/ark-favorites-list-small.png" alt="ARK: Survival Evolved Favorites List" title="ARK: Survival Evolved Favorites List" /></a></p></li>
+
+<li><p>If you&rsquo;ve created a server password in your <code>GameUserSettings.ini</code> file, enter it here:</p>
+
+<p><img src="/docs/assets/ark-password.png" alt="ARK Server Password" /></p>
+
+<p>Or if you are using the in-game menu, enter the server password here:</p>
+
+<p><a href="/docs/assets/ark-server-password.png" title="ARK: Survival Evolved Server Password Prompt"><img src="/docs/assets/ark-server-password-small.png" alt="ARK: Survival Evolved Server Password Prompt" title="ARK: Survival Evolved Server Password Prompt" /></a></p></li>
+</ol>
+
+<p>Congratulations! You can now explore the world of ARK in your own persistent server.</p>
+
+<p><a href="/docs/assets/ark-gameplay.png" title="ARK: Survival Evolved Gameplay"><img src="/docs/assets/ark-gameplay-small.png" alt="ARK: Survival Evolved Gameplay" title="ARK: Survival Evolved Gameplay" /></a></p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.playark.com/">PlayARK.com</a></li>
+
+<li><a href="http://ark.gamepedia.com/ARK_Survival_Evolved_Wiki">The Official ARK: Survival Evolved Wiki</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql/">Email with Postfix, Dovecot, and MySQL</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu/">How to Install a Turtl Server on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/what-is-docker/">Docker - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/installing-squirrelmail-on-ubuntu-12-04/">Installing SquirrelMail on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/">Install SquirrelMail on Ubuntu 16.04 or Debian 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="http://creativecommons.org/licenses/by-nd/3.0/us/">CC BY-ND 3.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#adjust-your-system-settings">Adjust Your System Settings</a></li>
+<li><a href="#install-your-ark-server">Install Your ARK Server</a></li>
+<li><a href="#create-a-systemd-unit-for-your-ark-server">Create a systemd Unit for Your ARK Server</a></li>
+<li><a href="#configure-your-ark-server">Configure Your ARK Server</a></li>
+<li><a href="#connect-the-game-client-to-your-ark-server">Connect the Game Client to Your ARK Server</a>
+<ul>
+<li><a href="#in-game-server-list">In-Game Server List</a></li>
+<li><a href="#steam-server-favorites">Steam Server Favorites</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

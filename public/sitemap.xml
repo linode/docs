@@ -1,0 +1,5022 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://linode.com/docs/getting-started/</loc>
+    <lastmod>2017-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/</loc>
+    <lastmod>2017-04-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/</loc>
+    <lastmod>2017-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/</loc>
+    <lastmod>2017-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/</loc>
+    <lastmod>2017-11-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/</loc>
+    <lastmod>2017-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/</loc>
+    <lastmod>2017-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/</loc>
+    <lastmod>2017-04-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/</loc>
+    <lastmod>2017-04-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/troubleshooting/</loc>
+    <lastmod>2016-08-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/</loc>
+    <lastmod>2017-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/how-to-back-up-your-postgresql-database/</loc>
+    <lastmod>2017-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/use-a-linode-for-web-development-on-remote-devices/</loc>
+    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/</loc>
+    <lastmod>2017-12-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/big-data/how-to-scrape-a-website-with-beautiful-soup/</loc>
+    <lastmod>2017-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/</loc>
+    <lastmod>2017-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/ssh/persistent-terminal-sessions-with-tmux/</loc>
+    <lastmod>2017-12-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/contribute/thankyou/</loc>
+    <lastmod>2017-12-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/python/use-scrapy-to-extract-data-from-html-tags/</loc>
+    <lastmod>2017-12-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/contribute/</loc>
+    <lastmod>2017-11-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/when-and-why-to-use-docker/</loc>
+    <lastmod>2017-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/remote-desktop/remote-desktop-using-apache-guacamole-on-docker/</loc>
+    <lastmod>2017-12-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/find-this-guide-on-github/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/automate-builds-with-jenkins-on-ubuntu/</loc>
+    <lastmod>2017-11-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/set-up-wireguard-vpn-on-ubuntu/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/caddy/</loc>
+    <lastmod>2017-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/jupyter-nobook-on-jekyll/</loc>
+    <lastmod>2017-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/how-to-develop-and-deploy-your-applications-using-wercker/</loc>
+    <lastmod>2017-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/how-to-build-your-infrastructure-using-terraform-and-linode/</loc>
+    <lastmod>2017-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linode-platform/add-caa-dns-records/</loc>
+    <lastmod>2017-11-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/scanning-your-linode-for-malware/</loc>
+    <lastmod>2017-11-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/</loc>
+    <lastmod>2017-11-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/cloud-storage/how-to-use-zfs-on-ubuntu-16-04/</loc>
+    <lastmod>2017-11-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/</loc>
+    <lastmod>2017-11-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/cloud-storage/tahoe-lafs-on-debian-9/</loc>
+    <lastmod>2017-10-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/</loc>
+    <lastmod>2017-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/</loc>
+    <lastmod>2017-10-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/</loc>
+    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/</loc>
+    <lastmod>2017-10-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/big-data/how-to-move-machine-learning-model-to-production/</loc>
+    <lastmod>2017-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/nodejs/use-nightmarejs-to-automate-headless-browsing/</loc>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/zipkin-server-configuration-using-docker-and-mysql/</loc>
+    <lastmod>2017-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/how-to-install-neovim-and-plugins-with-vim-plug/</loc>
+    <lastmod>2017-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/vpn-firewall-killswitch-for-linux-and-macos-clients/</loc>
+    <lastmod>2017-09-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/set-up-a-zipkin-server/</loc>
+    <lastmod>2017-09-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/how-to-set-up-htaccess-on-apache/</loc>
+    <lastmod>2017-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/how-to-install-openvz-on-debian-9/</loc>
+    <lastmod>2017-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linode-platform/find-your-linodes-ip-address/</loc>
+    <lastmod>2017-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/create-a-highly-available-postgresql-cluster-using-patroni-and-haproxy/</loc>
+    <lastmod>2017-09-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/how-to-set-up-tinc-peer-to-peer-vpn/</loc>
+    <lastmod>2017-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/</loc>
+    <lastmod>2017-09-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/</loc>
+    <lastmod>2017-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/</loc>
+    <lastmod>2017-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/how-to-create-a-private-python-package-repository/</loc>
+    <lastmod>2017-09-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/how-to-install-and-configure-graylog2-on-debian-9/</loc>
+    <lastmod>2017-08-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/</loc>
+    <lastmod>2017-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/caddy/install-and-configure-caddy-on-centos-7/</loc>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/using-your-systems-hosts-file/</loc>
+    <lastmod>2017-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/add-a-custom-search-to-your-site-with-solr/</loc>
+    <lastmod>2017-09-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/how-to-install-ghost-cms-on-ubuntu-16-04/</loc>
+    <lastmod>2017-09-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/set-up-a-streisand-gateway/</loc>
+    <lastmod>2017-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/how-to-install-midnight-commander/</loc>
+    <lastmod>2017-09-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/</loc>
+    <lastmod>2017-09-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/install-farmos/</loc>
+    <lastmod>2017-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/how-to-create-an-email-server-with-mail-in-a-box/</loc>
+    <lastmod>2017-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/</loc>
+    <lastmod>2017-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/how-to-use-yubikey-for-two-factor-ssh-authentication/</loc>
+    <lastmod>2017-09-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/</loc>
+    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/introduction-to-vim-customization/</loc>
+    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/install-and-run-askbot-on-ubuntu-16-04/</loc>
+    <lastmod>2017-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/install-a-half-life-2-deathmatch-dedicated-server-on-debian-or-ubuntu/</loc>
+    <lastmod>2017-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu/</loc>
+    <lastmod>2017-09-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/big-data/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604/</loc>
+    <lastmod>2017-08-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/create-a-python-virtualenv-on-ubuntu-1610/</loc>
+    <lastmod>2017-08-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/how-to-use-dockerfiles/</loc>
+    <lastmod>2017-08-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu/</loc>
+    <lastmod>2017-08-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04/</loc>
+    <lastmod>2017-08-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/</loc>
+    <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/configure-and-use-salt-ssh/</loc>
+    <lastmod>2017-08-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/getting-started-with-selinux/</loc>
+    <lastmod>2017-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/how-to-deploy-an-nginx-container-with-docker/</loc>
+    <lastmod>2017-07-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/how-to-install-configure-and-run-fish/</loc>
+    <lastmod>2017-07-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/</loc>
+    <lastmod>2017-10-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/setting-up-taskwarrior-on-ubuntu-16-10/</loc>
+    <lastmod>2017-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/install-selinux-on-ubuntu/</loc>
+    <lastmod>2017-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/introduction-to-docker/</loc>
+    <lastmod>2017-06-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8/</loc>
+    <lastmod>2017-09-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/</loc>
+    <lastmod>2017-06-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/how-to-change-selinux-modes/</loc>
+    <lastmod>2017-10-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/how-to-use-git/</loc>
+    <lastmod>2017-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/how-to-use-wget/</loc>
+    <lastmod>2017-06-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/how-to-use-block-storage-with-your-linode/</loc>
+    <lastmod>2017-06-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/install-nixos-on-linode/</loc>
+    <lastmod>2017-06-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/deploy-scalable-cassandra/</loc>
+    <lastmod>2017-06-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/use-coreos-container-linux-on-linode/</loc>
+    <lastmod>2017-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/install-java-on-centos/</loc>
+    <lastmod>2017-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/install-java-on-debian/</loc>
+    <lastmod>2017-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/install-java-on-ubuntu-16-04/</loc>
+    <lastmod>2017-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/cloud-storage/</loc>
+    <lastmod>2017-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/</loc>
+    <lastmod>2017-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/</loc>
+    <lastmod>2017-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linode-platform/enable-backups-on-a-linode/</loc>
+    <lastmod>2017-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linode-platform/</loc>
+    <lastmod>2017-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/</loc>
+    <lastmod>2017-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/log-in-to-coreos-container-linux/</loc>
+    <lastmod>2017-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/</loc>
+    <lastmod>2017-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linode-platform/resize-a-linode-disk/</loc>
+    <lastmod>2017-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/</loc>
+    <lastmod>2017-05-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/media-servers/install-plex-media-server-on-centos-7/</loc>
+    <lastmod>2017-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/</loc>
+    <lastmod>2017-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/install-opencart-on-centos-7/</loc>
+    <lastmod>2017-08-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/linux-command-line-tips/</loc>
+    <lastmod>2017-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/how-to-use-grep/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/how-to-use-head/</loc>
+    <lastmod>2017-04-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/quick-answers/linux/how-to-use-tail/</loc>
+    <lastmod>2017-04-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/advanced-ssh-server-security/</loc>
+    <lastmod>2017-04-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/</loc>
+    <lastmod>2017-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7/</loc>
+    <lastmod>2017-03-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/use-the-distribution-supplied-kernel-on-centos-6-with-grub-legacy/</loc>
+    <lastmod>2017-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/</loc>
+    <lastmod>2017-06-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/upgrade-to-hourly-billing/</loc>
+    <lastmod>2017-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/disk-images/resizing-a-linode/</loc>
+    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/install-openvas-on-ubuntu-16-04/</loc>
+    <lastmod>2016-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/install-mongodb-on-centos-7/</loc>
+    <lastmod>2016-12-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/</loc>
+    <lastmod>2016-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/install-magento-on-centos-7/</loc>
+    <lastmod>2016-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/install-magento-on-ubuntu-16-04/</loc>
+    <lastmod>2016-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/</loc>
+    <lastmod>2017-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/</loc>
+    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/create-a-mongodb-replica-set/</loc>
+    <lastmod>2017-02-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/</loc>
+    <lastmod>2016-11-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/disk-images/clone-your-linode/</loc>
+    <lastmod>2017-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/install-and-configure-apache-on-centos-7/</loc>
+    <lastmod>2017-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/</loc>
+    <lastmod>2016-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/</loc>
+    <lastmod>2016-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/</loc>
+    <lastmod>2016-11-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/use-luks-for-full-disk-encryption/</loc>
+    <lastmod>2016-11-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/big-data/big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm/</loc>
+    <lastmod>2017-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/install-wordpress-on-ubuntu-16-04/</loc>
+    <lastmod>2016-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/gpg-key-for-ssh-authentication/</loc>
+    <lastmod>2016-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/</loc>
+    <lastmod>2016-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/install-cpanel-on-centos/</loc>
+    <lastmod>2017-11-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/remote-access/</loc>
+    <lastmod>2014-09-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora/</loc>
+    <lastmod>2016-08-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu/</loc>
+    <lastmod>2016-08-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/</loc>
+    <lastmod>2016-08-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/</loc>
+    <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/host-a-website-with-high-availability/</loc>
+    <lastmod>2017-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/introduction-to-high-availability/</loc>
+    <lastmod>2016-07-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/remote-desktop/install-vnc-on-ubuntu-16-04/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/</loc>
+    <lastmod>2016-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04/</loc>
+    <lastmod>2016-12-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/</loc>
+    <lastmod>2016-05-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu/</loc>
+    <lastmod>2016-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/apache-tomcat-on-ubuntu-16-04/</loc>
+    <lastmod>2016-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-16-04/</loc>
+    <lastmod>2016-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/</loc>
+    <lastmod>2017-07-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/upgrade-to-ubuntu-16-04/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/</loc>
+    <lastmod>2017-09-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/install-and-configure-redis-on-centos-7/</loc>
+    <lastmod>2017-02-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8/</loc>
+    <lastmod>2016-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/use-unicorn-and-nginx-on-ubuntu-14-04/</loc>
+    <lastmod>2016-03-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/install-freebsd-on-linode/</loc>
+    <lastmod>2016-03-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/</loc>
+    <lastmod>2017-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/</loc>
+    <lastmod>2017-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/install-black-mesa-on-debian-or-ubuntu/</loc>
+    <lastmod>2016-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/</loc>
+    <lastmod>2016-09-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/</loc>
+    <lastmod>2016-02-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/left-4-dead-2-multiplayer-server-installation/</loc>
+    <lastmod>2016-02-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/install-php-fpm-and-apache-on-debian-8/</loc>
+    <lastmod>2017-02-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/</loc>
+    <lastmod>2015-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/install-steamcmd-for-a-steam-game-server/</loc>
+    <lastmod>2016-03-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/</loc>
+    <lastmod>2017-03-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/clients/install-roundcube-on-ubuntu-14-04/</loc>
+    <lastmod>2016-02-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/</loc>
+    <lastmod>2016-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/open-web-analytics-install-and-launch-on-your-server/</loc>
+    <lastmod>2016-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/host-a-terraria-server-on-your-linode/</loc>
+    <lastmod>2017-04-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/configuring-openvpn-client-devices/</loc>
+    <lastmod>2017-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/set-up-a-hardened-openvpn-server/</loc>
+    <lastmod>2017-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/</loc>
+    <lastmod>2017-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/deploy-mysql-workbench-for-database-administration/</loc>
+    <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/how-to-install-graphite-and-grafana-on-ubuntu-14-04/</loc>
+    <lastmod>2015-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/github-guide/</loc>
+    <lastmod>2015-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-on-centos-7/</loc>
+    <lastmod>2016-10-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/</loc>
+    <lastmod>2015-11-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/install-and-configure-drupal-8/</loc>
+    <lastmod>2015-11-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/</loc>
+    <lastmod>2015-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/firewalls/configure-firewall-with-ufw/</loc>
+    <lastmod>2015-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/</loc>
+    <lastmod>2015-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/voip/install-and-configure-mumble-on-debian/</loc>
+    <lastmod>2015-11-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/cloud-storage/access-your-box-account-from-your-linode/</loc>
+    <lastmod>2015-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604/</loc>
+    <lastmod>2017-09-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04/</loc>
+    <lastmod>2016-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/</loc>
+    <lastmod>2015-11-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/</loc>
+    <lastmod>2016-08-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitoring-servers-with-monit/</loc>
+    <lastmod>2015-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/using-fail2ban-for-security/</loc>
+    <lastmod>2017-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/</loc>
+    <lastmod>2016-02-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/install-gogs-on-debian/</loc>
+    <lastmod>2017-11-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/zimbra/zimbra-on-ubuntu-14-04/</loc>
+    <lastmod>2015-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/voip/install-asterisk-on-centos-7/</loc>
+    <lastmod>2015-09-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/cloud-storage/access-google-drive-linode/</loc>
+    <lastmod>2016-03-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/firewalls/introduction-to-firewalld-on-centos/</loc>
+    <lastmod>2015-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers/</loc>
+    <lastmod>2017-07-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/java-development-wildfly-centos-7/</loc>
+    <lastmod>2015-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/install-and-configure-puppet/</loc>
+    <lastmod>2017-03-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/configure-nginx-for-optimized-performance/</loc>
+    <lastmod>2015-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/minecraft-with-bungee-cord/</loc>
+    <lastmod>2015-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/</loc>
+    <lastmod>2015-09-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/nodebalancer/nodebalancer-ssl-configuration/</loc>
+    <lastmod>2017-04-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/using-the-linode-graphical-shell-glish/</loc>
+    <lastmod>2015-03-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/how-to-install-mysql-on-centos-7/</loc>
+    <lastmod>2017-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mariadb/how-to-install-mariadb-on-centos-7/</loc>
+    <lastmod>2015-08-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-systems-logwatch/</loc>
+    <lastmod>2015-08-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-web-server-on-ubuntu-14-04/</loc>
+    <lastmod>2017-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/pritunl-vpn-ubuntu/</loc>
+    <lastmod>2015-07-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/install-teamspeak/</loc>
+    <lastmod>2015-07-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns/</loc>
+    <lastmod>2017-07-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/install-nginx-web-server-on-debian-8/</loc>
+    <lastmod>2016-08-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/use-salt-states-to-configure-a-lamp-stack-on-a-minion/</loc>
+    <lastmod>2017-07-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/</loc>
+    <lastmod>2016-11-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-web-server-debian-8/</loc>
+    <lastmod>2017-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-on-debian-8-jessie/</loc>
+    <lastmod>2015-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/</loc>
+    <lastmod>2017-10-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/</loc>
+    <lastmod>2017-03-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-nginx-debian-8/</loc>
+    <lastmod>2015-06-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/vagrant-linode-environments/</loc>
+    <lastmod>2015-06-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/kvm-reference/</loc>
+    <lastmod>2016-09-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/how-to-install-mysql-on-debian-8/</loc>
+    <lastmod>2015-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/</loc>
+    <lastmod>2016-09-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-phpfastcgi-ubuntu-14-04/</loc>
+    <lastmod>2015-06-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/beginners-guide-chef/</loc>
+    <lastmod>2015-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/creating-your-first-chef-cookbook/</loc>
+    <lastmod>2015-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/</loc>
+    <lastmod>2015-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/install-openvpn-access-server-on-linux/</loc>
+    <lastmod>2017-10-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/firewalls/protecting-your-linode-using-tcp-wrappers/</loc>
+    <lastmod>2015-04-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/upgrade-to-debian-8-jessie/</loc>
+    <lastmod>2015-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/minecraft-with-spigot-ubuntu/</loc>
+    <lastmod>2015-04-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/install-dont-starve-together-game-server-on-ubuntu/</loc>
+    <lastmod>2016-02-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu/</loc>
+    <lastmod>2015-04-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/turbocharge-wordpress-search-with-solr/</loc>
+    <lastmod>2015-04-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/pocketmine-server-on-debian-7/</loc>
+    <lastmod>2015-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/docker-commands-quick-reference-cheat-sheet/</loc>
+    <lastmod>2017-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mariadb-on-centos-7/</loc>
+    <lastmod>2015-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-6/</loc>
+    <lastmod>2015-03-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/node-js-web-server-deployed-within-docker/</loc>
+    <lastmod>2015-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/team-fortress2-on-debian-and-ubuntu/</loc>
+    <lastmod>2016-02-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/</loc>
+    <lastmod>2017-06-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/reboot-survival-guide/</loc>
+    <lastmod>2015-10-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/</loc>
+    <lastmod>2017-08-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/</loc>
+    <lastmod>2015-02-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/top-htop-iotop/</loc>
+    <lastmod>2015-02-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/load-testing-with-siege/</loc>
+    <lastmod>2015-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/</loc>
+    <lastmod>2015-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/</loc>
+    <lastmod>2015-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/ossec-ids-debian-7/</loc>
+    <lastmod>2015-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/minecraft-with-mcmyadmin-on-debian/</loc>
+    <lastmod>2016-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/multicraft-on-debian/</loc>
+    <lastmod>2015-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/multicraft-on-ubuntu/</loc>
+    <lastmod>2015-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/media-servers/install-subsonic-media-server-on-ubuntu-or-debian/</loc>
+    <lastmod>2017-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/google-analytics-for-websites/</loc>
+    <lastmod>2015-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/google-analytics-on-wordpress/</loc>
+    <lastmod>2015-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/security-patches/patching-glibc-for-the-ghost-vulnerability/</loc>
+    <lastmod>2015-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/</loc>
+    <lastmod>2017-07-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-on-ubuntu-14-04/</loc>
+    <lastmod>2015-12-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/garrys-mod-server-on-centos-7/</loc>
+    <lastmod>2016-02-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/common-dns-configurations/</loc>
+    <lastmod>2017-11-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/diagnostics/</loc>
+    <lastmod>2015-01-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/nodejs/how-to-install-nodejs-and-nginx-on-debian/</loc>
+    <lastmod>2017-04-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/diagnostics/install-iperf-to-diagnose-network-speed-in-linux/</loc>
+    <lastmod>2017-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/high-availability-wordpress/</loc>
+    <lastmod>2015-01-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/configure-master-master-mysql-database-replication/</loc>
+    <lastmod>2017-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/nodejs/how-to-install-nodejs/</loc>
+    <lastmod>2017-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/</loc>
+    <lastmod>2017-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/network-helper/</loc>
+    <lastmod>2017-04-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/</loc>
+    <lastmod>2014-12-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/drush-drupal/</loc>
+    <lastmod>2014-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/ssl-apache2-centos/</loc>
+    <lastmod>2016-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/ssl-apache2-debian-ubuntu/</loc>
+    <lastmod>2016-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/how-to-upgrade-to-ubuntu-14-04-lts/</loc>
+    <lastmod>2015-02-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/</loc>
+    <lastmod>2015-07-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/cms-overview/</loc>
+    <lastmod>2017-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/security-patches/disabling-sslv3-for-poodle/</loc>
+    <lastmod>2014-10-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/file-transfer/filezilla/</loc>
+    <lastmod>2014-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/how-to-install-a-webmin-control-panel-and-modules/</loc>
+    <lastmod>2017-11-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/iredmail/install-iredmail-on-ubuntu/</loc>
+    <lastmod>2017-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/security-patches/patching-bash-for-the-shellshock-vulnerability/</loc>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/linode-images/</loc>
+    <lastmod>2017-09-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/</loc>
+    <lastmod>2014-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/iredmail/</loc>
+    <lastmod>2014-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/varnish/</loc>
+    <lastmod>2014-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/</loc>
+    <lastmod>2017-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/using-weechat-for-irc/</loc>
+    <lastmod>2016-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/install-znc-debian/</loc>
+    <lastmod>2015-06-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/using-google-apps-for-email/</loc>
+    <lastmod>2014-08-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/linux-static-ip-configuration/</loc>
+    <lastmod>2017-11-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/squid/</loc>
+    <lastmod>2014-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-12-04-precise/</loc>
+    <lastmod>2014-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/running-fastcgi-php-fpm-on-debian-7-with-apache/</loc>
+    <lastmod>2014-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mariadb/mariadb-setup-debian/</loc>
+    <lastmod>2017-11-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mariadb/</loc>
+    <lastmod>2014-06-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/cloud-storage/owncloud-debian-7/</loc>
+    <lastmod>2017-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/elasticsearch/</loc>
+    <lastmod>2014-06-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/postfix-smtp-debian7/</loc>
+    <lastmod>2014-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/cloud-storage/dropbox/</loc>
+    <lastmod>2015-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/disk-images/switch-to-a-64-bit-linux-kernel/</loc>
+    <lastmod>2016-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-fedora-20/</loc>
+    <lastmod>2014-04-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/remote-desktop/running-graphic-software-xforwarding-debian/</loc>
+    <lastmod>2014-04-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/remote-desktop/run-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04/</loc>
+    <lastmod>2014-04-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/remote-desktop/using-vnc-to-operate-a-desktop-on-ubuntu-12-04/</loc>
+    <lastmod>2014-08-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/creating-a-mongodb-replication-set-on-centos-6-4/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/creating-a-mongodb-replication-set-on-debian-7-wheezy/</loc>
+    <lastmod>2014-08-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-12-04-precise/</loc>
+    <lastmod>2014-08-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/security-patches/patching-openssl-for-the-heartbleed-vulnerability/</loc>
+    <lastmod>2014-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/installing-mail-filtering-for-ubuntu-12-04/</loc>
+    <lastmod>2014-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/</loc>
+    <lastmod>2014-03-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/squid/squid-http-proxy-centos-6-4/</loc>
+    <lastmod>2014-03-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/squid/squid-http-proxy-ubuntu-12-04/</loc>
+    <lastmod>2016-08-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/billing-and-payments/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/how-to-mount-nfs-shares-on-debian-9/</loc>
+    <lastmod>2017-11-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/</loc>
+    <lastmod>2014-02-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/package-mirrors/</loc>
+    <lastmod>2016-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/</loc>
+    <lastmod>2014-12-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-stack-on-debian-8/</loc>
+    <lastmod>2017-08-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-debian-7-wheezy/</loc>
+    <lastmod>2014-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/varnish/getting-started-with-varnish-cache/</loc>
+    <lastmod>2017-02-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6/</loc>
+    <lastmod>2014-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/</loc>
+    <lastmod>2014-02-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/managing-mysql-with-phpmyadmin-on-centos-6-4/</loc>
+    <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/what-is-docker/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/using-mysql-relational-databases-on-fedora-20/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/api/api-key/</loc>
+    <lastmod>2014-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/api/</loc>
+    <lastmod>2014-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/linode-cli/</loc>
+    <lastmod>2016-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/how-to-install-mysql-on-centos-6/</loc>
+    <lastmod>2017-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/previewing-websites-without-dns/</loc>
+    <lastmod>2015-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/linode-writers-formatting-guide/</loc>
+    <lastmod>2017-12-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/how-to-install-mysql-on-debian-7/</loc>
+    <lastmod>2017-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/</loc>
+    <lastmod>2016-06-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/clients/installing-squirrelmail-on-debian-7/</loc>
+    <lastmod>2014-01-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/clients/installing-squirrelmail-on-ubuntu-12-04/</loc>
+    <lastmod>2014-01-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-cgi-apache-centos-6/</loc>
+    <lastmod>2014-01-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-cgi-apapache-debian-7/</loc>
+    <lastmod>2015-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/install-mysql-phpmyadmin-debian-7/</loc>
+    <lastmod>2015-09-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/install-and-configure-phpmyadmin-on-debian-8/</loc>
+    <lastmod>2015-09-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-fedora-19/</loc>
+    <lastmod>2014-04-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-web-server-on-centos-6/</loc>
+    <lastmod>2015-07-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/longview/longview-app-for-mysql/</loc>
+    <lastmod>2013-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/longview/longview-app-for-nginx/</loc>
+    <lastmod>2013-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/longview/longview-app-for-apache/</loc>
+    <lastmod>2014-01-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-gentoo/</loc>
+    <lastmod>2014-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/migrate-to-linode/migrate-from-shared-hosting-to-linode/</loc>
+    <lastmod>2017-09-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-debian-7-wheezy/</loc>
+    <lastmod>2015-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-arch-linux/</loc>
+    <lastmod>2015-12-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/game-servers/minecraft-on-linode-with-ubuntu-12-04/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/introduction-to-version-control/</loc>
+    <lastmod>2013-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-apache-on-debian-7-wheezy/</loc>
+    <lastmod>2013-09-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/install-mysql-phpmyadmin-on-ubuntu-12-04/</loc>
+    <lastmod>2015-09-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/install-mysql-phpmyadmin-ubuntu-14-04/</loc>
+    <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/</loc>
+    <lastmod>2013-09-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-web-server-debian-7/</loc>
+    <lastmod>2014-01-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/</loc>
+    <lastmod>2014-02-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/</loc>
+    <lastmod>2014-03-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-apache-debian-8/</loc>
+    <lastmod>2017-09-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/full-disk-encryption-xen/</loc>
+    <lastmod>2014-06-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/automating-server-builds/</loc>
+    <lastmod>2015-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/running-a-mail-server/</loc>
+    <lastmod>2014-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql/</loc>
+    <lastmod>2015-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/how-to-upgrade-to-debian-7-wheezy/</loc>
+    <lastmod>2013-05-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/linode-manager-security-controls/</loc>
+    <lastmod>2014-10-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/backups/backing-up-your-data/</loc>
+    <lastmod>2013-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/longview/longview/</loc>
+    <lastmod>2017-05-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/linode-managed/</loc>
+    <lastmod>2014-05-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/ssh/install-mosh-server-as-ssh-alternative-on-linux/</loc>
+    <lastmod>2017-08-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2012-11-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/install-openfire-on-ubuntu-12-04-for-instant-messaging/</loc>
+    <lastmod>2016-03-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/use-uwsgi-to-deploy-python-apps-with-nginx-on-ubuntu-12-04/</loc>
+    <lastmod>2012-11-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/exim/deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04/</loc>
+    <lastmod>2014-01-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/launch-discussion-forums-with-phpbb-on-ubuntu-12-04/</loc>
+    <lastmod>2012-11-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/deploy-multiple-web-servers-with-proxypass-on-ubuntu-12-04/</loc>
+    <lastmod>2012-11-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04/</loc>
+    <lastmod>2013-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/citadel/email-with-citadel-on-ubuntu-12-04-lts-precise-pangolin/</loc>
+    <lastmod>2014-08-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/citadel/email-with-citadel-on-ubuntu-14-04/</loc>
+    <lastmod>2014-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-12-04-lts-precise-pangolin/</loc>
+    <lastmod>2012-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-cgi-apache-ubuntu-12-04/</loc>
+    <lastmod>2012-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/</loc>
+    <lastmod>2012-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/redis-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2012-10-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/</loc>
+    <lastmod>2015-09-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/twiki-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/create-an-aggregate-blog-using-planet-venus-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2012-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2015-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/ikiwiki-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2012-10-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/use-cacti-to-monitor-resource-utilization-on-ubuntu-12-04/</loc>
+    <lastmod>2012-10-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-web-server-ubuntu-12-04/</loc>
+    <lastmod>2015-07-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/deploy-websites-with-a-cherokee-web-server-on-ubuntu-12-04/</loc>
+    <lastmod>2012-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/piwik-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/use-cherokee-web-server-on-ubuntu-12-04/</loc>
+    <lastmod>2016-03-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2012-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2013-09-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2012-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04/</loc>
+    <lastmod>2012-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04/</loc>
+    <lastmod>2012-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-12-04-lts-precise-pangolin/</loc>
+    <lastmod>2012-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/deploy-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2015-09-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/install-mysql-on-ubuntu-14-04/</loc>
+    <lastmod>2015-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-12-04-precise/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-12-04/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/</loc>
+    <lastmod>2015-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring-and-maintaining-your-server/</loc>
+    <lastmod>2017-02-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitoring-servers-with-zabbix/</loc>
+    <lastmod>2012-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/nodebalancer/</loc>
+    <lastmod>2012-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/dolphin/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/use-cpanel-to-manage-domains-and-databases/</loc>
+    <lastmod>2017-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/media-servers/how-to-install-shoutcast-dnas-server-on-linux/</loc>
+    <lastmod>2017-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/media-servers/</loc>
+    <lastmod>2012-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/disk-images/copying-a-disk-image-over-ssh/</loc>
+    <lastmod>2017-12-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/disk-images/copying-a-disk-image-to-a-different-account/</loc>
+    <lastmod>2014-06-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/how-to-upgrade-to-ubuntu-12-04-precise/</loc>
+    <lastmod>2013-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/</loc>
+    <lastmod>2012-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/troubleshooting/rescue-and-rebuild/</loc>
+    <lastmod>2016-08-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/disk-images/migrating-a-server-to-your-linode/</loc>
+    <lastmod>2017-04-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/disk-images/disk-images-and-configuration-profiles/</loc>
+    <lastmod>2014-06-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/prepaid-billing-and-payments-legacy/</loc>
+    <lastmod>2017-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/troubleshooting/troubleshooting/</loc>
+    <lastmod>2017-03-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/accounts-and-passwords/</loc>
+    <lastmod>2014-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/support/</loc>
+    <lastmod>2013-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/linode-backup-service/</loc>
+    <lastmod>2017-02-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/hosting-a-website/</loc>
+    <lastmod>2017-01-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/securing-your-server/</loc>
+    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/set-up-a-lamp-server-on-gentoo/</loc>
+    <lastmod>2013-10-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitoring-servers-with-munin-on-ubuntu-11-04-natty/</loc>
+    <lastmod>2013-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache-tips-and-tricks/modevasive-on-apache/</loc>
+    <lastmod>2013-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache-tips-and-tricks/configure-modsecurity-on-apache/</loc>
+    <lastmod>2017-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/citadel/email-with-citadel-on-debian-6-squeeze/</loc>
+    <lastmod>2011-11-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/use-nano-text-editor-commands/</loc>
+    <lastmod>2011-11-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-ubuntu-11-10-oneiric/</loc>
+    <lastmod>2013-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/set-up-dns-services-on-cpanel/</loc>
+    <lastmod>2017-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/kloxo-guides/</loc>
+    <lastmod>2013-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-centos-6/</loc>
+    <lastmod>2013-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/creating-accounts-on-directadmin/</loc>
+    <lastmod>2013-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/directadmin/</loc>
+    <lastmod>2013-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-ubuntu-11-10-oneiric/</loc>
+    <lastmod>2013-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/install-kloxo-on-centos-5/</loc>
+    <lastmod>2013-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/how-to-upgrade-to-ubuntu-11-10-oneiric/</loc>
+    <lastmod>2013-05-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/install-a-commercial-ssl-certificate-using-cpanel/</loc>
+    <lastmod>2017-04-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/opencart-on-fedora-15/</loc>
+    <lastmod>2013-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/opencart-on-centos-6/</loc>
+    <lastmod>2011-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/opencart-on-debian-6-squeeze/</loc>
+    <lastmod>2011-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-fedora-15/</loc>
+    <lastmod>2013-11-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-on-centos-6/</loc>
+    <lastmod>2015-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/nodebalancer/nodebalancer-reference-guide/</loc>
+    <lastmod>2017-02-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-6-squeeze/</loc>
+    <lastmod>2011-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-5/</loc>
+    <lastmod>2015-03-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-fedora-15/</loc>
+    <lastmod>2012-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-debian-6-squeeze/</loc>
+    <lastmod>2012-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/exim/sendonly-mail-server-with-exim-on-ubuntu-11-04-natty/</loc>
+    <lastmod>2013-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-ubuntu-11-04-natty/</loc>
+    <lastmod>2013-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-debian-6-squeeze/</loc>
+    <lastmod>2011-06-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-11-04-natty/</loc>
+    <lastmod>2013-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-unbound-for-local-dns-resolution-on-fedora-15/</loc>
+    <lastmod>2013-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-11-04-natty/</loc>
+    <lastmod>2013-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/manage-projects-with-redmine-on-ubuntu-11-04-natty/</loc>
+    <lastmod>2013-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/manage-projects-with-redmine-on-debian-6-squeeze/</loc>
+    <lastmod>2011-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-phpfastcgi-on-debian-6-squeeze/</loc>
+    <lastmod>2011-06-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-11-04-natty/</loc>
+    <lastmod>2013-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/an-overview-of-ipv6-on-linode/</loc>
+    <lastmod>2017-11-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-11-04-natty/</loc>
+    <lastmod>2012-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/set-up-an-ipv6-tunnel-on-your-linode/</loc>
+    <lastmod>2016-07-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/how-to-upgrade-to-ubuntu-11-04-natty/</loc>
+    <lastmod>2013-05-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/multiple-web-servers-with-proxypass-on-debian-6-squeeze/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-and-modwsgi-on-debian-6-squeeze/</loc>
+    <lastmod>2012-01-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-and-modwsgi-on-fedora-14/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-and-modwsgi-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/stackscripts/</loc>
+    <lastmod>2014-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/discussion-forums-with-phpbb-on-debian-6-squeeze/</loc>
+    <lastmod>2011-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/discussion-forums-with-phpbb-on-fedora-14/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modwsgi-on-fedora-14/</loc>
+    <lastmod>2013-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/ikiwiki-on-debian-6-squeeze/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/ikiwiki-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/ikiwiki-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-content-with-markdown-and-mango-on-debian-6-squeeze/</loc>
+    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-content-with-markdown-and-mango-on-fedora-14/</loc>
+    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-content-with-markdown-and-mango-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/manage-development-with-the-mantis-bug-tracker-on-centos-5/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/manage-development-with-the-mantis-bug-tracker-on-fedora-14/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/</loc>
+    <lastmod>2011-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-a-debian-6-squeeze-vps-with-ispconfig/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-a-fedora-14-vps-with-ispconfig/</loc>
+    <lastmod>2013-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-system-logs-with-logwatch-on-fedora-14/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitoring-servers-with-munin-on-debian-6-squeeze/</loc>
+    <lastmod>2011-11-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/oracle/oracle-10g-express-edition-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2014-08-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/redis-on-debian-6-squeeze/</loc>
+    <lastmod>2013-07-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-apache-on-debian-6-squeeze/</loc>
+    <lastmod>2013-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/ssl-certificates-with-apache-2-on-fedora-14/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/secure-communications-with-openvpn-on-debian-6-squeeze/</loc>
+    <lastmod>2013-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/sinatra-framework-and-nginx-on-fedora-14/</loc>
+    <lastmod>2013-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/twiki-on-centos-5/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/twiki-on-debian-6-squeeze/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/twiki-on-fedora-14/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/use-public-key-authentication-with-ssh/</loc>
+    <lastmod>2017-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/using-mysql-relational-databases-on-arch-linux/</loc>
+    <lastmod>2014-01-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-and-mod-wsgi-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-openfire-on-debian-6-squeeze/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-2-web-server-on-debian-6-squeeze/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/ikiwiki-on-arch-linux/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-debian-6-squeeze/</loc>
+    <lastmod>2013-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-fedora-14/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/oracle/oracle-10g-express-edition-on-debian-6-squeeze/</loc>
+    <lastmod>2014-08-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/use-couchdb-for-document-based-data-storage-on-debian-6-squeeze/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-fedora-14/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-debian-6-squeeze/</loc>
+    <lastmod>2011-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/websites-with-nginx-on-debian-6-squeeze/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/debian-6-squeeze/</loc>
+    <lastmod>2013-03-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/apache-tomcat-on-debian-6-squeeze/</loc>
+    <lastmod>2011-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-and-modwsgi-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/basic-postfix-email-gateway-on-debian-6-squeeze/</loc>
+    <lastmod>2013-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modwsgi-on-debian-6-squeeze/</loc>
+    <lastmod>2011-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-debian-6-squeeze/</loc>
+    <lastmod>2011-05-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-apache-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/webpy-on-debian-6-squeeze/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/zimbra/email-and-calendars-with-zimbra-6-on-debian-6-squeeze/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-content-with-markdown-and-mango-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/exim/sendonly-mail-server-with-exim-on-debian-6-squeeze/</loc>
+    <lastmod>2011-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/twiki-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/twiki-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-unbound-for-local-dns-resolution-on-debian-6-squeeze/</loc>
+    <lastmod>2011-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/websites-with-nginx-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/how-to-upgrade-to-debian-6-squeeze/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-arch-linux/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-phpfastcgi-on-arch-linux/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-unbound-for-local-dns-resolution-on-fedora-14/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/websites-with-nginx-on-arch-linux/</loc>
+    <lastmod>2014-03-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/ikiwiki-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/phpfox/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/twiki-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-debian-6-squeeze/</loc>
+    <lastmod>2014-01-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/piwik-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-fedora-14/</loc>
+    <lastmod>2013-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/webpy-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/sinatra-framework-and-nginx-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/using-mysql-relational-databases-on-gentoo/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-phpfastcgi-on-fedora-14/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-fedora-14/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/webpy-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/piwik-on-fedora-13/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-arch-linux/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-14/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-2-web-server-on-fedora-14/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/apache-tomcat-on-fedora-14/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/apache-tomcat-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-fedora-14/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/websites-with-nginx-on-fedora-14/</loc>
+    <lastmod>2014-03-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-2-web-server-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/piwik-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/redis-on-fedora-14/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-nginx-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/exim/sendonly-mail-server-with-exim-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/use-couchdb-for-document-based-data-storage-on-fedora-14/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-fedora-14/</loc>
+    <lastmod>2013-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-fedora-14/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/nagios-server-monitoring/</loc>
+    <lastmod>2011-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/manipulate-lists-with-sort-and-uniq/</loc>
+    <lastmod>2011-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/use-killall-and-kill-to-stop-processes/</loc>
+    <lastmod>2017-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-14/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-services-with-nagios-on-gentoo-linux/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-centos-5/</loc>
+    <lastmod>2011-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-13/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/basic-postfix-email-gateway-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/basic-postfix-email-gateway-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/enable-ssl-for-https-configuration-on-nginx/</loc>
+    <lastmod>2014-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/redis-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modwsgi-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/</loc>
+    <lastmod>2016-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-a-fedora-13-vps-with-ispconfig/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-system-logs-with-logwatch-on-fedora-13/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/view-the-beginning-of-text-files-with-head/</loc>
+    <lastmod>2011-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/how-to-upgrade-to-ubuntu-10-10-maverick/</loc>
+    <lastmod>2013-05-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-dig-to-perform-manual-dns-queries/</loc>
+    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance/</loc>
+    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/oscommerce-on-fedora-13/</loc>
+    <lastmod>2013-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-10-10-maverick/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/create-file-system-links-with-ln/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/logs/use-logrotate-to-manage-log-files/</loc>
+    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/build-database-clusters-with-mongodb/</loc>
+    <lastmod>2017-02-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/discussion-forums-with-phpbb-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/power-team-collaboration-with-egroupware-on-fedora-13/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/ikiwiki-on-fedora-13/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-fedora-13/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-system-logs-with-logwatch-on-debian-5-lenny/</loc>
+    <lastmod>2011-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/logwatch-log-monitoring/</loc>
+    <lastmod>2011-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/confluence-on-centos-5/</loc>
+    <lastmod>2011-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/confluence-on-fedora-13/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-fedora-13/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-unbound-for-local-dns-resolution-on-fedora-13/</loc>
+    <lastmod>2013-07-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2013-07-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/confluence-on-debian-5-lenny/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/confluence-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/confluence-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2011-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/use-the-date-command-in-linux/</loc>
+    <lastmod>2017-08-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/social-networking-with-phpfox-on-debian-5-lenny/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/create-an-aggregate-blog-using-planet-venus-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/create-an-aggregate-blog-using-planet-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-openfire-on-centos-5/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/planet-feed-aggregator/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/redis-on-centos-5/</loc>
+    <lastmod>2013-07-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/redis-on-fedora-13/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/redis-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-fedora-13/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-apache-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-06-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/firewalls/control-network-traffic-with-iptables/</loc>
+    <lastmod>2017-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-apache-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-nginx-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2014-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/redis-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/how-to-install-and-configure-wordpress/</loc>
+    <lastmod>2015-10-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-centos-5/</loc>
+    <lastmod>2013-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/redis-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/apache-tomcat-on-fedora-12/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/apache-tomcat-on-fedora-13/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/apache-tomcat-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/apache-tomcat-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-on-arch/</loc>
+    <lastmod>2014-06-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-centos-7/</loc>
+    <lastmod>2015-04-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/run-a-custom-compiled-kernel-with-pvgrub/</loc>
+    <lastmod>2014-06-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-arch-linux/</loc>
+    <lastmod>2012-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed/</loc>
+    <lastmod>2017-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/modify-file-permissions-with-chmod/</loc>
+    <lastmod>2011-07-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/how-to-grep-for-text-in-files/</loc>
+    <lastmod>2011-05-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-fedora-13/</loc>
+    <lastmod>2011-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/</loc>
+    <lastmod>2010-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/basic-postfix-email-gateway-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/git-based-development-networks-with-girocco-on-debian-5-lenny/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lemp/lemp-server-on-debian-5-lenny/</loc>
+    <lastmod>2013-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-courier-and-mysql-on-fedora-13/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-2-web-server-on-fedora-13/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-fedora-13/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/fedora-13/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-phpfastcgi-on-fedora-13/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-fedora-13/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/use-couchdb-for-document-based-data-storage-on-fedora-13/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-13/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-fedora-13/</loc>
+    <lastmod>2011-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-fedora-14/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/cakephp-on-debian-5-lenny/</loc>
+    <lastmod>2014-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-courier-and-mysql-on-fedora-12/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-fedora-13/</loc>
+    <lastmod>2011-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/websites-with-nginx-on-fedora-13/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitoring-servers-with-munin-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-an-ubuntu-10-04-lucid-vps-with-ispconfig/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modwsgi-on-centos-5/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modwsgi-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitoring-resource-utilization-with-cacti-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modwsgi-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/</loc>
+    <lastmod>2017-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/question-and-answer-communities-with-osqa-on-debian-5-lenny/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/citadel/email-with-citadel-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/oracle/oracle-10g-express-edition-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2014-08-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/oracle/oracle-10g-express-edition-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2014-08-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/discussion-forums-with-fluxbb/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/discussion-forums-with-vanilla-forums/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/zimbra/email-and-calendars-with-zimbra-6-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-web-content-with-flatpress/</loc>
+    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/exim/sendonly-mail-server-with-exim-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/track-bugs-and-manage-development-with-bug-genie/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/track-bugs-and-manage-development-with-flyspray/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/</loc>
+    <lastmod>2016-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/upgrading/how-to-upgrade-to-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/manage-projects-with-redmine-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2011-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/ubuntu-10-04-lucid/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/</loc>
+    <lastmod>2014-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/</loc>
+    <lastmod>2016-05-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/zimbra/email-and-calendars-with-zimbra-6-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/manage-distributed-version-control-with-mercurial/</loc>
+    <lastmod>2011-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2013-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitor-services-with-nagios-on-debian-5-lenny/</loc>
+    <lastmod>2011-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/</loc>
+    <lastmod>2013-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/synchronize-files-with-unison/</loc>
+    <lastmod>2017-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/back-up-your-mysql-databases/</loc>
+    <lastmod>2013-09-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-a-debian-5-lenny-vps-with-ispconfig/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/dokuwiki-engine/</loc>
+    <lastmod>2017-07-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-web-content-with-phpfusion/</loc>
+    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/webalizer-on-centos-5/</loc>
+    <lastmod>2011-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/webpy-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/manage-cpan-modules-with-cpan-minus/</loc>
+    <lastmod>2011-11-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/create-an-aggregate-blog-using-planet-on-debian-5-lenny/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/discussion-forums-with-phpbb-on-centos-5/</loc>
+    <lastmod>2011-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/</loc>
+    <lastmod>2014-01-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/twiki/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/advanced-irssi-usage/</loc>
+    <lastmod>2013-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/using-irssi-for-internet-relay-chat/</loc>
+    <lastmod>2015-01-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-centos-5/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-debian-5-lenny/</loc>
+    <lastmod>2011-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/ikiwiki-on-fedora-12/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/ikiwiki-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-12/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-centos-5/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/discussion-forums-with-mybb/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/install-a-simple-machines-forum-on-your-website/</loc>
+    <lastmod>2015-02-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-phpfastcgi-on-fedora-12/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-fedora-12/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-fedora-12/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/</loc>
+    <lastmod>2010-03-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/</loc>
+    <lastmod>2010-03-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/</loc>
+    <lastmod>2010-03-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/</loc>
+    <lastmod>2010-03-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/</loc>
+    <lastmod>2010-03-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/ssl-certificates-with-apache-2-on-centos/</loc>
+    <lastmod>2014-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/ssl-certificates-with-apache-2-on-fedora-12/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/secure-communications-with-openvpn-on-centos-6/</loc>
+    <lastmod>2013-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/websites-with-nginx-on-centos-5/</loc>
+    <lastmod>2014-03-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache-tips-and-tricks/apache-configuration-structure/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache-tips-and-tricks/managing-resources-with-apache-modalias/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/secure-communications-with-openvpn-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/websites-with-nginx-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/websites-with-nginx-on-fedora-12/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/piwik-on-centos-5/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/use-couchdb-for-document-based-data-storage-on-centos-5/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/mailman/</loc>
+    <lastmod>2010-02-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/use-couchdb-for-document-based-data-storage-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/oscommerce-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modpython-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/magento-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/access-futon-over-ssh-using-putty-on-windows/</loc>
+    <lastmod>2017-07-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/</loc>
+    <lastmod>2011-07-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-fedora-12/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modpython-on-centos-5/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/power-team-collaboration-with-egroupware-on-centos-5/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-centos-5/</loc>
+    <lastmod>2014-01-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-fedora-12/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-debian-5-lenny/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/power-team-collaboration-with-egroupware-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/clients/retrieve-email-using-getmail/</loc>
+    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/catalyst-and-modperl/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-web-content-with-plone-on-debian-5-lenny/</loc>
+    <lastmod>2011-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/manage-mysql-with-phpmyadmin-on-debian-5-lenny/</loc>
+    <lastmod>2014-01-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/oracle/oracle-10g-express-edition-on-debian-5-lenny/</loc>
+    <lastmod>2014-08-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/oracle/securely-administer-oracle-xe-with-an-ssh-tunnel/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/webalizer-on-debian-5-lenny/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/power-team-collaboration-with-egroupware-on-debian-5-lenny/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-web-content-with-joomla/</loc>
+    <lastmod>2011-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/use-unbound-for-local-dns-resolution-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/oscommerce-on-debian-5-lenny/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/how-to-configure-nginx/</loc>
+    <lastmod>2016-02-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/ecommerce/magento-on-debian-5-lenny/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/manage-distributed-source-branches-with-bazaar/</loc>
+    <lastmod>2011-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/monitoring-resource-utilization-with-cacti-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/deploy-smalltalk-applications-with-seaside/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/clients/using-fetchmail-to-retrieve-email/</loc>
+    <lastmod>2013-09-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/</loc>
+    <lastmod>2013-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu/</loc>
+    <lastmod>2014-04-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/piwik-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/piwik-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-debian-5-lenny/</loc>
+    <lastmod>2014-01-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/exim/</loc>
+    <lastmod>2009-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/exim/sendonly-mail-server-with-exim-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/exim/sendonly-mail-server-with-exim-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-centos-5/</loc>
+    <lastmod>2011-07-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/manage-source-code-versions-with-subversion/</loc>
+    <lastmod>2011-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/schedule-tasks-with-cron/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/</loc>
+    <lastmod>2009-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-phpfastcgi-on-centos-5/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/nginx/nginx-and-phpfastcgi-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/linux-system-administration-basics/</loc>
+    <lastmod>2016-10-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-2-web-server-on-fedora-12/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/analytics/piwik-on-debian-5-lenny/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-centos-5/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/social-networking/social-networking-with-elgg-on-debian-5-lenny/</loc>
+    <lastmod>2013-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-access-control/</loc>
+    <lastmod>2015-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/</loc>
+    <lastmod>2017-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/manage-projects-with-redmine-on-debian-5-lenny/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/manage-projects-with-redmine-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/project-management/</loc>
+    <lastmod>2009-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora/</loc>
+    <lastmod>2016-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/create-a-self-signed-certificate-on-debian-and-ubuntu/</loc>
+    <lastmod>2016-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate/</loc>
+    <lastmod>2011-06-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/linode-beginners-guide/</loc>
+    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/obtaining-a-commercial-ssl-certificate/</loc>
+    <lastmod>2016-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/using-openssls-subjectaltname-with-multiple-site-domains/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/file-transfer/transfer-files-with-cyberduck-on-mac-os-x/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/file-transfer/transfer-files-with-filezilla-on-ubuntu-9-10-desktop/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/citadel/email-with-citadel-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/citadel/email-with-citadel-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/citadel/email-with-citadel-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2012-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/</loc>
+    <lastmod>2017-02-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/troubleshooting/troubleshooting-common-apache-issues/</loc>
+    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-2-web-server-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-10-karmic/</loc>
+    <lastmod>2011-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/ssh/using-sshfs-on-linux/</loc>
+    <lastmod>2017-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-centos-5/</loc>
+    <lastmod>2011-07-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/installing-prosody-xmpp-server-on-debian-5-lenny/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-8-04-hardy/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/</loc>
+    <lastmod>2017-02-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-debian-5-lenny/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/forums/discussion-forums-with-phpbb-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/wikis/install-mediawiki-on-ubuntu-1604/</loc>
+    <lastmod>2017-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/managing-web-content-with-drupal-7/</loc>
+    <lastmod>2014-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-fedora-11/</loc>
+    <lastmod>2011-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-fedora-12/</loc>
+    <lastmod>2011-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/apache-tomcat-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-8-04-hardy/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/ssh/ssh-connections-using-putty-on-windows/</loc>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/instant-messaging-services-with-openfire-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/zimbra/email-and-calendars-with-zimbra-6-on-ubuntu-8-04-hardy/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/backups/using-rdiff-backup-with-sshfs/</loc>
+    <lastmod>2017-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/zimbra/email-and-calendars-with-zimbra-6-on-centos-5/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/centos-5/</loc>
+    <lastmod>2013-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/fedora-12/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/ubuntu-8-04-hardy/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/zimbra/</loc>
+    <lastmod>2009-09-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/email-with-postfix-courier-and-mysql-on-debian-5-lenny/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modpython-on-debian-5-lenny/</loc>
+    <lastmod>2013-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/</loc>
+    <lastmod>2009-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-debian-5-lenny/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/</loc>
+    <lastmod>2014-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/introduction-to-rsync/</loc>
+    <lastmod>2017-09-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/debian-5-lenny/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/how-to-configure-git/</loc>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/</loc>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/introduction-to-linux-concepts/</loc>
+    <lastmod>2013-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/linux-users-and-groups/</loc>
+    <lastmod>2017-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/recovering-from-a-system-compromise/</loc>
+    <lastmod>2013-07-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/ssl-certificates-with-apache-2-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-nginx-on-centos-5/</loc>
+    <lastmod>2011-07-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode/</loc>
+    <lastmod>2014-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/</loc>
+    <lastmod>2011-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-centos-5/</loc>
+    <lastmod>2014-01-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-fedora-12/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-ubuntu-8-04-hardy/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/use-mysql-relational-databases-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/firewalls/configure-a-firewall-with-arno-iptables-in-debian-5-lenny/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lighttpd/lighttpd-web-server-on-debian-5-lenny/</loc>
+    <lastmod>2011-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/troubleshooting/troubleshooting-memory-and-networking-issues/</loc>
+    <lastmod>2013-11-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/using-the-linode-shell-lish/</loc>
+    <lastmod>2016-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/ssh/using-the-terminal/</loc>
+    <lastmod>2017-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/dns-records-an-introduction/</loc>
+    <lastmod>2017-11-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-2-web-server-on-centos-5/</loc>
+    <lastmod>2013-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/apache-2-web-server-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/manage-web-content-with-movable-type/</loc>
+    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache-tips-and-tricks/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/citadel/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/dns-manager-overview/</loc>
+    <lastmod>2017-05-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/file-transfer/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/apache/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lighttpd/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-debian-5-lenny/</loc>
+    <lastmod>2012-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-ubuntu-8-04-lts-hardy/</loc>
+    <lastmod>2011-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/web-servers/lamp/lamp-server-on-ubuntu-9-04-jaunty/</loc>
+    <lastmod>2011-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/linux-package-management/</loc>
+    <lastmod>2017-02-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/postfix/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/custom-kernels-distros/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/monitoring/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/frameworks/</loc>
+    <lastmod>2009-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/backups/</loc>
+    <lastmod>2013-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/big-data/</loc>
+    <lastmod>2017-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/configuration-management/</loc>
+    <lastmod>2017-11-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/cms/</loc>
+    <lastmod>2017-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/couchdb/</loc>
+    <lastmod>2012-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/containers/create-tag-and-upload-your-own-docker-image/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/dns/</loc>
+    <lastmod>2017-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/disk-images/</loc>
+    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/email/clients/</loc>
+    <lastmod>2016-02-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/firewalls/</loc>
+    <lastmod>2015-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/</loc>
+    <lastmod>2017-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/hadoop/</loc>
+    <lastmod>2017-10-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/loadbalancing/</loc>
+    <lastmod>2017-11-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/uptime/logs/</loc>
+    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/longview/</loc>
+    <lastmod>2013-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/messaging/</loc>
+    <lastmod>2016-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/platform/migrate-to-linode/</loc>
+    <lastmod>2017-09-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mongodb/</loc>
+    <lastmod>2016-12-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/mysql/</loc>
+    <lastmod>2017-08-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/nodejs/</loc>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/oracle/</loc>
+    <lastmod>2014-08-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/postgresql/</loc>
+    <lastmod>2017-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/proxies/</loc>
+    <lastmod>2012-11-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/websites/puppet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/python/</loc>
+    <lastmod>2017-12-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/databases/redis/</loc>
+    <lastmod>2017-09-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/remote-desktop/</loc>
+    <lastmod>2017-12-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/ror/</loc>
+    <lastmod>2016-03-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/ssh/</loc>
+    <lastmod>2017-12-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/ssl/</loc>
+    <lastmod>2016-08-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/security/security-patches/</loc>
+    <lastmod>2015-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/tools-reference/tools/</loc>
+    <lastmod>2017-09-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/networking/vpn/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/development/version-control/</loc>
+    <lastmod>2017-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linode.com/docs/applications/voip/</loc>
+    <lastmod>2015-11-09T00:00:00+00:00</lastmod>
+  </url>
+  
+</urlset>

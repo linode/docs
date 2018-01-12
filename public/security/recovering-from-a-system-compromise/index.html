@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Recovering from a System Compromise</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Steps to take if your Linode becomes compromised by unauthorized parties.">
+        <meta name="keywords" content="root compromise, Linode troubleshooting, Linode troubleshooting, Linux configuration">
+        
+        <meta property="og:title" content="Recovering from a System Compromise">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/recovering-from-a-system-compromise/">
+        <meta property="og:description" content="Steps to take if your Linode becomes compromised by unauthorized parties.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/recovering-from-a-system-compromise/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Recovering from a System Compromise
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Recovering from a System Compromise</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-07-12T00:00:00Z">Friday, July 12, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2frecovering-from-a-system-compromise%2f&via=linode&text=Recovering%20from%20a%20System%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2frecovering-from-a-system-compromise%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2frecovering-from-a-system-compromise%2f&t=Recovering%20from%20a%20System%20Compromise" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/recovering-from-a-system-compromise.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/recovering-from-a-system-compromise.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Sometimes, your system gets compromised. Whether it was because of a weak user password, a vulnerable system package, or an unpatched web application, sometimes you&rsquo;ve got to put the brakes on your server and see what you can salvage. Unfortunately, after a hack, it&rsquo;s virtually impossible to determine the full scope of an attacker&rsquo;s reach into a compromised system. The server should not be trusted for production use.</p>
+
+<p>This guide offers a few methods to recover from a system compromise:</p>
+
+<ul>
+<li><strong>The Rebuild Button</strong>: Fast, easy, destructive, and 100% secure. It deletes everything so you can start over.</li>
+<li><strong>Copying Data Offsite</strong>: Access your data while your server is offline, and copy what you need before you wipe your Linode.</li>
+<li><strong>Using a Second Linode</strong>: This is the most involved approach, but provides the most seamless transition to your new system.</li>
+</ul>
+
+<p>If you choose to keep your data, you will need to audit all the content on the affected system to prevent the transfer of malicious components to a new system. Please understand that compromised servers have a negative affect on our network resources, and prompt actions must be taken to prevent service interruption.</p>
+
+<h2 id="the-rebuild-button">The Rebuild Button</h2>
+
+<p>This is the easiest option, yet the most destructive. It will wipe all of your data from your Linode and let you start over with a fresh disk.</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com/">Linode Manager</a>.</li>
+<li>Select the <strong>Linodes</strong> tab.</li>
+<li>Select the compromised Linode.</li>
+<li>Select the <strong>Rebuild</strong> tab.</li>
+<li>Choose your new distribution, disk size, swap disk, and root password.</li>
+<li>Click <strong>Rebuild</strong>.</li>
+</ol>
+
+<p>This will delete your current compromised images and deploy fresh disks. All data that was stored on the Linode previously will be unrecoverable, but your system will be free of compromise. At this point, we recommend that you follow the instructions in the <a href="/docs/securing-your-server">Securing Your Server</a> guide to disable root logins via SSH, or to disable password logins, in favor of SSH keys only, for all accounts.</p>
+
+<h2 id="copying-data-offsite">Copying Data Offsite</h2>
+
+<p>If there is data on the compromised Linode that you need to retain, you can use the <a href="/docs/troubleshooting/rescue-and-rebuild">Finnix rescue environment</a> to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our <a href="/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh">SSH disk copy guide</a> explains how to copy your entire disk offsite.</p>
+
+<h2 id="using-a-second-linode">Using a Second Linode</h2>
+
+<p>You can use a second Linode for the most seamless transition to a new system.</p>
+
+<ol>
+<li>Begin by adding a new Linode to your account. See the <a href="/docs/getting-started">Getting Started</a> guide for instructions.</li>
+<li>Set a strong password for <strong>root</strong> and all user accounts, making sure not to reuse any passwords from the compromised system.</li>
+
+<li><p>Upgrade all system packages:</p>
+
+<p>Debian/Ubuntu:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre>
+
+<p>CentOS/Fedora:</p>
+
+<pre><code>yum update
+</code></pre></li>
+
+<li><p>Follow the instructions in the <a href="/docs/securing-your-server">Securing Your Server</a> guide to disable root logins via SSH, or to disable password logins, in favor of SSH keys only, for all accounts.</p></li>
+</ol>
+
+<h3 id="rebuild-your-configuration">Rebuild Your Configuration</h3>
+
+<p>Rebuild your production server&rsquo;s configuration on the new Linode.</p>
+
+<ul>
+<li>Install updated versions of all applications</li>
+<li>Restrict access to all applications appropriately, using firewall software or any other methods deemed appropriate</li>
+<li>Assign new administrative passwords for all web applications</li>
+</ul>
+
+<h3 id="copy-and-audit-your-data">Copy and Audit Your Data</h3>
+
+<p>The next task is to copy your data to the new Linode, and make sure you&rsquo;ve purged all compromised portions. Follow these steps:</p>
+
+<ol>
+<li>Create a temporary directory on the new Linode.</li>
+
+<li><p>Copy any needed user and configuration data from the compromised Linode using <a href="/docs/linux-tools/utilities/rsync">rsync</a> or <code>scp</code>. If you are not familiar with these programs, you can find more information by entering the <code>man rsync</code> or <code>man scp</code> commands.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Do not log in to the new Linode from the compromised Linode. Files should be pulled from the compromised server to your new setup instead.</div>
+</blockquote>
+</li>
+
+<li><p>Audit your data using tools such as <code>rkhunter</code> and <code>clamav</code>. You may wish to use additional malware scanners as well to be certain you aren&rsquo;t retaining tainted files. Examine all system scripts manually for contaminated code, and replace all suspicious executable files with known good copies.</p></li>
+</ol>
+
+<p>Alternately, if you&rsquo;re not comfortable copying anything from the compromised system to your new server prior to auditing the data, you may wish to use the <a href="/docs/troubleshooting/finnix-rescue-mode">Finnix rescue environment</a> to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server.</p>
+
+<h3 id="swap-ip-addresses">Swap IP Addresses</h3>
+
+<p>Next, you&rsquo;ll want to swap IP addresses so the new Linode uses the IP address assigned to the old Linode. Please note that if you configured any network services to use the new Linode&rsquo;s IP address, you will most likely want to modify their configurations now to use the old Linode&rsquo;s IP instead. For instructions, see <a href="/docs/networking/remote-access/#swapping-ip-addresses">Swapping IP Addresses</a>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>To swap IP addresses, both Linodes must be located in the same data center.</div>
+</blockquote>
+
+
+<p>Alternately, you may wish to <a href="/docs/websites/hosting-a-website/#add-dns-records">update your DNS entries</a> to point to the new Linode&rsquo;s IP address instead. Please be aware that DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.</p>
+
+<h3 id="preserving-data-for-forensics-and-linode-cancellation">Preserving Data for Forensics and Linode Cancellation</h3>
+
+<p>You may wish to download a complete copy of the old Linode&rsquo;s disk(s) for forensic analysis. To do this, follow the instructions in our <a href="/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh">SSH disk copy guide</a>. Even if you don&rsquo;t need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.</p>
+
+<p>When you no longer need the old Linode&rsquo;s disks, you should <a href="/docs/platform/billing-and-payments/#removing-services">remove the Linode</a>. Your account will be issued a pro-rated credit for that Linode&rsquo;s charges in the current billing period.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/troubleshooting/troubleshooting-memory-and-networking-issues/">Troubleshooting Memory and Networking Issues</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#the-rebuild-button">The Rebuild Button</a></li>
+<li><a href="#copying-data-offsite">Copying Data Offsite</a></li>
+<li><a href="#using-a-second-linode">Using a Second Linode</a>
+<ul>
+<li><a href="#rebuild-your-configuration">Rebuild Your Configuration</a></li>
+<li><a href="#copy-and-audit-your-data">Copy and Audit Your Data</a></li>
+<li><a href="#swap-ip-addresses">Swap IP Addresses</a></li>
+<li><a href="#preserving-data-for-forensics-and-linode-cancellation">Preserving Data for Forensics and Linode Cancellation</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

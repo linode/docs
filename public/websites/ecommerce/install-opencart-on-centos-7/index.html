@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install OpenCart on CentOS 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This tutorial will guide you through basic installation and set-up of popular ecommerce platform OpenCart on CentOS 7.">
+        <meta name="keywords" content="opencart, ecommerce, commerce, store, centos">
+        
+        <meta property="og:title" content="How to Install OpenCart on CentOS 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/ecommerce/install-opencart-on-centos-7/">
+        <meta property="og:description" content="This tutorial will guide you through basic installation and set-up of popular ecommerce platform OpenCart on CentOS 7.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/ecommerce/install-opencart-on-centos-7/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/ecommerce/">e-Commerce</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install OpenCart on CentOS 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install OpenCart on CentOS 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-08-21T00:00:00Z">Monday, August 21, 2017</time> by Jonathan Chun</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2finstall-opencart-on-centos-7%2f&via=linode&text=How%20to%20Install%20OpenCart%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2finstall-opencart-on-centos-7%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2finstall-opencart-on-centos-7%2f&t=How%20to%20Install%20OpenCart%20on%20CentOS%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/ecommerce/install-opencart-on-centos-7.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/ecommerce/install-opencart-on-centos-7.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<h2 id="what-is-opencart">What is OpenCart?</h2>
+
+<p><a href="https://www.opencart.com/">OpenCart</a> is free open source ecommerce platform for online merchants. OpenCart provides a professional and reliable foundation from which to build a successful online store. This foundation appeals to a wide variety of users; ranging from seasoned web developers looking for a user-friendly interface to use, to shop owners just launching their business online for the first time. OpenCart has an extensive amount of features that gives you a strong hold over the customization of your store. With OpenCart&rsquo;s tools, you can help your online shop live up to its fullest potential.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>You should set up <a href="/docs/web-servers/lamp/lamp-on-centos-7">LAMP on CentOS 7</a>.</p></li>
+
+<li><p>Install the Extra Packages for Enterprise Linux (EPEL) repository.
+    sudo yum install epel-release</p></li>
+
+<li><p>Make sure your server packages are up to date.
+    sudo yum update</p></li>
+
+<li><p>Install the unzip utility.
+    sudo yum install unzip</p></li>
+</ol>
+
+<h2 id="php-setup">PHP Setup</h2>
+
+<p>Make sure that you have the following PHP extensions/modules installed (They should be installed by default on almost all PHP installations):
+- Curl
+- Zip
+- Zlib
+- GD Library
+- Mcrypt
+- Mbstrings
+- Xml</p>
+
+<p>You can install them by running the following commands:</p>
+
+<pre><code>sudo yum install php-mcrypt curl zlib php-gd php-mbstring php-xml php-mysql
+</code></pre>
+
+<h2 id="create-a-database-and-user">Create a Database and User</h2>
+
+<p>You will need to make sure you have a MySQL database and a database user set up for OpenCart. To create a database and a database user, please complete the following instructions:</p>
+
+<ol>
+<li><p>Login to MySQL/MariaDB:</p>
+
+<pre><code>mysql -u root -p
+</code></pre>
+
+<p>Enter your MySQL/MariaDB root password when prompted. You should now see a MySQL prompt similar to</p>
+
+<pre><code>MariaDB [(none)]&gt;
+</code></pre></li>
+
+<li><p>Create a new database and user with permissions to use it for OpenCart:</p>
+
+<pre><code>create database opencart;
+grant all on opencart.* to 'ocuser' identified by 'yourpassword';
+flush privileges;
+</code></pre>
+
+<p>In the above example, <code>opencart</code> is the name of the database, <code>ocuser</code> the user, and <code>yourpassword</code> a strong password.</p></li>
+
+<li><p>Exit MySQL/MariaDB.</p>
+
+<pre><code>quit
+</code></pre></li>
+</ol>
+
+<h2 id="install-opencart">Install OpenCart</h2>
+
+<h3 id="download-opencart-and-configure-permissions">Download OpenCart and configure permissions</h3>
+
+<p>Issue the following commands to download and unpack OpenCart into your web root directory:</p>
+
+<pre><code>cd /var/www/html/example.com/public_html/
+curl -OL https://github.com/opencart/opencart/releases/download/2.3.0.2/2.3.0.2-compiled.zip
+unzip 2.3.0.2-compiled.zip 'upload/*'
+cp upload/config-dist.php upload/config.php
+cp upload/admin/config-dist.php upload/admin/config.php
+sudo chown -R apache:apache upload
+shopt -s dotglob
+mv upload/* .
+rm -rf upload
+</code></pre>
+
+<p>In the above example, replace <code>/var/www/html/example.com/public_html/</code> with your virtual host&rsquo;s web root and <code>2.3.0.2-compiled.zip</code> with the file name of the latest OpenCart release.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can find the latest version of OpenCart from their <a href="https://www.opencart.com/?route=cms/download">Download Page</a>.</div>
+</blockquote>
+
+
+<p>Next, run the following commands to make sure these directories are writable.</p>
+
+<pre><code>chmod 0755 system/storage/cache/
+chmod 0755 system/storage/logs/
+chmod 0755 system/storage/download/
+chmod 0755 system/storage/upload/
+chmod 0755 system/storage/modification/
+chmod 0755 image/
+chmod 0755 image/cache/
+chmod 0755 image/catalog/
+chmod 0755 config.php
+chmod 0755 admin/config.php
+</code></pre>
+
+<h3 id="run-the-opencart-installer">Run the OpenCart Installer</h3>
+
+<p>Visit your website in your browser. You should be redirected to the OpenCart Installer in a page that looks like this:</p>
+
+<p><a href="/docs/assets/opencart-1.png"><img src="/docs/assets/opencart-1-scaled.png" alt="OpenCart Installer Page 1." /></a></p>
+
+<p>Press <strong>CONTINUE</strong> and you will see the <em>Pre-Installation</em> page.</p>
+
+<p><a href="/docs/assets/opencart-2.png"><img src="/docs/assets/opencart-2-scaled.png" alt="OpenCart Installer Page 2." /></a></p>
+
+<p>Make sure that you see the green checkmark for every section before proceeding. If you see any red marks, please go back and make sure all of the instructions in this guide were followed properly. Once you&rsquo;ve confirmed that every section has a green checkmark, press the <strong>CONTINUE</strong> button to see the OpenCart configuration page:</p>
+
+<p><a href="/docs/assets/opencart-3.png"><img src="/docs/assets/opencart-3-scaled.png" alt="OpenCart Installer Page 3." /></a></p>
+
+<p>Here, select the <strong>MySQLi</strong> driver and fill out the form with the relevant information from the <a href="#create-a-database-and-user">Create a Database and User</a> section of this guide. You also need to select a username and password for the default administrator account for this OpenCart installation.</p>
+
+<p>Finally, press the <strong>CONTINUE</strong> button and you should now see the <em><strong>Installation complete</strong></em> screen. You will also see a warning box telling you to remove your installation directory. We can do this by going back to your web root directory and running:</p>
+
+<pre><code>rm -rf install
+</code></pre>
+
+<p>Once you&rsquo;ve done that, the installation is complete. Browse to</p>
+
+<pre><code>http://example.com/admin
+</code></pre>
+
+<p>In the above example, <code>example.com</code> is your domain name.</p>
+
+<p>You can now login using the administrator account details you entered previously.</p>
+
+<h2 id="recommended-next-steps">Recommended Next Steps</h2>
+
+<p>Now that you have your OpenCart installation up and running, there are a few more steps that we recommend. Because of the security-sensitive nature of ecommerce websites, you will want to make sure your system is secure.</p>
+
+<ol>
+<li><p>Make sure you follow our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide.</p></li>
+
+<li><p>Secure your website with SSL/TLS. Learn to <a href="/docs/security/ssl/ssl-apache2-centos">Install a SSL certificate with Apache on CentOS 7</a>. Once you&rsquo;ve installed a certificate, enable <strong>Use SSL</strong> by following the <a href="http://docs.opencart.com/administration/ssl/">Opencart Documentation on SSL</a>.</p></li>
+
+<li><p>Follow the <a href="http://docs.opencart.com/administration/security/">Basic Security Practices</a> from the OpenCart documentation.</p></li>
+
+<li><p>Install <a href="https://github.com/vqmod/vqmod">vQmod</a> if you wish to use 3rd party extensions.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.opencart.com">OpenCart Website</a></li>
+
+<li><a href="http://docs.opencart.com/">OpenCart Documentation</a></li>
+
+<li><a href="http://forum.opencart.com/">OpenCart Community Forums</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/ecommerce/opencart-on-centos-6/">OpenCart on CentOS 6</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/ecommerce/opencart-on-fedora-15/">OpenCart on Fedora 15 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/ecommerce/opencart-on-debian-6-squeeze/">OpenCart on Debian 6 (Squeeze) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/websites-with-nginx-on-centos-5/">Websites with Nginx on CentOS 5 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/ecommerce/oscommerce-on-ubuntu-9-10-karmic/">osCommerce on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-opencart">What is OpenCart?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#php-setup">PHP Setup</a></li>
+<li><a href="#create-a-database-and-user">Create a Database and User</a></li>
+<li><a href="#install-opencart">Install OpenCart</a>
+<ul>
+<li><a href="#download-opencart-and-configure-permissions">Download OpenCart and configure permissions</a></li>
+<li><a href="#run-the-opencart-installer">Run the OpenCart Installer</a></li>
+</ul></li>
+<li><a href="#recommended-next-steps">Recommended Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

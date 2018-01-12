@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Java Development with WildFly on CentOS 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Set up and configure WildFly as your Java Application Server to develop, test, and run, Java applications">
+        <meta name="keywords" content="java, jboss, jboss as, wildfly, apache, mysql, mariaDB">
+        
+        <meta property="og:title" content="Java Development with WildFly on CentOS 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/java-development-wildfly-centos-7/">
+        <meta property="og:description" content="Set up and configure WildFly as your Java Application Server to develop, test, and run, Java applications">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/java-development-wildfly-centos-7/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  Java Development with WildFly on CentOS 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Java Development with WildFly on CentOS 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-09-18T00:00:00Z">Friday, September 18, 2015</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/ashraffouad">Ashraf Fouad
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fjava-development-wildfly-centos-7%2f&via=linode&text=Java%20Development%20with%20WildFly%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fjava-development-wildfly-centos-7%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fjava-development-wildfly-centos-7%2f&t=Java%20Development%20with%20WildFly%20on%20CentOS%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/java-development-wildfly-centos-7.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/java-development-wildfly-centos-7.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>JBoss AS (Renamed to <a href="http://wildfly.org/">WildFly</a>) has been used for many years as one of the best known performing &amp; free community Java Application Server. The attention even increased when Red Hat started providing commercial support to its enterprise version <a href="http://www.redhat.com/en/technologies/jboss-middleware/application-platform">JBoss EAP</a> with support to on-premises, virtual, or cloud. Red Hat also provides commercial support for Red Hat Enterprise Linux &amp; building huge ecosystem of multiple products to serve its clients.</p>
+
+<p>Many software companies working with Java technology are targeting the stack of WildFly on CentOS so it supports clients with limited budget, and also supports JBoss EAP on Redhat Enterprise Linux for customers looking for commercial support, so they ensure their software meets various customer segments.</p>
+
+<p>This article has been introduced to show one of the most common architecture in Java application hosting stack, it consists of:</p>
+
+<ol>
+<li>CentOS 7: As Operating System.</li>
+<li>MySQL 5.6.24 Community Server: As RDBMS.</li>
+<li>WildFly 8.2 Final: As Java Application Server.</li>
+<li>Apache HTTP 2.4.6: As HTTP Server for serving static content &amp; using mod_jk 1.2.40 for directing calls to WildFly (Apache as reverse proxy).</li>
+</ol>
+
+<p>After full installation of above stack it was consuming around 650 MB of RAM with a very small sample application, so maybe you can consider Linode plan 1 GB for small application &amp; larger plan based on your application.</p>
+
+<h3 id="target-audience">Target Audience</h3>
+
+<ul>
+<li>Developers building development server for their project.</li>
+<li>Application Server Administrator who would like to start switching to WildFly &amp; need some guidance in their standalone setup.</li>
+</ul>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ul>
+<li><p>Please follow the steps mentioned in <a href="https://www.linode.com/docs/security/securing-your-server/">Linode: Securing Your Server</a> but skip the section Creating a Firewall as iptables has been replaced in CentOS 7 with <a href="https://fedoraproject.org/wiki/FirewallD">firewalld</a>.</p></li>
+
+<li><p>Start &amp; enable Firewalld</p>
+
+<pre><code>sudo systemctl start firewalld
+sudo systemctl enable firewalld
+</code></pre></li>
+
+<li><p>Please follow the steps mentioned in <a href="https://www.linode.com/docs/websites/hosting-a-website">Linode: Hosting a Website</a> sections &ldquo;Installing MySQL&rdquo;, &ldquo;Optimizing MySQL for a Linode 2GB&rdquo;, &ldquo;Creating a Database&rdquo;.</p></li>
+</ul>
+
+<h3 id="oracle-java-8-se-installation">Oracle Java 8 SE installation</h3>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Oracle is producing many updates for Java, so below steps ensures you are getting the latest updated Java version.</div>
+</blockquote>
+
+
+<ol>
+<li><p>In any browser go to <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Oracle Java SE download page</a>.</p></li>
+
+<li><p>Select Java JDK 8 download.</p></li>
+
+<li><p>Accept license agreement.</p></li>
+
+<li><p>Copy the link location of Linux x64 bit as the product &amp; the download with extension tar.gz not the RPM.</p></li>
+
+<li><p>Switch to destination folder:</p>
+
+<pre><code>cd /opt
+</code></pre></li>
+
+<li><p>Download Java, remember to change the URL with the latest you got in step 4:</p>
+
+<pre><code>sudo wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-x64.tar.gz&quot;
+</code></pre></li>
+
+<li><p>Extract archived content, remember exact name will differ based on your version</p>
+
+<pre><code>sudo tar xzf jdk-*.tar.gz
+</code></pre></li>
+
+<li><p>Install Java with Alternatives (I prefer this method as in future you most probably will have multiple versions of Java running on same server, so better use alternative to make sure you know the default version of your OS &amp; be able to change it easily). In the below option for new Linode you will find only 1 option. Be sure to change all instances of <code>jdk1.8.0_45</code> to include the correct version:</p>
+
+<pre><code>cd /opt/jdk1.8.0_45/
+sudo alternatives --install /usr/bin/java java /opt/jdk1.8.0_45/bin/java 2
+sudo alternatives --config java
+</code></pre>
+
+<p>It will output:</p>
+
+<pre><code>There is 1 program that provides 'java'.
+Selection    Command
+  *+ 1           /opt/jdk1.8.0_45/bin/java
+
+Enter to keep the current selection[+], or type selection number: 1
+</code></pre>
+
+<p>Select <code>1</code>.</p></li>
+
+<li><p>Setup <em>javac</em> and <em>jar</em> commands path using alternatives, then check the java version installed. Replace all instances of <code>jdk1.8.0_45</code> with the appropriate version:</p>
+
+<pre><code>sudo alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_45/bin/jar 2
+sudo alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_45/bin/javac 2
+sudo alternatives --set jar /opt/jdk1.8.0_45/bin/jar
+sudo alternatives --set javac /opt/jdk1.8.0_45/bin/javac
+
+java -version
+java version &quot;1.8.0_45&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
+</code></pre></li>
+
+<li><p>Configure environment variables, replacing <code>jdk1.8.0_45</code> with the proper version:</p>
+
+<pre><code>export JAVA_HOME=/opt/jdk1.8.0_45
+export JRE_HOME=/opt/jdk1.8.0_45/jre
+export PATH=$PATH:/opt/jdk1.8.0_45/bin:/opt/jdk1.8.0_45/jre/bin
+</code></pre></li>
+
+<li><p>The above command will work for this session only, but you will need to be added to all system users especially when server reboots, so for the Bourne shell, create a new file called <code>/etc/profile.d/java.sh</code>, replacing <code>jdk1.8.0_45</code> with the appropriate version:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/profile.d/java.sh 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="k">if</span> ! <span class="nb">echo</span> <span class="si">${</span><span class="nv">PATH</span><span class="si">}</span> <span class="p">|</span> grep -q /opt/jdk1.8.0_45/bin <span class="p">;</span> <span class="k">then</span>
+   <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/opt/jdk1.8.0_45/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+<span class="k">fi</span>
+<span class="k">if</span> ! <span class="nb">echo</span> <span class="si">${</span><span class="nv">PATH</span><span class="si">}</span> <span class="p">|</span> grep -q /opt/jdk1.8.0_45/jre/bin <span class="p">;</span> <span class="k">then</span>
+   <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/opt/jdk1.8.0_45/jre/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+<span class="k">fi</span>
+<span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/opt/jdk1.8.0_45
+<span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span>/opt/jdk1.8.0_45/jre
+<span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:/opt/jdk1.8.0_45/lib/tools.jar:/opt/jdk1.8.0_45/jre/lib/rt.jar</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>For the C shell, create a new file called <code>/etc/profile.d/java.csh</code>, replacing <code>jdk1.8.0_51</code> with the appropriate version:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/profile.d/java.csh 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="k">if</span> <span class="o">(</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">path</span><span class="si">}</span><span class="s2">&#34;</span> !~ */opt/jdk1.8.0_45/bin* <span class="o">)</span> <span class="k">then</span>
+   <span class="nb">set</span> <span class="nv">path</span> <span class="o">=</span> <span class="o">(</span> /opt/jdk1.8.0_45/bin <span class="nv">$path</span> <span class="o">)</span>
+endif
+<span class="k">if</span> <span class="o">(</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">path</span><span class="si">}</span><span class="s2">&#34;</span> !~ */opt/jdk1.8.0_45/jre/bin* <span class="o">)</span> <span class="k">then</span>
+   <span class="nb">set</span> <span class="nv">path</span> <span class="o">=</span> <span class="o">(</span> /opt/jdk1.8.0_45/jre/bin <span class="nv">$path</span> <span class="o">)</span>
+endif
+setenv JAVA_HOME /opt/jdk1.8.0_45
+setenv JRE_HOME /opt/jdk1.8.0_45/jre
+setenv CLASSPATH .:/opt/jdk1.8.0_45/lib/tools.jar:/opt/jdk1.8.0_45/jre/lib/rt.jar</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Make sure of the owner and ACL for the profile files by executing the following:</p>
+
+<pre><code>sudo chown root:root /etc/profile.d/java.sh
+sudo chmod 755 /etc/profile.d/java.sh
+sudo chown root:root /etc/profile.d/java.csh
+sudo chmod 755 /etc/profile.d/java.csh
+</code></pre></li>
+
+<li><p>Now Java is available to everyone in system.</p></li>
+</ol>
+
+<h2 id="wildfly-8-2-installation">WildFly 8.2 installation</h2>
+
+<ol>
+<li><p>This script is based on great article &amp; code mentioned in &ldquo;Dmitriy Sukharev. IT Blog&rdquo;, the original article &amp; original script can be found <a href="http://sukharevd.net/wildfly-8-installation.html">here</a> I have done few modification to do the following:</p>
+
+<ol>
+<li><p>Add backup to some important files before modification.</p></li>
+
+<li><p>Added modification to solve warning messages of using JDK 8 with WildFly (Default is JDK 7).</p></li>
+
+<li><p>Added scripts for firewalld to get WildFly working on your Linode instance.</p></li>
+
+<li><p>Enable access from anywhere for admin console (Recommended for development environment only).</p></li>
+
+<li><p>Remove other Linux distros, only CentOS is available for simplicity.</p></li>
+
+<li><p>Add WildFly to automatic start after boot.</p></li>
+
+<li><p>Show progress on screen for some commands.</p></li>
+
+<li><p>Added more comments for someone with basic CentOS &amp; Linux knowledge like myself :)</p></li>
+</ol>
+
+<p>Create wildfly installation file, &amp; execute using root user:</p>
+
+<dl class="file">
+<dt>
+
+
+		/opt/wildfly-install.sh 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">  1</span><span class="lnt">  2</span><span class="lnt">  3</span><span class="lnt">  4</span><span class="lnt">  5</span><span class="lnt">  6</span><span class="lnt">  7</span><span class="lnt">  8</span><span class="lnt">  9</span><span class="lnt"> 10</span><span class="lnt"> 11</span><span class="lnt"> 12</span><span class="lnt"> 13</span><span class="lnt"> 14</span><span class="lnt"> 15</span><span class="lnt"> 16</span><span class="lnt"> 17</span><span class="lnt"> 18</span><span class="lnt"> 19</span><span class="lnt"> 20</span><span class="lnt"> 21</span><span class="lnt"> 22</span><span class="lnt"> 23</span><span class="lnt"> 24</span><span class="lnt"> 25</span><span class="lnt"> 26</span><span class="lnt"> 27</span><span class="lnt"> 28</span><span class="lnt"> 29</span><span class="lnt"> 30</span><span class="lnt"> 31</span><span class="lnt"> 32</span><span class="lnt"> 33</span><span class="lnt"> 34</span><span class="lnt"> 35</span><span class="lnt"> 36</span><span class="lnt"> 37</span><span class="lnt"> 38</span><span class="lnt"> 39</span><span class="lnt"> 40</span><span class="lnt"> 41</span><span class="lnt"> 42</span><span class="lnt"> 43</span><span class="lnt"> 44</span><span class="lnt"> 45</span><span class="lnt"> 46</span><span class="lnt"> 47</span><span class="lnt"> 48</span><span class="lnt"> 49</span><span class="lnt"> 50</span><span class="lnt"> 51</span><span class="lnt"> 52</span><span class="lnt"> 53</span><span class="lnt"> 54</span><span class="lnt"> 55</span><span class="lnt"> 56</span><span class="lnt"> 57</span><span class="lnt"> 58</span><span class="lnt"> 59</span><span class="lnt"> 60</span><span class="lnt"> 61</span><span class="lnt"> 62</span><span class="lnt"> 63</span><span class="lnt"> 64</span><span class="lnt"> 65</span><span class="lnt"> 66</span><span class="lnt"> 67</span><span class="lnt"> 68</span><span class="lnt"> 69</span><span class="lnt"> 70</span><span class="lnt"> 71</span><span class="lnt"> 72</span><span class="lnt"> 73</span><span class="lnt"> 74</span><span class="lnt"> 75</span><span class="lnt"> 76</span><span class="lnt"> 77</span><span class="lnt"> 78</span><span class="lnt"> 79</span><span class="lnt"> 80</span><span class="lnt"> 81</span><span class="lnt"> 82</span><span class="lnt"> 83</span><span class="lnt"> 84</span><span class="lnt"> 85</span><span class="lnt"> 86</span><span class="lnt"> 87</span><span class="lnt"> 88</span><span class="lnt"> 89</span><span class="lnt"> 90</span><span class="lnt"> 91</span><span class="lnt"> 92</span><span class="lnt"> 93</span><span class="lnt"> 94</span><span class="lnt"> 95</span><span class="lnt"> 96</span><span class="lnt"> 97</span><span class="lnt"> 98</span><span class="lnt"> 99</span><span class="lnt">100</span><span class="lnt">101</span><span class="lnt">102</span><span class="lnt">103</span><span class="lnt">104</span><span class="lnt">105</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="c1">#Title : wildfly-install.sh
+</span><span class="c1">#Description : The script to install Wildfly 8.x
+</span><span class="c1">#Original script: http://sukharevd.net/wildfly-8-installation.html
+</span><span class="c1"></span>
+<span class="c1"># This version is the only variable to change when running the script
+</span><span class="c1"></span><span class="nv">WILDFLY_VERSION</span><span class="o">=</span><span class="m">8</span>.2.0.Final
+<span class="nv">WILDFLY_FILENAME</span><span class="o">=</span>wildfly-<span class="nv">$WILDFLY_VERSION</span>
+<span class="nv">WILDFLY_ARCHIVE_NAME</span><span class="o">=</span><span class="nv">$WILDFLY_FILENAME</span>.tar.gz
+<span class="nv">WILDFLY_DOWNLOAD_ADDRESS</span><span class="o">=</span>http://download.jboss.org/wildfly/<span class="nv">$WILDFLY_VERSION</span>/<span class="nv">$WILDFLY_ARCHIVE_NAME</span>
+
+<span class="c1"># Specify the destination location
+</span><span class="c1"></span><span class="nv">INSTALL_DIR</span><span class="o">=</span>/opt
+<span class="nv">WILDFLY_FULL_DIR</span><span class="o">=</span><span class="nv">$INSTALL_DIR</span>/<span class="nv">$WILDFLY_FILENAME</span>
+<span class="nv">WILDFLY_DIR</span><span class="o">=</span><span class="nv">$INSTALL_DIR</span>/wildfly
+
+<span class="nv">WILDFLY_USER</span><span class="o">=</span><span class="s2">&#34;wildfly&#34;</span>
+<span class="nv">WILDFLY_SERVICE</span><span class="o">=</span><span class="s2">&#34;wildfly&#34;</span>
+
+<span class="nv">WILDFLY_STARTUP_TIMEOUT</span><span class="o">=</span><span class="m">240</span>
+<span class="nv">WILDFLY_SHUTDOWN_TIMEOUT</span><span class="o">=</span><span class="m">30</span>
+
+<span class="nv">SCRIPT_DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span> <span class="nb">cd</span> <span class="s2">&#34;</span><span class="k">$(</span> dirname <span class="s2">&#34;</span><span class="si">${</span><span class="nv">BASH_SOURCE</span><span class="p">[0]</span><span class="si">}</span><span class="s2">&#34;</span> <span class="k">)</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span> <span class="k">)</span><span class="s2">&#34;</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="nb">echo</span> <span class="s2">&#34;This script must be run as root.&#34;</span>
+<span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;Downloading: </span><span class="nv">$WILDFLY_DOWNLOAD_ADDRESS</span><span class="s2">...&#34;</span>
+<span class="o">[</span> -e <span class="s2">&#34;</span><span class="nv">$WILDFLY_ARCHIVE_NAME</span><span class="s2">&#34;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">&#39;Wildfly archive already exists.&#39;</span>
+<span class="k">if</span> <span class="o">[</span> ! -e <span class="s2">&#34;</span><span class="nv">$WILDFLY_ARCHIVE_NAME</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+wget <span class="nv">$WILDFLY_DOWNLOAD_ADDRESS</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="nb">echo</span> <span class="s2">&#34;Not possible to download Wildfly.&#34;</span>
+<span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;Cleaning up...&#34;</span>
+rm -f <span class="s2">&#34;</span><span class="nv">$WILDFLY_DIR</span><span class="s2">&#34;</span>
+rm -rf <span class="s2">&#34;</span><span class="nv">$WILDFLY_FULL_DIR</span><span class="s2">&#34;</span>
+rm -rf <span class="s2">&#34;/var/run/</span><span class="nv">$WILDFLY_SERVICE</span><span class="s2">/&#34;</span>
+rm -f <span class="s2">&#34;/etc/init.d/</span><span class="nv">$WILDFLY_SERVICE</span><span class="s2">&#34;</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;Installation...&#34;</span>
+mkdir <span class="nv">$WILDFLY_FULL_DIR</span>
+tar -xzf <span class="nv">$WILDFLY_ARCHIVE_NAME</span> -C <span class="nv">$INSTALL_DIR</span>
+ln -s <span class="nv">$WILDFLY_FULL_DIR</span>/ <span class="nv">$WILDFLY_DIR</span>
+useradd -s /sbin/nologin <span class="nv">$WILDFLY_USER</span>
+chown -R <span class="nv">$WILDFLY_USER</span>:<span class="nv">$WILDFLY_USER</span> <span class="nv">$WILDFLY_DIR</span>
+chown -R <span class="nv">$WILDFLY_USER</span>:<span class="nv">$WILDFLY_USER</span> <span class="nv">$WILDFLY_DIR</span>/
+
+<span class="nb">echo</span> <span class="s2">&#34;Registering Wildfly as service...&#34;</span>
+cp <span class="nv">$WILDFLY_DIR</span>/bin/init.d/wildfly-init-redhat.sh /etc/init.d/<span class="nv">$WILDFLY_SERVICE</span>
+<span class="nv">WILDFLY_SERVICE_CONF</span><span class="o">=</span>/etc/default/wildfly.conf
+
+chmod <span class="m">755</span> /etc/init.d/<span class="nv">$WILDFLY_SERVICE</span>
+
+<span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&#34;</span><span class="nv">$WILDFLY_SERVICE_CONF</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="nb">echo</span> <span class="s2">&#34;Configuring service...&#34;</span>
+<span class="nb">echo</span> <span class="nv">JBOSS_HOME</span><span class="o">=</span><span class="se">\&#34;</span><span class="nv">$WILDFLY_DIR</span><span class="se">\&#34;</span> &gt; <span class="nv">$WILDFLY_SERVICE_CONF</span>
+<span class="nb">echo</span> <span class="nv">JBOSS_USER</span><span class="o">=</span><span class="nv">$WILDFLY_USER</span> &gt;&gt; <span class="nv">$WILDFLY_SERVICE_CONF</span>
+<span class="nb">echo</span> <span class="nv">JBOSS_MODE</span><span class="o">=</span>standalone &gt;&gt; <span class="nv">$WILDFLY_SERVICE_CONF</span>
+<span class="nb">echo</span> <span class="nv">JBOSS_CONFIG</span><span class="o">=</span>standalone.xml &gt;&gt; <span class="nv">$WILDFLY_SERVICE_CONF</span>
+<span class="nb">echo</span> <span class="nv">STARTUP_WAIT</span><span class="o">=</span><span class="nv">$WILDFLY_STARTUP_TIMEOUT</span> &gt;&gt; <span class="nv">$WILDFLY_SERVICE_CONF</span>
+<span class="nb">echo</span> <span class="nv">SHUTDOWN_WAIT</span><span class="o">=</span><span class="nv">$WILDFLY_SHUTDOWN_TIMEOUT</span> &gt;&gt; <span class="nv">$WILDFLY_SERVICE_CONF</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;Configuration backup&#34;</span>
+cp <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/standalone.xml <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/standalone-org.xml
+cp <span class="nv">$WILDFLY_DIR</span>/bin/standalone.conf <span class="nv">$WILDFLY_DIR</span>/bin/standalone-org.conf
+
+<span class="nb">echo</span> <span class="s2">&#34;Configuring application server...&#34;</span>
+sed -i -e <span class="s1">&#39;s,&lt;deployment-scanner path=&#34;deployments&#34; relative-to=&#34;jboss.server.base.dir&#34; scan-interval=&#34;5000&#34;/&gt;,&lt;deployment-scanner path=&#34;deployments&#34; relative-to=&#34;jboss.server.base.dir&#34; scan-interval=&#34;5000&#34; deployment-timeout=&#34;&#39;</span><span class="nv">$WILDFLY_STARTUP_TIMEOUT</span><span class="s1">&#39;&#34;/&gt;,g&#39;</span> <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/standalone.xml
+<span class="c1"># Enable access from any server
+</span><span class="c1"></span>sed -i -e <span class="s1">&#39;s,&lt;inet-address value=&#34;${jboss.bind.address.management:127.0.0.1}&#34;/&gt;,&lt;any-address/&gt;,g&#39;</span> <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/standalone.xml
+sed -i -e <span class="s1">&#39;s,&lt;inet-address value=&#34;${jboss.bind.address:127.0.0.1}&#34;/&gt;,&lt;any-address/&gt;,g&#39;</span> <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/standalone.xml
+
+<span class="c1"># The below line is added to avoid warning when starting WildFly with jdk 8 SE, as the JVM memory parameter changed
+</span><span class="c1"></span>sed -i -e <span class="s1">&#39;s,MaxPermSize,MaxMetaspaceSize,g&#39;</span> <span class="nv">$WILDFLY_DIR</span>/bin/standalone.conf
+
+<span class="nb">echo</span> <span class="s2">&#34;Configuring Firewalld for WildFly ports&#34;</span>
+firewall-cmd --permanent --add-port<span class="o">=</span><span class="m">8080</span>/tcp
+firewall-cmd --permanent --add-port<span class="o">=</span><span class="m">8443</span>/tcp
+firewall-cmd --permanent --add-port<span class="o">=</span><span class="m">9990</span>/tcp
+firewall-cmd --permanent --add-port<span class="o">=</span><span class="m">9993</span>/tcp
+firewall-cmd --reload
+
+<span class="nb">echo</span> <span class="s2">&#34;Backup management user&#34;</span>
+cp <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/mgmt-users.properties <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/mgmt-users-org.properties
+cp <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/application-users.properties <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/application-users-org.properties
+cp <span class="nv">$WILDFLY_DIR</span>/domain/configuration/mgmt-users.properties <span class="nv">$WILDFLY_DIR</span>/domain/configuration/mgmt-users-org.properties
+cp <span class="nv">$WILDFLY_DIR</span>/domain/configuration/application-users.properties <span class="nv">$WILDFLY_DIR</span>/domain/configuration/application-users-org.properties
+chown -R <span class="nv">$WILDFLY_USER</span>:<span class="nv">$WILDFLY_USER</span> <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/mgmt-users-org.properties
+chown -R <span class="nv">$WILDFLY_USER</span>:<span class="nv">$WILDFLY_USER</span> <span class="nv">$WILDFLY_DIR</span>/standalone/configuration/application-users-org.properties
+chown -R <span class="nv">$WILDFLY_USER</span>:<span class="nv">$WILDFLY_USER</span> <span class="nv">$WILDFLY_DIR</span>/domain/configuration/mgmt-users-org.properties
+chown -R <span class="nv">$WILDFLY_USER</span>:<span class="nv">$WILDFLY_USER</span> <span class="nv">$WILDFLY_DIR</span>/domain/configuration/application-users-org.properties
+
+<span class="nb">echo</span> <span class="s2">&#34;Starting Wildfly&#34;</span>
+service <span class="nv">$WILDFLY_SERVICE</span> start
+chkconfig --add wildfly
+chkconfig --level <span class="m">2345</span> wildfly on
+
+<span class="nb">echo</span> <span class="s2">&#34;Done.&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Make the script executable:</p>
+
+<pre><code>sudo chmod +x /opt/wildfly-install.sh
+</code></pre></li>
+
+<li><p>Run the script:</p>
+
+<pre><code>cd /opt
+sudo ./wildfly-install.sh
+</code></pre></li>
+
+<li><p>You will need to add to add management user (Web and/or CLI) to be able to access the management console, this can be simply done by running the command simply run the shell script in <code>/opt/wildfly/bin/add-user.sh</code>:</p>
+
+<ol>
+<li><strong>Select option a for Management user.</strong></li>
+<li><strong>Username:</strong> type_the_username</li>
+<li><strong>Password:</strong> type_the_password</li>
+<li><strong>What groups do you want this user to belong to?:</strong> Leave empty and click Enter</li>
+<li><strong>About to add user &hellip; Is this correct?:</strong> yes</li>
+<li><strong>Is this new user going to be used for one AS process to connect to another AS process:</strong> yes (Just in-case, we need this in the future, i.e. domain setup).</li>
+<li>You will get this message: <strong>To represent the user add the following to the server-identities definition</strong>. This is just to be used in domain installation. Keep it if you needed to switch to domain installation later.**</li>
+</ol>
+
+<p>You should be able to test the wildfly by using the URL <code>http://123.45.67.89:8080</code>, and the WildFly Admin console using the URL <code>http://123.45.67.89:9990/console</code>, replacing <code>123.45.67.89</code> with your Linode&rsquo;s IP address.</p></li>
+
+<li><p>I prefer that you install any sample application (Use your own, or simply get the <a href="https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/">default sample from Tomcat</a> and make sure it is working using the port 8080, as it will be used when testing after adding Apache HTTP. The sample application can be deployed from the WildFly admin console.</p></li>
+</ol>
+
+<h3 id="configure-mysql-driver-in-wildfly-add-datasource">Configure MySQL Driver in WildFly &amp; Add DataSource</h3>
+
+<p>Please Follow these steps to install MySQL driver as &ldquo;module&rdquo; in WildFly</p>
+
+<ol>
+<li><p>Log in as root, and create a folder within WildFly installation for the new module:</p>
+
+<pre><code>su
+mkdir -p /opt/wildfly/modules/com/mysql/main
+</code></pre></li>
+
+<li><p>Download the <a href="http://dev.mysql.com/downloads/connector/j/">jdbc driver of mysql</a> (mysql-connector-java-*-bin.jar) to <code>/opt/wildfly/modules/com/mysql/main</code>.</p></li>
+
+<li><p>Create a file defining the module to the same folder <code>/opt/wildfly/modules/com/mysql/main</code> named <code>module.xml</code> have the following information, replacing the <code>mysql-connector-java-5.1.34-bin.jar</code> with the correct version:</p>
+
+<p><dl class="file">
+<dt>
+
+
+		/opt/wildfly/modules/com/mysql/main/module.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;module</span> <span class="na">xmlns=</span><span class="s">&#34;urn:jboss:module:1.3&#34;</span> <span class="na">name=</span><span class="s">&#34;com.mysql&#34;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;resources&gt;</span>
+       <span class="nt">&lt;resource-root</span> <span class="na">path=</span><span class="s">&#34;mysql-connector-java-5.1.34-bin.jar&#34;</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/resources&gt;</span>
+   <span class="nt">&lt;dependencies&gt;</span>
+       <span class="nt">&lt;module</span> <span class="na">name=</span><span class="s">&#34;javax.api&#34;</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;module</span> <span class="na">name=</span><span class="s">&#34;javax.transaction.api&#34;</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/module&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></p></li>
+
+<li><p>Change ownership for the user wildfly for the files by issuing the command:</p>
+
+<pre><code>chown -R wildfly:wildfly /opt/wildfly/modules
+</code></pre></li>
+
+<li><p>We need to define MySQL driver in <code>/opt/wildfly/standalone/configuration/standalone.xml</code> by adding the following driver definition within the drivers tag, by default you will find only definition for h2:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/opt/wildfly/standalone/configuration/standalone.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;drivers&gt;</span>
+    <span class="nt">&lt;driver</span> <span class="na">name=</span><span class="s">&#34;h2&#34;</span> <span class="na">module=</span><span class="s">&#34;com.h2database.h2&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;xa-datasource-class&gt;</span>org.h2.jdbcx.JdbcDataSource<span class="nt">&lt;/xa-datasource-class&gt;</span>
+    <span class="nt">&lt;/driver&gt;</span>
+    <span class="nt">&lt;driver</span> <span class="na">name=</span><span class="s">&#34;mysqlDriver&#34;</span> <span class="na">module=</span><span class="s">&#34;com.mysql&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;xa-datasource-class&gt;</span>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource<span class="nt">&lt;/xa-datasource-class&gt;</span>
+    <span class="nt">&lt;/driver&gt;</span>
+<span class="nt">&lt;/drivers&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart WildFly so changes take effect:</p>
+
+<pre><code>systemctl restart wildfly
+</code></pre></li>
+
+<li><p>Login to the management console at <code>http://123.45.67.89:9990/console</code>.</p></li>
+
+<li><p>Click <strong>Configuration</strong>, then on the left menu <strong>SubSystems</strong> -&gt; <strong>Connector</strong> -&gt; <strong>DataSources</strong>. In the <strong>DataSources</strong>0 tab, click <strong>Add</strong>.</p></li>
+
+<li><p>For step 1 set:</p>
+
+<ul>
+<li><strong>Name:</strong> MySQLDS</li>
+<li><strong>JNDI Name:</strong> java:/datasource/MySQLDS</li>
+</ul>
+
+<p>Click <strong>Next</strong>.</p></li>
+
+<li><p>In step 2 select the <strong>mysqlDriver</strong> listed and click <strong>Next</strong>.</p></li>
+
+<li><p>In step 3 insert <code>jdbc:mysql://localhost:3066/type_db_name</code> as your <strong>Connection URL</strong>, replacing <code>type_db_name</code> with your database name, and set the username and password to your MySQL username and password. Leave the <strong>Security Domain</strong> blank.</p>
+
+<p>Click <strong>Test Connectivity</strong> and then <strong>Done</strong>.</p></li>
+
+<li><p>Select the MySQLDS Datasource, and click <strong>Enable</strong>.</p></li>
+
+<li><p>From your terminal, exit the root user session:</p>
+
+<pre><code>exit
+</code></pre></li>
+</ol>
+
+<p>WildFly is now connected to MySQL.</p>
+
+<h2 id="apache-http-server-installation">Apache HTTP Server installation</h2>
+
+<ol>
+<li><p>Install Apache:</p>
+
+<pre><code>sudo yum install -y httpd
+</code></pre></li>
+
+<li><p>Start and enable Apache:</p>
+
+<pre><code>sudo systemctl start httpd
+sudo systemctl enable httpd
+</code></pre></li>
+
+<li><p>Add a firewall exception for port 80:</p>
+
+<pre><code>sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --reload
+</code></pre></li>
+
+<li><p>Backup your default Apache configuration:</p>
+
+<pre><code>sudo cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-org.conf
+</code></pre></li>
+</ol>
+
+<p>You can test your installation successfully by opening a browser and typing the server link <code>http://123.45.67.89</code>, replacing the IP address with your own. You should be getting the default provided testing page 123.</p>
+
+<h3 id="configuring-apache-http-as-reverse-proxy-for-wildfly-using-mod-jk">Configuring Apache HTTP as reverse proxy for WildFly using mod_jk</h3>
+
+<p>There are multiple ways for setting Apache HTTP to direct calls to WildFly (mod_jk, mod_proxy, mod_cluster), the decision mainly to select mod_jk was based on <a href="http://www.programering.com/a/MTO3gDMwATg.html">this article</a> that its content is distributed across several sites, you will find detailed pros &amp; cons.</p>
+
+<ol>
+<li><p><code>mod_jk</code> provided by Tomcat needs to be built on the server, thats why you need to install build &amp; make tools to your linode using following command:</p>
+
+<pre><code>sudo yum install httpd-devel gcc gcc-c++ make libtool
+sudo ln -s /usr/bin/apxs /usr/sbin/apxs
+</code></pre></li>
+
+<li><p>Download <code>mod_jk</code> to temporary directory till build using following commands:</p>
+
+<pre><code>cd /tmp
+wget http://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.40-src.tar.gz
+tar -xf tomcat-connectors-1.2.40-src.tar.gz
+cd /tmp/tomcat-connectors-1.2.40-src/native
+./buildconf.sh
+./configure --with-apxs=/usr/sbin/apxs
+make
+</code></pre></li>
+
+<li><p>After successful build the library a file named <code>mod_jk.so</code> should be created in <code>/tmp/tomcat-connectors-1.2.40-src/native/apache-2.0/</code>. Copy the file to Apache http modules:</p>
+
+<pre><code>sudo cp /tmp/tomcat-connectors-1.2.40-src/native/apache-2.0/mod_jk.so /usr/lib64/httpd/modules
+</code></pre></li>
+
+<li><p>We need to configure Apache HTTP server to use this module, we will create worker file for mod_jk, and add its content (Status worker is useful in debugging as well):</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/httpd/conf.d/workers.properties 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">worker</span>.<span class="err">list=jboss1,</span><span class="nb">jkstatus</span>
+worker.jkstatus.type=status
+<span class="err">worker</span>.<span class="err">jboss1</span>.<span class="err">type=</span><span class="nb">ajp13</span>
+worker.jboss1.port=8009
+<span class="c"># The host should be using IP not server name as reported bug</span>
+<span class="c"># https://www.apachelounge.com/viewtopic.php?t=5883</span>
+<span class="err">worker</span>.<span class="err">jboss1</span>.<span class="err">host=127</span>.<span class="err">0</span>.<span class="err">0</span>.<span class="err">1</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Instead of modifying Apache configuration file; better create extra Apache HTTP configuration file that will work as Apache by default has in the file <code>/etc/httpd/conf/httpd.conf</code> the directive <code>IncludeOptional conf.d/*.conf</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/httpd/conf.d/modjk.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c"># To avoid error AH00558: httpd: Could not reliably</span>
+<span class="c"># determine the server&#39;s fully qualified domain name</span>
+<span class="c"># replace 1.2.3.4 with your server IP</span>
+<span class="nb">ServerName</span>    <span class="m">1.2.3.4</span>
+
+<span class="c"># Load mod_jk</span>
+<span class="nb">LoadModule</span>    jk_module modules/mod_jk.so
+<span class="nb">JkWorkersFile</span> <span class="sx">/etc/httpd/conf.d/workers.properties</span>
+<span class="nb">JkLogFile</span>     <span class="sx">/var/log/httpd/mod_jk_log</span>
+
+<span class="c"># To be changed to warn in production, the mount point should match your application sample pathes</span>
+<span class="nb">JkLogLevel</span>    <span class="k">info</span>
+<span class="nb">JKMount</span>       <span class="sx">/sample</span> jboss1
+<span class="nb">JkMount</span>       <span class="sx">/sample/</span>* jboss1
+<span class="nb">JKMount</span>       <span class="sx">/jkstatus</span> jkstatus
+
+<span class="c"># To avoid write access error in mod_jk</span>
+<span class="c"># https://bugzilla.redhat.com/show_bug.cgi?id=912730</span>
+<span class="nb">JKShmFile</span>     <span class="sx">/var/tmp/jk-runtime-status</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Restart Apache:</p>
+
+<pre><code>sudo systemctl restart httpd
+</code></pre></li>
+
+<li><p>Try the URL <code>http://123.45.67.89/jkstatus</code>, repalcing <code>123.45.67.89</code> with your Linode IP. It should display a page for &ldquo;JK Status Manager&rdquo;.</p></li>
+
+<li><p>We need to configure WildFly for accepting calls from Apache HTTP, Open the admin console, and selection the <strong>Configuration</strong> Menu -&gt; <strong>Web</strong> -&gt; <strong>HTTP</strong>. Then click the <strong>View</strong> link beside the <strong>default-server</strong>.</p></li>
+
+<li><p>Select the <strong>AJP Listener</strong> above, and click <strong>Add</strong>.</p>
+
+<ul>
+<li><strong>Name:</strong> default.ajp</li>
+<li><strong>Socket binding:</strong> ajp</li>
+</ul>
+
+<p>Click <strong>Save</strong>, then ensure the <strong>Enabled</strong> attribute is set to <strong>true</strong>.</p></li>
+
+<li><p>Go to your Linode&rsquo;s IP address. It should show Apache normal testing page. To see if the sample application works, go to <code>http://123.45.67.89/sample</code>, replacing <code>123.45.67.89</code> if your Linode IP. It should show sample application deployed in JBoss.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://books.google.com.sa/books?id=rufiBAAAQBAJ">WildFly Administration Guide</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/">Clojure Deployment with Immutant and WildFly on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-on-centos-7/">LAMP on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/use-salt-states-to-configure-a-lamp-stack-on-a-minion/">Use Salt States to Configure a LAMP Stack on a Minion</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/">Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-on-debian-8-jessie/">LAMP on Debian 8 (Jessie)</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#target-audience">Target Audience</a></li>
+</ul></li>
+<li><a href="#before-you-begin">Before You Begin</a>
+<ul>
+<li><a href="#oracle-java-8-se-installation">Oracle Java 8 SE installation</a></li>
+</ul></li>
+<li><a href="#wildfly-8-2-installation">WildFly 8.2 installation</a>
+<ul>
+<li><a href="#configure-mysql-driver-in-wildfly-add-datasource">Configure MySQL Driver in WildFly &amp; Add DataSource</a></li>
+</ul></li>
+<li><a href="#apache-http-server-installation">Apache HTTP Server installation</a>
+<ul>
+<li><a href="#configuring-apache-http-as-reverse-proxy-for-wildfly-using-mod-jk">Configuring Apache HTTP as reverse proxy for WildFly using mod_jk</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

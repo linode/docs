@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Learn How to Install Ansible and Run Playbooks</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="An introduction to configuration management with the Ansible IT automation platform including installation, configuration and playbook set up.">
+        <meta name="keywords" content="ansible, ansible configuration, ansible provisioning, ansible infrastructure, ansible automation, ansible configuration, ansible configuration change management, ansible server automation">
+        
+        <meta property="og:title" content="Learn How to Install Ansible and Run Playbooks">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/">
+        <meta property="og:description" content="An introduction to configuration management with the Ansible IT automation platform including installation, configuration and playbook set up.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/configuration-management/">Configuration Management</a>
+  
+</li>
+
+
+<li>
+  
+  Learn How to Install Ansible and Run Playbooks
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Learn How to Install Ansible and Run Playbooks</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-09-08T00:00:00Z">Tuesday, September 8, 2015</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://twitter.com/jlyman">Joshua Lyman
+    
+    <i class="fa fa-twitter"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2flearn-how-to-install-ansible-and-run-playbooks%2f&via=linode&text=Learn%20How%20to%20Install%20Ansible%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2flearn-how-to-install-ansible-and-run-playbooks%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2flearn-how-to-install-ansible-and-run-playbooks%2f&t=Learn%20How%20to%20Install%20Ansible%20and%20Run%20Playbooks" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg" alt="Ansible" /></p>
+
+<h1 id="getting-started-with-ansible-an-installation-and-configuration-tutorial">Getting started with Ansible: An Installation and Configuration Tutorial</h1>
+
+<p>Consider the monotony of administering a server fleet; keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn&rsquo;t have to be that way.</p>
+
+<p><em><a href="http://www.ansible.com/home">Ansible</a></em> is a helpful tool that allows you to create groups of machines, describe how those machines should be configured or what actions should be taken on them, and issue all of these commands from a central location. It uses SSH, so nothing needs to be installed on the machines you are targeting. Ansible only runs on your main control machine, which can even be your laptop! It is a simple solution to a complicated problem.</p>
+
+<p>This guide will introduce you to the basics of Ansible. By the end of this guide, you&rsquo;ll have the tools needed to turn a brand new Linode into a simple web server (Apache, MySQL, PHP), easily replicable and adjustable.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide. Some systems may require you to run Ansible commands as root. If so, prefix the <code>ansible</code> commands in this guide with <code>sudo</code>.</div>
+</blockquote>
+
+
+<h2 id="installing-ansible">Installing Ansible</h2>
+
+<p>Ansible only needs to be installed on the <em>control machine</em>, or the machine from which you will be running commands. This will likely be your laptop or other computer from which you frequently access your server, or it may be a centralized server in more complicated setups.</p>
+
+<p>Make sure that you have Python 2.x available on the control machine. Ansible is not compatible with Python 3, nor can you use Windows as the control machine. You can <a href="https://github.com/ansible/ansible">build Ansible from source</a>, or install the latest stable packages using the proper command below.</p>
+
+<ul>
+<li><p>Mac OS X:</p>
+
+<p>sudo easy_install pip
+  sudo pip install ansible</p></li>
+
+<li><p>CentOS/Fedora:</p>
+
+<p>sudo yum install ansible</p></li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux.</div>
+</blockquote>
+
+
+<ul>
+<li><p>Ubuntu:</p>
+
+<p>sudo apt-get install software-properties-common
+  sudo apt-add-repository ppa:ansible/ansible
+  sudo apt-get update
+  sudo apt-get install ansible</p></li>
+</ul>
+
+<h2 id="first-steps-to-configuring-ansible">First Steps to Configuring Ansible</h2>
+
+<p>Now that you have Ansible installed, let&rsquo;s test it out on a known server. All Ansible commands are executed via the command line (or batched in scripts), and follow the pattern:</p>
+
+<pre><code>ansible server_or_group -m module_name -a arguments
+</code></pre>
+
+<p>We&rsquo;ll get to groups in just a moment, but for now, let&rsquo;s try to make a simple connection to an existing server you have using the ping module. In place of <code>server_or_group</code>, type the name of a server that you can currently SSH into from your machine using key authentication. If you are using a non-standard SSH port, include that after a colon on the same line (<code>myserver.com:2222</code>).</p>
+
+<p>By default Ansible will use the same username as your current machine&rsquo;s username. If this will not match up, pass the proper username in using the <code>-u username</code> argument.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you don&rsquo;t want to use SSH keys, you can add the <code>--ask-pass</code> switch.</div>
+</blockquote>
+
+
+<p>To try an Ansible command without any additional setup, we&rsquo;ll add a few extra arguments for now. Format a test command like the following:</p>
+
+<pre><code>ansible all -i myserver.com, -m ping
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The extra directives are the <code>all -i</code> and the comma after your server name. This is temporary, and is only there to tell Ansible to try connecting directly to the server without an inventory file, which we&rsquo;ll learn about later.</div>
+</blockquote>
+
+
+<p>If you are successful you should see output similar to the following:</p>
+
+<pre><code>myserver.com | success &gt;&gt; {
+    &quot;changed&quot;: false,
+    &quot;ping&quot;: &quot;pong&quot;
+}
+</code></pre>
+
+<p>You were just able to get a valid connection to your server via Ansible!</p>
+
+<h2 id="using-ansible-s-inventory-file">Using Ansible&rsquo;s Inventory File</h2>
+
+<p>You executed an Ansible command against one client, but it would be cumbersome to have to type the host&rsquo;s address every single time, and what if you had several servers you wanted to apply the same configuration to? This is where Ansible&rsquo;s <a href="http://docs.ansible.com/ansible/intro_inventory.html">inventory file</a> comes into play.</p>
+
+<ol>
+<li><p>By default, the inventory file is expected to be <code>/etc/ansible/hosts</code>. Create that path and file if it does not already exist.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you are running OS X, you may want to create your own Ansible directory elsewhere and then set the path in an Ansible configuration file:</p>
+
+<p>mkdir ~/Path/To/ansible
+touch ~/Path/To/ansible/hosts
+touch ~/.ansible.cfg</p>
+
+<p>Open <code>~/.ansible.cfg</code> file and add the following lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+        &gt; ~/.ansible.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[defaults]</span>
+<span class="na">inventory</span> <span class="o">=</span> <span class="s">~/Path/To/ansible/hosts</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</blockquote>
+</li>
+
+<li><p>Add an entry to your hosts file, pointing to a server that you connected to in the previous section.  You can include multiple servers in this file, using either domains or IP addresses, and can even group them:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/Path/To/ansible/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">mainserver.com</span>
+<span class="na">myserver.net:2222</span>
+
+<span class="k">[mailservers]</span>
+<span class="na">mail1.mainserver.com</span>
+<span class="na">mail2.mainserver.com</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Use the <code>all</code> directive to ping all servers in your <code>hosts</code> file via Ansible:</p>
+
+<pre><code>ansible all -m ping
+</code></pre></li>
+</ol>
+
+<p>You should receive the same output as before, for each server in your <code>hosts</code> file. Note that instead of <code>all</code>, you could have substituted <code>mailservers</code> from the example file, and it would run just against those servers.</p>
+
+<p>You can heavily customize the Inventory file, so <a href="http://docs.ansible.com/ansible/intro_inventory.html">check out the docs for it</a> if you&rsquo;re interested.</p>
+
+<h2 id="ansible-configuration-via-playbooks">Ansible Configuration via Playbooks</h2>
+
+<p><em>Playbooks</em> in Ansible define a series of actions to run, and address particular sets of servers. It&rsquo;s important to note that, unlike some other configuration tools, a playbook does not describe a state of the machine, with Ansible determining all the changes that need to be made on its own. However, playbooks should be designed to be idempotent, meaning that they can be run more than once without negative effects. For example, a playbook might have a task that sets up a configuration file for a server and injects a few variables. The playbook should be written such that Ansible can take the template configuration file, compare it to the actual file, and create/update it only if necessary. Luckily, many Ansible modules take care of the heavy lifting for that.</p>
+
+<p>You can write playbooks to perform initial server configurations, add users and directories, ensure certain software packages are installed or uninstalled, move files, etc. A playbook can also run a few commands on one set of machines, switch to a different set to run different commands, and then switch back to the original or a different set of machines. It is procedural, and tasks are run in order, top to bottom.</p>
+
+<p>A playbook is a YAML file, and typically follows this structure:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Sample Playbook YAML file 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span>-<span class="w"> </span>hosts<span class="p">:</span><span class="w"> </span><span class="p">[</span>target<span class="w"> </span>hosts<span class="p">]</span><span class="w">
+</span><span class="w">  </span>remote_user<span class="p">:</span><span class="w"> </span><span class="p">[</span>yourname<span class="p">]</span><span class="w">
+</span><span class="w">  </span>tasks<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span><span class="p">[</span>task<span class="w"> </span><span class="m">1</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span><span class="p">[</span>task<span class="w"> </span><span class="m">2</span><span class="p">]</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>For example, the following playbook would log in to all servers in the <code>marketingservers</code> group and ensure Apache was started.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Sample service check playbook 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span>-<span class="w"> </span>hosts<span class="p">:</span><span class="w"> </span><span class="p">[</span>marketingservers<span class="p">]</span><span class="w">
+</span><span class="w">  </span>remote_user<span class="p">:</span><span class="w"> </span>webadmin<span class="w">
+</span><span class="w">  </span>tasks<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>Ensure<span class="w"> </span>the<span class="w"> </span>Apache<span class="w"> </span>daemon<span class="w"> </span>has<span class="w"> </span>started<span class="w">
+</span><span class="w">      </span>service<span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=started<span class="w">
+</span><span class="w">      </span>become<span class="p">:</span><span class="w"> </span>yes<span class="w">
+</span><span class="w">      </span>become_method<span class="p">:</span><span class="w"> </span>sudo</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In the playbook above is an example of a task:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Playbook task 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">tasks<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>Ensure<span class="w"> </span>the<span class="w"> </span>Apache<span class="w"> </span>daemon<span class="w"> </span>has<span class="w"> </span>started<span class="w">
+</span><span class="w">    </span>service<span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=started<span class="w">
+</span><span class="w">    </span>become<span class="p">:</span><span class="w"> </span>yes<span class="w">
+</span><span class="w">    </span>become_method<span class="p">:</span><span class="w"> </span>sudo</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Every task should have a name, which is logged and can help you track progress. Following the name line is the module that will be run (in this case, the <a href="http://docs.ansible.com/ansible/service_module.html">service module</a>), and the other attributes provide more options, in this case instructing Ansible to use <code>sudo</code> privileges (which we will configure later).</p>
+
+<h3 id="running-playbooks">Running Playbooks</h3>
+
+<p>Executing a playbook is even easier than running ad-hoc commands like we did earlier. Assuming you are in the same directory as a playbook file, you run the following command:</p>
+
+<pre><code>ansible-playbook myplaybook.yml
+</code></pre>
+
+<p>If you want to see what hosts this playbook will affect without having to open up the YAML file, you can run:</p>
+
+<pre><code>ansible-playbook myplaybook.yml --list-hosts
+</code></pre>
+
+<h3 id="types-of-tasks-you-can-run">Types of Tasks You Can Run</h3>
+
+<p>Ansible ships with a large collection of modules that you can run as tasks or via ad-hoc commands. To see a listing of all available modules, run:</p>
+
+<pre><code>ansible-doc -l
+</code></pre>
+
+<p>A few common core modules you might be interested in learning first include:</p>
+
+<ul>
+<li><a href="http://docs.ansible.com/ansible/command_module.html">command - Executes a command on a remote node</a></li>
+<li><a href="http://docs.ansible.com/ansible/script_module.html">script - Runs a local script on a remote node after transferring it</a></li>
+<li><a href="http://docs.ansible.com/ansible/shell_module.html">shell - Execute commands in nodes</a></li>
+<li><a href="http://docs.ansible.com/ansible/mysql_db_module.html">mysql_db - Add or remove MySQL databases from a remote host</a></li>
+<li><a href="http://docs.ansible.com/ansible/mysql_user_module.html">mysql_user - Adds or removes a user from a MySQL database</a></li>
+<li><a href="http://docs.ansible.com/ansible/postgresql_db_module.html">postgresql_db - Add or remove PostgreSQL databases from a remote host</a></li>
+<li><a href="http://docs.ansible.com/ansible/postgresql_user_module.html">postgresql_user - Adds or removes a users (roles) from a PostgreSQL database</a></li>
+<li><a href="http://docs.ansible.com/ansible/fetch_module.html">fetch - Fetches a file from remote nodes</a></li>
+<li><a href="http://docs.ansible.com/ansible/template_module.html">template - Templates a file out to a remote server</a></li>
+<li><a href="http://docs.ansible.com/ansible/yum_module.html">yum - Manages packages with the yum package manager</a></li>
+<li><a href="http://docs.ansible.com/ansible/apt_module.html">apt - Manages apt-packages</a></li>
+<li><a href="http://docs.ansible.com/ansible/git_module.html">git - Deploy software (or files) from git checkouts</a></li>
+<li><a href="http://docs.ansible.com/ansible/service_module.html">service - Manage services</a></li>
+</ul>
+
+<h2 id="basic-web-server-setup-via-ansible-playbooks">Basic Web Server Setup via Ansible Playbooks</h2>
+
+<p>As an example, we&rsquo;ll use Ansible to turn a freshly created Linode server into a web server, configured with Apache, MySQL, and PHP, ready to serve up dynamic sites and configured with the proper users and permissions. For brevity we won&rsquo;t handle all of the features and configuration that might normally be involved, but will cover enough to get you started.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>The following playbooks are for learning purposes only, and will NOT result in a hardened or secure server. Use them to learn from, but do not use them for production instances!</div>
+</blockquote>
+
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<ul>
+<li><p>This example will assume a brand new Ubuntu 14.04 LTS server, without any additional configuration already done to the box. The very first order of business will be to add in our public encryption keys so that we can connect without supplying passwords.</p></li>
+
+<li><p>Because Ansible playbooks are idempotent and can be run repeatedly without error, the <code>user</code> task checks that a user exists and that the password on file (which the system stores hashed) matches the hash you are supplying. Therefore you cannot (and should not) just put in a plaintext password, you must pre-hash it.</p></li>
+
+<li><p>Create a password hash for Ansible to use when communicating with the servers. An easy method is to use Python&rsquo;s PassLib library, which can be installed with <code>sudo pip install passlib</code>.</p></li>
+</ul>
+
+<p>Once installed, run the following command, replacing <code>plaintextpassword</code> with your actual password:</p>
+
+<pre><code>  python -c &quot;from passlib.hash import sha512_crypt; print sha512_crypt.encrypt('plaintextpassword')&quot;
+</code></pre>
+
+<h3 id="create-the-system-user">Create the System User</h3>
+
+<ol>
+<li><p>Add your new server&rsquo;s IP address to your Ansible <code>hosts</code> file so that we can address it. Remove any previous entries you may have added in the test sections above. Give the new server a group name to make it easier to refer to later. In our example the group name is <code>linode</code>.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/ansible/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[linode]</span>
+<span class="na">123.123.123.123</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Write a playbook that creates a new normal user, adds in our public key, and adds the new user to the <code>sudoers</code> file.</p>
+
+<p>We&rsquo;re introducing a new aspect of Ansible here: <em>variables</em>. Note the <code>vars:</code> entry and the <code>NORMAL_USER_NAME</code> line. You&rsquo;ll notice that it is reused twice in the file so that we only have to change it once. Replace <code>yourusername</code> with your choosen username, <code>localusername</code> in the path for the <code>authorized_key</code>, and the password hash.</p>
+
+<dl class="file">
+<dt>
+
+
+		initialize_basic_user.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span>-<span class="w"> </span>hosts<span class="p">:</span><span class="w"> </span>linode<span class="w">
+</span><span class="w">  </span>remote_user<span class="p">:</span><span class="w"> </span>root<span class="w">
+</span><span class="w">  </span>vars<span class="p">:</span><span class="w">
+</span><span class="w">    </span>NORMAL_USER_NAME<span class="p">:</span><span class="w"> </span><span class="s1">&#39;yourusername&#39;</span><span class="w">
+</span><span class="w">  </span>tasks<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span><span class="s2">&#34;Create a secondary, non-root user&#34;</span><span class="w">
+</span><span class="w">      </span>user<span class="p">:</span><span class="w"> </span>name={{<span class="w"> </span>NORMAL_USER_NAME<span class="w"> </span>}}<span class="w">
+</span><span class="w">            </span>password=<span class="s1">&#39;$6$rounds=656000$W.dSlhtSxE2HdSc1$4WbCFM6zQV1hTQYTCqmcddnKrSXIZ9LfWRAjJBervBFG.rH953lTa7rMeZNrN65zPzEONntMtYt9Bw74PvAei0&#39;</span><span class="w">
+</span><span class="w">            </span>shell=/bin/bash<span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>Add<span class="w"> </span>remote<span class="w"> </span>authorized<span class="w"> </span>key<span class="w"> </span>to<span class="w"> </span>allow<span class="w"> </span>future<span class="w"> </span>passwordless<span class="w"> </span>logins<span class="w">
+</span><span class="w">      </span>authorized_key<span class="p">:</span><span class="w"> </span>user={{<span class="w"> </span>NORMAL_USER_NAME<span class="w"> </span>}}<span class="w"> </span>key=<span class="s2">&#34;{{ lookup(&#39;file&#39;, &#39;/Users/localusername/.ssh/id_rsa.pub&#39;) }}&#34;</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>Add<span class="w"> </span>normal<span class="w"> </span>user<span class="w"> </span>to<span class="w"> </span>sudoers<span class="w">
+</span><span class="w">      </span>lineinfile<span class="p">:</span><span class="w"> </span>dest=/etc/sudoers<span class="w">
+</span><span class="w">                  </span>regexp=<span class="s2">&#34;{{ NORMAL_USER_NAME }} ALL&#34;</span><span class="w">
+</span><span class="w">                  </span>line=<span class="s2">&#34;{{ NORMAL_USER_NAME }} ALL=(ALL) ALL&#34;</span><span class="w">
+</span><span class="w">                  </span>state=present</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Save the playbook file as <code>initialize_basic_user.yml</code> and run the playbook with the following command. Note how we specify the use of a particular user (<code>-u root</code>) and force Ansible to prompt us for the password (<code>-ask-pass</code>) since we don&rsquo;t have key authentication set up yet:</p>
+
+<pre><code>ansible-playbook --ask-pass -u root initialize_basic_user.yml
+</code></pre></li>
+</ol>
+
+<p>You should see output from Ansible that reports that the three tasks all completed successfully with a status of &ldquo;changed.&rdquo; We can now work with new playbooks using our normal user account and keys.</p>
+
+<h3 id="configure-the-base-system">Configure the Base System</h3>
+
+<p>Let&rsquo;s take care of some common server setup tasks, such as setting the timezone, updating the hosts file, and updating packages. Here&rsquo;s a playbook covering those steps:</p>
+
+<dl class="file">
+<dt>
+
+
+		common_server_setup.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span>-<span class="w"> </span>hosts<span class="p">:</span><span class="w"> </span>linode<span class="w">
+</span><span class="w">  </span>remote_user<span class="p">:</span><span class="w"> </span>yourusername<span class="w">
+</span><span class="w">  </span>become<span class="p">:</span><span class="w"> </span>yes<span class="w">
+</span><span class="w">  </span>become_method<span class="p">:</span><span class="w"> </span>sudo<span class="w">
+</span><span class="w">  </span>vars<span class="p">:</span><span class="w">
+</span><span class="w">    </span>LOCAL_HOSTNAME<span class="p">:</span><span class="w"> </span><span class="s1">&#39;web01&#39;</span><span class="w">
+</span><span class="w">    </span>LOCAL_FQDN_NAME<span class="p">:</span><span class="w"> </span><span class="s1">&#39;www.example.com&#39;</span><span class="w">
+</span><span class="w">  </span>tasks<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>Set<span class="w"> </span>the<span class="w"> </span>timezone<span class="w"> </span>for<span class="w"> </span>the<span class="w"> </span>server<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>UTC<span class="w">
+</span><span class="w">      </span>command<span class="p">:</span><span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/usr/share/zoneinfo/UTC<span class="w"> </span>/etc/localtime<span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>Set<span class="w"> </span>up<span class="w"> </span>a<span class="w"> </span>unique<span class="w"> </span>hostname<span class="w">
+</span><span class="w">      </span>hostname<span class="p">:</span><span class="w"> </span>name={{<span class="w"> </span>LOCAL_HOSTNAME<span class="w"> </span>}}<span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>Add<span class="w"> </span>the<span class="w"> </span>server<span class="s1">&#39;s domain to the hosts file
+</span><span class="s1">      lineinfile: dest=/etc/hosts
+</span><span class="s1">                  regexp=&#39;</span>.*{{<span class="w"> </span>item<span class="w"> </span>}}$<span class="s1">&#39;
+</span><span class="s1">                  line=&#34;{{ hostvars[item].ansible_default_ipv4.address }} {{ LOCAL_FQDN_NAME }} {{ LOCAL_HOSTNAME }}&#34;
+</span><span class="s1">                  state=present
+</span><span class="s1">      when: hostvars[item].ansible_default_ipv4.address is defined
+</span><span class="s1">      with_items: &#34;{{ groups[&#39;</span>linode&#39;<span class="p">]</span><span class="w"> </span>}}&#34;<span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>Update<span class="w"> </span>packages<span class="w">
+</span><span class="w">      </span>apt<span class="p">:</span><span class="w"> </span>update_cache=yes<span class="w"> </span>upgrade=dist</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Run this playbook:</p>
+
+<pre><code>ansible-playbook common_server_setup.yml --ask-become-pass
+</code></pre>
+
+<p>As you run this playbook you will again see the steps come across as &ldquo;changed.&rdquo; Updating packages may take a few minutes, so don&rsquo;t fret if it doesn&rsquo;t return straight away.</p>
+
+<h3 id="install-the-stack">Install the Stack</h3>
+
+<p>Finally, let&rsquo;s get a very basic server set up with Apache and PHP, and a test MySQL database to use.</p>
+
+<ol>
+<li><p>The following playbook downloads the appropriate packages, turns on the Apache and MySQL services, and creates a basic database and user.</p>
+
+<dl class="file">
+<dt>
+
+
+		setup_webserver.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span>-<span class="w"> </span>hosts<span class="p">:</span><span class="w"> </span>linode<span class="w">
+</span><span class="w">  </span>remote_user<span class="p">:</span><span class="w"> </span>yourusername<span class="w">
+</span><span class="w">  </span>become<span class="p">:</span><span class="w"> </span>yes<span class="w">
+</span><span class="w">  </span>become_method<span class="p">:</span><span class="w"> </span>sudo<span class="w">
+</span><span class="w">  </span>tasks<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span><span class="s2">&#34;Install Apache, MySQL, and PHP5&#34;</span><span class="w">
+</span><span class="w">      </span>apt<span class="p">:</span><span class="w"> </span>name={{<span class="w"> </span>item<span class="w"> </span>}}<span class="w"> </span>state=present<span class="w">
+</span><span class="w">      </span>with_items<span class="p">:</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>apache<span class="m">2</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>mysql-server<span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>python-mysqldb<span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>php<span class="m">5</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>php-pear<span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>php<span class="m">5</span>-mysql<span class="w">
+</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span><span class="s2">&#34;Turn on Apache and MySQL and set them to run on boot&#34;</span><span class="w">
+</span><span class="w">      </span>service<span class="p">:</span><span class="w"> </span>name={{<span class="w"> </span>item<span class="w"> </span>}}<span class="w"> </span>state=started<span class="w"> </span>enabled=yes<span class="w">
+</span><span class="w">      </span>with_items<span class="p">:</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>apache<span class="m">2</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>mysql<span class="w">
+</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>Create<span class="w"> </span>a<span class="w"> </span>test<span class="w"> </span>database<span class="w">
+</span><span class="w">      </span>mysql_db<span class="p">:</span><span class="w"> </span>name=testDb<span class="w">
+</span><span class="w">                </span>state=present<span class="w">
+</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>Create<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>user<span class="w"> </span>for<span class="w"> </span>connections<span class="w">
+</span><span class="w">      </span>mysql_user<span class="p">:</span><span class="w"> </span>name=webapp<span class="w">
+</span><span class="w">                  </span>password=mypassword<span class="w">
+</span><span class="w">                  </span>priv=*.*<span class="p">:</span>ALL<span class="w"> </span>state=present</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Run the playbook from your control machine with the following command:</p>
+
+<pre><code>ansible-playbook setup_webserver.yml --ask-become-pass
+</code></pre>
+
+<p>When this playbook finishes, visit your Linode&rsquo;s IP address or FQDN to see the default Ubuntu Apache index page.</p></li>
+
+<li><p>Log in via SSH and check to see that the <code>testDb</code> has indeed been created:</p>
+
+<pre><code> mysql -u root -p
+ show databases;
+</code></pre>
+
+<p>You can even create a sample PHP page and place it in <code>/var/www/html</code> to test that PHP is active on the server. Ansible has done as we instructed it to, installing the appropriate packages and setting things up as we want.</p></li>
+</ol>
+
+<h2 id="exploring-ansible-further">Exploring Ansible Further</h2>
+
+<p>This is just the start of learning Ansible, and as you continue to learn and explore you will find it a truly powerful and flexible tool. Take a look at some of the example Ansible playbooks provided by the company itself.</p>
+
+<p>Below are a few topics to explore that become important as you create playbooks of any complexity, and that you will see frequently in others&rsquo; playbooks.</p>
+
+<ul>
+<li><a href="https://github.com/ansible/ansible-examples">Ansible Example Playbooks (GitHub)</a>
+
+<ul>
+<li><a href="https://github.com/ansible/ansible-examples/tree/master/wordpress-nginx">WordPress + nginx + PHP-FPM</a></li>
+<li><a href="https://github.com/ansible/ansible-examples/tree/master/lamp_simple">Simple LAMP Stack</a></li>
+<li><a href="https://github.com/ansible/ansible-examples/tree/master/mongodb">Sharded, production-ready MongoDB cluster</a></li>
+</ul></li>
+<li><a href="http://docs.ansible.com/ansible/index.html">Ansible Documentation</a></li>
+<li>Important Next Topics:
+
+<ul>
+<li><a href="http://docs.ansible.com/ansible/playbooks_intro.html#hosts-and-users">Users, and Switching Users</a> and <a href="http://docs.ansible.com/ansible/become.html">Privilege Escalation</a></li>
+<li><a href="http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change">Handlers: Running Operations On Change</a></li>
+<li><a href="http://docs.ansible.com/ansible/playbooks_roles.html">Roles</a></li>
+<li><a href="http://docs.ansible.com/ansible/playbooks_variables.html">Variables</a></li>
+<li><a href="http://docs.ansible.com/ansible/playbooks_best_practices.html">Playbook Best Practices</a></li>
+</ul></li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.ansible.com/home">Ansible Home Page</a></li>
+
+<li><a href="http://docs.ansible.com/ansible/index.html">Ansible Documentation</a></li>
+
+<li><a href="https://github.com/ansible/ansible-examples">Ansible Example Playbooks (GitHub)</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#getting-started-with-ansible-an-installation-and-configuration-tutorial">Getting started with Ansible: An Installation and Configuration Tutorial</a>
+<ul>
+<li><a href="#installing-ansible">Installing Ansible</a></li>
+<li><a href="#first-steps-to-configuring-ansible">First Steps to Configuring Ansible</a></li>
+<li><a href="#using-ansible-s-inventory-file">Using Ansible&rsquo;s Inventory File</a></li>
+<li><a href="#ansible-configuration-via-playbooks">Ansible Configuration via Playbooks</a>
+<ul>
+<li><a href="#running-playbooks">Running Playbooks</a></li>
+<li><a href="#types-of-tasks-you-can-run">Types of Tasks You Can Run</a></li>
+</ul></li>
+<li><a href="#basic-web-server-setup-via-ansible-playbooks">Basic Web Server Setup via Ansible Playbooks</a>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#create-the-system-user">Create the System User</a></li>
+<li><a href="#configure-the-base-system">Configure the Base System</a></li>
+<li><a href="#install-the-stack">Install the Stack</a></li>
+</ul></li>
+<li><a href="#exploring-ansible-further">Exploring Ansible Further</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

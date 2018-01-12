@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Website Guides</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="These guides cover simple web page hosting and many popular web applications.">
+        <meta name="keywords" content="web applications, wikis, CMS, content management systems, WordPress, Drupal, magento, plone, piwiki, webmin">
+        
+        <meta property="og:title" content="Website Guides">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://linode.com/docs/websites/">
+        <meta property="og:description" content="These guides cover simple web page hosting and many popular web applications.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section some-space-bottom">
+  <div class="container">
+    <div class="row pad-xs">
+      <div class="col-sm-8">
+        <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  Website Guides
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+      </div>
+      <div class="col-sm-4 library-breadcrumb-search">
+        <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+      </div>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1">
+      <h1 class="text-center">Website Guides</h1>
+      <p class="text-center lead">These guides cover simple web page hosting and many popular web applications.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="neutral">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/websites/host-a-website-with-high-availability/">Host a Website with High Availability</a></h4>
+            <p>How to configure a highly available web server stack</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/websites/introduction-to-high-availability/">Introduction to High Availability</a></h4>
+            <p>Introduction to high availability concepts</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/websites/hosting-a-website/">Hosting a Website</a></h4>
+            <p>Our guide to hosting a website on your Linode.</p>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="primary some-space">
+  <div class="container">
+    
+    
+    
+    <div class="row-content">
+      <div class="col-sm-12">
+        <h2 class="h3"><a href="https://linode.com/docs/websites/varnish/">Varnish Web Cache</a></h2>
+        <ul class="list-group article-list">
+          
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/">Use Varnish &amp; nginx to Serve WordPress over SSL &amp; HTTP on Debian 8</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/varnish/getting-started-with-varnish-cache/">Getting Started with Varnish Cache</a></h3></li>
+          
+        </ul>
+      </div>
+    </div>
+    
+    
+    
+    
+    <div class="row-content">
+      <div class="col-sm-12">
+        <h2 class="h3"><a href="https://linode.com/docs/websites/forums/">Forums</a></h2>
+        <ul class="list-group article-list">
+          
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/forums/install-and-run-askbot-on-ubuntu-16-04/">How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/forums/install-a-simple-machines-forum-on-your-website/">How to Install a Simple Machines Discussion Forum (SMF) on Linux</a></h3></li>
+          
+        </ul>
+      </div>
+    </div>
+    
+    
+    
+    
+    <div class="row-content">
+      <div class="col-sm-12">
+        <h2 class="h3"><a href="https://linode.com/docs/websites/wikis/">Wikis</a></h2>
+        <ul class="list-group article-list">
+          
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/wikis/dokuwiki-engine/">DokuWiki Engine</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/wikis/install-mediawiki-on-ubuntu-1604/">Install MediaWiki on Ubuntu 16.04</a></h3></li>
+          
+        </ul>
+      </div>
+    </div>
+    
+    
+    
+    
+    <div class="row-content">
+      <div class="col-sm-12">
+        <h2 class="h3"><a href="https://linode.com/docs/websites/ecommerce/">e-Commerce</a></h2>
+        <ul class="list-group article-list">
+          
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/">How to Install PrestaShop on Ubuntu 16.04</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/ecommerce/install-opencart-on-centos-7/">How to Install OpenCart on CentOS 7</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/ecommerce/install-magento-on-centos-7/">Install Magento on CentOS 7</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/ecommerce/install-magento-on-ubuntu-16-04/">Install Magento on Ubuntu 16.04</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/ecommerce/opencart-on-centos-6/">OpenCart on CentOS 6</a></h3></li>
+          
+        </ul>
+      </div>
+    </div>
+    
+    
+    
+    
+    <div class="row-content">
+      <div class="col-sm-12">
+        <h2 class="h3"><a href="https://linode.com/docs/websites/cms/">Control Panels &amp; Content Management Systems</a></h2>
+        <ul class="list-group article-list">
+          
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/">Set Up Apache to Run Multiple WordPress Sites on a Single Linode</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/add-a-custom-search-to-your-site-with-solr/">Add a Custom Search to your Site with Solr</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/how-to-install-ghost-cms-on-ubuntu-16-04/">How to Install Ghost CMS on Ubuntu 16.04</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/">Install Odoo 10 on Ubuntu 16.04</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/install-wordpress-on-ubuntu-16-04/">Install WordPress on Ubuntu 16.04</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/install-cpanel-on-centos/">Install cPanel on CentOS</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu/">Update and Secure Drupal 8 on Ubuntu or Debian</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/">Install WordPress Using WP-CLI on Ubuntu 14.04</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/install-and-configure-drupal-8/">Install and Configure Drupal 8</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04/">Install Odoo 9 ERP on Ubuntu 14.04</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/turbocharge-wordpress-search-with-solr/">Turbocharge Your WordPress Search Using Solr</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/high-availability-wordpress/">High Availability WordPress Hosting</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/">Themes, Modules, &amp; Backups with Drupal Drush on Debian 7</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/drush-drupal/">Installing &amp; Using Drupal Drush on Debian 7</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/cms-overview/">Content Management Systems: an Overview</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/how-to-install-a-webmin-control-panel-and-modules/">How to Install a Webmin Control Panel and Modules on Ubuntu 16.04</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/use-cpanel-to-manage-domains-and-databases/">Use cPanel to Manage Domains and Databases</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/set-up-dns-services-on-cpanel/">Set Up DNS Services on cPanel</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/install-a-commercial-ssl-certificate-using-cpanel/">Install a Commercial SSL Certificate Using cPanel</a></h3></li>
+          
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="https://linode.com/docs/websites/cms/managing-web-content-with-drupal-7/">Installing Drupal 7</a></h3></li>
+          
+        </ul>
+      </div>
+    </div>
+    
+    
+  </div>
+</section>
+
+
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+    </body>
+</html>

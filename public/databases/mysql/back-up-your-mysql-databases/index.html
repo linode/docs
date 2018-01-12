@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Back Up Your MySQL Databases</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Instructions for backing up MySQL databases using various methods.">
+        <meta name="keywords" content="mysql, backup, mysqldump">
+        
+        <meta property="og:title" content="Back Up Your MySQL Databases">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/mysql/back-up-your-mysql-databases/">
+        <meta property="og:description" content="Instructions for backing up MySQL databases using various methods.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/mysql/back-up-your-mysql-databases/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/mysql/">MySQL</a>
+  
+</li>
+
+
+<li>
+  
+  Back Up Your MySQL Databases
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Back Up Your MySQL Databases</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-09-11T00:00:00Z">Wednesday, September 11, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fback-up-your-mysql-databases%2f&via=linode&text=Back%20Up%20Your%20MySQL%20Databases" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fback-up-your-mysql-databases%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fback-up-your-mysql-databases%2f&t=Back%20Up%20Your%20MySQL%20Databases" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/mysql/back-up-your-mysql-databases.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/mysql/back-up-your-mysql-databases.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>MySQL is an open source relational database management system (DBMS) which is frequently deployed in a wide assortment of contexts. Most frequently it is deployed as part of the <a href="/docs/lamp-guides">LAMP Stack</a>. The database system is also easy to use and highly portable and is, in the context of many applications, extremely efficient. As MySQL is often a centralized data store for large amounts of mission critical data, making regular backups of your MySQL database is one of the most important disaster recovery tasks a system administrator can perform. This guide addresses a number of distinct methods for creating back ups of your database as well as restoring databases from backups.</p>
+
+<p><img src="/docs/assets/back_up_your_mysql-databases.png" alt="Back Up Your MySQL Databases" title="Back Up Your MySQL Databases" /></p>
+
+<p>Before beginning the installation process, we assume you&rsquo;ve followed the steps outlined in our <a href="/docs/getting-started/">getting started guide</a>. Additionally, you will need to install the <a href="/docs/databases/mysql/">MySQL Database</a>. All configuration will be performed in a terminal session; make sure you&rsquo;re logged into your Linode as root via SSH. If you&rsquo;re new to Linux server administration you may be interested in our <a href="/docs/tools-reference/linux-users-and-groups/">introduction to Linux concepts guide</a>, <a href="/content/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>.</p>
+
+<h2 id="backup-methodology">Backup Methodology</h2>
+
+<p>Most backups of MySQL databases in this guide are performed using the <code>mysqldump</code> tool, which is distributed with the default MySQL server installation. We recommend that you use <code>mysqldump</code> whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the <code>mysqldump</code> tool, as in a recovery environment like <a href="/docs/troubleshooting/finnix-rescue-mode">Finnix</a> or in situations where the local instance of the MySQL server will not start.</p>
+
+<p>Nevertheless, this guide provides a mere overview of the <code>mysqldump</code> tool, as there are many options for and uses of <code>mysqldump</code> that fall beyond the scope of this document. We encourage you to become familiar with all of the procedures covered in this document, and to continue your exploration of <code>mysqldump</code> beyond the cases described here. Be sure to note the following:</p>
+
+<ul>
+<li>The <code>*.sql</code> files created with <code>mysqldump</code> can be restored at any time. You can even edit the database <code>.sql</code> files manually (with great care!) using your favorite text editor.</li>
+<li>If your databases only make use of the MyISAM storage engine, you can substitute the <code>mysqldump</code> command with the faster <code>mysqlhotcopy</code>.</li>
+</ul>
+
+<h2 id="creating-backups-of-the-entire-database-management-system-dbms">Creating Backups of the Entire Database Management System (DBMS)</h2>
+
+<p>It is often necessary to take a back up (or &ldquo;dump&rdquo;) of an entire database management system along with all databases and tables, including the system databases which hold the users, permissions and passwords.</p>
+
+<h3 id="option-1-create-backups-of-an-entire-database-management-system-using-the-mysqldump-utility">Option 1: Create Backups of an Entire Database Management System Using the mysqldump Utility</h3>
+
+<p>The most straight forward method for creating a single coherent backup of the entire MySQL database management system uses the <code>mysqldump</code> utility from the command line. The syntax for creating a database dump with a current timestamp is as follows:</p>
+
+<pre><code>mysqldump --all-databases &gt; dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -p
+</code></pre>
+
+<p>This command will prompt you for a password before beginning the database backup in the current directory. This process can take anywhere from a few seconds to a few hours depending on the size of your databases.</p>
+
+<p>Automate this process by adding a line to <code>crontab</code>:</p>
+
+<pre><code>0 1 * * * /usr/bin/mysqldump --all-databases &gt; dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -pPASSWORD
+</code></pre>
+
+<p>For the example above, use <code>which mysqldump</code> to confirm the correct path to the command, and replace <code>root</code> with the mysql user you would like to run backups as, and <code>PASSWORD</code> with the correct password for that user.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In the crontab example, ensure that there is no space between the -P flag, and your password entry.</div>
+</blockquote>
+
+
+<h3 id="option-2-create-backups-of-an-entire-dbms-using-copies-of-the-mysql-data-directory">Option 2: Create Backups of an Entire DBMS Using Copies of the MySQL Data Directory</h3>
+
+<p>While the <code>mysqldump</code> tool is the preferred backup method, there are a couple of cases that require a different approach. <code>mysqldump</code> only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, we can copy MySQL&rsquo;s database directly. This method is often necessary in situations where you only have access to a recovery environment like <a href="/docs/troubleshooting/finnix-rescue-mode">Finnix</a> with your system&rsquo;s disks mounted in that file system. If you&rsquo;re attempting this method on your system itself, ensure that the database is <strong>not</strong> running. Issue a command that resembles the following:</p>
+
+<pre><code>/etc/init.d/mysqld stop
+</code></pre>
+
+<p>On most distribution&rsquo;s version of MySQL, the data directory is located in the <code>/var/lib/mysql/</code> directory. If this directory doesn&rsquo;t exist examine the <code>/etc/mysql/my.cnf</code> file for a path to the data directory. Alternatively, you can search your file system for the data directory by issuing the following command:</p>
+
+<pre><code>find / -name mysql
+</code></pre>
+
+<p>Once you have located your MySQL data directory you can copy it to a backup location. The following example assumes that the MySQL data directory is located at <code>/var/lib/mysql/</code>:</p>
+
+<pre><code>cp -R /var/lib/mysql/* /opt/database/backup-1266871069/
+</code></pre>
+
+<p>In this case, we have recursively copied the contents of the data directory (e.g. <code>/var/lib/mysql/</code>) to a directory within the <code>/opt/</code> hierarchy (e.g. <code>/opt/database/backup-1266871069/</code>). This directory must exist before initiating the copy operation. Consider the following sequence of operations:</p>
+
+<pre><code>/etc/init.d/mysql stop
+mkdir -p /opt/database/backup-1266872202/
+cp -R /var/lib/mysql/* /opt/database/backup-1266872202/
+</code></pre>
+
+<p>These commands begin by stopping the MySQL server daemon, then creating a directory named <code>/opt/database/backup-1266872202/</code>, and performing a recursive copy of the data directory. Note that we&rsquo;ve chosen to use the <code>backup-[time_t]</code> naming convention for our examples. Substitute the paths&rsquo; above for your preferred organization and naming scheme. The <code>cp</code> command does not produce output and can take some time to complete depending on the size of your database. Do not be alarmed if it takes a while to complete. When the copy operation is finished, you may want to archive the data directory into a &ldquo;tar&rdquo; archive to make it easier to manage and move between machines. Issue the following commands to create the archive:</p>
+
+<pre><code>cd /opt/database/backup-1266872202
+tar -czfv * &gt; /opt/mysqlBackup-1266872202.tar.gz
+</code></pre>
+
+<p>Once the tarball is created, you can easily <a href="/docs/using-linux/administration-basics#upload-files-to-a-remote-server">transfer the file</a> in the manner that is most convenient for you. Don&rsquo;t forget to restart the MySQL server daemon again if needed:</p>
+
+<pre><code>/etc/init.d/mysql start
+</code></pre>
+
+<h2 id="creating-backups-of-a-single-database">Creating Backups of a Single Database</h2>
+
+<p>In many cases, creating a back up of the entire database server isn&rsquo;t required. In some cases such as upgrading a web application, the installer may recommend making a backup of the database in case the upgrade adversely affects the database. Similarly, if you want to create a &ldquo;dump&rdquo; of a specific database to move that database to a different server, you might consider the following method.</p>
+
+<p>When possible, use the <code>mysqldump</code> tool to export a &ldquo;dump&rdquo; of a single database. This command will resemble the following:</p>
+
+<pre><code>mysqldump -u username -ps3cr1t -h localhost danceLeaders &gt; 1266861650-danceLeaders.sql
+</code></pre>
+
+<p>The above example is like the example in the previous section, except rather than using the <code>--all-databases</code> option, this example specifies a particular database name. In this case we create a back up of the <code>danceLeaders</code> database. The form of this command, in a more plain notation is as follows:</p>
+
+<pre><code>mysqldump -u [username] -p[password] -h [host] [databaseName] &gt; [backup-name].sql
+</code></pre>
+
+<p>For an additional example, we will backup the database named <code>customer</code> using the root database account by issuing the following command:</p>
+
+<pre><code>mysqldump -u root -p -h localhost customer &gt; customerBackup.sql
+</code></pre>
+
+<p>You will be prompted for a password before <code>mysqldump</code> begins it&rsquo;s backup process. As always the backup file, in this case <code>customerBackup.sql</code>, is created in the directory where you issue this command. The <code>mysqldump</code> command can complete in a few seconds or a few hours depending on the size of the database and the load on the host when running the backup.</p>
+
+<h2 id="creating-backups-of-a-single-table">Creating Backups of a Single Table</h2>
+
+<h3 id="option-1-create-backups-of-a-single-table-using-the-mysqldump-utility">Option 1: Create Backups of a Single Table Using the mysqldump Utility</h3>
+
+<p>This operation, like previous uses of the <code>mysqldump</code> utility in this document, allows you to create a backup of a single database table. Continuing our earlier examples the following example allows you to back up the table <code>usernameRecords</code> in the <code>danceLeaders</code> database.</p>
+
+<pre><code> mysqldump -u username -ps3cr1t -h localhost danceLeaders usernameRecords \&gt; 1266861650-danceLeaders-usernameRecords.sql
+</code></pre>
+
+<p>The above example is like the example in the previous section, except that we&rsquo;ve added a table name specification to the command to specify the name of the table that we want to back up. The form of this command in a more plain notation is as follows:</p>
+
+<pre><code>mysqldump -u [username] -p[password] -h [host] [databaseName] [tableName] &gt; [backup-name].sql
+</code></pre>
+
+<p>For an additional example, we will backup the table named &ldquo;order&rdquo; from the database named <code>customer</code> using the root database account by issuing the following command:</p>
+
+<pre><code>mysqldump -u root -p -h localhost customer order &gt; customerBackup-order.sql
+</code></pre>
+
+<p>You will be prompted for a password before <code>mysqldump</code> begins its backup process. As always, the backup file (in this case <code>customerBackup.sql</code>) is created in the directory where you issue this command. The <code>mysqldump</code> command can complete in a few seconds or a few hours depending on the size of the database and the load on the host when running the backup.</p>
+
+<h3 id="option-2-create-backups-of-a-single-table-using-the-mysql-client-and-an-outfile-statement">Option 2: Create Backups of a Single Table Using the MySQL Client and an OUTFILE Statement</h3>
+
+<p>The MySQL client itself has some backup capability. It is useful when you are already logged in and you do not want to exit the current session. If you are using a live system and cannot afford down time, you should consider temporarily locking the table you&rsquo;re backing up.</p>
+
+<p>Do be aware that when backing up a single table using the MySQL client, that table&rsquo;s structure is not maintained in the backup. Only the data itself is saved when using this method.</p>
+
+<ol>
+<li><p>Before we begin, we recommend performing a <code>LOCK TABLES</code> on the tables you intend to backup up, followed by <code>FLUSH TABLES</code> to ensure that the database is in a consistent space during the backup operation. You only need a read lock. This allows other clients to continue to query the tables while you are making a copy of the files in the MySQL data directory. For a &ldquo;read&rdquo; lock, the syntax of <code>LOCK TABLES</code> looks like the following:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">LOCK</span> <span class="n">TABLES</span> <span class="n">tableName</span> <span class="k">READ</span><span class="p">;</span></code></pre></div>
+
+<p>To perform a <code>LOCK TABLES</code> on the <code>order</code> table of the <code>customer</code> database, issue the following command:</p>
+
+<pre><code>mysql -u root -p -h localhost
+</code></pre>
+
+<p>You will then be prompted for the root password. Once you have entered the database credentials, you will arrive at the mysql client prompt. Issue the following command to lock the <code>order</code> table in the <code>customer</code> database (the trailing <code>;</code> is required for MySQL commands):</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">USE</span> <span class="n">customer</span><span class="p">;</span>
+<span class="k">LOCK</span> <span class="n">TABLES</span> <span class="k">order</span> <span class="k">READ</span><span class="p">;</span>
+<span class="n">FLUSH</span> <span class="n">TABLES</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>We can now begin the backup operation. To create a backup of a single table using the MySQL client, you will need to be logged in to your MySQL DBMS. If you are not currently logged in you may log in with the following command:</p>
+
+<pre><code>mysql -u root -p -h localhost
+</code></pre>
+
+<p>You will be prompted for a password. Once you have entered the correct password and are at the MySQL client prompt, you can use a <code>SELECT * INTO OUTFILE</code> statement. The syntax of this statement looks like the following:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">INTO</span> <span class="n">OUTFILE</span> <span class="s1">&#39;file_name&#39;</span> <span class="k">FROM</span> <span class="n">tbl_name</span><span class="p">;</span></code></pre></div>
+
+<p>In this example, we will create a backup of the data from the <code>order</code> table of the <code>customer</code> database. Issue the following command to begin the backup procedure (the trailing <code>;</code> is required for MySQL commands):</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">USE</span> <span class="n">customer</span><span class="p">;</span>
+<span class="k">LOCK</span> <span class="n">TABLES</span> <span class="k">order</span> <span class="k">READ</span><span class="p">;</span>
+<span class="n">FLUSH</span> <span class="n">TABLES</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">INTO</span> <span class="n">OUTFILE</span> <span class="s1">&#39;customerOrderBackup.sql&#39;</span> <span class="k">FROM</span> <span class="k">order</span><span class="p">;</span>
+<span class="n">UNLOCK</span> <span class="n">TABLES</span><span class="p">;</span></code></pre></div>
+
+<p>The <code>customerOrderBackup.sql</code> file will be created in the appropriate data sub-directory within MySQLs data directory. The MySQL data directory is commonly <code>/var/lib/mysql/</code>. In this example, the <code>OUTFILE</code> will be <code>/var/lib/mysql/customer/customerOrderBackup.sql</code>. The location of this directory and file can, however, vary between Linux distributions. If you can not find your backup file, you can search for it with the following command:</p>
+
+<pre><code>find / -name customerOrderBackup.sql
+</code></pre></li>
+
+<li><p>Once you have completed the backup operation, you will want to unlock the tables using the following command in the MySQL client. This will return your database to its normal operation. Log in to the MySQL client with the first command if you are not presently logged in and then issue the second command:</p>
+
+<pre><code>mysql -uroot -p -h localhost
+</code></pre>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">UNLOCK</span> <span class="n">TABLES</span><span class="p">;</span></code></pre></div></li>
+</ol>
+
+<p>You can continue using your database as normal from this point.</p>
+
+<h2 id="considerations-for-an-effective-backup-strategy">Considerations for an Effective Backup Strategy</h2>
+
+<p>Creating backups of your MySQL database should be a regular and scheduled task. You might like to consider scheduling periodic backups using <code>cron</code>, <code>mysqldump</code> and/or <code>mail</code>. Consider our documentation for more information regarding <a href="/docs/linux-tools/utilities/cron">cron</a>. Implementing an automated backup solution may help minimize down time in a disaster recovery situation.</p>
+
+<p>You do not need to log in as root when backing up databases. A MySQL user with read (e.g. <code>SELECT</code>) permission is able to use both the <code>mysqldump</code> and <code>mysql</code> (e.g. the MySQL client) tools to take backups, as described below. As a matter of common practice, we recommend that you not use the MySQL <code>root</code> user whenever possible to minimize security risks.</p>
+
+<p>You may want to consider incremental backups as part of a long-term database backup plan. While this process is not covered here, we recommend that you consider the <a href="http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html">MySQL Database Backup Methods</a> resource for more information.</p>
+
+<h2 id="restoring-an-entire-dbms-from-backup">Restoring an Entire DBMS From Backup</h2>
+
+<p>A backup that cannot be restored is of minimal value. We recommend testing your backups regularly to ensure that they can be restored in the event that you may need to restore from backups. When using restoring backups of your MySQL database, the method you use depends on the method you used to create the backup in question.</p>
+
+<h3 id="option-1-restoring-an-entire-dbms-using-the-mysql-client-and-backups-created-by-mysqldump">Option 1: Restoring an Entire DBMS Using the MySQL Client and Backups Created by mysqldump</h3>
+
+<p>Before beginning the restoration process, this section assumes your system is running a newly installed version of MySQL without any existing databases or tables. If you already have databases and tables in your MySQL DBMS, please make a backup before proceeding as this process will <strong>overwrite current MySQL data.</strong></p>
+
+<p>You can easily restore your entire DBMS using the <code>mysql</code> command. The syntax for this will resemble the following:</p>
+
+<pre><code>mysql -u [username] -p [password] &lt; backupFile.sql
+</code></pre>
+
+<p>In this case we&rsquo;re simply restoring the entire DBMS. The command will look like the following:</p>
+
+<pre><code>mysql -u root -p &lt; 1266861650-backup-all.sql
+</code></pre>
+
+<p>You will be prompted for the root MySQL user&rsquo;s password. Once the correct credentials are supplied, the restoration process will begin. Since this process restores an entire DBMS, it can take anywhere from a few seconds to many hours.</p>
+
+<h3 id="option-2-restoring-an-entire-dbms-using-mysql-data-files-copied-directly-from-mysql-s-data-directory">Option 2: Restoring an Entire DBMS Using MySQL Data Files Copied Directly from MySQL&rsquo;s Data Directory</h3>
+
+<p>Before beginning the restoration process, this section assumes your system is running a newly installed version of MySQL without any existing databases or tables. If you already have databases and tables in your MySQL DBMS, please make a backup before proceeding as this process will <strong>overwrite current MySQL data.</strong></p>
+
+<ol>
+<li><p>If you have a complete backup of your MySQL data directory (commonly <code>/var/lib/mysql</code>), you can restore it from the command line. To ensure a successful restore, you must first stop the MySQL server daemon and delete the current data in the MySQL data directory.</p>
+
+<pre><code>/etc/init.d/mysql stop
+rm -R /var/lib/mysql/*
+</code></pre></li>
+
+<li><p>In the following example, the MySQL data directory backup is located in the <code>/opt/database/backup-1266872202</code> directory. If you made a tarball of the data directory when you backed up your DBMS data directory, you will need to extract the files from the tarball before copying with the following commands:</p>
+
+<pre><code> cp mysqlBackup-1266872202.tar.gz /var/lib/mysql/
+ cd /var/lib/mysql
+ tar xzvf mysqlBackup-1266872202.tar.gz
+</code></pre></li>
+
+<li><p>Before we can restart the MySQL database process, we must ensure that the permissions are set correctly on the <code>/var/lib/mysql/</code> directory. For this example, we assume the MySQL server daemon runs as the user <code>mysql</code> with the group <code>mysql</code>. To change the permissions on the data directory issue the following command:</p>
+
+<pre><code>chown -R mysql:mysql /var/lib/mysql
+</code></pre></li>
+
+<li><p>Alter the <code>mysql:mysql</code> portion of this command if your MySQL instance runs with different user and group permissions. The form of this argument is <code>[user]:[group]</code>. Finally we can start the MySQL server daemon with the following command:</p>
+
+<pre><code>/etc/init.d/mysql start
+</code></pre>
+
+<p>If you receive an error similar to the following:</p>
+
+<pre><code>/usr/bin/mysqladmin: connect to server at 'localhost' failed
+    error: 'Access denied for user 'debian-sys-maint'@'localhost' (using password: YES)'
+</code></pre>
+
+<p>You&rsquo;ll need to find the old <code>debian-sys-maint</code> user&rsquo;s password in the <code>/etc/mysql/debian.cnf</code> and then change the new <code>debian-sys-maint</code> user&rsquo;s password to it. You can view the old password using <code>cat</code>:</p>
+
+<pre><code>cat /etc/mysql/debian.cnf | grep password
+</code></pre>
+
+<p>Copy (or remember) the password. Then you&rsquo;ll need to change the new <code>debian-sys-maint</code> user&rsquo;s password. You can do this by logging in as the MySQL root user and issuing the following command (where &lt;password&gt; is the password of the old <code>debian-sys-maint</code> user):</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;debian-sys-maint&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;&lt;password&gt;&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>You&rsquo;ll then need to restart MySQL with the following command:</p>
+
+<pre><code>/etc/init.d/mysql restart
+</code></pre></li>
+</ol>
+
+<p>After MySQL server has successfully started, you will want to test your MySQL DBMS and ensure that all databases and tables restored properly. We also recommend that you audit your logs for potential errors. In some cases MySQL can start successfully despite database errors.</p>
+
+<h2 id="restoring-a-single-database-from-backup">Restoring a Single Database from Backup</h2>
+
+<p>In cases where you have only created a backup for one database, or only need to restore a single database, the restoration process is somewhat different.</p>
+
+<p>Before beginning the restoration process, this section assumes your system is running a newly installed version of MySQL without any existing databases or tables. If you already have databases and tables in your MySQL DBMS, please make a backup before proceeding as this process will <strong>overwrite current MySQL data.</strong></p>
+
+<ol>
+<li><p>To restore a single database using the <code>mysql</code> command, first prepare the destination database. Log in to your (new) MySQL database server using the MySQL client:</p>
+
+<pre><code>mysql -u root -p -h localhost
+</code></pre></li>
+
+<li><p>You will be prompted for the root MySQL user&rsquo;s password. After you have provided the correct credentials, you must create the destination database. In this case, the <code>customer</code> database will be restored:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">customer</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>As with all MySQL statements, do not omit the final semi-colon (e.g. <code>;</code>) at the conclusion of each command. Depending on your deployment, you may need to create a new MySQL user or recreate a previous user with access to the newly created database. The command for creating a new MySQL user takes the following form:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;[username]&#39;</span><span class="o">@</span><span class="s1">&#39;[host]&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;[password]&#39;</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>In the next example, we will create a user named <code>customeradmin</code>:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;customeradmin&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;s3cr1t&#39;</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>Now we will give <code>customeradmin</code> privileges to access the <code>customer</code> database. The command for granting privileges to a database for a specific user takes the following form:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">GRANT</span> <span class="p">[</span><span class="n">privilegeType</span><span class="p">]</span> <span class="k">ON</span> <span class="p">[</span><span class="n">databaseName</span><span class="p">].[</span><span class="n">tableName</span><span class="p">]</span> <span class="k">TO</span> <span class="s1">&#39;[username]&#39;</span><span class="o">@</span><span class="s1">&#39;[host]&#39;</span></code></pre></div></li>
+
+<li><p>For the purposes of the following example, we will give <code>customeradmin</code> full access to the <code>customer</code> database. Issue the following command in the MySQL client:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="n">customer</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;customeradmin&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>You may need to specify different access grants depending on the demands of your deployment. Consult the official documentation for <a href="http://dev.mysql.com/doc/refman/5.1/en/grant.html">MySQL&rsquo;s GRANT statement</a>. Once the destination database and MySQL user have been created, you can close the MySQL client with the following command:</p>
+
+<pre><code>quit
+</code></pre></li>
+
+<li><p>You can now use the <code>mysql</code> command to restore your SQL file. The form of this command resembles the following:</p>
+
+<pre><code>mysql -u [username] -p[password] -h [host] [databaseName] &lt; [filename].sql
+</code></pre></li>
+</ol>
+
+<p>In the following example, we will restore the <code>customer</code> database from a SQL backup file named <code>customerBackup.sql</code> (pay special attention to the <code>&lt;</code> symbol in this command):</p>
+
+<pre><code>mysql -u root -p -h localhost customer &lt; customerBackup.sql
+</code></pre>
+
+<p>You will be prompted for the root MySQL user&rsquo;s password. Once the correct credentials are supplied, the restoration process will begin. The duration of this operation depends on your system&rsquo;s load and the size of the database that you are restoring. It may complete in a few seconds, or it may take many hours.</p>
+
+<h2 id="restoring-a-single-table-from-backup">Restoring a Single Table from Backup</h2>
+
+<h3 id="option-1-restoring-a-single-table-using-the-mysql-and-backups-created-by-mysqldump">Option 1: Restoring a Single Table Using the MySQL and Backups Created by mysqldump</h3>
+
+<ol>
+<li><p>Before beginning the restoration process, we assume that your MySQL instance already has an existing database that can receive the table you wish to restore. If your MySQL instance does not have the required database, we&rsquo;ll need to create it before proceeding. First, log into your MySQL instance with the following command:</p>
+
+<pre><code>mysql -u root -p -h localhost
+</code></pre></li>
+
+<li><p>You will be prompted for the root MySQL user&rsquo;s password. After you have provided the correct credentials, you must create the destination database. For the purpose of this example we will create the <code>customer</code> database.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">customer</span><span class="p">;</span></code></pre></div>
+
+<p>Then exit the <code>mysql</code> prompt:</p>
+
+<pre><code>quit
+</code></pre>
+
+<p>If you already have the required database, you can safely skip the above step. To continue with the table restoration, issue a command in the following form:</p>
+
+<pre><code>mysql -u [username] -p[password] -h [host] [databaseName] &lt; [filename].sql
+</code></pre></li>
+
+<li><p>For the following example, we will restore the <code>order</code> table into the existing <code>customer</code> database from an SQL backup file named <code>customerOrderBackup.sql</code>. Be very careful to use the <code>&lt;</code> operator in the following command:</p>
+
+<pre><code>mysql -u root -p -h localhost customer &lt; customerOrderBackup.sql
+</code></pre></li>
+</ol>
+
+<p>You will be prompted for the root MySQL user&rsquo;s password. Once the correct credentials are supplied, the restoration process will begin. The duration of this operation depends on your system&rsquo;s load and the size of the table that you are restoring. It may complete in a few seconds, or it may take many hours.</p>
+
+<h3 id="option-2-restoring-a-single-table-using-the-mysql-client-and-an-infile-statement-for-backups-created-with-outfile">Option 2: Restoring a Single Table Using the MySQL Client and an INFILE Statement for Backups Created with OUTFILE</h3>
+
+<ol>
+<li><p>Before beginning the restoration process, we assume that your MySQL instance already has an existing database that can receive the table you wish to restore. If your MySQL instance does not have the required database, we&rsquo;ll need to create it before proceeding. First, log into your MySQL instance with the following command:</p>
+
+<pre><code>mysql -u root -p -h localhost
+</code></pre></li>
+
+<li><p>You will be prompted for the root MySQL user&rsquo;s password. After you have provided the correct credentials, you must create the destination database. For the purpose of this example we will create the <code>customer</code> database.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">customer</span><span class="p">;</span></code></pre></div>
+
+<p>Then exit the <code>mysql</code> prompt:</p>
+
+<pre><code>quit
+</code></pre></li>
+
+<li><p>The data backup used in this case was created using the <code>SELECT * INTO OUTFILE 'backupFile.sql' FROM tableName</code> command. This type of backup only retains the data itself so the table structure must be recreated. To restore a single table from within the MySQL client, you must first prepare the destination database and table. Log in to your (new) MySQL instance using the MySQL client:</p>
+
+<pre><code>mysql -u root -p -h localhost
+</code></pre></li>
+
+<li><p>You will be prompted for the root MySQL user&rsquo;s password. Once the correct credentials are supplied, you must create the destination database. In this case, we will create the <code>customer</code> database. Issue the following statement:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">customer</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>Remember that the semi-colons (e.g. <code>;</code>) following each statement are required. Now you must create the destination table with the correct structure. The data types of the fields of the table must mirror those of the table where the backup originated. In this example, we will restore the <code>order</code> table of the <code>customer</code> database. There are 2 fields in the <code>order</code> table, <code>custNum</code> with data type <code>INT</code> and <code>orderName</code> with data type <code>VARCHAR(20)</code>; your table structure will be different:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">USE</span> <span class="n">customer</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">order</span> <span class="p">(</span><span class="n">custNum</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">orderName</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span></code></pre></div></li>
+
+<li><p>Depending on your deployment, you may need to create a new MySQL user or recreate a previous user with access to the newly created database. The command for creating a new MySQL user takes the following form:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;[username]&#39;</span><span class="o">@</span><span class="s1">&#39;[host]&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;[password]&#39;</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>In the next example, we will create a user named <code>customeradmin</code>:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;customeradmin&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;s3cr1t&#39;</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>Now we will give <code>customeradmin</code> privileges to access the <code>customer</code> database. The command for granting privileges to a database for a specific user takes the following form:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">GRANT</span> <span class="p">[</span><span class="n">privilegeType</span><span class="p">]</span> <span class="k">ON</span> <span class="p">[</span><span class="n">databaseName</span><span class="p">].[</span><span class="n">tableName</span><span class="p">]</span> <span class="k">TO</span> <span class="s1">&#39;[username]&#39;</span><span class="o">@</span><span class="s1">&#39;[host]&#39;</span></code></pre></div>
+
+<p>For the purposes of the following example, we will give <code>customeradmin</code> full access to the <code>customer</code> database. Issue the following command in the MySQL client:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-SQL" data-lang="SQL"><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="n">customer</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;customeradmin&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>You may need to specify different access grants depending on the demands of your deployment. Consult the official documentation for <a href="http://dev.mysql.com/doc/refman/5.1/en/grant.html">MySQL&rsquo;s GRANT statement</a>. Once the table and user have been created, we can import the backup data from the backup file using the <code>LOAD DATA</code> command. The syntax resembles the following:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">LOAD</span> <span class="k">DATA</span> <span class="n">INFILE</span> <span class="s1">&#39;[filename]&#39;</span> <span class="k">INTO</span> <span class="k">TABLE</span> <span class="p">[</span><span class="n">tableName</span><span class="p">];</span></code></pre></div>
+
+<p>In the following example, we will restore data from a table from a file named <code>customerOrderBackup.sql</code>. When MySQL client is given path and filename after <code>INFILE</code>, it looks in the MySQL data directory for that file. If the filename <code>customerOrderBackup.sql</code> was given, the path would be <code>/var/lib/mysql/customerOrderBackup.sql</code>. Ensure that the file you are trying to restore from exists, especially if MySQL generates <code>File not found</code> errors.</p></li>
+
+<li><p>To import the data from the <code>customerOrderBackup.sql</code> file located in <code>/var/lib/mysql/</code>, issue the following command:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">LOAD</span> <span class="k">DATA</span> <span class="n">INFILE</span> <span class="s1">&#39;customerOrderBackup.sql&#39;</span> <span class="k">INTO</span> <span class="k">TABLE</span> <span class="k">order</span><span class="p">;</span></code></pre></div>
+
+<p>This process can take anywhere from a few seconds to many hours depending on the size of your table. The duration of this operation depends on your system&rsquo;s load and the size of the table that you are restoring. It may complete in a few seconds, or it may take many hours. After you have verified that your data was imported successfully, you can log out:</p>
+
+<pre><code>quit
+</code></pre></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.mysql.com/">The Official MySQL Web Site</a></li>
+
+<li><a href="http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html">MySQL Database Backup Methods page</a></li>
+
+<li><a href="http://linuxcommand.org/man_pages/mysqldump1.html">mysqldump Manual Page</a></li>
+
+<li><a href="/docs/linux-tools/utilities/cron">Schedule Tasks With Cron</a></li>
+
+<li><a href="http://dev.mysql.com/doc/refman/5.1/en/grant.html">MySQL&rsquo;s Grant Statement, Official Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/postgresql/how-to-back-up-your-postgresql-database/">How to Back Up Your PostgreSQL Database</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/">Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu/">Install and Configure MySQL Workbench on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-on-centos-7/">LAMP on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/development/java-development-wildfly-centos-7/">Java Development with WildFly on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#backup-methodology">Backup Methodology</a></li>
+<li><a href="#creating-backups-of-the-entire-database-management-system-dbms">Creating Backups of the Entire Database Management System (DBMS)</a>
+<ul>
+<li><a href="#option-1-create-backups-of-an-entire-database-management-system-using-the-mysqldump-utility">Option 1: Create Backups of an Entire Database Management System Using the mysqldump Utility</a></li>
+<li><a href="#option-2-create-backups-of-an-entire-dbms-using-copies-of-the-mysql-data-directory">Option 2: Create Backups of an Entire DBMS Using Copies of the MySQL Data Directory</a></li>
+</ul></li>
+<li><a href="#creating-backups-of-a-single-database">Creating Backups of a Single Database</a></li>
+<li><a href="#creating-backups-of-a-single-table">Creating Backups of a Single Table</a>
+<ul>
+<li><a href="#option-1-create-backups-of-a-single-table-using-the-mysqldump-utility">Option 1: Create Backups of a Single Table Using the mysqldump Utility</a></li>
+<li><a href="#option-2-create-backups-of-a-single-table-using-the-mysql-client-and-an-outfile-statement">Option 2: Create Backups of a Single Table Using the MySQL Client and an OUTFILE Statement</a></li>
+</ul></li>
+<li><a href="#considerations-for-an-effective-backup-strategy">Considerations for an Effective Backup Strategy</a></li>
+<li><a href="#restoring-an-entire-dbms-from-backup">Restoring an Entire DBMS From Backup</a>
+<ul>
+<li><a href="#option-1-restoring-an-entire-dbms-using-the-mysql-client-and-backups-created-by-mysqldump">Option 1: Restoring an Entire DBMS Using the MySQL Client and Backups Created by mysqldump</a></li>
+<li><a href="#option-2-restoring-an-entire-dbms-using-mysql-data-files-copied-directly-from-mysql-s-data-directory">Option 2: Restoring an Entire DBMS Using MySQL Data Files Copied Directly from MySQL&rsquo;s Data Directory</a></li>
+</ul></li>
+<li><a href="#restoring-a-single-database-from-backup">Restoring a Single Database from Backup</a></li>
+<li><a href="#restoring-a-single-table-from-backup">Restoring a Single Table from Backup</a>
+<ul>
+<li><a href="#option-1-restoring-a-single-table-using-the-mysql-and-backups-created-by-mysqldump">Option 1: Restoring a Single Table Using the MySQL and Backups Created by mysqldump</a></li>
+<li><a href="#option-2-restoring-a-single-table-using-the-mysql-client-and-an-infile-statement-for-backups-created-with-outfile">Option 2: Restoring a Single Table Using the MySQL Client and an INFILE Statement for Backups Created with OUTFILE</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

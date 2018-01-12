@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Set Up the htaccess File on Apache</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This in-depth guide on the .htaccess file covers how to handle permissions, redirects, and IP address restriction.">
+        <meta name="keywords" content="htaccess,  apache">
+        
+        <meta property="og:title" content="How to Set Up the htaccess File on Apache">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/apache/how-to-set-up-htaccess-on-apache/">
+        <meta property="og:description" content="This in-depth guide on the .htaccess file covers how to handle permissions, redirects, and IP address restriction.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/apache/how-to-set-up-htaccess-on-apache/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/apache/">Hosting Websites with Apache</a>
+  
+</li>
+
+
+<li>
+  
+  How to Set Up the htaccess File on Apache
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Set Up the htaccess File on Apache</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-26T00:00:00Z">Tuesday, September 26, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://twitter.com/chrispiccini11">Christopher Piccini
+    
+    <i class="fa fa-twitter"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache%2fhow-to-set-up-htaccess-on-apache%2f&via=linode&text=How%20to%20Set%20Up%20the%20htaccess%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache%2fhow-to-set-up-htaccess-on-apache%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache%2fhow-to-set-up-htaccess-on-apache%2f&t=How%20to%20Set%20Up%20the%20htaccess%20File%20on%20Apache" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/apache/how-to-set-up-htaccess-on-apache.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/apache/how-to-set-up-htaccess-on-apache.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The purpose of this guide is to show you how to set up htaccess configuration (.htaccess) for Apache. The guide will cover topics relating to handling website file structure permissions, redirects, and IP address restrictions.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+
+<li><p>Complete the Apache section in the <a href="https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04">Install a Lamp Stack</a> to install Apache on your Linode.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Throughout this guide, replace each instance of <code>testuser</code> with your custom user account. Replace each occurrence of <code>example.com</code> with the IP address or Fully Qualified Domain Name (FQDN) of your Linode.</div>
+</blockquote>
+
+
+<h2 id="what-is-htaccess">What is .htaccess</h2>
+
+<p>.htaccess is a configuration file for the Apache web server. It&rsquo;s an extremely powerful tool, that can be used to modify the Apache configuration without needing to edit the Apache configuration files. The following sections describe how to create this configuration and use it to restrict directory listings and IP addresses, and to handle redirects.</p>
+
+<h2 id="enable-htaccess">Enable .htaccess</h2>
+
+<p>By default, .htaccess isn&rsquo;t available. To enable it you will need to edit the configuration file.</p>
+
+<ol>
+<li><p>Use a text editor to open your configuration file:</p>
+
+<pre><code>sudo nano /etc/apache2/sites-available/example.com.conf
+</code></pre></li>
+
+<li><p>After the VirtualHost block (</VirtualHost>) add:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">....
+&lt;/VirtualHost&gt;
+&lt;Directory /var/www/html/example.com/public_html&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+&lt;/Directory&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save the file, then restart apache:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre></li>
+</ol>
+
+<h2 id="restrict-directory-listings">Restrict Directory Listings</h2>
+
+<p>By default, someone visiting your website can view the directory and file structure, and gain access to files on the web server. It&rsquo;s best practice to restrict directory access, so that a visitor to example.com would have to be familiar with files on the server in order to see them. One way you can restrict this is through .htaccess.</p>
+
+<h3 id="create-htaccess">Create .htaccess</h3>
+
+<ol>
+<li><p>CMS systems such as Wordpress create .htaccess configurations by default. This guide assumes that no .htaccess file exists, so you will have to create one manually. Navigate to your site&rsquo;s root directory:</p>
+
+<pre><code>cd /var/www/html/example.com/public_html
+</code></pre></li>
+
+<li><p>Create an .htaccess file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/html/example.com/public_html/.htaccess 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">Options -Indexes</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Now if you navigate to your site, you will see a <strong>Forbidden</strong> message. You will have to specifically indicate the file or directory you would like to see.</p></li>
+</ol>
+
+<h2 id="restrict-ips">Restrict IPs</h2>
+
+<p>This section will guide you through restricting specific IPs from accessing your site. This is useful if you want to block certain visitors from visiting your site. You may also set this up to prevent certain IPs from accessing certain sections of your site.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Subdirectories can inherit settings from .htaccess files in their parent directories if they&rsquo;re not overridden by a separate .htaccess file in the subdirectory. The examples in this guide will continue to work with an .htaccess file in the project&rsquo;s root directory. You should carefully consider in which directory different .htaccess directives should be placed.</div>
+</blockquote>
+
+
+<h3 id="block-ips">Block IPs</h3>
+
+<ol>
+<li><p>Create or edit the .htaccess file located at the directory where Apache will host the website:</p>
+
+<pre><code>cd /var/www/html/example.com/public_html/
+sudo nano .htaccess
+</code></pre></li>
+
+<li><p>Delete the <code>Options -Indexes</code> line from the previous section (if applicable) and add the following lines to block the target IP addresses:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/html/example.com/public_html 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">order allow,deny
+
+<span class="c1"># This will deny the IP 172.15.23.9
+</span><span class="c1"></span>deny from <span class="m">172</span>.15.23.9
+
+<span class="c1"># This will deny all IP&#39;s from 172.15.23.0 through 172.15.23.255
+</span><span class="c1"></span>deny from <span class="m">172</span>.15.23</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<h3 id="allow-ips">Allow IPs</h3>
+
+<ol>
+<li><p>Create or edit the .htaccess file located in the web directory where you want this setting to be applied.</p></li>
+
+<li><p>Add the following lines to deny all IPs except for the specific IP and pool of IPs mentioned in the command:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/html/example.com/public_html 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">order deny,allow
+
+<span class="c1"># Denies all IP&#39;s
+</span><span class="c1"></span>Deny from all
+
+<span class="c1"># This will allow the IP 172.15.23.9
+</span><span class="c1"></span>allow from <span class="m">172</span>.15.23.9
+
+<span class="c1"># This will allow all IP&#39;s from 172.15.23.0 through 172.15.23.255
+</span><span class="c1"></span>allow from <span class="m">172</span>.15.23</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<h2 id="handle-redirects">Handle Redirects</h2>
+
+<p>You can redirect traffic using .htaccess configuration. In the below example, you&rsquo;ll update the .htaccess file for the root directory of your website. You want to redirect a visitor to <code>http://example.com/test2/index.html if they try to visit</code><a href="http://example.com/main.html`">http://example.com/main.html`</a>.</p>
+
+<ol>
+<li><p>Create a test html file to redirect to:</p>
+
+<pre><code>mkdir test1
+sudo touch test1/index.html
+</code></pre></li>
+
+<li><p>Add some basic content to the test html file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/html/example.com/public_html/test1/index.html 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+     This is the html file in test1.
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Open the .htaccess file in your project&rsquo;s root directory. Remove all existing configurations in this file and add the following line:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/html/example.com/public_html/.htaccess 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">Redirect <span class="m">301</span> /main.html /test1/index.html</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<p>The first parameter after the &lsquo;Redirect&rsquo; command is the HTTP status code. Specifying a status code is helpful for letting the browser know that the page has been moved to a new location. If you leave this parameter blank, it defaults to a 302 code indicating that the redirect is temporary. Specifying 301 makes it clear that the page at the requested location has permanently moved to a new location.</p>
+
+<p>The next parameter is the Unix path to the file that is requested in the URL. This parameter requires that it is a Unix path and not a URL. The path should be the location of the .htaccess file where the redirect configuration is set up. The final parameter indicates where you want the visitor to be redirected. In this case, the traffic is being redirected to <code>/test2/index.html</code>; for this second parameter a Unix path or HTTP URL is acceptable.</p>
+
+<ol>
+<li>Navigate to <code>example.com/main.html</code> in a browser. You should see the url redirect to <code>example.com/test1/index.html</code> in the address bar, and your test html file should be displayed.</li>
+</ol>
+
+<h3 id="set-the-404-error-page">Set the 404 Error Page</h3>
+
+<p>When a visitor attempts to access a page or resource that doesn&rsquo;t exist (for example by following a broken link or typing an incorrect URL,) the server will respond with a 404 error code. It is important that users receive feedback explaning the error. By default, Apache will display an error page in the event of a 404 error.  However, most sites provide a customized error page. You can use .htaccess settings to let Apache know what error page you would like displayed whenever a user attempts to access a nonexistent page.</p>
+
+<ol>
+<li><p>This will redirect all requests for nonexistent documents to a page in the project root directory called `404.html.  Open the .htaccess file and add the following line:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/html/example.com/public_html/.htaccess 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ErrorDocument <span class="m">404</span> /404.html</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create the <code>404.html</code> file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/html/example.com/public_html/404.html 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;!doctype html&gt;
+&lt;html&gt;
+ &lt;body&gt;
+   <span class="m">404</span> Error: Page not found
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>In a browser, navigate to a page that does not exist, such as <code>www.example.com/doesnotexist.html</code>. The 404 message should be displayed.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP Error and Status Codes</a></li>
+
+<li><a href="https://httpd.apache.org/docs/current/howto/htaccess.html">Apache .htaccess Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/apache-tips-and-tricks/modevasive-on-apache/">mod_evasive on Apache</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/couchdb/access-futon-over-ssh-using-putty-on-windows/">Access Futon Over SSH to Administer CouchDB</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#what-is-htaccess">What is .htaccess</a></li>
+<li><a href="#enable-htaccess">Enable .htaccess</a></li>
+<li><a href="#restrict-directory-listings">Restrict Directory Listings</a>
+<ul>
+<li><a href="#create-htaccess">Create .htaccess</a></li>
+</ul></li>
+<li><a href="#restrict-ips">Restrict IPs</a>
+<ul>
+<li><a href="#block-ips">Block IPs</a></li>
+<li><a href="#allow-ips">Allow IPs</a></li>
+</ul></li>
+<li><a href="#handle-redirects">Handle Redirects</a>
+<ul>
+<li><a href="#set-the-404-error-page">Set the 404 Error Page</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use the Linode Backup Service to Protect and Secure Your Data</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use the Linode Backup Service to protect and secure your data.">
+        <meta name="keywords" content="backup service, linode platform, linode backup service, enable a backup, manage a backup, schedule a backup, disable a backup, restore from a backup, boot from a backup">
+        
+        <meta property="og:title" content="Use the Linode Backup Service to Protect and Secure Your Data">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/linode-backup-service/">
+        <meta property="og:description" content="Use the Linode Backup Service to protect and secure your data.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/linode-backup-service/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  Use the Linode Backup Service to Protect and Secure Your Data
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use the Linode Backup Service to Protect and Secure Your Data</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-02-24T00:00:00Z">Friday, February 24, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-backup-service%2f&via=linode&text=Use%20the%20Linode%20Backup%20Service%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-backup-service%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-backup-service%2f&t=Use%20the%20Linode%20Backup%20Service%20to%20Protect%20and%20Secure%20Your%20Data" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/linode-backup-service.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/linode-backup-service.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The <em>Linode Backup Service</em> is a subscription service add-on that automatically performs daily, weekly, and biweekly backups of your Linode. It&rsquo;s affordable, easy to use, and provides peace of mind. This guide explains how to enable and schedule your backups, make a manual backup snapshot, restore from a backup, and disable the Backup Service.</p>
+
+<h2 id="pricing">Pricing</h2>
+
+<p>Pricing is per Linode and varies depending upon your Linode&rsquo;s plan:</p>
+
+<h3 id="standard-plans">Standard Plans</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Service</th>
+<th align="left">Backups Hourly Rate</th>
+<th align="left">Backups Monthly</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Linode 1GB</td>
+<td align="left">$0.003/hr</td>
+<td align="left">$2/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 2GB</td>
+<td align="left">$0.004/hr</td>
+<td align="left">$2.50/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 4GB</td>
+<td align="left">$0.008/hr</td>
+<td align="left">$5/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 8GB</td>
+<td align="left">$0.016/hr</td>
+<td align="left">$10/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 12GB</td>
+<td align="left">$0.03/hr</td>
+<td align="left">$20/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 24GB</td>
+<td align="left">$0.06/hr</td>
+<td align="left">$40/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 48GB</td>
+<td align="left">$0.12/hr</td>
+<td align="left">$80/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 64GB</td>
+<td align="left">$0.18/hr</td>
+<td align="left">$120/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 80GB</td>
+<td align="left">$0.24/hr</td>
+<td align="left">$160/mo</td>
+</tr>
+
+<tr>
+<td align="left">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="high-memory-plans">High Memory Plans</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Service</th>
+<th align="left">Backups Hourly Rate</th>
+<th align="left">Backups Monthly</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Linode 16GB</td>
+<td align="left">$0.008/hr</td>
+<td align="left">$5/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 32GB</td>
+<td align="left">$0.015/hr</td>
+<td align="left">$10/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 60GB</td>
+<td align="left">$0.03/hr</td>
+<td align="left">$20/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 104GB</td>
+<td align="left">$0.06/hr</td>
+<td align="left">$40/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 200GB</td>
+<td align="left">$0.09/hr</td>
+<td align="left">$60/mo</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="enable-the-backup-service">Enable the Backup Service</h2>
+
+<p>Use the Linode Manager to enable the Backup Service on a Linode. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>From the <strong>Linodes</strong> tab, select the Linode you want to back up.</li>
+<li>Click the <strong>Backups</strong> tab.</li>
+<li>Click <strong>Enable backups for this Linode</strong>. The <em>Complete Your Order</em> webpage appears.</li>
+<li>Review the pro-rated total, and then click <strong>Complete Order</strong>.</li>
+</ol>
+
+<p>The Linode Backup Service is now enabled for the selected Linode.</p>
+
+<p>You can also follow along with this video to enable the Backup Service on your Linode:</p>
+
+<iframe width="825" height="465" src="https://www.youtube.com/embed/X1J1OigQre0?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+
+<h2 id="manage-backups">Manage Backups</h2>
+
+<p>You&rsquo;ll manage your backups with a simple web interface in the Linode Manager. There&rsquo;s no software to install, and there are no commands to run. Just log in to the Linode Manager, click the <strong>Linodes</strong> tab, select a Linode, and then click the <strong>Backups</strong> tab. The backups interface is shown below.</p>
+
+<p><a href="/docs/assets/955-backups01-1.png"><img src="/docs/assets/954-backups0-small1-1.png" alt="The Linode Backup Service interface" /></a></p>
+
+<ol>
+<li>Schedule automated backups. For more information, see <a href="#schedule-backups">Scheduling Backups</a>.</li>
+<li>Indicates when the daily and weekly backups were performed. Click the <strong>Restore to&hellip;</strong> link to restore a backup to a Linode.</li>
+<li>Manually back up your Linode by taking a <em>manual snapshot</em>. For more information, see <a href="#take-a-manual-snapshot">Taking a Manual Snapshot</a>.</li>
+<li>Review the history to see when backups were created. If there are any error messages, they will also be displayed in this section.</li>
+</ol>
+
+<h2 id="how-linode-backups-work">How Linode Backups Work</h2>
+
+<p>Backups are stored on a separate system in the same datacenter as your Linode. The space required to store the backups is <em>not</em> subtracted from your storage space. You can store four backups of your Linode, three of which are automatically generated and rotated:</p>
+
+<ul>
+<li><strong>Daily backup:</strong> Automatically initiated daily within the backup window you select. Less than 24 hours old.</li>
+<li><strong>Current week&rsquo;s backup:</strong> Automatically initiated weekly within the backup window, on the day you select. Less than 7 days old.</li>
+<li><strong>Last week&rsquo;s backup:</strong> Automatically initiated weekly within the backup window, on the day you select. Between 8 and 14 days old.</li>
+<li><strong>Manual Snapshot:</strong> A user-initiated snapshot that stays the same until another snapshot is initiated.</li>
+</ul>
+
+<p>The daily and weekly backups are automatically erased when a new backup is performed. The Linode Backup Service does not keep automated backups older than 8 - 14 days.</p>
+
+<h2 id="schedule-backups">Schedule Backups</h2>
+
+<p>You can configure when automatic backups are initiated. Here&rsquo;s how:</p>
+
+<ol>
+<li>From the <strong>Linodes</strong> tab, select the Linode.</li>
+<li>Click the <strong>Backups</strong> tab.</li>
+<li>Select a time interval from the <strong>Backup Window</strong> menu. The Linode Backup Service will generate all backups between these hours.</li>
+<li>Select a day from the <strong>Weekly Backup</strong> menu. This is the day whose backup will be promoted to the weekly slot. The back up will be performed within the backup window you specified in step 3.</li>
+<li>Click <strong>Save Changes</strong>.</li>
+</ol>
+
+<p>The Linode Backup Service will backup your Linode according to the schedule you specified.</p>
+
+<h2 id="take-a-manual-snapshot">Take a Manual Snapshot</h2>
+
+<p>You can make a manual backup of your Linode by taking a <em>snapshot</em>. Here&rsquo;s how:</p>
+
+<ol>
+<li>From the <strong>Linodes</strong> tab, select the Linode.</li>
+<li>Click the <strong>Backups</strong> tab.</li>
+
+<li><p>Click <strong>Take a New Snapshot Now</strong>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Taking a new snapshot will overwrite a saved snapshot.</div>
+</blockquote>
+</li>
+
+<li><p>A warning appears asking if you would like to overwrite the previous snapsnot. Click <strong>OK</strong>.</p></li>
+</ol>
+
+<p>The Linode Backup Service initiates the manual snapshot. Be patient. Creating the manual snapshot can take several minutes, depending on the size of your Linode and the amount of data you have stored on it. Other Linode Manager jobs for this Linode will not run until the snapshot job has been completed.</p>
+
+<h2 id="restore-from-a-backup">Restore from a Backup</h2>
+
+<p>This section will show you how to restore a backup to a <a href="#restore-to-a-new-linode">new</a> Linode, or to an <a href="#restore-to-an-existing-linode">existing</a> Linode.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The size of the disk(s) created by the restore process will be slightly larger than the total size of the files restored. You may want to resize your disk(s) after the restore process is completed.</div>
+</blockquote>
+
+
+<p>To restore a backup to a different data center, first restore to a Linode in the same data center, creating a new one if necessary. Once the restore is complete, use the <a href="/docs/migrate-to-linode/disk-images/clone-your-linode">Clone</a> tab to copy the disk(s) to a Linode in a different data center.</p>
+
+<h3 id="restore-to-a-new-linode">Restore to a New Linode</h3>
+
+<p>You can restore a backup to any Linode located in the same data center, even if it does not have the Backup Service enabled. This section will cover how to restore a backup to a new Linode, that does not have any disks deployed to it. If you wish to restore your backup to an existing Linode, see the <a href="#restore-to-an-existing-linode">next section</a>.</p>
+
+<ol>
+<li><p>From the Dashboard of the Linode whose backups you intend to restore, click on the <strong>Backups</strong> tab. Select the <strong>Restore to&hellip;</strong> link beneath the backup that want to restore:</p>
+
+<p><img src="/docs/assets/backup-service-restore-to-link.png" alt="Backup Service Tab" /></p></li>
+
+<li><p>Click the <strong>Restore to this Linode</strong> link next to your new Linode:</p>
+
+<p><a href="/docs/assets/backup-service-restore-to-new.png"><img src="/docs/assets/backup-service-restore-to-new-small.png" alt="Restore to a New Linode" /></a></p>
+
+<p>The backup disks and configuration profiles will be restored to the Linode you selected. Watch the <em>Host Job Queue</em> to monitor the progress. Restoring from a backup can take several minutes depending on the size of your Linode and the amount of data you have stored on it.</p></li>
+</ol>
+
+<h3 id="restore-to-an-existing-linode">Restore to an Existing Linode</h3>
+
+<p>To restore a backup to an existing Linode, you will need to make sure that you have enough storage space that is not currently assigned to disk images.</p>
+
+<ol>
+<li><p>Start by confirming the size of the backup that you wish to restore. From the <strong>Backups</strong> tab in your Linode&rsquo;s Dashboard, click the <strong>Restore to&hellip;</strong> link beneath your desired backup:</p>
+
+<p><img src="/docs/assets/backup-service-restore-to-link.png" alt="Backup Service Tab" /></p></li>
+
+<li><p>Check the <strong>Total size required</strong> field to confirm the size of your backup:</p>
+
+<p><img src="/docs/assets/backup-service-total-size-required.png" alt="Backup Service Tab" /></p>
+
+<p>In this example, the total size of the backup comes to 3107MB, meaning you would need at least that much free space to restore this backup to your Linode.</p></li>
+
+<li><p>Next, you&rsquo;ll confirm the total space assigned to disk images on your Linode, via the <strong>Storage</strong> indicator on your Linode&rsquo;s Dashboard:</p>
+
+<p><a href="/docs/assets/backup-service-dashboard-storage-indicator.png"><img src="/docs/assets/backup-service-dashboard-storage-indicator-small.png" alt="Linode Dashboard Storage Indicator" /></a></p>
+
+<p>Here you can see that the Linode has a total of 30720MB of storage space available, but all of it is currently assigned to the Linode&rsquo;s two disks.</p></li>
+
+<li><p>Now that you know how much space you&rsquo;ll need to free in order to restore the backup, <a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk">resize your disk</a> to make room for it.</p></li>
+
+<li><p>Once the disk resize has completed, check the storage indicator on your Linode&rsquo;s Dashboard to confirm that you&rsquo;ve freed up enough space for your backup:</p>
+
+<p><img src="/docs/assets/backup-service-storage-indicator-resize.png" alt="Linode Dashboard Storage Indicator" /></p></li>
+
+<li><p>From the <strong>Backups</strong> tab, click the <strong>Restore to this Linode</strong> link next to your Linode:</p>
+
+<p><a href="/docs/assets/backup-service-restore-to-a-linode.png"><img src="/docs/assets/backup-service-restore-to-a-linode-small.png" alt="Linode Dashboard Storage Indicator" /></a></p>
+
+<p>Your backup will begin restoring to your Linode, and you can monitor its progress from the <em>Host Job Queue</em> in your Linode&rsquo;s Dashboard tab. Note that the time it takes to restore your backup will vary depending upon the restore size, and the number of files being restored.</p></li>
+</ol>
+
+<h2 id="boot-from-a-backup">Boot from a Backup</h2>
+
+<p>After the backup has been restored, the disks and configuration profiles will be available to the Linode you selected. Select the restored configuration profile and reboot your Linode to start up from the restored disks. Here&rsquo;s how:</p>
+
+<ol>
+<li>From the <strong>Linodes</strong> tab, select the Linode that you restored the backup to. The Linode&rsquo;s dashboard appears, as shown below.</li>
+</ol>
+
+<p><a href="/docs/assets/1049-backups3.png"><img src="/docs/assets/1049-backups3.png" alt="The restore from backup interface." /></a></p>
+
+<ol>
+<li>Select the configuration profile that was restored.</li>
+<li>Click <strong>Boot</strong> or <strong>Reboot</strong> to start your Linode from the backup disks.</li>
+</ol>
+
+<p>The Linode will start from the backup disks. Watch the <em>Host Job Queue</em> to monitor the progress.</p>
+
+<h2 id="cancel-the-backup-service">Cancel the Backup Service</h2>
+
+<p>You can cancel the Backup Service at any time. From your Linode&rsquo;s dashboard, choose the <strong>Backups</strong> tab and click the <strong>Cancel Backups</strong> link at the bottom of the page.  This will turn off the service, remove your backups from our servers, and issue a prorated service credit for the time left in the current billing period. This credit may be used to purchase additional Linode services in the future.</p>
+
+<h2 id="limitations">Limitations</h2>
+
+<p>There are some limitations to what the Linode Backup Service can back up. Here are some things you should be aware of:</p>
+
+<ul>
+<li>The Backup Service must be able to mount your disks. If you&rsquo;ve created partitions, configured full disk encryption, or made other changes that prevent us from mounting the disk as a filesystem, you will likely not be able to use the Linode Backup Service. The backup system operates at the file level, not at the block level.</li>
+<li>Because the Backup Service is file-based, the number of files stored on disk will impact both the time it takes for backups and restores to complete, and your ability to successfully take and restore backups. Customers who need to permanently store a large number of files may want to archive bundles of smaller files into a single file, or consider other backup services.</li>
+<li>Backups taken of ext4 or ext3 filesystems will be restored as ext4. Backups taken of other mountable filesystem types will have their contents restored using ext4.</li>
+<li>Files that have been modified but have the same size and modify time will not be considered &ldquo;changed&rdquo; during a subsequent backup. ACLs and extended attributes are <em>not</em> tracked.</li>
+<li>The Backup Service uses a snapshot of your disks to take consistent backups while your Linode is running. This method is very reliable, but can fail to properly back up the data files for database services like MySQL. If the snapshot occurs during a transaction, the database&rsquo;s files may be backed up in an unclean state. We recommend scheduling routine dumps of your database to a file on the filesystem. The resulting file will then be backed up, allowing you to restore the contents of the database if you need to restore from a backup.</li>
+</ul>
+
+            
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#pricing">Pricing</a>
+<ul>
+<li><a href="#standard-plans">Standard Plans</a></li>
+<li><a href="#high-memory-plans">High Memory Plans</a></li>
+</ul></li>
+<li><a href="#enable-the-backup-service">Enable the Backup Service</a></li>
+<li><a href="#manage-backups">Manage Backups</a></li>
+<li><a href="#how-linode-backups-work">How Linode Backups Work</a></li>
+<li><a href="#schedule-backups">Schedule Backups</a></li>
+<li><a href="#take-a-manual-snapshot">Take a Manual Snapshot</a></li>
+<li><a href="#restore-from-a-backup">Restore from a Backup</a>
+<ul>
+<li><a href="#restore-to-a-new-linode">Restore to a New Linode</a></li>
+<li><a href="#restore-to-an-existing-linode">Restore to an Existing Linode</a></li>
+</ul></li>
+<li><a href="#boot-from-a-backup">Boot from a Backup</a></li>
+<li><a href="#cancel-the-backup-service">Cancel the Backup Service</a></li>
+<li><a href="#limitations">Limitations</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

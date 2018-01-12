@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install ntopng for Network Monitoring on Debian 8</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This Linode tutorial guides you through deploying ntopng, a powerful, lightweight network tool that monitors and analyzes web traffic and packet flows, on Debian 8.">
+        <meta name="keywords" content="ntopng, network monitor, debian 8, debian jessie">
+        
+        <meta property="og:title" content="Install ntopng for Network Monitoring on Debian 8">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8/">
+        <meta property="og:description" content="This Linode tutorial guides you through deploying ntopng, a powerful, lightweight network tool that monitors and analyzes web traffic and packet flows, on Debian 8.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/diagnostics/">Diagnosing Network Issues</a>
+  
+</li>
+
+
+<li>
+  
+  Install ntopng for Network Monitoring on Debian 8
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install ntopng for Network Monitoring on Debian 8</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-13T00:00:00Z">Wednesday, September 13, 2017</time> by Andrew Lescher</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://www.linkedin.com/in/andrew-lescher-87027940/">Andrew Lescher
+    
+    <i class="fa fa-linkedin"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdiagnostics%2finstall-ntopng-for-network-monitoring-on-debian8%2f&via=linode&text=Install%20ntopng%20for%20Network%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdiagnostics%2finstall-ntopng-for-network-monitoring-on-debian8%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdiagnostics%2finstall-ntopng-for-network-monitoring-on-debian8%2f&t=Install%20ntopng%20for%20Network%20Monitoring%20on%20Debian%208" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/ntopng/ntopng-on-debian8.png" alt="Deploy network monitoring tool, ntopng, on Debian 8" title="Deploy network monitoring tool, ntopng, on Debian 8" /></p>
+
+<h2 id="overview-of-ntopng-the-network-monitoring-system">Overview of ntopng, the Network Monitoring System</h2>
+
+<p>In this tutorial you will configure and install ntopng on your Linode. The tutorial will also cover configuration examples and suggestions for the web administration interface. After you complete the tutorial and have the network monitor deployed, you&rsquo;ll be able to perform the following:</p>
+
+<ul>
+<li>Monitor and analyze traffic from your Linode;</li>
+<li>Create Host Pools to group connected devices together based on your own criteria;</li>
+<li>Have a general idea of how to work in the user interface and view statistics, as well as make your own configurations;</li>
+<li>Monitor security threats on your machine.</li>
+</ul>
+
+<h3 id="before-you-begin">Before You Begin</h3>
+
+<ol>
+<li>Complete the <a href="/docs/getting-started">Getting Started</a> guide for setting up a fresh Linode.</li>
+<li>Secure your server by following the steps outlined in the <a href="/docs/security/securing-your-server">Securing Your Server</a> guide.</li>
+<li>This guide will use UFW (Uncomplicated Firewall) to set the firewall rules, but you may use iptables instead. Instructions will be presented for both. If you aren’t familiar with UFW, follow the guide on <a href="/docs/security/firewalls/configure-firewall-with-ufw">How to Configure a Firewall with UFW</a>.</li>
+<li>OpenVPN will be used as an example to demonstrate the capabilities of ntopng. You do not need to have it installed on your machine to complete this guide. However, if you are interested in learning more about OpenVPN, read the <a href="/docs/networking/vpn/set-up-a-hardened-openvpn-server">Setting up a Hardened OpenVPN Server on Debian 8</a> guide.</li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps in this guide require root privileges. Be sure to run the steps below as <code>root</code> or with <code>sudo</code>. If two commands are presented in the same instance (seperated by <code>&amp;&amp;</code>), you must prefix each command with <code>sudo</code> (ex. <code>sudo [command] &amp;&amp; sudo [command]</code>). For more information on privileges, see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h3 id="add-the-ntopng-repository">Add the ntopng Repository</h3>
+
+<pre><code>wget http://apt-stable.ntop.org/jessie/all/apt-ntop-stable.deb
+dpkg -i apt-ntop-stable.deb
+apt-get clean all
+apt-get update
+</code></pre>
+
+<h3 id="update-the-system-and-install-ntopng">Update the System and Install ntopng</h3>
+
+<p>Verify that your system is up to date. Install <code>ntopng</code> and supporting services:</p>
+
+<pre><code>apt update &amp;&amp; apt upgrade -yuf
+apt install pfring nprobe ntopng ntopng-data n2disk ethtool
+</code></pre>
+
+<h3 id="add-system-user-for-ntopng">Add System User for ntopng</h3>
+
+<p>By default, ntopng is run as the user <code>nobody</code>. This is a good choice for daemons requiring minimal access to the system. However, ntopng installs files in directories to which the user <code>nobody</code> may not have access. Depending on how your system is configured, you can mitigate this by creating a new user for it:</p>
+
+<ol>
+<li><p>Add user <code>ntopng</code>:</p>
+
+<pre><code>useradd -r -s /bin/false ntopng
+</code></pre></li>
+
+<li><p>Set permissions for user <code>ntopng</code> and installation files/directories as shown:</p>
+
+<pre><code>mkdir /var/tmp/ntopng
+chown -R ntopng:ntopng /usr/share/ntopng /var/tmp/ntopng
+chmod 1770 -R /var/tmp/ntopng
+find /usr/share/ntopng -type d -print0 | xargs -0 chmod 744
+find /usr/share/ntopng -type f -print0 | xargs -0 chmod 755
+</code></pre></li>
+</ol>
+
+<h2 id="configure-ntopng">Configure ntopng</h2>
+
+<p>Ntopng has a built in web server and initializer. Configuration options can be defined in a config file or set from the command line during initialization on a per-use basis. If you use both the command line and the config file, ntopng will prioritize the settings in the config file.</p>
+
+<ol>
+<li><p>Disable TCP segmentation offload. Replace <code>eth0</code> with your primary connection interface (usually <code>eth0</code>):</p>
+
+<pre><code>ethtool -K eth0 gro off gso off tso off
+</code></pre></li>
+
+<li><p>Check and verify that TCP segmentation is disabled:</p>
+
+<pre><code>ethtool -k eth0
+</code></pre></li>
+
+<li><p>Verify that the <code>tcp-segmentation-offload</code> section in the output matches the following:</p>
+
+<pre><code>tcp-segmentation-offload: off
+        tx-tcp-segmentation: off
+        tx-tcp-ecn-segmentation: off
+        tx-tcp-mangleid-segmentation: off
+        tx-tcp6-segmentation: off
+</code></pre></li>
+
+<li><p>Create <code>/etc/ntopng/ntopng.conf</code> and match the contents to the example listed below. Replace <code>192.0.2.0</code> with your Linode’s domain or public IP address. If needed, replace <code>eth0</code> with your primary network interface. If you want to review available configuration parameters, run <code>man ntopng</code> from the terminal.</p>
+
+<dl class="file">
+<dt>
+
+
+		**/etc/ntopng/ntopng.conf** 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">--user=ntopng
+--interface=eth0
+-w=192.0.2.0:3005
+--community
+--daemon
+--dump-flows=logstash # optional
+--disable-autologout # optional
+--disable-login=1 # optional</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The option flags commented with <code># optional</code> are <strong>not mandatory.</strong> All flags requiring input must be followed by an <code>=</code> and a value. Replace <code>eth0</code> with your network interface below, if you are not using <code>eth0</code>.</div>
+</blockquote>
+</li>
+</ol>
+
+<h5 id="configuration-file-breakdown">Configuration File Breakdown</h5>
+
+<table>
+<thead>
+<tr>
+<th align="center">Flags</th>
+<th align="center">Features</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">&ndash;user</td>
+<td align="center">Designates the user <code>ntopng</code> will run under. Leaving this flag out of the configuration file will default to <code>nobody</code>.</td>
+</tr>
+
+<tr>
+<td align="center">&ndash;interface</td>
+<td align="center">The network interface ntopng will monitor.</td>
+</tr>
+
+<tr>
+<td align="center">-w</td>
+<td align="center">HTTP address and port used to connect to the admin interface. While port <code>3005</code> is the default, you may define any.</td>
+</tr>
+
+<tr>
+<td align="center">&ndash;community</td>
+<td align="center">The license ntopng will run under.</td>
+</tr>
+
+<tr>
+<td align="center">&ndash;daemon</td>
+<td align="center">ntpong can be used as a forward service or as a background daemon.</td>
+</tr>
+
+<tr>
+<td align="center">&ndash;dump-flows</td>
+<td align="center">Logged traffic can be shared with other services</td>
+</tr>
+
+<tr>
+<td align="center">&ndash;disable-autologout</td>
+<td align="center">Forces ntopng to allow users to remain logged into the web interface without being deactivated for inactivity.</td>
+</tr>
+
+<tr>
+<td align="center">&ndash;disable-login</td>
+<td align="center">1 to disable password authentication, 0 to require authentication.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="open-ports-for-ntopng">Open Ports For ntopng</h2>
+
+<h3 id="for-ufw">For UFW</h3>
+
+<pre><code>ufw allow 3005:3006/tcp
+</code></pre>
+
+<h3 id="for-iptables">For iptables</h3>
+
+<pre><code>iptables -A INPUT -p tcp --match multiport --dports 3005:3006 -j ACCEPT
+</code></pre>
+
+<h2 id="access-ntopng-s-web-interface">Access ntopng&rsquo;s Web Interface</h2>
+
+<ol>
+<li><p>From the terminal, initialize ntopng by typing <code>ntopng /etc/ntopng/ntopng.conf</code>. If your config file is in a different directory, adjust the command accordingly.</p></li>
+
+<li><p>Use a web browser to navigate to <code>192.0.2.0:3005</code>, replacing <code>192.0.2.0</code> with your domain or IP. If you enabled autologin, you’ll be routed to the <em>Welcome</em> page. If you did not enable autologin, enter <code>username:admin</code> and <code>password:admin</code> in the pop-up window. The system will then prompt you to set a new password.</p></li>
+</ol>
+
+<h2 id="create-a-host-pool">Create a Host Pool</h2>
+
+<p>If you want to group devices over the same network or host a home media server, you can use a host pool. This example uses OpenVPN to group connected devices together.</p>
+
+<ol>
+<li><p>In the <strong>Interfaces</strong> dropdown menu, select your main connection interface. In this case, it’s <code>eth0</code>. In the menu directly below the <strong>ntop</strong> logo, select the icon that resembles a group of 3 people. Select <strong>Manage Pools</strong>.</p></li>
+
+<li><p>Click on the <code>+</code> icon on the far right of the screen. Give your pool a descriptive name and save:</p>
+
+<p><img src="/docs/assets/ntopng/ntopng-add-pool.png" alt="Add a pool name to the managed pools" title="Add a pool name to the managed pools" /></p></li>
+
+<li><p>Click on the <strong>Unassigned Devices</strong> tab. This is a list of devices currently transmitting data through the Linode (you should at least see the device you’re connecting from listed here). Determine which devices you’ll add to your pool and add them. Click <strong>Save Settings</strong> when you’re finished.</p></li>
+
+<li><p>To view data from your host pool, you’ll need to mouse over the <strong>Hosts</strong> dropdown and select <strong>Host Pools</strong>. You’ll find the pool name you created listed on this page. Click on it. Here, you’ll see all currently open connections from each of the hosts in your host pool:</p>
+
+<p><img src="/docs/assets/ntopng/ntopng-currently-open-connections.png" alt="Currently open connections" title="Currently open connections" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you want to see all the host connections on a single page, set the number of rows to display per page next to the filtering options above the table.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="enable-security">Enable Security</h2>
+
+<p>Ntopng provides a simple and convenient method for monitoring threats.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Ntopng does not replace core security features such as a properly configured firewall. It is best to run this in tandem with an existing internal setup.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Near the top of the web interface, scroll over <strong>Settings</strong> and select <strong>Preferences</strong>. Click on <strong>Alerts</strong> in the menu to the left. Click on <strong>Enable Alerts</strong> and choose which alerts you’d like to enable.</p></li>
+
+<li><p>Scroll over the alert icon with the exclamation point in the top menu bar. Click on <strong>Alerts</strong>. All network alerts are recorded and displayed here. This page fills up quickly due to internet traffic and bot probes. If you locked down all ports on your machine excluding those needed for connections, ntopng will log all attempts to bypass those ports.</p></li>
+</ol>
+
+<p>In addition, ntopng receives nightly updates to a blacklisted hosts file, supplied by <a href="https://spamhaus.org">spamhaus.org</a> and <a href="https://dshield.org">dshield.org</a>. Connections made to and from these blacklisted hosts will be blocked outright by ntopng. While this should not be considered a full security solution, this is a good start to counteract malware and spam from infecting systems on your network.</p>
+
+<h3 id="next-steps-with-ntopng">Next Steps with ntopng</h3>
+
+<p>Now that you have some basic knowledge of how ntopng is used and some idea of its capabilities, you may want to further explore configurations for your specific situation. You can find detailed information at the official ntopng website. The site also hosts a thorough guide on using ntopng to enhance the security of your network. Both links are included below in the <strong>More Information</strong> section.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.ntop.org/products/traffic-analysis/ntop/">ntop Main Website</a></li>
+
+<li><a href="http://www.ntop.org/wp-content/uploads/2017/04/NetworkSecurityUsingntopng.pdf/">ntop Network Security Guide</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/nginx/install-nginx-web-server-on-debian-8/">Install Nginx Web Server on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/minecraft-with-mcmyadmin-on-debian/">Installing McMyAdmin for Minecraft on Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/">How to Install a Redis Server on Ubuntu or Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8/">Install Nagios 4 on Ubuntu and Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/install-php-fpm-and-apache-on-debian-8/">Install PHP-FPM and Apache on Debian 8 (Jessie)</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#overview-of-ntopng-the-network-monitoring-system">Overview of ntopng, the Network Monitoring System</a>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#add-the-ntopng-repository">Add the ntopng Repository</a></li>
+<li><a href="#update-the-system-and-install-ntopng">Update the System and Install ntopng</a></li>
+<li><a href="#add-system-user-for-ntopng">Add System User for ntopng</a></li>
+</ul></li>
+<li><a href="#configure-ntopng">Configure ntopng</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#configuration-file-breakdown">Configuration File Breakdown</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#open-ports-for-ntopng">Open Ports For ntopng</a>
+<ul>
+<li><a href="#for-ufw">For UFW</a></li>
+<li><a href="#for-iptables">For iptables</a></li>
+</ul></li>
+<li><a href="#access-ntopng-s-web-interface">Access ntopng&rsquo;s Web Interface</a></li>
+<li><a href="#create-a-host-pool">Create a Host Pool</a></li>
+<li><a href="#enable-security">Enable Security</a>
+<ul>
+<li><a href="#next-steps-with-ntopng">Next Steps with ntopng</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

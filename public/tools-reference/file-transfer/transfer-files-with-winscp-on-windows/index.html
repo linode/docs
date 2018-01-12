@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Transfer Files with WinSCP on Windows</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Securely copying files to and from your Linode with WinSCP, a free and open source file transfer client for Microsoft Windows systems.">
+        <meta name="keywords" content="winscp, ftp, windows scp, sftp, windows sftp program">
+        
+        <meta property="og:title" content="Transfer Files with WinSCP on Windows">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/">
+        <meta property="og:description" content="Securely copying files to and from your Linode with WinSCP, a free and open source file transfer client for Microsoft Windows systems.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/file-transfer/">File Transfer</a>
+  
+</li>
+
+
+<li>
+  
+  Transfer Files with WinSCP on Windows
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Transfer Files with WinSCP on Windows</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-08-22T00:00:00Z">Monday, August 22, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ffile-transfer%2ftransfer-files-with-winscp-on-windows%2f&via=linode&text=Transfer%20Files%20with%20WinSCP%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ffile-transfer%2ftransfer-files-with-winscp-on-windows%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ffile-transfer%2ftransfer-files-with-winscp-on-windows%2f&t=Transfer%20Files%20with%20WinSCP%20on%20Windows" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>WinSCP is a free, open source file transfer program written for Microsoft Windows. It implements several file transfer protocols, most notably SFTP via SSH. This tool allows you to securely transfer files to and from your Linode using an encrypted channel, avoiding the security problems and usability issues inherent in traditional FTP client/server systems. WinSCP sends both your login credentials and file transfers over the network securely encrypted, while standard FTP clients send this information as plaintext.</p>
+
+<p>You&rsquo;ll need to make sure your Linode is running an SSH daemon (all Linodes run an OpenSSH server by default), and that you have a user account on the server before following these instructions. You may wish to verify that you can log into your Linode via SSH using a tool like the <a href="/docs/networking/using-putty">PuTTY SSH client</a> before continuing.</p>
+
+<p><img src="/docs/assets/transfer_files_with_winscp_on_windows_smg.png" alt="winscp" /></p>
+
+<h2 id="obtaining-and-installing-winscp">Obtaining and Installing WinSCP</h2>
+
+<p>You can obtain the software from the <a href="http://winscp.net/eng/download.php">WinSCP download page</a>. Click the link for &ldquo;Installation package&rdquo; and save the file to your desktop. After downloading the installer, double-click its icon to launch it. You will be presented with the WinSCP setup wizard; please click &ldquo;Next&rdquo; to continue.</p>
+
+<p><a href="/docs/assets/164-winscp-install-welcome.png"><img src="/docs/assets/164-winscp-install-welcome.png" alt="WinSCP setup wizard welcome screen." /></a></p>
+
+<p>You&rsquo;ll be prompted to accept the license agreement for WinSCP (GPL v2 licensed as of this writing). There may be additional license agreements included as well, depending on whether the installer includes support for installing third party applications. Should you be asked if you would like to install any such third party applications alongside WinSCP, you are <em>not</em> required to do so to use WinSCP. Read the displayed license(s), and click &ldquo;Next&rdquo; if you agree to the terms presented.</p>
+
+<p><a href="/docs/assets/165-winscp-license-agreement.png"><img src="/docs/assets/165-winscp-license-agreement.png" alt="WinSCP setup wizard license agreement screen." /></a></p>
+
+<p>When presented with the option to perform a typical or custom installation, most users will choose the default selection (typical). Click &ldquo;Next&rdquo; to continue.</p>
+
+<p><a href="/docs/assets/166-winscp-setup-type.png"><img src="/docs/assets/166-winscp-setup-type.png" alt="WinSCP setup wizard setup type selection screen." /></a></p>
+
+<p>When presented with a choice between &ldquo;Commander&rdquo; or &ldquo;Explorer&rdquo; interface styles, most users will want to choose the default selection (Commander).</p>
+
+<p><a href="/docs/assets/167-winscp-user-interface-style.png"><img src="/docs/assets/167-winscp-user-interface-style.png" alt="WinSCP setup wizard user interface style selection screen." /></a></p>
+
+<p>After clicking &ldquo;Continue&rdquo; once more, the program should be installed. You&rsquo;ll be given an opportunity to allow the installer to launch WinSCP for you.</p>
+
+<h1 id="using-winscp">Using WinSCP</h1>
+
+<p>Once launched, you&rsquo;ll be presented with a screen similar to the following:</p>
+
+<p><a href="/docs/assets/168-winscp-login-screen.png"><img src="/docs/assets/168-winscp-login-screen.png" alt="WinSCP session login screen." /></a></p>
+
+<p>Enter your Linode&rsquo;s fully qualified hostname or IP address in the &ldquo;Host name&rdquo; field. Unless you&rsquo;ve modified your system to run your SSH server on a non-standard port, leave &ldquo;Port number&rdquo; as the default (port 22). Enter your Linux username and password in the next two fields. Click &ldquo;Login&rdquo; to begin your session.</p>
+
+<p>You&rsquo;ll need to specify account credentials that have access to the filesystem location you&rsquo;d like to transfer files to and/or from on your Linode; in this case, we&rsquo;ve specified the &ldquo;root&rdquo; user, which has administrative access to the system. It&rsquo;s advisable to create separate user accounts on your system in lieu of using &ldquo;root&rdquo; for common tasks; you can learn more about Linux/UNIX users and groups in our <a href="/docs/tools-reference/linux-users-and-groups">users and groups tutorial</a>.</p>
+
+<p>If you haven&rsquo;t previously logged into your Linode from this workstation with WinSCP, you&rsquo;ll be presented with a warning dialog similar to the following:</p>
+
+<p><a href="/docs/assets/169-winscp-key-warning.png"><img src="/docs/assets/169-winscp-key-warning.png" alt="WinSCP host key verification dialog." /></a></p>
+
+<p>In this case, WinSCP is asking you to verify that the server you&rsquo;re logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log into. You need some &ldquo;out of band&rdquo; method of comparing the key fingerprint presented to WinSCP with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the Lish console (see the &ldquo;Console&rdquo; tab in the Linode Manager) and executing the following command:</p>
+
+<pre><code>ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
+</code></pre>
+
+<p>The key fingerprints should match; click &ldquo;Yes&rdquo; to accept the warning and cache this host key in the registry. You won&rsquo;t receive further warnings unless the key presented to WinSCP changes for some reason; typically, this should only happen if you reinstall the remote server&rsquo;s operating system. If you should receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.</p>
+
+<p>Once you&rsquo;ve accepted the host key, you&rsquo;ll be presented with a dual-pane session window similar to the following:</p>
+
+<p><a href="/docs/assets/170-winscp-active-session.png"><img src="/docs/assets/170-winscp-active-session.png" alt="An active WinSCP file transfer session." /></a></p>
+
+<p>You can navigate your local filesystem in the left view pane, while your Linode&rsquo;s filesystem is displayed on the right side. You may copy files between the two systems by simply dragging and dropping them between the panes. Congratulations, you&rsquo;re now able to visually manage your remote filesystem using WinSCP!</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://winscp.net/eng/docs/start">WinSCP Documentation</a></li>
+<li><a href="/docs/tools-reference/">Tools &amp; Resources</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/file-transfer/filezilla/">Transfer Files with FileZilla</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/file-transfer/transfer-files-with-filezilla-on-ubuntu-9-10-desktop/">Transfer Files with Filezilla on Ubuntu 9.10 Desktop - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/file-transfer/transfer-files-with-cyberduck-on-mac-os-x/">Transfer Files with Cyberduck on Mac OS X - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu/">Limiting Access with SFTP Jails on Debian and Ubuntu</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#obtaining-and-installing-winscp">Obtaining and Installing WinSCP</a></li>
+</ul></li>
+<li><a href="#using-winscp">Using WinSCP</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

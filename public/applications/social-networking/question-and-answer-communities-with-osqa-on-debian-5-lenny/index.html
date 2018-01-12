@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Question and Answer Communities with OSQA on Debian 5 (Lenny)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="OSQA provides an advanced knowledge exchange system for vibrant communities.">
+        <meta name="keywords" content="knowledge exchange, question and answers, q&amp;a, debian lenny">
+        
+        <meta property="og:title" content="Question and Answer Communities with OSQA on Debian 5 (Lenny)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/social-networking/question-and-answer-communities-with-osqa-on-debian-5-lenny/">
+        <meta property="og:description" content="OSQA provides an advanced knowledge exchange system for vibrant communities.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/social-networking/question-and-answer-communities-with-osqa-on-debian-5-lenny/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/social-networking/">Social Networking</a>
+  
+</li>
+
+
+<li>
+  
+  Question and Answer Communities with OSQA on Debian 5 (Lenny)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Question and Answer Communities with OSQA on Debian 5 (Lenny)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-10-04T00:00:00Z">Friday, October 4, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fsocial-networking%2fquestion-and-answer-communities-with-osqa-on-debian-5-lenny%2f&via=linode&text=Question%20and%20Answer%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fsocial-networking%2fquestion-and-answer-communities-with-osqa-on-debian-5-lenny%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fsocial-networking%2fquestion-and-answer-communities-with-osqa-on-debian-5-lenny%2f&t=Question%20and%20Answer%20Communities%20with%20OSQA%20on%20Debian%205%20%28Lenny%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/social-networking/question-and-answer-communities-with-osqa-on-debian-5-lenny.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/social-networking/question-and-answer-communities-with-osqa-on-debian-5-lenny.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>OSQA, the Open Source Question and Answer platform, is a tool for structured community engagement centered around knowledge exchange. OSQA provides tools for groups of people to ask questions, get answers, and control the quality of the information exchanged within the system. OSQA models itself after the engine that powers sites like Stack Overflow and Server Fault. Thus, OSQA is not simply a tool for organizing user generated content, but also a tool for building vibrant and valuable forums that can serve as the informational backbone of entire communities.</p>
+
+<p>Before beginning this guide, we assume that you have completed the <a href="/docs/getting-started/">getting started guide</a>. If you&rsquo;re new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts/">introduction to Linux concepts guide</a>, <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>. Furthermore, this guide presumes that you have installed the <a href="/content/web-servers/apache/installation/debian-5-lenny">Apache HTTP server</a> and the <a href="/content/databases/mysql/debian-5-lenny">MySQL database engine</a>. If you want your OSQA instance to be able to send email, install the <a href="/content/email/exim/send-only-mta-debian-5-lenny">Exim send-only MTA</a>.</p>
+
+<h1 id="install-prerequisites">Install Prerequisites</h1>
+
+<p>Before beginning the installation of OSQA, issue the following commands to ensure that your system is up to date and that all required packages have been installed:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+apt-get install python-setuptools build-essential libapache2-mod-wsgi subversion mysql-server libmysqlclient15-dev git-core wget libmysql++-dev checkinstall python-mysqldb
+</code></pre>
+
+<p>Issue the following sequence of commands to use the <code>easy_install</code> tool to install Python dependencies:</p>
+
+<pre><code>easy_install Django==1.1
+easy_install mysql-python
+easy_install html5lib
+easy_install Markdown
+easy_install python-openid
+easy_install South
+easy_install django-debug-toolbar
+</code></pre>
+
+<p>Additionally, OSQA uses the Sphinx search engine tool, which is unfortunately not included in the Debian software repositories. At the time of this writing, the latest stable release of Sphinx is 0.9.9, but check the <a href="http://sphinxsearch.com/downloads.html">Sphinx Search Upstream</a> to ensure that you&rsquo;re downloading the most up to date version of this software. Issue the following sequence of commands to download, compile, and create a Debian package for Sphinx, then install that package:</p>
+
+<pre><code>cd /opt/
+wget http://www.sphinxsearch.com/downloads/sphinx-0.9.9.tar.gz
+tar -zxvf /opt/sphinx-0.9.9.tar.gz
+cd /opt/sphinx-0.9.9/
+./configure
+make
+checkinstall
+</code></pre>
+
+<p>The <code>checkinstall</code> command will ask you a number of questions regarding the package you are building. <code>checkinstall</code> will allow you to modify ten possible options concerning your application. We recommend naming this package <code>sphinxsearch</code> to avoid overlapping with other packages for different software in Debian. Other modifications can be made at your discretion. When complete, <code>checkinstall</code> will generate the following output. Press enter, when you have completed this process:</p>
+
+<pre><code>0 - Maintainer: [ username@example.com ]
+1 - Summary: [ Sphinx is a full-text search engine. ]
+2 - Name: [ sphinxsearch2 ]
+3 - Version: [ 0.9.9 ]
+4 - Release: [ 1 ]
+5 - License: [ GPL ]
+6 - Group: [ web ]
+7 - Architecture: [ i386 ]
+8 - Source location: [ sphinxsearch-2 ]
+9 - Alternate source location: [ http://sphinxsearch.com/downloads.html ]
+10 - Requires: [ ]
+
+Enter a number to change any of them or press ENTER to continue:
+</code></pre>
+
+<p>You will then be able to install Sphinx by issuing the following command:</p>
+
+<pre><code>dpkg -i /opt/sphinx-0.9.9/sphinxsearch_0.9.9-1_i386.deb
+</code></pre>
+
+<p>Now, you will be able to remove Sphinx with the following command if need be:</p>
+
+<pre><code>apt-get remove sphinxsearch
+</code></pre>
+
+<p>To complete the installation of prerequisites, issue the following commands to install the django-sphinx connector:</p>
+
+<pre><code>cd /opt/
+git clone git://github.com/dcramer/django-sphinx.git
+cd /opt/django-sphinx/
+python setup.py install
+</code></pre>
+
+<p>Now, to upgrade to the latest version of the <code>django-sphinx</code> software, issue the following command sequence:</p>
+
+<pre><code>cd /opt/django-sphinx/
+git pull
+python setup.py install
+</code></pre>
+
+<p>Continue reading to install the OSQA software. We will assume that your OSQA site will be located at <code>http://example.com/</code> which points at an Apache virtual host, with a document root located at <code>/srv/www/example.com/public_html/</code>.</p>
+
+<h1 id="install-osqa">Install OSQA</h1>
+
+<h3 id="download-software">Download Software</h3>
+
+<p>OSQA software is distributed by way of a subversion repository rather than a conventional release cycle. Use the following command sequence to fetch a copy of the software:</p>
+
+<pre><code>cd /srv/www/example.com/
+svn co http://svn.osqa.net/svnroot/osqa/trunk
+mv trunk osqa/
+</code></pre>
+
+<p>You can update your copy of OSQA to the latest version released by developers, by issuing the following commands:</p>
+
+<pre><code>cd /srv/www/example.com/osqa/
+svn up
+</code></pre>
+
+<p>Please remember to take reasonable precautions before performing this operation on your production sites to avoid breaking the application without proper testing.</p>
+
+<h3 id="configure-osqa">Configure OSQA</h3>
+
+<p>To configure OSQA, copy the <code>settings_local.py.dist</code> file inside of the <code>/srv/www/example.com/osqa/</code> directory to <code>/srv/www/example.com/osqa/settings_local.py</code>.</p>
+
+<p>Edit the newly created <code>/srv/www/example.com/osqa/settings_local.py</code> and set the following values to correspond to the database and database credentials that you have created.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		settings\\_local.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">DATABASE_NAME</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;osqa&#39;</span>                  <span class="c1"># Or path to database file if using sqlite3.</span>
+<span class="n">DATABASE_USER</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;username&#39;</span>                <span class="c1"># Not used with sqlite3.</span>
+<span class="n">DATABASE_PASSWORD</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;5t1ck&#39;</span>             <span class="c1"># Not used with sqlite3.</span>
+<span class="n">DATABASE_ENGINE</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;mysql&#39;</span>               <span class="c1"># mysql, ext.</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The majority of OSQA&rsquo;s features can be controlled from within the application itself. However, there are some options that can only be controlled from within the <code>setings_local.py</code> file. Consider the following settings, which you may need to modify to suit the needs of your application:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		settings\\_local.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">DEBUG</span><span class="o">=</span><span class="bp">False</span>                             <span class="c1"># set to True to enable debug mode</span>
+
+<span class="n">SERVER_EMAIL</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>
+<span class="n">DEFAULT_FROM_EMAIL</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>
+<span class="n">EMAIL_HOST_USER</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>
+<span class="n">EMAIL_HOST_PASSWORD</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>                <span class="c1"># not necessary if mailserver is run on local machine</span>
+<span class="n">EMAIL_SUBJECT_PREFIX</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;MORRIS &#39;</span>
+<span class="n">EMAIL_HOST</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;example.com&#39;</span>
+<span class="n">EMAIL_PORT</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;25&#39;</span>
+<span class="n">EMAIL_USE_TLS</span><span class="o">=</span><span class="bp">False</span>
+<span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;America/NewYork&#39;</span>
+
+<span class="n">FORUM_SCRIPT_ALIAS</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;&#39;</span>                 <span class="c1"># no leading slash, default = &#39;&#39; empty string</span>
+                                        <span class="c1"># if you set FORUM_SCRIPT_ALIAS= &#39;forum/&#39;</span>
+                                        <span class="c1"># then OSQA will run at url http://example.com/forum</span>
+                                        <span class="c1"># FORUM_SCRIPT_ALIAS cannot have leading slash, otherwise it can be set to anything</span>
+
+<span class="n">LANGUAGE_CODE</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;en&#39;</span>                    <span class="c1"># forum language (see language instructions on the wiki)</span>
+<span class="n">EMAIL_VALIDATION</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;off&#39;</span>                <span class="c1"># string - on|off</span>
+<span class="n">MIN_USERNAME_LENGTH</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">EMAIL_UNIQUE</span> <span class="o">=</span> <span class="bp">False</span>                    <span class="c1"># if True, email addresses must be unique in all accounts</span>
+<span class="n">APP_URL</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;http://example.com&#39;</span>      <span class="c1"># used by email notif system and RSS</span>
+<span class="n">WIKI_ON</span> <span class="o">=</span> <span class="bp">True</span>                          <span class="c1"># if False - community wiki feature is disabled</span>
+
+<span class="n">FEEDBACK_SITE_URL</span> <span class="o">=</span> <span class="bp">None</span>                <span class="c1"># None or url</span>
+<span class="n">LOGIN_URL</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;/</span><span class="si">%s%s%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">FORUM_SCRIPT_ALIAS</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;account/&#39;</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;signin/&#39;</span><span class="p">)</span>
+
+<span class="n">DJANGO_VERSION</span> <span class="o">=</span> <span class="mf">1.1</span>                    <span class="c1"># must be either 1.0 or 1.1</span>
+<span class="n">RESOURCE_REVISION</span><span class="o">=</span><span class="mi">4</span>                     <span class="c1"># increment when you update media files - clients will be forced to load new version</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="application-deployment">Application Deployment</h3>
+
+<p>We&rsquo;ll deploy OSQA using the Apache web server using the <code>mod_wsgi</code> method of executing Python code. Include the following directives in your Apache virtual hosting configuration, presumably located at <code>/etc/apache2/sites-available/example.com</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">WSGIScriptAlias</span> / <span class="sx">/srv/www/example.com/osqa/django.wsgi</span>
+<span class="nt">&lt;Directory</span> <span class="s">/srv/www/example.com/osqa</span><span class="nt">&gt;</span>
+   <span class="nb">Order</span> allow,deny
+   <span class="nb">Allow</span> from <span class="k">all</span>
+<span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This directive tells Apache that all requests for the top level of your virtual host should be directed to the WSGI application specified in the <code>/srv/www/example.com/osqa/django.wsgi</code> file, which we&rsquo;ll create below. In order to allow Apache to continue to serve some static files, insert <code>Alias</code> directives in the following form:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">Alias</span> <span class="sx">/robots.txt</span> <span class="sx">/srv/www/example.com/public_html/robots.txt</span>
+<span class="nb">Alias</span> <span class="sx">/favicon.ico</span> <span class="sx">/srv/www/example.com/public_html/favicon.ico</span>
+<span class="nb">Alias</span> <span class="sx">/images</span> <span class="sx">/srv/www/example.com/public_html/images</span>
+<span class="nb">Alias</span> <span class="sx">/static</span> <span class="sx">/srv/www/example.com/public_html/static</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Now create the required <code>django.wsgi</code> file, as specified:</p>
+
+<dl class="file">
+<dt>
+
+
+		/srv/www/example.com/osqa/django.wsgi 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;/srv/www/example.com/osqa&#39;</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;PYTHON_EGG_CACHE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;/srv/www.example.com/.python-egg&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;settings&#39;</span>
+
+<span class="kn">import</span> <span class="nn">django.core.handlers.wsgi</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">django</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">wsgi</span><span class="o">.</span><span class="n">WSGIHandler</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>After the application has been configured, issue the following commands to properly initialize the database:</p>
+
+<pre><code>python manage.py syncdb --all
+python manage.py migrate forum --fake
+</code></pre>
+
+<p>You will need to repeat this command sequence any time you update your software or your database. The first command will prompt to ask if you would like to create a superuser account: you do not. Issue the following commands to create the required directories, set the permissions of the application&rsquo;s logging directory and restart the web server:</p>
+
+<pre><code>mkdir -p /srv/www/example.com/osqa/cache /srv/www/example.com/.python-egg
+chown -R www-data /srv/www/example.com/osqa/log/ /srv/www/example.com/osqa/cache /srv/www/example.com/.python-egg
+/etc/init.d/apache2 restart
+</code></pre>
+
+<p>Congratulations! You will now be able to visit your new OSQA powered site located at <code>http://example.com</code>.</p>
+
+<h1 id="monitor-for-software-updates-and-security-notices">Monitor for Software Updates and Security Notices</h1>
+
+<p>When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.</p>
+
+<p>Please monitor the OSQ mailing lists for users and developers to ensure that you are aware of all updates to the software and can upgrade appropriately or apply patches and recompile as needed.</p>
+
+<ul>
+<li><a href="http://lists.osqa.net/mailman/listinfo/users">OSQA Users Mailing List</a></li>
+<li><a href="http://lists.osqa.net/mailman/listinfo/dev">OSQA Developers Mailing List</a></li>
+</ul>
+
+<p>When upstream sources offer new releases, repeat the instructions for installing the OSQA software as needed. These practices are crucial for the ongoing security and functioning of your system.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.osqa.net/">OSQA Home Page</a></li>
+<li><a href="http://meta.osqa.net/">OSQA Meta QA site</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/tools/synchronize-files-with-unison/">Synchronize Files with Unison - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/websites-with-nginx-on-debian-5-lenny/">Websites with nginx on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/exim/sendonly-mail-server-with-exim-on-debian-5-lenny/">Send-only Mail Server with Exim on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-debian-5-lenny/">Websites with the Cherokee Web Server on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/ssl-certificates-with-apache-2-on-debian-5-lenny/">SSL Certificates with Apache 2 on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#install-prerequisites">Install Prerequisites</a></li>
+<li><a href="#install-osqa">Install OSQA</a>
+<ul>
+<li>
+<ul>
+<li><a href="#download-software">Download Software</a></li>
+<li><a href="#configure-osqa">Configure OSQA</a></li>
+<li><a href="#application-deployment">Application Deployment</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#monitor-for-software-updates-and-security-notices">Monitor for Software Updates and Security Notices</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Rewrite URLs with mod_rewrite and Apache</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to use the mod_rewrite engine to generate URLs with the Apache HTTP server.">
+        <meta name="keywords" content="mod_rewrite, REST, URLs, redirect, apache, httpd">
+        
+        <meta property="og:title" content="Rewrite URLs with mod_rewrite and Apache">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/">
+        <meta property="og:description" content="How to use the mod_rewrite engine to generate URLs with the Apache HTTP server.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/apache-tips-and-tricks/">Apache Tips &amp; Tricks</a>
+  
+</li>
+
+
+<li>
+  
+  Rewrite URLs with mod_rewrite and Apache
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Rewrite URLs with mod_rewrite and Apache</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-02-21T00:00:00Z">Tuesday, February 21, 2017</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache-tips-and-tricks%2frewrite-urls-with-modrewrite-and-apache%2f&via=linode&text=Rewrite%20URLs%20with%20mod_rewrite%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache-tips-and-tricks%2frewrite-urls-with-modrewrite-and-apache%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache-tips-and-tricks%2frewrite-urls-with-modrewrite-and-apache%2f&t=Rewrite%20URLs%20with%20mod_rewrite%20and%20Apache" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>In this guide, you&rsquo;ll learn how to rewrite URLs with mod_rewrite and Apache. Rewriting a URL is a server-side operation that allows you to serve content from a file system location that doesn&rsquo;t correspond exactly with the client&rsquo;s request. This can be useful for improving URL readability by search engines and users, or updating locations of resources when your site architecture changes.</p>
+
+<p><img src="/docs/assets/rewrite-urls-with-modrewrite-and-apache.png" alt="Rewrite URLs with mod_rewrite and Apache" title="Rewrite URLs with mod_rewrite and Apache" /></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>This guide assumes you have followed our <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/security/securing-your-server">Securing Your Server</a> guides, and that you have already configured your Apache installation. If you haven&rsquo;t, refer to our <a href="https://www.linode.com/docs/websites/apache/">Apache guides</a> or <a href="https://www.linode.com/content/websites/lamp/">LAMP stack guides</a>.</p></li>
+
+<li><p>In this guide, we&rsquo;ll be modifying Apache configuration files, so be sure you have the proper permissions to do so.</p></li>
+
+<li><p>Update your system.</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<h2 id="rewrite-urls">Rewrite URLs</h2>
+
+<p>In a <code>&lt;Directory&gt;</code> block (usually found a virtual host file) or <code>.htaccess</code> file, enable mod_rewrite:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Configuration Option 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">RewriteEngine</span> <span class="k">on</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You may create multiple separate rewrite rules. These rules provide a pattern that the server compares against incoming requests. If a request matches a rewrite pattern, the server modifies the request as described by the rule and processes that request. Here is an example of a rewrite rule:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Configuration Option 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">RewriteRule</span> ^post-id/([0-9]+)$ <span class="sx">/posts/</span>$1.html</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Let&rsquo;s explain this rule: The first string is the pattern for matching against incoming requests. The second string specifies the actual files to be served. Rewrite patterns use <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a> syntax. The <code>^</code> defines the beginning of the string, and the <code>$</code> defines the end of the string, meaning that the rewrite engine won&rsquo;t rewrite strings that  match only part of the pattern.</p>
+
+<p>The string rewrites all URLs that specify paths beginning with <code>/post-id/</code> and contain one or more numbers (eg. <code>[0-9]+</code>), serving a corresponding <code>.html</code> file in the <code>/posts/</code> directory. The parenthetical term or terms in the pattern specify a variable that is passed to the second string as <code>$1</code>, <code>$2</code>, <code>$3</code> and so forth, depending on how many parentheticals are given in the first string..</p>
+
+<p>You can create and apply multiple rewrite rules and these rules are applied sequentially. <em>The order in which <code>RewriteRules</code> are stated can affect which rules are matched</em>.</p>
+
+<p>Optionally, you can insert a <code>RewriteBase</code> directive to modify the behavior of the rewrite rules. Let&rsquo;s assume:</p>
+
+<ul>
+<li>These directives are specified for the <code>/srv/www/example.com/public_html/</code> directory.</li>
+<li>Some users make a requests in the form <code>http://example.com/post-id/200</code>, where 200 might be any number longer than one digit.</li>
+<li>Some users make a requests in the form <code>http://example.com/page/title-of-page</code>, where &ldquo;title of page&rdquo; might represent any string of characters.</li>
+<li>The files are located on the filesystem at <code>/srv/www/example.com/public_html/objects/</code> and match requested object in name, but have an <code>.html</code> extension.</li>
+</ul>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Configuration Options 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">RewriteEngine</span> <span class="k">on</span>
+<span class="nb">RewriteBase</span> <span class="sx">/objects</span>
+<span class="nb">RewriteRule</span> ^post-id/([0-9]+)$ $1.html
+<span class="nb">RewriteRule</span> ^page/([^/]+)$ $1.html</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The above rewrite rules would take a request for:</p>
+
+<ul>
+<li><code>http://example.com/post-id/200/</code> and serve the file located at <code>/srv/www/example.com/public_html/objects/200.html</code></li>
+<li><code>http://example.com/page/free-the-toast/</code> and serve the file located at <code>/srv/example.com/public_html/objects/free-the-toast.html</code></li>
+</ul>
+
+<p>This is useful when the locations of files on the file system do not correspond to the URLs as requested by the client. This is also particularly useful when all requests are generated dynamically by a single file, for example <code>index.php</code>.</p>
+
+<h2 id="rewrite-urls-under-specific-conditions">Rewrite URLs Under Specific Conditions</h2>
+
+<p>With the <code>RewriteCond</code> parameter, you can set conditions under which a <code>RewriteRule</code> will be used. Let&rsquo;s take the following example from the default rewrite rules for the <a href="/docs/web-applications/cms-guides/wordpress/">WordPress</a> application:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Configuration Option for WordPress 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">RewriteEngine</span> <span class="k">On</span>
+<span class="nb">RewriteBase</span> /
+<span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+<span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-d
+<span class="nb">RewriteRule</span> . <span class="sx">/index.php</span> [L]</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, all requests that begin with the top level of the context are affected by the rewrite rules. This is specified by the <code>RewriteBase /</code> directive. The context is determined by where the rewrite rules are specified in the virtual host, directory block, or <code>.htaccess</code> file.</p>
+
+<p>The <code>RewriteCond</code> statements direct Apache to only apply the rule that follows them <em>if</em> their conditions are met. In the above example, the requested file name needs to <em>not</em> match an existing file on the file system (<code>!-f</code>) and <em>not</em> match an existing directory on the file system (<code>!-d</code>).</p>
+
+<p>If both conditions are true and no file or directory exists that matches the request, Apache applies the rewrite rule. For example, if the user requests <code>http://example.com/?post=123</code> or <code>http://example.com/post/123</code> the server will return the result for <code>index.php?post=123</code> or <code>index.php/post/123</code>, respectively.</p>
+
+<p>Multiple <code>RewriteCond</code> are connected with logical <em>AND</em> operators so that all conditions be true in order for a <code>RewriteRule</code> to apply for that request. You may also add an <code>[OR]</code> statement to the end of a <code>RewriteCond</code> directive to join a list of conditions with a logical <em>OR</em> and create several possible conditions where a request would be rewritten by a single <code>RewriteRule</code>. Consult <a href="https://httpd.apache.org/docs/current/mod/mod_rewrite.html">the Apache mod_rewrite documentation</a> for more information about rewrite conditions.</p>
+
+<h2 id="redirection-codes-in-mod-rewrite">Redirection Codes in mod_rewrite</h2>
+
+<p>Finally, there are a number of codes that you may append to a <code>RewriteRule</code> that modify the behavior of the rewrite. In the previous example, <code>RewriteRule . /index.php [L]</code>, we used the <code>[L]</code> option which stands for &ldquo;last rule&rdquo;. This prevents Apache from applying any additional rewrite rules after that rule. A few common options are:</p>
+
+<ul>
+<li><code>F</code> tells the client that the URL is forbidden, responding with HTTP code 403.</li>
+<li><code>N</code> forces <code>mod_rewrite</code> to begin the rewriting process again, and allows for multi-stage rewriting.</li>
+<li><code>R</code> tells the client that the requested page has moved, with the HTTP code 302 for temporary redirection. If the page has moved permanently, use &ldquo;<code>R=301</code>.&rdquo;</li>
+</ul>
+
+<p>You may also specify multiple options at the end of a <code>RewriteRule</code> separating them with commas: <code>[L,R=301]</code></p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="/docs/websites/apache/">Installing Apache</a></li>
+
+<li><a href="/docs/websites/lamp/">LAMP stack guides</a></li>
+
+<li><a href="https://httpd.apache.org/docs/current/mod/mod_rewrite.html">Apache Rewrite Guide</a></li>
+
+<li><a href="/docs/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server">Redirect URLs with the Apache Web Server</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/">Redirect URLs with the Apache Web Server</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/ssl-apache2-centos/">SSL Certificates with Apache on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-12-04-precise-pangolin/">Using Apache for Proxy and Clustering Services on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-fedora-14/">Using Apache for Proxy and Clustering Services on Fedora 14 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-10-maverick/">Using Apache for Proxy and Clustering Services on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#rewrite-urls">Rewrite URLs</a></li>
+<li><a href="#rewrite-urls-under-specific-conditions">Rewrite URLs Under Specific Conditions</a></li>
+<li><a href="#redirection-codes-in-mod-rewrite">Redirection Codes in mod_rewrite</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

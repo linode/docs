@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use Varnish &amp; nginx to Serve WordPress over SSL &amp; HTTP on Debian 8</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Learn to integrate Varnish with nginx to serve cached WordPress content for both SSL and plain HTTP websites.">
+        <meta name="keywords" content="Varnish, cache, Nginx, WordPress, SSL, PHP-FPM">
+        
+        <meta property="og:title" content="Use Varnish &amp; nginx to Serve WordPress over SSL &amp; HTTP on Debian 8">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/">
+        <meta property="og:description" content="Learn to integrate Varnish with nginx to serve cached WordPress content for both SSL and plain HTTP websites.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta property="og:image" content="https://linode.com/docs/assets/varnish-nginx-ssl.png">
+        
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/varnish/">Varnish Web Cache</a>
+  
+</li>
+
+
+<li>
+  
+  Use Varnish &amp; nginx to Serve WordPress over SSL &amp; HTTP on Debian 8
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use Varnish &amp; nginx to Serve WordPress over SSL &amp; HTTP on Debian 8</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-11-23T00:00:00Z">Wednesday, November 23, 2016</time> by Nick Brewer</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/Fred-Zweig">Frederick Jost Zweig
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fvarnish%2fuse-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8%2f&via=linode&text=Use%20Varnish%20%26amp%3b%20nginx%20to%20Serve%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fvarnish%2fuse-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fvarnish%2fuse-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8%2f&t=Use%20Varnish%20%26%20nginx%20to%20Serve%20WordPress%20over%20SSL%20%26%20HTTP%20on%20Debian%208" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><strong>Varnish</strong> is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server to cache its contents, which will improve speed and reduce server load. When a client requests a webpage, Varnish first tries to send it from the cache. If the page is not cached, Varnish forwards the request to the backend server, fetches the response, stores it in the cache, and delivers it to the client.</p>
+
+<p><img src="/docs/assets/use_varnish_nginx_to_serve_wordpress_over_ssl_http_on_debian_8.png" alt="Use Varnish &amp; nginx to Serve WordPress over SSL &amp; HTTP on Debian 8" title="Use Varnish &amp; nginx to Serve WordPress over SSL &amp; HTTP on Debian 8" /></p>
+
+<p>When a cached resource is requested through Varnish, the request doesn&rsquo;t reach the web server or involve PHP or MySQL execution. Instead, Varnish reads it from memory, delivering the cached page in a matter of microseconds.</p>
+
+<p>One Varnish drawback is that it doesn&rsquo;t support SSL-encrypted traffic. You can circumvent this issue by using <strong>nginx</strong> for both SSL decryption and as a backend web server. Using nginx for both tasks reduces the complexity of the setup, leading to fewer potential points of failure, lower resource consumption, and fewer components to maintain.</p>
+
+<p>Both Varnish and nginx are versatile tools with a variety of uses. This guide uses Varnish 4.0, which comes included in Debian 8 repositories, and presents a basic setup that you can refine to meet your specific needs.</p>
+
+<h2 id="how-varnish-and-nginx-work-together">How Varnish and nginx Work Together</h2>
+
+<p>In this guide, we will configure nginx and Varnish for two WordPress sites:</p>
+
+<ul>
+<li><code>www.example-over-http.com</code> will be an unencrypted, HTTP-only site.</li>
+<li><code>www.example-over-https.com</code> will be a separate, HTTPS-encrypted site.</li>
+</ul>
+
+<p>For HTTP traffic, Varnish will listen on port <code>80</code>. If content is found in the cache, Varnish will serve it. If not, it will pass the request to nginx on port <code>8080</code>. In the second case, nginx will send the requested content back to Varnish on the same port, then Varnish will store the fetched content in the cache and deliver it to the client on port <code>80</code>.</p>
+
+<p>For HTTPS traffic, nginx will listen on port <code>443</code> and send decrypted traffic to Varnish on port <code>80</code>. If content is found in the cache, Varnish will send the unencrypted content from the cache back to nginx, which will encrypt it and send it to the client. If content is not found in the cache, Varnish will request it from nginx on port <code>8080</code>, store it in the cache, and then send it unencrypted to frontend nginx, which will encrypt it and send it to the client&rsquo;s browser.</p>
+
+<p>Our setup is illustrated below. Please note that frontend nginx and backend nginx are one and the same server:</p>
+
+<p><a href="/docs/assets/varnish-cache.png" title="Nginx-Varnish-Nginx server configuration diagram"><img src="/docs/assets/varnish-cache.png" alt="Nginx-Varnish-Nginx server configuration diagram" /></a></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<p>This tutorial assumes that you have SSH access to your Linode running Debian 8 (Jessie). Before you get started:</p>
+
+<ol>
+<li><p>Complete the steps in our <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/security/securing-your-server">Securing your Server</a> guides. You&rsquo;ll need a standard user account with <code>sudo</code> privileges for many commands in this guide.</p></li>
+
+<li><p>Follow the steps outlined in our <a href="/docs/websites/lemp/lemp-server-on-debian-8">LEMP on Debian 8</a> guide. Skip the nginx configuration section, since we&rsquo;ll address it later in this guide.</p></li>
+
+<li><p>After configuring nginx according to this guide, follow the steps in our <a href="/docs/websites/cms/how-to-install-and-configure-wordpress">WordPress</a> guide to install and configure WordPress. We&rsquo;ll include a step in the instructions to let you know when it&rsquo;s time to do this.</p></li>
+</ol>
+
+<h2 id="install-and-configure-varnish">Install and Configure Varnish</h2>
+
+<p>For all steps in this section, replace <code>203.0.113.100</code> with your Linodes public IPv4 address, and <code>2001:DB8::1234</code> with its IPv6 address.</p>
+
+<ol>
+<li><p>Update your package repositories and install Varnish:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get install varnish
+</code></pre></li>
+
+<li><p>Open <code>/etc/default/varnish</code> with sudo rights. To make sure Varnish starts at boot, under <code>Should we start varnishd at boot?</code> set the <code>START</code> to <code>yes</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/default/varnish 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">START=yes</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>In the <code>Alternative 2</code> section, make the following changes to <code>DAEMON_OPTS</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/default/varnish 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">DAEMON_OPTS=&#34;-a :80 \
+            -T localhost:6082 \
+            -f /etc/varnish/custom.vcl \
+            -S /etc/varnish/secret \
+            -s malloc,1G&#34;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This will set Varnish to listen on port <code>80</code> and will instruct it to use the <code>custom.vcl</code> configuration file. The custom configuration file is used so that future updates to Varnish do not overwrite changes to <code>default.vcl</code>.</p>
+
+<p>The <code>-s malloc,1G</code> line sets the maximum amount of RAM that will be used by Varnish to store content. This value can be adjusted to suit your needs, taking into account the server&rsquo;s total RAM along with the size and expected traffic of your website. For example, on a system with 4 GB of RAM, you can allocate 2 or 3 GB to Varnish.</p>
+
+<p>When you&rsquo;ve made these changes, save and exit the file.</p></li>
+</ol>
+
+<h3 id="create-a-custom-varnish-configuration-file">Create a Custom Varnish Configuration File</h3>
+
+<ol>
+<li><p>To start customizing your Varnish configuration, create a new file called <code>custom.vcl</code>:</p>
+
+<pre><code>sudo touch /etc/varnish/custom.vcl
+</code></pre></li>
+
+<li><p>Varnish configuration uses a domain-specific language called Varnish Configuration Language (VCL). First, specify the VCL version used:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">vcl 4.0;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Specify that the backend (nginx) is listening on port <code>8080</code>, by adding the <code>backend default</code> directive:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">backend default {
+.host = &#34;localhost&#34;;
+.port = &#34;8080&#34;;
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Allow cache-purging requests only from localhost using the <code>acl</code> directive:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">acl purger {
+&#34;localhost&#34;;
+&#34;203.0.113.100&#34;;
+&#34;2001:DB8::1234&#34;;
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Remember to substitute your Linode&rsquo;s actual IP addresses for the example addresses.</p></li>
+
+<li><p>Create the <code>sub vcl_recv</code> routine, which is used when a request is sent by a HTTP client.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">sub vcl_recv {
+
+
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The settings in the following steps should be placed <strong>inside</strong> the <code>sub vcl_recv</code> brackets:</p>
+
+<ul>
+<li><p>Redirect HTTP requests to HTTPS for our SSL website:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">if (client.ip != &#34;127.0.0.1&#34; &amp;&amp; req.http.host ~ &#34;example-over-https.com&#34;) {
+set req.http.x-redir = &#34;https://www.example-over-https.com&#34; + req.url;
+return(synth(850, &#34;&#34;));
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Remember to replace the example domain with your own.</p></li>
+
+<li><p>Allow cache-purging requests only from the IP addresses in the above <code>acl purger</code> section (Step 4). If a purge request comes from a different IP address, an error message will be produced:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">if (req.method == &#34;PURGE&#34;) {
+if (!client.ip ~ purger) {
+return(synth(405, &#34;This IP is not allowed to send PURGE requests.&#34;));
+  }
+return (purge);
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Change the <code>X-Forwarded-For</code> header:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">if (req.restarts == 0) {
+if (req.http.X-Forwarded-For) {
+set req.http.X-Forwarded-For = client.ip;
+  }
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Exclude POST requests or those with basic authentication from caching:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">if (req.http.Authorization || req.method == &#34;POST&#34;) {
+return (pass);
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Exclude RSS feeds from caching:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">if (req.url ~ &#34;/feed&#34;) {
+return (pass);
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Tell Varnish not to cache the WordPress admin and login pages:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">if (req.url ~ &#34;wp-admin|wp-login&#34;) {
+return (pass);
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>WordPress sets many cookies that are safe to ignore. To remove them, add the following lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">set req.http.cookie = regsuball(req.http.cookie, &#34;wp-settings-\d+=[^;]+(; )?&#34;, &#34;&#34;);
+set req.http.cookie = regsuball(req.http.cookie, &#34;wp-settings-time-\d+=[^;]+(; )?&#34;, &#34;&#34;);
+if (req.http.cookie == &#34;&#34;) {
+unset req.http.cookie;
+  }</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This is the final setting to be placed inside the <code>sub vcl_recv</code> routine. All directives in the following steps (from Step 6 onward) should be placed after the closing last bracket.</div>
+</blockquote>
+</li>
+</ul></li>
+
+<li><p>Redirect HTTP to HTTPS using the <code>sub vcl_synth</code> directive with the following settings:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">sub vcl_synth {
+ if (resp.status == 850) {
+     set resp.http.Location = req.http.x-redir;
+     set resp.status = 302;
+     return (deliver);
+ }
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Cache-purging for a particular page must occur each time we make edits to that page. To implement this, we use the <code>sub vcl_purge</code> directive:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">sub vcl_purge {
+ set req.method = &#34;GET&#34;;
+ set req.http.X-Purger = &#34;Purged&#34;;
+ return (restart);
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>The <code>sub vcl_backend_response</code> directive is used to handle communication with the backend server, nginx. We use it to set the amount of time the content remains in the cache. We can also set a <em>grace period</em>, which determines how Varnish will serve content from the cache even if the backend server is down. Time can be set in seconds (s), minutes (m), hours (h) or days (d). Here, we&rsquo;ve set the caching time to 24 hours, and the grace period to 1 hour, but you can adjust these settings based on your needs:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">sub vcl_backend_response {
+ set beresp.ttl = 24h;
+ set beresp.grace = 1h;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Before closing the <code>vcl_backend_response</code> block with a bracket, allow cookies to be set only if you are on admin pages or WooCommerce-specific pages:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">if (bereq.url !~ &#34;wp-admin|wp-login|product|cart|checkout|my-account|/?remove_item=&#34;) {
+unset beresp.http.set-cookie;
+}
+        }</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Remember to include in the above series any page that requires cookies to work, for example <code>phpmyadmin|webmail|postfixadmin</code>, etc. If you change the WordPress login page from <code>wp-login.php</code> to something else, also add that new name to this series.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>The &ldquo;WooCommerce Recently Viewed&rdquo; widget, which displays a group of recently viewed products, uses a cookie to store recent user-specific actions and this cookie prevents Varnish from caching product pages when they are browsed by visitors. If you want to cache product pages when they are only browsed, before products are added to the cart, you must disable this widget.</p>
+
+<p>Special attention is required when enabling widgets that use cookies to store recent user-specific activities, if you want Varnish to cache as many pages as possible.</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Change the headers for purge requests by adding the <code>sub vcl_deliver</code> directive:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/varnish/custom.vcl 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">sub vcl_deliver {
+if (req.http.X-Purger) {
+set resp.http.X-Purger = req.http.X-Purger;
+  }
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This concludes the <code>custom.vcl</code> configuration. You can now save and exit the file. The final <code>custom.vcl</code> file will look like <a href="/docs/assets/custom.vcl">this</a>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can download the complete sample configuration file using the link above and <code>wget</code>. If you do, remember to replace the variables as described above.</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="edit-the-varnish-startup-configuration">Edit the Varnish Startup Configuration</h3>
+
+<ol>
+<li><p>For Varnish to work properly, we also need to edit the <code>/lib/systemd/system/varnish.service</code> file to use our custom configuration file.  Specifically, we&rsquo;ll tell it to use the custom configuration file and modify the port number and allocated memory values to match the changes we made in our <code>/etc/default/varnish</code> file.</p>
+
+<p>Open <code>/lib/systemd/system/varnish.service</code> and find the two lines beginning with <code>ExecStart</code>. Modify them to look like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/lib/systemd/system/varnish.service 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">ExecStartPre=/usr/sbin/varnishd -C -f /etc/varnish/custom.vcl
+ExecStart=/usr/sbin/varnishd -a :80 -T localhost:6082 -f /etc/varnish/custom.vcl -S /etc/varnish/secret -s malloc,1G</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>After saving and exiting the file, reload the <code>systemd</code> process:</p>
+
+<pre><code>sudo systemctl daemon-reload
+</code></pre></li>
+</ol>
+
+<h2 id="install-and-configure-php">Install and Configure PHP</h2>
+
+<p>Before configuring nginx, we have to install <em>PHP-FPM</em>. FPM is short for FastCGI Process Manager, and it allows the web server to act as a proxy, passing all requests with the <code>.php</code> file extension to the PHP interpreter.</p>
+
+<ol>
+<li><p>Install PHP-FPM:</p>
+
+<pre><code>sudo apt-get install php5-fpm php5-mysql
+</code></pre></li>
+
+<li><p>Open the <code>/etc/php5/fpm/php.ini</code> file. Find the directive <code>cgi.fix_pathinfo=</code>, uncomment and set it to <code>0</code>. If this parameter is set to <code>1</code>, the PHP interpreter will try to process the file whose path is closest to the requested path; if it&rsquo;s set to <code>0</code>, the interpreter will only process the file with the exact path, which is a safer option.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php5/fpm/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">cgi.fix_pathinfo</span><span class="o">=</span><span class="s">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>After you&rsquo;ve made this change, save and exit the file.</p></li>
+
+<li><p>Open <code>/etc/php5/fpm/pool.d/www.conf</code> and confirm that the <code>listen =</code> directive, which specifies the socket used by nginx to pass requests to PHP-FPM, matches the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php5/fpm/pool.d/www.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">listen = /var/run/php5-fpm.sock</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Save and exit the file.</p></li>
+
+<li><p>Restart PHP-FPM:</p>
+
+<pre><code>sudo systemctl restart php5-fpm
+</code></pre></li>
+
+<li><p>Open <code>/etc/nginx/fastcgi_params</code> and find the <code>fastcgi_param  HTTPS</code> directive. Below it, add the following two lines, which are necessary for nginx to interact with the FastCGI service:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/fastcgi_params 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">fastcgi_param</span>  <span class="s">SCRIPT_FILENAME</span>    <span class="nv">$request_filename</span><span class="p">;</span>
+<span class="k">fastcgi_param</span>  <span class="s">PATH_INFO</span>          <span class="nv">$fastcgi_path_info</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Once you&rsquo;re done, save and exit the file.</p></li>
+</ol>
+
+<h2 id="configure-nginx">Configure nginx</h2>
+
+<ol>
+<li><p>Open <code>/etc/nginx/nginx.conf</code> and comment out the <code>ssl_protocols</code> and <code>ssl_prefer_server_ciphers</code> directives. We&rsquo;ll include these SSL settings in the server block within the <code>/etc/nginx/sites-enabled/default</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"># ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE
+# ssl_prefer_server_ciphers on;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Since the access logs and error logs will be defined for each individual website in the server block, comment out the <code>access_log</code> and <code>error_log</code> directives:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"># access_log /var/log/nginx/access.log;
+# error_log /var/log/nginx/error.log;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Save and exit the file.</p></li>
+
+<li><p>Next, we&rsquo;ll configure the HTTP-only website, <code>www.example-over-http.com</code>. Begin by making a backup of the default server block (virtual host) file:</p>
+
+<pre><code>sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default-backup
+</code></pre></li>
+
+<li><p>Open a new <code>/etc/nginx/sites-available/default</code> file and add the following blocks:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/default 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+  <span class="kn">listen</span>  <span class="mi">8080</span><span class="p">;</span>
+  <span class="kn">listen</span>  <span class="s">[::]:8080</span><span class="p">;</span>
+  <span class="kn">server_name</span>  <span class="s">example-over-http.com</span><span class="p">;</span>
+  <span class="kn">return</span>       <span class="mi">301</span> <span class="s">http://www.example-over-http.com</span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+  <span class="kn">listen</span> <span class="mi">8080</span><span class="p">;</span>
+  <span class="kn">listen</span> <span class="s">[::]:8080</span><span class="p">;</span>
+  <span class="kn">server_name</span>  <span class="s">www.example-over-http.com</span><span class="p">;</span>
+  <span class="kn">root</span> <span class="s">/var/www/html/example-over-http.com/public_html</span><span class="p">;</span>
+  <span class="kn">port_in_redirect</span> <span class="no">off</span><span class="p">;</span>
+  <span class="kn">index</span> <span class="s">index.php</span><span class="p">;</span>
+  <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+  <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$args</span><span class="p">;</span>
+       <span class="p">}</span>
+
+  <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+       <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+       <span class="kn">fastcgi_split_path_info</span> <span class="s">^(.+\.php)(/.+)</span>$<span class="p">;</span>
+       <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+       <span class="kn">fastcgi_index</span> <span class="s">index.php</span><span class="p">;</span>
+       <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+       <span class="kn">fastcgi_pass</span> <span class="s">unix:/var/run/php5-fpm.sock</span><span class="p">;</span>
+       <span class="p">}</span>
+
+<span class="kn">error_log</span> <span class="s">/var/www/html/example-over-http.com/logs/error.log</span> <span class="s">notice</span><span class="p">;</span>
+
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>A few things to note here:</p>
+
+<ul>
+<li>The first server block is used to redirect all requests for <code>example-over-http.com</code> to <code>www.example-over-http.com</code>. This assumes you want to use the <code>www</code> subdomain and have added a DNS A record for it.</li>
+<li><code>listen [::]:8080;</code> is needed if you want your site to be also accesible over IPv6.</li>
+<li><code>port_in_redirect off;</code> prevents nginx from appending the port number to the requested URL.</li>
+<li><code>fastcgi</code> directives are used to proxy requests for PHP code execution to PHP-FPM, via the FastCGI protocol.</li>
+</ul></li>
+
+<li><p>To configure nginx for the SSL-encrypted website (in our example we called it <code>www.example-over-https.com</code>), you need two more server blocks. Append the following server blocks to your <code>/etc/nginx/sites-available/default</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/default 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span><span class="lnt">51</span><span class="lnt">52</span><span class="lnt">53</span><span class="lnt">54</span><span class="lnt">55</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+   <span class="kn">listen</span>  <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
+   <span class="kn">listen</span>  <span class="s">[::]:443</span> <span class="s">ssl</span><span class="p">;</span>
+   <span class="kn">server_name</span>  <span class="s">www.example-over-https.com</span><span class="p">;</span>
+   <span class="kn">port_in_redirect</span> <span class="no">off</span><span class="p">;</span>
+
+   <span class="kn">ssl</span>                  <span class="no">on</span><span class="p">;</span>
+   <span class="kn">ssl_certificate</span>      <span class="s">/etc/nginx/ssl/ssl-bundle.crt</span><span class="p">;</span>
+   <span class="kn">ssl_certificate_key</span>  <span class="s">/etc/nginx/ssl/example-over-https.com.key</span><span class="p">;</span>
+   <span class="kn">ssl_protocols</span> <span class="s">TLSv1</span> <span class="s">TLSv1.1</span> <span class="s">TLSv1.2</span><span class="p">;</span>
+   <span class="kn">ssl_ciphers</span> <span class="s">ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS</span><span class="p">;</span>
+   <span class="kn">ssl_prefer_server_ciphers</span>   <span class="no">on</span><span class="p">;</span>
+
+   <span class="kn">ssl_session_cache</span>   <span class="s">shared:SSL:20m</span><span class="p">;</span>
+   <span class="kn">ssl_session_timeout</span> <span class="mi">60m</span><span class="p">;</span>
+
+   <span class="kn">add_header</span> <span class="s">Strict-Transport-Security</span> <span class="s">&#34;max-age=31536000&#34;</span><span class="p">;</span>
+   <span class="kn">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
+
+   <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+     <span class="kn">proxy_pass</span> <span class="s">http://127.0.0.1:80</span><span class="p">;</span>
+     <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$http_host</span><span class="p">;</span>
+     <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Host</span> <span class="nv">$http_host</span><span class="p">;</span>
+     <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+     <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+     <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Proto</span> <span class="s">https</span><span class="p">;</span>
+     <span class="kn">proxy_set_header</span> <span class="s">HTTPS</span> <span class="s">&#34;on&#34;</span><span class="p">;</span>
+
+     <span class="kn">access_log</span> <span class="s">/var/www/html/example-over-https.com/logs/access.log</span><span class="p">;</span>
+     <span class="kn">error_log</span>  <span class="s">/var/www/html/example-over-https.com/logs/error.log</span> <span class="s">notice</span><span class="p">;</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+   <span class="kn">listen</span> <span class="mi">8080</span><span class="p">;</span>
+   <span class="kn">listen</span> <span class="s">[::]:8080</span><span class="p">;</span>
+   <span class="kn">server_name</span>  <span class="s">www.example-over-https.com</span><span class="p">;</span>
+   <span class="kn">root</span> <span class="s">/var/www/html/example-over-https.com/public_html</span><span class="p">;</span>
+   <span class="kn">index</span> <span class="s">index.php</span><span class="p">;</span>
+   <span class="kn">port_in_redirect</span> <span class="no">off</span><span class="p">;</span>
+
+   <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+      <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$args</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+       <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+       <span class="kn">fastcgi_split_path_info</span> <span class="s">^(.+\.php)(/.+)</span>$<span class="p">;</span>
+       <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+       <span class="kn">fastcgi_index</span> <span class="s">index.php</span><span class="p">;</span>
+       <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+       <span class="kn">fastcgi_param</span> <span class="s">HTTPS</span> <span class="no">on</span><span class="p">;</span>
+       <span class="kn">fastcgi_pass</span> <span class="s">unix:/var/run/php5-fpm.sock</span><span class="p">;</span>
+       <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>For an SSL-encrypted website, you need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port <code>80</code>, and another server block to serve unencrypted traffic to Varnish on port <code>8080</code>, when Varnish asks for it.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>The <code>ssl_certificate</code> directive must specify the location and name of the SSL certificate file. Take a look at our guide to using <a href="/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx">SSL on nginx</a> for more information, and update the <code>ssl_certificate</code> and <code>ssl_certificate_key</code> values as needed.</div>
+</blockquote>
+
+
+<p>Alternately, if you don&rsquo;t have a commercially-signed SSL certificate (issued by a CA), you can issue a self-signed SSL certificate using <em>openssl</em>, but this should be done only for testing purposes. Self-signed sites will return a &ldquo;This Connection is Untrusted&rdquo; message when opened in a browser.</p>
+
+<p>Now, let&rsquo;s review the key points of the previous two server blocks:</p>
+
+<ul>
+<li><code>ssl_session_cache   shared:SSL:20m;</code> creates a 20MB cache shared between all worker processes. This cache is used to store SSL session parameters to avoid SSL handshakes for parallel and subsequent connections. 1MB can store about 4000 sessions, so adjust this cache size according to the expected traffic for your website.</li>
+<li><code>ssl_session_timeout 60m;</code> specifies the SSL session cache timeout. Here it&rsquo;s set to 60 minutes, but it can be decreased or increased, depending on traffic and resources.</li>
+<li><code>ssl_prefer_server_ciphers   on;</code> means that when an SSL connection is established, the server ciphers are preferred over client ciphers.</li>
+<li><code>add_header Strict-Transport-Security &quot;max-age=31536000&quot;;</code> tells web browsers they should only interact with this server using a secure HTTPS connection. The <code>max-age</code> specifies in seconds what period of time the site is willing to accept HTTPS-only connections.</li>
+<li><code>add_header X-Content-Type-Options nosniff;</code> this header tells the browser not to override the response content&rsquo;s MIME type. So, if the server says the content is text, the browser will render it as text.</li>
+<li><code>proxy_pass http://127.0.0.1:80;</code> this directive proxies all the decrypted traffic to Varnish, which listens on port <code>80</code>.</li>
+<li><code>proxy_set_header</code> directives add specific headers to requests, so SSL traffic can be recognized.</li>
+<li><code>access_log</code> and <code>error_log</code> indicate the location and name of the respective types of logs. Adjust these locations and names according to your setup, and make sure the <code>www-data</code> user has permissions to modify each log.</li>
+<li><code>fastcgi</code> directives present in the last server block are necessary to proxy requests for PHP code execution to PHP-FPM, via the FastCGI protocol.</li>
+</ul></li>
+
+<li><p><strong>Optional:</strong> To prevent access to your website via direct input of your IP address into a browser, you can put a catch-all default server block right at the top of the file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/default 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+  <span class="kn">listen</span> <span class="mi">8080</span> <span class="s">default_server</span><span class="p">;</span>
+  <span class="kn">listen</span> <span class="s">[::]:8080</span><span class="p">;</span>
+  <span class="kn">server_name</span> <span class="s">_</span><span class="p">;</span>
+  <span class="kn">root</span> <span class="s">/var/www/html</span><span class="p">;</span>
+  <span class="kn">index</span> <span class="s">index.html</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>/var/www/html/index.html</code> file can contain a simple message like &ldquo;Page not found!&rdquo;</p></li>
+
+<li><p>Restart nginx, then start Varnish:</p>
+
+<pre><code>sudo systemctl restart nginx
+sudo systemctl start varnish
+</code></pre></li>
+
+<li><p>Install WordPress, following our <a href="/docs/websites/cms/how-to-install-and-configure-wordpress">How to Install and Configure WordPress</a> guide. Once WordPress is installed, continue with this guide.</p></li>
+
+<li><p>After installing WordPress, restart Varnish to clear any cached redirects to the setup page:</p>
+
+<pre><code>sudo systemctl restart varnish
+</code></pre></li>
+</ol>
+
+<h2 id="install-the-wordpress-varnish-http-purge-plugin">Install the WordPress &ldquo;Varnish HTTP Purge&rdquo; Plugin</h2>
+
+<p>When you edit a WordPress page and update it, the modification won&rsquo;t be visible even if you refresh the browser because it will receive the cached version of the page. To purge the cached page automatically when you edit a page, you must install a free WordPress plugin called &ldquo;Varnish HTTP Purge.&rdquo;</p>
+
+<p>To install this plugin, log in to your WordPress website and click <strong>Plugins</strong> on the main left sidebar. Select <strong>Add New</strong> at the top of the page, and search for <strong>Varnish HTTP Purge</strong>. When you&rsquo;ve found it, click <strong>Install Now</strong>, then <strong>Activate</strong>.</p>
+
+<h2 id="test-your-setup">Test Your Setup</h2>
+
+<ol>
+<li><p>To test whether Varnish and nginx are doing their jobs for the HTTP website, run:</p>
+
+<pre><code>wget -SS http://www.example-over-http.com
+</code></pre>
+
+<p>The output should look like this:</p>
+
+<pre><code>    --2016-11-04 16:48:43--  http://www.example-over-http.com/
+    Resolving www.example-over-http.com (www.example-over-http.com)... your_server_ip
+    Connecting to www.example-over-http.com (www.example-over-http.com)|your_server_ip|:80... connected.
+    HTTP request sent, awaiting response...
+      HTTP/1.1 200 OK
+      Server: nginx/1.6.2
+      Date: Sat, 26 Mar 2016 22:25:55 GMT
+      Content-Type: text/html; charset=UTF-8
+      Link: &lt;http://www.example-over-http.com/wp-json/&gt;; rel=&quot;https://api.w.org/&quot;
+      X-Varnish: 360795 360742
+      Age: 467
+      Via: 1.1 varnish-v4
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      Accept-Ranges: bytes
+    Length: unspecified [text/html]
+    Saving to: \u2018index.html.2\u2019
+
+    index.html              [ &lt;=&gt;                  ]  12.17K  --.-KB/s   in 0s
+
+    2016-03-27 00:33:42 (138 MB/s) - \u2018index.html.2\u2019 saved [12459]
+</code></pre>
+
+<p>The third line specifies the connection port number: <code>80</code>. The backend server is correctly identified: <code>Server: nginx/1.6.2</code>. And the traffic passes through Varnish as intended: <code>Via: 1.1 varnish-v4</code>. The period of time the object has been kept in cache by Varnish is also displayed in seconds: <code>Age: 467</code>.</p></li>
+
+<li><p>To test the SSL-encrypted website, run the same command, replacing the URL:</p>
+
+<pre><code>wget -SS https://www.example-over-https.com
+</code></pre>
+
+<p>The output should be similar to that of the HTTP-only site.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you&rsquo;re using a self-signed certificate while testing, add the <code>--no-check-certificate</code> option to the <code>wget</code> command:</p>
+
+<p>wget -SS &ndash;no-check-certificate <a href="https://www.example-over-https.com">https://www.example-over-https.com</a></p>
+</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>By using nginx in conjunction with Varnish, the speed of any WordPress website can be drastically improved while making best use of your hardware resources.</p>
+
+<p>You can strengthen the security of the SSL connection by generating a <a href="/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/#create-a-custom-diffie-hellman-key-exchange">custom Diffie-Hellman (DH) parameter</a>, for a more secure cryptographic key exchange process.</p>
+
+<p>An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while nginx only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by nginx because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as <a href="/docs/security/using-fail2ban-for-security/">Fail2ban</a>, Awstats or Webalizer.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://varnish-cache.org/docs/index.html">Varnish Documentation</a></li>
+
+<li><a href="https://nginx.org/en/docs/">NGINX Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/">Install a Jupyter Notebook Server on a Linode Behind an Apache Reverse Proxy</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/big-data/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604/">How to Install and Configure a Redis Cluster on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/nodebalancer/nodebalancer-ssl-configuration/">NodeBalancer SSL Configuration</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/">Themes, Modules, &amp; Backups with Drupal Drush on Debian 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/drush-drupal/">Installing &amp; Using Drupal Drush on Debian 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="http://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#how-varnish-and-nginx-work-together">How Varnish and nginx Work Together</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-and-configure-varnish">Install and Configure Varnish</a>
+<ul>
+<li><a href="#create-a-custom-varnish-configuration-file">Create a Custom Varnish Configuration File</a></li>
+<li><a href="#edit-the-varnish-startup-configuration">Edit the Varnish Startup Configuration</a></li>
+</ul></li>
+<li><a href="#install-and-configure-php">Install and Configure PHP</a></li>
+<li><a href="#configure-nginx">Configure nginx</a></li>
+<li><a href="#install-the-wordpress-varnish-http-purge-plugin">Install the WordPress &ldquo;Varnish HTTP Purge&rdquo; Plugin</a></li>
+<li><a href="#test-your-setup">Test Your Setup</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

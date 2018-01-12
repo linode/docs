@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Getting Started with Git</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Learn the basics of Git in this guide. Discover one of the most popular distributed version control and source code management systems that make contributing to projects and working with a team easy.">
+        <meta name="keywords" content="git, dvcs, vcs, scm, gitweb, gitolite, ubuntu, debian, arch, gentoo">
+        
+        <meta property="og:title" content="Getting Started with Git">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/version-control/how-to-configure-git/">
+        <meta property="og:description" content="Learn the basics of Git in this guide. Discover one of the most popular distributed version control and source code management systems that make contributing to projects and working with a team easy.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/version-control/how-to-configure-git/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/version-control/">Version Control</a>
+  
+</li>
+
+
+<li>
+  
+  Getting Started with Git
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Getting Started with Git</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-07-03T00:00:00Z">Monday, July 3, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fhow-to-configure-git%2f&via=linode&text=Getting%20Started%20with%20Git" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fhow-to-configure-git%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fhow-to-configure-git%2f&t=Getting%20Started%20with%20Git" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/version-control/how-to-configure-git.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/version-control/how-to-configure-git.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/git_getting_started.png" alt="Git Started Today" /></p>
+
+<h1 id="what-is-git">What is Git?</h1>
+
+<p>Git was designed and developed by <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> for Linux kernel development. Git provides support for non-linear, distributed development, allowing multiple contributors to work on a project simultaneously. Git is the most popular distributed version control and source code management system. This guide will walk you through the basics of getting started with Git, from installing the software to using basic commands on both local and remote repositories (repo).</p>
+
+<h2 id="configure-git">Configure Git</h2>
+
+<p>After you <a href="/docs/development/version-control/how-to-install-git-on-mac-and-windows">install Git</a>, configure it for first time use using <code>git config</code>, a built-in tool that obtains and sets configuration variables. These configuration variables are located in three different places on a GNU/Linux system:</p>
+
+<ul>
+<li><code>/etc/gitconfig</code> - stores the configuration information for all system users and their respective repositories.</li>
+<li><code>~/.gitconfig</code> - stores user-specific configuration files on the system.</li>
+<li><code>.git/config</code> - this is the configuration file of your current working repository.</li>
+</ul>
+
+<p>For a Windows system, the <code>.gitconfig</code> file is located in the <code>$HOME</code> directory of the user&rsquo;s profile. The full path is <code>C:\Document and Settings\$USER</code> or <code>C:\Users\$USER</code></p>
+
+<p>After installing Git make sure your username and email address are set correctly. To verify, use the command:</p>
+
+<pre><code>git config --list
+</code></pre>
+
+<p>If your name and email are not listed in the output, use the following commands to set them manually, replacing <code>examplename</code> and <code>user@example.com</code>:</p>
+
+<pre><code>git config --global user.name examplename
+git config --global user.email user@example.com
+</code></pre>
+
+<p>Set your default text editor, replacing <code>editor-name</code> with your desired editor:</p>
+
+<pre><code>git config --global core.editor editor-name
+</code></pre>
+
+<p>The output of <code>git config --list</code> should show echo the information you inputted:</p>
+
+<pre><code>MacBook-Pro:~ user$ git config --list
+user.name=exampleuser
+user.email=user@email.com
+core.editor=editor-name
+</code></pre>
+
+<h2 id="work-with-an-existing-local-repository-repo">Work with an Existing Local Repository (Repo)</h2>
+
+<p>If you have an existing project and you want to start using Git to keep track of its changes, run <code>git init</code> from the existing project&rsquo;s directory:</p>
+
+<pre><code>git init
+</code></pre>
+
+<p><code>git init</code> creates a new <code>.git</code> subdirectory in the current directory. This is where Git stores your configurations. The <code>git add</code> command tells Git to track changes of files:</p>
+
+<pre><code>git add filename
+</code></pre>
+
+<p>After you have added the file, stage a commit and leave a commit message. Commit message serve as a reminder of the changes that were made to a file:</p>
+
+<pre><code>git commit -m &quot;Initialized a Git repository for this project. tracking changes to a file&quot;
+</code></pre>
+
+<h3 id="basic-git-commands">Basic Git Commands</h3>
+
+<p>This table lists basic commands, a description, and an example of the command in use:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Command</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>git add</code></td>
+<td align="left">Add a file to a repository.</td>
+<td align="left"><code>git add filename</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>git rm</code></td>
+<td align="left">Remove a file from a repository.</td>
+<td align="left"><code>git rm filename</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>git mv</code></td>
+<td align="left">Move or rename a tracked file, directory, or symlink.</td>
+<td align="left"><code>git mv file_from file_to</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>git branch</code></td>
+<td align="left">List all the local and remote branches.</td>
+<td align="left"><code>git branch branchname</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>git commit</code></td>
+<td align="left">Commit all staged objects.</td>
+<td align="left"><code>git commit -m &quot;updates&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>git pull</code></td>
+<td align="left">Download all changes from the remote repo and merge them in a specified repo file.</td>
+<td align="left"><code>git pull repo refspec</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>git push</code></td>
+<td align="left">Publish the changes to the remote repo.</td>
+<td align="left"><code>git push repo</code></td>
+</tr>
+
+<tr>
+<td align="left">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</td>
+<td align="left">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</td>
+<td align="left">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="branches">Branches</h3>
+
+<p>Branches are used for editing files without disturbing the working portions of a project. The main branch is normally named <code>master</code>, it&rsquo;s customary to name the branch after an issue being fixed or a feature being implemented. Because Git keep tracks of file changes, you can jump from branch to branch without overwriting or interfering with other branches in the repo.</p>
+
+<p>The basic options used with the <code>git branch</code> command are:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">-r</td>
+<td align="left">List the remote branches</td>
+</tr>
+
+<tr>
+<td align="left">-a</td>
+<td align="left">Show both local and remote branches</td>
+</tr>
+
+<tr>
+<td align="left">-m</td>
+<td align="left">Rename an old branch</td>
+</tr>
+
+<tr>
+<td align="left">-d</td>
+<td align="left">Delete a branch</td>
+</tr>
+
+<tr>
+<td align="left">-r -d</td>
+<td align="left">Delete a remote branch</td>
+</tr>
+
+<tr>
+<td align="left">&mdash;&mdash;&mdash;-</td>
+<td align="left">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="working-with-remote-repositories">Working with Remote Repositories</h2>
+
+<p>Remote repositories are hosted on a network or another location on the Internet. This section provides some basic information on navigating remote Git repositories.</p>
+
+<p>To copy every file from a remote repository to your local system, use <code>git clone</code> followed by the remote repo&rsquo;s URL:</p>
+
+<pre><code>git clone remoteurl
+</code></pre>
+
+<p>To check the status of the files within the current branch of your repository, use <code>status</code>:</p>
+
+<pre><code>git status
+</code></pre>
+
+<p>The output of the <code>status</code> command will tell you if any tracked files have been modified.</p>
+
+<p>Use <code>remote</code> to view which remote servers are configured:</p>
+
+<pre><code>git remote
+</code></pre>
+
+<p>The <code>remote</code> command will display the short names of your remote repositories. If your repository was cloned, you will see a repository called <code>origin</code>. The default name origin comes from the cloned repository. To view more information about the remote repositories, use the command:</p>
+
+<pre><code>git remote -v
+</code></pre>
+
+<p>Below are some basic commands for working with remote repositories:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>git remote add [remote-name] [url]</code></td>
+<td align="left">Add a new remote repository.</td>
+</tr>
+
+<tr>
+<td align="left"><code>git fetch [repository [refspec]]</code></td>
+<td align="left">Gather all the data from a remote project that you do not have yet.</td>
+</tr>
+
+<tr>
+<td align="left"><code>git pull</code></td>
+<td align="left">Obtain and merge a remote branch into your current branch.</td>
+</tr>
+
+<tr>
+<td align="left"><code>git push [remote-name] [branch-name]</code></td>
+<td align="left">Move your data from your branch to your server.</td>
+</tr>
+
+<tr>
+<td align="left"><code>git remote show [remote-name]</code></td>
+<td align="left">Display information about the remote you specified.</td>
+</tr>
+
+<tr>
+<td align="left"><code>git remote rename [old-name] [new-name]</code></td>
+<td align="left">Rename a remote.</td>
+</tr>
+
+<tr>
+<td align="left"><code>git remote rm [name]</code></td>
+<td align="left">Remove the remote you specified.</td>
+</tr>
+
+<tr>
+<td align="left">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</td>
+<td align="left">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</td>
+</tr>
+</tbody>
+</table>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://git-scm.com/book/ch9-5.html">Refspec Information</a></li>
+
+<li><a href="https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud">Learn Git with Bitbucket Cloud</a></li>
+
+<li><a href="https://git-scm.com/book/en/v2">Pro Git Book</a></li>
+
+<li><a href="https://guides.github.com/">Github Guides</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/">How to Install Git and Clone a GitHub Repository</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/">How to Install Git on Linux, Mac or Windows</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/configure-firewall-with-ufw/">How to Configure a Firewall with UFW</a></li>
+    
+    
+    
+    <li><a href="/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/">Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu/">Obtain a Commercially Signed SSL Certificate on Debian &amp; Ubuntu</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#what-is-git">What is Git?</a>
+<ul>
+<li><a href="#configure-git">Configure Git</a></li>
+<li><a href="#work-with-an-existing-local-repository-repo">Work with an Existing Local Repository (Repo)</a>
+<ul>
+<li><a href="#basic-git-commands">Basic Git Commands</a></li>
+<li><a href="#branches">Branches</a></li>
+</ul></li>
+<li><a href="#working-with-remote-repositories">Working with Remote Repositories</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

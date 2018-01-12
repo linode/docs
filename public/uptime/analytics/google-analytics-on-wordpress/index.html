@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Google Analytics for WordPress</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Get in-depth website visitor statistics with Google Analytics on your WordPress website.">
+        <meta name="keywords" content="analytics, google analytics, wordpress, analytics, tracking, statistics">
+        
+        <meta property="og:title" content="Google Analytics for WordPress">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/analytics/google-analytics-on-wordpress/">
+        <meta property="og:description" content="Get in-depth website visitor statistics with Google Analytics on your WordPress website.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/analytics/google-analytics-on-wordpress/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/analytics/">Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  Google Analytics for WordPress
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Google Analytics for WordPress</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-01-29T00:00:00Z">Thursday, January 29, 2015</time> by Elle Krout</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fanalytics%2fgoogle-analytics-on-wordpress%2f&via=linode&text=Google%20Analytics%20for%20WordPress" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fanalytics%2fgoogle-analytics-on-wordpress%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fanalytics%2fgoogle-analytics-on-wordpress%2f&t=Google%20Analytics%20for%20WordPress" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/analytics/google-analytics-on-wordpress.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/analytics/google-analytics-on-wordpress.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.</p>
+
+<p>This guide provides three ways to add Google Analytics to WordPress: By directly adding the analytics code to your theme and two plugin options. Prior to using this guide, you should have completed our <a href="/docs/websites/cms/manage-web-content-with-wordpress">Manage Web Content with WordPress</a> guide and have a fully configured WordPress website set up.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps in this guide require root privileges. Be sure to run the steps below as <code>root</code> or with the <code>sudo</code> prefix. For more information on privileges, see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="sign-up-for-google-analytics">Sign Up for Google Analytics</h2>
+
+<p>Prior to adding Google Analytics to your website, you need to sign up for a Google Analytics account.</p>
+
+<ol>
+<li><p>Navigate to the <a href="http://www.google.com/analytics">Google Analytics</a> website, then click the <strong>Access Google Analytics</strong> button at the top right.</p></li>
+
+<li><p>Click <strong>Sign Up</strong>.</p></li>
+
+<li><p>Be sure the <strong>Website</strong> option is selected, then enter your account information as desired. Be sure that your website URL is accurate.</p>
+
+<p><img src="/docs/assets/googleana-wordpress-signup.png" alt="Google Analytics account creation" /></p></li>
+
+<li><p>Press <strong>Get Tracking ID</strong>, and read through and accept the Google Analytics Terms of Service.</p></li>
+
+<li><p>Make sure to note the <strong>Tracking ID</strong> and <strong>tracking code</strong>, you will use them again in this guide.</p></li>
+</ol>
+
+<p>You are now set up with Google Analytics and can decide how to proceed with adding the code to your WordPress website: <a href="#add-google-analytics-through-a-theme">Through your theme</a> or <a href="#add-google-analytics-through-a-plugin">through a plugin</a>.</p>
+
+<h2 id="add-google-analytics-through-a-theme">Add Google Analytics Through a Theme</h2>
+
+<p>WordPress uses PHP includes, so adding a Google Analytics code is as easy as altering a single file in your WordPress theme.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide assumes you have configured your LAMP server as described in our guides, with your publicly accessible directory located at something similar to <code>/var/www/example.com/public_html</code>. Replace all instances of <code>example.com</code> with your own domain information.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Navigate to your theme directory:</p>
+
+<pre><code>cd /var/www/example.com/public_html/wp-content/themes
+</code></pre></li>
+
+<li><p>Use the <code>ls</code> command to see your list of theme folders. Note the folder name of the theme are you <em>currently</em> using:</p>
+
+<pre><code>ls
+</code></pre></li>
+
+<li><p>Navigate to the folder that denotes the <em>current</em> theme you are using. In this example we are using the default Twenty Fifteen theme:</p>
+
+<pre><code>cd twentyfifteen
+</code></pre></li>
+
+<li><p>Open <code>header.php</code> and add your Google Analytics <strong>tracking code</strong> underneath the <code>&lt;body &lt;?php body_class(); ?&gt;&gt;</code> tag:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/www/example.com/public_html/wp-content/themes/header.php 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/**
+ * Google Analytics code block
+*/
+
+&lt;script&gt;
+ <span class="o">(</span><span class="k">function</span><span class="o">(</span>i,s,o,g,r,a,m<span class="o">){</span>i<span class="o">[</span><span class="s1">&#39;GoogleAnalyticsObject&#39;</span><span class="o">]=</span>r<span class="p">;</span>i<span class="o">[</span>r<span class="o">]=</span>i<span class="o">[</span>r<span class="o">]||</span><span class="k">function</span><span class="o">(){</span>
+ <span class="o">(</span>i<span class="o">[</span>r<span class="o">]</span>.q<span class="o">=</span>i<span class="o">[</span>r<span class="o">]</span>.q<span class="o">||[])</span>.push<span class="o">(</span>arguments<span class="o">)}</span>,i<span class="o">[</span>r<span class="o">]</span>.l<span class="o">=</span><span class="m">1</span>*new Date<span class="o">()</span><span class="p">;</span><span class="nv">a</span><span class="o">=</span>s.createElement<span class="o">(</span>o<span class="o">)</span>,
+ <span class="nv">m</span><span class="o">=</span>s.getElementsByTagName<span class="o">(</span>o<span class="o">)[</span><span class="m">0</span><span class="o">]</span><span class="p">;</span>a.async<span class="o">=</span><span class="m">1</span><span class="p">;</span>a.src<span class="o">=</span>g<span class="p">;</span>m.parentNode.insertBefore<span class="o">(</span>a,m<span class="o">)</span>
+ <span class="o">})(</span>window,document,<span class="s1">&#39;script&#39;</span>,<span class="s1">&#39;//www.google-analytics.com/analytics.js&#39;</span>,<span class="s1">&#39;ga&#39;</span><span class="o">)</span><span class="p">;</span>
+
+ ga<span class="o">(</span><span class="s1">&#39;create&#39;</span>, <span class="s1">&#39;UA-00000000-0&#39;</span>, <span class="s1">&#39;auto&#39;</span><span class="o">)</span><span class="p">;</span>
+ ga<span class="o">(</span><span class="s1">&#39;send&#39;</span>, <span class="s1">&#39;pageview&#39;</span><span class="o">)</span><span class="p">;</span>
+
+&lt;/script&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you copy the above code, replace <code>UA-00000000-0</code> with your <strong>tracking ID</strong>.</p>
+
+<p>At this time you may want to consider enabling the <em><a href="https://support.google.com/analytics/answer/2819948?hl=en">demographics</a></em> feature of Google Analytics. If you decide to do so, you will need to add an additional line of code to your JavaScript in the steps below. Insert the following between the lines containing <code>ga('create', 'UA-00000000-0', 'auto');</code> and <code>ga('send', 'pageview');</code>:</p>
+
+<p>ga(&lsquo;require&rsquo;, &lsquo;displayfeatures&rsquo;);</p>
+
+<p>Should you decide to disable the demographics feature at a later date, simply remove the above code.</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>To determine the success of the above process, open your WordPress website in a browser, then right click and select View Page Source. You should see the Google Analytics code inserted below the <code>&lt;body&gt;</code> tag. It is highlighted in the below example:</p>
+
+<p><img src="/docs/assets/googleana-wordpress-source.png" alt="Google Analytics source check" /></p></li>
+</ol>
+
+<p>Congratulations! You have added Google Analytics to your WordPress website. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics. Please note that if you change the theme you will have to redo the above steps.</p>
+
+<h2 id="add-google-analytics-through-a-plugin">Add Google Analytics Through a Plugin</h2>
+
+<p>This section explores adding Google Analytics to a WordPress website through two popular plugins. These plugins both add Google Analytics dashboards to your administration interface and insert the tracking code into your theme. If you have already added Google Analytics through the above method, these plugins can complement that process by adding in-dashboard features, should you desire to view your analytics within WordPress itself.</p>
+
+<p>If you do not want to incorporate an added dashboard to WordPress, and would rather monitor your visitors and demographics from the Google Analytics website, consider using the method of adding your code through your chosen theme, <a href="#add-google-analytics-through-a-theme">as shown above</a>.</p>
+
+<h3 id="google-analytics-dashboard-for-wp">Google Analytics Dashboard for WP</h3>
+
+<p>The Google Analytics Dashboard for WP is a comprehensive WordPress plugin that incorporates Google Analytics to your dashboard home, allowing you to track changes in visitors from the moment you log in. It is a powerful plugin that also offers both backend and frontend features allowing you to share the Google Analytics results with everyone from visitors to blog contributors.</p>
+
+<ol>
+<li><p>Prior to installing the Google Analytics for WP plugin you will need to add <strong>PHP Curl</strong> to your Linode. Log in to your server through SSH to update and install PHP Curl:</p>
+
+<pre><code>apt-get update &amp;&amp; apt-get install php5-curl
+</code></pre></li>
+
+<li><p>Log in to your WordPress dashboard and navigate to the <strong>Add New</strong> link under the Plugins menu. Search for, download, and enable <a href="https://wordpress.org/plugins/google-analytics-dashboard-for-wp/">Google Analytics for WP</a>. A Google Analytics link will be added to the navigation pane to the left.</p></li>
+
+<li><p>Click on the <strong>Google Analytics</strong> link and select <strong>Authorize Plugin</strong>. It will ask for an access code, which you can acquire by clicking the <strong>Get Access Code</strong> link. You will need to log in to your Google account and allow the plugin to view your Google Analytics data.</p>
+
+<p><img src="/docs/assets/googleana-wordpress-forwp1.png" alt="Google Analytics Dashboard for WP" /></p></li>
+
+<li><p>Copy the resulting code and insert it in the appropriate text field. From here, you can select the appropriate domain and alter other settings as needed.</p></li>
+
+<li><p>If you have not already inserted the tracking code within your website, make sure <strong>Tracking Options</strong> under the <strong>Tracking Code</strong> link is set to <strong>Enabled</strong>. Otherwise, this can be disabled.</p>
+
+<p><img src="/docs/assets/googleana-wordpress-forwp2.png" alt="Google Analytics Dashboard for WP tracking enabled" /></p></li>
+</ol>
+
+<p>Google Analytics Dashboard for WP has now been set up and configured. You can proceed to use WordPress as usual. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.</p>
+
+<h3 id="google-analytics-by-yoast">Google Analytics by Yoast</h3>
+
+<p>Google Analytics by Yoast inserts a Google Analytics section to your WordPress dashboard, and adds your tracking code to your website. Google Analytics by Yoast allows for wider customization of your analytics within your WordPress administration interface, but cannot be shared with other authors or visitors of your WordPress website.</p>
+
+<ol>
+<li><p>Log in to your WordPress dashboard and navigate to the <strong>Add New</strong> link in the Plugins menu. Search for, download, and extract <a href="https://wordpress.org/plugins/google-analytics-for-wordpress/">Google Analytics by Yoast</a>. Once activated, a Google Analytics link is added to the left navigation pane.</p></li>
+
+<li><p>Click on the <strong>Analytics</strong> link. You will need to authenticate with your Google account by selecting the authenticate button, logging in to your Google account and allowing Google Analytics by Yoast to view your Google Analytics data.</p></li>
+
+<li><p>Copy the resulting code and paste it into the box. From here, select the domain you are using Google Analytics for and alter other settings as needed. Be aware that if your domain information is not entered correctly, this plugin does not work.</p>
+
+<p><img src="/docs/assets/googleana-wordpress-yoast.png" alt="Google Analytics by Yoast" /></p></li>
+</ol>
+
+<p>Google Analytics by Yoast has now been set up. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://support.google.com/analytics/?hl=en#topic=3544906">Analytics Help</a></li>
+
+<li><a href="https://developers.google.com/analytics/">Google Analytics Developers</a></li>
+
+<li><a href="/docs/uptime/analytics/google-analytics-for-websites">Google Analytics for Websites</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/uptime/analytics/google-analytics-for-websites/">Google Analytics for Websites</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/analytics/piwik-on-ubuntu-12-04-precise-pangolin/">Piwik on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/analytics/piwik-on-ubuntu-10-10-maverick/">Piwik on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/analytics/piwik-on-fedora-13/">Piwik on Fedora 13 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/analytics/piwik-on-ubuntu-10-04-lucid/">Piwik on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#sign-up-for-google-analytics">Sign Up for Google Analytics</a></li>
+<li><a href="#add-google-analytics-through-a-theme">Add Google Analytics Through a Theme</a></li>
+<li><a href="#add-google-analytics-through-a-plugin">Add Google Analytics Through a Plugin</a>
+<ul>
+<li><a href="#google-analytics-dashboard-for-wp">Google Analytics Dashboard for WP</a></li>
+<li><a href="#google-analytics-by-yoast">Google Analytics by Yoast</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

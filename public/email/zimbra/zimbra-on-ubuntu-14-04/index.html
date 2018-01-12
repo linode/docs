@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Zimbra Open Source Edition on Ubuntu 14.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS Linode">
+        <meta name="keywords" content="zimbra, install zimbra, mail server, zimbra email, zimbra email server, mail zimbra, open source guide, zimbra open source, postfix, web mail, opendkim, amavis, ubuntu tahr, ubuntu 14.04, ubuntu">
+        
+        <meta property="og:title" content="Install Zimbra Open Source Edition on Ubuntu 14.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/zimbra/zimbra-on-ubuntu-14-04/">
+        <meta property="og:description" content="Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS Linode">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/zimbra/zimbra-on-ubuntu-14-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/zimbra/">Zimbra Groupware</a>
+  
+</li>
+
+
+<li>
+  
+  Install Zimbra Open Source Edition on Ubuntu 14.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Zimbra Open Source Edition on Ubuntu 14.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-10-01T00:00:00Z">Thursday, October 1, 2015</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Bill Bardon
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fzimbra%2fzimbra-on-ubuntu-14-04%2f&via=linode&text=Install%20Zimbra%20Open%20Source%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fzimbra%2fzimbra-on-ubuntu-14-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fzimbra%2fzimbra-on-ubuntu-14-04%2f&t=Install%20Zimbra%20Open%20Source%20Edition%20on%20Ubuntu%2014.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/zimbra/zimbra-on-ubuntu-14-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/zimbra/zimbra-on-ubuntu-14-04.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><a href="https://www.zimbra.com/">Zimbra</a> is a complete mail server that provides a configured Postfix with OpenDKIM, Amavis, ClamAV, and Nginx, ready to handle mail for one or more domains. Zimbra on a Linode is one of the quickest paths to an up-and-running mail server that you will find. This guide will take you through the Zimbra installation procedure.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps required in this guide require root privileges. Be sure to run the steps below as <strong>root</strong> or with the <code>sudo</code> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="set-up-your-linode">Set up Your Linode</h2>
+
+<ol>
+<li><p>Create a Linode with a minimum of 4 GB of RAM. See <a href="https://www.linode.com/docs/getting-started">Getting Started</a> for help setting up your host.</p></li>
+
+<li><p>Deploy an Ubuntu 14.04 LTS image to your Linode. Consider using slightly less than half the available disk space for the first image, keeping the other half for taking a backup image before updates. Your partition size will depend on the number of accounts and volume of mail you expect to handle. Once deployed, boot your new host. SSH into the terminal using the command shown on your Remote Access page in Linode Manager and the password you entered when you created the Linode.</p></li>
+
+<li><p>You must <a href="https://www.linode.com/docs/getting-started#ubuntu-1404--debian-7">set the hostname</a> and fully qualified domain name (FQDN), and <a href="https://www.linode.com/docs/getting-started#update-etchosts">update /etc/hosts</a> prior to installing Zimbra.</p></li>
+
+<li><p>Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See <a href="/docs/email/running-a-mail-server#dns-records">Running a Mail Server: DNS Records</a> for details on setting up DNS.</p></li>
+</ol>
+
+<h2 id="download-zimbra">Download Zimbra</h2>
+
+<ol>
+<li><p>Download the latestet release of <a href="https://www.zimbra.com/downloads/zimbra-collaboration-open-source">Zimbra Open Source Edition</a>. It&rsquo;s a good idea to read the release notes and understand the requirements and caveats before installing. Choose the Ubuntu 14.04 LTS 64-bit release and download it to your Linode with <code>wget</code>. To do this, right-click the <em>64bit x86</em> link in your browser and copy the link from the Zimbra page. Paste it into your shell command and execute it.</p>
+
+<p>For example:</p>
+
+<pre><code>wget https://files.zimbra.com/downloads/8.6.0_GA/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This Guide is about setting up a new Zimbra Linode, but if you are upgrading an existing Zimbra installation, it is very important that you read the release notes that Zimbra provides! The notes are found on the Download page where you found the software. There may be steps that are required to be performed before or after you upgrade.</div>
+</blockquote>
+</li>
+
+<li><p>Download the SHA256 checksum in the same way you just downloaded the Zimbra tarball.</p></li>
+
+<li><p>Test the checksum.</p>
+
+<pre><code>sha256sum -c zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz.sha256
+</code></pre>
+
+<p>If the checksum matches, this command will output &lsquo;OK&rsquo;. If not, you probably have a corrupt download. Download them again and re-check.</p></li>
+
+<li><p>Extract the Zimbra application files to your Linode root user directory.</p>
+
+<pre><code>tar xzf zcs-*.tgz
+</code></pre></li>
+</ol>
+
+<h2 id="install-zimbra">Install Zimbra</h2>
+
+<ol>
+<li><p>Change to the extracted directory and run the installation script.</p>
+
+<pre><code>cd zcs-*
+
+./install.sh
+</code></pre>
+
+<p>After checking some prerequisites, you will be asked to accept the license agreement. Note that while Zimbra OSE is open source, it is not GPL. The link the script displays allows you to read the terms. If you decide not to install, leave the default reply as <strong>N</strong> and press <strong>Enter</strong>. Otherwise type <strong>Y</strong> and press <strong>Enter</strong> to continue. (At any time while running the install script, to accept the default answer shown in brackets, you may simply press <strong>Enter</strong>.)</p>
+
+<pre><code>...
+
+License Terms for the Zimbra Collaboration Suite:
+http://www.zimbra.com/license/zimbra-public-eula-2-5.html
+
+Do you agree with the terms of the software license agreement? [N]
+</code></pre>
+
+<p>After answering <strong>Y</strong>, the script checks for installed software and reports any discrepancies.</p></li>
+
+<li><p>Satisfy missing dependencies.</p>
+
+<p>Zimbra will inform you of any missing dependencies with the <em>MISSING:</em> field as shown below.</p>
+
+<pre><code>Checking for prerequisites...
+FOUND: NPTL
+FOUND: netcat-openbsd-1.105-7ubuntu1
+FOUND: sudo-1.8.9p5-1ubuntu1.1
+FOUND: libidn11-1.28-1ubuntu2
+FOUND: libpcre3-1:8.31-2ubuntu2.1
+MISSING: libgmp10
+FOUND: libexpat1-2.1.0-4ubuntu1
+FOUND: libstdc++6-4.8.4-2ubuntu1~14.04
+MISSING: libperl5.18
+MISSING: libaio1
+FOUND: resolvconf-1.69ubuntu1.1
+FOUND: unzip-6.0-9ubuntu1.3
+
+Checking for suggested prerequisites...
+MISSING: pax does not appear to be installed.
+FOUND: perl-5.18.2
+FOUND: sysstat
+MISSING: sqlite3 does not appear to be installed.
+
+###WARNING###
+
+The suggested version of one or more packages is not installed.
+This could cause problems with the operation of Zimbra.
+
+Do you wish to continue? [N]
+</code></pre>
+
+<p>These dependencies must be installed before going further, so answer <strong>N</strong> to quit the installer and fix the problem. For example, installing the following packages will satisfy the dependencies named in the output above:</p>
+
+<pre><code>sudo apt-get install libgmp10 libperl5.18 libaio1 pax sqlite3
+</code></pre></li>
+
+<li><p>Choose installation options.</p>
+
+<p>Once missing packages are installed, start the installer again. Zimbra will continue its installation. Accept all the defaults, with the possible exception of the <code>zimbra-snmp</code> package if you have no use for SNMP monitoring.</p>
+
+<pre><code>Checking for installable packages
+
+...
+
+Install zimbra-snmp [Y] n
+
+...
+
+The system will be modified.  Continue? [N]
+</code></pre>
+
+<p>At this point you are ready to allow the install, so answer <strong>Y</strong>. The packages will be installed and most Zimbra settings will be configured to default settings.</p></li>
+
+<li><p>Configure MX records.</p>
+
+<p>If you receive an error about a missing MX record as shown below, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your <code>/etc/hostname</code> file and your <a href="/docs/networking/dns/dns-records-an-introduction/#mx">DNS records</a> to resolve the problem.</p>
+
+<pre><code>DNS ERROR resolving MX for linodemail.example.com
+It is suggested that the domain name have an MX record configured in DNS
+Change domain name? [Yes]
+</code></pre>
+
+<p>If you are only testing Zimbra and not deploying, continue by answering <strong>N</strong> to skip changing the domain name.</p></li>
+
+<li><p>Set admin password and DNS.</p>
+
+<p>Next you are presented with the Main menu. The installer displays the current settings for Zimbra and allows you to change them. Enter the number of the main section you want to change and the sub-menu for that section will be displayed. Enter the number of the item in the section that you want to change, and enter your preferred value.</p>
+
+<pre><code>Main menu
+
+1) Common Configuration:
+2) zimbra-ldap:                             Enabled
+3) zimbra-logger:                           Enabled
+4) zimbra-mta:                              Enabled
+5) zimbra-dnscache:                         Enabled
+6) zimbra-store:                            Enabled
+    +Create Admin User:                    yes
+    +Admin user to create:                 admin@linodemail.computassist.net
+******* +Admin Password                        UNSET
+
+   ...
+
+Address unconfigured (**) items  (? - help)
+</code></pre>
+
+<p>By default, no administrative password is set. To set a password, enter <strong>6</strong> to display the <code>zimbra-store</code> menu, then <strong>4</strong> to type a new password at the prompt. Enter <strong>r</strong> to return to the main menu. For DNS, enter the <code>zimbra-dnscache</code> menu, then change the <code>Master DNS</code> IP addresses and return to the main menu.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>It is common to run mail servers on UTC, as they regularly accept mail from all over the world. This helps when tracing mail flow, when Daylight Saving kicks in or out, and just makes reading logs easier. You may choose to use local time if you prefer.</div>
+</blockquote>
+</li>
+
+<li><p>Finalize the installation.</p>
+
+<p>Enter <strong>a</strong> to apply your changes to the settings. Finally, enter <strong>Y</strong> to continue the install.</p>
+
+<pre><code>*** CONFIGURATION COMPLETE - press 'a' to apply
+Select from menu, or press 'a' to apply config (? - help) a
+Save configuration data to a file? [Yes]
+Save config in file: [/opt/zimbra/config.13935]
+Saving config in /opt/zimbra/config.13935...done.
+The system will be modified - continue? [No] y
+</code></pre>
+
+<p>The installer will begin the final steps to complete the Zimbra install and inform you of its progress at each step. You will be asked if you wish to share notification of your new installation with the folks at the Zimbra home office.</p>
+
+<pre><code>You have the option of notifying Zimbra of your installation.
+This helps us to track the uptake of the Zimbra Collaboration Server.
+The only information that will be transmitted is:
+    The VERSION of zcs installed (8.6.0_GA_1153_UBUNTU14_64)
+    The ADMIN EMAIL ADDRESS created (admin@linodemail.example.com)
+
+Notify Zimbra of your installation? [Yes]
+Notifying Zimbra of installation via http://www.zimbra.com/cgi-bin/notify.cgi?VER=8.6.0_GA_1153_UBUNTU14_64&amp;MAIL=admin@linodemail.example.com
+</code></pre>
+
+<p>When the installation is finished, you&rsquo;ll see the output:</p>
+
+<pre><code>Configuration complete - press return to exit
+</code></pre></li>
+
+<li><p>Access Your mail server.</p>
+
+<p>Visit your Linode&rsquo;s hostname or IP address in your browser using https. For example, <code>https://mail.example.com</code>. This will open the login page. Log in using the admin account and password created during the install.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Since you haven&rsquo;t installed a trusted cert yet, you will likely get a browser warning about an untrusted site. Bypass the warning for now. Later you can either add Zimbra&rsquo;s self-signed cert to your browser or install a trusted cert in Zimbra.</div>
+</blockquote>
+
+
+<p><img src="/docs/assets/AdminConsole.png" alt="Zimbra admin console" /></p>
+
+<p>If you configured the appropriate DNS records (step 4 of <a href="#set-up-your-linode">Set up Your Linode</a> above), you should be able to send and receive mail with this account.</p></li>
+</ol>
+
+<h2 id="configuring-your-zimbra-server">Configuring Your Zimbra Server</h2>
+
+<p>Zimbra provides two ways to manage configuration: a web console and the command line. The command line interface is beyond the scope of this guide but you can find it documented in Appendix A of the Administrator&rsquo;s Guide which is linked to from the Help Center in your admin console.</p>
+
+<p>From the admin console you can configure default settings for new accounts (Zimbra calls this a Class Of Service, or COS), add and manage accounts, change passwords, and generally manage your mail server. The admin console has built-in descriptions for most settings. Click the label for the input item and a tool tip will appear. Click the <strong>More</strong> button below right and a more detailed note will be shown.</p>
+
+<p><img src="/docs/assets/Tooltip.png" alt="Click label for a tool tip" /> <img src="/docs/assets/Tooltipmore.png" alt="Click More for details" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can also reach the admin console if you are already logged in to your Zimbra webmail page. A drop-down menu beside your account name in the upper right of the window provides a link to the admin console.</div>
+</blockquote>
+
+
+<h3 id="global-settings">Global Settings</h3>
+
+<p>Your server was configured when you installed, and most of those settings will work as is. You may want to visit a few in particular to control who it is willing to talk to and eliminate some types of spam.</p>
+
+<ol>
+<li><p>From the admin console <strong>Home</strong> menu, click <strong>Configure</strong> and then <strong>Global Settings</strong>. There is a page menu on the left. Feel free to browse, there are hundreds of options here.</p></li>
+
+<li><p>Click the <strong>MTA</strong> page to configure some Postfix settings that can control from whom you will accept mail. If you have known servers on other networks outside your own from which you want to accept mail, you can add them to the <strong>MTA Trusted Networks</strong>. Enter them as IP addresses with subnets, separated by a space, e.g. &ldquo;127.0.0.0/8 10.0.0.0/16 12.34.56.<sup>78</sup>&frasl;<sub>32</sub>&rdquo;.</p></li>
+
+<li><p>Control your maximum message size in the <strong>Messages</strong> section. Enter your limit in KB, so 25 MB would be 25600 KB.</p></li>
+
+<li><p>The <strong>Protocol checks</strong> can stop many spam messages before they enter your system. You may turn them all on, but at least <em>Sender address must be fully qualified</em> should be checked.</p></li>
+
+<li><p><strong>DNS checks</strong> use realtime blacklists to reject mail coming from known spamming servers. zen.spamhuas.org is a good suggestion to start with. Enter the domain name into the <strong>List of Client RBLs</strong>.</p></li>
+
+<li><p>Click the <strong>AS/AV</strong> page. Here you determine how &ldquo;spammy&rdquo; a message has to be to get tagged or rejected. Zimbra uses SpamAssassin to score every message. A score of zero or less than zero means the message is likely to be worth delivering. A score above zero means there are some indicators that this could be an unwanted email. The <strong>Kill percent</strong> is the score above which Zimbra will not deliver the message at all. The <strong>Tag percent</strong> is the score above which Zimbra will let the message through, but deliver it to the Junk folder.</p>
+
+<p>These percentages will vary depending on your incoming mail stream. You have to balance controlling spam with getting false positives on good mail. Also, these numbers apply globally to all your accounts. Experimentation will show you which way to move. Zimbra starts at Kill = 75, Tag = 33. You will probably experience quite a bit of spam still coming through at those values. After much testing and over a year of gradually walking them down, I arrived at Kill = 20, Tag = 4. Please test under your own conditions and learn your own optimal values!</p></li>
+
+<li><p>Click the <strong>Save</strong> button and then the <strong>Home</strong> button at the top left.</p></li>
+
+<li><p>If you made changes to Global Settings, restart your server before continuing.</p></li>
+</ol>
+
+<h3 id="classes-of-service">Classes of Service</h3>
+
+<p>Zimbra installs a default class of service which will be applied to all new accounts. If you don&rsquo;t need to give different capabilities or settings to different groups of users, this default class will be all you need. You can create additional classes and then assign them to users as required to control their privileges, access to features, quotas, and default settings.</p>
+
+<ol>
+<li><p>To manage COS in the console, click the <strong>Configure</strong> menu option. The Configure menu opens, and <strong>Class of Service</strong> is already selected.</p>
+
+<p><img src="/docs/assets/ConfigureMenu.png" alt="Configure menu" /></p></li>
+
+<li><p>Double-click the <strong>default</strong> COS and the Class of Service page opens. There is a page menu on the left. Each page allows you to modify the settings of this COS.</p>
+
+<p><img src="/docs/assets/ClassOfService.png" alt="Class of Service page" /></p></li>
+
+<li><p>You will want to go through the <strong>Features</strong> page and decide what you want to offer your users. You may wish to turn off the Briefcase (file saving and sharing) if you don&rsquo;t have enough storage, restrict some forms of sharing, or enable external POP or IMAP access, for example.</p></li>
+
+<li><p>Next, read through <strong>Preferences</strong>, setting each item the way you want it for your users. Remember, all of these settings apply to this class of service only, and you can create other classes if needed.</p></li>
+
+<li><p>Finally, view the <strong>Advanced</strong> page. It&rsquo;s recommended to set an <strong>Account quota</strong>, even if it&rsquo;s fairly large, to prevent one user from consuming all the disk space. You can customize your <strong>Quota warning message template</strong> here. Scroll down to set password requirements, lockout options, and trash and spam retention policies.</p></li>
+
+<li><p>If needed, you can proceed to add more classes of service and define all these settings for another type of user. Different classes could have different quotas, access to more or fewer features, or perhaps one group gets external IMAP or access to the Briefcase tab. Note that individual user account settings can override the COS settings. New user accounts will be assigned the default COS unless you have defined another and choose it when creating the account.</p></li>
+</ol>
+
+<h3 id="user-accounts">User Accounts</h3>
+
+<p>You received an admin account when you installed Zimbra. The Open Source Edition has no limit on the number of accounts you can have. It is only limited by your server&rsquo;s ability to handle the traffic. If you have been through the <strong>Classes of Service</strong>, creating another account will be a trip through familiar territory, as most of the settings are the same, but applicable to this individual account.</p>
+
+<h4 id="creating-accounts">Creating Accounts</h4>
+
+<ol>
+<li><p>from the <strong>Home</strong> page click <strong>Manage</strong>. The <strong>Accounts</strong> page will be displayed.</p></li>
+
+<li><p>Click the gear icon top right, then click <strong>New</strong>.</p>
+
+<p><img src="/docs/assets/OpenNewAccount.png" alt="Open the new account dialog" /></p>
+
+<p><img src="/docs/assets/NewAccount.png" alt="Create a new account" /></p></li>
+
+<li><p>The only required items are the email address and the last name but you will want to create a temporary password, and possibly override the default COS if you&rsquo;ve set up others.</p></li>
+
+<li><p>If you want to explicitly set other properties on this account, click <strong>Next</strong> to proceed through the pages. At any time, you can choose <strong>Finish</strong> to accept the defaults for the rest of the properties.</p></li>
+
+<li><p>Once you have created the account, it is immediately ready to use.</p></li>
+</ol>
+
+<h4 id="managing-accounts">Managing Accounts</h4>
+
+<p>When users forget their passwords, resets are easily accomplished.</p>
+
+<ol>
+<li><p>On the <strong>Manage Accounts</strong> page, right-click the account you want to change, and click <strong>Change Password</strong>.</p>
+
+<p><img src="/docs/assets/ContextChangePassword.png" alt="Change a user password" /></p></li>
+
+<li><p>Enter a temporary password which you will send to the user, and also click <strong>Must change password</strong>. The next time they log in, they will be prompted to choose a new password.</p>
+
+<p><img src="/docs/assets/ChangePassword.png" alt="Change password dialog" /></p></li>
+</ol>
+
+<h2 id="install-an-ssl-certificate">Install an SSL Certificate</h2>
+
+<p>Zimbra creates and uses a self-signed SSL security certificate upon installation. If you are planning to offer your email service to others, you will want to install a trusted certificate from a third-party Certificate Authority (CA).</p>
+
+<h3 id="create-a-certificate-signing-request-csr">Create a Certificate Signing Request (CSR)</h3>
+
+<ol>
+<li><p>Log in to the Zimbra admin console</p></li>
+
+<li><p>Click the <strong>Configure</strong> menu, then <strong>Certificates</strong>.</p></li>
+
+<li><p>Click the <strong>gear icon</strong> in the toolbar and select <strong>Install Certificate</strong>.</p></li>
+
+<li><p>The Zimbra Certificate Installation Wizard will open. Choose your primary domain and click <strong>Next</strong>.</p></li>
+
+<li><p>Select the option to generate the Certificate Signing Request (CSR) and click <strong>Next</strong>.</p></li>
+
+<li><p>For details on how to properly fill the form, you should visit your CA&rsquo;s website and follow their recommendations. Generally, you will enter your FQDN as the common name, the appropriate country, state/province, city and your own organization name. Leave the Alternative name blank if your cert will only be used for the primary domain, or enter the other forms of your domain (different hosts, subdomains) if you will be getting a wildcard or multi-domain cert. For purposes of email, your cert only needs to authenticate your server&rsquo;s FQDN.</p></li>
+
+<li><p>Copy the CSR text and finish the Zimbra wizard, return to your CA&rsquo;s website and follow their process to purchase your SSL certificate.</p></li>
+</ol>
+
+<h3 id="install-your-certificate-into-zimbra">Install Your Certificate into Zimbra.</h3>
+
+<ol>
+<li><p>In the Zimbra admin console, click the <strong>Configure</strong> menu, then <strong>Certificates</strong>.</p></li>
+
+<li><p>Click the <strong>gear icon</strong> in the toolbar and select <strong>Install Certificate</strong>.</p></li>
+
+<li><p>The Zimbra Certificate Installation Wizard will open. Choose your primary domain and click <strong>Next</strong>.</p></li>
+
+<li><p>Select the option to install the commercially signed certificate and click <strong>Next</strong>.</p></li>
+
+<li><p>Review the information in your CSR one more time, then click Next.</p></li>
+
+<li><p>Upload the files received from your CA. Various CAs deliver the certificate, the intermediate CA and root CA files in different ways. You may receive a ZIP file containing everything you need, or you may need to download the root and intermediate CA files from their web site. Again, consult your CA&rsquo;s web site for the correct handling of these files. Once you have all the needed files, upload each using the Browse button in the Certificate Installation Wizard. Then click <strong>Next</strong>.</p></li>
+
+<li><p>The wizard will install the new cert. Once finished, you can confirm the install in two ways. In the admin console, go to <strong>Configure</strong>, <strong>Certificates</strong>, and double-click your server name. The certificate information will be displayed. Or, visit your server&rsquo;s Zimbra webmail page and display the cert info in your browser.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.zimbra.com/documentation/zimbra-collaboration-open-source">Zimbra OSE Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/installing-mail-filtering-for-ubuntu-12-04/">Installing Mail Filtering for Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/">Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/">Configure SPF and DKIM With Postfix on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/">Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-on-ubuntu-14-04/">Apache Web Server on Ubuntu 14.04 LTS</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#set-up-your-linode">Set up Your Linode</a></li>
+<li><a href="#download-zimbra">Download Zimbra</a></li>
+<li><a href="#install-zimbra">Install Zimbra</a></li>
+<li><a href="#configuring-your-zimbra-server">Configuring Your Zimbra Server</a>
+<ul>
+<li><a href="#global-settings">Global Settings</a></li>
+<li><a href="#classes-of-service">Classes of Service</a></li>
+<li><a href="#user-accounts">User Accounts</a>
+<ul>
+<li><a href="#creating-accounts">Creating Accounts</a></li>
+<li><a href="#managing-accounts">Managing Accounts</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#install-an-ssl-certificate">Install an SSL Certificate</a>
+<ul>
+<li><a href="#create-a-certificate-signing-request-csr">Create a Certificate Signing Request (CSR)</a></li>
+<li><a href="#install-your-certificate-into-zimbra">Install Your Certificate into Zimbra.</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install and Set Up a 3-Node Hadoop Cluster</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This Linode guide will show you how to install and set up a 3-node Hadoop cluster.">
+        <meta name="keywords" content="Hadoop,  YARN,  HDFS">
+        
+        <meta property="og:title" content="How to Install and Set Up a 3-Node Hadoop Cluster">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/">
+        <meta property="og:description" content="This Linode guide will show you how to install and set up a 3-node Hadoop cluster.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/hadoop/">Hadoop</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install and Set Up a 3-Node Hadoop Cluster
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install and Set Up a 3-Node Hadoop Cluster</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-16T00:00:00Z">Monday, October 16, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Florent Houbart
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fhadoop%2fhow-to-install-and-set-up-hadoop-cluster%2f&via=linode&text=How%20to%20Install%20and%20Set%20Up%20a%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fhadoop%2fhow-to-install-and-set-up-hadoop-cluster%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fhadoop%2fhow-to-install-and-set-up-hadoop-cluster%2f&t=How%20to%20Install%20and%20Set%20Up%20a%203-Node%20Hadoop%20Cluster" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<h2 id="what-is-hadoop">What is Hadoop?</h2>
+
+<p>Hadoop is an open-source Apache project that allows creation of parallel processing applications on large data sets, distributed across networked nodes. It&rsquo;s composed of the <strong>Hadoop Distributed File System (HDFS™)</strong> that handles scalability and redundancy of data across nodes, and <strong>Hadoop YARN</strong>: a framework for job scheduling that executes data processing tasks on all nodes.</p>
+
+<p><img src="/docs/assets/hadoop/hadoop-1-logo.png" alt="How to Install and Set Up a 3-Node Hadoop Cluster" title="How to Install and Set Up a 3-Node Hadoop Cluster" /></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Follow the <a href="/docs/getting-started">Getting Started</a> guide to create three (3) Linodes. They&rsquo;ll be referred to throughout this guide as <strong>node-master</strong>, <strong>node1</strong> and <strong>node2</strong>. It&rsquo;s recommended that you set the hostname of each Linode to match this naming convention.</p>
+
+<p>Run the steps in this guide from the <strong>node-master</strong> unless otherwise specified.</p></li>
+
+<li><p>Follow the <a href="/docs/security/securing-your-server">Securing Your Server</a> guide to harden the three servers. Create a normal user for the install, and a user called <code>hadoop</code> for any Hadoop daemons. Do <strong>not</strong> create SSH keys for <code>hadoop</code> users. SSH keys will be addressed in a later section.</p></li>
+
+<li><p>Install the JDK using the appropriate guide for your distribution, <a href="/docs/development/install-java-on-debian">Debian</a>, <a href="/docs/development/install-java-on-centos">CentOS</a> or <a href="/docs/development/install-java-on-ubuntu-16-04">Ubuntu</a>, or grab the latest JDK from Oracle.</p></li>
+
+<li><p>The steps below use example IPs for each node. Adjust each example according to your configuration:</p>
+
+<ul>
+<li><strong>node-master</strong>: 192.0.2.1</li>
+<li><strong>node1</strong>: 192.0.2.2</li>
+<li><strong>node2</strong>: 192.0.2.3</li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide. All  commands in this guide are run with the <em>hadoop</em> user if not specified otherwise.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="architecture-of-a-hadoop-cluster">Architecture of a Hadoop Cluster</h2>
+
+<p>Before configuring the master and slave nodes, it&rsquo;s important to understand the different components of a Hadoop cluster.</p>
+
+<p>A <strong>master node</strong> keeps knowledge about the distributed file system, like the <code>inode</code> table on an <code>ext3</code> filesystem, and schedules resources allocation. <strong>node-master</strong> will handle this role in this guide, and host two daemons:</p>
+
+<ul>
+<li>The <strong>NameNode</strong>: manages the distributed file system and knows where stored data blocks inside the cluster are.</li>
+<li>The <strong>ResourceManager</strong>: manages the YARN jobs and takes care of scheduling and executing processes on slave nodes.</li>
+</ul>
+
+<p><strong>Slave nodes</strong> store the actual data and provide processing power to run the jobs. They&rsquo;ll be <strong>node1</strong> and <strong>node2</strong>, and will host two daemons:</p>
+
+<ul>
+<li>The <strong>DataNode</strong> manages the actual data physically stored on the node; it&rsquo;s named, <code>NameNode</code>.</li>
+<li>The <strong>NodeManager</strong> manages execution of tasks on the node.</li>
+</ul>
+
+<h2 id="configure-the-system">Configure the System</h2>
+
+<h3 id="create-host-file-on-each-node">Create Host File on Each Node</h3>
+
+<p>For each node to communicate with its names, edit the <code>/etc/hosts</code> file to add the IP address of the three servers. Don&rsquo;t forget to replace the sample IP with your IP:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="m">192</span>.0.2.1    node-master
+<span class="m">192</span>.0.2.2    node1
+<span class="m">192</span>.0.2.3    node2</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="distribute-authentication-key-pairs-for-the-hadoop-user">Distribute Authentication Key-pairs for the Hadoop User</h3>
+
+<p>The master node will use an ssh-connection to connect to other nodes with key-pair authentication, to manage the cluster.</p>
+
+<ol>
+<li><p>Login to <strong>node-master</strong> as the <code>hadoop</code> user, and generate an ssh-key:</p>
+
+<pre><code>ssh-keygen -b 4096
+</code></pre></li>
+
+<li><p>Copy the key to the other nodes. It&rsquo;s good practice to also copy the key to the <strong>node-master</strong> itself, so that you can also use it as a DataNode if needed. Type the following commands, and enter the <code>hadoop</code> user&rsquo;s password when asked. If you are prompted whether or not to add the key to known hosts, enter <code>yes</code>:</p>
+
+<pre><code>ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node-master
+ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node1
+ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node2
+</code></pre></li>
+</ol>
+
+<h3 id="download-and-unpack-hadoop-binaries">Download and Unpack Hadoop Binaries</h3>
+
+<p>Login to <strong>node-master</strong> as the <code>hadoop</code> user, download the Hadoop tarball from <a href="https://hadoop.apache.org/">Hadoop project page</a>, and unzip it:</p>
+
+<pre><code>cd
+wget http://apache.mindstudios.com/hadoop/common/hadoop-2.8.1/hadoop-2.8.1.tar.gz
+tar -xzf hadoop-2.8.1.tar.gz
+mv hadoop-2.8.1 hadoop
+</code></pre>
+
+<h3 id="set-environment-variables">Set Environment Variables</h3>
+
+<ol>
+<li><p>Add Hadoop binaries to your PATH. Edit <code>/home/hadoop/.profile</code> and add the following line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/hadoop/.profile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">PATH</span><span class="o">=</span>/home/hadoop/hadoop/bin:/home/hadoop/hadoop/sbin:<span class="nv">$PATH</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<h2 id="configure-the-master-node">Configure the Master Node</h2>
+
+<p>Configuration will be done on <strong>node-master</strong> and replicated to other nodes.</p>
+
+<h3 id="set-java-home">Set JAVA_HOME</h3>
+
+<ol>
+<li><p>Get your Java installation path. If you installed open-jdk from your package manager, you can get the path with the command:</p>
+
+<pre><code>update-alternatives --display java
+</code></pre>
+
+<p>Take the value of the current link and remove the trailing <code>/bin/java</code>. For example on Debian, the link is <code>/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java</code>, so <code>JAVA_HOME</code> should be <code>/usr/lib/jvm/java-8-openjdk-amd64/jre</code>.</p>
+
+<p>If you installed java from Oracle, <code>JAVA_HOME</code> is the path where you unzipped the java archive.</p></li>
+
+<li><p>Edit <code>~/hadoop/etc/hadoop/hadoop-env.sh</code> and replace this line:</p>
+
+<pre><code>export JAVA_HOME=${JAVA_HOME}
+</code></pre>
+
+<p>with your actual java installation path. For example on a Debian with open-jdk-8:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/hadoop/etc/hadoop/hadoop-env.sh 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-8-openjdk-amd64/jre</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<h3 id="set-namenode-location">Set NameNode Location</h3>
+
+<p>On each node update <code>~/hadoop/etc/hadoop/core-site.xml</code> you want to set the NameNode location to <strong>node-master</strong> on port <code>9000</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/hadoop/etc/hadoop/core-site.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="cp">&lt;?xml-stylesheet type=&#34;text/xsl&#34; href=&#34;configuration.xsl&#34;?&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;property&gt;</span>
+            <span class="nt">&lt;name&gt;</span>fs.default.name<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>hdfs://node-master:9000<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<h3 id="set-path-for-hdfs">Set path for HDFS</h3>
+
+<p>Edit <code>hdfs-site.conf</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/hadoop/etc/hadoop/hdfs-site.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;property&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dfs.namenode.name.dir<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>/home/hadoop/data/nameNode<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+
+    <span class="nt">&lt;property&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dfs.datanode.data.dir<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>/home/hadoop/data/dataNode<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+
+    <span class="nt">&lt;property&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dfs.replication<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The last property, <code>dfs.replication</code>, indicates how many times data is replicated in the cluster. You can set <code>2</code> to have all the data duplicated on the two nodes. Don&rsquo;t enter a value higher than the actual number of slave nodes.</p>
+
+<h3 id="set-yarn-as-job-scheduler">Set YARN as Job Scheduler</h3>
+
+<ol>
+<li><p>In <code>~/hadoop/etc/hadoop/</code>, rename <code>mapred-site.xml.template</code> to <code>mapred-site.xml</code>:</p>
+
+<pre><code>cd ~/hadoop/etc/hadoop
+mv mapred-site.xml.template mapred-site.xml
+</code></pre></li>
+
+<li><p>Edit the file, setting yarn as the default framework for MapReduce operations:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/hadoop/etc/hadoop/mapred-site.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;property&gt;</span>
+            <span class="nt">&lt;name&gt;</span>mapreduce.framework.name<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>yarn<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<h3 id="configure-yarn">Configure YARN</h3>
+
+<p>Edit <code>yarn-site.xml</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/hadoop/etc/hadoop/yarn-site.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;property&gt;</span>
+            <span class="nt">&lt;name&gt;</span>yarn.acl.enable<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>0<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+
+    <span class="nt">&lt;property&gt;</span>
+            <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>node-master<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+
+    <span class="nt">&lt;property&gt;</span>
+            <span class="nt">&lt;name&gt;</span>yarn.nodemanager.aux-services<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>mapreduce_shuffle<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<h3 id="configure-slaves">Configure Slaves</h3>
+
+<p>The file <code>slaves</code> is used by startup scripts to start required daemons on all nodes. Edit <code>~/hadoop/etc/hadoop/slaves</code> to be:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/hadoop/etc/hadoop/slaves 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-resource" data-lang="resource">node1
+node2</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<h2 id="configure-memory-allocation">Configure Memory Allocation</h2>
+
+<p>Memory allocation can be tricky on low RAM nodes because default values are not suitable for nodes with less than 8GB of RAM. This section will highlight how memory allocation works for MapReduce jobs, and provide a sample configuration for 2GB RAM nodes.</p>
+
+<h3 id="the-memory-allocation-properties">The Memory Allocation Properties</h3>
+
+<p>A YARN job is executed with two kind of resources:</p>
+
+<ul>
+<li>An <em>Application Master</em> (AM) is responsible for monitoring the application and coordinating distributed executors in the cluster.</li>
+<li>Some executors that are created by the AM actually run the job. For a MapReduce jobs, they&rsquo;ll perform map or reduce operation, in parallel.</li>
+</ul>
+
+<p>Both are run in <em>containers</em> on slave nodes. Each slave node runs a <em>NodeManager</em> daemon that&rsquo;s responsible for container creation on the node. The whole cluster is managed by a <em>ResourceManager</em> that schedules container allocation on all the slave-nodes, depending on capacity requirements and current charge.</p>
+
+<p>Four types of resource allocations need to be configured properly for the cluster to work. These are:</p>
+
+<ol>
+<li><p>How much memory can be allocated for YARN containers on a single node. This limit should be higher than all the others; otherwise, container allocation will be rejected and applications will fail. However, it should not be the entire amount of RAM on the node.</p>
+
+<p>This value is configured in <code>yarn-site.xml</code> with <code>yarn.nodemanager.resource.memory-mb</code>.</p></li>
+
+<li><p>How much memory a single container can consume and the minimum memory allocation allowed. A container will never be bigger than the maximum, or else allocation will fail and will always be allocated as a multiple of the minimum amount of RAM.</p>
+
+<p>Those values are configured in <code>yarn-site.xml</code> with <code>yarn.scheduler.maximum-allocation-mb</code> and <code>yarn.scheduler.minimum-allocation-mb</code>.</p></li>
+
+<li><p>How much memory will be allocated to the ApplicationMaster. This is a constant value that should fit in the container maximum size.</p>
+
+<p>This is configured in <code>mapred-site.xml</code> with <code>yarn.app.mapreduce.am.resource.mb</code>.</p></li>
+
+<li><p>How much memory will be allocated to each map or reduce operation. This should be less than the maximum size.</p>
+
+<p>This is configured in <code>mapred-site.xml</code> with properties <code>mapreduce.map.memory.mb</code> and <code>mapreduce.reduce.memory.mb</code>.</p></li>
+</ol>
+
+<p>The relationship between all those properties can be seen in the following figure:</p>
+
+<p><img src="/docs/assets/hadoop/hadoop-2-memory-allocation-new.png" alt="Schema of memory allocation properties" title="Schema of memory allocation properties" /></p>
+
+<h3 id="sample-configuration-for-2gb-nodes">Sample Configuration for 2GB Nodes</h3>
+
+<p>For 2GB nodes, a working configuration may be:</p>
+
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th align="center">Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>yarn.nodemanager.resource.memory-mb</td>
+<td align="center">1536</td>
+</tr>
+
+<tr>
+<td>yarn.scheduler.maximum-allocation-mb</td>
+<td align="center">1536</td>
+</tr>
+
+<tr>
+<td>yarn.scheduler.minimum-allocation-mb</td>
+<td align="center">128</td>
+</tr>
+
+<tr>
+<td>yarn.app.mapreduce.am.resource.mb</td>
+<td align="center">512</td>
+</tr>
+
+<tr>
+<td>mapreduce.map.memory.mb</td>
+<td align="center">256</td>
+</tr>
+
+<tr>
+<td>mapreduce.reduce.memory.mb</td>
+<td align="center">256</td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li><p>Edit <code>/home/hadoop/hadoop/etc/hadoop/yarn-site.xml</code> and add the following lines:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/hadoop/etc/hadoop/yarn-site.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>yarn.nodemanager.resource.memory-mb<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>1536<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+
+<span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>yarn.scheduler.maximum-allocation-mb<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>1536<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+
+<span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>yarn.scheduler.minimum-allocation-mb<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>128<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+
+<span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>yarn.nodemanager.vmem-check-enabled<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>false<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The last property disables virtual-memory checking and can prevent containers from being allocated properly on JDK8.</p></li>
+
+<li><p>Edit <code>/home/hadoop/hadoop/etc/hadoop/mapred-site.xml</code> and add the following lines:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/hadoop/etc/hadoop/mapred-site.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>yarn.app.mapreduce.am.resource.mb<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>512<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+
+<span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>mapreduce.map.memory.mb<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>256<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+
+<span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>mapreduce.reduce.memory.mb<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>256<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<h2 id="duplicate-config-files-on-each-node">Duplicate Config Files on Each Node</h2>
+
+<ol>
+<li><p>Copy the hadoop binaries to slave nodes:</p>
+
+<pre><code>cd /home/hadoop/
+scp hadoop-*.tar.gz node1:/home/hadoop
+scp hadoop-*.tar.gz node2:/home/hadoop
+</code></pre></li>
+
+<li><p>Connect to <strong>node1</strong> via ssh. A password isn&rsquo;t required, thanks to the ssh keys copied above:</p>
+
+<pre><code>ssh node1
+</code></pre></li>
+
+<li><p>Unzip the binaries, rename the directory, and exit <strong>node1</strong> to get back on the node-master:</p>
+
+<pre><code>tar -xzf hadoop-2.8.1.tar.gz
+mv hadoop-2.8.1 hadoop
+exit
+</code></pre></li>
+
+<li><p>Repeat steps 2 and 3 for <strong>node2</strong>.</p></li>
+
+<li><p>Copy the Hadoop configuration files to the slave nodes:</p>
+
+<pre><code>for node in node1 node2; do
+    scp ~/hadoop/etc/hadoop/* $node:/home/hadoop/hadoop/etc/hadoop/;
+done
+</code></pre></li>
+</ol>
+
+<h2 id="format-hdfs">Format HDFS</h2>
+
+<p>HDFS needs to be formatted like any classical file system. On <strong>node-master</strong>, run the following command:</p>
+
+<pre><code>hdfs namenode -format
+</code></pre>
+
+<p>Your Hadoop installation is now configured and ready to run.</p>
+
+<h2 id="run-and-monitor-hdfs">Run and monitor HDFS</h2>
+
+<p>This section will walk through starting HDFS on NameNode and DataNodes, and monitoring that everything is properly working and interacting with HDFS data.</p>
+
+<h3 id="start-and-stop-hdfs">Start and Stop HDFS</h3>
+
+<ol>
+<li><p>Start the HDFS by running the following script from <strong>node-master</strong>:</p>
+
+<pre><code>start-dfs.sh
+</code></pre>
+
+<p>It&rsquo;ll start <strong>NameNode</strong> and <strong>SecondaryNameNode</strong> on node-master, and <strong>DataNode</strong> on <strong>node1</strong> and <strong>node2</strong>, according to the configuration in the <code>slaves</code> config file.</p></li>
+
+<li><p>Check that every process is running with the <code>jps</code> command on each node. You should get on <strong>node-master</strong> (PID will be different):</p>
+
+<pre><code>21922 Jps
+21603 NameNode
+21787 SecondaryNameNode
+</code></pre>
+
+<p>and on <strong>node1</strong> and <strong>node2</strong>:</p>
+
+<pre><code>19728 DataNode
+19819 Jps
+</code></pre></li>
+
+<li><p>To stop HDFS on master and slave nodes, run the following command from <strong>node-master</strong>:</p>
+
+<pre><code>stop-dfs.sh
+</code></pre></li>
+</ol>
+
+<h3 id="monitor-your-hdfs-cluster">Monitor your HDFS Cluster</h3>
+
+<ol>
+<li><p>You can get useful information about running your HDFS cluster with the <code>hdfs dfsadmin</code> command. Try for example:</p>
+
+<pre><code>hdfs dfsadmin -report
+</code></pre>
+
+<p>This will print information (e.g., capacity and usage) for all running DataNodes. To get the description of all available commands, type:</p>
+
+<pre><code>hdfs dfsadmin -help
+</code></pre></li>
+
+<li><p>You can also automatically use the friendlier web user interface. Point your browser to <a href="http://node-master-IP:50070">http://node-master-IP:50070</a> and you&rsquo;ll get a user-friendly monitoring console.</p></li>
+</ol>
+
+<p><img src="/docs/assets/hadoop/hadoop-3-hdfs-webui-wide.png" alt="Screenshot of HDFS Web UI" title="Screenshot of HDFS Web UI" /></p>
+
+<h3 id="put-and-get-data-to-hdfs">Put and Get Data to HDFS</h3>
+
+<p>Writing and reading to HDFS is done with command <code>hdfs dfs</code>. First, manually create your home directory. All other commands will use a path relative to this default home directory:</p>
+
+<pre><code>hdfs dfs -mkdir -p /user/hadoop
+</code></pre>
+
+<p>Let&rsquo;s use some textbooks from the <a href="https://www.gutenberg.org/">Gutenberg project</a> as an example.</p>
+
+<ol>
+<li><p>Create a <em>books</em> directory in HDFS. The following command will create it in the home directory, <code>/user/hadoop/books</code>:</p>
+
+<pre><code>hdfs dfs -mkdir books
+</code></pre></li>
+
+<li><p>Grab a few books from the Gutenberg project:</p>
+
+<pre><code>cd /home/hadoop
+wget -O alice.txt https://www.gutenberg.org/files/11/11-0.txt
+wget -O holmes.txt https://www.gutenberg.org/ebooks/1661.txt.utf-8
+wget -O frankenstein.txt https://www.gutenberg.org/ebooks/84.txt.utf-8
+</code></pre></li>
+
+<li><p>Put the three books through HDFS, in the <code>books</code>directory:</p>
+
+<pre><code>hdfs dfs -put alice.txt holmes.txt frankenstein.txt books
+</code></pre></li>
+
+<li><p>List the contents of the <code>book</code> directory:</p>
+
+<pre><code>hdfs dfs -ls books
+</code></pre></li>
+
+<li><p>Move one of the books to the local filesystem:</p>
+
+<pre><code>hdfs dfs -get books/alice.txt
+</code></pre></li>
+
+<li><p>You can also directly print the books from HDFS:</p>
+
+<pre><code>hdfs dfs -cat books/alice.txt
+</code></pre></li>
+</ol>
+
+<p>There are many commands to manage your HDFS. For a complete list, you can look at the <a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html">Apache HDFS shell documentation</a>, or print help with:</p>
+
+<pre><code>hdfs dfs -help
+</code></pre>
+
+<h2 id="run-yarn">Run YARN</h2>
+
+<p>HDFS is a distributed storage system, it doesn&rsquo;t provide any services for running and scheduling tasks in the cluster. This is the role of the YARN framework. The following section is about starting, monitoring, and submitting jobs to YARN.</p>
+
+<h3 id="start-and-stop-yarn">Start and Stop YARN</h3>
+
+<ol>
+<li><p>Start YARN with the script:</p>
+
+<pre><code>start-yarn.sh
+</code></pre></li>
+
+<li><p>Check that everything is running with the <code>jps</code> command. In addition to the previous HDFS daemon, you should see a <strong>ResourceManager</strong> on <strong>node-master</strong>, and a <strong>NodeManager</strong> on <strong>node1</strong> and <strong>node2</strong>.</p></li>
+
+<li><p>To stop YARN, run the following command on <strong>node-master</strong>:</p>
+
+<pre><code>stop-yarn.sh
+</code></pre></li>
+</ol>
+
+<h3 id="monitor-yarn">Monitor YARN</h3>
+
+<ol>
+<li><p>The <code>yarn</code> command provides utilities to manage your YARN cluster. You can also print a report of running nodes with the command:</p>
+
+<pre><code>yarn node -list
+</code></pre>
+
+<p>Similarly, you can get a list of running applications with command:</p>
+
+<pre><code>yarn application -list
+</code></pre>
+
+<p>To get all available parameters of the <code>yarn</code> command, see <a href="https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html">Apache YARN documentation</a>.</p></li>
+
+<li><p>As with HDFS, YARN provides a friendlier web UI, started by default on port <code>8088</code> of the Resource Manager. Point your browser to <a href="http://node-master-IP:8088">http://node-master-IP:8088</a> and browse the UI:</p>
+
+<p><img src="/docs/assets/hadoop/hadoop-4-yarn-webui-wide.png" alt="Screenshot of YARN Web UI" title="Screenshot of YARN Web UI" /></p></li>
+</ol>
+
+<h3 id="submit-mapreduce-jobs-to-yarn">Submit MapReduce Jobs to YARN</h3>
+
+<p>Yarn jobs are packaged into <code>jar</code> files and submitted to YARN for execution with the command <code>yarn jar</code>. The Hadoop installation package provides sample applications that can be run to test your cluster. You&rsquo;ll use them to run a word count on the three books previously uploaded to HDFS.</p>
+
+<ol>
+<li><p>Submit a job with the sample jar to YARN. On <strong>node-master</strong>, run:</p>
+
+<pre><code>yarn jar ~/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar wordcount &quot;books/*&quot; output
+</code></pre>
+
+<p>The last argument is where the output of the job will be saved - in HDFS.</p></li>
+
+<li><p>After the job is finished, you can get the result by querying HDFS with <code>hdfs dfs -ls output</code>. In case of a success, the output will resemble:</p>
+
+<pre><code>Found 2 items
+-rw-r--r--   1 hadoop supergroup          0 2017-10-11 14:09 output/_SUCCESS
+-rw-r--r--   1 hadoop supergroup     269158 2017-10-11 14:09 output/part-r-00000
+</code></pre></li>
+
+<li><p>Print the result with:</p>
+
+<pre><code>hdfs dfs -cat output/part-r-00000
+</code></pre></li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Now that you have a YARN cluster up and running, you can:</p>
+
+<ul>
+<li>Learn how to code your own YARN jobs with <a href="https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html">Apache documentation</a>.</li>
+<li>Install Spark on top on your YARN cluster with <a href="/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster">Linode Spark guide</a>.</li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html">YARN Command Reference</a></li>
+
+<li><a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html">HDFS Shell Documentation</a></li>
+
+<li><a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/core-default.xml">core-site.xml properties</a></li>
+
+<li><a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml">hdfs-site.xml properties</a></li>
+
+<li><a href="https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml">mapred-site.xml properties</a></li>
+
+<li><a href="https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-common/yarn-default.xml">core-site.xml properties</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-hadoop">What is Hadoop?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#architecture-of-a-hadoop-cluster">Architecture of a Hadoop Cluster</a></li>
+<li><a href="#configure-the-system">Configure the System</a>
+<ul>
+<li><a href="#create-host-file-on-each-node">Create Host File on Each Node</a></li>
+<li><a href="#distribute-authentication-key-pairs-for-the-hadoop-user">Distribute Authentication Key-pairs for the Hadoop User</a></li>
+<li><a href="#download-and-unpack-hadoop-binaries">Download and Unpack Hadoop Binaries</a></li>
+<li><a href="#set-environment-variables">Set Environment Variables</a></li>
+</ul></li>
+<li><a href="#configure-the-master-node">Configure the Master Node</a>
+<ul>
+<li><a href="#set-java-home">Set JAVA_HOME</a></li>
+<li><a href="#set-namenode-location">Set NameNode Location</a></li>
+<li><a href="#set-path-for-hdfs">Set path for HDFS</a></li>
+<li><a href="#set-yarn-as-job-scheduler">Set YARN as Job Scheduler</a></li>
+<li><a href="#configure-yarn">Configure YARN</a></li>
+<li><a href="#configure-slaves">Configure Slaves</a></li>
+</ul></li>
+<li><a href="#configure-memory-allocation">Configure Memory Allocation</a>
+<ul>
+<li><a href="#the-memory-allocation-properties">The Memory Allocation Properties</a></li>
+<li><a href="#sample-configuration-for-2gb-nodes">Sample Configuration for 2GB Nodes</a></li>
+</ul></li>
+<li><a href="#duplicate-config-files-on-each-node">Duplicate Config Files on Each Node</a></li>
+<li><a href="#format-hdfs">Format HDFS</a></li>
+<li><a href="#run-and-monitor-hdfs">Run and monitor HDFS</a>
+<ul>
+<li><a href="#start-and-stop-hdfs">Start and Stop HDFS</a></li>
+<li><a href="#monitor-your-hdfs-cluster">Monitor your HDFS Cluster</a></li>
+<li><a href="#put-and-get-data-to-hdfs">Put and Get Data to HDFS</a></li>
+</ul></li>
+<li><a href="#run-yarn">Run YARN</a>
+<ul>
+<li><a href="#start-and-stop-yarn">Start and Stop YARN</a></li>
+<li><a href="#monitor-yarn">Monitor YARN</a></li>
+<li><a href="#submit-mapreduce-jobs-to-yarn">Submit MapReduce Jobs to YARN</a></li>
+</ul></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

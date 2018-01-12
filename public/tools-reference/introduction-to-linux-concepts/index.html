@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Introduction to Linux Concepts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="An introduction to Linux and Unix-like systems covering history, system architecture, and distribution characteristics.">
+        <meta name="keywords" content="Linux, Unix-Like systems, history">
+        
+        <meta property="og:title" content="Introduction to Linux Concepts">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/introduction-to-linux-concepts/">
+        <meta property="og:description" content="An introduction to Linux and Unix-like systems covering history, system architecture, and distribution characteristics.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/introduction-to-linux-concepts/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  Introduction to Linux Concepts
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Introduction to Linux Concepts</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-12-19T00:00:00Z">Thursday, December 19, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fintroduction-to-linux-concepts%2f&via=linode&text=Introduction%20to%20Linux%20Concepts" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fintroduction-to-linux-concepts%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fintroduction-to-linux-concepts%2f&t=Introduction%20to%20Linux%20Concepts" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/introduction-to-linux-concepts.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/introduction-to-linux-concepts.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Linodes run <strong>Linux</strong>. Linux is an operating system that works just like Windows and Mac OS X. As an operating system, Linux manages your Linode&rsquo;s hardware and provides services your other software needs to run.</p>
+
+<p>Linux is a very hands-on operating system. If running Windows is like driving an automatic, then running Linux is like driving a stick. It can take some work, but once you know your way around Linux, you&rsquo;ll be using the command line and installing packages like a pro. This article aims to ease you into the world of Linux.</p>
+
+<p>This guide is intended to be very beginner-friendly. It takes a Linux 101 approach to explanations for basic concepts. There are a few how-to sections as well, which are intended to get you on your feet with your Linode. At times we&rsquo;ll link off to a different guide that has more details on a particular topic.</p>
+
+<p><img src="/docs/assets/introduction_to_linux_concepts_smg.png" alt="Title graphic" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Everything on a Linux system is case-sensitive. That means that <code>photo.jpg</code>, <code>photo.JPG</code>, and <code>Photo.jpg</code> are all different files. Usernames and passwords are also case-sensitive.</div>
+</blockquote>
+
+
+<h2 id="history">History</h2>
+
+<p>This section provides a brief overview of the history of Linux.</p>
+
+<p>Linux, like Mac OS X, is based on the Unix operating system. A research team at AT&amp;T&rsquo;s Bell Labs developed Unix in the late 1960s and early 1970s with a focus on creating an operating system that would be accessible and secure for multiple users.</p>
+
+<p>Corporations started licensing Unix in the 1980s and 1990s. By the late 1980s, there was interest in building a free operating system that would be similar to Unix, but that could be tinkered with and redistributed. In 1991, Linus Torvalds released the Linux kernel as free, <em>open-source</em> software. Open source means that the code is fully visible, and can be modified and redistributed.</p>
+
+<p>Strictly speaking, Linux is the <em>kernel</em>, not the entire operating system. The kernel provides an interface between your Linode&rsquo;s hardware and the input/output requests from applications. The rest of the operating system usually includes many GNU libraries, utilities, and other software, from the Free Software Foundation. The operating system as a whole is known as GNU/Linux.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>Let&rsquo;s begin at the beginning. If some of this is a repeat for you, feel free to skip ahead!</p>
+
+<h3 id="a-little-bit-about-servers">A Little Bit About Servers</h3>
+
+<p>Your Linode is a type of <em>server</em>. A server is a type of computer that provides services over a <em>network</em>, or connected group of computers. Servers are typically:</p>
+
+<ul>
+<li>Always (or almost always) on</li>
+<li>Connected to the Internet or a network of computers</li>
+<li>Contain programs and files for hosting websites and/or other Internet content</li>
+</ul>
+
+<p>Since a server is a type of computer, there are a lot of similarities between a Linode and your home computer. Some important similarities include:</p>
+
+<ul>
+<li><strong>The physical machine</strong>: Your Linode is hosted on a physical machine. It&rsquo;s sitting in one of our data centers.</li>
+<li><strong>The operating system</strong>: As we mentioned in the introduction, Linodes use the Linux operating system. It&rsquo;s just another type of operating system like Windows or Mac OS X.</li>
+<li><strong>Applications</strong>: Just like you can install applications on your home computer or smartphone, you can install applications on your Linode. These applications help your Linode do things like host a website. For example, you could install WordPress, a popular website hosting application, to host a website on your Linode. Applications are also known as <em>software</em> and <em>programs</em>.</li>
+<li><strong>Files and directories</strong>: In the end, whether it&rsquo;s an application or a photo, everything on your Linode is a file. You can create new files, edit and delete old ones, and navigate through directories just like you would on your home computer. In Linux, folders are called <em>directories</em>.</li>
+<li><strong>Internet access</strong>: Your Linode is connected to the Internet. That&rsquo;s how you connect to it to get everything set up, and how your users connect to it to view your website or download your app.</li>
+</ul>
+
+<h3 id="a-little-bit-about-linux">A Little Bit About Linux</h3>
+
+<p>Before you install Linux, decide which distribution to install. Linux comes in several different versions known as <em>distributions</em>. Different distributions are somewhat similar to operating system versions like Windows 7 or Windows 10, except Linux distributions aren&rsquo;t upgraded versions of each other, but rather different yet similar <em>flavors</em> of Linux. Different distributions install different default bundles of software. To learn more about distributions see the <a href="#distributions">Distributions</a> section at the end of this article or read more on your own.</p>
+
+<h3 id="install-linux-to-get-started">Install Linux to Get Started</h3>
+
+<p>Here at Linode, you install Linux with the <a href="https://manager.linode.com/">Linode Manager</a> dashboard. It takes just a few clicks to install Linux with this dashboard. If you don&rsquo;t have a particular Linux distribution in mind, install <strong>Ubuntu 16.04 LTS</strong>. Ubuntu is good for Linux beginners because it is well-supported and doesn&rsquo;t change often.</p>
+
+<p>After you know which distribution you want to install, follow the instructions for installing Linux in the <a href="/docs/getting-started/">Getting Started</a> article. Follow that article until you complete <a href="/docs/getting-started#boot-your-linode">Booting Your Linode</a>, then come back here.</p>
+
+<h3 id="connecting-to-your-linode">Connecting to Your Linode</h3>
+
+<p>Your Linode is physically housed in the Atlanta, Dallas, Frankfurt, Fremont, London, Newark, Singapore, or Tokyo data center, so you have to use the Internet and a terminal to connect to it and start using it. A <em>terminal</em> is a tool that runs a <em>shell</em> that lets you run text commands to interact with your server. The Secure Shell (<strong>SSH</strong>) protocol lets you send these commands to your Linode over a secure Internet connection from your local machine.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In this guide, we&rsquo;ll mostly be using the terms <em>terminal</em>, <em>shell</em>, and <em>SSH</em> to refer to the interface you use to send text commands to your Linux system. These are different tools that layer on top of each other to let you interact with your server. To learn more, read these simplified definitions:</p>
+
+<ul>
+<li><strong>Terminal</strong>: A device that enters data into and displays data from a computer. The terminal has the most direct access to the operating system. Technically, most terminals these days are actually <em>terminal emulators</em> that run as software on Mac OS X, Linux, or Windows computers.</li>
+<li><strong>Shell</strong>: A program that provides a user interface for interacting with an operating system. There are different types of shells, but the one we&rsquo;re using here is called <strong>Bash</strong> and provides a command-line interface that accepts and outputs text.</li>
+<li><strong>SSH</strong>: A protocol that lets you send shell commands to your Linode securely over the Internet.</li>
+</ul>
+</div>
+</blockquote>
+
+
+<p>To connect to your Linode, follow the next section of the <strong>Getting Started</strong> article, <a href="/docs/getting-started#connect-to-your-linode-via-ssh">Connecting to Your Linode</a>. Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode.</p>
+
+<h2 id="so-you-re-staring-at-a-shell-prompt">So You&rsquo;re Staring at a Shell Prompt</h2>
+
+<p>After you connect to your Linode, you should be looking at a shell prompt that looks like this with a blinking cursor:</p>
+
+<pre><code>root@localhost:~#
+</code></pre>
+
+<p>What does this bit of text mean? The entire thing is the <em>shell prompt</em>. It&rsquo;s your terminal&rsquo;s way of telling you that it&rsquo;s ready for you to enter the next command. The different parts of the shell prompt provide information:</p>
+
+<ul>
+<li><strong>root</strong>: This is your username. To learn more about users, jump down to the <a href="/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux">Users and Permissions</a> section.</li>
+<li><strong>localhost</strong>: This is your Linode&rsquo;s hostname. A <em>hostname</em> is your Linode&rsquo;s name for itself.</li>
+<li><strong>~</strong>: After the colon, the SSH session shows the name of the directory you&rsquo;re in. When you first log in, you&rsquo;re in your user&rsquo;s <em>home</em> directory. The tilde (<strong>~</strong>) is a shortcut for the home directory. If the directory was spelled out, it would be <code>/root</code>. For users other than the root user, home directories are in <code>/home/user1</code>, where <strong>user1</strong> is the name of the user.</li>
+<li><strong>#</strong> - The <strong>hash</strong> or <strong>pound</strong> (<strong>#</strong>) punctuation mark indicates where the shell prompt ends. When you type a command, your text begins after this point. For users other than the root user, the <strong>dollar sign</strong> (<strong>\$</strong>) indicates the same thing.</li>
+</ul>
+
+<p>You can type any valid Linux shell command at the blinking cursor after the shell prompt. We&rsquo;ll go over a few practical commands in the rest of this article, but to get a really good in-depth introduction to the command-line interface, you should read the <a href="/docs/using-linux/using-the-terminal">Using the Terminal</a> article as well.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>These command line tips will make your Linux forays much more effective:</p>
+
+<ul>
+<li>Press the <code>Return</code> or <code>Enter</code> key after you finish a command.</li>
+<li>In most cases, you will not receive an &ldquo;Are you sure?&rdquo; message after executing a potentially destructive command. Make sure you really want to run a command before you execute it.</li>
+<li>You might not get any message after a successful command. You will get an error if the command didn&rsquo;t work.</li>
+<li>If you don&rsquo;t know which directory you&rsquo;re in, you can always type <code>pwd</code>, short for <em>print working directory</em>.</li>
+<li>Press the <code>Up Arrow</code> on your keyboard to see or reuse the previous command that was executed.</li>
+</ul>
+</div>
+</blockquote>
+
+
+<h2 id="finding-your-way-around-files-and-folders">Finding Your Way Around Files and Folders</h2>
+
+<p>In this section, we&rsquo;ll look at the structure of a Linux server. Everything on your Linode is a file or a directory. Remember, <em>directory</em> is the Linux term for a folder. Linux uses a tree of nested directories to keep its files organized. The highest-level directory is called the <em>root</em> directory. It&rsquo;s designated with a single slash. Unlike Windows, there are no different disks or drives; the root directory is the highest-level directory for all Linux systems. Underneath the root directory are more, sub-directories.</p>
+
+<p>Most Linux systems have directories called <code>lib</code> and <code>var</code> (along with several others) underneath the root directory. The <code>lib</code> directory contains system libraries, while the <code>var</code> directory contains all of the files on your system that are likely to change, such as your logs and your mail messages. Directories can go inside other directories, as illustrated below:</p>
+
+<p><a href="/docs/assets/1489-linux_directory_structure_2.png"><img src="/docs/assets/1489-linux_directory_structure_2.png" alt="The Linux directory structure." /></a></p>
+
+<h3 id="print-a-working-directory">Print a Working Directory</h3>
+
+<p>Find out where you are in the directory structure. Make sure your terminal application is selected and that you&rsquo;re logged in to your Linode. You should see a blinking cursor where you can start typing.</p>
+
+<ol>
+<li><p>For your first command, use the <code>pwd</code> command. Short for <em>print working directory</em>, it lets you view the full path to your current directory. Type <code>pwd</code> after the shell prompt:</p>
+
+<pre><code>root@localhost:~# pwd
+</code></pre></li>
+
+<li><p>Press <code>Return</code> to execute the command. You should see the following output:</p>
+
+<pre><code>/root
+</code></pre></li>
+</ol>
+
+<p>The output of <code>pwd</code> shows you the full path to your current directory or directory. At the moment, you&rsquo;re inside the <code>/root</code> directory. You will always be inside a particular directory when you execute shell commands, although which directory you&rsquo;re in can change. The <code>pwd</code> command is very useful because it shows you exactly where you are in your Linode&rsquo;s directory structure.</p>
+
+<h3 id="change-directories">Change Directories</h3>
+
+<p>Let&rsquo;s move into the root directory, <code>/</code>, with the <code>cd</code> command. The <code>cd</code> command is short for <em>change directory</em>. After <code>cd</code> type a space and then the file path. The file path can be long or short, depending on how deep you&rsquo;re going into the directory structure.</p>
+
+<p>Change to the root directory:</p>
+
+<p>At the shell prompt, type the following command, and press <code>Return</code> to execute it.</p>
+
+<pre><code>cd /
+</code></pre>
+
+<p>Now you&rsquo;re in the root directory.</p>
+
+<h3 id="list-the-current-directory">List the Current Directory</h3>
+
+<p>The <em>list</em> command, <code>ls</code>, shows everything that&rsquo;s directly inside of your current directory. To make the output the most helpful, you can add a few <em>flags</em> to the <code>ls</code> command. The flags are part of the command. In this case, we&rsquo;ll add the <code>-ahl</code> flags to show <code>-a</code> all the files, in <code>-h</code> human-readable format, and with a <code>-l</code> long list format. There are more flags that you can add to the <code>ls</code> command, but you can learn more about them on the web.</p>
+
+<p>List the current directory:</p>
+
+<p>Type the following command, and press <code>Return</code> to execute it:</p>
+
+<pre><code>ls -ahl
+</code></pre>
+
+<p>The output should look something like this:</p>
+
+<pre><code>total 84K
+drwxr-xr-x  22 root root 4.0K Apr 30  2012 .
+drwxr-xr-x  22 root root 4.0K Apr 30  2012 ..
+drwxr-xr-x   2 root root 4.0K Nov  6 16:04 bin
+drwxr-xr-x   3 root root 4.0K Feb  4  2013 boot
+drwxr-xr-x  11 root root  14K Nov  6 16:17 dev
+drwxr-xr-x  94 root root 4.0K Dec 10 20:27 etc
+drwxr-xr-x   4 root root 4.0K Feb 19  2013 home
+drwxr-xr-x  16 root root 4.0K Nov  6 16:04 lib
+drwx------   2 root root  16K Apr 26  2012 lost+found
+drwxr-xr-x   3 root root 4.0K Apr 26  2012 media
+drwxr-xr-x   2 root root 4.0K Apr 19  2012 mnt
+drwxr-xr-x   3 root root 4.0K Nov 18 13:34 opt
+dr-xr-xr-x 141 root root    0 Nov  6 16:16 proc
+drwx------   3 root root 4.0K Apr  7  2013 root
+drwxr-xr-x  15 root root  560 Dec 10 15:57 run
+drwxr-xr-x   2 root root 4.0K Nov  6 16:04 sbin
+drwxr-xr-x   2 root root 4.0K Mar  5  2012 selinux
+drwxr-xr-x   2 root root 4.0K Apr 26  2012 srv
+dr-xr-xr-x  13 root root    0 Nov  6 16:16 sys
+drwxrwxrwt   2 root root 4.0K Dec 10 21:09 tmp
+drwxr-xr-x  10 root root 4.0K Apr 26  2012 usr
+drwxr-xr-x  13 root root 4.0K Nov  6 16:04 var
+</code></pre>
+
+<p>There are quite a few files inside this directory. The most important part is the list of directory and file names on the right, listed alphabetically. You&rsquo;ll notice the directories <code>lib</code> and <code>var</code>, as well as several others.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The <strong>/root</strong> directory is not the same as the <strong>/</strong> directory. <strong>/</strong> is the top-level directory of the server. Everything else is inside it. It is called the <em>root</em> directory when you&rsquo;re talking about it, but its name on the server is just <strong>/</strong>. On the other hand, the <strong>/root</strong> directory is the home directory for the <strong>root</strong> user. It&rsquo;s a sub-directory under the <strong>/</strong> directory, and it&rsquo;s where the <strong>root</strong> user starts after logging in to a new SSH session.</div>
+</blockquote>
+
+
+<h3 id="explore-linux-directories">Explore Linux Directories</h3>
+
+<p>If you open the <code>var</code> directory, you&rsquo;ll find more directories, such as <code>log</code> for your logs, and <code>mail</code> for your system mail.</p>
+
+<ol>
+<li><p>Move into the <code>var</code> directory by executing the <code>cd</code> command:</p>
+
+<pre><code>cd var
+</code></pre></li>
+
+<li><p>View the contents of the <code>var</code> directory with the <code>ls</code> command, just like we did earlier:</p>
+
+<pre><code>ls -ahl
+</code></pre></li>
+</ol>
+
+<p>You&rsquo;ll see another list of directories:</p>
+
+<pre><code>total 52K
+drwxr-xr-x 13 root root     4.0K Nov  6 16:04 .
+drwxr-xr-x 22 root root     4.0K Apr 30  2012 ..
+drwxr-xr-x  2 root root     4.0K Nov 19 06:27 backups
+drwxr-xr-x  9 root root     4.0K Apr  6  2013 cache
+drwxrwsrwt  2 root whoopsie 4.0K Apr 26  2012 crash
+drwxr-xr-x 37 root root     4.0K May 29  2013 lib
+drwxrwsr-x  2 root staff    4.0K Apr 19  2012 local
+lrwxrwxrwx  1 root root        9 Apr 30  2012 lock -&gt; /run/lock
+drwxr-xr-x 14 root root     4.0K Dec 12 06:53 log
+drwxrwsr-x  2 root mail     4.0K Aug  8 03:50 mail
+drwxr-xr-x  2 root root     4.0K Apr 26  2012 opt
+lrwxrwxrwx  1 root root        4 Nov  6 16:04 run -&gt; /run
+drwxr-xr-x  6 root root     4.0K May 29  2013 spool
+drwxrwxrwt  2 root root     4.0K Feb  4  2013 tmp
+drwxr-xr-x  2 root root     4.0K Apr  6  2013 www
+</code></pre>
+
+<p>Here you can see the <code>log</code> and <code>mail</code> directories, as well as several others. At the top of the list, you see two directories named <code>.</code> and <code>..</code> with periods. Similar to the tilde (<strong>~</strong>) we saw earlier, these directories are actually shortcuts or aliases, that appear in every directory. The single-period directory indicates the current directory. The double-period directory indicates the directory above the current one. If you are inside a lower-level directory and want to move to the directory above it, type <code>cd ..</code>.</p>
+
+<ol>
+<li><p>To move back up to <code>/</code> from <code>var</code>, type the following command:</p>
+
+<pre><code>cd ..
+</code></pre></li>
+
+<li><p>You should be in the <code>/</code> directory again. You can use <code>pwd</code> to verify this.</p>
+
+<pre><code>pwd
+</code></pre></li>
+
+<li><p>Let&rsquo;s take a look at the <code>lib</code> directory. Move into <code>lib</code> with the <code>cd</code> command:</p>
+
+<pre><code>cd lib
+</code></pre></li>
+
+<li><p>List its contents with the <code>ls</code> command:</p>
+
+<pre><code>ls -ahl
+</code></pre></li>
+</ol>
+
+<p>Inside, you&rsquo;ll see more directories and long list of library files that all start with <code>lib</code>. The output is very long, so we&rsquo;re just showing part of it here. The <code>...</code> indicates that the output continues.</p>
+
+<pre><code>total 1.2M
+drwxr-xr-x 16 root root 4.0K Nov  6 16:04 .
+drwxr-xr-x 22 root root 4.0K Apr 30  2012 ..
+lrwxrwxrwx  1 root root   21 Apr  6  2013 cpp -&gt; /etc/alternatives/cpp
+drwxr-xr-x  2 root root 4.0K Apr 26  2012 firmware
+drwxr-xr-x  2 root root 4.0K Feb  4  2013 hdparm
+drwxr-xr-x  3 root root 8.0K Oct 23 00:28 i386-linux-gnu
+drwxr-xr-x  2 root root 4.0K Mar 18  2013 init
+-rwxr-xr-x  1 root root  74K Mar 30  2012 klibc-LZ1cv1NoEVO2ugnvqTw3e4qPc8Y.so
+lrwxrwxrwx  1 root root   25 Sep 30 14:38 ld-linux.so.2 -&gt; i386-linux-gnu/ld-2.15.so
+-rw-r--r--  1 root root 143K Mar 20  2013 libdevmapper.so.1.02.1
+lrwxrwxrwx  1 root root   16 Apr 30  2012 libfuse.so.2 -&gt; libfuse.so.2.8.6
+-rw-r--r--  1 root root 179K Mar  2  2012 libfuse.so.2.8.6
+...
+</code></pre>
+
+<h3 id="learn-more-about-navigating-directories">Learn More About Navigating Directories</h3>
+
+<p>Now you know how to use the <code>pwd</code> command to show you where you are, the <code>cd</code> command to move to a new directory, and the <code>ls</code> command to show you the contents of a directory. These are the basic tools you need to navigate through your Linode&rsquo;s files and directories. To learn more about navigating directories, read the linked section of the <a href="/docs/tools-reference/ssh/using-the-terminal/">Using the Terminal</a> guide.</p>
+
+<h3 id="upload-files-to-your-linode">Upload Files to Your Linode</h3>
+
+<p>One of the easiest ways to upload your own files to your Linode is with a Secure FTP (<strong>SFTP</strong>) program. See <a href="/docs/migrate-from-shared">Migrate from Shared Hosting to Linode</a> for a walkthrough on how to upload your own files using SFTP.</p>
+
+<h2 id="users-and-permissions-in-linux">Users and Permissions in Linux</h2>
+
+<p>Linux uses a powerful system of users and permissions to make sure that the right people get access to the right files. For example,</p>
+
+<ul>
+<li>As the owner of your Linode, you want to be able to view, edit, and run every file on the system.</li>
+<li>You want the general public to be able to view, but not change, your website files, and you don&rsquo;t want them to see the structural files on your server.</li>
+<li>A different user, such as someone with a mailbox on your Linode, should be able to access their own files but not anyone else&rsquo;s.</li>
+</ul>
+
+<p>You can set users and permissions for each file directory on your Linode.</p>
+
+<p>Three categories comprise the file access system in Linux:</p>
+
+<ul>
+<li><strong>Users</strong>: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the <a href="/docs/security/securing-your-server/#add-a-limited-user-account">Adding a New User</a> section of the <strong>Securing Your Server</strong> guide.</li>
+<li><strong>Groups</strong>: A collection of one or more users. Groups are a useful way to grant similar access privileges to multiple users, without having to set them individually for each user. When a user account is created, it is assigned a default group with the same name as the user name. Each user can belong to any number of groups. Users that are a part of a group inherit the permissions granted to the group.</li>
+<li><strong>Everyone</strong>: is the category for everyone else. If someone accesses files on your Linode without being logged in as a specific user, they fall into the <em>everyone</em> category. <em>Everyone</em> is sometimes known as <em>world</em>, because it includes everyone in the whole world.</li>
+</ul>
+
+<p>The next important concept is <em>permissions</em>. Every file and directory on your Linux system has three possible access levels:</p>
+
+<ul>
+<li><strong>Read</strong>: Files with <em>read</em> permissions can be viewed.</li>
+<li><strong>Write</strong>: Files with <em>write</em> permissions can be edited.</li>
+<li><strong>Execute</strong>: Files with <em>execute</em> permissions can be run, like an application. When you start a program or script, you execute it.</li>
+</ul>
+
+<h3 id="view-permissions-in-linux">View Permissions in Linux</h3>
+
+<p>View the users and permissions for a particular file or directory.</p>
+
+<ol>
+<li><p>Run the <code>ls -l</code> command replacing <strong>my_directory</strong> with the name of your own file or directory:</p>
+
+<p>ls -l my_directory</p></li>
+
+<li><p>That command produces output like the following:</p>
+
+<p>drwxr-xr-x  13 user1 group1 4.0K Nov  6 16:04 my_directory</p></li>
+</ol>
+
+<p>The user and group are listed in the middle. In this case, the user is <strong>user1</strong> and the group is <strong>group1</strong>. The user is listed first and the group second. The permissions are listed at the beginning of the line. Ignoring the first character, you can see that the permissions for the <code>my_directory</code> directory are <strong>rwxr-xr-x</strong>.</p>
+
+<ul>
+<li><strong>r</strong>: read</li>
+<li><strong>w</strong>: write</li>
+<li><strong>x</strong>: execute</li>
+<li><strong>-</strong>: no permission</li>
+</ul>
+
+<p>The user permissions are listed first and the group permissions are listed second. The <em>everyone</em> permissions are listed last.</p>
+
+<ul>
+<li><strong>user1</strong> has read, write, and execute permissions, <strong>rwx</strong>.</li>
+<li><strong>group1</strong> and the user accounts inside the group has read and execute permissions, but not write permissions, <strong>r-x</strong>. Members of the <strong>group1</strong> group can view the contents of the <code>my_directory</code> directory, run files in it, but not change them.</li>
+<li>Everyone can read and execute the files in the <code>var</code> directory, but not change them, because the permissions for everyone are <strong>r-x</strong>.</li>
+</ul>
+
+<p>To learn about users and groups in more detail, read the <a href="/docs/tools-reference/linux-users-and-groups">Linux Users and Groups</a> article.</p>
+
+<h2 id="software">Software</h2>
+
+<p>This section shows you how to install, run, update, and uninstall software from a Linux system.</p>
+
+<h3 id="installing-software">Installing Software</h3>
+
+<p>Like most things in Linux, installing software is accomplished by typing and executing a specific text command. The most popular Linux distributions come with <em>package managers</em> that make it relatively easy to install and uninstall software on your Linode. Debian and Ubuntu use the Advanced Packaging Tool (<strong>APT</strong>) package manager, and Fedora and CentOS use the Yellowdog Updater, Modified (<strong>yum</strong>) package manager.</p>
+
+<p>Our <strong>Quick Start Guides</strong> series contain basic instructions for installing and configuring many common types of Linux software. The <a href="/docs/hosting-website">Hosting a Website</a> guide shows you how to install software to run a website, while <a href="/docs/mailserver">Running a Mail Server</a> is for email servers.</p>
+
+<h4 id="install-with-apt">Install with APT</h4>
+
+<p>Because we&rsquo;ve been working with the Ubuntu 16.04 distribution so far, let&rsquo;s look at an example with APT. The general form of the installation command for Ubuntu and Debian systems is:</p>
+
+<pre><code>apt-get install software
+</code></pre>
+
+<p>Replace the word <strong>software</strong> in the command above with the package name for the software you want to install. There are thousands of different programs available to install on your server. If you search online for the software you need, you can find the correct package names to use with the APT installer. For example, if you searched for &ldquo;ubuntu web server,&rdquo; you would find information about the Apache web server, and its package name, <strong>apache2</strong>.</p>
+
+<p>Run this command to install the web server Apache, which lets you display websites:</p>
+
+<pre><code>apt-get install apache2
+</code></pre>
+
+<p><strong>apache2</strong> is the name of the package for Apache in the Ubuntu repositories. A package is a piece of software. <em>Repositories</em> are collections of software for your Linux distribution. The <code>apt-get</code> command looks up an Ubuntu repository (specified on your system), finds the apache2 package, and installs it along with anything else you need for Apache.</p>
+
+<h4 id="install-with-yum">Install with yum</h4>
+
+<p>Using yum on Fedora and CentOS systems is just as easy:</p>
+
+<pre><code>yum install software
+</code></pre>
+
+<h3 id="running-software">Running Software</h3>
+
+<p>There are three main ways to run programs in Linux.</p>
+
+<p><strong>Always on:</strong></p>
+
+<p>You want some programs, like your web server, to run constantly. These are the programs that run as services on your Linode. For example, your web server keeps your website visible, so you want it to stay on all the time. Server processes that stay running in the background are known as <em>daemons</em>. To start a daemon, run the following command, replacing <strong>software</strong> with the name of the software you want to run. The name will be the same one you used to install it (for example, <strong>apache2</strong> for Apache):</p>
+
+<pre><code>systemctl start software
+</code></pre>
+
+<p><strong>Once:</strong></p>
+
+<p>Sometimes you want to run a program on an as-needed basis. For example, you might want to run a script to rename a group of files.</p>
+
+<ol>
+<li>Use the <code>cd</code> command to move into the directory where the script is located.</li>
+<li>Run <code>ls -l directory</code> to check that your user account has <a href="/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux">execute permissions</a> for the script file in the directory. If you need to modify the permissions, see the <a href="/docs/tools-reference/linux-users-and-groups#what-are-user-and-group-permissions">Linux Users and Groups</a> guide.</li>
+
+<li><p>Run the script with the following syntax:</p>
+
+<p>./my_script</p></li>
+</ol>
+
+<p><strong>Scheduled:</strong></p>
+
+<p>Sometimes you want to run a program at regular intervals, as in the case of a daily backup script. The best way to do this is with the <em>cron</em> tool. Read the <a href="/docs/linux-tools/utilities/cron">Schedule Tasks with Cron</a> article to learn more. Scripts that you run this way also have to be <a href="/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux">executable</a>.</p>
+
+<h3 id="updating-software">Updating Software</h3>
+
+<p>As long as you installed your software with a package manager, use APT or yum to update your entire system with one simple step.</p>
+
+<p>Update a Debian or Ubuntu system:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre>
+
+<p>Update a Fedora or CentOS system:</p>
+
+<pre><code>yum update
+</code></pre>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Updating your software is good for your system security. In most cases updates will go smoothly, but it&rsquo;s possible that some updates may break something on your server. It&rsquo;s always wise to make a <a href="/docs/platform/backup-service">backup</a> of your system before updating it.</div>
+</blockquote>
+
+
+<h3 id="uninstalling-software">Uninstalling Software</h3>
+
+<p>If you need to uninstall software, use the <code>apt-get remove</code> command:</p>
+
+<pre><code>apt-get remove software
+</code></pre>
+
+<p>If you also want to remove all configuration files associated with the software, run this command instead:</p>
+
+<pre><code>apt-get purge software
+</code></pre>
+
+<p>Here&rsquo;s the yum version for Fedora and CentOS:</p>
+
+<pre><code>yum remove software
+</code></pre>
+
+<h2 id="security">Security</h2>
+
+<p>When you run a Linux system, you are in charge of its security. The Internet is full of people who want to use your Linode&rsquo;s computing power for their own goals. If you neglect to change default passwords, install out-of-date software, or leave other security holes available for hackers to exploit, it won&rsquo;t take long for your system to get hacked. Follow the steps in the <a href="/docs/securing-your-server">Securing Your Server</a> guide to harden your server&rsquo;s security.</p>
+
+<h2 id="distributions">Distributions</h2>
+
+<p>The main differences between Linux distributions tend to be from goals and aims of the distribution developers and which bundles of software are installed by default, rather than differences in the code of the Linux kernel.</p>
+
+<p>RedHat Linux (which includes Fedora and CentOS) and Debian Linux (which includes Ubuntu) share a large amount of code with each other. The kernels are largely the same, and most of the user utilities and applications from the GNU project are the same.</p>
+
+<p>Some distributions are designed to be as simple and minimalistic as possible, while others are designed to contain the most current, bleeding-edge software. Still others aim to provide the greatest amount of stability and reliability. In addition to the personality of each distribution, which you&rsquo;ll have to discover for yourself, there are a number of factors that you might find useful when choosing a distribution.</p>
+
+<ul>
+<li><strong>Release Cycle</strong>: Different distributions release their operating system updates on different schedules. Distributions like Gentoo and Arch Linux use a <em>rolling release</em> model where individual packages are released whenever they&rsquo;re deemed ready by their developers. Conversely, distributions like Debian, Slackware, and CentOS strive to provide the most stable operating system attainable, and release new versions much less frequently. Fedora and Ubuntu release new versions of their operating systems every six months. Choosing the release cycle that&rsquo;s right for you depends on many factors, including the software you need to run, your comfort level, and the amount of stability and reliability you need.</li>
+<li><strong>Organizational Structure</strong>: While it might not affect the performance of the distribution, one of the distinguishing factors between distributions is the organizational structure of the development team. Some distributions, like Debian, Gentoo, Arch, and Slackware are developed by independent communities of developers, while other distributions like OpenSUSE, Fedora, and Ubuntu are developed by communities sponsored by various corporations (e.g. Novell, RedHat, and Canonical for the examples above). Other distributions, such as CentOS, are derived by a community from commercially-produced distributions.</li>
+<li><strong>Common Tool Sets</strong>: Different distributions make use of different tools for common tasks like <a href="/docs/tools-reference/linux-package-management/">package management</a> or system configuration. As we discussed above, Debian and Ubuntu use APT to manage <code>.deb</code> packages, CentOS and Fedora use yum to manage <code>.rpm</code> packages, and OpenSUSE also uses <code>.rpm</code> packages but manages them with a tool called <strong>yast</strong>. In many cases your choice of distribution will come down to the one that provides the tools you need and are most comfortable with.</li>
+</ul>
+
+<p>Different distributions of Linux are right for different situations. You should experiment until you find the best fit for you. Given the similarities between different distributions, don&rsquo;t be afraid switch to a new one that will serve you better. If you&rsquo;re familiar with the concepts in this article, you&rsquo;re well on your way to administrating your system like a pro with any distribution of Linux.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="/docs/getting-started/">Getting Started</a></li>
+
+<li><a href="/docs/using-linux/using-the-terminal">Using the Terminal</a></li>
+
+<li><a href="/docs/lamp-guides/">LAMP Guides</a></li>
+
+<li><a href="/docs/using-linux/package-management">Package Management</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/quick-answers/linux/how-to-use-git/">How to Use Git the Version Control System</a></li>
+    
+    
+    
+    <li><a href="/docs/security/advanced-ssh-server-security/">Use Advanced OpenSSH Features to Harden Access to Your Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/introduction-to-firewalld-on-centos/">Introduction to FirewallD on CentOS</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/how-to-install-mysql-on-centos-7/">How to Install MySQL on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mariadb/how-to-install-mariadb-on-centos-7/">How to Install MariaDB on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#history">History</a></li>
+<li><a href="#getting-started">Getting Started</a>
+<ul>
+<li><a href="#a-little-bit-about-servers">A Little Bit About Servers</a></li>
+<li><a href="#a-little-bit-about-linux">A Little Bit About Linux</a></li>
+<li><a href="#install-linux-to-get-started">Install Linux to Get Started</a></li>
+<li><a href="#connecting-to-your-linode">Connecting to Your Linode</a></li>
+</ul></li>
+<li><a href="#so-you-re-staring-at-a-shell-prompt">So You&rsquo;re Staring at a Shell Prompt</a></li>
+<li><a href="#finding-your-way-around-files-and-folders">Finding Your Way Around Files and Folders</a>
+<ul>
+<li><a href="#print-a-working-directory">Print a Working Directory</a></li>
+<li><a href="#change-directories">Change Directories</a></li>
+<li><a href="#list-the-current-directory">List the Current Directory</a></li>
+<li><a href="#explore-linux-directories">Explore Linux Directories</a></li>
+<li><a href="#learn-more-about-navigating-directories">Learn More About Navigating Directories</a></li>
+<li><a href="#upload-files-to-your-linode">Upload Files to Your Linode</a></li>
+</ul></li>
+<li><a href="#users-and-permissions-in-linux">Users and Permissions in Linux</a>
+<ul>
+<li><a href="#view-permissions-in-linux">View Permissions in Linux</a></li>
+</ul></li>
+<li><a href="#software">Software</a>
+<ul>
+<li><a href="#installing-software">Installing Software</a>
+<ul>
+<li><a href="#install-with-apt">Install with APT</a></li>
+<li><a href="#install-with-yum">Install with yum</a></li>
+</ul></li>
+<li><a href="#running-software">Running Software</a></li>
+<li><a href="#updating-software">Updating Software</a></li>
+<li><a href="#uninstalling-software">Uninstalling Software</a></li>
+</ul></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#distributions">Distributions</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

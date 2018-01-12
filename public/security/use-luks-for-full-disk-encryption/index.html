@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Use LUKS for Full Disk Encryption on Linux</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This tutorial will guide you through creating a secure, LUKS-encrypted Debian installation.">
+        <meta name="keywords" content="full, disk, encryption,, debian,, luks">
+        
+        <meta property="og:title" content="How to Use LUKS for Full Disk Encryption on Linux">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/use-luks-for-full-disk-encryption/">
+        <meta property="og:description" content="This tutorial will guide you through creating a secure, LUKS-encrypted Debian installation.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta property="og:image" content="https://linode.com/docs/assets/full_disk_encryption.png">
+        
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/use-luks-for-full-disk-encryption/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  How to Use LUKS for Full Disk Encryption on Linux
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Use LUKS for Full Disk Encryption on Linux</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-11-02T00:00:00Z">Wednesday, November 2, 2016</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fuse-luks-for-full-disk-encryption%2f&via=linode&text=How%20to%20Use%20LUKS%20for%20Full%20Disk%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fuse-luks-for-full-disk-encryption%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fuse-luks-for-full-disk-encryption%2f&t=How%20to%20Use%20LUKS%20for%20Full%20Disk%20Encryption%20on%20Linux" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/use-luks-for-full-disk-encryption.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/use-luks-for-full-disk-encryption.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<h2 id="using-luks-encryption-to-create-a-secure-disk-on-debian-8">Using LUKS encryption to Create a Secure Disk on Debian 8</h2>
+
+<p>Full disk encryption protects the information stored on your Linode&rsquo;s disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files.</p>
+
+<p>This guide will show you how to deploy a Linux distribution with <a href="https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup">LUKS</a> filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that the respective distro&rsquo;s installer includes a LUKS encryption option.</p>
+
+<p>The Debian 8 guided encryption option in this guide makes use of a process commonly referred to as <em>LVM on LUKS</em>, which allows you to create several logical volumes within an encrypted block device. This method offers advantages in terms of scalability and convenience, as your password only needs to be entered once to access all of the volumes within your encrypted disk.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div><p>Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you&rsquo;ll need to enter the encryption passphrase in the console every time your Linode boots.</p>
+
+<p>Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you&rsquo;ll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You&rsquo;ll also need to implement your own backup solution since the <a href="/docs/security/backups/linode-backup-service">Linode Backup Service</a> can&rsquo;t mount encrypted disks.</p>
+
+<p>Please note that this is an non-standard configuration. Troubleshooting encrypted disk configurations falls outside the scope of <a href="/docs/platform/support">Linode Support</a>.</p>
+</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before you Begin</h2>
+
+<ol>
+<li><p>Create a Linode in the data center of your choice.</p></li>
+
+<li><p>Determine the installation media you&rsquo;ll be using to deploy your custom distribution, and take note of its size. In this example, we&rsquo;re using Debian&rsquo;s <a href="http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/">network boot</a> option.</p></li>
+</ol>
+
+<h2 id="prepare-your-linode-for-encrypted-debian-installation">Prepare Your Linode for Encrypted Debian Installation</h2>
+
+<ol>
+<li><p><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk">Create two raw disk images</a> from the Linode&rsquo;s Dashboard:</p>
+
+<ul>
+<li>A disk labeled <strong>Installer</strong>. The size of this disk will depend upon the size of your distribution&rsquo;s installer, but it&rsquo;s recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size, giving us plenty of room for the Debian network installer.</li>
+<li>A disk labelled <strong>Boot</strong>. This will take up the rest of the free space available on your Linode.</li>
+</ul></li>
+
+<li><p><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles">Create two configuration profiles</a> and disable the options under <strong>Filesystem / Boot Helpers</strong> for each of them, as well as the <a href="/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog">Lassie</a> shutdown watchdog under the <strong>Settings</strong> menu. Both profiles will use the <strong>Direct Disk</strong> option from the <strong>Kernel</strong> drop down menu:</p>
+
+<p><strong>Installer profile</strong></p>
+
+<ul>
+<li>Label: Installer</li>
+<li>Kernel: Direct Disk</li>
+<li>/dev/sda: <em>Boot</em> disk image.</li>
+<li>/dev/sdb: <em>Installer</em> disk image.</li>
+<li>root / boot device: Standard /dev/sdb</li>
+</ul>
+
+<p><strong>Boot profile</strong></p>
+
+<ul>
+<li>Label: Boot</li>
+<li>Kernel: Direct Disk</li>
+<li>/dev/sda: <em>Boot</em> disk image.</li>
+<li>root / boot device: Standard /dev/sda</li>
+</ul></li>
+
+<li><p>Boot into <a href="/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode">Rescue Mode</a> with your <em>Installer</em> disk mounted to <code>/dev/sda</code>, and connect to your Linode using the <a href="/docs/networking/using-the-linode-shell-lish">Lish Console</a>.</p></li>
+
+<li><p>Once in Rescue Mode, download the Debian installation media and copy it to your <em>Installer</em> disk:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>As an additional security step, you can use the keys provided in the same directory as the <code>iso</code> to <a href="https://www.debian.org/CD/verify">verify the authenticity</a> of the image.</div>
+</blockquote>
+
+
+<pre><code>wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
+dd if=mini.iso of=/dev/sda
+</code></pre></li>
+
+<li><p>Reboot into your <em>Installer</em> configuration profile, and open the <a href="/docs/networking/use-the-graphic-shell-glish">Glish</a> graphical console from the <strong>Remote Access</strong> tab in your Linode&rsquo;s Dashboard.</p></li>
+</ol>
+
+<h2 id="install-the-operating-system">Install the Operating System</h2>
+
+<ol>
+<li><p>From the Glish console, you can view your distribution&rsquo;s installer. Select <strong>Install</strong> and press the Enter key:</p>
+
+<p><img src="/docs/assets/fde-debian-installer.png" alt="Debian 8 Installer" /></p></li>
+
+<li><p>Choose your language:</p>
+
+<p><a href="/docs/assets/fde-language.png"><img src="/docs/assets/fde-language-small.png" alt="Debian 8 Language Setting" /></a></p></li>
+
+<li><p>Select your location. This will be used to determine your system locale and time zone:</p>
+
+<p><a href="/docs/assets/fde-location.png"><img src="/docs/assets/fde-location-small.png" alt="Debian 8 Location Setting" /></a></p></li>
+
+<li><p>After you select a keyboard layout, the installer will use DHCP to connect to the network. If you prefer, you&rsquo;ll have the option to configure your network settings manually:</p>
+
+<p><a href="/docs/assets/fde-dhcp-config.png"><img src="/docs/assets/fde-dhcp-config-small.png" alt="Debian 8 DHCP" /></a></p></li>
+
+<li><p>Assign your Linode&rsquo;s hostname and domain name. In this example we&rsquo;re using <code>fde-test</code> as the hostname, and <code>members.linode.com</code> for the domain:</p>
+
+<p><a href="/docs/assets/fde-hostname.png"><img src="/docs/assets/fde-hostname-small.png" alt="Debian 8 Hostname Setting" /></a>
+<a href="/docs/assets/fde-domain-name.png"><img src="/docs/assets/fde-domain-name-small.png" alt="Debian 8 Domain Name Setting" /></a></p></li>
+
+<li><p>Choose the Debian mirror that will be used to download packages. Select the appropriate location depending on which data center your Linode resides in:</p>
+
+<p><a href="/docs/assets/fde-mirror-location.png"><img src="/docs/assets/fde-mirror-location-small.png" alt="Debian 8 Mirror Location Setting" /></a>
+<a href="/docs/assets/fde-mirror-selection.png"><img src="/docs/assets/fde-mirror-selection-small.png" alt="Debian 8 Mirror Selection" /></a></p></li>
+
+<li><p>Set the password for the <code>root</code> user:</p>
+
+<p><a href="/docs/assets/fde-root-password.png"><img src="/docs/assets/fde-root-password-small.png" alt="Debian 8 Root Password Setting" /></a></p></li>
+
+<li><p>Create a second, non-administrative user and password combination:</p>
+
+<p><a href="/docs/assets/fde-new-user.png"><img src="/docs/assets/fde-new-user-small.png" alt="Debian 8 User Setting" /></a></p></li>
+
+<li><p>Select the method to be used for partitioning your disk. Since we&rsquo;re encrypting the disk, choose <strong>Guided - use entire disk and set up encrypted LVM</strong>:</p>
+
+<p><a href="/docs/assets/fde-partitioning.png"><img src="/docs/assets/fde-partitioning-small.png" alt="Debian 8 Partitioning" /></a></p></li>
+
+<li><p>Select the volume on which you&rsquo;ll create partitions and install Debian. Since we previously mounted the <em>Boot</em> disk to <code>/dev/sda</code>, select it here:</p>
+
+<p><a href="/docs/assets/fde-volume-selection.png"><img src="/docs/assets/fde-volume-selection-small.png" alt="Debian 8 Volume Selection" /></a></p></li>
+
+<li><p>Choose your partitioning scheme. For this example, we&rsquo;ll keep all files in a single partition, but you can select another option without affecting the rest of the process:</p>
+
+<p><a href="/docs/assets/fde-disk-partitioning.png"><img src="/docs/assets/fde-disk-partitioning-small.png" alt="Debian 8 Partition Scheme" /></a></p></li>
+
+<li><p>Confirm and apply your changes. This step may take awhile, as the volume is overwritten with random data to protect against <a href="https://en.wikipedia.org/wiki/Cryptanalysis">cryptanalysis</a>:</p>
+
+<p><a href="/docs/assets/fde-write-changes.png"><img src="/docs/assets/fde-write-changes-small.png" alt="Debian 8 Partitioning Confirmation" /></a></p></li>
+
+<li><p>Once the partitioning process completes, create an encryption passphrase:</p>
+
+<p><a href="/docs/assets/fde-encryption-passphrase.png"><img src="/docs/assets/fde-encryption-passphrase-small.png" alt="Debian 8 Encryption Passphrase" /></a></p>
+
+<p>It&rsquo;s recommended that you follow best practices for creating a secure password. If you enter a password with less than eight characters, you will receive a warning prompt:</p>
+
+<p><a href="/docs/assets/fde-weak-passphrase-warning.png"><img src="/docs/assets/fde-weak-passphrase-warning-small.png" alt="Debian 8 Encryption Passphrase Warning" /></a></p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>If you lose or forget this password, the data on this disk image will be <strong>irrecoverable</strong>.</div>
+</blockquote>
+</li>
+
+<li><p>Next you&rsquo;ll receive a full overview of the partitioning scheme being applied to your disk. Once you&rsquo;ve confirmed the changes, select <strong>Finish partitioning and write changes to disk</strong>:</p>
+
+<p><a href="/docs/assets/fde-partition-overview.png"><img src="/docs/assets/fde-partition-overview-small.png" alt="Debian 8 Write Partition Changes" /></a></p></li>
+
+<li><p>Confirm the new partitions you&rsquo;ve created, and write your changes by selecting <strong>Yes</strong>:</p>
+
+<p><a href="/docs/assets/fde-disk-formatting.png"><img src="/docs/assets/fde-disk-formatting-small.png" alt="Debian 8 Write Partition Confirmation" /></a></p></li>
+
+<li><p>The installer will begin deploying the base system. Once it completes, you&rsquo;ll have the option to choose specific software packages. The only packages required for the server are <code>SSH server</code> and <code>standard system utilities</code>, but you can select additional options as needed. If you wish to make use of a graphical shell over <a href="/docs/applications/remote-desktop/install-vnc-on-ubuntu-16-04">VNC</a> or the Glish console, select the desktop environment of your choice. Once you&rsquo;ve confirmed your selections, hit <strong>Continue</strong>:</p>
+
+<p><a href="/docs/assets/fde-software-selection.png"><img src="/docs/assets/fde-software-selection-small.png" alt="Debian 8 Software Selection" /></a></p></li>
+
+<li><p>When the software installation completes, you&rsquo;ll be presented with the option to install the GRUB boot loader to the master boot record. Choose <strong>Yes</strong>:</p>
+
+<p><a href="/docs/assets/fde-grub-install.png"><img src="/docs/assets/fde-grub-install-small.png" alt="Debian 8 Grub Installation" /></a></p></li>
+
+<li><p>From the list of available target devices for GRUB installation, select <code>/dev/sda</code>:</p>
+
+<p><a href="/docs/assets/fde-device-selection.png"><img src="/docs/assets/fde-device-selection-small.png" alt="Debian 8 Grub Device Selection" /></a></p></li>
+
+<li><p>The installer will confirm once it has completed:</p>
+
+<p><a href="/docs/assets/fde-installation-complete.png"><img src="/docs/assets/fde-installation-complete-small.png" alt="Debian 8 Install Complete" /></a></p></li>
+</ol>
+
+<h2 id="configure-grub">Configure GRUB</h2>
+
+<p>By default the GRUB menu will only work with the Glish interface. This section enables terminal support for Lish.</p>
+
+<ol>
+<li><p>Now that you&rsquo;ve completed the Debian installation, reboot your Linode into its <em>Boot</em> configuration profile, and connect to it from the Glish console. You will be prompted to enter your disk encryption passphrase:</p>
+
+<p><a href="/docs/assets/fde-glish-decrypt.png"><img src="/docs/assets/fde-glish-decrypt-small.png" alt="Glish Decryption Password" /></a></p></li>
+
+<li><p>Once you&rsquo;ve entered your encryption passphrase, you&rsquo;ll have access to a login prompt for your Debian installation. Log in as the root user with the password created previously.</p></li>
+
+<li><p>Open the GRUB configuration file under <code>/etc/default/grub</code> with the text editor of your choice. Make the following changes to the appropriate directives:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/default/grub 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GRUB_TIMEOUT</span><span class="o">=</span><span class="m">10</span>
+<span class="nv">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="s2">&#34;console=ttyS0,19200n8&#34;</span>
+<span class="nv">GRUB_SERIAL_COMMAND</span><span class="o">=</span><span class="s2">&#34;serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1&#34;</span>
+<span class="nv">GRUB_TERMINAL</span><span class="o">=</span>serial</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save your changes, then apply them to your GRUB configuration:</p>
+
+<pre><code>update-grub
+</code></pre></li>
+
+<li><p>Reboot your Linode and open the Lish console. Now that we&rsquo;ve configured the serial console in GRUB, you will receive a prompt to enter your decryption password in Lish:</p>
+
+<p><a href="/docs/assets/fde-lish.png"><img src="/docs/assets/fde-lish-small.png" alt="Lish Decryption Password" /></a></p></li>
+</ol>
+
+<h2 id="confirm-disk-encryption">Confirm Disk Encryption.</h2>
+
+<p>Once you&rsquo;ve logged in, you can confirm your encryption settings by running the following command:</p>
+
+<pre><code>cryptsetup status /dev/mapper/sda5_crypt
+</code></pre>
+
+<p>Your output will be similar to this:</p>
+
+<pre><code>type:    LUKS1
+cipher:  aes-xts-plain64
+keysize: 512 bits
+device:  /dev/sda5
+offset:  4096 sectors
+size:    19972096 sectors
+mode:    read/write
+</code></pre>
+
+<p>You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/security/securing-your-server">Securing your Server</a> guides to begin configuring your Linode.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/full-disk-encryption-xen/">Full Disk Encryption - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/disk-images/switch-to-a-64-bit-linux-kernel/">Switch to a 64-bit Linux Kernel</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/disk-images/copying-a-disk-image-over-ssh/">Copying a Disk Over SSH</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/disk-images/copying-a-disk-image-to-a-different-account/">Copying a Disk to a Different Account</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#using-luks-encryption-to-create-a-secure-disk-on-debian-8">Using LUKS encryption to Create a Secure Disk on Debian 8</a></li>
+<li><a href="#before-you-begin">Before you Begin</a></li>
+<li><a href="#prepare-your-linode-for-encrypted-debian-installation">Prepare Your Linode for Encrypted Debian Installation</a></li>
+<li><a href="#install-the-operating-system">Install the Operating System</a></li>
+<li><a href="#configure-grub">Configure GRUB</a></li>
+<li><a href="#confirm-disk-encryption">Confirm Disk Encryption.</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

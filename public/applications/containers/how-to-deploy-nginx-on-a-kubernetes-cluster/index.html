@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to install Kubernetes on a Linode with CentOS or Ubuntu. Includes a section on how to deploy nginx to the example cluster.">
+        <meta name="keywords" content="kubernetes, docker, container, deployment, nginx">
+        
+        <meta property="og:title" content="How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/">
+        <meta property="og:description" content="Kubernetes can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an nginx service.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/containers/">Containers</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-27T00:00:00Z">Monday, November 27, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/snarik">Kiran Singh
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcontainers%2fhow-to-deploy-nginx-on-a-kubernetes-cluster%2f&via=linode&text=How%20to%20Install%2c%20Configure%2c%20and%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcontainers%2fhow-to-deploy-nginx-on-a-kubernetes-cluster%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcontainers%2fhow-to-deploy-nginx-on-a-kubernetes-cluster%2f&t=How%20to%20Install%2c%20Configure%2c%20and%20Deploy%20Nginx%20on%20a%20Kubernetes%20Cluster" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/Nginx_Kubernetes.jpg" alt="Kubernetes on Linode" /></p>
+
+<h2 id="what-is-kubernetes">What is Kubernetes?</h2>
+
+<p><a href="https://kubernetes.io/">Kubernetes</a> is an open-source container management system that is based on <a href="https://research.google.com/pubs/pub43438.html">Google Borg</a>. It can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an nginx service.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<p>You will need:</p>
+
+<ul>
+<li>Two or more Linodes with <a href="/docs/networking/remote-access#adding-private-ip-addresses">Private IPs</a></li>
+<li>Each Linode should have a 64-bit distribution of either:
+
+<ul>
+<li>Ubuntu 16.04+</li>
+<li>Debian 9</li>
+<li>CentOS 7</li>
+<li>RHEL 7</li>
+<li>Fedora 26</li>
+</ul></li>
+<li>At least 2GB RAM per Linode</li>
+<li>Root or sudo privileges to install and configure Kubernetes. Any user can interact with the cluster once it&rsquo;s configured.</li>
+</ul>
+
+<h2 id="prepare-the-host-linode-for-kubernetes">Prepare the Host Linode for Kubernetes</h2>
+
+<p>The steps in this guide create a two-node cluster. Evaluate your own resource requirements and launch an appropriately-sized cluster for your needs.</p>
+
+<ol>
+<li><p>Create two Linodes with at least 2GB memory within the same data center.</p></li>
+
+<li><p>For each node, go into the Remote Access tab of your Linode manager and add a <a href="/docs/networking/remote-access#adding-private-ip-addresses">private IP</a>. It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.</p></li>
+
+<li><p>Configure a firewall with <a href="/docs/security/firewalls/configure-firewall-with-ufw">UFW</a> or <a href="/docs/security/firewalls/control-network-traffic-with-iptables">iptables</a> to ensure only the two nodes can communicate with each other.</p></li>
+</ol>
+
+<h3 id="disable-swap-memory">Disable Swap Memory</h3>
+
+<p>Linodes come with swap memory enabled by default. <a href="https://kubernetes.io/docs/admin/kubelet/">kubelets</a> do not support swap memory and will not work if swap is active or even present in your <code>/etc/fstab</code> file.</p>
+
+<p>The <code>/etc/fstab</code> should look something like this:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/fstab 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># /etc/fstab: static file system information.
+</span><span class="c1">#
+</span><span class="c1"># use &#39;blkid&#39; to print the universally unique identifier for a
+</span><span class="c1"># device; this may be used with uuid= as a more robust way to name devices
+</span><span class="c1"># that works even if disks are added and removed. see fstab(5).
+</span><span class="c1">#
+</span><span class="c1"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;
+</span><span class="c1"># / was on /dev/sda1 during installation
+</span><span class="c1"></span>/dev/sda         /               ext4    noatime,errors<span class="o">=</span>remount-ro <span class="m">0</span>       <span class="m">1</span>
+/dev/sdb         none            swap    sw <span class="m">0</span>    <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<ol>
+<li><p>Delete the line describing the swap partition. In this example, Line 10 with <code>/dev/sdb</code>.</p></li>
+
+<li><p>Disable swap memory usage:</p>
+
+<pre><code>swapoff -a
+</code></pre></li>
+</ol>
+
+<h3 id="set-hostnames-for-kubernetes-nodes">Set Hostnames for Kubernetes Nodes</h3>
+
+<p>To make the commands in this guide easier to understand, set up your hostname and hosts files on each of your machines.</p>
+
+<ol>
+<li><p>Choose a node to designate as your Kubernetes master node and SSH into it.</p></li>
+
+<li><p>Edit <code>/etc/hostname</code>, and add:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/hostname 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">kube-master</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Add the following lines to <code>/etc/hosts</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;kube-master-private-ip&gt;    kube-master
+&lt;kube-worker-private-ip&gt;    kube-worker-1</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you have more than two nodes, add their private IPs to <code>/etc/hosts</code> as well.</p>
+
+<p>To make it easier to understand output and debug issues later, consider naming each hostname according to its role (<code>kube-worker-1</code>, <code>kube-worker-2</code>, etc.).</p></li>
+
+<li><p>Perform Steps 2 and 3 on each worker node, changing the values accordingly.</p></li>
+
+<li><p>For the changes to take effect, restart your Linodes.</p></li>
+</ol>
+
+<h3 id="confirm-hostnames">Confirm Hostnames</h3>
+
+<p>Once your nodes have rebooted, log into each to confirm your changes.</p>
+
+<p>Check that:</p>
+
+<ul>
+<li><code>$ hostname</code> in the terminal outputs the expected hostname.</li>
+<li>You can ping all of the nodes in your cluster by their hostnames.</li>
+<li>Swap is correctly disabled on all nodes using <code>cat /proc/swaps</code>.</li>
+</ul>
+
+<p>If you are unable to ping any of your hosts by their hostnames or private IPs:</p>
+
+<ol>
+<li><p>SSH into the host that isn&rsquo;t responding.</p></li>
+
+<li><p>Enter <code>ifconfig</code>. You should see an entry for <code>eth0:1</code> that lists your private IP. If <code>eth0:1</code> isn&rsquo;t listed, it&rsquo;s possible that you deployed your Linode image before adding a private IP to the underlying host. Recreate the image and return to the beginning of the guide.</p></li>
+</ol>
+
+<h2 id="install-docker-and-kubernetes-on-linode">Install Docker and Kubernetes on Linode</h2>
+
+<p><strong>Debian/Ubuntu:</strong></p>
+
+<pre><code>apt install ebtables ethtool
+</code></pre>
+
+<p><strong>CentOS/RHEL:</strong></p>
+
+<pre><code>yum install ebtables ethtool
+</code></pre>
+
+<h3 id="install-docker">Install Docker</h3>
+
+<p><strong>Debian/Ubuntu:</strong></p>
+
+<pre><code>apt-get update &amp;&amp; apt-get install -y curl apt-transport-https
+curl -fssl https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+cat &lt;&lt;eof &gt;/etc/apt/sources.list.d/docker.list
+deb https://download.docker.com/linux/$(lsb_release -si | tr '[:upper:]' '[:lower:]') $(lsb_release -cs) stable
+eof
+apt-get update &amp;&amp; apt-get install -y docker-ce=$(apt-cache madison docker-ce | grep 17.03 | head -1 | awk '{print $3}')
+</code></pre>
+
+<p><strong>CentOS/RHEL:</strong></p>
+
+<pre><code>yum install -y docker
+systemctl enable docker &amp;&amp; systemctl start docker
+</code></pre>
+
+<p>Test Docker:</p>
+
+<pre><code>docker run hello-world
+</code></pre>
+
+<h3 id="install-kubeadm-kubectl-and-kubelet">Install kubeadm, kubectl, and kubelet</h3>
+
+<p><strong>Debian/Ubuntu:</strong></p>
+
+<pre><code>curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt update
+sudo apt install -y kubelet kubeadm kubectl
+</code></pre>
+
+<p><strong>CentOS/RHEL:</strong></p>
+
+<pre><code>cat &lt;&lt;eof &gt; /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+      https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+eof
+setenforce 0
+yum install -y kubelet kubeadm kubectl
+systemctl enable kubelet &amp;&amp; systemctl start kubelet
+</code></pre>
+
+<h2 id="kubernetes-master-and-slave">Kubernetes Master and Slave</h2>
+
+<h3 id="configure-the-kubernetes-master-node">Configure the Kubernetes Master Node</h3>
+
+<ol>
+<li><p>On the master node initialize your cluster using its private IP:</p>
+
+<pre><code>kubeadm init  --pod-network-cidr=192.168.0.0/16 --apiserver-advertise=&lt;private IP&gt;
+</code></pre>
+
+<p>If you encounter a warning stating that swap is enabled, return to the <a href="#disable-swap-memory">Disable Swap Memory</a> section.</p>
+
+<p>If successful, your output will resemble:</p>
+
+<pre><code>To start using your cluster, you need to run (as a regular user):
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run &quot;kubectl apply -f [podnetwork].yaml&quot; with one of the options listed at:
+  http://kubernetes.io/docs/admin/addons/
+
+You can now join any number of machines by running the following on each node
+as root:
+
+  kubeadm join --token 921e92.d4582205da623812 &lt;private IP&gt;:6443 --discovery-token-ca-cert-hash sha256:bd85666b6a97072709b210ddf677245b4d79dab88d61b4a521fc00b0fbcc710c
+</code></pre></li>
+
+<li><p>On each node, while logged in as root, run <code>kubeadm token create</code> to create a new token. By default the token is valid for 24 hours. To extend the token&rsquo;s life, run it with the <code>--ttyl</code> flag. For example, to create a token that does not expire: <code>kubeadm token create --ttyl infinity</code>.</p></li>
+
+<li><p>On the master node, configure the <code>kubectl</code> tool:</p>
+
+<pre><code>mkdir -p $home/.kube
+sudo cp -i /etc/kubernetes/admin.conf $home/.kube/config
+sudo chown $(id -u):$(id -g) $home/.kube/config
+</code></pre></li>
+
+<li><p>Check on the status of the nodes with <code>kubectl get nodes</code>. Output will resemble:</p>
+
+<pre><code>root@kube-master:~# kubectl get nodes
+name          status     roles     age       version
+kube-master   NotReady   master    1m        v1.8.1
+</code></pre>
+
+<p>The master node is listed as <code>NotReady</code> because the cluster does not have a Container Networking Interface (<a href="https://github.com/containernetworking/cni/blob/master/spec.md">CNI</a>). CNI is a spec for a of container based network interface. In this guide, we will be using Calico. Alternatively, you can use <a href="https://raw.githubusercontent.com/coreos/flannel/v0.9.0/Documentation/kube-flannel.yml">Flannel</a> or another CNI for similar results.</p>
+
+<p>The <code>--pod-network-cidr</code> argument used in the <a href="#configure-the-kubernetes-master-node">Configure the Kubernetes Master Node</a> section defines the network range for the CNI.</p></li>
+
+<li><p>While still on the master node run the following command to deploy the CNI to your cluster:</p>
+
+<pre><code>kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
+</code></pre></li>
+
+<li><p>To ensure Calico was set up correctly, use <code>kubectl get pods --all-namespaces</code> to view the pods created in the <code>kube-system</code> namespace:</p>
+
+<pre><code>root@kube-master:~# kubectl get pods --all-namespaces
+NAMESPACE     NAME                                       READY     STATUS             RESTARTS   AGE
+kube-system   calico-etcd-nmx26                          1/1       Running            0          48s
+kube-system   calico-kube-controllers-6ff88bf6d4-p25cw   1/1       Running            0          47s
+kube-system   calico-node-bldzb                          1/2       CrashLoopBackOff   2          48s
+kube-system   calico-node-k5c9m                          2/2       Running            0          48s
+kube-system   etcd-master                                1/1       Running            0          3m
+kube-system   kube-apiserver-master                      1/1       Running            0          3m
+kube-system   kube-controller-manager-master             1/1       Running            0          3m
+kube-system   kube-dns-545bc4bfd4-g8xtm                  3/3       Running            0          4m
+kube-system   kube-proxy-sw562                           1/1       Running            0          4m
+kube-system   kube-proxy-x6psn                           1/1       Running            0          1m
+kube-system   kube-scheduler-master                      1/1       Running            0          3m
+</code></pre>
+
+<p>This command uses the <code>-n</code> flag. The <code>-n</code> flag is a global kubectl flag that selects a non-default namespace. We can see our existing name spaces by running <code>kubectl get namespaces</code>:</p>
+
+<pre><code>root@kube-master:~# kubectl get namespaces
+NAME          STATUS    AGE
+default       Active    4h
+kube-public   Active    4h
+kube-system   Active    4h
+</code></pre></li>
+
+<li><p>Run <code>kubectl get nodes</code> again to see that the master node is now running properly:</p>
+
+<pre><code>root@kube-master:~# kubectl get nodes
+name          status    roles     age       version
+kube-master   Ready     master    12m       v1.8.1
+</code></pre></li>
+</ol>
+
+<h3 id="add-nodes-to-the-kubernetes-cluster">Add Nodes to the Kubernetes Cluster</h3>
+
+<ol>
+<li><p>Run <code>kubeadm join</code> with the <code>kube-master</code> hostname to add the first worker:</p>
+
+<p>kubeadm join &ndash;token <some-token> kube-master:6443 &ndash;discovery-token-ca-cert-hash sha256:<some-sha256-hash></p></li>
+
+<li><p>On the master node, use <code>kubectl</code> to see that the slave node is now ready:</p>
+
+<p>root@kube-master:~# kubectl get nodes
+   name            status    roles     age       version
+   kube-master     ready     master    37m       v1.8.1
+   kube-worker-1   ready     <none>    2m        v1.8.1</p></li>
+</ol>
+
+<h2 id="deploy-nginx-on-the-kubernetes-cluster">Deploy nginx on the Kubernetes Cluster</h2>
+
+<p>A <em>deployment</em> is a logical reference to a pod or pods and their configurations.</p>
+
+<ol>
+<li><p>From your master node <code>kubectl create</code> an nginx deployment:</p>
+
+<pre><code>root@kube-master:~# kubectl create deployment nginx --image=nginx
+deployment &quot;nginx&quot; created
+</code></pre></li>
+
+<li><p>This creates a deployment called <code>nginx</code>. <code>kubectl get deployments</code> lists all available deployments:</p>
+
+<pre><code>root@kube-master:~# kubectl get deployments
+name      desired   current   up-to-date   available   age
+nginx     1         1         1            1           25s
+</code></pre></li>
+
+<li><p>Use <code>kubectl describe deployment nginx</code> to view more information:</p>
+
+<pre><code>root@kube-master:~# kubectl describe deployment nginx
+Name:                   nginx
+Namespace:              default
+CreationTimestamp:      Sun, 15 Oct 2017 06:10:50 +0000
+Labels:                 app=nginx
+Annotations:            deployment.kubernetes.io/revision=1
+Selector:               app=nginx
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=nginx
+  Containers:
+    nginx:
+    Image:        nginx
+    Port:         &lt;none&gt;
+    Environment:  &lt;none&gt;
+    Mounts:       &lt;none&gt;
+  Volumes:        &lt;none&gt;
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  &lt;none&gt;
+NewReplicaSet:   nginx-68fcbc9696 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  1m    deployment-controller  Scaled up replica set nginx-68fcbc9696 to 1
+</code></pre>
+
+<p>The <code>describe</code> command allows you to interrogate different kubernetes resources such as pods, deployments, and services at a deeper level. The output above indicates that there is a deployment called <code>nginx</code> within the default namespace. This deployment has a single replicate, and is running the docker image <code>nginx</code>. The ports, mounts, volumes and environmental variable are all unset.</p></li>
+
+<li><p>Make the nginx container accessible via the internet:</p>
+
+<pre><code>kubectl create service nodeport nginx --tcp=80:80
+</code></pre>
+
+<p>This creates a public facing service on the host for the nginx deployment. Because this is a nodeport deployment, kubernetes will assign this service a port on the host machine in the <code>32000</code>+ range.</p>
+
+<p>Try to <code>get</code> the current services:</p>
+
+<pre><code>root@kube-master:~# kubectl get svc
+NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+kubernetes   ClusterIP   10.96.0.1     &lt;none&gt;        443/TCP        5h
+nginx        NodePort    10.98.24.29   &lt;none&gt;        80:32555/TCP   52s
+</code></pre></li>
+
+<li><p>Verify that the nginx deployment is successful by using <code>curl</code> on the slave node:</p>
+
+<pre><code>root@kube-master:~# curl kube-worker-1:32555
+</code></pre>
+
+<p>The output will show the unrendered &ldquo;Welcome to nginx!&rdquo; page HTML.</p></li>
+
+<li><p>To remove the deployment, use <code>kubectl delete deployment</code>:</p>
+
+<pre><code>root@kube-master:~# kubectl delete deployment nginx
+deployment &quot;nginx&quot; deleted
+root@kube-master:~# kubectl get deployments
+No resources found.
+</code></pre></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://kubernetes.io/">Kubernetes</a></li>
+
+<li><a href="https://research.google.com/pubs/pub43438.html">Google Borg</a></li>
+
+<li><a href="https://kubernetes.io/docs/admin/kubelet/">Kubelet Definition</a></li>
+
+<li><a href="https://github.com/containernetworking/cni/blob/master/SPEC.md">CNI Spec</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/use-a-linode-for-web-development-on-remote-devices/">Use a Linode for Web Development on Remote Devices</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/">How to Create a Docker Swarm Manager and Nodes on Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-use-dockerfiles/">How to Use Dockerfiles</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-deploy-an-nginx-container-with-docker/">How to Deploy an nginx Container with Docker on Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/">How to Install Docker and Pull Images for Container Deployment</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-kubernetes">What is Kubernetes?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#prepare-the-host-linode-for-kubernetes">Prepare the Host Linode for Kubernetes</a>
+<ul>
+<li><a href="#disable-swap-memory">Disable Swap Memory</a></li>
+<li><a href="#set-hostnames-for-kubernetes-nodes">Set Hostnames for Kubernetes Nodes</a></li>
+<li><a href="#confirm-hostnames">Confirm Hostnames</a></li>
+</ul></li>
+<li><a href="#install-docker-and-kubernetes-on-linode">Install Docker and Kubernetes on Linode</a>
+<ul>
+<li><a href="#install-docker">Install Docker</a></li>
+<li><a href="#install-kubeadm-kubectl-and-kubelet">Install kubeadm, kubectl, and kubelet</a></li>
+</ul></li>
+<li><a href="#kubernetes-master-and-slave">Kubernetes Master and Slave</a>
+<ul>
+<li><a href="#configure-the-kubernetes-master-node">Configure the Kubernetes Master Node</a></li>
+<li><a href="#add-nodes-to-the-kubernetes-cluster">Add Nodes to the Kubernetes Cluster</a></li>
+</ul></li>
+<li><a href="#deploy-nginx-on-the-kubernetes-cluster">Deploy nginx on the Kubernetes Cluster</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Manage Distributed Version Control with Mercurial</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use the Mercurial version control system to manage source code in distributed environments.">
+        <meta name="keywords" content="scm, vcs, hg, mercurial, dcvs, source control management, version control, distributed version control">
+        
+        <meta property="og:title" content="Manage Distributed Version Control with Mercurial">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/version-control/manage-distributed-version-control-with-mercurial/">
+        <meta property="og:description" content="Use the Mercurial version control system to manage source code in distributed environments.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/version-control/manage-distributed-version-control-with-mercurial/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/version-control/">Version Control</a>
+  
+</li>
+
+
+<li>
+  
+  Manage Distributed Version Control with Mercurial
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Manage Distributed Version Control with Mercurial</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-05-23T00:00:00Z">Monday, May 23, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fmanage-distributed-version-control-with-mercurial%2f&via=linode&text=Manage%20Distributed%20Version%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fmanage-distributed-version-control-with-mercurial%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fmanage-distributed-version-control-with-mercurial%2f&t=Manage%20Distributed%20Version%20Control%20with%20Mercurial" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/version-control/manage-distributed-version-control-with-mercurial.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/version-control/manage-distributed-version-control-with-mercurial.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Mercurial is one of the leading distributed version control systems that allows software developers and teams of collaborators to work on a common code base without needing to rely on a centralized server or constant network connection while working. This document will provide an introduction to the Mercurial version control system so you can begin to use Mercurial to manage source control and collaboration for your development projects.</p>
+
+<p>Mercurial runs on multiple platforms and you may choose to use Mercurial to manage code projects on systems running many different operating systems. Before deploying Mercurial on a Linode, we assume that you have completed our <a href="/docs/tools-reference/introduction-to-linux-concepts">getting started guide</a>. If you&rsquo;re new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts/">introduction to Linux concepts guide</a>, <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>.</p>
+
+<h2 id="installing-mercurial">Installing Mercurial</h2>
+
+<p>Issue the following commands on Debian and Ubuntu systems to update your system&rsquo;s package repository, ensure that all installed packages are up to date, and install Mercurial and all of its dependencies:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+apt-get install mercurial
+</code></pre>
+
+<p>On CentOS and Fedora systems, issue the following commands to ensure that all of your system&rsquo;s software and package databases are up to date and then install Mercurial:</p>
+
+<pre><code>yum update
+yum install mercurial
+</code></pre>
+
+<p>On Arch Linux systems, issue the following commands to ensure that your system&rsquo;s package database is up to date and then install Mercurial:</p>
+
+<pre><code>pacman -Sy
+pacman -S mercurial
+</code></pre>
+
+<p>Mac OS X and Windows users can download prepared packages for Mercurial directly from the <a href="http://mercurial.selenic.com/downloads/">upstream download resource</a>. Once Mercurial is installed, we can begin to manage our source control projects with this tool. All Mercurial commands in the shell environment begin with <code>hg</code> in reference to the abbreviation for the element Mercury.</p>
+
+<h2 id="local-mercurial-workflows">Local Mercurial Workflows</h2>
+
+<h3 id="creating-repositories">Creating Repositories</h3>
+
+<p>Like other distributed version control systems, Mercurial allows users to maintain a sense of the history of a tree of files independently of a centralized remote server. Most operations with mercurial can be completed and tested locally and do not require any server configuration. Issue the following command to make a new directory called &ldquo;myproject&rdquo; and create a Mercurial repository in that directory:</p>
+
+<pre><code>hg init myproject
+</code></pre>
+
+<p>Optionally change directory into the repository and init the repository as follows:</p>
+
+<pre><code>cd myproject
+hg init
+</code></pre>
+
+<h3 id="adding-files-and-creating-commits">Adding Files and Creating Commits</h3>
+
+<p>Once a repository exists you must add files before mercurial will be able to track their versions. In our new repository, issue the following command to create a file named <code>world</code> with the contents &ldquo;<code>hello world</code>, and add this to the repository:</p>
+
+<pre><code>echo &quot;hello world&quot; &gt; world
+hg add
+</code></pre>
+
+<p>The file is now set to be included in the next commit is created. To &ldquo;commit&rdquo; this change and save it for future reference, issue the following command:</p>
+
+<pre><code>hg commit -m 'hello mercurial world'
+</code></pre>
+
+<p>When complete, the new file at this iteration is saved in the Mercurial repository&rsquo;s database. The <code>-m</code> option causes Mercurial to store a message describing the contents of the commit change set to give your collaborators or future selves the ability to understand the contents of the commit change set. You may choose to omit the <code>-m</code> flag and the commit message, however Mercurial will open your system&rsquo;s default text editor so that you can edit your commit message there.</p>
+
+<p>If you accidentally create a commit that you did not intend to, issue the following command to &ldquo;rollback&rdquo; the last commit without modifying the state of the files:</p>
+
+<pre><code>hg rollback
+</code></pre>
+
+<p>After the first commit any changes you make to the <code>world</code> file will be tracked by Mercurial in successive commits. When you decide to add additional files you must specify them explicitly using the <code>hg add [filename]</code> command. Once added and committed the files will be tracked through future revisions.</p>
+
+<p>Mercurial stores all changes you make to your repository in terms of two variables: a local revision number that begins at 0 and incrementing full numbers. Note that Mercurial also stores a universally unique identifier for every commit called a &ldquo;changeset identifier&rdquo; for cases when local revision numbers may not correspond to the revision numbers that collaborators may have.</p>
+
+<h3 id="manipulating-files">Manipulating Files</h3>
+
+<p>When you need to rename, move, or copy files or folders that are versioned by Mercurial, use Mercurial&rsquo;s default commands for manipulating files rather than using your operating system&rsquo;s default tools for managing your filesystem. For example:</p>
+
+<pre><code>hg mv world hw.txt
+hg cp hw.txt hello-world
+hg rm hw.txt
+</code></pre>
+
+<p>These commands, in turn, move (rename) the <code>world</code> file to <code>hw.txt</code>, copy <code>hw.txt</code> to the file <code>hello-world</code> and finally remove the file <code>hw.txt</code>. When you perform the next commit, Mercurial will include these revisions in the changeset it saves, keeping track of a file&rsquo;s history despite any changes in name.</p>
+
+<p>At any point, you can use the following <code>status</code> command to retrieve the current state of the working copy as you prepare for the next commit:</p>
+
+<pre><code>hg status
+</code></pre>
+
+<p>If you accidentally move files using default filesystem tools without using mercurial tools you can issue the following command, to &ldquo;clean up&rdquo; your repository:</p>
+
+<pre><code>hg addremove --similarity 100
+</code></pre>
+
+<h3 id="viewing-history">Viewing History</h3>
+
+<p>When working in Mercurial you can issue the following command at any point to view the difference between the last committed revision and the current uncommitted changes:</p>
+
+<pre><code>hg diff
+</code></pre>
+
+<p>If you want to view a log of the history, issue the following command:</p>
+
+<pre><code>hg log
+</code></pre>
+
+<p>This will produce output that resembles the following for each commit stored in Mercurial:</p>
+
+<pre><code>changeset:   0:dcf111b16118
+tag:         tip
+user:        username@example.com
+date:        Thu Apr 22 18:51:21 2010 +0000
+summary:     hello mercurial world
+</code></pre>
+
+<p>To generate a patch or a view of the history of your repository with the differences (a &ldquo;diff&rdquo;) contained within, issue a command in the following form:</p>
+
+<pre><code>hg log -p -r 2 5
+</code></pre>
+
+<p>This generates a patch (<code>-p</code>) of all changes contained between revisions (<code>-r</code>) 2 and 5.</p>
+
+<h3 id="inserting-modifications-into-the-history">Inserting Modifications into the History</h3>
+
+<p>If you need to make a modification to a revision after a changeset is committed, issue the following command to revert the current working copy to a previous version:</p>
+
+<pre><code>hg update 4
+</code></pre>
+
+<p>This reverts the working copy to the 4th revision. Make the required modification and then commit the change using the <code>hg commit</code> command. Issue the following command to merge the new changes into the latest version of your repository:</p>
+
+<pre><code>hg merge
+</code></pre>
+
+<p>Depending on the nature of the change, this command may resolve all changes without any errors. However, in some cases where a change is non-trivial this will create merge conflicts. In these cases, issue the following command:</p>
+
+<pre><code>hg resolve --list
+</code></pre>
+
+<p>This generates a list of the changes that need to be resolved before the merge will succeed. Each file will need to be resolved in sequence. Issue the following command to &ldquo;mark&rdquo; each file as resolved:</p>
+
+<pre><code>hg resolve --mark [file-name]
+</code></pre>
+
+<p>When all changes have been resolved, issue the <code>hg commit</code> command to complete the merge and continue developing from the most recent version of your repository.</p>
+
+<p>If at any point you find yourself working in a revision and you would like to revert to the most recent commit, issue the following command:</p>
+
+<pre><code>hg update tip
+</code></pre>
+
+<h2 id="distributed-mercurial-workflows">Distributed Mercurial Workflows</h2>
+
+<p>Most of the Mercurial workflow cycle is completed in isolation from other developers and contributors. The above outline of how to manage version control will allow you to complete work on your projects even in the context of larger Mercurial-supported collaborations. The &ldquo;distributed&rdquo; workflows outlined below provide an overview of common procedures for using Mercurial in distributed environments.</p>
+
+<h3 id="retrieve-content-from-remote-repositories">Retrieve Content from Remote Repositories</h3>
+
+<p>In many cases when you begin working on a project with Mercurial, you will be downloading a repository, or &ldquo;cloning&rdquo; the project. This operation will create a full and independent copy of the repository on your local system. Issue the following command:</p>
+
+<pre><code>hg clone http://www.example.com/lolipop/
+</code></pre>
+
+<p>In this instance, the URL <code>http://www.example.com:8000/lolipop.hg</code> refers to the server hosting the repository in question. Once downloaded, you&rsquo;ll be able to manipulate files, create content, or remove content <em>and</em> commit those changes incrementally to create a history of the work you have accomplished.</p>
+
+<p>As time passes you will probably want to update your local repositories with the changes. Use the &ldquo;pull&rdquo; command to download all changes to the remote repository since your initial clone, or the last time you pulled new changes:</p>
+
+<pre><code>hg pull http://www.example.com/lolipop/
+</code></pre>
+
+<p>After a pull, additional revisions are stored in your local repository, but your local &ldquo;working copy&rdquo; has not yet been updated to reflect the change sets. In these situations, use the <code>hg merge</code>, <code>hg resolve</code>, and finally <code>hg commit</code> commands as described <a href="/docs/development/version-control/manage-distributed-version-control-with-mercurial#inserting-modifications-into-the-history">above</a> to resolve any conflicts and commit all changes to the local repository.</p>
+
+<p>If you work on one project and collaborate with two or more people who publish public Mercurial repositories, you can pull from multiple upstream repositories. Consider the following command:</p>
+
+<pre><code>hg pull http://www.example.org/lolipop/
+</code></pre>
+
+<p>Following every pull operation, remember to repeat the <code>merge</code>, <code>resolve</code> if necessary, and <code>commit</code> operations to update your repository with the retrieved changes. When collaborating, <code>pull</code> often to ensure that you are working with the latest possible versions of the versioned content.</p>
+
+<h3 id="publish-content-for-collaboration">Publish Content for Collaboration</h3>
+
+<p>When you&rsquo;re ready to share the changes to your repository, you can use the <code>hg push</code> command to send local changes to remote repositories assuming the administrators of the repository in question have granted you access to it. This command takes the following form:</p>
+
+<pre><code>hg push http://www.example.com/lolipop/
+</code></pre>
+
+<p>In this configuration, Mercurial and its workflows strongly resemble the centralized workflows that users of systems like CVS and Subversion may find familiar. For small scale applications, Mercurial includes a built in web server that binds to port <code>8000</code> and makes it possible for your collaborators to pull your changes into their instances of your repository. Change directories to your Mercurial repository and issue the following command:</p>
+
+<pre><code>hg serve
+</code></pre>
+
+<p>Now navigate to <code>http://localhost:8000</code> in your web browser. Replace <code>localhost</code> with the resolvable hostname or domain name for your machine or simply the IP address. You will be presented with a web based interface to your repository. Additionally, users will be able to <code>pull</code> content from your repository using the URL you provide. When you&rsquo;re done running the server, send <code>Control+c</code> to kill the server.</p>
+
+<p>Additionally, you can specify remote Mercurial repositories using SSH paths as in the following example:</p>
+
+<pre><code>hg clone ssh://username@example.com//srv/hg/lolipop
+</code></pre>
+
+<p>In this example, the user <code>username</code> logs into the server located at <code>example.com</code> and clones the Mercurial repository located at the path <code>/srv/hg/lolipop</code>. By default, <code>ssh</code> presumes that the specified path is in the users home directory. Use the double slash (e.g. <code>//</code>) to specify absolute paths when the Mercurial repository is located outside of the users home directory. You may use the SSH protocol to push and pull content. To create a Mercurial repository that you can use to push changes to, issue the following commands:</p>
+
+<pre><code>mkdir -p /srv/hg/
+hg init lolipop
+cd /srv/hg/lolipop
+hg update null
+</code></pre>
+
+<p>The <code>hg update null</code> command removes all files from the &ldquo;working copy&rdquo; of your Mercurial repository, and can be used on any Mercurial repository. This prevents user confusion between the files in the working copy and the state of the repository&rsquo;s database, which is located in the <code>.hg/</code> directory.</p>
+
+<h3 id="create-patches-with-mercurial">Create Patches with Mercurial</h3>
+
+<p>If you do not want to host your own repository or your collaboration workflow does not support pushing content to remote repositories, you can also use Mercurial to create &ldquo;patch files&rdquo; that you can send to your collaborators for them to apply to <em>their</em> repositories. Issue the following command to create a patch of the contents of <em>your</em> repository&rsquo;s commit number <code>7</code>:</p>
+
+<pre><code>hg export 7 &gt; patch7.diff
+</code></pre>
+
+<p>Email the <code>ducklignton-patch7.diff</code> file to your collaborators who will, in turn, issue the following command within their repositories:</p>
+
+<pre><code>hg import patch7.diff
+</code></pre>
+
+<p>Email-based collaboration reduces some of the architectural complexity of maintaining shared infrastructure, or running <em>ad hoc</em> http servers, and allows individuals to collaborate in an easy and asynchronous way.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://mercurial.selenic.com/">Mercurial Project Home Page</a></li>
+
+<li><a href="http://hginit.com/">HG Init, a Guide by Joel Spolsky</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/version-control/manage-distributed-source-branches-with-bazaar/">Manage Distributed Source Branches with Bazaar</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/">How to Install Git and Clone a GitHub Repository</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/manage-source-code-versions-with-subversion/">Manage Source Code Versions with Subversion</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/">How to Install Git on Linux, Mac or Windows</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/how-to-configure-git/">Getting Started with Git</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#installing-mercurial">Installing Mercurial</a></li>
+<li><a href="#local-mercurial-workflows">Local Mercurial Workflows</a>
+<ul>
+<li><a href="#creating-repositories">Creating Repositories</a></li>
+<li><a href="#adding-files-and-creating-commits">Adding Files and Creating Commits</a></li>
+<li><a href="#manipulating-files">Manipulating Files</a></li>
+<li><a href="#viewing-history">Viewing History</a></li>
+<li><a href="#inserting-modifications-into-the-history">Inserting Modifications into the History</a></li>
+</ul></li>
+<li><a href="#distributed-mercurial-workflows">Distributed Mercurial Workflows</a>
+<ul>
+<li><a href="#retrieve-content-from-remote-repositories">Retrieve Content from Remote Repositories</a></li>
+<li><a href="#publish-content-for-collaboration">Publish Content for Collaboration</a></li>
+<li><a href="#create-patches-with-mercurial">Create Patches with Mercurial</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

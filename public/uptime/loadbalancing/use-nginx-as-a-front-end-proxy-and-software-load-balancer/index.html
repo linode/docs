@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use Nginx as a Front-end Proxy and Software Load Balancer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use Nginx as a Front-end Proxy and Software Load-Balancer.">
+        <meta name="keywords" content="apache, nginx, proxy, load balancer, load balancing, web server, http, use nginx as proxy, use nginx as load-balancer, front-end proxy, cluster">
+        
+        <meta property="og:title" content="Use Nginx as a Front-end Proxy and Software Load Balancer">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/">
+        <meta property="og:description" content="Use Nginx as a Front-end Proxy and Software Load-Balancer.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/loadbalancing/">Load Balancing</a>
+  
+</li>
+
+
+<li>
+  
+  Use Nginx as a Front-end Proxy and Software Load Balancer
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use Nginx as a Front-end Proxy and Software Load Balancer</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-03-23T00:00:00Z">Thursday, March 23, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2floadbalancing%2fuse-nginx-as-a-front-end-proxy-and-software-load-balancer%2f&via=linode&text=Use%20Nginx%20as%20a%20Front-end%20Proxy%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2floadbalancing%2fuse-nginx-as-a-front-end-proxy-and-software-load-balancer%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2floadbalancing%2fuse-nginx-as-a-front-end-proxy-and-software-load-balancer%2f&t=Use%20Nginx%20as%20a%20Front-end%20Proxy%20and%20Software%20Load%20Balancer" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The nginx web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because ngnix uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.</p>
+
+<p><img src="/docs/assets/use_nginx_as_a_frontend_proxy_and_software_load_balancer.png" alt="Use Nginx as a Front-end Proxy and Software Load Balancer" title="Use Nginx as a Front-end Proxy and Software Load Balancer" /></p>
+
+<p>Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like <a href="/docs/frameworks/seaside/">Seaside</a> and Ruby On Rails&rsquo;s Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using nginx as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.</p>
+
+<p>This document provides an overview of using nginx as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring nginx, please see our <a href="/docs/websites/nginx/basic-nginx-configuration">Basic Nginx Configuration</a> guide. If you want a simple nginx deployment with content that uses PHP or Perl scripts, consider following one of our <a href="/docs/web-servers/nginx/">Installing Nginx</a> guides.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before we begin, make sure you have completed the following:</p>
+
+<ul>
+<li>Follow the <a href="/docs/getting-started/">Getting Started</a> guide.</li>
+<li>Install the <a href="/docs/web-servers/nginx/">nginx server</a>.</li>
+<li>Familiarize yourself with <a href="/docs/websites/nginx/basic-nginx-configuration">Basic Nginx Configuration</a>.</li>
+</ul>
+
+<p>If you&rsquo;re new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts">introduction to Linux basics</a> guide, <a href="/docs/beginners-guide/">Beginner&rsquo;s Guide</a> and <a href="/docs/using-linux/administration-basics">Administration Basics</a> guide.</p>
+
+<h2 id="front-end-proxy-services-with-nginx-how-it-works">Front-End Proxy Services with Nginx: How It Works</h2>
+
+<p>When a request reaches the nginx front-end proxy server, here&rsquo;s an overview of the process that occurs:</p>
+
+<ol>
+<li>nginx receives a request for a resource.</li>
+<li>nginx sends a second <em>proxied</em> request to a specified server, and gets a response.</li>
+<li>nginx returns the result of that request to the original requester.</li>
+</ol>
+
+<h2 id="configure-apache-for-port-listening">Configure Apache for Port Listening</h2>
+
+<p>In this section, you&rsquo;ll configure Apache to listen on an alternate port so it can respond to the nginx front end.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide assumes you are using Apache 2.4. Some path names will be slightly different if you are using an older version.</div>
+</blockquote>
+
+
+<ol>
+<li><p>The first thing you will configure is the port on which Apache listens. This needs to be a port other than 80, so that you can proxy requests to Apache on the alternate port. This has the added benefit of preventing conflicts between Apache and nginx listening on the same port. First, open up the <code>/etc/apache2/ports.conf</code> file for editing, and configure it as shown below:</p>
+
+<pre><code>sudo nano /etc/apache2/ports.conf
+</code></pre>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/ports.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">NameVirtualHost</span> *:8000
+<span class="nb">Listen</span> <span class="m">8000</span>
+
+<span class="nt">&lt;IfModule</span> <span class="s">mod_ssl.c</span><span class="nt">&gt;</span>
+  <span class="c"># If you add NameVirtualHost *:443 here, you will also have to change</span>
+  <span class="c"># the VirtualHost statement in /etc/apache2/sites-available/default-ssl</span>
+  <span class="c"># to &lt;VirtualHost*:443&gt;</span>
+  <span class="c"># Server Name Indication for SSL named virtual hosts is currently not</span>
+  <span class="c"># supported by MSIE on Windows XP.</span>
+  <span class="nb">Listen</span> <span class="m">443</span>
+<span class="nt">&lt;/IfModule</span><span class="s"></span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;IfModule</span> <span class="s">mod_gnutls.c</span><span class="nt">&gt;</span>
+  <span class="nb">Listen</span> <span class="m">443</span>
+<span class="nt">&lt;/IfModule</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Next, in the virtual host configuration file, edit the port to match the new default port set in the previous step. More specifically, edit the <code>&lt;VirtualHost *:&gt;</code> line to use port 8000.</p>
+
+<pre><code>sudo nano /etc/apache2/sites-available/example.com.conf
+</code></pre>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;VirtualHost</span> <span class="s">*:8000</span><span class="nt">&gt;</span>
+ <span class="nb">ServerAdmin</span> webmaster@example.com
+ <span class="nb">ServerName</span>  www.example.com
+ <span class="nb">DocumentRoot</span> <span class="sx">/var/www/html/example.com</span>
+
+ <span class="nt">&lt;Directory</span> <span class="s">/</span><span class="nt">&gt;</span>
+   <span class="nb">Options</span> FollowSymLink
+   <span class="nb">AllowOverride</span> <span class="k">None</span>
+ <span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span>
+
+ <span class="nt">&lt;Directory</span> <span class="s">/var/www/html/example.com</span><span class="nt">&gt;</span>
+   <span class="nb">Options</span> Indexes FollowSymLinks MultiViews
+   <span class="nb">AllowOverride</span> <span class="k">None</span>
+   <span class="nb">Order</span> allow,deny
+   <span class="nb">allow</span> from <span class="k">all</span>
+ <span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span>
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>In the <code>/etc/apache2/apache2.conf</code> file, comment out the <code>LogFormat {User-Agent}</code> line. Then, add a forward so that Apache will log the original user’s IP address in the access logs instead of nginx&rsquo;s IP address (which would be listed as 127.0.0.1).</p>
+
+<pre><code>sudo nano /etc/apache2/apache2.conf
+</code></pre>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/apache2.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c">#LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined</span>
+<span class="nb">LogFormat</span> <span class="s2">&#34;%{X-Forwarded-For}i %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34;</span> combined</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Install the Apache module <code>libapache2-mod-rpaf</code>, which takes care of logging the correct IP address.</p>
+
+<pre><code>sudo apt-get install libapache2-mod-rpaf
+</code></pre></li>
+
+<li><p>Restart Apache.</p>
+
+<pre><code>service apache restart
+</code></pre></li>
+
+<li><p>Edit the <code>/etc/nginx/proxy_params</code> file. These settings are a good starting point for optimal forwarding of proxy requests from Nginx to Apache:</p>
+
+<pre><code>sudo nano /etc/nginx/proxy_params
+</code></pre>
+
+<dl class="file">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
+<span class="k">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="k">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+
+<span class="k">client_max_body_size</span> <span class="s">100M</span><span class="p">;</span>
+<span class="k">client_body_buffer_size</span> <span class="mi">1m</span><span class="p">;</span>
+<span class="k">proxy_intercept_errors</span> <span class="no">on</span><span class="p">;</span>
+<span class="k">proxy_buffering</span> <span class="no">on</span><span class="p">;</span>
+<span class="k">proxy_buffer_size</span> <span class="mi">128k</span><span class="p">;</span>
+<span class="k">proxy_buffers</span> <span class="mi">256</span> <span class="mi">16k</span><span class="p">;</span>
+<span class="k">proxy_busy_buffers_size</span> <span class="mi">256k</span><span class="p">;</span>
+<span class="k">proxy_temp_file_write_size</span> <span class="mi">256k</span><span class="p">;</span>
+<span class="k">proxy_max_temp_file_size</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">proxy_read_timeout</span> <span class="mi">300</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create the nginx <code>example.com</code> virtual host file at <code>/etc/nginx/sites-available/example.com</code>. Make sure you specify the same document root here that you did for Apache (for example, <code>/var/www/html/example.com</code>). This will ensure that nginx can deliver static files directly without passing the request to Apache. Static files (like JavaScript, CSS, images, PDF files, static HTML files, etc.) can be delivered much faster with nginx than Apache.</p>
+
+<pre><code>sudo nano /etc/nginx/sites-available/example.com
+</code></pre>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">www.example.com</span> <span class="s">example.com</span><span class="p">;</span>
+    <span class="kn">root</span> <span class="s">/var/www/html/example.com</span><span class="p">;</span>
+
+    <span class="kn">if</span> <span class="s">(</span><span class="nv">$http_host</span> <span class="s">!=</span> <span class="s">&#34;www.example.com&#34;)</span> <span class="p">{</span>
+        <span class="kn">rewrite</span> <span class="s">^</span> <span class="s">www.example.com</span><span class="nv">$request_uri</span> <span class="s">permanent</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">proxy_pass</span> <span class="s">http://localhost:8000</span><span class="p">;</span>
+        <span class="kn">include</span> <span class="s">/etc/nginx/proxy_params</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">\.(js|css|jpg|jpeg|gif|png|svg|ico|pdf|html|htm)</span>$ <span class="p">{</span>
+    <span class="p">}</span>
+
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>There are some additional <code>location</code> directives to add in the <code>server</code> section of the <code>/etc/nginx/sites-available/example.com</code> file. You will probably need these directives, but it&rsquo;s possible that you may not, depending on your nginx and Apache configuration.</p></li>
+
+<li><p>Add a <code>location</code> directive to make nginx refuse all requests for files beginning with the characters <code>.ht</code>. There&rsquo;s a similar directive in nearly every default Apache configuration. This directive is useful if your Apache deployment relies on settings from <code>.htaccess</code> and <code>.htpasswd</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
+    <span class="kn">deny</span>  <span class="s">all</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>If you need to proxy requests for a specific location to a specific resource, use a rewrite rule to capture the path to the resource and pass that along to the proxied server. For example, if you want all requests for <code>http://example.com/</code> to be handed to a server running on <code>192.168.3.105</code> with a path of <code>/teams/~example/</code>, you would write the following <code>location</code> block:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+  <span class="kn">rewrite</span> <span class="s">^(.*)</span>$ <span class="s">/teams/~example/</span><span class="nv">$1</span> <span class="s">break</span><span class="p">;</span>
+  <span class="kn">proxy_pass</span>   <span class="s">http://192.168.3.105</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Here, the rewrite rule (<code>^(.*)$</code>) captures the entire request string and appends it (<code>$1</code>) to the path on the new server (<code>/teams/~example/</code>). Here&rsquo;s how this would play out:</p>
+
+<p><strong>Request:</strong> <code>http://example.com/images/images.png</code></p>
+
+<p><strong>Response:</strong> <code>http://192.168.3.105/teams/~example/images/images.png</code></p>
+
+<p><strong>Request:</strong> <code>http://example.com/wiki/PracticeSchedule/</code></p>
+
+<p><strong>Response:</strong> <code>http://192.168.3.105/teams/~example/wiki/PracticeSchedule/</code></p></li>
+
+<li><p>For most conventional proxy setups, you will also want to add a <code>proxy_redirect</code> specification to your <code>location</code> directive blocks. This directive rewrites the HTTP headers that nginx receives from the proxy server to make them appear as if they were generated by the nginx server.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		example.com.vhost proxy location directive 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/pictures/</span> <span class="p">{</span>
+  <span class="kn">proxy_pass</span>       <span class="s">http://192.168.3.106:8080</span><span class="p">;</span>
+  <span class="kn">proxy_redirect</span>   <span class="s">http://192.168.3.106:8080</span> <span class="s">http://example.com/pictures/</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, requests are made for resources under <code>http://example.com/pictures/</code>, then passed to a server running on port <code>8080</code> of the LAN IP address <code>192.168.3.106</code>. Without the <code>proxy_redirect</code> directive, the <code>Location:</code> header of the HTTP response would return the location for a request of <code>http://example.com/team.jpg</code> as <code>http://192.168.3.106:8080/team.jpg</code>. By adding the <code>proxy_redirect</code> directive, proxied requests return the expected <code>Location:</code> header.</p></li>
+</ol>
+
+<h2 id="software-load-balancing">Software Load Balancing</h2>
+
+<p>In addition to using nginx as a front-end proxy to pass requests to other web servers, nginx can also serve as the front end for clusters of servers, and even as a software load balancer.</p>
+
+<h3 id="basic-http-clustering">Basic HTTP Clustering</h3>
+
+<p>In this example, we&rsquo;ll show you how to build a cluster named <code>appcluster</code> with a simple round-robin load balancer. Here are the appropriate excerpts from the <code>/etc/nginx/sites-available/example.com</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+
+  <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+  <span class="kn">server_name</span> <span class="s">example.com</span> <span class="s">www.example.com</span><span class="p">;</span>
+
+  <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+     <span class="kn">proxy_pass</span>  <span class="s">http://appcluster</span><span class="p">;</span>
+     <span class="kn">include</span> <span class="s">/etc/nginx/proxy_params</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">upstream</span> <span class="s">appcluster</span> <span class="p">{</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8801</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8802</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8803</span> <span class="s">down</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8804</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">galloway.example.com</span><span class="p">:</span><span class="mi">8801</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">galloway.example.com</span><span class="p">:</span><span class="mi">8802</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">galloway.example.com</span><span class="p">:</span><span class="mi">8803</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">galloway.example.com</span><span class="p">:</span><span class="mi">8804</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="err">#</span> <span class="k">[...]</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, in the <code>server</code> directive block, nginx is configured to listen for requests on a specific IP address and port (e.g. <code>192.0.2.0</code> and <code>80</code>), and respond to requests for the domains <code>example.com</code> and <code>www.example.com</code>. All requests for resources at this domain (e.g. <code>/</code>) will be passed to the <code>http://appcluster</code> server established in the <code>upstream</code> directive.</p>
+
+<p>The <code>upstream</code> directive establishes the round-robin load balancer. Within this block eight servers are listed, each running on a distinct hostname and port combination.</p>
+
+<ul>
+<li>The <code>upstream</code> configuration must occur in the top level of the <code>http</code> block of the <code>/etc/nginx/sites-available/example.com</code> file.</li>
+<li>The servers running on ports <code>8801</code> through <code>8804</code> of the servers <code>linode.example.com</code> and <code>galloway.example.com</code> will receive equal portions of the requests made of the upstream <code>appcluster</code>.</li>
+<li>The <code>down</code> parameter excludes that server from being proxied. Use it when one of your servers is down.</li>
+</ul>
+
+<h3 id="advanced-load-balancing">Advanced Load Balancing</h3>
+
+<p>nginx also allows you to control the behavior of the <code>upstream</code> resource cluster beyond a simple round-robin setup. The simplest modification is to add the <code>ip_hash</code> directive to the configuration block. This causes requests from the same IP address to be routed to the same back-end server. Consider the following example excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">upstream</span> <span class="s">appcluster</span> <span class="p">{</span>
+   <span class="kn">ip_hash</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8801</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8802</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">galloway.example.com</span><span class="p">:</span><span class="mi">8801</span> <span class="s">down</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">galloway.example.com</span><span class="p">:</span><span class="mi">8802</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Here, the <code>ip_hash</code> directive causes nginx to attempt to match requests originating from a single IP address with the same back-end component. If a component server is unreachable, nginx will route those connections to an alternate component.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If a server needs to be taken offline for an extended period of time, append the <code>down</code> argument, as shown in the entry for <code>galloway.example.com:8801</code>. This will prevent missed connections from attempting to hit a component of the server which is down.</div>
+</blockquote>
+
+
+<p>Here is a more advanced configuration, where seven server components running on unique ports on the server <code>linode.example.com</code> comprise the <code>appcluster</code> upstream:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">upstream</span> <span class="s">appcluster</span> <span class="p">{</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8801</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8802</span> <span class="s">weight=1</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8803</span> <span class="s">weight=2</span> <span class="s">max_fails=2</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8804</span> <span class="s">weight=2</span> <span class="s">max_fails=2</span> <span class="s">fail_timeout=20</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8805</span> <span class="s">weight=4</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8806</span> <span class="s">weight=4</span> <span class="s">fail_timeout=4</span><span class="p">;</span>
+   <span class="kn">server</span> <span class="n">linode.example.com</span><span class="p">:</span><span class="mi">8807</span> <span class="s">weight=2</span> <span class="s">fail_timeout=20</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Using these arguments, you can use nginx to manage the behavior and distribution of load across a cluster of servers:</p>
+
+<ul>
+<li><p>By default, each server listed in an upstream cluster has a weight of <code>1</code>. The argument <code>weight=[number]</code> sets a specific weight. Higher numbers receive more weight.</p>
+
+<p>In the example above, the components running on ports <code>8801</code> and <code>8802</code> are treated identically by nginx, as the default value for <code>weight</code> is <code>1</code>. The components running on <code>8803</code>, <code>8804</code>, and <code>8807</code> will receive twice as much traffic as the first two components. The components running on <code>8805</code> and <code>8806</code> will receive four times as much traffic as the ones on <code>8801</code> and <code>8802</code> and twice much traffic as the components on <code>8803</code>, <code>8804</code>, and <code>8807</code>.</p></li>
+
+<li><p><code>max_fails=[number]</code> specifies the number of unsuccessful attempts at communication with an upstream component before it is considered inoperative. To prevent components from ever being marked as inoperative, even if they are unreachable, set this value to <code>0</code>. The default value for <code>max_fails</code> is <code>1</code>.</p>
+
+<p>In the example above, the component servers on ports <code>8801</code>, <code>8802</code>, <code>8805</code>, <code>8806</code>, and <code>8807</code> can only refuse a connection once before being marked as inoperative. Components <code>8803</code> and <code>8804</code> are allowed to fail twice before being marked as inoperative.</p></li>
+
+<li><p>The <code>fail_timeout=[time-in=seconds]</code> argument determines the span of time within which the <code>max_fails</code> number of unsuccessful attempts must occur in order to mark a component of the server inoperative. Note that servers that return a 404 response are considered operative. Also, this value does not affect timeouts for established proxy connections.</p>
+
+<p>By default, all components have their fail counter reset every 10 seconds, which covers components <code>8801</code>, <code>8802</code>, <code>8803</code>, and <code>8805</code>. In the example above, the components running on <code>8804</code> and <code>8807</code> have their fail counters reset every 20 seconds, while <code>8806</code> has its counter reset every 4 seconds.</p></li>
+
+<li><p>The <code>ip_hash</code> directive cannot be combined with the additional arguments shown in the example above.</p></li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://wiki.nginx.org/NginxHttpProxyModule">nginx Proxy Module</a></li>
+
+<li><a href="http://wiki.nginx.org/NginxHttpUpstreamModule">HTTP Upstream Module</a></li>
+
+<li><a href="/docs/websites/nginx/basic-nginx-configuration">nginx Configuration</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-on-ubuntu-14-04/">Apache Web Server on Ubuntu 14.04 LTS</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/">Rule-based Access Control for Apache</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-access-control/">Apache Access Control</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/">Apache Configuration Basics</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/install-nginx-web-server-on-debian-8/">Install Nginx Web Server on Debian 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#front-end-proxy-services-with-nginx-how-it-works">Front-End Proxy Services with Nginx: How It Works</a></li>
+<li><a href="#configure-apache-for-port-listening">Configure Apache for Port Listening</a></li>
+<li><a href="#software-load-balancing">Software Load Balancing</a>
+<ul>
+<li><a href="#basic-http-clustering">Basic HTTP Clustering</a></li>
+<li><a href="#advanced-load-balancing">Advanced Load Balancing</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TWiki on Debian 6 (Squeeze)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install and configure a structured wiki with TWiki.">
+        <meta name="keywords" content="wiki, twiki, structured wiki, enterprise wiki">
+        
+        <meta property="og:title" content="TWiki on Debian 6 (Squeeze)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/wikis/twiki-on-debian-6-squeeze/">
+        <meta property="og:description" content="Install and configure a structured wiki with TWiki.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/wikis/twiki-on-debian-6-squeeze/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/wikis/">Wikis</a>
+  
+</li>
+
+
+<li>
+  
+  TWiki on Debian 6 (Squeeze)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">TWiki on Debian 6 (Squeeze)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-10-04T00:00:00Z">Friday, October 4, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fwikis%2ftwiki-on-debian-6-squeeze%2f&via=linode&text=TWiki%20on%20Debian%206%20%28Squeeze%29" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fwikis%2ftwiki-on-debian-6-squeeze%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fwikis%2ftwiki-on-debian-6-squeeze%2f&t=TWiki%20on%20Debian%206%20%28Squeeze%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/wikis/twiki-on-debian-6-squeeze.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/wikis/twiki-on-debian-6-squeeze.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>TWiki is a robust &ldquo;structured wiki&rdquo; roughly comparable to other &ldquo;Enterprise&rdquo; wiki solutions such as <a href="/docs/websites/wikis/confluence-on-debian-5-lenny">Confluence</a>. Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.</p>
+
+<h1 id="prepare-system-and-install-twiki">Prepare System and Install TWiki</h1>
+
+<h3 id="install-prerequisites">Install Prerequisites</h3>
+
+<p>Issue the following commands to update your system&rsquo;s package database and ensure that all installed packages are up to date:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<p>Issue the following command to install all required dependencies for TWiki:</p>
+
+<pre><code>apt-get install apache2 libgdal-perl libcgi-session-perl libhtml-tree-perl liberror-perl libfreezethaw-perl libgd2-xpm
+</code></pre>
+
+<h3 id="install-twiki">Install TWiki</h3>
+
+<p>At the time of writing the most recent release of TWiki is 5.0.1. Check the <a href="http://twiki.org/">TWiki upstream</a> to confirm this is the most current version. Issue the following sequence of commands to download TWiki, extract the files, and set the appropriate permissions:</p>
+
+<pre><code>cd /opt
+wget http://downloads.sourceforge.net/project/twiki/TWiki%20for%20all%20Platforms/TWiki-5.0.1/TWiki-5.0.1.tgz
+tar -zxvf /opt/TWiki-5.0.1.tgz
+mkdir -p /srv/www/example.com/
+mv /opt/twiki /srv/www/example.com/twiki
+chown -R www-data:www-data /srv/www/example.com/twiki
+cp /srv/www/example.com/twiki/bin/LocalLib.cfg.txt /srv/www/example.com/twiki/bin/LocalLib.cfg
+</code></pre>
+
+<p>The TWiki files are now installed in the <code>/srv/www/example.com/</code> directory. This is not, and should not be, within the public <code>DocumentRoot</code> for your site.</p>
+
+<h1 id="configure-software">Configure Software</h1>
+
+<h3 id="configure-apache-web-server">Configure Apache Web Server</h3>
+
+<p>Create a virtual host specification that resembles the following. Modify the references to <code>example.com</code> and <code>/srv/www/example.com/</code> to reflect the domain name and file paths for you deployment.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/conf.d/twiki.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+       <span class="nb">ServerName</span> example.com
+       <span class="nb">ServerAlias</span> www.example.com
+
+       <span class="nb">DocumentRoot</span> <span class="sx">/srv/www/example.com/public_html</span>
+
+       <span class="nb">ErrorLog</span> <span class="sx">/srv/www/example.com/logs/error.log</span>
+       <span class="nb">CustomLog</span> <span class="sx">/srv/www/example.com/logs/access.log</span> combined
+
+       <span class="nb">ScriptAlias</span> <span class="sx">/bin</span> <span class="s2">&#34;/srv/www/example.com/twiki/bin&#34;</span>
+       <span class="nb">Alias</span> <span class="sx">/pub</span> <span class="s2">&#34;/srv/www/example.com/twiki/pub&#34;</span>
+       <span class="nb">Alias</span> / <span class="s2">&#34;/srv/www/example.com/twiki/bin/view/&#34;</span>
+       <span class="nt">&lt;Location</span> <span class="s">&#34;/&#34;</span><span class="nt">&gt;</span>
+          <span class="nb">Options</span> -Indexes +ExecCGI
+       <span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span>
+
+       <span class="nb">SetEnvIf</span> Request_URI <span class="s2">&#34;pub/.*\.[hH][tT][mM]?$&#34;</span> blockAccess
+       <span class="nb">SetEnvIf</span> Request_URI <span class="s2">&#34;pub/TWiki/.*\.[hH][tT][mM]?$&#34;</span> !blockAccess
+       <span class="nb">BrowserMatchNoCase</span> ^$ blockAccess
+       <span class="nt">&lt;Directory</span> <span class="s">&#34;/srv/www/example.com/twiki/bin&#34;</span><span class="nt">&gt;</span>
+          <span class="nb">AllowOverride</span> <span class="k">None</span>
+          <span class="nb">Order</span> Allow,Deny
+          <span class="nb">Allow</span> from <span class="k">all</span>
+          <span class="nb">Deny</span> from env=blockAccess
+
+          <span class="nb">Options</span> ExecCGI FollowSymLinks
+          <span class="nb">SetHandler</span> cgi-script
+
+          <span class="nt">&lt;FilesMatch</span> <span class="s">&#34;^configure.*&#34;</span><span class="nt">&gt;</span>
+             <span class="nb">SetHandler</span> cgi-script
+             <span class="nb">Order</span> Deny,Allow
+             <span class="nb">Deny</span> from <span class="k">all</span>
+             <span class="nb">Allow</span> from <span class="m">127.0.0.1</span>
+          <span class="nt">&lt;/FilesMatch</span><span class="s"></span><span class="nt">&gt;</span>
+       <span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span>
+       <span class="nt">&lt;Directory</span> <span class="s">&#34;/srv/www/example.com/twiki/bin&#34;</span><span class="nt">&gt;</span>
+          <span class="nb">Options</span> <span class="k">None</span>
+          <span class="nb">AllowOverride</span> Limit
+          <span class="nb">Allow</span> from <span class="k">all</span>
+          <span class="nb">AddType</span> text/plain .shtml .php .php3 .phtml .phtm .pl .py .cgi
+       <span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span>
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this configuration your wiki will be located at the root level of the <code>example.com</code> domain. Modify the following lines if you wish to deploy TWiki at a different location on your domain.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/conf.d/twiki.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">ScriptAlias</span> <span class="sx">/wiki/bin</span> <span class="s2">&#34;/srv/www/example.com/twiki/bin&#34;</span>
+<span class="nb">Alias</span> <span class="sx">/wiki/pub</span> <span class="s2">&#34;/srv/www/example.com/twiki/pub&#34;</span>
+<span class="nb">Alias</span> <span class="sx">/wiki/</span> <span class="s2">&#34;/srv/www/example.com/twiki/bin/view/&#34;</span>
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, TWiki will be accessible by at the <code>http://example.com/wiki</code> location. The path you configure for TWiki need not correlate to the actual location of the files on the file system. Issue the following commands to create the required directories:</p>
+
+<pre><code>mkdir -p /srv/www/example.com/public_html
+mkdir -p /srv/www/example.com/logs
+</code></pre>
+
+<h3 id="configure-twiki">Configure TWiki</h3>
+
+<p>Edit the <code>$twikiLibPath</code> value in the <code>/srv/www/example.com/twiki/bin/LocalLib.cfg</code> file to reflect the location of the <code>lib</code> files in the TWiki directory on your system, as in the following example:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/srv/www/example.com/twiki/bin/LocalLib.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-perl" data-lang="perl"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-perl" data-lang="perl"><span class="nv">$twikiLibPath</span> <span class="o">=</span> <span class="s">&#34;/srv/www/example.com/twiki/lib&#34;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Before you can proceed with the installation process, you will need to configure the access control settings in the Apache Configuration (as above) so that you will be able to access your TWiki instance. Consider the following configuration directives:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/conf.d/twiki.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;FilesMatch</span> <span class="s">&#34;^configure.*&#34;</span><span class="nt">&gt;</span>
+       <span class="nb">SetHandler</span> cgi-script
+       <span class="nb">Order</span> Deny,Allow
+       <span class="nb">Deny</span> from <span class="k">all</span>
+       <span class="nb">Allow</span> from <span class="m">127.0.0.1</span>
+<span class="nt">&lt;/FilesMatch</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Add your local IP address to the <code>Allow from</code> directive in the <code>FilesMatch</code> block to allow access to the configuration scripts. For more information about access control with Apache, consider the <a href="/docs/web-servers/apache/configuration/rule-based-access-control">Rule Based Access Control</a> document.</p>
+
+<p>When you&rsquo;ve completed these modifications, reload the web server configuration by issuing the following command:</p>
+
+<pre><code>/etc/init.d/apache2 reload
+</code></pre>
+
+<h1 id="install-twiki-1">Install TWiki</h1>
+
+<p>If your wiki is accessible at <code>http://example.com</code>, visit <code>http://example.com/bin/configure</code> to begin the configuration process. Enter an administrative password, and click the &ldquo;Configure&rdquo; button. Next, click on the &ldquo;General path settings&rdquo; option to ensure that the configuration script has properly deduced the location of all required files. Once you have confirmed these setting click on the &ldquo;Next&rdquo; option. On the next page select the &ldquo;Save&rdquo; option to save these settings.</p>
+
+<p>Add the following line to the <code>/srv/www/example.com/twiki/lib/LocalSite.cfg</code>&rdquo; file. Make sure that you do not append this line to the very end of the file.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/srv/www/example.com/twiki/lib/LocalSite.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-perl" data-lang="perl"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-perl" data-lang="perl"><span class="nv">$</span><span class="nn">TWiki::</span><span class="nv">cfg</span><span class="p">{</span><span class="n">ScriptUrlPaths</span><span class="p">}{</span><span class="n">view</span><span class="p">}</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Log into the configuration section at <code>http://example.com/bin/configure</code>, using the password configured above. In the &ldquo;Store Settings&rdquo; change the value of the <code>{StoreImpl}</code> value to <code>RcsLite</code>. Click &ldquo;Next&rdquo; and &ldquo;Save&rdquo; to store these values. Visit <code>http://example.com/TWiki/TWikiRegistration</code>&rdquo; to register new users to be able to edit the wiki. Although mail configuration is beyond the scope of this document, you will need to install a mail server and configure TWiki in the &ldquo;Mail and Proxies&rdquo; section of the configuration interface before TWiki will be able to successfully send email notifications and messages.</p>
+
+<p>Congratulations! You have successfully installed TWiki. You can now visit your wiki at <code>http://example.com/</code></p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://twiki.org/">TWiki Project Upstream</a></li>
+<li><a href="/docs/web-servers/apache">Apache HTTP Server Documentation</a></li>
+<li><a href="/docs/email/exim/send-only-mta-debian-6-squeeze">Exim Send Only MTA</a></li>
+<li><a href="/docs/email/postfix/gateway-debian-6-squeeze">Postfix Mail Gateway MTA</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/wikis/twiki-on-ubuntu-12-04-precise-pangolin/">TWiki on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/wikis/twiki-on-centos-5/">TWiki on CentOS 5 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/wikis/twiki-on-fedora-14/">TWiki on Fedora 14 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/wikis/twiki-on-ubuntu-10-04-lucid/">TWiki on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/wikis/twiki-on-ubuntu-10-10-maverick/">TWiki on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#prepare-system-and-install-twiki">Prepare System and Install TWiki</a>
+<ul>
+<li>
+<ul>
+<li><a href="#install-prerequisites">Install Prerequisites</a></li>
+<li><a href="#install-twiki">Install TWiki</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#configure-software">Configure Software</a>
+<ul>
+<li>
+<ul>
+<li><a href="#configure-apache-web-server">Configure Apache Web Server</a></li>
+<li><a href="#configure-twiki">Configure TWiki</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#install-twiki-1">Install TWiki</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

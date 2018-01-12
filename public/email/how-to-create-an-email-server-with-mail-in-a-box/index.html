@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Create an Email Server with Mail-in-a-Box</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to install and run Mail-in-a-Box, a simple, comprehensive, preconfigured email package.">
+        <meta name="keywords" content="install mail-in-a-box, webmail control panel, caldav, cardav,  TLS certificate">
+        
+        <meta property="og:title" content="How to Create an Email Server with Mail-in-a-Box">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/how-to-create-an-email-server-with-mail-in-a-box/">
+        <meta property="og:description" content="This guide shows how to install and run Mail-in-a-Box, a simple, comprehensive, preconfigured email package.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/how-to-create-an-email-server-with-mail-in-a-box/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  How to Create an Email Server with Mail-in-a-Box
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Create an Email Server with Mail-in-a-Box</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-08-30T00:00:00Z">Wednesday, August 30, 2017</time> by Alexandru Andrei</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Alexandru Andrei
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fhow-to-create-an-email-server-with-mail-in-a-box%2f&via=linode&text=How%20to%20Create%20an%20Email%20Server%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fhow-to-create-an-email-server-with-mail-in-a-box%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fhow-to-create-an-email-server-with-mail-in-a-box%2f&t=How%20to%20Create%20an%20Email%20Server%20with%20Mail-in-a-Box" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/how-to-create-an-email-server-with-mail-in-a-box.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/how-to-create-an-email-server-with-mail-in-a-box.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/Mail_in_a_box.jpg" alt="How to Create an Email Server with Mail-in-a-Box" title="How to Create an Email Server with Mail-in-a-Box" /></p>
+
+<p>If you chose to host your own email server, but after reading through <a href="/docs/email/running-a-mail-server">Running a Mail Server</a> you got discouraged by the complexity of this process, then there&rsquo;s another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:</p>
+
+<ul>
+<li>Postfix, as the Simple Mail Transfer Protocol (SMTP) server.</li>
+<li>Dovecot, as the Internet Message Access Protocol (IMAP) server; it&rsquo;s what allows you to sync mail with your phone, read/send messages, delete them, etc.</li>
+<li>CardDAV/CalDAV implemented through Nextcloud (a fork of OwnCloud that includes more features); this enables you to sync your address book and calendar events.</li>
+<li>Z-push to implement the Exchange ActiveSync protocol so that mail can be &ldquo;pushed&rdquo; to your phone as soon as it arrives on the server.</li>
+<li>Roundcube webmail, which helps you manage your email by using a web browser.</li>
+<li>Nsd4 Domain Name System (DNS) server; this saves you the hassle of manually adding DNS entries to configure <em>Sender Policy Framework</em> (<em>SPF</em>), <em>DomainKeys Identified Mail</em> (<em>DKIM</em>) and <em>Domain-based Message Authentication, Reporting and Conformance</em> (<em>DMARC</em>), features used to battle spam on the Internet; properly configured, these increase the likelihood that your server will be seen as &ldquo;legit&rdquo; by other servers</li>
+<li>A backup service</li>
+<li>A control panel, also accessible through the web browser, that:
+
+<ul>
+<li>Greets you with a comprehensive system status check that makes you aware of any possible problems with your server and offers advice on how to fix them;</li>
+<li>Lets you add or remove mailboxes, change passwords, backup data, change DNS settings;</li>
+<li>Does a great job at explaining what each setting does and how it should be used. It also includes examples on how to interact with its <em>Application Programming Interface</em> (API) so that you can automate tasks, such as creating a mailbox through your own application/website (e.g., user registers on your website to get an email account)</li>
+</ul></li>
+<li>And more: if you&rsquo;re interested in the details, you can read about the components here: <a href="https://github.com/mail-in-a-box/mailinabox#the-box">Mail-in-a-Box Components</a></li>
+</ul>
+
+<p>The preconfigured box of software is also fairly security-conscious and you can read more about it here: <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/security.md">Security features enabled in Mail-in-a-Box</a></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Make sure your domain name registrar allows you to use <em>custom nameservers</em> and set <em>glue records</em>.</p></li>
+
+<li><p>If you&rsquo;re unfamiliar with the basic concepts of Linode administration, read the <a href="/docs/getting-started">Getting Started</a> guide.</p></li>
+
+<li><p>It&rsquo;s highly recommended that you follow the instructions on <a href="/docs/security/securing-your-server#harden-ssh-access">Hardening SSH access</a> but <strong>only</strong> the steps regarding SSH; other steps might clash with what Mail-in-a-Box will set up (e.g., it implements its own <code>fail2ban</code> rules).</p></li>
+</ol>
+
+<p>If you insist on using a password for root instead of a private key, at least use a <strong>very good password</strong>. Bots constantly scan the Internet for SSH servers and try random passwords. Some are more aggressive than others, and while <code>fail2ban</code> helps block IPs, there&rsquo;s always the next bot (with a different IP) that will visit and have another try. Keep in mind that strings such as &ldquo;h4x0r123,&rdquo; while they may look strong because they mix letters and numbers, are actually very weak.</p>
+
+<ol>
+<li>Wherever you see <code>example.com</code> in this tutorial, replace it with your domain name, and leave the prefix as it is. That is, don&rsquo;t change <code>box</code> to something else.</li>
+</ol>
+
+<h2 id="launch-ubuntu-14-04-server">Launch Ubuntu 14.04 Server</h2>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.</div>
+</blockquote>
+
+
+<p>Although Ubuntu 16.04 is available, Mail-in-a-Box has not been prepared or tested in that environment so you&rsquo;ll need to use the 14.04 release which still receives security fixes until April 2019.</p>
+
+<p>Choose a server with at least 1GB of RAM. If you plan to host many users (mailboxes) and/or expect a high volume of email traffic, you can start out with 2GB or more. Don&rsquo;t forget to boot the server.</p>
+
+<h2 id="configure-your-domain-name">Configure Your Domain Name</h2>
+
+<p>You&rsquo;ll have to check with the company where you&rsquo;ve registered your domain name to see how you can change your nameservers and add glue records. Either search for this information on Google, the site&rsquo;s knowledge base, or ask their support to help you.</p>
+
+<p>Here&rsquo;s what you&rsquo;ll need to do:</p>
+
+<ol>
+<li><p>Log in to your account on your domain name registrar&rsquo;s site. Find the page where you can enter your nameservers, and add these values:</p>
+
+<pre><code>ns1.box.example.com
+ns2.box.example.com
+</code></pre></li>
+
+<li><p>Now, find the page where you can set up glue records. Then, add these entries, replacing <code>203.0.113.1</code> with the IP address of your server:</p>
+
+<pre><code>ns1.box.example.com 203.0.113.1
+ns2.box.example.com 203.0.113.1
+</code></pre></li>
+</ol>
+
+<p>You might have noticed you&rsquo;re using the same IP in both entries. There are a few registrars that have a problem with this, so in case you&rsquo;re unlucky, you won&rsquo;t be able to save these settings and will have to contact their support team.</p>
+
+<p>Also note that some registrars may only require you to enter <code>ns1.box</code> as they autocomplete the rest of your hostname, <code>.example.com</code>. Carefully examine the page to see which variant you should use.</p>
+
+<ol>
+<li><p>This shouldn&rsquo;t suffer the delays of <em>DNS propagation</em> (since it&rsquo;s a nameserver change, not a DNS record change), but you can still check if everything is correct and proper with:</p>
+
+<pre><code>dig example.com NS +trace
+</code></pre></li>
+</ol>
+
+<p>You should see your nameservers at the end of the output:</p>
+
+<pre><code>;; Received 595 bytes from 192.5.5.241#53(f.root-servers.net) in 343 ms
+
+example.com.        300 IN  NS  ns1.box.example.com.
+example.com.        300 IN  NS  ns2.box.example.com.
+dig: couldn't get address for 'ns1.box.example.com': no more
+</code></pre>
+
+<p>At this point you can continue. If you don&rsquo;t see the required data, then come back later and check - again. If after one hour it&rsquo;s still missing, then contact your registrar&rsquo;s support team.</p>
+
+<h2 id="install-mail-in-a-box">Install Mail-in-a-Box</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<ol>
+<li><p>After you log in to your server with an SSH client, update all the software packages on your server:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<p>If you notice a reboot is needed (usually when the Linux kernel is upgraded), type <code>sudo reboot</code> at the command prompt to restart your server.</p>
+
+<ol>
+<li><p>If you&rsquo;re able to understand bash scripts, at least vaguely, and you want to see what the following step will execute on your server, you can check this link in your browser and have a read: <a href="https://mailinabox.email/setup.sh">Mail-in-a-Box Bash Script</a>.</p></li>
+
+<li><p>To start the install process, run the following command:</p>
+
+<pre><code>curl -s https://mailinabox.email/setup.sh | sudo bash
+</code></pre></li>
+</ol>
+
+<p>It will start to download software and after a while greet you with a <em>Text User Interface</em> (<em>TUI</em>), which is a way to present a more user-friendly install wizard under the limitations of a terminal. You can navigate the menus with the arrow keys and simply press <code>ENTER</code> to make the desired selections.</p>
+
+<p>Every step is thoroughly explained in the terminal output. The first steps are easy to follow. But here are the more interesting ones:</p>
+
+<h3 id="install-wizard-steps">Install Wizard Steps</h3>
+
+<ol>
+<li><p>When you&rsquo;re prompted to choose an email address, delete the pre-filled value and replace it with <code>your_name</code>@example.com. You can replace <code>your_name</code> with whatever you desire, as long as it&rsquo;s a valid username.</p>
+
+<p><img src="/docs/assets/mail-in-a-box-choose-email-and-domain-ubuntu1404.png" alt="Choose Main Email Address and Domain" /></p></li>
+
+<li><p>In the next step, the hostname should look like this:</p>
+
+<p><img src="/docs/assets/mail-in-a-box-choose-hostname-ubuntu1404.png" alt="Choose Hostname" /></p>
+
+<p>Now, the install wizard should continue to download and configure software packages. Just wait for it to do its magic.</p></li>
+
+<li><p>At the next step, you&rsquo;ll be prompted to choose your timezone. Use the arrow keys to make the desired selection and press <code>ENTER</code>.</p>
+
+<p><img src="/docs/assets/mail-in-a-box-choosing-timezone-ubuntu1404.png" alt="Choose Timezone" /></p>
+
+<p>Once again, Mail-in-a-Box will continue to pull in required packages and auto-configure them. Wait for it to finish, it will take longer this time.</p></li>
+
+<li><p>When package auto-configuration is complete, you&rsquo;ll be prompted to install a <em>Transport Layer Security</em> (<em>TLS</em>) certificate. If Let&rsquo;s Encrypt cannot verify that you own your domain (i.e., DNS changes haven&rsquo;t yet propagated to its servers), then this step will be automatically skipped, but you can still request your certificate later from the control panel of Mail-in-a-Box.</p></li>
+
+<li><p>At the next step, you&rsquo;ll choose a password for the administrative account. Choose a good password since this is the most powerful account that can make any change in the control panel.</p></li>
+
+<li><p>At this point the script has finished its job and you&rsquo;ll be prompted with this message in the terminal output:</p>
+
+<pre><code>Your Mail-in-a-Box is running.
+
+Please log in to the control panel for further instructions at:
+
+https://203.0.113.1/admin
+
+You will be alerted that the website has an invalid certificate. Check that
+the certificate fingerprint matches:
+
+D7:E7:DC:E1:6F:9E:2A:96:E4:6E:FA:15:FC:AB:97:66:6F:EF:AF:E4:41:3E:14:D6:6B:61:A2:99:BE:38:F1:30
+</code></pre></li>
+</ol>
+
+<p>In the unlikely event that DNS changes have propagated fast enough to Linode&rsquo;s resolvers, the output will be slightly different:</p>
+
+<pre><code>Your Mail-in-a-Box is running.
+
+Please log in to the control panel for further instructions at:
+
+https://box.example.com/admin
+
+If you have a DNS problem put the box's IP address in the URL
+(https://203.0.113.1/admin) but then check the TLS fingerprint: D2:69:5E:47:52:E6:3D:48:FB:23:80:F4:E7:8B:22:D4:94:71:91:91:C9:89:15:65:85:99:90:94:97:24:F6:8D
+</code></pre>
+
+<p>Now, you can access the control panel in your web browser. After logging in, you&rsquo;ll be greeted with a page showing you status checks for all the moving parts of your mail server. This page is incredibly useful, centralizing all the information you need to see to make sure everything is working correctly. It also describes how you can resolve possible problems.</p>
+
+<p><img src="/docs/assets/mail-in-a-box-control-panel-system-status-checks-ubuntu1404.png" alt="Mail-in-a-Box Control Panel - System Status Checks" /></p>
+
+<h2 id="install-tls-certificate-and-add-ptr-record">Install TLS Certificate and Add PTR Record</h2>
+
+<p>Since it&rsquo;s very likely that a Let&rsquo;s Encrypt TLS certificate hasn&rsquo;t been installed yet, let&rsquo;s do that now.</p>
+
+<ol>
+<li><p>Type this command in the server to check if Linode received your DNS changes:</p>
+
+<pre><code>dig example.com
+</code></pre>
+
+<p>When you see this in the output, <code>203.0.113.1</code> (the IP address of your server), you can continue; otherwise try again later:</p>
+
+<pre><code>;; ANSWER SECTION:
+example.com.        1724    IN  A   203.0.113.1
+</code></pre></li>
+
+<li><p>In the top-left menu you&rsquo;ll notice an element called <strong>System</strong>. Click on it and then select <strong>TLS (SSL) Certificates</strong>. Now click on the blue button that says <strong>Provision</strong> and follow the instructions.</p>
+
+<p><img src="/docs/assets/mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png" alt="Control Panel - TLS Certificates Page" /></p></li>
+
+<li><p>Follow this guide, <a href="/docs/networking/dns/configure-your-linode-for-reverse-dns">How to Configure Reverse DNS on a Linode Server</a>, to set up a pointer record (PTR). This step is important to execute and pass some antispam checks. Without it, some of the other mail servers will flag your outbound email as spam or will consider it suspicious that your IP doesn&rsquo;t point to your domain name.</p></li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>As you can see, it&rsquo;s very convenient when everything for an email server is packaged in one place and automagically configured. But convenience often has a price. Mail-in-a-box&rsquo;s centralization  - that makes it easy to manage everything - also creates a single point of failure. There is a safety net though: email servers are intelligent enough to retry sending you their data for a few days, in case your server is unavailable.</p>
+
+<p>But if you can&rsquo;t afford the delay, you should look at ways to make your setup more reliable. A beginner friendly approach is to set up a monitoring system that will notify you quickly in case of problems. Later on, you can look into secondary (slave) nameservers, secondary MX entries, cloning and syncing Mail-in-a-Box machines, so they can take over in case of failure and floating IPs.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://mailinabox.email/">Mail-in-a-Box Official Website</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#launch-ubuntu-14-04-server">Launch Ubuntu 14.04 Server</a></li>
+<li><a href="#configure-your-domain-name">Configure Your Domain Name</a></li>
+<li><a href="#install-mail-in-a-box">Install Mail-in-a-Box</a>
+<ul>
+<li><a href="#install-wizard-steps">Install Wizard Steps</a></li>
+</ul></li>
+<li><a href="#install-tls-certificate-and-add-ptr-record">Install TLS Certificate and Add PTR Record</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

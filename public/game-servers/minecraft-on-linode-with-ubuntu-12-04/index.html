@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Minecraft on Linode with Ubuntu 12.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="A basic Minecraft server installation for Ubuntu 12.04">
+        <meta name="keywords" content="minecraft, ubuntu, ubuntu precise, 12.04">
+        
+        <meta property="og:title" content="Minecraft on Linode with Ubuntu 12.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/game-servers/minecraft-on-linode-with-ubuntu-12-04/">
+        <meta property="og:description" content="A basic Minecraft server installation for Ubuntu 12.04">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/game-servers/minecraft-on-linode-with-ubuntu-12-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/game-servers/">Game Servers</a>
+  
+</li>
+
+
+<li>
+  
+  Minecraft on Linode with Ubuntu 12.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Minecraft on Linode with Ubuntu 12.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-10-01T00:00:00Z">Tuesday, October 1, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fminecraft-on-linode-with-ubuntu-12-04%2f&via=linode&text=Minecraft%20on%20Linode%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fminecraft-on-linode-with-ubuntu-12-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fminecraft-on-linode-with-ubuntu-12-04%2f&t=Minecraft%20on%20Linode%20with%20Ubuntu%2012.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/game-servers/minecraft-on-linode-with-ubuntu-12-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/game-servers/minecraft-on-linode-with-ubuntu-12-04.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>This guide shows you how to set up a personal Minecraft server on a Linode running Ubuntu 12.04 LTS (64 bit).</p>
+
+<p>Minecraft has rapidly become one of the more popular online games for kids and adults alike. It is a sandbox game, offering a limitless world in which to create, as well as an end goal to strive towards: defeating the <em>Ender Dragon</em> and <em>The Wither</em>.</p>
+
+<p>The game starts you in the vast wilderness with nothing but your bare hands. By chopping at trees you can acquire wood. With the wood you can construct a crafting bench, and with that simple tools. The more materials you gather, the more you can create. As you explore you will encounter monsters, lava, and other hazards that could spell disaster for your character. Counter these dangers with armor, enchantments, traps, and seek out the path to <em>The End</em>.</p>
+
+<p>Running your own Minecraft server allows you to control whom you play with, and keeps a persistent world available whenever you want to rejoin the game.</p>
+
+<p>In this guide, we will show you how to install the official or <em>Vanilla</em> server version of Minecraft, but you can use the same instructions for <a href="http://dl.bukkit.org/downloads/craftbukkit/">Craftbukkit</a> or <a href="http://www.spigotmc.org/">Spigot</a>, which are popular versions of Minecraft that allow plugins and customization. We will also show you how to create a new user to run the Minecraft server.</p>
+
+<h1 id="preparation">Preparation</h1>
+
+<p>In this section, we&rsquo;ll prepare your Linode for installing the Minecraft server.</p>
+
+<ul>
+<li>We recommend that you install the Minecraft on at least a Linode 2GB so it runs smoothly.</li>
+<li>We will also be installing Oracle Java Runtime Environment (JRE) 7 as a prerequisite.</li>
+</ul>
+
+<h3 id="updating-packages">Updating Packages</h3>
+
+<ol>
+<li>Log in to your Linode via <a href="/docs/getting-started#ssh-overview">SSH</a>.</li>
+
+<li><p>Gain administrator privileges:</p>
+
+<pre><code>su
+</code></pre></li>
+
+<li><p>Execute the following two commands to make sure your packages are up to date:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre></li>
+</ol>
+
+<h3 id="installing-oracle-jre">Installing Oracle JRE</h3>
+
+<p>This guide uses Oracle JRE 7, which offers the best performance for your Minecraft server, but is not available in Ubuntu&rsquo;s repositories. The website <a href="http://www.webupd8.org/">webupd8.org</a> has provided instructions for installing the official version on Debian-based systems, including Ubuntu. The full guide is <a href="http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html">here</a>.</p>
+
+<p>For convenience, all the necessary commands for installing JRE 7 are also listed below.</p>
+
+<ol>
+<li><p>Run these commands to set up the third-party repository for the Oracle JRE:</p>
+
+<pre><code>apt-get install python-software-properties
+add-apt-repository ppa:webupd8team/java
+</code></pre></li>
+
+<li><p>You will see the following output, which provides more information on the method we&rsquo;re using to install Java. Press <strong>Enter</strong> when the final prompt appears:</p>
+
+<pre><code>You are about to add the following PPA to your system:
+Oracle Java (JDK) Installer (automatically downloads and installs Oracle
+JDK6 / JDK7 / JDK8). There are no actual Java files in this PPA. More info:
+http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html
+More info: https://launchpad.net/~webupd8team/+archive/java
+Press [ENTER] to continue or ctrl-c to cancel adding it
+</code></pre></li>
+
+<li><p>Then run the following commands to install JRE:</p>
+
+<pre><code>apt-get update
+apt-get install oracle-java7-installer
+</code></pre>
+
+<p>You will need to agree to Oracle’s license agreement.</p></li>
+
+<li><p>Test the installation by running this command:</p>
+
+<pre><code>java -version
+</code></pre>
+
+<p>You should see the following output:</p>
+
+<pre><code>java version &quot;1.7.0_40&quot;
+Java(TM) SE Runtime Environment (build 1.7.0_40-b43)
+Java HotSpot(TM) 64-Bit Server VM (build 24.0-b56, mixed mode)
+</code></pre></li>
+</ol>
+
+<p>If you don’t see this output or you get errors, refer to webupd8.org’s <a href="http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html">guide</a> for more steps. Or if you prefer, you can download the installer for Oracle’s JRE <a href="http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html">directly from Oracle</a>, and install it on your own.</p>
+
+<h1 id="installing-and-setting-up-minecraft">Installing and Setting Up Minecraft</h1>
+
+<p>There are many popular versions of the Minecraft server, but for this guide we&rsquo;ll be using the official version. You can follow these same steps with the third-party servers as well. One of the more popular versions is Craftbukkit. The list of available CraftBukkit versions is available <a href="http://dl.bukkit.org/downloads/craftbukkit/">here</a>.</p>
+
+<p>To find the latest version of the Minecraft server, visit the <a href="https://minecraft.net/download">Minecraft download page</a>.</p>
+
+<ol>
+<li><p>Create the user to run the server:</p>
+
+<pre><code>adduser minecraft
+</code></pre></li>
+
+<li><p>Switch to the <strong>minecraft</strong> user:</p>
+
+<pre><code>su minecraft
+</code></pre></li>
+
+<li><p>Move into the <strong>minecraft</strong> user&rsquo;s home directory:</p>
+
+<pre><code>cd
+</code></pre></li>
+
+<li><p>Download the latest version of the Minecraft server:</p>
+
+<pre><code>wget https://s3.amazonaws.com/Minecraft.Download/versions/1.6.4/minecraft_server.1.6.4.jar
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This URL will change as Minecraft is updated. Please check the downloads <a href="https://minecraft.net/download">page</a> for the current URL.</div>
+</blockquote>
+</li>
+
+<li><p>Using your preferred text editor, create the following text file. This is a script that invokes the JRE and tells it to run Minecraft:</p>
+
+<dl class="file">
+<dt>
+
+
+		/home/minecraft/run.sh 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span><span class="nv">BINDIR</span><span class="o">=</span><span class="k">$(</span>dirname <span class="s2">&#34;</span><span class="k">$(</span>readlink -fn <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2">&#34;</span><span class="k">)</span><span class="s2">&#34;</span><span class="k">)</span>
+<span class="nb">cd</span> <span class="s2">&#34;</span><span class="nv">$BINDIR</span><span class="s2">&#34;</span>
+
+java -Xms1024M -Xmx1536M -jar minecraft_server.1.6.4.jar -o true</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you are using a different or newer version of the Minecraft server, make sure to adjust this file to name the correct <code>.jar</code> file.</p>
+
+<p>The variable <code>-Xms</code> defines for Java the minimum amount of memory to allocate for the Minecraft server, and <code>-Xmx</code> defines the maximum. These values are set for a Linode 2GB, but you will want to adjust these numbers based on your Linode’s size and other uses.</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Make the script executable:</p>
+
+<pre><code>chmod +x run.sh
+</code></pre></li>
+
+<li><p>Exit the <strong>minecraft</strong> user&rsquo;s shell:</p>
+
+<pre><code>exit
+</code></pre></li>
+
+<li><p>We recommend running Minecraft from a screen session under your username, and running the server as the <strong>minecraft</strong> user. Screen is already installed on Ubuntu 12.04, and is available in most Linux distributions&rsquo; repositories. With the Minecraft server running in a screen session, you can keep it running even when you disconnect from the Linode. When you reconnect, you can access the Minecraft console again with the <code>screen -rd</code> command and the name you gave the screen session. To put Minecraft into a screen session, execute the following command:</p>
+
+<pre><code>screen -S minecraft
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>To leave this screen session running in the background, type <strong>CTRL-a</strong> and then <strong>d</strong>. You can now safely exit from your SSH session. To reattach to the session later, use the command <code>screen -rd minecraft</code>.</div>
+</blockquote>
+</li>
+
+<li><p>In your screen session (which you started in the previous step), switch to the <strong>minecraft</strong> user:</p>
+
+<pre><code>su minecraft
+</code></pre></li>
+
+<li><p>Change your working directory:</p>
+
+<pre><code>cd
+</code></pre></li>
+
+<li><p>Launch the server:</p>
+
+<pre><code>./run.sh
+</code></pre>
+
+<p>This will take several seconds, as the server needs to generate the initial environment for your players. Once you see the output <code>Done</code>, your server is live:</p>
+
+<pre><code>minecraft@li510-161:~$ ./run.sh
+2013-09-22 23:37:24 [INFO] Starting minecraft server version 1.6.4
+2013-09-22 23:37:24 [INFO] Loading properties
+2013-09-22 23:37:24 [WARNING] server.properties does not exist
+2013-09-22 23:37:24 [INFO] Generating new properties file
+2013-09-22 23:37:24 [INFO] Default game type: SURVIVAL
+2013-09-22 23:37:24 [INFO] Generating keypair
+2013-09-22 23:37:26 [INFO] Starting Minecraft server on *:25565
+2013-09-22 23:37:26 [WARNING] Failed to load operators list: java.io.FileNotFoundException: ./ops.txt (No such file or directory)
+2013-09-22 23:37:26 [WARNING] Failed to load white-list: java.io.FileNotFoundException: ./white-list.txt (No such file or directory)
+2013-09-22 23:37:26 [INFO] Preparing level &quot;world&quot;
+2013-09-22 23:37:28 [INFO] Preparing start region for level 0
+2013-09-22 23:37:29 [INFO] Preparing spawn area: 0%
+2013-09-22 23:37:30 [INFO] Preparing spawn area: 2%
+2013-09-22 23:37:31 [INFO] Preparing spawn area: 4%
+....
+2013-09-22 23:37:53 [INFO] Preparing spawn area: 89%
+2013-09-22 23:37:54 [INFO] Preparing spawn area: 95%
+2013-09-22 23:37:55 [INFO] Done (29.209s)! For help, type &quot;help&quot; or &quot;?&quot;
+</code></pre></li>
+</ol>
+
+<h1 id="configuring-your-minecraft-client">Configuring Your Minecraft Client</h1>
+
+<p>For you and your friends to play Minecraft, you will all need to install the Minecraft client on your computers.</p>
+
+<ol>
+<li>Visit <a href="http://minecraft.net/">minecraft.net</a>.</li>
+<li>Create an account, which you will use to log in to your Minecraft client and to access your (or any other) server.</li>
+<li>Download the Minecraft client from the Minecraft website.</li>
+<li>Run the Minecraft client.</li>
+<li>Log in with the credentials you created in Step 2.</li>
+<li>Click <strong>Multiplayer</strong>.</li>
+<li>Click <strong>Add server</strong>.</li>
+<li>In the <strong>Server Name</strong> field, enter your desired name for your Minecraft server. This is only for your convenience, and will only be visible to you.</li>
+<li>In the <strong>Server Address</strong> field, enter your <a href="/docs/getting-started#find-the-ip-address-of-your-linode">Linode’s IP address</a>, or any domain that resolves to your Linode.</li>
+
+<li><p>Click <strong>Done</strong> to return to the server list screen.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Sometimes the Minecraft Client will show a newly-added server as unavailable the first time around. Just click the <strong>Refresh</strong> button to reload the screen.</div>
+</blockquote>
+</li>
+
+<li><p>Double-click your newly-added server to log in.</p></li>
+</ol>
+
+<p>Congratulations! You’ve created a working Minecraft server. Feel free to look around and begin playing, but remember that your work isn’t done yet, and your server is not yet fully configured. Once you’re ready, log out and continue with this guide.</p>
+
+<h1 id="configuring-your-new-minecraft-server">Configuring Your New Minecraft Server</h1>
+
+<p>Once you’re ready to continue and have logged out of your server, log back in to your Linode.</p>
+
+<ol>
+<li><p>Rejoin your screen session:</p>
+
+<pre><code>screen -rd minecraft
+</code></pre></li>
+
+<li><p>Switch to the <strong>minecraft</strong> user:</p>
+
+<pre><code>su minecraft
+</code></pre></li>
+
+<li><p>Change your working directory:</p>
+
+<pre><code>cd
+</code></pre></li>
+
+<li><p>Stop the Minecraft server:</p>
+
+<pre><code>stop
+</code></pre></li>
+
+<li><p>Take a look at what’s just been created for us, so we can start configuring the server:</p>
+
+<pre><code>2013-09-22 23:47:27 [INFO] Stopping the server
+2013-09-22 23:47:27 [INFO] Stopping server
+2013-09-22 23:47:27 [INFO] Saving players
+2013-09-22 23:47:27 [INFO] Saving worlds
+2013-09-22 23:47:27 [INFO] Saving chunks for level 'world'/Overworld
+java.net.SocketException: Socket closed
+        at java.net.PlainSocketImpl.socketAccept(Native Method)
+        at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:398)
+        at java.net.ServerSocket.implAccept(ServerSocket.java:530)
+        at java.net.ServerSocket.accept(ServerSocket.java:498)
+        at iy.run(SourceFile:61)
+2013-09-22 23:47:27 [INFO] Closing listening thread
+2013-09-22 23:47:27 [INFO] Saving chunks for level 'world'/Nether
+2013-09-22 23:47:27 [INFO] Saving chunks for level 'world'/The End
+minecraft@li510-161:~$
+</code></pre></li>
+</ol>
+
+<p>These next sections contain descriptions for certain files or directories in your <code>/minecraft</code> directory. These are not all the files that you may want to configure, nor are these complete descriptions. For more details, see the <a href="http://minecraft.gamepedia.com/Minecraft_Wiki">Minecraft Wiki</a>.</p>
+
+<h3 id="edit-the-configuration-files">Edit the Configuration Files</h3>
+
+<p>In the <code>/minecraft</code> home folder, run this command:</p>
+
+<pre><code>cd
+</code></pre>
+
+<p>Now that the server has been started once, you will see (in addition to the <code>run.sh</code> file) several new files and directories. Below are explanations and instructions on how to use them.</p>
+
+<ol>
+<li><p>Edit the <code>ops.txt</code> file:</p>
+
+<pre><code>nano /home/minecraft/ops.txt
+</code></pre>
+
+<p>This file holds the usernames of players that have <strong>ops</strong> privileges on your server, each on their own line. Add your Minecraft username to this file, but be careful who else you put on this list. Players on this list can change their game mode, ban and unban players, etc. You can also add players to the ops list while the server is running by typing <code>op playername</code> into the server console, or <code>/op playername</code> from within the game (replacing <code>playername</code> with the actual name of the player). Note that you need to add your player name to this list manually or from the console in order to be able to do so from within the game for other users.</p></li>
+
+<li><p>Edit the white list:</p>
+
+<pre><code>nano /home/minecraft/white-list.txt
+</code></pre>
+
+<p>If you decide you want to make your server accessible only to select players, you can add their names to the file <code>white-list.txt</code>. You will need to edit the <code>server.properties</code> file as described in step 3, and change <code>white-list=false</code> to <code>white-list=true</code>.</p></li>
+
+<li><p>Edit the <code>server.properties</code> file:</p>
+
+<pre><code>nano server.properties
+</code></pre>
+
+<p>In addition to changing the white list settings as described in Step 2, you can also use this file to change the public message for your Minecraft server. Edit the <code>motd=A Minecraft Server</code> line to show the name or phrase for your server that you want to display publicly.</p></li>
+</ol>
+
+<p>Any time you modify these files while the game is running, you will need to stop and restart the server for the changes to take effect.</p>
+
+<h3 id="description-of-directories">Description of Directories</h3>
+
+<ul>
+<li><code>/world</code></li>
+<li><code>/world_nether</code></li>
+<li><code>/world_the_end</code></li>
+</ul>
+
+<p>The directories <code>world</code>, <code>world_nether</code>, and <code>world-the-end</code> contain the map and player data for those realms in your game. We suggest <a href="/docs/platform/backup-service">backing up</a> these directories on a regular basis so that you can revert to previous versions in case of catastrophe or <a href="http://www.minecraftwiki.net/wiki/Griefing">griefing</a>. These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the <em>nether</em> and <em>the end</em> will not be created until a player goes to this area on the server.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://minecraft.net/">Official Minecraft Site</a></li>
+<li><a href="http://minecraft.gamepedia.com/Minecraft_Wiki">Minecraft Wiki</a></li>
+<li><a href="http://dl.bukkit.org/">Official CraftBukkit Site</a></li>
+<li><a href="http://dev.bukkit.org/bukkit-plugins/">Bukkit Plugins</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/">Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/multicraft-on-ubuntu/">Installing Multicraft on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/">How to Set Up a Minecraft Server on Ubuntu or Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/remote-desktop/using-vnc-to-operate-a-desktop-on-ubuntu-12-04/">Using VNC to Operate a Desktop on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/installing-mail-filtering-for-ubuntu-12-04/">Installing Mail Filtering for Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#preparation">Preparation</a>
+<ul>
+<li>
+<ul>
+<li><a href="#updating-packages">Updating Packages</a></li>
+<li><a href="#installing-oracle-jre">Installing Oracle JRE</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#installing-and-setting-up-minecraft">Installing and Setting Up Minecraft</a></li>
+<li><a href="#configuring-your-minecraft-client">Configuring Your Minecraft Client</a></li>
+<li><a href="#configuring-your-new-minecraft-server">Configuring Your New Minecraft Server</a>
+<ul>
+<li>
+<ul>
+<li><a href="#edit-the-configuration-files">Edit the Configuration Files</a></li>
+<li><a href="#description-of-directories">Description of Directories</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

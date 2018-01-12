@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install PostgreSQL Relational Databases on CentOS 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="The PostgreSQL relational database is a powerful open source database platform. Learn how to install it on CentOS 7 in this simple tutorial.">
+        <meta name="keywords" content="postgresql, CentOS 7, open source database, relational database">
+        
+        <meta property="og:title" content="How to Install PostgreSQL Relational Databases on CentOS 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/">
+        <meta property="og:description" content="The PostgreSQL relational database is a powerful open source database platform. Learn how to install it on CentOS 7 in this simple tutorial.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/postgresql/">PostgreSQL</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install PostgreSQL Relational Databases on CentOS 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install PostgreSQL Relational Databases on CentOS 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-12-12T00:00:00Z">Monday, December 12, 2016</time> by Nick Brewer</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fhow-to-install-postgresql-relational-databases-on-centos-7%2f&via=linode&text=How%20to%20Install%20PostgreSQL%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fhow-to-install-postgresql-relational-databases-on-centos-7%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fhow-to-install-postgresql-relational-databases-on-centos-7%2f&t=How%20to%20Install%20PostgreSQL%20Relational%20Databases%20on%20CentOS%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The <a href="http://www.postgresql.org/">PostgreSQL</a> relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your CentOS 7 Linode.</p>
+
+<p><img src="/docs/assets/use-postgresql-on-centos-7-title.png" alt="Use PostgreSQL Relational Databases on CentOS 7" title="Use PostgreSQL Relational Databases on CentOS 7" /></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started guide</a> and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server guide</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo yum update
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, visit the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups guide</a> for more information.</div>
+</blockquote>
+
+
+<h2 id="install-postgresql">Install PostgreSQL</h2>
+
+<p>In this section, we&rsquo;ll cover two different methods for installing PostgreSQL. If you do not need the latest version, we recommend using the first method to install PostgreSQL from the CentOS repositories.</p>
+
+<p>Unless otherwise noted, the instructions in subsequent sections of this guide will be compatible with versions installed by either method.</p>
+
+<h3 id="install-from-the-centos-repositories">Install From the CentOS Repositories</h3>
+
+<ol>
+<li><p>As of this writing, the CentOS 7 repositories ship with PostgreSQL version <code>9.2.15</code>. To install from the CentOS repositories, simply run:</p>
+
+<pre><code>sudo yum install postgresql-server postgresql-contrib
+</code></pre></li>
+
+<li><p>Initialize your Postgres database and start PostgreSQL:</p>
+
+<pre><code>sudo postgresql-setup initdb
+sudo systemctl start postgresql
+</code></pre></li>
+
+<li><p><strong>Optional</strong>: Configure PostgreSQL to start on boot:</p>
+
+<pre><code>sudo systemctl enable postgresql
+</code></pre></li>
+</ol>
+
+<h3 id="install-from-the-postgres-repositories">Install From the Postgres Repositories</h3>
+
+<p>Alternatively, you can install the latest version from the Postgres repositories. As of this publication, PostgreSQL <code>9.6.3</code> is the most recent version available for CentOS 7, but these steps can be applied to any RPM-based installation.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>When Postgres is installed using this method, the version number is included in its configuration directories. For example, <code>/var/lib/pgsql</code> becomes <code>/var/lib/pgsql/9.6</code>. This is also the case with systemd units; <code>systemctl status postgresql</code> becomes <code>systemctl status postgresql-9.6</code>.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Select the version you wish to install from the <a href="https://yum.postgresql.org/repopackages.php">Postgres Yum repositories</a>. Locate the CentOS 7 link for your chosen version and download it to your Linode:</p>
+
+<pre><code>wget https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+</code></pre></li>
+
+<li><p>Install the RPM, as well as the <a href="https://fedoraproject.org/wiki/EPEL">EPEL</a> repositories, which will be used to satisfy dependencies:</p>
+
+<pre><code>sudo yum install pgdg-centos96-9.6-3.noarch.rpm epel-release
+</code></pre></li>
+
+<li><p>Update Yum to apply your changes and install PostgreSQL. When installing Postgres manually, you will have to specify the version:</p>
+
+<pre><code>sudo yum update
+sudo yum install postgresql96-server postgresql96-contrib
+</code></pre></li>
+
+<li><p>Initialize your database and start PostgreSQL:</p>
+
+<pre><code>sudo /usr/pgsql-9.6/bin/postgresql96-setup initdb
+sudo systemctl start postgresql-9.6
+</code></pre></li>
+
+<li><p><strong>Optional</strong>: Configure PostgreSQL to start on boot:</p>
+
+<pre><code>sudo systemctl enable postgresql-9.6
+</code></pre></li>
+</ol>
+
+<h2 id="configure-postgresql">Configure PostgreSQL</h2>
+
+<h3 id="secure-the-postgres-users">Secure the Postgres Users</h3>
+
+<p>By default, PostgreSQL will create a Linux user named <code>postgres</code> to access the database software.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>The <code>postgres</code> user should not be used for other purposes (e.g., connecting to other networks). Doing so presents a serious risk to the security of your databases.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Change the <code>postgres</code> user&rsquo;s Linux password:</p>
+
+<pre><code>sudo passwd postgres
+</code></pre></li>
+
+<li><p>Issue the following commands to set a password for the <code>postgres</code> database user. Be sure to replace <code>newpassword</code> with a strong password and keep it in a secure place.</p>
+
+<pre><code>su - postgres
+psql -d template1 -c &quot;ALTER USER postgres WITH PASSWORD 'newpassword';&quot;
+</code></pre>
+
+<p>Note that this user is distinct from the <code>postgres</code> Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases.</p>
+
+<p>The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the <a href="/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7#secure-local-access">Secure Local PostgreSQL Access section</a> for information about changing this setting.</p></li>
+</ol>
+
+<h3 id="access-the-postgresql-shell">Access the PostgreSQL Shell</h3>
+
+<p>The PostgreSQL client shell allows you to issue SQL commands to administer your databases. As the <code>postgres</code> Linux user, log in by running:</p>
+
+<pre><code>psql postgres
+</code></pre>
+
+<p>This will log you in as the <code>postgres</code> database user. You&rsquo;ll see a prompt similar to this:</p>
+
+<pre><code>psql (9.2.15)
+Type &quot;help&quot; for help.
+
+postgres=#
+</code></pre>
+
+<p>In the last line, <code>postgres=#</code> indicates the name of the current database. To see a list of available commands, type <code>\h</code>. You may find more information on a specific command by adding it after <code>\h</code>. Once you’ve finished using the shell, you can exit with <code>\q</code>.</p>
+
+<h2 id="work-with-databases">Work with Databases</h2>
+
+<p>This section will cover how to create, delete and access databases.</p>
+
+<h3 id="create-a-database">Create a Database</h3>
+
+<p>You can create databases with the <code>createdb</code> command. Create a sample database called <code>mytestdb</code> by running this command as the <code>postgres</code> Linux user:</p>
+
+<pre><code>createdb mytestdb
+</code></pre>
+
+<p>It&rsquo;s also possible to assign ownership of the database to a specific Postgres user/role. For example, you could assign ownership to the <code>examplerole</code> role by running:</p>
+
+<pre><code>createdb mytestdb -O examplerole
+</code></pre>
+
+<p>The <code>createdb</code> command has several additional options, which can be found in the <a href="https://www.postgresql.org/docs/9.2/static/app-createdb.html">PostgreSQL documentation</a>.</p>
+
+<h3 id="connect-to-a-database">Connect to a Database</h3>
+
+<p>You can use the <code>psql</code> command to connect to a specific database.</p>
+
+<ol>
+<li><p>Connect to the test database:</p>
+
+<pre><code>psql mytestdb
+</code></pre></li>
+
+<li><p>You will see the following output:</p>
+
+<pre><code>psql (9.2.15)
+Type &quot;help&quot; for help.
+
+mytestdb=#
+</code></pre>
+
+<p>By default, you will connect to a database as your <a href="#peer-authentication">peer-authenticated</a> user. However, if you&rsquo;ve enabled <a href="#secure-local-access">local password access</a>, it&rsquo;s also possible to specify which user you wish to connect as:</p>
+
+<pre><code>psql mytestdb -U examplerole
+</code></pre>
+
+<p>You&rsquo;ll be prompted to enter the password for the <code>examplerole</code> database user before you access the shell.</p></li>
+</ol>
+
+<h3 id="list-databases">List Databases</h3>
+
+<p>From the <a href="#access-the-postgresql-shell">Postgres shell</a>, you can list all of your databases with the <code>\l</code> or <code>\list</code> command. You will receive output similar to this:</p>
+
+<pre><code>postgres=# \l
+                          List of databases
+Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
+-----------+----------+----------+-------------+-------------+-----------------------
+mytestdb  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+|         |          |          |             | postgres=CTc/postgres
+template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+|         |          |          |             | postgres=CTc/postgres
+(4 rows)
+</code></pre>
+
+<p>You may also show the current database and user by entering <code>\c</code> from the Postgres shell. Additional info, like socket and port, will be included if you use <code>\conninfo</code>:</p>
+
+<pre><code>You are connected to database &quot;mytestdb&quot; as user &quot;postgres&quot; via socket in &quot;/var/run/postgresql&quot; at port &quot;5432&quot;.
+</code></pre>
+
+<h3 id="delete-a-database">Delete a Database</h3>
+
+<p>You can delete, or <em>drop</em>, databases with the <code>dropdb</code> command. For example, to delete the <code>mytestdb</code> database created previously, issue this command as the <code>postgres</code> Linux user:</p>
+
+<pre><code>dropdb mytestdb
+</code></pre>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Deleted databases cannot be recovered.</div>
+</blockquote>
+
+
+<h2 id="work-with-tables">Work With Tables</h2>
+
+<p>PostgreSQL databases use tables to store and organize information within a database. In this section, you&rsquo;ll find practical examples for adding, removing and manipulating tables. Unless otherwise noted, the commands in this section should be issued from the Postgres shell once you&rsquo;ve <a href="#connect-to-a-database">connected to your database</a>.</p>
+
+<h3 id="create-tables">Create Tables</h3>
+
+<p>This section contains examples that create a test database with an employee&rsquo;s first and last name, assigning each a unique key. When creating your own tables, you may specify as many parameters (columns) as you need and name them appropriately.</p>
+
+<ol>
+<li><p>Create a table called &ldquo;employees&rdquo; in your test database:</p>
+
+<pre><code>CREATE TABLE employees (employee_id int, first_name varchar, last_name varchar);
+</code></pre></li>
+
+<li><p>Insert a record into the table:</p>
+
+<pre><code>INSERT INTO employees VALUES (1, 'John', 'Doe');
+</code></pre></li>
+</ol>
+
+<h3 id="view-the-content-of-a-table">View the Content of a Table</h3>
+
+<p>To view the contents of the &ldquo;employees&rdquo; table:</p>
+
+<pre><code>SELECT * FROM employees;
+</code></pre>
+
+<p>This produces the following output:</p>
+
+<pre><code>employee_id | first_name | last_name
+-------------+------------+-----------
+          1 | John       | Doe
+(1 row)
+</code></pre>
+
+<h3 id="list-tables-in-a-database">List Tables in a Database</h3>
+
+<p>You can list all tables in the current database with the <code>\dt</code> command:</p>
+
+<pre><code>mytestdb-# \dt
+          List of relations
+Schema |   Name    | Type  |  Owner
+--------+-----------+-------+----------
+public | employees | table | postgres
+</code></pre>
+
+<h3 id="delete-tables">Delete Tables</h3>
+
+<p>Delete tables with <code>DROP TABLE</code>. To delete the <code>employees</code> table:</p>
+
+<pre><code>DROP TABLE employees;
+</code></pre>
+
+<p><code>DROP TABLE</code> accepts multiple comma-separated table names as arguments. For example, if you had two separate tables called <code>employees1</code> and <code>employees2</code>, you could delete them both by running:</p>
+
+<pre><code>DROP TABLE employees1, employees2;
+</code></pre>
+
+<h3 id="add-columns">Add Columns</h3>
+
+<p>Tables can be altered to add definitions, data types and columns. In this example you&rsquo;ll add a new <code>start_date</code> column that uses the <a href="https://www.postgresql.org/docs/9.2/static/datatype-datetime.html">date</a> data type.</p>
+
+<ol>
+<li><p>Add the <code>start_date</code> column to the <code>employees</code> table:</p>
+
+<pre><code>ALTER TABLE employees ADD start_date date;
+</code></pre></li>
+
+<li><p>Verify your change:</p>
+
+<pre><code>SELECT * FROM employees;
+</code></pre>
+
+<p>You&rsquo;ll see that the new column has been created, but it does not contain any data:</p>
+
+<pre><code>employee_id | first_name | last_name | start_date
+-------------+------------+-----------+------------
+          1 | John       | Doe       |
+(1 row)
+</code></pre>
+
+<p>In this example you&rsquo;ve used the <code>date</code> data type, but PostgreSQL tables support several different types of data. See the <a href="https://www.postgresql.org/docs/9.2/static/datatype.html">PostgreSQL Documentation</a> for a full explanation of supported data types.</p></li>
+</ol>
+
+<h3 id="add-and-update-rows">Add and Update Rows</h3>
+
+<p>In this section, you&rsquo;ll use <code>UPDATE</code> to enter a value into the existing row you&rsquo;ve created. Then, you&rsquo;ll create an entirely new row with <code>INSERT</code>.</p>
+
+<ol>
+<li><p>Update the <code>start_date</code> field for the user with the value <code>1</code> in the <code>employee_id</code> column:</p>
+
+<pre><code>UPDATE employees SET start_date = '2016-09-28' WHERE employee_id = '1';
+</code></pre></li>
+
+<li><p>Create a new row in the <code>employees</code> table:</p>
+
+<pre><code>INSERT INTO employees VALUES (2, 'Jane', 'Smith', '2015-03-09');
+</code></pre></li>
+
+<li><p>Verify your changes:</p>
+
+<pre><code>SELECT * FROM employees;
+</code></pre>
+
+<p>You&rsquo;ll see that the start date of <code>2016-09-28</code> has been added to the first row, and that a new row has been created for &ldquo;Jane Smith&rdquo;:</p>
+
+<pre><code>employee_id | first_name | last_name | start_date
+-------------+------------+-----------+------------
+          1 | John       | Doe       | 2016-09-28
+          2 | Jane       | Smith     | 2015-03-09
+(2 rows)
+</code></pre></li>
+</ol>
+
+<h3 id="remove-columns-and-rows">Remove Columns and Rows</h3>
+
+<p>In this section, you&rsquo;ll remove a column from your table and then remove the second row.</p>
+
+<ol>
+<li><p>Use <code>ALTER TABLE</code> to remove the <code>start_date</code> column you made previously:</p>
+
+<pre><code>ALTER TABLE employees DROP start_date;
+</code></pre></li>
+
+<li><p>Now use <code>DELETE</code> to remove the second row of your <code>employees</code> table. The following command will remove the row with a value of <code>2</code> in the <code>employee_id</code> column:</p>
+
+<pre><code>DELETE FROM employees WHERE employee_id = '2';
+</code></pre></li>
+
+<li><p>Confirm your changes:</p>
+
+<pre><code>SELECT * FROM employees;
+</code></pre>
+
+<p>Your table now consists of a single row, with the <code>start_date</code> column removed:</p>
+
+<pre><code>employee_id | first_name | last_name
+-------------+------------+-----------
+          1 | John       | Doe
+(1 row)
+</code></pre></li>
+</ol>
+
+<h3 id="query-a-table">Query a Table</h3>
+
+<p>You can use queries to pull specific information from your database. This command will query your <code>employees</code> table to only return values for the <code>employee_id</code> and <code>last_name</code> columns:</p>
+
+<pre><code>SELECT last_name,employee_id FROM employees;
+</code></pre>
+
+<p>You&rsquo;ll receive an output similar to this:</p>
+
+<pre><code>last_name | employee_id
+-----------+-------------
+Doe       |           1
+(1 row)
+</code></pre>
+
+<p>PostgreSQL supports many querying options. See the <a href="https://www.postgresql.org/docs/9.2/static/sql-select.html">PostgreSQL Documentation</a> for more information.</p>
+
+<h2 id="work-with-roles">Work With Roles</h2>
+
+<p>PostgreSQL grants database access via <strong>roles</strong>, which are used to specify privileges. Roles can be understood as having a similar function to Linux &ldquo;users.&rdquo; In addition, roles may also be created as a set of other roles, similar to a Linux &ldquo;group.&rdquo; PostgreSQL roles apply globally, so you will not need to create the same role twice if you&rsquo;d like to grant it access to more than one database on the same server.</p>
+
+<h3 id="create-roles">Create Roles</h3>
+
+<p>New user roles are added with the <code>createuser</code> command. To create a new user called <code>examplerole</code>, issue this command as the <code>postgres</code> Linux user:</p>
+
+<pre><code>createuser examplerole --pwprompt
+</code></pre>
+
+<p>You will be prompted to create a password for the new user.</p>
+
+<h3 id="give-a-role-access-to-a-database">Give a Role Access to a Database</h3>
+
+<p>In this example, you&rsquo;ll give the newly created <code>examplerole</code> user access to your database.</p>
+
+<ol>
+<li><p>Connect to the database:</p>
+
+<pre><code>psql mytestdb
+</code></pre>
+
+<p>You&rsquo;ll be connected as the <code>postgres</code> database user by default.</p></li>
+
+<li><p>From the PostgreSQL shell, enter the following to grant all privileges on the table <code>employees</code> to the user <code>examplerole</code>:</p>
+
+<pre><code>GRANT ALL ON employees TO examplerole;
+</code></pre></li>
+
+<li><p>Exit the database with <code>\q</code>.</p></li>
+</ol>
+
+<h3 id="list-all-roles">List All Roles</h3>
+
+<p>You can list all roles from the <a href="#access-the-postgresql-shell">Postgres Shell</a> by running <code>\du</code>. You&rsquo;ll see an output similar to this:</p>
+
+<pre><code>postgres=# \du
+                             List of roles
+Role name   |                   Attributes                   | Member of
+-------------+------------------------------------------------+-----------
+examplerole |                                                | {}
+postgres    | Superuser, Create role, Create DB, Replication | {}
+</code></pre>
+
+<h3 id="group-roles">Group Roles</h3>
+
+<p>For ease of administration, it&rsquo;s possible to add multiple user roles to a single group, so that their privileges can be managed as a whole. In this section you&rsquo;ll create a new group and add the <code>examplerole</code> user to it. These commands should be run as the <code>postgres</code> Linux user.</p>
+
+<ol>
+<li><p>Use the <code>createuser</code> command to create a new group role. The <code>--no-login</code> option is specified because groups do not need login capability.</p>
+
+<pre><code>createuser examplegroup --no-login
+</code></pre></li>
+
+<li><p>Log into the Postgres shell and add <code>examplerole</code> to the new group:</p>
+
+<pre><code>psql postgres
+GRANT examplegroup TO examplerole;
+</code></pre></li>
+
+<li><p>From the Postgres shell, verify your changes with <code>\du</code>. You&rsquo;ll see that the <code>examplerole</code> user is now listed as a member of the <code>examplegroup</code> group:</p>
+
+<pre><code>postgres=# \du
+                                List of roles
+Role name    |                   Attributes                   |   Member of
+--------------+------------------------------------------------+----------------
+examplegroup | Cannot login                                   | {}
+examplerole  |                                                | {examplegroup}
+group        |                                                | {}
+postgres     | Superuser, Create role, Create DB, Replication | {}
+</code></pre>
+
+<p>The <code>createuser</code> command has several other options. See the <a href="https://www.postgresql.org/docs/9.2/static/app-createuser.html">PostgreSQL documentation</a> for more details.</p></li>
+
+<li><p>When you&rsquo;ve finished applying your changes, exit the Postgres shell with <code>\q</code>.</p></li>
+</ol>
+
+<h3 id="alter-roles">Alter Roles</h3>
+
+<p>While specific settings and privileges can be applied to a role when it&rsquo;s created, you can also modify a role&rsquo;s properties later on. In this example, we&rsquo;ll modify the <code>examplerole</code> user so that it can create new databases. The commands in this section should be run as the <code>postgres</code> Linux user.</p>
+
+<ol>
+<li><p>Log in as the <code>postgres</code> database user:</p>
+
+<pre><code>psql postgres
+</code></pre></li>
+
+<li><p>From the Postgres shell, add the <code>CREATEDB</code> parameter to the <code>examplerole</code> user:</p>
+
+<pre><code>ALTER ROLE examplerole CREATEDB;
+</code></pre>
+
+<p>A number of permissions can be applied when creating or altering a role. See the <a href="https://www.postgresql.org/docs/9.2/static/sql-createrole.html">PostgeSQL Documentation</a> for more details.</p></li>
+
+<li><p>Use <code>\du</code> to confirm your changes. You&rsquo;ll see that the &ldquo;Create DB&rdquo; attribute is listed next to the <code>examplerole</code> user:</p>
+
+<pre><code>postgres=# \du
+                             List of roles
+Role name   |                   Attributes                   | Member of
+-------------+------------------------------------------------+-----------
+examplerole | Create DB                                      | {}
+group       |                                                | {}
+postgres    | Superuser, Create role, Create DB, Replication | {}
+</code></pre></li>
+
+<li><p>Once you&rsquo;ve finished, exit the Postgres shell with <code>\q</code>.</p></li>
+</ol>
+
+<h3 id="delete-roles">Delete Roles</h3>
+
+<p>The <code>dropuser</code> command is used to delete PostgreSQL roles. To delete the <code>examplerole</code> user, issue this command as the <code>postgres</code> Linux user:</p>
+
+<pre><code>dropuser examplerole
+</code></pre>
+
+<h3 id="peer-authentication">Peer Authentication</h3>
+
+<p>PostgreSQL uses <strong>peer authentication</strong> by default. This means that database connections will be granted to local system users if their Linux username matches the name of their PostgreSQL role. To make use of peer authentication effectively, you would need to create both a Linux user and a corresponding PostgreSQL role. For the <code>examplerole</code> role you just created, you can use peer authentication by creating an <code>examplerole</code> local system user. This command must be run as a user with <code>sudo</code> access:</p>
+
+<pre><code>sudo adduser examplerole &amp;&amp; passwd examplerole
+</code></pre>
+
+<p>Note that you will be prompted to create a password for the new <code>examplerole</code> Linux user. Alternatively, you can follow our steps to <a href="#secure-local-access">secure local access</a>.</p>
+
+<h2 id="secure-postgresql">Secure PostgreSQL</h2>
+
+<h3 id="secure-local-access">Secure Local Access</h3>
+
+<p>While PostgreSQL&rsquo;s default peer authentication is useful in cases where a particular system user will be running a local program (e.g., scripts, CGI/FastCGI processes owned by separate users, etc.), you may wish to require passwords for greater security.</p>
+
+<p>Commands in this section should be run as the <code>postgres</code> Linux user unless otherwise specified.</p>
+
+<ol>
+<li><p>Edit the <code>/var/lib/pgsql/data/pg_hba.conf</code> file, under the <code># &quot;local&quot; is for Unix domain socket connections only</code> header:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/lib/pgsql/data/pg_hba.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># &#34;local&#34; is for Unix domain socket connections only
+</span><span class="c1"></span><span class="nb">local</span>    all        all             peer</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Replace <code>peer</code> with <code>md5</code> on this line to activate password authentication using an MD5 hash.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you installed PostgreSQL from the <a href="#install-from-the-postgres-repositories">Postgres repositories</a>, you will need to specify your version number in this file path, for example: <code>/var/lib/pgsql/9.6/data/pg_hba.conf</code>.</div>
+</blockquote>
+</li>
+
+<li><p>To enable these changes, you need to restart PostgreSQL. However, you did not grant the <code>postgres</code> user sudo privileges for security reasons. Return to the normal user shell:</p>
+
+<pre><code>exit
+</code></pre></li>
+
+<li><p>Restart PostgreSQL and switch back to the <code>postgres</code> user:</p>
+
+<pre><code>sudo systemctl restart postgresql
+su - postgres
+</code></pre></li>
+
+<li><p>As <code>postgres</code>, connect to the test database as the <code>examplerole</code> PostgreSQL user:</p>
+
+<pre><code>psql mytestdb -U examplerole
+</code></pre>
+
+<p>You will be prompted to enter the password for the <code>examplerole</code> user and then given <code>psql</code> shell access to the database. When using a database, you may check access privileges for each of its tables with the <code>\z</code> command.</p></li>
+</ol>
+
+<h3 id="secure-remote-access">Secure Remote Access</h3>
+
+<p>PostgreSQL listens for connections on <code>localhost</code> by default, and it is not advised to reconfigure it to listen on public IP addresses. If you wish to make PostgreSQL externally accessible, it&rsquo;s recommended that you follow the Postgres documentation for <a href="https://www.postgresql.org/docs/9.2/static/ssl-tcp.html">using SSL</a> to secure your remote connections. Alternatively, you could connect to PostgreSQL over an <a href="https://www.postgresql.org/docs/9.2/static/ssh-tunnels.html">SSH tunnel</a>. To access your databases remotely using a graphical tool, please follow one of these guides:</p>
+
+<ul>
+<li><a href="/docs/databases/postgresql/pgadmin-windows">Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows</a></li>
+<li><a href="/docs/databases/postgresql/pgadmin-macos-x">Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X</a></li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.postgresql.org/docs/">PostgreSQL Online Documentation</a></li>
+
+<li><a href="http://www.rootr.net/man/man/psql/1">psql manual page</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/">How to Install PostgreSQL on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-12-04/">Use PostgreSQL Relational Databases on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/ubuntu-10-10-maverick/">Use PostgreSQL Relational Databases on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/ubuntu-10-04-lucid/">Use PostgreSQL Relational Databases on Ubuntu 10.04 LTS (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/ubuntu-9-10-karmic/">Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-postgresql">Install PostgreSQL</a>
+<ul>
+<li><a href="#install-from-the-centos-repositories">Install From the CentOS Repositories</a></li>
+<li><a href="#install-from-the-postgres-repositories">Install From the Postgres Repositories</a></li>
+</ul></li>
+<li><a href="#configure-postgresql">Configure PostgreSQL</a>
+<ul>
+<li><a href="#secure-the-postgres-users">Secure the Postgres Users</a></li>
+<li><a href="#access-the-postgresql-shell">Access the PostgreSQL Shell</a></li>
+</ul></li>
+<li><a href="#work-with-databases">Work with Databases</a>
+<ul>
+<li><a href="#create-a-database">Create a Database</a></li>
+<li><a href="#connect-to-a-database">Connect to a Database</a></li>
+<li><a href="#list-databases">List Databases</a></li>
+<li><a href="#delete-a-database">Delete a Database</a></li>
+</ul></li>
+<li><a href="#work-with-tables">Work With Tables</a>
+<ul>
+<li><a href="#create-tables">Create Tables</a></li>
+<li><a href="#view-the-content-of-a-table">View the Content of a Table</a></li>
+<li><a href="#list-tables-in-a-database">List Tables in a Database</a></li>
+<li><a href="#delete-tables">Delete Tables</a></li>
+<li><a href="#add-columns">Add Columns</a></li>
+<li><a href="#add-and-update-rows">Add and Update Rows</a></li>
+<li><a href="#remove-columns-and-rows">Remove Columns and Rows</a></li>
+<li><a href="#query-a-table">Query a Table</a></li>
+</ul></li>
+<li><a href="#work-with-roles">Work With Roles</a>
+<ul>
+<li><a href="#create-roles">Create Roles</a></li>
+<li><a href="#give-a-role-access-to-a-database">Give a Role Access to a Database</a></li>
+<li><a href="#list-all-roles">List All Roles</a></li>
+<li><a href="#group-roles">Group Roles</a></li>
+<li><a href="#alter-roles">Alter Roles</a></li>
+<li><a href="#delete-roles">Delete Roles</a></li>
+<li><a href="#peer-authentication">Peer Authentication</a></li>
+</ul></li>
+<li><a href="#secure-postgresql">Secure PostgreSQL</a>
+<ul>
+<li><a href="#secure-local-access">Secure Local Access</a></li>
+<li><a href="#secure-remote-access">Secure Remote Access</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

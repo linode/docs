@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use a Linode for Web Development on Remote Devices</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to set up a remote development environment on your Linode. You can then connect to it from a remote device such as a tablet or laptop.">
+        <meta name="keywords" content="docker, container, portainer, linode, remote, devices">
+        
+        <meta property="og:title" content="Use a Linode for Web Development on Remote Devices">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/use-a-linode-for-web-development-on-remote-devices/">
+        <meta property="og:description" content="This guide will show you how to create a remote development environment on your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/use-a-linode-for-web-development-on-remote-devices/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  Use a Linode for Web Development on Remote Devices
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use a Linode for Web Development on Remote Devices</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-12-14T00:00:00Z">Thursday, December 14, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://twitter.com/damasosanoja">Damaso Sanoja
+    
+    <i class="fa fa-twitter"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fuse-a-linode-for-web-development-on-remote-devices%2f&via=linode&text=Use%20a%20Linode%20for%20Web%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fuse-a-linode-for-web-development-on-remote-devices%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fuse-a-linode-for-web-development-on-remote-devices%2f&t=Use%20a%20Linode%20for%20Web%20Development%20on%20Remote%20Devices" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/use-a-linode-for-web-development-on-remote-devices.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/use-a-linode-for-web-development-on-remote-devices.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>This guide will walk you through the necessary steps to configure your Linode to be an efficient remote development environment. You will then connect to this environment using a tablet and edit a simple web application using <code>ssh</code> and a text editor.</p>
+
+<h2 id="development-environments">Development Environments</h2>
+
+<h3 id="local-development-enviroment">Local Development Enviroment</h3>
+
+<p>A local development environment is usually faster, more powerful, and more comfortable than a remote environment. However, there some drawbacks associated with local development:</p>
+
+<ul>
+<li>You are bound to your workstation&rsquo;s operating system. You may need to employ virtual machines to overcome limitations.</li>
+<li>No matter how powerful your machine is, resources are finite. Depending on the complexity of your project, scaling-up for complexity could become an issue.</li>
+<li>A development environment that relies on a powerful desktop, a local NAS, multi-monitor setup, full size keyboard and mouse is not portable. You can use a good laptop to gain some freedom, but then you sacrifice CPU power and internal storage that could hinder your ability to run specific projects.</li>
+<li>Last but not least, if your local machine fails your entire development process stops.</li>
+</ul>
+
+<p>However, a simple remote development environment has its own disadvantages:</p>
+
+<h3 id="remote-development-environment">Remote Development Environment</h3>
+
+<ul>
+<li>Most remote development environments have certain limitations on the frameworks you can use.</li>
+<li>Speed could be an issue too, especially if your project requires compiling large amounts of code.</li>
+<li>You won&rsquo;t be able to reproduce the exact production environment.</li>
+<li>Finally, cost could become an issue.</li>
+</ul>
+
+<h3 id="the-hybrid-approach">The Hybrid Approach</h3>
+
+<ul>
+<li>Operating system agnostic.</li>
+<li>Flexibility to recreate any production scenario, but also workflow flexibility to adapt to any power user.</li>
+<li>Security and data integrity.</li>
+<li>Ability to scale power and storage on demand.</li>
+</ul>
+
+<p>By using Docker, you can ensure that your development is fully portable: containers can be run on a Linode for remote development, but can easily be ported to a local environment if necessary. This guide will use <a href="https://portainer.io/">Portainer</a> to manage the Docker environment, to make it easier to work with containers from a remote device.</p>
+
+<h2 id="provision-the-remote-environment">Provision the Remote Environment</h2>
+
+<h3 id="install-docker">Install Docker</h3>
+
+
+<!-- Install Docker CE using the official Docker repositories. -->
+
+<ol>
+<li><p>As of this writing, the recommended Docker installation is Docker CE. Remove any older installations of Docker that may be on your system:</p>
+
+<pre><code>apt remove docker docker-engine docker.io
+</code></pre></li>
+
+<li><p>Make sure you have the necessary packages to allow the use of Docker&rsquo;s repository:</p>
+
+<pre><code>apt install apt-transport-https ca-certificates curl software-properties-common
+</code></pre></li>
+
+<li><p>Add Docker&rsquo;s GPG key:</p>
+
+<pre><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+</code></pre></li>
+
+<li><p>Verify the fingerprint of the GPG key:</p>
+
+<pre><code>apt-key fingerprint 0EBFCD88
+</code></pre>
+
+<p>You should see output similar to the following:</p>
+
+<pre><code>pub   4096R/0EBFCD88 2017-02-22
+      Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid                  Docker Release (CE deb) &lt;docker@docker.com&gt;
+sub   4096R/F273FCD8 2017-02-22
+</code></pre></li>
+
+<li><p>Add the <code>stable</code> Docker repository:</p>
+
+<pre><code>add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;
+</code></pre></li>
+
+<li><p>Update your package index and install Docker CE:</p>
+
+<pre><code>apt update
+apt install docker-ce
+</code></pre></li>
+
+<li><p>Add your limited user account to the <code>docker</code> group:</p>
+
+<pre><code>usermod -aG docker exampleuser
+</code></pre>
+
+<p>You will need to restart your shell session for this change to take effect.</p></li>
+
+<li><p>Check that the installation was successful by running the built-in &ldquo;Hello World&rdquo; program:</p>
+
+<pre><code>docker run hello-world
+</code></pre></li>
+</ol>
+
+
+
+<h3 id="install-portainer">Install Portainer</h3>
+
+<p>The easiest way to install Portainer is by deploying the official image.</p>
+
+<ol>
+<li><p>Create a volume for storing persistent data:</p>
+
+<pre><code>docker volume create portainer_data
+</code></pre></li>
+
+<li><p>Run your container in detached mode:</p>
+
+<pre><code>docker run -d -p 9000:9000 \
+--name portainer --restart unless-stopped \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v portainer_data:/data portainer/portainer
+</code></pre></li>
+</ol>
+
+<p>The <code>-v /var/run/docker.sock:/var/run/docker.sock</code> directive allows the Docker container to communicate with the host Docker environment. <code>-v portainer_data:/data portainer/portainer</code> mounts the previously created Portainer data volume.</p>
+
+<ol>
+<li><p>Point your browser to <a href="http://192.0.0.0:9000">http://192.0.0.0:9000</a>, replacing <code>192.0.0.0</code> with the IP address or FQDN of your workstation Linode. You should see a screen similar to this:</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-01.png" alt="Portainer Login Screen" /></p></li>
+
+<li><p>After registering your <code>admin</code> user you will be asked about the type of connection you are using: <strong>Local</strong> or <strong>Remote</strong>. Since you will run your containers from the same Linode choose Local:</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-02.png" alt="Portainer Connection Type" /></p></li>
+
+<li><p>If everything goes as expected you will be presented with the Portainer Dashboard.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-03.png" alt="Portainer Dashboard" /></p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>By default your connection with Portainer GUI is not encrypted. If you need to use SSL then you must install the corresponding certificates on your Linode and pass their location to the Docker container on start. For more information please read how to <a href="https://portainer.readthedocs.io/en/stable/deployment.html#secure-portainer-using-ssl">Secure Portainer using SSL</a> in the Portainer official documentation.</div>
+</blockquote>
+
+
+<h3 id="set-up-an-nginx-directory">Set Up an Nginx Directory</h3>
+
+<p>In the next section you will mount a directory on your Linode to an nginx Docker container. Create this directory now:</p>
+
+<pre><code>  mkdir -p ~/nginx/html
+</code></pre>
+
+<h2 id="connect-from-a-remote-device">Connect From a Remote Device</h2>
+
+<p>With everything set up it&rsquo;s time to work with your remote development environment. This guide will test your development environment using a simple nginx container.</p>
+
+<h3 id="install-a-container-from-a-tablet">Install a Container from a Tablet</h3>
+
+<ol>
+<li><p>Open your browser and point it to the address: <a href="http://192.0.2.0:9000">http://192.0.2.0:9000</a> from Portainer Dashboard Sidebar navigate to <strong>App Templates</strong> menu.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-04.png" alt="Portainer App Templates" /></p></li>
+
+<li><p>In the Application templates list, click on <strong>Nginx</strong> to install the container.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-05.png" alt="Portainer Templates List" /></p></li>
+
+<li><p>You will see the Configuration screen. From here you can name your container, choose a Docker network and even determine access control (useful for teams).</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-06.png" alt="Portainer Templates List" /></p></li>
+
+<li><p>Deploy your container when ready by hitting the corresponding button. The nginx image will download automatically and will be available for deployment. You will be directed to the <strong>Containers</strong> menu, where you can manage your containers.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-09.png" alt="Portainer Containers Menu" /></p></li>
+
+<li><p>Check your installation by pointing your browser to the assigned port <code>http://&lt;Linode IP or FQDN&gt; :32769</code>.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-10.png" alt="Ngix welcome page" /></p></li>
+</ol>
+
+<h3 id="use-portainer-to-manage-your-containers">Use Portainer to Manage your Containers</h3>
+
+<ol>
+<li><p>Navigate to the <strong>Containers</strong> menu on the left sidebar and click the check-box for the <code>web-01</code> container you just created. Review the available options for managing this container.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-25.png" alt="Portainer Containers management" /></p></li>
+
+<li><p>You can | start | stop | kill | restart | pause | resume | remove | the selected container, in the same manner as you would use <code>docker</code> from the terminal. You can also edit <code>web-01</code> container by clicking on its name.</p></li>
+
+<li><p>Remove the <code>web-01</code> container by touching the <strong>Remove</strong> button, and select to automatically remove non-persistent volumes.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-26.png" alt="Portainer Remove Container" /></p></li>
+</ol>
+
+<h3 id="bind-volumes-to-your-container">Bind Volumes to your Container</h3>
+
+<ol>
+<li><p>From the <strong>App Templates</strong> menu select Nginx again.</p></li>
+
+<li><p>Disable access control and click on <strong>Show advanced options</strong>. On the volume mapping section touch the <strong>Bind</strong> button for the container&rsquo;s <code>/usr/share/nginx/html</code> and set the host to <code>/home/username/nginx/html</code>.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-27.png" alt="Portainer Bind Container" /></p></li>
+</ol>
+
+<h3 id="connect-to-your-linode-host-using-juicessh">Connect to your Linode host using JuiceSSH</h3>
+
+<ol>
+<li><p>Open JuiceSSH and then select <strong>connections</strong> from the main dashboard.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-11.png" alt="JuiceSSH Dashboard" /></p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-12.png" alt="JuiceSSH Dashboard" /></p></li>
+
+<li><p>Add a new identity by swiping right on the <strong>identities</strong> menu and then clicking the <strong>+</strong> sign.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-13.png" alt="JuiceSSH New Identity" /></p></li>
+
+<li><p>Enter a nickname, and then fill in the username and password for your Linode (make sure you choose an account that has sudo access).</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-14.png" alt="JuiceSSH Identity creation" /></p></li>
+
+<li><p>You can also create a private SSH key for secure access. Once you have connected to your Linode you can use <code>ssh-copy-id</code> to transfer the public key to the server.</p></li>
+
+<li><p>Press the check button on top right to save the identity.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-16.png" alt="JuiceSSH Save Identity" /></p></li>
+
+<li><p>If you created an SSH key, you can export the public key by pressing and holding the identity name in the Identities menu. Coose <strong>Export Public Key</strong> from the pop-up menu.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-17.png" alt="JuiceSSH Export SSH Key" /></p></li>
+
+<li><p>Swipe left on the <strong>Connections</strong> menu and create a new connection by touching the <strong>+</strong> sign.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-19.png" alt="JuiceSSH New Connection" /></p></li>
+
+<li><p>Assign a nickname to your connection, fill in the Linode&rsquo;s IP address or FQDN, and save your connection by touching the check mark on top right.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-20.png" alt="JuiceSSH Connection Settings" /></p></li>
+
+<li><p>Touch the connection name to open an SSH connection to your Linode.</p></li>
+
+<li><p>Check your nginx container from JuiceSSH.</p>
+
+<pre><code>sudo docker ps
+</code></pre></li>
+
+<li><p>You can work with your Docker containers through the command line as normal. The top of the virtual keyboard provides some shortcuts pre-defined for ease of use.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-24.png" alt="JuiceSSH Keyboard" /></p></li>
+
+<li><p>Navigate to the volume bound to the container:</p>
+
+<pre><code>cd nginx/html
+</code></pre></li>
+
+<li><p>Create a test HTML file:</p>
+
+<pre><code>echo &quot;&lt;html&gt;&lt;p&gt;Hello World&lt;/p&gt;&lt;/html&gt;&quot; &gt;&gt; index.html
+</code></pre></li>
+
+<li><p>Point your browser to the nginx server (you can check the port that nginx is listening on from the Portainer console). Any edits you make from your tablet&rsquo;s SSH connection will be rendered to the browser, allowing you to work on this nginx project from your tablet.</p></li>
+</ol>
+
+<h3 id="edit-files-using-quickedit">Edit Files Using QuickEdit</h3>
+
+<ol>
+<li><p>Editing simple configuration files is not hard. But if you need to do substantial editing from your tablet then you will need a text editor with syntax highlighting and other features. Open QuickEdit and allow access to photos, media, and files on your device.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-29.png" alt="Open QuickEdit" /></p></li>
+
+<li><p>By default, you will see a blank file. Touch the menu icon on top left.</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-30.png" alt="Menu QuickEdit" /></p></li>
+
+<li><p>Select the <strong>Storage Manager</strong> from the menu.</p></li>
+
+<li><p>Create a new connection by touching the <strong>+</strong> button on lower right. When prompted choose FTP/FTPS/SFTP and then SFTP</p>
+
+<p><img src="/docs/assets/webdev-remote-devices/linode-on-remote-devices-32.png" alt="New Connection QuickEdit" /></p></li>
+
+<li><p>Enter your Linode&rsquo;s IP address or FQDN, desired label and username. Then select an authentication mode (you can use either a password or SSH keys).</p></li>
+
+<li><p>Touch your Linode connection and you will be forwarded to the remote directory structure. Find your nginx bind, then mount and open the <code>test.json</code> file.</p></li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>You now have a basic but powerful setup that allows you to work from any device with an internet connection.</p>
+
+<p>The main limitation of a tablet is its storage capacity. An efficient way to set up a centralized storage space is by using OwnCloud on a Linode with <a href="https://linode.com/docs/platform/how-to-use-block-storage-with-your-linode/">block storage</a>. This way you can host all your archives, dotfiles, scripts, images and more in a scalable Linode. An additional benefit is the possibility to connect external storages like Dropbox, Google Drive or OneDrive. OwnCloud has native applications for Android and iOS so managing your assets won&rsquo;t be a problem. You can install and configure ownCloud by following our <a href="https://www.linode.com/docs/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04">guide</a></p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://docs.docker.com/">Docker Docs</a></li>
+
+<li><a href="https://portainer.io/">Portainer</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/">How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/">How to Create a Docker Swarm Manager and Nodes on Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-use-dockerfiles/">How to Use Dockerfiles</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-deploy-an-nginx-container-with-docker/">How to Deploy an nginx Container with Docker on Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/">How to Install Docker and Pull Images for Container Deployment</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#development-environments">Development Environments</a>
+<ul>
+<li><a href="#local-development-enviroment">Local Development Enviroment</a></li>
+<li><a href="#remote-development-environment">Remote Development Environment</a></li>
+<li><a href="#the-hybrid-approach">The Hybrid Approach</a></li>
+</ul></li>
+<li><a href="#provision-the-remote-environment">Provision the Remote Environment</a>
+<ul>
+<li><a href="#install-docker">Install Docker</a></li>
+<li><a href="#install-portainer">Install Portainer</a></li>
+<li><a href="#set-up-an-nginx-directory">Set Up an Nginx Directory</a></li>
+</ul></li>
+<li><a href="#connect-from-a-remote-device">Connect From a Remote Device</a>
+<ul>
+<li><a href="#install-a-container-from-a-tablet">Install a Container from a Tablet</a></li>
+<li><a href="#use-portainer-to-manage-your-containers">Use Portainer to Manage your Containers</a></li>
+<li><a href="#bind-volumes-to-your-container">Bind Volumes to your Container</a></li>
+<li><a href="#connect-to-your-linode-host-using-juicessh">Connect to your Linode host using JuiceSSH</a></li>
+<li><a href="#edit-files-using-quickedit">Edit Files Using QuickEdit</a></li>
+</ul></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

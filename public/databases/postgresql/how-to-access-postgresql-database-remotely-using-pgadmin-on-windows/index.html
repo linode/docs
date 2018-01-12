@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Access PostgreSQL Database Remotely Using pgAdmin on Windows</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use the open-source pgAdmin program to securely manage remote PostgreSQL databases from a Windows workstation.">
+        <meta name="keywords" content="pgadmin, pgadmin windows, postgresql gui, postgresql windows, manage postgresql databases, ssh tunnel">
+        
+        <meta property="og:title" content="How to Access PostgreSQL Database Remotely Using pgAdmin on Windows">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/">
+        <meta property="og:description" content="Use the open-source pgAdmin program to securely manage remote PostgreSQL databases from a Windows workstation.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/postgresql/">PostgreSQL</a>
+  
+</li>
+
+
+<li>
+  
+  How to Access PostgreSQL Database Remotely Using pgAdmin on Windows
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Access PostgreSQL Database Remotely Using pgAdmin on Windows</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-05-12T00:00:00Z">Thursday, May 12, 2016</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fhow-to-access-postgresql-database-remotely-using-pgadmin-on-windows%2f&via=linode&text=How%20to%20Access%20PostgreSQL%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fhow-to-access-postgresql-database-remotely-using-pgadmin-on-windows%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fpostgresql%2fhow-to-access-postgresql-database-remotely-using-pgadmin-on-windows%2f&t=How%20to%20Access%20PostgreSQL%20Database%20Remotely%20Using%20pgAdmin%20on%20Windows" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>PgAdmin is a free, open-source PostgreSQL database administration GUI for Microsoft Windows, Apple MacOS X and Linux systems. It offers database server information retrieval, development, testing, and ongoing maintenance. This guide will help you install pgAdmin on Windows, providing secure, remote access to PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode in accordance with our <a href="/docs/databases/postgresql/">PostgreSQL installation guides</a>.</p>
+
+<h2 id="install-pgadmin">Install pgAdmin</h2>
+
+<p>Visit the <a href="https://www.pgadmin.org/download/windows4.php">pgAdmin download page</a> to obtain the most recent version of the program. Save the installer to your desktop and launch it. You&rsquo;ll be greeted with the following screen; click &ldquo;Next&rdquo; to continue.</p>
+
+<p><a href="/docs/assets/364-pgadmin-windows-install-1.png"><img src="/docs/assets/364-pgadmin-windows-install-1.png" alt="pgAdmin on Windows installer welcome dialog" /></a></p>
+
+<p>Read the license agreement and check the box below it to accept the terms. Click &ldquo;Next&rdquo; to continue.</p>
+
+<p><a href="/docs/assets/365-pgadmin-windows-install-2.png"><img src="/docs/assets/365-pgadmin-windows-install-2.png" alt="pgAdmin on Windows installer license agreement dialog" /></a></p>
+
+<p>You will be prompted to specify which features you want to install. The default settings are recommended. Click &ldquo;Next&rdquo; to continue.</p>
+
+<p><a href="/docs/assets/366-pgadmin-windows-install-3.png"><img src="/docs/assets/366-pgadmin-windows-install-3.png" alt="pgAdmin on Windows installer feature selection dialog" /></a></p>
+
+<p>If you&rsquo;re running Windows Vista or Windows 7, you may receive the following warning dialog. Click &ldquo;Yes&rdquo; to finish the installation.</p>
+
+<p><a href="/docs/assets/367-pgadmin-windows-install-4.png"><img src="/docs/assets/367-pgadmin-windows-install-4.png" alt="Windows 7 system modification warning dialog" /></a></p>
+
+<p>Next, you&rsquo;ll configure an SSH tunnel to securely connect to your remote database server.</p>
+
+<h2 id="configure-ssh-tunnel">Configure SSH Tunnel</h2>
+
+<p>While PostgreSQL supports SSL connections, it is not advisable to instruct it to listen on public IP addresses unless absolutely necessary. For this reason, you&rsquo;ll be using PuTTY (a free SSH client) to create a secure SSH tunnel to your Linode. Obtain the program by visiting the <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY download page</a>. Save it to your desktop and launch it. You&rsquo;ll be greeted with the &ldquo;Session&rdquo; dialog shown below; enter your Linode&rsquo;s IP address or FQDN in the &ldquo;Host Name&rdquo; field.</p>
+
+<p><a href="/docs/assets/368-putty-01-session.png"><img src="/docs/assets/368-putty-01-session.png" alt="PuTTY on Windows 7 session dialog" /></a></p>
+
+<p>Open the &ldquo;Connection -&gt; SSH -&gt; Tunnels&rdquo; screen. Enter &ldquo;5433&rdquo; in the &ldquo;Source port&rdquo; field. Although PostgreSQL uses 5432 for TCP connections, you&rsquo;ll want to specify 5433 as the port number in case you decide to install PostgreSQL locally later on. Enter &ldquo;127.0.0.1:5432&rdquo; in the &ldquo;Destination&rdquo; field, and click the &ldquo;Add&rdquo; button.</p>
+
+<p><a href="/docs/assets/369-putty-03-postgresql-ssh-tunnel.png"><img src="/docs/assets/369-putty-03-postgresql-ssh-tunnel.png" alt="PuTTY tunnels screen on Windows 7" /></a></p>
+
+<p>The &ldquo;Forwarded ports&rdquo; list should now contain an entry like the one shown below.</p>
+
+<p><a href="/docs/assets/370-putty-04-postgresql-ssh-tunnel-open.png"><img src="/docs/assets/370-putty-04-postgresql-ssh-tunnel-open.png" alt="PuTTY tunnels screen showing forwarded ports on Windows 7" /></a></p>
+
+<p>Click the &ldquo;Open&rdquo; button to start your connection. If you haven&rsquo;t logged into your Linode with PuTTY before, you will receive a warning similar to the following:</p>
+
+<p><a href="/docs/assets/371-putty-02-host-key-warning.png"><img src="/docs/assets/371-putty-02-host-key-warning.png" alt="An unknown host key warning in PuTTY on Windows 7" /></a></p>
+
+<p>PuTTY is asking you to verify that the server you&rsquo;re logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some &ldquo;out of band&rdquo; method to compare the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via <a href="https://www.linode.com/docs/networking/using-the-linode-shell-lish">Lish</a> and executing the following command:</p>
+
+<pre><code>ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
+</code></pre>
+
+<p>If the fingerprints match, click &ldquo;Yes&rdquo; to accept the warning and cache this host key in the registry. You won&rsquo;t receive further warnings unless the key presented to PuTTY changes for some reason; typically, this should only happen if you reinstall the remote server&rsquo;s operating system. If you should receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.</p>
+
+<p>You may log into your Linode with any user account you have configured on it. Next, you&rsquo;ll use pgAdmin to connect to PostgreSQL through the tunnel.</p>
+
+<h2 id="use-pgadmin">Use pgAdmin</h2>
+
+<p>Launch pgAdmin and you&rsquo;ll be presented with a default view containing no servers. Click &ldquo;File -&gt; Add Server&rdquo; as shown below.</p>
+
+<p><a href="/docs/assets/372-pgadmin-windows-use-1-add-server.png"><img src="/docs/assets/372-pgadmin-windows-use-1-add-server.png" alt="pgAdmin III default view on Windows 7" /></a></p>
+
+<p>In the &ldquo;New Server Registration&rdquo; dialog that appears, enter appropriate values for your server name and PostgreSQL user credentials. Be sure to specify &ldquo;localhost&rdquo; for the &ldquo;Host&rdquo; field, as you&rsquo;ll be connecting via your SSH tunnel. Click &ldquo;OK&rdquo; to connect to your server.</p>
+
+<p><a href="/docs/assets/373-pgadmin-windows-use-2-new-server-details.png"><img src="/docs/assets/373-pgadmin-windows-use-2-new-server-details.png" alt="pgAdmin III new server details dialog" /></a></p>
+
+<p>You will be presented with a full view of the databases that your user account has access to.</p>
+
+<p><a href="/docs/assets/374-pgadmin-windows-use-3-database-view.png"><img src="/docs/assets/374-pgadmin-windows-use-3-database-view.png" alt="pgAdmin III full database view" /></a></p>
+
+<p>Congratulations! You&rsquo;ve gained secure, remote access to your PostgreSQL server with pgAdmin III.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.pgadmin.org/docs/">pgAdmin Documentation</a></li>
+
+<li><a href="http://www.postgresql.org/docs/">PostgreSQL Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/">Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/cherokee/use-cherokee-web-server-on-ubuntu-12-04/">Use Cherokee Web Server on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#install-pgadmin">Install pgAdmin</a></li>
+<li><a href="#configure-ssh-tunnel">Configure SSH Tunnel</a></li>
+<li><a href="#use-pgadmin">Use pgAdmin</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

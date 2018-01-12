@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Configure nginx</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="nginx is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic nginx parameters and conventions.">
+        <meta name="keywords" content="nginx,  web server,  nginx.conf,  install">
+        
+        <meta property="og:title" content="How to Configure nginx">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/nginx/how-to-configure-nginx/">
+        <meta property="og:description" content="nginx is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic nginx parameters and conventions.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/nginx/how-to-configure-nginx/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/nginx/">Nginx</a>
+  
+</li>
+
+
+<li>
+  
+  How to Configure nginx
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Configure nginx</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-02-24T00:00:00Z">Wednesday, February 24, 2016</time> by Alex Fornuto</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fhow-to-configure-nginx%2f&via=linode&text=How%20to%20Configure%20nginx" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fhow-to-configure-nginx%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fhow-to-configure-nginx%2f&t=How%20to%20Configure%20nginx" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/nginx/how-to-configure-nginx.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/nginx/how-to-configure-nginx.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly with efficient use of system resources. nginx&rsquo;s strong point is its ability to efficiently serve static content, like plain HTML and media files. Some consider it a less than ideal server for dynamic content.</p>
+
+<p><img src="/docs/assets/how_to_configure_nginx.png" alt="How To Configure nginx" title="How To Configure nginx" /></p>
+
+<p>Unlike <a href="/docs/web-servers/apache/">Apache</a>, which uses a threaded or process-oriented approach to handle requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load. Rather than using the embedded interpreter approach, nginx hands off dynamic content to CGI, FastCGI, or even other web servers like Apache, which is then passed back to nginx for delivery to the client.</p>
+
+<p>This leads to a more complex setup for certain deployments. For these and other reasons, the configuration of nginx can feel complicated and unintuitive at first. This document should familiarize you with basic nginx parameters and conventions. We&rsquo;ll be going through nginx&rsquo;s primary configuration file.</p>
+
+<p>All nginx configuration files are located in the <code>/etc/nginx/</code> directory. The primary configuration file is <code>/etc/nginx/nginx.conf</code>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This is where the files will be located if you install nginx from the package manager. Other possible locations include <code>/opt/nginx/conf/</code>.</div>
+</blockquote>
+
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before we begin, make sure you have completed the following:</p>
+
+<ul>
+<li>Follow the <a href="/docs/getting-started/">Getting Started</a> guide.</li>
+<li>Install the <a href="/docs/websites/nginx/nginx-web-server-debian-8">nginx server</a>.</li>
+<li>The steps required in this guide require root privileges. Be sure to run the steps below as <code>root</code> or with the <strong>sudo</strong> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</li>
+</ul>
+
+<p>If you&rsquo;re new to Linux server administration, you may also be interested in our <a href="/docs/beginners-guide/">Beginner&rsquo;s Guide</a> and <a href="/docs/using-linux/administration-basics">Administration Basics Guide</a>.</p>
+
+<h2 id="before-you-start">Before You Start</h2>
+
+<p>The following sections cover a few concepts and safeguards that should be reviewed before making any changes to your nginx configuration.</p>
+
+<h3 id="preserve-a-working-configuration">Preserve a Working Configuration</h3>
+
+<p>Sometimes, server configuration files can get so corrupted or convoluted that they become unusable, so it&rsquo;s always a good idea to have a working copy of the essential files on hand. A good first step is to copy any configuration file before you begin making changes to it, like so:</p>
+
+<pre><code>cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
+</code></pre>
+
+<p>For even better restoration options, we recommend making regular <a href="/docs/platform/backup-service">backups</a> of your nginx configuration. You might want to store your entire <code>/etc/nginx/</code> directory in a <a href="/docs/linux-tools/version-control/git">Git</a> repository so you can save the original settings and all the versions from all your different changes. Another option is to periodically create dated copies of your files. You can accomplish this by issuing the following command:</p>
+
+<pre><code>cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.$(date &quot;+%b_%d_%Y_%H.%M.%S&quot;)
+</code></pre>
+
+<h3 id="start-stop-reload">Start, Stop, Reload</h3>
+
+<p>Now you&rsquo;re ready to make changes to your nginx configuration. Whenever you make a change to the <code>nginx.conf</code> file, you need to reload your configuration before the change will take effect. You can do this by issuing the following command:</p>
+
+<pre><code>service nginx reload
+</code></pre>
+
+<p>To completely stop or start the service, replace <code>reload</code> with <code>start</code> or <code>stop</code>.</p>
+
+<h2 id="introduction-to-syntax">Introduction to Syntax</h2>
+
+<p>This section showcases an excerpt from the beginning of the default configuration file, <code>/etc/nginx/nginx.conf</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">user www-data<span class="p">;</span>
+worker_processes <span class="m">4</span><span class="p">;</span>
+pid /run/nginx.pid<span class="p">;</span>
+
+events <span class="o">{</span>
+        worker_connections <span class="m">768</span><span class="p">;</span>
+        <span class="c1"># multi_accept on;
+</span><span class="c1"></span><span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Normally, you will not need to change anything in this first section. Instead, we&rsquo;ll use this as an opportunity to explain the syntax of the configuration file.</p>
+
+<ul>
+<li><p>All lines preceded by a <strong>pound sign</strong> or <strong>hash</strong> (<strong>#</strong>) are comments. This means that they are not interpreted by nginx. Programmers use comments to explain what certain blocks of code do, or leave suggestions on how to edit values. The default file has several commented sections for explanatory purposes, and you can add your own if desired. Programmers will also leave optional statements as comments. They can be &ldquo;turned on&rdquo; if needed by removing the pound sign.</p>
+
+<p>An example of this is shown above. The directive <code>multi_accept on;</code> has a <code>#</code> in front of it. This isn&rsquo;t a comment for the user, but rather a directive that can be &ldquo;activated&rdquo; by removing the <code>#</code>.</p></li>
+
+<li><p>Settings begin with the <em>variable</em> name and then state an <em>argument</em> or series of arguments separated by spaces. Examples include <code>worker_processes  1;</code> and <code>error_log  logs/error.log  notice;</code>. All statements end with a semi-colon (<strong>;</strong>).</p></li>
+
+<li><p>Some settings, like the <code>events</code> variable above, have arguments that are themselves settings with arguments. All sub-directives are enclosed in one set of curly brackets (<strong>{</strong> <strong>}</strong>).</p></li>
+
+<li><p>Brackets are sometimes nested inside each other for multiple sets of sub-directives. If you add or edit a section with nested brackets, make sure they all come in opening and closing pairs.</p></li>
+
+<li><p>Tabs or multiple spaces are interpreted by nginx as a single space. Using tabs or spaces for indentation in a standardized way will greatly improve the readability of your file and make it easier to maintain.</p></li>
+</ul>
+
+<h2 id="understanding-how-nginx-works">Understanding How nginx Works</h2>
+
+<p>Now that we understand the syntax, let&rsquo;s get into the nuts and bolts of nginx. First we&rsquo;ll go over the core directives in the <code>nginx.conf</code> file, which define the basic behavior of the web server. Then we&rsquo;ll explain the <code>HTTP</code> block in greater detail and some of the more commonly adjusted variables. From there we&rsquo;ll move to the <code>server</code> block, and virtual host configuration files. This is the section you will edit the most when defining the websites you&rsquo;ll host with nginx.</p>
+
+<h3 id="defining-the-directives">Defining the Directives</h3>
+
+<p>We&rsquo;ll begin by explaining the core directives in <code>/etc/nginx/nginx.conf</code> Let&rsquo;s go back to that first section:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">user www-data<span class="p">;</span>
+worker_processes <span class="m">4</span><span class="p">;</span>
+pid /run/nginx.pid<span class="p">;</span>
+
+events <span class="o">{</span>
+        worker_connections <span class="m">768</span><span class="p">;</span>
+        <span class="c1"># multi_accept on;
+</span><span class="c1"></span><span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<dl>
+<dt>user</dt>
+<dd>Defines which Linux system user will own and run the nginx server. Most Debian-based distributions use <code>www-data</code> but this may be different in other distros. There are certain use cases that benefit from changing the user; for instance if you run two simultaneous web servers, or need another program&rsquo;s user to have control over nginx.</dd>
+<dt>worker_process</dt>
+<dd>Defines how many threads, or simultaneous instances, of nginx to run. You can learn more about this directive and the values of adjusting it <a href="http://wiki.nginx.org/CoreModule#worker_processes">here</a>.</dd>
+<dt>pid</dt>
+<dd>Defines where nginx will write its master process ID, or PID. The PID is used by the operating system to keep track of and send signals to the nginx process.</dd>
+</dl>
+
+<h3 id="http-universal-configuration">HTTP (Universal Configuration)</h3>
+
+<p>The next section of the <code>nginx.conf</code> file covers the universal directives for nginx as it handles HTTP web traffic. The first part of the HTTP block is shown below:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">http</span> <span class="p">{</span>
+
+    <span class="c1">##
+</span><span class="c1"></span>    <span class="c1"># Basic Settings
+</span><span class="c1"></span>    <span class="c1">##
+</span><span class="c1"></span>
+    <span class="kn">sendfile</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">tcp_nopush</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">tcp_nodelay</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">keepalive_timeout</span> <span class="mi">65</span><span class="p">;</span>
+    <span class="kn">types_hash_max_size</span> <span class="mi">2048</span><span class="p">;</span>
+    <span class="c1"># server_tokens off;
+</span><span class="c1"></span>
+    <span class="c1"># server_names_hash_bucket_size 64;
+</span><span class="c1"></span>    <span class="c1"># server_name_in_redirect off;
+</span><span class="c1"></span>
+    <span class="kn">include</span> <span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
+    <span class="kn">default_type</span> <span class="s">application/octet-stream</span><span class="p">;</span>
+
+    <span class="c1">##
+</span><span class="c1"></span>    <span class="c1"># Logging Settings
+</span><span class="c1"></span>    <span class="c1">##
+</span><span class="c1"></span>
+    <span class="kn">access_log</span> <span class="s">/var/log/nginx/access.log</span><span class="p">;</span>
+    <span class="kn">error_log</span> <span class="s">/var/log/nginx/error.log</span><span class="p">;</span>
+
+    <span class="c1">##
+</span><span class="c1"></span>    <span class="c1"># Gzip Settings
+</span><span class="c1"></span>    <span class="c1">##
+</span><span class="c1"></span>
+    <span class="kn">gzip</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">gzip_disable</span> <span class="s">&#34;msie6&#34;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Most of the <code>http { }</code> block should work as-is for most nginx configurations. We do, however, want to draw your attention to the following configuration options:</p>
+
+<dl>
+<dt>include</dt>
+<dd><p>The <code>include</code> statement at the beginning of this section <em>includes</em> the file <code>mime.types</code> located at <code>/etc/nginx/mime.types</code>. What this means is that anything written in the file <code>mime.types</code> is interpreted as if it was written inside the <code>http { }</code> block. This lets you include a lengthy amount of information in the <code>http { }</code> block without having it clutter up the main configuration file.
+Try to avoid too many chained inclusions (i.e., including a file that itself includes a file, etc.) Keep it to one or two levels of inclusion if possible, for readability purposes. You can always include all files in a certain directory with the directive:</p>
+
+<pre><code>include /etc/nginx/sites-enabled/*;
+</code></pre>
+
+<p>Or to be more specific, you can include all <code>.conf</code> files in a directory:</p>
+
+<pre><code>include /etc/nginx/conf.d/*.conf;
+</code></pre></dd>
+<dt>gzip</dt>
+<dd><p>The <code>gzip</code> directive tells the server to use on-the-fly gzip compression to limit the amount of bandwidth used and speed up some transfers. This is equivalent to Apache&rsquo;s <code>mod_deflate</code>. Additional settings can be uncommented in this section of the http block to modify the gzip behavior:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1"># gzip_vary on;
+</span><span class="c1"># gzip_proxied any;
+</span><span class="c1"># gzip_comp_level 6;
+</span><span class="c1"># gzip_buffers 16 8k;
+</span><span class="c1"># gzip_http_version 1.1;
+</span><span class="c1"></span><span class="err">#</span> <span class="k">gzip_types</span> <span class="s">text/plain</span> <span class="s">text/css</span> <span class="s">application/json</span> <span class="s">application/x-javascript</span> <span class="s">text/xml</span> <span class="s">application/xml</span> <span class="s">application/xml+rss</span> <span class="s">text/javascript</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>For full definitions of the gzip options, check out <a href="http://nginx.org/en/docs/http/ngx_http_gzip_module.html">this page</a> from the nginx docs.</p></dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you keep gzip compression enabled here, note that you are trading increased CPU costs in exchange for your lower bandwidth use. Set the <code>gzip_comp_level</code> to a value between 1 and 9, where 9 requires the greatest amount of CPU resources and 1 requires the least. The default value is 1.</div>
+</blockquote>
+
+
+<p>Note that the code snippet shown above does not include the closing bracket (<strong>}</strong>), because the HTTP section isn&rsquo;t finished. For detailed explanations of every directive in the <code>HTTP</code> block, check out <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html">this page</a> from the nginx documentation.</p>
+
+<h3 id="server-virtual-domains-configuration">Server (Virtual Domains Configuration)</h3>
+
+<p>The HTTP block of the <code>nginx.conf</code> file contains the statement <code>include /etc/nginx/sites-enabled/*;</code>. This allows for server block configurations to be loaded in from separate files found in the <code>sites-enabled</code> sub-directory. Usually these are symlinks to files stored in <code>/etc/nginx/sites-available/</code>. By using symlinks you can quickly enable or disable a virtual server while preserving its configuration file. nginx provides a single default virtual host file, which can be used as a template to create virtual host files for other domains:</p>
+
+<pre><code>cp /etc/nginx/sites-available/default /etc/nginx/sites-available/example.com
+</code></pre>
+
+<p>Now let&rsquo;s go over the directives and settings that make up the <code>server</code> block:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/default 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+        <span class="kn">listen</span> <span class="mi">80</span> <span class="s">default_server</span><span class="p">;</span>
+        <span class="kn">listen</span> <span class="s">[::]:80</span> <span class="s">default_server</span> <span class="s">ipv6only=on</span><span class="p">;</span>
+
+        <span class="kn">root</span> <span class="s">/usr/share/nginx/html</span><span class="p">;</span>
+        <span class="kn">index</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+
+        <span class="c1"># Make site accessible from http://localhost/
+</span><span class="c1"></span>        <span class="kn">server_name</span> <span class="s">localhost</span><span class="p">;</span>
+
+        <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+                <span class="c1"># First attempt to serve request as file, then
+</span><span class="c1"></span>                <span class="c1"># as directory, then fall back to displaying a 404.
+</span><span class="c1"></span>                <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.html</span><span class="p">;</span>
+                <span class="c1"># Uncomment to enable naxsi on this location
+</span><span class="c1"></span>                <span class="c1"># include /etc/nginx/naxsi.rules
+</span><span class="c1"></span>        <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>server</code> block is where the typical nginx user will make most of his or her changes to the default configuration. Generally, you&rsquo;ll want to make a separate file with its own <code>server</code> block for each virtual domain on your server. More configuration options for the server block are shown in the following sections.</p>
+
+<h4 id="listening-ports">Listening Ports</h4>
+
+<p>The <code>listen</code> directive, which is located in the <code>server</code> block, tells nginx the hostname/IP and the TCP port where it should listen for HTTP connections. By default, nginx will listen for HTTP connections on port <code>80</code>.</p>
+
+<p>Next we&rsquo;ll present a few common examples for the <code>listen</code> directive.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can use more than one <code>listen</code> directive, if needed.</div>
+</blockquote>
+
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/default 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">listen</span> <span class="mi">80</span> <span class="s">default_server</span><span class="p">;</span>
+<span class="k">listen</span> <span class="s">[::]:80</span> <span class="s">default_server</span> <span class="s">ipv6only=on</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>These are the default listen statements in the default virtual host file. The argument <code>default_server</code> means this virtual host will answer requests on port 80 that don&rsquo;t specifically match another virtual host&rsquo;s listen statement. The second statement listens over IPv6 and behaves in the same way.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">listen</span>     <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
+<span class="k">listen</span>     <span class="n">localhost</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>These two examples direct nginx to listen on <code>127.0.0.1</code>; that is, the local loopback interface. <code>localhost</code> is conventionally set as the hostname for <code>127.0.0.1</code> in <code>/etc/hosts</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">listen</span>     <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8080</span><span class="p">;</span>
+<span class="k">listen</span>     <span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The third pair of examples also listen on localhost, but they listen for responses on port <code>8080</code> instead of port <code>80</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">listen</span>     <span class="n">192.168.3.105</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
+<span class="k">listen</span>     <span class="n">192.168.3.105</span><span class="p">:</span><span class="mi">8080</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The fourth pair of examples specify a server listening for requests on the IP address <code>192.168.3.105</code>. The first listens on port <code>80</code> and the second on port <code>8080</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">listen</span>     <span class="mi">80</span><span class="p">;</span>
+<span class="k">listen</span>     <span class="s">*:80</span><span class="p">;</span>
+<span class="k">listen</span>     <span class="mi">8080</span><span class="p">;</span>
+<span class="k">listen</span>     <span class="s">*:8080</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The fifth set of examples tell nginx to listen on <em>all</em> domains and IP addresses on a specific port. <code>listen 80;</code> is equivalent to <code>listen *:80;</code>, and <code>listen 8080;</code> is equivalent to <code>listen *:8080;</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">listen</span>     <span class="n">12.34.56.77</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
+<span class="k">listen</span>     <span class="n">12.34.56.78</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
+<span class="k">listen</span>     <span class="n">12.34.56.79</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Finally, the last set of examples instruct the server to listen for requests on port <code>80</code> for the IP addresses <code>12.34.56.77</code>, <code>12.34.56.78</code>, and <code>12.34.56.79</code>.</p>
+
+<h4 id="name-based-virtual-hosting">Name-Based Virtual Hosting</h4>
+
+<p>The <code>server_name</code> directive, which is located in the <code>server</code> block, lets the administrator provide <em>name-based virtual hosting</em>. This allows multiple domains to be served from a single IP address. The server decides which domain to serve based on the request header it receives (for example, when someone requests a particular URL).</p>
+
+<p>Typically, you will want to create one file per domain you want to host on your server. Each file should have its own <code>server</code> block, and the <code>server_name</code> directive is where you specify which domain this file affects.</p>
+
+<p>Next we&rsquo;ll present a few common examples for the <code>server_name</code> directive:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server_name</span>   <span class="s">example.com</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The example above directs nginx to process requests for <code>example.com</code>. This is the most basic configuration.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server_name</span>   <span class="s">example.com</span> <span class="s">www.example.com</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The second example instructs the server to process requests for both <code>example.com</code> and <code>www.example.com</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server_name</span>   <span class="s">*.example.com</span><span class="p">;</span>
+<span class="k">server_name</span>   <span class="s">.example.com</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>These two examples are equivalent. <code>*.example.com</code> and <code>.example.com</code> both instruct the server to process requests for all subdomains of <code>example.com</code>, including <code>www.example.com</code>, <code>foo.example.com</code>, etc.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server_name</span>   <span class="s">example.*</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The fourth example instructs the server to process requests for all domain names beginning with <code>example.</code>, including <code>example.com</code>, <code>example.org</code>, <code>example.net</code>, <code>example.foo.com</code>, etc.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/multi-list 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server_name</span>   <span class="s">example.com</span> <span class="s">linode.com</span> <span class="s">icann.org</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The fifth example instructs the server to process requests for three different domain names. Note that any combination of domain names can be listed in a single <code>server_name</code> directive.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/local 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server_name</span>   <span class="s">localhost</span> <span class="s">linode</span> <span class="s">galloway</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>nginx allows you to specify names for virtual hosts that are not valid domain names. nginx uses the name from the HTTP header to answer requests; it doesn&rsquo;t matter to nginx whether the domain name is valid or not. In this case, the hostames can be specified in the <a href="/docs/tools-reference/linux-system-administration-basics#configure-the-etchosts-file">/etc/hosts file</a>.</p>
+
+<p>Using non-domain hostnames may be useful if your nginx server is deployed on a LAN, or if you already know all of the clients that will be making requests of the server. This includes front-end proxy servers that preconfigured <code>/etc/hosts</code> entries for the IP address on which nginx is listening.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/catchall 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server_name</span>   <span class="s">&#34;&#34;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Finally, if you set <code>server_name</code> to the empty quote set (<strong>&rdquo;&rdquo;</strong>), nginx will process all requests that either do not have a hostname, or that have an unspecified hostname, such as requests for the IP address itself.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Individual names are separated with a space. You can use regular expressions if desired.</div>
+</blockquote>
+
+
+<h4 id="access-logs">Access Logs</h4>
+
+<p>The <code>access_log</code> directive can be set in the <code>http</code> block in <code>nginx.conf</code> or in the <code>server</code> block for a specific virtual domain. It sets the location of the nginx access log. By defining the access log to a different path in each <code>server</code> block, you can sort the output specific to each virtual domain into its own file. An <code>access_log</code> directive defined in the <code>http</code> block can be used to log all access to a single file, or as a catch-all for access to virtual hosts that don&rsquo;t define their own log files.</p>
+
+<p>You can use a path relative to the current directory:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">access_log</span> <span class="s">logs/example.access.log</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Or, you can use a full path:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">access_log</span> <span class="s">/srv/www/example.com/logs/access.log</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You can also disable the access log, although this is not recommended:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">access_log</span> <span class="no">off</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h4 id="location-file-and-folder-configuration">Location (File and Folder Configuration)</h4>
+
+<p>The final component of the <code>server</code> settings block is the <code>location</code> directive. We&rsquo;ll cover the specifics of what goes <em>inside</em> of a location block in the next section; right now we&rsquo;re going to focus on the basic path setting.</p>
+
+<p>The <code>location</code> setting lets you configure how nginx will respond to requests for resources within the server. Just like the <code>server_name</code> directive tells nginx how to process requests for the domain, such as <strong><a href="http://example.com">http://example.com</a></strong>, the <code>location</code> directive covers requests for specific files and folders, such as <strong><a href="http://example.com/blog/">http://example.com/blog/</a></strong>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can have more than one location directive.</div>
+</blockquote>
+
+
+<p>Here are a few examples:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">location</span> <span class="s">/images/</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">location</span> <span class="s">/blog/</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">location</span> <span class="s">/planet/</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">location</span> <span class="s">/planet/blog/</span> <span class="p">{</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>These first five examples are <em>literal string</em> matches, which match any part of an HTTP request that comes after the host segment. So, for example, if someone requests:</p>
+
+<p><strong>Request:</strong> <code>http://example.com/</code></p>
+
+<p><strong>Returns:</strong> Assuming that there is a <code>server_name</code> entry for <code>example.com</code>, the <code>location /</code> directive will determine what happens with this request.</p>
+
+<p>nginx always fulfills request using the most specific match. So, for example:</p>
+
+<p><strong>Request:</strong> <code>http://example.com/planet/blog/</code> or <code>http://example.com/planet/blog/about/</code></p>
+
+<p><strong>Returns:</strong> This is fulfilled by the <code>location /planet/blog/</code> setting because it is more specific, even though <code>location /planet/</code> also matches this request.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="p">~</span> <span class="sr">IndexPage\.php$</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">location</span> <span class="p">~</span> <span class="sr">^/BlogPlanet(/|/index\.php)$</span> <span class="p">{</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>When a <code>location</code> directive is followed by a tilde (<strong>~</strong>), nginx performs a <em>regular expression</em> match. These matches are always case-sensitive. So, <code>IndexPage.php</code> would match the first example above, but <code>indexpage.php</code> would not. In the second example, the regular expression <code>^/BlogPlanet(/|index\.php)$</code> will match requests for <code>/BlogPlanet/</code> and <code>/BlogPlanet/index.php</code>, but <strong>not</strong> <code>/BlogPlanet</code>, <code>/blogplanet/</code>, or <code>/blogplanet/index.php</code>. nginx uses <a href="http://perldoc.perl.org/perlre.html">Perl Compatible Regular Expressions</a> (PCRE).</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">\.(pl|cgi|perl|prl)</span>$ <span class="p">{</span> <span class="p">}</span>
+<span class="k">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">\.(md|mdwn|txt|mkdn)</span>$ <span class="p">{</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you want matches to be case-<em>insensitive</em>, use a tilde with an asterisk (<strong>~</strong>*). The examples above all specify how nginx should process requests that end in a particular file extension. In the first example, any file ending in: <code>.pl</code>, <code>.PL</code>, <code>.cgi</code>, <code>.CGI</code>, <code>.perl</code>, <code>.Perl</code>, <code>.prl</code>, and <code>.PrL</code> (among others) will match the request.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">^~</span> <span class="s">/images/IndexPage/</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">location</span> <span class="s">^~</span> <span class="s">/blog/BlogPlanet/</span> <span class="p">{</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Adding a caret and tilde (<strong>^~</strong>) to your <code>location</code> directives tells nginx, if it makes a match for a particular string, to stop searching for more specific matches and use the directives here instead. Other than that, these directives work like the literal string matches in the first group. So, even if there&rsquo;s a more specific match later, if a request matches one of these directives, the settings here will be used. See below for more information about the order and priority of <code>location</code> directive processing.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="p">=</span> <span class="s">/</span> <span class="p">{</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Finally, if you add an equals sign (<strong>=</strong>) to the <code>location</code> setting, this forces an exact match with the path requested and then stops searching for more specific matches. For instance, the final example will match only <code>http://example.com/</code>, not <code>http://example.com/index.html</code>. Using exact matches can speed up request times slightly, which can be useful if you have some requests that are particularly popular.</p>
+
+<p>Directives are processed in the following order:</p>
+
+<ol>
+<li>Exact string matches are processed first. If a match is found, nginx stops searching and fulfills the request.</li>
+<li>Remaining literal string directives are processed next. If nginx encounters a match where the <strong>^~</strong> argument is used, it stops here and fulfills the request. Otherwise, nginx continues to process location directives.</li>
+<li>All location directives with regular expressions (<strong>~</strong> and <strong>~</strong>*) are processed. If a regular expression matches the request, nginx stops searching and fulfills the request.</li>
+<li>If no regular expressions match, the most specific literal string match is used.</li>
+</ol>
+
+<p>Make sure each file and folder under a domain will match at least one <code>location</code> directive.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>While nginx&rsquo;s configuration parser is technically capable of reading nested location blocks, this is neither recommended nor supported.</div>
+</blockquote>
+
+
+<h5 id="location-root-and-index">Location Root and Index</h5>
+
+<p>The <code>location</code> setting is another variable that has its own block of arguments.</p>
+
+<p>Once nginx has determined which <code>location</code> directive best matches a given request, the response to this request is determined by the contents of the associated <code>location</code> directive block. Here&rsquo;s an example:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+    <span class="kn">root</span> <span class="s">html</span><span class="p">;</span>
+    <span class="kn">index</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, the document root is located in the <code>html/</code> directory. Given the default installation prefix for nginx, the full path to this location is <code>/etc/nginx/html/</code>.</p>
+
+<p><strong>Request:</strong> <code>http://example.com/blog/includes/style.css</code></p>
+
+<p><strong>Returns:</strong> nginx will attempt to serve the file located at <code>/etc/nginx/html/blog/includes/style.css</code></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can use absolute paths for the <code>root</code> directive if desired.</div>
+</blockquote>
+
+
+<p>The <code>index</code> variable tells nginx which file to serve if none is specified. For example:</p>
+
+<p><strong>Request:</strong> <code>http://example.com</code></p>
+
+<p><strong>Returns:</strong> nginx will attempt to serve the file located at <code>/etc/nginx/html/index.html</code>.</p>
+
+<p>If multiple files are specified for the <code>index</code> directive, nginx will process the list in order and fulfill the request with the first file that exists. If <code>index.html</code> doesn&rsquo;t exist in the relevant directory, then <code>index.htm</code> will be used. If neither exist, a 404 message will be sent.</p>
+
+<p>Here&rsquo;s a more complex example, showcasing a set of <code>location</code> directives taken approximately from the <a href="/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze">nginx and Perl-FastCGI Guide</a> for a server responding for the domain <code>example.com</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com location directive 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+    <span class="kn">root</span>   <span class="s">/srv/www/example.com/public_html</span><span class="p">;</span>
+    <span class="kn">index</span>  <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">location</span> <span class="p">~</span> <span class="sr">\.pl$</span> <span class="p">{</span>
+    <span class="kn">gzip</span> <span class="no">off</span><span class="p">;</span>
+    <span class="kn">include</span> <span class="s">/etc/nginx/fastcgi_params</span><span class="p">;</span>
+    <span class="kn">fastcgi_pass</span> <span class="s">unix:/var/run/fcgiwrap.socket</span><span class="p">;</span>
+    <span class="kn">fastcgi_index</span> <span class="s">index.pl</span><span class="p">;</span>
+    <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="s">/srv/www/www.example.com/public_html</span><span class="nv">$fastcgi_script_name</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, all requests for resources that end in a <code>.pl</code> extension are handled by the second location block, which specifies a <code>fastcgi</code> handler for these requests. Otherwise, nginx uses the first location directive. Resources are located on the file system at <code>/srv/www/example.com/public_html/</code>. If no file name is specified in the request, nginx will look for and provide the <code>index.html</code> or <code>index.htm</code> file. If no <code>index</code> files are found, the server will return a 404 error.</p>
+
+<p>Let&rsquo;s analyze what happens during a few requests:</p>
+
+<p><strong>Request:</strong> <code>http://example.com/</code></p>
+
+<p><strong>Returns:</strong> <code>/srv/www/example.com/public_html/index.html</code> if it exists. If that file doesn&rsquo;t exist, it will serve <code>/srv/www/example.com/public_html/index.htm</code>. If neither exists, nginx returns a 404 error.</p>
+
+<p><strong>Request:</strong> <code>http://example.com/blog/</code></p>
+
+<p><strong>Returns:</strong> <code>/srv/www/example.com/public_html/blog/index.html</code> if it exists. If that file doesn&rsquo;t exist, it will serve <code>/srv/www/example.com/public_html/blog/index.htm</code>. If neither exists, nginx returns a 404 error.</p>
+
+<p><strong>Request:</strong> <code>http://example.com/tasks.pl</code></p>
+
+<p><strong>Returns:</strong> nginx will use the FastCGI handler to execute the file located at <code>/srv/www/example.com/public_html/tasks.pl</code> and return the result.</p>
+
+<p><strong>Request:</strong> <code>http://example.com/username/roster.pl</code></p>
+
+<p><strong>Returns:</strong> nginx will use the FastCGI handler to execute the file located at <code>/srv/www/example.com/public_html/username/roster.pl</code> and return the result.</p>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<p>The examples and explanations in the previous sections should help you learn to configure your nginx server with elegance and confidence. In this section, we&rsquo;ll look at a few best practices for keeping your nginx configuration organized:</p>
+
+<ul>
+<li>Where possible, put your configurations in separate files, not all in the main configuration file.</li>
+<li>Make a separate configuration file for each of your domains. For example, an nginx configuration file for <strong>example.com</strong> might be called <code>/etc/nignx/sites-available/example.com</code> as shown throughout this guide. It will contain a <a href="#server-configuration">server</a> block for that domain. The domain name is specified in the <a href="#name-based-virtual-hosting">server_name</a> variable.</li>
+<li>Use <code>include</code> statements in the main <code>nginx.conf</code> configuration to include each server configuration file. These include statements go in the <code>http { }</code> block of the main configuration file:</li>
+</ul>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">http</span> <span class="p">{</span>
+      <span class="c1"># [...]
+</span><span class="c1"></span>
+      <span class="kn">include</span> <span class="s">/srv/www/example.com/nginx.conf</span><span class="p">;</span>
+
+      <span class="c1"># [...]
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can also use a relative path, if desired.</div>
+</blockquote>
+
+
+<ul>
+<li>Name your files with a consistent pattern. Keeping your files well-organized and cleanly formatted will greatly reduce the burden of maintaining an nginx server.</li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="/docs/web-servers/nginx/">Linode nginx guides</a></li>
+
+<li><a href="https://nginx.org/en/docs/">nginx documentation</a></li>
+
+<li><a href="/docs/lemp-guides/">Linode LEMP Application Stack guides</a></li>
+
+<li><a href="https://nginx.org/">nginx Website</a></li>
+
+<li><a href="http://nginx.org/en/docs/http/ngx_http_log_module.html">nginx log module documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/">Monitor an nginx Web Server Using the Elastic Stack on Centos 7</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/">How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/">How to Install and Configure Redmine on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/">Nginx SSL and TLS Deployment Best Practices</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-16-04/">How to Install a LEMP (Linux, Nginx, MySQL, PHP) Stack on Ubuntu 16.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#before-you-start">Before You Start</a>
+<ul>
+<li><a href="#preserve-a-working-configuration">Preserve a Working Configuration</a></li>
+<li><a href="#start-stop-reload">Start, Stop, Reload</a></li>
+</ul></li>
+<li><a href="#introduction-to-syntax">Introduction to Syntax</a></li>
+<li><a href="#understanding-how-nginx-works">Understanding How nginx Works</a>
+<ul>
+<li><a href="#defining-the-directives">Defining the Directives</a></li>
+<li><a href="#http-universal-configuration">HTTP (Universal Configuration)</a></li>
+<li><a href="#server-virtual-domains-configuration">Server (Virtual Domains Configuration)</a>
+<ul>
+<li><a href="#listening-ports">Listening Ports</a></li>
+<li><a href="#name-based-virtual-hosting">Name-Based Virtual Hosting</a></li>
+<li><a href="#access-logs">Access Logs</a></li>
+<li><a href="#location-file-and-folder-configuration">Location (File and Folder Configuration)</a>
+<ul>
+<li><a href="#location-root-and-index">Location Root and Index</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#best-practices">Best Practices</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

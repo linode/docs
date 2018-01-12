@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Linode CLI</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="An introduction to the Linode command line interface.">
+        <meta name="keywords" content="linode cli,  command line interface,  man pages,  api key">
+        
+        <meta property="og:title" content="Linode CLI">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/linode-cli/">
+        <meta property="og:description" content="An introduction to the Linode command line interface.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/linode-cli/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  Linode CLI
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Linode CLI</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-06-20T00:00:00Z">Monday, June 20, 2016</time> by Alex Fornuto</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-cli%2f&via=linode&text=Linode%20CLI" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-cli%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-cli%2f&t=Linode%20CLI" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/linode-cli.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/linode-cli.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The Linode Command Line Interface (<strong>CLI</strong>) is an <a href="https://github.com/linode/cli">open-source</a> command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the <a href="https://manager.linode.com/">Linode Manager</a> graphical user interface.</p>
+
+<p>Your Linode <a href="/docs/api/key">API key</a> is required for the CLI to function.</p>
+
+<p><img src="/docs/assets/linode-cli.png" alt="Linode CLI" title="Linode CLI" /></p>
+
+<h2 id="install-the-cli">Install the CLI</h2>
+
+<p>You can install the Linode CLI on any Mac OS X or Linux computer. You can install it on a Linode if you want to, but the typical use case for the CLI is to run it from your home or office workstation. You can use it to manage your Linode account quickly, without the use of a GUI.</p>
+
+<h3 id="mac-os-x">Mac OS X</h3>
+
+<p>Prerequisites:</p>
+
+<ul>
+<li><a href="http://brew.sh">Homebrew</a></li>
+</ul>
+
+<p>First, update Homebrew:</p>
+
+<pre><code>brew update
+</code></pre>
+
+<p>Run the following commands to install the Linode CLI:</p>
+
+<pre><code>brew tap linode/cli
+brew install linode-cli
+</code></pre>
+
+<h3 id="debian-and-ubuntu">Debian and Ubuntu</h3>
+
+<ol>
+<li><p>Add the Linode repository to your list:</p>
+
+<pre><code>sudo bash -c 'echo &quot;deb http://apt.linode.com/ $(lsb_release -cs) main&quot; &gt; /etc/apt/sources.list.d/linode.list'
+</code></pre></li>
+
+<li><p>Get the Linode GPG key:</p>
+
+<pre><code>wget -O- https://apt.linode.com/linode.gpg | sudo apt-key add -
+</code></pre></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update
+</code></pre></li>
+
+<li><p>Install the Linode CLI package:</p>
+
+<pre><code>sudo apt-get install linode-cli
+</code></pre></li>
+</ol>
+
+<h3 id="fedora">Fedora</h3>
+
+<p>linode-cli included in Fedora&rsquo;s standard package database:</p>
+
+<pre><code>dnf install linode-cli
+</code></pre>
+
+<h3 id="manual-installation-for-linux-all-distros">Manual Installation for Linux (All Distros)</h3>
+
+<p>In this section, you will learn how to install the Linode CLI manually on any Linux system. Use a package manager, CPAN, <a href="https://github.com/miyagawa/cpanminus">cpanminus</a>, or your preferred method to install the following Perl modules:</p>
+
+<ul>
+<li>Crypt::SSLeay</li>
+<li>JSON</li>
+<li>LWP::Protocol::https</li>
+<li>LWP::UserAgent</li>
+<li>Mozilla::CA</li>
+<li>Try::Tiny</li>
+<li>WebService::Linode</li>
+</ul>
+
+<ol>
+<li><p>Download the Linode CLI tarball:</p>
+
+<pre><code>curl -Lo linode-cli.tar.gz https://github.com/linode/cli/archive/master.tar.gz
+</code></pre></li>
+
+<li><p>Extract the files:</p>
+
+<pre><code>tar xf linode-cli.tar.gz
+</code></pre></li>
+
+<li><p>Install the CLI:</p>
+
+<pre><code>cd cli-master &amp;&amp; perl Makefile.PL &amp;&amp; sudo make install
+</code></pre></li>
+</ol>
+
+<h2 id="setup">Setup</h2>
+
+<p>If you installed the Linode CLI in a standard location, it should already be added to your PATH variable. That way, you will be able to invoke the CLI with the <code>linode</code> command. Otherwise, you will need to manually add the <code>linode-cli</code> folder location to your PATH, or call the program directly with the command <code>/path/to/linode-cli/linode</code>.</p>
+
+<p>To start with, most users will want to run the configuration utility:</p>
+
+<ol>
+<li><p>Start the configuration utility:</p>
+
+<pre><code>linode configure
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>This will walk you through setting default values for common options.
+</code></pre></li>
+
+<li><p>Fill in your information at the prompts. You can skip optional questions by pressing <code>Return</code>. Here&rsquo;s some example output with the answers filled in.</p>
+
+<pre><code>$ linode configure
+This will walk you through setting default values for common options.
+
+ Linode Manager user name
+ &gt;&gt; user1
+
+ Linode Manager password for user1
+ &gt;&gt;
+
+
+ Default distribution when deploying a new Linode or rebuilding an existing one. (Optional)
+ Valid options are:
+   1 - Arch 2017.01.01
+   2 - CentOS 5.6
+   3 - CentOS 6.5
+   4 - CentOS 7
+   5 - Debian 7
+   6 - Debian 8
+   7 - Fedora 24
+   8 - Fedora 25
+   9 - Gentoo 2017-01-05
+  10 - Slackware 13.37
+  11 - Slackware 13.37 32bit
+  12 - Slackware 14.1
+  13 - Slackware 14.2
+  14 - Ubuntu 12.04 LTS
+  15 - Ubuntu 14.04 LTS
+  16 - Ubuntu 16.04 LTS
+  17 - Ubuntu 16.10
+  18 - openSUSE Leap 42.1
+  19 - openSUSE Leap 42.2
+ Choose[ 1-19 ] or Enter to skip&gt;&gt;
+
+ Default datacenter when deploying a new Linode. (Optional)
+ Valid options are:
+   1 - atlanta
+   2 - dallas
+   3 - frankfurt
+   4 - fremont
+   5 - london
+   6 - newark
+   7 - shinagawa1
+   8 - singapore
+   9 - tokyo
+ Choose[ 1-9 ] or Enter to skip&gt;&gt;
+
+ Default plan when deploying a new Linode. (Optional)
+ Valid options are:
+   1 - Linode 1024
+   2 - Linode 2048
+   3 - Linode 4096
+   4 - Linode 8192
+   5 - Linode 12288
+   6 - Linode 16384
+   7 - Linode 24576
+   8 - Linode 32768
+   9 - Linode 49152
+  10 - Linode 61440
+  11 - Linode 65536
+  12 - Linode 81920
+  13 - Linode 102400
+  14 - Linode 204800
+ Choose[ 1-14 ] or Enter to skip&gt;&gt;
+
+  Path to an SSH public key to install when deploying a new Linode. (Optional)
+  &gt;&gt; /home/user1/.ssh/id_rsa.pub
+
+  Config written to /Users/user1/.linodecli/config
+</code></pre></li>
+</ol>
+
+<p>Once the CLI has your Linode Manager username and password, it will generate and use a new API key automatically.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you have <a href="/docs/security/linode-manager-security-controls/#two-factor-authentication">two-factor authentication</a> enabled, you will receive a prompt for the code after entering your password:</p>
+
+<p>Two-factor authentication code
+&gt;&gt; 123456</p>
+
+<p>Enter your code at the prompt, then continue with the configuration tool as described above. Once the Linode CLI has access to your API key, you will no longer have to enter the code.</p>
+</div>
+</blockquote>
+
+
+<p>You can run the <code>linode configure</code> command again if your settings change. New answers will overwrite the old ones in the <code>/Users/user1/.linodecli/config</code> file in your user&rsquo;s home directory.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you don&rsquo;t run the configuration tool, you can add these options manually in the <code>.linodecli/config</code> file.</div>
+</blockquote>
+
+
+<h3 id="api-key">API Key</h3>
+
+<p>The Linode CLI requires your API key to function. If you need to generate an API key manually, read the <a href="/docs/api/key">API Key</a> article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the <code>.linodecli/config</code> file automatically.</p>
+
+<ul>
+<li><p>In the <code>.linodecli/config</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		.linodecli/config 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">api-key SampleKey123456...</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>As an environment variable:</p>
+
+<pre><code>LINODE_API_KEY=SampleKey123456...
+</code></pre></li>
+
+<li><p>Passed directly in the command:</p>
+
+<pre><code>linode --api-key SampleKey123456...
+</code></pre></li>
+</ul>
+
+<p>If you add your API key in the <code>.linodecli/config</code> file, or if you set it as an environment variable, the Linode CLI will have persistent access to your account. If you don&rsquo;t save or set the API key beforehand, you will have to enter it in the command whenever you use the CLI. The <code>--api-key</code> option should come at the end of the command. For example, your command would look like:</p>
+
+<pre><code>linode options --api-key SampleKey123456...
+</code></pre>
+
+<h3 id="multiple-users">Multiple Users</h3>
+
+<p>The default Linode CLI user is stored in the <code>.linodecli/config</code> file.</p>
+
+<p>To set up the API for additional Linode users, you can run the <code>linode configure</code> command again, supplying a different username. Configuration files for additional users are stored with the file name pattern <code>.linodecli/config_user1</code>, with <strong>user1</strong> being replaced by the actual username.</p>
+
+<p>To invoke the CLI with a particular username, use the <code>-u user1</code> option, with <strong>user1</strong> being your actual username, at the end of the command.</p>
+
+<h2 id="using-the-cli">Using the CLI</h2>
+
+<p>Invoke the CLI by prefacing your commands with <code>linode</code>. Make sure the <code>linode-cli</code> folder has been appended to your PATH variable (see the previous <a href="#setup">Setup</a> section). In general, commands are in the format:</p>
+
+<pre><code>linode [object] [action] [action-options...] [options...]
+</code></pre>
+
+<p>If no object is given, the <strong>linode</strong> object is assumed. Available objects include:</p>
+
+<pre><code>linode
+domain
+nodebalancer
+stackscript
+account
+</code></pre>
+
+<p>To specify a particular Linode user, add the <code>-u user1</code> option, with <strong>user1</strong> being your actual username, at the end of the command. If no user is specified, the default user described in the <code>.linodecli/config</code> file will be used.</p>
+
+<p>The Linode CLI has many options available. In the rest of this article, we&rsquo;ll go over some common examples relating to Linodes, domains, NodeBalancers, StackScripts, and account details. To see all of the available options, view the man pages:</p>
+
+<pre><code>man linode
+man linode-linode
+man linode-domain
+man linode-nodebalancer
+man linode-stackscript
+man linode-account
+</code></pre>
+
+<p>Press <code>q</code> to exit the man pages. You can also view more examples and options on the project&rsquo;s <a href="https://github.com/linode/cli/blob/master/README.md">README</a> page on GitHub.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you do something via the CLI that costs money (creating a Linode, upgrading a Linode, enrolling in a new service, etc.), the CLI <em>will</em> attempt to charge the credit card on file for your account or use any account credit available.</div>
+</blockquote>
+
+
+<h3 id="linodes">Linodes</h3>
+
+<p>The Linode CLI allows you to spin up new Linodes, issue reboots, upgrade plan sizes, and more.</p>
+
+<p>Listing Linodes:</p>
+
+<pre><code>linode list
+</code></pre>
+
+<p>Creating a new Linode:</p>
+
+<pre><code>linode create &lt;linode-label&gt; --location &lt;data center&gt; --plan &lt;linodeXXXX&gt; --payment-term &lt;X&gt; --distribution &quot;&lt;Distribution&gt;&quot; --group &lt;group-label&gt; --stackscript &quot;&lt;stackscript-label&gt;&quot;
+</code></pre>
+
+<p>Restarting a Linode:</p>
+
+<pre><code>linode restart &lt;linode-label&gt;
+</code></pre>
+
+<p>Resizing a Linode:</p>
+
+<pre><code>linode resize &lt;linode-label&gt; &lt;linodeXXXX&gt;
+</code></pre>
+
+<p>Rebuilding a Linode (rebuilding with a StackScript is available):</p>
+
+<pre><code>linode rebuild &lt;linode-label&gt; --distribution &quot;&lt;Distribution&gt;&quot; --password &quot;&lt;password&gt;&quot;
+</code></pre>
+
+<p>For your convenience, several of the options are explained below. For details on all the Linode options, please check the appropriate man page:</p>
+
+<pre><code>man linode-linode
+</code></pre>
+
+<h4 id="plan-options">&ndash;plan options</h4>
+
+<p>To view available <a href="https://www.linode.com/pricing/">Linode plan sizes</a> for the <code>--plan</code> option, use the following command:</p>
+
+<pre><code>linode plans
+</code></pre>
+
+<p>Choose from the options below:</p>
+
+<ul>
+<li>Linode 1024</li>
+<li>Linode 2048</li>
+<li>Linode 4096</li>
+<li>Linode 8192</li>
+<li>Linode 12288</li>
+<li>Linode 16384</li>
+<li>Linode 24576</li>
+<li>Linode 32768</li>
+<li>Linode 49152</li>
+<li>Linode 61440</li>
+<li>Linode 65536</li>
+<li>Linode 81920</li>
+<li>Linode 102400</li>
+<li>Linode 204800</li>
+</ul>
+
+<h4 id="location-options">&ndash;location options</h4>
+
+<p>To view available data centers for new Linodes for the <code>--location</code> option, use either of the following commands:</p>
+
+<pre><code>linode locations
+linode datacenters
+</code></pre>
+
+<p>Choose from the options below:</p>
+
+<ul>
+<li>atlanta</li>
+<li>dallas</li>
+<li>frankfurt</li>
+<li>fremont</li>
+<li>london</li>
+<li>newark</li>
+<li>shinagawa1</li>
+<li>singapore</li>
+<li>tokyo</li>
+</ul>
+
+<h4 id="distribution-options">&ndash;distribution options</h4>
+
+<p>To view available distributions for new Linodes for the <code>--distribution</code> option, use either of the following commands:</p>
+
+<pre><code>linode distros
+linode distributions
+</code></pre>
+
+<p>Choose from the options below:</p>
+
+<ul>
+<li>Arch 2017.01.01</li>
+<li>CentOS 5.6</li>
+<li>CentOS 6.5</li>
+<li>CentOS 7</li>
+<li>Debian 7</li>
+<li>Debian 8</li>
+<li>Fedora 24</li>
+<li>Fedora 25</li>
+<li>Gentoo 2017-01-05</li>
+<li>Slackware 13.37</li>
+<li>Slackware 13.37 32bit</li>
+<li>Slackware 14.1</li>
+<li>Slackware 14.2</li>
+<li>Ubuntu 12.04 LTS</li>
+<li>Ubuntu 14.04 LTS</li>
+<li>Ubuntu 16.04 LTS</li>
+<li>Ubuntu 16.10</li>
+<li>openSUSE Leap 42.1</li>
+<li>openSUSE Leap 42.2</li>
+</ul>
+
+<h3 id="domains">Domains</h3>
+
+<p>With the Linode CLI, you can add and remove domains, update DNS records, and more.</p>
+
+<p>Listing domains:</p>
+
+<pre><code>linode domain list
+</code></pre>
+
+<p>Listing domain records:</p>
+
+<pre><code>linode domain record-list &lt;example.com&gt;
+</code></pre>
+
+<p>Creating a domain record:</p>
+
+<pre><code>linode domain record-create &lt;example.com&gt; &lt;RECORD TYPE&gt; &lt;subdomain&gt; &lt;X.X.X.X&gt;
+</code></pre>
+
+<p>Updating a domain record:</p>
+
+<pre><code>linode domain record-update &lt;example.com&gt; &lt;RECORD TYPE&gt; &lt;subdomain&gt; [--priority &lt;priority&gt;]
+</code></pre>
+
+<p>To see all the available options, check the man pages:</p>
+
+<pre><code>man linode-domain
+</code></pre>
+
+<h3 id="nodebalancers">NodeBalancers</h3>
+
+<p>The Linode CLI allows you to manage your <a href="/docs/nodebalancers">NodeBalancers</a> from the command line.</p>
+
+<p>Listing NodeBalancers:</p>
+
+<pre><code>linode nodebalancer list
+</code></pre>
+
+<p>Creating a NodeBalancer:</p>
+
+<pre><code>linode nodebalancer create &lt;nodebalancer-label&gt; &lt;data center&gt;
+</code></pre>
+
+<p>Configuring a NodeBalancer to handle traffic on a specific port:</p>
+
+<pre><code>linode nodebalancer config-create &lt;nodebalancer-label&gt; &lt;port&gt;
+</code></pre>
+
+<p>Configuring a node on a NodeBalancer:</p>
+
+<pre><code>linode nodebalancer node-create &lt;nodebalancer-label&gt; &lt;port&gt; &lt;linode-label&gt; &lt;private-ip&gt;:&lt;port&gt;
+</code></pre>
+
+<p>To see all the available options, check the man pages:</p>
+
+<pre><code>man linode-nodebalancer
+</code></pre>
+
+<h3 id="stackscripts">StackScripts</h3>
+
+<p>The Linode CLI allows you to create and show StackScripts, and more.</p>
+
+<p>Creating a StackScript:</p>
+
+<pre><code>linode stackscript create --label &quot;&lt;stackscript-label&gt;&quot; --codefile &quot;&lt;/path/myscript.sh&gt;&quot; --distribution &quot;&lt;Distribution&gt;&quot;
+</code></pre>
+
+<p>Showing a StackScript:</p>
+
+<pre><code>linode stackscript show &lt;stackscript-label&gt;
+</code></pre>
+
+<p>StackScripts can be used to create or rebuild a Linode. Creating and rebuilding Linodes is covered in the <a href="#linodes">Linodes</a> section.</p>
+
+<p>To see all the available options, check the man pages:</p>
+
+<pre><code>man linode-stackscript
+</code></pre>
+
+<h3 id="account">Account</h3>
+
+<p>The CLI allows you to view your account billing details at a glance. Run the following command:</p>
+
+<pre><code>linode account show
+</code></pre>
+
+<p>Sample output:</p>
+
+<pre><code>managed: yes
+balance: $ 0.00
+transfer pool: 6732.00GB
+transfer used: 13.02GB
+transfer billable: 0.00GB
+billing method: prepay
+</code></pre>
+
+<p>To see all the available options, check the man pages:</p>
+
+<pre><code>man linode-account
+</code></pre>
+
+<h2 id="updating-the-cli">Updating the CLI</h2>
+
+<p>Follow these instructions to update your Linode CLI package.</p>
+
+<h3 id="mac-os-x-1">Mac OS X</h3>
+
+<p>Run the following Homebrew commands:</p>
+
+<pre><code>brew update
+brew upgrade linode-cli
+</code></pre>
+
+<h3 id="debian-and-ubuntu-1">Debian and Ubuntu</h3>
+
+<p>Run the following commands:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get upgrade linode-cli
+</code></pre>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://github.com/linode/cli">Github Linode CLI</a></li>
+
+<li><a href="/docs/platform/api/api-key">Linode API Key</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/api/api-key/">API Key</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#install-the-cli">Install the CLI</a>
+<ul>
+<li><a href="#mac-os-x">Mac OS X</a></li>
+<li><a href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
+<li><a href="#fedora">Fedora</a></li>
+<li><a href="#manual-installation-for-linux-all-distros">Manual Installation for Linux (All Distros)</a></li>
+</ul></li>
+<li><a href="#setup">Setup</a>
+<ul>
+<li><a href="#api-key">API Key</a></li>
+<li><a href="#multiple-users">Multiple Users</a></li>
+</ul></li>
+<li><a href="#using-the-cli">Using the CLI</a>
+<ul>
+<li><a href="#linodes">Linodes</a>
+<ul>
+<li><a href="#plan-options">&ndash;plan options</a></li>
+<li><a href="#location-options">&ndash;location options</a></li>
+<li><a href="#distribution-options">&ndash;distribution options</a></li>
+</ul></li>
+<li><a href="#domains">Domains</a></li>
+<li><a href="#nodebalancers">NodeBalancers</a></li>
+<li><a href="#stackscripts">StackScripts</a></li>
+<li><a href="#account">Account</a></li>
+</ul></li>
+<li><a href="#updating-the-cli">Updating the CLI</a>
+<ul>
+<li><a href="#mac-os-x-1">Mac OS X</a></li>
+<li><a href="#debian-and-ubuntu-1">Debian and Ubuntu</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

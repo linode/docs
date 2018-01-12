@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Use ZFS on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to use ZFS to store data redundantly and avoid silent data corruption.">
+        <meta name="keywords" content="zfs, file system, volume manager, redundant, silent corruption, mirror, raid, pool">
+        
+        <meta property="og:title" content="How to Use ZFS on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/cloud-storage/how-to-use-zfs-on-ubuntu-16-04/">
+        <meta property="og:description" content="How to use ZFS to store data redundantly and avoid silent data corruption.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/cloud-storage/how-to-use-zfs-on-ubuntu-16-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/cloud-storage/">Cloud Storage</a>
+  
+</li>
+
+
+<li>
+  
+  How to Use ZFS on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Use ZFS on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-16T00:00:00Z">Thursday, November 16, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Alexandru Andrei
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2fhow-to-use-zfs-on-ubuntu-16-04%2f&via=linode&text=How%20to%20Use%20ZFS%20on%20Ubuntu%2016.04" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2fhow-to-use-zfs-on-ubuntu-16-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2fhow-to-use-zfs-on-ubuntu-16-04%2f&t=How%20to%20Use%20ZFS%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/cloud-storage/how-to-use-zfs-on-ubuntu-16-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/cloud-storage/how-to-use-zfs-on-ubuntu-16-04.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<h2 id="what-is-silent-data-corruption-how-does-zfs-work">What is Silent Data Corruption? How Does ZFS Work?</h2>
+
+<p><em>Silent data corruption</em> can be caused by a controller fault, firmware bug, or microscopic flaw in the design of magnetic/flash memory. The drive will write incorrect data but report a successful operation. Since no errors have been reported by the filesystem, the backups contain the corrupted files so there is no way to recover.</p>
+
+<p>ZFS offers protection against silent data corruption. Instead of &ldquo;trusting&rdquo; the storage device, it <a href="https://en.wikipedia.org/wiki/Checksum">checksums</a> the data then stores it in separate blocks from the data itself. Corrupted data will be reported and even automatically fixed if the storage pool has been setup with redundancy.</p>
+
+<p>ZFS provides other features as well:</p>
+
+<ul>
+<li>A volume manager allows you to combine your physical storage devices into pools. This makes it possible to dynamically increase the pool size without worrying about partitioning and expanding the filesystem.</li>
+<li>Most of the operations can be done online.</li>
+<li>Devices can be grouped in RAID-Z arrays, similar to RAID 5, but more than three parity disks are supported.</li>
+<li>You can take snapshots of your filesystems and rollback to them in case of need.</li>
+<li>Clones can be created from snapshots and can be promoted to take over.</li>
+<li>Compression and deduplication can be turned on to save disk space. Compression also improves read and write speeds - sometimes considerably if the information is very compressible (e.g. text files).</li>
+</ul>
+
+<h2 id="the-structure-of-zfs-pools">The Structure of ZFS Pools</h2>
+
+<ol>
+<li><p>A ZFS pool is made up of one or more groups of <em>virtual devices</em> or <em>vdevs</em>. The vdevs are made up of block devices. The block devices can be backed by partitions or whole disks/drives.</p>
+
+<p>Here&rsquo;s an example of a pool:</p>
+
+<pre><code>root@zfsbox:~# zpool status
+  pool: testpool
+ state: ONLINE
+  scan: none requested
+config:
+
+        NAME            STATE     READ WRITE CKSUM
+        testpool        ONLINE       0     0     0
+          mirror-0      ONLINE       0     0     0
+            sdb         ONLINE       0     0     0
+            sdc         ONLINE       0     0     0
+          mirror-1      ONLINE       0     0     0
+            sdd         ONLINE       0     0     0
+            sde         ONLINE       0     0     0
+
+errors: No known data errors
+</code></pre>
+
+<p><strong>sdb</strong> and <strong>sdc</strong> are the block devices backed by whole disks. These make up the vdev called <strong>mirror-0</strong>. The second vdev, <strong>mirror-1</strong>, is made up as well of two disks. These two vdevs make up the pool called <strong>testpool</strong>.</p></li>
+
+<li><p>The pool can store <em>datasets</em>. These can be: filesystems, snapshots, clones or volumes. The last are a kind of virtual block devices.</p>
+
+<p>For example, you could combine two physical disks into a pool and then create a volume that spans on both of the physical devices. This way a large, virtual disk can be formatted with the filesystem of your choice.</p></li>
+</ol>
+
+<h3 id="single-disk-vdev">Single-Disk vdev</h3>
+
+<p>You can create a vdev out of a single disk. If you group multiple such vdevs together, you get a structure similar to RAID-0, where data is striped dynamically across all the physical devices.</p>
+
+<p>Advantages:</p>
+
+<ul>
+<li>Using close to 100% of the storage space available</li>
+<li>Fastest write and read speeds</li>
+<li>Easily increase pool capacity by adding more drives</li>
+</ul>
+
+<p>Disadvantages:</p>
+
+<ul>
+<li>If one disk fails, your entire pool fails</li>
+<li>No way to recover original data in case of read/checksum errors; ZFS will report them but there&rsquo;s nothing more it can do</li>
+</ul>
+
+<h3 id="mirror-vdevs">Mirror vdevs</h3>
+
+<p>Mirror two or more devices then later add another mirror to the same virtual device to increase redundancy. Alternatively, you can create a new vdev that includes a new set of mirrored drives to expand the poll. This gets something similar to RAID-10. While expanding the pool with other types of vdevs is an option, it&rsquo;s generally recommended you stick to the same kind of structures in each pool.</p>
+
+<p>If you couple a 1TB disk with a 2TB disk, the usable space will be cut to 1TB. This is because that is the maximum information that can be mirrored in such a setup.</p>
+
+<p>Advantages:</p>
+
+<ul>
+<li>Fast read speeds. Slightly better than what you get with RAID-Z; slightly worse than the previous non-redundant setup.</li>
+<li>Fast resilvering (replacing a failed device and mirroring data back).</li>
+<li>If there is at least one functional device in a mirror vdev, you can replace the failed drives and recover.</li>
+<li>Redundancy can be increased later on</li>
+</ul>
+
+<p>Disadvantages:</p>
+
+<ul>
+<li>Least amount of storage space available. If there are 4 disks in a mirror vdev, the capacity that you can use to store data is the capacity of the smallest disk in that structure.</li>
+<li>Weakest write performance. Basically the same as a single disk.</li>
+</ul>
+
+<h3 id="raid-z-vdevs">RAID-Z vdevs</h3>
+
+<p>These vdevs can be configured with single, double, or triple parity (and even more in recent versions of ZFS). Parity information is spread across all physical devices in the vdev. The usable space is roughly total storage capacity minus parity information. As an example when using a structure with double parity and the RAID-Z2 vdev contains 9 disks of 1TB, then you can store approximately 7TB of information (9TB total - 2TB for parity).</p>
+
+<p>Advantages:</p>
+
+<ul>
+<li>Good compromise between usable space and redundancy.</li>
+<li>Good read/write speeds that is inversely proportional to parity.</li>
+</ul>
+
+<p>Disadvantages:</p>
+
+<ul>
+<li>Cannot add disks to a RAID-Z vdev.</li>
+<li>Resilvering can be more time-consuming and intensive than mirrors.</li>
+</ul>
+
+<p>Other types of virtual devices like cache and log can be used when dealing with mechanical hard-drives. Spare vdevs can be set up to automatically replace failed devices.</p>
+
+<h2 id="raid-z-and-zfs-recommendations">RAID-Z and ZFS Recommendations</h2>
+
+<ol>
+<li><p>When compression is turned on and RAID-Z arrays are large or are set up with more than two parity devices, it can help a lot to use a Linode with multiple virtual CPUs (usually in intense write situations).</p></li>
+
+<li><p>If creating a storage server that is intensively read by other servers/services, it helps to choose a Linode with plenty of RAM so that data is cached and rapidly delivered when requested.</p>
+
+<p>The above recommendations are for best performance but ZFS will work on any Linode. There is a myth caused by misunderstanding how Adaptive Replacement Cache (ARC) is RAM intensive to be discussed at the end of this guide. This is true only if deduplication is enabled.</p></li>
+
+<li><p>Use the same size for all physical devices in a vdev. There&rsquo;s almost never a reason to mix them up and performance is almost always degraded or usable space is lost if you mix devices with different storage space.</p>
+
+<p>For example, a 1TB disk and a 4TB disk are in a non-redundant striped array, and you write 5GB of data. ZFS will try to balance writes so that drives are filled up at the same rate. Approximately 1GB will be sent to the first disk and 4GB to the second. The 4GB drive will be the rate limiting step for writing. If they would have been the same size, the write could have been more balanced and would have finished faster.</p>
+
+<p>In the case of mirrors or RAID-Z, usable size will be capped to the smallest storage device in a vdev.</p></li>
+
+<li><p>It&rsquo;s better to design it right from the start rather than starting low and then adding vdevs to your pool when you need more space. An empty vdev will get more writes than one which is half full.</p>
+
+<p>If you need to add more space to your setup, it&rsquo;s preferable to create a secondary pool rather than add virtual devices to the old one. You can create a new Linode, create a larger pool, and import data from your old Linode.</p></li>
+
+<li><p>Even with all the measures against data corruption, it&rsquo;s still good practice to backup off-site.</p></li>
+</ol>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps in this guide require root privileges. Be sure to run the steps below as <code>root</code> or with the <code>sudo</code> prefix. For more information on privileges, see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Familiarize yourself with the <a href="/docs/getting-started">Getting Started</a> guide, deploy an Ubuntu 16.04 image and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>apt update &amp;&amp; apt upgrade
+</code></pre>
+
+<p>If asked about a configuration change in GRUB&rsquo;s config file. Select <strong>keep the local version currently installed</strong>.</p></li>
+
+<li><p>Install a metapackage that will pull in the latest Ubuntu provided kernel, geared towards virtual machines.</p>
+
+<pre><code>apt install linux-image-virtual
+</code></pre></li>
+
+<li><p>You&rsquo;ll activate booting with GRUB later on, which has a default timeout of 10 seconds for user input. Change it to 0 and rebuild GRUB configuration files:</p>
+
+<pre><code>sed -i.bak 's/GRUB_TIMEOUT.*/GRUB_TIMEOUT=0/' /etc/default/grub; update-grub
+</code></pre></li>
+
+<li><p>After deciding how to structure your ZFS build, follow the steps in this guide to <a href="/docs/platform/how-to-use-block-storage-with-your-linode">create new volumes and attach them to your Linode</a>. Ignore the steps about creating a filesystem, mounting, editing <code>fstab</code>. ZFS will take care of that.</p></li>
+
+<li><p>Linode&rsquo;s kernels, booted by default, don&rsquo;t include the ZFS module you&rsquo;ll need so you have to switch to the kernel provided by Ubuntu. In your Linode&rsquo;s dashboard, click <strong>Edit</strong> to make changes to your Ubuntu configuration profile. Under <strong>Boot settings</strong>, change the <strong>Kernel</strong> to <strong>GRUB 2</strong>.</p>
+
+<p><img src="/docs/assets/zfs-ubuntu-changing-boot-settings.png" alt="Changing Boot Settings" /></p></li>
+
+<li><p>Reboot through the Linode Manager.</p></li>
+</ol>
+
+<h2 id="install-zfs-and-create-a-pool">Install ZFS and Create a Pool</h2>
+
+<ol>
+<li><p>Install the ZFS utilities:</p>
+
+<pre><code>apt install zfsutils-linux
+</code></pre></li>
+
+<li><p>Find out how the symbolic links to your volumes are named:</p>
+
+<pre><code>ls /dev/disk/by-id/
+</code></pre>
+
+<p>Here is an example output:</p>
+
+<pre><code>root@localhost:~# ls /dev/disk/by-id/
+scsi-0Linode_Volume_d1  scsi-0Linode_Volume_d4
+scsi-0Linode_Volume_d2  scsi-0QEMU_QEMU_HARDDISK_drive-scsi-disk-0
+scsi-0Linode_Volume_d3  scsi-0QEMU_QEMU_HARDDISK_drive-scsi-disk-1
+</code></pre>
+
+<p><code>d1</code>, standing for device 1, resulted in the id <code>scsi-0Linode_Volume_d1</code>. Remember to replace each instance you&rsquo;ll see in the following example commands with your own identifiers.</p></li>
+</ol>
+
+<h3 id="non-redundant-zfs-pools">Non-redundant ZFS Pools</h3>
+
+<ol>
+<li><p>Adding two disks in a striped, non-redundant configuration is done by:</p>
+
+<pre><code>zpool create -f testpool /dev/disk/by-id/scsi-0Linode_Volume_d1 /dev/disk/by-id/scsi-0Linode_Volume_d2
+</code></pre>
+
+<p><code>-f</code> stands for &ldquo;force&rdquo;. Under normal circumstances, you should not use this switch so you get warnings about possible mistakes. It is used here since the devices are empty and zpool refuses to use them in their current state without the <code>-f</code> switch.</p>
+
+<p><code>testpool</code> is the name of the pool. This will be automatically mounted in <code>/testpool</code>. You can choose a different mountpoint with the -m switch: <code>zpool create -f -m /othermountpoint testpool /dev/disk/by-id/scsi-0Linode_Volume_d1</code>.</p></li>
+
+<li><p>To change this mountpoint later on:</p>
+
+<pre><code>zfs set mountpoint=/somewhereelse testpool
+</code></pre></li>
+
+<li><p>To add more disks to the array:</p>
+
+<pre><code>zpool add -f testpool /dev/disk/by-id/scsi-0Linode_Volume_d4
+</code></pre></li>
+
+<li><p>Destroy the test pool so you can proceed through the next examples:</p>
+
+<pre><code>zpool destroy testpool
+</code></pre></li>
+</ol>
+
+<h3 id="mirror-zfs-pools">Mirror ZFS Pools</h3>
+
+<ol>
+<li><p>Create a pool by mirroring two devices:</p>
+
+<pre><code>zpool create -f testpool mirror /dev/disk/by-id/scsi-0Linode_Volume_d1 /dev/disk/by-id/scsi-0Linode_Volume_d2
+</code></pre></li>
+
+<li><p>Redundancy can be further increased by adding another device and creating a three-way mirror:</p>
+
+<pre><code>zpool attach -f testpool /dev/disk/by-id/scsi-0Linode_Volume_d2 /dev/disk/by-id/scsi-0Linode_Volume_d3
+</code></pre></li>
+
+<li><p>Inspect the pool with:</p>
+
+<pre><code>zpool status
+</code></pre>
+
+<p>The <strong>READ WRITE</strong> and <strong>CKSUM</strong> columns show how many errors have been encountered when trying to read, write and verify checksums. If these are different than 0, it&rsquo;s time to replace the respective device.</p></li>
+
+<li><p>Destroy the pool:</p>
+
+<pre><code>zpool destroy testpool
+</code></pre>
+
+<p>Let&rsquo;s create another type of array:</p>
+
+<pre><code>zpool create -f testpool mirror /dev/disk/by-id/scsi-0Linode_Volume_d1 /dev/disk/by-id/scsi-0Linode_Volume_d2 mirror /dev/disk/by-id/scsi-0Linode_Volume_d3 /dev/disk/by-id/scsi-0Linode_Volume_d4
+</code></pre>
+
+<p>With <code>zpool status</code> you will see that now you have two mirrors. This combines the benefits of redundancy with the benefits of distributing writes across two vdevs.</p>
+
+<p>Destroy the pool so you can also experiment with RAID-Z.</p></li>
+</ol>
+
+<h3 id="raid-z-pools">Raid-Z Pools</h3>
+
+<ol>
+<li><p>Create a RAID-Z pool with single parity:</p>
+
+<pre><code>zpool create -f testpool raidz1 /dev/disk/by-id/scsi-0Linode_Volume_d1 /dev/disk/by-id/scsi-0Linode_Volume_d2 /dev/disk/by-id/scsi-0Linode_Volume_d3 /dev/disk/by-id/scsi-0Linode_Volume_d4
+</code></pre></li>
+
+<li><p>Run this command:</p>
+
+<pre><code>zpool list
+</code></pre>
+
+<p><strong>SIZE</strong> stands for raw size including parity data. To get the usable storage size:</p>
+
+<pre><code>zfs list
+</code></pre>
+
+<p><strong>AVAIL</strong> shows the storage capacity for your files and directories.</p></li>
+
+<li><p>To create a double parity RAID-Z setup, destroy your pool and enter the following command:</p>
+
+<pre><code>zpool create -f testpool raidz2 /dev/disk/by-id/scsi-0Linode_Volume_d1 /dev/disk/by-id/scsi-0Linode_Volume_d2 /dev/disk/by-id/scsi-0Linode_Volume_d3 /dev/disk/by-id/scsi-0Linode_Volume_d4
+</code></pre>
+
+<p>Entering <code>zfs list</code> again will show there&rsquo;s less space available since two devices are used for parity instead of one. Parity can be further increased by changing <code>raidz2</code> in the previous command with <code>raidz3</code>, <code>raidz4</code>, or more. The more parity added, the more performance is degraded. It&rsquo;s usually better to have two RAID-Z2 arrays of eight disks each rather than a single array of 16 disks.</p></li>
+</ol>
+
+<h2 id="datasets-snapshots-and-rollbacks">Datasets, Snapshots and Rollbacks</h2>
+
+<ol>
+<li><p>Creating multiple ZFS filesystems can be useful. These are mounted under <code>/testpool</code> in our example and look like ordinary directories.</p>
+
+<pre><code>zfs create testpool/data
+</code></pre>
+
+<p>If you have one directory with code from a project and a directory with images, you can create two datasets and then turn compression on for the dataset containing code and compression off for the dataset with images. You can see the value of all properties that can be changed with:</p>
+
+<pre><code>zfs get all
+</code></pre>
+
+<p>By keeping a logical separation of data in different filesystems, you will also be able to snapshot and rollback just the parts of interest.</p></li>
+
+<li><p>Change directory to <code>/testpool/data</code> and create a few files:</p>
+
+<pre><code>cd /testpool/data/; touch {a..z}
+</code></pre>
+
+<p>Type <code>ls</code> to see them.</p></li>
+
+<li><p>Take a snapshot:</p>
+
+<pre><code>zfs snapshot testpool/data@a-to-z
+</code></pre></li>
+
+<li><p>Simulate a disaster by deleting a few files:</p>
+
+<pre><code>rm /testpool/data/{a..l};ls /testpool/data/
+</code></pre></li>
+
+<li><p>There&rsquo;s a hidden directory, <code>.zfs</code>, in each filesystem that can be used to see the content of your snapshots:</p>
+
+<pre><code>ls /testpool/data/.zfs/snapshot/a-to-z/
+</code></pre></li>
+
+<li><p>Rollback to that snapshot:</p>
+
+<pre><code>zfs rollback testpool/data@a-to-z
+</code></pre></li>
+
+<li><p>If you list the contents of your <code>data</code> filesystem, it is restored back to the snapshot:</p>
+
+<pre><code>ls /testpool/data/
+</code></pre></li>
+
+<li><p>Destroy a snapshot with:</p>
+
+<pre><code>zfs destroy testpool/data@a-to-z
+</code></pre></li>
+</ol>
+
+<h2 id="speed-up-zfs">Speed Up ZFS</h2>
+
+<ol>
+<li><p>By default, compression is turned off. Turning this on will speed up writing and reading data when files are compressible.</p>
+
+<pre><code>zfs set compression=on testpool
+</code></pre>
+
+<p>To turn on compression on a specific dataset:</p>
+
+<pre><code>zfs set compression=on testpool/data
+</code></pre></li>
+
+<li><p>The memory used by the Adaptive Replacement Cache shows up as used instead of cached in various utilities such as <code>free</code> or <code>htop</code>. This can make it seem like the ARC is chewing up RAM. However, the ARC frees up memory when other utilities need it. This allows a ZFS filesystem to run even with modest RAM.</p></li>
+
+<li><p>By default, the ARC will use at most 75% of total memory. While this makes sense on a server with multiple purposes, a storage server loses of approximately 20% RAM that could be put to good use. So follow these instructions only if you&rsquo;re not using your Linode to run other applications and have at least 4GB of RAM.</p>
+
+<p>The numbers in <code>zfs.conf</code> represent bytes. 1GB is calculated by multiplying 2 to the power of 30 but you should use values such as <code>7000000000</code> to reserve approximately 7GB. As a rule of thumb, set <code>zfs_arc_max</code> to total memory available minus 1GB.  <code>zfs_arc_min</code> can be set to 50% of total RAM. For example if you have 16GB available, <code>zfs_arc_max</code> would be <code>15000000000</code> and <code>zfs_arc_min</code> would be <code>8000000000</code>.</p></li>
+
+<li><p>Open the <code>zfs.conf</code> file. Paste these lines into the editor and then adjust the two numerical values:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/modprobe.d/zfs.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">options zfs zfs_arc_min=3221225472
+options zfs zfs_arc_max=6442450944</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save the file and reboot the machine via the Linode Manager so the changes can take effect.</p></li>
+</ol>
+
+<p>Occasionally run <code>zpool status</code> to keep an eye on things. There is also a cron script that runs <code>zpool scrub</code> monthly in <code>/etc/cron.d/zfsutils-linux</code>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://wiki.ubuntu.com/Kernel/Reference/ZFS">Ubuntu ZFS wiki</a></li>
+
+<li><a href="https://en.wikipedia.org/wiki/Standard_RAID_levels">RAID levels Wikipedia</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-silent-data-corruption-how-does-zfs-work">What is Silent Data Corruption? How Does ZFS Work?</a></li>
+<li><a href="#the-structure-of-zfs-pools">The Structure of ZFS Pools</a>
+<ul>
+<li><a href="#single-disk-vdev">Single-Disk vdev</a></li>
+<li><a href="#mirror-vdevs">Mirror vdevs</a></li>
+<li><a href="#raid-z-vdevs">RAID-Z vdevs</a></li>
+</ul></li>
+<li><a href="#raid-z-and-zfs-recommendations">RAID-Z and ZFS Recommendations</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-zfs-and-create-a-pool">Install ZFS and Create a Pool</a>
+<ul>
+<li><a href="#non-redundant-zfs-pools">Non-redundant ZFS Pools</a></li>
+<li><a href="#mirror-zfs-pools">Mirror ZFS Pools</a></li>
+<li><a href="#raid-z-pools">Raid-Z Pools</a></li>
+</ul></li>
+<li><a href="#datasets-snapshots-and-rollbacks">Datasets, Snapshots and Rollbacks</a></li>
+<li><a href="#speed-up-zfs">Speed Up ZFS</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

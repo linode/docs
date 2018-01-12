@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Odoo 9 ERP on Ubuntu 14.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Odoo is an open-source suite of over 4,500 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.">
+        <meta name="keywords" content="Odoo, Odoo ERP, CMS, Ubuntu, CRM, OpenERP">
+        
+        <meta property="og:title" content="Install Odoo 9 ERP on Ubuntu 14.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04/">
+        <meta property="og:description" content="Odoo is an open-source suite of over 4,500 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/cms/">Control Panels &amp; Content Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  Install Odoo 9 ERP on Ubuntu 14.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Odoo 9 ERP on Ubuntu 14.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-07-21T00:00:00Z">Thursday, July 21, 2016</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Damaso Sanoja
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2finstall-odoo-9-erp-on-ubuntu-14-04%2f&via=linode&text=Install%20Odoo%209%20ERP%20on%20Ubuntu%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2finstall-odoo-9-erp-on-ubuntu-14-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2finstall-odoo-9-erp-on-ubuntu-14-04%2f&t=Install%20Odoo%209%20ERP%20on%20Ubuntu%2014.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><a href="https://www.odoo.com/">Odoo</a> (formerly known as OpenERP) is an open-source suite of business applications including: Customer Relationship Management, Sales Pipeline, Project Management, Manufacturing, Invoicing , Accounting, eCommerce and Inventory just to name a few. There are 31 main applications created by Odoo team and over 4,500+ developed by community members covering a wide range of business needs.</p>
+
+<p><img src="/docs/assets/install-odoo-9-erp-on-ubuntu-14-04.png" alt="Install Odoo 9 ERP on Ubuntu 14.04" title="Install Odoo 9 ERP on Ubuntu 14.04" /></p>
+
+<p>Once deployed, Odoo&rsquo;s flexibility allows the administrator to install any module combination and configure/customize them at will to satisfy business needs ranging from a small shop to an Enterprise Level Corporation.</p>
+
+<p>This guide covers how to install and configure Odoo in just 35 minutes using Git source, so it will be easy to upgrade, maintain and customize.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Complete the <a href="/docs/getting-started">Getting Started</a> guide.</p></li>
+
+<li><p>Follow the <a href="/docs/security/securing-your-server/">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use <code>sudo</code> wherever possible. Do <strong>not</strong> follow the <em>Configuring a Firewall</em> section&ndash;this guide has instructions specifically for an Odoo production server.</p></li>
+
+<li><p>Log in to your Linode via SSH and check for updates using <code>apt-get</code> package manager.</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<h2 id="open-corresponding-firewall-ports">Open Corresponding Firewall Ports</h2>
+
+<p>In this case we&rsquo;re using Odoo&rsquo;s default port 8069, but this could be any port you specify later in the configuration file.</p>
+
+<pre><code>sudo ufw allow ssh
+sudo ufw allow 8069/tcp
+sudo ufw enable
+</code></pre>
+
+<h2 id="install-database-and-server-dependencies">Install Database and Server Dependencies</h2>
+
+<p>Now we&rsquo;re going to install the PostgreSQL database and other necessary server libraries using <code>apt-get</code></p>
+
+<pre><code>sudo apt-get install subversion git bzr bzrtools python-pip postgresql postgresql-server-dev-9.3 python-all-dev python-dev python-setuptools libxml2-dev libxslt1-dev libevent-dev libsasl2-dev libldap2-dev pkg-config libtiff5-dev libjpeg8-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev liblcms2-utils libwebp-dev tcl8.6-dev tk8.6-dev python-tk libyaml-dev fontconfig
+</code></pre>
+
+<h3 id="create-odoo-user-and-log-directory">Create Odoo User and Log Directory</h3>
+
+<ol>
+<li><p>Create the Odoo system user:</p>
+
+<pre><code>sudo adduser --system --home=/opt/odoo --group odoo
+</code></pre></li>
+
+<li><p>Create the log directory:</p>
+
+<pre><code>sudo mkdir /var/log/odoo
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In the scenario of running multiple Odoo versions on the same Linode you may want to use different users and directories for each instance.</div>
+</blockquote>
+
+
+<h3 id="install-odoo-server-files-from-source">Install Odoo Server Files from Source</h3>
+
+<ol>
+<li><p>Change to the Odoo directory, in our case:</p>
+
+<pre><code>cd /opt/odoo/
+</code></pre></li>
+
+<li><p>Clone the Odoo files on your server:</p>
+
+<pre><code>sudo git clone https://www.github.com/odoo/odoo --depth 1 --branch 9.0 --single-branch .
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Using Git allows great flexibility because any time a new upgrade ,is available you only need to pull that branch, You can even install a different one alongside the production version; just change the destination directory and the  <code>--branch X.x</code> flag. Before performing any operation, remember to make a full backup of your database and custom files.</div>
+</blockquote>
+
+
+<h3 id="create-postgresql-user">Create PostgreSQL User</h3>
+
+<ol>
+<li><p>Switch to <code>postgres</code> user:</p>
+
+<pre><code>sudo su - postgres
+</code></pre></li>
+
+<li><p>But if you&rsquo;re deploying a Production server, you may want to set a strong password for the database user:</p>
+
+<pre><code>createuser odoo -U postgres -dRSP
+</code></pre></li>
+
+<li><p>You&rsquo;ll be prompted for a password, <strong>save it</strong>, we&rsquo;ll need it shortly.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In the scenario of a testing or development environment you could create a user with no password using <code>createuser odoo -U postgres -dRS</code>.</div>
+</blockquote>
+</li>
+
+<li><p>Press <strong>CTRL+D</strong> to exit from <code>postgres</code> user session.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you want to run multiple Odoo instances on the same Linode remember to check pg_hba.conf and change it according your needs.</div>
+</blockquote>
+
+
+<h2 id="specific-dependencies-for-odoo-applications">Specific Dependencies for Odoo Applications</h2>
+
+<p>Using <code>pip</code> instead of <code>apt-get</code> will guarantee that your installation has the correct versions needed. We&rsquo;ll also abstain of using Ubuntu&rsquo;s packaged versions of <a href="http://wkhtmltopdf.org/">Wkhtmltopdf</a> and <a href="http://lesscss.org/">node-less</a>.</p>
+
+<h3 id="install-python-dependencies">Install Python Dependencies</h3>
+
+<p>Install Python libraries using the following commands:</p>
+
+<pre><code>sudo pip install -r /opt/odoo/doc/requirements.txt
+sudo pip install -r /opt/odoo/requirements.txt
+</code></pre>
+
+<h3 id="install-less-css-via-nodejs-and-npm">Install Less CSS via nodejs and npm</h3>
+
+<ol>
+<li><p>Download the <code>nodejs</code> installation script from <a href="https://nodesource.com/">nodesource</a>:</p>
+
+<pre><code>wget -qO- https://deb.nodesource.com/setup | sudo bash -
+</code></pre></li>
+
+<li><p>Now that our repository list is updated install <code>nodejs</code> using <code>apt-get</code>:</p>
+
+<pre><code>sudo apt-get install nodejs
+</code></pre></li>
+
+<li><p>Time to install a newer version of Less via <code>npm</code>:</p>
+
+<pre><code>sudo npm install -g less less-plugin-clean-css
+</code></pre></li>
+</ol>
+
+<h3 id="install-updated-wkhtmltopdf-version">Install Updated Wkhtmltopdf Version</h3>
+
+<ol>
+<li><p>Switch to the <code>/tmp/</code> directory:</p>
+
+<pre><code>cd /tmp/
+</code></pre></li>
+
+<li><p>Download the recommended version of wkhtmltopdf for Odoo server, currently <strong>0.12.1</strong>:</p>
+
+<pre><code>sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+</code></pre></li>
+
+<li><p>Install the package using <code>dpkg</code>:</p>
+
+<pre><code>sudo dpkg -i wkhtmltox-0.12.1_linux-trusty-amd64.deb
+</code></pre></li>
+
+<li><p>To function properly we&rsquo;ll need to copy the binaries to an adequate location:</p>
+
+<pre><code>sudo cp /usr/local/bin/wkhtmltopdf /usr/bin
+sudo cp /usr/local/bin/wkhtmltoimage /usr/bin
+</code></pre></li>
+</ol>
+
+<h2 id="odoo-server-configuration">Odoo Server Configuration</h2>
+
+<ol>
+<li><p>Copy the included configuration file to a more convenient location, changing its name to <code>odoo-server.conf</code>:</p>
+
+<pre><code>sudo cp /opt/odoo/debian/openerp-server.conf /etc/odoo-server.conf
+</code></pre></li>
+
+<li><p>Next we need to modify the configuration file. The finished file should look similar to this depending on your deploying needs:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/odoo-server.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">[options]</span>
+<span class="nb">admin_passwd</span> = admin
+<span class="nb">db_host</span> = False
+<span class="nb">db_port</span> = False
+<span class="nb">db_user</span> = odoo
+<span class="nb">db_password</span> = &lt;PostgreSQL_user_password&gt;
+<span class="nb">addons_path</span> = <span class="sx">/opt/odoo/addons</span>
+<span class="nb">logfile</span> = <span class="sx">/var/log/odoo/odoo-server.log</span>
+<span class="nb">xmlrpc_port</span> = <span class="m">8069</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<ul>
+<li><code>admin_passwd = admin</code> This is the password that allows database operations.</li>
+<li><code>db_host = False</code> Unless you plan to connect to a different database server address, leave this line untouched.</li>
+<li><code>db_port = False</code> Odoo uses PostgreSQL default port 5432, change only if necessary.</li>
+<li><code>db_user = odoo</code> Database user, in this case we used the default name.</li>
+<li><code>db_password =</code> The previously created PostgreSQL user password.</li>
+<li><code>addons_path =</code> We need to modify this line to read: <code>addons_path = /opt/odoo/addons</code>. Add <code>&lt;/path/to/custom/modules&gt;</code> if needed.</li>
+<li>We need to include the path to log files adding a new line: <code>logfile = /var/log/odoo/odoo-server.log</code>.</li>
+<li>Optionally we could include a new line specifying the Odoo Frontend port used for connection: <code>xmlrpc_port = 8069</code>. This only makes sense if you&rsquo;re planning to run multiple Odoo instances (or versions) on the same server. For normal installation you could skip this line and Odoo will connect by default to port 8069.</li>
+</ul></li>
+</ol>
+
+<h3 id="odoo-boot-script">Odoo Boot Script</h3>
+
+<p>Next step is creating a boot script called <code>odoo-server</code> to gain control over Odoo&rsquo;s behavior and use it at server startup and shutdown.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/init.d/odoo-server 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span><span class="lnt">51</span><span class="lnt">52</span><span class="lnt">53</span><span class="lnt">54</span><span class="lnt">55</span><span class="lnt">56</span><span class="lnt">57</span><span class="lnt">58</span><span class="lnt">59</span><span class="lnt">60</span><span class="lnt">61</span><span class="lnt">62</span><span class="lnt">63</span><span class="lnt">64</span><span class="lnt">65</span><span class="lnt">66</span><span class="lnt">67</span><span class="lnt">68</span><span class="lnt">69</span><span class="lnt">70</span><span class="lnt">71</span><span class="lnt">72</span><span class="lnt">73</span><span class="lnt">74</span><span class="lnt">75</span><span class="lnt">76</span><span class="lnt">77</span><span class="lnt">78</span><span class="lnt">79</span><span class="lnt">80</span><span class="lnt">81</span><span class="lnt">82</span><span class="lnt">83</span><span class="lnt">84</span><span class="lnt">85</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/sh
+</span><span class="cp"></span><span class="c1">### BEGIN INIT INFO
+</span><span class="c1"># Provides: odoo-server
+</span><span class="c1"># Required-Start: $remote_fs $syslog
+</span><span class="c1"># Required-Stop: $remote_fs $syslog
+</span><span class="c1"># Should-Start: $network
+</span><span class="c1"># Should-Stop: $network
+</span><span class="c1"># Default-Start: 2 3 4 5
+</span><span class="c1"># Default-Stop: 0 1 6
+</span><span class="c1"># Short-Description: Odoo ERP
+</span><span class="c1"># Description: Odoo is a complete ERP business solution.
+</span><span class="c1">### END INIT INFO
+</span><span class="c1"></span>
+<span class="nv">PATH</span><span class="o">=</span>/bin:/sbin:/usr/bin
+<span class="c1"># Change the Odoo source files location according your needs.
+</span><span class="c1"></span><span class="nv">DAEMON</span><span class="o">=</span>/opt/odoo/openerp-server
+<span class="c1"># Use the name convention of your choice
+</span><span class="c1"></span><span class="nv">NAME</span><span class="o">=</span>odoo-server
+<span class="nv">DESC</span><span class="o">=</span>odoo-server
+
+<span class="c1"># Specify the user name (Default: odoo).
+</span><span class="c1"></span><span class="nv">USER</span><span class="o">=</span>odoo
+
+<span class="c1"># Specify an alternate config file (Default: /etc/odoo-server.conf).
+</span><span class="c1"></span><span class="nv">CONFIGFILE</span><span class="o">=</span><span class="s2">&#34;/etc/odoo-server.conf&#34;</span>
+
+<span class="c1"># pidfile
+</span><span class="c1"></span><span class="nv">PIDFILE</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>.pid
+
+<span class="c1"># Additional options that are passed to the Daemon.
+</span><span class="c1"></span><span class="nv">DAEMON_OPTS</span><span class="o">=</span><span class="s2">&#34;-c </span><span class="nv">$CONFIGFILE</span><span class="s2">&#34;</span>
+
+<span class="o">[</span> -x <span class="nv">$DAEMON</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">0</span>
+<span class="o">[</span> -f <span class="nv">$CONFIGFILE</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">0</span>
+
+checkpid<span class="o">()</span> <span class="o">{</span>
+<span class="o">[</span> -f <span class="nv">$PIDFILE</span> <span class="o">]</span> <span class="o">||</span> <span class="k">return</span> <span class="m">1</span>
+<span class="nv">pid</span><span class="o">=</span><span class="sb">`</span>cat <span class="nv">$PIDFILE</span><span class="sb">`</span>
+<span class="o">[</span> -d /proc/<span class="nv">$pid</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="k">return</span> <span class="m">0</span>
+<span class="k">return</span> <span class="m">1</span>
+<span class="o">}</span>
+
+<span class="k">case</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&#34;</span> in
+start<span class="o">)</span>
+<span class="nb">echo</span> -n <span class="s2">&#34;Starting </span><span class="si">${</span><span class="nv">DESC</span><span class="si">}</span><span class="s2">: &#34;</span>
+
+start-stop-daemon --start --quiet --pidfile <span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span> <span class="se">\
+</span><span class="se"></span>--chuid <span class="si">${</span><span class="nv">USER</span><span class="si">}</span> --background --make-pidfile <span class="se">\
+</span><span class="se"></span>--exec <span class="si">${</span><span class="nv">DAEMON</span><span class="si">}</span> -- <span class="si">${</span><span class="nv">DAEMON_OPTS</span><span class="si">}</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">NAME</span><span class="si">}</span><span class="s2">.&#34;</span>
+<span class="p">;;</span>
+
+stop<span class="o">)</span>
+<span class="nb">echo</span> -n <span class="s2">&#34;Stopping </span><span class="si">${</span><span class="nv">DESC</span><span class="si">}</span><span class="s2">: &#34;</span>
+
+start-stop-daemon --stop --quiet --pidfile <span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span> <span class="se">\
+</span><span class="se"></span>--oknodo
+
+<span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">NAME</span><span class="si">}</span><span class="s2">.&#34;</span>
+<span class="p">;;</span>
+
+restart<span class="p">|</span>force-reload<span class="o">)</span>
+<span class="nb">echo</span> -n <span class="s2">&#34;Restarting </span><span class="si">${</span><span class="nv">DESC</span><span class="si">}</span><span class="s2">: &#34;</span>
+
+start-stop-daemon --stop --quiet --pidfile <span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span> <span class="se">\
+</span><span class="se"></span>--oknodo
+
+sleep <span class="m">1</span>
+
+start-stop-daemon --start --quiet --pidfile <span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span> <span class="se">\
+</span><span class="se"></span>--chuid <span class="si">${</span><span class="nv">USER</span><span class="si">}</span> --background --make-pidfile <span class="se">\
+</span><span class="se"></span>--exec <span class="si">${</span><span class="nv">DAEMON</span><span class="si">}</span> -- <span class="si">${</span><span class="nv">DAEMON_OPTS</span><span class="si">}</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">NAME</span><span class="si">}</span><span class="s2">.&#34;</span>
+<span class="p">;;</span>
+
+*<span class="o">)</span>
+<span class="nv">N</span><span class="o">=</span>/etc/init.d/<span class="si">${</span><span class="nv">NAME</span><span class="si">}</span>
+<span class="nb">echo</span> <span class="s2">&#34;Usage: </span><span class="si">${</span><span class="nv">NAME</span><span class="si">}</span><span class="s2"> {start|stop|restart|force-reload}&#34;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="nb">exit</span> <span class="m">1</span>
+<span class="p">;;</span>
+<span class="k">esac</span>
+
+<span class="nb">exit</span> <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<h3 id="odoo-file-ownership-and-permissions">Odoo File Ownership and Permissions</h3>
+
+<ol>
+<li><p>Change the <code>odoo-server</code> file permissions and ownership so only <strong>root</strong> can write to it, while the <strong>odoo</strong> user will only be able to read and execute it.</p>
+
+<pre><code>sudo chmod 755 /etc/init.d/odoo-server
+sudo chown root: /etc/init.d/odoo-server
+</code></pre></li>
+
+<li><p>Since the <strong>odoo</strong> user will run the application, change its ownership accordingly:</p>
+
+<pre><code>sudo chown -R odoo: /opt/odoo/
+</code></pre></li>
+
+<li><p>We should set the <strong>odoo</strong> user as the owner of log directory as well:</p>
+
+<pre><code>sudo chown odoo:root /var/log/odoo
+</code></pre></li>
+
+<li><p>Finally, we should protect the server configuration file changing its ownership and permissions so no other non-root user can access it:</p>
+
+<pre><code>sudo chown odoo: /etc/odoo-server.conf
+sudo chmod 640 /etc/odoo-server.conf
+</code></pre></li>
+</ol>
+
+<h2 id="testing-the-server">Testing the Server</h2>
+
+<ol>
+<li><p>It&rsquo;s time to check that everything is working as expected; let&rsquo;s start the Odoo server:</p>
+
+<pre><code>sudo /etc/init.d/odoo-server start
+</code></pre></li>
+
+<li><p>Let&rsquo;s take a look at log file to verify that no errors occurred:</p>
+
+<pre><code>cat /var/log/odoo/odoo-server.log
+</code></pre></li>
+
+<li><p>Now we can check if the server stops properly too:</p>
+
+<pre><code>sudo /etc/init.d/odoo-server stop
+</code></pre></li>
+
+<li><p>Enter the same command as you did in Step 2:</p>
+
+<pre><code>cat /var/log/odoo/odoo-server.log
+</code></pre></li>
+</ol>
+
+<h2 id="running-boot-script-at-server-startup-and-shutdown">Running Boot Script at Server Startup and Shutdown</h2>
+
+<ol>
+<li><p>If the Odoo server log doesn&rsquo;t indicate any problems, we can continue and make the boot script start and stop with the server:</p>
+
+<pre><code>sudo update-rc.d odoo-server defaults
+</code></pre></li>
+
+<li><p>It&rsquo;s a good idea to restart our Linode to see if everything is working:</p>
+
+<pre><code>sudo shutdown -r now
+</code></pre></li>
+
+<li><p>Once restarted, verify the log file again:</p>
+
+<pre><code>cat /var/log/odoo/odoo-server.log
+</code></pre></li>
+</ol>
+
+<h2 id="testing-odoo-frontend">Testing Odoo Frontend</h2>
+
+<ol>
+<li><p>Open a new browser window and enter your IP address, followed by <code>:8069</code> (to indicate port 8069) in the address bar:</p>
+
+<pre><code>http://example_ip:8069
+</code></pre></li>
+
+<li><p>A screen similar to this will show:</p>
+
+<p><a href="/docs/assets/odoo_db_creation.png"><img src="/docs/assets/odoo_db_creation.png" alt="Odoo Db creation" /></a></p></li>
+
+<li><p>Congratulations, now you can create your first database and start using Odoo!</p>
+
+<p><a href="/docs/assets/odoo_applications.png"><img src="/docs/assets/odoo_applications.png" alt="Odoo applications" /></a></p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://doc.odoo.com/book/">Odoo User Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/">Install Odoo 10 on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/security/advanced-ssh-server-security/">Use Advanced OpenSSH Features to Harden Access to Your Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/install-roundcube-on-ubuntu-14-04/">Install Roundcube on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/package-mirrors/">Package Mirrors</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/varnish/getting-started-with-varnish-cache/">Getting Started with Varnish Cache</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#open-corresponding-firewall-ports">Open Corresponding Firewall Ports</a></li>
+<li><a href="#install-database-and-server-dependencies">Install Database and Server Dependencies</a>
+<ul>
+<li><a href="#create-odoo-user-and-log-directory">Create Odoo User and Log Directory</a></li>
+<li><a href="#install-odoo-server-files-from-source">Install Odoo Server Files from Source</a></li>
+<li><a href="#create-postgresql-user">Create PostgreSQL User</a></li>
+</ul></li>
+<li><a href="#specific-dependencies-for-odoo-applications">Specific Dependencies for Odoo Applications</a>
+<ul>
+<li><a href="#install-python-dependencies">Install Python Dependencies</a></li>
+<li><a href="#install-less-css-via-nodejs-and-npm">Install Less CSS via nodejs and npm</a></li>
+<li><a href="#install-updated-wkhtmltopdf-version">Install Updated Wkhtmltopdf Version</a></li>
+</ul></li>
+<li><a href="#odoo-server-configuration">Odoo Server Configuration</a>
+<ul>
+<li><a href="#odoo-boot-script">Odoo Boot Script</a></li>
+<li><a href="#odoo-file-ownership-and-permissions">Odoo File Ownership and Permissions</a></li>
+</ul></li>
+<li><a href="#testing-the-server">Testing the Server</a></li>
+<li><a href="#running-boot-script-at-server-startup-and-shutdown">Running Boot Script at Server Startup and Shutdown</a></li>
+<li><a href="#testing-odoo-frontend">Testing Odoo Frontend</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

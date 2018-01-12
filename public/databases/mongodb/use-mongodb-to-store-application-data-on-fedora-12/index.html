@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use MongoDB to Store Application Data on Fedora 12</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install MongoDB for use in application development on Fedora 12.">
+        <meta name="keywords" content="nosql, database, mognodb, key store">
+        
+        <meta property="og:title" content="Use MongoDB to Store Application Data on Fedora 12">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-12/">
+        <meta property="og:description" content="Install MongoDB for use in application development on Fedora 12.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-12/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/mongodb/">MongoDB</a>
+  
+</li>
+
+
+<li>
+  
+  Use MongoDB to Store Application Data on Fedora 12
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use MongoDB to Store Application Data on Fedora 12</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-04-29T00:00:00Z">Friday, April 29, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmongodb%2fuse-mongodb-to-store-application-data-on-fedora-12%2f&via=linode&text=Use%20MongoDB%20to%20Store%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmongodb%2fuse-mongodb-to-store-application-data-on-fedora-12%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmongodb%2fuse-mongodb-to-store-application-data-on-fedora-12%2f&t=Use%20MongoDB%20to%20Store%20Application%20Data%20on%20Fedora%2012" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-12.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-12.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>MongoDB is a database engine that provides access to non-relational key-value databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON-based output format and specialized language specific bindings that make it particularly attractive for use in custom application development. Although MongoDB is a relatively new project and has not yet been packaged by most major operating system distributions, the software has been used in a number of large scale <a href="http://www.mongodb.org/display/DOCS/Production+Deployments">production deployments</a> such as &ldquo;GitHub&rdquo;, &ldquo;SourceForge&rdquo;, and &ldquo;DISQUS&rdquo;.</p>
+
+<p>Before installing MongoDB, it is assume that you have followed our <a href="/docs/getting-started/">getting started guide</a>. If you are new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts/">introduction to Linux concepts guide</a>, <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>.</p>
+
+<h1 id="installing-mongodb">Installing MongoDB</h1>
+
+<h3 id="install-prerequisites">Install Prerequisites</h3>
+
+<p>Issue the following command to ensure that your system and all installed software is up to date:</p>
+
+<pre><code>yum update
+</code></pre>
+
+<h3 id="install-mongodb">Install MongoDB</h3>
+
+<p>Download the latest binaries from the <a href="http://www.mongodb.org/display/DOCS/Downloads">upstream source</a>: at the time of writing this is version 1.6.5. When downloading MongoDB, ensure that you download a version that is compiled for the proper system architecture. This document uses the 32-bit version; however, these steps will work for the 64-bit edition with a few modifications. Please note that the 32-bit version of MongoDB has a database size limit of 2 gigabytes. If you expect to store more than 2 gigabytes of data, ensure that you have deployed a 64-bit system and are using the 64-bit version of MongoDB.</p>
+
+<pre><code>cd /opt/
+wget http://fastdl.mongodb.org/linux/mongodb-linux-i686-1.6.5.tgz
+tar zxvf mongodb-linux-i686-1.6.5.tgz
+mv mongodb-linux-i686-1.6.5 /opt/mongodb
+</code></pre>
+
+<p>MongoDB is now deployed in the <code>/opt/mongodb/</code> folder with the binaries located in the <code>/opt/mongodb/bin/</code> folder. In this example, it is assumed that all database files will be stored in the <code>/srv/db/mongodb</code> folder and that log files will be stored in the <code>/srv/db/mongodb.log</code> file. Issue the following commands to create this file and directory:</p>
+
+<pre><code>mkdir -p /srv/db/mongodb
+touch /srv/db/mongodb.log
+</code></pre>
+
+<p>In this example the name of the database will be <code>mongodb</code>; however, you can modify this name with another name or naming scheme as needed.</p>
+
+<h1 id="monitor-for-software-updates-and-security-notices">Monitor for Software Updates and Security Notices</h1>
+
+<p>When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.</p>
+
+<p>Please monitor the following MongoDB mailing lists for updates to ensure that you are aware of all updates to the software and can upgrade appropriately or apply patches and recompile as needed:</p>
+
+<ul>
+<li><a href="http://groups.google.com/group/mongodb-dev">MongoDB Developers List</a></li>
+<li><a href="http://groups.google.com/group/mongodb-user">MongoDB Users List</a></li>
+</ul>
+
+<p>When upstream sources offer new releases, repeat the instructions for installing MongoDB and recompile your software when needed.</p>
+
+<h1 id="create-basic-control-scripts">Create Basic Control Scripts</h1>
+
+<p>In typical installations, the MongoDB server process is controlled using command line arguments to binaries located at <code>/opt/mongodb/bin/mongod</code>. In order to simplify commands, you can create control scripts named <code>mongodb-start</code> and <code>mongodb-stop</code> in the <code>/opt/bin/</code> directory. Issue the following commands to create the required directories:</p>
+
+<pre><code>mkdir /opt/bin/
+mkdir /opt/config/
+</code></pre>
+
+<p>Issue the following sequence of commands to download the scripts and set the permissions on these files:</p>
+
+<pre><code>cd /opt/bin/
+wget -O mongodb-start http://www.linode.com/docs/assets/575-mongodb-start.sh
+wget -O mongodb-stop http://www.linode.com/docs/assets/576-mongodb-stop.sh
+chmod +x *
+</code></pre>
+
+<p>Review the contents of the <code>mongodb-start</code> and <code>mongodb-stop</code> and modify these files if your deployment requires an alternate initialization procedure. From now on, issuing <code>/opt/bin/mongodb-start</code> or <code>/opt/bin/mongodb-stop</code> will start or stop the MongoDB process, respectively. The behavior of the <code>mongod</code> process is controlled by the values set in <code>/opt/config/mongodb</code>.</p>
+
+<p>Create the <code>/opt/config/mongodb</code> and use the following example as a template:</p>
+
+<dl class="file">
+<dt>
+
+
+		/opt/config/mongodb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="c1"># Configuration Options for MongoDB</span>
+<span class="c1">#</span>
+<span class="c1"># For More Information, Consider:</span>
+<span class="c1"># - Configuration Parameters: http://www.mongodb.org/display/DOCS/Command+Line+Parameters</span>
+<span class="c1"># - File Based Configuration: http://www.mongodb.org/display/DOCS/File+Based+Configuration</span>
+
+<span class="na">dbpath</span> <span class="o">=</span> <span class="s">/srv/db/mongodb</span>
+<span class="na">logpath</span> <span class="o">=</span> <span class="s">/srv/db/mongodb.log</span>
+<span class="na">logappend</span> <span class="o">=</span> <span class="s">true</span>
+
+<span class="na">bind_ip</span> <span class="o">=</span> <span class="s">127.0.0.1</span>
+<span class="na">port</span> <span class="o">=</span> <span class="s">27017</span>
+<span class="na">fork</span> <span class="o">=</span> <span class="s">true</span>
+
+<span class="na">auth</span> <span class="o">=</span> <span class="s">true</span>
+<span class="c1"># noauth = true</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This specifies a number of important options that you may modify to control the functionality of <code>mongodb</code>. The <code>dbpath</code> option indicates that database files will be stored in <code>/srv/db/mongo</code>. The <code>logpath</code> directive indicates that MongoDB&rsquo;s logs will be located in the <code>/srv/db/log/mongodb.log</code> file, and that new log entries will be appended to the end of the log rather than overwriting existing log entries even after MongoDB restarts.</p>
+
+<p>If the <code>bind_ip</code> option is not specified, MongoDB will bind to and listen for requests on all local IP addresses. In this case, MongoDB is configured to <em>only</em> listen for requests on the localhost interface. Modify this option to allow your MongoDB server to listen for requests on other IP addresses; however, consider the possible security implications of providing public access. The <code>port</code> option in this file specifies the default port, but can be modified depending on your needs.</p>
+
+<p>Setting the <code>fork</code> option to equal <code>true</code> configures MongoDB to run as a daemon process in the background independently of the current user&rsquo;s session. Please note that MongoDB will run under the user that executes the <code>mongodb-start</code> script. We <strong>strongly</strong> recommend that this user <em>not</em> be root or another privileged user account. To provide additional security, it is recommended that you set the <code>auth</code> option to <code>true</code> in order to take advantage of MongoDB&rsquo;s internal authentication capabilities. If you need to test the database without authentication, you can replace the <code>auth</code> option to <code>noauth</code>.</p>
+
+<h1 id="using-a-basic-init-script">Using a Basic Init Script</h1>
+
+<p>We&rsquo;ve also created a <em>very</em> basic &ldquo;init script&rdquo; as a wrapper around the <code>mongodb-start</code> and <code>mongo-stop</code> scripts described above. You will still need to modify and manage the configuration of your MongoDB server in the files above. This script only provides a means for ensuring that MongoDB will start at boot. Issue the following commands:</p>
+
+<pre><code>wget -O init-rpm.sh http://www.linode.com/docs/assets/574-mongodb-init-rpm.sh
+mv init-rpm.sh /etc/rc.d/init.d/mongodb
+chmod +x /etc/rc.d/init.d/mongodb /etc/init.d/mongodb
+chkconfig --add mongodb
+chkconfig --level 2345 mongodb on
+</code></pre>
+
+<p>You will also need to create a user and group for mongodb; issue the following command:</p>
+
+<pre><code>useradd -M -r --home-dir /opt/mongodb mongodb
+</code></pre>
+
+<p>Now issue the following command to ensure that the MongoDB user you just created will have access to all required files in the <code>/srv/db/</code> hierarchy:</p>
+
+<pre><code>chown mongodb:mongodb -R /srv/db/
+</code></pre>
+
+<p>To start and stop MongoDB using the init script, issue the appropriate command from the following:</p>
+
+<pre><code>/etc/init.d/mongodb start
+/etc/init.d/mongodb stop
+</code></pre>
+
+<p>Congratulations, you now have a fully functional installation of the MongoDB system.</p>
+
+<h1 id="additional-mongodb-functionality">Additional MongoDB Functionality</h1>
+
+<p>Now that MongoDB is running properly, you can begin to explore some of its features. Most interaction with MongoDB is done via the rich set of <a href="http://www.mongodb.org/display/DOCS/Drivers">language-specific drivers</a>. There are also a number of tools in the <code>/opt/mongodb/bin/</code> directory that you might find useful for interacting with MongoDB databases. The <code>mongo</code> utility provides an interactive JavaScript shell for MongoDB including commands such as <code>mongodump</code> and <code>mongorestore</code> for creating and restoring backups and snapshots as well <code>mongoexport</code> and <code>mongoimportjson</code> for exporting individual collections in JSON format.</p>
+
+<p>You can now fully enjoy application development with MongoDB!</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.mongodb.org/">MongoDB Project</a></li>
+<li><a href="http://www.mongodb.org/display/DOCS/Drivers">Language-Specific MongoDB Drivers</a></li>
+<li><a href="http://mongo.kylebanker.com/">MongoDB Shell</a></li>
+<li><a href="http://www.mongodb.org/display/DOCS/MapReduce">MapReduce Paradigm and MongoDB</a></li>
+<li><a href="http://www.mongodb.org/display/DOCS/Sharding">MongoDB Sharding</a></li>
+<li><a href="http://www.mongodb.org/display/DOCS/Command+Line+Parameters">Configuration Parameters</a></li>
+<li><a href="http://www.mongodb.org/display/DOCS/File+Based+Configuration">File Based Configuration</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-10-10-maverick/">Use MongoDB to Store Application Data on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-13/">Use MongoDB to Store Application Data on Fedora 13 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-9-10-karmic/">Use MongoDB to Store Application Data on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/use-mongodb-to-store-application-data-on-debian-5-lenny/">Use MongoDB to Store Application Data on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mongodb/install-mongodb-on-centos-7/">Install MongoDB on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#installing-mongodb">Installing MongoDB</a>
+<ul>
+<li>
+<ul>
+<li><a href="#install-prerequisites">Install Prerequisites</a></li>
+<li><a href="#install-mongodb">Install MongoDB</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#monitor-for-software-updates-and-security-notices">Monitor for Software Updates and Security Notices</a></li>
+<li><a href="#create-basic-control-scripts">Create Basic Control Scripts</a></li>
+<li><a href="#using-a-basic-init-script">Using a Basic Init Script</a></li>
+<li><a href="#additional-mongodb-functionality">Additional MongoDB Functionality</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using the Linode Shell (Lish)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Learn how to use Lish as a shell for managing or rescuing your Linode.">
+        <meta name="keywords" content="Console, Shell, Lish, rescue">
+        
+        <meta property="og:title" content="Using the Linode Shell (Lish)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/using-the-linode-shell-lish/">
+        <meta property="og:description" content="Learn how to use Lish as a shell for managing or rescuing your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/using-the-linode-shell-lish/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  Using the Linode Shell (Lish)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using the Linode Shell (Lish)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-11-21T00:00:00Z">Monday, November 21, 2016</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fusing-the-linode-shell-lish%2f&via=linode&text=Using%20the%20Linode%20Shell%20%28Lish%29" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fusing-the-linode-shell-lish%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fusing-the-linode-shell-lish%2f&t=Using%20the%20Linode%20Shell%20%28Lish%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/using-the-linode-shell-lish.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/using-the-linode-shell-lish.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/using-the-linode-shell-lish.jpg &quot;Using the Linode Shell (Lish" alt="Using the Linode Shell (Lish)" />&rdquo;)</p>
+
+<p>The Linode Shell (<em>Lish</em>) provides console access to all of your Linodes. It also allows you to perform actions like rebooting a Linode or switching to a different configuration profile without having to open the Linode Manager. Lish is also a good rescue tool. The console provides out-of-band access to your Linode, which means you can use Lish to access your Linode even when you are unable to connect directly via SSH. This is useful if firewall settings or a bad network configuration prevent you from accessing your Linode using SSH. Lish can also be useful if you need to access your secure server on a local computer whose public key has not been added to the allowed list.</p>
+
+<h2 id="connect-to-lish">Connect to Lish</h2>
+
+<p>There are two ways to access Lish. You can use a terminal application to connect to a <em>Lish SSH gateway</em>, or you can log in to the <a href="https://manager.linode.com">Linode Manager</a> and use the Lish console in your web browser. This section explains both methods.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Lish used to be accessible via a direct SSH connection to your Linode&rsquo;s host machine, but as of May 10, 2013, all users must connect to a Lish SSH gateway to access Lish. For more information, please see <a href="https://blog.linode.com/2013/04/30/lish-ssh-gateway/">this blog post</a>.</div>
+</blockquote>
+
+
+<h3 id="use-a-terminal-application">Use a Terminal Application</h3>
+
+<p>You can connect to Lish with the SSH client of your choice. For example, you can use the Terminal application in Mac OS X, PuTTY in Windows, or your favorite X11 terminal emulator.</p>
+
+<ol>
+<li><p>Select a Lish SSH gateway. There&rsquo;s one in every data center. You can use any gateway to access your Linodes, but we recommend using one close to your Linode&rsquo;s data center. The gateway boxes are available over IPv4 and IPv6.</p>
+
+<ul>
+<li>lish-atlanta.linode.com</li>
+<li>lish-dallas.linode.com</li>
+<li>lish-frankfurt.linode.com</li>
+<li>lish-fremont.linode.com</li>
+<li>lish-london.linode.com</li>
+<li>lish-newark.linode.com</li>
+<li>lish-singapore.linode.com</li>
+<li>lish-tokyo.linode.com</li>
+<li>lish-tokyo2.linode.com</li>
+</ul></li>
+
+<li><p>Open a terminal window and enter the following command, replacing <code>username</code> with your Linode Manager username, and <code>location</code> with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.</p>
+
+<pre><code>ssh username@location
+</code></pre>
+
+<p>For example, logging in as <code>user</code> via the Newark gateway would look like:</p>
+
+<pre><code>ssh user@lish-newark.linode.com
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Users who have been granted &ldquo;Access&rdquo; rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can&rsquo;t access in the Linode Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see <a href="/docs/accounts-and-passwords">Accounts and Passwords</a>.</div>
+</blockquote>
+</li>
+
+<li><p>Verify that the Lish SSH gateway&rsquo;s fingerprint is valid. <a href="#lish-gateway-fingerprints">Click here</a> for more information.</p></li>
+
+<li><p>Enter the password you use to log in to the Linode Manager. You are now at the Lish shell. A list of your Linodes appears, as shown below:</p>
+
+<pre><code>Linodes located in this data center:
+linode241706         Newark, NJ
+linode276072         Newark, NJ
+
+Linodes located in other data centers:
+linode287497         Dallas, TX
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can add a public SSH key for Lish in the Linode Manager to automatically connect to Lish without a password. See <a href="#add-your-public-key">this section</a> for more information.</div>
+</blockquote>
+</li>
+
+<li><p>At the Lish command prompt, type a Linode&rsquo;s name from the list. For example, typing <code>linode241706</code> will connect you to the screen console session for that Linode.</p></li>
+
+<li><p>Log in to the Linode with your username and password.</p></li>
+</ol>
+
+<p>After you log in, you&rsquo;ll have console access to your Linode. You&rsquo;ll be able to restart services like <code>sshd</code>, edit firewall settings, and make other changes to your Linode. To exit your Linode&rsquo;s console, press <strong>CTRL+A</strong> then <strong>D</strong> to return to the host machine, and then press <strong>CTRL+D</strong> to return to the Lish menu. If you&rsquo;d like to see the list of your Linodes again, type <code>list</code> from the gateway.</p>
+
+<h3 id="use-a-web-browser">Use a Web Browser</h3>
+
+<p>You can also connect to Lish using a web browser. This is useful when you don&rsquo;t have access to a terminal application, or if you just need quick and easy console access from the Linode Manager.</p>
+
+<ol>
+<li>Log in to the Linode Manager.</li>
+<li>Select a Linode.</li>
+<li>Click on the <strong>Remote Access</strong> tab.</li>
+
+<li><p>In the <strong>Console Access</strong> section, click <strong>Launch Lish Console</strong>, as shown below.</p>
+
+<p><a href="/docs/assets/lish-via-browser.png"><img src="/docs/assets/lish-via-browser.png" alt="Click Lish via Browser." /></a></p></li>
+
+<li><p>The Lish Web Console window appears with your Linode&rsquo;s console, as shown below.</p>
+
+<p><a href="/docs/assets/1283-lish_ajax.png"><img src="/docs/assets/1283-lish_ajax.png" alt="Ajax Lish" /></a></p></li>
+
+<li><p>From here, you can log in to your Linode with your root username and password, or any other username and password.</p></li>
+</ol>
+
+<p>Now you can use the console, or exit to the Lish prompt by pressing <strong>CTRL+A</strong> then <strong>D</strong>. You cannot exit to a Lish gateway box using your web browser. To exit the session entirely, just close the Lish Web Console window.</p>
+
+<h3 id="add-your-public-key">Add Your Public Key</h3>
+
+<p>If you don&rsquo;t want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Manager. If you haven&rsquo;t yet created SSH keys, please see our <a href="/docs/security/use-public-key-authentication-with-ssh/">Public Key Authentication with SSH</a> guide for more information.</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>my profile</strong> link.</li>
+
+<li><p>Enter your password, and then click <strong>Authenticate</strong>, as shown below.</p>
+
+<p><a href="/docs/assets/1280-manager_reauth_linodedemo.png"><img src="/docs/assets/1280-manager_reauth_linodedemo.png" alt="Re-enter your password." /></a></p></li>
+
+<li><p>Select the <strong>Lish Settings</strong> tab.</p></li>
+
+<li><p>Copy your public SSH key into the <strong>Lish Keys</strong> field, as shown below.</p>
+
+<p><a href="/docs/assets/1282-manager_lish_keys.png"><img src="/docs/assets/1282-manager_lish_keys.png" alt="Copy your SSH public key(s) into the text field." /></a></p></li>
+
+<li><p>Click <strong>Submit Keys</strong>. Your Lish key will be saved in the Linode Manager.</p></li>
+</ol>
+
+<p>Now you can log in to any of the Lish gateway boxes without having to type your password.</p>
+
+<p>If you wish to disable Lish access for users without keys, use the <strong>Authentication modes</strong> dropdown menu on the same page, and then click <strong>Save Setting</strong>.</p>
+
+<h2 id="understanding-lish-commands">Understanding Lish Commands</h2>
+
+<p>The Lish shell provides access to many functions which are otherwise only accessible via the Linode Manager web-based administration tool. Enter the <code>help</code> command to see a full list of available commands. The output provides an introduction to Lish functionality:</p>
+
+<pre><code>kill            - kill stuck screen sessions
+exit            - exit from lish
+help            - this menu
+
+[return]        - connect to console
+version         - display running kernel version
+boot            - boot last used (or the only) config profile
+boot N          - boot the specified config profile
+shutdown        - shut down the Linode
+reboot          - shut down, then boot the last used config profile
+reboot N        - shut down, then boot the specified config profile
+sysrq X         - send SysRq X to your Linode
+destroy         - pulls the plug on a running Linode, no fs sync, no warning
+
+jobs            - view the job queue for your Linode
+configs         - view the configuration profiles for your Linode
+config N        - view configuration profile details for profile N
+status          - view the status of your Linode
+logview         - view contents of console log
+</code></pre>
+
+<p>There are two ways to run these commands for a specific Linode. If you are at the main Lish gateway, you can prefix the command with a Linode ID, like this:</p>
+
+<pre><code>linode123456 logview
+</code></pre>
+
+<p>You can also bring up the Linode&rsquo;s console, then type <strong>CTRL+A</strong> then <strong>D</strong> to drop back to the host for that Linode. Now all of the commands above will be run for that Linode specifically. To exit back to the main Lish menu, type <code>exit</code>.</p>
+
+<h2 id="advanced-lish-tricks">Advanced Lish Tricks</h2>
+
+<p>While the Lish interface as described above is useful as a basic command-line interface, you may find that you want to issue commands to your Linode without going through the Lish login process.</p>
+
+<p>You can directly connect to a Linode&rsquo;s console:</p>
+
+<pre><code>ssh -t [manager-username]@lish-[location].linode.com [linode-name]
+</code></pre>
+
+<p>You can also append Lish commands to the SSH command on your system prompt. For instance, to reboot your system, using your Linode Manager username, location, and the host-id for your Linode:</p>
+
+<pre><code>ssh -t [manager-username]@lish-[location].linode.com [linode-name] reboot
+</code></pre>
+
+<p>Similarly, you can generate a view of the log using Lish:</p>
+
+<pre><code>ssh -t [manager-username]@lish-[location].linode.com [linode-name] logview
+</code></pre>
+
+<p>This command format works for all Lish functionality.</p>
+
+<h2 id="lish-gateway-fingerprints">Lish Gateway Fingerprints</h2>
+
+<p>The valid fingerprints for the Lish gateway boxes are as follows:</p>
+
+<h3 id="atlanta">Atlanta</h3>
+
+<p>These are the fingerprints for the Lish gateway in our Atlanta data center (lish-atlanta.linode.com):</p>
+
+<pre><code>RSA 59:30:1a:0b:93:5e:3f:4b:6f:d1:96:ff:7e:9e:12:f8
+DSA 0b:90:ed:f2:a1:e0:55:5b:38:6e:5d:6e:fa:00:63:7f
+ECDSA SHA256 9V/AK2EcQFjYzm1PU3XhOJbzhwYCoqqThl2vnFxbyvg
+</code></pre>
+
+<h3 id="dallas">Dallas</h3>
+
+<p>These are the fingerprints for the Lish gateway in our Dallas data center (lish-dallas.linode.com):</p>
+
+<pre><code>RSA 6d:3d:b5:d0:42:1c:49:45:a6:47:29:bd:88:4e:58:d4
+DSA 58:bc:07:fa:c1:61:a4:3b:b5:00:3b:9b:6b:78:c6:c5
+ECDSA SHA256 IVXyNAH78L7KJFgfrScp948+56BTew8Z41nOkAw2kGo
+</code></pre>
+
+<h3 id="frankfurt">Frankfurt</h3>
+
+<p>These are the fingerprints for the Lish gateway in our Frankfurt data center (lish-frankfurt.linode.com):</p>
+
+<pre><code>RSA 43:76:22:43:0e:01:cb:84:6a:80:b9:9b:90:34:c7:b1
+DSA 87:2d:c9:5a:76:06:e6:3d:08:70:1b:2e:a6:b4:e8:c2
+ECDSA SHA256 4F/M6SYqrukVHJJbCkzw4tw4TjRVfAY98cDKwqXT9MY
+</code></pre>
+
+<h3 id="fremont">Fremont</h3>
+
+<p>These are the fingerprints for the Lish gateway in our Fremont data center (lish-fremont.linode.com):</p>
+
+<pre><code>RSA 2c:43:0e:fc:88:f2:3a:dd:01:43:3a:fc:9f:67:9f:66
+DSA 19:30:1a:48:85:aa:78:ab:46:8d:0f:4d:00:88:e6:b7
+ECDSA SHA256 0BmmvUv/itqa1ruA4KmqzMFaY4Ijdw/YW+SoiMJT1mo
+</code></pre>
+
+<h3 id="london">London</h3>
+
+<p>These are the fingerprints for the Lish gateway in our London data center (lish-london.linode.com):</p>
+
+<pre><code>RSA 71:27:30:cd:dc:69:7a:fe:58:4a:04:e6:6b:5f:b4:e2
+DSA ce:41:c0:48:2c:93:de:c8:d2:a9:bf:3f:97:1f:04:ad
+ECDSA SHA256 L7sQgnpnoBwRoyIYXAFBs8SdSnwtyYmhXs1p/mQDKQM
+</code></pre>
+
+<h3 id="newark">Newark</h3>
+
+<p>These are the fingerprints for the Lish gateway in our Newark data center (lish-newark.linode.com):</p>
+
+<pre><code>RSA 11:2a:57:a4:f8:ca:42:b2:c0:ab:17:58:0d:0c:b7:8b
+DSA a1:e2:f5:5a:71:f9:b8:98:d9:a6:4c:65:e5:05:ea:04
+ECDSA SHA256 p+fsr503gCnyZhAG7wx5mzrvw9MIPdgzvKauScUm8wk
+</code></pre>
+
+<h3 id="singapore">Singapore</h3>
+
+<p>These are the fingerprints for the Lish gateway in our Singapore data center (lish-singapore.linode.com):</p>
+
+<pre><code>RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
+DSA 0c:f9:f9:d6:f3:0a:f6:bb:82:82:07:4b:51:db:e2:35
+ECDSA SHA256 LzlyP1Uj1nne2KwCkB5HlOWoHLH/7YrApZlNCn5204A
+</code></pre>
+
+<h3 id="tokyo">Tokyo</h3>
+
+<p>These are the fingerprints for the Lish gateway in our Tokyo data center (lish-tokyo.linode.com):</p>
+
+<pre><code>RSA af:ec:f0:b8:87:33:d5:12:04:0d:7c:bb:a6:c5:5f:be
+DSA 1d:7d:bd:5c:a1:41:29:c3:78:de:e7:0f:d3:f2:63:34
+ECDSA SHA256 XcBYWsYm4p/bZ/tfWEntUzScDlTxvzTrmd7emeRBMJc
+</code></pre>
+
+<h3 id="tokyo-2">Tokyo 2</h3>
+
+<p>These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-tokyo2.linode.com):</p>
+
+<pre><code>RSA 2c:60:9a:ce:cf:4b:8d:4e:8f:09:ae:e0:c2:b0:fb:b7
+DSA 2d:0f:b0:a5:d0:bd:4a:71:1a:75:dc:de:b1:06:61:a6
+ECDSA SHA256 nE/1fY3QdCXuoTBfnvQtXzwFVOnO+/gbijm4ZM9wvaY
+</code></pre>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/using-the-linode-graphical-shell-glish/">Using the Linode Graphical Shell (Glish)</a></li>
+    
+    
+    
+    <li><a href="/docs/troubleshooting/rescue-and-rebuild/">Rescue and Rebuild</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#connect-to-lish">Connect to Lish</a>
+<ul>
+<li><a href="#use-a-terminal-application">Use a Terminal Application</a></li>
+<li><a href="#use-a-web-browser">Use a Web Browser</a></li>
+<li><a href="#add-your-public-key">Add Your Public Key</a></li>
+</ul></li>
+<li><a href="#understanding-lish-commands">Understanding Lish Commands</a></li>
+<li><a href="#advanced-lish-tricks">Advanced Lish Tricks</a></li>
+<li><a href="#lish-gateway-fingerprints">Lish Gateway Fingerprints</a>
+<ul>
+<li><a href="#atlanta">Atlanta</a></li>
+<li><a href="#dallas">Dallas</a></li>
+<li><a href="#frankfurt">Frankfurt</a></li>
+<li><a href="#fremont">Fremont</a></li>
+<li><a href="#london">London</a></li>
+<li><a href="#newark">Newark</a></li>
+<li><a href="#singapore">Singapore</a></li>
+<li><a href="#tokyo">Tokyo</a></li>
+<li><a href="#tokyo-2">Tokyo 2</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

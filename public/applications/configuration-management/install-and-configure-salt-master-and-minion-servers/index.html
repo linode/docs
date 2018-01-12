@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install and Configure Salt Master and Minion Servers</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Salt is a server management platform that can control a number of servers from a single location. Learn how to install Salt in this simple tutorial.">
+        <meta name="keywords" content="Install salt,  salt configuration management,  salt master">
+        
+        <meta property="og:title" content="Install and Configure Salt Master and Minion Servers">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers/">
+        <meta property="og:description" content="Salt is a server management platform that can control a number of servers from a single location. Learn how to install Salt in this simple tutorial.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/configuration-management/">Configuration Management</a>
+  
+</li>
+
+
+<li>
+  
+  Install and Configure Salt Master and Minion Servers
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install and Configure Salt Master and Minion Servers</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-07-10T00:00:00Z">Monday, July 10, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2finstall-and-configure-salt-master-and-minion-servers%2f&via=linode&text=Install%20and%20Configure%20Salt%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2finstall-and-configure-salt-master-and-minion-servers%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2finstall-and-configure-salt-master-and-minion-servers%2f&t=Install%20and%20Configure%20Salt%20Master%20and%20Minion%20Servers" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><a href="https://saltstack.com/">Salt</a> is a server management platform, designed to control a number of servers from a single master server. The following directions will walk you through configuring a Salt master and multiple Salt minions, and deploying your first Salt Formula. These instructions assume that you are using Debian 8 but can be adjusted to function on other distributions.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps required in this guide require root privileges. Be sure to run the steps below as <strong>root</strong> or with the <code>sudo</code> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>You will need at least three Linodes: One Salt master, and at least two Salt minions.</p></li>
+
+<li><p>Ensure that each Linode&rsquo;s <a href="https://www.linode.com/docs/getting-started#setting-the-hostname">hostname</a> has been set. As the Linode&rsquo;s hostname will be used to identify it within Salt, we recommend using descriptive hostnames. You should also designate one Linode as your Salt master and name it appropriately. If your Linodes are located within the same datacenter, we recommend that you configure <a href="https://www.linode.com/docs/networking/remote-access#adding-private-ip-addresses">private IP addresses</a> for each system.</p></li>
+</ol>
+
+<h2 id="add-the-salt-repository">Add the Salt Repository</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps in this section will need to be run on <em>each</em> of your Linodes.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Create the file <code>/etc/apt/sources.list.d/salt.list</code> and enter the following lines to add the Salt repository:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apt/sources.list.d/salt.list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># salt
+</span><span class="c1"></span>deb http://debian.saltstack.com/debian jessie-saltstack main</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Add the repository key:</p>
+
+<pre><code>wget -q -O- &quot;http://debian.saltstack.com/debian-salt-team-joehealy.gpg.key&quot; | apt-key add -
+</code></pre></li>
+
+<li><p>Update your Linode:</p>
+
+<pre><code>apt-get update
+</code></pre></li>
+</ol>
+
+<h2 id="configure-your-salt-master">Configure Your Salt Master</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The following steps will be run only on the Linode designated as your Salt master.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Install the Salt master package:</p>
+
+<pre><code>apt-get install salt-master
+</code></pre></li>
+
+<li><p>Open <code>/etc/salt/master</code>. Uncomment the <code>#interface:</code> line and replace <code>&lt;master's IP address&gt;</code> below with the address of your Salt master Linode. If your Linodes are located in the same datacenter, you can utilize your private network address for this purpose.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/salt/master 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># The address of the interface to bind to:
+</span><span class="c1"></span>  interface: &lt;master Linode IP address&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>As part of this step, you can also configure the user you wish to issue Salt commands to your minions. Uncomment the <code>#user:</code> line and enter your desired username to modify this setting. You will also need to issue the following command to set the required permissions for the user in question.</p>
+
+<pre><code>chown -R user /etc/salt /var/cache/salt /var/log/salt /var/run/salt
+</code></pre>
+
+<p>Once this setting has been modified, you will need to issue any further Salt commands on your Salt Master while logged in as that user.</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Restart Salt:</p>
+
+<pre><code>systemctl restart salt-master
+</code></pre></li>
+</ol>
+
+<h2 id="installing-and-configuring-a-salt-minion">Installing and Configuring a Salt Minion</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The following steps will need to be run on <em>each</em> of your Salt minions.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Install Salt:</p>
+
+<pre><code>apt-get install salt-minion
+</code></pre></li>
+
+<li><p>Edit the <code>/etc/salt/minion</code> file to uncomment the <code>#master: salt</code> line, and replace &ldquo;salt&rdquo; with the IP address of your Salt Master:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/salt/minion 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Set the location of the salt master server. If the master server cannot be
+</span><span class="c1"># resolved, then the minion will fail to start.
+</span><span class="c1"></span>  master: &lt;master<span class="err">&#39;</span>s IP address&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Restart Salt:</p>
+
+<pre><code>systemctl restart salt-minion
+</code></pre></li>
+</ol>
+
+<h2 id="configure-salt">Configure Salt</h2>
+
+<ol>
+<li><p>On your Salt master, issue the following command to list the known Salt Minions linked to the Salt Master:</p>
+
+<pre><code>salt-key -L
+</code></pre></li>
+
+<li><p>For security purposes, verify the Minions&rsquo; IDs on both the Salt Master and the Salt Minions. Each Minion will be identified by its hostname.</p>
+
+<p>Run the following command from the Salt master to query each minion&rsquo;s key ID:</p>
+
+<pre><code>salt-key -f &lt;hostname&gt;
+</code></pre>
+
+<p>On the Salt Minions:</p>
+
+<pre><code>salt-call key.finger --local
+</code></pre></li>
+
+<li><p>Once you have verified each of your Minion&rsquo;s ID&rsquo;s, accept the listed Salt Minions.</p>
+
+<p>To accept all Minions:</p>
+
+<pre><code>salt-key -A
+</code></pre>
+
+<p>To accept an individual minion, run the command below, replacing the <code>&lt;hostname&gt;</code> value with your minion&rsquo;s hostname:</p>
+
+<pre><code>salt-key -a &lt;hostname&gt;
+</code></pre></li>
+
+<li><p>Check the status of accepted minions:</p>
+
+<pre><code>salt-run manage.up
+</code></pre></li>
+
+<li><p>Ping the Minions, using <code>*</code> for all:</p>
+
+<pre><code>salt '*' test.ping
+</code></pre>
+
+<p>It should return the value <code>True</code> for each minion.</p></li>
+</ol>
+
+<h2 id="installing-individual-packages-with-salt">Installing Individual Packages with Salt</h2>
+
+<p>Once you have completed the previous configuration steps, you can install packages using Salt on all of your minions. Packages can be targeted to individual minions, or installed to all minions via simple commands. For these examples we will use Apache.</p>
+
+<ol>
+<li><p>To install a package to a specific minion:</p>
+
+<pre><code>salt 'minionid' pkg.install apache2
+</code></pre></li>
+
+<li><p>To install a package to all minions:</p>
+
+<pre><code>salt '*' pkg.install apache2
+</code></pre></li>
+
+<li><p>To control services related to the installed package:</p>
+
+<pre><code>salt '*' service.start apache2
+salt '*' service.stop apache2
+</code></pre></li>
+
+<li><p>To remove a package from minions:</p>
+
+<pre><code>salt '*' pkg.remove apache2
+</code></pre></li>
+</ol>
+
+<h2 id="deploy-your-first-salt-formula">Deploy Your First Salt Formula</h2>
+
+<p>Salt Formulas create a framework of software and configurations to be deployed to your minions. Multiple Salt Formulas can be deployed to your minions and this will allow you to manage package configuration and maintenance from the Salt Master. These steps will walk you through installing one of the pre-made formulas hosted on <a href="https://github.com/saltstack-formulas">Salt&rsquo;s Github</a>.</p>
+
+<ol>
+<li><p>Create the directory for storing your Salt states and navigate to that directory:</p>
+
+<pre><code>mkdir /srv/salt
+cd /srv/salt
+</code></pre></li>
+
+<li><p>Create a state file to store your configuration. For this example, we&rsquo;ll create a simple Apache state:</p>
+
+<dl class="file">
+<dt>
+
+
+		/srv/salt/apache.sls 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">apache2:
+  pkg:
+    - installed</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>To install the packages contained within the SLS file and enable the state, execute the following command. You can replace <code>*</code> with the ID of a specific minion:</p>
+
+<pre><code>salt '*' state.apply apache
+</code></pre></li>
+
+<li><p>To disable or re-enable states installed on your Minions, run the following command:</p>
+
+<pre><code>salt '*' state.disable apache
+salt '*' state.enable apache
+</code></pre></li>
+</ol>
+
+            
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#add-the-salt-repository">Add the Salt Repository</a></li>
+<li><a href="#configure-your-salt-master">Configure Your Salt Master</a></li>
+<li><a href="#installing-and-configuring-a-salt-minion">Installing and Configuring a Salt Minion</a></li>
+<li><a href="#configure-salt">Configure Salt</a></li>
+<li><a href="#installing-individual-packages-with-salt">Installing Individual Packages with Salt</a></li>
+<li><a href="#deploy-your-first-salt-formula">Deploy Your First Salt Formula</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

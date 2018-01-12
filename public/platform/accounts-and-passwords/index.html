@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Accounts and Passwords</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Our guide to managing accounts and passwords.">
+        <meta name="keywords" content="accounts, passwords, linode manager, manager">
+        
+        <meta property="og:title" content="Accounts and Passwords">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/accounts-and-passwords/">
+        <meta property="og:description" content="Our guide to managing accounts and passwords.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/accounts-and-passwords/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  Accounts and Passwords
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Accounts and Passwords</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-02-10T00:00:00Z">Monday, February 10, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2faccounts-and-passwords%2f&via=linode&text=Accounts%20and%20Passwords" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2faccounts-and-passwords%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2faccounts-and-passwords%2f&t=Accounts%20and%20Passwords" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/accounts-and-passwords.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/accounts-and-passwords.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Maintaining your accounts, passwords, and contact information in the Linode Manager is just as important as administering your Linode. This guide shows you how to control access to the Linode Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Linode Manager only, except for the section on resetting the root password.</p>
+
+<h2 id="users-and-permissions">Users and Permissions</h2>
+
+<p>You can grant other users access to the Linode Manager by creating <em>accounts</em> and assigning <em>permissions</em> to restrict access to certain areas of the control panel. Adding users and configuring permissions is useful for groups that need to grant all team members access to the Linode Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Your account was automatically created when you signed up for Linode. If you will be the only person accessing the Linode Manager, you won&rsquo;t need to create any other user accounts.</div>
+</blockquote>
+
+
+<h3 id="adding-a-user">Adding a User</h3>
+
+<p>When you add a user, you give that individual permission to log in to the Linode Manager and, depending on the access level they are assigned, receive email notifications. There are two types of users: <em>Restricted users</em>, who have limited access to the Linode Manager, and <em>unrestricted users</em>, who have full access.</p>
+
+<p>This video will show you how to add a new user:</p>
+
+<iframe width="825" height="465" src="https://www.youtube.com/embed/QF5FNxWbtUQ?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+
+<p>Here&rsquo;s how to add a user to your Linode account:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Account</strong> tab.</li>
+<li>Click the <strong>Users and Permissions</strong> tab.</li>
+<li>Enter your password and click <strong>Authenticate</strong>. The <em>User Manager</em> webpage appears.</li>
+<li>Select the <strong>Add a user</strong> link. The <em>Edit User</em> webpage appears.</li>
+<li>Enter a username for the user in the <strong>Username</strong> field.</li>
+<li>Enter a password for the user in the <strong>New Password</strong> fields.</li>
+<li>Enter the user&rsquo;s email address in the <strong>Email</strong> field.</li>
+<li>Select an access setting for the user&rsquo;s account. You can specify restrictions or grant the user full access to all of the settings in the Linode Manager.</li>
+<li>Click <strong>Save Changes</strong>.</li>
+</ol>
+
+<p>If you granted the user full access, the account will be created and no further action is required. If you opted to restrict the user, follow the instructions in the next section.</p>
+
+<h3 id="setting-permissions">Setting Permissions</h3>
+
+<p>Setting permissions restricts a user&rsquo;s access to certain areas of the Linode Manager. For example, you could limit a user to a single Linode and prevent them from removing the Linode or adding extra services. Don&rsquo;t worry - these settings aren&rsquo;t permanent. You can add or remove access for a user at any time in the future.</p>
+
+<p>Here&rsquo;s how to set a user&rsquo;s access permissions:</p>
+
+<ol>
+<li>Click the <strong>Account</strong> tab.</li>
+<li>Click the <strong>Users and Permissions</strong> tab.</li>
+<li>Enter your password and click <strong>Authenticate</strong>. The <em>User Manager</em> webpage appears.</li>
+<li>Locate the user in the list and select the <strong>Edit Permissions</strong> link. The webpage shown below appears.</li>
+</ol>
+
+<p><a href="/docs/assets/921-user1.png"><img src="/docs/assets/922-user1-small.png" alt="Configure permissions for a user in the Linode Manager." /></a></p>
+
+<ol>
+<li>Select checkboxes in the <strong>Global Grants</strong> section to allow the user to add Linodes, Domains, and NodeBalancers to the account, create StackScripts, access all billing information, and cancel the entire account.</li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Granting access to settings denoted with a dollar sign (\$) will allow the user perform actions that incur billing costs, such as adding or resizing a Linode.</div>
+</blockquote>
+
+
+<ol>
+<li>Select checkboxes in the other sections to allow the user to access certain features and sections of the Linode Manager.</li>
+<li>When you have finished configuring the user&rsquo;s permissions, click <strong>Update Grants</strong>.</li>
+</ol>
+
+<p>The user&rsquo;s permissions will be saved and effective immediately.</p>
+
+<h3 id="recovering-a-lost-username">Recovering a Lost Username</h3>
+
+<p>Did you forget your Linode Manager username? Recover it with the <em>Forgot Username</em> webpage. Here&rsquo;s how:</p>
+
+<ol>
+<li>Visit the <a href="https://manager.linode.com/session/forgot/username">Forgot Username</a> webpage.</li>
+<li>Enter your email address in the <strong>Email</strong> field.</li>
+<li>Click <strong>Submit</strong>.</li>
+</ol>
+
+<p>In a couple minutes, you&rsquo;ll receive an email message with your Linode Manager username.</p>
+
+<h3 id="removing-a-user">Removing a User</h3>
+
+<p>You can permanently remove a user account from the Linode Manager. Here&rsquo;s how:</p>
+
+<ol>
+<li>Click the <strong>Account</strong> tab.</li>
+<li>Click the <strong>Users and Permissions</strong> tab.</li>
+<li>Authenticate with your Linode Manager password. The <em>User Manager</em> webpage appears.</li>
+<li>Locate the user in the list and select the <strong>Remove</strong> link. A warning appears asking you to confirm that you want to delete the user.</li>
+<li>Click <strong>Yes. Delete!</strong></li>
+</ol>
+
+<p>The account will be removed, and the user will no longer be able to access the Linode Manager.</p>
+
+<h2 id="email-addresses-and-contact-information">Email Addresses and Contact Information</h2>
+
+<p>Linode uses the contact information on file in your account to notify and bill you. Keep this information current to prevent service interruptions. It&rsquo;s especially important to keep your email address current.</p>
+
+<p>Both the <em>Account</em> and <em>My Profile</em> webpages have a field for email address. The email addresses saved on these pages receive different notifications, as described in the following sections. If you are the only user, you should enter your email address on both webpages. If there are multiple users, verify that the primary account holder&rsquo;s email address is current on the <em>Account</em> webpage.</p>
+
+<h3 id="updating-contact-information">Updating Contact Information</h3>
+
+<p>Use the <em>Account</em> webpage to update the contact information for the Linode account. The email address saved on this webpage receives invoices, receipts, and credit card expiration warnings. Support tickets are <em>not</em> sent to this email address.</p>
+
+<p>Here&rsquo;s how to update the contact information and the email address on the <em>Account</em> webpage:</p>
+
+<ol>
+<li>Click the <strong>Account</strong> tab.</li>
+<li>Click the <strong>Contact Info</strong> tab.</li>
+<li>Update the contact information for the account and the email address, if necessary.</li>
+<li>Click <strong>Save Changes</strong>.</li>
+</ol>
+
+<p>The account&rsquo;s contact information will be updated.</p>
+
+<h3 id="changing-your-email-address">Changing Your Email Address</h3>
+
+<p>Use the <em>My Profile</em> webpage to modify the email address associated with your user account. The email address saved on this webpage receives IP whitelist warnings, password reset messages, and support tickets for services that you have permission to access. You may also receive invoices and receipts, if the primary account holder grants you access to that information.</p>
+
+<p>Here&rsquo;s how to change your email address on the <em>My Profile</em> webpage:</p>
+
+<ol>
+<li>Select the <strong>My Profile</strong> link.</li>
+<li>Enter your password and click <strong>Authenticate</strong>.</li>
+<li>In the <strong>My Profile</strong> tab, enter your email address in the <strong>New Email</strong> field.</li>
+<li>Click <strong>Change Email</strong>.</li>
+</ol>
+
+<p>Your profile&rsquo;s email account will be updated.</p>
+
+<h2 id="passwords">Passwords</h2>
+
+<p>Creating strong passwords is essential to protecting your Linode and your Linode Manager account. If you suspect that an unauthorized user has gained access to one of your accounts, you should change the password immediately. Use the instructions in this section to change your Linode Manager password and reset the password for the <code>root</code> user on the Linode.</p>
+
+<h3 id="changing-your-linode-manager-password">Changing Your Linode Manager Password</h3>
+
+<p>It&rsquo;s a good idea to periodically change the password for your Linode Manager user account. Here&rsquo;s how:</p>
+
+<ol>
+<li>Select the <strong>My Profile</strong> link.</li>
+<li>Enter your password and click <strong>Authenticate</strong>.</li>
+<li>Select the <strong>Password &amp; Authentication</strong> tab.</li>
+<li>Enter a new password in both of the <strong>New Password</strong> fields.</li>
+<li><em>Optional:</em> Set an expiration date for your password by selecting a value from the <strong>Expires</strong> menu. When the password expires, you&rsquo;ll be prompted to reset it at login.</li>
+<li>Click <strong>Change Password</strong>.</li>
+</ol>
+
+<p>Your Linode Manager password will be changed.</p>
+
+<h3 id="resetting-your-linode-manager-password">Resetting Your Linode Manager Password</h3>
+
+<p>Did you forget your Linode Manager password? Reset it with the <em>Forgot Password</em> webpage. Here&rsquo;s how:</p>
+
+<ol>
+<li>Visit the <a href="https://manager.linode.com/session/forgot/password">Forgot Password</a> webpage.</li>
+<li>Enter your username in the <strong>Username</strong> field.</li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;ve forgotten your Linode Manager username, see <a href="#recovering-a-lost-username">Recovering a Lost Username</a>.</div>
+</blockquote>
+
+
+<ol>
+<li>Check your email for a message containing further instructions.</li>
+</ol>
+
+<p>Follow the instructions in the email message to reset your password.</p>
+
+<h3 id="resetting-the-root-password">Resetting the Root Password</h3>
+
+<p>If you can&rsquo;t remember the password for the <code>root</code> user on a Linode, use the Linode Manager to reset it. Here&rsquo;s how:</p>
+
+<ol>
+<li>Click the <strong>Linodes</strong> tab. A list of your Linodes appears.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Click <strong>Shut down</strong> to turn off your Linode. Monitor the <em>Host Job Queue</em> for a message indicating that your Linode has shut down.</li>
+<li>Click the <strong>Rescue</strong> tab. The rescue webpage appears.</li>
+<li>Select your primary disk from the <strong>Filesystem</strong> menu.</li>
+<li>Enter a new password for the <code>root</code> user in the <strong>New Password</strong> field.</li>
+<li>Click <strong>Reset Root Password</strong>. The Linode&rsquo;s dashboard appears.</li>
+<li>Click <strong>Boot</strong> to turn on your Linode.</li>
+</ol>
+
+<p>Now you can use the new <code>root</code> user password to log in to your Linode. See <a href="/docs/getting-started#connect-to-your-linode-via-ssh">Connecting to Your Linode</a> for more information about connecting.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>You can take additional steps to secure your Linode Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the <a href="/docs/security/linode-manager-security-controls/">Security</a> guide.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/resize-a-linode-disk/">Resize a Linode Disk</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/">Reset the Root Password on your Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/enable-backups-on-a-linode/">Enable Backups on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/">Deploy an Image to a Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#users-and-permissions">Users and Permissions</a>
+<ul>
+<li><a href="#adding-a-user">Adding a User</a></li>
+<li><a href="#setting-permissions">Setting Permissions</a></li>
+<li><a href="#recovering-a-lost-username">Recovering a Lost Username</a></li>
+<li><a href="#removing-a-user">Removing a User</a></li>
+</ul></li>
+<li><a href="#email-addresses-and-contact-information">Email Addresses and Contact Information</a>
+<ul>
+<li><a href="#updating-contact-information">Updating Contact Information</a></li>
+<li><a href="#changing-your-email-address">Changing Your Email Address</a></li>
+</ul></li>
+<li><a href="#passwords">Passwords</a>
+<ul>
+<li><a href="#changing-your-linode-manager-password">Changing Your Linode Manager Password</a></li>
+<li><a href="#resetting-your-linode-manager-password">Resetting Your Linode Manager Password</a></li>
+<li><a href="#resetting-the-root-password">Resetting the Root Password</a></li>
+</ul></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

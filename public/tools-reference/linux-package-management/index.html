@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Linux Package Management</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Guides for installing and managing software on major Linux operating systems on a Linode.">
+        <meta name="keywords" content="Linux package management, rpm, apt, dpkg, apt-get, apt-cache, pacman, yum">
+        
+        <meta property="og:title" content="Linux Package Management">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/linux-package-management/">
+        <meta property="og:description" content="Guides for installing and managing software on major Linux operating systems on a Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/linux-package-management/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  Linux Package Management
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Linux Package Management</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-02-23T00:00:00Z">Thursday, February 23, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2flinux-package-management%2f&via=linode&text=Linux%20Package%20Management" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2flinux-package-management%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2flinux-package-management%2f&t=Linux%20Package%20Management" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/linux-package-management.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/linux-package-management.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Many tutorials reference &ldquo;package managers&rdquo; and &ldquo;package management tools.&rdquo; If you are new to the Linux world and don&rsquo;t understand the purpose of these technologies, or if you are familiar with one package management tool but want to learn how to use another, this guide will provide an introduction to the major package management tools.</p>
+
+<p><img src="/docs/assets/linux-package-management.png" alt="Linux Package Management" title="Linux Package Management" /></p>
+
+<h2 id="package-management-concepts">Package Management Concepts</h2>
+
+<p>Contemporary distributions of Linux-based operating systems install software in pre-compiled <em>packages</em>, which are archives that contain binaries of software, configuration files, and information about dependencies. Furthermore, package management tools keep track of updates and upgrades so that the user doesn&rsquo;t have to hunt down information about bug and security fixes.</p>
+
+<p>Without package management, users must ensure that all of the required dependencies for a piece of software are installed and up-to-date, compile the software from the source code (which takes time and introduces compiler-based variations from system to system), and manage configuration for each piece of software. Without package management, application files are located in the standard locations for the system to which the developers are accustomed, regardless of which system they&rsquo;re using.</p>
+
+<p>Package management systems attempt to solve these problems and are the tools through which developers attempt to increase the overall quality and coherence of a Linux-based operating system. The features that most package management applications provide are:</p>
+
+<ul>
+<li><strong>Package downloading</strong>: Operating-system projects provide package repositories which allow users to download their packages from a single, trusted provider. When you download from a package manager, the software can be authenticated and will remain in the repository even if the original source becomes unreliable.</li>
+<li><strong>Dependency resolution</strong>: Packages contain metadata which provides information about what other files are required by each respective package. This allows applications and their dependencies to be installed with one command, and for programs to rely on common, shared libraries, reducing bulk and allowing the operating system to manage updates to the packages.</li>
+<li><strong>A standard binary package format</strong>: Packages are uniformly prepared across the system to make installation easier. While some distributions share formats, compatibility issues between similarly formatted packages for different operating systems can occur.</li>
+<li><strong>Common installation and configuration locations</strong>: Linux distribution developers often have conventions for how applications are configured and the layout of files in the <code>/etc/</code> and <code>/etc/init.d/</code> directories; by using packages, distributions are able to enforce a single standard.</li>
+<li><strong>Additional system-related configuration and functionality</strong>: Occasionally, operating system developers will develop patches and helper scripts for their software which get distributed within the packages. These modifications can have a significant impact on user experience.</li>
+<li><strong>Quality control</strong>: Operating-system developers use the packaging process to test and ensure that the software is stable and free of bugs that might affect product quality and that the software doesn&rsquo;t cause the system to become unstable. The subjective judgments and community standards that guide packaging and package management also guide the &ldquo;feel&rdquo; and &ldquo;stability&rdquo; of a given system.</li>
+</ul>
+
+<p>In general, we recommend that you install the versions of software available in your distribution&rsquo;s repository and packaged for your operating system. If packages for the application or software that you need to install aren&rsquo;t available, we recommend that you find packages for your operating system, when available, before installing from source code.</p>
+
+<p>The remainder of this guide will cover how to use specific package management systems and how to compile and package software yourself.</p>
+
+<h2 id="debian-and-ubuntu-package-management">Debian and Ubuntu Package Management</h2>
+
+<p>The Debian package management system, based on a tool called <code>dpkg</code> with the very popular <code>apt</code> system, is a powerful, popular, and useful method of package management. In addition to Debian, a number of other prominent distributions of GNU/Linux are derived from the Debian system, most notably the Ubuntu family of distributions.</p>
+
+<p>As a result, these instructions apply to Debian and Ubuntu systems. While Debian and derived systems are not necessarily binary-compatible, <code>.debs</code> packaged for Debian are often compatible with Ubuntu (though this is not a supported workflow).</p>
+
+<h3 id="advanced-packaging-tool-apt">Advanced Packaging Tool (APT)</h3>
+
+<p>You may already be familiar with <code>apt-get</code>, a command which uses the advanced packaging tool to interact with the operating system&rsquo;s package system. The most relevant and useful commands are (to be run with root privileges):</p>
+
+<ul>
+<li><code>apt-get install package-name(s)</code> - Installs the package(s) specified, along with any dependencies.</li>
+<li><code>apt-get remove package-name(s)</code> - Removes the package(s) specified, but does not remove dependencies.</li>
+<li><code>apt-get autoremove</code> - Removes any <em>orphaned</em> dependencies, meaning those that remain installed but are no longer required.</li>
+<li><code>apt-get clean</code> - Removes downloaded package files (.deb) for software that is already installed.</li>
+<li><code>apt-get purge package-name(s)</code> - Combines the functions of <code>remove</code> and <code>clean</code> for a specific package, as well as configuration files.</li>
+<li><code>apt-get update</code> - Reads the <code>/etc/apt/sources.list</code> file and updates the system&rsquo;s database of packages available for installation. Run this after changing <code>sources.list</code>.</li>
+<li><code>apt-get upgrade</code> - Upgrades all packages if there are updates available. Run this after running <code>apt-get update</code>.</li>
+</ul>
+
+<p>While <code>apt-get</code> provides the most often-used functionality, APT provides additional information in the <code>apt-cache</code> command.</p>
+
+<ul>
+<li><code>apt-cache search package-name(s)</code> - If you know the name of a piece of software but <code>apt-get install</code> fails or points to the wrong software, this looks for other possible names.</li>
+<li><code>apt-cache show package-name(s)</code> - Shows dependency information, version numbers and a basic description of the package.</li>
+<li><code>apt-cache depends package-name(s)</code> - Lists the packages that the specified packages depends upon in a tree. These are the packages that will be installed with the <code>apt-get install</code> command.</li>
+<li><code>apt-cache rdepends package-name(s)</code> - Outputs a list of packages that depend upon the specified package. This list can often be rather long, so it is best to pipe its output through a command, like <code>less</code>.</li>
+<li><code>apt-cache pkgnames</code> - Generates a list of the currently installed packages on your system. This list is often rather long, so it is best to pipe its output through a program, like <code>less</code>, or direct the output to a text file.</li>
+</ul>
+
+<p>Combining most of these commands with <code>apt-cache show</code> can provide you with a lot of useful information about your system, the software that you might want to install, and the software that you have already installed. If you&rsquo;re overwhelmed by <code>apt-cache</code> check out the following resources for easy-to-read lists of available packages:</p>
+
+<ul>
+<li><a href="http://packages.debian.org">The Debian Package Directory</a></li>
+<li><a href="http://packages.ubuntu.com">The Ubuntu Package Directory</a></li>
+</ul>
+
+<h3 id="aptitude">Aptitude</h3>
+
+<p>Aptitude is another front-end interface for APT. In addition to a graphical interface, Aptitude provides a combined command-line interface for most APT functionality. Some notable commands are:</p>
+
+<ul>
+<li><code>aptitude update</code>, <code>aptitude install</code>, <code>aptitude remove</code>, <code>aptitude clean</code>, or <code>aptitude purge</code> - Same as their apt-get counterparts.</li>
+<li><code>aptitude search</code> or <code>aptitude show</code>, - Same as their apt-cache counterparts.</li>
+<li><code>aptitude download</code> - Downloads a .deb file for a given package into the current directory.</li>
+</ul>
+
+<p>Aptitude also includes <em>safe upgrading</em>, meaning it doesn&rsquo;t remove existing packages, as well as <em>holding</em>, which prevents the system from upgrading specific packages.</p>
+
+<h3 id="etc-apt-sources-list">/etc/apt/sources.list</h3>
+
+<p>The file <code>/etc/apt/sources.list</code> controls repositories from which APT constructs its database. This file contains lines in the following format:</p>
+
+<pre><code>deb location-of-resources distribution component(s)
+</code></pre>
+
+<p>Here are some examples:</p>
+
+<pre><code>deb http://mirrors.linode.com/debian/ jessie main contrib
+deb http://www.deb-multimedia.org jessie main non-free
+</code></pre>
+
+<p>The first line specifies the Linode mirror for the Debian 8 (code named Jessie) Linux distribution, as well as the main and contributed components. The next line specifies the deb-multimedia.org repository for Jessie, which provides some multimedia packages unavailable in the main repositories for licensing reasons, and its main and non-free components.</p>
+
+<p>In general, one does not want to add new entries to <code>sources.list</code> without a lot of scrutiny and diligence, as updating the package cache with additional repositories and running upgrades can sometimes result in the installation of broken packages, unmet dependencies, and system instability. In Debian systems, downgrading is often difficult.</p>
+
+<p>For Debian systems, the repository names can either refer to the distribution code name (e.g., jessie for current-stable, stretch for testing, sid for unstable, wheezy for old-stable) or to a specific branch (e.g., oldstable, stable, testing, unstable). For more information about Debian versions and choosing a Debian version or branch, read the <a href="http://www.us.debian.org/releases/">Debian releases and branches page</a>.</p>
+
+<p>The component section of the line divides the repository based on how much support the developers of the operating system are able to offer for the contained packages (e.g. main vs. contrib), or if the software is considered &ldquo;free-software&rdquo; or simply freely-distributable (e.g., non-free).</p>
+
+<p>The layout of <code>sources.list</code> is a bit different in Ubuntu systems. The lines are in the same format but the names of the distributions and components are different:</p>
+
+<ul>
+<li>Ubuntu versions have a different naming scheme. Version 14.04 is named &ldquo;trusty&rdquo; in <code>sources.list</code>, 15.10 is &ldquo;wily,&rdquo; and 16.04 is &ldquo;xenial.&rdquo; These names follow an alphabetical pattern.</li>
+<li>Ubuntu components are: &ldquo;main&rdquo; and &ldquo;restricted&rdquo; for supported free and non-free packages; &ldquo;universe&rdquo; and &ldquo;multiverse&rdquo; for unsupported free and non-free software.</li>
+</ul>
+
+<h3 id="using-dpkg">Using dpkg</h3>
+
+<p><code>Apt-get</code> and <code>apt-cache</code> are merely frontend programs that provide a more usable interface and connections to repositories for the underlying package management tools called <code>dpkg</code> and <code>debconf</code>. These tools are quite powerful, and fully explaining their functionality is beyond the scope of this document. However, a basic understanding of how to use these tools is useful. Some important commands are:</p>
+
+<ul>
+<li><code>dpkg -i package-file-name.deb</code> - Installs a .deb file.</li>
+<li><code>dpkg --list search-pattern</code> - Lists packages currently installed on the system.</li>
+<li><code>dpkg --configure package-name(s)</code> - Runs a configuration interface to set up a package.</li>
+<li><code>dpkg-reconfigure package-name(s)</code> - Runs a configuration interface on an already installed package.</li>
+</ul>
+
+<p>For information about building your own packages, refer to the <a href="http://www.debian.org/doc/maint-guide/">Debian New Maintainers Guide</a>.</p>
+
+<h2 id="fedora-and-centos-package-management">Fedora and CentOS Package Management</h2>
+
+<p>Fedora and CentOS are closely related distributions, being upstream and downstream (respectively) from Red Hat Enterprise Linux (RHEL). Their main differences stem from how packages are chosen for inclusion in their repositories.</p>
+
+<p>CentOS uses <code>yum</code>, <em>Yellowdog Updater, Modified</em>, as a front end to interact with system repositories and install dependencies, and also includes a lower-level tool called <code>rpm</code>, which allows you to interact with individual packages.</p>
+
+<p>Starting with version 22, Fedora uses the <code>dnf</code> package manager instead of YUM to interact with <code>rpm</code>. DNF supports many of the same commands as YUM, with some slight changes.</p>
+
+<p><strong>Note:</strong> Many operating systems aside from RedHat use <code>rpm</code> packages. These include OpenSuSE, AIX, and Mandriva. While it may be possible to install an RPM packaged for one operating system on another, this is not supported or recommended, and the results of this action can vary greatly.</p>
+
+<h3 id="yellow-dog-updater-modified-yum">Yellow Dog Updater, Modified (YUM)</h3>
+
+<p>The YUM tool was developed for the Yellow Dog Linux system as a replacement for the Yellow Dog Updater (YUP). RedHat found the YUM tool to be a valuable addition to their systems. Today, YUM is the default package and repository management tool for a number of operating systems.</p>
+
+<p>You can use the following commands to interact with YUM:</p>
+
+<ul>
+<li><code>yum install package-name(s)</code> - Installs the specified package(s) along with any required dependencies.</li>
+<li><code>yum erase package-name(s)</code> - Removes the specified package(s) from your system.</li>
+<li><code>yum search search-pattern</code> - Searches the list of package names and descriptions for packages that match the search pattern and provides a list of package names, with architectures and a brief description of the package contents. Note that regular expression searches are not permitted.</li>
+<li><code>yum deplist package-name(s)</code> - Lists all of the libraries and modules that the named package depends on, along with the names of the packages (including versions) that provide those dependencies.</li>
+<li><code>yum check-update</code> - Refreshes the local cache of the yum database so that dependency information and the latest packages are always up to date.</li>
+<li><code>yum info package-name(s)</code> - The results of the info command provides the name, description of the package, as well as a link to the upstream home page for the software, release versions and the installed size of the software.</li>
+<li><code>yum reinstall package-name(s)</code> - Erases and then downloads a new copy of the package file and re-installs the software on your system.</li>
+<li><code>yum localinstall local-rpm-file</code> - Checks the dependencies of a local .rpm file and then installs it.</li>
+<li><code>yum update optional-package-name(s)</code> - Downloads and installs all updates including bug fixes, security releases, and upgrades, as provided by the distributors of your operating system. Note that you can specify package names with the update command.</li>
+<li><code>yum upgrade</code> - Upgrades all packages installed in your system to the latest release.</li>
+</ul>
+
+<h3 id="etc-yum-conf">/etc/yum.conf</h3>
+
+<p>The file located at <code>/etc/yum.conf</code> provides system-wide configuration options for YUM, as well as information about repositories. Repository information may also be located in files ending in <code>.repo</code> under <code>/etc/yum.repos.d</code>.</p>
+
+<p>The options in the <code>[main]</code> stanza don&rsquo;t need modification, though you may set alternate logging and cache locations for the database by adding the following lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/yum.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">logfile=/var/log/yum.log
+cachedir=/var/cache/yum</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="dandified-yum-dnf">Dandified YUM (DNF)</h3>
+
+<p>DNF is the modern extension of the YUM package manager. It retains much of the same command usage and functionality as YUM, with a number of improvements for newer operating systems. DNF was first introduced in Fedora 18 and became the default package manager with the release of Fedora 22.</p>
+
+<ul>
+<li><code>dnf install package-name(s)</code> - Installs the specified package(s) along with any required dependencies. <code>dnf install</code> can also accept <code>.rpm</code> files in place of a package name, to install directly from a downloaded RPM.</li>
+<li><code>dnf remove package-name(s)</code> - Removes the specified package(s) from your system, along with any package(s) that depend upon them.</li>
+<li><code>dnf search search-pattern</code> - Searches the list of package names and descriptions for packages that match the search pattern and provides a list of package names, with architectures and a brief description of the package contents. Note that regular expression searches are not permitted.</li>
+<li><code>dnf provides package-name(s)</code> - Lists all of the libraries and modules that the named package depends on, along with the names of the packages (including versions) that provide those dependencies.</li>
+<li><code>dnf check-update</code> - Refreshes the local cache of the DNF database so that dependency information and the latest packages are always up to date.</li>
+<li><code>dnf info package-name(s)</code> - Provides the name and description of the package as well as a link to the upstream home page for the software, release versions, and the installed size of the software.</li>
+<li><code>dnf reinstall package-name(s)</code> - Erases and then downloads a new copy of the package file and re-installs the software on your system.</li>
+<li><code>dnf upgrade optional-package-name(s)</code> - Downloads and installs all updates including bug fixes, security releases, and upgrades for a specific package.</li>
+<li><code>dnf upgrade</code> - With no arguments, <code>upgrade</code> upgrades all packages installed in your system to the latest release.</li>
+<li><code>dnf config-manager --add-repo example.repo</code> Adds a <code>.repo</code> file as a DNF repository.</li>
+<li><code>dnf config-manager --set-enabled example-repo</code> Enables a DNF repository.</li>
+<li><code>dnf config-manager --set-disabled example-repo</code> Disables a DNF repository.</li>
+</ul>
+
+<h3 id="etc-dnf-dnf-conf">/etc/dnf/dnf.conf</h3>
+
+<p>The <code>dnf.conf</code> file provides global configuration settings for DNF. If DNF <code>.repo</code> files are being added manually, instead of with <code>dnf config-manager</code>, they should be added to <code>/etc/yum.repos.d</code>.</p>
+
+<h3 id="rpm-package-manager-rpm">RPM Package Manager (RPM)</h3>
+
+<p>YUM and DNF are simply front-ends to a lower-level tool called RPM, similar to <code>apt-get</code>&rsquo;s relationship with <code>dpkg</code>. You will likely not need to interact with RPM very often, but there are a few commands that you may find useful.</p>
+
+<p>The following commands should be run as root. The flags are expanded here, but the abbreviated syntax is also included:</p>
+
+<ul>
+<li><code>rpm --install --verbose --hash local-rpm-file-name.rpm</code> or <code>rpm -ivh filename.rpm</code> - Installs an rpm from the file. <code>rpm</code> is also capable of installing RPM files from http and ftp sources as well as local files.</li>
+<li><code>rpm --erase package-name(s)</code> or <code>rpm -e</code> - Removes the given package. Usually will not complete if <code>package-name</code> matches more than one package, but will remove more than one match if used with the <code>--allmatches</code> flag.</li>
+<li><code>rpm --query --all</code> or <code>rpm -qa</code> - lists the name of all packages currently installed.</li>
+<li><code>rpm --query package-name(s)</code> or <code>rpm -q</code> - allows you to confirm whether a given package is installed in your system.</li>
+<li><code>rpm --query --info package-name(s)</code> or <code>rpm -qi</code> - displays the information about an installed package.</li>
+<li><code>rpm --query --list package-name(s)</code> or <code>rpm -ql</code> - generates a list of files installed by a given package. This is complemented by:</li>
+<li><code>rpm --query --file</code> or <code>rpm -q qf filename</code> - checks to see what installed package &ldquo;owns&rdquo; a given file.</li>
+</ul>
+
+<p>Note that RPM does not automatically check for dependencies, so you must install them manually. For more information please consult these external sources:</p>
+
+<ul>
+<li><a href="http://www.idevelopment.info/data/Unix/Linux/LINUX_RPMCommands.shtml">iDevelopment Info - RPM Commands</a></li>
+<li><a href="http://www.tfug.org/helpdesk/linux/rpm.html">Quick Guide to RPM</a></li>
+</ul>
+
+<p>You can use the following template to define a new stanza for a new repository, replacing the capitalized strings with your own values:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/yum.repos.d/example.repo 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">[REPO-NAME]
+name=REPOSITORY-NAME
+mirrorlist=HTTP-ACCESSIBLE-MIRROR-LIST
+#baseurl=BASE-URL-FOR-REPOSITORY
+gpgcheck=BOOLEAN-VALUE-TO-VERIFY-REPOSITORY
+gpgkey=FILE-PATH-TO-GPG-KEY</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The following example is the default configuration for the &ldquo;Base&rdquo; repository in CentOS 7:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/yum.repos.d/CentOS-Base.repo 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">[base]
+name=CentOS-$releasever - Base
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os
+#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h2 id="slackware-package-management">Slackware Package Management</h2>
+
+<p><em>Credit: This section was kindly provided by</em> <a href="http://slaxer.com/">JK Wood</a>.</p>
+
+<p>Packages in Slackware Linux are distributed as compressed tarballs, generally using gzip or lzma compression. These tarballs can be recognized by their suffixes, <code>.tgz</code> or <code>.txz</code>. This format includes a complete filesystem layout, as well as additional scripts to be run upon installation or removal of the software. Slackware packages do not offer dependency resolution information; this is generally viewed as allowing more flexibility and control.</p>
+
+<p>Packages can also be built using SlackBuilds, shell scripts that compile source or repackage binary distribution packages for easy installation and removal on Slackware. These scripts have been adopted as a community standard by such sites as <a href="https://slackbuilds.org/">SlackBuilds.org</a>, which provides many common third-party packages not available in Slackware proper.</p>
+
+<p>Slackware includes <code>pkgtool</code> for local package management and <code>slackpkg</code> for remote installation of packages from official mirrors. For less interactive tasks, there are <code>installpkg</code>, <code>upgradepkg</code>, and <code>removepkg</code>.</p>
+
+<h3 id="working-with-packages-locally">Working With Packages Locally</h3>
+
+<p>The <code>pkgtool</code> program offers the ability to manage packages on the local system through a text-based menu interface. Each option is self-explanatory, from installing packages from the Current or an Other directory, to Removing installed packages, Viewing a list of files in a package, and running Slackware Setup scripts.</p>
+
+<p>The package installation operations offer a list of packages in a menu, with the ability to choose which packages to install and which to leave alone. The package removal option offers a similar choice, with a list of installed packages. Viewing a package can be useful to determine what is in it. This information includes a description written by the creator of the package along with the expected list of files.</p>
+
+<p>The Setup scripts options do not often apply to Linode, though there is a <code>netconfig</code> option that may be helpful to some users.</p>
+
+<p>For those seeking a command-line approach, the <code>*pkg</code> commands are fairly straightforward in their use.</p>
+
+<ul>
+<li><code>installpkg package-name(s)</code> - Installs a package from the current directory, or a pathname you specify. It accepts full filenames, as well as globs such as <code>*/*.t?z</code> for all tgz, tbz, tlz, or txz packages in all immediately adjacent directories.</li>
+<li><code>upgradepkg package-name(s)</code> - Upgrades a package from the current directory, or a pathname you specify. If also accepts full filenames and globs like <code>installpkg</code>. Note that the <code>--install-new</code> flag can be passed to allow <code>upgradepkg</code> to operate like <code>installpkg</code> on packages that are not currently installed on the system.</li>
+<li><code>removepkg package-name(s)</code> - Removes a package from the system. This command does not require a full filename, but can often operate with only the software name associated with the package.</li>
+</ul>
+
+<h3 id="working-with-packages-remotely">Working With Packages Remotely</h3>
+
+<p>The <code>slackpkg</code> program is a recent addition to Slackware that allows official Slackware packages to be installed and upgraded using a remote FTP or HTTP mirror. Before using Slackpkg, a mirror should be set in <code>/etc/slackpkg/mirrors</code>, and can be added or selected from the available list. Only one mirror can ever be active, and is chosen by uncommenting it (deleting the initial #).</p>
+
+<p>While <code>slackpkg</code> offers a menu-based interface, it can also be run in a console-only mode by setting <code>DIALOG=off</code> in <code>/etc/slackpkg/slackpkg.conf</code>.</p>
+
+<ul>
+<li><code>slackpkg check-updates</code> - Checks for new entries to the changelog on the remote mirror. This can be useful in a cron script to notify the system administrator of new patches.</li>
+<li><code>slackpkg update</code> - Downloads updates to the Slackware changelog and file lists. This check is useful for finding security updates, and must be run before attempting to download updated software.</li>
+<li><code>slackpkg install-new</code> - Looks for new packages. While rarely useful on a static release, this command should be run before others on machines running the current development release or when upgrading to a new release.</li>
+<li><code>slackpkg install package-name(s)</code> - Looks for any packages matching the name given, and presents the user with a menu allowing the choice of installation. Note that all commands accepting a package name will also work with Slackware installation series, such as ap, d, or xap.</li>
+<li><code>slackpkg upgrade-all</code> - Presents the user with a menu listing all packages on the remote mirror that do not match the versions currently installed on your system. While this will generally result in upgrades, outdated software can sometimes be listed as an upgrade, such as when changing to an outdated mirror, or using self-built packages to replace standard Slackware packages. One common area this occurs is using alienBOB&rsquo;s multilib glibc packages on Slackware 64-bit. Upon choosing and confirmation of upgrades, the chosen packages will be downloaded and upgraded.</li>
+<li><code>slackpkg upgrade package-name(s)</code> - Searches for any packages matching the name given, and presents a menu to allow upgrades.</li>
+<li><code>slackpkg clean-system</code> - Presents a menu listing all packages on the local system that are not present on upstream mirrors. This includes self-built packages, packages installed from a third-party source, and packages that were once included in Slackware, but have since been removed.</li>
+<li><code>slackpkg remove package-name(s)</code> - Attempts to find any installed packages matching the name given, and presents the user with a menu allowing the choice of removal.</li>
+<li><code>slackpkg reinstall package-name(s)</code> - Reinstalls the given package. This is useful if certain files in that package have been corrupted.</li>
+<li><code>slackpkg search package-name(s)</code> - Searches for the given package name, and displays matching packages as well as installation status.</li>
+<li><code>slackpkg file-search filename</code> - Searches installed and remote package descriptions for the given filename, and displays matching packages as well as installation status.</li>
+<li><code>slackpkg blacklist package-name(s)</code> - Adds the given package to the blacklist located in <code>/etc/slackpkg/blacklist</code>. Blacklisted packages will not be installed, upgraded, or removed by slackpkg.</li>
+<li><code>slackpkg info package-name(s)</code> - Displays standard information about the given package.</li>
+</ul>
+
+<h3 id="slackbuilds-sbopkg-and-third-party-packages">SlackBuilds, sbopkg, and Third-Party Packages</h3>
+
+<p>Slackware does not offer as large a selection of official software as some other more community-oriented distributions, so it can include dubious third-party packages. For this reason, the use of third-party software repositories in Slackware is generally discouraged. Third-party package management tools such as <code>slapt-get</code> are also frowned upon, as they have a reputation for disrupting systems.</p>
+
+<p>The Slackware community has produced SlackBuilds.org, offering SlackBuild scripts for a growing volume of third-party software. These scripts are heavily vetted for integrity and proper operation. Dependencies are noted in README files, and all builds are verified to work as advertised in a clean build environment. Local compilation also verifies that packages for your machine will work on your machine.</p>
+
+<p>To facilitate the management of SlackBuilds, <a href="https://www.sbopkg.org/">sbopkg.org</a> offers <code>sbopkg</code>, which operates similarly to <code>slackpkg</code>, but works with the SlackBuilds.org repository.</p>
+
+<p>The <code>sbopkg</code> program, like <code>pkgtool</code>, offers a text-based menu interface. There is also a Sync option, which ensures that you are working with the latest version of all SlackBuilds. SlackBuilds can be browsed or searched for, as can their respective Changelogs. <code>Sbopkg</code> offers an Updates option, which compares local versions of your packages to remote versions of the SlackBuilds. Unlike <code>slackpkg</code>, <code>sbopkg</code> will not overwrite a newer package than what&rsquo;s on the server by default. In addition, <code>sbopkg</code> offers the ability to manage the order in which SlackBuilds are built using a queue system, and allows the user to make changes to the SlackBuild locally. You can also view which SlackBuilds packages are installed, choose a different repository version to work with, or look for updates to <code>sbopkg</code> itself.</p>
+
+<h2 id="package-management-in-arch-linux-with-pacman">Package Management in Arch Linux with Pacman</h2>
+
+<p>Arch Linux uses binary packages in a <code>.tar.xz</code> format, and also provides a &ldquo;ports&rdquo; build system that facilitates building packages.</p>
+
+<p>Arch Linux runs on a <em>rolling release</em> schedule, which means packages are added to the main repository when they (and their dependencies) are ready for production. This means that there aren&rsquo;t release versions of Arch, as all systems, once upgraded, are equivalent.</p>
+
+<p>Therefore, administrators of Arch Linux must consider the output of <code>pacman</code> carefully before agreeing to upgrade or update any packages.</p>
+
+<h3 id="pacman">Pacman</h3>
+
+<p>The <code>pacman</code> tool is very powerful, but it is also very simple. There are three core commands for basic package management:</p>
+
+<ul>
+<li><code>pacman --query package-name(s)</code> or <code>pacman -Q</code> - Searches the package database for a package name and version number.</li>
+<li><code>pacman --sync package-name(s)</code> or <code>pacman -S</code> - Installs new packages, downloads new content for the database and/or upgrades the system, depending on the options and the named package or packages.</li>
+<li><code>pacman --remove package-name(s)</code> or <code>pacman -R</code> - Removes the named package or packages.</li>
+</ul>
+
+<p>Note that the terse flags are all uppercase and case-sensitive. These terse flags are often combined with additional flags for additional functionality. Here are some examples with brief descriptions:</p>
+
+<ul>
+<li><code>pacman -Qi package-name(s)</code> - Displays information about a given package, including dependency information, the date of the package, a link to the upstream source and other useful information.</li>
+<li><code>pacman -Qo filename</code> - Outputs the version number and name of the package that &ldquo;owns&rdquo; a given file.</li>
+<li><code>pacman -Qs package-name(s)</code> - Searches among the installed packages for a given package.</li>
+<li><code>pacman -Qu</code> - Lists out-of-date installed packages that are in need of an update.</li>
+<li><code>pacman -Sy</code> - Triggers a database refresh, and synchronizes the local database with the remote database.</li>
+<li><code>pacman -Su</code> - Triggers a full system update and downloads new packages to upgrade the system. The update and refresh command can (and should) be run together, as in: <code>pacman -Syu</code>.</li>
+<li><code>pacman -Sc</code> - Removes uninstalled packages from the cache and attempts to clean up old copies of the repository database.</li>
+<li><code>pacman -S --ignore package-name(s)</code> - Ignores upgrades to a given package or list of packages.</li>
+<li><code>pacman -Rs</code> Removes a package and its dependencies, as long as the dependencies are not needed and were not explicitly installed by the user. This command is the inverse of <code>pacman -S</code>.</li>
+<li><code>pacman -Ru</code> Removes packages that are unneeded by any other packages.</li>
+</ul>
+
+<h3 id="configuration-options">Configuration Options</h3>
+
+<p>The configuration for <code>pacman</code> is defined in the <code>/etc/pacman.conf</code> file, while the addresses of the repository mirrors are contained in <code>/etc/pacman.d/mirrorlist</code>. The mirror list was created and prioritized during the installation process and you probably will not need to alter this.</p>
+
+<p>The options in the stock <code>/etc/pacman.conf</code> are documented in comments, and are beyond the scope of this document. You may access the manual page for this configuration file with the command <code>man pacman.conf</code>.</p>
+
+<p>While it is unlikely that you will need to modify the default <code>pacman.conf</code> for most installations, you can change default installation and logging directories and specify packages to be held back from upgrades.</p>
+
+<p>If you need to add an additional third-party repository, add a repository stanza:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/pacman.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">[REPOSITORY-NAME]
+Server = SERVER-LOCATION
+Include = REPOSITORY-LIST</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>Server =</code> and <code>Include =</code> lines are both optional, and the order indicates their priority. By default, the testing repository is disabled, which is wise if you&rsquo;re planning to use the system for production work; however, if you need bleeding-edge packages, uncomment those lines.</p>
+
+<h3 id="the-arch-build-system-abs">The Arch Build System (ABS)</h3>
+
+<p>The Arch Build System allows users to compile and install software not included in the Arch repository. This brief guide outlines the steps to building a package using the ABS.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>All commands explained here should be run as root unless otherwise specified.</div>
+</blockquote>
+
+
+<p>Begin by installing the <code>abs</code> framework and the <code>base-devel</code> packages:</p>
+
+<pre><code>pacman -Sy abs base-devel
+</code></pre>
+
+<p>Edit <code>/etc/abs.conf</code> so that the <code>REPOS</code> line indicates the proper repositories. Note, repositories prefixed with a bang (!) are disabled. The line might look like:</p>
+
+<pre><code>REPOS=(core extra community !testing)
+</code></pre>
+
+<p>To create a local ABS tree in <code>/var/abs</code>, run the <code>abs</code> command as root. You may now browse <code>/var/abs</code>, which contains a representation of the package collection with folders representing each repository, category, and piece of software.</p>
+
+<p>Arch recommends that you create a build directory at another location, such as <code>~/abs/</code>, where actual building will occur.</p>
+
+<p>Begin the build process by copying the files from the ABS tree into your build directory as a non-root user:</p>
+
+<pre><code>cp -r /var/abs/REPO/PACKAGE ~/abs
+</code></pre>
+
+<p>Change to the package&rsquo;s directory:</p>
+
+<pre><code>cd ~/abs/PACKAGE
+</code></pre>
+
+<p>You have the option of modifying the <code>PKGBUILD</code> file. There&rsquo;s a build shell function that you can use to add additional patches to the files if you have modifications to the software or the build process. That shell function generally looks like:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/abs/PACKAGE/PKGBUILD 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">build<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> <span class="nv">$startdir</span>/src/<span class="nv">$pkgname</span>-<span class="nv">$pkgver</span>.orig
+
+  patch -Np1 -i
+  <span class="nv">$startdir</span>/src/<span class="si">${</span><span class="nv">pkgname</span><span class="si">}</span>_<span class="si">${</span><span class="nv">pkgver</span><span class="si">}</span>-<span class="nv">$_patchlevel</span>.diff <span class="o">||</span> <span class="k">return</span> <span class="m">1</span>
+
+  ./configure --prefix<span class="o">=</span>/usr
+  make <span class="o">||</span> <span class="k">return</span> <span class="m">1</span>
+  make install
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>To build the package, use the following command as a non-root user:</p>
+
+<pre><code>    makepkg -s
+</code></pre>
+
+<p>The <code>makepkg</code> command creates a package that contains dependency information. As root, issue the following command:</p>
+
+<pre><code>pacman -U PACKAGE.pkg.tar.xz
+</code></pre>
+
+<p>Make sure to replace <code>PACKAGE</code> with the full package name exactly as it appears in the file system. Arch will now install the package and any required dependencies.</p>
+
+<p>Because ABS downloads source versions of the <code>PKGBUILD</code> file as it creates the package - sometimes checking out a copy of the source code from the version control system - we don&rsquo;t recommend removing files from the build directory hierarchy.</p>
+
+<h3 id="more-information-about-pacman-and-abs">More Information About Pacman and ABS</h3>
+
+<p>If you&rsquo;re interested in learning more about Arch and its package management tools, consult these external sources for the documentation provided by the Arch community:</p>
+
+<ul>
+<li><a href="http://wiki.archlinux.org/index.php/Arch_Build_System">The Arch Build System</a></li>
+<li><a href="http://wiki.archlinux.org/index.php/Pacman">Pacman</a></li>
+</ul>
+
+<h2 id="gentoo-linux-package-management">Gentoo Linux Package Management</h2>
+
+<p>Gentoo provides its entire operating system in source format. These source packages, in concert with <code>ebuild</code> scripts, provide a package management system that borrows and builds on many concepts from the BSD&rsquo;s &ldquo;portage&rdquo; system.</p>
+
+<p>Like Arch, the Gentoo project produces new versions of Gentoo Linux on a rolling release cycle.</p>
+
+<p>This section addresses common package management tasks and functions using the <code>emerge</code> front end for the portage system. We encourage you to install the &ldquo;gentoolkit&rdquo; to provide additional package management tools, such as <code>equery</code>. Install this package with the following command:</p>
+
+<pre><code>emerge app-portage/gentoolkit
+</code></pre>
+
+<h3 id="emerge-portage-commands">Emerge/Portage Commands</h3>
+
+<ul>
+<li><code>emerge --sync</code> - Updates the local copy of the portage tree, so that your local system can download and install the latest version of the software.</li>
+<li><code>emerge --update --deep world</code> - Checks and updates all packages on the system to the latest version. This should be run regularly to avoid falling behind on a critical update.</li>
+<li><code>emerge --search keyword</code> or <code>emerge -s keyword</code> - Searches the names of all of the packages for the given keyword. This command accepts a regular expression as the keyword argument.</li>
+<li><code>emerge --searchdoc keyword</code> or <code>emerge -S keyword</code> - Searches the full description for a given keyword. This command accepts a regular expression as the keyword argument.</li>
+<li><code>emerge package-name(s)</code> - Installs the specified package or packages.</li>
+<li><code>emerge -u package-name(s)</code> - Updates the specified package to the latest version. Using the flag <code>-uD</code> also updates dependencies.</li>
+<li><code>emerge --depclean package-name(s)</code> or <code>emerge -c package-name(s)</code> - Removes the specified package or packages.</li>
+<li><code>emerge --depclean</code> - Removes packages that are orphaned. This means removal of all packages that weren&rsquo;t explicitly installed and do not depend upon any specific package. We recommend that you run it with the <code>--pretend</code> option before running this command on a production system.</li>
+<li><code>emerge -evp --deep world</code> - Lists all of the packages currently installed on the system.</li>
+<li><code>equery depends package-name(s)</code> - Lists all of the packages that depend upon the specified package.</li>
+<li><code>equery files package-name(s)</code> - Lists all of the files &ldquo;owned&rdquo; by a package.</li>
+<li><code>equery belongs filename</code> - Lists the package that &ldquo;owns&rdquo; a particular file.</li>
+</ul>
+
+<h3 id="use-flags">USE Flags</h3>
+
+<p>Portage also makes it possible to install additional variants of a package with <em>USE flags</em>, which allow the user to enable support for a particular option related to that package. To discover which USE flags are available for a given package, issue the following command:</p>
+
+<pre><code>equery uses package-name
+</code></pre>
+
+<p>The <code>equery</code> command depends on the <code>gentoolkit</code> package. This will provide information about what USE flags are available and which have been installed. To specify additional USE flags:</p>
+
+<pre><code>echo &quot;package-name USE-flags&quot; &gt;&gt; /etc/portage/package.use
+emerge package-name
+</code></pre>
+
+<p>This will install the specified package with the appropriate options enabled.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/package-mirrors/">Package Mirrors</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/cloud-storage/access-google-drive-linode/">Access Google Drive from Linode with Ubuntu 14.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#package-management-concepts">Package Management Concepts</a></li>
+<li><a href="#debian-and-ubuntu-package-management">Debian and Ubuntu Package Management</a>
+<ul>
+<li><a href="#advanced-packaging-tool-apt">Advanced Packaging Tool (APT)</a></li>
+<li><a href="#aptitude">Aptitude</a></li>
+<li><a href="#etc-apt-sources-list">/etc/apt/sources.list</a></li>
+<li><a href="#using-dpkg">Using dpkg</a></li>
+</ul></li>
+<li><a href="#fedora-and-centos-package-management">Fedora and CentOS Package Management</a>
+<ul>
+<li><a href="#yellow-dog-updater-modified-yum">Yellow Dog Updater, Modified (YUM)</a></li>
+<li><a href="#etc-yum-conf">/etc/yum.conf</a></li>
+<li><a href="#dandified-yum-dnf">Dandified YUM (DNF)</a></li>
+<li><a href="#etc-dnf-dnf-conf">/etc/dnf/dnf.conf</a></li>
+<li><a href="#rpm-package-manager-rpm">RPM Package Manager (RPM)</a></li>
+</ul></li>
+<li><a href="#slackware-package-management">Slackware Package Management</a>
+<ul>
+<li><a href="#working-with-packages-locally">Working With Packages Locally</a></li>
+<li><a href="#working-with-packages-remotely">Working With Packages Remotely</a></li>
+<li><a href="#slackbuilds-sbopkg-and-third-party-packages">SlackBuilds, sbopkg, and Third-Party Packages</a></li>
+</ul></li>
+<li><a href="#package-management-in-arch-linux-with-pacman">Package Management in Arch Linux with Pacman</a>
+<ul>
+<li><a href="#pacman">Pacman</a></li>
+<li><a href="#configuration-options">Configuration Options</a></li>
+<li><a href="#the-arch-build-system-abs">The Arch Build System (ABS)</a></li>
+<li><a href="#more-information-about-pacman-and-abs">More Information About Pacman and ABS</a></li>
+</ul></li>
+<li><a href="#gentoo-linux-package-management">Gentoo Linux Package Management</a>
+<ul>
+<li><a href="#emerge-portage-commands">Emerge/Portage Commands</a></li>
+<li><a href="#use-flags">USE Flags</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

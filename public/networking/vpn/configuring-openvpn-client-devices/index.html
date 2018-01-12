@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Configure OpenVPN Client Devices</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide will show you how to install, configure, and fine-tune OpenVPN clients on Android, iOS, Linux, OS X and Windows.">
+        <meta name="keywords" content="openvpn, vpn, vpn tunnel, ios, os x, mac, windows, android">
+        
+        <meta property="og:title" content="Configure OpenVPN Client Devices">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/vpn/configuring-openvpn-client-devices/">
+        <meta property="og:description" content="This guide will show you how to install, configure, and fine-tune OpenVPN clients on Android, iOS, Linux, OS X and Windows.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/vpn/configuring-openvpn-client-devices/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/vpn/">VPNs: Virtual Private Networks</a>
+  
+</li>
+
+
+<li>
+  
+  Configure OpenVPN Client Devices
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Configure OpenVPN Client Devices</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-26T00:00:00Z">Tuesday, September 26, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2fconfiguring-openvpn-client-devices%2f&via=linode&text=Configure%20OpenVPN%20Client%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2fconfiguring-openvpn-client-devices%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2fconfiguring-openvpn-client-devices%2f&t=Configure%20OpenVPN%20Client%20Devices" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/vpn/configuring-openvpn-client-devices.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/vpn/configuring-openvpn-client-devices.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>This guide is the third of a three-part series on setting up a hardened OpenVPN environment. Though it&rsquo;s recommended that you first complete parts one and two, <a href="/docs/networking/vpn/set-up-a-hardened-openvpn-server">Set up a Hardened OpenVPN Server on Debian</a> and <a href="/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server">Tunnel Your Internet Traffic Through an OpenVPN Server</a>, this guide can stand on its own as a general tutorial for configuring OpenVPN clients on various operating systems, including mobile.</p>
+
+<p><img src="/docs/assets/configuring-openvpn-client-devices.png" alt="Configuring OpenVPN Client Devices" title="Configuring OpenVPN Client Devices" /></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<p>You must already have the client files ready to transfer to the device. These are listed below. <strong>Each client</strong> will need its own copies. If you need client credentials, see the <a href="/docs/networking/vpn/set-up-a-hardened-openvpn-server/#vpn-certificate-authority">VPN Certificate Authority</a> area of part one of in series.</p>
+
+<ul>
+<li><code>client1.key</code>    # Exclusive to this device.</li>
+<li><code>client1.cert</code>   # Exclusive to this device.</li>
+<li><code>CA.pem</code>         # Is shared among server and client devices.</li>
+<li><code>ta.key</code>         # Is shared among server and client devices.</li>
+<li><code>client.ovpn</code>    # Is shared among client devices.</li>
+</ul>
+
+<h2 id="transfer-client-credentials">Transfer Client Credentials</h2>
+
+<p>Client credentials must be moved to the client device using an encrypted transfer protocol, like <a href="/docs/tools-reference/linux-system-administration-basics#how-to-upload-files-to-a-remote-server">SCP or SFTP</a>. FTP or telnet should <strong>not</strong> be used because these protocols do not encrypt traffic. Windows, has no native SCP or SFTP support. See <a href="/docs/tools-reference/file-transfer/filezilla">our Filezilla guide</a> if you are using Windows for transferring the VPN credentials. Since you created the credentials on a local computer in part one of this series, you can also transfer them by Bluetooth or USB. Apple OS X can also use iTunes to transfer the files to iOS devices. A Linux computer with the package <code>gvfs-backends</code> installed can mount the iOS device as external storage.</p>
+
+<h2 id="client-side-configurations">Client-Side Configurations</h2>
+
+<h3 id="android">Android</h3>
+
+<p>There are two main options for an Android OpenVPN client. The first is <em>OpenVPN Connect</em> on <a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn">Google Play</a>, the official client from OpenVPN Technologies, Inc., the parent company behind OpenVPN software. The second option is <em>OpenVPN for Android</em> on both <a href="https://play.google.com/store/apps/details?id=de.blinkt.openvpn">Google Play</a> and <a href="https://f-droid.org/packages/de.blinkt.openvpn/">F-droid</a>. OpenVPN for Android is open source, more feature-rich, and usually updated more often so we&rsquo;ll use it for this guide, though the two clients are similar.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you have a Linux computer with the package <code>gvfs-backends</code> installed, or a Windows computer, you can connect the device by USB and it will be visible in the system&rsquo;s file manager as an external USB device. If you have Apple OS X, you need to first install <a href="https://android.com/filetransfer/">Android File Transfer</a>.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Ensure that your Android device is fully updated, then install OpenVPN for Android from whichever source you prefer.</p>
+
+<p><img src="/docs/assets/google-play-openvpn-for-android.png" alt="Google Play Store OpenVPN for Android" /></p></li>
+
+<li><p>Connect your Android device by USB to your computer. From the USB settings notification, put the device into file transfer mode. See <a href="https://support.google.com/nexus/answer/2840804">here</a> for more information. Copy over the folder containing the VPN client credentials. You can put it into the <code>/../Internal storage/</code> directory.</p></li>
+
+<li><p>Disconnect the device from USB and launch OpenVPN for Android. To import the VPN profile, tap the Import icon at the top right.</p>
+
+<p><img src="/docs/assets/openvpn-for-android-import-profile.png" alt="OpenVPN for Android import profile" /></p>
+
+<p>You&rsquo;ll then be shown the file browser. Navigate to the folder you copied to the device in the previous step and tap the <code>client.ovpn</code> file to import it as a VPN profile.</p>
+
+<p><img src="/docs/assets/openvpn-for-android-file-browser.png" alt="OpenVPN for Android file browser" /></p></li>
+
+<li><p>At the <em>Convert Config File</em> screen, verify the certificate and key file names are correct. Then tap the check mark at the top right of the screen to complete the process.</p>
+
+<p><img src="/docs/assets/openvpn-for-android-imported.png" alt="OpenVPN for Android profile imported" /></p></li>
+
+<li><p>To connect to the VPN server, tap the profile you just created and confirm the connection request. The log screen will show the connection status and shortly after, Android will be connected.</p>
+
+<p><img src="/docs/assets/openvpn-for-android-profile.png" alt="OpenVPN for Android" /></p>
+
+<p><img src="/docs/assets/openvpn-for-android-connection-request.png" alt="OpenVPN for Android" /></p>
+
+<p><img src="/docs/assets/openvpn-for-android-log.png" alt="OpenVPN for Android" /></p>
+
+<p>You can customize the profile further in the app&rsquo;s settings tab.</p></li>
+
+<li><p>After the profile is imported and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they&rsquo;ll reside in the VPN profile and no longer need to remain on the device storage.</p></li>
+</ol>
+
+<h3 id="ios">iOS</h3>
+
+<p><em>OpenVPN Connect</em> is used to manage OpenVPN connections in Apple&rsquo;s iOS for iPhones and iPads. We&rsquo;ll use iTunes to transfer the file to the iOS device from a computer running OS X or Windows. A Linux computer with the package <code>gvfs-backends</code> installed can mount the iOS device as external storage.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The following example was performed on iOS 9.0.2 and OS X 10.10 using iTunes 12 and OpenVPN Connect 1.0.5.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Ensure that your iOS device is fully updated, then install <a href="https://itunes.apple.com/us/app/openvpn-connect/id590379981">OpenVPN Connect</a> from the App store.</p>
+
+<p><img src="/docs/assets/itunes-appstore-openvpn-connect.png" alt="iTunes App Store OpenVPN Connect" /></p></li>
+
+<li><p>Connect your iOS device by USB to your computer running OS X or Windows. Open iTunes.</p></li>
+
+<li><p>Select the icon for iPad or iPhone near the top-left of the menu bar.</p>
+
+<p><a href="/docs/assets/itunes-device-summary.png"><img src="/docs/assets/itunes-device-summary-small.png" alt="iTunes device summary" /></a></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If this is the first time connecting your iOS device to iTunes, you&rsquo;ll need to click on the overflow menu (the three horizontal dots) and choose <strong>Apps</strong>, then click <strong>Get Started</strong>.</div>
+</blockquote>
+</li>
+
+<li><p>In the left sidebar, choose <strong>Apps</strong> and scroll down to the <strong>File Sharing</strong> category in the main window. You will see the icon for OpenVPN Connect. Click it, then click <strong>Add</strong> in the <strong>OpenVPN Documents</strong> box. Navigate to your <code>ta.key</code> file and <code>.opvn</code> client profile and drag them into the window from Finder. If you add them individually, add the key before the client profile. Otherwise, OpenVPN Connect will fail to find the key.</p>
+
+<p><a href="/docs/assets/itunes-file-sharing.png"><img src="/docs/assets/itunes-file-sharing-small.png" alt="iTunes File Sharing" /></a></p></li>
+
+<li><p>After you&rsquo;ve added the profile to iTunes on your computer, go back to the iOS device and open the OpenVPN Connect app. You&rsquo;ll see an area saying that a new OpenVPN profile is available for import. Tap it to highlight the profile, then tap the green button to add it.</p>
+
+<p><a href="/docs/assets/openvpn-connect-itunes-import-profile.png"><img src="/docs/assets/openvpn-connect-itunes-import-profile-small.png" alt="OpenVPN Connect import profile" /></a></p></li>
+
+<li><p>In the next screen, tap the <strong>Connection</strong> slider to start the connection.</p>
+
+<p><a href="/docs/assets/openvpn-connect-status.png"><img src="/docs/assets/openvpn-connect-status-small.png" alt="OpenVPN Connect connection status" /></a></p></li>
+
+<li><p>You&rsquo;ll see a notification prompt asking to allow OpenVPN to enable the connection. Choose <strong>Yes</strong>. Shortly after, iOS will be connected.</p>
+
+<p><a href="/docs/assets/openvpn-ios-connected.png"><img src="/docs/assets/openvpn-ios-connected-small.png" alt="OpenVPN Connect, connected." /></a></p></li>
+
+<li><p>OpenVPN Connect&rsquo;s app settings can be used to further tweak the connection. Here you can specify whether the VPN is to be used over WiFi connections, cellular, or both; disable Google DNS if you want to only receive DNS addresses from the VPN server.</p>
+
+<p>For detailed explanations of each choice, see the <a href="https://docs.openvpn.net/docs/openvpn-connect/openvpn-connect-ios-faq.html">OpenVPN Connect iOS FAQ</a>.</p>
+
+<p><a href="/docs/assets/openvpn-settings-ios.png"><img src="/docs/assets/openvpn-settings-ios-small.png" alt="OpenVPN Connect settings." /></a></p></li>
+
+<li><p>After the profile is imported and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they&rsquo;ll reside in the VPN profile and no longer need to remain on your client&rsquo;s internal storage, which is readable by other applications.</p></li>
+</ol>
+
+<h3 id="linux">Linux</h3>
+
+<p>These steps assume your distribution uses NetworkManager. Depending on the NetworkManager version your distribution packages, the windows and prompts may look slightly different than the screenshots below.</p>
+
+<ol>
+<li><p>Be sure you have the package <code>network-manager-openvpn</code> or <code>networkmanager-openvpn</code> installed, depending on your distribution. This will bring in the necessary dependencies with it, including the <code>openvpn</code> package.</p></li>
+
+<li><p>Some Linux distributions start services automatically after installation and on reboot. If yours does not, start and enable the OpenVPN Service.</p>
+
+<p>For distros with systemd (CentOS 7, Fedora, OpenSUSE):</p>
+
+<pre><code>sudo systemctl enable openvpn*.service &amp;&amp; sudo systemctl start openvpn*.service
+</code></pre>
+
+<p>For distros which do not use systemd:</p>
+
+<pre><code>sudo service openvpn start
+</code></pre></li>
+
+<li><p>Go to the <strong>System Settings</strong> menu and open the <strong>Network</strong> settings to add a new connection to NetworkManager. In the network connections window, select the plus sign at the bottom of the window to add a new connection.</p>
+
+<p><img src="/docs/assets/networkmanager-openvpn-new-connection.png" alt="NetworkManager OpenVPN" /></p></li>
+
+<li><p>You&rsquo;ll then see the window shown below. Choose <strong>VPN</strong>, and then <strong>Import from file</strong>.</p>
+
+<p><img src="/docs/assets/networkmanager-openvpn-vpn.png" alt="NetworkManager OpenVPN" /></p>
+
+<p><img src="/docs/assets/networkmanager-openvpn-vpn-import-ovpn.png" alt="NetworkManager OpenVPN" /></p></li>
+
+<li><p>The file browser will then open. Navigate to the computer&rsquo;s <code>client.ovpn</code> file and click <em>Open</em> to import it.</p></li>
+
+<li><p>At the <strong>Add Network Connection</strong> window, select IPv6 in the left column. Switch IPv6 from <strong>On</strong>, to <strong>Off</strong>. Then click <strong>Add</strong>.</p>
+
+<p><img src="/docs/assets/networkmanager-openvpn-imported.png" alt="NetworkManager OpenVPN" /></p></li>
+
+<li><p>The VPN client is now configured and ready to connect. How you do this will differ by desktop environment and NetworkManager version, but after configuring the VPN, an entry for it will appear in the desktop environment&rsquo;s network connection menu.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Before connecting for the first time, it&rsquo;s a good idea to run <code>journalctl -f | grep vpn</code> or <code>tail -f /var/log/syslog | grep vpn</code> in a terminal on your client. The command gives you a real-time output of OpenVPN&rsquo;s logging, all errors will be visible here.</div>
+</blockquote>
+</li>
+
+<li><p>After the profile is imported, and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they&rsquo;ll reside in the VPN profile and no longer need to remain on the device storage which is readable by other applications.</p></li>
+</ol>
+
+<h3 id="os-x">OS X</h3>
+
+<p>Apple OS X doesn&rsquo;t support the OpenVPN protocol natively. <a href="https://tunnelblick.net/">Tunnelblick</a> is a free and open source application that lets you control OpenVPN connections on OS X and Tunnelblick.com has an excellent <a href="https://www.tunnelblick.net/cInstall.html">installation guide</a>.</p>
+
+<p><img src="/docs/assets/1346-tunnelblick2.png" alt="Tunnelblick spash" /></p>
+
+<p>Back up the client credential files to external storage. After the profile is imported and you confirm it works properly, delete the key and certificate files from the device. Once imported, they&rsquo;ll reside in the VPN profile and no longer need to remain on the device storage.</p>
+
+<h3 id="windows">Windows</h3>
+
+<ol>
+<li><p>Download and install <a href="https://openvpn.net/index.php/open-source/downloads.html">OpenVPN&rsquo;s installer</a> using the default settings. Be sure to choose <strong>Install</strong> when prompted about the TAP network adapter.</p>
+
+<p><img src="/docs/assets/openvpn-windows-tap-installer.png" alt="OpenVPN Windows TAP Installer" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>OpenVPN provides a GPG signature file to check the installer&rsquo;s integrity and authenticity. <a href="https://gnupg.org/">GnuPG</a> must be installed to do this and performing the check is highly recommended.</div>
+</blockquote>
+</li>
+
+<li><p>Move the extracted client credentials into <code>C:\Program Files\OpenVPN\config</code>.</p></li>
+
+<li><p>OpenVPN must be run as an administrator to function properly. There are two ways you can do this:</p>
+
+<p><strong>Option 1</strong></p>
+
+<p>Right-click on the OpenVPN desktop shortcut and select <strong>Run as administrator</strong>. This must be done each time you to connect to your VPN.</p>
+
+<p><strong>Option 2</strong></p>
+
+<p>Configure the shortcut to run with admin privileges automatically. <em>This will apply to all users on the system!</em> Right-click on the OpenVPN GUI shortcut, select <strong>Properties</strong>. Go to the <strong>Compatibility</strong> tab and select <strong>Change settings for all users</strong>. Select <strong>Run this program as an administrator</strong>, then <strong>OK</strong> to exit the menus.</p></li>
+
+<li><p>When you launch the OpenVPN application, its icon will appear in the taskbar. Right-click on it and select <strong>Connect</strong>. The OpenVPN taskbar icon will turn yellow and a dialog box will appear showing the verbose output of the connection process. When you successfully connect, the icon will turn green and show a confirmation.</p>
+
+<p><img src="/docs/assets/openvpn-windows-taskbar-icon.png" alt="OpenVPN Windows Taskbar Icon" /></p>
+
+<p><img src="/docs/assets/openvpn-windows-client-connected.png" alt="OpenVPN Windows Connected" /></p></li>
+
+<li><p>After the profile is imported and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they&rsquo;ll reside in the VPN profile and no longer need to remain on the device storage.</p></li>
+</ol>
+
+<h2 id="revoke-a-vpn-client-certificate">Revoke a VPN Client Certificate</h2>
+
+<p>To remove a client device&rsquo;s access to the VPN, go back to the EasyRSA root directory. The folder <code>~/ca</code> was used in the <a href="/docs/networking/vpn/set-up-a-hardened-openvpn-server/#vpn-certificate-authority">VPN Certificate Authority</a> section of part one of this series.</p>
+
+<ol>
+<li><p>Change to the <code>easy-rsa</code> folder and source <code>vars</code>:</p>
+
+<pre><code>cd ~/ca &amp;&amp; source ./vars
+</code></pre></li>
+
+<li><p>Run the <code>revoke-full</code> script, substituting <strong>client1</strong> with the name of the client whose certificate you want to revoke:</p>
+
+<pre><code>./revoke-full client1
+</code></pre></li>
+</ol>
+
+<h2 id="connection-testing">Connection Testing</h2>
+
+<ol>
+<li><p>With your VPN connection enabled, go to <a href="https://dnsleaktest.com/">https://dnsleaktest.com/</a> in a web browser from your VPN client. The IP address shown should be that of your Linode&rsquo;s public IPv4 address.</p></li>
+
+<li><p>Choose <strong>Extended test</strong>. The resulting IP addresses should be for either: The DNS resolvers you chose in <code>server.conf</code>, or The DNS resolvers you chose for your client device (if applicable).</p>
+
+<p>If the client device you&rsquo;re testing is using OpenVPN Connect with Google DNS fallback enabled, you may see Google in the results as well.</p></li>
+
+<li><p>To ensure that no IPv6 traffic can be detected, run the test at <a href="http://test-ipv6.com/">http://test-ipv6.com/</a>. Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.</p></li>
+</ol>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>If the test results show you any IP addresses other than those of your Linode and intended DNS servers, your VPN is not properly tunneling traffic. Review the logs on both server and client to determine how to troubleshoot the connection.</div>
+</blockquote>
+
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://openvpn.net/index.php/open-source/documentation/howto.html">Official OpenVPN Documentation</a></li>
+
+<li><a href="https://www.tunnelblick.net/">Tunnelblick OS X OpenVPN Client</a></li>
+
+<li><a href="https://openvpn.net/index.php/open-source/downloads.html">OpenVPN GUI for Windows</a></li>
+
+<li><a href="https://wiki.gnome.org/Projects/NetworkManager">Network Manager GNOME Configuration Management Tool</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/vpn/set-up-a-hardened-openvpn-server/">Set up a Hardened OpenVPN Server on Debian 9</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/">Tunnel Your Internet Traffic Through an OpenVPN Server</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/set-up-a-streisand-gateway/">How to Set Up a Streisand Gateway</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/">How to Configure OpenVPN Access Server to Tunnel Traffic</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/install-openvpn-access-server-on-linux/">Install OpenVPN Access Server on Linux for Secure Communications</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#transfer-client-credentials">Transfer Client Credentials</a></li>
+<li><a href="#client-side-configurations">Client-Side Configurations</a>
+<ul>
+<li><a href="#android">Android</a></li>
+<li><a href="#ios">iOS</a></li>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#os-x">OS X</a></li>
+<li><a href="#windows">Windows</a></li>
+</ul></li>
+<li><a href="#revoke-a-vpn-client-certificate">Revoke a VPN Client Certificate</a></li>
+<li><a href="#connection-testing">Connection Testing</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use Puppet Modules to Create a LAMP Stack</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Learn how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera in this simple tutorial.">
+        <meta name="keywords" content="puppet, automation, puppet master, puppet agent, modules, server automation, configuration management">
+        
+        <meta property="og:title" content="Use Puppet Modules to Create a LAMP Stack">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/">
+        <meta property="og:description" content="Learn how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera in this simple tutorial.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/configuration-management/">Configuration Management</a>
+  
+</li>
+
+
+<li>
+  
+  Use Puppet Modules to Create a LAMP Stack
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use Puppet Modules to Create a LAMP Stack</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-11-12T00:00:00Z">Thursday, November 12, 2015</time> by Elle Krout</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fuse-puppet-modules-to-create-a-lamp-stack%2f&via=linode&text=Use%20Puppet%20Modules%20to%20Create%20a%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fuse-puppet-modules-to-create-a-lamp-stack%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fuse-puppet-modules-to-create-a-lamp-stack%2f&t=Use%20Puppet%20Modules%20to%20Create%20a%20LAMP%20Stack" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Within Puppet, modules are the building blocks of your servers&rsquo; configurations. Modules install and configure packages, create directories, and generate any other server changes that the user includes in the module. A Puppet module aims to perform all parts of a certain task, such as downloading the Apache package, configuring all files, changing the MPM data, and setting up virtual hosts. Modules are, in turn, broken down into classes that are <code>.pp</code> files meant to simplify the module into various tasks and improve the module&rsquo;s readability for any future users.</p>
+
+<p>In this guide, Apache and PHP modules will be created from scratch, and a MySQL module will be adapted from the Puppet Lab&rsquo;s MySQL module found on the <a href="https://forge.puppetlabs.com/">Puppet Forge</a>. These steps will create a full LAMP stack on your server and provide an overview of the various ways modules can be utilized.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master and CentOS 7 and Ubuntu 14.04 nodes, configured in the <a href="/docs/applications/puppet/set-up-puppet-master-agent">Puppet Setup</a> guide. If using a different setup, please adapt the guide accordingly.</div>
+</blockquote>
+
+
+<h2 id="create-the-apache-module">Create the Apache Module</h2>
+
+<ol>
+<li><p>From the Puppet Master, navigate to Puppet&rsquo;s module directory and create the <code>apache</code> directory:</p>
+
+<pre><code>cd /etc/puppet/modules
+sudo mkdir apache
+</code></pre></li>
+
+<li><p>From within the <code>apache</code> directory, create <code>manifests</code>, <code>templates</code>, <code>files</code>, and <code>examples</code> directories:</p>
+
+<pre><code>cd apache
+sudo mkdir {manifests,templates,files,examples}
+</code></pre></li>
+
+<li><p>Navigate to the <code>manifests</code> directory:</p>
+
+<pre><code>cd manifests
+</code></pre>
+
+<p>From here, the module will be separated into classes, based upon the goals of that particular section of code. In this instance, there will be an <code>init.pp</code> class for downloading the Apache package, a <code>params.pp</code> file to define any variables and parameters, <code>config.pp</code> to managed any configuration files for the Apache service itself, and a <code>vhosts.pp</code> file to define the virtual hosts. This module will also make use of <a href="http://docs.puppetlabs.com/hiera/latest/">Hiera</a> data to store variables for each node.</p></li>
+</ol>
+
+<h3 id="create-the-initial-apache-class-and-parameters">Create the Initial Apache Class and Parameters</h3>
+
+<ol>
+<li><p>From within the <code>manifests</code> directory, an <code>init.pp</code> class needs to be created. This class should share its name with the module name:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/init.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">apache</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This file will be used to install the Apache package. Ubuntu 14.04 and CentOS 7 have different package names for Apache, however. Because of this, a variable will be used:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/init.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">apache</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">package</span> <span class="p">{</span> <span class="s">&#39;apache&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">name</span>    <span class="o">=&gt;</span> <span class="nv">$apachename,</span><span class="err">
+</span><span class="err"></span>    <span class="na">ensure</span>  <span class="o">=&gt;</span> <span class="k">present</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The <code>package</code> resource allows for the management of a package. This is used to add, remove, or ensure a package is present. In most cases, the name of the resource (<code>'apache'</code>, above) should be the name of the package being managed. Because of the difference in naming conventions, however, this resource is simply called <code>apache</code>, while the actual <em>name</em> of the package is called upon with the <code>name</code> reference. <code>name</code>, in this instance, calls for the yet-undefined variable <code>$apachename</code>. The <code>ensure</code> reference ensures that the package is <code>present</code>.</p></li>
+
+<li><p>Now that there are variables that need to be defined, the <code>params.pp</code> class will come into play. While these variables could be defined within the <code>init.pp</code> code, because more variables will need to be used outside of the resource type itself, using a <code>params.pp</code> class allows for variables to be defined in <code>if</code> statements and used across multiple classes.</p>
+
+<p>Create and open <code>params.pp</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/params.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">apache</span><span class="p">::</span><span class="na">params</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Outside of the original <code>init.pp</code> class, each class name needs to branch off of <code>apache</code>. As such, this class is called <code>apache::params</code>. The name after the double colon should share a name with the file.</p></li>
+
+<li><p>The parameters should now be defined. To do this, an <code>if</code> statement will be used, pulling from information provided by <a href="https://puppetlabs.com/facter">Facter</a>, which is already installed on the Puppet master. In this case, Facter will be used to pull down the operating system family (<code>osfamily</code>), to discern if it is Red Hat or Debian-based.</p>
+
+<p>The skeleton of the <code>if</code> statement should resemble the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/params.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">apache</span><span class="p">::</span><span class="na">params</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">if</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;RedHat&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span> <span class="na">elseif</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;Debian&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="na">print</span> <span class="s">&#34;This is not a supported distro.&#34;</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>And once we&rsquo;ve added the variables that have already been referenced:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/params.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">apache</span><span class="p">::</span><span class="na">params</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">if</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;RedHat&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="nv">$apachename</span>     <span class="o">=</span> <span class="s">&#39;httpd&#39;</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span> <span class="na">elseif</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;Debian&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="nv">$apachename</span>     <span class="o">=</span> <span class="s">&#39;apache2&#39;</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="na">print</span> <span class="s">&#34;This is not a supported distro.&#34;</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of <code>params.pp</code> can be viewed <a href="/docs/assets/params.pp">here</a>.</div>
+</blockquote>
+</li>
+
+<li><p>With the parameters finally defined, we need to call the <code>params.pp</code> file and the parameters into <code>init.pp</code>. To do this, the parameters need to be added after the class name, but before the opening curly bracket (<code>{</code>):</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/init.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">apache</span> <span class="p">(</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$apachename</span>   <span class="o">=</span> <span class="nv">$::apache::params::apachename,</span><span class="err">
+</span><span class="err"></span><span class="p">)</span> <span class="k">inherits</span> <span class="p">::</span><span class="na">apache</span><span class="p">::</span><span class="na">params</span> <span class="p">{</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The value string <code>$::apache::params::value</code> tells Puppet to pull the values from the <code>apache</code> modules, <code>params</code> class, followed by the parameter name. The fragment <code>inherits ::apache::params</code> allows for <code>init.pp</code> to inherit these values.</p></li>
+</ol>
+
+<h3 id="manage-configuration-files">Manage Configuration Files</h3>
+
+<p>Apache has two different configuration files, depending on whether you are working on a Red Hat- or Debian-based system. These can be pulled off a server, or viewed here: <a href="/docs/assets/httpd.conf">httpd.conf (Red Hat)</a>, <a href="/docs/assets/apache2.conf">apache2.conf (Debian)</a>.</p>
+
+<ol>
+<li><p>Copy the <code>httpd.conf</code> and <code>apache2.conf</code> files to the <code>files</code> directory located at <code>/etc/puppet/modules/apache/files/</code>.</p></li>
+
+<li><p>Both files need to be edited to turn <code>KeepAlive</code> settings to <code>Off</code>. This setting will need to be added to <code>httpd.conf</code>. Otherwise, a comment should to added to the top of each file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/puppet/modules/apache/files/httpd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c"># This file is managed by Puppet</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>These files now need to be added to the <code>init.pp</code> file, so Puppet will know where they are located on both the master server and agent nodes. To do this, the <code>file</code> resource is used:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/init.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">file</span> <span class="p">{</span> <span class="s">&#39;configuration-file&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>  <span class="na">path</span>    <span class="o">=&gt;</span> <span class="nv">$conffile,</span><span class="err">
+</span><span class="err"></span>  <span class="na">ensure</span>  <span class="o">=&gt;</span> <span class="k">file</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="na">source</span>  <span class="o">=&gt;</span> <span class="nv">$confsource,</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Because the configuration file is found in two different locations, the resource is given the generic name <code>configuration-file</code> with the file path defined as a parameter with the <code>path</code> attribute. <code>ensure</code> ensures that it is a file. <code>source</code> is another parameter, which will call to where the master files created above are located on the Puppet master.</p></li>
+
+<li><p>Open the <code>params.pp</code> file. The <code>$conffile</code> and <code>$confsource</code> variables need to be defined within the <code>if</code> statement:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/params.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">if</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;RedHat&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err">...
+</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$conffile</span>     <span class="o">=</span> <span class="s">&#39;/etc/httpd/conf/httpd.conf&#39;</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$confsource</span>   <span class="o">=</span> <span class="s">&#39;puppet:///modules/apache/httpd.conf&#39;</span><span class="err">
+</span><span class="err"></span><span class="p">}</span> <span class="k">elsif</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;Debian&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err">...
+</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$conffile</span>     <span class="o">=</span> <span class="s">&#39;/etc/apache2/apache2.conf&#39;</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$confsource</span>   <span class="o">=</span> <span class="s">&#39;puppet:///modules/apache/apache2.conf&#39;</span><span class="err">
+</span><span class="err"></span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err">...</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>These parameters will also need to be added to the <code>init.pp</code> file, following the example of the additional parameters. A complete copy of the <code>init.pp</code> file can be seen <a href="/docs/assets/puppet_apacheinit.pp">here</a>.</p></li>
+
+<li><p>When the configuration file is changed, Apache needs to restart. To automate this, the <code>service</code> resource can be used in combination with the <code>notify</code> attribute, which will call the resource to run whenever the configuration file is changed:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/init.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">file</span> <span class="p">{</span> <span class="s">&#39;configuration-file&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>  <span class="na">path</span>    <span class="o">=&gt;</span> <span class="nv">$conffile,</span><span class="err">
+</span><span class="err"></span>  <span class="na">ensure</span>  <span class="o">=&gt;</span> <span class="k">file</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="na">source</span>  <span class="o">=&gt;</span> <span class="nv">$confsource,</span><span class="err">
+</span><span class="err"></span>  <span class="k">notify</span>  <span class="o">=&gt;</span> <span class="k">Service</span><span class="p">[</span><span class="s">&#39;apache-service&#39;</span><span class="p">],</span><span class="err">
+</span><span class="err"></span><span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">service</span> <span class="p">{</span> <span class="s">&#39;apache-service&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>  <span class="na">name</span>          <span class="o">=&gt;</span> <span class="nv">$apachename,</span><span class="err">
+</span><span class="err"></span>  <span class="na">hasrestart</span>    <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>service</code> resource uses the already-created parameter that defined the Apache name on Red Hat and Debian systems. The <code>hasrestart</code> attribute will trigger a restart of the defined service.</p></li>
+</ol>
+
+<h3 id="create-the-virtual-hosts-files">Create the Virtual Hosts Files</h3>
+
+<p>The Virtual Hosts files will be managed differently, depending on whether the server is based on Red Hat or Debian distributions. Because of this, the code for virtual hosts will be encased in an <code>if</code> statement, similar to the one used in the <code>params.pp</code> class but containing actual Puppet resources. This will provide an example of an alternate use of <code>if</code> statement within Puppet&rsquo;s code.</p>
+
+<ol>
+<li><p>From within the <code>apache/manifests/</code> directory, create and open a <code>vhosts.pp</code> file.</p></li>
+
+<li><p>Create the skeleton of the <code>if</code> statement:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/vhosts.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">apache</span><span class="p">::</span><span class="na">vhosts</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">if</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;RedHat&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span> <span class="k">elsif</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;Debian&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>The location of the virtual hosts file on our CentOS 7 server is <code>/etc/httpd/conf.d/vhost.conf</code>. This file will need to be created as a template on the Puppet master. The same needs to be done for the Ubuntu virtual hosts file, which is located at <code>/etc/apache2/sites-available/example.com.conf</code>, replacing <code>example.com</code> with the server&rsquo;s FQDN. The template for this file also needs to be created on the Puppet master. Navigate to the <code>templates</code> file within the <code>apache</code> module, and then create two files for your virtual hosts:</p>
+
+<p>For Red Hat systems:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/templates/vhosts-rh.conf.erb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerAdmin</span>	&lt;%= @adminemail %&gt;
+    <span class="nb">ServerName</span> &lt;%= @servername %&gt;
+    <span class="nb">ServerAlias</span> www.&lt;%= @servername %&gt;
+    <span class="nb">DocumentRoot</span> <span class="sx">/var/www/</span>&lt;%= @servername -%&gt;/public_html/
+    <span class="nb">ErrorLog</span> <span class="sx">/var/www/</span>&lt;%- @servername -%&gt;/logs/error.log
+    <span class="nb">CustomLog</span> <span class="sx">/var/www/</span>&lt;%= @servername -%&gt;/logs/access.log combined
+<span class="nt">&lt;/Virtual</span> <span class="s">Host</span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>For Debian systems:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/templates/vhosts-deb.conf.erb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerAdmin</span>	&lt;%= @adminemail %&gt;
+    <span class="nb">ServerName</span> &lt;%= @servername %&gt;
+    <span class="nb">ServerAlias</span> www.&lt;%= @servername %&gt;
+    <span class="nb">DocumentRoot</span> <span class="sx">/var/www/html/</span>&lt;%= @servername -%&gt;/public_html/
+    <span class="nb">ErrorLog</span> <span class="sx">/var/www/html/</span>&lt;%- @servername -%&gt;/logs/error.log
+    <span class="nb">CustomLog</span> <span class="sx">/var/www/html/</span>&lt;%= @servername -%&gt;/logs/access.log combined
+    <span class="nt">&lt;Directory</span> <span class="s">/var/www/html/&lt;%= @servername -%</span><span class="nt">&gt;</span><span class="err">/public_html&gt;</span>
+        <span class="nb">Require</span> <span class="k">all</span> granted
+    <span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span>
+<span class="nt">&lt;/Virtual</span> <span class="s">Host</span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Only two variables are used in these files: <code>adminemail</code> and <code>servername</code>. These will be defined on a node-by-node basis, within the <code>site.pp</code> file.</p></li>
+
+<li><p>Return to the <code>vhosts.pp</code> file. The templates created can now be referenced in the code:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/vhosts.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">apache</span><span class="p">::</span><span class="na">vhosts</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">if</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;RedHat&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/etc/httpd/conf.d/vhost.conf&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>      <span class="na">ensure</span>    <span class="o">=&gt;</span> <span class="k">file</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>      <span class="na">content</span>   <span class="o">=&gt;</span> <span class="k">template</span><span class="p">(</span><span class="s">&#39;apache/vhosts-rh.conf.erb&#39;</span><span class="p">),</span><span class="err">
+</span><span class="err"></span>    <span class="p">}</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span> <span class="k">elsif</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;Debian&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="k">file</span> <span class="p">{</span> <span class="s">&#34;/etc/apache2/sites-available/$servername.conf&#34;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>      <span class="na">ensure</span>  <span class="o">=&gt;</span> <span class="k">file</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>      <span class="na">content</span>  <span class="o">=&gt;</span> <span class="k">template</span><span class="p">(</span><span class="s">&#39;apache/vhosts-deb.conf.erb&#39;</span><span class="p">),</span><span class="err">
+</span><span class="err"></span>    <span class="p">}</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="na">print</span> <span class="s">&#34;This is not a supported distro.&#34;</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Both distribution families call to the <code>file</code> resource and take on the title of the virtual host&rsquo;s location on the respective distribution. For Debian, this once more means referencing the <code>$servername</code> value. The <code>content</code> attribute calls to the respective templates.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Values containing variables, such as the name of the Debian file resource above, need to be wrapped in double quotes (<code>&quot;</code>). Any variables in single quotes (<code>'</code>) are parsed exactly as written and will not pull in a variable.</div>
+</blockquote>
+</li>
+
+<li><p>Both virtual hosts files reference two directories that are not on the distributions by default. These can be created through the use of the <code>file</code> resource, each located within the <code>if</code> statement. The complete <code>vhosts.conf</code> file should resemble:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/manifests/vhosts.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">apache</span><span class="p">::</span><span class="na">vhosts</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">if</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;RedHat&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/etc/httpd/conf.d/vhost.conf&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>      <span class="na">ensure</span>    <span class="o">=&gt;</span> <span class="k">file</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>      <span class="na">content</span>   <span class="o">=&gt;</span> <span class="k">template</span><span class="p">(</span><span class="s">&#39;apache/vhosts-rh.conf.erb&#39;</span><span class="p">),</span><span class="err">
+</span><span class="err"></span>    <span class="p">}</span><span class="err">
+</span><span class="err"></span>    <span class="k">file</span> <span class="p">{</span> <span class="s">&#34;/var/www/$servername&#34;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>      <span class="na">ensure</span>    <span class="o">=&gt;</span> <span class="k">directory</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="p">}</span><span class="err">
+</span><span class="err"></span>    <span class="k">file</span> <span class="p">{</span> <span class="s">&#34;/var/www/$servername/public_html&#34;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>      <span class="na">ensure</span>    <span class="o">=&gt;</span> <span class="k">directory</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="p">}</span><span class="err">
+</span><span class="err"></span>    <span class="k">file</span> <span class="p">{</span> <span class="s">&#34;/var/www/$servername/log&#34;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">ensure</span>    <span class="o">=&gt;</span> <span class="k">directory</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span> <span class="k">elsif</span> <span class="nv">$::osfamily</span> <span class="o">==</span> <span class="s">&#39;Debian&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="k">file</span> <span class="p">{</span> <span class="s">&#34;/etc/apache2/sites-available/$servername.conf&#34;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>      <span class="na">ensure</span>  <span class="o">=&gt;</span> <span class="k">file</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>      <span class="na">content</span>  <span class="o">=&gt;</span> <span class="k">template</span><span class="p">(</span><span class="s">&#39;apache/vhosts-deb.conf.erb&#39;</span><span class="p">),</span><span class="err">
+</span><span class="err"></span>    <span class="p">}</span><span class="err">
+</span><span class="err"></span>    <span class="k">file</span> <span class="p">{</span> <span class="s">&#34;/var/www/$servername&#34;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>      <span class="na">ensure</span>    <span class="o">=&gt;</span> <span class="k">directory</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="p">}</span><span class="err">
+</span><span class="err"></span>    <span class="k">file</span> <span class="p">{</span> <span class="s">&#34;/var/www/html/$servername/public_html&#34;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>      <span class="na">ensure</span>    <span class="o">=&gt;</span> <span class="k">directory</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="p">}</span><span class="err">
+</span><span class="err"></span>    <span class="k">file</span> <span class="p">{</span> <span class="s">&#34;/var/www/html/$servername/logs&#34;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>      <span class="na">ensure</span>    <span class="o">=&gt;</span> <span class="k">directory</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="p">}</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="na">print</span> <span class="s">&#34;This is not a supported distro.&#34;</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<h3 id="test-and-run-the-module">Test and Run the Module</h3>
+
+<ol>
+<li><p>From within the <code>apache/manifests/</code> directory, run the <code>puppet parser</code> on all files to ensure the Puppet coding is without error:</p>
+
+<pre><code>sudo puppet parser validate init.pp params.pp vhosts.pp
+</code></pre>
+
+<p>It should return empty, barring any issues.</p></li>
+
+<li><p>Navigate to the <code>examples</code> directory within the <code>apache</code> module. Create an <code>init.pp</code> file and include the created classes. Provide variables for <code>servername</code> and <code>adminemail</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/apache/examples/init.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="nv">$serveremail</span> <span class="o">=</span> <span class="s">&#39;webmaster@example.com&#39;</span><span class="err">
+</span><span class="err"></span><span class="nv">$servername</span> <span class="o">=</span> <span class="s">&#39;example.com&#39;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">include</span> <span class="na">apache</span><span class="err">
+</span><span class="err"></span><span class="k">include</span> <span class="na">apache</span><span class="p">::</span><span class="na">vhosts</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Test the module by running <code>puppet apply</code> with the <code>--noop</code> tag:</p>
+
+<pre><code>sudo puppet apply --noop init.pp
+</code></pre>
+
+<p>It should return no errors, and output that it will trigger refreshes from events. To install and configure apache on the Puppet master, this can be run again without <code>--noop</code> , if so desired.</p></li>
+
+<li><p>Navigate back to the main Puppet directory and then to the <code>manifests</code> folder (<strong>not</strong> the one located in the Apache module). If you are continuing this guide from the <a href="/docs/applications/puppet/set-up-puppet-master-agent">Puppet Setup</a> guide, you should have a <code>site.pp</code> file already created. If not, create one now.</p></li>
+
+<li><p>Open <code>site.pp</code> and include the Apache module for each agent node. Also input the variables for the <code>adminemail</code> and <code>servername</code> parameters. If you followed the <a href="/docs/applications/puppet/set-up-puppet-master-agent">Puppet Setup</a> guide, a single node configuration within <code>site.pp</code> will resemble the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/puppet/manifests/site.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">node</span> <span class="s">&#39;ubuntuhost.example.com&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$adminemail</span> <span class="o">=</span> <span class="s">&#39;webmaster@example.com&#39;</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$servername</span> <span class="o">=</span> <span class="s">&#39;hostname.example.com&#39;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">include</span> <span class="na">accounts</span><span class="err">
+</span><span class="err"></span>  <span class="k">include</span> <span class="na">apache</span><span class="err">
+</span><span class="err"></span>  <span class="k">include</span> <span class="na">apache</span><span class="p">::</span><span class="na">vhosts</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">resources</span> <span class="p">{</span> <span class="s">&#39;firewall&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">purge</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="na">Firewall</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="k">before</span>        <span class="o">=&gt;</span> <span class="k">Class</span><span class="p">[</span><span class="s">&#39;firewall::post&#39;</span><span class="p">],</span><span class="err">
+</span><span class="err"></span>    <span class="na">require</span>       <span class="o">=&gt;</span> <span class="k">Class</span><span class="p">[</span><span class="s">&#39;firewall::pre&#39;</span><span class="p">],</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">class</span> <span class="p">{</span> <span class="p">[</span><span class="s">&#39;firewall::pre&#39;</span><span class="p">,</span> <span class="s">&#39;firewall::post&#39;</span><span class="p">]:</span> <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">node</span> <span class="s">&#39;centoshost.example.com&#39;</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$adminemail</span> <span class="o">=</span> <span class="s">&#39;webmaster@example.com&#39;</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$servername</span> <span class="o">=</span> <span class="s">&#39;hostname.example.com&#39;</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">include</span> <span class="na">accounts</span><span class="err">
+</span><span class="err"></span>  <span class="k">include</span> <span class="na">apache</span><span class="err">
+</span><span class="err"></span>  <span class="k">include</span> <span class="na">apache</span><span class="p">::</span><span class="na">vhosts</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">resources</span> <span class="p">{</span> <span class="s">&#39;firewall&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">purge</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="na">Firewall</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="k">before</span>        <span class="o">=&gt;</span> <span class="k">Class</span><span class="p">[</span><span class="s">&#39;firewall::post&#39;</span><span class="p">],</span><span class="err">
+</span><span class="err"></span>    <span class="na">require</span>       <span class="o">=&gt;</span> <span class="k">Class</span><span class="p">[</span><span class="s">&#39;firewall::pre&#39;</span><span class="p">],</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">class</span> <span class="p">{</span> <span class="p">[</span><span class="s">&#39;firewall::pre&#39;</span><span class="p">,</span> <span class="s">&#39;firewall::post&#39;</span><span class="p">]:</span> <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>To run the new module on your agent nodes, log in to the nodes and run:</p>
+
+<pre><code>sudo puppet agent -t
+</code></pre></li>
+</ol>
+
+<h2 id="using-the-mysql-module">Using the MySQL Module</h2>
+
+<p>Many modules needed to run a server already exist within Puppet Lab&rsquo;s <a href="https://forge.puppetlabs.com">Puppet Forge</a>. These can be configured just as extensively as a module that you created and can save time since the module need not be created from scratch.</p>
+
+<p>Install the <a href="https://forge.puppetlabs.com/puppetlabs/mysql">Puppet Forge&rsquo;s MySQL module</a> by PuppetLabs:</p>
+
+<pre><code>sudo puppet module install puppetlabs-mysql
+</code></pre>
+
+<p>This will also install any prerequisite modules.</p>
+
+<h3 id="use-hiera-to-create-databases">Use Hiera to Create Databases</h3>
+
+<p>Before you begin to create the configuration files for the MySQL module, consider that you may not want the same values to be used across all agent nodes. To supply Puppet with the correct data per node, Hiera is used. In this instance, you will be using a different root password per node, thus creating different MySQL databases.</p>
+
+<ol>
+<li><p>Navigate to <code>/etc/puppet</code> and create Hiera&rsquo;s configuration file <code>hiera.yaml</code> in the main <code>puppet</code> directory:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/hiera.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="p">:</span>backends<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>yaml<span class="w">
+</span><span class="w"></span><span class="p">:</span>yaml<span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="p">:</span>datadir<span class="p">:</span><span class="w"> </span>/etc/puppet/hieradata<span class="w">
+</span><span class="w"></span><span class="p">:</span>hierarchy<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span><span class="s2">&#34;nodes/%{::fqdn}&#34;</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>common</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The value under <code>:backends:</code> defines that you are writing data in YAML, whereas <code>:datadir:</code> calls to the directory where the Hiera data will be stored. The <code>:hierarchy:</code> section denotes that your data will be saved in files under the <code>node</code> directory, as a file named after the node&rsquo;s FQDN. A <code>common</code> file will also contain default variables.</p></li>
+
+<li><p>Ensure you are in the <code>/etc/puppet/</code> directory, then create a directory for <code>hieradata</code> and <code>nodes</code>:</p>
+
+<pre><code>sudo mkdir -p hieradata/nodes
+</code></pre></li>
+
+<li><p>Navigate to the <code>nodes</code> directory:</p>
+
+<pre><code>cd hieradata/nodes
+</code></pre></li>
+
+<li><p>Use the <code>puppet cert</code> command to list what nodes are available, then create a YAML file for each, using the FQDN as the file&rsquo;s name:</p>
+
+<pre><code>sudo puppet cert list --all
+sudo touch {ubuntuhost.example.com.yaml,centoshost.example.com.yaml}
+</code></pre></li>
+
+<li><p>Open the first node&rsquo;s configuration file to define the first database. In this example, the database is called <code>webdata1</code>, with <code>username</code> and <code>password</code> self-defined. The <code>grant</code> value is granting the user all access to the webdata1 database:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/hieradata/nodes/ubuntuhost.example.com.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">databases<span class="p">:</span><span class="w">
+</span><span class="w">  </span>webdata<span class="m">1</span><span class="p">:</span><span class="w">
+</span><span class="w">   </span>user<span class="p">:</span><span class="w"> </span><span class="s1">&#39;username&#39;</span><span class="w">
+</span><span class="w">   </span>password<span class="p">:</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="w">
+</span><span class="w">   </span>grant<span class="p">:</span><span class="w"> </span><span class="s1">&#39;ALL&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Repeat with the second server. In this example, the database is called <code>webdata2</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/hieradata/nodes/centoshost.example.com.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">databases<span class="p">:</span><span class="w">
+</span><span class="w">  </span>webdata<span class="m">2</span><span class="p">:</span><span class="w">
+</span><span class="w">   </span>user<span class="p">:</span><span class="w"> </span><span class="s1">&#39;username&#39;</span><span class="w">
+</span><span class="w">   </span>password<span class="p">:</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="w">
+</span><span class="w">   </span>grant<span class="p">:</span><span class="w"> </span><span class="s1">&#39;ALL&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Save and close the files.</p></li>
+
+<li><p>Return to the <code>hieradata</code> directory and create the file <code>common.yaml</code>. It will be used to define the default <code>root</code> password for MySQL:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/hieradata/common.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">mysql<span class="p">::</span>server<span class="p">::</span>root_password<span class="p">:</span><span class="w"> </span><span class="s1">&#39;password&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The <code>common.yaml</code> file is used when a variable is not defined elsewhere. This means all servers will share the same MySQL root password. These passwords can also be hashed to increase security.</p></li>
+
+<li><p>Puppet now needs to know to use the information input in Hiera to create the defined database. Move to the <code>mysql</code> module directory and within the <code>manifests</code> directory create <code>database.pp</code>. Here you will define a class that will link the <code>mysql::db</code> resource to the Hiera data. It will also call the <code>mysql::server</code> class, so it will not have to be included later:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/mysql/manifests/database.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">mysql</span><span class="p">::</span><span class="na">database</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">include</span> <span class="na">mysql</span><span class="p">::</span><span class="na">server</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">create_resources</span><span class="p">(</span><span class="s">&#39;mysql::db&#39;</span><span class="p">,</span> <span class="na">hiera_hash</span><span class="p">(</span><span class="s">&#39;databases&#39;</span><span class="p">))</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Include <code>include mysql::database</code> within your <code>site.pp</code> file for both nodes.</p></li>
+</ol>
+
+<h2 id="create-the-php-module">Create the PHP Module</h2>
+
+<ol>
+<li><p>Create the <code>php</code> directory in the <code>modules</code> path, generating the <code>files</code>, <code>manifests</code>, <code>templates</code>, and <code>examples</code> sub-folders afterward:</p>
+
+<pre><code>sudo mkdir php
+cd php
+sudo mkdir {files,manifests,examples,templates}
+</code></pre></li>
+
+<li><p>Create and open <code>init.pp</code>. Because all that needs to be done is to install and ensure the PHP service is on and able to start on boot, all code will be contained in this file.</p></li>
+
+<li><p>Two packages will be installed: The PHP package and the PHP Extension and Application Repository. Use the <code>package</code> resource for this:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/php/manifests/init.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">php</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">package</span> <span class="p">{</span> <span class="s">&#39;php&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">name</span><span class="p">:</span> <span class="nv">$phpname,</span><span class="err">
+</span><span class="err"></span>    <span class="na">ensure</span><span class="p">:</span> <span class="k">present</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">package</span> <span class="p">{</span> <span class="s">&#39;php-pear&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">ensure</span><span class="p">:</span> <span class="k">present</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Because the <code>php</code> package has different names on Ubuntu and CentOS, it will once again need to be defined with a parameter. However, because this is the only parameter we will be needing, it will be added directly to the <code>init.pp</code> file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/php/manifests/init.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">php</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$phpname</span> <span class="o">=</span> <span class="nv">$osfamily</span> <span class="o">?</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="s">&#39;Debian&#39;</span>    <span class="o">=&gt;</span> <span class="s">&#39;php5&#39;</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="s">&#39;RedHat&#39;</span>    <span class="o">=&gt;</span> <span class="s">&#39;php&#39;</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="k">default</span>     <span class="o">=&gt;</span> <span class="k">warning</span><span class="p">(</span><span class="s">&#39;This distribution is not supported by the PHP module&#39;</span><span class="p">),</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">package</span> <span class="p">{</span> <span class="s">&#39;php&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">name</span>    <span class="o">=&gt;</span> <span class="nv">$phpname,</span><span class="err">
+</span><span class="err"></span>    <span class="na">ensure</span>  <span class="o">=&gt;</span> <span class="k">present</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">package</span> <span class="p">{</span> <span class="s">&#39;php-pear&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">ensure</span>  <span class="o">=&gt;</span> <span class="k">present</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Use the <code>service</code> resource to ensure that PHP is on and set to start at boot:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppet/modules/php/manifests/init.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">class</span> <span class="na">php</span> <span class="p">{</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="nv">$phpname</span> <span class="o">=</span> <span class="nv">$osfamily</span> <span class="o">?</span> <span class="p">{</span><span class="err">
+</span><span class="err"></span>    <span class="s">&#39;Debian&#39;</span>    <span class="o">=&gt;</span> <span class="s">&#39;php5&#39;</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="s">&#39;RedHat&#39;</span>    <span class="o">=&gt;</span> <span class="s">&#39;php&#39;</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="k">default</span>     <span class="o">=&gt;</span> <span class="k">warning</span><span class="p">(</span><span class="s">&#39;This distribution is not supported by the PHP module&#39;</span><span class="p">),</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">package</span> <span class="p">{</span> <span class="s">&#39;php&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">name</span>    <span class="o">=&gt;</span> <span class="nv">$phpname,</span><span class="err">
+</span><span class="err"></span>    <span class="na">ensure</span>  <span class="o">=&gt;</span> <span class="k">present</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">package</span> <span class="p">{</span> <span class="s">&#39;php-pear&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">ensure</span>  <span class="o">=&gt;</span> <span class="k">present</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>  <span class="k">service</span> <span class="p">{</span> <span class="s">&#39;php-service&#39;</span><span class="p">:</span><span class="err">
+</span><span class="err"></span>    <span class="na">name</span>    <span class="o">=&gt;</span> <span class="nv">$phpname,</span><span class="err">
+</span><span class="err"></span>    <span class="na">ensure</span>  <span class="o">=&gt;</span> <span class="k">running</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>    <span class="na">enable</span>  <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span><span class="err">
+</span><span class="err"></span>  <span class="p">}</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Add <code>include php</code> to the hosts in your <code>sites.pp</code> file and run <code>puppet agent -t</code> on your agent nodes to pull in any changes to your servers.</p></li>
+</ol>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/configuration-management/beginners-guide-chef/">A Beginner&#39;s Guide to Chef</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/creating-your-first-chef-cookbook/">Creating Your First Chef Cookbook</a></li>
+    
+    
+    
+    <li><a href="/docs/development/automate-builds-with-jenkins-on-ubuntu/">How to Automate Builds with Jenkins on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/">Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-and-configure-puppet/">Install and Configure Puppet</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#create-the-apache-module">Create the Apache Module</a>
+<ul>
+<li><a href="#create-the-initial-apache-class-and-parameters">Create the Initial Apache Class and Parameters</a></li>
+<li><a href="#manage-configuration-files">Manage Configuration Files</a></li>
+<li><a href="#create-the-virtual-hosts-files">Create the Virtual Hosts Files</a></li>
+<li><a href="#test-and-run-the-module">Test and Run the Module</a></li>
+</ul></li>
+<li><a href="#using-the-mysql-module">Using the MySQL Module</a>
+<ul>
+<li><a href="#use-hiera-to-create-databases">Use Hiera to Create Databases</a></li>
+</ul></li>
+<li><a href="#create-the-php-module">Create the PHP Module</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

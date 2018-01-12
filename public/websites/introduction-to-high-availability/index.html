@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Introduction to High Availability</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Introduction to high availability concepts">
+        <meta name="keywords" content="high availability, hosting, website, failover">
+        
+        <meta property="og:title" content="Introduction to High Availability">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/introduction-to-high-availability/">
+        <meta property="og:description" content="Introduction to high availability concepts">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/introduction-to-high-availability/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Introduction to High Availability
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Introduction to High Availability</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-07-12T00:00:00Z">Tuesday, July 12, 2016</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fintroduction-to-high-availability%2f&via=linode&text=Introduction%20to%20High%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fintroduction-to-high-availability%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fintroduction-to-high-availability%2f&t=Introduction%20to%20High%20Availability" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/introduction-to-high-availability.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/introduction-to-high-availability.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<h2 id="what-is-high-availability">What is High Availability?</h2>
+
+<p>High availability (HA) is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down, whether due to traffic overload or any number of other issues, the entire site or application could become unavailable.</p>
+
+<p>Systems with high availability avoid this problem by eliminating single points of failure, which prevents the site or application from going down when one component fails.</p>
+
+<h2 id="what-high-availability-is-not">What High Availability is Not</h2>
+
+<p>High availability does <strong>not</strong> mean your site or application will never go down. Although it provides a number of failsafes, and aims for a 99.999% uptime, no system is perfect. Availability will still depend on the number of components, their configuration settings, and the resources allocated to each component. While high availability solutions offer your site or application greater uptime than a single host, remember that the system is only equal to the sum of its parts.</p>
+
+<p>However, because highly available systems are made up of so many components, they can be scaled horizontally when needed, thus improving their ability to serve content.</p>
+
+<h2 id="how-high-availability-works">How High Availability Works</h2>
+
+<p>To create a highly available system, three characteristics should be present:</p>
+
+<ol>
+<li>Redundancy</li>
+<li>Monitoring</li>
+<li>Failover</li>
+</ol>
+
+<p>In general, a high availability system works by having more components than it needs, performing regular checks to make sure each component is working properly, and if one fails, switching it out for one that is working.</p>
+
+<h3 id="redundancy">Redundancy</h3>
+
+<p>In computing, <em>redundancy</em> means that there are multiple components that can perform the same task. This eliminates the single point of failure problem by allowing a second server to take over a task if the first one goes down or becomes disabled. Because the same tasks are handled by multiple components, <em>replication</em> is also critical. In a replicated system, the components that handle the same tasks communicate with one another to ensure that they have the same information at all times.</p>
+
+<p>For example, suppose you have a LAMP stack running a website hosted on a single Linode. If the database in the LAMP stack were to stop working, PHP may be unable to perform queries properly, and your website will be unavailable to display the requested content or handle user authentication.</p>
+
+<p>In a highly available configuration, however, this problem is mitigated because the databases are distributed across several servers. If one of the database servers becomes disabled for any reason, data can still be read from one of the others, and because the databases are replicated, any one of them can serve the same information. Even if one database becomes disabled, another can take its place.</p>
+
+<h3 id="monitoring-and-failover">Monitoring and Failover</h3>
+
+<p>In a highly available setup, the system needs to be able to <em>monitor</em> itself for failure. This means that there are regular checks to ensure that all components are working properly. <em>Failover</em> is the process by which a secondary component becomes primary when monitoring reveals that a primary component has failed.</p>
+
+<p>To expand on the example above, suppose your database stops working, disabling your website. The reason the website becomes disabled in this example is because there is no backup database from which to read information. However, even if there were a backup database, the system needs a way to know that it failed, and to enable the backup for requests for information.</p>
+
+<p>In a highly available setup, regular checks are performed to ensure that the primary database is working properly. If a check results in an error, meaning that the primary database has become disabled, the system fails over. This means that database requests are sent to a secondary database instead, and because the secondary database has been replicated to include the same information, there is no disruption in service.</p>
+
+<h2 id="elements-of-high-availability">Elements of High Availability</h2>
+
+<p>In this section, we&rsquo;ll go over the function of each component of the high availability configuration, and explain how the pieces work together. There are a number of combinations of software to perform each task in a high availability configuration, and the software mentioned in this section serves as just one possible solution to creating a highly available site or application.</p>
+
+<p>The concepts discussed here are specifically geared toward the configuration described in our guide on how to <a href="/docs/websites/host-a-website-with-high-availability">host a website with high availability</a>, but will apply to highly available systems in general. The  diagram below shows the configuration we use in our guide.</p>
+
+<p><a href="/docs/assets/high-availability-diagram.png"><img src="/docs/assets/high-availability-diagram.png" alt="High availability server configuration" /></a></p>
+
+<h3 id="file-system">File System</h3>
+
+<p>In order to store uploads and plugins, your site will need a networked file system. Our high availability guide uses <a href="https://www.gluster.org/">GlusterFS</a>.</p>
+
+<p>In a high availability setup, a <em>distributed replicated volume</em> is used to store files. You can think of the volume as the entire shared file system across all servers. The volume is made up of <em>bricks</em>, which are the shared file directories on any one server.</p>
+
+<p>In our configuration, a cluster of three GlusterFS nodes are configured to replicate data across a given volume, which is then mounted onto each Apache application server. Because the volume is replicated across three nodes, it is redundant. One of the advantages of using GlusterFS for the file system cluster is that it handles monitoring and failover by default, making it an excellent choice when building a highly available system.</p>
+
+<h3 id="database">Database</h3>
+
+<p>The database stores the content and user credentials for your site. In our guide, we use <a href="https://www.percona.com/software/mysql-database/percona-server/xtradb">Percona XtraDB</a>, but other database management systems work in a similar way. A database is particularly important when using a CMS like Wordpress, as it stores the information that makes up your pages and posts.</p>
+
+<p>In our configuration, the database nodes are a cluster of Percona XtraDB servers, using Galera for replication. Galera offers <em>synchronous replication</em>, meaning data is written to secondary database nodes at the same time as it&rsquo;s being written to the primary. This method of replication provides excellent redundancy to the database cluster because it avoids periods of time where the database nodes are not in matching states. Galera also provides <em>multi-master replication</em>, meaning any one of the database nodes can respond to client queries.</p>
+
+<p>Our configuration also uses <a href="https://www.percona.com/software/mysql-database/percona-xtrabackup">XtraBackup</a>, an efficient method of <em>state snapshot transfer</em>. This means that when a new node joins the cluster, the node from which it&rsquo;s syncing data (the donor) is still available to handle queries. This not only helps with efficiency in the initial setup, it also allows nearly seamless horizontal scaling as your needs grow.</p>
+
+<h3 id="web-server">Web Server</h3>
+
+<p>Web servers monitor for requests for web content, and serve them accordingly. Our guide uses <a href="https://www.apache.org/">Apache HTTPD</a>, but other web servers like nginx and lighttpd will fill this role as well.</p>
+
+<p>In most setups, the web server will read from a database to generate its content and write to a database if a form is filled out. On a dynamic website or application, the database is crucial to fulfilling web requests. The web server also stores software, such as Wordpress, and plugins within the file system.</p>
+
+<p>The Apache server in our configuration specifies its <em>document root</em>, or the location from which it serves content, as the mountpoint for our Gluster file system cluster. In doing this, Apache serves certain files (such as images and CMS assets) not from the server it is running on, but from a separate highly available cluster of nodes. Each Apache node works the same way, so there are three available web servers that can all read from any of three replicated file servers.</p>
+
+<p>Apache&rsquo;s communication with the database nodes works in a similar way. Because the database cluster has multiple masters, any one of the databases can respond to queries from Apache. Because of its synchronous replication, when Apache writes to one database, the others are updated in real time to serve requests from any of the other Apache servers.</p>
+
+<h3 id="failover">Failover</h3>
+
+<p><em>Failover</em> is the process by which one node takes over the job of another in the event that one becomes disabled. This comes as a result of monitoring for failures by the system.</p>
+
+<p>While GlusterFS handles monitoring and failover itself, a separate service is needed for the database cluster. For this, we use <a href="http://www.keepalived.org/">Keepalived</a> with a <em>floating IP address</em>. The floating (or virtual) IP address is simply a private IP address that can be reassigned between nodes as needed when one fails.</p>
+
+<p>Keepalived uses <em>virtual router redundancy protocol</em>, or VRRP, to automatically assign the floating IP address to any of the database nodes. The keepalived service uses user-defined rules to monitor for a certain number of failures by a database node. When that failure threshold is met, keepalived assigns the floating IP address to a different node so that there is no interruption to the fulfillment of requests while the first node waits to be fixed.</p>
+
+<h3 id="load-balancing">Load Balancing</h3>
+
+<p>The load balancing component of a high availability system is one of its most important components, acting as the first barrier to handle traffic from users to the application servers. Without a load balancer, your site would be hosted on three application servers that have no way of assigning priority among themselves.</p>
+
+<p>Our solution to load balancing is the <a href="/docs/platform/nodebalancer/getting-started-with-nodebalancers">NodeBalancer</a>, a highly available component that will evenly distribute incoming traffic to one of the three application servers, ensuring that no single server experiences a much heavier load than the others.</p>
+
+<p>The NodeBalancer is critical because it provides a single point of access without a single point of failure. It offers backend monitoring, and failover at the top level of the highly available system (the bottom level is handled by Gluster FS and Keepalived).</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>A system must offer redundancy, monitoring, and failover on each service in order to be highly available. In our configuration, the NodeBalancer offers monitoring and failover for the three (redundant) application servers. The application servers read from clusters of three database and three file system nodes, which are replicated, making them redundant. Monitoring and failover are each handled separately for these clusters, ensuring that the failure of any one service does not affect the availability of the entire system.</p>
+
+<p>Now that you understand high availability, you can begin to apply its concepts when designing your own systems and setting up your own hosting configurations. If you&rsquo;re ready to get started right away, check our guide to <a href="/docs/websites/host-a-website-with-high-availability">hosting a website with high availability</a> for instructions on how to set up the system described above.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://en.wikipedia.org/wiki/Fault_tolerance">Fault Tolerance</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/host-a-website-with-high-availability/">Host a Website with High Availability</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/">How to Use HAProxy for Load Balancing</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/">Set Up MariaDB Clusters with Galera Debian and Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/nodebalancer/getting-started-with-nodebalancers/">Getting Started with NodeBalancers</a></li>
+    
+    
+    
+    <li><a href="/docs/development/nodejs/how-to-install-nodejs-and-nginx-on-debian/">How to Install Node.js and Nginx on Debian</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-high-availability">What is High Availability?</a></li>
+<li><a href="#what-high-availability-is-not">What High Availability is Not</a></li>
+<li><a href="#how-high-availability-works">How High Availability Works</a>
+<ul>
+<li><a href="#redundancy">Redundancy</a></li>
+<li><a href="#monitoring-and-failover">Monitoring and Failover</a></li>
+</ul></li>
+<li><a href="#elements-of-high-availability">Elements of High Availability</a>
+<ul>
+<li><a href="#file-system">File System</a></li>
+<li><a href="#database">Database</a></li>
+<li><a href="#web-server">Web Server</a></li>
+<li><a href="#failover">Failover</a></li>
+<li><a href="#load-balancing">Load Balancing</a></li>
+</ul></li>
+<li><a href="#overview">Overview</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

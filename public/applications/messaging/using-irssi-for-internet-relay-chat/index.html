@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using Irssi for Internet Relay Chat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use IRC and GNU Screen to maintain persistent connections to IRC networks.">
+        <meta name="keywords" content="irssi, irc, oftc, freenode, real time, chat">
+        
+        <meta property="og:title" content="Using Irssi for Internet Relay Chat">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/messaging/using-irssi-for-internet-relay-chat/">
+        <meta property="og:description" content="Use IRC and GNU Screen to maintain persistent connections to IRC networks.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/messaging/using-irssi-for-internet-relay-chat/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/messaging/">Messaging &amp; Chat</a>
+  
+</li>
+
+
+<li>
+  
+  Using Irssi for Internet Relay Chat
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using Irssi for Internet Relay Chat</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-01-09T00:00:00Z">Friday, January 9, 2015</time> by Elle Krout</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2fusing-irssi-for-internet-relay-chat%2f&via=linode&text=Using%20Irssi%20for%20Internet%20Relay%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2fusing-irssi-for-internet-relay-chat%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2fusing-irssi-for-internet-relay-chat%2f&t=Using%20Irssi%20for%20Internet%20Relay%20Chat" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/messaging/using-irssi-for-internet-relay-chat.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/messaging/using-irssi-for-internet-relay-chat.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><strong>Irssi</strong> is a terminal-based chat client for real-time conversations over Internet Relay Chat (<strong>IRC</strong>). IRC is the common meeting ground for Linode users to exchange knowledge and troubleshoot issues in our public channel, <strong>#linode</strong> on <strong>OFTC</strong>.</p>
+
+<p>Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode guides <a href="/docs/using-linux/using-the-terminal">Using the Terminal</a> and <a href="/docs/tools-reference/introduction-to-linux-concepts">Introduction to Linux Concepts</a>. Additionally, it is assumed that you have followed our <a href="/docs/getting-started/">Getting Started Guide</a> if you intend to run Irssi on your Linode.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Complete these tasks before you start:</p>
+
+<ul>
+<li>All the procedures listed in the <a href="/docs/getting-started/">Getting Started</a> guide</li>
+<li>The <strong>Adding a New User</strong>, <strong>Using SSH Key Pair Authentication</strong>, and <strong>Disabling SSH Password Authentication and Root Login</strong> sections in the <a href="/docs/securing-your-server/">Securing Your Server</a> guide</li>
+<li>Make sure <strong>GNU Screen</strong> is installed. It should be by default. See our <a href="/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions">Screen Guide</a> for information.</li>
+</ul>
+
+<h2 id="installing-irssi">Installing Irssi</h2>
+
+<p>To install Irssi, issue the command for the appropriate system:</p>
+
+<p>Debian or Ubuntu:</p>
+
+<pre><code>apt-get install irssi
+</code></pre>
+
+<p>CentOS or Fedora:</p>
+
+<pre><code>yum install irssi
+</code></pre>
+
+<p>Arch:</p>
+
+<pre><code>pacman -S irssi
+</code></pre>
+
+<p>Mac OS X with MacPorts:</p>
+
+<pre><code>port install irssi
+</code></pre>
+
+<p>Mac OS X with HomeBrew; check for new Brew formulas <strong>before</strong> you install Irssi. The following commands will update Brew and install Irssi:</p>
+
+<pre><code>brew update
+brew install irssi
+</code></pre>
+
+<h2 id="starting-irssi">Starting Irssi</h2>
+
+<p>To start Irssi, follow the steps below.</p>
+
+<ol>
+<li><p>Start a new Screen session called <strong>chat</strong> so Irssi will keep running when you close your terminal session:</p>
+
+<pre><code>screen -S chat
+</code></pre></li>
+
+<li><p>Start Irssi:</p>
+
+<pre><code>irssi
+</code></pre>
+
+<p>You should see the Irssi startup screen on the default chat interface:</p>
+
+<p><a href="/docs/assets/1735-irssi-1.png"><img src="/docs/assets/1735-irssi-1.png" alt="Irssi's default message." /></a></p></li>
+</ol>
+
+<p>To rejoin Irssi later, just rejoin your Screen session.</p>
+
+<h2 id="configuring-irssi">Configuring Irssi</h2>
+
+<p>Now you can start configuring Irssi to use your preferred networks, join channels, and set your nick (nickname). These examples will show you how to connect to the Linode IRC channel, <strong>#linode</strong>.</p>
+
+<h3 id="joining-irc-networks">Joining IRC Networks</h3>
+
+<p>The Linode channel is hosted on the OFTC network. An IRC network is made up one or more connected IRC servers with the same channels and people. Linode&rsquo;s channel is on <strong>irc.oftc.net</strong>. Join the OFTC network with the following command, from within Irssi:</p>
+
+<pre><code>/connect irc.oftc.net
+</code></pre>
+
+<p>To disconnect from a channel, run:</p>
+
+<pre><code>/disconnect irc.oftc.net
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can join additional networks by replacing <strong>irc.oftc.net</strong> with a different network.</div>
+</blockquote>
+
+
+<h3 id="joining-channels">Joining Channels</h3>
+
+<p>A channel is a chatroom. Linode&rsquo;s channel is called <strong>#linode</strong>. Use the following command to join:</p>
+
+<pre><code>/join #linode
+</code></pre>
+
+<p>Once you&rsquo;ve joined the channel, you can start typing messages to everyone in the channel.</p>
+
+<p>To join a channel that has a password, use this command, replacing <strong>#channel</strong> with the channel name, and <strong>password</strong> with the channel password:</p>
+
+<pre><code>/join #channel password
+</code></pre>
+
+<p>To leave or part an IRC window use the following command:</p>
+
+<pre><code>/part #linode
+</code></pre>
+
+<h3 id="configuring-default-nickname-nick">Configuring Default Nickname (Nick)</h3>
+
+<p>To set your default nick use the command, replacing <strong>user</strong> with your desired nickname:</p>
+
+<pre><code>/set nick user
+</code></pre>
+
+<p>If the nickname (or nick) is already being used on the servers you&rsquo;re connected to, Irssi will alert you.</p>
+
+<h3 id="managing-irc-nicknames">Managing IRC Nicknames</h3>
+
+<p>Changing your IRC nickname is easy with the <code>/nick</code> command. Replace <strong>user</strong> with your new nickname:</p>
+
+<pre><code>/nick user
+</code></pre>
+
+<p>If the nickname (or nick) is already being used on the servers you&rsquo;re connected to, Irssi will alert you.</p>
+
+<p>When you change nicknames, every channel that you are joined to will receive (and display) a message alerting the participants of those channels that you have changed nicks.</p>
+
+<p>If you want to gather more information about an IRC user, use the command below:</p>
+
+<pre><code>/whois new_user
+</code></pre>
+
+<p>Sample output of the <code>whois</code> command:</p>
+
+<pre><code>11:45 -!-  new_user [for@example.com]
+11:45 -!-  ircname  : Cecil Sharp
+11:45 -!-  channels : #linode
+11:45 -!-  server   : sample.oftc.net [Galloway, NJ, US]
+11:45 -!-           : user has identified to services
+</code></pre>
+
+<p>The information provided via this command includes the ircname, channels, and name of the user.</p>
+
+<h3 id="sending-messages">Sending Messages</h3>
+
+<p>To send a private message to just one person on your network, use the <code>/msg</code> command. You should replace <strong>friendnick</strong> with the other user&rsquo;s nick, and <strong>Hello there!</strong> with your message:</p>
+
+<pre><code>/msg friendnick Hello there!
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Please note that if you are in a channel, you can use tab to autocomplete nicks within that channel.</div>
+</blockquote>
+
+
+<p>Messages are <strong>not</strong> encrypted and should not be considered secure communications. Also, there is no spellcheck feature in Irssi.</p>
+
+<h3 id="basic-window-navigation">Basic Window Navigation</h3>
+
+<p>Every channel and private message has its own numbered window. To move between windows, use the command:</p>
+
+<pre><code>/win number
+</code></pre>
+
+<p>For example, if you joined the <strong>#linode</strong> channel on Window 2, you can get back to it with the command:</p>
+
+<pre><code>/win 2
+</code></pre>
+
+<h3 id="managing-and-manipulating-windows">Managing and Manipulating Windows</h3>
+
+<p>Use the <code>Alt</code> key and the window number to change to a different window. Window numbers 1 through 10 are 1 through 0 on the keyboard, and can be accessed by using the keybindings <code>M-1</code> through <code>M-0</code>. Windows numbered 11 through 19 are accessed by using the key bindings <code>M-q</code> through <code>M-o</code>. Irssi does support more than 19 windows. Windows 20 and up are not accessible by key bindings. Issue the command below to navigate between windows:</p>
+
+<pre><code>/win number
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If the <code>Alt</code> + <code>num</code> command does not switch windows, use <code>esc</code> followed by the window number.</div>
+</blockquote>
+
+
+<p>Below are more commands for navigating between windows:</p>
+
+<ul>
+<li><p><code>/win list</code> - generates a list in detail of all the windows. Sample output is below.</p>
+
+<p><a href="/docs/assets/1484-Irssi-window-list-v2.png"><img src="/docs/assets/1484-Irssi-window-list-v2.png" alt="Window list output sample." /></a></p></li>
+
+<li><p><code>Alt+A</code> (/window goto active) - changes the focus of the current window to the window with the highest amount of activity and the lowest identifier.</p></li>
+
+<li><p><code>Ctrl-n</code> (/window next) - moves the current focus to the next window in sequence.</p></li>
+
+<li><p><code>Ctrl-p</code> (/window previous) - moves the current focus to the previous window in sequence.</p></li>
+
+<li><p><code>/wc</code> (/window close) - closes the currently selected window.</p></li>
+</ul>
+
+<h3 id="adding-default-networks">Adding Default Networks</h3>
+
+<p>To automatically join a network when Irssi starts, run:</p>
+
+<pre><code>/server add -auto -network OFTC irc.oftc.net 6667
+</code></pre>
+
+<p>There are several options in this command. Let&rsquo;s go over them briefly:</p>
+
+<ul>
+<li>The <code>-auto</code> flag tells Irssi to connect to the server on startup.</li>
+<li>The <code>-network</code> flag associates the server with a specific network. This is useful if you want to add multiple servers on the same network. Here I&rsquo;ve associated <code>irc.oftc.net</code> with the network name <strong>OFTC</strong></li>
+<li>Next we provide the server address we&rsquo;re connecting to, <code>irc.oftc.net</code></li>
+<li>Finally we specify a port to connect to the server on. You can leave this blank to use the default port, but if there&rsquo;s an encrypted option we suggest using it.</li>
+</ul>
+
+<p>Note that you may add as many channels as you like.</p>
+
+<h2 id="irssi-commands-and-usage">Irssi Commands and Usage</h2>
+
+<p>All Irssi commands are preceded by a slash (<strong>/</strong>). Each channel you join as well as any private messages you receive will appear in their own window. A prompt down on the left-hand side will display the name of the active window.</p>
+
+<p>If you expect output from a command but don&rsquo;t see it, you may need to return to your <strong>(status)</strong> channel.</p>
+
+<p>Irssi commands are provided in the table below:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">/ban</td>
+<td align="left">Sets or lists bans for a channel</td>
+</tr>
+
+<tr>
+<td align="left">/clear</td>
+<td align="left">Clears a channel buffer</td>
+</tr>
+
+<tr>
+<td align="left">/disconnect</td>
+<td align="left">Disconnects from the network that has focus</td>
+</tr>
+
+<tr>
+<td align="left">/exit</td>
+<td align="left">Disconnects your client from all networks and returns to the shell prompt</td>
+</tr>
+
+<tr>
+<td align="left">/join</td>
+<td align="left">Joins a channel</td>
+</tr>
+
+<tr>
+<td align="left">/kick</td>
+<td align="left">Kicks a user out</td>
+</tr>
+
+<tr>
+<td align="left">/kickban</td>
+<td align="left">Kickbans a user</td>
+</tr>
+
+<tr>
+<td align="left">/msg</td>
+<td align="left">Sends a private message to a user</td>
+</tr>
+
+<tr>
+<td align="left">/names</td>
+<td align="left">Lists the users in the current channel</td>
+</tr>
+
+<tr>
+<td align="left">/query</td>
+<td align="left">Opens a query window with a user or closes a current query window</td>
+</tr>
+
+<tr>
+<td align="left">/topic</td>
+<td align="left">Displays/edits the current topic</td>
+</tr>
+
+<tr>
+<td align="left">/unban</td>
+<td align="left">Unbans everyone</td>
+</tr>
+
+<tr>
+<td align="left">/whois</td>
+<td align="left">Displays user information</td>
+</tr>
+
+<tr>
+<td align="left">/window close</td>
+<td align="left">Forces closure of a window</td>
+</tr>
+
+<tr>
+<td align="left">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="disconnecting-and-exiting-irssi">Disconnecting and Exiting Irssi</h2>
+
+<p>Disconnect from an IRC network by using this command, replacing <strong>freenode</strong> with your network:</p>
+
+<pre><code>/disconnect freenode
+</code></pre>
+
+<p>Exit the Irssi program using the command:</p>
+
+<pre><code>/exit
+</code></pre>
+
+<h2 id="configuring-hilights">Configuring Hilights</h2>
+
+<p>The <code>hilight</code> command will highlight certain words used in the channels you have joined. If there are particular words or topics that you want to keep track of, add them with this command :</p>
+
+<pre><code>/hilight word
+</code></pre>
+
+<p>To remove a hilight, use the command:</p>
+
+<pre><code>/dehilight word
+</code></pre>
+
+<h2 id="user-friendly-plugins">User-friendly Plugins</h2>
+
+<p>Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the <a href="/docs/communications/irc/advanced-irssi#using-plugins">Using Plugins</a> section of the <a href="/docs/communications/irc/advanced-irssi">Advanced Irssi Usage</a> guide.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.irssi.org/">Irssi Project Home Page</a></li>
+
+<li><a href="http://irssi.org/themes/">Irssi Themes Page</a></li>
+
+<li><a href="/docs/linux-tools/utilities/screen">Screen for Persistent Terminal Sessions</a></li>
+
+<li><a href="http://quadpoint.org/articles/irssi">An Effective Guide for Using Screen and Irssi</a></li>
+
+<li><a href="http://www.oftc.net/oftc/">The Open and Free Technology Community</a></li>
+
+<li><a href="http://freenode.net/">The Freenode IRC Network</a></li>
+
+<li><a href="http://www.gnu.org/software/screen/">GNU Screen</a></li>
+
+<li><a href="/docs/communications/irc/advanced-irssi">Advanced Irssi Usage</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/messaging/advanced-irssi-usage/">Advanced Irssi Usage</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/using-weechat-for-irc/">Using WeeChat for Internet Relay Chat</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/install-teamspeak/">Install a TeamSpeak Server on Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#installing-irssi">Installing Irssi</a></li>
+<li><a href="#starting-irssi">Starting Irssi</a></li>
+<li><a href="#configuring-irssi">Configuring Irssi</a>
+<ul>
+<li><a href="#joining-irc-networks">Joining IRC Networks</a></li>
+<li><a href="#joining-channels">Joining Channels</a></li>
+<li><a href="#configuring-default-nickname-nick">Configuring Default Nickname (Nick)</a></li>
+<li><a href="#managing-irc-nicknames">Managing IRC Nicknames</a></li>
+<li><a href="#sending-messages">Sending Messages</a></li>
+<li><a href="#basic-window-navigation">Basic Window Navigation</a></li>
+<li><a href="#managing-and-manipulating-windows">Managing and Manipulating Windows</a></li>
+<li><a href="#adding-default-networks">Adding Default Networks</a></li>
+</ul></li>
+<li><a href="#irssi-commands-and-usage">Irssi Commands and Usage</a></li>
+<li><a href="#disconnecting-and-exiting-irssi">Disconnecting and Exiting Irssi</a></li>
+<li><a href="#configuring-hilights">Configuring Hilights</a></li>
+<li><a href="#user-friendly-plugins">User-friendly Plugins</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

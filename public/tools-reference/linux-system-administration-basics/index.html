@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Linux System Administration Basics</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Troubleshooting tips, basic Linux commands, and software usage suggestions for beginner Linux system administrators.">
+        <meta name="keywords" content="linux tips, linux beginners, systems administration, admin, linux, mail, http, troubleshooting">
+        
+        <meta property="og:title" content="Linux System Administration Basics">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/linux-system-administration-basics/">
+        <meta property="og:description" content="Troubleshooting tips, basic Linux commands, and software usage suggestions for beginner Linux system administrators.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/linux-system-administration-basics/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  Linux System Administration Basics
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Linux System Administration Basics</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-10-05T00:00:00Z">Wednesday, October 5, 2016</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2flinux-system-administration-basics%2f&via=linode&text=Linux%20System%20Administration%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2flinux-system-administration-basics%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2flinux-system-administration-basics%2f&t=Linux%20System%20Administration%20Basics" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/linux-system-administration-basics.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/linux-system-administration-basics.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>This guide presents a collection of common issues and useful tips for Linux system administration. Whether you&rsquo;re new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.</p>
+
+<p><img src="/docs/assets/linux-system-administration-basics.png" alt="Linux System Administration Basics" /></p>
+
+<h2 id="basic-configuration">Basic Configuration</h2>
+
+<p>These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general <a href="/docs/getting-started">Getting Started guide</a> for your convenience if you&rsquo;re new to Linode and basic Linux system administration. Additionally, you may find our <a href="/docs/tools-reference/introduction-to-linux-concepts">Introduction to Linux Concepts guide</a> useful.</p>
+
+<h3 id="set-the-hostname">Set the Hostname</h3>
+
+<p>Please follow our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. You can use the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p>
+
+<h3 id="set-the-time-zone">Set the Time Zone</h3>
+
+<p>When setting the time zone of your server, it may be best to use the time zone of the majority of your users. If you&rsquo;re not sure which time zone would be best, consider using Universal Coordinated Time or UTC (i.e., Greenwich Mean Time).</p>
+
+<p>By default, Linodes are set to UTC. Many operating systems provide built-in, interactive methods for changing time zones:</p>
+
+<h4 id="set-the-time-zone-in-debian-or-ubuntu">Set the Time Zone in Debian or Ubuntu</h4>
+
+<p>Issue the following command and answer the questions as prompted on the screen:</p>
+
+<pre><code>dpkg-reconfigure tzdata
+</code></pre>
+
+<h4 id="set-the-time-zone-in-centos-7-or-arch-linux">Set the Time Zone in CentOS 7 or Arch Linux</h4>
+
+<ol>
+<li><p>View the list of available time zones:</p>
+
+<pre><code>timedatectl list-timezones
+</code></pre>
+
+<p>Use the <code>Up</code>, <code>Down</code>, <code>Page Up</code> and <code>Page Down</code> keys to navigate to the correct zone. Remember it, write it down or copy it as a mouse selection. Then press <strong>q</strong> to exit the list.</p></li>
+
+<li><p>Set the time zone (change <code>America/New_York</code> to the correct zone):</p>
+
+<pre><code>timedatectl set-timezone 'America/New_York'
+</code></pre></li>
+</ol>
+
+<h4 id="set-the-time-zone-manually-on-a-linux-system">Set the Time Zone Manually on a Linux System</h4>
+
+<p>Find the appropriate zone file in <code>/usr/share/zoneinfo/</code> and link that file to <code>/etc/localtime</code>. See the examples below for possibilities:</p>
+
+<p>Universal Coordinated Time:</p>
+
+<pre><code>ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+</code></pre>
+
+<p>Eastern Standard Time:</p>
+
+<pre><code>ln -sf /usr/share/zoneinfo/EST /etc/localtime
+</code></pre>
+
+<p>American Central Time (including Daylight Savings Time):</p>
+
+<pre><code>ln -sf /usr/share/zoneinfo/US/Central /etc/localtime
+</code></pre>
+
+<p>American Eastern Time (including Daylight Savings Time):</p>
+
+<pre><code>ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
+</code></pre>
+
+<h3 id="configure-the-etc-hosts-file">Configure the /etc/hosts File</h3>
+
+<p>The <code>/etc/hosts</code> file provides a list of IP addresses with corresponding hostnames. This allows you to specify hostnames for an IP address in one place on the local machine, and then have multiple applications connect to external resources via their hostnames. The system of host files precedes <a href="/docs/networking/dns/dns-records-an-introduction/">DNS</a>, and hosts files are <em>always</em> checked before DNS is queried. As a result, <code>/etc/hosts</code> can be useful for maintaining small &ldquo;internal&rdquo; networks, for development purposes, and for managing clusters.</p>
+
+<p>Some applications require that the machine properly identify itself in the <code>/etc/hosts</code> file. As a result, we recommend configuring the <code>/etc/hosts</code> file shortly after deployment. Here is an example file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>   <span class="n">localhost</span><span class="o">.</span><span class="n">localdomain</span>   <span class="n">localhost</span>
+<span class="mf">103.0</span><span class="o">.</span><span class="mf">113.12</span>    <span class="n">username</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>   <span class="n">username</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You can specify a number of hostnames on each line separated by spaces. Every line must begin with one and only one IP address. In the above example, replace <code>103.0.113.12</code> with your machine&rsquo;s IP address. Consider a few additional <code>/etc/hosts</code> entries:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="mf">198.51</span><span class="o">.</span><span class="mf">100.30</span>   <span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="mf">192.168</span><span class="o">.</span><span class="mf">1.1</span>     <span class="n">stick</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, all requests for the <code>example.com</code> hostname or domain will resolve to the IP address <code>198.51.100.30</code>, which bypasses the DNS records for <code>example.com</code> and returns an alternate website.</p>
+
+<p>The second entry tells the system to look to <code>192.168.1.1</code> for the domain <code>stick.example.com</code>. These kinds of host entries are useful for using &ldquo;private&rdquo; or &ldquo;back channel&rdquo; networks to access other servers in a cluster without needing to send traffic on the public network.</p>
+
+<h2 id="network-diagnostics">Network Diagnostics</h2>
+
+<p>In this section, we&rsquo;ll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your <a href="/docs/platform/support">support ticket</a> can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.</p>
+
+<h3 id="the-ping-command">The ping Command</h3>
+
+<p>The <code>ping</code> command tests the connection between the local machine and a remote address or machine. The following commands &ldquo;ping&rdquo; <code>google.com</code> and <code>216.58.217.110</code>:</p>
+
+<pre><code>ping google.com
+ping 216.58.217.110
+</code></pre>
+
+<p>These commands send a small amount of data (an ICMP packet) to the remote host and wait for a response. If the system is able to make a connection, it will report on the &ldquo;round trip time&rdquo; for every packet. Here is the sample output of four pings to google.com:</p>
+
+<pre><code>PING google.com (216.58.217.110): 56 data bytes
+64 bytes from 216.58.217.110: icmp_seq=0 ttl=54 time=14.852 ms
+64 bytes from 216.58.217.110: icmp_seq=1 ttl=54 time=16.574 ms
+64 bytes from 216.58.217.110: icmp_seq=2 ttl=54 time=16.558 ms
+64 bytes from 216.58.217.110: icmp_seq=3 ttl=54 time=18.695 ms
+64 bytes from 216.58.217.110: icmp_seq=4 ttl=54 time=25.885 ms
+</code></pre>
+
+<p>The <code>time</code> field specifies in milliseconds the duration of the round trip for an individual packet. When you&rsquo;ve gathered the amount of information you need, use <strong>Control+C</strong> to interrupt the process. You&rsquo;ll be presented with some statistics once the process is stopped. This will resemble:</p>
+
+<pre><code>--- google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3007ms
+rtt min/avg/max/mdev = 33.890/40.175/53.280/7.679 ms
+</code></pre>
+
+<p>There are several important data points to notice:</p>
+
+<ul>
+<li><em>Packet Loss</em>, or the discrepancy between the number of packets sent and the number of packets that return successfully. This number shows the percentage of packets that are dropped.</li>
+<li><em>Round Trip Time</em> (rtt) statistics on the final line report information about all the ping responses. For this ping we see that the fastest packet round trip (min) took 33.89 milliseconds. The average round trip (avg) took 40.175 milliseconds. The longest packet (max) took 53.28 milliseconds. A single standard deviation unit (mdev) for these four packets is 7.67 milliseconds.</li>
+</ul>
+
+<p>The ping command is useful as an informal diagnostic tool to measure point-to-point network latency, and as a tool to simply ensure you are able to make a connection to a remote server.</p>
+
+<h3 id="the-traceroute-command">The traceroute Command</h3>
+
+<p>The <code>traceroute</code> command expands on the functionality of the <a href="#the-ping-command">ping</a> command. It provides a report on the path that the packets take to get from the local machine to the remote machine. Each step (intermediate server) in the path is called a <em>hop</em>. Route information is useful when troubleshooting a networking issue: if there is packet loss in one of the first few hops the problem is often related to the user&rsquo;s local area network (LAN) or Internet service provider (ISP). By contrast, if there is packet loss near the end of the route, the problem may be caused by an issue with the server&rsquo;s connection.</p>
+
+<p>Here is an example of output from a <code>traceroute</code> command:</p>
+
+<pre><code>traceroute to google.com (74.125.53.100), 30 hops max, 40 byte packets
+1 207.192.75.2 (207.192.75.2) 0.414 ms 0.428 ms 0.509 ms
+2 vlan804.tbr2.mmu.nac.net (209.123.10.13) 0.287 ms 0.324 ms 0.397 ms
+3 0.e1-1.tbr2.tl9.nac.net (209.123.10.78) 1.331 ms 1.402 ms 1.477 ms
+4 core1-0-2-0.lga.net.google.com (198.32.160.130) 1.514 ms 1.497 ms 1.519 ms
+5 209.85.255.68 (209.85.255.68) 1.702 ms 72.14.238.232 (72.14.238.232) 1.731 ms 21.031 ms
+6 209.85.251.233 (209.85.251.233) 26.111 ms 216.239.46.14 (216.239.46.14) 23.582 ms 23.468 ms
+7 216.239.43.80 (216.239.43.80) 123.668 ms 209.85.249.19 (209.85.249.19) 47.228 ms 47.250 ms
+8 209.85.241.211 (209.85.241.211) 76.733 ms 216.239.43.80 (216.239.43.80) 73.582 ms 73.570 ms
+9 209.85.250.144 (209.85.250.144) 86.025 ms 86.151 ms 86.136 ms
+10 64.233.174.131 (64.233.174.131) 80.877 ms 216.239.48.34 (216.239.48.34) 76.212 ms 64.233.174.131 (64.233.174.131) 80.884 ms
+11 216.239.48.32 (216.239.48.32) 81.267 ms 81.198 ms 81.186 ms
+12 216.239.48.137 (216.239.48.137) 77.478 ms pw-in-f100.1e100.net (74.125.53.100) 79.009 ms 216.239.48.137 (216.239.48.137) 77.437 ms
+</code></pre>
+
+<p>Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by lines with three asterisks (<code>* * *</code>).</p>
+
+<p>Adding <code>traceroute</code> output to <a href="/docs/platform/support/">Linode support</a> tickets is sometimes useful when trying to diagnose network issues. You may also want to forward <code>traceroute</code> information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP&rsquo;s network. Recording <code>traceroute</code> information is particularly useful if you are experiencing an intermittent issue.</p>
+
+<h3 id="the-mtr-command">The mtr Command</h3>
+
+<p>The <code>mtr</code> command, like the <a href="#the-traceroute-command">traceroute</a> tool, provides information about the route that internet traffic takes between the local system and a remote host. However, <code>mtr</code> provides additional information about the round trip time for the packet. In a way, you can think of <code>mtr</code> as a combination of traceroute and ping.</p>
+
+<p>Here is an example of output from an <code>mtr</code> command:</p>
+
+<pre><code>HOST: username.example.com              Loss%   Snt     Last    Avg     Best    Wrst    StDev
+    1.  256.129.75.4                    0.0%    10      0.4     0.4     0.3     0.6     0.1
+    2.  vlan804.tbr2.mmu.nac.net        0.0%    10      0.3     0.4     0.3     0.7     0.1
+    3.  0.e1-1.tbr2.tl9.nac.net         0.0%    10      4.3     4.4     1.3     11.4    4.1
+    4.  core1-0-2-0.lga.net.google.com  0.0%    10      64.9    11.7    1.5     64.9    21.2
+    5.  209.85.255.68                   0.0%    10      1.7     4.5     1.7     29.3    8.7
+    6.  209.85.251.9                    0.0%    10      23.1    35.9    22.6    95.2    27.6
+    7.  72.14.239.127                   0.0%    10      24.2    24.8    23.7    26.1    1.0
+    8.  209.85.255.190                  0.0%    10      27.0    27.3    23.9    37.9    4.2
+    9.  gw-in-f100.1e100.net            0.0%    10      24.1    24.4    24.0    26.5    0.7
+</code></pre>
+
+<p>Like the <code>ping</code> command, <code>mtr</code> tracks the speed of the connection in real time until you exit the program with <strong>CONTROL+C</strong>. To have <code>mtr</code> stop automatically and generate a report after ten packets, use the <code>--report</code> flag:</p>
+
+<pre><code>mtr --report
+</code></pre>
+
+<p>Be aware that <code>mtr</code> will pause for a few moments while generating output. For more information regarding <code>mtr</code> consider our <a href="/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/">diagnosing network issues with mtr</a> guide.</p>
+
+<h2 id="system-diagnostics">System Diagnostics</h2>
+
+<p>If you&rsquo;re having an issue with your Linode that is neither related to <a href="#network-diagnostics">networking</a> nor another application issue, it may help to rule out &ldquo;hardware&rdquo; and operating system level issues. Use the following tools to better diagnose and resolve these.</p>
+
+<p>If you determine that you have a problem with memory usage, refer to our guide on <a href="/docs/troubleshooting/troubleshooting-memory-and-networking-issues/">resolving memory usage issues</a>. Use the following tools and approaches to determine the specific cause of your troubles.</p>
+
+<h3 id="check-current-memory-usage">Check Current Memory Usage</h3>
+
+<p>To see how much memory your system is currently using:</p>
+
+<pre><code>free -m
+</code></pre>
+
+<p>On a Linode 2GB under moderate use, the output should resemble the following:</p>
+
+<pre><code>             total       used       free     shared    buffers     cached
+Mem:          1999        954       1044        105         34        703
+-/+ buffers/cache:        216       1782
+Swap:          255          0        255
+</code></pre>
+
+<p>This output takes a bit of careful reading to interpret. Out of a total 1999 megabytes of memory (RAM), the system is using 954 megabytes and has 1044 megabytes free. <em>However</em>, the system also has 703 megabytes of &ldquo;stale&rdquo; data buffered and stored in cache. The operating system will &ldquo;drop&rdquo; the caches if it needs the space, but retains the cache if there is no other need for the space. It is normal for a Linux system to leave old data in RAM until the space is needed, so don&rsquo;t be alarmed if only a small amount of memory is &ldquo;free.&rdquo;</p>
+
+<p>In the above example, there are 1782 megabytes of memory that are actually <em>free</em>. This means 1782 megabytes are available to your system when you start an additional process or a running application needs more memory.</p>
+
+<h3 id="monitor-i-o-usage-with-vmstat">Monitor I/O Usage with vmstat</h3>
+
+<p>The <code>vmstat</code> tool provides information about memory, swap utilization, I/O wait, and system activity. It is particularly useful for diagnosing I/O-related issues.</p>
+
+<p>If you think you&rsquo;re having an I/O issue then run the following command:</p>
+
+<pre><code>vmstat 1 20
+</code></pre>
+
+<p>This runs a vmstat every second, twenty times, giving a sample of the current state of the system. The output generated resembles the following:</p>
+
+<pre><code>procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+ 0  0      4  32652  47888 110824    0    0 0     2   15   15  0  0 100  0
+ 0  0      4  32644  47888 110896    0    0 0     4  106  123  0  0 100  0
+ 0  0      4  32644  47888 110912    0    0 0     0   70  112  0  0 100  0
+ 0  0      4  32644  47888 110912    0    0 0     0   92  121  0  0 100  0
+ 0  0      4  32644  47888 110912    0    0 0    36   97  136  0  0 100  0
+ 0  0      4  32644  47888 110912    0    0 0     0   96  119  0  0 100  0
+ 0  0      4  32892  47888 110912    0    0 0     4   96  125  0  0 100  0
+ 0  0      4  32892  47888 110912    0    0 0     0   70  105  0  0 100  0
+ 0  0      4  32892  47888 110912    0    0 0     0   97  119  0  0 100  0
+ 0  0      4  32892  47888 110912    0    0 0    32   95  135  0  0 100  0
+ 0  0      4  33016  47888 110912    0    0 0     0   75  107  0  0 100  0
+ 0  0      4  33512  47888 110912    0    0 0    24  113  134  0  0 100  0
+ 0  0      4  33512  47888 110912    0    0 0     0  175  244  0  0 100  0
+ 0  0      4  33512  47888 110912    0    0 0     0   92  148  0  0 100  0
+ 0  0      4  33512  47888 110912    0    0 0     0  114  162  0  0 100  0
+ 0  0      4  33512  47888 110912    0    0 0    36  100  157  0  0 100  0
+ 0  0      4  33388  47888 110912    0    0 0     0  116  166  0  0 100  0
+ 0  0      4  33388  47888 110912    0    0 0     0   97  157  0  0 100  0
+ 0  0      4  33388  47888 110912    0    0 0     0   89  144  0  0 100  0
+ 0  0      4  33380  47888 110912    0    0 0     0  181  185  0  0 99  0
+</code></pre>
+
+<p>The memory and swap columns provide the same kind of information provided by the &ldquo;<a href="#check-current-memory-usage">free -m</a>&rdquo; command, albeit in a slightly harder to understand format. The most relevant information produced by this command is the <code>wa</code> column, which is the final column in most implementations. This field displays the amount of time the CPU spends waiting for I/O operations to complete.</p>
+
+<p>If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the <code>vmstat</code> output resembles the above, you can be sure in the knowledge that you&rsquo;re not experiencing an IO-related issues.</p>
+
+<p>If you are experiencing an intermittent issue, you will need to run <code>vmstat</code> <em>when</em> you experience the issue in order to properly diagnose or rule out an I/O issue. <code>vmstat</code> output can sometimes help <a href="/docs/platform/support/">support</a> diagnose problems.</p>
+
+<h3 id="monitor-processes-memory-and-cpu-usage-with-htop">Monitor Processes, Memory, and CPU Usage with htop</h3>
+
+<p>If you want a more organized, real-time view of the current state of your system, we recommend a tool called <code>htop</code>. This is not installed by default on most systems. To install <code>htop</code>, issue one of the following commands, depending on which distribution you use:</p>
+
+<pre><code>apt-get install htop
+yum install htop
+pacman -S htop
+emerge sys-process/htop
+</code></pre>
+
+<p>To start the program:</p>
+
+<pre><code>htop
+</code></pre>
+
+<p>You can quit at any time by pressing the <code>F10</code> or <code>Q</code> keys. There are a couple of <code>htop</code> behaviors that may not be initially intuitive. Take note of the following:</p>
+
+<ul>
+<li>The memory utilization graph displays used memory, buffered memory, and cached memory. The numbers displayed at the end of this graph reflect the total amount of memory available and the total amount memory on the system as reported by the kernel.</li>
+<li>The default configuration of <code>htop</code> presents all application threads as independent processes, which may not be clear if you&rsquo;re not aware of it. You can disable this by selecting the &ldquo;setup&rdquo; option with <code>F2</code>, then &ldquo;Display Options,&rdquo; and then toggling the &ldquo;Hide userland threads&rdquo; option.</li>
+<li>You can toggle a &ldquo;Tree&rdquo; view with the <code>F5</code> key that displays the processes in a hierarchy and shows which processes were spawned by other processes in an organized format. This is helpful in diagnosing a problem when you&rsquo;re having trouble distinguishing among processes.</li>
+</ul>
+
+<h2 id="file-system-management">File System Management</h2>
+
+<p>Web developers and editors often use the FTP protocol to transfer and manage files on a remote system. FTP, however, is very insecure and inefficient for managing the files on a system when you have SSH access.</p>
+
+<p>If you&rsquo;re new to Linux systems administration, consider our &ldquo;<a href="/docs/tools-reference/">Tools &amp; Reference</a>&rdquo; section and articles including: <a href="/docs/networking/file-transfer/transfer-files-winscp">installing and using WinSCP</a>, <a href="/docs/linux-tools/utilities/rsync">using rsync to synchronize files</a> and <a href="/content/using-linux/using-the-terminal">using SSH and the terminal</a>.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>If you are giving other users access to upload files to your server, consider the <a href="/docs/security/basics">security implications</a> of all additional access that you grant to third parties.</div>
+</blockquote>
+
+
+<h3 id="upload-files-to-a-remote-server">Upload Files to a Remote Server</h3>
+
+<p>If you&rsquo;re used to using an FTP client, OpenSSH (which is included and active with all of the Linode distribution images) allows you to use an FTP-like interface over the SSH protocol. Known as &ldquo;SFTP,&rdquo; many clients support this protocol, including <a href="/docs/networking/file-transfer/transfer-files-winscp">WinSCP</a> for Windows, <a href="/docs/networking/file-transfer/transfer-files-cyberduck">Cyberduck</a> for Mac OS X, and <a href="/docs/tools-reference/file-transfer/filezilla">Filezilla</a> for Linux, OS X, and Windows desktops.</p>
+
+<p>If you are accustomed to FTP, SFTP will be very familiar to you. By default, whatever access a user has to a file system at the command line, that user will also have over SFTP. Consider the implications of <a href="/docs/tools-reference/linux-users-and-groups">file permissions</a> when configuring user access.</p>
+
+<p>You can also use Unix utilities including <code>scp</code> and <a href="/docs/linux-tools/utilities/rsync">rsync</a> to securely transfer files to your Linode. On a local machine, a command to copy <code>team-info.tar.gz</code> would look like:</p>
+
+<pre><code>scp team-info.tar.gz username@hostname.example.com:/home/username/backups/
+</code></pre>
+
+<p>The command, <code>scp</code>, is followed by the path of the file on the local file system to be transferred. Next, the username and hostname of the remote machine follow, separated by an &ldquo;at&rdquo; sign (<code>@</code>). Follow the hostname with a colon (<code>:</code>) and the path on the remote server to where the file should be uploaded. Using a more generalized example:</p>
+
+<pre><code>scp [/path/to/local/file] [remote-username]@[remote-hostname]:[/path/to/remote/file]
+</code></pre>
+
+<p>This command is available by default on OS X and Linux machines. You can use it to copy files to a Linode, as well as between remote servers. If you use SSH keys, you can use the <code>scp</code> command without entering a password for every transfer.</p>
+
+<p>The syntax of <code>scp</code> follows the form <code>scp [source] [destination]</code>. You can copy files from a remote host to the local machine by reversing the order of the paths in the above example.</p>
+
+<h3 id="protect-files-on-a-remote-server">Protect Files on a Remote Server</h3>
+
+<p>Because Linode servers are network accessible and often have a number of distinct users, maintaining the security of files is often an important concern. We recommend you familiarize yourself with our <a href="/docs/security/basics">basic security guide</a>. Our guide on <a href="/docs/tools-reference/linux-users-and-groups">access control with user accounts and permissions</a> may provide additional insight.</p>
+
+<p>We suggest the following best practices for maintaining security:</p>
+
+<ul>
+<li>Only give users the permission to do what they need to. This includes application-specific users.</li>
+<li>Only run services on public interfaces that you are actively using. One common source of security vulnerabilities is in unused daemons that are left running. This includes database servers, HTTP development servers, and FTP servers.</li>
+<li>Use SSH connections whenever possible to secure and encrypt the transfer of sensitive information.</li>
+</ul>
+
+<h3 id="symbolic-links">Symbolic Links</h3>
+
+<p><em>Symbolic linking</em>, colloquially &ldquo;symlinking&rdquo;, allows you to create an object in your filesystem that points to another object on your filesystem. This is useful when you need to provide users and applications access to specific files and directories without reorganizing your folders. This way you can provide restricted users access to your web-accessible directories without moving your <code>DocumentRoot</code> into their home directories.</p>
+
+<p>To create a symbolic link, issue a command in the following format:</p>
+
+<pre><code>ln -s /home/username/config-git/etc-hosts /etc/hosts
+</code></pre>
+
+<p>This creates a link of the file <code>etc-hosts</code> at the location of the system&rsquo;s <code>/etc/hosts</code> file. More generically:</p>
+
+<pre><code>ln -s [/path/to/target/file] [/path/to/location/of/sym/link]
+</code></pre>
+
+<p>Note the following features of the link command:</p>
+
+<ul>
+<li>The final term, the location of the link, is optional. If you omit the link destination, a link will be created in the current directory with the same name as the file you&rsquo;re linking to.</li>
+<li>When specifying the location of the link, ensure that path does not have a final trailing slash. You can create a sym link that <em>targets</em> a directory, but sym links cannot terminate with slashes.</li>
+<li>You may remove a symbolic link without affecting the target file.</li>
+<li>You can use relative or absolute paths when creating a link.</li>
+</ul>
+
+<h3 id="manage-files-on-a-linux-system">Manage Files on a Linux System</h3>
+
+<p>If you&rsquo;re new to using Linux and manipulating files on the terminal interface we encourage you to consider our guide on <a href="/docs/using-linux/using-the-terminal">using the terminal</a>. This section provides a list of basic commands to manage the contents of your filesystem.</p>
+
+<p>To <strong>copy</strong> files:</p>
+
+<pre><code>cp /home/username/todo.txt /home/username/archive/todo.01.txt
+</code></pre>
+
+<p>This copies <code>todo.txt</code> to an archive folder, and adds a number to the file name. If you want to recursively copy all of the files and subdirectories in a directory to another directory, use the <code>-R</code> option. This command looks like:</p>
+
+<pre><code>cp -R /home/username/archive/ /srv/backup/username.01/
+</code></pre>
+
+<p>To <strong>move</strong> a file or directory:</p>
+
+<pre><code>mv /home/username/archive/ /srv/backup/username.02/
+</code></pre>
+
+<p>You can also use the <code>mv</code> command to rename a file.</p>
+
+<p>To <strong>delete</strong> a file:</p>
+
+<pre><code>rm scratch.txt
+</code></pre>
+
+<p>This will delete the <code>scratch.txt</code> file from the current directory.</p>
+
+<p>For more information about file system navigation and manipulation, please consider our documentation of <a href="/docs/tools-reference/ssh/using-the-terminal/#file-system-navigation">file system navigation</a>.</p>
+
+<h2 id="package-management">Package Management</h2>
+
+<p>Most Linux systems use package management tools to facilitate the installation and maintenance of all software on your system. For more in-depth coverage of this topic, please reference our <a href="/docs/using-linux/package-management">package management</a> guide.</p>
+
+<p>While these tools provide a number of powerful features, it is easy to look past the benefits of package management. If you install software manually without package management tools, it becomes difficult to keep your system up to date and to manage dependencies. For these reasons, we recommend installing all software through package management tools unless other means are absolutely necessary. The following tips outline a couple of basic package management tasks.</p>
+
+<h3 id="find-packages-installed-on-your-system">Find Packages Installed on Your System</h3>
+
+<p>Because packages are so easy to install, and often pull in a number of dependencies, it can be easy to lose track of what software is installed on your system. The following commands provide a list of installed packages on your system.</p>
+
+<p><strong>For Debian and Ubuntu systems</strong>:</p>
+
+<pre><code>dpkg -l
+</code></pre>
+
+<p>The following example presents the first few lines of the output of this command on a production Debian Lenny system.</p>
+
+<pre><code>||/ Name                         Version                      Description
++++-============================-============================-===============================
+ii  adduser                      3.110                        add and remove users and groups
+ii  apache2-mpm-itk              2.2.6-02-1+lenny2            multiuser MPM for Apache 2.2
+ii  apache2-utils                2.2.9-10+lenny4              utility programs for webservers
+ii  apache2.2-common             2.2.9-10+lenny4              Apache HTTP Server common files
+ii  apt                          0.7.20.2+lenny1              Advanced front-end for dpkg
+ii  apt-utils                    0.7.20.2+lenny1              APT utility programs
+ii  bash                         3.2-4                        The GNU Bourne Again SHell
+</code></pre>
+
+<p><strong>For CentOS and Fedora systems</strong>:</p>
+
+<pre><code>yum list installed
+</code></pre>
+
+<p>The following example shows a few lines of this command&rsquo;s output:</p>
+
+<pre><code>MAKEDEV.i386                 3.23-1.2                  installed
+SysVinit.i386                2.86-15.el5               installed
+</code></pre>
+
+<p>CentOS and Fedora systems provide the name of the package (<code>SysVinit</code>), the architecture it was compiled for (<code>i386</code>), and the version of the build installed on the system (<code>2.86-15.el5</code>).</p>
+
+<p><strong>For Arch Linux systems</strong>:</p>
+
+<pre><code>pacman -Q
+</code></pre>
+
+<p>This command provides a total list of all packages installed on the system. Arch also allows you to filter these results to display only packages that were explicitly installed (with the <code>-Qe</code> option) or that were automatically installed as dependencies (with the <code>-Qd</code> option). The above command is actually a combination of the output of two commands:</p>
+
+<pre><code>pacman -Qe
+pacman -Qd
+</code></pre>
+
+<p>The following is an example of the output:</p>
+
+<pre><code>perl-www-mechanize 1.60-
+perl-yaml 0.70-1
+pkgconfig 0.23-1
+procmail 3.22-2
+python 2.6.4-1
+rsync 3.0.6-1
+</code></pre>
+
+<p><strong>For Gentoo Linux systems</strong>:</p>
+
+<pre><code>emerge -evp --deep world
+</code></pre>
+
+<p>The following is a sample of this output:</p>
+
+<pre><code>These are the packages that would be merged, in order:
+
+   Calculating dependencies... done!
+   [ebuild   R   ] sys-libs/ncurses-5.6-r2  USE=&quot;unicode -debug -doc -gpm -minimal -nocxx -profile -trace&quot; 0 kB
+   [ebuild   R   ] virtual/libintl-0  0 kB
+   [ebuild   R   ] sys-libs/zlib-1.2.3-r1  0 kB
+</code></pre>
+
+<p>Because there are often a large number of packages installed on any given system, the output of these commands can be quite large. As a result, it is often useful to use tools like <a href="#search-for-a-string-in-files-with-grep">grep</a> and <code>less</code> to make these results more useful. For example:</p>
+
+<pre><code>dpkg -l | grep &quot;python&quot;
+</code></pre>
+
+<p>This will return a list of all packages with the word &ldquo;python&rdquo; in their name or description. Similarly, you can use <code>less</code>:</p>
+
+<pre><code>dpkg -l | less
+</code></pre>
+
+<p>This will return the same list as the plain &ldquo;<code>dpkg -l</code>; however, the results will appear in the <code>less</code> <a href="https://en.wikipedia.org/wiki/Terminal_pager">pager</a>, which allows you to search and scroll more easily.</p>
+
+<p>You can append <code>| grep &quot;[string]&quot;</code> to these commands to filter package list results, or <code>| less</code> to display the results in a pager, regardless of distribution.</p>
+
+<h3 id="find-package-names-and-information">Find Package Names and Information</h3>
+
+<p>Sometimes the name of a package isn&rsquo;t intuitive, based on the name of the software. As a result, most package management tools make provide an option to search the package database. These search tools may be helpful if you&rsquo;re looking for a specific piece of software but don&rsquo;t know what it&rsquo;s called.</p>
+
+<p><strong>For Debian and Ubuntu systems</strong>:</p>
+
+<pre><code>apt-cache search [package-name]
+</code></pre>
+
+<p>This will search the local package database for a given term and generate a list with descriptions. An excerpt of the output for <code>apt-cache search python</code> follows:</p>
+
+<pre><code>txt2regex - A Regular Expression &quot;wizard&quot;, all written with bash2 builtins
+vim-nox - Vi IMproved - enhanced vi editor
+vim-python - Vi IMproved - enhanced vi editor (transitional package)
+vtk-examples - C++, Tcl and Python example programs/scripts for VTK
+zope-plone3 - content management system based on zope and cmf
+zorp - An advanced protocol analyzing firewall
+groovy - Agile dynamic language for the Java Virtual Machine
+python-django - A high-level Python Web framework
+python-pygresql-dbg - PostgreSQL module for Python (debug extension)
+python-samba - Python bindings that allow access to various aspects of Samba
+</code></pre>
+
+<p>Note that <code>apt-cache search</code> queries the full records for all of the packages and not simply the titles and the descriptions displayed here, hence the inclusion of <code>vim-nox</code> and <code>groovy</code> which both mention python in their descriptions. To see the full record on a specific package:</p>
+
+<pre><code>apt-cache show [package-name]
+</code></pre>
+
+<p>This provides information regarding the maintainer, the dependencies, the size, the homepage of the upstream project, and a description of the software.</p>
+
+<p><strong>For CentOS and Fedora systems</strong>:</p>
+
+<pre><code>yum search [package-name]
+</code></pre>
+
+<p>This generates a list of all packages available in the package database that match the given term. The following is an example of the output of <code>yum search wget</code>:</p>
+
+<pre><code>Loaded plugins: fastestmirror
+ Loading mirror speeds from cached hostfile
+  * addons: centos.secsup.org
+  * base: centos.secsup.org
+  * extras: centos.secsup.org
+  * updates: styx.biochem.wfubmc.edu
+ ================================ Matched: wget =================================
+ wget.i386 : A utility for retrieving files using the HTTP or FTP protocols.
+</code></pre>
+
+<p>You can use the package management tools to discover more information about a specific package. Use the following command to get a full record from the package database:</p>
+
+<pre><code>yum info [package-name]
+</code></pre>
+
+<p>This output presents more in-depth information concerning the package, its dependencies, origins, and purpose.</p>
+
+<p><strong>For Arch Linux systems</strong>:</p>
+
+<pre><code>pacman -Ss [package-name]
+</code></pre>
+
+<p>This will perform a search of the local package database. Here is an excerpt of results for a search for &ldquo;python&rdquo;:</p>
+
+<pre><code>extra/twisted 8.2.0-1
+    Asynchronous networking framework written in Python.
+community/emacs-python-mode 5.1.0-1
+    Python mode for Emacs
+</code></pre>
+
+<p>The terms &ldquo;extra&rdquo; and &ldquo;community&rdquo; refer to which repository the software is located in. To request more information about a specific package issue a command in the following form:</p>
+
+<pre><code>pacman -Si [package-name]
+</code></pre>
+
+<p>Running <code>pacman</code> with the <code>-Si</code> option generates the package&rsquo;s record from the database. This record includes dependencies, package size, and a brief description.</p>
+
+<p><strong>For Gentoo Linux systems</strong>:</p>
+
+<pre><code>emerge --search [package-name]
+emerge --searchdoc [package-name]
+</code></pre>
+
+<p>The first command only searches the database for package names. The second command searches through the database for package names and descriptions. These commands will allow you to search your local package tree (i.e., portage) for the specific package name or term. The output of either command is similar to the excerpt below.</p>
+
+<pre><code>Searching...
+ [ Results for search key : wget ]
+ [ Applications found : 4 ]
+
+ *  app-emacs/emacs-wget
+       Latest version available: 0.5.0
+       Latest version installed: [ Not Installed ]
+       Size of files: 36 kB
+       Homepage:      http://pop-club.hp.infoseek.co.jp/emacs/emacs-wget/
+       Description:   Wget interface for Emacs
+       License:       GPL-2
+</code></pre>
+
+<p>Because the output provided by the <code>emerge --search</code> command is verbose, there is no &ldquo;show more information&rdquo; tool, unlike other distributions&rsquo; tools. The <code>emerge --search</code> command accepts input in the form of a regular expression if you need to narrow results even further.</p>
+
+<p>Since there are often a large number of results for package searches, these commands output a great quantity of text. As a result it is often useful to use tools like <a href="#search-for-a-string-in-files-with-grep">grep</a> and <code>less</code> to make these results easier to scroll through. For example:</p>
+
+<pre><code>apt-cache search python | grep &quot;xml&quot;
+</code></pre>
+
+<p>This will return the subset of the list of packages which matched for the search term &ldquo;python&rdquo; and that mention xml in their name or short description. Similarly:</p>
+
+<pre><code>apt-cache search python | less
+</code></pre>
+
+<p>This will return the same list as the plain <code>apt-cache search python</code> but the results will appear in the <code>less</code> pager. This allows you to search and scroll more conveniently.</p>
+
+<p>You can append <code>| grep &quot;[string]&quot;</code> to any of these commands to filter package search results, or <code>| less</code> to display the results in the <code>less</code> pager, regardless of distribution.</p>
+
+<h2 id="text-manipulation">Text Manipulation</h2>
+
+<p>Among Linux and UNIX-like systems, nearly all system configuration information is stored and manipulated in plain text form. These following sections show a list of basic Linux commands and tools to manipulate text files.</p>
+
+<h3 id="search-for-a-string-in-files-with-grep">Search for a String in Files with grep</h3>
+
+<p>The <code>grep</code> tool allows you to search a stream of text, such as a file or the output of a command, for a term or regex pattern.</p>
+
+<p>To use the <code>grep</code> tool, let&rsquo;s review an example:</p>
+
+<pre><code>grep &quot;^Subject:.*HELP.*&quot; /home/username/mbox
+</code></pre>
+
+<p>This will search your mail spool for subject lines (i.e. begins with the word &ldquo;Subject:&ldquo;), beginning with any number of characters, containing the word &ldquo;help&rdquo; in upper case, and followed by any number of additional characters. It would then print these results in the terminal.</p>
+
+<p>The <code>grep</code> tool provides additional options that, if specified, force the program to output the context for each match (e.g., with <code>-C 2</code> for two lines of context). With <code>-n</code>, <code>grep</code> outputs the line number of the match. With <code>-H</code>, <code>grep</code> prints the file name for each match, which is useful when you &ldquo;grep&rdquo; a group of files or &ldquo;grep&rdquo; recursively through a file system (using <code>-r</code>). Use <code>grep --help</code> for more options.</p>
+
+<p>To grep a group of files, you can specify the file with a wildcard:</p>
+
+<pre><code>grep -i &quot;morris&quot; ~/org/*.txt
+</code></pre>
+
+<p>This will find and match against every occurrence of the word &ldquo;morris,&rdquo; while ignoring case (because of the option for <code>-i</code>). The <code>grep</code> tool will search all files in the <code>~/org/</code> directory with a .txt extension.</p>
+
+<p>You can use <code>grep</code> to filter the results of another command that sends output to standard out (<code>stdout</code>). This is done by &ldquo;piping&rdquo; the output of one command into <code>grep</code>. For instance:</p>
+
+<pre><code>ls /home/username/data | grep &quot;1257&quot;
+</code></pre>
+
+<p>In this example, we assume that the <code>/home/username/data</code> directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits &ldquo;1257&rdquo; in their file names. In these cases, <code>grep</code> only filters the output of <code>ls</code> and does not look into file contents. For more information regarding <code>grep</code>, refer to our full documentation of the <a href="/docs/tools-reference/search-and-filter-text-with-grep">grep command</a>.</p>
+
+<h3 id="search-and-replace-across-a-group-of-files">Search and Replace Across a Group of Files</h3>
+
+<p>While the <a href="#search-for-a-string-in-files-with-grep">grep</a> tool is quite powerful for filtering text on the basis of regular expressions, if you need to edit a file or otherwise manipulate the text, you can use <code>sed</code>. The <code>sed</code> tool, or the Stream EDitor, allows you search for a regex pattern and replace it with another string.</p>
+
+<p><code>sed</code> is extremely powerful, and we recommend that you back up your files and test your <code>sed</code> commands thoroughly before running them. Here is a very simple <code>sed</code> one-liner, intended to illustrate its syntax:</p>
+
+<pre><code>sed -i `s/^good/BAD/` morning-star.txt
+</code></pre>
+
+<p>This replaces occurrences of the word &ldquo;good&rdquo; at the beginning of a line (noted by the <code>^</code>) with the string &ldquo;BAD&rdquo; in the file <code>morning-star.txt</code>. The option <code>-i</code> tells <code>sed</code> to perform the replacements &ldquo;in place.&rdquo; The <code>sed</code> command can make backups of the files it edits if you specify a suffix after the <code>-i</code> option, as in <code>-iBAK</code>. In the above command this option would save the original file as <code>morning-star.txt.BAK</code> before making changes.</p>
+
+<p>The general format of a <code>sed</code> statement is:</p>
+
+<pre><code>'s/[regex]/[replacement]/'
+</code></pre>
+
+<p>To match literal slashes (<code>/</code>), you must escape them with a backslash (<code>\</code>). As a result, to match a <code>/</code> character you would use <code>\/</code> in the <code>sed</code> expression. If you are searching for a string that has multiple slashes, you can replace the slashes which another character. For instance:</p>
+
+<pre><code>'s|r/e/g/e/x|regex|'
+</code></pre>
+
+<p>This would strip the slashes from the string <code>r/e/g/e/x</code> so that this string would be <code>regex</code> after running the <code>sed</code> command on the file that contains the string.</p>
+
+<p>The following example, from our <a href="/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode">migrating a server to your Linode</a> document, searches and replaces one IP address with another. In this case <code>98.76.54.32</code> is replaced with <code>12.34.56.78</code>:</p>
+
+<pre><code>sed -i 's/98\.76\.54\.32/12\.34\.56\.78/'
+</code></pre>
+
+<p>In the above example, period characters are escaped as <code>\.</code>. In regular expressions the full-stop (period) character matches to any character if it is not escaped.</p>
+
+<p>For more information about <code>sed</code> refer to our full documentation of <a href="/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed">text manipulation with sed</a>.</p>
+
+<h3 id="edit-text">Edit Text</h3>
+
+<p>In many Linode documents, you may be instructed to edit the contents of a file. To do this, you need to use a text editor. Most of the distribution templates that Linode provides come with an implementation of the vi/vim text editor and the nano text editor. These are small, lightweight and powerful text editors that allow you manipulate the text of a file from the terminal environment.</p>
+
+<p>There are other options for text editors, notably emacs and &ldquo;zile.&rdquo; Feel free to install these programs using your operating system&rsquo;s package manager. Make sure you <a href="#find-package-names-and-information">search your package database</a> so you can install a version compiled without GUI components (i.e. X11).</p>
+
+<p>To open a file, issue a command beginning with the name of the editor you wish to run followed by the name of the file you wish to edit. Here are a number of example commands that open the <code>/etc/hosts</code> file:</p>
+
+<pre><code>nano /etc/hosts
+vi /etc/hosts
+emacs /etc/hosts
+zile /etc/hosts
+</code></pre>
+
+<p>When you&rsquo;ve edited a file, you can save and exit the editor to return to the prompt. This procedure varies between different editors. In emacs and zile, the key sequence is the same: press control and type x and s to save. This operation is typically notated &ldquo;C-x C-s&rdquo; and then &ldquo;C-x C-c&rdquo; to close the editor. In nano, press Control-O (notated \^O) and confirm the file name to write the file, and use Control-X to exit from the program.</p>
+
+<p>Since vi and vim are <em>modal</em> editors, their operation is a bit more complex. After opening a file in vi, you can enter &ldquo;insert&rdquo; mode by pressing the &ldquo;i&rdquo; key; this will let you edit text in the conventional way. To save the file, you must exit into &ldquo;normal&rdquo; mode by pressing the escape key (<code>Control-[</code> also sends escape), and then type <code>:wq</code> to write the file and quit the program.</p>
+
+<p>This provides only the most basic outline of how to use these text editors, and there are numerous external resources which will provide instructions for more advanced use of this software.</p>
+
+<h2 id="web-servers-and-http-issues">Web Servers and HTTP Issues</h2>
+
+<p>Linodes do not come with a web server installed by default. You must install and configure your web server. This allows you to configure your web server in a way that makes sense for your application or website. <a href="/docs">Linode Guides &amp; Tutorials</a> contains a number of documents regarding the installation and maintenance of various <a href="/docs/websites/">web servers</a>.</p>
+
+<p>This section covers a number of basic web serving tasks and functions, as well as some guidance for users new to the world of web servers.</p>
+
+<h3 id="serve-websites">Serve Websites</h3>
+
+<p>Web servers work by listening on a TCP port, typically port 80 for HTTP and port 443 for HTTPS. When a visitor makes a request for content, the servers respond by delivering the resource requested. Typically, resources are specified with a URL that contains the protocol, <code>http</code> or <code>https</code>; a colon and two slashes, <code>://</code>; hostname or domain, <code>www.example.com</code> or <code>username.example.com</code>; and the path to a file, <code>/images/avatar.jpg,</code> or <code>index.html</code>. A full URL would resemble <code>http://www.example.com/images/avatar.jpg</code>.</p>
+
+<p>In order to provide these resources to users, your Linode needs to be running a web server. There are many different HTTP servers and countless configurations to provide support for various web development frameworks. The three most popular general use web servers are the <a href="/docs/websites/apache">Apache HTTP</a> server, <a href="/docs/websites/lighttpd">Lighttpd</a> (&ldquo;Lighty&rdquo;), and <a href="/docs/websites/nginx">nginx</a> (&ldquo;Engine X&rdquo;). Each server has its strengths and weaknesses, and your choice depends largely on your experience and your needs.</p>
+
+<p>Once you&rsquo;ve chosen a web server, you need to decide what (if any) scripting support you need to install. Scripting support allows you to run dynamic content with your web server and program server side scripts in languages such as Python, PHP, Ruby, and Perl.</p>
+
+<p>If you need a full web application stack, we encourage you to consider one of our more full-featured <a href="/docs/websites/lamp/">LAMP stack guides</a>. If you need support for a specific web development framework, consult our tutorials for installing and using specific <a href="/docs/development/frameworks/">web application frameworks</a>.</p>
+
+<h3 id="how-to-choose-a-web-server">How to Choose a Web Server</h3>
+
+<p>In most situations, end users are unaware of which web server you use. As a result, choosing a web server is often a personal decision based on the comfort of the administrator and the requirements of the deployment in question. This can be a challenge for the new systems administrator. This section offers some guidance by providing some background and information on the most popular web servers.</p>
+
+<p>The <a href="/docs/web-servers/apache/">Apache HTTP Server</a> is considered by some to be the <em>de facto</em> standard web server. It is the most widely deployed open-source web server, its configuration interface has been stable for many years, and its modular architecture allows it to function in many different types of deployments. Apache forms the foundation of the <a href="/docs/lamp-guides">LAMP stack</a>, and supports the integration of dynamic server-side applications into the web server.</p>
+
+<p>By contrast, web servers like <a href="/docs/websites/lighttpd">Lighttpd</a> and <a href="/docs/websites/nginx/">nginx</a> are optimized for efficiently serving static content. If you have a deployment where server resources are limited and are facing a great deal of demand, consider one of these servers. They are functional and stable with minimal system resources. Lighttpd and nginx can be more difficult to configure when integrating dynamic content interpreters.</p>
+
+<p>Your choice of web servers is based on your needs. Specific choices depend on factors like the type of content you want to serve, the demand for that content, and your comfort with that software as an administrator.</p>
+
+<h3 id="apache-logs">Apache Logs</h3>
+
+<p>When there is something wrong with <a href="/docs/websites/apache">Apache</a>, it can be difficult to determine what the cause of the error is from the behavior of the web server. There are a number of common issues with which you might begin your <a href="/docs/troubleshooting/troubleshooting-common-apache-issues/">troubleshooting</a> efforts. When more complex issues arise, you may need to review the Apache error logs.</p>
+
+<p>By default, error logs are located in the <code>/var/log/apache2/error.log</code> file (on Debian-based distributions). You can track or &ldquo;tail&rdquo; this log with the following command:</p>
+
+<pre><code>tail -F /var/log/apache2/error.log
+</code></pre>
+
+<p>In the default virtual host configurations suggested in our <a href="/docs/websites/apache/">Apache installation</a> and <a href="/docs/websites/lamp">LAMP guides</a>, we suggest adding a custom log setting:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ErrorLog /var/www//html/example.com/logs/error.log CustomLog /var/www/html/example.com/logs/access.log combined</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Where <code>example.com</code> represents the name of your virtual host and the location of its resources. These directives make Apache create two log files that contain logging information specific to that virtual host. This allows you to easily troubleshoot errors on specific virtual hosts. To track or tail the error log:</p>
+
+<pre><code>tail -F /var/www/html/example.com/logs/error.log
+</code></pre>
+
+<p>This will allow you to see new error messages as they appear. Problems can be diagnosed by using specific parts of an error message from an Apache log as a term in web search. Common errors to look for include:</p>
+
+<ul>
+<li>Missing files, or errors in file names</li>
+<li>Permissions errors</li>
+<li>Configuration errors</li>
+<li>Dynamic code execution or interpretation errors</li>
+</ul>
+
+<h2 id="dns-servers-and-domain-names">DNS Servers and Domain Names</h2>
+
+<p>The <em>Domain Name System</em>, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our <a href="/docs/networking/dns/dns-records-an-introduction">overview of the domain name system</a>. If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the <a href="/docs/networking/dns/dns-manager-overview">Linode DNS manager</a>.</p>
+
+<h3 id="redirect-dns-queries-with-cnames">Redirect DNS Queries with CNAMEs</h3>
+
+<p><a href="/docs/networking/dns/dns-records-an-introduction#cname">CNAME DNS records</a> make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don&rsquo;t want to set up the web server to handle requests.</p>
+
+<p>CNAMEs are <em>only</em> valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and <a href="/docs/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server">configure redirection</a> and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as <code>team.example.com</code>, to other subdomains or domains, such as <code>jack.example.org</code>. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.</p>
+
+<p>Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the <a href="https://manager.linode.com//">Linode Manager</a>, refer to our <a href="/docs/networking/dns/dns-manager-overview">DNS Manager Guide</a>.</p>
+
+<h3 id="set-up-subdomains">Set Up Subdomains</h3>
+
+<p>When <a href="/docs/networking/dns/dns-records-an-introduction#domain-names">reading domain names</a>, we refer to parts before the main or first-level domain as &ldquo;subdomains.&rdquo; For example, in the domain <code>team.example.com</code>, <code>team</code> is a subdomain for the root domain <code>example.com</code>.</p>
+
+<p>Follow these steps to <a href="/docs/networking/dns/common-dns-configurations#configuring-subdomains">create and host a sub-domain</a>:</p>
+
+<ol>
+<li><p>First, create an <a href="/docs/networking/dns/dns-records-an-introduction#a-and-aaaa">A Record</a> in the DNS zone for the domain. You can do this using the <a href="/docs/networking/dns/dns-manager-overview">Linode DNS Manager</a>. You may host the DNS for your domain with any provider you choose.</p></li>
+
+<li><p>Set up a server to respond to requests sent to this domain. For web servers like <a href="/docs/websites/apache/">Apache</a>, this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.</p></li>
+
+<li><p>Once configured, subdomains function almost identically to root domains on your server. If you need to, you can set up HTTP redirection for the new subdomain.</p></li>
+</ol>
+
+<h2 id="smtp-servers-and-email-issues">SMTP Servers and Email Issues</h2>
+
+<p>We provide a number of guides that cover <a href="/docs/email/">email-related topics</a>. In this section, we&rsquo;ll explain how to choose an email setup that fits your needs and how to configure your Linode to send email.</p>
+
+<h3 id="choose-an-email-solution">Choose an Email Solution</h3>
+
+<p>There are two major components that are required for email functionality. The most important part is the SMTP server or &ldquo;Mail Transfer Agent.&rdquo; The MTA, as it is often called, sends mail from one server to another. The second part of an email system is a server that permits users to access and download that mail from the server to their own machine. Typically these servers use a protocol such as POP3 or IMAP to provide remote access to the mailbox.</p>
+
+<p>There may also be other components in the email server tool chain. These components may be optional depending on the requirements of your deployment. They include filtering and delivery tools like <a href="http://www.procmail.org/">procmail</a>, anti-virus filters like <a href="https://www.clamav.net/">ClamAV</a>, mailing list managers like <a href="https://www.gnu.org/software/mailman/index.html">MailMan</a>, and spam filters like <a href="https://spamassassin.apache.org/">SpamAssassin</a>. These components function independently of the MTA and remote mailbox server.</p>
+
+<p>The most prevalent SMTP servers or MTAs in the UNIX-like world are <a href="http://www.postfix.org/">Postfix</a>, <a href="https://www.exim.org/">Exim</a>, and <a href="http://www.sendmail.org/">Sendmail</a>. Sendmail has the longest history and many system administrators have extensive experience with it. Postfix is robust and modern, and is compatible with many different configurations. Exim is the default MTA in Debian systems, and many consider it to be easier to use for basic tasks. For remote mailbox access, servers like <a href="http://www.courier-mta.org/">Courier</a> and <a href="https://www.dovecot.org/">Dovecot</a> are popular options.</p>
+
+<p>If you need an easy-to-install email solution, consider the <a href="/docs/email/citadel/">Citadel groupware server</a>. Citadel provides an integrated &ldquo;turnkey&rdquo; solution that includes an SMTP server, remote mailbox access, real time collaboration tools including XMPP, and a shared calendar interface. Along similar lines, we also provide documentation for the installation of the <a href="/docs/email/zimbra">Zimbra groupware server</a>.</p>
+
+<p>If, by contrast, you want a more simple and modular email stack, we urge you to consider one of our guides built around the <a href="/docs/email/postfix/">Postfix SMTP server</a>.</p>
+
+<p>Finally, it&rsquo;s possible to outsource email service to a third-party provider, such as <a href="/docs/email/using-google-apps-for-email">Google Apps</a> or <a href="https://www.fastmail.fm">FastMail.fm</a>. These services allows you to send and receive mail from your domain, without hosting email services on your Linode.</p>
+
+<h3 id="send-email-from-your-server">Send Email From Your Server</h3>
+
+<p>For simple configurations, you may have no need for a complete email stack like some of those documented in our <a href="/docs/email/">email guides</a>. However, applications running on that server still need to be able to send mail for notifications and other routine purposes.</p>
+
+<p>The configuration of applications to send notifications and alerts is beyond the scope of this guide. Most applications rely on a simple &ldquo;sendmail&rdquo; interface, which is accessible via several common SMTP servers including Postfix and msmtp.</p>
+
+<p>To install Postfix on Debian and Ubuntu systems:</p>
+
+<pre><code>apt-get install postfix
+</code></pre>
+
+<p>On CentOS and Fedora systems:</p>
+
+<pre><code>yum install postfix
+</code></pre>
+
+<p>Once Postfix is installed, your applications should be able to access the sendmail interface, located at <code>/usr/sbin/sendmail</code>. Most applications running on your Linode should be able to send mail normally with this configuration.</p>
+
+<p>If you want to use your server to send email through an external SMTP server, consider a more simple tool like <code>msmtp</code>. Since <code>msmtp</code> is packaged in most distributions, and you can install it using the appropriate command:</p>
+
+<pre><code>apt-get install msmtp
+yum install msmtp
+pacman -S msmtp
+</code></pre>
+
+<p>Use the command <code>type msmtp</code> or <code>which msmtp</code>, to find the location of <code>msmtp</code> on your system. Typically the program is located at <code>/usr/bin/msmtp</code>. You can specify authentication credentials with command line arguments or by declaring SMTP credentials in a configuration file. Here is an example <code>.msmtprc</code> file.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		.msmtprc example 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">account default host smtp.example.com
+from &lt;username@example.com&gt;
+auth on user username password s3cr37
+tls on
+tls_certcheck off
+port <span class="m">587</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>.msmptrc</code> file needs to be set to mode 600 and owned by the user account that will be sending mail. For example, if the configuration file is located at <code>/srv/smtp/msmtprc</code>, you can call mstmp with the following command:</p>
+
+<pre><code>/usr/bin/msmtp --file=/srv/smtp/msmtprc
+</code></pre>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/quick-answers/linux/install-selinux-on-ubuntu/">How to Install SELinux on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/how-to-use-wget/">How to Use Wget</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/">Deploy an Image to a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/resize-a-linode-disk/">Resize a Linode Disk</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/enable-backups-on-a-linode/">Enable Backups on a Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#basic-configuration">Basic Configuration</a>
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#set-the-time-zone">Set the Time Zone</a>
+<ul>
+<li><a href="#set-the-time-zone-in-debian-or-ubuntu">Set the Time Zone in Debian or Ubuntu</a></li>
+<li><a href="#set-the-time-zone-in-centos-7-or-arch-linux">Set the Time Zone in CentOS 7 or Arch Linux</a></li>
+<li><a href="#set-the-time-zone-manually-on-a-linux-system">Set the Time Zone Manually on a Linux System</a></li>
+</ul></li>
+<li><a href="#configure-the-etc-hosts-file">Configure the /etc/hosts File</a></li>
+</ul></li>
+<li><a href="#network-diagnostics">Network Diagnostics</a>
+<ul>
+<li><a href="#the-ping-command">The ping Command</a></li>
+<li><a href="#the-traceroute-command">The traceroute Command</a></li>
+<li><a href="#the-mtr-command">The mtr Command</a></li>
+</ul></li>
+<li><a href="#system-diagnostics">System Diagnostics</a>
+<ul>
+<li><a href="#check-current-memory-usage">Check Current Memory Usage</a></li>
+<li><a href="#monitor-i-o-usage-with-vmstat">Monitor I/O Usage with vmstat</a></li>
+<li><a href="#monitor-processes-memory-and-cpu-usage-with-htop">Monitor Processes, Memory, and CPU Usage with htop</a></li>
+</ul></li>
+<li><a href="#file-system-management">File System Management</a>
+<ul>
+<li><a href="#upload-files-to-a-remote-server">Upload Files to a Remote Server</a></li>
+<li><a href="#protect-files-on-a-remote-server">Protect Files on a Remote Server</a></li>
+<li><a href="#symbolic-links">Symbolic Links</a></li>
+<li><a href="#manage-files-on-a-linux-system">Manage Files on a Linux System</a></li>
+</ul></li>
+<li><a href="#package-management">Package Management</a>
+<ul>
+<li><a href="#find-packages-installed-on-your-system">Find Packages Installed on Your System</a></li>
+<li><a href="#find-package-names-and-information">Find Package Names and Information</a></li>
+</ul></li>
+<li><a href="#text-manipulation">Text Manipulation</a>
+<ul>
+<li><a href="#search-for-a-string-in-files-with-grep">Search for a String in Files with grep</a></li>
+<li><a href="#search-and-replace-across-a-group-of-files">Search and Replace Across a Group of Files</a></li>
+<li><a href="#edit-text">Edit Text</a></li>
+</ul></li>
+<li><a href="#web-servers-and-http-issues">Web Servers and HTTP Issues</a>
+<ul>
+<li><a href="#serve-websites">Serve Websites</a></li>
+<li><a href="#how-to-choose-a-web-server">How to Choose a Web Server</a></li>
+<li><a href="#apache-logs">Apache Logs</a></li>
+</ul></li>
+<li><a href="#dns-servers-and-domain-names">DNS Servers and Domain Names</a>
+<ul>
+<li><a href="#redirect-dns-queries-with-cnames">Redirect DNS Queries with CNAMEs</a></li>
+<li><a href="#set-up-subdomains">Set Up Subdomains</a></li>
+</ul></li>
+<li><a href="#smtp-servers-and-email-issues">SMTP Servers and Email Issues</a>
+<ul>
+<li><a href="#choose-an-email-solution">Choose an Email Solution</a></li>
+<li><a href="#send-email-from-your-server">Send Email From Your Server</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

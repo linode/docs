@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Load Testing Web Servers with Siege</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Load testing your web server with regression testing and benchmarking utility Siege">
+        <meta name="keywords" content="siege, load testing, benchmarking">
+        
+        <meta property="og:title" content="Load Testing Web Servers with Siege">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/tools/load-testing-with-siege/">
+        <meta property="og:description" content="Load testing your web server with regression testing and benchmarking utility Siege">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/tools/load-testing-with-siege/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/tools/">Tools</a>
+  
+</li>
+
+
+<li>
+  
+  Load Testing Web Servers with Siege
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Load Testing Web Servers with Siege</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-02-18T00:00:00Z">Wednesday, February 18, 2015</time> by Elle Krout</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fload-testing-with-siege%2f&via=linode&text=Load%20Testing%20Web%20Servers%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fload-testing-with-siege%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fload-testing-with-siege%2f&t=Load%20Testing%20Web%20Servers%20with%20Siege" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/tools/load-testing-with-siege.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/tools/load-testing-with-siege.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Siege is an HTTP load testing and benchmarking utility that can be used to measure the performance of a web server when under duress. It evaluates the amount of data transferred, response time of the server, transaction rate, throughput, concurrency, and times the program returned okay. Siege offers three modes of operation: Regression, internet simulation, and brute force.</p>
+
+<p><img src="/docs/assets/load-testing-web-servers-with-siege.png" alt="Load Testing Web Servers with Siege" /></p>
+
+<p>This guide is for Debian or Ubuntu systems.</p>
+
+<h2 id="download-and-configure-siege">Download and Configure Siege</h2>
+
+<ol>
+<li><p>Prior to installing any new programs, update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade --show-upgraded
+</code></pre></li>
+
+<li><p>Download the latest version of Siege (3.0.9 at the time of this publication), which is always available at <a href="http://www.joedog.org/siege-home">Siege&rsquo;s website</a>:</p>
+
+<pre><code>wget http://download.joedog.org/siege/siege-latest.tar.gz
+</code></pre></li>
+
+<li><p>Extract the program:</p>
+
+<pre><code>tar -zxvf siege-latest.tar.gz
+</code></pre></li>
+
+<li><p>Navigate to the Siege directory:</p>
+
+<pre><code>cd siege-*/
+</code></pre></li>
+
+<li><p>If the GNU Compiler Collection (gcc) is not installed, install now:</p>
+
+<pre><code>sudo apt-get install build-essential
+</code></pre></li>
+
+<li><p>Configure and complete the installation:</p>
+
+<pre><code>./configure
+make
+sudo make install
+</code></pre></li>
+
+<li><p>Generate a configuration file:</p>
+
+<pre><code>siege.config
+</code></pre></li>
+
+<li><p>Open the <code>.siegerc</code> file located in your home directory.</p></li>
+
+<li><p>The suggested Siege configuration is for 25 concurrent users over a period of 1 minute. Set a location for your log file. Be sure to uncomment the variables shown below, and any other commented settings you want to use by removing the pound sign (<code>#</code>):</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/.siegerc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">...
+
+		<span class="c1">#
+</span><span class="c1"></span>		<span class="c1"># Variable declarations. You can set variables here
+</span><span class="c1"></span>		<span class="c1"># for use in the directives below. Example:
+</span><span class="c1"></span>		<span class="c1"># PROXY = proxy.joedog.org
+</span><span class="c1"></span>		<span class="c1"># Reference variables inside ${} or $(), example:
+</span><span class="c1"></span>		<span class="c1"># proxy-host = ${PROXY}
+</span><span class="c1"></span>		<span class="c1"># You can also reference ENVIRONMENT variables without
+</span><span class="c1"></span>		<span class="c1"># actually declaring them, example:
+</span><span class="c1"></span>		<span class="nv">logfile</span> <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/siege.log
+
+...
+
+		<span class="c1">#
+</span><span class="c1"></span>		<span class="c1"># Default number of simulated  concurrent users
+</span><span class="c1"></span>		<span class="c1"># ex: concurrent = 25
+</span><span class="c1"></span>		<span class="c1">#
+</span><span class="c1"></span>		<span class="nv">concurrent</span> <span class="o">=</span> <span class="m">25</span>
+
+		<span class="c1">#
+</span><span class="c1"></span>		<span class="c1"># Default duration of the siege.  The right hand argument has
+</span><span class="c1"></span>		<span class="c1"># a modifier which specifies the time units, H=hours, M=minutes,
+</span><span class="c1"></span>		<span class="c1"># and S=seconds. If a modifier is not specified, then minutes
+</span><span class="c1"></span>		<span class="c1"># are assumed.
+</span><span class="c1"></span>		<span class="c1"># ex: time = 50M
+</span><span class="c1"></span>		<span class="c1">#
+</span><span class="c1"></span>		<span class="nb">time</span> <span class="o">=</span> 1M</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<p>You are now ready to run Siege!</p>
+
+<h2 id="run-siege">Run Siege</h2>
+
+<p>To run Siege with the default settings, input the following command, replacing <code>www.example.com</code> with your domain name or IP address:</p>
+
+<pre><code>siege www.example.com
+</code></pre>
+
+<p>Siege outputs the results:</p>
+
+<pre><code>** SIEGE 2.70
+** Preparing 25 concurrent users for battle.
+The server is now under siege...
+Lifting the server siege...      done.
+Transactions:               2913 hits
+Availability:             100.00 %
+Elapsed time:              59.51 secs
+Data transferred:           0.41 MB
+Response time:              0.00 secs
+Transaction rate:          48.95 trans/sec
+Throughput:             0.01 MB/sec
+Concurrency:                0.04
+Successful transactions:        2913
+Failed transactions:               0
+Longest transaction:            0.01
+Shortest transaction:           0.00
+
+FILE: /var/log/siege.log
+You can disable this annoying message by editing
+the .siegerc file in your home directory; change
+the directive 'show-logfile' to false.
+</code></pre>
+
+<p>If there are no failed connections and the availability remains at 100%, there are no problems.</p>
+
+<h2 id="further-configuring-and-commands">Further Configuring and Commands</h2>
+
+<h3 id="creating-a-url-file">Creating a URL File</h3>
+
+<p>If you want Siege to hit a number of pages on your website at random, configure the program to read from a <code>urls.txt</code> file that lists the selected pages.</p>
+
+<ol>
+<li><p>Open the <code>urls.txt</code> file generally created at <code>/usr/local/etc/urls.txt</code>. Add a list of URLs or IP addresses to that file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/usr/local/etc/urls.txt 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># URLS file for siege
+</span><span class="c1"># --
+</span><span class="c1"># Format the url entries in any of the following formats:
+</span><span class="c1"># http://www.whoohoo.com/index.html
+</span><span class="c1"># http://www/index.html
+</span><span class="c1"># www/index.html
+</span><span class="c1"># http://www.whoohoo.com/cgi-bin/howto/display.cgi?1013
+</span><span class="c1"># Use the POST directive for pages that require it:
+</span><span class="c1"># http://www.whoohoo.com/cgi-bin/haha.cgi POST ha=1&amp;ho=2
+</span><span class="c1">#      or POST content from a file:
+</span><span class="c1"># http://www.whoohoo.com/melvin.jsp POST &lt;/home/jeff/haha
+</span><span class="c1"># http://www.whoohoo.com/melvin.jsp POST &lt;./haha
+</span><span class="c1"># You may also set and reference variables inside this file,
+</span><span class="c1"># for more information, man urls_txt
+</span><span class="c1"># -------------------------------------------------------
+</span><span class="c1"></span>
+www.example.com
+www.example.org
+<span class="m">123</span>.45.67.89</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>To run Siege with this file use the <code>siege</code> command:</p>
+
+<pre><code>siege
+</code></pre>
+
+<p>If using a separate file, run:</p>
+
+<pre><code>siege -f your/file/path.txt
+</code></pre></li>
+</ol>
+
+<h3 id="commands">Commands</h3>
+
+<p>Siege features a number of command line options to use when you want to deviate from the default configuration but do not wish to edit the file.</p>
+
+<ul>
+<li><p><strong><code>-c [num]</code></strong>: Set the number of concurrent users. Most web servers have less than a couple hundred users trying to access their website at the same time, so setting this to more than a few hundred is often not needed.</p></li>
+
+<li><p><strong><code>-t [num]</code></strong>: Set a time limit for which Siege runs. Siege can run with the modifiers <code>s</code> for seconds, <code>m</code> for minutes, or <code>h</code> for hours. There should be no space between the number and the modifier (<code>-t10s</code> not <code>-t10 s</code>).</p></li>
+
+<li><p><strong><code>-d [num]</code></strong>: Set the delay for each Siege user. Each user is then delayed for a random amount of seconds in between 1 and the set number. The default value is 3.</p></li>
+
+<li><p><strong><code>-i</code></strong>: Used in conjunction with a URLs file, this causes each user to randomly hit one of the URLs, with no predetermined pattern. Similar to real life (the &lsquo;i&rsquo; stands for &ldquo;internet&rdquo;), where you will not know where site visitors go, not all pages may be hit.</p></li>
+
+<li><p><strong><code>-v</code></strong>: Verbose output. This outputs the results Siege gets in real time before printing the final results.</p></li>
+
+<li><p><strong><code>-f [file]</code></strong>: Run Siege with a file containing a list of URLs that is not the default <code>urls.txt</code> file.</p></li>
+
+<li><p><strong><code>-g [url]</code></strong>: Pull down the HTTP headers.</p></li>
+
+<li><p><strong><code>-l</code></strong>: Generates a log file.</p></li>
+
+<li><p><strong><code>-m &quot;[message]&quot;</code></strong>: Include a message in the log file.</p></li>
+
+<li><p><strong><code>-C</code></strong>: Outputs Siege&rsquo;s current configuration profile.</p></li>
+
+<li><p><strong><code>-V</code></strong>: Outputs Siege&rsquo;s version information.</p></li>
+
+<li><p><strong><code>-h</code></strong>: Outputs help information.</p></li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.joedog.org/siege-home">Siege Home</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#download-and-configure-siege">Download and Configure Siege</a></li>
+<li><a href="#run-siege">Run Siege</a></li>
+<li><a href="#further-configuring-and-commands">Further Configuring and Commands</a>
+<ul>
+<li><a href="#creating-a-url-file">Creating a URL File</a></li>
+<li><a href="#commands">Commands</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

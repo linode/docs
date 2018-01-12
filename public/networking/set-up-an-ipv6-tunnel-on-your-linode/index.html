@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Set Up an IPv6 Tunnel on Your Linode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to set up an IPv6 tunnel on your Linode.">
+        <meta name="keywords" content="ipv6, tunnel, broker, networking">
+        
+        <meta property="og:title" content="Set Up an IPv6 Tunnel on Your Linode">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/set-up-an-ipv6-tunnel-on-your-linode/">
+        <meta property="og:description" content="How to set up an IPv6 tunnel on your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/set-up-an-ipv6-tunnel-on-your-linode/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  Set Up an IPv6 Tunnel on Your Linode
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Set Up an IPv6 Tunnel on Your Linode</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-07-07T00:00:00Z">Thursday, July 7, 2016</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fset-up-an-ipv6-tunnel-on-your-linode%2f&via=linode&text=Set%20Up%20an%20IPv6%20Tunnel%20on%20Your%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fset-up-an-ipv6-tunnel-on-your-linode%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fset-up-an-ipv6-tunnel-on-your-linode%2f&t=Set%20Up%20an%20IPv6%20Tunnel%20on%20Your%20Linode" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/set-up-an-ipv6-tunnel-on-your-linode.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/set-up-an-ipv6-tunnel-on-your-linode.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>As IPv4 address exhaustion nears, many people are making the switch to IPv6. Linode offers <a href="/docs/networking/native-ipv6-networking/">native IPv6</a> addresses in all locations.</p>
+
+<p>An IPv6 tunnel lets a system reach an IPv6 network using existing IPv4 connectivity. Follow this guide if you:</p>
+
+<ul>
+<li>Have a tunnel that you are migrating to your Linode;</li>
+<li>Want to increase your IPv6 footprint for redundancy and failover in case of routing issues;</li>
+<li>Don&rsquo;t have IPv6 from your ISP, and want to interact with your Linode through its IPv6 address. By configuring the tunnel to a local computer instead of your Linode, you can connect to your Linode via the IPv6 address.</li>
+</ul>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<p>You should have already signed up for an IPv6 tunnel through a tunnel broker. <a href="http://en.wikipedia.org/wiki/List_of_IPv6_tunnel_brokers">Wikipedia contains a list of tunnel brokers by region</a>, and we encourage you to research each before you decide which to use. The steps outlined in this guide were performed using tunnels from Hurricane Electric (HE).</p>
+
+<h2 id="general-setup">General Setup</h2>
+
+<p>Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users may need to install the <code>iproute2</code> package before continuing.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the <a href="/docs/networking/using-the-linode-shell-lish">Lish</a> or <a href="/docs/networking/use-the-graphic-shell-glish">Glish</a> interface.</p></li>
+
+<li><p>Use the <code>ip</code> tool to add the tunnel device. Ours is called <code>he-ipv6</code> to match the device described in Hurricane Electric&rsquo;s examples. Replace <code>203.0.113.10</code> with the endpoint of your tunnel, and <code>198.51.100.5</code> with your Linode&rsquo;s IP address. The information for the endpoint can be found in your tunnel broker&rsquo;s web interface, and your Linode&rsquo;s IP address can be found under the <a href="/docs/networking/remote-access">Remote Access</a> tab of the Linode Manager:</p>
+
+<pre><code>ip tunnel add he-ipv6 mode sit remote 203.0.113.10 local 198.51.100.5 ttl 255
+ip link set he-ipv6 up
+</code></pre>
+
+<p>For more information on how the <code>ip</code> tool configures tunnels, see the <a href="http://man7.org/linux/man-pages/man8/ip-tunnel.8.html">ip-tunnel documentation</a>.</p></li>
+
+<li><p>Assign IPv6 address and routing information to your new tunnel device. Replace <code>2001:db8:1234:5678::2/64</code> with the IPv6 address assigned to you. This information should be provided to you by your tunnel broker as your &ldquo;Client IPv6 Address&rdquo;:</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div><p>The <code>ifdown</code> command <strong>will halt all network traffic to your Linode</strong>. This step is included to avoid an error when adding the IPv6 route. It may not be required on all Linux distributions.</p>
+
+<p>On Arch Linux, replace the <code>ifdown</code> and <code>ifup</code> commands with <code>ip link set eth0 down</code> and <code>ip link set eth0 up</code></p>
+</div>
+</blockquote>
+
+
+<pre><code>ip addr add 2001:db8:1234:5678::2/64 dev he-ipv6
+ifdown eth0
+ip route add ::/0 dev he-ipv6
+ifup eth0
+ip -f inet6 addr
+</code></pre>
+
+<p>The final command in Line 5 will show all devices with IPv6 addresses, and should have a block similar to this:</p>
+
+<pre><code>13: he-ipv6@NONE: &lt;POINTOPOINT,NOARP,UP,LOWER_UP&gt; mtu 1480 state UNKNOWN qlen 1
+    inet6 2001:db8:1234:5678::2/64 scope global
+       valid_lft forever preferred_lft forever
+    inet6 fe80::0000:0000/64 scope link
+       valid_lft forever preferred_lft forever
+</code></pre></li>
+
+<li><p>Test the tunnel. Replace <code>he-ipv6</code> with the name of your tunnel:</p>
+
+<pre><code>ping6 -I he-ipv6 irc6.oftc.net
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>On Arch Linux and other distributions without <code>ping6</code>, use <code>ping -6</code> instead.</div>
+</blockquote>
+</li>
+</ol>
+
+<p>If everything is working, you should see ping replies. If not, go back and make sure that you haven&rsquo;t made any errors.</p>
+
+<h2 id="manual-configuration">Manual Configuration</h2>
+
+<p>The instructions in this section will allow you to manually configure your IPv6 tunnel. This can permanently affect your connectivity across reboots. Read the IPv6 documentation for your distribution before proceeding.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>When manually modifying your network configuration, always disable <a href="/docs/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles">Network Helper</a> first to avoid having your changes overwritten on reboot.</div>
+</blockquote>
+
+
+<h3 id="debian-and-ubuntu">Debian and Ubuntu</h3>
+
+<p>Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can perform the following steps to set up a tunnel on their Linode.</p>
+
+<ol>
+<li><p>In the following excerpt, replace the:</p>
+
+<ul>
+<li><code>address</code> value with the &ldquo;Client IPv6 address.&rdquo;</li>
+<li><code>gateway</code> value with the &ldquo;Server IPv6 address.&rdquo;</li>
+<li><code>endpoint</code> value with the endpoint, or &ldquo;Server IPv4 Address,&rdquo; that your tunnel broker provides you. Generally this endpoint is in a geographical location that is close to your Linode.</li>
+<li><code>local</code> value with your Linode&rsquo;s IP address. If you have multiple IPs, make sure that this IP is set to the same address as the one you used to sign up for the tunnel.</li>
+</ul>
+
+<p>Insert the following into your <code>/etc/network/interfaces</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/network/interfaces 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">auto he-ipv6
+iface he-ipv6 inet6 v4tunnel
+    address <span class="m">2001</span>:db8:1234:5678::2
+    netmask <span class="m">64</span>
+    endpoint <span class="m">203</span>.0.113.10
+    <span class="nb">local</span> <span class="m">198</span>.51.100.5
+    ttl <span class="m">255</span>
+    gateway <span class="m">2001</span>:db8:1234:5678::1</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart networking services and test the tunnel. Replace <code>he-ipv6</code> with the name of your tunnel:</p>
+
+<pre><code>systemctl restart networking.service
+ping6 -I he-ipv6 irc6.oftc.net
+</code></pre>
+
+<p>If configuration was successful, you will receive ping replies. If not, check your network configuration for errors.</p></li>
+</ol>
+
+<h3 id="centos-7-and-fedora-22">CentOS 7 and Fedora 22+</h3>
+
+<ol>
+<li><p>Create a file at <code>/etc/sysconfig/network-scripts/ifcfg-he-ipv6</code> that contains the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/sysconfig/network-scripts/ifcfg-he-ipv6 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">NAME</span><span class="o">=</span><span class="s2">&#34;he-ipv6&#34;</span>
+<span class="nv">DEVICE</span><span class="o">=</span>he-ipv6
+<span class="nv">ONBOOT</span><span class="o">=</span>yes
+<span class="nv">USERCTL</span><span class="o">=</span>yes
+<span class="nv">BOOTPROTO</span><span class="o">=</span>none
+<span class="nv">PEERDNS</span><span class="o">=</span>no
+
+<span class="nv">IPV6INIT</span><span class="o">=</span>yes
+<span class="nv">IPV6_AUTOTUNNEL</span><span class="o">=</span>yes
+<span class="nv">IPV6ADDR</span><span class="o">=</span><span class="s2">&#34;2001:db8:1234:5678::2/64&#34;</span>
+<span class="nv">IPV6_ROUTER</span><span class="o">=</span>yes
+<span class="nv">IPV6_AUTOCONF</span><span class="o">=</span>no
+
+<span class="nv">IPV6_CONTROL_RADVD</span><span class="o">=</span>yes
+<span class="nv">IPV6TUNNELIPV4</span><span class="o">=</span><span class="m">203</span>.0.113.10
+<span class="nv">IPV6TUNNELIPV4LOCAL</span><span class="o">=</span><span class="m">45</span>.79.171.199
+
+<span class="nv">PHYSDEV</span><span class="o">=</span>eth0
+<span class="nv">TYPE</span><span class="o">=</span>sit
+<span class="nv">DEVICETYPE</span><span class="o">=</span>sit
+<span class="nv">NM_CONTROLLED</span><span class="o">=</span>no
+
+<span class="nv">IPV6_DEFAULTGW</span><span class="o">=</span><span class="m">2001</span>:db8:1234:5678::1
+<span class="nv">IPV6_DEFAULTDEV</span><span class="o">=</span>he-ipv6</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>In the above, replace the:</p>
+
+<ul>
+<li><code>IPV6ADDR</code> value with your &ldquo;Client IPV6 Address.&rdquo;</li>
+<li><code>IPV6TUNNELIPV4</code> value with your &ldquo;Server IPV4 Address.&rdquo;</li>
+<li><code>IPV6TUNNELIPV4LOCAL</code> value with your &ldquo;Client IPV4 Address.&rdquo;</li>
+<li><code>IPV6_DEFAULTGW</code> value with your &ldquo;Server IPV6 Address.&rdquo;</li>
+</ul></li>
+
+<li><p>Start the <code>he-ipv6</code> interface:</p>
+
+<pre><code>ifup he-ipv6
+</code></pre></li>
+
+<li><p>Test the tunnel. Replace <code>he-ipv6</code> with the name of your tunnel:</p>
+
+<pre><code>ping6 -I he-ipv6 irc6.oftc.net
+</code></pre>
+
+<p>If configuration was successful, you will receive ping replies. If not, check your network configuration for errors.</p></li>
+</ol>
+
+<h3 id="centos-6">CentOS 6</h3>
+
+<ol>
+<li><p>Add the following lines to your <code>/etc/sysconfig/network</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/sysconfig/network 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">NETWORKING_IPV6</span><span class="o">=</span>yes
+<span class="nv">IPV6_DEFAULTDEV</span><span class="o">=</span>he-ipv6</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Create a file at <code>/etc/sysconfig/network-scripts/ifcfg-he-ipv6</code> that contains the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/sysconfig/network-scripts/ifcfg-he-ipv6 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">DEVICE</span><span class="o">=</span>he-ipv6
+<span class="nv">BOOTPROTO</span><span class="o">=</span>none
+<span class="nv">ONBOOT</span><span class="o">=</span>yes
+<span class="nv">IPV6INIT</span><span class="o">=</span>yes
+<span class="nv">IPV6TUNNELIPV4</span><span class="o">=</span><span class="m">203</span>.0.113.10
+<span class="nv">IPV6ADDR</span><span class="o">=</span><span class="m">2001</span>:db8:1234:5678::2/64</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Replace the <code>IPV6TUNNELIPV4</code> value with your remote tunnel endpoint and the <code>IPV6ADDR</code> value with the &ldquo;Client IPv6&rdquo; address provided to you by your tunnel broker.</p></li>
+
+<li><p>Start the <code>he-ipv6</code> interface:</p>
+
+<pre><code>ifup he-ipv6
+</code></pre></li>
+
+<li><p>Test the tunnel. Replace <code>he-ipv6</code> with the name of your tunnel:</p>
+
+<pre><code>ping6 -I he-ipv6 irc6.oftc.net
+</code></pre>
+
+<p>If configuration was successful, you will receive ping replies. If not, check your network configuration for errors.</p></li>
+</ol>
+
+<h3 id="arch-linux">Arch Linux</h3>
+
+<p>Refer to the <a href="https://wiki.archlinux.org/index.php/IPv6_tunnel_broker_setup">Arch Linux Wiki</a> for more information.</p>
+
+<h3 id="gentoo-linux">Gentoo Linux</h3>
+
+<p>Refer to the <a href="https://wiki.gentoo.org/wiki/IPv6_router_guide">Gentoo Linux Wiki</a> for more information.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/">How to Configure OpenVPN Access Server to Tunnel Traffic</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/configure-firewall-with-ufw/">How to Configure a Firewall with UFW</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/install-openvpn-access-server-on-linux/">Install OpenVPN Access Server on Linux for Secure Communications</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/diagnostics/install-iperf-to-diagnose-network-speed-in-linux/">Install iPerf to Diagnose Network Speed in Linux</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/">Setting up an SSH Tunnel with Your Linode for Safe Browsing</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#general-setup">General Setup</a></li>
+<li><a href="#manual-configuration">Manual Configuration</a>
+<ul>
+<li><a href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
+<li><a href="#centos-7-and-fedora-22">CentOS 7 and Fedora 22+</a></li>
+<li><a href="#centos-6">CentOS 6</a></li>
+<li><a href="#arch-linux">Arch Linux</a></li>
+<li><a href="#gentoo-linux">Gentoo Linux</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

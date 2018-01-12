@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Full Disk Encryption</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Full Disk Encryption.">
+        <meta name="keywords" content="full, disk, encryption, debian, wheezy, security, cryptsetup">
+        
+        <meta property="og:title" content="Full Disk Encryption">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/full-disk-encryption-xen/">
+        <meta property="og:description" content="Full Disk Encryption.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/full-disk-encryption-xen/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Full Disk Encryption
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Full Disk Encryption</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-06-19T00:00:00Z">Thursday, June 19, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2ffull-disk-encryption-xen%2f&via=linode&text=Full%20Disk%20Encryption" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2ffull-disk-encryption-xen%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2ffull-disk-encryption-xen%2f&t=Full%20Disk%20Encryption" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/full-disk-encryption-xen.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/full-disk-encryption-xen.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Full disk encryption protects the information stored on your Linode&rsquo;s disks by converting it into unreadable code that can only be deciphered by authorized individuals. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will help you implement full disk encryption on a Linode running Debian 7 (Wheezy). You&rsquo;ll learn how to:</p>
+
+<ul>
+<li>Format and encrypt your disks</li>
+<li>Install a base Debian 7 (Wheezy) system with <code>debootstrap</code></li>
+<li>Configure services and networking</li>
+<li>Boot from the encrypted images</li>
+</ul>
+
+<h2 id="potential-drawbacks">Potential Drawbacks</h2>
+
+<p>Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you&rsquo;ll need to enter the encryption passphrase in the console every time your Linode boots. And some Linode Manager tools may not work as expected if your disks are encrypted. You&rsquo;ll need to manually resize your filesystem if you want to resize your disk. You&rsquo;ll also need to implement your own backup solution since the <a href="/docs/backup-service">Linode Backup Service</a> can&rsquo;t mount encrypted disks.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>Ready to encrypt your Linode&rsquo;s disks? Here&rsquo;s how to prepare a Linode for full disk encryption:</p>
+
+<ol>
+<li>Create a new Linode in the data center of your choice.</li>
+
+<li><p>Make at least three unformatted / raw disks for your Linode. You&rsquo;ll probably want to use the rest of your disk quota for your main disk.</p>
+
+<ul>
+<li>A <code>/boot</code> image, which will be unencrypted. In most cases, 128-256MB will be suitable for /boot.</li>
+<li>A swap image. You&rsquo;ll need to choose an appropriate swap size based your particular needs.</li>
+<li>A <code>root</code> image to store the files in the root of your filesystem.</li>
+</ul></li>
+
+<li><p>After you have created these disks, you&rsquo;ll want to <a href="/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode">boot into Finnix from the Rescue tab</a>. Ensure that your disks are attached as follows:</p>
+
+<ul>
+<li>/boot xvda</li>
+<li>swap xvdb</li>
+<li>/ xvdc</li>
+</ul></li>
+</ol>
+
+<p>You&rsquo;ve successfully created the disks for your Linode.</p>
+
+<h2 id="creating-a-configuration-profile">Creating a Configuration Profile</h2>
+
+<p>Next, you&rsquo;ll need to create a configuration profile for the new Linode. Here&rsquo;s how to do it:</p>
+
+<ol>
+<li><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-configuration-profile">Create a new configuration profile</a> in the Linode Manager.</li>
+<li>Select the <code>pv-grub-x86_64</code> kernel from the <strong>Kernel</strong> menu.</li>
+<li>In the <strong>Block Device Assignment</strong> section, select the disks you created in the previous section of this guide.</li>
+<li>Disable the <strong>Automount devtmpfs</strong> and <strong>Distro Helper</strong> settings.</li>
+<li>Save the configuration profile.</li>
+</ol>
+
+<p>Congratulations! You&rsquo;re now ready to set up full disk encryption on your Linode.</p>
+
+<h2 id="enabling-full-disk-encryption">Enabling Full Disk Encryption</h2>
+
+<p>Now you&rsquo;re ready to enable full disk encryption on your Linode running Debian 7 (Wheezy). Here&rsquo;s how to do it:</p>
+
+<ol>
+<li><a href="/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode">Reboot into Finnix</a> from the <strong>Rescue</strong> tab in the Linode Manager.</li>
+<li><a href="/docs/networking/using-the-linode-shell-lish/">Connect to LISH</a>, which will allow you to access the Linode&rsquo;s virtual console.</li>
+
+<li><p>Enter the following command to create an encrypted volume. You&rsquo;ll be prompted for a passphrase. Make sure that you enter a very strong passphrase, and that you store the passphrase in a physically secure location. Or better yet, memorize the passphrase and don&rsquo;t store it anywhere! :</p>
+
+<pre><code>cryptsetup luksFormat /dev/xvdc
+</code></pre>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>If you lose this passphrase your data will be irretrievable!</div>
+</blockquote>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You may receive a FATAL notice about loading a kernel module used for hardware crypto acceleration. This message can be safely ignored.</div>
+</blockquote>
+</li>
+
+<li><p>Open this encrypted device for access by entering the following command. Enter your passphrase when prompted.</p>
+
+<pre><code>cryptsetup luksOpen /dev/xvdc crypt-xvdc
+</code></pre></li>
+
+<li><p>Create the file systems by entering the following commands, one by one. Use <code>ext2</code> for <code>/boot</code>, and <code>ext4</code> for <code>/</code>. :</p>
+
+<pre><code>mke2fs /dev/xvda
+mke2fs -j /dev/mapper/crypt-xvdc
+</code></pre></li>
+
+<li><p>Create and activate your swap partition by entering the following commands, one by one:</p>
+
+<pre><code>cryptsetup -d /dev/urandom create crypt-swap /dev/xvdb
+mkswap /dev/mapper/crypt-swap
+swapon /dev/mapper/crypt-swap
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Swap will not persist through reboots, so a random key will be used to encrypt swap data.</div>
+</blockquote>
+</li>
+
+<li><p>Mount the encrypted volume to make it writable by entering the following commands, one by one:</p>
+
+<pre><code>mkdir mnt
+mount /dev/mapper/crypt-xvdc mnt/
+</code></pre></li>
+</ol>
+
+<p>You have successfully enabled full disk encryption, created the file systems, and mounted the encrypted volume.</p>
+
+<h3 id="installing-debian-and-mounting-the-disks">Installing Debian and Mounting the Disks</h3>
+
+<p>Now it&rsquo;s time to install Debian 7 (Wheezy) and mount the disks. Here&rsquo;s how to do it:</p>
+
+<ol>
+<li><p>Use <code>debootstrap</code> to install a minimal Debian installation by entering the following command:</p>
+
+<pre><code>debootstrap --arch=amd64  --include=openssh-server,vim,nano,cryptsetup wheezy mnt/
+</code></pre></li>
+
+<li><p>Mount <code>/dev/xvda</code> and a few other things in preparation for changing root into the newly created Debian system, then changing root into the new install. Enter the following commands, one by one:</p>
+
+<pre><code>mount /dev/xvda mnt/boot/
+mount -o bind /dev mnt/dev/
+mount -o bind /dev/pts/ mnt/dev/pts
+mount -t proc /proc/ mnt/proc/
+mount -t sysfs /sys/ mnt/sys/
+chroot mnt/ /bin/bash
+</code></pre></li>
+</ol>
+
+<p>You have successfully installed Debian and mounted the disks on your Linode.</p>
+
+<h3 id="configuring-debian">Configuring Debian</h3>
+
+<p>Now that you&rsquo;re &ldquo;inside&rdquo; the newly installed Debian system, you&rsquo;ll need to make the following changes to create a system that boots and works correctly. Please follow these steps with care. Any error will mean your system will not boot! Here&rsquo;s how to configure Debian:</p>
+
+<ol>
+<li><p>Edit <code>/etc/crypttab</code> to match the following:</p>
+
+<pre><code>crypt-xvdc      /dev/xvdc               none            luks
+crypt-swap      /dev/xvdb               /dev/urandom    swap
+</code></pre></li>
+
+<li><p>Edit <code>/etc/fstab</code> to match the following:</p>
+
+<pre><code>/dev/xvda               /boot   ext2    defaults
+/dev/mapper/crypt-xvdc  /       ext4    noatime,errors=remount-ro
+/dev/mapper/crypt-swap  none    swap    sw
+proc                    /proc   proc    defaults
+</code></pre></li>
+
+<li><p>Modify <code>/etc/mtab</code> by entering the following command:</p>
+
+<pre><code>cat /proc/mounts &gt; /etc/mtab
+</code></pre></li>
+
+<li><p>Configure console access. Note that your console must be configured correctly to boot. Edit <code>/etc/inittab</code> and find the following line:</p>
+
+<pre><code>0:2345:respawn:/sbin/getty 38400 tty1
+</code></pre></li>
+
+<li><p>Change the line in <code>/etc/inittab</code> to match the following:</p>
+
+<pre><code>0:2345:respawn:/sbin/getty 38400 hvc0
+</code></pre></li>
+
+<li><p>Install a kernel and a bootloader, and then configure the bootloader to boot your kernel by entering the following commands, one by one:</p>
+
+<pre><code>mkdir /boot/grub
+apt-get install grub-legacy
+apt-get install linux-image-amd64
+</code></pre></li>
+
+<li><p>Locate the following line in <code>/boot/grub/menu.lst</code>:</p>
+
+<pre><code># kopt=root=/dev/mapper/crypt-xvdc ro
+</code></pre></li>
+
+<li><p>Change the line in <code>/boot/grub/menu.lst</code> to match the following. This will allow update-grub to properly generate a new menu.lst when you update your kernel.</p>
+
+<pre><code># kopt=root=/dev/mapper/crypt-xvdc console=hvc0 ro
+</code></pre></li>
+
+<li><p>Run <code>update-grub</code> and generate a new <code>initramfs</code> by entering the following commands, one by one:</p>
+
+<pre><code>update-grub
+update-initramfs -u
+</code></pre></li>
+</ol>
+
+<p>You have successfully configured Debian for full disk encryption.</p>
+
+<h3 id="tidying-up">Tidying Up</h3>
+
+<p>You&rsquo;re almost finished! Just a couple more steps and you&rsquo;ll have a Linode with encrypted disks:</p>
+
+<ol>
+<li><p>You&rsquo;ll need to make some changes to the structure in <code>/boot</code> due to the way pvgrub expects to see your boot disk. Enter the following commands, one by one:</p>
+
+<pre><code>cd /boot
+mkdir boot/
+mv grub boot/
+ln -nfs boot/grub grub
+</code></pre></li>
+
+<li><p>Set the password for the root user by entering the following command:</p>
+
+<pre><code>passwd
+</code></pre></li>
+
+<li><p>Configure networking by editing <code>/etc/network/interfaces</code> to match the following:</p>
+
+<pre><code>auto lo eth0
+iface lo inet loopback
+iface eth0 inet dhcp
+</code></pre></li>
+
+<li><p>Now exit <code>chroot</code>, unmount your disks, and reboot. You can do this by detaching the screen session and entering the &ldquo;reboot&rdquo; command in LISH:</p>
+
+<pre><code>exit
+umount -l mnt/
+^a^d
+reboot 1
+</code></pre></li>
+</ol>
+
+<p>If everything is configured properly your Linode will boot and prompt you for the encryption passphrase. Enter the passphrase on your console to mount your encrypted disk and boot your Linode. Now you&rsquo;ll want to follow the steps in our <a href="/docs/getting-started">Getting Started</a> guide.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/use-luks-for-full-disk-encryption/">How to Use LUKS for Full Disk Encryption on Linux</a></li>
+    
+    
+    
+    <li><a href="/docs/security/upgrading/upgrade-to-debian-8-jessie/">Upgrading to Debian 8 (Jessie)</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/minecraft-with-mcmyadmin-on-debian/">Installing McMyAdmin for Minecraft on Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/security/security-patches/patching-glibc-for-the-ghost-vulnerability/">Upgrading glibc for the GHOST Vulnerability</a></li>
+    
+    
+    
+    <li><a href="/docs/security/security-patches/disabling-sslv3-for-poodle/">Disabling SSLv3 for POODLE</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#potential-drawbacks">Potential Drawbacks</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#creating-a-configuration-profile">Creating a Configuration Profile</a></li>
+<li><a href="#enabling-full-disk-encryption">Enabling Full Disk Encryption</a>
+<ul>
+<li><a href="#installing-debian-and-mounting-the-disks">Installing Debian and Mounting the Disks</a></li>
+<li><a href="#configuring-debian">Configuring Debian</a></li>
+<li><a href="#tidying-up">Tidying Up</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

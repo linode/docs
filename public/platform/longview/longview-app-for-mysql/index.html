@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Longview App for MySQL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Longview App for MySQL">
+        <meta name="keywords" content="Longview,  MySQL,  statistics">
+        
+        <meta property="og:title" content="Longview App for MySQL">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/longview/longview-app-for-mysql/">
+        <meta property="og:description" content="Longview App for MySQL">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/longview/longview-app-for-mysql/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/longview/">Longview Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Longview App for MySQL
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Longview App for MySQL</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-11-06T00:00:00Z">Wednesday, November 6, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview-app-for-mysql%2f&via=linode&text=Longview%20App%20for%20MySQL" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview-app-for-mysql%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview-app-for-mysql%2f&t=Longview%20App%20for%20MySQL" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/longview/longview-app-for-mysql.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/longview/longview-app-for-mysql.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you&rsquo;ll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL&rsquo;s settings, queries, system resource consumption, and other information.</p>
+
+<h2 id="installing">Installing</h2>
+
+<p>Prerequisites:</p>
+
+<ul>
+<li>Install and start <a href="/docs/databases/mysql">MySQL</a></li>
+<li>Install the <a href="/docs/platform/longview/longview/#installing-the-client">Longview client</a></li>
+</ul>
+
+<h3 id="debian-and-ubuntu-automatic-configuration">Debian and Ubuntu Automatic Configuration</h3>
+
+<p>If MySQL is installed and running when you install the Longview client, the MySQL App should enable and configure itself automatically.</p>
+
+<p>If you already have Longview installed, and later want to install MySQL and enable the Longview App for it, you can run Longview through its automatic configuration sequence again. In most cases, it will find everything it needs to get the MySQL App started. And don&rsquo;t worry - your old Longview data will stay safe. To run the automatic Longview configuration, first make sure that MySQL is running, and then run the following command on your Linode via SSH:</p>
+
+<pre><code>dpkg-reconfigure -phigh linode-longview
+</code></pre>
+
+<p>For most people, Longview should be able to configure itself automatically, and you will receive output something like this:</p>
+
+<pre><code>[ ok ] Stopping Longview Agent: longview.
+Checking MySQL configuration...
+Successfully connected to MySQL
+[ ok ] Starting Longview Agent: longview.
+update-rc.d: using dependency based boot sequencing
+</code></pre>
+
+<p>Once you see this successful message, the Longview MySQL App should automatically start collecting MySQL data. Refresh the Longview MySQL tab in the Linode Manager to start viewing your stats.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Unless you already have a specific Longview database user set up in the <code>/etc/linode/longview.d/MySQL.conf</code> file, Longview will locate and use the <code>debian-sys-maint</code> database user credentials if it can, located at <code>/etc/mysql/debian.cnf</code>.</div>
+</blockquote>
+
+
+<p>If you receive a failure message or the popup shown below, you should visit the <a href="#troubleshooting">Troubleshooting</a> section at the end of this article.</p>
+
+<p><a href="/docs/assets/1459-longview_mysql_popup_crop.png"><img src="/docs/assets/1459-longview_mysql_popup_crop.png" alt="Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \&lt;Ok\&gt;" /></a></p>
+
+<h3 id="manual-configuration-all-distributions">Manual Configuration (All Distributions)</h3>
+
+<p>To enable the MySQL Longview app manually, follow these steps on your Linode via SSH:</p>
+
+<ol>
+<li><p>Create a new MySQL user with minimal privileges for Longview. Run the following queries on your database as the root MySQL user to create the new user:</p>
+
+<pre><code>CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '***************';
+flush privileges;
+</code></pre></li>
+
+<li><p>Edit <code>/etc/linode/longview.d/MySQL.conf</code> to include the same username and password you just added. It should look like the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/linode/longview.d/MySQL.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="c">#username root</span>
+<span class="c">#password example_password</span>
+<span class="nb">username</span> linode-longview
+<span class="nb">password</span> ***************</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Restart Longview:</p>
+
+<pre><code>service longview restart
+</code></pre></li>
+
+<li><p>Refresh the Longview MySQL tab in the Linode Manager.</p></li>
+</ol>
+
+<p>You should now be able to see Longview data for MySQL. If that&rsquo;s not the case, proceed to the <a href="#troubleshooting">Troubleshooting</a> section at the end of this article.</p>
+
+<h2 id="viewing-statistics">Viewing Statistics</h2>
+
+<p>To see the output for the Longview MySQL App:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com/">Linode Manager</a>.</li>
+<li>Select the <strong>Longview</strong> tab.</li>
+<li>Select the <strong>MySQL</strong> tab.</li>
+</ol>
+
+<p>Click the image for a full-size view.</p>
+
+<p><a href="/docs/assets/1457-longview_mysql_stats.png"><img src="/docs/assets/1458-longview_mysql_stats_sm.png" alt="The Longview MySQL App." /></a></p>
+
+<p>You&rsquo;ll see the current version of MySQL listed on the upper right.</p>
+
+<p>Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about <a href="/docs/platform/longview/longview#using-the-interface">navigating the Longview interface</a>. The next sections cover the Longview MySQL App in detail.</p>
+
+<h3 id="queries">Queries</h3>
+
+<p>The <strong>Queries</strong> graph shows the total number of select, update, insert, and delete queries MySQL handled at the selected time.</p>
+
+<h3 id="throughput">Throughput</h3>
+
+<p>The <strong>Throughput</strong> graph shows the amount of data that MySQL sent and received at the time selected.</p>
+
+<h3 id="connections">Connections</h3>
+
+<p>The <strong>Connections</strong> graph shows all of the MySQL connections at the selected time.</p>
+
+<h3 id="slow-queries">Slow Queries</h3>
+
+<p>The <strong>Slow Queries</strong> graph shows the number of slow MySQL queries at the selected time.</p>
+
+<h3 id="aborted">Aborted</h3>
+
+<p>The <strong>Aborted</strong> graph shows the number of aborted MySQL connections and clients at the selected time.</p>
+
+<h3 id="max-connections">Max Connections</h3>
+
+<p>Longview displays the maximum number of MySQL connections.</p>
+
+<h3 id="queries-in-cache">Queries in Cache</h3>
+
+<p>Longview shows the current number of queries in MySQL&rsquo;s cache.</p>
+
+<h3 id="cpu">CPU</h3>
+
+<p>The <strong>CPU</strong> graph shows the percentage of your Linode&rsquo;s CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the <a href="/docs/platform/longview/longview#overview-tab">Overview tab</a>.</p>
+
+<h3 id="memory">Memory</h3>
+
+<p>The <strong>Memory</strong> graph shows the amount of RAM being used by MySQL at the selected time. If you want to see your Linode&rsquo;s total memory use instead, check the <a href="/docs/platform/longview/longview#overview-tab">Overview tab</a>.</p>
+
+<h3 id="disk-io">Disk IO</h3>
+
+<p>The <strong>Disk IO</strong> graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the <a href="/docs/platform/longview/longview#disks-tab">Disks tab</a>.</p>
+
+<h3 id="process-count">Process Count</h3>
+
+<p>The <strong>Process Count</strong> graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the <a href="/docs/platform/longview/longview#process-explorer-tab">Process Explorer tab</a>.</p>
+
+<h1 id="troubleshooting">Troubleshooting</h1>
+
+<p>If you don&rsquo;t see Longview data for MySQL, you&rsquo;ll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the <code>/var/log/linode/longview.log</code> file for errors as well.</p>
+
+<h3 id="unable-to-automatically-configure-mysql-popup">Unable to Automatically Configure MySQL Popup</h3>
+
+<p>If you run the <a href="#debian-and-ubuntu-automatic-configuration">automatic Longview configuration tool</a>, and get the popup message shown below:</p>
+
+<p><a href="/docs/assets/1459-longview_mysql_popup_crop.png"><img src="/docs/assets/1459-longview_mysql_popup_crop.png" alt="Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \&lt;Ok\&gt;" /></a></p>
+
+<p>This indicates that Longview can&rsquo;t locate any valid MySQL user credentials, so it will create some for itself (in the <code>/etc/linode/longview.d/MySQL.conf</code> file) and ask you to add them to MySQL. To finish getting Longview set up, copy the command shown in the popup message, log in to your database as the root MySQL user, then run the query that was shown in the popup message:</p>
+
+<pre><code>CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '***************';
+flush privileges;
+</code></pre>
+
+<p>Refresh the Longview MySQL tab in the Linode Manager to verify that it&rsquo;s working now.</p>
+
+<p>If you&rsquo;ve added the credentials to MySQL and it still doesn&rsquo;t work, double-check your MySQL installation, and then do a <a href="#manual-configuration-all-distributions">manual configuration</a>.</p>
+
+<h3 id="unable-to-connect-to-the-database-no-credentials-found">Unable to Connect to the Database, No Credentials Found</h3>
+
+<p>If you receive the error <code>Unable to connect to the database, no credentials found</code>, this indicates that you need to add a MySQL user for Longview, and make sure the Longview configuration file has the appropriate credentials. See the <a href="#manual-configuration-all-distributions">manual configuration</a> section for details.</p>
+
+<h3 id="unable-to-connect-to-the-database">Unable to Connect to the Database</h3>
+
+<p>This error will state <code>Unable to connect to the database:</code> and then a specific reason. This type of error could occur if the password isn&rsquo;t correct, for example. The list of errors that could cause this issue is pretty long, so you may want to reference the <a href="http://dev.mysql.com/doc/refman/5.5/en/error-messages-client.html">MySQL documentation</a> if you need help understanding a specific error message.</p>
+
+<h3 id="unable-to-collect-mysql-status-information">Unable to Collect MySQL Status Information</h3>
+
+<p>If you receive the error <code>Unable to collect MySQL status information</code>, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode <a href="/docs/support">support</a>.</p>
+
+<h3 id="mysql-tab-is-missing">MySQL Tab is Missing</h3>
+
+<p>If the Longview MySQL tab is missing entirely, this indicates that MySQL is either not installed, or has stopped. If you restart MySQL, you will be able to see the tab again and view all of your old data.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/longview/longview-app-for-nginx/">Longview App for Nginx</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/longview/longview-app-for-apache/">Longview App for Apache</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#installing">Installing</a>
+<ul>
+<li><a href="#debian-and-ubuntu-automatic-configuration">Debian and Ubuntu Automatic Configuration</a></li>
+<li><a href="#manual-configuration-all-distributions">Manual Configuration (All Distributions)</a></li>
+</ul></li>
+<li><a href="#viewing-statistics">Viewing Statistics</a>
+<ul>
+<li><a href="#queries">Queries</a></li>
+<li><a href="#throughput">Throughput</a></li>
+<li><a href="#connections">Connections</a></li>
+<li><a href="#slow-queries">Slow Queries</a></li>
+<li><a href="#aborted">Aborted</a></li>
+<li><a href="#max-connections">Max Connections</a></li>
+<li><a href="#queries-in-cache">Queries in Cache</a></li>
+<li><a href="#cpu">CPU</a></li>
+<li><a href="#memory">Memory</a></li>
+<li><a href="#disk-io">Disk IO</a></li>
+<li><a href="#process-count">Process Count</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li>
+<ul>
+<li><a href="#unable-to-automatically-configure-mysql-popup">Unable to Automatically Configure MySQL Popup</a></li>
+<li><a href="#unable-to-connect-to-the-database-no-credentials-found">Unable to Connect to the Database, No Credentials Found</a></li>
+<li><a href="#unable-to-connect-to-the-database">Unable to Connect to the Database</a></li>
+<li><a href="#unable-to-collect-mysql-status-information">Unable to Collect MySQL Status Information</a></li>
+<li><a href="#mysql-tab-is-missing">MySQL Tab is Missing</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

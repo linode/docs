@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Alpine Linux on your Linode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Alpine Linux is a small, security-oriented Linux distro. This guide explains how to install and configure Alpine Linux on a Linode">
+        <meta name="keywords" content="alpine, alpine linux, custom, custom distro, install alpine linux, alpine linux packages">
+        
+        <meta property="og:title" content="Install Alpine Linux on your Linode">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/">
+        <meta property="og:description" content="Alpine Linux is a small, security-oriented Linux distro. This guide explains how to install and configure Alpine Linux on a Linode">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/custom-kernels-distros/">Run Custom Kernels and Distribution Templates on Linode Instances</a>
+  
+</li>
+
+
+<li>
+  
+  Install Alpine Linux on your Linode
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Alpine Linux on your Linode</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-09-22T00:00:00Z">Thursday, September 22, 2016</time> by Phil Zona</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="http://github.com/andyleap">Andrew Leap
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-alpine-linux-on-your-linode%2f&via=linode&text=Install%20Alpine%20Linux%20on%20your%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-alpine-linux-on-your-linode%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-alpine-linux-on-your-linode%2f&t=Install%20Alpine%20Linux%20on%20your%20Linode" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><a href="http://www.alpinelinux.org/">Alpine Linux</a> is a small, security-oriented Linux distro.
+It&rsquo;s regularly updated with security patches, and runs on the <a href="https://grsecurity.net/">grsecurity</a> kernel. All binaries are statically linked and built against <a href="http://www.musl-libc.org/intro.html">musl libc</a>.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with <a href="/docs/networking/using-the-linode-shell-lish">Lish</a>, as most of this guide will require an out-of-band connection.</p></li>
+
+<li><p>Back up <em>all</em> data on the images on which you intend to install Alpine. Installing Alpine in this manner will destroy all existing data on the disk images you install it on.</p></li>
+
+<li><p>The initial portion of this guide involves creating the disk images, so you make sure you have plenty of free space for them. A minimal installation of Alpine requires less than 1 GB, but depending on your data storage and software needs, you may want to allow for more.</p></li>
+
+<li><p>This guide assumes a consistent present working directory, meaning all commands should be run from the same directory. In most cases, it will be <code>/alpine</code> or a chroot of said directory.</p></li>
+</ol>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>While this guide will provide you with a fully operational Alpine installation, be aware that Linode does not provide official support for Alpine Linux and cannot guarantee its stability or security. Please consider this before proceeding.</div>
+</blockquote>
+
+
+<h2 id="prepare-the-linode">Prepare the Linode</h2>
+
+<h3 id="disk-images">Disk Images</h3>
+
+<p>In this section, we&rsquo;ll create the disk images necessary to install Alpine Linux. Although it is not strictly necessary, giving each disk a descriptive name upon creation will make it easier to keep track of its role in the system.</p>
+
+<ol>
+<li><p>Log in to the <a href="https://manager.linode.com/linodes/">Linode Manager</a> and select the Linode to install Alpine Linux on.</p></li>
+
+<li><p>Create your boot disk image by selecting <strong>Create a new Disk</strong> under the Disks section. The size should be between 128 and 256 MB, and the type should be <strong>ext4</strong>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Boot drives (disk images) will need to store your kernel and your initramfs. Currently, Alpine will need about 21 MB for each kernel/initramfs combination, so even 128 MB is enough for several kernel versions, just remember to keep an eye on the available storage in <code>/boot</code> when you perform upgrades of the kernel.</div>
+</blockquote>
+</li>
+
+<li><p>Create your root disk image with as much space as you need, although if you want a swap disk image, make sure you leave room for it. The root disk image should be of the <strong>ext4</strong> type as well.</p></li>
+
+<li><p>Optionally, create a swap disk image with type <strong>swap</strong>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Between 256 and 512 MB of swap is a good estimate. Many sources recommend much more than this, but a new installation of Alpine will use less than 50 MB of RAM when fully booted.</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="configuration-profile">Configuration Profile</h3>
+
+<p>Create a new configuration profile for your Linode. Choose <strong>GRUB 2</strong> from the kernel menu, which will use the GRUB 2 bootloader to boot Alpine&rsquo;s kernel from your disk image. Set your boot disk image as <code>/dev/sda</code>, your root disk image as <code>/dev/sdb</code>, and your swap disk image, if you created one, as <code>/dev/sdc</code>.</p>
+
+<p>Turn off all the <strong>Filesystem/Boot Helpers</strong>. The rest of the settings can be left at their default values.</p>
+
+<p><a href="/docs/assets/install-alpine-linux-config.png"><img src="/docs/assets/install-alpine-linux-config_small.png" alt="Linode Config" /></a></p>
+
+<h2 id="install-alpine-linux">Install Alpine Linux</h2>
+
+<h3 id="boot-into-rescue-mode">Boot into Rescue Mode</h3>
+
+<ol>
+<li><p>From the Linode Manager, boot your Linode into <a href="/docs/troubleshooting/rescue-and-rebuild">Rescue Mode</a>, with your boot disk image as <code>/dev/sda</code>, your root disk image as <code>/dev/sdb</code>, and your swap as /<code>dev/sdc</code>.</p></li>
+
+<li><p>Once the Linode has booted, connect to it via Lish. If you are not familiar with Lish, there is a simple web interface for it located under the <strong>Remote Access</strong> tab in the Linode Manager.</p></li>
+</ol>
+
+<h3 id="mount-drives">Mount Drives</h3>
+
+<ol>
+<li><p>Create the <code>/alpine</code> directory. This will serve as a mount point for the root disk image:</p>
+
+<pre><code>mkdir /alpine
+</code></pre></li>
+
+<li><p>Mount the root disk to the new <code>/alpine</code> directory and navigate to it:</p>
+
+<pre><code>mount /dev/sdb /alpine
+cd /alpine
+</code></pre></li>
+
+<li><p>Create a <code>boot</code> directory and mount the boot disk image to it:</p>
+
+<pre><code>mkdir boot
+mount /dev/sda /alpine/boot
+</code></pre></li>
+</ol>
+
+<h3 id="download-apk-tools">Download APK Tools</h3>
+
+<ol>
+<li><p>Update the CA Certificates package, so <code>curl</code> can verify the download:</p>
+
+<pre><code>update-ca-certificates
+</code></pre></li>
+
+<li><p>Select your desired Alpine Linux release. In most cases, you can use the <a href="http://nl.alpinelinux.org/alpine/latest-stable/">latest stable release</a></p></li>
+
+<li><p>Identify the current version of the <code>apk-tools-static</code> package. You will need to navigate into the <code>main/x86_64</code> directory of your chosen release in your web browser.</p>
+
+<p>For example, the latest stable version&rsquo;s <code>apk-tools-static</code> package can be found by visiting <code>http://nl.alpinelinux.org/alpine/latest-stable/main/x86_64/</code>. From there, simply search for <code>apk-tools-static</code>. Once you&rsquo;ve found it, copy the file&rsquo;s location. To do this in most browsers, right click the filename and select <strong>Copy Link Address</strong>.</p></li>
+
+<li><p>Download and extract the <code>apk-tools-static</code> package to your Linode. You should still be working in the <code>/alpine</code> directory when performing this step. Replace <code>address</code> in the following command with the address you copied in the previous step:</p>
+
+<pre><code>curl -s address | tar xz
+</code></pre></li>
+
+<li><p>Perform the initial distro installation. This will use the latest stable build of Alpine:</p>
+
+<pre><code>./sbin/apk.static --repository https://nl.alpinelinux.org/alpine/latest-stable/main/ --update-cache --allow-untrusted --root /alpine --initdb add alpine-base alpine-mirrors
+</code></pre>
+
+<p>This should output a series of installation messages, followed by a message showing how many packages were installed and their sizes.</p></li>
+</ol>
+
+<h3 id="system-configuration">System Configuration</h3>
+
+<p>In this section, we will modify critical system files. It is recommended that you make backup copies before making changes.</p>
+
+<ol>
+<li><p>Configure your file systems table (<em>fstab</em>), entering a single hard tab between each column. This file specifies how each disk drive is initialized or mounted into the overall filesystem:</p>
+
+<dl class="file">
+<dt>
+
+
+		/alpine/etc/fstab 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/dev/sdb    /       ext4    defaults,noatime    <span class="m">0</span>   <span class="m">0</span>
+/dev/sda    /boot   ext4    defaults,noatime    <span class="m">0</span>   <span class="m">1</span>
+/dev/sdc    swap    swap    defaults    <span class="m">0</span>   <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Modify the <em>inittab</em>. This file contains options to be read when the system boots or changes run states:</p>
+
+<dl class="file">
+<dt>
+
+
+		/alpine/etc/inittab 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># /etc/inittab
+</span><span class="c1"></span>
+::sysinit:/sbin/rc sysinit
+::sysinit:/sbin/rc boot
+::wait:/sbin/rc default
+
+<span class="c1"># Put a getty on the serial port
+</span><span class="c1"></span>ttyS0::respawn:/sbin/getty -L ttyS0 <span class="m">115200</span> vt100
+
+<span class="c1"># Stuff to do for the 3-finger salute
+</span><span class="c1"></span>::ctrlaltdel:/sbin/reboot
+
+<span class="c1"># Stuff to do before rebooting
+</span><span class="c1"></span>::shutdown:/sbin/rc shutdown</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create the GRUB 2 boot configuration directory:</p>
+
+<pre><code>mkdir /alpine/boot/grub
+</code></pre>
+
+<p>Create a new file, <code>grub.cfg</code> within this directory, and add the following contents. This file specifies configuration options for GRUB 2 to use during the boot process:</p>
+
+<dl class="file">
+<dt>
+
+
+		/alpine/boot/grub/grub.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nv">root</span><span class="o">=(</span>hd0<span class="o">)</span>
+<span class="nb">set</span> <span class="nv">default</span><span class="o">=</span><span class="s2">&#34;Alpine Linux&#34;</span>
+<span class="nb">set</span> <span class="nv">timeout</span><span class="o">=</span><span class="m">0</span>
+
+menuentry <span class="s2">&#34;Alpine Linux&#34;</span> <span class="o">{</span>
+    linux /vmlinuz-grsec <span class="nv">root</span><span class="o">=</span>/dev/sdb <span class="nv">modules</span><span class="o">=</span>sd-mod,usb-storage,ext4 <span class="nv">console</span><span class="o">=</span>ttyS0 quiet
+    initrd /initramfs-grsec
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create a <code>mkinitfs</code> directory:</p>
+
+<pre><code>mkdir /alpine/etc/mkinitfs
+</code></pre>
+
+<p>Create a new file, <code>mkinitfs.conf</code>, within this directory and add the following contents. This file specifies options for building the initial RAM file system (<em>initramfs</em>):</p>
+
+<dl class="file">
+<dt>
+
+
+		/alpine/etc/mkinitfs/mkinitfs.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">features</span><span class="o">=</span><span class="s2">&#34;ata ide scsi virtio base ext4&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Copy the system&rsquo;s <code>resolv.conf</code> file into <code>/alpine/etc</code>:</p>
+
+<pre><code>cp /etc/resolv.conf /alpine/etc
+</code></pre></li>
+
+<li><p>Add <code>ttyS0</code> to <code>securetty</code> to allow root login over Lish:</p>
+
+<pre><code>echo ttyS0 &gt;&gt; /alpine/etc/securetty
+</code></pre></li>
+</ol>
+
+<h3 id="install-the-kernel">Install the Kernel</h3>
+
+<ol>
+<li><p>Bind the <code>/proc</code> and <code>/dev</code> directories to the <code>/alpine</code> directory:</p>
+
+<pre><code>mount --bind /proc /alpine/proc
+mount --bind /dev /alpine/dev
+</code></pre></li>
+
+<li><p>Enter the Alpine <a href="https://en.wikipedia.org/wiki/Chroot">chroot</a> jail:</p>
+
+<pre><code>chroot /alpine /bin/sh
+</code></pre></li>
+
+<li><p>Select a mirror to use when downloading or updating packages:</p>
+
+<pre><code>setup-apkrepos
+</code></pre>
+
+<p>You can select a mirror by entering its corresponding number, or <code>f</code> to automatically pick the fastest mirror.</p></li>
+
+<li><p>Update your packages:</p>
+
+<pre><code>apk update
+</code></pre></li>
+
+<li><p>Set your hostname, replacing <code>example</code> with a hostname of your choice:</p>
+
+<pre><code>setup-hostname -n example
+</code></pre></li>
+
+<li><p>Configure important services to start automatically using Alpine&rsquo;s <a href="https://en.wikipedia.org/wiki/OpenRC">OpenRC</a> init system:</p>
+
+<pre><code>rc-update add networking boot
+rc-update add urandom boot
+rc-update add crond
+</code></pre>
+
+<p>If you&rsquo;ll need other services, you can also add them now. The above is intended to serve as a starting point.</p></li>
+
+<li><p>Install the <a href="https://grsecurity.net/">grsecurity</a> kernel:</p>
+
+<pre><code>apk add linux-grsec
+</code></pre></li>
+
+<li><p>Exit the chroot jail by issuing the <code>exit</code> command, and then shut down your Linode from the Linode Dashboard.</p></li>
+</ol>
+
+<h2 id="configure-alpine-linux">Configure Alpine Linux</h2>
+
+<h3 id="reboot-into-alpine">Reboot into Alpine</h3>
+
+<ol>
+<li><p>Boot into the Alpine Linux configuration you made earlier by selecting the button next to the profile in the Linode Manager and clicking <strong>Boot</strong>. If this is the only configuration profile, this can also be accomplished from Lish using the <code>boot 1</code> command. If there are other profiles, you can substitute <code>1</code> with the list position of your Alpine profile.</p></li>
+
+<li><p>Use Lish to log in as <code>root</code>. You will not be prompted for a password since it has not yet been set.</p></li>
+</ol>
+
+<h3 id="configuration">Configuration</h3>
+
+<ol>
+<li><p>Set up and start networking. Alpine has a handy script that will configure the network interface file for you and guide you through the various options. It&rsquo;s capable of advanced configuration, like bridging and bonding, but for a basic setup, its defaults should be sufficient.</p>
+
+<pre><code>setup-interfaces
+</code></pre>
+
+<p>Press <strong>enter</strong> 3 times to accept the defaults of <code>eth0</code>, <code>dhcp</code>, and <code>no</code>, then restart the networking service:</p>
+
+<pre><code>service networking restart
+</code></pre>
+
+<p>Your Linode should now have a functional network connection.</p></li>
+
+<li><p>Set a root password:</p>
+
+<pre><code>passwd
+</code></pre></li>
+
+<li><p>Create a limited user account to avoid using root for all commands. Replace <code>example-user</code> with a username of your choice:</p>
+
+<pre><code>adduser example-user
+</code></pre></li>
+
+<li><p>Install the <code>sudo</code> package:</p>
+
+<pre><code>apk add sudo
+</code></pre></li>
+
+<li><p>Configure <code>sudo</code> to allow users in the sudo group to temporarily elevate their privileges:</p>
+
+<pre><code>echo &quot;%sudo   ALL=(ALL) ALL&quot; &gt;&gt; /etc/sudoers
+</code></pre>
+
+<p>Alternatively, you can allow passwordless sudo. However, this is not recommended in most cases:</p>
+
+<pre><code>echo &quot;%sudo   ALL=(ALL) NOPASSWD: ALL&quot; &gt;&gt; /etc/sudoers
+</code></pre>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>This configuration is less secure, and generally not recommended.</div>
+</blockquote>
+</li>
+
+<li><p>Create the sudo group and add your new user to it:</p>
+
+<pre><code>addgroup sudo
+adduser example-user sudo
+</code></pre></li>
+
+<li><p>Install and configure the SSH daemon (SSHD). Alpine has a simple setup script to handle this:</p>
+
+<pre><code>setup-sshd
+</code></pre>
+
+<p>We recommend the <code>openssh</code> server if you want full SFTP access. <code>dropbear</code> is a more lightweight option, although it only provides SSH access.</p></li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>At this point, you should be able to connect to your server via SSH. Alpine is very lightweight, and doesn&rsquo;t install very much unless you ask it to. For instance, you won&rsquo;t have a text editor to start off, and the only service running is your SSH daemon.</p>
+
+<h2 id="install-packages">Install Packages</h2>
+
+<p>Alpine&rsquo;s website provides a searchable library of <a href="https://pkgs.alpinelinux.org/packages">available packages</a>.</p>
+
+<p>A few packages to consider:</p>
+
+<ul>
+<li>Text editor: <code>nano</code> or <code>vim</code></li>
+<li>Web server: <code>lighttpd</code>, <code>apache2</code>, or <code>nginx</code></li>
+<li>Scripting languages: <code>php</code>, <code>perl</code>, or <code>python</code></li>
+<li>Database servers: <code>mysql</code> or <code>postgresql</code></li>
+</ul>
+
+<p>Note that some of these combinations may require additional dependencies. To install a new package, use the following command, replacing <code>package</code> with the package name(s):</p>
+
+<pre><code>apk add package
+</code></pre>
+
+<p>For example, to add Apache, PHP, and MySQL:</p>
+
+<pre><code>apk add apache2 php mysql
+</code></pre>
+
+<p>For more information, see Alpine&rsquo;s wiki page on <a href="https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management">package management</a>.</p>
+
+<h2 id="secure-your-server">Secure Your Server</h2>
+
+<p>Before using your Linode in a development or production capacity, make sure you&rsquo;ve taken some basic security precautions. Our guide on <a href="/docs/security/securing-your-server">Securing Your Server</a> provides a good starting point, but you may want to research additional, Alpine-specific security options on your own. Keep in mind that you will need to install most security packages, e.g. <code>iptables</code>.</p>
+
+<p>For more information, refer to their wiki page on <a href="https://wiki.alpinelinux.org/wiki/Category:Security">security</a>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.alpinelinux.org/">Alpine Linux</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-nixos-on-linode/">Install and Configure NixOS on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/">Install a Custom Distribution on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/">Install CoreOS on Your Linode - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode/">Install a Custom Distribution on a Xen Linode - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="http://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#prepare-the-linode">Prepare the Linode</a>
+<ul>
+<li><a href="#disk-images">Disk Images</a></li>
+<li><a href="#configuration-profile">Configuration Profile</a></li>
+</ul></li>
+<li><a href="#install-alpine-linux">Install Alpine Linux</a>
+<ul>
+<li><a href="#boot-into-rescue-mode">Boot into Rescue Mode</a></li>
+<li><a href="#mount-drives">Mount Drives</a></li>
+<li><a href="#download-apk-tools">Download APK Tools</a></li>
+<li><a href="#system-configuration">System Configuration</a></li>
+<li><a href="#install-the-kernel">Install the Kernel</a></li>
+</ul></li>
+<li><a href="#configure-alpine-linux">Configure Alpine Linux</a>
+<ul>
+<li><a href="#reboot-into-alpine">Reboot into Alpine</a></li>
+<li><a href="#configuration">Configuration</a></li>
+</ul></li>
+<li><a href="#next-steps">Next Steps</a></li>
+<li><a href="#install-packages">Install Packages</a></li>
+<li><a href="#secure-your-server">Secure Your Server</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

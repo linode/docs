@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Apache Configuration Structure</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="An introduction to the structure of the Apache web server configuration for maintaining granular configuration.">
+        <meta name="keywords" content="apache, httpd, configuration">
+        
+        <meta property="og:title" content="Apache Configuration Structure">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/apache-tips-and-tricks/apache-configuration-structure/">
+        <meta property="og:description" content="An introduction to the structure of the Apache web server configuration for maintaining granular configuration.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/apache-tips-and-tricks/apache-configuration-structure/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/apache-tips-and-tricks/">Apache Tips &amp; Tricks</a>
+  
+</li>
+
+
+<li>
+  
+  Apache Configuration Structure
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Apache Configuration Structure</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-08-22T00:00:00Z">Monday, August 22, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache-tips-and-tricks%2fapache-configuration-structure%2f&via=linode&text=Apache%20Configuration%20Structure" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache-tips-and-tricks%2fapache-configuration-structure%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fapache-tips-and-tricks%2fapache-configuration-structure%2f&t=Apache%20Configuration%20Structure" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/apache-tips-and-tricks/apache-configuration-structure.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/apache-tips-and-tricks/apache-configuration-structure.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>In our basic <a href="/docs/web-servers/apache/">installation guides for Apache</a> and <a href="/docs/lamp-guides/">LAMP stack tutorials</a>, we suggest a very simple configuration based on <code>&lt;VirtualHost&gt;</code> configurations. This is useful for configuring a number of different websites on a single server, but this approach does not provide granular control over the behavior of resources <em>within</em> these sites.</p>
+
+<p><img src="/docs/assets/apache-configuration-structure-headerimg.jpg" alt="Apache configuration structure" title="Apache configuration structure" /></p>
+
+<p>The <code>&lt;VirtualHost&gt;</code> block provides administrators with the ability to modify the behavior of the web server on a per-host or per-domain basis; any options specified in the <code>&lt;VirtualHost&gt;</code> block apply to the entire domain. However, they don&rsquo;t provide the ability to specify options on a per-directory basis. Thankfully, Apache provides additional possibilities for specific configuration.</p>
+
+<p>This document addresses a number of ways to configure the behavior of your web server on a very narrow per-directory and even per-file level. For more information about specific options, consult our other <a href="/docs/web-servers/apache/">Apache configuration guides</a> or the official <a href="http://httpd.apache.org/docs/">Apache documentation</a>.</p>
+
+<h2 id="directory-and-options">Directory and Options</h2>
+
+<p>The <code>&lt;Directory&gt;</code> block refers to a directory in the filesystem and specifies how Apache will behave with regards to that directory. This block is enclosed in angle braces and begins with the word &ldquo;Directory&rdquo; and a path to a directory in the file system. Options set in a directory block apply to the directory and its sub directories as specified. The following is an example of a directory block:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Virtual Host Entry in an Apache Configuration file 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Directory</span> <span class="s">/srv/www/example.com/public_html/images</span><span class="nt">&gt;</span>
+    <span class="nb">Order</span> Allow,Deny
+    <span class="nb">Allow</span> from <span class="k">all</span>
+    <span class="nb">Deny</span> <span class="m">55</span>.1
+<span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Additional notes about the <code>&lt;Directory&gt;</code> block:</p>
+
+<ul>
+<li>Directory blocks <em>cannot</em> be nested within each other.</li>
+<li>Directory blocks <em>can</em> be nested within <code>&lt;VirtualHost&gt;</code> blocks.</li>
+
+<li><p>The path contained in a directory block can contain the wildcard character. The asterisk (e.g. <code>*</code>) will match any series of characters while a question mark (e.g. <code>?</code>) will match against any single character. This may be useful if you need to control an option for the <code>DocumentRoot</code> of all virtual hosts. You might begin a <code>&lt;Directory&gt;</code> block with the following line:</p>
+
+<p><strong>File excerpt:</strong> <em>Directory Block in an Apache Configuration file</em> :</p>
+
+<pre><code>&lt;Directory /srv/www/*/public_html&gt;
+</code></pre></li>
+</ul>
+
+<h2 id="file-options">File Options</h2>
+
+<p>If you need further control over specific files within a directory on your server, you can use the <code>&lt;Files&gt;</code> directive. This controls the behavior of the web server with regards to a single file. <code>&lt;Files&gt;</code> directives will apply to any file with the specified name. For instance, the following example directive will match any file named <code>roster.htm</code> in the filesystem:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Files Directive in an Apache Configuration file 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Files</span> <span class="s">roster.htm</span><span class="nt">&gt;</span>
+     <span class="nb">Order</span> Allow,Deny
+     <span class="nb">Deny</span> from <span class="k">all</span>
+<span class="nt">&lt;/Files</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If enclosed in a <code>&lt;VirtualHost&gt;</code> block, this will apply to all files named <code>roster.htm</code> in the <code>DocumentRoot</code> or in directories located within the <code>DocumentRoot</code> of that Host. If the <code>&lt;Files&gt;</code> directive is enclosed in a <code>&lt;Directory&gt;</code> block, the options specified will apply to all files named <code>roster.htm</code> within the directory, or within sub-directories of the directory specified.</p>
+
+<h2 id="location-options">Location Options</h2>
+
+<p>While <code>&lt;Directory&gt;</code> and <code>&lt;Files&gt;</code> blocks control Apache&rsquo;s behavior with regards to locations in the <em>filesystem</em>, the <code>&lt;Location&gt;</code> directive controls Apache&rsquo;s behavior with regard to a particular path requested by the client. If a user makes a request for <code>http://www.example.com/webmail/inbox/</code>, the web server would look in the <code>webmail/inbox/</code> directory beneath the <code>DocumentRoot</code> such as <code>/srv/www/example.com/public_html/webmail/inbox/</code>. One common use for this functionality might be to allow a script to handle requests made to a given path. For example, the following block directs all requests for the specified path to a <code>mod_python</code> script:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Location Directive in an Apache Configuration file 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Location</span> <span class="s">/webmail/inbox</span><span class="nt">&gt;</span>
+    <span class="nb">SetHandler</span> python-program
+    <span class="nb">PythonHandler</span> modpython
+    <span class="nb">PythonPath</span> <span class="s2">&#34;[&#39;/srv/www/example.com/application/inbox&#39;] + sys.path&#34;</span>
+<span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Note that the options specified in <code>&lt;Location&gt;</code> directives are processed after the options specified in <code>&lt;Directory&gt;</code> blocks and can override any options set in these blocks.</p>
+
+<h2 id="htaccess-options">htaccess Options</h2>
+
+<p>In addition to the configuration methods discussed above, default configurations of Apache will read configuration options for a directory from a file located in that directory. This file is typically called <code>.htaccess</code>. Look for the following configuration options in your <code>httpd.conf</code> and connected files:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/httpd/httpd.conf or /etc/apache2/apache2.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">AccessFileName</span> .htaccess
+
+<span class="nt">&lt;Files</span> <span class="s">~ &#34;^\.ht&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">Order</span> allow,deny
+    <span class="nb">Deny</span> from <span class="k">all</span>
+<span class="nt">&lt;/Files</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The first line tells Apache to look in <code>.htaccess</code> files for configuration options in publicly accessible directories. The second <code>&lt;Files ~ &quot;^\.ht&quot;&gt;</code> directive tells Apache to deny all requests to serve any file with a name that begins with the characters <code>.ht</code>. This prevents visitors from gaining access to configuration options.</p>
+
+<p>You can change the <code>AccessFileName</code> to specify another name where Apache can look for these configuration options. If you change this option, be sure to update the <code>&lt;Files&gt;</code> directive to prevent unintentional public access. This is not recommended for obvious security reasons.</p>
+
+<p>Any option that can be specified in a <code>&lt;Directory&gt;</code> block can be specified in an <code>.htaccess</code> file. <code>.htaccess</code> files are particularly useful in cases where the operator of a website is a user who has access to edit files in the public directory of website, but not to any of the Apache configuration files.</p>
+
+<p><code>.htaccess</code> files are processed for each request and apply to all requests made for files in the current directory. The directives also apply to all the directories &ldquo;beneath&rdquo; the current directory in the file system hierarchy.</p>
+
+<p>Despite the power and flexibility provided by <code>.htaccess</code> files, there are disadvantages to using them.</p>
+
+<ul>
+<li>If <code>.htaccess</code> files are enabled, Apache must check and process the directives in the <code>.htaccess</code> file on every request. Furthermore Apache must check for <code>.htaccess</code> files in directories above the current directory in the file system. This can cause a slight performance degradation if access files are enabled, and applies even if they&rsquo;re not used.</li>
+<li>Options set in <code>.htaccess</code> files can override options set in <code>&lt;Directory&gt;</code> blocks, which can cause confusion and undesirable behavior. Any option set in an <code>.htaccess</code> file can be set in a <code>&lt;Directory&gt;</code> block.</li>
+<li>Allowing non-privileged users to modify web-server configurations presents a potential security risk, however the <a href="http://httpd.apache.org/docs/1.3/mod/core.html#allowoverride">AllowOverride</a> options may mitigate this risk considerably.</li>
+</ul>
+
+<p>If you want to disable <code>.htaccess</code> files for a directory or tree of directories, specify the following option in any <em>directory</em> block.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache `&lt;Directory &gt;` block 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">AllowOverride</span> <span class="k">None</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Note that you can specify <code>AllowOverride All</code> for a directory that falls within a directory where overrides have been disabled.</p>
+
+<h2 id="match-directives-and-regular-expressions">&ldquo;Match&rdquo; Directives and Regular Expressions</h2>
+
+<p>In addition to the basic directives described above, Apache also allows server administrators some additional flexibility in how directories, files, and locations are specified. These &ldquo;Match&rdquo; blocks and regular expression-defined directive blocks allow administrators to define a single set of configuration options for a class of directories, files, and locations. Here is an example:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		DirectoryMatch Block in an Apache Configuration file 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;DirectoryMatch</span> <span class="s">&#34;^.+/images&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">Order</span> Allow,Deny
+    <span class="nb">Allow</span> from <span class="k">all</span>
+    <span class="nb">Deny</span> <span class="m">55</span>.1
+<span class="nt">&lt;/DirectoryMatch</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This block specifies a number of options for any directory that matches the regular expression <code>^.+/images</code>. In other words, any path which begins with a number of characters and ends with images will match these options, including the following paths: <code>/srv/www/example.com/public_html/images/</code>, <code>/srv/www/example.com/public_html/objects/images</code>, and <code>/home/username/public/www/images</code>.</p>
+
+<p>Apache also allows an alternate syntax for regular expression-defined directory blocks. Adding a tilde (e.g. <code>~</code>) between the <code>Directory</code> term and the specified path causes the specified path to be read as a regular expression. Regular expressions are a standard syntax for pattern matching, and Apache supports standard and Perl regular expression variants.</p>
+
+<p>Though <code>DirectoryMatch</code> is preferred, the following block is equivalent to the previous block in all respects:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Directory Regular Expression Block in an Apache Configuration file 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Directory</span> <span class="s">~ &#34;^.+/images&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">Order</span> Allow,Deny
+    <span class="nb">Allow</span> from <span class="k">all</span>
+    <span class="nb">Deny</span> <span class="m">55</span>.1
+<span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Apache provides similar functionality for using regular expressions to match a class of locations or files to a single set of configuration directives. As a result, the following options all specify valid configurations:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		File and Location Match Directives 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Files</span> <span class="s">~ &#34;^\..+&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">Order</span> allow,deny
+    <span class="nb">Deny</span> from <span class="k">all</span>
+<span class="nt">&lt;/Files</span><span class="s"></span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;FilesMatch</span> <span class="s">&#34;^\..+&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">Order</span> allow,deny
+    <span class="nb">Deny</span> from <span class="k">all</span>
+<span class="nt">&lt;/FilesMatch</span><span class="s"></span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;Location</span> <span class="s">~ &#34;inbox$&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">Order</span> Deny,Allow
+    <span class="nb">Deny</span> from <span class="k">all</span>
+    <span class="nb">Allow</span> <span class="m">192</span>.168
+<span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;LocationMatch</span> <span class="s">&#34;inbox$&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">Order</span> Deny,Allow
+    <span class="nb">Deny</span> from <span class="k">all</span>
+    <span class="nb">Allow</span> <span class="m">192</span>.168
+<span class="nt">&lt;/LocationMatch</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Note that the above <code>&lt;Files&gt;</code> and <code>&lt;FilesMatch&gt;</code> directives are equivalent, as are the <code>&lt;Location&gt;</code> and <code>&lt;LocationMatch&gt;</code> directives.</p>
+
+<h2 id="order-of-precedence">Order of Precedence</h2>
+
+<p>With so many possible locations for configuration options, it is possible to specify one option in one file or block only to have it be overridden by another option later. One of the chief challenges in using the Apache HTTP server is in determining how all of the disparately located configuration options combine to produce specific web server behaviors.</p>
+
+<p>The following list provides a guide to the priority that Apache uses to &ldquo;merge configuration options&rdquo; together. Later operations can override options specified earlier.</p>
+
+<ol>
+<li><code>&lt;Directory&gt;</code> blocks are read first.</li>
+<li><code>.htaccess</code> files are read at the same time as <code>&lt;Directory&gt;</code> blocks, but can override the options specified in <code>&lt;Directory&gt;</code> blocks if permitted by the <code>AllowOverride</code> option.</li>
+<li><code>&lt;DirectoryMatch&gt;</code> and <code>&lt;Directory ~&gt;</code> are read next.</li>
+<li><code>&lt;Files&gt;</code> and <code>&lt;FilesMatch&gt;</code> are read after directory behaviors have been determined.</li>
+<li>Finally, <code>&lt;Location&gt;</code> and <code>&lt;LocationMatch&gt;</code> are read.</li>
+</ol>
+
+<p>Generally, <code>&lt;Directory&gt;</code> options are parsed in order from shortest to longest. In other words, options set for <code>/srv/www/example.com/public_html/objects</code> will be processed before options set for <code>/srv/www/example.com/public_html/objects/images</code> regardless of what order they appear in the configuration file. All other directives are processed in the order that they appear in the configuration file.</p>
+
+<p>Additionally, note that <code>Include</code> directives are processed linearly. Options specified in a file included in line 20 of <code>httpd.conf</code> can be overridden by an option specified in line 30 of that file or in a file that is included at that point.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="/docs/web-servers/apache/">Apache Installation</a></li>
+
+<li><a href="/docs/lamp-guides/">LAMP Stack Guides</a></li>
+
+<li><a href="/docs/web-servers/apache/troubleshooting/">Troubleshooting Apache</a></li>
+
+<li><a href="http://linode.com/community/">Linode User Community</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/">Tuning Your Apache Server</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/ssl-apache2-centos/">SSL Certificates with Apache on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-12-04-precise-pangolin/">Using Apache for Proxy and Clustering Services on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-fedora-14/">Using Apache for Proxy and Clustering Services on Fedora 14 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-10-maverick/">Using Apache for Proxy and Clustering Services on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#directory-and-options">Directory and Options</a></li>
+<li><a href="#file-options">File Options</a></li>
+<li><a href="#location-options">Location Options</a></li>
+<li><a href="#htaccess-options">htaccess Options</a></li>
+<li><a href="#match-directives-and-regular-expressions">&ldquo;Match&rdquo; Directives and Regular Expressions</a></li>
+<li><a href="#order-of-precedence">Order of Precedence</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

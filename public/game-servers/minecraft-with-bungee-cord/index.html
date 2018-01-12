@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Set Up BungeeCord to Link Spigot Servers</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to link your Minecraft servers together using BungeeCord on your Linode with Ubuntu/Debian">
+        <meta name="keywords" content="minecraft, spigot, bungeecord, link, bukkit, 25565, minecraft servers, linking minecraft servers, how to set up bungeecord">
+        
+        <meta property="og:title" content="How to Set Up BungeeCord to Link Spigot Servers">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/game-servers/minecraft-with-bungee-cord/">
+        <meta property="og:description" content="How to link your Minecraft servers together using BungeeCord on your Linode with Ubuntu/Debian">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/game-servers/minecraft-with-bungee-cord/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/game-servers/">Game Servers</a>
+  
+</li>
+
+
+<li>
+  
+  How to Set Up BungeeCord to Link Spigot Servers
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Set Up BungeeCord to Link Spigot Servers</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-09-09T00:00:00Z">Wednesday, September 9, 2015</time> by linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/twemyss">Thomas Wemyss
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fminecraft-with-bungee-cord%2f&via=linode&text=How%20to%20Set%20Up%20BungeeCord%20to%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fminecraft-with-bungee-cord%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fminecraft-with-bungee-cord%2f&t=How%20to%20Set%20Up%20BungeeCord%20to%20Link%20Spigot%20Servers" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/game-servers/minecraft-with-bungee-cord.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/game-servers/minecraft-with-bungee-cord.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>After you’ve got a Minecraft server up and running with <a href="/docs/game-servers/minecraft-with-spigot-ubuntu">Spigot on Debian and Ubuntu</a>, you may want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft client and the server, and allows for simple and easy switching between your Spigot servers. It allows for players to connect to one address, yet also access a wider variety of activities than can be easily set up on a single Minecraft server instance.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="setting-up-your-linode">Setting Up Your Linode</h2>
+
+<p>For the purposes of this tutorial, you will be creating another Debian or Ubuntu Linode to run BungeeCord. This helps to keep it separate from your other servers, and allows you to hide the IP of any back-end services.</p>
+
+<p>We will assume that the IP of the Linode you&rsquo;re going to install BungeeCord on is <code>203.0.113.0</code>, and there are two Spigot servers, with the IP addresses <code>203.0.113.112</code> and <code>203.0.113.198</code>.</p>
+
+<h3 id="updating-and-installing-prerequisite-software">Updating and Installing Prerequisite Software</h3>
+
+<p>On the Linode that is going to host BungeeCord:</p>
+
+<ol>
+<li><p>Update the system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+
+<li><p>If not previously installed, you will need to install OpenJDK JRE, an open source Java environment:</p>
+
+<pre><code>sudo apt-get install openjdk-7-jre-headless
+</code></pre></li>
+
+<li><p>Install GNU Screen. This allows BungeeCord to run in the background, even when you&rsquo;re not connected to SSH.</p>
+
+<pre><code>sudo apt-get install screen
+</code></pre></li>
+
+<li><p>Create another user for the BungeeCord proxy, so that it doesn&rsquo;t have the same privileges as your user. You&rsquo;ll need to keep this password for future reference.</p>
+
+<pre><code>sudo adduser bungeecord
+</code></pre></li>
+</ol>
+
+<h3 id="configuring-the-firewall-on-the-bungeecord-node">Configuring the Firewall on the BungeeCord Node</h3>
+
+<p>If you&rsquo;re using iptables or ufw to act as a firewall, you&rsquo;ll need to make a rule on the Linode running BungeeCord, to permit TCP on port 25565. This can be done by running:</p>
+
+<pre><code>sudo iptables -A INPUT -p tcp --dport 25565 -j ACCEPT
+</code></pre>
+
+<h3 id="configuring-the-firewall-on-the-spigot-server-linodes">Configuring the Firewall on the Spigot Server Linodes</h3>
+
+<p>For BungeeCord, the Spigot servers need to be in offline mode, as the BungeeCord proxy handles the authentication. This can make the servers vulnerable to people connecting directly, as they can connect with any username, potentially allowing for connection as a user with adminsitrative permissions. To prevent this, you can set up iptables to limit connections to only the BungeeCord server.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This section assumes that you&rsquo;ve only got a Spigot server running on each Linode. If you have other services, you&rsquo;ll need to modify the rules to allow them to continue working.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Delete existing rules and then allow SSH. If you&rsquo;ve changed your SSH port, make sure to change the <code>22</code> below:</p>
+
+<pre><code>sudo iptables -F
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+</code></pre></li>
+
+<li><p>Limit the connections on port 25565 (TCP) to the IP of the BungeeCord Linode, <code>203.0.113.0</code>. You will need to change this for your system:</p>
+
+<pre><code>sudo iptables -A INPUT -p tcp -s `203.0.113.0` --dport 25565 -j ACCEPT
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;re running other Spigot servers on the same Linode, then you will need to run step 2 again, but changing <code>25565</code> to the port of the other servers.</div>
+</blockquote>
+</li>
+
+<li><p>Allow loopback traffic through the firewall:</p>
+
+<pre><code>sudo iptables -A INPUT -i lo -j ACCEPT
+sudo iptables -A OUTPUT -o lo -j ACCEPT
+</code></pre></li>
+
+<li><p>Allow outgoing connections, and then drop all other packets:</p>
+
+<pre><code>sudo iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A INPUT -j DROP
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;ve configured your <code>iptables</code> firewall by following our <a href="/docs/security/securing-your-server/">Securing Your Server</a> tutorial, then you will need to append the exceptions in steps 1, 2 and 3 to <code>/etc/iptables.firewall.rules</code> to ensure that they&rsquo;re persistent between reboots.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="installing-bungeecord">Installing BungeeCord</h2>
+
+<p>Log into the BungeeCord Linode as the <code>bungeecord</code> user created earlier, and download BungeeCord:</p>
+
+<pre><code>wget -O BungeeCord.jar http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This downloads the latest version of BungeeCord. You can find older versions for older Minecraft server versions, <a href="http://ci.md-5.net/job/BungeeCord/">here</a>.</div>
+</blockquote>
+
+
+<h3 id="setting-up-bungeecord">Setting up BungeeCord</h3>
+
+<ol>
+<li><p>Start BungeeCord up, allowing it to generate the configuration files:</p>
+
+<pre><code>java -jar BungeeCord.jar
+</code></pre>
+
+<p>After the prompt <code>[INFO] Listening on /0.0.0.0:25577</code> is displayed in the console, type <code>end</code> and press Enter.</p></li>
+
+<li><p>Edit <code>config.yml</code> by replacing the section of the configuration that says <code>host: 0.0.0.0:25577</code> to <code>host: 0.0.0.0:25565</code> as this is the default port that the Minecraft Client attempts to connect to.</p></li>
+
+<li><p>Edit the following block of the configuration, in order to add our existing Spigot servers:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		config.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">servers<span class="p">:</span><span class="w">
+</span><span class="w">  </span>lobby<span class="p">:</span><span class="w">
+</span><span class="w">    </span>address<span class="p">:</span><span class="w"> </span>localhost<span class="p">:</span><span class="m">25565</span><span class="w">
+</span><span class="w">    </span>restricted<span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span>motd<span class="p">:</span><span class="w"> </span><span class="s1">&#39;Just another BungeeCord - Forced Host&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>For the servers that are specified as examples in the introduction, it would look like:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		config.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">servers<span class="p">:</span><span class="w">
+</span><span class="w">  </span>lobby<span class="p">:</span><span class="w">
+</span><span class="w">    </span>address<span class="p">:</span><span class="w"> </span><span class="m">203.0</span>.<span class="m">113.112</span><span class="p">:</span><span class="m">25565</span><span class="w">
+</span><span class="w">    </span>restricted<span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span>motd<span class="p">:</span><span class="w"> </span><span class="s1">&#39;Just another BungeeCord - Forced Host&#39;</span><span class="w">
+</span><span class="w">	      </span>games<span class="p">:</span><span class="w">
+</span><span class="w"> </span>address<span class="p">:</span><span class="w"> </span><span class="m">203.0</span>.<span class="m">113.198</span><span class="p">:</span><span class="m">25565</span><span class="w">
+</span><span class="w"> </span>restricted<span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"> </span>motd<span class="p">:</span><span class="w"> </span><span class="s1">&#39;Just another BungeeCord - Forced Host&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Each server block has a label: In the case of the example, <code>lobby</code> or <code>games</code>. These can be any word you want, but it&rsquo;s important that they are descriptive, as they will be used by the players to change servers.</p>
+
+<p>So that players can recognise your server more easily in their server list, you can set a custom message. Change the line that says <code>motd: 'Just another Bungeecord - Forced Host'</code> and put your custom message between the quotes. You can use Minecraft color codes here.</p>
+
+<p>To allow for UUIDs to be correct in the Spigot servers, you should also ensure that you set <code>ip_forward</code> to <code>true</code>.</p>
+
+<p>Finally, you need to set the default server for players who connect. You can do this by replacing the <code>lobby</code> in the line that says <code>default_server: lobby</code> with the label for your server.</p>
+
+<p>Save and exit.</p></li>
+</ol>
+
+<h3 id="running-bungeecord">Running BungeeCord</h3>
+
+<ol>
+<li><p>Create the file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/home/bungeecord/bungeestart.sh 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+screen -dmS <span class="s2">&#34;bungeecord&#34;</span> java -jar BungeeCord.jar</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Run <code>chmod +x bungeestart.sh</code>, to make the file executable.</p></li>
+
+<li><p>When you want to start your server, run <code>./bungeestart.sh</code>.</p>
+
+<p>To connect to the server console, run:</p>
+
+<pre><code>screen -r bungeecord
+</code></pre>
+
+<p>Whenever you want to detach from the console, press <code>Control-a</code> followed by <code>d</code></p></li>
+</ol>
+
+<h2 id="configuring-your-spigot-servers-for-bungeecord">Configuring your Spigot servers for BungeeCord</h2>
+
+<ol>
+<li><p>On your Spigot servers, navigate to the Spigot directory and open <code>spigot.yml</code>.</p></li>
+
+<li><p>Change <code>bungeecord: false</code> to <code>bungeecord: true</code>. Save and exit.</p></li>
+
+<li><p>Open <code>server.properties</code>.</p></li>
+
+<li><p>Change <code>online-mode=true</code> to <code>online-mode=false</code>. Save and exit.</p></li>
+
+<li><p>Restart the Spigot servers.</p></li>
+</ol>
+
+<h2 id="switching-between-servers-without-reconnecting">Switching Between Servers Without Reconnecting</h2>
+
+<p>Connect to your BungeeCord address in Minecraft, and run <code>/server name</code> where <code>name</code> is the name you configured in the BungeeCord <code>config.yml</code> file. It&rsquo;s that simple!</p>
+
+<p>To see who is online on any of the BungeeCord servers that you&rsquo;ve linked, you can run:</p>
+
+<pre><code>/glist
+</code></pre>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="unable-to-connect-to-minecraft">Unable to Connect to Minecraft</h3>
+
+<p>If there is an issue connecting, then it&rsquo;s important to check that the login servers are up. These quite frequently come under attack, so you&rsquo;ll need to check if you can access other servers. If you can, and you&rsquo;re using the right version of Minecraft, there are some simple steps that you can follow to isolate the problem:</p>
+
+<h4 id="check-the-ping">Check the Ping</h4>
+
+<p><a href="/docs/assets/ping.png"><img src="/docs/assets/ping.png" alt="Server Ping" /></a></p>
+
+<p>If the server shows the MOTD and a ping in the server list, as per the image above, it&rsquo;s likely that the problem lies between BungeeCord and your Spigot servers. To check, you can log into your BungeeCord server, and you&rsquo;ll most likely see a line similar to the following in the logs, where the IP <code>198.51.100.0</code> is replaced by your IP. This shows that your client is successfully pinging the BungeeCord server:</p>
+
+<pre><code>00:20:34 [INFO] [/198.51.100.0:50677] &lt;-&gt; InitialHandler has connected
+</code></pre>
+
+<p>If the logs look similar to above, the following error is likely occurring:</p>
+
+<p><a href="/docs/assets/connection.png"><img src="/docs/assets/connection.png" alt="Backend connection error" /></a></p>
+
+<p>This indicates that Bungee couldn&rsquo;t contact your Spigot servers. There are a few steps you can take:</p>
+
+<ol>
+<li><p>Ensure that the settings in the BungeeCord <code>config.yml</code> are correct, especially the server IP addresses and ports. If not, edit them to correct the mistake, and restart BungeeCord.</p></li>
+
+<li><p>If the settings are correct, then you may want to change the default server to another of the Spigot servers, in case the problem is isolated to the default. Restart BungeeCord.</p></li>
+
+<li><p>If the problem continues, then you&rsquo;ll need to check the Spigot configs to ensure you&rsquo;ve configured them for BungeeCord as detailed above.</p></li>
+
+<li><p>If the problem still occurs, it&rsquo;s likely to be with the firewall on your Spigot servers. You can try running <code>iptables -F</code> to clear the rules. You can now test connecting without any firewall, to see if that was causing the issue. As soon as possible after this, you should reconfigure the firewall as above.</p></li>
+</ol>
+
+<h4 id="unable-to-ping">Unable to Ping</h4>
+
+<p>In other cases, the server won&rsquo;t even show a response in the server list:</p>
+
+<p><a href="/docs/assets/noping.png"><img src="/docs/assets/noping.png" alt="BungeeCord connection error" /></a></p>
+
+<p>If this happens, you should check that BungeeCord is actually running, and that you&rsquo;re attempting to connect to the correct IP address. In our example, it would be <code>203.0.113.0</code>.</p>
+
+<p>Assuming that the issue is not solved, the issue is likely to be the firewall. You can flush your firewalls with:</p>
+
+<pre><code>iptables -F
+</code></pre>
+
+<p>You should try again to reconnect. If you can connect now, then you&rsquo;ll need to reconfigure the firewall as detailed above.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://minecraft.net/">Minecraft.net</a></li>
+
+<li><a href="http://minecraft.gamepedia.com/Minecraft_Wiki">The Official Minecraft Wiki</a></li>
+
+<li><a href="https://www.spigotmc.org/wiki/bungeecord/">Official BungeeCord Site</a></li>
+
+<li><a href="https://www.spigotmc.org/">BungeeCord and Spigot Forums</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/game-servers/minecraft-with-spigot-ubuntu/">Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/host-a-terraria-server-on-your-linode/">How to Setup a Terraria Linux Server</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/pocketmine-server-on-debian-7/">PocketMine Server on Debian 7</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/minecraft-with-mcmyadmin-on-debian/">Installing McMyAdmin for Minecraft on Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/multicraft-on-debian/">Installing Multicraft on Debian - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#setting-up-your-linode">Setting Up Your Linode</a>
+<ul>
+<li><a href="#updating-and-installing-prerequisite-software">Updating and Installing Prerequisite Software</a></li>
+<li><a href="#configuring-the-firewall-on-the-bungeecord-node">Configuring the Firewall on the BungeeCord Node</a></li>
+<li><a href="#configuring-the-firewall-on-the-spigot-server-linodes">Configuring the Firewall on the Spigot Server Linodes</a></li>
+</ul></li>
+<li><a href="#installing-bungeecord">Installing BungeeCord</a>
+<ul>
+<li><a href="#setting-up-bungeecord">Setting up BungeeCord</a></li>
+<li><a href="#running-bungeecord">Running BungeeCord</a></li>
+</ul></li>
+<li><a href="#configuring-your-spigot-servers-for-bungeecord">Configuring your Spigot servers for BungeeCord</a></li>
+<li><a href="#switching-between-servers-without-reconnecting">Switching Between Servers Without Reconnecting</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#unable-to-connect-to-minecraft">Unable to Connect to Minecraft</a>
+<ul>
+<li><a href="#check-the-ping">Check the Ping</a></li>
+<li><a href="#unable-to-ping">Unable to Ping</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

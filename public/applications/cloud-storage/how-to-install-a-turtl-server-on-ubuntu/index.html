@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install a Turtl Server on Ubuntu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide will show you how to install Turtl, a Privacy-Conscious Cloud Storage Service, on an Ubuntu distro.">
+        <meta name="keywords" content="install turtl,  cloud-based storage,  monitor system security,  ubuntu">
+        
+        <meta property="og:title" content="How to Install a Turtl Server on Ubuntu">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu/">
+        <meta property="og:description" content="This guide will show you how to install Turtl, a Privacy-Conscious Cloud Storage Service, on an Ubuntu distro.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/cloud-storage/">Cloud Storage</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install a Turtl Server on Ubuntu
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install a Turtl Server on Ubuntu</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-06T00:00:00Z">Wednesday, September 6, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2fhow-to-install-a-turtl-server-on-ubuntu%2f&via=linode&text=How%20to%20Install%20a%20Turtl%20Server%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2fhow-to-install-a-turtl-server-on-ubuntu%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2fhow-to-install-a-turtl-server-on-ubuntu%2f&t=How%20to%20Install%20a%20Turtl%20Server%20on%20Ubuntu" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/turtl/Turtl.jpg" alt="Turtl_Banner" /></p>
+
+<p><a href="https://turtlapp.com/docs">Turtl</a> is an open-source alternative to cloud-based storage services. With a focus on privacy, Turtl offers a place to store and access your passwords, bookmarks and pictures. Hosting your own Turtl server on a secure Linode allows you to monitor your own security.</p>
+
+<p>The Turtl server is written in Common Lisp, and the low-level encryption is derived from the Stanford Javascript Crypto Library. If encryption is important to you, read over the <a href="https://turtlapp.com/docs/security/encryption-specifics/">encryption specifics</a> section of the official documentation.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services. Do <strong>not</strong> follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre></li>
+</ol>
+
+<h3 id="install-dependencies">Install Dependencies:</h3>
+
+<p>The Turtl server has to be built from source. Download all of the dependencies as well as git:</p>
+
+<pre><code>apt install wget curl libtool subversion make automake git
+</code></pre>
+
+<h3 id="libuv-rethinkdb-clozure-common-lisp-quicklisp">Libuv, RethinkDB, Clozure Common Lisp, QuickLisp:</h3>
+
+<h4 id="libuv">Libuv</h4>
+
+<p>Download the Libuv package from the official repository:</p>
+
+<pre><code>wget https://dist.libuv.org/dist/v1.13.0/libuv-v1.13.0.tar.gz
+tar -xvf libuv-v1.13.0.tar.gz
+</code></pre>
+
+<p>Build the package from source:</p>
+
+<pre><code>cd libuv-v1.13.0
+sudo sh autogen.sh
+sudo ./configure
+sudo make
+sudo make install
+</code></pre>
+
+<p>After the package is built, run <code>sudo ldconfig</code> to maintain the shared libracy cache.</p>
+
+<h4 id="rethinkdb">RethinkDB</h4>
+
+<p><a href="https://rethinkdb.com/faq/">RethinkDB</a> is a flexible JSON datbase. According to the Turtl <a href="https://turtlapp.com/docs/server/">documentation</a>, RethinkDB just needs to be installed; Turtl will take care of the rest.</p>
+
+<p>RehinkDB has community-maintained packages on most distributions. On Ubuntu, you have to add the RethinkDB to your list of repositories:</p>
+
+<pre><code>source /etc/lsb-release &amp;&amp; echo &quot;deb http://download.rethinkdb.com/apt $xenial main&quot; | sudo tee /etc/apt/sources.list.d/rethinkdb.list
+wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
+</code></pre>
+
+<p>Navigate to your <code>sources.list</code> folder and add your version of Ubuntu:</p>
+
+<pre><code>vi /etc/apt/sources.list.d/rethinkdb.list
+deb http://download.rethinkdb.com/apt xenial main
+</code></pre>
+
+<p>Update apt and install RethinkDB:</p>
+
+<pre><code> sudo apt update
+ sudo apt install rethinkdb
+</code></pre>
+
+<p>Navigate to <code>/etc/rethinkdb/</code> and rename <code>default.conf.sample</code> to <code>default.conf</code></p>
+
+<pre><code>sudo mv /etc/rethinkdb/default.conf.sample /etc/rethinkdb/default.conf
+</code></pre>
+
+<p>Restart the <code>rethinkdb.service</code> daemon:</p>
+
+<pre><code>sudo systemctl restart rethinkdb.service
+</code></pre>
+
+<h4 id="clozure-common-lisp">Clozure Common Lisp</h4>
+
+<p>For this installation you will need to install Clozure Common Lisp (CCL):</p>
+
+<pre><code>svn co http://svn.clozure.com/publicsvn/openmcl/release/1.11/linuxx86/ccl
+</code></pre>
+
+<p>According to the CCL <a href="https://ccl.clozure.com/download.html">documentation</a>, you can replace <code>linuxx86</code> with another platform, like <code>solarisx86</code>.</p>
+
+<p>Quickly check if CCL has been installed correctly by updating the sources:</p>
+
+<pre><code>cd ccl
+svn update
+</code></pre>
+
+<p>Move <code>ccl</code> to <code>/usr/bin</code> so <code>ccl</code> can run from the command line:</p>
+
+<pre><code>cd ..
+sudo cp -r ccl/ /usr/local/src
+sudo cp /usr/local/src/ccl/scripts/ccl64 /usr/local/bin
+</code></pre>
+
+<p>Now, running <code>ccl64</code>, or <code>ccl</code> depending on your system, will launch a Lisp environment:</p>
+
+<pre><code>linode@localhost:~$ ccl64
+Welcome to Clozure Common Lisp Version 1.11-r16635  (LinuxX8664)!
+
+CCL is developed and maintained by Clozure Associates. For more information
+about CCL visit http://ccl.clozure.com.  To enquire about Clozure's Common Lisp
+consulting services e-mail info@clozure.com or visit http://www.clozure.com.
+</code></pre>
+
+<p>To exit the environment type <code>(quit)</code>.</p>
+
+<h4 id="quicklisp-and-asdf">QuickLisp and ASDF</h4>
+
+<p>Create a user named <code>turtl</code>:</p>
+
+<pre><code>adduser turtl
+su turtl
+</code></pre>
+
+<p>QuickLisp is to Lisp what <code>pip</code> is to Python. Turtl loads its dependencies for the server through Quicklisp. ASDF is a tool that builds Lisp software.</p>
+
+<pre><code>wget https://beta.quicklisp.org/quicklisp.lisp
+
+ccl64 --load quicklisp.lisp
+</code></pre>
+
+<p>The successful execution of the above steps will open the CCL environment with the following output:</p>
+
+<pre><code><div class="file">
+<p>==== quicklisp quickstart 2015-01-28 loaded ====</p>
+
+<p>To continue with installation, evaluate: (quicklisp-quickstart:install)</p>
+
+<p>For installation options, evaluate: (quicklisp-quickstart:help)</p>
+
+<p>Welcome to Clozure Common Lisp Version 1.11-r16635  (LinuxX8664)!</p>
+
+<p>CCL is developed and maintained by Clozure Associates. For more information
+about CCL visit <a href="http://ccl.clozure.com">http://ccl.clozure.com</a>.  To enquire about Clozure&rsquo;s Common Lisp
+consulting services e-mail info@clozure.com or visit <a href="http://www.clozure.com">http://www.clozure.com</a>.</p>
+
+</div>
+</code></pre>
+
+<p>Once you are in the CCL environment, install QuickLisp using:</p>
+
+<pre><code>(quicklisp-quickstart:install)
+</code></pre>
+
+<p>After the install finishes, add Quicklisp into your init file.</p>
+
+<pre><code>(ql:add-to-init-file)
+</code></pre>
+
+<p>After confirming the settings, Quicklisp will start when <code>ccl64</code> starts. <code>(quit)</code> out of CCL for now.</p>
+
+<p>Download ASDF:</p>
+
+<pre><code>wget https://common-lisp.net/project/asdf/asdf.lisp
+</code></pre>
+
+<p>Load and install <code>asdf.lisp</code> in your CCL environment:</p>
+
+<pre><code>ccl64 --load quicklisp.lisp
+(load (compile-file &quot;asdf.lisp&quot;))
+(quit)
+</code></pre>
+
+<h3 id="install-turtl">Install Turtl</h3>
+
+<p>Clone Turtl from the Github repository:</p>
+
+<pre><code>git clone https://github.com/turtl/api.git
+</code></pre>
+
+<p>Create a file called <code>launch.lisp</code> inside <code>/api</code> and copy the commands below:</p>
+
+<pre><code>touch launch.lisp
+vi launch.lisp
+
+(pushnew &quot;./&quot; asdf:*central-registry* :test #'equal)
+(load &quot;start&quot;)
+</code></pre>
+
+<p>Turtl does not ship with all of its dependencies. Instead, the Turtl community provides a list of dependencies. Clone these into <code>/home/turtl/quicklisp/local-projects</code>:</p>
+
+<pre><code>echo &quot;https://github.com/orthecreedence/cl-hash-util https://github.com/orthecreedence/cl-async https://github.com/orthecreedence/cffi https://github.com/orthecreedence/wookie https://github.com/orthecreedence/cl-rethinkdb https://github.com/orthecreedence/cl-libuv https://github.com/orthecreedence/drakma-async https://github.com/Inaimathi/cl-cwd.git&quot; &gt; dependencies.txt
+
+for repo in `cat dependencies.txt`; do `git clone $repo`; done
+</code></pre>
+
+<p>Edit the <code>/home/turtl/.ccl-init.lisp</code> to include:</p>
+
+<pre><code>(cwd &quot;/home/turtl/api&quot;)
+(load &quot;/home/turtl/api/launch&quot;)
+</code></pre>
+
+<p>The first line tells Lisp to use the <code>cl-cwd</code> package that you cloned to change the current working directory to <code>/home/turtl/api</code>. You can change this to anything, but your naming conventions should be consistent. The second line loads your <code>launch.lisp</code>, loading <code>asdf</code> so that Turtl can run.</p>
+
+<p>Create the default Turtl configuration file:</p>
+
+<pre><code>cp /home/turtl/api/config/config.default.lisp /home/turtl/api/config/config.lisp
+</code></pre>
+
+<p>The <code>config.lisp</code> file is where the configurations for your server are stored. If you want to connect to your Linode from a Turtl desktop or mobile client, you need to add the Linode&rsquo;s public IP address to:</p>
+
+<pre><code>(defvar *site-url* &quot;http://1.0.0.0:8181&quot;
+   &quot;The main URL the site will load from.&quot;)
+</code></pre>
+
+<p>Go to your home directory and run <code>ccl64</code>. This will automatically start the Turtl server.</p>
+
+<p>On your local device, download a client app for Turtl from the <a href="https://turtlapp.com/download/">turtl website</a> for supported devices and operating systems.</p>
+
+<p><img src="/docs/assets/turtl/turtl_download.png" alt="turtldownload" /></p>
+
+<p>Put your public facing IP address (or <code>http://localhost:8181</code> if running locally) when prompted and create a username.</p>
+
+<p><img src="/docs/assets/turtl/enterip.png" alt="turtlinfo" /></p>
+
+<p>You now have a functioning Turtl server. Add files, store passwords, and save bookmarks in your own private Turtl instance.</p>
+
+<h3 id="next-steps">Next Steps</h3>
+
+<p>Turtl does not have much official documentation. Fred C has created an install guide for Turtl on Debian that is also very helpful for making it work on Ubuntu 16.10. Take a look at the Turtl Google Group, and Fred C&rsquo;s guide:</p>
+
+<ul>
+<li><a href="https://groups.google.com/forum/#!topic/turtl/q3kAYnAcH0s">Fred C&rsquo;s Install on Debian Guide</a></li>
+<li><a href="https://groups.google.com/forum/#!forum/turtl">Turtl Google Group</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/">Create an ARK: Survival Evolved Server on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/what-is-docker/">Docker - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/">Install SquirrelMail on Ubuntu 16.04 or Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/installing-squirrelmail-on-ubuntu-12-04/">Installing SquirrelMail on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql/">Email with Postfix, Dovecot, and MySQL</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a>
+<ul>
+<li><a href="#install-dependencies">Install Dependencies:</a></li>
+<li><a href="#libuv-rethinkdb-clozure-common-lisp-quicklisp">Libuv, RethinkDB, Clozure Common Lisp, QuickLisp:</a>
+<ul>
+<li><a href="#libuv">Libuv</a></li>
+<li><a href="#rethinkdb">RethinkDB</a></li>
+<li><a href="#clozure-common-lisp">Clozure Common Lisp</a></li>
+<li><a href="#quicklisp-and-asdf">QuickLisp and ASDF</a></li>
+</ul></li>
+<li><a href="#install-turtl">Install Turtl</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

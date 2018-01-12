@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Instant Messaging Services with ejabberd on Ubuntu 9.10 (Karmic)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 9.10 (Karmic).">
+        <meta name="keywords" content="ejabberd, ejabberd ubuntu karmic, ejabberd ubuntu 9.10, ejabberd on linux, real-time messaging, xmpp server, collaboration software, chat software, linux jabber server">
+        
+        <meta property="og:title" content="Instant Messaging Services with ejabberd on Ubuntu 9.10 (Karmic)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic/">
+        <meta property="og:description" content="Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 9.10 (Karmic).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/messaging/">Messaging &amp; Chat</a>
+  
+</li>
+
+
+<li>
+  
+  Instant Messaging Services with ejabberd on Ubuntu 9.10 (Karmic)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Instant Messaging Services with ejabberd on Ubuntu 9.10 (Karmic)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2012-10-31T00:00:00Z">Wednesday, October 31, 2012</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2finstant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic%2f&via=linode&text=Instant%20Messaging%20Services%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2finstant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmessaging%2finstant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic%2f&t=Instant%20Messaging%20Services%20with%20ejabberd%20on%20Ubuntu%209.10%20%28Karmic%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface, and broad support for <a href="http://xmpp.org/">XMPP standards</a>, ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered &ldquo;heavyweight&rdquo; by critics, because of the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads. Ejabberd servers are believed to be the backbone for some of the largest Jabber servers running now.</p>
+
+<p>This installation process assumes that you have a working installation of Ubuntu 9.10 (Karmic), have followed the steps in the <a href="/docs/getting-started/">getting started</a> guide, and now have an up to date instance of the Ubuntu Karmic operating system. We also assume you are connected to your Linode via SSH as root. Once you&rsquo;ve completed these requirements, we can begin with the installation process.</p>
+
+<h1 id="xmpp-jabber-basics">XMPP/Jabber Basics</h1>
+
+<p>Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:</p>
+
+<ul>
+<li><p>The <em>JID</em> or &ldquo;Jabber ID,&rdquo; is the unique identifier for a user in the XMPP network. It often looks like an email and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, &ldquo;username&rdquo; is the username, &ldquo;example.com&rdquo; is the hostname, and &ldquo;/office&rdquo; is the resource.</p>
+
+<pre><code>username@example/office
+</code></pre>
+
+<p>Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.</p></li>
+
+<li><p>The XMPP system is federated by nature. Users with accounts on one server&ndash;if the server administrators allow it&ndash;can communicate with users on other servers. Without a centralized server, every XMPP server maintains the accounts and serves as the communication gateway for their own users. In the XMPP system there is no single point of failure, however each server administrator can decide how their server is going to participate in the federated network. For instance, to federate with Google&rsquo;s &ldquo;GTalk&rdquo; XMPP network, server administrators need to have server-to-server (s2s) SSL/TLS encryption enabled, while other servers don&rsquo;t always require this.</p></li>
+
+<li><p>XMPP takes advantage of <a href="/docs/dns-guides/introduction-to-dns">&ldquo;SRV&rdquo; DNS records</a> to support the resolution of domains to the servers which provide DNS records.</p></li>
+</ul>
+
+<h1 id="enabling-the-universe-repository">Enabling the Universe Repository</h1>
+
+<p>Prior to installing the ejabberd daemon, you will need to enable the <code>universe</code> repository. Open <code>/etc/apt/sources.list</code> with your favorite text editor and make sure that the following lines are present:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apt/sources.list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Now issue the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<h1 id="install-ejabberd">Install ejabberd</h1>
+
+<p>To install ejabberd and its required dependencies, issue the following command:</p>
+
+<pre><code>apt-get install ejabberd
+</code></pre>
+
+<p>The default installation is complete and functional. The installation process creates a self-signed SSL certificate. If you want to use a commercially signed certificate, place the certificate file at <code>/etc/ejabberd/ejabberd.pem</code>. Most of the time a self-signed certificate is sufficient for many jabber applications.</p>
+
+<p>If you have not already configured your <code>/etc/hosts</code> as follows, please do that before you continue. This will allow your Linode to associate its hostname with the public IP. Your file should have an excerpt that looks something like this, (use your Linode&rsquo;s public IP address instead of 12.34.56.78):</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="m">127</span>.0.0.1    localhost.localdomain   localhost
+<span class="m">12</span>.34.56.78  username.example.com  username</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>With the hostname configured, you&rsquo;re ready to begin configuring ejabberd.</p>
+
+<h1 id="configure-ejabberd">Configure ejabberd</h1>
+
+<p>Ejabberd&rsquo;s configuration files are written in Erlang syntax, which might be difficult to comprehend. Thankfully, the modifications we need to make are relatively minor and straightforward. The main ejabberd configuration file is located at <code>/etc/ejabberd/ejabberd.cfg</code>. We&rsquo;ll cover each relevant option in turn.</p>
+
+<h3 id="administrative-users">Administrative Users</h3>
+
+<p>Some users will need the ability to administer the XMPP server remotely. By default this block of the config file looks like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/ejabberd/ejabberd.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">%% Admin user <span class="o">{</span>acl, admin, <span class="o">{</span>user, <span class="s2">&#34;&#34;</span>, <span class="s2">&#34;localhost&#34;</span><span class="o">}}</span>.</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In Erlang, comments begin with the <code>%</code> sign, and the Access Control list segment contains information in the following form: <code>{user, &quot;USERNAME&quot;, &quot;HOSTNAME&quot;}</code>. The following examples correspond to the users with the JIDs of <code>admin@example.com</code> and <code>username@example.com</code>. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/ejabberd/ejabberd.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">{</span>acl, admin, <span class="o">{</span>user, <span class="s2">&#34;admin&#34;</span>, <span class="s2">&#34;example.com&#34;</span><span class="o">}}</span>.
+<span class="o">{</span>acl, admin, <span class="o">{</span>user, <span class="s2">&#34;username&#34;</span>, <span class="s2">&#34;example.com&#34;</span><span class="o">}}</span>.</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>All users specified in this manner have full administrative access to the server through both the XMPP and web-based interfaces. You will have to create your administrative users (as described below) before they can log in.</p>
+
+<h3 id="hostnames-and-virtual-hosting">Hostnames and Virtual Hosting</h3>
+
+<p>A single ejabberd instance can provide XMPP services for multiple domains at once, as long as those domains (or subdomains) are hosted by the server. To add a hostname for virtual hosting in ejabberd, modify the <code>hosts</code> option. By default, ejabberd is only configured to host the &ldquo;localhost&rdquo; domain:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/ejabberd/ejabberd.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">{</span>hosts, <span class="o">[</span><span class="s2">&#34;localhost&#34;</span><span class="o">]}</span>.</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In the following example, ejabberd has been configured to host a number of additional domains. In this case &ldquo;username.example.com,&rdquo; &ldquo;example.com,&rdquo; and &ldquo;example.com.&rdquo;</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/ejabberd/ejabberd.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">{</span>hosts, <span class="o">[</span><span class="s2">&#34;username.example.com&#34;</span>, <span class="s2">&#34;example.com&#34;</span>, <span class="s2">&#34;example.com&#34;</span><span class="o">]}</span>.</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You can specify any number of hostnames in the host list, but you should be careful to avoid adding inserting a line break as this will cause ejabberd to fail.</p>
+
+<h3 id="listening-ports">Listening Ports</h3>
+
+<p>TCP port number 5222 is the conventional &ldquo;XMPP&rdquo; port. If you want to change the port, this is the section of the configuration that needs to be modified.</p>
+
+<p>Additionally, you may want to enable SSL access for client-to-server (c2s) SSL/TLS connections if you or the other users of you are using a client that requires legacy support for secured connections on port 5223. Uncomment the following stanza.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/ejabberd/ejabberd.cfg 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">{</span><span class="m">5223</span>, ejabberd_c2s, <span class="o">[</span>
+    <span class="o">{</span>access, c2s<span class="o">}</span>,
+    <span class="o">{</span>shaper, c2s_shaper<span class="o">}</span>,
+    <span class="o">{</span>max_stanza_size, <span class="m">65536</span><span class="o">}</span>,
+    tls, <span class="o">{</span>certfile, <span class="s2">&#34;/etc/ejabberd/ejabberd.pem&#34;</span><span class="o">}</span>
+<span class="o">]}</span>,</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="additional-functionality">Additional Functionality</h3>
+
+<p>The <code>ejabberd.cfg</code> file is complete and well commented, and from this point forward your server should run. However, you should take the time to become familiar with the options provided in this file.</p>
+
+<p>By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the &ldquo;conference.[hostname]&rdquo; sub-domain. If you want the public to be able to access MUCs on your domain, you need to create an &ldquo;A Record&rdquo; pointing the <code>conference</code> hostname (eg. subdomain) to the IP address where the ejabberd instance is running.</p>
+
+<h1 id="using-ejabberd">Using Ejabberd</h1>
+
+<p>Once installed, the use and configuration of ejabberd is uncomplicated. To start, stop, or restart the server issue the appropriate command from the following:</p>
+
+<pre><code>/etc/init.d/ejabberd start
+/etc/init.d/ejabberd stop
+/etc/init.d/ejabberd restart
+</code></pre>
+
+<p>By default, ejabberd is configured to disallow &ldquo;in-band-registrations,&rdquo; which prevents Internet users from getting accounts on your server without your consent. To register a new user, issue a command in the following form:</p>
+
+<pre><code>ejabberdctl register lollipop example.com man
+</code></pre>
+
+<p>In this example, <code>lollipop</code> is the username, <code>example.com</code> is the domain, and <code>man</code> is the password. This will create a JID for <code>lollipop@example.com</code> with the password of &ldquo;man.&rdquo; Use this form to create the administrative users specified above.</p>
+
+<p>To remove a user from your server, issue a command in the following form:</p>
+
+<pre><code>ejabberdctl unregister lollipop example.com
+</code></pre>
+
+<p>The above command would unregister the <code>lollipop@example.com</code> account from the server.</p>
+
+<p>To set or reset the password for a user, issue the following command:</p>
+
+<pre><code>ejabberdctl set-password lollipop example.com morris
+</code></pre>
+
+<p>This command changes the password for the <code>lollipop@example.com</code> user to <code>morris</code>.</p>
+
+<p>To back up ejabberd&rsquo;s database, issue the following command:</p>
+
+<pre><code>ejabberdctl dump ejabberd-backup.db
+</code></pre>
+
+<p>This command dumps the contents of the internal ejabberd database into a file located in the &ldquo;/var/lib/ejabberd/&rdquo; directory. To restore from the backup, issue the following command:</p>
+
+<pre><code>ejabberdctl load ejabberd-backup.db
+</code></pre>
+
+<p>For more information about the <code>ejabberdctl</code> command, issue <code>ejabberdctl help</code> or <code>man ejabberdctl</code>.</p>
+
+<p>If you would prefer to administer your ejabberd instance via the web-based interface, log in to <code>http://example.com:5280/admin/</code>, where &ldquo;example.com&rdquo; is the domain where ejabberd is running. Log in with the full JID as the username and the password of one of the administrators specified in the <code>/etc/ejabberd/ejabberd.cfg</code> file.</p>
+
+<h1 id="xmpp-federation-and-dns">XMPP Federation and DNS</h1>
+
+<p>To ensure that your ejabberd instance will federate properly with the rest of the XMPP network, particularly with Google&rsquo;s &ldquo;GTalk&rdquo; service (i.e. the <a href="mailto:&quot;@gmail.com">&rdquo;@gmail.com</a>&rdquo; chat tool,) we must set the SRV records for the domain to point to the server where the ejabberd instance is running. We need three records, which can be created in the DNS Management tool of your choice:</p>
+
+<ol>
+<li>Service: <code>_xmpp-server</code> Protocol: TCP Port: 5269</li>
+<li>Service: <code>_xmpp-client</code> Protocol: TCP Port: 5222</li>
+<li>Service: <code>_jabber</code> Protocol: TCP Port: 5269</li>
+</ol>
+
+<p>The &ldquo;target&rdquo; of the SRV record should point to the publicly routable hostname for that machine (e.g. &ldquo;username.example.com&rdquo;). The priority and weight should both be set to <code>0</code>.</p>
+
+<h1 id="troubleshooting">Troubleshooting</h1>
+
+<p>If you&rsquo;re having problems getting ejabberd to start, or are getting obscure errors on the console don&rsquo;t be discouraged: the errors generated by Erlang are often abstruse at best. The logs for ejabberd are located in the <code>/var/log/ejabberd/</code> directory. If you&rsquo;re getting error messages look in these files, particularly <code>ejabberd.log</code> and <code>sasl.log</code>. Additionally, if ejabberd crashes, the &ldquo;image dump&rdquo; of Erlang will be saved in this directory. Begin your investigations for error messages in these files.</p>
+
+<p>Furthermore, ejabberd&rsquo;s &ldquo;Mnesia&rdquo; database is stored in the <code>/var/lib/ejabberd/</code> directory. If you think the database has become corrupted, delete the files in this directory (e.g. <code>rm /var/lib/ejabberd/*</code>) and reload from a backup if necessary. This is sometimes required if the hostname of the local machine changes.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.ejabberd.im/">Ejabberd Community Site</a></li>
+<li><a href="http://xmpp.org/">XMPP Standards Foundation</a></li>
+<li><a href="http://xmpp.org/software/clients.shtml">XMPP Client Software</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-fedora-13/">Instant Messaging Services with ejabberd on Fedora 13 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-centos-5/">Instant Messaging Services with ejabberd on CentOS 5 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-04-jaunty/">Instant Messaging Services with ejabberd on Ubuntu 9.04 (Jaunty) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy/">Instant Messaging Services with ejabberd on Ubuntu 8.04 (Hardy) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-debian-5-lenny/">Instant Messaging Services with ejabberd on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#xmpp-jabber-basics">XMPP/Jabber Basics</a></li>
+<li><a href="#enabling-the-universe-repository">Enabling the Universe Repository</a></li>
+<li><a href="#install-ejabberd">Install ejabberd</a></li>
+<li><a href="#configure-ejabberd">Configure ejabberd</a>
+<ul>
+<li>
+<ul>
+<li><a href="#administrative-users">Administrative Users</a></li>
+<li><a href="#hostnames-and-virtual-hosting">Hostnames and Virtual Hosting</a></li>
+<li><a href="#listening-ports">Listening Ports</a></li>
+<li><a href="#additional-functionality">Additional Functionality</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#using-ejabberd">Using Ejabberd</a></li>
+<li><a href="#xmpp-federation-and-dns">XMPP Federation and DNS</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

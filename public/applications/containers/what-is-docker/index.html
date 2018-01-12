@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Docker</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="An overview of Installing Docker, with an example use case for Nginx">
+        <meta name="keywords" content="docker,  ubuntu,  12.04,  centos,  container">
+        
+        <meta property="og:title" content="Docker">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/containers/what-is-docker/">
+        <meta property="og:description" content="An overview of Installing Docker, with an example use case for Nginx">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/containers/what-is-docker/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/containers/">Containers</a>
+  
+</li>
+
+
+<li>
+  
+  Docker
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Docker</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-01-28T00:00:00Z">Tuesday, January 28, 2014</time> by Alex Fornuto</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcontainers%2fwhat-is-docker%2f&via=linode&text=Docker" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcontainers%2fwhat-is-docker%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcontainers%2fwhat-is-docker%2f&t=Docker" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/containers/what-is-docker.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/containers/what-is-docker.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Docker is an extensible, open-source engine powered by <a href="http://linuxcontainers.org/">Linux Containers</a> that automates the deployment of applications as portable, lightweight, and self-sufficient containers. For purposes of this tutorial, we&rsquo;ll assume you&rsquo;ve followed the steps outlined in our <a href="/docs/getting-started/">Getting Started Guide</a>, that your system is up to date, and that you&rsquo;ve logged in to your Linode as root via SSH.</p>
+
+<h1 id="installation">Installation</h1>
+
+<p>For the purposes of this guide we will show you how to install Docker on both Ubuntu 12.04 and CentOS 6.4 Docker provides repositories for each of these distributions, which makes installation easy.</p>
+
+<h3 id="ubuntu-12-04-64bit">Ubuntu 12.04 64bit</h3>
+
+<p>Here we will add the Docker-maintained repository for Ubuntu and install the software.</p>
+
+<ol>
+<li><p>Docker is available as a package in Docker&rsquo;s Ubuntu repositories, but only for 64bit. First, you will need to add the Docker repository key using <code>apt-key</code>:</p>
+
+<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+</code></pre></li>
+
+<li><p>Add the Docker repository to your apt sources:</p>
+
+<pre><code>echo &quot;deb http://get.docker.io/ubuntu docker main&quot; | sudo tee /etc/apt/sources.list.d/docker.list
+</code></pre></li>
+
+<li><p>Run the following to apt-get update and install <code>lxc-docker</code>:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get install lxc-docker
+</code></pre></li>
+
+<li><p>To verify that the installation has completed successfully, launch an example Ubuntu container. This command will automatically grab any missing images, run the container, and provide an interactive bash session:</p>
+
+<pre><code>sudo docker run -i -t ubuntu /bin/bash
+</code></pre>
+
+<p>The output should resemble:</p>
+
+<div class="file">
+<h1 id="docker-run-i-t-ubuntu-bin-bash">docker run -i -t ubuntu /bin/bash</h1>
+
+<p>Unable to find image &lsquo;ubuntu&rsquo; (tag: latest) locally
+Pulling repository ubuntu
+8dbd9e392a96: Download complete
+b750fe79269d: Download complete
+27cf78414709: Download complete
+root@145dfc4f6dff:/#
+</div></li>
+
+<li><p>To exit the container, type <code>exit</code>.</p></li>
+</ol>
+
+<h3 id="centos-6-64bit">CentOS 6 64bit</h3>
+
+<p>Docker is available on the <a href="https://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F">EPEL</a> repository as the <code>docker-io</code> package for 64bit only.</p>
+
+<ol>
+<li>To add the EPEL repository, install the latest <a href="http://download.fedoraproject.org/pub/epel/6/i386/repoview/epel-release.html">epel-release package</a>.</li>
+
+<li><p>To install Docker, run the following command:</p>
+
+<pre><code>sudo yum -y install docker-io
+</code></pre></li>
+
+<li><p>To start the Docker daemon, invoke <code>service</code>:</p>
+
+<pre><code>sudo service docker start
+</code></pre></li>
+
+<li><p>If you would like the Docker daemon to start at boot, issue the following command:</p>
+
+<pre><code>sudo chkconfig docker on
+</code></pre></li>
+
+<li><p>To verify that the installation has completed successfully, launch an example Fedora container. This command will automatically grab any missing images, run the container, and provide an interactive bash session:</p>
+
+<pre><code>sudo docker run -i -t fedora /bin/bash
+</code></pre></li>
+
+<li><p>To exit the container, type <code>exit</code>.</p></li>
+</ol>
+
+<h1 id="what-can-i-do-with-docker">What Can I Do with Docker?</h1>
+
+<p>Docker allows users to package their applications and configurations into lightweight images for deployment as portable containers.</p>
+
+<h3 id="hello-world">Hello World</h3>
+
+<p>To run a Docker container that prints &ldquo;hello world&rdquo;, run the following command:</p>
+
+<pre><code>docker run ubuntu /bin/echo hello world
+</code></pre>
+
+<p>It should return <code>hello world</code>.</p>
+
+<p>This tells Docker to do a number of things:</p>
+
+<ol>
+<li>If the image (Ubuntu) doesn&rsquo;t already exist locally, download it from the <a href="https://index.docker.io/">Docker Index</a>.</li>
+<li>Create a new container with the base Ubuntu image with a read-write filesystem and networking interface.</li>
+<li>Allocate an IP address to the container; set up NAT to forward traffic to and from the container.</li>
+<li>Run the command <code>/bin/echo hello world</code>, and print the output.</li>
+<li>Having completed the main process, the container will exit.</li>
+</ol>
+
+<h3 id="writing-a-dockerfile-for-nginx">Writing a Dockerfile for Nginx</h3>
+
+<p>When building an image, Docker follows the instruction set in a file named <code>Dockerfile</code>. Note that the file needs to be named <code>Dockerfile</code> and all any files or folders required by the Dockerfile need to be under the same directory as the <code>Dockerfile</code> itself.</p>
+
+<p>Running a program like <code>echo</code> in a Docker container is pretty simple. However, for programs that act as servers, such as <a href="http://nginx.com/">Nginx</a>, you will need to ensure that the program is configured not to self-daemonize.</p>
+
+<p>This is an example Dockerfile for Nginx:</p>
+
+<pre><code>FROM        ubuntu:12.04
+MAINTAINER  Jon Chen &quot;fly@burrito.sh&quot;
+
+RUN         echo &quot;deb http://archive.ubuntu.com/ubuntu precise main universe&quot; &gt; /etc/apt/sources.list
+RUN         apt-get update
+RUN         apt-get install -y nginx
+
+RUN         echo &quot;\ndaemon off;&quot; &gt;&gt; /etc/nginx/nginx.conf
+VOLUME      /etc/nginx/sites-enabled
+VOLUME      /var/log/nginx
+
+EXPOSE      80
+CMD         [&quot;nginx&quot;]
+</code></pre>
+
+<p>The Dockerfile syntax looks like this:</p>
+
+<pre><code># Comment
+INSTRUCTION arguments
+</code></pre>
+
+<p>Docker runs through the Dockerfile instructions from top to bottom in order. The first instruction <strong>must</strong> be <code>FROM</code>, which specifies the base image from which you wish to build your new image:</p>
+
+<pre><code>FROM ubuntu:12.04
+</code></pre>
+
+<p>This sets the <a href="https://index.docker.io/_/ubuntu/">official ubuntu:12.04 image</a> as the base image. You will also wish to use the MAINTAINER instruction to define the author of the image:</p>
+
+<pre><code>MAINTAINER Jon Chen &quot;fly@burrito.sh&quot;
+</code></pre>
+
+<p>Next, the <code>RUN</code> instruction will execute commands on the image, and commit the results. Each commit is saved and used for the next instruction. For example, this <code>RUN</code> line replaces the contents of <code>/etc/apt/sources.list</code> in the image with <code>deb http://archive.ubuntu.com/ubuntu precise main universe</code>:</p>
+
+<pre><code>RUN echo &quot;deb http://archive.ubuntu.com/ubuntu precise main universe&quot; &gt; /etc/apt/sources.list
+</code></pre>
+
+<p>The important thing to remember for programs such as Nginx is to ensure that the program doesn&rsquo;t run as a daemon. Nginx&rsquo;s default behavior as a daemon is to fork off worker processes, then exit the master process. As Docker only watches the PID for the original process, the container will halt prematurely instead of running persistently. To disable daemonization, add the <a href="http://wiki.nginx.org/CoreModule#daemon">daemon off configuration directive</a> to <code>/etc/nginx/nginx.conf</code>:</p>
+
+<pre><code>RUN echo &quot;\ndaemon off;&quot; &gt;&gt; /etc/nginx/nginx.conf
+</code></pre>
+
+<p>To expose a port inside the container to the outside of the container, use the EXPOSE instruction:</p>
+
+<pre><code>EXPOSE 80
+</code></pre>
+
+<p>The CMD instruction defines the default command to run when the container starts. In our example, we want to run Nginx:</p>
+
+<pre><code>CMD [&quot;nginx&quot;]
+</code></pre>
+
+<p>By default, Docker containers do not have persistent storage. In order to share data between containers, use the <a href="http://docs.docker.io/en/latest/use/working_with_volumes/">VOLUME</a> feature:</p>
+
+<pre><code>VOLUME /etc/nginx/sites-enabled
+VOLUME /var/log/nginx
+</code></pre>
+
+<p>In order to mount a directory from the host onto the container, you will need to specify the host directory, corresponding container directory, and directory permissions in the command line when you run the container:</p>
+
+<pre><code>-v=[]: Create a bind mount with: [host-dir]:[container-dir]:[rw|ro].
+If &quot;host-dir&quot; is missing, then docker creates a new volume.
+</code></pre>
+
+<p>To build this image, run the following command in the same directory as the Dockerfile. You can specify a repository and tag for your image as well with <code>-t repo/tag</code>:</p>
+
+<pre><code>docker build -t bsdlp/nginx .
+</code></pre>
+
+<p>Run the following command to add <code>/etc/nginx/sites-enabled</code> and <code>/var/log/nginx</code> as volumes from the host to the container, start the container as a daemon, and expose port 80 from the container as port 80 on the host:</p>
+
+<pre><code>docker run -d -p 80:80 -v /etc/nginx/sites-enabled:/etc/nginx/sites-enabled -v /var/log/nginx:/var/log/nginx bsdlp/nginx
+</code></pre>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.docker.io/gettingstarted/">Docker&rsquo;s Getting Started guide</a></li>
+<li><a href="https://github.com/dotcloud/docker">Docker on GitHub</a></li>
+<li><a href="https://index.docker.io/">Official Docker Image Index</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/clients/installing-squirrelmail-on-ubuntu-12-04/">Installing SquirrelMail on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/use-a-linode-for-web-development-on-remote-devices/">Use a Linode for Web Development on Remote Devices</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/">How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/when-and-why-to-use-docker/">When and Why to Use Docker</a></li>
+    
+    
+    
+    <li><a href="/docs/development/how-to-develop-and-deploy-your-applications-using-wercker/">How to Develop and Deploy Your Applications Using Wercker</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#installation">Installation</a>
+<ul>
+<li>
+<ul>
+<li><a href="#ubuntu-12-04-64bit">Ubuntu 12.04 64bit</a></li>
+<li><a href="#centos-6-64bit">CentOS 6 64bit</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#what-can-i-do-with-docker">What Can I Do with Docker?</a>
+<ul>
+<li>
+<ul>
+<li><a href="#hello-world">Hello World</a></li>
+<li><a href="#writing-a-dockerfile-for-nginx">Writing a Dockerfile for Nginx</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

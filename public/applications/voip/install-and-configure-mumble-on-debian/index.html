@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install and Configure Mumble on Debian</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Mumble is an open-source, encrypted VoIP software. This guide instructs how to install the Mumble server on Debian and gives general guidelines for configuring the Mumble client.">
+        <meta name="keywords" content="mumble,  debian,  murmur,  gaming,  voip,  voice chat">
+        
+        <meta property="og:title" content="Install and Configure Mumble on Debian">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/voip/install-and-configure-mumble-on-debian/">
+        <meta property="og:description" content="Mumble is an open-source, encrypted VoIP software. This guide instructs how to install the Mumble server on Debian and gives general guidelines for configuring the Mumble client.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/voip/install-and-configure-mumble-on-debian/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/voip/">VoIP</a>
+  
+</li>
+
+
+<li>
+  
+  Install and Configure Mumble on Debian
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install and Configure Mumble on Debian</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-11-09T00:00:00Z">Monday, November 9, 2015</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://twitter.com/markzz989/">Mark Weiman
+    
+    <i class="fa fa-twitter"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fvoip%2finstall-and-configure-mumble-on-debian%2f&via=linode&text=Install%20and%20Configure%20Mumble%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fvoip%2finstall-and-configure-mumble-on-debian%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fvoip%2finstall-and-configure-mumble-on-debian%2f&t=Install%20and%20Configure%20Mumble%20on%20Debian" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/voip/install-and-configure-mumble-on-debian.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/voip/install-and-configure-mumble-on-debian.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><a href="http://wiki.mumble.info/wiki/Main_Page">Mumble</a> is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs how to install and configure the Mumble server (also called Murmur) on Debian.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system.</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="mumble-server">Mumble Server</h2>
+
+<h3 id="install-mumble">Install Mumble</h3>
+
+<ol>
+<li><p>Since Murmur is in the official Debian repositories, you can use <em>apt-get</em> to install it.  Be careful though, the package is <code>mumble-server</code> and <em>not</em> <code>murmur</code>.</p>
+
+<pre><code>sudo apt-get install mumble-server
+</code></pre></li>
+
+<li><p>After installation, run the initial configuration:</p>
+
+<pre><code>sudo dpkg-reconfigure mumble-server
+</code></pre></li>
+
+<li><p>The first question asked is if you want the server to run at boot. Select <code>Yes</code> unless you would prefer to manually start Mumble after a server reboot.</p>
+
+<p><a href="/docs/assets/murmur-debian-auto-start.png"><img src="/docs/assets/murmur-debian-auto-start-resized.png" alt="Image description" /></a></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you wish to disable the server starting at boot, you can use your init system to disable it.</p>
+
+<p>For Debian 8:</p>
+
+<p><code>sudo systemctl disable mumble-server</code></p>
+
+<p>For Debian 7 or earlier:</p>
+
+<p><code>sudo service mumble-server disable</code></p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Mumble will then ask if you want to reduce latency by setting a higher CPU and network priority.</p>
+
+<p><a href="/docs/assets/murmur-debian-priority.png"><img src="/docs/assets/murmur-debian-priority-resized.png" alt="Image description" /></a></p>
+
+<p>If you want Murmur to have priority over other applications on the server, you can answer <strong>Yes</strong> to this question.</p></li>
+
+<li><p>Next, you will be asked to set a <em>SuperUser</em> password. Murmur has a SuperUser account that lets you change server settings from the Mumble client. You may set it to whatever password you want.</p>
+
+<p><a href="/docs/assets/murmur-debian-super-user.png"><img src="/docs/assets/murmur-debian-super-user-resized.png" alt="Image description" /></a></p>
+
+<p>You now have a working Mumble server.  It&rsquo;s time to configure it further.</p></li>
+</ol>
+
+<h3 id="configure-server-settings">Configure Server Settings</h3>
+
+<ol>
+<li><p>If you need to address more exact configuration specifics, such as assigning port numbers and/or maximum users, Murmur has a settings file at <code>/etc/mumble-server.ini</code>. Below is a partial list of settings included; more settings exist and are further explained in the file.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Setting</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">autobanAttempts</td>
+<td align="left">Set how many times someone can fail to connect to the server within a given timeframe.</td>
+</tr>
+
+<tr>
+<td align="left">autobanTimeframe</td>
+<td align="left">Set the given timeframe for attempts to login to the server.</td>
+</tr>
+
+<tr>
+<td align="left">autobanTime</td>
+<td align="left">Set the amount of time that the login ban lasts.</td>
+</tr>
+
+<tr>
+<td align="left">logfile</td>
+<td align="left">Set the location of the log file, if you want it to reside in a different location.</td>
+</tr>
+
+<tr>
+<td align="left">welcometext</td>
+<td align="left">Set the text that shows in the text chat log when you login.</td>
+</tr>
+
+<tr>
+<td align="left">port</td>
+<td align="left">Set the port you wish to bind to and have your users connect to.</td>
+</tr>
+
+<tr>
+<td align="left">serverpassword</td>
+<td align="left">Set a password that users will have to use to login.  This is not the same as the SuperUser password and therefore, should be different.</td>
+</tr>
+
+<tr>
+<td align="left">bandwidth</td>
+<td align="left">Set the maximum bandwith (in bits per second) each user can use.</td>
+</tr>
+
+<tr>
+<td align="left">users</td>
+<td align="left">Set the maximum number of users that can connect to the server at once.</td>
+</tr>
+</tbody>
+</table></li>
+
+<li><p>Once you are done, save and restart Murmur.</p>
+
+<p>For Debian 8:</p>
+
+<pre><code>sudo systemctl restart mumble-server
+</code></pre>
+
+<p>For Debian 7 or earlier:</p>
+
+<pre><code>sudo service mumble-server restart
+</code></pre></li>
+</ol>
+
+<h2 id="mumble-client">Mumble Client</h2>
+
+<h3 id="installation">Installation</h3>
+
+<p><strong>OS X or Windows</strong></p>
+
+<p>Installer available at <a href="http://wiki.mumble.info/wiki/Main_Page">Mumble&rsquo;s Wiki</a>.</p>
+
+<p><strong>Linux</strong></p>
+
+<p>The package <code>mumble</code> is available in most distribution&rsquo;s repositories. See <a href="http://wiki.mumble.info/wiki/Installing_Mumble">Mumble&rsquo;s Wiki</a> for more distro-specific information.</p>
+
+<h3 id="connecting-as-superuser">Connecting As SuperUser</h3>
+
+<p>After installing the client and server, if you want to grant permissions to other users or make changes to the server, you must connect as SuperUser. Be aware! SuperUser cannot be used to speak on the server, only to make changes.</p>
+
+<ol>
+<li><p>To connect, open the client, then click <strong>Server</strong>, then <strong>Connect</strong>.  This opens the Mumble Server Connect dialog.</p>
+
+<p><a href="/docs/assets/mumble-server-list.png"><img src="/docs/assets/mumble-server-list.png" alt="Server List" /></a></p>
+
+<p>Next, click <strong>Add New</strong> at the bottom and enter the following.</p>
+
+<ul>
+<li><strong>Label</strong> - Name this anything you want.</li>
+<li><strong>Address</strong> - Enter the IP address or domain name of the server.</li>
+<li><strong>Port</strong> - Leave this as default (64738), unless you changed it in the server&rsquo;s configuration.</li>
+<li><strong>Username</strong> - Identify the SuperUser username.</li>
+<li><strong>Password</strong> - Set this to whatever you set the SuperUser password to in the server&rsquo;s setup.</li>
+</ul>
+
+<p><a href="/docs/assets/mumble-superuser-info.png"><img src="/docs/assets/mumble-superuser-info.png" alt="SuperUser Info" /></a></p></li>
+
+<li><p>Once these additions have been made to your server list, select it and click <strong>Connect</strong>.</p>
+
+<p><a href="/docs/assets/mumble-server-list-with-favorite.png"><img src="/docs/assets/mumble-server-list-with-favorite.png" alt="Server List With Favorite." /></a></p></li>
+
+<li><p>Mumble may then ask you if you want to accept a self-signed certificate.  Since we never set up an SSL certificate, select <strong>Yes</strong>.</p>
+
+<p><a href="/docs/assets/mumble-accept-certificate.png"><img src="/docs/assets/mumble-accept-certificate.png" alt="Certificate accept" /></a></p></li>
+
+<li><p>You should now be connected as SuperUser. You can make changes to the server by right-clicking the <em>Root</em> channel and selecting <strong>Edit</strong>. Please refer to the <a href="http://wiki.mumble.info/wiki/Main_Page">Mumble Wiki</a> for more information on how to configure channels.</p>
+
+<p><a href="/docs/assets/mumble_connected_as_superuser.png"><img src="/docs/assets/mumble_connected_as_superuser-resized.png" alt="Connected as SuperUser." /></a></p></li>
+</ol>
+
+<h3 id="connecting-as-normal-user">Connecting As Normal User</h3>
+
+<p>When a normal user connects, you follow the same relative process as you did to connect as the SuperUser. However, a password is not necessary (unless you set one, with which you can then use to communicate).</p>
+
+<ol>
+<li><p>To open the Mumble Server Connect dialog, first open the client, then click <strong>Server</strong>, and then <strong>Connect</strong>. The following appears on your screen:</p>
+
+<p><a href="/docs/assets/mumble-server-list.png"><img src="/docs/assets/mumble-server-list.png" alt="Server List" /></a></p></li>
+
+<li><p>At page bottom, click <strong>Add New</strong>, then enter the following:</p>
+
+<ul>
+<li><strong>Label</strong> - Name this anything you want.</li>
+<li><strong>Address</strong> - Enter the IP address or domain name of the server.</li>
+<li><strong>Port</strong> - Leave this as default (64738), unless you changed it in the server&rsquo;s configuration.</li>
+<li><strong>Username</strong> - Your identifier on the server, name this anything you want.</li>
+</ul>
+
+<p><a href="/docs/assets/mumble-connect-as-normal-user.png"><img src="/docs/assets/mumble-connect-as-normal-user.png" alt="Normal User Info." /></a></p>
+
+<p>You should now be logged in as a normal user and can use the server as a user with limited privileges.</p>
+
+<p><a href="/docs/assets/mumble-connected-as-normal-user.png"><img src="/docs/assets/mumble-connected-as-normal-user-resized.png" alt="Connected as Normal User." /></a></p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://wiki.mumble.info/wiki/Main_Page">Mumble Wiki</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/">Custom Compiled Kernel on Debian &amp; Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu/">Custom Compiled Kernel with PV-GRUB on Debian &amp; Ubuntu - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/nodejs/how-to-install-nodejs-and-nginx-on-debian/">How to Install Node.js and Nginx on Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/drush-drupal/">Installing &amp; Using Drupal Drush on Debian 7</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/">Install SquirrelMail on Ubuntu 16.04 or Debian 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#mumble-server">Mumble Server</a>
+<ul>
+<li><a href="#install-mumble">Install Mumble</a></li>
+<li><a href="#configure-server-settings">Configure Server Settings</a></li>
+</ul></li>
+<li><a href="#mumble-client">Mumble Client</a>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#connecting-as-superuser">Connecting As SuperUser</a></li>
+<li><a href="#connecting-as-normal-user">Connecting As Normal User</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Gogs on Debian 9 with nginx and PostgreSQL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.">
+        <meta name="keywords" content="gogs, git, golang, nginx,  postgresql">
+        
+        <meta property="og:title" content="Install Gogs on Debian 9 with nginx and PostgreSQL">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/version-control/install-gogs-on-debian/">
+        <meta property="og:description" content="Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/version-control/install-gogs-on-debian/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/version-control/">Version Control</a>
+  
+</li>
+
+
+<li>
+  
+  Install Gogs on Debian 9 with nginx and PostgreSQL
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Gogs on Debian 9 with nginx and PostgreSQL</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-09T00:00:00Z">Thursday, November 9, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://twitter.com/flow__free">Nashruddin Amin
+    
+    <i class="fa fa-twitter"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2finstall-gogs-on-debian%2f&via=linode&text=Install%20Gogs%20on%20Debian%209%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2finstall-gogs-on-debian%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2finstall-gogs-on-debian%2f&t=Install%20Gogs%20on%20Debian%209%20with%20nginx%20and%20PostgreSQL" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/version-control/install-gogs-on-debian.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/version-control/install-gogs-on-debian.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><a href="http://gogs.io">Gogs</a> is a self-hosted Git service, similar to GitLab. It is written in <a href="http://golang.org">Go</a> and aims to be the easiest and most painless way to set up self-hosted Git service. Gogs is one of the best choices if you need to set up a private Git repository, but don&rsquo;t want to pay for the private plans on other Git services.</p>
+
+<p><img src="/docs/assets/gogs_tg.png" alt="Install Gogs on Debian" title="Install Gogs on Debian" /></p>
+
+<p>This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and nginx for the reverse proxy server. We will use <code>example.com</code> as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our <a href="/docs/platform/how-to-use-block-storage-with-your-linode">Block Storage</a> service with this setup.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="before-installing-gogs">Before Installing Gogs</h2>
+
+<ol>
+<li><p>Follow the <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/security/securing-your-server">Securing Your Server</a> guides, and make sure your Linode&rsquo;s <a href="/docs/getting-started#setting-the-hostname">hostname is set</a>.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre></li>
+
+<li><p>Install <code>git</code>:</p>
+
+<pre><code>sudo apt-get install -y git
+</code></pre></li>
+
+<li><p>When you install Go and Gogs, it will be under the user <code>git</code>. So, create that user:</p>
+
+<pre><code>sudo adduser --disabled-login --gecos 'Gogs' git
+</code></pre></li>
+</ol>
+
+<h2 id="install-go">Install Go</h2>
+
+<p>In this section we will download the latest version of Go (version 1.7 at the time of this writing) and install the package in the <code>/home/git/local/go</code> directory.</p>
+
+<ol>
+<li><p>Create the <code>/home/git/local</code> directory:</p>
+
+<pre><code>sudo su - git
+mkdir $HOME/local &amp;&amp; cd $_
+</code></pre></li>
+
+<li><p>Download Go and extract the compressed file:</p>
+
+<pre><code>wget https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
+tar -C /home/git/local -xvzf go1.7.linux-amd64.tar.gz
+</code></pre></li>
+
+<li><p>Set the <code>GOPATH</code> environment variable to specify the location of our workspace. We will set the variables in our <code>.bashrc</code> file so they will be available every time we enter the shell.</p>
+
+<pre><code>echo 'export GOROOT=$HOME/local/go' &gt;&gt; $HOME/.bashrc
+echo 'export GOPATH=$HOME/go' &gt;&gt; $HOME/.bashrc
+echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' &gt;&gt; $HOME/.bashrc
+source $HOME/.bashrc
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>We need to specify the <code>GOROOT</code> environment variable since we are installing Go to a custom location.</div>
+</blockquote>
+</li>
+
+<li><p>Check that Go is properly installed:</p>
+
+<pre><code>go version
+</code></pre>
+
+<p>You&rsquo;ll see output that resembles the following:</p>
+
+<pre><code>go version go1.7 linux/amd64
+</code></pre></li>
+</ol>
+
+<h2 id="install-gogs">Install Gogs</h2>
+
+<ol>
+<li><p>Download and install Gogs:</p>
+
+<pre><code>go get -u github.com/gogits/gogs
+</code></pre>
+
+<p>This may take a few minutes during which your console will appear unresponsive.</p></li>
+
+<li><p>Build the Gogs binary:</p>
+
+<pre><code>cd $GOPATH/src/github.com/gogits/gogs
+go build
+</code></pre></li>
+
+<li><p>It will produce a binary named <code>gogs</code> in the current directory. Execute the binary:</p>
+
+<pre><code>./gogs web
+</code></pre>
+
+<p>It will start the web server and listen for HTTP connections on port 3000 while outputting something like this:</p>
+
+<pre><code>2015/10/09 15:41:41 [W] Custom config (/home/git/go/src/github.com/gogits/gogs/custom/conf/app.ini) not found, ignore this if you're running first time
+2015/10/09 15:41:41 [T] Custom path: /home/git/go/src/github.com/gogits/gogs/custom
+2015/10/09 15:41:41 [T] Log path: /home/git/go/src/github.com/gogits/gogs/log
+2015/10/09 15:41:41 [I] Gogs: Go Git Service 0.6.16.1008 Beta
+2015/10/09 15:41:41 [I] Log Mode: Console(Trace)
+2015/10/09 15:41:41 [I] Cache Service Enabled
+2015/10/09 15:41:41 [I] Session Service Enabled
+2015/10/09 15:41:41 [I] Run Mode: Development
+2015/10/09 15:41:41 [I] Listen: http://0.0.0.0:3000
+</code></pre>
+
+<p>Open <code>http://example.com:3000</code> using your browser. Gogs will redirect the browser to the installation page. Since you haven&rsquo;t installed the database server yet, close the browser and stop the web server by pressing CTRL+C. You will return to this installation page after installing PostgreSQL and Nginx.</p></li>
+
+<li><p>Exit from user <code>git</code>:</p>
+
+<pre><code>exit
+</code></pre></li>
+</ol>
+
+<h2 id="install-postgresql">Install PostgreSQL</h2>
+
+<p>Using a database server for Gogs is completely optional. Feel free to skip this section if you don&rsquo;t want to use a database server with Gogs.</p>
+
+<ol>
+<li><p>Install the required packages:</p>
+
+<pre><code>sudo apt-get install -y postgresql postgresql-client libpq-dev
+</code></pre></li>
+
+<li><p>Open the PostgreSQL interactive terminal to create a new database and user for Gogs:</p>
+
+<pre><code>sudo -u postgres psql -d template1
+</code></pre>
+
+<p>The output looks like this:</p>
+
+<pre><code>psql (9.4.4)
+Type &quot;help&quot; for help.
+
+template1=#
+</code></pre></li>
+
+<li><p>Create new user for Gogs:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">gogs</span> <span class="k">CREATEDB</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>Set the password for user <code>gogs</code>:</p>
+
+<pre><code>\password gogs
+</code></pre>
+
+<p>It will prompt you for the password and password confirmation. Take note of this password, you will need it later when configuring Gogs.</p></li>
+
+<li><p>Create new database for Gogs:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">gogs</span> <span class="k">OWNER</span> <span class="n">gogs</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>Exit the <code>psql</code> terminal:</p>
+
+<pre><code>\q
+</code></pre></li>
+</ol>
+
+<h2 id="install-nginx">Install nginx</h2>
+
+<p>We will use nginx as the reverse proxy for Gogs, so we can access Gogs using our domain name rather than using our host&rsquo;s IP address. In addition, we will let nginx handle the HTTPS connections for our Gogs site.</p>
+
+<ol>
+<li><p>Create a <a href="/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate">self-signed SSL certificate</a> or buy a <a href="/docs/security/ssl/obtaining-a-commercial-ssl-certificate">commercial SSL certificate</a> from a certificate authority (CA).</p></li>
+
+<li><p>Install nginx from the repository:</p>
+
+<pre><code>sudo apt-get install -y nginx
+</code></pre></li>
+
+<li><p>Set nginx as the reverse proxy for Gogs. Using <code>sudo</code>, create a new file named <code>/etc/nginx/sites-available/gogs</code>, and set the content as shown below:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/nginx/sites-available/gogs 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">example.com</span><span class="p">;</span>
+    <span class="kn">return</span> <span class="mi">302</span> <span class="s">https://</span><span class="nv">$server_name$request_uri</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">example.com</span><span class="p">;</span>
+
+    <span class="kn">ssl_certificate</span> <span class="s">/path/to/certificate.crt</span><span class="p">;</span>
+    <span class="kn">ssl_certificate_key</span> <span class="s">/path/to/certificate_key.key</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+        <span class="kn">proxy_pass</span> <span class="s">http://localhost:3000</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Activate the reverse proxy:</p>
+
+<pre><code>sudo ln -s /etc/nginx/sites-available/gogs /etc/nginx/sites-enabled/gogs
+</code></pre></li>
+
+<li><p>Restart nginx:</p>
+
+<pre><code>sudo systemctl restart nginx
+</code></pre></li>
+</ol>
+
+<h2 id="automatic-startup-with-systemd">Automatic Startup with systemd</h2>
+
+<p>In this section we will set up Gogs to run automatically on boot by creating a systemd unit file.</p>
+
+<ol>
+<li><p>Using <code>sudo</code>, create <code>/etc/systemd/system/gogs.service</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/systemd/system/gogs.service 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Gogs (Go Git Service)</span>
+<span class="na">After</span><span class="o">=</span><span class="s">syslog.target</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+<span class="na">After</span><span class="o">=</span><span class="s">postgresql.service</span>
+<span class="na">After</span><span class="o">=</span><span class="s">nginx.service</span>
+
+<span class="k">[Service]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+<span class="na">User</span><span class="o">=</span><span class="s">git</span>
+<span class="na">Group</span><span class="o">=</span><span class="s">git</span>
+<span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/home/git/go/src/github.com/gogits/gogs</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/home/git/go/src/github.com/gogits/gogs/gogs web</span>
+<span class="na">Restart</span><span class="o">=</span><span class="s">always</span>
+<span class="na">Environment</span><span class="o">=</span><span class="s">USER=git HOME=/home/git</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Enable the systemd unit file:</p>
+
+<pre><code>sudo systemctl enable gogs
+</code></pre></li>
+
+<li><p>Start the service:</p>
+
+<pre><code>sudo systemctl start gogs
+</code></pre></li>
+
+<li><p>Check the status of the service:</p>
+
+<pre><code>sudo systemctl status gogs
+</code></pre>
+
+<p>It should display the output like this:</p>
+
+<pre><code>gogs.service - Gogs (Go Git Service)
+   Loaded: loaded (/etc/systemd/system/gogs.service; enabled)
+   Active: active (running) since Sat 2015-10-10 16:51:45 WIB; 34s ago
+ Main PID: 818 (gogs)
+   CGroup: /system.slice/gogs.service
+           └─818 /home/git/go/src/github.com/gogits/gogs/gogs web
+
+Oct 10 16:51:45 debian gogs[818]: 2015/10/10 16:51:45 [W] Custom config (/home/git/go/src/github.com/g... time
+Oct 10 16:51:45 debian gogs[818]: 2015/10/10 16:51:45 [T] Custom path: /home/git/go/src/github.com/gog...ustom
+Oct 10 16:51:45 debian gogs[818]: 2015/10/10 16:51:45 [T] Log path: /home/git/go/src/github.com/gogits...s/log
+Oct 10 16:51:45 debian gogs[818]: 2015/10/10 16:51:45 [I] Gogs: Go Git Service 0.6.16.1008 Beta
+...
+</code></pre></li>
+</ol>
+
+<h2 id="configure-gogs-using-the-web-installer">Configure Gogs Using the Web Installer</h2>
+
+<p>Open <code>https://example.com:3000</code> in your browser. It will redirect you to the installation page:</p>
+
+<p><img src="/docs/assets/gogs_debian_jessie_installation_page.png" alt="Gogs installation page" /></p>
+
+<p>Modify the database settings to match with the PostgreSQL database we created earlier:</p>
+
+<ul>
+<li><strong>Database type</strong> = <code>PostgreSQL</code></li>
+<li><strong>Host</strong> = <code>127.0.0.1:5432</code></li>
+<li><strong>User</strong> = <code>gogs</code></li>
+<li><strong>Password</strong> = <code>&lt;password for user gogs&gt;</code></li>
+<li><strong>Database Name</strong> = <code>gogs</code></li>
+</ul>
+
+<p>Set your domain and URL under the General Settings section:</p>
+
+<ul>
+<li><strong>Domain</strong> = <code>example.com</code></li>
+<li><strong>Application URL</strong> = <code>https://example.com</code></li>
+</ul>
+
+<p>Under <strong>Application General Settings</strong>, check the box for <strong>Enable Builtin SSH Server</strong></p>
+
+<p>Also, you might want to setup an admin account at the bottom of the installation page. Click the <strong>Install Gogs</strong> button when you&rsquo;re ready to start the installation. When it&rsquo;s finished, you will see the login page:</p>
+
+<p><img src="/docs/assets/gogs_debian_jessie_login_page.png" alt="Gogs Login Page" /></p>
+
+<p>Congratulations! You have successfully installed Gogs on your server.</p>
+
+<h2 id="disable-http-access-to-gogs">Disable HTTP Access to Gogs</h2>
+
+<p>The Gogs site is still accessible over unsecured HTTP via <code>http://example.com:3000</code>. This is because the Gogs web server listens to all network interfaces on port 3000. If you want your Gogs site to be secure, you need to configure Gogs to listen <em>only</em> to your loopback interface.</p>
+
+<ol>
+<li><p>Login as user <code>git</code> and go to the Gogs installation directory:</p>
+
+<pre><code>sudo su - git
+cd $GOPATH/src/github.com/gogits/gogs
+</code></pre></li>
+
+<li><p>Open the configuration file <code>custom/conf/app.ini</code>. Add a new configuration value <code>HTTP_ADDR</code> under the <code>[server]</code> section. The section should look like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/git/go/src/github.com/gogits/gogs/custom/conf/app.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[server]</span>
+<span class="na">DOMAIN</span> <span class="o">=</span> <span class="s">example.com</span>
+<span class="na">HTTP_ADDR</span> <span class="o">=</span> <span class="s">127.0.0.1</span>
+<span class="na">HTTP_PORT</span> <span class="o">=</span> <span class="s">3000</span>
+<span class="na">ROOT_URL</span> <span class="o">=</span> <span class="s">https://example.com/</span>
+<span class="na">DISABLE_SSH</span> <span class="o">=</span> <span class="s">false</span>
+<span class="na">SSH_PORT</span> <span class="o">=</span> <span class="s">22</span>
+<span class="na">OFFLINE_MODE</span> <span class="o">=</span> <span class="s">false</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Logout from user <code>git</code>:</p>
+
+<pre><code>exit
+</code></pre></li>
+
+<li><p>Restart Gogs:</p>
+
+<pre><code>sudo systemctl restart gogs
+</code></pre></li>
+
+<li><p>Open your browser. Confirm that <code>https://example.com</code> is still running and <code>http://example.com:3000</code> is not.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://gogs.io">Gogs official site</a></li>
+
+<li><a href="http://gogs.io/docs">Gogs documentation</a></li>
+
+<li><a href="http://blog.gopheracademy.com/birthday-bash-2014/gogs-gitlab-alternative-in-go/">Gogs: GitLab alternative in Go</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/">Install GitLab on Ubuntu 14.04 (Trusty Tahr)</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/">Monitor an nginx Web Server Using the Elastic Stack on Centos 7</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/">How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/">How to Install and Configure Redmine on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/">Nginx SSL and TLS Deployment Best Practices</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-installing-gogs">Before Installing Gogs</a></li>
+<li><a href="#install-go">Install Go</a></li>
+<li><a href="#install-gogs">Install Gogs</a></li>
+<li><a href="#install-postgresql">Install PostgreSQL</a></li>
+<li><a href="#install-nginx">Install nginx</a></li>
+<li><a href="#automatic-startup-with-systemd">Automatic Startup with systemd</a></li>
+<li><a href="#configure-gogs-using-the-web-installer">Configure Gogs Using the Web Installer</a></li>
+<li><a href="#disable-http-access-to-gogs">Disable HTTP Access to Gogs</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install Asterisk on CentOS 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Installing Asterisk 13 on CentOS 7">
+        <meta name="keywords" content="asterisk 13, centos 7, centos, open source, private branch exchange, pbx, asterisk pbx, sip, session initiation protocol, sip protocol, IP PBX systems, VoIP gateways">
+        
+        <meta property="og:title" content="How to Install Asterisk on CentOS 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/voip/install-asterisk-on-centos-7/">
+        <meta property="og:description" content="Installing Asterisk 13 on CentOS 7">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/voip/install-asterisk-on-centos-7/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/voip/">VoIP</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install Asterisk on CentOS 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install Asterisk on CentOS 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-09-30T00:00:00Z">Wednesday, September 30, 2015</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Nick Rahl
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fvoip%2finstall-asterisk-on-centos-7%2f&via=linode&text=How%20to%20Install%20Asterisk%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fvoip%2finstall-asterisk-on-centos-7%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fvoip%2finstall-asterisk-on-centos-7%2f&t=How%20to%20Install%20Asterisk%20on%20CentOS%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/voip/install-asterisk-on-centos-7.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/voip/install-asterisk-on-centos-7.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/how-to-install-asterisk-on-centos-7.jpg" alt="How to Install Asterisk on CentOS 7" title="How to Install Asterisk on CentOS 7" /></p>
+
+<h2 id="what-is-asterisk">What is Asterisk?</h2>
+
+<p>Asterisk is an open source <em>private branch exchange</em> (PBX) server that uses <em>Session Initiation Protocol</em> (SIP) to route and manage telephone calls. Notable features include customer service queues, music on hold, conference calling, and call recording, among others.</p>
+
+<p>This guide covers the steps necessary to provision a new CentOS 7 Linode as a dedicated Asterisk server for your home or office.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Create a CentOS 7 Linode in your closest datacenter (barring Atlanta, which does not currently support SIP servers). A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.</p></li>
+
+<li><p>Ensure you have followed the <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/security/securing-your-server">Securing Your Server</a> guides to prepare your server. <strong>Do not</strong> following the section to set up a firewall.</p></li>
+
+<li><p>Edit <code>/etc/selinux/config</code> to ensure SELinux is disabled:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/selinux/config 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">SELINUX</span><span class="o">=</span>disabled</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Update your packages:</p>
+
+<pre><code>sudo yum update
+</code></pre></li>
+
+<li><p>Reboot your Linode:</p>
+
+<pre><code>reboot
+</code></pre></li>
+</ol>
+
+<h3 id="configuring-iptables">Configuring iptables</h3>
+
+<p>iptables will be used to secure the Linode against unwanted traffic. The Linode should not have any firewall rules configured.</p>
+
+<ol>
+<li><p>Check for current firewall rules:</p>
+
+<pre><code>sudo iptables -L
+</code></pre>
+
+<p>It should show an empty rule table:</p>
+
+<pre><code>Chain INPUT (policy ACCEPT)
+target      prot opt source                    destination
+
+Chain FORWARD (policy ACCEPT)
+target      prot opt source                    destination
+
+Chain OUTPUT (policy ACCEPT)
+target      prot opt source                    destination
+</code></pre></li>
+
+<li><p>Create <code>/etc/iptables.firewall.rules</code> using your preferred text editor. This file will be used to activate the firewall with the desired rules every time the Linode boots.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/iptables.firewall.rules 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">*filter
+
+<span class="c1">#  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn&#39;t use lo0
+</span><span class="c1"></span>-A INPUT -i lo -j ACCEPT
+-A INPUT -d <span class="m">127</span>.0.0.0/8 -j REJECT
+
+<span class="c1">#  Accept all established inbound connections
+</span><span class="c1"></span>-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+<span class="c1">#  Allow all outbound traffic - you can modify this to only allow certain traffic
+</span><span class="c1"></span>-A OUTPUT -j ACCEPT
+
+<span class="c1">#  Allow SSH connections
+</span><span class="c1">#
+</span><span class="c1">#  The -dport number should be the same port number you set in sshd_config, ie 8050
+</span><span class="c1">#
+</span><span class="c1"></span>-A INPUT -p tcp -m state --state NEW --dport <span class="m">22</span> -j ACCEPT
+
+<span class="c1"># SIP on UDP port 5060, 5061 for secure signaling. Used for signals such as &#34;hang up&#34;
+</span><span class="c1"></span>-A INPUT -p udp -m udp --dport <span class="m">5060</span> -j ACCEPT
+-A INPUT -p udp -m udp --dport <span class="m">5061</span> -j ACCEPT
+
+<span class="c1"># IAX2- the IAX protocol - comment out if you don&#39;t plan to use IAX
+</span><span class="c1"># -A INPUT -p udp -m udp --dport 4569 -j ACCEPT
+</span><span class="c1"></span>
+<span class="c1"># IAX - old IAX protocol, uncomment if needed for legacy systems.
+</span><span class="c1"># -A INPUT -p udp -m udp --dport 5036 -j ACCEPT
+</span><span class="c1"></span>
+<span class="c1"># RTP - the media stream - you can change this in /etc/asterisk/rtp.conf
+</span><span class="c1"></span>-A INPUT -p udp -m udp --dport <span class="m">10000</span>:20000 -j ACCEPT
+
+<span class="c1"># MGCP - if you use media gateway control protocol in your configuration
+</span><span class="c1"></span>-A INPUT -p udp -m udp --dport <span class="m">2727</span> -j ACCEPT
+
+
+<span class="c1"># Uncomment these lines if you plan to use FreePBX to manage Asterisk
+</span><span class="c1"># -A INPUT -p tcp --dport 80 -j ACCEPT
+</span><span class="c1"># -A INPUT -p tcp --dport 443 -j ACCEPT
+</span><span class="c1"></span>
+<span class="c1">#  Allow ping
+</span><span class="c1"></span>-A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+
+<span class="c1">#  Log iptables denied calls
+</span><span class="c1"></span>-A INPUT -m limit --limit <span class="m">5</span>/min -j LOG --log-prefix <span class="s2">&#34;iptables denied: &#34;</span> --log-level <span class="m">7</span>
+
+<span class="c1">#  Drop all other inbound - default deny unless explicitly allowed policy
+</span><span class="c1"></span>-A INPUT -j DROP
+-A FORWARD -j DROP
+
+COMMIT</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Leave IAX commented out unless you know you need it. IAX is &ldquo;Inter-Asterisk Exchange&rdquo; and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won&rsquo;t need IAX or IAX2.</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="start-firewall-at-boot">Start Firewall at Boot</h3>
+
+<p>CentOS 7 does not come with the <code>iptables-services</code> pre-installed, it will have to be installed so the firewall can load at boot.</p>
+
+<ol>
+<li><p>Install <code>iptables-services</code>, then enable and start it:</p>
+
+<pre><code>sudo yum install -y iptables-services
+sudo systemctl enable iptables
+sudo systemctl start iptables
+</code></pre></li>
+
+<li><p>Load the firewall rules:</p>
+
+<pre><code>sudo iptables-restore &lt; /etc/iptables.firewall.rules
+</code></pre></li>
+
+<li><p>Recheck the Linode’s firewall rules:</p>
+
+<pre><code>sudo iptables -L
+</code></pre>
+
+<p>Your output should now look like this:</p>
+
+<pre><code>Chain INPUT (policy ACCEPT)
+target      prot opt source                    destination
+ACCEPT      all  --  anywhere                 anywhere
+REJECT      all  --  anywhere                 loopback/8              reject-with icmp-port-unreachable
+ACCEPT      all  --  anywhere                 anywhere                 state RELATED,ESTABLISHED
+ACCEPT      tcp  --  anywhere                 anywhere                 state NEW tcp dpt:8050
+ACCEPT      udp  --  anywhere                 anywhere                 udp dpt:sip
+ACCEPT      udp  --  anywhere                 anywhere                 udp dpt:iax
+ACCEPT      udp  --  anywhere                 anywhere                 udp dpts:ndmp:dnp
+ACCEPT      udp  --  anywhere                 anywhere                 udp dpt:mgcp-callagent
+ACCEPT      icmp --  anywhere                 anywhere                 icmp echo-request
+LOG          all  --  anywhere                 anywhere                 limit: avg 5/min burst 5 LOG level debug prefix &quot;iptables denied: &quot;
+DROP         all  --  anywhere                 anywhere
+
+Chain FORWARD (policy ACCEPT)
+target      prot opt source                    destination
+DROP         all  --  anywhere                 anywhere
+
+Chain OUTPUT (policy ACCEPT)
+target      prot opt source                    destination
+ACCEPT      all  --  anywhere                 anywhere
+</code></pre></li>
+
+<li><p>Save this ruleset:</p>
+
+<pre><code>/usr/libexec/iptables/iptables.init save
+</code></pre></li>
+
+<li><p>In a new terminal, make sure you can log in:</p>
+
+<pre><code>ssh exampleuser@xx.xx.xx.xxx
+</code></pre></li>
+</ol>
+
+<h2 id="installing-dependencies">Installing Dependencies</h2>
+
+<p>A number of dependencies will be to be installed prior to installing Asterisk. To install them run:</p>
+
+<pre><code>sudo yum install -y epel-release dmidecode gcc-c++ ncurses-devel libxml2-devel make wget openssl-devel newt-devel kernel-devel sqlite-devel libuuid-devel gtk2-devel jansson-devel binutils-devel
+</code></pre>
+
+<h3 id="installing-pjproject">Installing PJPROJECT</h3>
+
+<p>PJPROJECT is Asterisk&rsquo;s SIP channel driver. It should provide improved call clarity and performance over older drivers.</p>
+
+<ol>
+<li><p>As a non-root user, create a directory to work from:</p>
+
+<pre><code>mkdir ~/build
+</code></pre></li>
+
+<li><p>Switch to that directory:</p>
+
+<pre><code>cd ~/build
+</code></pre></li>
+
+<li><p>Use <code>wget</code> to fetch the PJSIP fdriver source code:</p>
+
+<pre><code>wget http://www.pjsip.org/release/2.3/pjproject-2.3.tar.bz2
+</code></pre></li>
+
+<li><p>Extract it:</p>
+
+<pre><code>tar -jxvf pjproject-2.3.tar.bz2
+</code></pre></li>
+
+<li><p>Change to the newly created directory:</p>
+
+<pre><code>cd pjproject-2.3
+</code></pre></li>
+
+<li><p>Prepare the software to be compiled:</p>
+
+<pre><code>./configure CFLAGS=&quot;-DNDEBUG -DPJ_HAS_IPV6=1&quot; --prefix=/usr --libdir=/usr/lib64 --enable-shared --disable-video --disable-sound --disable-opencore-amr
+</code></pre>
+
+<p>You should not see any error messages.</p></li>
+
+<li><p>Ensure that all dependencies are in place:</p>
+
+<pre><code>make dep
+make
+</code></pre></li>
+
+<li><p>Install the packages:</p>
+
+<pre><code>sudo make install
+sudo ldconfig
+</code></pre></li>
+
+<li><p>Ensure the libraries have been properly installed:</p>
+
+<pre><code>sudo ldconfig -p | grep pj
+</code></pre>
+
+<p>You should get output that looks like:</p>
+
+<pre><code>libpjsua2.so.2 (libc6,x86-64) =&gt; /lib64/libpjsua2.so.2
+libpjsua2.so (libc6,x86-64) =&gt; /lib64/libpjsua2.so
+libpjsua.so.2 (libc6,x86-64) =&gt; /lib64/libpjsua.so.2
+libpjsua.so (libc6,x86-64) =&gt; /lib64/libpjsua.so
+libpjsip.so.2 (libc6,x86-64) =&gt; /lib64/libpjsip.so.2
+libpjsip.so (libc6,x86-64) =&gt; /lib64/libpjsip.so
+libpjsip-ua.so.2 (libc6,x86-64) =&gt; /lib64/libpjsip-ua.so.2
+libpjsip-ua.so (libc6,x86-64) =&gt; /lib64/libpjsip-ua.so
+libpjsip-simple.so.2 (libc6,x86-64) =&gt; /lib64/libpjsip-simple.so.2
+libpjsip-simple.so (libc6,x86-64) =&gt; /lib64/libpjsip-simple.so
+libpjnath.so.2 (libc6,x86-64) =&gt; /lib64/libpjnath.so.2
+libpjnath.so (libc6,x86-64) =&gt; /lib64/libpjnath.so
+libpjmedia.so.2 (libc6,x86-64) =&gt; /lib64/libpjmedia.so.2
+libpjmedia.so (libc6,x86-64) =&gt; /lib64/libpjmedia.so
+libpjmedia-videodev.so.2 (libc6,x86-64) =&gt; /lib64/libpjmedia-videodev.so.2
+libpjmedia-videodev.so (libc6,x86-64) =&gt; /lib64/libpjmedia-videodev.so
+libpjmedia-codec.so.2 (libc6,x86-64) =&gt; /lib64/libpjmedia-codec.so.2
+libpjmedia-codec.so (libc6,x86-64) =&gt; /lib64/libpjmedia-codec.so
+libpjmedia-audiodev.so.2 (libc6,x86-64) =&gt; /lib64/libpjmedia-audiodev.so.2
+libpjmedia-audiodev.so (libc6,x86-64) =&gt; /lib64/libpjmedia-audiodev.so
+libpjlib-util.so.2 (libc6,x86-64) =&gt; /lib64/libpjlib-util.so.2
+libpjlib-util.so (libc6,x86-64) =&gt; /lib64/libpjlib-util.so
+libpj.so.2 (libc6,x86-64) =&gt; /lib64/libpj.so.2
+libpj.so (libc6,x86-64) =&gt; /lib64/libpj.so
+</code></pre></li>
+</ol>
+
+<h3 id="optional-installing-dahdi">(Optional) Installing DAHDI</h3>
+
+<p>DAHDI, or <em>Digium/Asterisk Hardware Device Interface</em>, is the kernel module that controls telephone interface cards. This type of card is usually used when adding Asterisk to an existing call center that uses older technology.
+Since it&rsquo;s not possible to add physical cards to a virtual machine you probably won&rsquo;t need the DAHDI driver installed.</p>
+
+<p>There is one exception: If you plan to host conference calls on your Asterisk box where more than one person can join a conference room, DAHDI also provides the required timing source for this feature to work.</p>
+
+<h4 id="install-the-vanilla-centos-kernel">Install the Vanilla CentOS Kernel</h4>
+
+<p>Since DAHDI is a kernel module it needs kernel headers in order to compile. The Linode-supplied kernel is a different version than the headers supplied in the CentOS repository, so we&rsquo;ll need to switch to the distribution-supplied kernel.</p>
+
+<p>Follow the instructions at <a href="/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub">Run a Distribution-Supplied Kernel on a XEN Linode</a> or <a href="/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm">Run a Distribution-Supplied Kernel on a KVM Linode</a> before continuing with the next steps.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>You should not attempt to replace the Kernel on a system that is currently in production.</div>
+</blockquote>
+
+
+<h4 id="build-dahdi">Build DAHDI</h4>
+
+<p>With the new Kernel in place, you&rsquo;re now ready to build DAHDI.</p>
+
+<ol>
+<li><p>Switch back to your build directory:</p>
+
+<pre><code>cd ~/build
+</code></pre></li>
+
+<li><p>Download the latest version of DAHDI (version 2.10.2 at the time of this writing):</p>
+
+<pre><code>wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
+</code></pre></li>
+
+<li><p>Untar the file:</p>
+
+<pre><code>tar -zxvf dahdi-linux-complete-current.tar.gz
+</code></pre></li>
+
+<li><p>Switch to the new directory:</p>
+
+<pre><code>cd dahdi-linux-complete-2.10.2+2.10.2/
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Your version may be different, so substitute <code>2.10.2</code> with the version that was extracted.</div>
+</blockquote>
+</li>
+
+<li><p>Build DAHDI:</p>
+
+<pre><code>make
+</code></pre></li>
+
+<li><p>Install DAHDI:</p>
+
+<pre><code>sudo make install
+sudo make config
+</code></pre></li>
+</ol>
+
+<h2 id="installing-asterisk">Installing Asterisk</h2>
+
+<p>We&rsquo;re now ready to install Asterisk 13, the current long-term support release of Asterisk.</p>
+
+<h3 id="installing-asterisk-from-source">Installing Asterisk from Source</h3>
+
+<ol>
+<li><p>Switch to the build directory:</p>
+
+<pre><code>cd ~/build
+</code></pre></li>
+
+<li><p>Download the latest version of Asterisk 13:</p>
+
+<pre><code>wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
+</code></pre></li>
+
+<li><p>Untar the file:</p>
+
+<pre><code>tar -zxvf asterisk-13-current.tar.gz
+</code></pre></li>
+
+<li><p>Switch to the new Asterisk directory, replacing <code>13.5.0</code> if needed:</p>
+
+<pre><code>cd asterisk-13.5.0
+</code></pre></li>
+</ol>
+
+<h3 id="enable-mp3-support">Enable MP3 Support</h3>
+
+<p>To use MP3 files for Music on Hold, some dependencies will need to be installed.</p>
+
+<ol>
+<li><p>Install Subversion:</p>
+
+<pre><code>sudo yum install svn
+</code></pre></li>
+
+<li><p>Run:</p>
+
+<pre><code>contrib/scripts/get_mp3_source.sh
+</code></pre></li>
+</ol>
+
+<h3 id="configure-and-build-asterisk">Configure and Build Asterisk</h3>
+
+<ol>
+<li><p>Run the <code>configure</code> script to prepare the Asterisk source code for compiling:</p>
+
+<pre><code>./configure --libdir=/usr/lib64
+
+If there are any missing dependencies, install them.
+</code></pre></li>
+
+<li><p>Start the build process:</p>
+
+<pre><code>make menuselect
+</code></pre>
+
+<p>After a short while, you should get a menu on screen that allows you to configure the features you want to build.</p></li>
+
+<li><p>If you want to use the MP3 format with Music on Hold, you should select <code>Add-Ons</code>, then use the right arrow to move to the right-hand list. Navigate to <code>format_mp3</code> and press enter to select it.</p></li>
+
+<li><p>Select addition sound packages and Music on Hold packs on the left menu, and enable the wav format for your desired language. (ie. use the <code>EN</code> package for English.)</p></li>
+
+<li><p>Press <strong>F12</strong> to save and exit.</p></li>
+
+<li><p>Compile Asterisk:</p>
+
+<pre><code>make
+</code></pre></li>
+
+<li><p>Install Asterisk on the system:</p>
+
+<pre><code>sudo make install
+</code></pre></li>
+
+<li><p>Install sample configuration files:</p>
+
+<pre><code>sudo make samples
+</code></pre></li>
+
+<li><p>Configure Asterisk to start itself automatically on boot:</p>
+
+<pre><code>sudo make config
+</code></pre></li>
+</ol>
+
+<h3 id="try-it-out">Try it Out</h3>
+
+<p>Congratulations! You now have a working Asterisk phone server. Let&rsquo;s fire up Asterisk and make sure it runs.</p>
+
+<ol>
+<li><p>Start Asterisk:</p>
+
+<pre><code>sudo service asterisk start
+</code></pre></li>
+
+<li><p>Connect to Asterisk:</p>
+
+<pre><code>asterisk -rvv
+</code></pre>
+
+<p>You should get a prompt with the current version number.</p></li>
+
+<li><p>To see a list of possible commands:</p>
+
+<pre><code>core show help
+</code></pre></li>
+
+<li><p>To disconnect type:</p>
+
+<pre><code>exit
+</code></pre>
+
+<p>Once disconnected, Asterisk continues to run in the background.</p></li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Now that you have an Asterisk server running on your Linode, it&rsquo;s time to connect some phones, add extensions, and configure the various options that are available with Asterisk. For detailed instructions, check out
+the Asterisk Project&rsquo;s guide to <a href="https://wiki.asterisk.org/wiki/display/AST/Basic+PBX+Functionality">Configuring Asterisk</a>.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>When running a phone system on a remote server such as a Linode, it&rsquo;s always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to follow the <a href="https://wiki.asterisk.org/wiki/display/AST/Secure+Calling">Secure Calling Guide</a> to encrypt your communications.</div>
+</blockquote>
+
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/game-servers/garrys-mod-server-on-centos-7/">Garry&#39;s Mod on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/websites-with-nginx-on-centos-5/">Websites with Nginx on CentOS 5 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/">Monitor an nginx Web Server Using the Elastic Stack on Centos 7</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/">Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/ecommerce/install-opencart-on-centos-7/">How to Install OpenCart on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-asterisk">What is Asterisk?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a>
+<ul>
+<li><a href="#configuring-iptables">Configuring iptables</a></li>
+<li><a href="#start-firewall-at-boot">Start Firewall at Boot</a></li>
+</ul></li>
+<li><a href="#installing-dependencies">Installing Dependencies</a>
+<ul>
+<li><a href="#installing-pjproject">Installing PJPROJECT</a></li>
+<li><a href="#optional-installing-dahdi">(Optional) Installing DAHDI</a>
+<ul>
+<li><a href="#install-the-vanilla-centos-kernel">Install the Vanilla CentOS Kernel</a></li>
+<li><a href="#build-dahdi">Build DAHDI</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#installing-asterisk">Installing Asterisk</a>
+<ul>
+<li><a href="#installing-asterisk-from-source">Installing Asterisk from Source</a></li>
+<li><a href="#enable-mp3-support">Enable MP3 Support</a></li>
+<li><a href="#configure-and-build-asterisk">Configure and Build Asterisk</a></li>
+<li><a href="#try-it-out">Try it Out</a></li>
+</ul></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

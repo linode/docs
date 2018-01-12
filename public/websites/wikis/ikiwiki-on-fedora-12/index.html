@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Ikiwiki on Fedora 12</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Using Ikiwiki on Fedora 12 to power a standard wiki implementation.">
+        <meta name="keywords" content="ikiwiki, fedora, fedora 12, wiki, perl, git, markdown">
+        
+        <meta property="og:title" content="Ikiwiki on Fedora 12">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/wikis/ikiwiki-on-fedora-12/">
+        <meta property="og:description" content="Using Ikiwiki on Fedora 12 to power a standard wiki implementation.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/wikis/ikiwiki-on-fedora-12/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/wikis/">Wikis</a>
+  
+</li>
+
+
+<li>
+  
+  Ikiwiki on Fedora 12
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Ikiwiki on Fedora 12</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-04-29T00:00:00Z">Friday, April 29, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fwikis%2fikiwiki-on-fedora-12%2f&via=linode&text=Ikiwiki%20on%20Fedora%2012" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fwikis%2fikiwiki-on-fedora-12%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fwikis%2fikiwiki-on-fedora-12%2f&t=Ikiwiki%20on%20Fedora%2012" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/wikis/ikiwiki-on-fedora-12.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/wikis/ikiwiki-on-fedora-12.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Unlike some other popular wiki engines, Ikiwiki compiles static HTML pages which can be efficiently served with a basic web server. These are generated from a source directory that can be stored in the <a href="/docs/linux-tools/version-control/">version control</a> system of your choice, though this guide assumes that you use <a href="/docs/development/version-control/how-to-configure-git">git</a>.</p>
+
+<p>This guide is written for Fedora 12, and assumes that you&rsquo;ve followed our <a href="/docs/getting-started/">getting started guide</a> and have a running and updated system. Additionally, it is assume that you have a functioning <a href="/docs/web-servers/apache/installation/fedora-12">Apache web server</a> and a working installation of <a href="/docs/development/version-control/how-to-configure-git">git</a>.</p>
+
+<h1 id="installing-ikiwiki">Installing Ikiwiki</h1>
+
+<p>Ensure your system is up to date by issuing the following command:</p>
+
+<pre><code>yum update
+</code></pre>
+
+<p>We&rsquo;re ready to install Ikiwiki and its dependencies using the following command:</p>
+
+<pre><code>yum install ikiwiki git gcc httpd
+</code></pre>
+
+<p>Now that you have Ikiwiki installed, we can move on to configuring it for use.</p>
+
+<h1 id="automatic-ikiwiki-configuration">Automatic Ikiwiki Configuration</h1>
+
+<p>From the command line, you can issue the following command to generate a basic config file using Ikiwiki&rsquo;s auto-setup script.</p>
+
+<pre><code>ikiwiki -setup /etc/ikiwiki/auto.setup
+</code></pre>
+
+<p>This will ask you a series of questions about file locations and the revision control system you want to use. We recommend using git. When it&rsquo;s completed, it will generate the following output:</p>
+
+<pre><code>Successfully set up foo:
+    url:         http://example.com/~username/wiki
+    srcdir:      ~/wiki
+    destdir:     ~/public_html/wiki
+    repository:  ~/wiki.git
+To modify settings, edit ~/wiki.setup and then run:
+    ikiwiki -setup ~/wiki.setup
+</code></pre>
+
+<p>In this example, <code>example</code> is the machine&rsquo;s hostname, <code>username</code> is the admin user specified in the setup process, and <code>wiki</code> is the name of the wiki you specified during setup. You will need to configure your web server to serve files in <code>~/public_html/wiki</code> before this wiki will be accessible. No matter how you configure your web server, you will need to issue the following commands to start the web server for the first time and ensure that it will return following the next reboot cycle:</p>
+
+<pre><code>chkconfig httpd on
+/etc/init.d/httpd start
+</code></pre>
+
+<p>While the auto-setup script is great for getting up and running in a matter of moments, you are encouraged to examine and edit the config file <code>~/wiki.setup</code> as needed. If the automatic wiki setup is not ideal for your use case, we recommend manual configuration.</p>
+
+<h1 id="manual-ikiwiki-configuration">Manual Ikiwiki Configuration</h1>
+
+<p>To help you begin a manual configuration, we&rsquo;ve included a full-featured <a href="/docs/assets/657-ikiwiki.setup">Ikiwiki configuration file</a> for you to review and edit. This provides configuration options for common plugins and some additional comments. Issue the following commands to fetch this file:</p>
+
+<pre><code>cd ~/
+wget -O ikiwiki.setup http://www.linode.com/docs/assets/657-ikiwiki.setup
+</code></pre>
+
+<p>If you do not use the auto creation script, you&rsquo;ll need to create the &ldquo;source directory&rdquo; repository. For the sake of example, the source directory will be <code>~/wiki/</code>. Issue the following commands to create the directory and repository:</p>
+
+<pre><code>mkdir ~/wiki/
+cd ~/wiki/
+git init
+</code></pre>
+
+<p>You&rsquo;ll want to create an index or &ldquo;home page&rdquo; for your wiki in the <code>index.mdwn</code> file. When you&rsquo;ve saved this file you&rsquo;ll need to add it to the staging area and create the commit with the following commands:</p>
+
+<pre><code>git add index.mdwn
+git commit -m &quot;creating the initial index file for the wiki&quot;
+</code></pre>
+
+<p>It&rsquo;s important to set up a git repository that will be the &ldquo;origin&rdquo; repository for the source directory repository so that you will be able to clone and push from remote machines. We&rsquo;ll create the &ldquo;origin&rdquo; repository in <code>/srv/git/wiki.git/</code> using the following sequence of commands:</p>
+
+<pre><code>mkdir -p /srv/git/wiki.git/
+cd /srv/git/wiki.git/
+git init --bare
+</code></pre>
+
+<p>Edit the <code>~/wiki/.git/config</code> file to create the remote repository so that it looks something like the following example:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/wiki/.git/config 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>core<span class="o">]</span>
+:   <span class="nv">repositoryformatversion</span> <span class="o">=</span> <span class="m">0</span> <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span> <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span> <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
+
+<span class="o">[</span>remote <span class="s2">&#34;origin&#34;</span><span class="o">]</span>
+:   <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/* <span class="nv">url</span> <span class="o">=</span> /srv/git/wiki.git
+
+<span class="o">[</span>branch <span class="s2">&#34;master&#34;</span><span class="o">]</span>
+:   <span class="nv">remote</span> <span class="o">=</span> origin <span class="nv">merge</span> <span class="o">=</span> refs/heads/master</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Now perform the first push using the following sequence of commands. This will update the &ldquo;origin&rdquo; repository with the first commit created above:</p>
+
+<pre><code>cd ~/wiki/
+git push origin master
+</code></pre>
+
+<p>Read through the <code>ikiwiki.setup</code> file that you fetched above. It is located at <code>~/ikiwiki.setup</code>. This file has been thoroughly commented to make it easy to configure Ikiwiki for your particular needs. Alter it to conform to your setup and to point to the correct locations of the various repositories created above. After the file is edited correctly, issue the following command:</p>
+
+<pre><code>ikiwiki --setup ~/ikiwiki.setup
+</code></pre>
+
+<p>This assumes the <code>ikiwiki.setup</code> file is located in the home directory of the current user. You may have to adjust the path in the command if your Ikiwiki configuration file is located elsewhere.</p>
+
+<p>If you have git installed, you can now clone the repository that stores the content for your wiki to your local machine. Use the following command:</p>
+
+<pre><code>git clone ssh://username@colab.example.com/srv/git/wiki.git
+</code></pre>
+
+<p>In this example, <code>username</code> is the username, <code>colab.example.com</code> is the name of the host where the repository resides, and <code>/srv/git/wiki.git</code> is the location of the &ldquo;bare&rdquo; repository.</p>
+
+<p>If Ikiwiki is configured correctly, when you do a <code>git push</code> to the remote repository a &ldquo;<code>post-update</code> hook&rdquo; will trigger Ikiwiki to refresh the wiki with the content contained in your commit.</p>
+
+<p>If you have not started Apache for the first time, you will need to issue the following commands to start the web server and ensure that it starts up when your Linode boots:</p>
+
+<pre><code>chkconfig httpd on
+/etc/init.d/httpd start
+</code></pre>
+
+<h1 id="advanced-ikiwiki-setup">Advanced Ikiwiki Setup</h1>
+
+<p>While all of the content of an Ikiwiki is stored under version control, the templates and configuration files are stored outside of the source directory. If you want to use git to store these files and track the versions of your configuration we recommend making an &ldquo;admin&rdquo; repository located in the <code>~/wiki-admin</code> directory. This should reside next to the <code>~/wiki/</code> repository/directory where the wiki&rsquo;s source directory is located. To create the directory and initialize the repository, issue the following commands:</p>
+
+<pre><code>mkdir ~/wiki-admin/
+cd ~/wiki-admin/
+git init
+</code></pre>
+
+<p>Move your <code>ikiwiki.setup</code> file into <code>~/wiki-admin/</code>. You may also want to move the template files into the <code>wiki-admin</code> repository with the following command:</p>
+
+<pre><code>cp -R /usr/share/ikiwiki/templates/ ~/wiki-admin/
+</code></pre>
+
+<p>Add these files to the commit and create an initial commit object with the following commands:</p>
+
+<pre><code>git add .
+git commit -m &quot;templates and ikiwiki.setup&quot;
+</code></pre>
+
+<p>The process for creating a bare repository to push/pull the <code>wiki-admin</code> git repository is very much like the process you use for creating the bare &ldquo;remote&rdquo; repository for the <code>wiki/</code> content. To begin, create a bare remote repository:</p>
+
+<pre><code>mkdir -p /srv/git/wiki-admin.git/
+cd /srv/git/wiki-admin.git/
+git init --bare
+</code></pre>
+
+<p>Next, edit the <code>~/wiki-admin/.git/config</code> file to set up the remote repository. Use the following example as a guideline.</p>
+
+<dl class="file">
+<dt>
+
+
+		~/wiki/.git/config 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>core<span class="o">]</span>
+:   <span class="nv">repositoryformatversion</span> <span class="o">=</span> <span class="m">0</span> <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span> <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span> <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
+
+<span class="o">[</span>remote <span class="s2">&#34;origin&#34;</span><span class="o">]</span>
+:   <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/* <span class="nv">url</span> <span class="o">=</span> /srv/git/wiki-admin.git
+
+<span class="o">[</span>branch <span class="s2">&#34;master&#34;</span><span class="o">]</span>
+:   <span class="nv">remote</span> <span class="o">=</span> origin <span class="nv">merge</span> <span class="o">=</span> refs/heads/master</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Now you can perform the first push for the <code>wiki-admin</code> repository by issuing the following commands:</p>
+
+<pre><code>cd ~/wiki-admin/
+git push origin master
+</code></pre>
+
+<p>You can clone the <code>wiki-admin</code> repository to your local machine with the following command (issued locally):</p>
+
+<pre><code>git clone ssh://username@colab.example.com/srv/git/wiki-admin.git
+</code></pre>
+
+<p>In this example, <code>username</code> is the username, <code>colab.example.com</code> is the name of the host where the repository resides, and <code>/srv/git/wiki-admin.git</code> is the location of the &ldquo;bare&rdquo; repository. When you push to this repository, you&rsquo;ll need to issue a <code>git pull</code> from within <code>~/wiki-admin/</code> on your server so that Ikiwiki will be able to see the changes you&rsquo;ve made. You may set up a <code>post-update</code> hook at <code>/srv/git/wiki-admin.git/hooks/post-update</code> to make sure that <code>~/wiki-admin</code> stays up to date.</p>
+
+<p>The <code>wiki-admin</code> repository is totally optional, however it will simplify backup and mirroring down the road and allow you to version the templates. If you think any of these features will be helpful in your use case, we encourage you to consider storing your files in this manner. If you have not yet started the Apache for the first time, you will need to issue the following commands to start the web server and ensure that it will return if the system reboots:</p>
+
+<pre><code>chkconfig httpd on
+/etc/init.d/httpd start
+</code></pre>
+
+<h1 id="using-ikiwiki">Using Ikiwiki</h1>
+
+<p>Once installed, using Ikiwiki itself is fairly straightforward. You can push content to the bare repository, and Ikiwiki will incrementally update the pages changed in that commit. You can also choose to update pages via the web-based interface. As a result, you may find that you don&rsquo;t actually need to interact with the <code>ikiwiki</code> program very much.</p>
+
+<p>Nevertheless, if you change a configuration option or a template and need to rebuild all pages in the wiki, issue the following command:</p>
+
+<pre><code>ikiwiki --setup ~/wiki-admin/ikiwiki.setup
+</code></pre>
+
+<p>In this command, <code>~/wiki-admin/ikiwiki.setup</code> represents the path to your setup file.</p>
+
+<p>You may find yourself wondering why there are so many git repositories for a single wiki. The setup with a remote &ldquo;bare&rdquo; repository allows Ikiwiki to avoid a situation where you might &ldquo;push&rdquo; content to a non-bare repository, which would cause the &ldquo;working copy&rdquo; of the &ldquo;source directory&rdquo; repository to get out of sync with the sequence of commits in the git database. In short, <strong>never push to a non-bare git repository</strong>.</p>
+
+<h1 id="notes-for-using-gitosis-with-ikiwiki">Notes for Using Gitosis with Ikiwiki</h1>
+
+<p>If you&rsquo;re using <code>gitosis</code> to manage the git repositories as described in the <a href="/docs/linux-tools/version-control/git">introduction to Git</a> guide, there are a couple of configuration options for Ikiwiki that you&rsquo;ll need to keep in mind as you&rsquo;re setting things up. As <code>gitosis</code> needs to &ldquo;own&rdquo; the git repositories it manages, the <code>gitosis</code> user ends up executing <code>post-update</code> hook and wrappers, and as a result many Ikiwiki files need to be owned by the <code>gitosis</code> user. This should not present a concern as Ikiwiki&rsquo;s scripts are designed to be run securely by untrusted users. This means running <code>ikiwiki.cgi</code> as mode &ldquo;6755&rdquo;. See the example <a href="/docs/assets/657-ikiwiki.setup">Ikiwiki configuration file</a> for details on how to configure this.</p>
+
+<p>The files that needed to be owned by the <code>gitosis</code> user are the &ldquo;destination&rdquo; directory where Ikiwiki puts its output, the &ldquo;source directory&rdquo;, and the bare repository. Run the following commands to set this ownership.</p>
+
+<pre><code>chown -R gitosis:gitosis /srv/git/wiki.git
+chown -R gitosis:gitosis ~/wiki/
+chown -R gitosis:gitosis /srv/www/example.com/public_html/wiki
+</code></pre>
+
+<p>Change the paths as necessary and run those commands again to correct permissions errors if you&rsquo;re having a permissions problem.</p>
+
+<p>If you&rsquo;re using <code>gitosis</code>, you will want to run Ikiwiki scripts and interact with the git repositories on the server as the git user in order to ensure that permissions stay set as needed. You can use the <code>su</code> (switch user) command to get a prompt as the <code>gitosis</code> user by issuing a command in the following format:</p>
+
+<pre><code>su --login gitosis
+</code></pre>
+
+<p>However, using the <code>sudo</code> command may prove more useful and flexible for some use cases. To issue a single command as the <code>gitosis</code> user, prefix that command with <code>sudo -u gitosis</code>. For example, to trigger Ikiwiki to refresh your wiki, use the following format:</p>
+
+<pre><code>sudo -u gitosis ikiwiki --setup ~/wiki-admin/ikiwiki.setup
+</code></pre>
+
+<p>If you need to drop into a prompt as the <code>gitosis</code> user for more complicated operations, issue the following command:</p>
+
+<pre><code>sudo -u gitosis -s
+</code></pre>
+
+<p>Beyond these basic considerations, using Ikiwiki with gitosis is no different than using Ikiwiki with more conventionally managed repositories.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://ikiwiki.info">Ikiwiki Home Page</a></li>
+<li><a href="http://ikiwiki.info/ikiwikiusers/">Example Ikiwiki Deployments</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/wikis/ikiwiki-on-fedora-13/">Ikiwiki on Fedora 13 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/wikis/ikiwiki-on-ubuntu-12-04-precise-pangolin/">Ikiwiki on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/wikis/ikiwiki-on-ubuntu-10-04-lucid/">Ikiwiki on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/wikis/ikiwiki-on-ubuntu-10-10-maverick/">Ikiwiki on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/wikis/ikiwiki-on-debian-6-squeeze/">Ikiwiki on Debian 6 (Squeeze) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#installing-ikiwiki">Installing Ikiwiki</a></li>
+<li><a href="#automatic-ikiwiki-configuration">Automatic Ikiwiki Configuration</a></li>
+<li><a href="#manual-ikiwiki-configuration">Manual Ikiwiki Configuration</a></li>
+<li><a href="#advanced-ikiwiki-setup">Advanced Ikiwiki Setup</a></li>
+<li><a href="#using-ikiwiki">Using Ikiwiki</a></li>
+<li><a href="#notes-for-using-gitosis-with-ikiwiki">Notes for Using Gitosis with Ikiwiki</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

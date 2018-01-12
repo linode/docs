@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Run a Distribution-Supplied Kernel with PV-GRUB</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Instructions for configuring your Linode to run a native distribution-supplied kernel with PV-GRUB.">
+        <meta name="keywords" content="pv-grub, pvgrub, custom linux kernel, custom linode">
+        
+        <meta property="og:title" content="Run a Distribution-Supplied Kernel with PV-GRUB">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/">
+        <meta property="og:description" content="Instructions for configuring your Linode to run a native distribution-supplied kernel with PV-GRUB.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/custom-kernels-distros/">Run Custom Kernels and Distribution Templates on Linode Instances</a>
+  
+</li>
+
+
+<li>
+  
+  Run a Distribution-Supplied Kernel with PV-GRUB
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Run a Distribution-Supplied Kernel with PV-GRUB</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-08-20T00:00:00Z">Wednesday, August 20, 2014</time> by James Stewart</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2frun-a-distributionsupplied-kernel-with-pvgrub%2f&via=linode&text=Run%20a%20Distribution-Supplied%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2frun-a-distributionsupplied-kernel-with-pvgrub%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2frun-a-distributionsupplied-kernel-with-pvgrub%2f&t=Run%20a%20Distribution-Supplied%20Kernel%20with%20PV-GRUB" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>This guide is for legacy Xen Linodes. For newer Linodes, consult our guide on how to <a href="/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel">Run a Distribution-Supplied Kernel</a>.</div>
+</blockquote>
+
+
+<p>PV-GRUB makes it possible to run your own kernel on your Linode, instead of using a host-supplied kernel. This is useful in cases where you&rsquo;d like to enable specific kernel features, or you&rsquo;d prefer to handle kernel upgrades directly.</p>
+
+<p>If you&rsquo;d like to run a custom distro on your Linode in combination with PV-GRUB, please follow our <a href="/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/">Custom Distro</a> guide before taking these steps.</p>
+
+<p>Before you get started, make sure you follow the steps outlined in our <a href="/docs/getting-started">Getting Started</a> guide. Your Linode needs to be in a functional state. These steps should be performed as <code>root</code> on your Linode, via an SSH session.</p>
+
+<h2 id="ubuntu-13-04-raring">Ubuntu 13.04 (Raring)</h2>
+
+<ol>
+<li><p>Update your package repositories and upgrade your installed packages by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre></li>
+
+<li><p>Issue the following commands to install the default kernel for Ubuntu 13.04, uninstall <code>grub2</code>, and install <code>grub</code>:</p>
+
+<pre><code>apt-get install linux-image-virtual
+apt-get purge grub2 grub-pc
+apt-get install grub
+mkdir /boot/grub
+update-grub
+</code></pre>
+
+<p>When you are asked which devices you would like to install <code>grub</code> on, leave all listed devices unchecked and select <code>Ok</code> to continue. When you are asked whether you would like to continue without installing GRUB, answer <code>yes</code>. When you are asked to confirm removal of GRUB 2 from <code>/boot/grub</code>, answer <code>yes</code>. When you are asked whether you would like a <code>menu.lst</code> file generated for you, answer <code>yes</code>.</p></li>
+
+<li><p>Edit the <code>/boot/grub/menu.lst</code> file as follows. As noted in the file, please do not uncomment entries that begin with the <code>#</code> character. First, locate the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">3</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">10</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Next, locate the line containing <code>kopt</code> that resembles the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">kopt</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span><span class="nv">UUID</span><span class="o">=</span>de400b9f-2578-488e-8664-250a8455a6fc ro</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Change it to match the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">kopt</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span>/dev/xvda <span class="nv">console</span><span class="o">=</span>hvc0 ro quiet</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Next, locate the line containing <code>groot</code> that resembles the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">groot</span><span class="o">=(</span>hd0,0<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Change it to match the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">groot</span><span class="o">=(</span>hd0<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Issue the following command to update <code>grub</code>:</p>
+
+<pre><code>update-grub
+</code></pre></li>
+
+<li><p>Next, open the file <code>/etc/init/hvc0.conf</code> and verify that it matches the following excerpt:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/init/hvc0.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># hvc0 - getty
+</span><span class="c1">#
+</span><span class="c1"># This service maintains a getty on hvc0 from the point the system is
+</span><span class="c1"># started until it is shut down again.
+</span><span class="c1"></span>
+start on stopped rc <span class="nv">RUNLEVEL</span><span class="o">=[</span><span class="m">2345</span><span class="o">]</span>
+stop on runlevel <span class="o">[</span>!2345<span class="o">]</span>
+
+respawn
+<span class="nb">exec</span> /sbin/getty -8 <span class="m">38400</span> hvc0</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>In the Linode Manager, edit your Linode&rsquo;s configuration profile to use either <strong>pv-grub-x86_32</strong> or <strong>pv-grub-x86_64</strong> as the kernel, depending on the version of Ubuntu you have deployed (32-bit or 64-bit).</p></li>
+
+<li><p>Make sure the root device is specified as <strong>xvda</strong>.</p></li>
+
+<li><p>In the <strong>Filesystem/Boot Helpers</strong> section, disable the <strong>Distro Helper</strong> option.</p></li>
+
+<li><p>Save your changes by clicking <strong>Save Profile</strong> at the bottom of the page.</p></li>
+
+<li><p>Reboot your Linode from the <strong>Dashboard</strong> tab.</p></li>
+
+<li><p>Once your Linode has rebooted, log in via SSH and issue the following command:</p>
+
+<pre><code>uname -a
+</code></pre>
+
+<p>You should see output similar to the following, indicating that you&rsquo;re running the native kernel:</p>
+
+<pre><code>Linux li63-119 3.8.0-29-generic #42-Ubuntu SMP Tue Aug 13 19:40:39 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre></li>
+</ol>
+
+<h2 id="ubuntu-12-04-precise">Ubuntu 12.04 (Precise)</h2>
+
+<ol>
+<li><p>Update your package repositories and upgrade your installed packages by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre></li>
+
+<li><p>Issue the following commands to install the default kernel for Ubuntu 12.04, uninstall <code>grub2</code>, and install <code>grub</code>:</p>
+
+<pre><code>apt-get install linux-virtual
+apt-get purge grub2 grub-pc
+apt-get install grub
+update-grub
+</code></pre>
+
+<p>When you are asked which devices you would like to install <code>grub</code> on, leave all listed devices unchecked and select <code>Ok</code> to continue. When you are asked whether you would like to continue without installing GRUB, answer <code>yes</code>. When you are asked to confirm removal of GRUB 2 from <code>/boot/grub</code>, answer <code>yes</code>. When you are asked whether you would like a <code>menu.lst</code> file generated for you, answer <code>yes</code>.</p></li>
+
+<li><p>Edit the <code>/boot/grub/menu.lst</code> file as follows. As noted in the file, please do not uncomment entries that begin with the <code>#</code> character. First, locate the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">3</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Edit the file to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">10</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Next, locate the line containing <code>kopt</code> that resembles the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">kopt</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span><span class="nv">UUID</span><span class="o">=</span>de400b9f-2578-488e-8664-250a8455a6fc ro</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Edit it to match the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">kopt</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span>/dev/xvda <span class="nv">console</span><span class="o">=</span>hvc0 ro quiet</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Next, locate the line containing &ldquo;groot&rdquo; that resembles the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">groot</span><span class="o">=(</span>hd0,0<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Change it to match the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">groot</span><span class="o">=(</span>hd0<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Issue the following command to update <code>grub</code>:</p>
+
+<pre><code>update-grub
+</code></pre></li>
+
+<li><p>Next, open the file &ldquo;/etc/init/hvc0.conf&rdquo; and verify that it matches the following excerpt:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/init/hvc0.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># hvc0 - getty
+</span><span class="c1">#
+</span><span class="c1"># This service maintains a getty on hvc0 from the point the system is
+</span><span class="c1"># started until it is shut down again.
+</span><span class="c1"></span>
+start on stopped rc <span class="nv">RUNLEVEL</span><span class="o">=[</span><span class="m">2345</span><span class="o">]</span>
+stop on runlevel <span class="o">[</span>!2345<span class="o">]</span>
+
+respawn
+<span class="nb">exec</span> /sbin/getty -8 <span class="m">38400</span> hvc0</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>In the Linode Manager, edit your Linode&rsquo;s configuration profile to use either <strong>pv-grub-x86_32</strong> or <strong>pv-grub-x86_64</strong> as the kernel, depending on the version of Ubuntu you have deployed (32-bit or 64-bit).</p></li>
+
+<li><p>Make sure the root device is specified as <strong>xvda</strong>.</p></li>
+
+<li><p>In the <strong>Filesystem/Boot Helpers</strong> section, disable the <strong>Distro Helper</strong> option.</p></li>
+
+<li><p>Save your changes by clicking <strong>Save Profile</strong> at the bottom of the page.</p></li>
+
+<li><p>Reboot your Linode from the <strong>Dashboard</strong> tab.</p></li>
+
+<li><p>Once your Linode has rebooted, log in via SSH and issue the following command:</p>
+
+<pre><code>uname -a
+</code></pre>
+
+<p>You should see output similar to the following, indicating you&rsquo;re running the native kernel:</p>
+
+<pre><code>Linux localhost 3.2.0-52-virtual #78-Ubuntu SMP Fri Jul 26 16:45:00 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre></li>
+</ol>
+
+<h2 id="ubuntu-10-04-lts-lucid">Ubuntu 10.04 LTS (Lucid)</h2>
+
+<ol>
+<li><p>Update your package repositories and upgrade your installed packages by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre></li>
+
+<li><p>Issue the following commands to install the default kernel for Ubuntu 10.04 LTS, uninstall <code>grub2</code>, and install <code>grub</code>:</p>
+
+<pre><code>apt-get install linux-virtual
+apt-get purge grub2 grub-pc
+rm -f /boot/grub/*
+apt-get install grub
+update-grub
+</code></pre>
+
+<p>When you are asked whether you would like to continue without installing GRUB, answer <code>yes</code>. When you are asked to confirm removal of GRUB 2 from <code>/boot/grub</code>, answer <code>yes</code>. When you are asked whether you would like a <code>menu.lst</code> file generated for you, answer <code>yes.</code></p></li>
+
+<li><p>Edit the <code>/boot/grub/menu.lst</code> file as follows. As noted in the file, please do not uncomment entries that begin with the <code>#</code> character. First, locate the following excerpt:</p>
+
+<dl class="file">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">3</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Edit this line to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.</p>
+
+<dl class="file">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">10</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Next, locate the line containing <code>kopt</code> that resembles the following excerpt:</p>
+
+<dl class="file">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">kopt</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span><span class="nv">UUID</span><span class="o">=</span>de400b9f-2578-488e-8664-250a8455a6fc ro</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Change it to match the following excerpt:</p>
+
+<dl class="file">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">kopt</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span>/dev/xvda <span class="nv">console</span><span class="o">=</span>hvc0 ro quiet</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Next, locate the line containing <code>groot</code> that resembles the following excerpt:</p>
+
+<dl class="file">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">groot</span><span class="o">=</span>de400b9f-2578-488e-8664-250a8455a6fc</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Change it to match the following excerpt:</p>
+
+<dl class="file">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">groot</span><span class="o">=(</span>hd0<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Issue the following command to update <code>grub</code>:</p>
+
+<pre><code>update-grub
+</code></pre></li>
+
+<li><p>Create the file <code>/etc/init/hvc0.conf</code> with the following contents:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/init/hvc0.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># hvc0 - getty
+</span><span class="c1">#
+</span><span class="c1"># This service maintains a getty on hvc0 from the point the system is
+</span><span class="c1"># started until it is shut down again.
+</span><span class="c1"></span>
+start on stopped rc <span class="nv">RUNLEVEL</span><span class="o">=[</span><span class="m">2345</span><span class="o">]</span>
+stop on runlevel <span class="o">[</span>!2345<span class="o">]</span>
+
+respawn
+<span class="nb">exec</span> /sbin/getty -8 <span class="m">38400</span> hvc0</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>In the Linode Manager, edit your Linode&rsquo;s configuration profile to use either <strong>pv-grub-x86_32</strong> or <strong>pv-grub-x86_64</strong> as the kernel, depending on the version of Ubuntu you have deployed (32-bit or 64-bit).</p></li>
+
+<li><p>Make sure the root device is specified as <strong>xvda</strong>.</p></li>
+
+<li><p>In the <strong>Filesystem/Boot Helpers</strong> section, disable the <strong>Distro Helper</strong> option.</p></li>
+
+<li><p>Save your changes by clicking <strong>Save Profile</strong> at the bottom of the page.</p></li>
+
+<li><p>Reboot your Linode from the <strong>Dashboard</strong> tab.</p></li>
+
+<li><p>Once your Linode has rebooted, log in via SSH and issue the following command:</p>
+
+<pre><code>uname -a
+</code></pre>
+
+<p>You should see output similar to the following, indicating you&rsquo;re running the native kernel:</p>
+
+<pre><code>Linux li263-140 2.6.32-31-generic-pae #61-Ubuntu SMP Fri Apr 8 20:00:13 UTC 2011 i686 GNU/Linux
+</code></pre></li>
+</ol>
+
+<h2 id="debian-7-wheezy-debian-8-jessie">Debian 7 (Wheezy) / Debian 8 (Jessie)</h2>
+
+<ol>
+<li><p>Update your package repositories and upgrade your installed packages by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre></li>
+
+<li><p>Issue the following commands to install the default kernel for Debian 7, along with the <code>grub</code> bootloader package:</p>
+
+<p><strong>32-bit Debian:</strong> :</p>
+
+<pre><code>apt-get install linux-image-686-pae
+mkdir /boot/grub
+apt-get install grub-legacy
+</code></pre>
+
+<p><strong>64-bit Debian:</strong> :</p>
+
+<pre><code>apt-get install linux-image-amd64
+mkdir /boot/grub
+apt-get install grub-legacy
+</code></pre></li>
+
+<li><p>Issue the following commands to generate an initial <code>/boot/grub/menu.lst</code> file:</p>
+
+<pre><code>grub-set-default 1
+update-grub
+</code></pre></li>
+
+<li><p>Edit the <code>/boot/grub/menu.lst</code> file as follows. As noted in the file, please do not uncomment entries that begin with the <code>#</code> character. First, locate the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">5</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">10</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Next, locate the line containing <code>kopt</code> that resembles the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">kopt</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span><span class="nv">UUID</span><span class="o">=</span>de400b9f-2578-488e-8664-250a8455a6fc ro</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Change it to match the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">kopt</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span>/dev/xvda <span class="nv">console</span><span class="o">=</span>hvc0 ro quiet</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Next, locate the line containing <code>groot=</code> and verify that it matches the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">groot</span><span class="o">=(</span>hd0<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Issue the following command to update <code>grub</code>:</p>
+
+<pre><code>update-grub
+</code></pre></li>
+
+<li><p>In the Linode Manager, edit your Linode&rsquo;s configuration profile to use either <strong>pv-grub-x86_32</strong> or <strong>pv-grub-x86_64</strong> as the kernel, depending on the version of Debian you have deployed (32-bit or 64-bit).</p></li>
+
+<li><p>Make sure the root device is specified as <strong>xvda</strong>.</p></li>
+
+<li><p>In the <strong>Filesystem/Boot Helpers</strong> section, disable the <strong>Distro Helper</strong> option.</p></li>
+
+<li><p>Save your changes by clicking <strong>Save Profile</strong> at the bottom of the page.</p></li>
+
+<li><p>Reboot your Linode from the <strong>Dashboard</strong> tab.</p></li>
+
+<li><p>Once your Linode has rebooted, log in via SSH and issue the following command:</p>
+
+<pre><code>uname -a
+</code></pre>
+
+<p>You should see output similar to the following, indicating you&rsquo;re running the native kernel:</p>
+
+<pre><code>Linux li263-140 2.6.32-5-xen-686 #1 SMP Wed May 18 09:43:15 UTC 2011 i686 GNU/Linux
+</code></pre></li>
+</ol>
+
+<h2 id="debian-6-squeeze">Debian 6 (Squeeze)</h2>
+
+<ol>
+<li><p>Update your package repositories and upgrade your installed packages by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre></li>
+
+<li><p>Issue the following commands to install the default kernel for Debian 6, along with the <code>grub</code> bootloader package:</p>
+
+<p><strong>32-bit Debian:</strong> :</p>
+
+<pre><code>apt-get install linux-image-xen-686
+mkdir /boot/grub
+apt-get install grub-legacy
+</code></pre>
+
+<p><strong>64-bit Debian:</strong> :</p>
+
+<pre><code>apt-get install linux-image-xen-amd64
+mkdir /boot/grub
+apt-get install grub-legacy
+</code></pre></li>
+
+<li><p>Issue the following commands to generate an initial <code>/boot/grub/menu.lst</code> file:</p>
+
+<pre><code>grub-set-default 1
+update-grub
+</code></pre></li>
+
+<li><p>Edit the <code>/boot/grub/menu.lst</code> file as follows. As noted in the file, please do not uncomment entries that begin with the <code>#</code> character. First, locate the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">5</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">10</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Next, locate the line containing <code>kopt</code> that resembles the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">kopt</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span><span class="nv">UUID</span><span class="o">=</span>de400b9f-2578-488e-8664-250a8455a6fc ro</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Change it to match the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">kopt</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span>/dev/xvda <span class="nv">console</span><span class="o">=</span>hvc0 ro quiet</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Next, locate the line containing <code>groot=</code> and verify that it matches the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">groot</span><span class="o">=(</span>hd0<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Issue the following command to update <code>grub</code>:</p>
+
+<pre><code>update-grub
+</code></pre></li>
+
+<li><p>In the Linode Manager, edit your Linode&rsquo;s configuration profile to use either <strong>pv-grub-x86_32</strong> or <strong>pv-grub-x86_64</strong> as the kernel, depending on the version of Debian you have deployed (32-bit or 64-bit).</p></li>
+
+<li><p>Make sure the root device is specified as <strong>xvda</strong>.</p></li>
+
+<li><p>In the <strong>Filesystem/Boot Helpers</strong> section, disable the <strong>Distro Helper</strong> option.</p></li>
+
+<li><p>Save your changes by clicking <strong>Save Profile</strong> at the bottom of the page.</p></li>
+
+<li><p>Reboot your Linode from the <strong>Dashboard</strong> tab.</p></li>
+
+<li><p>Once your Linode has rebooted, log in via SSH and issue the following command:</p>
+
+<pre><code>uname -a
+</code></pre>
+
+<p>You should see output similar to the following, indicating you&rsquo;re running the native kernel:</p>
+
+<pre><code>Linux li263-140 2.6.32-5-xen-686 #1 SMP Wed May 18 09:43:15 UTC 2011 i686 GNU/Linux
+</code></pre></li>
+</ol>
+
+<h2 id="centos-6-and-newer">CentOS 6 and Newer</h2>
+
+<ol>
+<li><p>Make sure your package repositories and installed packages are up to date by issuing the following command:</p>
+
+<pre><code>yum update
+</code></pre></li>
+
+<li><p>Run the following command to identify the kernel your CentOS system has provided:</p>
+
+<pre><code>uname -a
+</code></pre></li>
+
+<li><p>This command should provide output similar to that shown below:</p>
+
+<pre><code>Linux li63-119 2.6.32-358.14.1.el6.x86_64 #1 SMP Tue Jul 16 23:51:20 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre></li>
+
+<li><p>Make a note of the kernel you&rsquo;re currently using (<code>2.6.32-358.14.1.el6.x86_64</code> in our example). You will be replacing it with the kernel shown in the configuration below.</p></li>
+
+<li><p>Issue the following command to install the default kernel for CentOS6:</p>
+
+<p><strong>32-bit CentOS:</strong> :</p>
+
+<pre><code>yum install kernel-PAE.i686
+</code></pre>
+
+<p><strong>64-bit CentOS:</strong> :</p>
+
+<pre><code>yum install kernel.x86_64
+</code></pre></li>
+
+<li><p>Create a file named <code>/boot/grub/menu.lst</code> with the following contents. Adjust the <code>title</code>, <code>kernel</code>, and <code>initrd</code> lines to reflect the actual file names found in the <code>/boot/</code> directory.</p>
+
+<dl class="file">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">5</span>
+title CentOS <span class="o">(</span><span class="m">2</span>.6.32-431.23.3.el6.x86_64<span class="o">)</span>
+    root <span class="o">(</span>hd0<span class="o">)</span>
+    kernel /boot/vmlinuz-2.6.32-431.23.3.el6.x86_64 <span class="nv">root</span><span class="o">=</span>/dev/xvda
+    initrd /boot/initramfs-2.6.32-431.23.3.el6.x86_64.img</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>In the Linode Manager, edit your Linode&rsquo;s configuration profile to use either <strong>pv-grub-x86_32</strong> or <strong>pv-grub-x86_64</strong> as the <strong>Kernel</strong>, depending on the version of CentOS you have deployed (32-bit or 64-bit).</p></li>
+
+<li><p>Make sure the root device is specified as <strong>xvda</strong>.</p></li>
+
+<li><p>Save your changes by clicking <strong>Save Profile</strong> at the bottom of the page.</p></li>
+
+<li><p>Reboot your Linode from the <strong>Dashboard</strong> tab.</p></li>
+
+<li><p>Once your Linode has rebooted, log in via SSH and issue the following command:</p>
+
+<pre><code>uname -a
+</code></pre>
+
+<p>You should see output similar to the following, indicating you&rsquo;re running the native kernel:</p>
+
+<pre><code>Linux li63-119 2.6.32-358.14.1.el6.x86_64 #1 SMP Tue Jul 16 23:51:20 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre></li>
+</ol>
+
+<h2 id="centos-5">CentOS 5</h2>
+
+<p><a href="http://togami.com/">Warren Togami</a> was kind enough to provide a script to automate getting a native CentOS 5 kernel up and running, including with SELinux support. We will use this script in the following instructions.</p>
+
+<ol>
+<li><p>Issue the following commands as <code>root</code> to retrieve and run the script:</p>
+
+<pre><code>wget -O selinux.sh http://www.linode.com/docs/assets/542-centos5-native-kernel-selinux-enforcing.sh
+chmod +x selinux.sh
+./selinux.sh
+</code></pre></li>
+
+<li><p>Once the script has finished, edit your Linode&rsquo;s configuration profile. Change the <strong>Kernel</strong> to <strong>pv-grub-x86_32</strong> or <strong>pv-grub-x86_64</strong>, depending on which version of CentOS (32-bit or 64-bit) you&rsquo;re running.</p></li>
+
+<li><p>Set the <strong>Distro Helper</strong> and <strong>Automount devtmpfs</strong> options to <strong>No</strong>.</p></li>
+
+<li><p>Click the <strong>Save Changes</strong> button.</p></li>
+
+<li><p>Reboot your Linode from the <strong>Dashboard</strong> tab.</p></li>
+
+<li><p>Once your Linode has rebooted, log in via SSH and issue the following command:</p>
+
+<pre><code>restorecon -Rv /
+</code></pre></li>
+
+<li><p>Your Linode should now be running a native CentOS 5 kernel. You can verify this by issuing the following command:</p>
+
+<pre><code>uname -a
+</code></pre>
+
+<p>You should see output similar to the following:</p>
+
+<pre><code>Linux li181-194 2.6.18-194.26.1.el5xen #1 SMP Tue Nov 9 14:13:46 EST 2010 i686 i686 i386 GNU/Linux
+</code></pre></li>
+</ol>
+
+<h2 id="fedora-17">Fedora 17</h2>
+
+<ol>
+<li><p>Make sure your package repositories and installed packages are up to date by issuing the following command:</p>
+
+<pre><code>yum update
+</code></pre></li>
+
+<li><p>Issue the following command to install the default kernel for Fedora 13:</p>
+
+<p><strong>32-bit Fedora:</strong> :</p>
+
+<pre><code>yum install kernel-PAE.i686
+</code></pre>
+
+<p><strong>64-bit Fedora:</strong> :</p>
+
+<pre><code>yum install kernel.x86_64
+</code></pre></li>
+
+<li><p>Create a file named <code>/boot/grub/menu.lst</code> with the following contents. Adjust the <code>title</code>, <code>kernel</code>, and <code>initrd</code> lines to reflect the actual file names found in the <code>/boot/</code> directory.</p>
+
+<dl class="file">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timeout <span class="m">5</span>
+
+title Fedora <span class="m">17</span>, kernel <span class="m">3</span>.9.10-100.fc17.x86<span class="se">\_</span><span class="m">64</span> root <span class="o">(</span>hd0<span class="o">)</span> kernel /boot/vmlinuz-3.9.10-100.fc17.x86<span class="se">\_</span><span class="m">64</span> <span class="nv">root</span><span class="o">=</span>/dev/xvda ro quiet initrd /boot/initramfs-3.9.10-100.fc17.x86<span class="se">\_</span><span class="m">64</span>.img</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>In the Linode Manager, edit your Linode&rsquo;s configuration profile to use either <strong>pv-grub-x86_32</strong> or <strong>pv-grub-x86_64</strong> as the <strong>Kernel</strong>, depending on the version of Fedora you have deployed (32-bit or 64-bit).</p></li>
+
+<li><p>Make sure the root device is specified as <strong>xvda</strong>.</p></li>
+
+<li><p>Save your changes by clicking <strong>Save Profile</strong> at the bottom of the page.</p></li>
+
+<li><p>Reboot your Linode from the <strong>Dashboard</strong> tab.</p></li>
+
+<li><p>Once your Linode has rebooted, log in via SSH and issue the following command:</p>
+
+<pre><code>uname -a
+</code></pre>
+
+<p>You should see output similar to the following, indicating you&rsquo;re running the native kernel:</p>
+
+<pre><code>Linux li63-119 3.9.10-100.fc17.x86_64 #1 SMP Sun Jul 14 01:31:27 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre></li>
+</ol>
+
+<p>Note that if you later install an updated kernel, you&rsquo;ll need to add an entry for it to your <code>menu.lst</code> file. By default, the first kernel in the list will be booted.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu/">Custom Compiled Kernel with PV-GRUB on Debian &amp; Ubuntu - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/run-a-custom-compiled-kernel-with-pvgrub/">Run a Custom Compiled Kernel with PV-GRUB - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-centos-7/">Custom Compiled Kernel with PV-GRUB on CentOS 7 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-on-arch/">Custom Compiled Kernel with PV-GRUB on Arch Linux - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/">Custom Compiled Kernel on Debian &amp; Ubuntu</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#ubuntu-13-04-raring">Ubuntu 13.04 (Raring)</a></li>
+<li><a href="#ubuntu-12-04-precise">Ubuntu 12.04 (Precise)</a></li>
+<li><a href="#ubuntu-10-04-lts-lucid">Ubuntu 10.04 LTS (Lucid)</a></li>
+<li><a href="#debian-7-wheezy-debian-8-jessie">Debian 7 (Wheezy) / Debian 8 (Jessie)</a></li>
+<li><a href="#debian-6-squeeze">Debian 6 (Squeeze)</a></li>
+<li><a href="#centos-6-and-newer">CentOS 6 and Newer</a></li>
+<li><a href="#centos-5">CentOS 5</a></li>
+<li><a href="#fedora-17">Fedora 17</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

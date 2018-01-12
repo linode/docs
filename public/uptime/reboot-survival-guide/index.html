@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Reboot Survival Guide</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Best practices in preparation for a server reboot.">
+        <meta name="keywords" content="uptime, reboot, downtime, fault tolerance">
+        
+        <meta property="og:title" content="Reboot Survival Guide">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/reboot-survival-guide/">
+        <meta property="og:description" content="Best practices in preparation for a server reboot.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/reboot-survival-guide/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  Reboot Survival Guide
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Reboot Survival Guide</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-10-28T00:00:00Z">Wednesday, October 28, 2015</time> by Alex Fornuto</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2freboot-survival-guide%2f&via=linode&text=Reboot%20Survival%20Guide" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2freboot-survival-guide%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2freboot-survival-guide%2f&t=Reboot%20Survival%20Guide" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/reboot-survival-guide.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/reboot-survival-guide.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Although constant server uptime is optimal, downtime is inevitable. Cloud infrastructure and RAID arrays offer resilience, but all servers rely on physical hardware, which eventually need maintenance. Hardware aside, kernel updates and other software patches can mean rebooting to ensure your system is secure and up-to-date.</p>
+
+<p>This guide covers best practices to ensure that your server is prepared to handle an unexpected reboot, and considerations for scheduled downtime.</p>
+
+<h2 id="testing-for-reboot-issues">Testing for Reboot Issues</h2>
+
+<p>The best way to know what occurs during a server reboot is to test for it. During your development process, or whenever you make significant changes to your stack, reboot your system and test to ensure that your stack is fully operational afterwards. By conducting scheduled reboot tests, you can be sure that your system is prepared for the unexpected.</p>
+
+<h2 id="when-to-reboot">When to Reboot</h2>
+
+<p>In most cases a reboot is required when upgrading to a newer Linux kernel. By default, Linode configuration profiles are set to use the latest kernel available provided by Linode at each boot. If you&rsquo;ve changed this option or are using a custom configuration, you&rsquo;re responsible for updating the kernel on your system.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Linode maintains an RSS feed and web page for cataloging current and deprecated Linux kernels. When the support status of a kernel changes, that change will always be recorded and be pushed out to RSS subscribers. See <a href="https://www.linode.com/kernels">Available Kernels</a>.</div>
+</blockquote>
+
+
+<p>Updating certain packages will occasionally require a system reboot too. This does not happen often, but when necessary, the terminal output will inform you that a reboot is needed.</p>
+
+<p>It&rsquo;s not uncommon to see <em><a href="http://linux.die.net/man/8/fsck">fsck</a></em> run a filesystem scan on reboot. This does not mean anything is broken&ndash;fsck is a regularly scheduled process for optimal system health. Some Linux distros run fsck on every boot, others run the tool after a certain duration, and most distros perfom a filesystem check after unclean shutdowns.</p>
+
+<h2 id="backups">Backups</h2>
+
+<p>All critical data should be backed up, and if possible in more than one location. RAID arrays offer a level of fault tolerance against hard drive failure, but backups are a necessary additional option. Linode provides an integrated <a href="https://www.linode.com/backups">Backups</a> solution with daily, weekly, and bi-weekly backup windows, as well as a manual snapshot option. Our backups solution is one of many Linode services to ensure that your data is never in only one place.</p>
+
+<h3 id="backing-up-databases">Backing up Databases</h3>
+
+<p>Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found <a href="/docs/databases/mysql/back-up-your-mysql-databases#option-1-create-backups-of-an-entire-database-management-system-using-the-mysqldump-utility">here</a>.</p>
+
+<h3 id="backing-up-important-files">Backing up Important Files</h3>
+
+<p>If you aren&rsquo;t implementing a system wide backups solution like Linode Backups, you&rsquo;ll need to know specifically what files and folders are important to back up. Although this is dependent on your custom software stack and configuration, here are the most common places to backup:</p>
+
+<ul>
+<li><code>/home/</code> - This directory contains the home folders for all of your users, excluding the root user.</li>
+<li><code>/root/</code> - Your root user&rsquo;s home directory.</li>
+<li><code>/etc/</code> - The common area for software configuration files.</li>
+<li><code>/var/www</code> - The common location for web server files. On some systems this may be <code>/srv/www/</code>.</li>
+</ul>
+
+<h2 id="autostart-services">Autostart Services</h2>
+
+<p>For future reboots, ensure that any critical stack software is configured to start at boot. This differs depending on operating systems.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is a high-level overview, and does not discuss runlevels. Read more about runlevels <a href="https://www.centos.org/docs/5/html/5.2/Installation_Guide/s2-init-boot-shutdown-rl.html">here</a>.</div>
+</blockquote>
+
+
+<h3 id="debian-and-ubuntu">Debian and Ubuntu</h3>
+
+<ol>
+<li><p>Display which services are currently running, and which are listed to start on boot:</p>
+
+<pre><code>sudo service --status-all
+</code></pre>
+
+<p>The output will resemble the following:</p>
+
+<pre><code> [ + ]  apache2
+ [ + ]  atd
+ [ - ]  bootlogs
+ [ ? ]  bootmisc.sh
+ [ ? ]  checkfs.sh
+ [ - ]  checkroot.sh
+ [ - ]  console-setup
+ [ + ]  cron
+ [ + ]  dbus
+ [ + ]  exim4
+ [ - ]  hostname.sh
+ [ ? ]  hwclock.sh
+...
+</code></pre>
+
+<p>Services preceded by a <code>[ + ]</code> are currently running, while those following a <code>[ - ]</code> are not.</p></li>
+
+<li><p>Use <code>update-rc.d</code> to add or remove services from startup:</p>
+
+<pre><code>sudo update-rc.d apache2 defaults
+update-rc.d: using dependency based boot sequencing
+
+sudo update-rc.d -f rsyslog remove
+update-rc.d: using dependency based boot sequencing
+</code></pre></li>
+</ol>
+
+<h3 id="centos-7">CentOS 7</h3>
+
+<ol>
+<li><p>Display which services are set to run on boot:</p>
+
+<pre><code>sudo systemctl list-unit-files
+</code></pre>
+
+<p>The output resembles the following:</p>
+
+<pre><code>UNIT FILE                                   STATE
+proc-sys-fs-binfmt_misc.automount           static
+dev-hugepages.mount                         static
+dev-mqueue.mount                            static
+...
+ebtables.service                            disabled
+emergency.service                           static
+firewalld.service                           disabled
+getty@.service                              enabled
+halt-local.service                          static
+htcacheclean.service                        static
+httpd.service                               disabled
+...
+</code></pre></li>
+
+<li><p>Check that the services you need to run on startup are enabled:</p>
+
+<pre><code>sudo systemctl enable httpd.service
+</code></pre></li>
+</ol>
+
+<h3 id="centos-6">CentOS 6</h3>
+
+<ol>
+<li><p>Display which services are set to run on boot:</p>
+
+<pre><code>sudo chkconfig --list
+</code></pre>
+
+<p>The output resembles the following:</p>
+
+<pre><code>auditd          0:off   1:off   2:on    3:on    4:on    5:on    6:off
+crond           0:off   1:off   2:on    3:on    4:on    5:on    6:off
+dovecot         0:off   1:off   2:on    3:on    4:on    5:on    6:off
+htcacheclean    0:off   1:off   2:off   3:off   4:off   5:off   6:off
+httpd           0:off   1:off   2:off   3:off   4:off   5:off   6:off
+ip6tables       0:off   1:off   2:on    3:on    4:on    5:on    6:off
+iptables        0:off   1:off   2:on    3:on    4:on    5:on    6:off
+mysqld          0:off   1:off   2:on    3:on    4:on    5:on    6:off
+netconsole      0:off   1:off   2:off   3:off   4:off   5:off   6:off
+netfs           0:off   1:off   2:off   3:on    4:on    5:on    6:off
+network         0:off   1:off   2:on    3:on    4:on    5:on    6:off
+ntpd            0:off   1:off   2:on    3:on    4:on    5:on    6:off
+ntpdate         0:off   1:off   2:off   3:off   4:off   5:off   6:off
+postfix         0:off   1:off   2:on    3:on    4:on    5:on    6:off
+rdisc           0:off   1:off   2:off   3:off   4:off   5:off   6:off
+restorecond     0:off   1:off   2:off   3:off   4:off   5:off   6:off
+rsyslog         0:off   1:off   2:on    3:on    4:on    5:on    6:off
+saslauthd       0:off   1:off   2:off   3:off   4:off   5:off   6:off
+sshd            0:off   1:off   2:on    3:on    4:on    5:on    6:off
+udev-post       0:off   1:on    2:on    3:on    4:on    5:on    6:off
+</code></pre>
+
+<p>Optionally, run <code>chkconfig --list</code> on specific services to see only their status:</p>
+
+<pre><code>sudo chkconfig --list httpd
+httpd           0:off   1:off   2:off   3:off   4:off   5:off   6:off
+</code></pre></li>
+
+<li><p>Check that the services you need at boot are enabled:</p>
+
+<pre><code>sudo chkconfig --level 3 httpd on
+</code></pre></li>
+</ol>
+
+<h2 id="ssl-passphrases">SSL Passphrases</h2>
+
+<p>Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the <a href="/docs/networking/using-the-linode-shell-lish">LISH</a> console to enter your passphrase on reboot:</p>
+
+<pre><code>Starting web server (apache2)...[Mon Sep 22 09:03:45 2008] [warn] module ssl_module is already loaded, skipping
+Apache/2.2.3 mod_ssl/2.2.3 (Pass Phrase Dialog)
+Some of your private key files are encrypted for security reasons.
+In order to read them you have to provide the pass phrases.
+
+Server 127.0.0.1:443 (RSA)
+Enter pass phrase:
+
+OK: Pass Phrase Dialog successful.
+</code></pre>
+
+<p>The console does not display any characters (ex: <strong>*</strong>) as you enter your passphrase.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you use full-disk encryption, enter your password in the LISH console after a reboot.</div>
+</blockquote>
+
+
+<h2 id="firewall-rules">Firewall Rules</h2>
+
+<p>If you followed the <a href="/docs/security/securing-your-server#configure-a-firewall">Creating a Firewall</a> section of our <a href="/docs/security/securing-your-server">Securing your Server</a> guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you&rsquo;ve manually configured your <code>iptables</code> exceptions live, they may not persist through a server reboot.</p>
+
+<ol>
+<li><p>Ensure that your custom firewall rules are saved:</p>
+
+<pre><code>sudo iptables-save &gt; /etc/iptables.firewall.rules
+</code></pre></li>
+
+<li><p>Follow the steps linked above for your operating system to ensure that your <code>iptables</code> rules load on reboot.</p></li>
+</ol>
+
+<h2 id="load-balancing-for-fault-tolerance">Load Balancing for Fault Tolerance</h2>
+
+<p>If your system absolutely <strong>cannot</strong> afford any downtime, then scale the platform across multiple servers. Multi-server availability ensures that your service can remain live even if one of the servers goes down. The services and options for enabling highly available stacks are too numerous to detail here, but refer to these guides to get started with high availability:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can deploy your services to an additional Linode to enable high availability.  New Linodes will automatically be placed on known good hosts, and can ensure that vital services remain online throughout the reboot process.</div>
+</blockquote>
+
+
+<ul>
+<li><a href="/docs/platform/nodebalancer/">Linode NodeBalancers</a></li>
+<li><a href="/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer">Using Nginx for Proxy Services and Software Load Balancing</a></li>
+<li><a href="/docs/databases/mysql/mysql-master-master-replication">MySQL Master-Master Replication</a></li>
+<li><a href="/docs/databases/mariadb/clustering-with-mariadb-and-galera">MariaDB Clusters with Galera</a></li>
+</ul>
+
+            
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#testing-for-reboot-issues">Testing for Reboot Issues</a></li>
+<li><a href="#when-to-reboot">When to Reboot</a></li>
+<li><a href="#backups">Backups</a>
+<ul>
+<li><a href="#backing-up-databases">Backing up Databases</a></li>
+<li><a href="#backing-up-important-files">Backing up Important Files</a></li>
+</ul></li>
+<li><a href="#autostart-services">Autostart Services</a>
+<ul>
+<li><a href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
+<li><a href="#centos-7">CentOS 7</a></li>
+<li><a href="#centos-6">CentOS 6</a></li>
+</ul></li>
+<li><a href="#ssl-passphrases">SSL Passphrases</a></li>
+<li><a href="#firewall-rules">Firewall Rules</a></li>
+<li><a href="#load-balancing-for-fault-tolerance">Load Balancing for Fault Tolerance</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

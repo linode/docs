@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Turbocharge Your WordPress Search Using Solr</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Turbocharge your WordPress blog search using Solr search engine.">
+        <meta name="keywords" content="wordpress, search, solr, ubuntu, debian">
+        
+        <meta property="og:title" content="Turbocharge Your WordPress Search Using Solr">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/cms/turbocharge-wordpress-search-with-solr/">
+        <meta property="og:description" content="Turbocharge your WordPress blog search using Solr search engine.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/cms/turbocharge-wordpress-search-with-solr/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/cms/">Control Panels &amp; Content Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  Turbocharge Your WordPress Search Using Solr
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Turbocharge Your WordPress Search Using Solr</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-04-03T00:00:00Z">Friday, April 3, 2015</time> by James Stewart</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://twitter.com/pathbreaksoft">Karthik Shiraly
+    
+    <i class="fa fa-twitter"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fturbocharge-wordpress-search-with-solr%2f&via=linode&text=Turbocharge%20Your%20WordPress%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fturbocharge-wordpress-search-with-solr%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fturbocharge-wordpress-search-with-solr%2f&t=Turbocharge%20Your%20WordPress%20Search%20Using%20Solr" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/cms/turbocharge-wordpress-search-with-solr.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/cms/turbocharge-wordpress-search-with-solr.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>The standard search that is built into WordPress does not provide the best search experience you can offer your visitors, given its inability to suggest search phrases, catch typos, understand word variations, organize and filter results, and index documents for search results. <em>Full text search engines</em> often offer these features and <strong>Apache Solr</strong> is a free, open-source option that does.</p>
+
+<p>In this guide, you will learn how to install Java, install and configure Solr on Ubuntu 14.x or Debian 7.x, and integrate it into your WordPress blog using the WPSolr plugin.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+<li><p>WordPress must be already installed and configured. If you have not yet installed WordPress, follow the <a href="/docs/websites/cms/manage-web-content-with-wordpress">Manage Web Content with WordPress</a> guide.</p></li>
+
+<li><p>Much of this guide assumes that Solr is being installed on the same server as WordPress; however, Solr can be installed on a second server for security or scalibility reasons. Alternate steps are provided should Solr be installed on a second server.</p></li>
+</ul>
+
+<h2 id="install-java">Install Java</h2>
+
+<p>Since Solr is a Java web application, it requires a <em>Java Runtime Environment (JRE)</em>.</p>
+
+<ol>
+<li><p>Check if Java is already installed on your server using the following commands:</p>
+
+<pre><code>whereis java
+java -version
+</code></pre>
+
+<p>If Java is already installed, it will output the path of the executable Java file and the Java version that is being run. Skip to the <a href="#install-unzip-curl-and-php5-curl">next step</a>.</p></li>
+
+<li><p>Install the <code>openjdk-7-jre-headless</code> package:</p>
+
+<pre><code>sudo apt-get install openjdk-7-jre-headless
+</code></pre></li>
+
+<li><p>After the JRE is installed, test it by checking the version:</p>
+
+<pre><code>java -version
+</code></pre>
+
+<p>If it&rsquo;s working correctly, it should produce similar output:</p>
+
+<pre><code>java version &quot;1.7.0_75&quot;
+OpenJDK Runtime Environment (IcedTea 2.5.4) (7u75-2.5.4-1~deb7u1)
+OpenJDK 64-Bit Server VM (build 24.75-b04, mixed mode)
+</code></pre></li>
+</ol>
+
+<h2 id="install-unzip-curl-and-php5-curl">Install unzip, curl and php5-curl</h2>
+
+<ol>
+<li><p>Install the <code>unzip</code>, <code>curl</code>, and <code>php5-curl</code> packages:</p>
+
+<pre><code>sudo apt-get install unzip curl php5-curl
+</code></pre></li>
+
+<li><p>Restart the HTTP server where WordPress is hosted:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre></li>
+</ol>
+
+<h2 id="install-and-configure-solr">Install and Configure Solr</h2>
+
+<h3 id="download-and-install-solr">Download and Install Solr</h3>
+
+<ol>
+<li><p>Open the <a href="http://www.apache.org/dyn/closer.cgi/lucene/solr/">Solr download site</a> in your browser.</p></li>
+
+<li><p>Apache will provide a download link based on location:</p>
+
+<p><a href="/docs/assets/wpsolr_select_apache_mirror.png"><img src="/docs/assets/wpsolr_select_apache_mirror_resized.png" alt="Selecting an Apache download mirror site" /></a></p></li>
+
+<li><p>Click the link to open a page of Solr releases:</p>
+
+<p><a href="/docs/assets/wpsolr_mirror_directory_listing.png"><img src="/docs/assets/wpsolr_mirror_directory_listing_resized.png" alt="List of Solr releases" /></a></p></li>
+
+<li><p>Click on the highest available 4.x version to see the files in that release:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Since Solr 5.x is still in beta, its configuration procedures are different from 4.x, and WPSolr is not yet compatible with the 5.x release.</div>
+</blockquote>
+
+
+<p><img src="/docs/assets/wpsolr_directory_files.png" alt="Solr release directory listing" /></p></li>
+
+<li><p>Copy the link address for the non-source <code>.tgz</code> file.</p></li>
+
+<li><p>On your Linode, download that file into your home directory using the <code>wget</code> command:</p>
+
+<pre><code>cd ~
+wget http://apache.bytenet.in/lucene/solr/4.10.4/solr-4.10.4.tgz
+</code></pre></li>
+
+<li><p>Install Solr under the <code>/opt</code> directory:</p>
+
+<pre><code>sudo tar -C /opt -xzvf solr-4.10.4.tgz
+</code></pre></li>
+</ol>
+
+<h3 id="install-wpsolr-configuration-files">Install WPSolr Configuration Files</h3>
+
+<p>For Solr to index blog posts, it needs to know the structure of the blog data. This structure is described in Solr configuration files.</p>
+
+<ol>
+<li><p>WPSolr provides ready-made configuration files on their website.
+Visit the <a href="http://wpsolr.com/releases/">WPSolr website</a> and get the link address of the latest WPSolr release for your Solr version:</p>
+
+<p><a href="/docs/assets/wpsolr_wpsolr_config_download.png"><img src="/docs/assets/wpsolr_wpsolr_config_download_resized.png" alt="WPSolr Configuration Download" /></a></p>
+
+<p>The copied address will look similar to <code>http://wpsolr.com/?wpdmdl=2064</code>.</p></li>
+
+<li><p>On the server where Solr is installed, use the <code>wget</code> command to download the file from copied address and save it as <code>wpsolr_config.zip</code>.</p>
+
+<pre><code>wget -O wpsolr_config.zip http://wpsolr.com/?wpdmdl=2064
+</code></pre></li>
+
+<li><p>Extract <code>wpsolr_config.zip</code>:</p>
+
+<pre><code>unzip wpsolr_config.zip
+</code></pre></li>
+
+<li><p>Copy <code>schema.xml</code> and <code>solrconfig.xml</code> into <code>/opt/solr-4.10.4/example/solr/collection1/conf</code>. Back up the original files before copying:</p>
+
+<pre><code>sudo cp /opt/solr-4.10.4/example/solr/collection1/conf/schema.xml /opt/solr-4.10.4/example/solr/collection1/conf/schema.xml.original
+sudo cp /opt/solr-4.10.4/example/solr/collection1/conf/solrconfig.xml  /opt/solr-4.10.4/example/solr/collection1/conf/solrconfig.xml.original
+sudo cp schema.xml  /opt/solr-4.10.4/example/solr/collection1/conf/
+sudo cp solrconfig.xml  /opt/solr-4.10.4/example/solr/collection1/conf/
+</code></pre></li>
+</ol>
+
+<h3 id="change-the-ip-address-and-port-of-solr-optional">Change the IP Address and Port of Solr (Optional)</h3>
+
+<p>By default, Solr listens for search requests on all IP addresses at port 8983. For security reasons, you may wish to change the IP address and/or port it listens on. It is also recommended that only WordPress be able to query Solr.</p>
+
+<ol>
+<li><p>First, make a back up of <code>/opt/solr-4.10.4/example/etc/jetty.xml</code>. Then, open the file in a text editor:</p>
+
+<pre><code>sudo cp /opt/solr-4.10.4/example/etc/jetty.xml /opt/solr-4.10.4/example/etc/jetty.xml.backup
+</code></pre></li>
+
+<li><p>Locate the section where listening host and port are set:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/opt/solr-4.10.4/example/etc/jetty.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;!--
+    &lt;Call <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;addConnector&#34;</span>&gt;
+      &lt;Arg&gt;
+          &lt;New <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;org.eclipse.jetty.server.nio.SelectChannelConnector&#34;</span>&gt;
+            &lt;Set <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;host&#34;</span>&gt;&lt;SystemProperty <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;jetty.host&#34;</span> /&gt;&lt;/Set&gt;
+            &lt;Set <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;port&#34;</span>&gt;&lt;SystemProperty <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;jetty.port&#34;</span> <span class="nv">default</span><span class="o">=</span><span class="s2">&#34;8983&#34;</span>/&gt;&lt;/Set&gt;
+            &lt;Set <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;maxIdleTime&#34;</span>&gt;50000&lt;/Set&gt;
+            &lt;Set <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Acceptors&#34;</span>&gt;2&lt;/Set&gt;
+            &lt;Set <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;statsOn&#34;</span>&gt;false&lt;/Set&gt;
+            &lt;Set <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;confidentialPort&#34;</span>&gt;8443&lt;/Set&gt;
+            &lt;Set <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;lowResourcesConnections&#34;</span>&gt;5000&lt;/Set&gt;
+            &lt;Set <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;lowResourcesMaxIdleTime&#34;</span>&gt;5000&lt;/Set&gt;
+          &lt;/New&gt;
+      &lt;/Arg&gt;
+    &lt;/Call&gt;
+--&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Set the appropriate listening IP address:</p>
+
+<ul>
+<li><p>If Solr is on the <strong>same</strong> server as WordPress, replace <code>&lt;Set name=&quot;host&quot;&gt;&lt;SystemProperty name=&quot;jetty.host&quot; /&gt;&lt;/Set&gt;</code> with:</p>
+
+<pre><code>&lt;Set name=&quot;host&quot;&gt;localhost&lt;/Set&gt;
+</code></pre></li>
+
+<li><p>If Solr is on a <strong>different</strong> server from WordPress, replace <code>&lt;Set name=&quot;host&quot;&gt;&lt;SystemProperty name=&quot;jetty.host&quot; /&gt;&lt;/Set&gt;</code> with:</p>
+
+<pre><code>&lt;Set name=&quot;host&quot;&gt;123.45.67.89&lt;/Set&gt;
+</code></pre>
+
+<p>Replace <code>123.45.67.89</code> with your own private IP or FQDN.</p></li>
+</ul></li>
+</ol>
+
+<h3 id="create-a-user-account-and-user-group-for-solr">Create a User Account and User Group for Solr</h3>
+
+<p>For security purposes, Solr should run with its own user account and group.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The following commands should be run on the server where <strong>Solr</strong> is installed.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Create a group named <code>solr</code>:</p>
+
+<pre><code>sudo addgroup --system solr
+</code></pre></li>
+
+<li><p>Create a user named <code>solr</code>:</p>
+
+<pre><code>sudo adduser --system --ingroup solr --home /opt/solr-4.10.4 --shell /bin/sh --disabled-password --disabled-login solr
+</code></pre></li>
+
+<li><p>Transfer ownership of the Solr directory to the user <code>solr</code>:</p>
+
+<pre><code>sudo chown -R solr:solr /opt/solr-4.10.4
+</code></pre></li>
+</ol>
+
+<h3 id="configure-solr-as-a-startup-service">Configure Solr as a Startup Service</h3>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Run the following commands on the server where <strong>Solr</strong> is installed.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Use a text editor to create a new script <code>/etc/init.d/solr</code>.  Alternatively, you can download it from <a href="/docs/assets/solr">this link</a>:</p>
+
+<pre><code>sudo nano /etc/init.d/solr
+</code></pre></li>
+
+<li><p>Copy the following text into the editor, save and close it:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If using a different version of Solr, change the <code>JETTY_HOME=/opt/solr-4.10.4/example</code> line to match the installed version.</div>
+</blockquote>
+
+
+<dl class="file">
+<dt>
+
+
+		/etc/init.d/solr 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">  1</span><span class="lnt">  2</span><span class="lnt">  3</span><span class="lnt">  4</span><span class="lnt">  5</span><span class="lnt">  6</span><span class="lnt">  7</span><span class="lnt">  8</span><span class="lnt">  9</span><span class="lnt"> 10</span><span class="lnt"> 11</span><span class="lnt"> 12</span><span class="lnt"> 13</span><span class="lnt"> 14</span><span class="lnt"> 15</span><span class="lnt"> 16</span><span class="lnt"> 17</span><span class="lnt"> 18</span><span class="lnt"> 19</span><span class="lnt"> 20</span><span class="lnt"> 21</span><span class="lnt"> 22</span><span class="lnt"> 23</span><span class="lnt"> 24</span><span class="lnt"> 25</span><span class="lnt"> 26</span><span class="lnt"> 27</span><span class="lnt"> 28</span><span class="lnt"> 29</span><span class="lnt"> 30</span><span class="lnt"> 31</span><span class="lnt"> 32</span><span class="lnt"> 33</span><span class="lnt"> 34</span><span class="lnt"> 35</span><span class="lnt"> 36</span><span class="lnt"> 37</span><span class="lnt"> 38</span><span class="lnt"> 39</span><span class="lnt"> 40</span><span class="lnt"> 41</span><span class="lnt"> 42</span><span class="lnt"> 43</span><span class="lnt"> 44</span><span class="lnt"> 45</span><span class="lnt"> 46</span><span class="lnt"> 47</span><span class="lnt"> 48</span><span class="lnt"> 49</span><span class="lnt"> 50</span><span class="lnt"> 51</span><span class="lnt"> 52</span><span class="lnt"> 53</span><span class="lnt"> 54</span><span class="lnt"> 55</span><span class="lnt"> 56</span><span class="lnt"> 57</span><span class="lnt"> 58</span><span class="lnt"> 59</span><span class="lnt"> 60</span><span class="lnt"> 61</span><span class="lnt"> 62</span><span class="lnt"> 63</span><span class="lnt"> 64</span><span class="lnt"> 65</span><span class="lnt"> 66</span><span class="lnt"> 67</span><span class="lnt"> 68</span><span class="lnt"> 69</span><span class="lnt"> 70</span><span class="lnt"> 71</span><span class="lnt"> 72</span><span class="lnt"> 73</span><span class="lnt"> 74</span><span class="lnt"> 75</span><span class="lnt"> 76</span><span class="lnt"> 77</span><span class="lnt"> 78</span><span class="lnt"> 79</span><span class="lnt"> 80</span><span class="lnt"> 81</span><span class="lnt"> 82</span><span class="lnt"> 83</span><span class="lnt"> 84</span><span class="lnt"> 85</span><span class="lnt"> 86</span><span class="lnt"> 87</span><span class="lnt"> 88</span><span class="lnt"> 89</span><span class="lnt"> 90</span><span class="lnt"> 91</span><span class="lnt"> 92</span><span class="lnt"> 93</span><span class="lnt"> 94</span><span class="lnt"> 95</span><span class="lnt"> 96</span><span class="lnt"> 97</span><span class="lnt"> 98</span><span class="lnt"> 99</span><span class="lnt">100</span><span class="lnt">101</span><span class="lnt">102</span><span class="lnt">103</span><span class="lnt">104</span><span class="lnt">105</span><span class="lnt">106</span><span class="lnt">107</span><span class="lnt">108</span><span class="lnt">109</span><span class="lnt">110</span><span class="lnt">111</span><span class="lnt">112</span><span class="lnt">113</span><span class="lnt">114</span><span class="lnt">115</span><span class="lnt">116</span><span class="lnt">117</span><span class="lnt">118</span><span class="lnt">119</span><span class="lnt">120</span><span class="lnt">121</span><span class="lnt">122</span><span class="lnt">123</span><span class="lnt">124</span><span class="lnt">125</span><span class="lnt">126</span><span class="lnt">127</span><span class="lnt">128</span><span class="lnt">129</span><span class="lnt">130</span><span class="lnt">131</span><span class="lnt">132</span><span class="lnt">133</span><span class="lnt">134</span><span class="lnt">135</span><span class="lnt">136</span><span class="lnt">137</span><span class="lnt">138</span><span class="lnt">139</span><span class="lnt">140</span><span class="lnt">141</span><span class="lnt">142</span><span class="lnt">143</span><span class="lnt">144</span><span class="lnt">145</span><span class="lnt">146</span><span class="lnt">147</span><span class="lnt">148</span><span class="lnt">149</span><span class="lnt">150</span><span class="lnt">151</span><span class="lnt">152</span><span class="lnt">153</span><span class="lnt">154</span><span class="lnt">155</span><span class="lnt">156</span><span class="lnt">157</span><span class="lnt">158</span><span class="lnt">159</span><span class="lnt">160</span><span class="lnt">161</span><span class="lnt">162</span><span class="lnt">163</span><span class="lnt">164</span><span class="lnt">165</span><span class="lnt">166</span><span class="lnt">167</span><span class="lnt">168</span><span class="lnt">169</span><span class="lnt">170</span><span class="lnt">171</span><span class="lnt">172</span><span class="lnt">173</span><span class="lnt">174</span><span class="lnt">175</span><span class="lnt">176</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh -e
+</span><span class="cp"></span><span class="c1">#
+</span><span class="c1"># /etc/init.d/solr -- startup script for Apache Solr
+</span><span class="c1">#
+</span><span class="c1">#
+</span><span class="c1">### BEGIN INIT INFO
+</span><span class="c1"># Provides:          solr
+</span><span class="c1"># Required-Start:    $local_fs $remote_fs $network
+</span><span class="c1"># Required-Stop:     $local_fs $remote_fs $network
+</span><span class="c1"># Should-Start:      $named
+</span><span class="c1"># Should-Stop:       $named
+</span><span class="c1"># Default-Start:     2 3 4 5
+</span><span class="c1"># Default-Stop:      0 1 6
+</span><span class="c1"># Short-Description: Start Solr
+</span><span class="c1"># Description:       Start Apache Solr jetty server
+</span><span class="c1">### END INIT INFO
+</span><span class="c1"></span>
+<span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+<span class="nv">NAME</span><span class="o">=</span>solr
+<span class="nv">DESC</span><span class="o">=</span><span class="s2">&#34;Solr search engine&#34;</span>
+<span class="nv">JETTY_HOME</span><span class="o">=</span>/opt/solr-4.10.4/example
+<span class="nv">START_JAR</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$JETTY_HOME</span><span class="s2">/start.jar&#34;</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="sb">`</span>id -u<span class="sb">`</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;You need root privileges to run this script&#34;</span>
+        <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="c1"># Make sure jetty is started with system locale
+</span><span class="c1"></span><span class="k">if</span> <span class="o">[</span> -r /etc/default/locale <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        . /etc/default/locale
+        <span class="nb">export</span> LANG
+<span class="k">fi</span>
+
+. /lib/lsb/init-functions
+
+<span class="k">if</span> <span class="o">[</span> -r /etc/default/rcS <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        . /etc/default/rcS
+<span class="k">fi</span>
+
+<span class="c1"># Run Jetty as this user ID (default: jetty)
+</span><span class="c1"># Set this to an empty string to prevent Jetty from starting automatically
+</span><span class="c1"></span><span class="nv">SOLR_USER</span><span class="o">=</span>solr
+
+<span class="nv">SOLR_GROUP</span><span class="o">=</span>solr
+
+<span class="nb">export</span> <span class="nv">JAVA</span><span class="o">=</span><span class="s2">&#34;/usr/bin/java&#34;</span>
+
+<span class="c1"># Extra options to pass to the JVM
+</span><span class="c1"># Set java.awt.headless=true if JAVA_OPTIONS is not set so the
+</span><span class="c1"># Xalan XSL transformer can work without X11 display on JDK 1.4+
+</span><span class="c1"># It also sets the maximum heap size to 256M to deal with most cases.
+</span><span class="c1"></span><span class="nv">JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-Djava.awt.headless=true&#34;</span>
+
+<span class="c1"># Timeout in seconds for the shutdown of all webapps
+</span><span class="c1"></span><span class="nv">JETTY_SHUTDOWN</span><span class="o">=</span><span class="m">30</span>
+
+<span class="nv">JETTY_STOP_PORT</span><span class="o">=</span><span class="m">17935</span>
+<span class="nv">JETTY_STOP_KEY</span><span class="o">=</span>stopsolr
+<span class="nv">JETTY_ARGS</span><span class="o">=</span><span class="s2">&#34;-Djetty.home=</span><span class="nv">$JETTY_HOME</span><span class="s2"> -DSTOP.PORT=</span><span class="nv">$JETTY_STOP_PORT</span><span class="s2"> -DSTOP.KEY=</span><span class="nv">$JETTY_STOP_KEY</span><span class="s2">&#34;</span>
+
+<span class="c1"># Define other required variables
+</span><span class="c1"></span><span class="nv">PIDFILE</span><span class="o">=</span><span class="s2">&#34;/var/run/</span><span class="nv">$NAME</span><span class="s2">.pid&#34;</span>
+<span class="nv">WEBAPPDIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$JETTY_HOME</span><span class="s2">/webapps&#34;</span>
+
+<span class="c1">##################################################
+</span><span class="c1"># Do the action
+</span><span class="c1">##################################################
+</span><span class="c1"></span><span class="k">case</span> <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> in
+    start<span class="o">)</span>
+        log_daemon_msg <span class="s2">&#34;Starting </span><span class="nv">$DESC</span><span class="s2">.&#34;</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">&#34;</span>
+        <span class="k">if</span> start-stop-daemon --quiet --test --start --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                        --user <span class="s2">&#34;</span><span class="nv">$SOLR_USER</span><span class="s2">&#34;</span> --group <span class="s2">&#34;</span><span class="nv">$SOLR_GROUP</span><span class="s2">&#34;</span> --startas <span class="s2">&#34;</span><span class="nv">$JAVA</span><span class="s2">&#34;</span> &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+
+                <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$PIDFILE</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+                      log_warning_msg <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2"> exists, but solr was not running. Ignoring </span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span>
+                <span class="k">fi</span>
+
+                start-stop-daemon --start --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> --chuid <span class="s2">&#34;</span><span class="nv">$SOLR_USER</span><span class="s2">:</span><span class="nv">$SOLR_GROUP</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                    --chdir <span class="s2">&#34;</span><span class="nv">$JETTY_HOME</span><span class="s2">&#34;</span> --background --make-pidfile --startas <span class="nv">$JAVA</span> -- <span class="se">\
+</span><span class="se"></span>                    <span class="nv">$JAVA_OPTIONS</span> <span class="nv">$JETTY_ARGS</span> -jar <span class="nv">$START_JAR</span> --daemon
+
+                log_daemon_msg <span class="s2">&#34;</span><span class="nv">$DESC</span><span class="s2"> started&#34;</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">&#34;</span>
+
+                sleep <span class="m">5</span>
+                <span class="k">if</span> start-stop-daemon --test --start --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                        --user <span class="nv">$SOLR_USER</span> --group <span class="nv">$SOLR_GROUP</span>  --startas <span class="s2">&#34;</span><span class="nv">$JAVA</span><span class="s2">&#34;</span> &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+                        log_end_msg <span class="m">1</span>
+                <span class="k">else</span>
+                        log_end_msg <span class="m">0</span>
+                <span class="k">fi</span>
+
+        <span class="k">else</span>
+                log_warning_msg <span class="s2">&#34;(already running).&#34;</span>
+                log_end_msg <span class="m">0</span>
+                <span class="nb">exit</span> <span class="m">1</span>
+        <span class="k">fi</span>
+        <span class="p">;;</span>
+
+    stop<span class="o">)</span>
+        log_daemon_msg <span class="s2">&#34;Stopping </span><span class="nv">$DESC</span><span class="s2">.&#34;</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">&#34;</span>
+
+        <span class="k">if</span> start-stop-daemon --quiet --test --start --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                --user <span class="s2">&#34;</span><span class="nv">$SOLR_USER</span><span class="s2">&#34;</span> --group <span class="s2">&#34;</span><span class="nv">$SOLR_GROUP</span><span class="s2">&#34;</span> --startas <span class="s2">&#34;</span><span class="nv">$JAVA</span><span class="s2">&#34;</span> &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+                <span class="k">if</span> <span class="o">[</span> -x <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+                      log_warning_msg <span class="s2">&#34;(not running but </span><span class="nv">$PIDFILE</span><span class="s2"> exists).&#34;</span>
+                <span class="k">else</span>
+                        log_warning_msg <span class="s2">&#34;(not running).&#34;</span>
+                <span class="k">fi</span>
+        <span class="k">else</span>
+                start-stop-daemon --quiet --stop <span class="se">\
+</span><span class="se"></span>                        --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> --user <span class="s2">&#34;</span><span class="nv">$SOLR_USER</span><span class="s2">&#34;</span> --group <span class="s2">&#34;</span><span class="nv">$SOLR_GROUP</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                        --startas <span class="nv">$JAVA</span> -- <span class="nv">$JAVA_OPTIONS</span> <span class="nv">$JETTY_ARGS</span> -jar <span class="nv">$START_JAR</span> --stop &gt; /dev/null
+
+                <span class="k">while</span> ! start-stop-daemon --quiet --test --start <span class="se">\
+</span><span class="se"></span>                            --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> --user <span class="s2">&#34;</span><span class="nv">$SOLR_USER</span><span class="s2">&#34;</span> --group <span class="s2">&#34;</span><span class="nv">$SOLR_GROUP</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                            --startas <span class="s2">&#34;</span><span class="nv">$JAVA</span><span class="s2">&#34;</span> &gt; /dev/null<span class="p">;</span> <span class="k">do</span>
+                        sleep <span class="m">1</span>
+                        log_progress_msg <span class="s2">&#34;.&#34;</span>
+                        <span class="nv">JETTY_SHUTDOWN</span><span class="o">=</span><span class="sb">`</span>expr <span class="nv">$JETTY_SHUTDOWN</span> - <span class="m">1</span><span class="sb">`</span> <span class="o">||</span> <span class="nb">true</span>
+                        <span class="k">if</span> <span class="o">[</span> <span class="nv">$JETTY_SHUTDOWN</span> -ge <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+                                start-stop-daemon --oknodo --quiet --stop <span class="se">\
+</span><span class="se"></span>                                        --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> --user <span class="s2">&#34;</span><span class="nv">$SOLR_USER</span><span class="s2">&#34;</span> --group <span class="s2">&#34;</span><span class="nv">$SOLR_GROUP</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                                        --startas <span class="nv">$JAVA</span> -- <span class="nv">$JAVA_OPTIONS</span> <span class="nv">$JETTY_ARGS</span> -jar <span class="nv">$START_JAR</span> --stop
+                        <span class="k">else</span>
+                                log_progress_msg <span class="s2">&#34; (killing) &#34;</span>
+                                start-stop-daemon --stop --signal <span class="m">9</span> --oknodo <span class="se">\
+</span><span class="se"></span>                                        --quiet --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                                        --user <span class="s2">&#34;</span><span class="nv">$SOLR_USER</span><span class="s2">&#34;</span> --group <span class="s2">&#34;</span><span class="nv">$SOLR_GROUP</span><span class="s2">&#34;</span>
+                        <span class="k">fi</span>
+                <span class="k">done</span>
+                rm -f <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span>
+                log_daemon_msg <span class="s2">&#34;</span><span class="nv">$DESC</span><span class="s2"> stopped.&#34;</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">&#34;</span>
+                log_end_msg <span class="m">0</span>
+        <span class="k">fi</span>
+        <span class="p">;;</span>
+
+    status<span class="o">)</span>
+        <span class="k">if</span> start-stop-daemon --quiet --test --start --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                --user <span class="s2">&#34;</span><span class="nv">$SOLR_USER</span><span class="s2">&#34;</span> --group <span class="s2">&#34;</span><span class="nv">$SOLR_GROUP</span><span class="s2">&#34;</span> --startas <span class="s2">&#34;</span><span class="nv">$JAVA</span><span class="s2">&#34;</span> &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+
+                <span class="k">if</span> <span class="o">[</span> -f <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+                    log_success_msg <span class="s2">&#34;</span><span class="nv">$DESC</span><span class="s2"> is not running, but pid file exists.&#34;</span>
+                        <span class="nb">exit</span> <span class="m">1</span>
+                <span class="k">else</span>
+                    log_success_msg <span class="s2">&#34;</span><span class="nv">$DESC</span><span class="s2"> is not running.&#34;</span>
+                        <span class="nb">exit</span> <span class="m">3</span>
+                <span class="k">fi</span>
+        <span class="k">else</span>
+                log_success_msg <span class="s2">&#34;</span><span class="nv">$DESC</span><span class="s2"> is running with pid `cat </span><span class="nv">$PIDFILE</span><span class="s2">`&#34;</span>
+        <span class="k">fi</span>
+        <span class="p">;;</span>
+
+    restart<span class="p">|</span>force-reload<span class="o">)</span>
+        <span class="k">if</span> ! start-stop-daemon --quiet --test --start --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                --user <span class="s2">&#34;</span><span class="nv">$SOLR_USER</span><span class="s2">&#34;</span> --group <span class="s2">&#34;</span><span class="nv">$SOLR_GROUP</span><span class="s2">&#34;</span> --startas <span class="s2">&#34;</span><span class="nv">$JAVA</span><span class="s2">&#34;</span> &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+                <span class="nv">$0</span> stop <span class="nv">$*</span>
+                sleep <span class="m">1</span>
+        <span class="k">fi</span>
+        <span class="nv">$0</span> start <span class="nv">$*</span>
+        <span class="p">;;</span>
+
+    try-restart<span class="o">)</span>
+        <span class="k">if</span> start-stop-daemon --quiet --test --start --pidfile <span class="s2">&#34;</span><span class="nv">$PIDFILE</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>                --user <span class="s2">&#34;</span><span class="nv">$SOLR_USER</span><span class="s2">&#34;</span> --group <span class="s2">&#34;</span><span class="nv">$SOLR_GROUP</span><span class="s2">&#34;</span> --startas <span class="s2">&#34;</span><span class="nv">$JAVA</span><span class="s2">&#34;</span> &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+                <span class="nv">$0</span> start <span class="nv">$*</span>
+        <span class="k">fi</span>
+        <span class="p">;;</span>
+
+    *<span class="o">)</span>
+        log_success_msg <span class="s2">&#34;Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart|force-reload|try-restart|status}&#34;</span>
+        <span class="nb">exit</span> <span class="m">1</span>
+        <span class="p">;;</span>
+<span class="k">esac</span>
+
+<span class="nb">exit</span> <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>After saving the script, run the following commands:</p>
+
+<pre><code>sudo chmod ugo+x /etc/init.d/solr
+sudo update-rc.d  solr defaults
+sudo update-rc.d  solr enable
+sudo service solr start
+</code></pre></li>
+</ol>
+
+<h2 id="test-solr">Test Solr</h2>
+
+<p>Run the following command on the server where Solr is installed:</p>
+
+<pre><code>curl http://localhost:8983/solr/collection1/select
+</code></pre>
+
+<p>If it shows similar output, Solr is installed and configured correctly:</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;response&gt;
+&lt;lst name=&quot;responseHeader&quot;&gt;&lt;int name=&quot;status&quot;&gt;0&lt;/int&gt;&lt;int name=&quot;QTime&quot;&gt;1&lt;/int&gt;&lt;lst name=&quot;params&quot;/&gt;&lt;/lst&gt;&lt;result name=&quot;response&quot; numFound=&quot;0&quot; start=&quot;0&quot;&gt;&lt;/result&gt;
+&lt;/response&gt;
+</code></pre>
+
+<p>If Solr is installed on a different server from WordPress, repeat the test from the WordPress server by sending a request to the Solr server:</p>
+
+<pre><code>curl http://HOSTNAME-OR-IP-OF-SOLR-SERVER:8983/solr/collection1/select
+</code></pre>
+
+<h2 id="install-and-configure-wpsolr">Install and Configure WPSolr</h2>
+
+<h3 id="install-the-wpsolr-plugin">Install the WPSolr Plugin</h3>
+
+<ol>
+<li><p>Install the <a href="https://wordpress.org/plugins/wpsolr-search-engine/">WPSolr</a> WordPress plugin, either through your WordPress admin console or by downloading the files into your <code>plugins/</code> directory.</p></li>
+
+<li><p>On the <strong>Plugins</strong> page, activate the plugin named <strong>Enterprise Search in seconds</strong>:</p>
+
+<p><a href="/docs/assets/wpsolr_activate_wpsolr_plugin.png"><img src="/docs/assets/wpsolr_activate_wpsolr_plugin_resized.png" alt="Activate WPSolr plugin" /></a></p></li>
+
+<li><p>WordPress then displays a <em>plugin activated</em> message and adds a <strong>WPSOLR</strong> menu item to the sidebar:</p>
+
+<p><a href="/docs/assets/wpsolr_after_plugin_activation.png"><img src="/docs/assets/wpsolr_after_plugin_activation_resized.png" alt="After WPSolr activation" /></a></p></li>
+</ol>
+
+<h3 id="configure-wpsolr-plugin">Configure WPSolr Plugin</h3>
+
+<ol>
+<li><p>Open WPSolr page:</p>
+
+<p><a href="/docs/assets/wpsolr_open_wpsolr_admin.png"><img src="/docs/assets/wpsolr_open_wpsolr_admin_resized.png" alt="WPSolr admin page" /></a></p></li>
+
+<li><p>Click on the button <strong>I uploaded my 2 compatible configuration files to my Solr core</strong>:</p>
+
+<p><img src="/docs/assets/wpsolr_wpsolr_solr_config_tab_firsttime.png" alt="WPSolr first configuration" /></p></li>
+
+<li><p>On the next page, select <strong>Self Hosted</strong> option:</p>
+
+<p><a href="/docs/assets/wpsolr_wpsolr_hosting_tab.png"><img src="/docs/assets/wpsolr_wpsolr_hosting_tab_resized.png" alt="WPSolr Hosting tab" /></a></p></li>
+
+<li><p>When selecting <strong>Self Hosted</strong>, the plugin prompts you to enter details about the Solr server:</p>
+
+<p><a href="/docs/assets/wpsolr_wpsolr_hosting_tab_settings.png"><img src="/docs/assets/wpsolr_wpsolr_hosting_tab_settings_resized.png" alt="WPSolr self hosting settings" /></a></p>
+
+<ul>
+<li><p><strong>Solr Host</strong>: This should be the same value as the host typed in <code>/opt/solr-4.10.4/example/etc/jetty.xml</code>. If Solr is installed on same server as WordPress, enter <code>localhost</code>. If Solr is installed on a different server, enter the same IP address or hostname.</p></li>
+
+<li><p><strong>Solr Port</strong>: This should be the same value as the port typed in <code>/opt/solr-4.10.4/example/etc/jetty.xml</code>.</p></li>
+
+<li><p><strong>Solr Path</strong>: Set this value to <code>/solr/collection1</code>, the default Solr core. The Solr server can run multiple Solr cores, each core serving a different set of search data. For more information on Solr cores, go through the <a href="https://wiki.apache.org/solr/CoreAdmin">Solr Core wiki</a>.</p></li>
+</ul></li>
+
+<li><p>Press the <strong>Check Solr Status, then Save</strong> button. If everything is set correctly, it will show a green tick mark.</p></li>
+
+<li><p>Click on the <strong>Solr Options</strong> tab:</p>
+
+<p><a href="/docs/assets/wpsolr_wpsolr_indexing_options.png"><img src="/docs/assets/wpsolr_wpsolr_indexing_options_resized.png" alt="WPSolr Indexing Options" /></a></p>
+
+<ul>
+<li><p><strong>Post types to be indexed</strong>: Selecting all of them is recommended. <strong>Post</strong> indexes all blog posts, <strong>page</strong> all pages (such as about pages), and <strong>attachment</strong> all documents (such as PDFs and DOC files).</p></li>
+
+<li><p><strong>Custom taxonomies to be indexed</strong>: Generally there is no need to enter anything here; however, if Wordpress has been customized to organize blog posts in ways other than categories and tags, enter the name of the taxonomy here.</p></li>
+
+<li><p><strong>Custom fields to be indexed</strong>: Generally there is no need to select anything here.</p></li>
+
+<li><p><strong>Index Comments</strong>: Select this if you want search results to include comments. This is suitable only for blogs where comments add some value to the post and are rigorously moderated.</p></li>
+
+<li><p><strong>Exclude Items</strong>: If you want some posts or pages to be excluded from search results, enter their IDs here.</p></li>
+</ul></li>
+
+<li><p>Press the <strong>Save Options</strong> button.</p></li>
+
+<li><p>Open the <strong>Solr Options &gt; Result Options</strong> page:</p>
+
+<p><a href="/docs/assets/wpsolr_wpsolr_result_options.png"><img src="/docs/assets/wpsolr_wpsolr_result_options_resized.png" alt="WPSolr Result Options" /></a></p>
+
+<ul>
+<li><p><strong>Display Suggestions (Did you mean?)</strong>: Recommended. If selected, Solr will suggest alternate search phrases if it doesn&rsquo;t find any matches for the entered search phrase:</p>
+
+<p><img src="/docs/assets/wpsolr_search_results_did_you_mean_small.png" alt="WPSolr Suggestions" /></p></li>
+
+<li><p><strong>Display number of results and current page</strong>: Recommended. This is useful for paginating search results.</p></li>
+
+<li><p><strong>Replace default WordPress search</strong>: Recommended. This replaces the default WordPress search box with one that uses Solr to show autocompletion suggestions.</p></li>
+
+<li><p><strong>No. of results per page</strong>: Configures how many search results should be shown per page.</p></li>
+
+<li><p><strong>No. of values to be displayed by facets</strong>: Facets refer to the filters that Solr shows to enable visitors to shortlist from search results. This value is the maximum number of values shown for each facet. For example, in the image below, this value has been set to 5 so that the <em>Tags</em> facet shows a maximum of 5 tag filters.</p>
+
+<p><img src="/docs/assets/wpsolr_search_results_facet_count.png" alt="Facet count" /></p></li>
+</ul></li>
+
+<li><p>Press the <strong>Save Options</strong> button.</p></li>
+
+<li><p>Next, open the <strong>Solr Options &gt; Facets Options</strong> page:</p>
+
+<p><a href="/docs/assets/wpsolr_wpsolr_facet_options.png"><img src="/docs/assets/wpsolr_wpsolr_facet_options_resized.png" alt="WPSolr Facet Options" /></a></p>
+
+<p>Press the green &ldquo;+&rdquo; buttons to add a facet. The ones added here are shown as filters in the search results page. Generally, <em>categories</em> and <em>tags</em> are enough, but if the blog has multiple contributors or custom taxonomies, you may also want to add these values as additional facets.</p>
+
+<p><a href="/docs/assets/wpsolr_search_results_facets.png"><img src="/docs/assets/wpsolr_search_results_facets_resized.png" alt="WPSolr Faceting" /></a></p></li>
+
+<li><p>Go to the <strong>Solr Operations</strong> tab and click the <strong>Synchronize Wordpress with my Solr index</strong> button.</p>
+
+<p><blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Whenever you publish a new post or page or attachment, this button must be selected for the new pages to be indexed.</div>
+</blockquote>
+</p>
+
+<p><img src="/docs/assets/wpsolr_wpsolr_solr_operations.png" alt="Solr Operations" /></p>
+
+<p>After the operation has completed, the same page displays how many documents were indexed.</p></li>
+</ol>
+
+<h2 id="testing-the-new-search">Testing the New Search</h2>
+
+<p>The following steps will be completed while on your blog.</p>
+
+<ol>
+<li><p>Test <strong>autocompletion</strong> by beginning to type a word you know is in one of your blog posts. As you are typing, the search box should display some suggestions in a dropdown:</p>
+
+<p><img src="/docs/assets/wpsolr_search_box_suggestions.png" alt="Autocompletion" /></p></li>
+
+<li><p>Test <strong>search results</strong> by entering a search phrase. Matching results should be displayed:</p>
+
+<p><a href="/docs/assets/wpsolr_search_results.png"><img src="/docs/assets/wpsolr_search_results_resized.png" alt="Search Results" /></a></p></li>
+
+<li><p>Test <strong>autocorrection suggestions</strong> by entering a word with some spelling mistakes or a word that does not occur in any of your blog posts. It should show <em>Did you mean</em> suggestions:</p>
+
+<p><a href="/docs/assets/wpsolr_search_results_did_you_mean.png"><img src="/docs/assets/wpsolr_search_results_did_you_mean_resized.png" alt="Did you mean suggestions" /></a></p></li>
+
+<li><p>Test the  <strong>document search</strong> by creating and publishing some test posts with added file attachments (such as PDFs). Update the search data, then search for a phrase that you know occurs in your attachment. It should display matches inside those attachments:</p>
+
+<p><a href="/docs/assets/wpsolr_search_results_from_doc_pdf.png"><img src="/docs/assets/wpsolr_search_results_from_doc_pdf_resized.png" alt="Document search results" /></a></p></li>
+</ol>
+
+<h2 id="location-of-search-data">Location of Search Data</h2>
+
+<p>Search engine data is stored in the <code>/opt/solr-4.10.4/example/solr/collection1/data</code> directory.</p>
+
+<h2 id="back-up-or-restore-search-data">Back Up or Restore Search Data</h2>
+
+<p>If you have a data backup procedure for your server, you can back up search data by including the <code>/opt/solr-4.10.4/example/solr/collection1/data</code> directory in the backup.</p>
+
+<p>The backing up of search data is not critical, since it can always be recreated from the WordPress database. However, for very large blogs with thousands of posts and attachments, backing up and restoring search data will be much faster than recreating it. Overall, when migrating or merging a blog from another WordPress server, the recommended approach is to <em>recreate</em> the search data.</p>
+
+<p>After a migration or merger, go to the <strong>Solr Operations</strong> option located at the WPSOLR plugin section of your administration panel and press the <strong>Synchronize Wordpress with my Solr index</strong> to recreate the search data.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/">Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu/">Obtain a Commercially Signed SSL Certificate on Debian &amp; Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/">Install WordPress Using WP-CLI on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/configure-firewall-with-ufw/">How to Configure a Firewall with UFW</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/install-openvpn-access-server-on-linux/">Install OpenVPN Access Server on Linux for Secure Communications</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#install-java">Install Java</a></li>
+<li><a href="#install-unzip-curl-and-php5-curl">Install unzip, curl and php5-curl</a></li>
+<li><a href="#install-and-configure-solr">Install and Configure Solr</a>
+<ul>
+<li><a href="#download-and-install-solr">Download and Install Solr</a></li>
+<li><a href="#install-wpsolr-configuration-files">Install WPSolr Configuration Files</a></li>
+<li><a href="#change-the-ip-address-and-port-of-solr-optional">Change the IP Address and Port of Solr (Optional)</a></li>
+<li><a href="#create-a-user-account-and-user-group-for-solr">Create a User Account and User Group for Solr</a></li>
+<li><a href="#configure-solr-as-a-startup-service">Configure Solr as a Startup Service</a></li>
+</ul></li>
+<li><a href="#test-solr">Test Solr</a></li>
+<li><a href="#install-and-configure-wpsolr">Install and Configure WPSolr</a>
+<ul>
+<li><a href="#install-the-wpsolr-plugin">Install the WPSolr Plugin</a></li>
+<li><a href="#configure-wpsolr-plugin">Configure WPSolr Plugin</a></li>
+</ul></li>
+<li><a href="#testing-the-new-search">Testing the New Search</a></li>
+<li><a href="#location-of-search-data">Location of Search Data</a></li>
+<li><a href="#back-up-or-restore-search-data">Back Up or Restore Search Data</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>osCommerce on Fedora 13</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to set up an online store using the open source osCommerce system on Fedora 13.">
+        <meta name="keywords" content="osCommerce, Fedora, Store, Ecommerce">
+        
+        <meta property="og:title" content="osCommerce on Fedora 13">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/ecommerce/oscommerce-on-fedora-13/">
+        <meta property="og:description" content="How to set up an online store using the open source osCommerce system on Fedora 13.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/ecommerce/oscommerce-on-fedora-13/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/ecommerce/">e-Commerce</a>
+  
+</li>
+
+
+<li>
+  
+  osCommerce on Fedora 13
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">osCommerce on Fedora 13</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-10-03T00:00:00Z">Thursday, October 3, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2foscommerce-on-fedora-13%2f&via=linode&text=osCommerce%20on%20Fedora%2013" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2foscommerce-on-fedora-13%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fecommerce%2foscommerce-on-fedora-13%2f&t=osCommerce%20on%20Fedora%2013" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/ecommerce/oscommerce-on-fedora-13.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/ecommerce/oscommerce-on-fedora-13.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.</p>
+
+<p>Before installing osCommerce, it is assumed that you have followed our <a href="/docs/getting-started/">getting started guide</a>. If you are new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts/">introduction to Linux concepts guide</a>, <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>. Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you&rsquo;ve followed our <a href="/content/lamp-guides/fedora-13/">Fedora LAMP guide</a>.</p>
+
+<h1 id="installation">Installation</h1>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>Make sure your package repositories and installed programs are up to date by issuing the following command:</p>
+
+<pre><code>yum update
+</code></pre>
+
+<p>Before installing osCommerce, you&rsquo;ll need to install an additional PHP package as well as the <code>unzip</code> and <code>wget</code> tools. Run the following commands:</p>
+
+<pre><code>yum install unzip php-gd wget
+service httpd restart
+</code></pre>
+
+<p>Installing osCommerce is straightforward and simple. <code>cd</code> into your document root directory and download the latest version of osCommerce. You can find the latest version available on <a href="http://www.oscommerce.com/solutions/downloads">the osCommerce website</a>. Run the following commands to install osCommerce in the document root of your website:</p>
+
+<pre><code>cd /srv/www/example.com/public_html
+wget http://www.oscommerce.com/ext/oscommerce-2.2rc2a.zip
+unzip oscommerce-2.2rc2a.zip
+mv oscommerce-2.2rc2a/catalog/* .
+</code></pre>
+
+<p>If you want to install osCommerce in a subdirectory, simply <code>cd</code> into that subdirectory before downloading and unzipping the package. Now we&rsquo;ll create a database for osCommerce, as well as a user for the new database:</p>
+
+<pre><code>mysql -u root -p
+CREATE DATABASE oscommerce;
+CREATE USER oscom;
+GRANT ALL ON oscommerce.* TO 'oscom' IDENTIFIED BY 'password';
+exit;
+</code></pre>
+
+<p>Lastly, change the permissions on the following two <code>configure.php</code> files to allow the online setup process to work:</p>
+
+<pre><code>chmod 777 admin/includes/configure.php includes/configure.php
+</code></pre>
+
+<h3 id="web-configuration">Web Configuration</h3>
+
+<p>At this point you can finish the rest of the installation process through your web browser. Point your browser to the domain or IP of the osCommerce install and append <code>/install/</code> to the end. In our example, the URL would be <code>http://www.example.com/install/</code>. You&rsquo;ll be prompted to fill in your database details. Use &ldquo;localhost&rdquo; for the address of the database server, and the credentials from the user and database we created above. The rest of the installation process is self explanatory. After the installation you&rsquo;ll be able to see your store as well as the administrative interface.</p>
+
+<h3 id="post-installation">Post Installation</h3>
+
+<p>After the installation, certain files need to be removed or renamed for security reasons. First, we need to remove the installation folder:</p>
+
+<pre><code>rm -rf /srv/www/example.com/public_html/install
+</code></pre>
+
+<p>Change the permissions on <code>configure.php</code> to prevent security issues:</p>
+
+<pre><code>chmod 644 /srv/www/example.com/public_html/includes/configure.php
+</code></pre>
+
+<p>Change the permissions of the <code>images</code> and <code>graphs</code> directory to be accessible by the server:</p>
+
+<pre><code>chmod -R 777 images/
+chmod -R 777 admin/images/graphs
+</code></pre>
+
+<p>Finally, change the permissions of the <code>backups</code> directory to be accessible by the server:</p>
+
+<pre><code>chmod -R 777 admin/backups
+</code></pre>
+
+<p>From here you can begin customizing your store. The default index page will give you instructions on where to begin. You can also check our &ldquo;More Information&rdquo; section below.</p>
+
+<h1 id="ssl-certificates">SSL Certificates</h1>
+
+<p>You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After <a href="/docs/security/ssl/obtaining-a-commercial-ssl-certificate">Obtaining a Commercial SSL Certificate</a>, you&rsquo;ll need to make a couple of changes to your <code>includes/configure.php</code> file. Below is an example section from that file that highlights the changes you need to make:</p>
+
+<dl class="file">
+<dt>
+
+
+		/srv/www/example.com/public\\_html/includes/configure.php 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="x">// Define the webserver and path parameters
+</span><span class="x">// * DIR_FS_* = Filesystem directories (local/physical)
+</span><span class="x">// * DIR_WS_* = Webserver directories (virtual/URL)
+</span><span class="x">define(&#39;HTTP_SERVER&#39;, &#39;http://www.example.com&#39;); // eg, http://localhost - should not be empty for productive servers
+</span><span class="x">define(&#39;HTTPS_SERVER&#39;, &#39;https://example.com&#39;); // eg, https://localhost - should not be empty for productive servers
+</span><span class="x">define(&#39;ENABLE_SSL&#39;, true); // secure webserver for checkout procedure?
+</span><span class="x">define(&#39;HTTP_COOKIE_DOMAIN&#39;, &#39;www.example.com&#39;);
+</span><span class="x">define(&#39;HTTPS_COOKIE_DOMAIN&#39;, &#39;example.com);
+</span><span class="x">define(&#39;HTTP_COOKIE_PATH&#39;, &#39;/&#39;);
+</span><span class="x">define(&#39;HTTPS_COOKIE_PATH&#39;, &#39;/&#39;);
+</span><span class="x">define(&#39;DIR_WS_HTTP_CATALOG&#39;, &#39;/&#39;);
+</span><span class="x">define(&#39;DIR_WS_HTTPS_CATALOG&#39;, &#39;/&#39;);</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>It should be noted that in this example, the certificate was issued without the <code>www</code> qualifier. Your specific requirements may require tweaking.</p>
+
+<h1 id="monitor-for-software-updates-and-security-notices">Monitor for Software Updates and Security Notices</h1>
+
+<p>When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.</p>
+
+<p>Please monitor the osCommerce security forums and mailing lists to ensure that you are aware of all updates to the software and can upgrade appropriately or apply patches and recompile as needed:</p>
+
+<ul>
+<li><a href="http://forums.oscommerce.com/forum/77-security/?s=82fef4edc6197910baa8281a3f82de1b">osCommerce Security Forums</a></li>
+<li><a href="http://oscommerce.list-manage.com/subscribe?u=a5961750a3635e18fdf4bb539&amp;id=10af90c126">osCommerce Mailing Lists</a></li>
+</ul>
+
+<p>When upstream sources offer new releases, repeat the instructions for installing the osCommerce software as needed. These practices are crucial for the ongoing security and functioning of your system.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.oscommerce.com/">osCommerce Website</a></li>
+<li><a href="http://www.oscommerce.info/">osCommerce Knowledge Base</a></li>
+<li><a href="http://forums.oscommerce.com/">osCommerce Forums</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/ecommerce/oscommerce-on-debian-5-lenny/">osCommerce on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/introduction-to-firewalld-on-centos/">Introduction to FirewallD on CentOS</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/ecommerce/magento-on-debian-5-lenny/">Magento on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#installation">Installation</a>
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#web-configuration">Web Configuration</a></li>
+<li><a href="#post-installation">Post Installation</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#ssl-certificates">SSL Certificates</a></li>
+<li><a href="#monitor-for-software-updates-and-security-notices">Monitor for Software Updates and Security Notices</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

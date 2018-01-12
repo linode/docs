@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Run a Distribution-Supplied Kernel on a KVM Linode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use the Linode Manager&#39;s GRUB 2 boot setting to run your distribution&#39;s native Linux kernel">
+        <meta name="keywords" content="kvm, custom linux,  kernel, custom linode, grub, grub 2">
+        
+        <meta property="og:title" content="Run a Distribution-Supplied Kernel on a KVM Linode">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/">
+        <meta property="og:description" content="Use the Linode Manager&#39;s GRUB 2 boot setting to run your distribution&#39;s native Linux kernel">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/custom-kernels-distros/">Run Custom Kernels and Distribution Templates on Linode Instances</a>
+  
+</li>
+
+
+<li>
+  
+  Run a Distribution-Supplied Kernel on a KVM Linode
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Run a Distribution-Supplied Kernel on a KVM Linode</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-03-03T00:00:00Z">Friday, March 3, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2frun-a-distribution-supplied-kernel-with-kvm%2f&via=linode&text=Run%20a%20Distribution-Supplied%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2frun-a-distribution-supplied-kernel-with-kvm%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2frun-a-distribution-supplied-kernel-with-kvm%2f&t=Run%20a%20Distribution-Supplied%20Kernel%20on%20a%20KVM%20Linode" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/run-a-distribution-supplied-kernel-with-kvm.png" alt="Run a Distribution-Supplied Kernel on a KVM Linode" title="Run a Distribution-Supplied Kernel on a KVM Linode" /></p>
+
+<p>As of February, 2017, you can boot your Linode using your choice of Linode&rsquo;s own kernel or the upstream kernel provided by a distribution&rsquo;s maintainers. Booting with Linode&rsquo;s kernel is enabled by default, but changing to the distro-supplied kernel is easy. This is useful if you&rsquo;d like to enable specific kernel features, or if you&rsquo;d prefer to handle kernel upgrades yourself.</p>
+
+<h2 id="recommended-distributions">Recommended Distributions</h2>
+
+<p>The steps in this section currently apply only to the distributions under <em>Recommended</em> in the Linode Manager&rsquo;s <em>Deploy an Image</em> dropdown.</p>
+
+<p><img src="/docs/assets/deploy-an-image-example.png" alt="Deploy an image" title="Deploy an image" /></p>
+
+<ol>
+<li><p>Shut down your Linode from the Linode Manager.</p></li>
+
+<li><p>Click <strong>Edit</strong> to view a distribution&rsquo;s configuration profile options:</p>
+
+<p><img src="/docs/assets/edit_config_profile_small.png" alt="Edit the configuration profile" title="Edit the configuration profile" /></p></li>
+
+<li><p>Under <strong>Boot Settings</strong> is a <strong>Kernel</strong> dropdown menu. By default, this will be set to the latest Linode-supplied 64 bit kernel:</p>
+
+<p><img src="/docs/assets/boot-settings-kernel-latest.png" alt="Our latest 64 bit kernel" title="Our latest 64 bit kernel" /></p></li>
+
+<li><p>To switch to the distro&rsquo;s default kernel, select <strong>GRUB 2</strong> instead of the latest 64 bit.</p>
+
+<p><img src="/docs/assets/boot-settings-kernel-grub2.png" alt="Selecting the distribution's kernel" title="Selecting the distribution's kernel" /></p></li>
+
+<li><p>Click <strong>Save Changes</strong> at the bottom of the page and reboot into the new kernel.</p></li>
+</ol>
+
+<p>Once booted, you can verify the kernel information with <code>uname</code>:</p>
+
+<pre><code>uname -r
+</code></pre>
+
+<p>This should return something similar to:</p>
+
+<pre><code>4.8.13-1-ARCH
+</code></pre>
+
+<p>If you want to switch back to the Linode kernel at any time:</p>
+
+<ol>
+<li>Shut down your Linode.</li>
+<li>Select the latest 64 bit Linode kernel using the steps above.</li>
+<li>Click <strong>Save Changes</strong> and reboot.</li>
+</ol>
+
+<h3 id="caveats">Caveats</h3>
+
+<p>CentOS 7 and Fedora ship with SELinux installed and enabled by default. When switching from the Linode kernel to the CentOS or Fedora kernel, SELinux must run a relabeling of the filesystem to boot. Systemd will then reboot the Linode and if you have Lassie enabled, you&rsquo;ll be back at the login prompt shortly. If you do not have Lassie enabled, you will need to manually <em>Reboot</em> in the Linode Manager.</p>
+
+<p><img src="/docs/assets/selinux-filesystem-relabel.png" alt="SELinux filesystem relabel" title="SELinux filesystem relabel" /></p>
+
+<p>The relabel process is triggered by the empty <code>/.autorelabel</code> file.</p>
+
+<pre><code>[root@li901-254 ~]# ls -a /
+.   .autorelabel  boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
+..  bin           dev   home  lib64  media       opt  root  sbin  sys  usr
+</code></pre>
+
+<p>We include a systemd unit and bash script in our CentOS 7 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You&rsquo;ll find the systemd unit file at <code>/etc/systemd/system/selinuxfsrelabel.service</code>, which calls <code>/usr/local/bin/selinuxfsrelabel.sh</code>.</p>
+
+<h2 id="older-distributions">Older Distributions</h2>
+
+<p>The steps in this section apply to distributions that are not found in the <em>Recommended</em> section when deploying an image.</p>
+
+<p>At the time of this writing, these steps have been tested on:</p>
+
+<ul>
+<li>Arch Linux</li>
+<li>CentOS</li>
+<li>Debian</li>
+<li>Fedora 24</li>
+<li>Gentoo</li>
+<li>Ubuntu</li>
+</ul>
+
+<h3 id="install-the-distribution-provided-kernel">Install the Distribution Provided Kernel</h3>
+
+<ol>
+<li><p>Ensure that your system is up to date using the distribution&rsquo;s package manager.</p></li>
+
+<li><p>Install the Linux kernel. The package name differs based on your distribution:</p>
+
+<h4 id="arch-linux">Arch Linux</h4>
+
+<pre><code>pacman -S linux grub
+</code></pre>
+
+<h4 id="centos-7">CentOS 7</h4>
+
+<pre><code>yum install kernel grub2
+</code></pre>
+
+<h4 id="debian">Debian</h4>
+
+<pre><code>apt-get install linux-image-amd64 grub2
+</code></pre>
+
+<h4 id="fedora">Fedora</h4>
+
+<pre><code>dnf install kernel-core grub2
+</code></pre>
+
+<h4 id="gentoo">Gentoo</h4>
+
+<pre><code>mkdir /boot/grub
+echo &quot;GRUB_PLATFORMS=\&quot;coreboot pc\&quot;&quot; &gt;&gt; /etc/portage/make.conf
+emerge --ask sys-boot/grub sys-kernel/gentoo-sources genkernel
+eselect kernel list
+eselect kernel set [# of new kernel]
+zcat /proc/config.gz &gt; /usr/src/linux/.config
+genkernel --oldconfig all
+</code></pre>
+
+<h4 id="ubuntu">Ubuntu</h4>
+
+<pre><code>apt-get install linux-image-virtual grub2
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>During the installation of <code>grub</code> you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the <code>grub.cfg</code> file, and you don&rsquo;t need to install <code>grub</code> to your MBR.</div>
+</blockquote>
+
+
+<p>You&rsquo;ll see the kernel and other components you just installed and generated in the <code>/boot</code> directory. For example:</p>
+
+<pre><code>[root@centos7 ~]# ls /boot
+config-3.10.0-514.el7.x86_64
+grub
+grub2
+initramfs-0-rescue-4f09fa5fdd3642fa85221d7c11370603.img
+initramfs-3.10.0-514.el7.x86_64.img
+initramfs-3.10.0-514.el7.x86_64kdump.img
+initrd-plymouth.img
+symvers-3.10.0-514.el7.x86_64.gz
+System.map-3.10.0-514.el7.x86_64
+vmlinuz-0-rescue-4f09fa5fdd3642fa85221d7c11370603
+vmlinuz-3.10.0-514.el7.x86_64
+</code></pre></li>
+</ol>
+
+<h3 id="configure-grub">Configure Grub</h3>
+
+<ol>
+<li><p>Open <code>/etc/default/grub</code> in a text editor and go to the line beginning with <code>GRUB_CMDLINE_LINUX</code>. Remove the word <code>quiet</code> if present, and add <code>console=ttyS0,19200n8 net.ifnames=0</code>. Leave the other entries in the line. For example, on CentOS you should have something similar to:</p>
+
+<pre><code>GRUB_CMDLINE_LINUX=&quot;crashkernel=auto rhgb console=ttyS0,19200n8 net.ifnames=0&quot;
+</code></pre></li>
+
+<li><p>Then add or change the following options to match the following example. There will be other variables in this file, but we are only concerned with these lines.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/default/grub 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GRUB_TERMINAL</span><span class="o">=</span>serial
+<span class="nv">GRUB_DISABLE_OS_PROBER</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">GRUB_SERIAL_COMMAND</span><span class="o">=</span><span class="s2">&#34;serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1&#34;</span>
+<span class="nv">GRUB_DISABLE_LINUX_UUID</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">GRUB_GFXPAYLOAD_LINUX</span><span class="o">=</span>text</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Run the following command to prepare and update the bootloader:</p>
+
+<h5 id="arch-and-gentoo">Arch and Gentoo</h5>
+
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<h5 id="centos-and-fedora">CentOS and Fedora</h5>
+
+<pre><code>mkdir /boot/grub
+ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
+grub2-mkconfig -o /boot/grub/grub.cfg
+touch /.autorelabel
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The autorelabel command is necessary to queue the SELinux filesystem relabeling process when rebooting from the Linode kernel to the CentOS or Fedora kernel.</div>
+</blockquote>
+
+
+<h5 id="debian-and-ubuntu">Debian and Ubuntu</h5>
+
+<pre><code>update-grub
+</code></pre></li>
+</ol>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/">Run a Distribution-Supplied Kernel</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/">Custom Compiled Kernel on Debian &amp; Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-nixos-on-linode/">Install and Configure NixOS on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/">Install a Custom Distribution on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/">Custom Compiled Kernel on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="http://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#recommended-distributions">Recommended Distributions</a>
+<ul>
+<li><a href="#caveats">Caveats</a></li>
+</ul></li>
+<li><a href="#older-distributions">Older Distributions</a>
+<ul>
+<li><a href="#install-the-distribution-provided-kernel">Install the Distribution Provided Kernel</a>
+<ul>
+<li><a href="#arch-linux">Arch Linux</a></li>
+<li><a href="#centos-7">CentOS 7</a></li>
+<li><a href="#debian">Debian</a></li>
+<li><a href="#fedora">Fedora</a></li>
+<li><a href="#gentoo">Gentoo</a></li>
+<li><a href="#ubuntu">Ubuntu</a></li>
+</ul></li>
+<li><a href="#configure-grub">Configure Grub</a>
+<ul>
+<li>
+<ul>
+<li><a href="#arch-and-gentoo">Arch and Gentoo</a></li>
+<li><a href="#centos-and-fedora">CentOS and Fedora</a></li>
+<li><a href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

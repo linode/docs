@@ -16,8 +16,6 @@ external_resources:
  - '[mysqldump - A Database Backup Program, MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)'
 ---
 
-![Use mysqldump to Back Up MySQL or MariaDB](/docs/assets/mysql/mysqldump-to-back-up-mysql-mariadb.png "Use mysqldump to Back Up MySQL or MariaDB")
-
 ## What is mysqldump?
 
 [MySQL](http://www.mysql.com/) and [MariaDB](https://mariadb.com/) include the [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) utility to simplify the process to create a backup of a database or system of databases. Using `mysqldump` is a form of *logical backup*, as opposed to a [*physical backup*](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/), which is a copy of the filesystem structure which contains your data.
@@ -47,15 +45,15 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 * Create a backup of an entire Database Management System (DBMS):
 
-    mysqldump --all-databases > full-backup-$(date +%F).sql -u root -p
+        mysqldump --all-databases > full-backup-$(date +%F).sql -u root -p
 
 * Back up a specific database. Replace `db1` with the name of the database you want to back up:
 
-    mysqldump -u username -p db1 > db1-backup-$(date +%F).sql
+        mysqldump -u username -p db1 > db1-backup-$(date +%F).sql
 
 * Back up a single table from any database. In the example below, `table1` is exported from the database `db1`:
 
-    mysqldump -u username -p db1 table1 > db1-table1-$(date +%F).sql
+        mysqldump -u username -p db1 table1 > db1-table1-$(date +%F).sql
 
 ## Automate Backups with cron
 

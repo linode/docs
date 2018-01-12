@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install Asterisk and FreePBX on your Linode to use and manage a telephone exchange.">
+        <meta name="keywords" content="asterisk ubuntu 9.10, asterisk, asterisk linux, freepbx, freepbx ubuntu, pbx, voip">
+        
+        <meta property="og:title" content="Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic/">
+        <meta property="og:description" content="Install Asterisk and FreePBX on your Linode to use and manage a telephone exchange.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/voip/">VoIP</a>
+  
+</li>
+
+
+<li>
+  
+  Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-08-02T00:00:00Z">Friday, August 2, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fvoip%2fdeploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic%2f&via=linode&text=Deploy%20VoIP%20Services%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fvoip%2fdeploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fvoip%2fdeploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic%2f&t=Deploy%20VoIP%20Services%20with%20Asterisk%20and%20FreePBX%20on%20Ubuntu%209.10%20%28Karmic%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Asterisk is an open source telephone solution that runs over the internet instead of running through copper lines like a normal phone would. It offers a variety of features such as voice mail and conference calling, much like a land line telephone can.</p>
+
+<p>Before you begin, you need to make sure a few things are in order. We assume you have followed the <a href="/docs/getting-started/">getting started guide</a> and have set the hostname, timezone, and configured networking. These last steps are of particular importance for ensuring your Asterisk installation functions normally. If you plan on using Asterisk&rsquo;s email features, you may also wish to <a href="/docs/dns-guides/introduction-to-dns#types-of-dns-records">add an A record</a> for your domain.</p>
+
+<p><strong>Please note:</strong> Because of the special configuration options required for this setup, you should not run other services on the Linode you intend to use Asterisk on. It is also worth noting that this guide will walk you through using pv_grub. Any alterations to the steps in this guide will fall outside the scope of support.</p>
+
+<p>This guide is based largely on <a href="http://blog.hoopycat.com/2009/12/asterisk-freepbx-ubuntu-910-karmic-lighttpd-linode">Ryan Tucker&rsquo;s guide</a>, with some modification to the procedures and software used.</p>
+
+<h1 id="prerequisites">Prerequisites</h1>
+
+<p>There are quite a few prerequisites to satisfy before you can begin installing Asterisk and FreePBX. Most notably, you will need to install a kernel module and change your Linode&rsquo;s configuration profile. We&rsquo;re going to outline the instructions for doing so in this document, however you may wish to take a look at the in-depth information contained in the <a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu">pv-grub guide</a>.</p>
+
+<h3 id="edit-sources-list">Edit Sources List</h3>
+
+<p>You will need to enable the universe repositories in order to install Asterisk. To do so, edit <code>/etc/apt/sources.list</code> so that it looks like the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apt/sources.list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## main &amp; restricted repositories
+</span><span class="c1"></span>deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+
+<span class="c1">## universe repositories
+</span><span class="c1"></span>deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Issue the following commands to update your package lists and upgrade packages on your Linode:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<h3 id="create-asterisk-user">Create Asterisk User</h3>
+
+<p>We&rsquo;re going to create a user to run Asterisk as so that we&rsquo;re not running everything as root. Issue the following command:</p>
+
+<pre><code>adduser asterisk
+</code></pre>
+
+<p>You will be prompted for a password and some details for the user such as name and phone number. You need to fill out the password, but you may safely hit &ldquo;Enter&rdquo; for the other entries.</p>
+
+<h1 id="configure-the-kernel">Configure the Kernel</h1>
+
+<p>You will need to use the &ldquo;pv-grub&rdquo; kernel provided by Linode. This method works, however any kernel problems that arise from editing the kernel beyond the steps outlined in this document will not be supported by Linode support. You&rsquo;ll need to prepare your Linode before updating your configuration profile by following the commands below.</p>
+
+<p>Asterisk uses the &ldquo;dahdi_dummy&rdquo; kernel module, which requires you to edit a few things in the kernel as well as your Linode&rsquo;s configuration profile. You will need to use the EC2 image in order to use Asterisk without compiling your own kernel. This is a straightforward process; issue the following command:</p>
+
+<pre><code>apt-get install linux-image-ec2
+</code></pre>
+
+<h3 id="install-and-configure-grub">Install and Configure Grub</h3>
+
+<p>GRUB is a <a href="http://en.wikipedia.org/wiki/Booting#Boot_loader">bootloader</a> that will allow you to boot the kernel we&rsquo;re setting up. You will need to install and create a default configuration file for it. Issue the following commands:</p>
+
+<pre><code>apt-get install grub
+update-grub
+</code></pre>
+
+<p>You will receive a warning about the <code>/boot/grub/menu.lst</code> file not existing and be asked if you would like to create one. Enter &ldquo;y&rdquo; to create a new file. You will now need to edit the <code>/boot/grub/menu.lst</code> file, particularly the &ldquo;groot&rdquo; line. <strong>Please note:</strong> Directives in this file look like the are commented out. <strong>Leave the hash marks (&rdquo;#&rdquo;) as they are.</strong></p>
+
+<p>Change the groot line to resemble the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## default grub root device
+</span><span class="c1">## e.g. groot=(hd0,0)
+</span><span class="c1"></span># <span class="nv">groot</span><span class="o">=(</span>hd0<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You will also want to change the indomU line to resemble the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/boot/grub/menu.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"># <span class="nv">indomU</span><span class="o">=</span>false</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You will now need to update grub again in order to apply the changes. Issue the following command:</p>
+
+<pre><code>update-grub
+</code></pre>
+
+<h3 id="edit-configuration-profile">Edit Configuration Profile</h3>
+
+<p>You will now need to log in to the Linode Manager in order to change your Linode&rsquo;s configuration profile. To do so, navigate to the Dashboard page of the Linode you are going to use for Asterisk. Click the profile you are currently using and select &ldquo;pv-grub-x86_32&rdquo; (or &ldquo;pv-grub-x86_64&rdquo; if you are using a 64 bit system) from the kernel drop down. Save this configuration profile. You may wish to change the name of it to indicate that this is no longer a default profile.</p>
+
+<p>Reboot your system to make sure that these changes are applied. You will need to do this before you can proceed. It is a good idea to watch the shutdown and reboot phases via Lish to see if there are any errors.</p>
+
+<h3 id="troubleshooting">Troubleshooting</h3>
+
+<p>It&rsquo;s very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via <a href="/docs/networking/using-the-linode-shell-lish/">Lish</a>. If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.</p>
+
+<h1 id="install-the-dahdi-module">Install the Dahdi Module</h1>
+
+<p>You now need to install the Dahdi module to allow features like conference calling. Issue the following commands:</p>
+
+<pre><code>apt-get install build-essential module-assistant
+module-assistant -t update
+module-assistant -t prepare
+apt-get install gawk
+apt-get install dahdi dahdi-dkms dahdi-linux
+</code></pre>
+
+<h1 id="install-asterisk">Install Asterisk</h1>
+
+<p>You&rsquo;re now ready to install Asterisk. There are a few packages related to Asterisk that you may not need, however we&rsquo;ve included them below. Unless you know what you will need, it&rsquo;s wise to install these packages.</p>
+
+<p>Install Asterisk and some extra features with the following command:</p>
+
+<pre><code>apt-get install asterisk asterisk-config asterisk-doc asterisk-mp3 asterisk-mysql asterisk-sounds-main asterisk-sounds-extra
+</code></pre>
+
+<p>If you plan on having a US telephone number, enter &ldquo;1&rdquo; for the ITU-T telephone code. If you would like to use a number in another country, please select the corresponding <a href="http://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html">code for your country</a>.</p>
+
+<p>By default, Asterisk includes voice prompts in English. However, support for other languages can be installed using the command(s) below:</p>
+
+<pre><code>apt-get install asterisk-prompt-de # German voice prompts for the Asterisk PBX
+apt-get install asterisk-prompt-es-co # Colombian Spanish voice prompts for Asterisk
+apt-get install asterisk-prompt-fr-armelle # French voice prompts for Asterisk by Armelle Desjardins
+apt-get install asterisk-prompt-fr-proformatique # French voice prompts for Asterisk
+apt-get install asterisk-prompt-fr # French voice prompts for Asterisk
+apt-get install asterisk-prompt-it # Italian voice prompts for the Asterisk PBX
+apt-get install asterisk-prompt-se # Swedish voice prompts for Asterisk
+</code></pre>
+
+<p>To start Asterisk, issue the following command:</p>
+
+<pre><code>asterisk
+</code></pre>
+
+<p>Now check to see if asterisk is running by issuing:</p>
+
+<pre><code>asterisk -r
+</code></pre>
+
+<p>You will be connected to the Command Line Interface (CLI) for Asterisk; you can disconnect from this process by typing <code>exit</code>. If you would like to view available commands, type <code>help</code>.</p>
+
+<p>At this time, you will want to reboot your Linode to see that everything functions normally. In particular, check that Asterisk has started by issuing the <code>asterisk -r</code> command. You are encouraged to use the Linode Manager to reboot your Linode.</p>
+
+<h1 id="installing-freepbx">Installing FreePBX</h1>
+
+<p>FreePBX is a PHP application that allows you to control your Asterisk installation through a web interface.</p>
+
+<h3 id="set-up-lamp-stack">Set Up LAMP Stack</h3>
+
+<p>Before you can use FreePBX, you will need to set up a LAMP stack. An overview is provided here, but you may wish to consult our <a href="/docs/lamp-guides/ubuntu-9-10-karmic/">LAMP documentation</a> for more information. To begin installing Apache, issue the following command:</p>
+
+<pre><code>apt-get install apache2
+</code></pre>
+
+<p>By default, Apache listens on all IP addresses available to it. We must configure it to listen only on addresses we specify.</p>
+
+<p>Begin by modifying the <code>NameVirtualHost</code> entry in <code>/etc/apache2/ports.conf</code> as follows:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/ports.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">NameVirtualHost</span> <span class="m">12.34.56.78</span>:80</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Be sure to replace &ldquo;12.34.56.78&rdquo; with your Linode&rsquo;s public IP address.</p>
+
+<p>Now, modify the default site&rsquo;s virtual hosting in the file <code>/etc/apache2/sites-available/default</code> so that the <code>&lt;VirtualHost &gt;</code> entry reads:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/default 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">12.34.56.78:80</span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You will now need to install MySQL. To begin the installation, issue the following command:</p>
+
+<pre><code>apt-get install mysql-server
+</code></pre>
+
+<p>After this completes, you will want to secure the default installation by issuing the following command:</p>
+
+<pre><code>mysql_secure_installation
+</code></pre>
+
+<p>You will need to create some databases, which we will use later on. Issue the following commands:</p>
+
+<pre><code>mysql -p
+</code></pre>
+
+<p>You will be asked for the password you created when you installed MySQL, then you will be taken to the MySQL command line interface. Be sure to change the password (&ldquo;CHANGEME&rdquo;) to something secure that you will remember.</p>
+
+<pre><code>create database asterisk;
+create database asteriskcdr;
+GRANT ALL PRIVILEGES ON asteriskcdr.* TO asterisk@localhost IDENTIFIED BY 'CHANGEME';
+GRANT ALL PRIVILEGES ON asterisk.* TO asterisk@localhost IDENTIFIED BY 'CHANGEME';
+flush privileges;
+exit
+</code></pre>
+
+<p>Next, you will need to install PHP. Issue the following commands:</p>
+
+<pre><code>apt-get install php5 php-pear php5-mysql php5-suhosin php5-cgi php-pear php-db
+</code></pre>
+
+<p>You will need to edit PHP&rsquo;s configuration file in order to ensure FreePBX can function properly. In particular you need to ensure that the &ldquo;memory_limit&rdquo; directive is set to &ldquo;100M&rdquo; or else you may run into problems.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php5/apache2/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">max_execution_time</span> <span class="o">=</span> <span class="m">30</span>
+<span class="nv">memory_limit</span> <span class="o">=</span> 100M
+<span class="nv">error_reporting</span> <span class="o">=</span> E_COMPILE_ERROR<span class="p">|</span>E_RECOVERABLE_ERROR<span class="p">|</span>E_ERROR<span class="p">|</span>E_CORE_ERROR
+<span class="nv">display_errors</span> <span class="o">=</span> Off
+<span class="nv">log_errors</span> <span class="o">=</span> On
+<span class="nv">error_log</span> <span class="o">=</span> /var/log/php.log
+<span class="nv">register_globals</span> <span class="o">=</span> Off</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>FreePBX requires you to disable &ldquo;magic quotes&rdquo; in PHP. Find the following directives in your php.ini file and change them to reflect the example below:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php5/apache2/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">magic_quotes_gpc</span> <span class="o">=</span> Off</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>For this installation, we want Apache to run as the Asterisk user. This will allow Apache to access all of the files it needs in order to run FreePBX. Make sure your <code>/etc/apache2/envvars</code> file resembles the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/envvars 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">APACHE_RUN_USER</span><span class="o">=</span>asterisk
+<span class="nb">export</span> <span class="nv">APACHE_RUN_GROUP</span><span class="o">=</span>asterisk</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Finally, restart Apache to make sure everything is loaded correctly:</p>
+
+<pre><code>/etc/init.d/apache2 restart
+</code></pre>
+
+<h3 id="download-and-extract-freepbx">Download and Extract FreePBX</h3>
+
+<p>Obtain FreePBX and unpack it by issuing the following commands:</p>
+
+<pre><code>cd /opt
+wget http://mirror.freepbx.org/freepbx-2.6.0.tar.gz
+tar -xvf freepbx-2.6.0.tar.gz
+chown -R asterisk:asterisk freepbx*
+su - asterisk
+cd /opt/freepbx-2.6.0
+</code></pre>
+
+<p>The FreePBX directory contains SQL files that you can insert into the database that we created previously. Issue the following commands to insert this data:</p>
+
+<pre><code>mysql -p asterisk &lt; SQL/newinstall.sql
+mysql -p asteriskcdr &lt; SQL/cdr_mysql_table.sql
+exit
+</code></pre>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>The FreePBX configuration process will ask you a series of questions that you will want to pay attention to. Some of the default values are fine for a production system, however you will want to change the passwords to prevent someone from accessing the system while you are setting it up.</p>
+
+<p>You need to pass the credentials of the MySQL user and database you created above to the configuration script. Issue the following command, making sure to change the password (&ldquo;CHANGEME&rdquo;) to the password you created when you created the MySQL users and databases:</p>
+
+<pre><code>./install_amp --username=asterisk --password=CHANGEME
+</code></pre>
+
+<h3 id="create-virtualhost">Create VirtualHost</h3>
+
+<p>Before you continue your FreePBX installation, you will want to configure a <code>VirtualHost</code> for the web interface. You will also want to secure your installation using SSL and .htaccess.</p>
+
+<p>You will need to create a <code>VirtualHost</code> for your FreePBX installation. By default, FreePBX installs files to <code>/var/www/html/</code>; you may leave this as it is. Your <code>VirtualHost</code> may resemble the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		VirtualHost Entry 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">12.34.56.78:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerAdmin</span> webmaster@e-cabi.net
+    <span class="nb">ServerName</span> pbx.e-cabi.net
+    <span class="nb">ServerAlias</span> pbx.e-cabi.net
+    <span class="nb">DocumentRoot</span> <span class="sx">/var/www/html</span>
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>To update your Apache configuration, you will need to restart the server. Issue the following command:</p>
+
+<pre><code>/etc/init.d/apache2 restart
+</code></pre>
+
+<p>You will also need to edit your <code>nano /etc/rc.local</code> file to enable some features of FreePBX on boot. You will need to add the &ldquo;perl /var/www/html/panel/op_server.pl -d&rdquo; line to this file. <strong>Please note:</strong> You need to add this line before any lines that way &ldquo;exit&rdquo;, as follows:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/rc.local 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># [..]
+</span><span class="c1"></span>
+perl /var/www/html/panel/op_server.pl -d
+<span class="nb">exit</span> <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You should now be able to visit your Linode&rsquo;s IP address or the A record you have pointed at your Linode in your web browser. You will need to log in using the <code>asterisk</code> username, and the password you selected for the FreePBX installation above. Once you have successfully logged in, you will be able to control your Asterisk installation through FreePBX!</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.asterisk.org/docs">Asterisk Documentation</a></li>
+<li><a href="http://www.asterisk.org/community">Asterisk Community</a></li>
+<li><a href="http://www.freepbx.org/support/documentation">FreePBX Documentation</a></li>
+<li><a href="http://www.freepbx.org/community">FreePBX Community</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-12-04-precise/">Deploy VoIP Services with Asterisk and Freepbx on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/voip/install-asterisk-on-centos-7/">How to Install Asterisk on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#prerequisites">Prerequisites</a>
+<ul>
+<li>
+<ul>
+<li><a href="#edit-sources-list">Edit Sources List</a></li>
+<li><a href="#create-asterisk-user">Create Asterisk User</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#configure-the-kernel">Configure the Kernel</a>
+<ul>
+<li>
+<ul>
+<li><a href="#install-and-configure-grub">Install and Configure Grub</a></li>
+<li><a href="#edit-configuration-profile">Edit Configuration Profile</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#install-the-dahdi-module">Install the Dahdi Module</a></li>
+<li><a href="#install-asterisk">Install Asterisk</a></li>
+<li><a href="#installing-freepbx">Installing FreePBX</a>
+<ul>
+<li>
+<ul>
+<li><a href="#set-up-lamp-stack">Set Up LAMP Stack</a></li>
+<li><a href="#download-and-extract-freepbx">Download and Extract FreePBX</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#create-virtualhost">Create VirtualHost</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

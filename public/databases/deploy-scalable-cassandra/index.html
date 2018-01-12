@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install Apache Cassandra on Ubuntu 17.04 and CentOS 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 17.04 and CentOS 7 distros.">
+        <meta name="keywords" content="cassandra,  apache cassandra,  centos 7,  ubuntu 17.04,  database,  nosql">
+        
+        <meta property="og:title" content="How to Install Apache Cassandra on Ubuntu 17.04 and CentOS 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/deploy-scalable-cassandra/">
+        <meta property="og:description" content="This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 17.04 and CentOS 7 distros.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/deploy-scalable-cassandra/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install Apache Cassandra on Ubuntu 17.04 and CentOS 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install Apache Cassandra on Ubuntu 17.04 and CentOS 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-06-24T00:00:00Z">Saturday, June 24, 2017</time> by Andrew Lescher</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://www.linkedin.com/in/andrew-lescher-87027940/">Andrew Lescher
+    
+    <i class="fa fa-linkedin"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fdeploy-scalable-cassandra%2f&via=linode&text=How%20to%20Install%20Apache%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fdeploy-scalable-cassandra%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fdeploy-scalable-cassandra%2f&t=How%20to%20Install%20Apache%20Cassandra%20on%20Ubuntu%2017.04%20and%20CentOS%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/deploy-scalable-cassandra.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/deploy-scalable-cassandra.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/Cassandra/Apache_Cassandra.png" alt="Deploy a scalable and development driven NoSQL DB with Cassandra" /></p>
+
+<h2 id="introduction-to-apache-cassandra">Introduction to Apache Cassandra</h2>
+
+<p>The Cassandra NoSQL database is ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and rapidly evolving project demands during the development life cycle which would otherwise be heavily restricted by traditional relational database implementations. Apache Cassandra is an open-source application that is managed in a simple command line interface using the CQL language. CQL, or Cassandra Query Language is syntactically similar to the Structured Query Language, making it easy to pick up for those already familiar with SQL.</p>
+
+<p>After completing this guide, you will have a single-node, production-ready installation of Apache Cassandra hosted on your Linode. This tutorial will cover basic configuration options, as well as harden database security. If the instructions differ between the Ubuntu and CentOS distros, they will be presented in sections underneath the <strong>bolded</strong> names of the distributions. In order to successfully execute the commands in this guide, you will need to run them as the &ldquo;root&rdquo; user, or log in using an account with root privileges, prefixing each command with <code>sudo</code>.</p>
+
+<h3 id="install-cassandra">Install Cassandra</h3>
+
+<h4 id="before-you-begin">Before You Begin</h4>
+
+<ol>
+<li>Complete the <a href="/docs/getting-started">Getting Started</a> guide for setting up a new Linode.</li>
+<li>While it is recommended you complete the entire <a href="/docs/security/securing-your-server">Securing Your Server</a> guide, it will be necessary at least to possess a limited user account.</li>
+</ol>
+
+<h4 id="add-repositories-and-gpg-keys">Add Repositories and GPG Keys</h4>
+
+<p>Add required repositories/gpg keys. Be sure to run the key add commands in the order shown.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>(Ubuntu only) If you receive an error while running <code>apt update</code> that pertains to a missing key, copy the key listed in the error message and add it to your keyring using the commands in step 4. As of this publish date, the only keys required are listed below.</div>
+</blockquote>
+
+
+<p><strong>Ubuntu 17.04</strong></p>
+
+<ol>
+<li><p>Add the package <code>software-properties-common</code>:</p>
+
+<pre><code>apt install software-properties-common
+</code></pre></li>
+
+<li><p>Add the Java repository:</p>
+
+<pre><code>add-apt-repository ppa:webupd8team/java
+</code></pre></li>
+
+<li><p>Add the apache repository:</p>
+
+<pre><code>echo &quot;deb http://www.apache.org/dist/cassandra/debian 39x main&quot; |  tee /etc/apt/sources.list.d/cassandra.list
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You may want to follow the link to the Apache repository to confirm that &ldquo;39x&rdquo; is the latest available version.</div>
+</blockquote>
+</li>
+
+<li><p>Download the two public keys needed to access these repositories:</p>
+
+<pre><code>gpg --keyserver pgp.mit.edu --recv-keys 749D6EEC0353B12C
+gpg --export --armor 749D6EEC0353B12C | apt-key add -
+
+gpg --keyserver pgp.mit.edu --recv-keys A278B781FE4B2BDA
+gpg --export --armor A278B781FE4B2BDA | apt-key add -
+</code></pre></li>
+</ol>
+
+<p><strong>CentOS 7</strong></p>
+
+<ol>
+<li><p>Install the &ldquo;yum-utils&rdquo; package:</p>
+
+<pre><code>yum install yum-utils -y
+</code></pre></li>
+
+<li><p>Add the Datastax repository:</p>
+
+<pre><code>yum-config-manager --add-repo http://rpm.datastax.com/community
+</code></pre></li>
+
+<li><p>Add the public key for the datastax repository. Create a directory for the downloaded key:</p>
+
+<pre><code>mkdir ~/.keys
+</code></pre></li>
+
+<li><p>Navigate to the &ldquo;.keys&rdquo; directory you just created and download the public key:</p>
+
+<pre><code>wget http://rpm.datastax.com/rpm/repo_key
+</code></pre></li>
+
+<li><p>The key should now be contained in a file called &ldquo;repo_key&rdquo;. Install the key with the package manager:</p>
+
+<pre><code>rpm --import repo_key
+</code></pre></li>
+</ol>
+
+<h2 id="install-cassandra-and-supporting-applications">Install Cassandra and Supporting Applications</h2>
+
+<p>Update the system and install Java along with Cassandra. Answer &ldquo;yes&rdquo; to the Java installation prompts regarding the license terms (Ubuntu only). NTP will help keep the Cassandra node synced to the correct time.</p>
+
+<ol>
+<li><p>Install Cassandra, Java, and NTP:</p>
+
+<p><strong>Ubuntu 17.04</strong></p>
+
+<pre><code>apt-get update &amp;&amp; apt-get upgrade -yuf
+apt-get install oracle-java8-set-default cassandra ntp -y
+</code></pre>
+
+<p><strong>CentOS 7</strong></p>
+
+<pre><code>yum update &amp;&amp; yum upgrade -y
+yum install java dsc30 cassandra30-tools ntp -y
+</code></pre></li>
+</ol>
+
+<h2 id="activate-cassandra">Activate Cassandra</h2>
+
+<ol>
+<li><p>Enable Cassandra on system boot and verify that it is running:</p>
+
+<pre><code>systemctl enable cassandra
+systemctl start cassandra
+systemctl -l status cassandra
+</code></pre></li>
+
+<li><p>Check the status of the Cassandra cluster:</p>
+
+<pre><code>nodetool status
+</code></pre></li>
+</ol>
+
+<p>If <code>UN</code> is displayed in the output, the cluster is working. Your output should resemble this:</p>
+
+<pre><code>Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address    Load       Tokens       Owns (effective)  Host ID                               Rack
+UN  127.0.0.1  103.51 KiB  256          100.0%            c43a2db6-8e5f-4b5e-8a83-d9b6764d923d  rack1
+</code></pre>
+
+<p>If you are receiving connection errors, open the <code>cassandra-env.sh</code> file in a text editor:</p>
+
+<p><strong>Ubuntu 17.04</strong></p>
+
+<pre><code>vim /etc/cassandra/cassandra-env.sh
+</code></pre>
+
+<p><strong>CentOS 7</strong></p>
+
+<pre><code>vim /etc/cassandra/conf/cassandra-env.sh
+</code></pre>
+
+<p>Search for <code>-Djava.rmi.server.hostname=</code> in the file. Uncomment this line and add your loopback address or public IP address by replacing <code>&lt;public name&gt;</code> at the end of the line:</p>
+
+<pre><code>JVM_OPTS=&quot;$JVM_OPTS -Djava.rmi.server.hostname=&lt;public name&gt;&quot;
+</code></pre>
+
+<p>Restart Cassandra with <code>systemctl restart Cassandra</code> and check the node status <code>nodetool status</code>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.</div>
+</blockquote>
+
+
+<h3 id="configure-cassandra">Configure Cassandra</h3>
+
+<h4 id="enable-security-features">Enable Security Features</h4>
+
+<ol>
+<li><p>Enable user login authentication. Make a backup of the Cassandra configuration file &ldquo;cassandra.yaml.&rdquo;</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The CentOS 7 installation already includes a backup file located at <code>/etc/cassandra/conf/cassandra.yaml.orig</code>.</div>
+</blockquote>
+
+
+<p><strong>Ubuntu 17.04</strong></p>
+
+<pre><code>cp /etc/cassandra/cassandra.yaml /etc/cassandra/cassandra.yaml.backup
+</code></pre></li>
+
+<li><p>Open &ldquo;cassandra.yaml&rdquo; in your preferred text editor:</p>
+
+<p><strong>Ubuntu 17.04</strong></p>
+
+<pre><code>vim /etc/cassandra/cassandra.yaml
+</code></pre>
+
+<p><strong>CentOS 7</strong></p>
+
+<pre><code>vim /etc/cassandra/conf/cassandra.yaml
+</code></pre></li>
+
+<li><p>Match the following variables in the file to the values shown below. If any values are commented out, uncomment them. The rest of the properties found in the cassandra.yaml config file should be set based on your project&rsquo;s particular requirements and how you plan to utilize Cassandra. The default configuration should work well for development.</p>
+
+<p>More information on this file can be found by following the <em>Cassandra .yaml Configuration File Overview</em> link in the &ldquo;External Resources&rdquo; section.</p>
+
+<p>After editing the file restart Cassandra.</p>
+
+<dl class="file">
+<dt>
+
+
+		Ubuntu /etc/cassandra/cassandra.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">authenticator<span class="p">:</span><span class="w"> </span>org.apache.cassandra.auth.PasswordAuthenticator<span class="w">
+</span><span class="w"></span>authorizer<span class="p">:</span><span class="w"> </span>org.apache.cassandra.auth.CassandraAuthorizer<span class="w">
+</span><span class="w"></span>role_manager<span class="p">:</span><span class="w"> </span>CassandraRoleManager<span class="w">
+</span><span class="w"></span>roles_validity_in_ms<span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="w"></span>permissions_validity_in_ms<span class="p">:</span><span class="w"> </span><span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<h3 id="add-an-administration-superuser">Add An Administration Superuser</h3>
+
+<ol>
+<li><p>Open the Cassandra command terminal by typing <code>cqlsh</code>. Login with the credentials shown below for the default user &ldquo;Cassandra&rdquo;:</p>
+
+<pre><code>cqlsh -u cassandra -p cassandra
+</code></pre></li>
+
+<li><p>Create a new superuser. Replace the brackets as well as the content inside with the applicable information:</p>
+
+<pre><code>cassandra@cqlsh&gt; CREATE ROLE [new_superuser] WITH PASSWORD = '[secure_password]' AND SUPERUSER = true AND LOGIN = true;
+</code></pre></li>
+
+<li><p>Log out by typing exit.</p></li>
+
+<li><p>Log back in with the new superuser account using the new credentials, and remove the elevated permissions from the Cassandra account:</p>
+
+<pre><code>superuser@cqlsh&gt; ALTER ROLE cassandra WITH PASSWORD = 'cassandra' AND SUPERUSER = false AND LOGIN = false;
+
+superuser@cqlsh&gt; REVOKE ALL PERMISSIONS ON ALL KEYSPACES FROM cassandra;
+</code></pre></li>
+
+<li><p>Grant all permissions to the new superuser account. Replace the brackets and contents inside with your superuser account username:</p>
+
+<pre><code>superuser@cqlsh&gt; GRANT ALL PERMISSIONS ON ALL KEYSPACES TO [superuser];
+</code></pre></li>
+</ol>
+
+<h2 id="edit-the-console-configuration-file">Edit The Console Configuration File</h2>
+
+<p>The <em>cqlshrc</em> file holds configuration settings that influence user preferences on how Cassandra performs certain tasks. Before proceeding, switch from the &ldquo;root&rdquo; user to your administrative Linux user account (you need sudo privileges for this).</p>
+
+<p>Since your Cassandra username and password can be stored here in plaintext, this should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system. Do not set this up as the root user. Caution: Before proceeding, fully evaluate the security risks and consequences to your node cluster before adding the [Authentication] section.</p>
+
+<ol>
+<li><p>Create the file <em>cqlshrc</em> using your preferred text editor. If the <code>~/.cassandra</code> directory does not exist, create it:</p>
+
+<pre><code>sudo mkdir ~/.cassandra
+sudo vim ~/.cassandra/cqlshrc
+</code></pre></li>
+
+<li><p>Copy any sections below that you wish to add to your configuration. Details for this file can be found by following the &ldquo;Cassandra cqlshrc File Configuration Overview&rdquo; link in the &ldquo;External Resources&rdquo; section.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>CentOS 7 users can find a sample file containing all the configuration options at <code>/etc/cassandra/conf/cqlshrc.sample</code>.</div>
+</blockquote>
+
+
+<dl class="file">
+<dt>
+
+
+		.cassandra/cqlshrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="p">;;</span> Options that are common to both COPY TO and COPY FROM
+
+<span class="o">[</span>copy<span class="o">]</span>
+<span class="p">;;</span> The string placeholder <span class="k">for</span> null values
+<span class="nv">nullval</span><span class="o">=</span>null
+<span class="p">;;</span> For COPY TO, controls whether the first line in the CSV output file will
+<span class="p">;;</span> contain the column names.  For COPY FROM, specifies whether the first
+<span class="p">;;</span> line in the CSV file contains column names.
+<span class="nv">header</span><span class="o">=</span><span class="nb">true</span>
+<span class="p">;;</span> The string literal format <span class="k">for</span> boolean values
+<span class="nv">boolstyle</span> <span class="o">=</span> True,False
+<span class="p">;;</span> Input login credentials here to automatically login to the Cassandra <span class="nb">command</span> line without entering them each time. When this
+<span class="p">;;</span> is enabled, just <span class="nb">type</span> <span class="s2">&#34;cqlsh&#34;</span> to start Cassandra.
+<span class="o">[</span>authentication<span class="o">]</span>
+<span class="nv">username</span><span class="o">=[</span>superuser<span class="o">]</span>
+<span class="nv">password</span><span class="o">=[</span>password<span class="o">]</span>
+
+<span class="p">;;</span> Uncomment to automatically use a certain keyspace on login
+<span class="p">;;</span> <span class="nv">keyspace</span><span class="o">=[</span>keyspace<span class="o">]</span>
+
+<span class="o">[</span>ui<span class="o">]</span>
+<span class="nv">color</span><span class="o">=</span>on
+<span class="nv">datetimeformat</span><span class="o">=</span>%Y-%m-%d %H:%M:%S%z
+<span class="nv">completekey</span><span class="o">=</span>tab
+<span class="p">;;</span> The number of digits displayed after the decimal point
+<span class="p">;;</span> <span class="o">(</span>note that increasing this to large numbers can result in unusual values<span class="o">)</span>
+<span class="nv">float_precision</span> <span class="o">=</span> <span class="m">5</span>
+<span class="p">;;</span> The encoding used <span class="k">for</span> characters
+<span class="nv">encoding</span> <span class="o">=</span> utf8</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Save and close the file. Update the file and directory with the following permissions:</p>
+
+<pre><code>sudo chmod 1700 ~/.cassandra/cqlshrc
+sudo chmod 700 ~/.cassandra
+</code></pre></li>
+
+<li><p>If you enabled the auto-login feature, login by typing <code>cqlsh</code>. The command terminal should open, and your superuser name should be visible in the command line.</p></li>
+</ol>
+
+<h2 id="rename-the-cluster">Rename the Cluster</h2>
+
+<p>Update your default cluster name from &ldquo;Test Cluster&rdquo; to your desired name.</p>
+
+<ol>
+<li><p>Login to the control terminal with cqlsh. Replace [new_name] with your new cluster name:</p>
+
+<pre><code>UPDATE system.local SET cluster_name = '[new_name]' WHERE KEY = 'local';
+</code></pre></li>
+
+<li><p>Edit the cassandra.yaml file and replace the value in the cluster_name variable with the new cluster name you just set.</p></li>
+
+<li><p>Save and close.</p>
+
+<p><strong>Ubuntu 17.04</strong></p>
+
+<pre><code>vim /etc/cassandra/cassandra.yaml
+</code></pre>
+
+<p><strong>CentOS 7</strong></p>
+
+<pre><code>vim /etc/cassandra/conf/cassandra.yaml
+</code></pre></li>
+
+<li><p>From the Linux terminal (not cqlsh), run <code>nodetool flush system</code>. This will clear the system cache and preserve all data in the node.</p></li>
+
+<li><p>Restart Cassandra. Log in with cqlsh and verify the new cluster name is visible.</p></li>
+</ol>
+
+<h3 id="where-to-go-from-here">Where To Go From Here</h3>
+
+<p>Be sure to check out the links in the &ldquo;External Resources&rdquo; section, which will help you further configure Cassandra to your needs, as well as provide resources to improve your understanding and ability to use Cassandra. To fully utilize the capabilities of Cassandra in a production setting, additional nodes should be added to your cluster. See the companion guide, &ldquo;Deploy Additional Nodes To The Cassandra Cluster&rdquo; to get started.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://cassandra.apache.org/doc/latest/">Cassandra Documentation</a></li>
+
+<li><a href="http://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html">Cassandra cqlshrc File Configuration Overview</a></li>
+
+<li><a href="http://cassandra.apache.org/doc/latest/configuration/cassandra_config_file.html">Cassandra .yaml Configuration File Overview</a></li>
+
+<li><a href="http://docs.datastax.com/en/landing_page/doc/landing_page/recommendedSettings.html">Recommended Production Settings For Apache Cassandra</a></li>
+
+<li><a href="http://cassandra.apache.org/doc/latest/cql/index.html">The Cassandra Query Language (CQL)</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/">Set Up a Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/redis/install-and-configure-redis-on-centos-7/">Install and Configure Redis on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#introduction-to-apache-cassandra">Introduction to Apache Cassandra</a>
+<ul>
+<li><a href="#install-cassandra">Install Cassandra</a>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#add-repositories-and-gpg-keys">Add Repositories and GPG Keys</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#install-cassandra-and-supporting-applications">Install Cassandra and Supporting Applications</a></li>
+<li><a href="#activate-cassandra">Activate Cassandra</a>
+<ul>
+<li><a href="#configure-cassandra">Configure Cassandra</a>
+<ul>
+<li><a href="#enable-security-features">Enable Security Features</a></li>
+</ul></li>
+<li><a href="#add-an-administration-superuser">Add An Administration Superuser</a></li>
+</ul></li>
+<li><a href="#edit-the-console-configuration-file">Edit The Console Configuration File</a></li>
+<li><a href="#rename-the-cluster">Rename the Cluster</a>
+<ul>
+<li><a href="#where-to-go-from-here">Where To Go From Here</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

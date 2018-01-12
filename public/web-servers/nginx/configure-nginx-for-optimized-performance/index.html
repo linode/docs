@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Configure nginx for Optimized Performance</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Fine tune nginx for maximum performance">
+        <meta name="keywords" content="nginx, performance, tuning, optimize, web servers">
+        
+        <meta property="og:title" content="How to Configure nginx for Optimized Performance">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/nginx/configure-nginx-for-optimized-performance/">
+        <meta property="og:description" content="Fine tune nginx for maximum performance">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/nginx/configure-nginx-for-optimized-performance/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/nginx/">Nginx</a>
+  
+</li>
+
+
+<li>
+  
+  How to Configure nginx for Optimized Performance
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Configure nginx for Optimized Performance</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-09-09T00:00:00Z">Wednesday, September 9, 2015</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/bobstrecansky">Bob Strecansky
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fconfigure-nginx-for-optimized-performance%2f&via=linode&text=How%20to%20Configure%20nginx%20for%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fconfigure-nginx-for-optimized-performance%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2fconfigure-nginx-for-optimized-performance%2f&t=How%20to%20Configure%20nginx%20for%20Optimized%20Performance" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/nginx/configure-nginx-for-optimized-performance.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/nginx/configure-nginx-for-optimized-performance.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>nginx is known for its use in both high performance load balancing, and caching static and dynamic web content.  This guide aims to provide assistance in determining the best performance optimizations to make to an nginx server in order to speed up delivery of content to your end users.</p>
+
+<p><img src="/docs/assets/configure-nginx-for-optimized-performance.png" alt="How to Configure nginx for Optimized Performance" title="How to Configure nginx for Optimized Performance" /></p>
+
+<p>If you&rsquo;re unfamiliar with how nginx works, we suggest reading <a href="/docs/websites/nginx/how-to-configure-nginx">How to Configure nginx</a> first.</p>
+
+<h2 id="worker-modifications">Worker Modifications</h2>
+
+<p>The easiest thing to set in your configuration is the right number of workers and connections.</p>
+
+<h3 id="worker-processes">Worker Processes</h3>
+
+<p>In <code>/etc/nginx/nginx.conf</code>, set <code>worker_processes 1;</code> if you have a lower traffic site where nginx, a database, and a web application all run on the same server.</p>
+
+<p>If you have a higher traffic site or a dedicated instance for nginx, set one worker per CPU core: <code>worker_processes auto;</code></p>
+
+<p>If you&rsquo;d like to set this manually, you can utilize <code>grep ^processor /proc/cpuinfo | wc -l</code> to find the number of processes that the server can handle.</p>
+
+<h3 id="worker-connections">Worker Connections</h3>
+
+<p>The option <code>worker_connections</code> sets the maximum number of connections that can be processed at one time by each worker process. By default, the worker connection limit is 512, but many systems can handle more.</p>
+
+<p>The appropriate sizing can be discovered through testing, as it is variable based on the type of traffic nginx is handling.  The system&rsquo;s core limitations can also be find through using <code>ulimit</code>:</p>
+
+<pre><code>ulimit -n
+</code></pre>
+
+<p>It will output a number as a result:</p>
+
+<pre><code>65536
+</code></pre>
+
+<p>You can also set <code>use epoll</code>, a scalable I/O event notification mechanism to trigger on events and make sure that I/O is utilized to the best of its ability.</p>
+
+<p>Lastly, you can utilize <code>multi_accept</code> in order for a worker to accept all new connections at one time.</p>
+
+<p>The <code>events</code> function should look something like this when configured:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">events</span> {
+	<span class="nb">worker_connections</span> <span class="m">65536</span>;
+	<span class="nb">use</span> epoll;
+	<span class="nb">multi_accept</span> <span class="k">on</span>;
+<span class="err">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h2 id="http-and-tcp-optimizations">HTTP and TCP Optimizations</h2>
+
+<h3 id="keep-alive">Keep Alive</h3>
+
+<p>Keep alive allows for fewer reconnections from the browser. Remember to place these settings inside the http {} directive.</p>
+
+<ul>
+<li><p><code>keepalive_timeout</code> and <code>keepalive_requests</code> control the keep alive settings.</p></li>
+
+<li><p><code>sendfile</code> optimizes serving static files from the file system, like logos.</p></li>
+
+<li><p><code>tcp_nodelay</code> allows nginx to make TCP send multiple buffers as individual packets.</p></li>
+
+<li><p><code>tcp_nopush</code> optimizes the amount of data sent down the wire at once by activating the <em>TCP_CORK</em> option within the TCP stack. TCP_CORK blocks the data until the packet reaches the MSS, which is equal to the MTU minus the 40 or 60 bytes of the IP header.</p></li>
+</ul>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">keepalive_timeout</span> <span class="m">65</span>;
+<span class="nb">keepalive_requests</span> <span class="m">100000</span>;
+<span class="nb">sendfile</span> <span class="k">on</span>;
+<span class="nb">tcp_nopush</span> <span class="k">on</span>;
+<span class="nb">tcp_nodelay</span> <span class="k">on</span>;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="buffer-size">Buffer Size</h3>
+
+<p>Making tweaks to the buffer size can be advantageous. If the buffer sizes are too low, then nginx will write to a temporary file. This will cause for excessive disk I/O. Remember to place these settings inside the http {} directive.</p>
+
+<ul>
+<li><p><code>client_body_buffer_size</code> handles the client buffer size.  Most client buffers are coming from POST method form submissions. 128k is normally a good choice for this setting.</p></li>
+
+<li><p><code>client_max_body_size</code> sets the max body buffer size. If the size in a request exceeds the configured value, the 413 (Request Entity Too Large) error is returned to the client. For reference, browsers cannot correctly display 413 errors. Setting size to 0 disables checking of client request body size.</p></li>
+
+<li><p><code>client_header_buffer_size</code> handles the client header size. 1k is usually a sane choice for this by default.</p></li>
+
+<li><p><code>large_client_header_buffers</code> shows the maximum number and size of buffers for large client headers. 4 headers with 4k buffers should be sufficient here.</p></li>
+
+<li><p><code>output_buffers</code> sets the number and size of the buffers used for reading a response from a disk.  If possible, the transmission of client data will be postponed until nginx has at least the set size of bytes of data to send. The zero value disables postponing data transmission.</p></li>
+</ul>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">client_body_buffer_size</span>      <span class="m">128</span>k;
+<span class="nb">client_max_body_size</span>         <span class="m">10</span>m;
+<span class="nb">client_header_buffer_size</span>    <span class="m">1</span>k;
+<span class="nb">large_client_header_buffers</span>  <span class="m">4</span> <span class="m">4</span>k;
+<span class="nb">output_buffers</span>               <span class="m">1</span> <span class="m">32</span>k;
+<span class="nb">postpone_output</span>              <span class="m">1460</span>;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="connection-queue">Connection Queue</h3>
+
+<p>Some directives in the in the <code>/etc/sysctl.conf</code> file can be changed in order to set the size of a Linux queue for connections and buckets.  Updating the <code>net.core.somaxconn</code> and <code>net.ipv4.tcp_max_tw_buckets</code> changes the size of the queue for connections waiting for acceptance by nginx.  If there are error messages in the kernel log, increase the value until errors stop.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/sysctl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">net</span>.<span class="err">core</span>.<span class="nb">somaxconn</span> = <span class="m">65536</span>
+<span class="err">net</span>.<span class="err">ipv4</span>.<span class="nb">tcp_max_tw_buckets</span> = <span class="m">1440000</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Packets can be buffered in the network card before being handed to the CPU by setting the max backlog with the <code>net.core.netdev_max_backlog</code> tag. Consult the network card documentation for advice on changing this value.</p>
+
+<h3 id="timeouts">Timeouts</h3>
+
+<p>Timeouts can also drastically improve performance. Remember to place these settings inside the http {} directive.</p>
+
+<ul>
+<li><p><code>client_body_timeout</code> sends directives for the time a server will wait for a <strong>body</strong> to be sent.</p></li>
+
+<li><p><code>client_header_timeout</code> sends directives for the time a server will wait for a <strong>header</strong> body to be sent.  These directives are responsible for the time a server will wait for a client body or client header to be sent after request. If neither a body or header is sent, the server will issue a 408 error or Request time out.</p></li>
+
+<li><p><code>send_timeout</code> specifies the response timeout to the client. This timeout does not apply to the entire transfer but, rather, only between two subsequent client-read operations. Thus, if the client has not read any data for this amount of time, then nginx shuts down the connection.</p></li>
+</ul>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">client_header_timeout</span>  <span class="m">3</span>m;
+<span class="nb">client_body_timeout</span>    <span class="m">3</span>m;
+<span class="nb">send_timeout</span>           <span class="m">3</span>m;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="static-asset-serving">Static Asset Serving</h3>
+
+<p>If your site serves static assets (such as CSS/JavaScript/images), nginx can cache these files for a short period of time.  Adding this within your configuration block tells nginx to cache 1000 files for 30 seconds, excluding any files that haven&rsquo;t been accessed in 20 seconds, and only files that have been accessed at least 5 times in that timeframe. If you aren&rsquo;t deploying frequently you can safely bump up these numbers higher. Remember to place these settings inside the http {} directive.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">open_file_cache</span> max=1000 inactive=20s;
+<span class="nb">open_file_cache_valid</span> <span class="m">30</span>s;
+<span class="nb">open_file_cache_min_uses</span> <span class="m">5</span>;
+<span class="nb">open_file_cache_errors</span> <span class="k">off</span>;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>You can also cache via a particular location.  Caching files for a long time is beneficial, especially if the files have a version control system delivered by the build process or CMS. This should be placed in the virtual host configuration or main configuration (e.g: /etc/nginx/sites-available/default)</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">location</span> ~* .(woff|eot|ttf|svg|mp4|webm|jpg|jpeg|png|gif|ico|css|js)$ {
+	<span class="nb">expires</span> <span class="m">365</span>d;
+<span class="err">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="gzipping-content">Gzipping Content</h3>
+
+<p>For content that is plain text, nginx can use gzip compression to serve back these assets compressed to the client.  Modern web browsers will accept gzip compression and this will shave bytes off of each request that comes in for plain text assets. The list below is a &ldquo;safe&rdquo; list of compressible content types; however, you only want to enable the content types that you are utilizing within your web application. Remember to place these settings inside the http {} directive.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">gzip</span> <span class="k">on</span>;
+<span class="nb">gzip_min_length</span> <span class="m">1000</span>;
+<span class="nb">gzip_types</span> text/html application/x-javascript text/css application/javascript text/javascript text/plain text/xml application/json application/vnd.ms-fontobject application/x-font-opentype application/x-font-truetype application/x-font-ttf application/xml font/eot font/opentype font/otf image/svg+xml image/vnd.microsoft.icon;
+<span class="nb">gzip_disable</span> <span class="s2">&#34;MSIE [1-6]\.&#34;</span>;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h2 id="filesystem-optimizations">Filesystem Optimizations</h2>
+
+<p>These file system operations improve system memory management, and can be added in <code>/etc/sysctl.conf</code>.</p>
+
+<h3 id="ephemeral-ports">Ephemeral Ports</h3>
+
+<p>When nginx is acting as a proxy, each connection to an upstream server uses a temporary, or ephemeral, port.</p>
+
+<p>The IPv4 local port range defines a port range value.  A common setting is <code>net.ipv4.ip_local_port_range = 1024 65000</code>.</p>
+
+<p>The TCP FIN timeout belays the amount of time a port must be inactive before it can reused for another connection. The default is often 60 seconds, but can normally be safely reduced to 30 or even 15 seconds:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/sysctl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">net.ipv4.tcp_fin_timeout <span class="o">=</span> <span class="m">15</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="scale-tcp-window">Scale TCP Window</h3>
+
+<p>The TCP window scale option is an option to increase the receive window size allowed in Transmission Control Protocol above its former maximum value of 65,535 bytes. This TCP option, along with several others, is defined in IETF RFC 1323 which deals with long fat networks.  It can be defined with the <code>net.ipv4.tcp_window_scaling = 1</code> tag.</p>
+
+<h3 id="backlog-packets-before-drop">Backlog Packets Before Drop</h3>
+
+<p>The <code>net.ipv4.tcp_max_syn_backlog</code> determines a number of packets to keep in the backlog before the kernel starts dropping them.  A sane value is <code>net.ipv4.tcp_max_syn_backlog = 3240000</code>.</p>
+
+<h3 id="close-connection-on-missing-client-response">Close connection on Missing Client Response</h3>
+
+<p><code>reset_timedout_connection on;</code> allows the server to close the connection after a client stops responding. This frees up socket-associated memory. Remember to place this setting inside the http {} directive.</p>
+
+<h3 id="file-descriptors">File Descriptors</h3>
+
+<p>File descriptors are operating system resources used to handle things such as connections and open files.  nginx can use up to two file descriptors per connection. For example, if it is proxying, there is generally one file descriptor for the client connection and another for the connection to the proxied server, though this ratio is much lower if HTTP keep alives are used. For a system serving a large number of connections, these settings may need to be adjusted.</p>
+
+<p><code>sys.fs.file_max</code> defines the system wide limit for file descriptors. <code>nofile</code> defines the user file descriptor limit, set in the <code>/etc/security/limits.conf</code> file.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/security/limits.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">soft</span> nofile <span class="m">4096</span>
+<span class="nb">hard</span> nofile <span class="m">4096</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="error-logs">Error Logs</h3>
+
+<p><code>error_log logs/error.log warn;</code> defines the location and the different severity levels written to the error log. Setting a certain log level will cause all messages from that log level and higher to be logged. For example, the <code>default</code> level error will cause <code>error</code>, <code>crit</code>, <code>alert</code>, and <code>emerg</code> messages to be logged. If this parameter is omitted, then <code>error</code> is used by default.</p>
+
+<ul>
+<li><p><strong><code>emerg</code>:</strong> Emergency situations where the system is in an unusable state.</p></li>
+
+<li><p><strong><code>alert</code>:</strong> Severe situation where action is needed promptly.</p></li>
+
+<li><p><strong><code>crit</code>:</strong> Important problems that need to be addressed.</p></li>
+
+<li><p><strong><code>error</code>:</strong> An Error has occurred. Something was unsuccessful.</p></li>
+
+<li><p><strong><code>warn</code>:</strong> Something out of the ordinary happened, but not a cause for concern.</p></li>
+
+<li><p><strong><code>notice</code>:</strong> Something normal, but worth noting has happened.</p></li>
+
+<li><p><strong><code>info</code>:</strong> An informational message that might be nice to know.</p></li>
+
+<li><p><strong><code>debug</code>:</strong> Debugging information that can be useful to pinpoint where a problem is occurring.</p></li>
+</ul>
+
+<p>Access logs with the <code>log_format</code> directive to configure a format of logged messages, as well as the <code>access_log</code> directive to specify the location of the log and the format.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">http</span> {
+	<span class="nb">log_format</span> compression &#39;$remote_addr - $remote_user [$time_local] &#39; &#39;<span class="s2">&#34;$request&#34;</span> $status $body_bytes_sent &#39; &#39;<span class="s2">&#34;$http_referer&#34;</span> <span class="s2">&#34;$http_user_agent&#34;</span> <span class="s2">&#34;$gzip_ratio&#34;</span>&#39;;
+	<span class="nb">server</span> {
+		<span class="nb">gzip</span> <span class="k">on</span>;
+		<span class="nb">access_log</span> <span class="sx">/spool/logs/nginx-access.log</span> compression;
+	<span class="err">}</span>
+<span class="err">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="conditional-logging">Conditional Logging</h3>
+
+<p>Conditional logging can be completed if the system administrator only wants to log certain requests.  The example below excludes logging for both 2XX and 3XX HTTP status codes:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">map</span> $status $loggable {
+	<span class="err">~^[23]</span>  <span class="err">0;</span>
+	<span class="nb">default</span> <span class="m">1</span>;
+<span class="err">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="turning-off-logging-completely">Turning off Logging Completely</h3>
+
+<p>Logging can be turned off completely if you have an alternative logging methodology or if you don&rsquo;t care about logging any of the requests to the server.  Turning off logging can be performed with the following server directives</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">server</span> {
+    <span class="nb">listen</span>       <span class="m">80</span>;
+    <span class="nb">server_name</span>  example.com;
+    <span class="nb">access_log</span>  <span class="k">off</span>;
+    <span class="nb">error_log</span> <span class="k">off</span>;
+<span class="err">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="activity-monitoring">Activity Monitoring</h3>
+
+<p>One can also set up activity monitoring to see JSON responses in real-time.  With the following configuration, the webpage <code>status.html</code> located at <code>/usr/share/nginx/html</code> can be requested by the URL <code>http://127.0.0.1/status.html</code>.</p>
+
+<p>You could also utilize <a href="https://github.com/linode/longview">Linode Longview</a> in order to view these collections.  Longview is a system level statistics collection and graphing service, powered by the Longview open source software agent that can be installed onto any Linux system. The Longview agent collects system statistics and sends them to Linode, where the data is stored and presented it in beautiful and meaningful ways.</p>
+
+<h2 id="example-files">Example Files</h2>
+
+<p>Several tweaks have now been made across three files to improve nginx performance on your system. Full snippets of the files are included below.</p>
+
+<h3 id="sysctl-conf">sysctl.conf</h3>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/sysctl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">net</span>.<span class="err">core</span>.<span class="nb">somaxconn</span> = <span class="m">65536</span>
+<span class="err">net</span>.<span class="err">ipv4</span>.<span class="nb">tcp_max_tw_buckets</span> = <span class="m">1440000</span>
+<span class="err">net</span>.<span class="err">ipv4</span>.<span class="nb">ip_local_port_range</span> = <span class="m">1024</span> <span class="m">65000</span>
+<span class="err">net</span>.<span class="err">ipv4</span>.<span class="nb">tcp_fin_timeout</span> = <span class="m">15</span>
+<span class="err">net</span>.<span class="err">ipv4</span>.<span class="nb">tcp_window_scaling</span> = <span class="m">1</span>
+<span class="err">net</span>.<span class="err">ipv4</span>.<span class="nb">tcp_max_syn_backlog</span> = <span class="m">3240000</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="limits-conf">limits.conf</h3>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/security/limits.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">soft</span> nofile <span class="m">4096</span>
+   <span class="nb">hard</span> nofile <span class="m">4096</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="nginx-conf">nginx.conf</h3>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span><span class="lnt">51</span><span class="lnt">52</span><span class="lnt">53</span><span class="lnt">54</span><span class="lnt">55</span><span class="lnt">56</span><span class="lnt">57</span><span class="lnt">58</span><span class="lnt">59</span><span class="lnt">60</span><span class="lnt">61</span><span class="lnt">62</span><span class="lnt">63</span><span class="lnt">64</span><span class="lnt">65</span><span class="lnt">66</span><span class="lnt">67</span><span class="lnt">68</span><span class="lnt">69</span><span class="lnt">70</span><span class="lnt">71</span><span class="lnt">72</span><span class="lnt">73</span><span class="lnt">74</span><span class="lnt">75</span><span class="lnt">76</span><span class="lnt">77</span><span class="lnt">78</span><span class="lnt">79</span><span class="lnt">80</span><span class="lnt">81</span><span class="lnt">82</span><span class="lnt">83</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">pid</span> <span class="sx">/var/run/nginx.pid</span>;
+<span class="nb">worker_processes</span>  <span class="m">2</span>;
+
+<span class="nb">events</span> {
+	<span class="nb">worker_connections</span>   <span class="m">65536</span>;
+	<span class="nb">use</span> epoll;
+	<span class="nb">multi_accept</span> <span class="k">on</span>;
+<span class="err">}</span>
+
+<span class="nb">http</span> {
+	<span class="nb">keepalive_timeout</span> <span class="m">65</span>;
+	<span class="nb">keepalive_requests</span> <span class="m">100000</span>;
+	<span class="nb">sendfile</span>         <span class="k">on</span>;
+	<span class="nb">tcp_nopush</span>       <span class="k">on</span>;
+	<span class="nb">tcp_nodelay</span>      <span class="k">on</span>;
+
+	<span class="nb">client_body_buffer_size</span>    <span class="m">128</span>k;
+	<span class="nb">client_max_body_size</span>       <span class="m">10</span>m;
+	<span class="nb">client_header_buffer_size</span>    <span class="m">1</span>k;
+	<span class="nb">large_client_header_buffers</span>  <span class="m">4</span> <span class="m">4</span>k;
+	<span class="nb">output_buffers</span>   <span class="m">1</span> <span class="m">32</span>k;
+	<span class="nb">postpone_output</span>  <span class="m">1460</span>;
+
+	<span class="nb">client_header_timeout</span>  <span class="m">3</span>m;
+	<span class="nb">client_body_timeout</span>    <span class="m">3</span>m;
+	<span class="nb">send_timeout</span>           <span class="m">3</span>m;
+
+	<span class="nb">open_file_cache</span> max=1000 inactive=20s;
+	<span class="nb">open_file_cache_valid</span> <span class="m">30</span>s;
+	<span class="nb">open_file_cache_min_uses</span> <span class="m">5</span>;
+	<span class="nb">open_file_cache_errors</span> <span class="k">off</span>;
+
+	<span class="nb">gzip</span> <span class="k">on</span>;
+	<span class="nb">gzip_min_length</span>  <span class="m">1000</span>;
+	<span class="nb">gzip_buffers</span>     <span class="m">4</span> <span class="m">4</span>k;
+	<span class="nb">gzip_types</span>       text/html application/x-javascript text/css application/javascript text/javascript text/plain text/xml application/json application/vnd.ms-fontobject application/x-font-opentype application/x-font-truetype application/x-font-ttf application/xml font/eot font/opentype font/otf image/svg+xml image/vnd.microsoft.icon;
+	<span class="nb">gzip_disable</span> <span class="s2">&#34;MSIE [1-6]\.&#34;</span>;
+
+	<span class="c"># [ debug | info | notice | warn | error | crit | alert | emerg ]</span>
+	<span class="nb">error_log</span>  <span class="sx">/var/log/nginx.error_log</span>  <span class="k">warn</span>;
+
+	<span class="nb">log_format</span> main      &#39;$remote_addr - $remote_user [$time_local]  &#39;
+	  <span class="err">&#39;&#34;$request&#34;</span> <span class="err">$</span><span class="nb">status</span> $bytes_sent &#39;
+	  <span class="err">&#39;&#34;$http_referer&#34;</span> <span class="err">&#34;$http_user_agent&#34;</span> <span class="err">&#39;</span>
+ 		<span class="err">&#39;&#34;$gzip_ratio&#34;&#39;;</span>
+
+	<span class="nb">log_format</span> download  &#39;$remote_addr - $remote_user [$time_local]  &#39;
+	  <span class="err">&#39;&#34;$request&#34;</span> <span class="err">$</span><span class="nb">status</span> $bytes_sent &#39;
+	  <span class="err">&#39;&#34;$http_referer&#34;</span> <span class="err">&#34;$http_user_agent&#34;</span> <span class="err">&#39;</span>
+ 		<span class="err">&#39;&#34;$http_range&#34;</span> <span class="err">&#34;$sent_http_content_range&#34;&#39;;</span>
+
+	<span class="nb">map</span> $status $loggable {
+		<span class="err">~^[23]</span>  <span class="err">0;</span>
+		<span class="nb">default</span> <span class="m">1</span>;
+	<span class="err">}</span>
+
+	<span class="nb">server</span> {
+		<span class="nb">listen</span>        <span class="m">127.0.0.1</span>;
+		<span class="nb">server_name</span>   <span class="m">127.0.0.1</span>;
+		<span class="nb">root</span>         <span class="sx">/var/www/html</span>;
+		<span class="nb">access_log</span>   <span class="sx">/var/log/nginx.access_log</span>  main;
+
+		<span class="nb">location</span> / {
+			<span class="nb">proxy_pass</span>         http://127.0.0.1/;
+			<span class="nb">proxy_redirect</span>     <span class="k">off</span>;
+			<span class="nb">proxy_set_header</span>   Host             $host;
+			<span class="nb">proxy_set_header</span>   X-Real-IP        $remote_addr;
+			<span class="nb">proxy_set_header</span>  X-Forwarded-For  $proxy_add_x_forwarded_for;
+			<span class="nb">proxy_connect_timeout</span>      <span class="m">90</span>;
+			<span class="nb">proxy_send_timeout</span>         <span class="m">90</span>;
+			<span class="nb">proxy_read_timeout</span>         <span class="m">90</span>;
+			<span class="nb">proxy_buffer_size</span>          <span class="m">4</span>k;
+			<span class="nb">proxy_buffers</span>              <span class="m">4</span> <span class="m">32</span>k;
+			<span class="nb">proxy_busy_buffers_size</span>    <span class="m">64</span>k;
+			<span class="nb">proxy_temp_file_write_size</span> <span class="m">64</span>k;
+			<span class="nb">proxy_temp_path</span>            <span class="sx">/etc/nginx/proxy_temp</span>;
+		<span class="err">}</span>
+
+		<span class="nb">location</span> ~* .(woff|eot|ttf|svg|mp4|webm|jpg|jpeg|png|gif|ico|css|js)$ {
+			<span class="nb">expires</span> <span class="m">365</span>d;
+		<span class="err">}</span>
+	<span class="err">}</span>
+<span class="err">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/nginx/install-nginx-web-server-on-debian-8/">Install Nginx Web Server on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/">How to Install Nginx on Debian 7 (Wheezy)</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/">Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/websites-with-nginx-on-debian-6-squeeze/">Websites with nginx on Debian 6 (Squeeze) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/websites-with-nginx-on-ubuntu-10-10-maverick/">Websites with nginx on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#worker-modifications">Worker Modifications</a>
+<ul>
+<li><a href="#worker-processes">Worker Processes</a></li>
+<li><a href="#worker-connections">Worker Connections</a></li>
+</ul></li>
+<li><a href="#http-and-tcp-optimizations">HTTP and TCP Optimizations</a>
+<ul>
+<li><a href="#keep-alive">Keep Alive</a></li>
+<li><a href="#buffer-size">Buffer Size</a></li>
+<li><a href="#connection-queue">Connection Queue</a></li>
+<li><a href="#timeouts">Timeouts</a></li>
+<li><a href="#static-asset-serving">Static Asset Serving</a></li>
+<li><a href="#gzipping-content">Gzipping Content</a></li>
+</ul></li>
+<li><a href="#filesystem-optimizations">Filesystem Optimizations</a>
+<ul>
+<li><a href="#ephemeral-ports">Ephemeral Ports</a></li>
+<li><a href="#scale-tcp-window">Scale TCP Window</a></li>
+<li><a href="#backlog-packets-before-drop">Backlog Packets Before Drop</a></li>
+<li><a href="#close-connection-on-missing-client-response">Close connection on Missing Client Response</a></li>
+<li><a href="#file-descriptors">File Descriptors</a></li>
+<li><a href="#error-logs">Error Logs</a></li>
+<li><a href="#conditional-logging">Conditional Logging</a></li>
+<li><a href="#turning-off-logging-completely">Turning off Logging Completely</a></li>
+<li><a href="#activity-monitoring">Activity Monitoring</a></li>
+</ul></li>
+<li><a href="#example-files">Example Files</a>
+<ul>
+<li><a href="#sysctl-conf">sysctl.conf</a></li>
+<li><a href="#limits-conf">limits.conf</a></li>
+<li><a href="#nginx-conf">nginx.conf</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

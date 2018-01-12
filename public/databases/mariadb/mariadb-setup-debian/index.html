@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Set Up MariaDB on Debian 9</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to install and configure the MariaDB database server on Debian 9.">
+        <meta name="keywords" content="mariadb, debian 9, debian, database, mysql">
+        
+        <meta property="og:title" content="How to Set Up MariaDB on Debian 9">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/mariadb/mariadb-setup-debian/">
+        <meta property="og:description" content="MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/mariadb/mariadb-setup-debian/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/mariadb/">MariaDB</a>
+  
+</li>
+
+
+<li>
+  
+  How to Set Up MariaDB on Debian 9
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Set Up MariaDB on Debian 9</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-22T00:00:00Z">Wednesday, November 22, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://twitter.com/bsd_noobz">Nashruddin Amin
+    
+    <i class="fa fa-twitter"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmariadb%2fmariadb-setup-debian%2f&via=linode&text=How%20to%20Set%20Up%20MariaDB%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmariadb%2fmariadb-setup-debian%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmariadb%2fmariadb-setup-debian%2f&t=How%20to%20Set%20Up%20MariaDB%20on%20Debian%209" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/mariadb/mariadb-setup-debian.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/mariadb/mariadb-setup-debian.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<h2 id="what-is-mariadb">What is MariaDB?</h2>
+
+<p>MariaDB is a drop-in replacement for MySQL. It strives to be the logical choice for database professionals looking for a robust, scalable and reliable SQL Server. This guide will help beginners install and configure MariaDB on Debian 9 (Stretch).</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps required in this guide require root privileges. Be sure to run the steps below as <code>root</code> or with the <strong>sudo</strong> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="install-mariadb">Install MariaDB</h2>
+
+<p>In this section, you will install MariaDB and set the password for the MariaDB root user. MariaDB maintains a shell script that automatically sets up the necessary package repositories.</p>
+
+<ol>
+<li><p>Update your system and install dependencies:</p>
+
+<pre><code>apt update &amp;&amp; apt upgrade
+apt install dirmngr
+</code></pre></li>
+
+<li><p>Add the MariaDB signing key:</p>
+
+<pre><code>apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+</code></pre></li>
+
+<li><p>Download and execute the script:</p>
+
+<pre><code>curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
+</code></pre></li>
+
+<li><p>Update your sources list:</p>
+
+<pre><code>apt update
+</code></pre></li>
+
+<li><p>Install MariaDB:</p>
+
+<pre><code>apt install mariadb-server
+</code></pre>
+
+<p>You will be prompted to set a password for the MariaDB root user:</p>
+
+<p><a href="/docs/assets/1745-mariadb-set-root-password.png"><img src="/docs/assets/1745-mariadb-set-root-password.png" alt="Set the password for root during MariaDB installation" /></a></p>
+
+<p>Choose a strong password to secure your server.</p></li>
+</ol>
+
+<p>After installation, Debian will start the MariaDB server and also set the service to start automatically on reboot.</p>
+
+<h2 id="using-mariadb">Using MariaDB</h2>
+
+<p>In this section you will learn how to connect to MariaDB and perform basic SQL commands.</p>
+
+<ol>
+<li><p>The standard tool for interacting with MariaDB is the MySQL client. To get started, issue the following command to connect to MariaDB as the root user:</p>
+
+<pre><code>mysql -u root -p
+</code></pre>
+
+<p>When prompted, enter the root password you set when you installed MariaDB. You&rsquo;ll see output like the following:</p>
+
+<pre><code>Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 30
+Server version: 5.5.37-MariaDB-1~wheezy-log mariadb.org binary distribution
+
+Copyright (c) 2000, 2014, Oracle, Monty Program Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]&gt;
+</code></pre>
+
+<p>Note the <code>(none)</code> text in the MariaDB prompt. It will be used to display the current working database. Since you haven&rsquo;t selected any database yet, it is displayed as <code>(none)</code>.</p></li>
+
+<li><p>Create a sample database, to be populated with sample data. Use the following commands to create a database named <strong>testdb</strong>, which is owned by a new user <strong>testuser</strong>. These commands also set the password <strong>secretpassword</strong> for the new user:</p>
+
+<pre><code>CREATE DATABASE testdb;
+CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON testdb.* TO testuser@localhost;
+FLUSH PRIVILEGES;
+quit
+</code></pre>
+
+<p>The final line logs out the root user from MariaDB.</p></li>
+
+<li><p>Log in to MariaDB as <strong>testuser</strong>:</p>
+
+<pre><code>mysql -u testuser -p
+</code></pre></li>
+
+<li><p>Use the database <strong>testdb</strong>:</p>
+
+<pre><code>USE testdb;
+</code></pre></li>
+
+<li><p>Databases are composed of multiple <strong>tables</strong>. Create a new table and populate it with sample data:</p>
+
+<pre><code>CREATE TABLE products (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price DECIMAL(6,2));
+INSERT INTO products (name, price) VALUES ('MacBook Pro', 1600.0);
+INSERT INTO products (name, price) VALUES ('Dell', 850.0);
+INSERT INTO products (name, price) VALUES ('Acer', 775.0);
+</code></pre></li>
+
+<li><p>Verify that the new data has been inserted:</p>
+
+<pre><code>SELECT * FROM products;
+</code></pre>
+
+<p>Which should show this output:</p>
+
+<pre><code>+----+-------------+---------+
+| id | name        | price   |
++----+-------------+---------+
+|  1 | MacBook Pro | 1600.00 |
+|  2 | Dell        |  850.00 |
+|  3 | Acer        |  775.00 |
++----+-------------+---------+
+3 rows in set (0.00 sec)
+</code></pre></li>
+
+<li><p>Exit the MariaDB client by typing:</p>
+
+<pre><code>quit
+</code></pre></li>
+</ol>
+
+<p>For more information about SQL commands, refer to the <a href="https://mariadb.com/kb/en/sql-commands/">SQL Commands</a> page on the MariaDB Knowledge Base. To view MariaDB&rsquo;s command list from within the client, type:</p>
+
+<pre><code>\h
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>MariaDB [(none)]&gt; \h
+
+General information about MariaDB can be found at
+http://mariadb.org
+
+List of all MySQL commands:
+Note that all text commands must be first on line and end with ';'
+?         (\?) Synonym for `help'.
+clear     (\c) Clear the current input statement.
+connect   (\r) Reconnect to the server. Optional arguments are db and host.
+delimiter (\d) Set statement delimiter.
+edit      (\e) Edit command with $EDITOR.
+ego       (\G) Send command to mysql server, display result vertically.
+exit      (\q) Exit mysql. Same as quit.
+go        (\g) Send command to mysql server.
+help      (\h) Display this help.
+nopager   (\n) Disable pager, print to stdout.
+notee     (\t) Don't write into outfile.
+pager     (\P) Set PAGER [to_pager]. Print the query results via PAGER.
+print     (\p) Print current command.
+prompt    (\R) Change your mysql prompt.
+quit      (\q) Quit mysql.
+rehash    (\#) Rebuild completion hash.
+source    (\.) Execute an SQL script file. Takes a file name as an argument.
+status    (\s) Get status information from the server.
+system    (\!) Execute a system shell command.
+tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
+use       (\u) Use another database. Takes database name as argument.
+charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
+warnings  (\W) Show warnings after every statement.
+nowarning (\w) Don't show warnings after every statement.
+
+For server side help, type 'help contents'
+</code></pre>
+
+<h2 id="configure-mariadb">Configure MariaDB</h2>
+
+<p>To configure MariaDB to run the way you want, edit the <code>/etc/mysql/my.cnf</code> file. This file controls most of the server system variables, which you will generally want to leave at the default setting.</p>
+
+<p>Whenever you make changes to <code>/etc/mysql/my.cnf</code>, restart the server by issuing the following command:</p>
+
+<pre><code>service mysql restart
+</code></pre>
+
+<h2 id="secure-mariadb-server">Secure MariaDB Server</h2>
+
+<p>MariaDB recommends that you secure your installation by executing the following command:</p>
+
+<pre><code>mysql_secure_installation
+</code></pre>
+
+<p>You will be asked to change the root password, remove anonymous users, disable root logins outside of localhost, and remove the test database. It is recommended that you answer <strong>Y</strong> for all questions.</p>
+
+<h2 id="remote-user-connections">Remote User Connections</h2>
+
+<p>This section will demonstrate how to allow the previously created user, <strong>testuser</strong>, to connect to MariaDB remotely (by default, MariaDB will allow connections from only localhost).</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Opening a MariaDB server up to the internet makes it less secure. If you need to connect from somewhere other than localhost, make sure you implement <a href="/docs/security/firewalls/iptables">firewall</a> rules that allow connections only from specific IP addresses.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Log in to MariaDB as root:</p>
+
+<pre><code>mysql -u root -p
+</code></pre></li>
+
+<li><p>Allow <strong>testuser</strong> to connect from remote hosts:</p>
+
+<pre><code>GRANT ALL PRIVILEGES ON testdb.* TO testuser@'%' IDENTIFIED BY 'secretpassword';
+FLUSH PRIVILEGES;
+quit
+</code></pre></li>
+
+<li><p>Configure MariaDB to listen to all network interfaces. Open the <code>/etc/mysql/my.cnf</code> file and edit the <code>bind-address</code> variable to listen to all network interfaces:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/mysql/my.cnf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">bind-address <span class="o">=</span> <span class="m">0</span>.0.0.0</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart the server:</p>
+
+<pre><code>service mysql restart
+</code></pre></li>
+
+<li><p>Test the connection from your local computer to the MariaDB server, replacing <strong>testuser</strong> with your username, and <strong>example.com</strong> with your domain or IP address:</p>
+
+<pre><code>mysql -u testuser -h example.com -p
+</code></pre>
+
+<p>If the login is successful, you should see the MariaDB welcome message and the shell prompt.</p></li>
+</ol>
+
+<h2 id="tune-mariadb">Tune MariaDB</h2>
+
+<p>MySQL Tuner is a useful tool that connects to a running instance of MariaDB and provides configuration recommendations based on workload. You should let your MariaDB instance run for at least 24 hours before running the tuner. The longer the instance has been running, the better advice the tuner will provide.</p>
+
+<ol>
+<li><p>Install MySQL Tuner by issuing the following command:</p>
+
+<p>apt install mysqltuner</p></li>
+
+<li><p>Run MySQL tuner with the following command:</p>
+
+<p>mysqltuner</p></li>
+</ol>
+
+<h2 id="reset-mariadb-s-root-password">Reset MariaDB&rsquo;s Root Password</h2>
+
+<p>If you forget your root password, reset it with these steps:</p>
+
+<ol>
+<li><p>Stop the MariaDB server:</p>
+
+<pre><code>systemctl restart mysql
+</code></pre></li>
+
+<li><p>Start the server with the <code>skip-grant-tables</code> setting so you can log in to MariaDB without the password:</p>
+
+<pre><code>mysqld_safe --skip-grant-tables --skip_networking &amp;
+</code></pre></li>
+
+<li><p>Now you can connect to the MariaDB server as root without a password:</p>
+
+<pre><code>mysql -u root
+</code></pre></li>
+
+<li><p>Within the MariaDB client, issue the following commands to reset the password for the <strong>root</strong> user and log out:</p>
+
+<pre><code>FLUSH PRIVILEGES;
+USE mysql;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+FLUSH PRIVILEGES;
+quit
+</code></pre></li>
+
+<li><p>Restart the MariaDB server:</p>
+
+<pre><code>service mysql restart
+</code></pre></li>
+
+<li><p>Connect to the MariaDB server using your new password:</p>
+
+<pre><code>mysql -u root -p
+</code></pre></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://mariadb.com/kb/en">MariaDB Knowledge Base</a></li>
+
+<li><a href="https://mariadb.com/kb/en/mariadb-mariadb-faq/">MariaDB FAQ</a></li>
+
+<li><a href="https://mariadb.com/kb/en/sql-commands/">MariaDB SQL commands</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/">Set Up MariaDB Clusters with Galera Debian and Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/">Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/lamp-on-debian-8-jessie/">LAMP on Debian 8 (Jessie)</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/install-mysql-phpmyadmin-debian-7/">How to Install MySQL with phpMyAdmin on Debian 7</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/install-and-configure-phpmyadmin-on-debian-8/">How to Install and Configure phpMyAdmin on Debian 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-mariadb">What is MariaDB?</a></li>
+<li><a href="#install-mariadb">Install MariaDB</a></li>
+<li><a href="#using-mariadb">Using MariaDB</a></li>
+<li><a href="#configure-mariadb">Configure MariaDB</a></li>
+<li><a href="#secure-mariadb-server">Secure MariaDB Server</a></li>
+<li><a href="#remote-user-connections">Remote User Connections</a></li>
+<li><a href="#tune-mariadb">Tune MariaDB</a></li>
+<li><a href="#reset-mariadb-s-root-password">Reset MariaDB&rsquo;s Root Password</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

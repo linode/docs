@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Dolphin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Dolphin">
+        <meta name="keywords" content="social network,  dolphin,  boonex">
+        
+        <meta property="og:title" content="Dolphin">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/social-networking/dolphin/">
+        <meta property="og:description" content="Dolphin">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/social-networking/dolphin/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/social-networking/">Social Networking</a>
+  
+</li>
+
+
+<li>
+  
+  Dolphin
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Dolphin</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-10-04T00:00:00Z">Friday, October 4, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fsocial-networking%2fdolphin%2f&via=linode&text=Dolphin" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fsocial-networking%2fdolphin%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fsocial-networking%2fdolphin%2f&t=Dolphin" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/social-networking/dolphin.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/social-networking/dolphin.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+		Please refer to the updated version of this guide: true - &#39;[Boonex Home Page](http://www.boonex.com)&#39; - &#39;[Boonex Plug-in Market](http://www.boonex.com/market)&#39; - &#39;[Boonex Forums](http://www.boonex.com/forums/)&#39;
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p><a href="http://www.boonex.com/dolphin">Dolphin</a> is an open-source software package for building social networks, dating sites and niche communities. Dolphin&rsquo;s features include video chat, video messenger, iPhone app, Android App, Adobe AIR desktop app, groups, events, blogs, files, media sharing, a store, and more. Dolphin also allows developers to create plugins to add additional functionality or features. You can use the <a href="http://www.boonex.com/market">Dolphin Market</a> to find extensions, design templates, mods, plugins, language packs and third party software integrations.</p>
+
+<h2 id="dolphin-prerequisites">Dolphin Prerequisites</h2>
+
+<p>Dolphin requires a standard LAMP (Linux, Apache, MySQL, and PHP) server. If haven&rsquo;t already created a LAMP server, or just want to make sure that you have everything installed, <a href="/docs/hosting-website">take a look at our Hosting a Website guide</a>. After you have a LAMP server running, read through the rest of this section to verify that you have the other prerequisites installed.</p>
+
+<h3 id="installing-php-extensions">Installing PHP Extensions</h3>
+
+<p>Dolphin requires the following PHP extensions to be installed and enabled: <code>mbstring</code>, <code>mysql</code>, <code>mysqli</code>, <code>curl</code>, <code>gd</code>, <code>xslt</code>. Here&rsquo;s how to install them:</p>
+
+<ol>
+<li><p>Install the extensions by entering the following command:</p>
+
+<pre><code>sudo apt-get install php5-mysql php5-curl php5-gd php5-xsl
+</code></pre></li>
+
+<li><p>Install <code>imagemagick</code> by entering the following command:</p>
+
+<pre><code>sudo apt-get install imagemagick
+</code></pre></li>
+
+<li><p>Save your changes by restarting the Apache web server:</p>
+
+<pre><code>sudo /etc/init.d/apache2 restart
+</code></pre></li>
+</ol>
+
+<p>The required PHP extensions for Dolphin are now installed on your computer.</p>
+
+<h3 id="configuring-php">Configuring PHP</h3>
+
+<p>You&rsquo;ll also need to make some modifications to your <code>php.ini</code> file. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Open the <code>php.ini</code> file for editing by entering the following command:</p>
+
+<pre><code>sudo nano /etc/php5/apache2/php.ini
+</code></pre></li>
+
+<li><p>If necessary, change the settings in that file, as shown below:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/php5/apache2/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">memory_limit</span> <span class="o">=</span> <span class="s">128M</span>
+<span class="na">post_max_size</span> <span class="o">=</span> <span class="s">32M</span>
+<span class="na">upload_max_filesize</span> <span class="o">=</span> <span class="s">16M</span>
+<span class="na">register_globals</span> <span class="o">=</span> <span class="s">Off</span>
+<span class="na">allow_url_fopen</span> <span class="o">=</span> <span class="s">On</span>
+<span class="na">allow_url_include</span> <span class="o">=</span> <span class="s">Off</span>
+<span class="na">magic_quotes_gpc</span> <span class="o">=</span> <span class="s">Off</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save the changes to the file by pressing Control-X, pressing Y, and then pressing Enter.</p></li>
+
+<li><p>Save your changes by restarting the Apache web server:</p>
+
+<pre><code>sudo /etc/init.d/apache2 restart
+</code></pre></li>
+</ol>
+
+<p>You have successfully modified your <code>php.ini</code> file for Dolphin.</p>
+
+<h3 id="setting-up-email">Setting Up Email</h3>
+
+<p>To configure Dolphin to send email, you&rsquo;ll need to install either Sendmail or <a href="/docs/email/postfix">Postfix</a>. You should be able to use <a href="/docs/email/exim">send-only exim</a> as well.</p>
+
+<h3 id="installing-jre">Installing JRE</h3>
+
+<p>If you&rsquo;d like to run the Boonex RMS (Ray Media Server), which is a required component for some of Dolphin&rsquo;s features, like Flash chat, Flash instant messaging, boards, video recorder, video comments, you&rsquo;ll also need to install JRE (Java Runtime Environment) version 1.6. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Install JRE on your Linode by entering the following command:</p>
+
+<pre><code>sudo apt-get install openjdk-6-jre
+</code></pre></li>
+
+<li><p>RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the <a href="/docs/securing-your-server#configure-a-firewall">Securing Your Server guide</a> and the <a href="/docs/security/firewalls">Firewall reference manuals</a>.</p></li>
+</ol>
+
+<p>You have successfully installed JRE on your Linode.</p>
+
+<h2 id="installing-dolphin">Installing Dolphin</h2>
+
+<p>Now that you&rsquo;ve installed the necessary prerequisites, we can start installing Dolphin. We&rsquo;ll walk you through the process of downloading Dolphin, adding a new MySQL user and database, configuring permissions, running the install script, removing the installation directory, and finally logging in to the Dolphin admin panel.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>We assume that you followed the <a href="/docs/hosting-website">Hosting a Website guide</a>. If you&rsquo;re using a different DocumentRoot directive than <code>/home/example_user/public/example.com/public</code> for your virtual host, you&rsquo;ll need to update the path to correctly reflect your DocumentRoot.</div>
+</blockquote>
+
+
+<h3 id="downloading-dolphin">Downloading Dolphin</h3>
+
+<p>First, you need to download the latest Dolphin release. Here&rsquo;s how:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Be sure to check the <a href="http://www.boonex.com/dolphin">Dolphin web site</a> to verify that you are downloading the latest release.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Change to your virtual host directory by entering the following command, replacing <code>example_user</code> with your username and <code>example.com</code> with your domain name:</p>
+
+<pre><code>cd /home/example_user/public/example.com/public
+</code></pre></li>
+
+<li><p>Create a new directory for Dolphin by entering the following command:</p>
+
+<pre><code>mkdir dolphin
+</code></pre></li>
+
+<li><p>Change to the Dolphin directory by entering the following command:</p>
+
+<pre><code>cd dolphin
+</code></pre></li>
+
+<li><p>Download the latest Dolphin release by entering the following command:</p>
+
+<pre><code>wget http://get.boonex.com/Dolphin-v.7.0
+</code></pre></li>
+
+<li><p>Unzip the archive by entering the following command:</p>
+
+<pre><code>unzip Dolphin-v.7.0
+</code></pre></li>
+</ol>
+
+<p>You have successfully downloaded Dolphin and unzipped the archive on your Linode.</p>
+
+<h3 id="adding-a-mysql-user-and-database">Adding a MySQL User and Database</h3>
+
+<p>Next, you&rsquo;ll need to add a MySQL user and database. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Log in to MySQL by entering the following command:</p>
+
+<pre><code>sudo mysql -uroot -p
+</code></pre></li>
+
+<li><p>Enter your MySQL <code>root</code> password.</p></li>
+
+<li><p>Create a database for Dolphin by entering the following command:</p>
+
+<pre><code>create database dolphindb;
+</code></pre></li>
+
+<li><p>Create MySQL user for Dolphin by entering the following command, replacing <code>password</code> with the password for the new user:</p>
+
+<pre><code>create user 'dolphin' identified by 'password';
+</code></pre></li>
+
+<li><p>Grant the new MySQL <code>dolphin</code> user access to the <code>dolphin</code> database by entering the following command:</p>
+
+<pre><code>grant all privileges on dolphindb.* to 'dolphin';
+</code></pre></li>
+
+<li><p>Exit MySQL by entering the following command:</p>
+
+<pre><code>quit;
+</code></pre></li>
+</ol>
+
+<p>You have successfully added a new MySQL user and created a database for Dolphin.</p>
+
+<h3 id="configuring-permissions">Configuring Permissions</h3>
+
+<p>Now you&rsquo;ll need to adjust the permissions on Dolphin&rsquo;s files. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Change to Dolphin&rsquo;s directory in your virtual host by entering the following command, replacing <code>example_user</code> with your username and <code>example.com</code> with your domain name:</p>
+
+<pre><code>cd /home/example_user/public/example.com/public/dolphin
+</code></pre></li>
+
+<li><p>To change the permissions, enter the following commands, one by one. Make sure you copy the entire commands - most of them are long:</p>
+
+<pre><code>chmod 777 ./inc ./backup ./cache ./cache_public ./langs ./media/app ./media/images ./media/images/banners ./media/images/blog ./media/images/classifieds ./media/images/membership ./media/images/profile ./media/images/profile_bg ./media/images/promo ./media/images/promo/original ./tmp ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/HTML ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/CSS ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/Test ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/URI
+
+chmod 777 ./flash/modules/board/files ./flash/modules/chat/files ./flash/modules/photo/files ./flash/modules/im/files ./flash/modules/mp3/files ./flash/modules/video/files ./flash/modules/video_comments/files
+
+chmod 666 inc/prof.inc.php
+
+chmod 666 ./flash/modules/global/data/integration.dat ./flash/modules/board/xml/config.xml ./flash/modules/board/xml/langs.xml ./flash/modules/board/xml/main.xml ./flash/modules/board/xml/skins.xml ./flash/modules/chat/xml/config.xml ./flash/modules/chat/xml/langs.xml ./flash/modules/chat/xml/main.xml ./flash/modules/chat/xml/skins.xml ./flash/modules/desktop/xml/config.xml ./flash/modules/desktop/xml/langs.xml ./flash/modules/desktop/xml/main.xml ./flash/modules/desktop/xml/skins.xml ./flash/modules/global/xml/config.xml ./flash/modules/global/xml/main.xml ./flash/modules/im/xml/config.xml ./flash/modules/im/xml/langs.xml ./flash/modules/im/xml/main.xml ./flash/modules/im/xml/skins.xml ./flash/modules/mp3/xml/config.xml ./flash/modules/mp3/xml/langs.xml ./flash/modules/mp3/xml/main.xml ./flash/modules/mp3/xml/skins.xml ./flash/modules/photo/xml/config.xml ./flash/modules/photo/xml/langs.xml ./flash/modules/photo/xml/main.xml ./flash/modules/photo/xml/skins.xml ./flash/modules/video/xml/config.xml ./flash/modules/video/xml/langs.xml ./flash/modules/video/xml/main.xml ./flash/modules/video/xml/skins.xml ./flash/modules/video_comments/xml/config.xml ./flash/modules/video_comments/xml/langs.xml ./flash/modules/video_comments/xml/main.xml ./flash/modules/video_comments/xml/skins.xml
+
+chmod 777 flash/modules/global/app/ffmpeg.exe
+</code></pre></li>
+</ol>
+
+<p>You have successfully configured the permissions of Dolphin&rsquo;s installation files.</p>
+
+<h3 id="running-the-install-script">Running the Install Script</h3>
+
+<p>Now you can run the install script from your browser. Here&rsquo;s how:</p>
+
+<ol>
+<li>Navigate to <a href="http://example.com/dolphin/install/index.php">http://example.com/dolphin/install/index.php</a>. Replace <code>example.com</code> with your domain name or IP address. The Dolphin installation page appears, as shown below.</li>
+</ol>
+
+<p><a href="/docs/assets/861-Dolphin1.png"><img src="/docs/assets/1076-dolphin-1-small.png" alt="Dolphin installer." /></a></p>
+
+<ol>
+<li>Click <strong>Install</strong> to begin. The webpage shown below appears.</li>
+</ol>
+
+<p><a href="/docs/assets/862-Dolphin2.png"><img src="/docs/assets/1077-dolphin-2-small.png" alt="Dolphin installer." /></a></p>
+
+<p><a href="/docs/assets/863-Dolphin2a.png"><img src="/docs/assets/1078-dolphin-3-small.png" alt="Dolphin installer." /></a></p>
+
+<ol>
+<li>All of the files listed should be <em>Writable</em>. Click <strong>Next</strong> to continue. The <em>Paths Check</em> webpage appears, as shown below.</li>
+</ol>
+
+<p><a href="/docs/assets/864-Dolphin3.png"><img src="/docs/assets/1079-dolphin-4-small.png" alt="Dolphin installer." /></a></p>
+
+<ol>
+<li>All of the paths listed should be &ldquo;found&rdquo;. You should also see a <strong>GD library installed</strong> message at the bottom of the webpage. Click <strong>Next</strong> to continue. The <em>Database</em> webpage appears, as shown below.</li>
+</ol>
+
+<p><a href="/docs/assets/865-Dolphin4.png"><img src="/docs/assets/1080-dolphin-5-small.png" alt="Dolphin installer." /></a></p>
+
+<ol>
+<li>Enter the details for the Dolphin database you created earlier in this guide. Click <strong>Next</strong> to continue. The <em>Configuration</em> webpage appears, as shown below.</li>
+</ol>
+
+<p><a href="/docs/assets/866-Dolphin5.png"><img src="/docs/assets/1081-dolphin-6-small.png" alt="Dolphin installer." /></a></p>
+
+<ol>
+<li>Complete the form by entering the required information for your website, and then click <strong>Next</strong> to continue. The <em>Cron Jobs</em> webpage appears, as shown below.</li>
+</ol>
+
+<p><a href="/docs/assets/867-Dolphin6.png"><img src="/docs/assets/1082-dolphin-7-small.png" alt="Dolphin installer." /></a></p>
+
+<ol>
+<li><p>Now you&rsquo;ll need to set up a cron job specified on the webpage. To set up your cron job, you&rsquo;ll need to open your crontab for editing by entering the following command:</p>
+
+<pre><code>sudo crontab -e
+</code></pre></li>
+
+<li><p>Paste the following in to the crontab, making sure to replace <code>myemail@gmail.com</code> with the email address you entered for Dolphin:</p>
+
+<pre><code>MAILTO=myemail@gmail.com
+* * * * * cd /var/www/periodic; /usr/bin/php -q cron.php
+</code></pre></li>
+
+<li><p>To save the cron job, press Control-X, and then press Y to save.</p></li>
+
+<li><p>Back in your web browser, click <strong>Next</strong>. The <em>Permissions Reversal</em> webpage appears, as shown below.</p></li>
+</ol>
+
+<p><a href="/docs/assets/868-Dolphin7.png"><img src="/docs/assets/1083-dolphin-8-small.png" alt="Dolphin installer." /></a></p>
+
+<ol>
+<li><p>To reverse your permissions, enter the following commands, one by one. Be sure to replace <code>example_user</code> with your username, and <code>example.com</code> with your domain name:</p>
+
+<pre><code>cd /home/example_user/public/example.com/public/dolphin
+find ./ -type d -exec chmod 755 {} \;
+sudo find ./ -type f -exec chmod 644 {} \;
+chmod 755 flash/modules/global/app/ffmpeg.exe;
+</code></pre></li>
+
+<li><p>Back in your web browser, click <strong>Check</strong>. The webpage should now indicate that the directory is &ldquo;Non-writable&rdquo;, as shown below.</p></li>
+</ol>
+
+<p><a href="/docs/assets/869-Dolphin7a.png"><img src="/docs/assets/1084-dolphin-9-small.png" alt="Dolphin installer." /></a></p>
+
+<ol>
+<li>Click <strong>Next</strong>. If the webpage shown below appears, You have successfully installed Dolphin on your Linode.</li>
+</ol>
+
+<p><a href="/docs/assets/870-Dolphin8.png"><img src="/docs/assets/1085-dolphin-10-small.png" alt="Dolphin installer." /></a></p>
+
+<ol>
+<li><p>Copy the languages from the install directory by entering the following command. Be sure to replace <code>example_user</code> with your username, and <code>example.com</code> with your domain name:</p>
+
+<pre><code>mv /home/example_user/public/example.com/public/dolphin/install/langs/* /home/example_user/public/example.com/public/dolphin/langs/
+</code></pre></li>
+
+<li><p>Now you&rsquo;ll want to remove the install directory by entering the following commands, one by one:</p>
+
+<pre><code>cd /home/example_user/public/example.com/public/dolphin
+rm -rf install
+</code></pre></li>
+
+<li><p>Change the permissions of the <code>cache</code>, <code>cache_public</code>, <code>langs</code>, and <code>tmp</code> folders by entering the following commands, one by one:</p>
+
+<pre><code>chmod 777 cache
+chmod 777 cache_public
+chmod 777 tmp
+</code></pre></li>
+</ol>
+
+<p>You have successfully installed Dolphin and removed the installation directory from your Linode.</p>
+
+<h3 id="logging-in-to-the-dolphin-admin-panel">Logging in to the Dolphin Admin Panel</h3>
+
+<p>You can now log into your admin panel at <a href="http://example.com/dolphin/administration/">http://example.com/dolphin/administration/</a>. Replace <code>example.com</code> with your domain name or IP address. Try logging in now.</p>
+
+<h2 id="installing-dolphin-modules">Installing Dolphin Modules</h2>
+
+<p>Now you can install any of Dolphin&rsquo;s modules in the <strong>Tools</strong> &gt; <strong>Modules</strong> section. Take a look!</p>
+
+<h3 id="updating-php-permissions">Updating PHP Permissions</h3>
+
+<p>If you have PHP running as an Apache module, you may need to update permissions to allow installation of some of these modules.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you are running PHP in CGI mode, you can skip this section.</div>
+</blockquote>
+
+
+<p>To update permissions, enter the following commands, one by one:</p>
+
+<pre><code>chmod 777 modules/boonex/avatar/data/images/ modules/boonex/avatar/data/tmp/
+chmod 777 modules/boonex/forum/classes modules/boonex/forum/conf modules/boonex/forum/layout modules/boonex/forum/log modules/boonex/forum/js modules/boonex/forum/cachejs modules/boonex/forum/data/attachments
+chmod 777 modules/boonex/photos/data/files
+chmod 777 modules/boonex/files/data/files
+chmod 777 modules/boonex/desktop/file
+chmod 777 modules/boonex/profile_customize/data/images
+chmod 666 modules/boonex/profiler/log/profiler.log
+chmod 777 modules/boonex/smtpmailer/data/logs
+</code></pre>
+
+<h2 id="media-server-rms-installation">Media Server (RMS) Installation</h2>
+
+<p>Dolphin comes with a free Media Server software (formerly Ray Media Server - RMS), based on open-source Red 5. Media Server is required for some of the media streaming features of some Dolphin modules. Here&rsquo;s how to install media server on your Linode:</p>
+
+<ol>
+<li><p>We&rsquo;ll be installing RMS into your /opt directory. Create a directory for the RMS install by entering the following command:</p>
+
+<pre><code>sudo mkdir /opt/ray_server
+</code></pre></li>
+
+<li><p>Change to the new directory by entering the following command:</p>
+
+<pre><code>cd /opt/ray_server
+</code></pre></li>
+
+<li><p>Download the latest Media Server for Linux by entering the following command:</p>
+
+<pre><code>sudo wget http://get.boonex.com/RMS-LINUX-v.7.0.4
+</code></pre></li>
+
+<li><p>Unpack the archive by entering the following command:</p>
+
+<pre><code>sudo tar -xvf RMS-LINUX-v.7.0.4
+</code></pre></li>
+
+<li><p>Move the files to <code>ray_server</code> by entering the following command:</p>
+
+<pre><code>sudo cp RMS_7.0.4/* /opt/ray_server -R
+</code></pre></li>
+
+<li><p>Remove the archive and Media Server folder by entering the following commands, one by one:</p>
+
+<pre><code>sudo rm -rf RMS_7.0.4
+sudo rm -rf RMS-LINUX-v.7.0.4
+</code></pre></li>
+
+<li><p>Open <code>access.dat</code> for editing by entering the following command:</p>
+
+<pre><code>sudo nano /opt/ray_server/access.dat
+</code></pre></li>
+
+<li><p>Enter all of the domains you want to have access to your RMS installation. They should be listed one per line, as shown below. Do not include <a href="http://">http://</a> or www:</p>
+
+<blockquote>
+<dl class="file">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/opt/ray<span class="se">\_</span>server/access.dat
+
+&gt; domain1.com domain2.com domain2.net domain3.com domain3.org</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</blockquote></li>
+
+<li><p>Save the changes to <code>access.dat</code> by pressing Control-X, and then pressing Y.</p></li>
+
+<li><p>Open the <code>red5.sh</code> file for editing by entering the following command:</p>
+
+<pre><code>sudo nano /opt/ray_server/red5.sh
+</code></pre></li>
+
+<li><p>Set the JAVA_HOME variable, as shown below:</p>
+
+<dl class="file">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/opt/ray<span class="se">\_</span>server/red5.sh</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote>
+<p>JAVA_HOME=/usr/share/java;</p>
+</blockquote></li>
+
+<li><p>Save the changes to <code>red5.dat</code> by pressing Control-X, and then pressing Y.</p></li>
+
+<li><p>Open the <code>rundaemon.sh</code> file for editing by entering the following command:</p>
+
+<pre><code>sudo nano /opt/ray_server/run_daemon.sh
+</code></pre></li>
+
+<li><p>Set the RAY_SERVER_PATH variable, as shown below:</p>
+
+<dl class="file">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/opt/ray<span class="se">\_</span>server/run<span class="se">\_</span>daemon.sh</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote>
+<p>RAY_SERVER_PATH=/opt/ray_server;</p>
+</blockquote></li>
+
+<li><p>Save the changes to <code>run_daemon.sh</code> by pressing Control-Y, and then pressing Y.</p></li>
+
+<li><p>Update the <code>webapp.virtualHosts</code> variable in the following files to your Linode&rsquo;s IP address. Use <code>nano</code> to edit the files, like you did earlier:</p>
+
+<p>/opt/ray_server/webapps/board/WEB-INF/red5-web.properties /opt/ray_server/webapps/chat/WEB-INF/red5-web.properties /opt/ray_server/webapps/im/WEB-INF/red5-web.properties</p></li>
+
+<li><p>Modify the permissions of all the <code>.sh</code> files in your Media Server directory by entering the following commands, one by one:</p>
+
+<pre><code>cd /opt/ray_server
+sudo chmod -v 777 *.sh
+</code></pre></li>
+
+<li><p>Test your install by entering the following command:</p>
+
+<pre><code>sudo ./red5.sh
+</code></pre></li>
+
+<li><p>A successful start should end with the following:</p>
+
+<p>[INFO] [Launcher:/installer] org.red5.server.service.Installer - Installer service created</p></li>
+
+<li><p>If the start was successful, you can use the <a href="http://www.boonex.com/rms.html">Boonex Media Server Tester</a> to verify that your RMS install is working properly. If you get &ldquo;NetConnection.Connect.Success&rdquo;, everything is working.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you receive &ldquo;NetConnection.Connect.Failed&rdquo;, make sure you have ports 1935 and 1936 open in your firewall. For more information, see the <a href="/docs/securing-your-server#configure-a-firewall">Securing Your Server guide</a> and the <a href="/docs/security/firewalls">Firewall reference manuals</a>.</div>
+</blockquote>
+
+
+<ol>
+<li>If your test was successful, hold Control and press C to stop <code>red5.sh</code>.</li>
+
+<li><p>Now you can start RMS as a background process by entering the following command:</p>
+
+<pre><code>sudo ./run_daemon.sh
+</code></pre></li>
+</ol>
+
+<p>You have successfully installed RMS on your Linode.</p>
+
+            
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#dolphin-prerequisites">Dolphin Prerequisites</a>
+<ul>
+<li><a href="#installing-php-extensions">Installing PHP Extensions</a></li>
+<li><a href="#configuring-php">Configuring PHP</a></li>
+<li><a href="#setting-up-email">Setting Up Email</a></li>
+<li><a href="#installing-jre">Installing JRE</a></li>
+</ul></li>
+<li><a href="#installing-dolphin">Installing Dolphin</a>
+<ul>
+<li><a href="#downloading-dolphin">Downloading Dolphin</a></li>
+<li><a href="#adding-a-mysql-user-and-database">Adding a MySQL User and Database</a></li>
+<li><a href="#configuring-permissions">Configuring Permissions</a></li>
+<li><a href="#running-the-install-script">Running the Install Script</a></li>
+<li><a href="#logging-in-to-the-dolphin-admin-panel">Logging in to the Dolphin Admin Panel</a></li>
+</ul></li>
+<li><a href="#installing-dolphin-modules">Installing Dolphin Modules</a>
+<ul>
+<li><a href="#updating-php-permissions">Updating PHP Permissions</a></li>
+</ul></li>
+<li><a href="#media-server-rms-installation">Media Server (RMS) Installation</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

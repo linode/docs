@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using Terraform to Provision Linode Environments</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use Terraform to deploy Linodes containing pre-configured application environmets built using Docker or Packer, for example, or from manual configuration.">
+        <meta name="keywords" content="Linode, terraform, plugin, infrastructure">
+        
+        <meta property="og:title" content="Using Terraform to Provision Linode Environments">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/how-to-build-your-infrastructure-using-terraform-and-linode/">
+        <meta property="og:description" content="Use Terraform to deploy Linodes containing pre-configured application environmets built using Docker or Packer, for example, or from manual configuration.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/how-to-build-your-infrastructure-using-terraform-and-linode/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  Using Terraform to Provision Linode Environments
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using Terraform to Provision Linode Environments</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-06T00:00:00Z">Monday, November 6, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Damaso Sanoja
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fhow-to-build-your-infrastructure-using-terraform-and-linode%2f&via=linode&text=Using%20Terraform%20to%20Provision%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fhow-to-build-your-infrastructure-using-terraform-and-linode%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fhow-to-build-your-infrastructure-using-terraform-and-linode%2f&t=Using%20Terraform%20to%20Provision%20Linode%20Environments" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/how-to-build-your-infrastructure-using-terraform-and-linode.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/how-to-build-your-infrastructure-using-terraform-and-linode.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>Infrastructure as code (IaC) is software that gives the developer the ability to build, manage, and provision computing environments with a high-level programming language. Some key benefits of this technology are: enforcing DevOps best practices, processes automation and the opportunity to version control systems for greater visibility and collaboration within a team.</p>
+
+<p>Terraform stands out from other IaC solutions because it&rsquo;s an orchestration tool, which means <em>it&rsquo;s designed specifically for bare-metal server and virtual machines</em>. The configuration of the servers can be achieved using Terraform, but implementing specialized software for tasks like Puppet, Chef, or Ansible are easily done through a provisioner architecture.
+This guide will showcase Terraform, and its benefits when used in conjuction with Linode&rsquo;s cloud technology.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>The configurations and commands used in this guide, will result in multiple Linodes being added to your account. Be sure to monitor your account closely using the Linode Manager to avoid unwanted charges.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>You will need a Linode account. <a href="https://manager.linode.com/signup">Sign up</a> here if you don&rsquo;t already have one.</p></li>
+
+<li><p>Follow the steps described in <a href="https://www.linode.com/docs/platform/api/api-key">this guide</a> to create an API key for your Linode account. Be sure to write down the API key when it&rsquo;s displayed, it will only appear once.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Terraform automates the build process of an app&rsquo;s infrastructure, including creating the necessary amount Linodes for your project. As a result, unless otherwise specified, all commands in this guide should be run from a client machine. This guide will assume that your client machine is running Ubuntu 16.04, but similar procedures should work on other platforms.</div>
+</blockquote>
+</li>
+</ol>
+
+<h1 id="installing-terraform-on-ubuntu-16-04">Installing Terraform on Ubuntu 16.04</h1>
+
+<p>Unlike other tools that require server agents (Chef &amp; Puppet,) Terraform is a &ldquo;Client-Only&rdquo; architecture. In fact, Terraform is bundled as a single binary available for MacOS, FreeBSD, Linux, OpenBSD, Solaris and Windows. The binary file contains the core of the application; providers and plugins can be added as required by the user.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In the particular case of Linode there is no official Terraform plugin yet.</div>
+</blockquote>
+
+
+<h2 id="install-golang">Install Golang</h2>
+
+<ol>
+<li><p>Install Git if it&rsquo;s not already on your system:</p>
+
+<pre><code>apt install git
+</code></pre></li>
+
+<li><p>Download and extract <code>golang</code> to the appropriate location. Terraform requires Version 1.9:</p>
+
+<pre><code>wget -c https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz
+sudo tar -C /usr/local -xvzf go1.9.linux-amd64.tar.gz
+</code></pre></li>
+
+<li><p>The language workspace (projects) demands that executables and source code have their own directories:</p>
+
+<pre><code>mkdir -p ~/go_projects/{bin,src,pkg}
+</code></pre></li>
+
+<li><p>Next step is to add <code>Go</code> to the <code>PATH</code>. For convenience the folder <code>~/go_projects/bin</code> will be included for Terraform and plugin packages.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/.profile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go_projects/bin
+export GOPATH=&#34;$HOME/go_projects&#34;
+export GOBIN=&#34;$GOPATH/bin&#34;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Reload your profile into memory:</p>
+
+<pre><code>source ~/.profile
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can change the variables to any location that suits you, just be sure to include it in the <code>PATH</code>.</div>
+</blockquote>
+
+
+<h2 id="building-the-linode-plugin">Building the Linode plugin</h2>
+
+<ol>
+<li><p>Download Terraform repository, <code>Go</code> will save it in the appropriate location:</p>
+
+<pre><code>go get github.com/hashicorp/terraform
+</code></pre></li>
+
+<li><p>Download the custom <code>terraform-provider-linode</code> repository, once again <code>Go</code> will save it in the workspace location:</p>
+
+<pre><code>go get github.com/LinodeContent/terraform-provider-linode
+</code></pre></li>
+
+<li><p>By default source code is stored in <code>src</code> directory, go to the plugin <code>bin</code> location and build the package. Dependencies will be handled automatically by <code>godeps</code> that&rsquo;s already in the plugin folder.</p>
+
+<pre><code>cd ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/bin/terraform-provider-linode
+
+go build -o terraform-provider-linode
+</code></pre></li>
+
+<li><p>Move the newly created executable to <code>~/go_projects/bin</code>:</p>
+
+<pre><code>mv ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/bin/terraform-provider-linode/terraform-provider-linode ~/go_projects/bin
+</code></pre></li>
+
+<li><p>And now, move the <code>linode-template.tf</code> file to the same path:</p>
+
+<pre><code>mv ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/linode-template.tf ~/go_projects/bin
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>AT this point, you have all binaries needed, <code>terraform</code> which comes with the Terraform GitHub repository and will locate itself on <code>go_projects/bin</code> and <code>terraform-provider-linode</code> that you just built. If the rest of your clients use the same OS then you can distribute these files among them. There is no need for each client to install <code>Go</code> or build the same package.</div>
+</blockquote>
+
+
+<h2 id="install-terraform">Install Terraform</h2>
+
+<ol>
+<li><p>Download the Terraform repository:</p>
+
+<pre><code>go get github.com/hashicorp/terraform
+</code></pre></li>
+
+<li><p>Get the Linode plugin for Terraform:</p>
+
+<pre><code>wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/terraform-linode-plugin/terraform-provider-linode
+</code></pre></li>
+
+<li><p>Move the plugin to <code>~go_projects/bin</code>:</p>
+
+<pre><code>mv terraform-provider-linode ~/go_projects/bin/
+chmod 750 ~/go_projects/bin/terraform-provider-linode
+</code></pre></li>
+</ol>
+
+<h1 id="configure-the-linode-provider">Configure the Linode Provider</h1>
+
+<p>Terraform can understand two types of configuration files: JSON and HashiCorp Configuration Language (HCL). This guide will use the HCL format, designated by the extension <code>.tf</code>.</p>
+
+<ol>
+<li><p>Open <code>linode-template.tf</code> in a text editor and add the following content. Fill in your Linode API key, public SSH key, and desired root password where indicated:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/go_projects/bin/linode-template.tf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">provider &#34;linode&#34; {
+  key = &#34;your-linode-API-key-here&#34;
+}
+
+resource &#34;linode_linode&#34; &#34;terraform-example&#34; {
+        image = &#34;Ubuntu 16.04 LTS&#34;
+        kernel = &#34;Latest 64 bit&#34;
+        name = &#34;linode-example&#34;
+        group = &#34;terraform-test&#34;
+        region = &#34;Atlanta, GA, USA&#34;
+        size = 1024
+        ssh_key = &#34;your-ssh-id_rsa.pub-here&#34;
+        root_password = &#34;your-server-password-here&#34;
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The first block defines the provider&ndash; in this case Linode, the second block describes the resource: what distribution will be used, kernel, name and group, region, memory, public ssh key and root password. This information is needed to create a Linode.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For more specific information about Terraform <a href="https://www.terraform.io/docs/configuration/syntax.html">configuration syntax</a> please read the documentation.</div>
+</blockquote>
+</li>
+
+<li><p>Navigate to <code>~/go_projects/bin</code> and initialize the Terraform configuration:</p>
+
+<pre><code>cd ~/go_projects/bin
+terraform init
+</code></pre>
+
+<p>You should see something similar to:</p>
+
+<p><img src="/docs/assets/terraform/terraform-init.jpg" alt="Terraform Init" /></p></li>
+
+<li><p>If an error is encountered you can run the command again in debug mode:</p>
+
+<pre><code>TF_LOG=debug terraform init
+</code></pre></li>
+</ol>
+
+<p>That&rsquo;s it, the successful <code>init</code> output indicates that you are ready to create your Linodes.</p>
+
+<h2 id="test-and-deploy-the-linode-infrastructure">Test and Deploy the Linode Infrastructure</h2>
+
+<p>This section will present three Terraform examples, ranging from a single Linode to a multi-server and multi-location infrastructure.</p>
+
+<h3 id="single-server-basic-linode">Single Server Basic Linode</h3>
+
+<ol>
+<li><p>Check your Terraform plan:</p>
+
+<pre><code>terraform plan
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-plan-01.jpg" alt="Terraform Plan" /></p>
+
+<p>There shouldn&rsquo;t be any errors, but if you need to fix any problems you can activate debug mode again:</p>
+
+<pre><code>TF_LOG=debug terraform plan
+</code></pre>
+
+<p>The command above won&rsquo;t take any action or make any changes on your Linode account, yet. Terraform uses a declarative approach, that means that your configuration file specifies the desired end-state of the infrastructure. When you run <code>terraform plan</code>, an analysis is done to know which actions are required to achieve this state.</p></li>
+
+<li><p>If there are no errors you can create your infrastructure with the command:</p>
+
+<pre><code>terraform apply
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-apply-01.jpg" alt="Terraform Plan" /></p></li>
+
+<li><p>Open the Linode Manager. You should see a new Linode, <code>linode-test</code>, that has been added to your account.</p></li>
+</ol>
+
+<p>The most simple Terraform work flow is: <em>initialize</em> your configuration, <em>plan</em> to check for errors and <em>apply</em> the changes.</p>
+
+<h2 id="two-server-configuration">Two Server Configuration</h2>
+
+<p>Now that you have a <code>linode-example</code> running, imagine you need to implement a typical &ldquo;Web server / Database Server&rdquo; deployment. If you want to add another Linode, the procedure to add another server is very straightforward:</p>
+
+<ol>
+<li><p>From the <code>linode-template.tf</code> create another file called <code>linode-www.tf</code> (don&rsquo;t delete <code>linode-template.tf</code>):</p>
+
+<dl class="file">
+<dt>
+
+
+		~/go_projects/bin/linode-www.tf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">resource &#34;linode_linode&#34; &#34;terraform-www&#34; {
+  image = &#34;CentOS 7&#34;
+  kernel = &#34;Latest 64 bit&#34;
+  name = &#34;www&#34;
+  group = &#34;web&#34;
+  region = &#34;Dallas, TX, USA&#34;
+  size = 2048
+  swap_size = 1024
+  ssh_key = &#34;your-ssh-id_rsa.pub-here&#34;
+  root_password = &#34;your-server-password-here&#34;
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>Remember:</p>
+
+<ul>
+<li><p>Terraform loads into memory all files with the &ldquo;.tf&rdquo; extension present in the working directory. As a result all files are &ldquo;concatenated&rdquo; (in memory). As a result you don&rsquo;t need to define the provider on this file, since it was declared in <code>linode-template.tf</code>.</p></li>
+
+<li><p>Resources can&rsquo;t be duplicated, so you need to assign a unique name for each one.</p></li>
+
+<li><p>In this example the same SSH key and root password is being used. You can change that easily for testing or production.</p></li>
+
+<li><p>A new parameter <code>swap_size</code> is used to override the default value of 512Mb. You can check all available options for <code>terraform-provider-linode</code> in the plugin GitHub repository <a href="https://github.com/LinodeContent/terraform-provider-linode">readme.md</a>.</p></li>
+</ul>
+</div>
+</blockquote>
+</li>
+
+<li><p>Check your plan for errors:</p>
+
+<pre><code>terraform plan
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-plan-02.jpg" alt="Terraform Plan" /></p></li>
+
+<li><p>The final step is to apply all changes:</p>
+
+<pre><code>terraform apply
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-apply-02.jpg" alt="Terraform Plan" /></p></li>
+
+<li><p>Check the Linode Manager to ensure that another Linode, <code>www</code>, has been added to the <code>web</code> display group on your account.</p></li>
+</ol>
+
+<h2 id="adjust-architecture">Adjust Architecture</h2>
+
+<p>To expand this example a bit further just imagine you want to change the first server name and tag to something more relevant and also you want to increase the size to match the newly created Linode.</p>
+
+<ol>
+<li><p>Modify the <code>linode-template.tf</code></p>
+
+<dl class="file">
+<dt>
+
+
+		~/go_projects/bin/linode-template.tf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">provider &#34;linode&#34; {
+  key = &#34;your-linode-API-key-here&#34;
+}
+
+resource &#34;linode_linode&#34; &#34;terraform-example&#34; {
+        image = &#34;Ubuntu 16.04 LTS&#34;
+        kernel = &#34;Latest 64 bit&#34;
+        name = &#34;database&#34;
+        group = &#34;web&#34;
+        region = &#34;Atlanta, GA, USA&#34;
+        size = 2048
+        swap_size = 1024
+        ssh_key = &#34;your-ssh-id_rsa.pub-here&#34;
+        root_password = &#34;your-server-password-here&#34;
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Check your plan:</p>
+
+<pre><code>terraform plan
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-plan-03.jpg" alt="Terraform Plan" /></p></li>
+
+<li><p>Apply your changes:</p>
+
+<pre><code>terraform apply
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-apply-03.jpg" alt="Terraform Plan" /></p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Changing the size of your Linode will force your server to be powered off and migrated to a different host in the same data center. The associated disk migration will take approximately 1 minute for every 3-5 gigabytes of data. For more information about resizing read <a href="https://www.linode.com/docs/platform/disk-images/resizing-a-linode">this article.</a></div>
+</blockquote>
+</li>
+
+<li><p>Open the Linode Manager to verify the changes.</p></li>
+</ol>
+
+<h2 id="advanced-configuration-example">Advanced Configuration Example</h2>
+
+<p>Up to this point, the procedure for adding a new node to your infrastructure was to create a new file and run the <code>terraform apply</code> command. But what happens when your planned infrastructure has dozens of servers? In this example, you will use a very simplistic version of a Terraform configuration file that uses variables.</p>
+
+<ol>
+<li><p>For the purpose of this example you will need to delete previous nodes:</p>
+
+<pre><code>terraform plan -destroy
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-destroy-01.jpg" alt="Plan for destroy Linodes" /></p></li>
+
+<li><p>Similar to <code>terraform plan</code> the above command checks your infrastructure before doing any change. To perform the deletion run the command:</p>
+
+<pre><code>terraform destroy
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-destroy-02.jpg" alt="Destroy Linodes" /></p></li>
+
+<li><p>Use the Linode Manager to verify the deletion.</p></li>
+
+<li><p>Delete (or move to a different location) all Terraform files.</p>
+
+<pre><code>rm *.tf*
+</code></pre></li>
+
+<li><p>Create a new file to define variables, you can use any name, for this example we&rsquo;ll use <code>variables.tf</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/go_projects/bin/variables.tf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">variable</span> <span class="s2">&#34;linode_key&#34;</span> {}
+<span class="nb">variable</span> <span class="s2">&#34;ssh_key&#34;</span> {}
+<span class="nb">variable</span> <span class="s2">&#34;root_password&#34;</span> {}
+<span class="nb">variable</span> <span class="s2">&#34;region&#34;</span> {
+  <span class="nb">default</span> = <span class="s2">&#34;Atlanta, GA, USA&#34;</span>
+<span class="err">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create a file named <code>terraform.tfvars</code> to store your variables values <em>you can&rsquo;t change this name</em>:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/go_projects/bin/terraform.tfvars 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">linode_key</span> = <span class="s2">&#34;your-linode-API-key-here&#34;</span>
+<span class="nb">ssh_key</span> = <span class="s2">&#34;your-ssh-id_rsa.pub-here&#34;</span>
+<span class="nb">root_password</span> =<span class="s2">&#34;your-root-password-here&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create a new configuration file called <code>linode-mod-template.tf</code></p>
+
+<dl class="file">
+<dt>
+
+
+		~/go_projects/bin/linode-mod-template.tf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"># Linode Provider definition
+
+provider &#34;linode&#34; {
+  key = &#34;${var.linode_key}&#34;
+}
+
+# Example Web Server
+
+resource &#34;linode_linode&#34; &#34;www-01&#34; {
+        image = &#34;CentOS 7&#34;
+        kernel = &#34;Latest 64 bit&#34;
+        name = &#34;www&#34;
+        group = &#34;web&#34;
+        region = &#34;Dallas, TX, USA&#34;
+        size = 2048
+        swap_size = 1024
+        ssh_key = &#34;${var.ssh_key}&#34;
+        root_password = &#34;${var.root_password}&#34;
+}
+
+# Example Database Server
+
+resource &#34;linode_linode&#34; &#34;db-01&#34; {
+        image = &#34;Ubuntu 16.04 LTS&#34;
+        kernel = &#34;Latest 64 bit&#34;
+        name = &#34;database&#34;
+        group = &#34;web&#34;
+        region = &#34;${var.region}&#34;
+        size = 2048
+        swap_size = 1024
+        ssh_key = &#34;${var.ssh_key}&#34;
+        root_password = &#34;${var.root_password}&#34;
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Check your new deployment for errors:</p>
+
+<pre><code>terraform plan
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-plan-04.jpg" alt="Terraform Plan" /></p></li>
+
+<li><p>Apply all changes:</p>
+
+<pre><code>terraform apply
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-apply-04.jpg" alt="Terraform Plan" /></p>
+
+<p>As you can see the end result is the same as before. The use of variables gives Terraform great flexibility, not only it allow to store repetitive data (as keys) but also you can assign default values to any field.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Before reading next section take a moment to experiment with Terraform commands, create new servers, change names, resize. Once you are done please destroy all Linodes and delete associated files.</div>
+</blockquote>
+</li>
+</ol>
+
+<h1 id="managing-your-infrastructure">Managing your infrastructure</h1>
+
+<p>So far, the guide has covered the tip of the iceberg of what Terraform can do. This final section will cover briefly:</p>
+
+<ul>
+<li>The ability to reuse your code.</li>
+<li>How to overcome the limitation of hard-coded values.</li>
+<li>An introduction to Terraform server configuration solutions.</li>
+</ul>
+
+<h2 id="terraform-modules">Terraform Modules</h2>
+
+<p>The idea behind any code-driven solution is to avoid repetitive blocks. Terraform uses a concept called <em>modules</em> to group common server requirements and configurations. You can think of modules as an equivalent to <em>functions</em> in programming languages.</p>
+
+<p>Take a look at the following file structure:</p>
+
+<p><img src="/docs/assets/terraform/terraform-modules-tree.jpg" alt="Terraform Modules Tree" /></p>
+
+<p>There is a directory called <code>modules</code> containing the reusable code blocks in this case <code>appserver</code> and a <code>testing</code> directory containing the specific configuration to implement. Is a minimal layout but enough to highlight benefits  modules.</p>
+
+<h3 id="basic-module-structure">Basic Module structure</h3>
+
+<p>Module structure is flexible, you can use as many terraform files as needed to describe your infrastructure. This example contains just one main configuration file describing the reusable code:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/go_projects/bin/modules/appserver/main.tf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"># Application Server
+
+resource &#34;linode_linode&#34; &#34;appserver&#34; {
+        image = &#34;Ubuntu 16.04 LTS&#34;
+        kernel = &#34;Latest 64 bit&#34;
+        name = &#34;${var.appserver_name}&#34;
+        group = &#34;web&#34;
+        region = &#34;${var.region}&#34;
+        size = 2048
+        swap_size = 1024
+        ssh_key = &#34;${var.ssh_key}&#34;
+        root_password = &#34;${var.root_password}&#34;
+}
+
+# Database Server
+
+resource &#34;linode_linode&#34; &#34;dbserver&#34; {
+        image = &#34;CentOS 7&#34;
+        kernel = &#34;Latest 64 bit&#34;
+        name = &#34;${var.dbserver_name}&#34;
+        group = &#34;web&#34;
+        region = &#34;${var.region}&#34;
+        size = &#34;${var.db_size}&#34;
+        swap_size = 1024
+        ssh_key = &#34;${var.ssh_key}&#34;
+        root_password = &#34;${var.root_password}&#34;
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Notice the use of variables, you can choose how many and where to use them. For this purposes the module will reproduce the same infrastructure used before consisting of only two servers. Once again both servers share the same SSH key and <code>root</code> password, remember that you can change that behavior using different variables. One parameter that&rsquo;s not present in this file is your Linode API key, besides that the code is very similar to the previous examples.</p>
+
+<p>The next file contains variables definitions:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/go_projects/bin/modules/appserver/variables.tf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">variable &#34;appserver_name&#34; {
+    description = &#34;The name for the Application Server&#34;
+    default = &#34;default-app&#34;
+}
+
+variable &#34;dbserver_name&#34; {
+    description = &#34;The name for the Database Server&#34;
+    default = &#34;default-db&#34;
+}
+
+variable &#34;db_size&#34; {
+    description = &#34;The size (plan) for your Database Linode&#34;
+    default = &#34;1024&#34;
+}
+
+variable &#34;region&#34; {
+    description = &#34;The default Linode region to deploy the infrastructure&#34;
+    default = &#34;default-region&#34;
+}
+
+variable &#34;ssh_key&#34; {
+    description = &#34;The Public id_rsa.pub key used for secure SSH connections&#34;
+    default = &#34;default-ssh-key&#34;
+}
+
+variable &#34;root_password&#34; {
+    description = &#34;The default root password for the Linode server&#34;
+    default = &#34;default-root-pwd&#34;
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>It&rsquo;s necessary to assign a default value for each variable. That value will be used if you don&rsquo;t override it when you call the module.</div>
+</blockquote>
+
+
+<p>Finally, you need a &ldquo;main&rdquo; configuration file that uses the module you just created:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/go_projects/bin/testing/main.tf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"># Newark Testing Environment Infrastructure
+
+provider &#34;linode&#34; {
+  key = &#34;your-linode-API-key-here&#34;
+}
+
+module &#34;appserver&#34; {
+  source = &#34;/your/absolute/path/to/modules/appserver&#34;
+
+# Variables Specific to this Deployment
+
+region = &#34;Newark, NJ, USA&#34;
+ssh_key = &#34;your-ssh-id_rsa&#34;
+root_password =&#34;your-root-password-here&#34;
+
+# Variables Specific to Servers
+
+appserver_name = &#34;NJ-app&#34;
+dbserver_name = &#34;NJ-db&#34;
+db_size = &#34;8192&#34;
+
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Using modules is easy, just call them by name with the command <code>module</code> and indicate the absolute path where they are saved. Then, you can assign values to each field defined by a variable. The final result would be the same as if you pasted in all of the reusable code in the main configuration file. Let&rsquo;s deploy this infrastructure:</p>
+
+<pre><code>cd ~/go_projects/bin/testing/
+terraform init &amp;&amp; terraform plan
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-modules-plan.jpg" alt="Terraform Modules Plan" /></p>
+
+<pre><code>terraform apply
+</code></pre>
+
+<p><img src="/docs/assets/terraform/terraform-modules-apply.jpg" alt="Terraform Modules Apply" /></p>
+
+<p>Modules possibilities are endless: you can use several modules at once, you can mix the use of modules with traditional <code>resource</code> definitions, you can even call modules from remote sources (version systems). For more information read Terraform <a href="https://www.terraform.io/docs/modules/index.html">modules documentation</a>.</p>
+
+<h2 id="server-configuration">Server Configuration</h2>
+
+<p>Server configuration is beyond the scope of this guide, but it is worth mentioning that Terraform offers many ways to set up your Linode:</p>
+
+<ul>
+<li>Using custom scripts, that can be included on configuration file itself or called from a local or remote file.</li>
+<li>Using specialized software tools integrated with Terraform like Chef or Puppet.</li>
+<li>Using container-based solutions like Docker, Kubernetes.</li>
+<li>Using Terraform plugin-based solutions.</li>
+</ul>
+
+<p>There are also plenty of <a href="https://www.terraform.io/docs/provisioners/index.html">provisioners</a>, <a href="https://github.com/terraform-providers">providers</a> and even <a href="https://registry.terraform.io">modules</a> available to use.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.terraform.io/docs/index.html">Terraform Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/">Install WordPress Using WP-CLI on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/introduction-to-firewalld-on-centos/">Introduction to FirewallD on CentOS</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/nodebalancer/nodebalancer-ssl-configuration/">NodeBalancer SSL Configuration</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+</ul></li>
+<li><a href="#installing-terraform-on-ubuntu-16-04">Installing Terraform on Ubuntu 16.04</a>
+<ul>
+<li><a href="#install-golang">Install Golang</a></li>
+<li><a href="#building-the-linode-plugin">Building the Linode plugin</a></li>
+<li><a href="#install-terraform">Install Terraform</a></li>
+</ul></li>
+<li><a href="#configure-the-linode-provider">Configure the Linode Provider</a>
+<ul>
+<li><a href="#test-and-deploy-the-linode-infrastructure">Test and Deploy the Linode Infrastructure</a>
+<ul>
+<li><a href="#single-server-basic-linode">Single Server Basic Linode</a></li>
+</ul></li>
+<li><a href="#two-server-configuration">Two Server Configuration</a></li>
+<li><a href="#adjust-architecture">Adjust Architecture</a></li>
+<li><a href="#advanced-configuration-example">Advanced Configuration Example</a></li>
+</ul></li>
+<li><a href="#managing-your-infrastructure">Managing your infrastructure</a>
+<ul>
+<li><a href="#terraform-modules">Terraform Modules</a>
+<ul>
+<li><a href="#basic-module-structure">Basic Module structure</a></li>
+</ul></li>
+<li><a href="#server-configuration">Server Configuration</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

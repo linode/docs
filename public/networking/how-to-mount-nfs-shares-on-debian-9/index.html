@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Mount NFS Shares on Debian 9</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This tutorial shows how to set up an NFS server and client for remote file access on Debian.">
+        <meta name="keywords" content="NFS, network file system">
+        
+        <meta property="og:title" content="How to Mount NFS Shares on Debian 9">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/how-to-mount-nfs-shares-on-debian-9/">
+        <meta property="og:description" content="With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes for file sharing as an NFS server and client.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/how-to-mount-nfs-shares-on-debian-9/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  How to Mount NFS Shares on Debian 9
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Mount NFS Shares on Debian 9</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-07T00:00:00Z">Tuesday, November 7, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fhow-to-mount-nfs-shares-on-debian-9%2f&via=linode&text=How%20to%20Mount%20NFS%20Shares%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fhow-to-mount-nfs-shares-on-debian-9%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fhow-to-mount-nfs-shares-on-debian-9%2f&t=How%20to%20Mount%20NFS%20Shares%20on%20Debian%209" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/how-to-mount-nfs-shares-on-debian-9.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/how-to-mount-nfs-shares-on-debian-9.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/networking/mount-nfs-shares-deb-9-title.jpg" alt="How to Mount NFS Shares on Debian 9" title="How to Mount NFS Shares on Debian 9" /></p>
+
+<h2 id="what-is-network-file-system-nfs">What is Network File System (NFS)</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Network_File_System">Network File System</a> (NFS) is a file system protocol that allows users of Unix-like systems to access files over a network in much the same way they can with local storage. This is useful for sharing files across several Linodes or other computers on the internet. For example, you can share the home directories for your users, or system configuration files, over NFS.</p>
+
+<p>However, be aware that one limitation of NFS (versions 3 and older) is that servers and clients must be restricted to a local or trusted private network since data travels unencrypted from one machine to the other. This drawback was addressed with NFS version 4, which relies on Kerberos for authentication and encryption. Unfortunately, setting up Kerberos for use with NFS is rather complicated and requires a Key Distribution Center, which is out of the scope of this tutorial.</p>
+
+<p>This guide walks you through the setup of two Linodes; one is the NFS server, and the other acting as the client. In this example, both Linodes are in the same data center and will communicate using their private IP addresses, so your data will never leave Linode&rsquo;s network. <strong>Caution</strong>: Other NFS setups can potentially send traffic over the public internet.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+<li>Two Debian 9 Linodes deployed in the same data center.</li>
+<li>Linodes configured to use private IPs. See our <a href="/docs/networking/linux-static-ip-configuration">Linux Static IP Configuration</a> guide.</li>
+</ul>
+
+<h2 id="nfs-server-setup">NFS Server Setup</h2>
+
+<p>Choose one Linode to be your NFS server. Follow the instructions below to configure it.</p>
+
+<ol>
+<li><p>Update your package references:</p>
+
+<pre><code>sudo apt update
+</code></pre></li>
+
+<li><p>Install the NFS server package <code>nfs-kernel-server</code>:</p>
+
+<pre><code>sudo apt install nfs-kernel-server
+</code></pre></li>
+
+<li><p>Install the Portmapper package <code>portmap</code>:</p>
+
+<pre><code>sudo apt-get install portmap
+</code></pre></li>
+
+<li><p>Prevent access to the services used by NFS by default by adding the following line to your <code>hosts.deny</code> file.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts.deny 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">rpcbind mountd nfsd statd lockd rquotad : ALL</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Allow access to the services used by NFS for your client and localhost. Add the following lines to your <code>hosts.allow</code> file, replacing <code>example_IP</code> with the client Linode&rsquo;s private IPv4 address.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts.allow 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">rpcbind mountd nfsd statd lockd rquotad : <span class="m">127</span>.0.0.1 : allow
+rpcbind mountd nfsd statd lockd rquotad : example_IP : allow
+rpcbind mountd nfsd statd lockd rquotad : ALL : deny</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Create a directory in your local filesystem to use as the NFS share&rsquo;s root location:</p>
+
+<pre><code>sudo mkdir /var/nfsroot
+</code></pre></li>
+
+<li><p>Assign appropriate ownership to the NFS share&rsquo;s root:</p>
+
+<pre><code>sudo chown nobody:nogroup /var/nfsroot/
+</code></pre></li>
+
+<li><p>Add the following line to the <code>/etc/exports</code> file, replacing <code>example_IP</code> with the client Linode&rsquo;s private IPv4 address. Make sure there is no space between the /17 and the opening parenthesis, and that there is a blank line at the end of the file.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/exports 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/var/nfsroot     example_IP/17<span class="o">(</span>rw,root_squash,subtree_check<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Update the table of exported file systems with the following command:</p>
+
+<pre><code>sudo exportfs -ra
+</code></pre></li>
+
+<li><p>Restart the NFS service on the server Linode for your changes to take effect:</p>
+
+<pre><code>sudo systemctl restart nfs-kernel-server
+</code></pre></li>
+</ol>
+
+<p>Done! Now you have a basic NFS server onone of your Linodes, configured to serve the <code>/var/nfsroot</code> directory to your second Linode.</p>
+
+<h2 id="nfs-client-setup">NFS Client Setup</h2>
+
+<p>The second Linode will be your NFS client. Follow the instructions below to configure it.</p>
+
+<ol>
+<li><p>Update your package references:</p>
+
+<pre><code>sudo apt update
+</code></pre></li>
+
+<li><p>Install the NFS client package <code>nfs-common</code>:</p>
+
+<pre><code>sudo apt install nfs-common
+</code></pre></li>
+
+<li><p>Create a directory in the client Linode&rsquo;s local filesystem to serve as the mount point for the remote filesystem:</p>
+
+<pre><code>sudo mkdir /mnt/remotenfs
+</code></pre></li>
+
+<li><p>Use your favorite editor to add the following line to the client&rsquo;s <code>fstab</code> file, replacing <code>example_IP</code> with the server Linode&rsquo;s private IPv4 address.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/fstab 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">example_IP:/var/nfsroot /mnt/remotenfs nfs rw,async,hard,intr,noexec <span class="m">0</span> <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Mount the filesystem by running the following command:</p>
+
+<pre><code>sudo mount /mnt/remotenfs
+</code></pre></li>
+</ol>
+
+<p>And you&rsquo;re done! Now, from the client Linode, you have access to the remote filesystem hosted on your Linode NFS server. You can add more clients by adding them to the server&rsquo;s <code>/etc/exports</code> file, then repeating the client setup for each client.</p>
+
+<h2 id="advanced-configuration">Advanced Configuration</h2>
+
+<p>NFS provides various mount options. In this guide, we are using the standard behaviors of read and write access, asynchronous file transfers, and interruptible hard waits, but you can configure other behaviors on your NFS shares using the following options.</p>
+
+<h3 id="client-options">Client Options</h3>
+
+<p>These options can be specified either in <code>fstab</code>, or manually using the <code>mount</code> command with the <code>-o</code> switch, followed by a comma-separated list of mount options.</p>
+
+<ul>
+<li><strong>rw</strong>: Read/write filesystem.</li>
+<li><strong>ro</strong>: Read-only filesystem. Remote NFS clients can&rsquo;t modify the filesystem.</li>
+<li><strong>hard</strong>: Applications using files stored on an NFS will always wait if the server goes down. User cannot terminate the process unless the option <code>intr</code> is set.</li>
+<li><strong>soft</strong>: Applications using files stored on an NFS will wait a specified time (using the <code>timeo</code> option) if the server goes down, and after that, will throw an error.</li>
+<li><strong>intr</strong>: Allows user interruption of processes waiting on a NFS request.</li>
+<li><strong>timeo=&lt;num&gt;</strong>: For use with the <strong>soft</strong> option. Specify the timeout for an NFS request.</li>
+<li><strong>nolock</strong>: Disable file locks. Useful with older NFS servers.</li>
+<li><strong>noexec</strong>: Disable execution of binaries or scripts on an NFS share.</li>
+<li><strong>nosuid</strong>: Prevents users from gaining ownership of files on the NFS share.</li>
+<li><strong>rsize=&lt;num&gt;</strong>: Sets the read block data size. Defaults to 8192 on NFSv2 and NFSv3, and 32768 on NFSv4.</li>
+<li><strong>wsize=&lt;num&gt;</strong>: Sets the write block data size. Defaults to 8192 on NFSv2 and NFSv3, and 32768 on NFSv4.</li>
+</ul>
+
+<h3 id="server-options">Server Options</h3>
+
+<p>These options can be specified in the <code>/etc/exports</code> entry:</p>
+
+<ul>
+<li><strong>rw</strong>: Read/write filesystem.</li>
+<li><strong>ro</strong>: Force clients to connect in the read-only filesystem mode only.</li>
+<li><strong>no_root_squash</strong>: The root account on the client machine will have the same privilege level as the root on the server machine. This option has security implications; do not use unless you are sure you need it. On the other hand, <strong>root_squash</strong> causes root on the client to have the same access type as nobody on the server - thus preventing root on the client(s) from spreading undesired files on to the others.</li>
+<li><strong>no_subtree_check</strong>: Disable file location checks on partial volume exports. This option will speed up transfers on full volume exports.</li>
+<li><strong>sync</strong>: Force all transfers to operate in synchronous mode, so all clients will wait until their operations are really done. This can avoid data corruption in the event of a server crash.</li>
+</ul>
+
+<h3 id="examples">Examples</h3>
+
+<p>In the client, create a test file named <code>testfile.txt</code> inside <code>/mnt/remotenfs</code>:</p>
+
+<pre><code>sudo echo &quot;Hello World&quot; &gt; /mnt/remotenfs/testfile.txt
+</code></pre>
+
+<p>If everything went as expected, <code>/mnt/remotenfs/testfile.txt</code> is owned by <code>nobody:nogroup</code>. You can check with</p>
+
+<pre><code>ls -l /mnt/remotenfs/testfile.txt
+</code></pre>
+
+<p>Likewise, the same permissions should be visible in the server if you do</p>
+
+<pre><code>ls -l /var/nfsroot/testfile.txt
+</code></pre>
+
+<p>Now let&rsquo;s replace <strong>root_squash</strong> with <strong>no_root_squash</strong> in <code>/etc/exports</code> on the server and update the table of exported shares as explained in step 8 of <strong>NFS Server Setup</strong> above. Finally, we will repeat the above exercise by creating another test file (<code>testfile2.txt</code>) in the same directory (<code>/mnt/remotenfs</code>):</p>
+
+<pre><code>sudo echo &quot;Hi everyone&quot; &gt; /mnt/remotenfs/testfile2.txt
+</code></pre>
+
+<p>If you check the ownership of <code>testfile2.txt</code> either on the client or the server, you&rsquo;ll see that it is now owned by <code>root:root</code>. These simple examples illustrate the use and implications of <strong>root_squash</strong> and <strong>no_root_squash</strong>. For your security, don&rsquo;t forget to remove the latter and readd the former in your <code>/etc/exports</code> as soon as possible.</p>
+
+            
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-network-file-system-nfs">What is Network File System (NFS)</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#nfs-server-setup">NFS Server Setup</a></li>
+<li><a href="#nfs-client-setup">NFS Client Setup</a></li>
+<li><a href="#advanced-configuration">Advanced Configuration</a>
+<ul>
+<li><a href="#client-options">Client Options</a></li>
+<li><a href="#server-options">Server Options</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

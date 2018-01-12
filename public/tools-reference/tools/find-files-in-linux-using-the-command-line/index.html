@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Find Files in Linux, Using the Command Line</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use the Find command from the Linux command line to locate files in a file system">
+        <meta name="keywords" content="find command, linux, command line">
+        
+        <meta property="og:title" content="Find Files in Linux, Using the Command Line">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/">
+        <meta property="og:description" content="Use the Find command from the Linux command line to locate files in a file system">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/tools/">Tools</a>
+  
+</li>
+
+
+<li>
+  
+  Find Files in Linux, Using the Command Line
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Find Files in Linux, Using the Command Line</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-09-15T00:00:00Z">Thursday, September 15, 2016</time> by Edward Angert</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2ffind-files-in-linux-using-the-command-line%2f&via=linode&text=Find%20Files%20in%20Linux%2c%20Using%20the%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2ffind-files-in-linux-using-the-command-line%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2ffind-files-in-linux-using-the-command-line%2f&t=Find%20Files%20in%20Linux%2c%20Using%20the%20Command%20Line" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/tools/find-files-in-linux-using-the-command-line.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/tools/find-files-in-linux-using-the-command-line.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><code>find</code> is a command for recursively filtering objects in the file system based on a simple conditional mechanism. Use <code>find</code> to search for a file or directory on your file system. Using the <code>-exec</code> flag, files can be found and immediately <a href="#how-to-find-and-process-files-using-the-find-command">processed within the same command</a>.</p>
+
+<p><img src="/docs/assets/find-files-title.jpg" alt="Find Files in Linux using the command line" title="Find Files in Linux using the command line" /></p>
+
+<h2 id="find-linux-files-by-name-or-extension">Find Linux Files by Name or Extension</h2>
+
+<p>Use <code>find</code> from the command line to locate a specific file by name or extension.
+The following example searches for <code>*.err</code> files in the <code>/home/username/</code> directory and all sub-directories:</p>
+
+<pre><code>find /home/username/ -name &quot;*.err&quot;
+</code></pre>
+
+<h2 id="common-linux-find-commands-and-syntax">Common Linux Find Commands and Syntax</h2>
+
+<p><code>find</code> expressions take the following form:</p>
+
+<pre><code>find options starting/path expression
+</code></pre>
+
+<ul>
+<li>The <code>options</code> attribute will control the behavior and optimization method of the <code>find</code> process.</li>
+<li>The <code>starting/path</code> attribute will define the top level directory where <code>find</code> begins filtering.</li>
+<li>The <code>expression</code> attribute controls the tests that search the directory hierarchy to produce output.</li>
+</ul>
+
+<p>Consider the following example command:</p>
+
+<pre><code>find -O3 -L /var/www/ -name &quot;*.html&quot;
+</code></pre>
+
+<p>This command enables the maximum optimization level (-O3) and allows <code>find</code> to follow symbolic links (<code>-L</code>). <code>find</code> searches the entire directory tree beneath <code>/var/www/</code> for files that end with <code>.html</code>.</p>
+
+<h3 id="basic-examples">Basic Examples</h3>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>find . -name testfile.txt</code></td>
+<td align="left">Find a file called testfile.txt in current and sub-directories.</td>
+</tr>
+
+<tr>
+<td><code>find /home -name '*.jpg</code></td>
+<td align="left">Find all <code>.jpg</code> files in the <code>/home</code> and sub-directories.</td>
+</tr>
+
+<tr>
+<td><code>find . -type f -empty</code></td>
+<td align="left">Find an empty file within the current directory.</td>
+</tr>
+
+<tr>
+<td><code>find /home -user exampleuser -mtime 7 -iname &quot;.db&quot;</code></td>
+<td align="left">Find all <code>.db</code> files (ignoring text case) modified in the last 7 days by a user named exampleuser.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="options-and-optimization-for-find">Options and Optimization for Find</h2>
+
+<p>The default configuration for <code>find</code> will ignore symbolic links (shortcut files). If you want <code>find</code> to follow and return symbolic links, you can add the <code>-L</code> option to the command, as shown in the example above.</p>
+
+<p><code>find</code> optimizes its filtering strategy to increase performance. Three user-selectable optimization levels are specified as <code>-O1</code>, <code>-O2</code>, and <code>-O3</code>. The <code>-O1</code> optimization is the default and forces <code>find</code> to filter based on filename before running all other tests.</p>
+
+<p>Optimization at the <code>-O2</code> level prioritizes file name filters, as in <code>-O1</code>, and then runs all file-type filtering before proceeding with other more resource-intensive conditions. Level <code>-O3</code> optimization allows <code>find</code> to perform the most severe optimization and reorders all tests based on their relative expense and the likelihood of their success.</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right"><code>-O1</code></td>
+<td align="left">(Default) filter based on file name first.</td>
+</tr>
+
+<tr>
+<td align="right"><code>-O2</code></td>
+<td align="left">File name first, then file-type.</td>
+</tr>
+
+<tr>
+<td align="right"><code>-O3</code></td>
+<td align="left">Allow <code>find</code> to automatically re-order the search based on efficient use of resources and likelihood. of success</td>
+</tr>
+
+<tr>
+<td align="right"><code>-maxdepth X</code></td>
+<td align="left">Search current directory as well as all sub-directories X levels deep.</td>
+</tr>
+
+<tr>
+<td align="right"><code>-iname</code></td>
+<td align="left">Search without regard for text case.</td>
+</tr>
+
+<tr>
+<td align="right"><code>-not</code></td>
+<td align="left">Return only results that do not match the test case.</td>
+</tr>
+
+<tr>
+<td align="right"><code>-type f</code></td>
+<td align="left">Search for files.</td>
+</tr>
+
+<tr>
+<td align="right"><code>-type d</code></td>
+<td align="left">Search for directories.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="find-files-by-modification-time">Find Files by Modification Time</h2>
+
+<p>The <code>find</code> command contains the ability to filter a directory hierarchy based on when the file was last modified:</p>
+
+<pre><code>find / -name &quot;*conf&quot; -mtime 7
+find /home/exampleuser/ -name &quot;*conf&quot; -mtime 3
+</code></pre>
+
+<p>The first command returns a list of all files in the entire file system that end with the characters <code>conf</code> and have been modified in the last 7 days. The second command filters <code>exampleuser</code> user&rsquo;s home directory for files with names that end with the characters <code>conf</code> and have been modified in the previous 3 days.</p>
+
+<h2 id="use-grep-to-find-files-based-on-content">Use Grep to Find Files Based on Content</h2>
+
+<p>The <code>find</code> command is only able to filter the directory hierarchy based on a file&rsquo;s name and meta data. If you need to search based on the content of the file, use a tool like <a href="/docs/tools-reference/search-and-filter-text-with-grep">grep</a>. Consider the following example:</p>
+
+<pre><code>find . -type f -exec grep &quot;example&quot; '{}' \; -print
+</code></pre>
+
+<p>This searches every object in the current directory hierarchy (<code>.</code>) that is a file (<code>-type f</code>) and then runs the command <code>grep &quot;example&quot;</code> for every file that satisfies the conditions. The files that match are printed on the screen (<code>-print</code>). The curly braces (<code>{}</code>) are a placeholder for the <code>find</code> match results. The <code>{}</code> are enclosed in single quotes (<code>'</code>) to avoid handing <code>grep</code> a malformed file name. The <code>-exec</code> command is terminated with a semicolon (<code>;</code>), which should be escaped (<code>\;</code>) to avoid interpretation by the shell.</p>
+
+<p>Before the implementation of the <code>-exec</code> option, this kind of command might have used the <code>xargs</code> command to generate a similar output:</p>
+
+<pre><code>find . -type f -print | xargs grep &quot;example&quot;
+</code></pre>
+
+<h2 id="how-to-find-and-process-files-using-the-find-command">How to Find and Process Files Using the Find Command</h2>
+
+<p>The <code>-exec</code> option runs commands against every object that matches the find expression. Consider the following example:</p>
+
+<pre><code>find . -name &quot;rc.conf&quot; -exec chmod o+r '{}' \;
+</code></pre>
+
+<p>This filters every object in the current hierarchy (<code>.</code>) for files named <code>rc.conf</code> and runs the <code>chmod o+r</code> command to modify file permissions of the <code>find</code> results.</p>
+
+<p>The commands run with the <code>-exec</code> are executed in the root directory of the <code>find</code> process. Use <code>-execdir</code> to execute the specified command in the directory where the match resides. This may alleviate security concerns and produce more desirable performance for some operations.</p>
+
+<p>The <code>-exec</code> or <code>-execdir</code> options run without further prompts. If you prefer to be prompted before action is taken, replace <code>-exec</code> with <code>-ok</code> or <code>-execdir</code> with <code>-okdir</code>.</p>
+
+<h2 id="how-to-find-and-delete-files-in-the-linux-command-line">How to Find and Delete Files in the Linux Command Line</h2>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Use this option with extreme caution.</div>
+</blockquote>
+
+
+<p>Add the option <code>-delete</code> to the end of a match expression to delete all files that match. Use this option when you are certain that the results <em>only</em> match the files that you wish to delete.</p>
+
+<p>In the following example, <code>find</code> locates all files in the hierarchy starting at the current directory and fully recursing into the directory tree. In this example, <code>find</code> will delete all files that end with the characters <code>.bak</code>:</p>
+
+<pre><code>find . -name &quot;*.bak&quot; -delete
+</code></pre>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://man7.org/linux/man-pages/man1/find.1.html">Online man Pages</a></li>
+
+<li><a href="http://explainshell.com/explain/1/find">ExplainShell</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/tools/create-file-system-links-with-ln/">Create File System Links with ln</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/install-selinux-on-ubuntu/">How to Install SELinux on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/how-to-use-wget/">How to Use Wget</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/enable-backups-on-a-linode/">Enable Backups on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/">Deploy an Image to a Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#find-linux-files-by-name-or-extension">Find Linux Files by Name or Extension</a></li>
+<li><a href="#common-linux-find-commands-and-syntax">Common Linux Find Commands and Syntax</a>
+<ul>
+<li><a href="#basic-examples">Basic Examples</a></li>
+</ul></li>
+<li><a href="#options-and-optimization-for-find">Options and Optimization for Find</a></li>
+<li><a href="#find-files-by-modification-time">Find Files by Modification Time</a></li>
+<li><a href="#use-grep-to-find-files-based-on-content">Use Grep to Find Files Based on Content</a></li>
+<li><a href="#how-to-find-and-process-files-using-the-find-command">How to Find and Process Files Using the Find Command</a></li>
+<li><a href="#how-to-find-and-delete-files-in-the-linux-command-line">How to Find and Delete Files in the Linux Command Line</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

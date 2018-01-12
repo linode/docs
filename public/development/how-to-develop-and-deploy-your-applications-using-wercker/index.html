@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Develop and Deploy Your Applications Using Wercker</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.">
+        <meta name="keywords" content="wercker, docker, development">
+        
+        <meta property="og:title" content="How to Develop and Deploy Your Applications Using Wercker">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/how-to-develop-and-deploy-your-applications-using-wercker/">
+        <meta property="og:description" content="Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/how-to-develop-and-deploy-your-applications-using-wercker/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  How to Develop and Deploy Your Applications Using Wercker
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Develop and Deploy Your Applications Using Wercker</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-06T00:00:00Z">Monday, November 6, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Damaso Sanoja
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fhow-to-develop-and-deploy-your-applications-using-wercker%2f&via=linode&text=How%20to%20Develop%20and%20Deploy%20Your%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fhow-to-develop-and-deploy-your-applications-using-wercker%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fhow-to-develop-and-deploy-your-applications-using-wercker%2f&t=How%20to%20Develop%20and%20Deploy%20Your%20Applications%20Using%20Wercker" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/how-to-develop-and-deploy-your-applications-using-wercker.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/how-to-develop-and-deploy-your-applications-using-wercker.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<h2 id="what-is-wercker">What is Wercker?</h2>
+
+<p>Wercker is a software automation tool that aims to improve the Continuous-Integration and Continuous-Delivery (CI/CD) process for developers and organizations. It enables the creation of automated workflows, or <em>pipelines</em>, which specify a series of tasks or commands that are run on your code whenever a change is pushed to the source repository.</p>
+
+<p>This guide will use three example <a href="https://golang.org/">Go</a> apps to demonstrate the basics of Wercker setup and configuration, and show how these can be used to create different kinds of workflows.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Complete the <a href="/docs/getting-started">Getting Started</a> guide to create a Linode. The commands in this guide are written for Ubuntu 16.04, but should also work with other distributions.</p></li>
+
+<li><p>Follow the <a href="/docs/security/securing-your-server/">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use <code>sudo</code> wherever possible.</p></li>
+
+<li><p>Update your packages:</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre></li>
+
+<li><p>This guide requires Docker installed on your Linode. See our <a href="/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment">How to Install Docker and Pull Images for Container Deployment</a> guide for more information.</p></li>
+
+<li><p>Create a GitHub or similar account. Modify the commands to match your chosen git variant.</p></li>
+
+<li><p>Create a Docker account. Other services might require modifying the commands and examples.</p></li>
+</ol>
+
+<h2 id="set-up-demo-applications-and-version-control">Set up Demo Applications and Version Control</h2>
+
+<ol>
+<li><p>Install <code>git</code> on both your local machine and on your Linode:</p>
+
+<pre><code>sudo apt install git
+</code></pre></li>
+
+<li><p>Sign in to GitHub and fork the following repositories:</p>
+
+<ul>
+<li><a href="https://github.com/mcmastermind/jClocksGMT">jClocksGMT</a>, a basic jQuery collection of digital and analog clocks.</li>
+<li><a href="https://github.com/golang/example">golang/example</a>, a minimal set of <code>Go</code> examples made by <code>golang</code> Project.</li>
+<li><a href="https://github.com/wercker/getting-started-golang">Getting Started golang</a>, a sample <code>Go</code> application for Wercker.</li>
+</ul></li>
+
+<li><p>Clone your forks on your local machine. Replace <code>&lt;GITHUB_USER&gt;</code> in each command:</p>
+
+<pre><code>git clone https://github.com/&lt;GITHUB_USER&gt;/jClocksGMT.git
+git clone https://github.com/&lt;GITHUB_USER&gt;/example.git
+git clone https://github.com/&lt;GITHUB_USER&gt;/getting-started-golang.git
+</code></pre></li>
+
+<li><p>Install Go on your system and make sure it is in your <code>$PATH</code>:</p>
+
+<pre><code>sudo apt install golang-go
+go version
+</code></pre></li>
+</ol>
+
+<h2 id="set-up-a-wercker-account">Set up a Wercker Account</h2>
+
+<ol>
+<li><p>In a web browser, navigate to the <a href="http://www.wercker.com/">Wercker main page</a> and sign up for a free account.</p>
+
+<p><img src="/docs/assets/wercker/wercker-main.png" alt="Wercker Main Page" title="Wercker Main Page" /></p></li>
+
+<li><p>The easiest way to register is using your GitHub account.</p>
+
+<p><img src="/docs/assets/wercker/wercker-registration.png" alt="Wercker Registration" title="Wercker Registration" /></p></li>
+</ol>
+
+<h2 id="configure-wercker-yml-and-practice-examples">Configure wercker.yml and Practice Examples</h2>
+
+<p>One of the advantages of Wercker is its simplicity. One <code>wercker.yml</code> configuration file manages the automation <em>pipelines</em> through as many <em>steps</em> as needed. You can think of steps as calls to action processes, and <em>pipelines</em> as collections of one or more steps.</p>
+
+<h3 id="jclocksgmt-example">jClocksGMT Example</h3>
+
+<p>This example demonstrates how to use Wercker to update the source code on a remote server whenever the repository on GitHub is updated. This is a common use case for static web sites: whenever you push to GitHub from your local machine, the code on the server on which the site is hosted will automatically be updated as well.</p>
+
+<p>Create a <code>wercker.yml</code> file in the root of the <code>jClocksGMT</code> directory and paste in the content below. Replace <code>192.0.2.0</code> with the public IP address of your Linode, and update the last line to use the correct username and file path. All indentation in the <code>wercker.yml</code> must be with spaces, not tabs.</p>
+
+<dl class="file">
+<dt>
+
+
+		/path/to/jClocksGMT/wercker.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">box<span class="p">:</span><span class="w"> </span>debian<span class="w">
+</span><span class="w"></span><span class="c"># Build definition</span><span class="w">
+</span><span class="w"></span>build<span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># The steps that will be executed on build</span><span class="w">
+</span><span class="w">  </span>steps<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># Installs openssh client and server.</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>install-packages<span class="p">:</span><span class="w">
+</span><span class="w">        </span>packages<span class="p">:</span><span class="w"> </span>openssh-client<span class="w"> </span>openssh-server<span class="w">
+</span><span class="w">    </span><span class="c"># Adds Linode server to the list of known hosts.</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>add-to-known_hosts<span class="p">:</span><span class="w">
+</span><span class="w">            </span>hostname<span class="p">:</span><span class="w"> </span><span class="m">192.0</span>.<span class="m">2.0</span><span class="w">
+</span><span class="w">            </span>local<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="c"># Adds the Wercker SSH key.</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>add-ssh-key<span class="p">:</span><span class="w">
+</span><span class="w">            </span>keyname<span class="p">:</span><span class="w"> </span>linode<span class="w">
+</span><span class="w">    </span><span class="c"># Custom code to be executed on remote Linode</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>script<span class="p">:</span><span class="w">
+</span><span class="w">        </span>name<span class="p">:</span><span class="w"> </span>Update<span class="w"> </span>code<span class="w"> </span>on<span class="w"> </span>remote<span class="w"> </span>Linode<span class="w">
+</span><span class="w">        </span>code<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">          ssh username@&lt;Linode IP or hostname&gt; git -C /path/to/jClocksGMT pull</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Whenever a Wercker run is triggered (by a push to the repository), Wercker will load a Docker image and run the steps specified from that image. This is why all commands to be run on your Linode are prefaced with an <code>ssh</code> command. In this case, the <code>wercker.yml</code> file contains the following steps:</p>
+
+<ul>
+<li><code>box</code>: Defines the Docker image to be used. In this case a global Debian image is specified.</li>
+<li><code>install-packages</code>: This step is a shortcut to <code>apt-get install</code>. All packages listed will be installed in your container.</li>
+<li><code>add-to-known_hosts</code>: Adds the Linode IP or domain name to the known hosts file.</li>
+<li><code>add-ssh-key</code>: Adds the Wercker generated Public SSH key to your container.</li>
+<li><code>script</code>: Scripts are custom steps that can execute almost any command, in this case on your remote Linode.</li>
+</ul>
+
+<p>With this <code>build</code> pipeline, Wercker will do the following every time it is run:</p>
+
+<ol>
+<li>Load a Debian image in the container.</li>
+<li>Install the necessary packages, <code>openssh-client</code> and <code>openssh-server</code>.</li>
+<li>Set up the SSH connection between the Wercker container and the Linode.</li>
+<li>The Debian container runs a <code>git pull</code> command from your remote Linode.</li>
+</ol>
+
+<h3 id="hello-go-example">Hello.go Example</h3>
+
+<p>This example demonstrates a more complicated pipeline with both <code>build</code> and <code>deploy</code> pipelines. This time, Wercker will build a simple Go application and deploy it to DockerHub, then deploy the image from DockerHub to your remote Linode.</p>
+
+<ol>
+<li><p>Go to the root directory of your <code>example</code> fork and copy the <code>hello.go</code> file there:</p>
+
+<pre><code>cp ./hello/hello.go .
+</code></pre></li>
+
+<li><p>Create the <code>wercker.yml</code> file in the same directory:</p>
+
+<dl class="file">
+<dt>
+
+
+		/path/to/example/wercker.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span><span class="lnt">51</span><span class="lnt">52</span><span class="lnt">53</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">box<span class="p">:</span><span class="w"> </span>google/golang<span class="w">
+</span><span class="w">
+</span><span class="w"></span>build<span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span>steps<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># Sets the go workspace and places your package</span><span class="w">
+</span><span class="w">    </span><span class="c"># in the right place in the workspace tree</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>setup-go-workspace<span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="c"># Build the project</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>script<span class="p">:</span><span class="w">
+</span><span class="w">        </span>name<span class="p">:</span><span class="w"> </span>Build<span class="w"> </span>application<span class="w">
+</span><span class="w">        </span>code<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">            go get github.com/&lt;user&gt;/example
+</span><span class="sd">            go build -o myapp</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>script<span class="p">:</span><span class="w">
+</span><span class="w">        </span>name<span class="p">:</span><span class="w"> </span>Copy<span class="w"> </span>binary<span class="w">
+</span><span class="w">        </span>code<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">          cp myapp &#34;$WERCKER_OUTPUT_DIR&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c">### Docker Deployment</span><span class="w">
+</span><span class="w"></span>deploy<span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="c"># This deploys to DockerHub</span><span class="w">
+</span><span class="w">    </span>steps<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>internal/docker-scratch-push<span class="p">:</span><span class="w">
+</span><span class="w">        </span>username<span class="p">:</span><span class="w"> </span>$DOCKER_USERNAME<span class="w">
+</span><span class="w">        </span>password<span class="p">:</span><span class="w"> </span>$DOCKER_PASSWORD<span class="w">
+</span><span class="w">        </span>repository<span class="p">:</span><span class="w"> </span>&lt;docker-username&gt;/myapp<span class="w">
+</span><span class="w">        </span>cmd<span class="p">:</span><span class="w"> </span>./myapp<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c">### Linode Deployment from Docker</span><span class="w">
+</span><span class="w"></span>linode<span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span>steps<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># Installs openssh client and other dependencies.</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>install-packages<span class="p">:</span><span class="w">
+</span><span class="w">        </span>packages<span class="p">:</span><span class="w"> </span>openssh-client<span class="w"> </span>openssh-server<span class="w">
+</span><span class="w">    </span><span class="c"># Adds Linode server to the list of known hosts.</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>add-to-known_hosts<span class="p">:</span><span class="w">
+</span><span class="w">        </span>hostname<span class="p">:</span><span class="w"> </span><span class="m">192.0</span>.<span class="m">2.0</span><span class="w">
+</span><span class="w">        </span>local<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="c"># Adds SSH key created by Wercker</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>add-ssh-key<span class="p">:</span><span class="w">
+</span><span class="w">        </span>keyname<span class="p">:</span><span class="w"> </span>linode<span class="w">
+</span><span class="w">    </span><span class="c"># Custom code to pull image</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>script<span class="p">:</span><span class="w">
+</span><span class="w">        </span>name<span class="p">:</span><span class="w"> </span>pull<span class="w"> </span>latest<span class="w"> </span>image<span class="w">
+</span><span class="w">        </span>code<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">            ssh username@192.0.2.0 docker pull &lt;docker-username&gt;/myapp:latest
+</span><span class="sd">            ssh username@192.0.2.0 docker tag &lt;docker-username&gt;/myapp:latest &lt;docker-username&gt;/myapp:current
+</span><span class="sd">            ssh username@192.0.2.0 docker rmi &lt;docker-username&gt;/myapp:latest</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<p>There are three pipelines in this configuration:</p>
+
+<ol>
+<li><p><code>build</code>: The obligatory pipeline that is used in this case to build your application. Since this example uses Go, the most convenient <code>box</code> is the official <code>google/golang</code> that comes with the necessary tools configured. The steps performed by this pipeline are:</p>
+
+<ul>
+<li><code>setup-go-workspace</code>: Prepares your Go environment.</li>
+<li><code>Build application</code>: Runs the actual building process for your sample application named <code>myapp</code>. The application is saved in the corresponding workspace.</li>
+<li><code>Copy binary</code>: Remember that you are working on a temporary pipeline. This step saves your application binary as a predefined environmental variable called <code>$WERCKER_OUTPUT_DIR</code> so that it is available for use in the next pipeline.</li>
+</ul></li>
+
+<li><p><code>deploy</code>: Takes your binary from <code>$WERCKER_OUTPUT_DIR</code> and then pushes it to your Docker account.</p>
+
+<ul>
+<li><code>internal/docker-scratch-push</code>: Makes all the magic happen. Using the environmental variables <code>$DOCKER_USERNAME</code> and <code>$DOCKER_PASSWORD</code>, this saves your binary to a lightweight <code>scratch</code> image. The <code>repository</code> parameter specifies the desired Docker repository to use.</li>
+</ul></li>
+
+<li><p><code>linode</code>: The fist three steps, <code>install-packages</code>, <code>add-to-known_hosts</code> and <code>add-ssh-key</code> were explained in the previous example: they are responsible for the SSH communication between your pipeline&rsquo;s container and your Linode.</p>
+
+<p>The custom <code>-script</code>, <code>pull latest image</code>, which begins on Line 48 in the above example:</p>
+
+<ul>
+<li>Pulls your most recent image build from Docker Hub. By default this image is tagged <code>latest</code> unless specified otherwise.</li>
+<li>Clones your latest image and tag it <code>current</code>.</li>
+<li>Removes the pulled image tagged <code>latest</code> in preparation for your next update.</li>
+</ul></li>
+</ol>
+
+<p>This is one simple way to have a &ldquo;current&rdquo; application running all the time. Remember this is only an example you can define your own process.</p>
+
+<h3 id="getting-started-golang-example-with-wercker-cli">Getting-Started-golang - Example with Wercker CLI</h3>
+
+<p>This last example introduces the <strong>Wercker CLI</strong>. This tool requires that Docker be installed on your local machine. You can use the same guide as for your Linode in the <a href="/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment">Pull Images for Container Deployment</a> guide.</p>
+
+<ol>
+<li><p>Install Docker Machine:</p>
+
+<pre><code>curl -L https://github.com/docker/machine/releases/download/v0.12.2/docker-machine-`uname -s`-`uname -m` &gt;/tmp/docker-machine &amp;&amp; chmod +x /tmp/docker-machine &amp;&amp; sudo cp /tmp/docker-machine /usr/local/bin/docker-machine
+</code></pre></li>
+
+<li><p>Install the Wercker CLI:</p>
+
+<pre><code>sudo curl -L https://s3.amazonaws.com/downloads.wercker.com/cli/stable/linux_amd64/wercker -o /usr/local/bin/wercker
+sudo chmod 777 /usr/local/bin/wercker
+</code></pre></li>
+
+<li><p>Check that the CLI is correctly installed:</p>
+
+<pre><code>wercker version
+</code></pre></li>
+
+<li><p>If the above command fails, you may also need to add <code>/usr/local/bin</code> to your <code>$PATH</code> variable:</p>
+
+<pre><code>echo 'PATH=/usr/local/bin:$PATH' &gt;&gt; ~/.bash_profile
+</code></pre></li>
+
+<li><p>Navigate to your fork&rsquo;s root directory:</p>
+
+<pre><code>cd /path/of/your/getting-started-golang
+</code></pre>
+
+<p>A <code>wercker.yml</code> file should already be present:</p>
+
+<dl class="file">
+<dt>
+
+
+		/path/to/getting-started-golang/wercker.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">box<span class="p">:</span><span class="w">
+</span><span class="w"></span>id<span class="p">:</span><span class="w"> </span>golang<span class="w">
+</span><span class="w"></span>ports<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span><span class="s2">&#34;5000&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>dev<span class="p">:</span><span class="w">
+</span><span class="w"></span>steps<span class="p">:</span><span class="w">
+</span><span class="w"></span>-<span class="w"> </span>internal/watch<span class="p">:</span><span class="w">
+</span><span class="w">    </span>code<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">      go build ./...
+</span><span class="sd">      ./source</span><span class="w">
+</span><span class="w">    </span>reload<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Build definition</span><span class="w">
+</span><span class="w"></span>build<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># The steps that will be executed on build</span><span class="w">
+</span><span class="w">    </span>steps<span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="c"># golint step</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>wercker/golint<span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="c"># Build the project</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>script<span class="p">:</span><span class="w">
+</span><span class="w">            </span>name<span class="p">:</span><span class="w"> </span>go<span class="w"> </span>build<span class="w">
+</span><span class="w">            </span>code<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">              go build ./...</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Test the project</span><span class="w">
+</span><span class="w"></span>-<span class="w"> </span>script<span class="p">:</span><span class="w">
+</span><span class="w">    </span>name<span class="p">:</span><span class="w"> </span>go<span class="w"> </span>test<span class="w">
+</span><span class="w">    </span>code<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">      go test ./...</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Only two pipelines are defined in this <code>yml</code> file: <code>dev</code> and <code>build</code>. Note that in this example, Port <code>5000</code> is exposed.</p>
+
+<ul>
+<li><code>dev</code>: This special type of pipeline can only be used locally, and serves the purpose of application testing.</li>
+<li><code>internal/watch</code>: Watches for source code changes. If any occur, it triggers a build of your application again (<code>reload: true</code>). This is useful for debugging processes.</li>
+<li><code>build</code>: This was usually your first step for building your application. But now you can use it to check your code for any errors during the <code>build</code> step (<code>wercker/golint</code>).</li>
+</ul></li>
+</ol>
+
+<h2 id="how-to-add-your-applications-to-wercker">How to Add Your Applications to Wercker</h2>
+
+<p>As the name implies, Wercker applications correspond to each of your projects. Because of Wercker&rsquo;s versioning scheme, you can think of each application as a specific working repository.</p>
+
+<ol>
+<li><p>Register the three forked repositories. Click the <strong>+</strong> button in the upper right:</p>
+
+<p><img src="/docs/assets/wercker/wercker-app-button.jpg" alt="Application creation" title="Application creation" /></p></li>
+
+<li><p>Select the first example repository, <strong>&lt;GITHUB_USER&gt;/jClocksGMT</strong>:</p>
+
+<p><img src="/docs/assets/wercker/wercker-choose-repository.png" alt="Choose repository" title="Choose repository" /></p></li>
+
+<li><p>Configure access to your repository. If the project doesn&rsquo;t use submodules, the recommended option is usually the best choice.</p>
+
+<p><img src="/docs/assets/wercker/wercker-conf-access.jpg" alt="Configure access" title="Configure access" /></p></li>
+
+<li><p>Choose whether your application should be private (default) or public. Mark the example as public and click the <strong>Finish</strong> button.</p>
+
+<p>A greeting message indicates you are almost ready to start building your application. It offers to start a wizard to help you create the application <code>wercker.yml</code> file, but that won&rsquo;t be necessary because you already did that in the previous section.</p>
+
+<p><img src="/docs/assets/wercker/wercker-yml-wizard.jpg" alt="YML Wizard" title="YML Wizard" /></p></li>
+
+<li><p>Repeat the same procedure for the other two example projects.</p></li>
+</ol>
+
+<h3 id="configure-applications">Configure Applications</h3>
+
+<h4 id="jclocks-example">jClocks Example</h4>
+
+<p>Similar to the configuration files, you have several environmental variables to setup.</p>
+
+<ol>
+<li><p>For the first example you need a SSH key pair for communication with your Linode. Click on the <strong>Environment</strong> tab:</p>
+
+<p><img src="/docs/assets/wercker/wercker-global-environment-variables.jpg" alt="jClocksGMT variables" title="jClocksGMT variables" /></p></li>
+
+<li><p>Click on &ldquo;Generate SSH Keys&rdquo;. A popup window will ask for a key name (use the same name used in your <code>wercker.yml</code> file: <code>linode</code>). Choose <strong>4096 bit</strong> encryption:</p>
+
+<p><img src="/docs/assets/wercker/wercker-ssh-key-creation.jpg" alt="jClocksGMT SSH Keys" title="jClocksGMT SSH Keys" /></p>
+
+<p>This will generate a key pair: <code>linode_PUBLIC</code> and <code>linode_PRIVATE</code>. The suffix is automatically added and is not needed in the configuration file.</p></li>
+
+<li><p>Copy the <code>linode_PUBLIC</code> key into your Linode. If your terminal application supports copy and paste, you can use <strong>CTL-C</strong> and <strong>CTL-V</strong> to copy the text from the Wercker dashboard into <code>~/.ssh/authorized_keys</code> on your Linode. If not, you can copy the key to your local machine and copy it from there to your remote server:</p>
+
+<pre><code>cat ~/.ssh/jclock.pub | ssh root@&lt;Linode IP or hostname&gt; &quot;mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt;  ~/.ssh/authorized_keys&quot;
+</code></pre></li>
+
+<li><p>Your first example is ready to be deployed: the application is configured on Wercker and your local repository contains the <code>wercker.yml</code> file that explains the steps to be executed. To trigger the automation, commit your changes. To watch the progress, click the <strong>Runs</strong> tab in Wercker. Run the following command from the root of the jClocksGMT fork:</p>
+
+<pre><code>git add . &amp;&amp; git commit -m &quot;initial commit&quot; &amp;&amp; git push origin master
+</code></pre></li>
+
+<li><p>An animation will show each step&rsquo;s progress, allowing you to debug any problems. In this case, the build will fail:</p>
+
+<p><img src="/docs/assets/wercker/wercker-jclocks-error-01.jpg" alt="jClocksGMT build error" title="jClocksGMT build error" /></p>
+
+<p>The hint says &ldquo;Update code on remote Linode failed.&rdquo; Click on the build pipeline for more information:</p>
+
+<p><img src="/docs/assets/wercker/wercker-jclocks-error-02.jpg" alt="jClocksGMT build error - more information" title="jClocksGMT build error - more information" /></p></li>
+
+<li><p>This shows that the process failed at the step &ldquo;Update code on remote Linode.&rdquo; This is due to the fact the repository was not cloned on the remote Linode in the first place. Connect to your Linode and clone the repository in the appropriate location, then return to the Wercker dashboard and click the &ldquo;Retry&rdquo; button:</p>
+
+<p><img src="/docs/assets/wercker/wercker-jclocks-retry.jpg" alt="jClocksGMT build error retry" title="jClocksGMT build error retry" /></p>
+
+<p>This time the run should succeed, and your remote Linode repository will be updated. This basic example can be useful for many scenarios. If you are hosting a static website, you can configure Wercker to update your remote server each time you commit a change.</p></li>
+</ol>
+
+<h4 id="hello-go-example-1">Hello.go Example</h4>
+
+<p>Click the <strong>Workflows</strong> tab in the Wercker dashboard. The editor will show a single pipeline, <code>build</code>, created automatically by Wercker. This example requires additional pipelines which you will have to create manually.</p>
+
+<ol>
+<li><p>Click <strong>Add new pipeline</strong>:</p>
+
+<p><img src="/docs/assets/wercker/wercker-add-pipeline.jpg" alt="Add pipeline" title="Add pipeline" /></p></li>
+
+<li><p>Fill in the fields as follows:</p>
+
+<ul>
+<li><strong>Name:</strong> You can use any name to describe your pipeline, for this example <code>deploy-docker</code> and <code>deploy-linode</code> will be used.</li>
+<li><strong>YML Pipeline name:</strong> This is the name declared in the <code>wercker.yml</code> file. Fill it in with <code>deploy</code> and <code>linode</code> respectively.</li>
+<li><strong>Hook type:</strong> Use the default behavior to <em>chain</em> this pipeline to another. You can select <strong>Git push</strong> if you want to run different pipelines in parallel each time a push is committed.</li>
+</ul></li>
+
+<li><p>Once you configure your pipelines you can chain them. Click the <strong>+</strong> to the right of the <code>build</code> pipeline:</p>
+
+<p><img src="/docs/assets/wercker/wercker-chain-pipeline.jpg" alt="Chain pipeline" title="Chain pipeline" /></p>
+
+<p>You have the option to define an specific branch (or branches) to trigger the pipeline. By default Wercker will monitor all branches and start executing the steps if any commit is made, this is the case for our example. Select <strong>deploy-docker</strong> in the drop-down list and then click <strong>Add</strong>.</p></li>
+
+<li><p>Repeat this procedure to chain <code>deploy-linode</code> after this pipeline. The end result will look similar to this:</p>
+
+<p><img src="/docs/assets/wercker/wercker-workflow-01.jpg" alt="Workflow screen" title="Workflow screen" /></p></li>
+
+<li><p>Next you need to define the environmental variables, but this time you will do it inside each pipeline and not globally. On the Workflows tab, click the <strong>deploy-docker</strong> pipeline at the botton of the screen. Here you can create the variables. There are two variables from this example&rsquo;s <code>wercker.yml</code> that must be defined here: <code>DOCKER_USERNAME</code> and <code>DOCKER_PASSWORD</code>. Create them and mark the password as <strong>protected</strong>.</p></li>
+
+<li><p>Select the <strong>deploy-linode</strong> pipeline and create an SSH key pair, similar to the last example. Remember to copy the public key to your remote server.</p></li>
+
+<li><p>Test your workflow by committing to your local fork:</p>
+
+<pre><code>git add . &amp;&amp; git commit -m &quot;initial commit&quot; &amp;&amp; git push origin master
+</code></pre>
+
+<p>You will end up with a result similar to:</p>
+
+<p><img src="/docs/assets/wercker/wercker-example-final.jpg" alt="Example Workflow" title="Example Workflow" /></p></li>
+
+<li><p>Test your application on the remote server by logging in remotely and running <code>docker images</code>:</p>
+
+<p><img src="/docs/assets/wercker/wercker-hello-images.jpg" alt="Docker images" title="Docker images" /></p>
+
+<p>Only an image tagged <code>current</code> is present.</p></li>
+
+<li><p>Run the application with <code>docker run</code>:</p>
+
+<pre><code>docker run &lt;docker-username&gt;/myapp:current
+</code></pre></li>
+
+<li><p>If you want to test your automation further, edit <code>hello.go</code> inside the <code>/example</code> folder. Add some text to the message. Commit your changes and wait for the Wercker automation to run.</p></li>
+
+<li><p>Run your application again. You should see the modified message:</p>
+
+<p><img src="/docs/assets/wercker/wercker-hello-run-02.jpg" alt="Changed text" title="Changed text" /></p></li>
+</ol>
+
+<h4 id="wercker-cli-example">Wercker CLI Example</h4>
+
+<p>The final example demonstrates the Wercker CLI.</p>
+
+<ol>
+<li><p>Navigate to the root directory of the <code>getting-started-golang</code> fork.</p></li>
+
+<li><p>Run the following command to start Wercker:</p>
+
+<pre><code>wercker build
+</code></pre>
+
+<p><img src="/docs/assets/wercker/wercker-cli-build.jpg" alt="Wercker CLI build" title="Wercker CLI build" /></p>
+
+<p>The output should be similar to the logs you saw on the Wercker dashboard. The difference is that you can check each step locally and detect any errors early in the process. The Wercler CLI replicates the SaaS behavior: it downloads specified images, builds, tests and shows errors. Since the CLI is a development tool intended to facilitate local testing, you will not be able to deploy the end result remotely.</p></li>
+
+<li><p>Build the application with Go:</p>
+
+<pre><code>go build
+</code></pre>
+
+<p>The application <code>getting-started-golang</code> is built in the root directory.</p></li>
+
+<li><p>Run the program:</p>
+
+<pre><code>./getting-started-golang
+</code></pre></li>
+
+<li><p>Navigate to <code>localhost:5000/cities.json</code> in your browser. You should see a list of cities displayed:</p>
+
+<p><img src="/docs/assets/wercker/wercker-cities-JSON.png" alt="Cities JSON" title="Cities JSON" /></p></li>
+
+<li><p>Close the program with <strong>CTRL+C</strong>. Run <code>wercker dev</code>:</p>
+
+<pre><code>wercker dev --expose-ports
+</code></pre>
+
+<p><img src="/docs/assets/wercker/wercker-dev.jpg" alt="Wercker Dev" title="Wercker Dev" /></p>
+
+<p>This command starts the auto-build function in the <code>dev</code> pipeline. It builds the application within the Docker container and serves from there. If you make any changes to the app, the container will rebuild to reflect the changes.</p></li>
+
+<li><p>Open the <code>main.go</code> file in a text editor and add an entry to the list of cities. Refresh your browser and you should see the updated list.</p></li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>There are infinite possibilities for developers to play with when using Wercker:</p>
+
+<ul>
+<li>You can specify <em>local boxes</em>, meaning you can use specialized images depending on your pipeline goals. DockerHub has many images ready to use for this purpose.</li>
+<li>You are not limited to <em>chained</em> workflows; you can start pipelines in parallel (as many as needed) and chain only when necessary. This is useful if you need to build a complex application that takes a long time to compile. You can start the compilation pipeline early in parallel with other tasks. You can also divide your application into several pipelines to reduce the time of each process and isolate problems.</li>
+<li>Wercker is language agnostic, process agnostic and platform agnostic. Your imagination is the limit for the possible uses of the Wercker tool.</li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://devcenter.wercker.com/docs/home">Wercker Developer Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/use-a-linode-for-web-development-on-remote-devices/">Use a Linode for Web Development on Remote Devices</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/">How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/when-and-why-to-use-docker/">When and Why to Use Docker</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/">How to Create a Docker Swarm Manager and Nodes on Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/containers/how-to-use-dockerfiles/">How to Use Dockerfiles</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-wercker">What is Wercker?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#set-up-demo-applications-and-version-control">Set up Demo Applications and Version Control</a></li>
+<li><a href="#set-up-a-wercker-account">Set up a Wercker Account</a></li>
+<li><a href="#configure-wercker-yml-and-practice-examples">Configure wercker.yml and Practice Examples</a>
+<ul>
+<li><a href="#jclocksgmt-example">jClocksGMT Example</a></li>
+<li><a href="#hello-go-example">Hello.go Example</a></li>
+<li><a href="#getting-started-golang-example-with-wercker-cli">Getting-Started-golang - Example with Wercker CLI</a></li>
+</ul></li>
+<li><a href="#how-to-add-your-applications-to-wercker">How to Add Your Applications to Wercker</a>
+<ul>
+<li><a href="#configure-applications">Configure Applications</a>
+<ul>
+<li><a href="#jclocks-example">jClocks Example</a></li>
+<li><a href="#hello-go-example-1">Hello.go Example</a></li>
+<li><a href="#wercker-cli-example">Wercker CLI Example</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

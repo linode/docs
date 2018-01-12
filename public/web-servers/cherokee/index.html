@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Hosting Websites with Cherokee</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Guides and tutorials on the Linode platform, Linux basics, and software installation and configuration.">
+        <meta name="keywords" content="cherokee web server, cherokee on linode, Linode web server">
+        
+        <meta property="og:title" content="Hosting Websites with Cherokee">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/cherokee/">
+        <meta property="og:description" content="Guides and tutorials on the Linode platform, Linux basics, and software installation and configuration.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/cherokee/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section some-space-bottom">
+  <div class="container">
+    <div class="row pad-xs">
+      <div class="col-sm-8">
+        <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Hosting Websites with Cherokee
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+      </div>
+      <div class="col-sm-4 library-breadcrumb-search">
+        <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+      </div>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1">
+      <h1 class="text-center">Hosting Websites with Cherokee</h1>
+      <p class="text-center lead"></p>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="primary">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/web-servers/cherokee/deploy-websites-with-a-cherokee-web-server-on-ubuntu-12-04/">Deploy Websites with a Cherokee Web Server on Ubuntu 12.04</a></h4>
+            <p>Deploy a Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin).</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/web-servers/cherokee/use-cherokee-web-server-on-ubuntu-12-04/">Use Cherokee Web Server on Ubuntu 12.04</a></h4>
+            <p>Use Cherokee Web Server on Ubuntu 12.04.</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/">Web Apps with Cherokee and PHP-FastCGI on Fedora 13</a></h4>
+            <p>Using PHP-FastCGI for dynamic sites under Cherokee on Fedora 13</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/">Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)</a></h4>
+            <p>Using PHP-FastCGI for dynamic sites under Cherokee on Ubuntu 10.04 LTS (Lucid)</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-fedora-13/">Websites with the Cherokee Web Server on Fedora 13</a></h4>
+            <p>Instructions for getting started with the Cherokee web server on Fedora 13.</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-fedora-14/">Websites with the Cherokee Web Server on Fedora 14</a></h4>
+            <p>Instructions for getting started with the Cherokee web server on Fedora 14.</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/">Websites with the Cherokee Web Server on Ubuntu 10.04 LTS (Lucid)</a></h4>
+            <p>Instructions for getting started with the Cherokee web server on Ubuntu 10.04 LTS (Lucid).</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-10-karmic/">Websites with the Cherokee Web Server on Ubuntu 9.10 (Karmic)</a></h4>
+            <p>Instructions for getting started with the Cherokee web server on Ubuntu 9.10 (Karmic).</p>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/">Websites with the Cherokee Web Server on Ubuntu 9.04 (Jaunty)</a></h4>
+            <p>Instructions for getting started with the Cherokee web server on Ubuntu 9.04 (Jaunty).</p>
+          </div>
+        
+
+        
+
+        
+
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="https://linode.com/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-debian-5-lenny/">Websites with the Cherokee Web Server on Debian 5 (Lenny)</a></h4>
+            <p>Instructions for getting started with the Cherokee web server on Debian 5 (Lenny).</p>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+    </body>
+</html>

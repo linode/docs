@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>DNS Records: an Introduction</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Learn about DNS records and system structure.">
+        <meta name="keywords" content="dns records, domain names, dns record types, dns resolution">
+        
+        <meta property="og:title" content="DNS Records: an Introduction">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/dns/dns-records-an-introduction/">
+        <meta property="og:description" content="Learn about DNS records and system structure.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/dns/dns-records-an-introduction/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/dns/">DNS</a>
+  
+</li>
+
+
+<li>
+  
+  DNS Records: an Introduction
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">DNS Records: an Introduction</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-02T00:00:00Z">Thursday, November 2, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdns%2fdns-records-an-introduction%2f&via=linode&text=DNS%20Records%3a%20an%20Introduction" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdns%2fdns-records-an-introduction%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdns%2fdns-records-an-introduction%2f&t=DNS%20Records%3a%20an%20Introduction" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/dns/dns-records-an-introduction.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/dns/dns-records-an-introduction.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The Domain Name System (DNS) is the Internet&rsquo;s address book. DNS directs web traffic to your Linode and email to your inbox by mapping memorable domain names like <code>example.com</code> to IP addresses like <code>12.34.56.78</code> or <code>0123:4567:89ab:cdef:0123:4567:89ab:cdef</code>. This guide introduces basic DNS concepts and the different types of DNS records.</p>
+
+<p><img src="/docs/assets/dns-records-an-introduction.png" alt="DNS Records: an Introduction" title="DNS Records: an Introduction" /></p>
+
+<h2 id="how-dns-works">How DNS Works</h2>
+
+<p>Before adding any DNS records, you should learn the basics of DNS. You&rsquo;ll start by dissecting a domain name, and then you&rsquo;ll learn about the mechanics of DNS resolution, including name servers, zone files, and individual DNS records.</p>
+
+<h3 id="domain-names">Domain Names</h3>
+
+<p>Domain names are best understood by reading from right to left. The broadest domain classification is on the right, and becomes more specific as you move to the left. In the examples below, the top-level domain, or <em>TLD</em>, is <em>.com</em>.</p>
+
+<pre><code>example.com
+mail.hello.example.com
+</code></pre>
+
+<p>Every term to the left of the TLD and separated by a period is considered a more specific subdomain, although conventionally, first-level subdomains plus their TLDs (<em>example.com</em>) are referred to as &ldquo;domains.&rdquo; Moving to the left, <em>hello</em> and <em>mail</em> are the second- and third-level subdomains, respectively. Typically, subdomains are used to uniquely identify specific machines or services, but this is left up to the domain owner.</p>
+
+<h3 id="name-servers">Name Servers</h3>
+
+<p>Choosing and specifying <em>name servers</em> is an essential part of domain ownership. If you don&rsquo;t, the Internet won&rsquo;t know where to find your DNS information, and your domain won&rsquo;t resolve. Name servers host a domain&rsquo;s DNS information in a text file called the <em>zone file</em>. They&rsquo;re are also known as Servers of Authority (SOAs). You can host your DNS information on name servers in one of several locations:</p>
+
+<ul>
+<li>Linode (recommended)</li>
+<li>Your registrar</li>
+<li>Your own DNS server</li>
+<li>Third-party DNS hosting</li>
+</ul>
+
+<p>Using Linode&rsquo;s free name servers is the easiest approach, because Linode provides a default zone file with all the right IP addresses for your website and email. For basic DNS setups and many advanced ones, Linode&rsquo;s name servers will work beautifully. However, you can also look into the options offered by your registrar and third-party DNS hosts, or host your own DNS if you want to take control of as much of the DNS process as possible.</p>
+
+<p>You&rsquo;ll specify name servers on your domain registrar&rsquo;s website. They&rsquo;ll take care of publishing that information to the higher-level name servers. You&rsquo;ll want to specify at least two name servers. That way, if one of them is down, the next one can continue to serve your DNS information.</p>
+
+<h3 id="dns-records-and-zone-files">DNS Records and Zone Files</h3>
+
+<p>The next aspect of DNS management is specifying DNS records, which actually match domain names to IP addresses. The DNS records are then automatically bundled up into a zone file, which is what allows the Internet to look up the correct IP address for your domain. If you decide to use Linode&rsquo;s name servers, our DNS Manager will help you create a default zone file. It contains records similar to the following:</p>
+
+<pre><code>; example.com [448369]
+$TTL 86400
+@   IN  SOA ns1.linode.com. admin.example.com. 2013062147 14400 14400 1209600 86400
+@       NS  ns1.linode.com.
+@       NS  ns2.linode.com.
+@       NS  ns3.linode.com.
+@       NS  ns4.linode.com.
+@       NS  ns5.linode.com.
+@           MX  10  mail.example.com.
+@           A   12.34.56.78
+mail        A   12.34.56.78
+www         A   12.34.56.78
+</code></pre>
+
+<p>Every domain&rsquo;s zone file contains the admin&rsquo;s email address, the name servers, and the DNS records. Of course, you are not limited to these default entries. You can create a variety of DNS records for as many different subdomains as you wish. To learn how to add individual DNS records using the DNS Manager, read <a href="/docs/networking/dns/dns-manager">this article</a>.</p>
+
+<h3 id="dns-resolution">DNS Resolution</h3>
+
+<p>So how does DNS actually work? First, the domain name needs to get translated into your Linode&rsquo;s IP address. DNS matches human-friendly domain names like <em>example.com</em> to computer-friendly IP addresses like <em>12.34.56.78</em>. This happens in a special text file called a <em>zone file</em>, which lists domains and their corresponding IP addresses (and a few other things). A zone file is like a phone book that matches names with street addresses.</p>
+
+<p>Here&rsquo;s how the DNS lookup process works:</p>
+
+<ol>
+<li>You type a domain name like <em>example.com</em> in to the address bar.</li>
+<li>Your computer connects to the Internet through an Internet Service Provider (ISP).</li>
+<li>The ISP&rsquo;s <em>DNS resolver</em> queries a <em>root nameserver</em> for the proper TLD nameserver. In other words, it asks the root nameserver, &ldquo;Where can I find the nameserver for <em>.com</em> domains?&rdquo;</li>
+<li>The root nameserver responds with the IP address for the <em>.com</em> nameserver.</li>
+<li>The ISP&rsquo;s DNS resolver visits the <em>.com</em> nameserver, using the IP address it got from the root nameserver. It asks the <em>.com</em> nameserver, &ldquo;Where can I find the nameserver for <em>example.com</em>?&rdquo;</li>
+<li>The <em>.com</em> nameserver responds with the IP address for the <em>example.com</em> nameserver.</li>
+<li>The ISP&rsquo;s DNS resolver visits your domain&rsquo;s nameserver and reads the zone file.</li>
+<li>The zone file shows which IP address goes with the domain.</li>
+<li>Now that the ISP has the IP address for <em>example.com</em>, it connects you to your Linode.</li>
+
+<li><p>Apache handles everything after that, ensuring that the correct files and folders get displayed in your visitor&rsquo;s browser.</p>
+
+<p><img src="/docs/assets/1330-dnsoverview.jpg" alt="The steps for DNS resolution, also displayed below." /></p></li>
+</ol>
+
+<p>The scenario described above is what happens if the ISP has no current information about the requested domain. In actuality, ISPs cache a lot of DNS information after they&rsquo;ve looked it up the first time. This results in faster lookups and less strain on DNS servers. Usually caching is a good thing, but it can be a problem if you&rsquo;ve recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In those cases, you&rsquo;ll want to pay attention to your zone file&rsquo;s <a href="/docs/networking/dns/dns-manager#set-the-time-to-live-or-ttl">time to live (TTL)</a> so that your DNS change happens as quickly as possible.</p>
+
+<h2 id="types-of-dns-records">Types of DNS Records</h2>
+
+<h3 id="a-and-aaaa">A and AAAA</h3>
+
+<p>An <em>A record</em> matches up a domain (or subdomain) to an IP address. In other words, it points your domain name to your Linode&rsquo;s IP address, which allows web traffic to reach your Linode. This is the core functionality of DNS. A typical A record looks like the following:</p>
+
+<pre><code>example.com     A       12.34.56.78
+</code></pre>
+
+<p>You can also make A records for subdomains you want to direct to your server:</p>
+
+<pre><code>hello.example.com       A       12.34.56.78
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can point different subdomains to different IP addresses.</div>
+</blockquote>
+
+
+<p>If you want to point <em>every</em> subdomain of <em>example.com</em> to your Linode&rsquo;s IP, you can use an asterisk (<em>*</em>**) as your subdomain:</p>
+
+<pre><code>*.example.com   A       12.34.56.78
+</code></pre>
+
+<p>An <em>AAAA record</em> is just like an A record, but for IPv6 IP addresses. A typical AAAA record looks like the following:</p>
+
+<pre><code>example.com     AAAA        0123:4567:89ab:cdef:0123:4567:89ab:cdef
+</code></pre>
+
+<h3 id="axfr">AXFR</h3>
+
+<p>An <em>AXFR record</em> is a type of DNS record used for DNS replication, although there are also more modern ways to do DNS replication. AXFR records are not used in ordinary zone files. Rather, they are used on a <em>slave DNS server</em> to replicate the zone file from a <em>master DNS server</em>. For an example of how to configure Linode&rsquo;s nameservers as slave DNS servers using AXFR, visit this <a href="/docs/web-applications/control-panels/cpanel/dns-on-cpanel#using-linodes-dns-manager-as-a-slave">guide about configuring DNS on cPanel</a>.</p>
+
+<h3 id="caa">CAA</h3>
+
+<p>DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain. See our <a href="/docs/quick-answers/linode-platform/add-caa-dns-records">CAA records</a> guide for a configuration walkthrough in the Linode Manager.</p>
+
+<h3 id="cname">CNAME</h3>
+
+<p>A <em>CNAME record</em> or <em>Canonical Name record</em> matches up a domain (or subdomain) to a different domain. With a CNAME record, DNS lookups use the target domain&rsquo;s DNS resolution as the alias&rsquo;s resolution. Here&rsquo;s an example:</p>
+
+<pre><code>alias.com       CNAME   example.com.
+example.com     A       12.34.56.78
+</code></pre>
+
+<p>With this setup, when <code>alias.com</code> is requested, the initial DNS lookup will find the CNAME entry with the target of <code>example.com</code>. A new DNS lookup will be started for <code>example.com</code>, which will find the IP address <em>12.34.56.78</em>. Finally, visitors to <code>alias.com</code> will be directed to <code>12.34.56.78</code>.</p>
+
+<p>CNAME records exist so that domains can have aliases. You should not use a CNAME record for a domain that gets email, because some mail servers handle mail oddly for domains with CNAME records. Likewise, MX records cannot reference CNAME-defined hostnames. Also, the target domain for a CNAME record should have a normal A-record resolution. Chaining or looping CNAME records is not recommended.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In some cases, a CNAME record can be an effective way to redirect traffic from one domain to another while keeping the same URL. However, keep in mind that a CNAME record does not function the same way as a URL redirect. A CNAME record directs web traffic for a particular domain to the target domain&rsquo;s IP address. Once the visitor reaches that IP address, the local Apache (or other web server) configuration will determine how the domain is handled. If that domain is not configured on the server, the server will simply display its default web page (if any). This may or may not be the web page for the target domain in the CNAME record, depending on how the server is configured.</div>
+</blockquote>
+
+
+<h3 id="dkim">DKIM</h3>
+
+<p>A <em>DKIM record</em> or <em>domain keys identified mail record</em> displays the public key for authenticating messages that have been signed with the DKIM protocol. This practice increases the capability to check mail authenticity. A typical DKIM record looks like the following:</p>
+
+<pre><code>selector1._domainkey.example.com        TXT     k=rsa;p=J8eTBu224i086iK
+</code></pre>
+
+<p>DKIM records are implemented as text records. The record must be created for a subdomain, which has a unique selector for that key, then a period (<strong>.</strong>), and then <code>_domainkey.example.com</code>. The type is TXT, and the value includes the type of key, followed by the actual key.</p>
+
+<h3 id="mx">MX</h3>
+
+<p>An <em>MX record</em> or <em>mail exchange record</em> sets the mail delivery destination for a domain (or subdomain). A typical MX record looks like the following:</p>
+
+<pre><code>example.com         MX      10  mail.example.com.
+mail.example.com    A           12.34.56.78
+</code></pre>
+
+<p>The above records direct mail for <em>example.com</em> to the <em>mail.example.com</em> server. The target domain (<code>mail.example.com</code> above) needs to have its own A record that resolves to your Linode. Ideally, an MX record should point to a domain that is also the <a href="/docs/getting-started#setting-the-hostname">hostname</a> for its server.</p>
+
+<p>Your MX records don&rsquo;t necessarily have to point to your Linode. If you&rsquo;re using a third-party mail service, like <a href="/docs/email/google-mail">Google Apps</a>, you should use the MX records they provide.</p>
+
+<p><em>Priority</em> is another component of MX records. This is the number written between the record type and the target server (10 in the example above). Priority allows you to designate a fallback server (or servers) for mail for a particular domain. Lower numbers have a higher priority. Here&rsquo;s an example of a domain that has two fallback mail servers:</p>
+
+<pre><code>example.com         MX      10  mail_1.example.com
+example.com         MX      20  mail_2.example.com
+example.com         MX      30  mail_3.example.com
+</code></pre>
+
+<p>In this example, if <code>mail_1.example.com</code> is down, mail will be delivered to <code>mail_2.example.com</code>. If <code>mail_2.example.com</code> is also down, mail will be delivered to <code>mail_3.example.com</code>.</p>
+
+<h3 id="ns">NS</h3>
+
+<p><em>NS records</em> or <em>name server records</em> set the nameservers for a domain (or subdomain). The primary nameserver records for your domain are set both at your registrar and in your zone file. Typical nameserver records (you need at least two) look like this:</p>
+
+<pre><code>example.com     NS      ns1.linode.com.
+example.com     NS      ns2.linode.com.
+example.com     NS      ns3.linode.com.
+example.com     NS      ns4.linode.com.
+example.com     NS      ns5.linode.com.
+</code></pre>
+
+<p>The nameservers you designate at your registrar then carry the zone file for your domain.</p>
+
+<p>You can also set up different nameservers for any of your subdomains. Subdomain NS records get configured in your primary domain&rsquo;s zone file. For example, if you&rsquo;re using Linode&rsquo;s nameservers, you could configure separate NS records in your Linode zone file for the subdomain <code>mail.example.com</code> as shown below:</p>
+
+<pre><code>mail.example.com    NS      ns1.nameserver.com
+mail.example.com    NS      ns2.nameserver.com
+</code></pre>
+
+<p>Primary nameservers get configured at your registrar; secondary subdomain nameservers get configured in the primary domain&rsquo;s zone file. The order of NS records does not matter; DNS requests are sent randomly to the different servers, and if one host fails to respond, another one will be queried.</p>
+
+<h3 id="ptr">PTR</h3>
+
+<p>A <em>PTR record</em> or <em>pointer record</em> matches up an IP address to a domain (or subdomain), allowing reverse DNS queries to function. It performs the opposite service an A record does, in that it allows you to look up the domain associated with a particular IP address, instead of vice versa.</p>
+
+<p>PTR records are usually set with your hosting provider. They are not part of your domain&rsquo;s zone file. This means that you&rsquo;ll always set reverse DNS for your Linodes in the Linode Manager, even if your nameservers are elsewhere. Likewise, if you have servers somewhere else but are using Linode&rsquo;s nameservers, you will still have to set up your PTR records with your hosting provider.</p>
+
+<p>As a prerequisite for adding a PTR record, you need to create a valid, live A or AAAA record that points the desired domain to that IP. If you want an IPv4 PTR record, point the domain (or subdomain) to your Linode&rsquo;s IPv4 address. If you want an IPv6 PTR record, point the domain to your Linode&rsquo;s IPv6 address. Beyond that, IPv4 and IPv6 PTR records work the same way.</p>
+
+<p>For instructions on setting up reverse DNS on your Linode, see our <a href="/docs/networking/dns/setting-reverse-dns">Reverse DNS</a> guide.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>It&rsquo;s possible to have different IPs (including both IPv4 and IPv6 addresses) that have the same domain set for reverse DNS. To do this, you will have to configure multiple A or AAAA records for that domain that point to the various IPs.</div>
+</blockquote>
+
+
+<h3 id="soa">SOA</h3>
+
+<p>An <em>SOA record</em> or <em>Start of Authority record</em> labels a zone file with the name of the host where it was originally created. Next, it lists the contact email address for the person responsible for the domain. There are also various numbers, which we&rsquo;ll get into in detail in a moment. First, here&rsquo;s a typical SOA record:</p>
+
+<pre><code>@   IN  SOA ns1.linode.com. admin.example.com. 2013062147 14400 14400 1209600 86400
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The administrative email address is written with a period (<strong>.</strong>) instead of an at symbol (&lt;<strong>@</strong>&gt;).</div>
+</blockquote>
+
+
+<p>Here&rsquo;s what the numbers mean:</p>
+
+<ul>
+<li><strong>Serial number</strong>: The revision number for this domain&rsquo;s zone file. It changes when the file gets updated.</li>
+<li><strong>Refresh time</strong>: The amount of time (in seconds) a secondary DNS server will keep the zone file before it checks for changes.</li>
+<li><strong>Retry time</strong>: The amount of time a secondary DNS server will wait before retrying a failed zone file transfer.</li>
+<li><strong>Expire time</strong>: The amount of time a secondary DNS server will wait before expiring its current zone file copy if it cannot update itself.</li>
+<li><strong>Minimum TTL</strong>: The minimum amount of time other servers should keep data cached from this zone file.</li>
+</ul>
+
+<p>The single nameserver mentioned in the SOA record is considered the primary master for the purposes of Dynamic DNS and is the server where zone file changes get made before they are propagated to all other nameservers.</p>
+
+<h3 id="spf">SPF</h3>
+
+<p>An <em>SPF record</em> or <em>Sender Policy Framework record</em> lists the designated mail servers for a domain (or subdomain). It helps establish the legitimacy of your mail server and reduces the chances of spoofing, which occurs when someone fakes the headers on an email to make it look like it&rsquo;s coming from your domain, even though the message did not originate from your Linode. Spammers sometimes try to do this to get around spam filters. An SPF record for your domain tells other receiving mail servers which outgoing server(s) are valid sources of email, so they can reject spoofed email from your domain that has originated from unauthorized servers. A very basic SPF record looks like the following:</p>
+
+<pre><code>example.com   TXT     &quot;v=spf1 a ~all&quot;
+</code></pre>
+
+<p>In your SPF record, you should list all the mail servers from which you send mail, and then exclude all the others. Your SPF record will have a domain or subdomain, type (which is TXT, or SPF if your name server supports it), and text (which starts with &ldquo;v=spf1&rdquo; and contains the SPF record settings).</p>
+
+<p>If your Linode is the only mail server you use, you should be able to use the example record above. With this SPF record, the receiving server will check the IP addresses of both the sending server and the IP address of example.com. If the IPs match, the check passes. If not, the check will &ldquo;soft fail&rdquo; (i.e., the message will be marked but will not automatically be rejected for failing the SPF check).</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. We strongly recommend visiting openspf.org to learn how SPF records work and how to construct one that works for your setup. Their <a href="http://www.openspf.org/FAQ/Examples">examples</a> are also helpful.</div>
+</blockquote>
+
+
+<h3 id="srv">SRV</h3>
+
+<p>An <em>SRV record</em> or <em>service record</em> matches up a specific service that runs on your domain (or subdomain) to a target domain. This allows you to direct traffic for specific services, like instant messaging, to another server. A typical SRV record looks like the following:</p>
+
+<pre><code>_service._protocol.example.com  SRV     10      0       5060    service.example.com
+</code></pre>
+
+<p>Here&rsquo;s a breakdown of the elements in an SRV record:</p>
+
+<ul>
+<li><strong>Service</strong>: The name of the service must be preceded by an underscore (<strong>_</strong>) and followed by a period (<strong>.</strong>). The service could be something like <strong>_xmpp.</strong></li>
+<li><strong>Protocol</strong>: The name of the protocol must be proceeded by an underscore (<strong>_</strong>) and followed by a period (<strong>.</strong>). The protocol could be something like <strong>_tcp.</strong></li>
+<li><strong>Domain</strong>: The name of the domain that will receive the original traffic for this service.</li>
+<li><strong>Priority</strong>: The first number (<strong>10</strong> in the example above) allows you to set the priority for the target server. You can set different targets with different priorities, which allows you to have a fallback server (or servers) for that service. Lower numbers have a higher priority.</li>
+<li><strong>Weight</strong>: If two records have the same priority, weight is used instead.</li>
+<li><strong>Port</strong>: The TCP or UDP port on which the service runs.</li>
+<li><strong>Target</strong>: The target domain or subdomain. This domain must have an A or AAAA record that resolves to an IP address.</li>
+</ul>
+
+<p>An example use of SRV records would be to set up <a href="http://en.wikipedia.org/wiki/Federated_VoIP">Federated VoIP</a>.</p>
+
+<h3 id="txt">TXT</h3>
+
+<p>A <em>TXT record</em> or <em>text record</em> provides information about the domain in question to other resources on the Internet. It&rsquo;s a flexible type of DNS record that can serve many different purposes depending on the specific contents. One common use of the TXT record is to create an <a href="#spf">SPF record</a> on nameservers that don&rsquo;t natively support SPF. Another use is to create a <a href="#dkim">DKIM record</a> for mail signing.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="/docs/networking/dns/dns-manager">DNS Manager</a></li>
+
+<li><a href="/docs/networking/dns/setting-reverse-dns">Reverse DNS</a></li>
+
+<li><a href="/docs/networking/dns/common-dns-configurations">Common DNS Configurations</a></li>
+
+<li><a href="http://zytrax.com/books/dns/">DNS for Rocket Scientists</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/dns/use-dig-to-perform-manual-dns-queries/">Use dig to Perform Manual DNS Queries</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#how-dns-works">How DNS Works</a>
+<ul>
+<li><a href="#domain-names">Domain Names</a></li>
+<li><a href="#name-servers">Name Servers</a></li>
+<li><a href="#dns-records-and-zone-files">DNS Records and Zone Files</a></li>
+<li><a href="#dns-resolution">DNS Resolution</a></li>
+</ul></li>
+<li><a href="#types-of-dns-records">Types of DNS Records</a>
+<ul>
+<li><a href="#a-and-aaaa">A and AAAA</a></li>
+<li><a href="#axfr">AXFR</a></li>
+<li><a href="#caa">CAA</a></li>
+<li><a href="#cname">CNAME</a></li>
+<li><a href="#dkim">DKIM</a></li>
+<li><a href="#mx">MX</a></li>
+<li><a href="#ns">NS</a></li>
+<li><a href="#ptr">PTR</a></li>
+<li><a href="#soa">SOA</a></li>
+<li><a href="#spf">SPF</a></li>
+<li><a href="#srv">SRV</a></li>
+<li><a href="#txt">TXT</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

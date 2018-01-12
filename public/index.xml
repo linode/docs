@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guides &amp; Tutorials on Linode Guides &amp; Tutorials</title>
+    <link>https://linode.com/docs/</link>
+    <description>Recent content in Guides &amp; Tutorials on Linode Guides &amp; Tutorials</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+    <lastBuildDate>Mon, 18 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://linode.com/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <item>
+      <title>How to Back Up Your PostgreSQL Database</title>
+      <link>https://linode.com/docs/databases/postgresql/how-to-back-up-your-postgresql-database/</link>
+      <pubDate>Mon, 18 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/databases/postgresql/how-to-back-up-your-postgresql-database/</guid>
+      <description>If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users&amp;rsquo; data is not lost. By frequently backing up your database, and/or automating backups with a cron task, you will be able to quickly restore your system in the event that your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage.</description>
+    </item>
+    
+    <item>
+      <title>Use a Linode for Web Development on Remote Devices</title>
+      <link>https://linode.com/docs/development/use-a-linode-for-web-development-on-remote-devices/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/development/use-a-linode-for-web-development-on-remote-devices/</guid>
+      <description>This guide will walk you through the necessary steps to configure your Linode to be an efficient remote development environment. You will then connect to this environment using a tablet and edit a simple web application using ssh and a text editor.
+Development Environments Local Development Enviroment A local development environment is usually faster, more powerful, and more comfortable than a remote environment. However, there some drawbacks associated with local development:</description>
+    </item>
+    
+    <item>
+      <title>Monitor an nginx Web Server Using the Elastic Stack on Centos 7</title>
+      <link>https://linode.com/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/</guid>
+      <description>What is the Elastic Stack? The Elastic Stack is a set of open-source tools that aid in analyzing different types of data. Tools such as Filebeat and Metricbeat can collect system and webserver logs and send them to Elasticsearch where the data can be searched, analyzed, and visualized using Kibana as a browser-based application.
+This guide will explain how to install different components of the stack in order to monitor a typical webserver.</description>
+    </item>
+    
+    <item>
+      <title>Install Icinga2 Monitoring on Debian 9</title>
+      <link>https://linode.com/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9/</guid>
+      <description>What is Icinga2? Icinga, previously a fork of the popular Nagios monitoring system, is an open source network monitoring application that can be used to monitor critical services and systems on your Linode. Icinga2 can monitor hosts in a network or it can verify network external protocols, such as the state of an HTTP server, mail server, file share service, or others.
+Icinga2 can be configured to monitor internal systems state and check the load, the memory, the disk free space or other internal parameters via Icinga agents deployed in every node that needs to me monitored.</description>
+    </item>
+    
+    <item>
+      <title>How to Scrape a Website with BeautifulSoup</title>
+      <link>https://linode.com/docs/applications/big-data/how-to-scrape-a-website-with-beautiful-soup/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/applications/big-data/how-to-scrape-a-website-with-beautiful-soup/</guid>
+      <description>What is Beautiful Soup? Beautiful Soup is a Python library that parses HTML or XML documents into a tree structure that makes it easy to find and extract data. It is often used for scraping data from websites.
+Beautiful Soup features a simple, Pythonic interface and automatic encoding conversion to make it easy to work with website data.
+Web pages are structured documents, and Beautiful Soup gives you the tools to walk through that complex structure and extract bits of that information.</description>
+    </item>
+    
+    <item>
+      <title>Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7</title>
+      <link>https://linode.com/docs/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/</link>
+      <pubDate>Thu, 07 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/</guid>
+      <description>Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection.</description>
+    </item>
+    
+    <item>
+      <title>How to Use tmux the Terminal Multiplexer</title>
+      <link>https://linode.com/docs/networking/ssh/persistent-terminal-sessions-with-tmux/</link>
+      <pubDate>Wed, 06 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/networking/ssh/persistent-terminal-sessions-with-tmux/</guid>
+      <description>What is tmux? Tmux, is a terminal multiplexer. Tmux creates a host server on your Linode, and connects to it with a client window. When the client is disconnected, the server keeps running. When you reconnect to your Linode after rebooting your computer or losing your Internet connection, you can reattach to the tmux session and find the files you were working with still open, and the processes you had running are still active.</description>
+    </item>
+    
+    <item>
+      <title>Use Scrapy to Extract Data From HTML Tags</title>
+      <link>https://linode.com/docs/development/python/use-scrapy-to-extract-data-from-html-tags/</link>
+      <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/development/python/use-scrapy-to-extract-data-from-html-tags/</guid>
+      <description>Scrapy is a Python framework for creating web scraping applications. It provides a programming interface to crawl the web by identifying new links, and extracts structured data from the downloaded content.
+This guide will provide you with instructions to build a spider which recursively checks all &amp;lt;a&amp;gt; tags of a website and tracks broken links. This guide is written for Python version 3.4 or above, and with Scrapy version 1.</description>
+    </item>
+    
+    <item>
+      <title>How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster</title>
+      <link>https://linode.com/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/</link>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/</guid>
+      <description>What is Kubernetes? Kubernetes is an open-source container management system that is based on Google Borg. It can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an nginx service.
+Before You Begin You will need:
+ Two or more Linodes with Private IPs Each Linode should have a 64-bit distribution of either:  Ubuntu 16.</description>
+    </item>
+    
+    <item>
+      <title>When and Why to Use Docker</title>
+      <link>https://linode.com/docs/applications/containers/when-and-why-to-use-docker/</link>
+      <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/applications/containers/when-and-why-to-use-docker/</guid>
+      <description>Since its release in 2012, Docker has become one of the fastest-growing technologies in devops and web development. Like any new technology, however, it is still under development, has some limitations, and is not right for every project. This guide provides an overview of the pros and cons of Docker so that you can decide whether it would be a good addition to your project.
+Note For a more basic introduction to Docker concepts and terminology, see our An Introduction to Docker guide.</description>
+    </item>
+    
+    <item>
+      <title>Virtual Cloud Desktop Using Apache Guacamole</title>
+      <link>https://linode.com/docs/applications/remote-desktop/remote-desktop-using-apache-guacamole-on-docker/</link>
+      <pubDate>Fri, 17 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://linode.com/docs/applications/remote-desktop/remote-desktop-using-apache-guacamole-on-docker/</guid>
+      <description>Apache Guacamole is an HTML5 application useful for accessing a remote desktop through RDP, VNC, and other protocols. You can create a virtual cloud desktop where applications can be accessed through a web browser. This guide will cover the installation of Apache Guacamole through Docker, then access a remote desktop environment hosted on a Linode.
+Install Docker The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.</description>
+    </item>
+    
+  </channel>
+</rss>

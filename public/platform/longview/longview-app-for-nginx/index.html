@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Longview App for Nginx</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Longview App for Nginx">
+        <meta name="keywords" content="Longview,  Nginx,  statistics,  HttpStubStatusModule">
+        
+        <meta property="og:title" content="Longview App for Nginx">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/longview/longview-app-for-nginx/">
+        <meta property="og:description" content="Longview App for Nginx">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/longview/longview-app-for-nginx/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/longview/">Longview Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Longview App for Nginx
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Longview App for Nginx</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-11-12T00:00:00Z">Tuesday, November 12, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview-app-for-nginx%2f&via=linode&text=Longview%20App%20for%20Nginx" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview-app-for-nginx%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flongview%2flongview-app-for-nginx%2f&t=Longview%20App%20for%20Nginx" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/longview/longview-app-for-nginx.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/longview/longview-app-for-nginx.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Longview for Nginx is a Longview App. The Longview Nginx tab appears in the Linode Manager when Longview detects that you have Nginx installed on your Linode. With the Longview Nginx App, you&rsquo;ll be able to view statistics for Nginx on your Linode. It can help you keep track of Nginx&rsquo;s settings, workers and requests, system resource consumption, and other information.</p>
+
+<h2 id="installing">Installing</h2>
+
+<p>Prerequisites:</p>
+
+<ul>
+<li>Install and start <a href="/docs/websites/nginx">Nginx</a></li>
+<li>Install the <a href="/docs/platform/longview/longview/#installing-the-client">Longview client</a></li>
+</ul>
+
+<h3 id="debian-and-ubuntu-automatic-configuration">Debian and Ubuntu Automatic Configuration</h3>
+
+<p>If Nginx is installed and running when you install the Longview client, the Nginx App should enable and configure itself automatically.</p>
+
+<p>If you already have Longview installed, and later want to install Ngnix and enable the Longview App for it, you can run Longview through its automatic configuration sequence again. Depending on how Nginx&rsquo;s status module is configured, it will either find everything it needs to get the Nginx App started, or it will pop up a request to make some additional configurations. And don&rsquo;t worry - your old Longview data will stay safe.</p>
+
+<ol>
+<li>Make sure that Nginx is running.</li>
+
+<li><p>Run the automatic Longview configuration command on your Linode via SSH:</p>
+
+<pre><code>dpkg-reconfigure -phigh linode-longview
+</code></pre></li>
+
+<li><p>For most people, this will prompt a popup asking whether you would like Longview to attempt an automatic configuration of the Nginx status module:</p>
+
+<p><a href="/docs/assets/1456-longview_ngnix_popup_crop.png"><img src="/docs/assets/1456-longview_ngnix_popup_crop.png" alt="Longview has detected Nginx running on this server but was unable to access the server status page. Would you like to attempt to automatically configure the Nginx status module? This will require restarting Nginx to enable. Autoconfigure Mod\_Status: \&lt;Yes\&gt; \&lt;No\&gt;" /></a></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>It&rsquo;s also possible that Longview will be able to locate the status page on its own. In that case, you won&rsquo;t get the popup, and you can go directly to Step 5.</div>
+</blockquote>
+</li>
+
+<li><p>This popup occurs when Longview can&rsquo;t locate the Nginx status page. In turn, this could indicate that the status page is in an unusual and unspecified location, or that the status module isn&rsquo;t enabled, or that Nginx itself is misconfigured. Select one of the options:</p>
+
+<ul>
+<li><strong>&lt;No&gt;</strong>: the Longview tool will quit, and you can do a <a href="#manual-configuration-all-distributions">manual configuration</a>, which is safer if you have a delicate Nginx setup.</li>
+
+<li><p><strong>&lt;Yes&gt;</strong>: the Longview tool will attempt to enable the status module, set the status page location in a new vhost configuration file, and restart Nginx. This option is easier, but has the potential to disrupt your current Nginx configuration. If you choose yes, and the configuration is successful, you should see output like the following:</p>
+
+<pre><code>[ ok ] Stopping Longview Agent: longview.
+Checking Nginx configuration...
+Restarting nginx: nginx.
+Finished configuring nginx, writing new configuration to /etc/linode/longview.d/Nginx.conf
+[ ok ] Starting Longview Agent: longview.
+update-rc.d: using dependency based boot sequencing
+</code></pre></li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The automatic configuration sets the status page location to <code>http://127.0.0.2/nginx_status</code>.</div>
+</blockquote>
+</li>
+
+<li><p>Refresh the Longview Nginx tab in the Linode Manager to verify that it&rsquo;s working now.</p></li>
+</ol>
+
+<p>If instead you receive a failure message, such as:</p>
+
+<pre><code>[FAIL] Reloading web server config: nginx failed!
+</code></pre>
+
+<p>You will need to double-check your Nginx installation, and then do a <a href="#manual-configuration-all-distributions">manual configuration</a>. You can also visit the <a href="#troubleshooting">Troubleshooting</a> section at the end of this article.</p>
+
+<h3 id="manual-configuration-all-distributions">Manual Configuration (All Distributions)</h3>
+
+<p>To enable the Nginx Longview app manually, follow these steps on your Linode via SSH:</p>
+
+<ol>
+<li><p>Add the following lines to your Nginx configuration to enable the status module and set the location of the status page. The lines can go at the end of the main configuration file at <code>nginx.conf</code> or in a separate vhost configuration file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+    listen <span class="m">127</span>.0.0.1:80<span class="p">;</span>
+    server_name <span class="m">127</span>.0.0.1<span class="p">;</span>
+    location /nginx_status <span class="o">{</span>
+        stub_status on<span class="p">;</span>
+        allow <span class="m">127</span>.0.0.1<span class="p">;</span>
+        deny all<span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart Nginx:</p>
+
+<pre><code>service nginx restart
+</code></pre></li>
+
+<li><p>Edit <code>/etc/linode/longview.d/Nginx.conf</code> to look like the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/linode/longview.d/Nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">location http://127.0.0.1/nginx_status</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Restart Longview:</p>
+
+<pre><code>service longview restart
+</code></pre></li>
+
+<li><p>Refresh the Longview Nginx tab in the Linode Manager.</p></li>
+</ol>
+
+<p>You should now be able to see Longview data for Nginx. If that&rsquo;s not the case, proceed to the <a href="#troubleshooting">Troubleshooting</a> section at the end of this article.</p>
+
+<h2 id="viewing-statistics">Viewing Statistics</h2>
+
+<p>To see the output for the Longview Nginx App:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com/">Linode Manager</a>.</li>
+<li>Select the <strong>Longview</strong> tab.</li>
+<li>Select the <strong>Nginx</strong> tab.</li>
+</ol>
+
+<p>Click the image for a full-size view.</p>
+
+<p><a href="/docs/assets/1454-longview_nginx_stats.png"><img src="/docs/assets/1455-longview_nginx_stats_sm.png" alt="The Longview Nginx App." /></a></p>
+
+<p>You&rsquo;ll see the current version of Nginx listed on the upper right.</p>
+
+<p>Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about <a href="/docs/platform/longview/longview#using-the-interface">navigating the Longview interface</a>. The next sections cover the Longview Nginx App in detail.</p>
+
+<h3 id="requests">Requests</h3>
+
+<p>The <strong>Requests</strong> graph shows the total number of requests Nginx handled at the selected time. This is every HTTP and HTTPS request to your Linode.</p>
+
+<h3 id="connections">Connections</h3>
+
+<p>The <strong>Connections</strong> graph shows the amount of data that Nginx accepted and handled via web requests at the time selected.</p>
+
+<h3 id="workers">Workers</h3>
+
+<p>The <strong>Workers</strong> graph shows all of the Nginx workers at the selected time. The workers are broken down by state:</p>
+
+<ul>
+<li>Waiting</li>
+<li>Reading</li>
+<li>Writing</li>
+</ul>
+
+<h3 id="cpu">CPU</h3>
+
+<p>The <strong>CPU</strong> graph shows the percentage of your Linode&rsquo;s CPU being used by Nginx at the selected time. If you want to see the total CPU use instead, check the <a href="/docs/platform/longview/longview#overview-tab">Overview tab</a>.</p>
+
+<h3 id="memory">Memory</h3>
+
+<p>The <strong>Memory</strong> graph shows the amount of RAM being used by Nginx at the selected time. If you want to see your Linode&rsquo;s total memory use instead, check the <a href="/docs/platform/longview/longview#overview-tab">Overview tab</a>.</p>
+
+<h3 id="disk-io">Disk IO</h3>
+
+<p>The <strong>Disk IO</strong> graph shows the amount of input to and output from the disk caused by Nginx at the selected time. To see the total IO instead, visit the <a href="/docs/platform/longview/longview#disks-tab">Disks tab</a>.</p>
+
+<h3 id="process-count">Process Count</h3>
+
+<p>The <strong>Process Count</strong> graph shows the total number of processes on your Linode spawned by Nginx at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the <a href="/docs/platform/longview/longview#process-explorer-tab">Process Explorer tab</a>.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>If you don&rsquo;t see Longview data for Nginx, you&rsquo;ll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the <code>/var/log/linode/longview.log</code> file for errors as well.</p>
+
+<h3 id="unable-to-access-server-status-page-for-nginx">Unable to Access Server Status Page for Nginx</h3>
+
+<p>More specifically, the error will state <code>Unable to access server status page (http://example.com/example) for Nginx: &lt;error&gt;</code>. This error occurs when Nginx&rsquo;s status setting is disabled or has been changed from the default location.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This error occurs when Longview attempts to check the status page <code>location</code> listed in <code>/etc/linode/longview.d/Nginx.conf</code>, or the default page at <code>http://127.0.0.1/nginx_status</code>, but receives a non-200 HTTP response code. Basically, it means that the status page Longview is checking doesn&rsquo;t exist.</div>
+</blockquote>
+
+
+<p>To fix this, follow these steps:</p>
+
+<ol>
+<li><p>Make sure Nginx is running:</p>
+
+<pre><code>service nginx restart
+</code></pre></li>
+
+<li><p>Check the status page location, and make sure it&rsquo;s available over Port 80. The default location Longview checks is <code>http://127.0.0.1/nginx_status</code> on localhost, but Nginx doesn&rsquo;t typically have a status page location set up by default. In the Nginx configuration file (typically <code>nginx.conf</code> or a vhost configuration file), this is designated with the lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+    listen <span class="m">127</span>.0.0.1:80<span class="p">;</span>
+    server_name <span class="m">127</span>.0.0.1<span class="p">;</span>
+    location /nginx_status <span class="o">{</span>
+        stub_status on<span class="p">;</span>
+        allow <span class="m">127</span>.0.0.1<span class="p">;</span>
+        deny all<span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview Nginx tab in the Linode Manager to verify that it&rsquo;s working now.</p></li>
+
+<li><p>If you&rsquo;re not using the default location, you need to create a new file, <code>/etc/linode/longview.d/Nginx.conf</code>, and set the <code>location</code> variable to match what you set in the Nginx configuration file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/linode/longview.d/Nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">location http://127.0.0.1/url-goes-here</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Restart Longview:</p>
+
+<pre><code>service longview restart
+</code></pre></li>
+
+<li><p>Refresh the Longview Nginx tab in the Linode Manager to verify that it&rsquo;s working now.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you originally compiled Nginx without the status module, you will need to recompile it with <code>--with-http_stub_status_module</code> and all your other settings. Then go back and try to enable the Longview Nginx App.</div>
+</blockquote>
+
+
+<h3 id="the-nginx-status-page-doesn-t-look-right">The Nginx Status Page Doesn&rsquo;t Look Right</h3>
+
+<p>More specifically, the error will state <code>The Nginx status page doesn't look right. Check &lt;http://example.com/example&gt; and investigate any redirects for misconfiguration.</code> This error occurs when Longview is able to reach the status page, but doesn&rsquo;t receive the expected content.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This error occurs when Longview attempts to check the status page, and receives a 200 HTTP response code, but can&rsquo;t scrape the expected status content from the page. That is, the page exists on your Linode, but it doesn&rsquo;t have the right content. If, for example, Longview was to check your website&rsquo;s home page, you would get this error.</div>
+</blockquote>
+
+
+<p>To resolve this issue, follow these steps:</p>
+
+<ol>
+<li>Visit the URL shown in the error. See if it directs or redirects you to a page that isn&rsquo;t the Nginx status page.</li>
+
+<li><p>Update your Nginx and Longview settings so that they specify the same location:</p>
+
+<ul>
+<li>The <strong>server_name</strong> and <strong>location</strong> lines in your Nginx configuration file</li>
+<li>The <strong>location</strong> line in <code>/etc/linode/longview.d/Nginx.conf</code></li>
+</ul>
+
+<p>If the location line isn&rsquo;t set in <code>/etc/linode/longview.d/Nginx.conf</code>, Longview will check the default location of <code>http://127.0.0.1/nginx_status</code> on localhost.</p></li>
+
+<li><p>Make sure there aren&rsquo;t any Nginx redirects or other settings that are affecting this page.</p></li>
+
+<li><p>Restart Longview:</p>
+
+<pre><code>service longview restart
+</code></pre></li>
+
+<li><p>Refresh the Longview Nginx tab in the Linode Manager to verify that it&rsquo;s working now.</p></li>
+</ol>
+
+<h3 id="nginx-tab-is-missing">Nginx Tab is Missing</h3>
+
+<p>If the Longview Nginx tab is missing entirely, this indicates that Nginx is either not installed, or has stopped. If you restart Nginx, you will be able to see the tab again and view all of your old data.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/longview/longview-app-for-mysql/">Longview App for MySQL</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/longview/longview-app-for-apache/">Longview App for Apache</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#installing">Installing</a>
+<ul>
+<li><a href="#debian-and-ubuntu-automatic-configuration">Debian and Ubuntu Automatic Configuration</a></li>
+<li><a href="#manual-configuration-all-distributions">Manual Configuration (All Distributions)</a></li>
+</ul></li>
+<li><a href="#viewing-statistics">Viewing Statistics</a>
+<ul>
+<li><a href="#requests">Requests</a></li>
+<li><a href="#connections">Connections</a></li>
+<li><a href="#workers">Workers</a></li>
+<li><a href="#cpu">CPU</a></li>
+<li><a href="#memory">Memory</a></li>
+<li><a href="#disk-io">Disk IO</a></li>
+<li><a href="#process-count">Process Count</a></li>
+</ul></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#unable-to-access-server-status-page-for-nginx">Unable to Access Server Status Page for Nginx</a></li>
+<li><a href="#the-nginx-status-page-doesn-t-look-right">The Nginx Status Page Doesn&rsquo;t Look Right</a></li>
+<li><a href="#nginx-tab-is-missing">Nginx Tab is Missing</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

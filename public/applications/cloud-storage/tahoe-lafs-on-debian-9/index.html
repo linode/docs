@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Keep Your Data Private in the Cloud with Tahoe-LAFS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn&#39;t been tampered with and keeps redundant copies on multiple servers.">
+        <meta name="keywords" content="confidential,  encrypted,  integrity,  redundant,  private,  filesystem,  storage">
+        
+        <meta property="og:title" content="How to Keep Your Data Private in the Cloud with Tahoe-LAFS">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/cloud-storage/tahoe-lafs-on-debian-9/">
+        <meta property="og:description" content="Tahoe Least Authority File Store, or Tahoe-LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible. Use our guide to create, manage, and access a Tahoe-LAFS grid.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/cloud-storage/tahoe-lafs-on-debian-9/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/cloud-storage/">Cloud Storage</a>
+  
+</li>
+
+
+<li>
+  
+  How to Keep Your Data Private in the Cloud with Tahoe-LAFS
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Keep Your Data Private in the Cloud with Tahoe-LAFS</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-26T00:00:00Z">Thursday, October 26, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Alexandru Andrei
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2ftahoe-lafs-on-debian-9%2f&via=linode&text=How%20to%20Keep%20Your%20Data%20Private%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2ftahoe-lafs-on-debian-9%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2ftahoe-lafs-on-debian-9%2f&t=How%20to%20Keep%20Your%20Data%20Private%20in%20the%20Cloud%20with%20Tahoe-LAFS" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/cloud-storage/tahoe-lafs-on-debian-9.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/cloud-storage/tahoe-lafs-on-debian-9.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<h2 id="what-is-tahoe-lafs">What is Tahoe-LAFS?</h2>
+
+<p>While Tahoe-LAFS might resemble other decentralized or distributed file system, like Gluster, Ceph or others, the problems it solves are different. The <em>Least Authority File Store</em> (LAFS) is designed with these things in mind:</p>
+
+<ol>
+<li><p><strong>Confidentiality</strong>: Keeping your data private, even if you store it on outside servers. When you keep sensitive data in the cloud, some inherent risks exist. For example:</p>
+
+<ul>
+<li>If the server is hacked, your data could be stolen.</li>
+<li>An user with read access might accidentally leak data or purposely steal it for their own gain.</li>
+</ul>
+
+<p>By encrypting data before it reaches your storage servers, these risks are reduced.</p></li>
+
+<li><p><strong>Data integrity</strong>: If the encrypted data is compromised, the software detects the change, and in some cases, may still restore the original.</p></li>
+
+<li><p><strong>Redundancy</strong>: Tahoe-LAFS distributes your data in a redundant fashion.</p>
+
+<p>By default, it uses a 3-of-10 configuration. This means that when you upload a file, it is split into ten shares and distributed randomly between your available storage nodes. To reconstruct the file, you need to get three of those shares back. If you have ten servers and a few fail, you can still retrieve your data. In a uniform distribution of shares, you would need only three servers. Since distribution is random the number required differs. One server can hold zero, one, two, or more shares, depending on the random number generated (it does however tend to favor a near uniform distribution).</p>
+
+<p>Having more storage nodes and changing the default 3-of-10 to something else means you can make the setup more resistant to failure or attacks. 3-of-20 would give you a more uniform distribution. 1-of-10 would increase failure resistance but would keep ten copies of your data. So one gigabyte of data would require ten gigabytes of storage. This mechanism of shares makes it possible to destroy compromised or failed servers, create new ones, add them to the pool and redistribute shares if required.</p></li>
+</ol>
+
+<p>All of these things make Tahoe-LAFS a good fit for securely storing sensitive data on remote machines, while at the same time mitigating risks of data loss. Storage space can be increased dynamically by adding to the pool of machines. To learn more, visit the <a href="http://tahoe-lafs.readthedocs.io/en/latest/about.html">Tahoe-LAFS documentation</a>.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps in this guide require root privileges. Be sure to run the steps below as <code>root</code> or with the <code>sudo</code> prefix. For more information on privileges, see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide, deploy a Debian 9 (Stretch) image and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>apt-get update &amp;&amp; apt-get upgrade
+</code></pre></li>
+</ol>
+
+<h2 id="server-requirements-and-recommendations">Server Requirements and Recommendations</h2>
+
+<ol>
+<li><p>With the default settings, at least 10 storage nodes will be needed for satisfactory results. For testing purposes you can launch fewer, but keep in mind that with less than seven storage units, most uploads will fail entirely. Read the documentation about <code>shares.needed</code>, <code>shares.total</code> and <code>shares.happy</code> to learn more about <a href="http://tahoe-lafs.readthedocs.io/en/latest/configuration.html?#client-configuration">how to configure your nodes</a>.</p></li>
+
+<li><p>Create the storage node Linodes with at least 2GB of RAM. The larger the files you plan to upload, the higher the memory and CPU pressure. With the current version of Tahoe-LAFS available in Debian 9&rsquo;s repositories, at least 1GB RAM is required when uploading mutable files larger than 40MB. Once the node runs out of RAM you will get an <em>out-of-memory kill</em>. Periodically check the Grid Status page in the web user interface to maintain your grid.</p></li>
+
+<li><p>For a more reliable and resilient setup, create Linodes in different data centers.</p></li>
+</ol>
+
+<h2 id="install-tahoe-lafs-and-set-up-the-introducer">Install Tahoe-LAFS and Set Up the Introducer</h2>
+
+<p>Introducers are the <em>middlemen</em>, central points that connect storage nodes and clients together in the grid.</p>
+
+<p>Introducers have a variety of advantages and disadvantages:</p>
+
+<ul>
+<li>Allow the system to alert every node when a new peer joins the grid.</li>
+<li>Tell the joining machines about the currently active peers to which it can connect.</li>
+<li>Potential for a single point of failure. But,</li>
+<li>Without the introducers you would have to edit a configuration file on every node, and add a new IP address every time you insert another node into the grid.</li>
+<li>Allow you to configure multiple introducers to make your setup more reliable in the event of crashes or other unforeseen events, ideally, in different datacenters.</li>
+</ul>
+
+<p>After you get acquainted with the initial introducer setup, you can <a href="http://tahoe-lafs.readthedocs.io/en/latest/configuration.html#additional-introducer-definitions">read about additional introducers</a>.</p>
+
+<ol>
+<li><p>Log in as root and create an unprivileged user:</p>
+
+<pre><code>adduser --disabled-password --gecos &quot;&quot; tahoe
+</code></pre></li>
+
+<li><p>Install Tahoe-LAFS:</p>
+
+<pre><code>apt-get install tahoe-lafs
+</code></pre></li>
+
+<li><p>Log in as the <code>tahoe</code> user:</p>
+
+<pre><code>su - tahoe
+</code></pre></li>
+
+<li><p>Create the introducer configuration, replacing <code>203.0.113.1</code> with the public IP address of your Linode:</p>
+
+<pre><code>tahoe create-introducer --port=tcp:1234 --location=tcp:203.0.113.1:1234 --basedir=introducer
+</code></pre>
+
+<p>This creates a directory called <code>introducer</code> which contains a few configuration files. Logs and identifiers will be placed here as well.</p></li>
+
+<li><p>Generate an identifier by starting the introducer:</p>
+
+<pre><code>tahoe run --basedir introducer
+</code></pre>
+
+<p>The last line of output should mention <code>introducer running</code>. Press <strong>CTRL+C</strong> to stop the program. The identifier that is needed, called a <em>FURL</em> is now generated.</p></li>
+
+<li><p>Display the FURL using <code>cat</code>:</p>
+
+<pre><code>cat introducer/private/introducer.furl
+</code></pre>
+
+<p>Copy the whole line starting with <strong>pb://</strong> and paste it somewhere you can access it later. The storage nodes and clients will need to be configured with that value.</p></li>
+
+<li><p>Logout from the user <code>tahoe</code> and return to root:</p>
+
+<pre><code>exit
+</code></pre></li>
+
+<li><p>To automatically start up the introducer on boot, create a systemd service file with the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/systemd/system/tahoe-autostart-introducer.service 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Tahoe-LAFS autostart introducer
+<span class="nv">After</span><span class="o">=</span>network.target
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>simple
+<span class="nv">User</span><span class="o">=</span>tahoe
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/home/tahoe
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/tahoe run introducer --logfile<span class="o">=</span>logs/introducer.log
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>While a rule to restart the process in case of a crash can be added here, it&rsquo;s better to inspect the Linode each time a node, client or introducer crashes, before restarting the process.</p></li>
+
+<li><p>Enable the service to automatically start at boot:</p>
+
+<pre><code>systemctl enable tahoe-autostart-introducer.service
+</code></pre></li>
+
+<li><p>Start the introducer:</p>
+
+<pre><code>systemctl start tahoe-autostart-introducer.service
+</code></pre>
+
+<p>You can now close the SSH session to avoid confusing windows and entering commands on the wrong Linode when configuring the rest.</p></li>
+</ol>
+
+<h3 id="how-to-restart-the-introducer">How to Restart the Introducer</h3>
+
+<p>If the process crashes or encounters an error, start or restart the service with these commands.</p>
+
+<p>Start the introducer service:</p>
+
+<pre><code>systemctl start tahoe-autostart-introducer.service
+</code></pre>
+
+<p>Restart the service:</p>
+
+<pre><code>systemctl restart tahoe-autostart-introducer.service
+</code></pre>
+
+<h2 id="add-tahoe-lafs-storage-nodes-to-the-grid">Add Tahoe-LAFS Storage Nodes to the Grid</h2>
+
+<p>Although the process can be automated so that you can easily expand your storage pool, set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the <a href="#before-you-begin">Before You Begin</a> section apply here as well.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you need large amounts of disk space, <a href="/docs/platform/how-to-use-block-storage-with-your-linode">configure block storage devices on your Linode</a>.</p>
+
+<p>Configure block storage before the other steps in this section.</p>
+
+<p>When you configure <code>/etc/fstab</code>, instead of mounting your volume in <code>/mnt/BlockStorage1</code> as instructed in the tutorial, mount it in <code>/home</code>. Use the same location when using the <code>mount</code> command. Unfortunately, going this route, has the added disadvantage that you won&rsquo;t be able to automate the creation of storage nodes with the steps provided in <a href="#automatically-configure-storage-nodes-with-linode-stackscripts">the next subsection</a>.</p>
+</div>
+</blockquote>
+
+
+<ol>
+<li><p>After you launch a new Linode and deploy Debian 9, login as root and create an unprivileged user:</p>
+
+<pre><code>adduser --disabled-password --gecos &quot;&quot; tahoe
+</code></pre></li>
+
+<li><p>Install Tahoe-LAFS:</p>
+
+<pre><code>apt-get install tahoe-lafs
+</code></pre></li>
+
+<li><p>Log in as the unprivileged user:</p>
+
+<pre><code>su - tahoe
+</code></pre></li>
+
+<li><p>Retrieve the introducer FURL copied in Step 6 of <a href="#install-tahoe-lafs-and-set-up-the-introducer">the introducer installation</a>, and paste it after <code>--introducer=</code>. Replace <code>pb://&lt;Introducer FURL&gt;</code> with your own FURL. Replace <code>203.0.113.1</code> in <code>--location</code> with the public IP address of the Linode. Choose unique nicknames for each server as you repeat this step on new Linodes.</p>
+
+<pre><code>tahoe create-node --nickname=node01 --introducer=pb://&lt;Introducer FURL&gt; --port=tcp:1235 --location=tcp:203.0.113.1:1235
+</code></pre>
+
+<p>Configuration files, shares, logs and other data are in <code>/home/tahoe/.tahoe</code>.</p></li>
+
+<li><p>Return to the root shell:</p>
+
+<pre><code>exit
+</code></pre></li>
+
+<li><p>Create a systemd service file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/systemd/system/tahoe-autostart-node.service 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Tahoe-LAFS autostart node
+<span class="nv">After</span><span class="o">=</span>network.target
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>simple
+<span class="nv">User</span><span class="o">=</span>tahoe
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/home/tahoe
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/tahoe run .tahoe --logfile<span class="o">=</span>logs/node.log
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Enable the service to autostart the storage node at boot:</p>
+
+<pre><code>systemctl enable tahoe-autostart-node.service
+</code></pre></li>
+
+<li><p>Start the service to launch the node:</p>
+
+<pre><code>systemctl start tahoe-autostart-node.service
+</code></pre></li>
+</ol>
+
+<h3 id="how-to-use-linode-stackscripts-to-automatically-configure-storage-nodes">How to Use Linode StackScripts to Automatically Configure Storage Nodes</h3>
+
+<p>Since some users may require tens or hundreds of storage nodes, automate configuration of newly deployed Linodes with StackScripts.</p>
+
+<p>To confirm each successful setup instead of launching all instances before verifying that they work, you can temporarily skip to the next two sections, and use the web user interface in your local browser. Then, return to this section, and after launching each Linode refresh the page after a few minutes. The new storage node should appear along with a green checkmark next to it.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This StackScript relies on <em>icanhazip.com</em> to retrieve each Linode&rsquo;s external IP address. While the site has redundant servers, there is a chance it may unavailable at times.</div>
+</blockquote>
+
+
+<ol>
+<li><p><a href="/docs/platform/stackscripts">Familiarize yourself with StackScripts</a>, then navigate to the <a href="https://manager.linode.com/stackscripts/index">StackScripts page</a> to add a new StackScript.</p></li>
+
+<li><p>Select Debian 9 as the distribution and paste the following in the <strong>Script</strong> section:</p>
+
+<pre><code>#!/bin/bash
+
+#&lt;UDF name=&quot;nickname&quot; Label=&quot;Storage Node Nickname&quot; example=&quot;node01&quot; /&gt;
+#&lt;UDF name=&quot;introducer&quot; Label=&quot;Introducer FURL&quot; example=&quot;pb://wfpe...&quot; /&gt;
+
+apt-get update
+apt-get -y upgrade
+adduser --disabled-password --gecos &quot;&quot; tahoe
+apt-get -y install tahoe-lafs
+su - -c &quot;tahoe create-node --nickname=$NICKNAME --introducer=$INTRODUCER --port=tcp:1235 --location=tcp:`curl -4 -s icanhazip.com`:1235&quot; tahoe
+
+echo &quot;[Unit]
+Description=Tahoe-LAFS autostart node
+After=network.target
+
+[Service]
+Type=simple
+User=tahoe
+WorkingDirectory=/home/tahoe
+ExecStart=/usr/bin/tahoe run .tahoe --logfile=logs/node.log
+
+[Install]
+WantedBy=multi-user.target&quot; &gt;&gt; /etc/systemd/system/tahoe-autostart-node.service
+
+systemctl enable tahoe-autostart-node.service
+
+systemctl start tahoe-autostart-node.service
+</code></pre>
+
+<p>Save the changes.</p></li>
+
+<li><p>Create a new Linode, deploy the StackScript on a Debian 9 image, and boot.</p></li>
+
+<li><p>Repeat this procedure to create as many nodes as necessary for your storage cluster.</p></li>
+</ol>
+
+<h2 id="set-up-the-tahoe-lafs-client-on-your-local-computer">Set up the Tahoe-LAFS Client on Your Local Computer</h2>
+
+<p>To securely upload and download files to and from the grid, you must set up a client node on your local machine.</p>
+
+<p>While you could use port forwarding to access the web user interface from a storage node hosted on Linode, or use the command line interface on a remote server to work with files in the grid, it&rsquo;s not recommended to do so. Going this route exposes you to a few risks like accidentally leaking unencrypted data or <em>filecaps/dircaps</em> (think of them as passwords, giving you access to files and directories; more about this later).</p>
+
+<p>Install the Tahoe-LAFS Client for your operating system:</p>
+
+<ul>
+<li><a href="http://tahoe-lafs.readthedocs.io/en/latest/windows.html">Windows</a></li>
+<li><a href="http://tahoe-lafs.readthedocs.io/en/latest/OS-X.html">MacOS</a></li>
+
+<li><p>Linux users should use their distribution&rsquo;s package manager to install Tahoe-LAFS (as in previous sections).</p>
+
+<ul>
+<li>If your distribution doesn&rsquo;t include Tahoe in its repositories, <a href="http://tahoe-lafs.readthedocs.io/en/latest/INSTALL.html?highlight=build%20tahoe#preliminaries">build Tahoe-LAFS from source</a>.</li>
+</ul></li>
+</ul>
+
+<ol>
+<li><p>Run <code>tahoe create-client</code> to configure a client node, replacing <code>pb://&lt;Introducer FURL&gt;</code> with your own introducer FURL:</p>
+
+<pre><code>tahoe create-client --nickname=localclient --introducer=pb://&lt;Introducer FURL&gt;
+</code></pre></li>
+
+<li><p>Launch the client to work with your grid:</p>
+
+<pre><code>tahoe run
+</code></pre></li>
+
+<li><p>Close the server with <strong>CTRL+C</strong>.</p></li>
+</ol>
+
+<h2 id="manage-your-grid-with-tahoe-lafs-s-web-interface">Manage your Grid with Tahoe-LAFS&rsquo;s Web Interface</h2>
+
+<p>The web interface is the most user-friendly way to interact with your grid. One of the useful features of the interface is the bird&rsquo;s eye view it gives you over the whole grid, showing active and inactive nodes, connection status and errors, total storage space available, and other details.</p>
+
+<ol>
+<li><p>By default, the web server listens on the <em>loopback</em> interface, on port <code>3456</code>. Connect to it by launching the local client, then navigating to the address in your web browser:</p>
+
+<pre><code>tahoe run --basedir client
+</code></pre>
+
+<p><a href="/docs/assets/tahoe-lafs-web-user-interface.png" title="Tahoe-LAFS Web User Interface"><img src="/docs/assets/tahoe-lafs-web-user-interface_small.png" alt="Tahoe-LAFS Web User Interface" /></a></p></li>
+
+<li><p>Files can be uploaded using one of three algorithms:</p>
+
+<ul>
+<li><strong>Immutable</strong>: Designed to store files that won&rsquo;t be altered.</li>
+<li><strong>SDMF (Small Mutable Distributed Files)</strong>: Initially designed for small files, but supports larger sizes as well. May be slow for large files because it has to replace all blocks even when a few bytes have changed.</li>
+<li><strong>MDMF (Medium Distributed Mutable Files)</strong>: Allows large files to be modified in-place, with only the segments that have changed, it allows you to append data, and selectively retrieve only certain blocks that the user requests. Use this for large files that you update often.</li>
+</ul></li>
+
+<li><p>After you upload a file, you get a <em>capability</em> or filecap. An SDMF filecap for example looks something like:</p>
+
+<pre><code>URI:SSK:4a4hv34xtt43a6s7ft76i563oa:7s643ebsf2yujglqhn55xo7c5ohunx2tpoi32dahgr23seob7t5q
+</code></pre>
+
+<p>Filecaps are the only way you to access the data once it&rsquo;s encrypted. Store filecaps somewhere safe. <strong>If you lose a filecap there is no way to retrieve your data.</strong></p></li>
+
+<li><p>Since it&rsquo;s hard to keep track of multiple random strings of characters, a more efficient way to store your data is to organize it in directories. These come with a handful of advantages:</p>
+
+<p><a href="/docs/assets/tahoe-lafs-directory-seen-in-wui.png" title="Directory Displayed in Web User Interface"><img src="/docs/assets/tahoe-lafs-directory-seen-in-wui_small.png" alt="Directory Displayed in Web User Interface" /></a></p>
+
+<ul>
+<li>They can be bookmarked in your browser, allowing you to easily come back to them.
+
+<ul>
+<li>These are also accessed using cryptographic secrets. If you lose the bookmarks or directory writecaps/readcaps, there&rsquo;s no way to recover them. You can still access directory contents though if you have individual elements bookmarked or their capabilities saved somewhere.</li>
+</ul></li>
+<li>It&rsquo;s easier to keep track of a directory capability that gives you access to hundreds of objects rather than keep track of hundreds of capabilities.</li>
+<li>Click <strong>More Info</strong> or <strong>More info on this directory</strong> to get read only capabilities so you can share data with others, verify data integrity, or repair and redistribute unhealthy shares.</li>
+</ul></li>
+</ol>
+
+<h2 id="how-to-use-tahoe-lafs-s-command-line-interface">How to Use Tahoe-LAFS&rsquo;s Command Line Interface</h2>
+
+<p>While the web user interface is easy to work with, it has some limitations. Another way to interact with files and directories is through the command line interface. Some of its advantages include the ability to recursively upload files, and synchronizing (backing up) directories.</p>
+
+<ul>
+<li><p>After you&rsquo;ve launched the local client, open another terminal window or command prompt and create an alias:</p>
+
+<p>tahoe create-alias testing</p>
+
+<p>This will create a directory on the grid and associate an alias to it so you can easily access it by typing <code>testing:</code> instead of a long capability.</p></li>
+
+<li><p>To copy an existing file from your current, local working directory into your new alias:</p>
+
+<p>tahoe cp file1 testing:</p></li>
+
+<li><p>List the alias contents:</p>
+
+<p>tahoe ls testing:</p></li>
+
+<li><p>List the file/directory capabilities:</p>
+
+<p>tahoe ls &ndash;uri testing:</p></li>
+
+<li><p>To upload an entire directory:</p>
+
+<p>tahoe cp &ndash;recursive name-of-local-directory testing:</p></li>
+
+<li><p>Back up a directory:</p>
+
+<p>tahoe backup name-of-local-directory testing:</p>
+
+<p>This creates incremental backups, kept in timestamped directories, and it will only upload files that have changed when running the command again.</p></li>
+
+<li><p>Fix problems and redistribute file shares when required:</p>
+
+<p>tahoe deep-check &ndash;repair testing:</p>
+
+<p>It&rsquo;s a good idea to routinely run this command on important directories and especially after you&rsquo;ve lost a few storage nodes.</p></li>
+
+<li><p>You should also save the capabilities stored in your aliases and keep them some place safe (back them up on another machine, preferably encrypted with a strong password). You can see these with:</p>
+
+<p>tahoe list-aliases</p></li>
+
+<li><p>To display a list of available commands:</p>
+
+<p>tahoe</p></li>
+
+<li><p>If you need additional help on a command:</p>
+
+<p>tahoe name-of-command &ndash;help</p>
+
+<p>For example: <code>tahoe ls --help</code>. For more information about Tahoe-LAFS, visit the <a href="http://tahoe-lafs.readthedocs.io/en/latest/frontends/CLI.html">official documentation</a>.</p></li>
+</ul>
+
+<h2 id="possible-next-steps">Possible Next Steps</h2>
+
+<p>Now that you have your grid up and running, it&rsquo;s important to maintain it in good working condition. Some improvements can be made:</p>
+
+<ol>
+<li><p>If people with low upload bandwidth notice that it takes a long time to send a file to the grid, <a href="http://tahoe-lafs.readthedocs.io/en/latest/helper.html">set up helper nodes</a>. Slowdowns may occur because your local Tahoe client also has to send redundant data to multiple nodes.</p></li>
+
+<li><p>In time, your storage servers might get full with data you no longer need. Read about <a href="http://tahoe-lafs.readthedocs.io/en/latest/garbage-collection.html">garbage collection</a> to understand how you can get rid of the unnecessary files.</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://tahoe-lafs.org/">Tahoe-LAFS Project Page</a></li>
+
+<li><a href="http://tahoe-lafs.readthedocs.io">Tahoe-LAFS Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/how-to-use-block-storage-with-your-linode/">How to Use Block Storage with Your Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-tahoe-lafs">What is Tahoe-LAFS?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#server-requirements-and-recommendations">Server Requirements and Recommendations</a></li>
+<li><a href="#install-tahoe-lafs-and-set-up-the-introducer">Install Tahoe-LAFS and Set Up the Introducer</a>
+<ul>
+<li><a href="#how-to-restart-the-introducer">How to Restart the Introducer</a></li>
+</ul></li>
+<li><a href="#add-tahoe-lafs-storage-nodes-to-the-grid">Add Tahoe-LAFS Storage Nodes to the Grid</a>
+<ul>
+<li><a href="#how-to-use-linode-stackscripts-to-automatically-configure-storage-nodes">How to Use Linode StackScripts to Automatically Configure Storage Nodes</a></li>
+</ul></li>
+<li><a href="#set-up-the-tahoe-lafs-client-on-your-local-computer">Set up the Tahoe-LAFS Client on Your Local Computer</a></li>
+<li><a href="#manage-your-grid-with-tahoe-lafs-s-web-interface">Manage your Grid with Tahoe-LAFS&rsquo;s Web Interface</a></li>
+<li><a href="#how-to-use-tahoe-lafs-s-command-line-interface">How to Use Tahoe-LAFS&rsquo;s Command Line Interface</a></li>
+<li><a href="#possible-next-steps">Possible Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

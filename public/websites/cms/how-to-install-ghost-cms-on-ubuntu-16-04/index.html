@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install Ghost CMS on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 16.04">
+        <meta name="keywords" content="ghost, install ghost, ghost on linode, configure ghost, deploy ghost on ubuntu 16.04">
+        
+        <meta property="og:title" content="How to Install Ghost CMS on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/cms/how-to-install-ghost-cms-on-ubuntu-16-04/">
+        <meta property="og:description" content="Easily publish your own professional-looking blog using Ghost on your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/cms/how-to-install-ghost-cms-on-ubuntu-16-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/cms/">Control Panels &amp; Content Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install Ghost CMS on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install Ghost CMS on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-12T00:00:00Z">Tuesday, September 12, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/blagoeres">Blago Eres
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fhow-to-install-ghost-cms-on-ubuntu-16-04%2f&via=linode&text=How%20to%20Install%20Ghost%20CMS%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fhow-to-install-ghost-cms-on-ubuntu-16-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fcms%2fhow-to-install-ghost-cms-on-ubuntu-16-04%2f&t=How%20to%20Install%20Ghost%20CMS%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/cms/how-to-install-ghost-cms-on-ubuntu-16-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/cms/how-to-install-ghost-cms-on-ubuntu-16-04.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/ghost/ghost-blog-ubuntu-16-04-title-graphic.png" alt="How to Install Ghost CMS on Ubuntu 16.04" title="How to Install Ghost CMS on Ubuntu 16.04" /></p>
+
+<p><a href="https://ghost.org/developers/">Ghost</a> is an open source blogging platform that helps you easily create a professional-looking online blog.</p>
+
+<p>Ghost 1.0.0 is the first major, stable release of the Ghost content management system (CMS). Ghost 1.0.0 has a brand new Markdown editor, refreshed user interface, new default theme design, improved install and update process with <a href="https://github.com/TryGhost/Ghost-CLI">Ghost-CLI</a>, and more.</p>
+
+<p>In this guide you&rsquo;ll set up, deploy, and secure a Ghost 1.0.0 blog on a Linode running Ubuntu 16.04 LTS, using nginx, MySQL, Node.js, NPM, Ghost-CLI, and Let&rsquo;s Encrypt.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, consult our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</p>
+
+<p>Replace each instance of <code>example.com</code> in this guide with your site’s domain name.</p>
+</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before you Begin</h2>
+
+<ol>
+<li><p>This guide assumes that you&rsquo;ve followed the steps in our <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/security/securing-your-server">Securing Your Server</a> guides and have created a new user for Ghost with elevated <code>sudo</code> privileges. The example in this guide uses <code>ghostexample</code>.</p></li>
+
+<li><p>Ensure that you have a valid domain name and properly configured DNS records for your domain.</p></li>
+
+<li><p>Ensure that your system is up to date:</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre></li>
+
+<li><p>Install <code>build-essential</code>:</p>
+
+<pre><code>sudo apt install build-essential
+</code></pre></li>
+</ol>
+
+<h2 id="install-nginx">Install nginx</h2>
+
+<p>nginx will be used as a reverse proxy for your Ghost application:</p>
+
+<pre><code>sudo apt install nginx
+</code></pre>
+
+<h2 id="install-mysql">Install MySQL</h2>
+
+<ol>
+<li><p>Download and install MySQL:</p>
+
+<pre><code>sudo apt install mysql-server
+</code></pre>
+
+<p>Enter a strong password for the <code>root</code> user when prompted.</p></li>
+
+<li><p>Run the <code>mysql_secure_installation</code> script:</p>
+
+<pre><code>sudo mysql_secure_installation
+</code></pre></li>
+</ol>
+
+<h2 id="install-node-js-and-npm">Install Node.js and NPM</h2>
+
+<p>Ghost is built on Node.js and follows Node&rsquo;s Long Term Support (LTS) plan. Ghost only supports <a href="https://github.com/nodejs/LTS">LTS versions of Node.js</a>.</p>
+
+<p>Download and install Node.js:</p>
+
+<pre><code>curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt install nodejs
+</code></pre>
+
+<h2 id="install-ghost-cli">Install Ghost-CLI</h2>
+
+<p>Ghost-CLI is a command line interface (CLI) tool that makes installing and updating Ghost easy. It sets up the database, configures nginx as a reverse proxy, enables TLS/SSL security using Let&rsquo;s Encrypt CA, automatically renews your SSL, and initializes Ghost as a systemd service.</p>
+
+<ol>
+<li><p>Install Ghost-CLI:</p>
+
+<pre><code>sudo npm install -g ghost-cli@latest
+</code></pre></li>
+
+<li><p>Troubleshoot the system for any potential issues when installing or updating Ghost:</p>
+
+<pre><code>ghost doctor
+</code></pre></li>
+
+<li><p>Get help about <code>ghost</code>:</p>
+
+<pre><code>ghost help
+</code></pre></li>
+</ol>
+
+<h2 id="install-ghost">Install Ghost</h2>
+
+<p>Install Ghost 1.0.0 using the Ghost-CLI tool.</p>
+
+<ol>
+<li><p>Create the document root directory:</p>
+
+<pre><code>sudo mkdir -p /var/www/ghost
+</code></pre></li>
+
+<li><p>Change ownership of the <code>/var/www/ghost</code> directory to the non-root user with <code>sudo</code> privileges that you created. In this example, <code>ghostexample</code>:</p>
+
+<pre><code>sudo chown ghostexample:ghostexample /var/www/ghost
+</code></pre></li>
+
+<li><p>Navigate to the Ghost root directory:</p>
+
+<pre><code>cd /var/www/ghost
+</code></pre></li>
+
+<li><p>Ensure that the directory is empty to avoid file conflicts:</p>
+
+<pre><code>ls -a
+</code></pre></li>
+
+<li><p>Install Ghost in production mode:</p>
+
+<pre><code>ghost install
+</code></pre></li>
+
+<li><p>Answer each question as prompted. For more information about each question, visit the <a href="https://docs.ghost.org/docs/cli-install#section-prompts">Ghost documentation</a>:</p>
+
+<div class="file">
+? Enter your blog URL: <a href="https://example.com">https://example.com</a>
+? Enter your MySQL hostname: localhost
+? Enter your MySQL username: root
+? Enter your MySQL password: areallysecurepassword
+? Enter your Ghost database name: exampleGhost
+? Do you wish to set up Nginx? yes
+? Do you wish to set up SSL? yes
+? Enter your email (used for Let&rsquo;s Encrypt notifications) user@example.com
+? Do you wish to set up &ldquo;ghost&rdquo; mysql user? yes
+? Do you wish to set up Systemd? yes
+? Do you want to start Ghost? yes
+</div></li>
+
+<li><p>After installation is complete, run <code>ghost ls</code> to view running Ghost processes:</p>
+
+<pre><code>ghost ls
+</code></pre></li>
+</ol>
+
+<p>In the future when a newer version of Ghost is released, run <code>ghost update</code> from the <code>/var/www/ghost</code> directory to update to the newest version.</p>
+
+<h2 id="complete-the-setup">Complete the Setup</h2>
+
+<p>To complete the setup process, navigate to the Ghost configuration page by appending <code>/ghost</code> to the end of your blog’s URL or IP. This example uses <code>https://example.com/ghost</code>.</p>
+
+<ol>
+<li><p>On the welcome screen, click <strong>Create your account</strong>:</p>
+
+<p><img src="/docs/assets/ghost-1-0-0-welcome-small.png" alt="Ghost Welcome Screen" title="Ghost Welcome Screen" /></p></li>
+
+<li><p>Enter your email, create a user, password, and blog title:</p>
+
+<p><img src="/docs/assets/ghost-1-0-0-create-account-small.png" alt="Create Your Account Screen" title="Create Your Account Screen" /></p></li>
+
+<li><p>Invite additional members to your team. If you’d prefer to skip this step, click <strong>I’ll do this later, take me to my blog!</strong> at the bottom of the page.</p>
+
+<p><img src="/docs/assets/ghost-1-0-0-invite-team-small.png" alt="Invite Your Team Screen" title="Invite Your Team Screen" /></p></li>
+
+<li><p>Navigate the Ghost admin area to create your first post, change your site&rsquo;s theme, or configure additional settings:</p>
+
+<p><img src="/docs/assets/ghost-1-0-0-getting-started-small.png" alt="Ghost Admin Area" title="Ghost Admin Area" /></p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://docs.ghost.org/v1.0.0">Ghost Setup Documentation</a></li>
+
+<li><a href="https://themes.ghost.org/v1.0.0">Ghost Theme Documentation</a></li>
+
+<li><a href="https://api.ghost.org/v1.0.0">Ghost API Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/security-patches/patching-glibc-for-the-ghost-vulnerability/">Upgrading glibc for the GHOST Vulnerability</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before you Begin</a></li>
+<li><a href="#install-nginx">Install nginx</a></li>
+<li><a href="#install-mysql">Install MySQL</a></li>
+<li><a href="#install-node-js-and-npm">Install Node.js and NPM</a></li>
+<li><a href="#install-ghost-cli">Install Ghost-CLI</a></li>
+<li><a href="#install-ghost">Install Ghost</a></li>
+<li><a href="#complete-the-setup">Complete the Setup</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Set Up a Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster on either Ubuntu 16.04 or CentOS 7.">
+        <meta name="keywords" content="cassandra,  apache-cassandra,  centos 7,  ubuntu 16.04,  database,  nosql">
+        
+        <meta property="og:title" content="Set Up a Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/">
+        <meta property="og:description" content="This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster on either Ubuntu 16.04 or CentOS 7.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  Set Up a Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Set Up a Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-06-24T00:00:00Z">Saturday, June 24, 2017</time> by Andrew Lescher</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://www.linkedin.com/in/andrew-lescher-87027940/">Andrew Lescher
+    
+    <i class="fa fa-linkedin"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fset-up-a-cassandra-node-cluster-on-ubuntu-and-centos%2f&via=linode&text=Set%20Up%20a%20Production-Ready%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fset-up-a-cassandra-node-cluster-on-ubuntu-and-centos%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fset-up-a-cassandra-node-cluster-on-ubuntu-and-centos%2f&t=Set%20Up%20a%20Production-Ready%20Cassandra%20Node%20Cluster%20on%20Ubuntu%2016.04%20and%20CentOS%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/Cassandra/cass.png" alt="Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7" title="Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7" /></p>
+
+<h2 id="what-is-apache-cassandra">What is Apache Cassandra</h2>
+
+<p>Apache Cassandra is an open-source application that is managed through a simple command line interface using the CQL language. CQL, or Cassandra Query Language, is syntactically similar to Structured Query Language, making it easy to pick up for those familiar with SQL.</p>
+
+<p>Cassandra NoSQL databases are ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and evolving project needs during the software development lifecycle, which would otherwise be heavily restricted by traditional relational database implementations.</p>
+
+<p>This guide is <a href="/docs/databases/deploy-scalable-cassandra">Part 2 in a series</a> detailing the implementation of Apache Cassandra on Ubuntu 16.04 and CentOS 7 distributions. To complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following these instructions, you will learn how to link your Cassandra nodes together to form a true cluster.</p>
+
+<p>You will also learn how to secure communication between your nodes, as well as reinforce your cluster against typical failure points. The resulting cluster will be production-ready and configured for maximum uptime.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>You must have at least two Cassandra nodes set up and configured according to the <a href="/docs/databases/deploy-scalable-cassandra">Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra</a> guide. The Cassandra nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur.</p></li>
+
+<li><p>A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at <a href="/docs/security/firewalls/configure-firewall-with-ufw">How to Configure a Firewall with UFW</a>. FirewallD instructions are located at <a href="/docs/security/firewalls/introduction-to-firewalld-on-centos">Introduction to FirewallD on CentOS</a>.</p></li>
+
+<li><p>Most of the commands in this guide require root privileges in order to execute. You may work through the guide as-is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with <code>sudo</code>.</p></li>
+</ol>
+
+<h2 id="prepare-the-cassandra-nodes-for-clustering">Prepare the Cassandra Nodes for Clustering</h2>
+
+<p>The instructions here must be executed on each Cassandra node to be clustered. Apply the exact same configuration to each node, unless otherwise indicated.</p>
+
+<ol>
+<li><p>Clear the default data from the Cassandra system table in order to import the new values set in the <code>cassandra.yaml</code> config file:</p>
+
+<pre><code>systemctl stop cassandra
+rm -rf /var/lib/cassandra/data/system/*
+</code></pre></li>
+
+<li><p>Edit the <code>cassandra.yaml</code> file. Set the appropriate values for each variable indicated below:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Property</th>
+<th align="center">Explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">cluster_name</td>
+<td align="center">Choose your cluster name here.</td>
+</tr>
+
+<tr>
+<td align="center">seed_provider</td>
+<td align="center">This contains a comma-delimited list of each public IP address of each node to be clustered. Input the list in the line that reads <code>- seeds: &quot;127.0.0.1&quot;</code>.</td>
+</tr>
+
+<tr>
+<td align="center">listen_address</td>
+<td align="center">Other nodes in the cluster will use the IP address listed here to find each other. Change from <code>localhost</code> to the specific node&rsquo;s public IP address.</td>
+</tr>
+
+<tr>
+<td align="center">rpc_address</td>
+<td align="center">The listen address for client communication. Change from &ldquo;localhost&rdquo; to the public IP address or loopback address of the node.</td>
+</tr>
+
+<tr>
+<td align="center">endpoint_snitch</td>
+<td align="center">Snitches determine how Cassandra replicates data. Change this to &ldquo;GossipingPropertyFileSnitch,&rdquo; as this is more suitable to a multi-datacenter configuration.</td>
+</tr>
+
+<tr>
+<td align="center">auto_bootstrap</td>
+<td align="center">Add this property anywhere in the file. If you have yet to add data to your nodes - that is, you would start with a fresh cluster - set this to &ldquo;false.&rdquo; If your node(s) already contains data, <strong>do not</strong> add this property.</td>
+</tr>
+
+<tr>
+<td align="center">num_tokens</td>
+<td align="center">This property defines the proportion of data stored on each node. For nodes with equal hardware capabilities, this number should be set equally between them so the data is more likely to be evenly distributed. The default value of 256 is likely to ensure equal data distribution. For more information on this topic, see the &ldquo;How data is distributed across a cluster&rdquo; link in the &ldquo;External Resources&rdquo; section.</td>
+</tr>
+</tbody>
+</table>
+
+<dl class="file">
+<dt>
+
+
+		/etc/cassandra/conf/cassandra.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cluster_name: <span class="s1">&#39;[Your Cluster Name]&#39;</span>
+listen_address: <span class="o">[</span>public_ip_address<span class="o">]</span>
+rpc_address: <span class="o">[</span>public_ip_address<span class="o">]</span>
+num_tokens: <span class="m">256</span>
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+parameters:
+  - seeds: <span class="s2">&#34;[node1_ip_address],[node2_ip_address]&#34;</span>
+endpoint_snitch: GossipingPropertyFileSnitch
+auto_bootstrap: false</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Edit the <code>cassandra-rackdc.properties</code> file. Assign each node the same datacenter and rack name:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/cassandra/conf/cassandra-rackdc.properties 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-properties" data-lang="properties"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-properties" data-lang="properties"># These properties are used with GossipingPropertyFileSnitch and will
+# indicate the rack and dc for this node
+dc=DC1
+rack=RACK1</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<h2 id="edit-firewall-settings">Edit Firewall Settings</h2>
+
+<h3 id="open-cassandra-communication-ports">Open Cassandra Communication Ports</h3>
+
+<p>Ports <code>7000</code> and <code>9042</code> must be available for external nodes to connect to. As a security measure, limit connections to these ports to only the IP addresses of any other nodes in the cluster. Depending on your preference, you may use UFW, FirewallD, or iptables.</p>
+
+<p><strong>UFW</strong></p>
+
+<pre><code>ufw allow proto tcp from [external_node_ip_address] to any port 7000,9042 comment &quot;Cassandra TCP&quot;
+</code></pre>
+
+<p><strong>FirewallD</strong></p>
+
+<pre><code>firewall-cmd --permanent --zone=public --add-rich-rule='
+    rule family=&quot;ipv4&quot;
+    source address=&quot;[external_node_ip_address]&quot;
+    port protocol=&quot;tcp&quot; port=&quot;7000&quot; accept'
+
+firewall-cmd --permanent --zone=public --add-rich-rule='
+    rule family=&quot;ipv4&quot;
+    source address=&quot;[external_node_ip_address]&quot;
+    port protocol=&quot;tcp&quot; port=&quot;9042&quot; accept'
+
+firewall-cmd --reload
+</code></pre>
+
+<p><strong>iptables</strong></p>
+
+<pre><code>-A INPUT -p tcp -s [external_node_ip_address] -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h2 id="test-the-cluster-setup">Test the Cluster Setup</h2>
+
+<h3 id="boot-cassandra">Boot Cassandra</h3>
+
+<p>Start Cassandra on each node, one after another, with <code>systemctl start cassandra</code>. Run <code>nodetool status</code>, and you should see each node in your cluster listed in the output.</p>
+
+<h2 id="enable-node-to-node-encryption">Enable Node-to-Node Encryption</h2>
+
+<p>Setting up encryption between nodes offers additional security and protects the data that is transferred between Cassandra nodes. The commands in this section need only to be run on one node in your cluster, with the appropriate files then distributed across the rest of the cluster.</p>
+
+<h3 id="generate-ssl-files">Generate SSL Files</h3>
+
+<ol>
+<li><p>Create a new directory called <code>.keystore</code> in the Cassandra config directory. Navigate to the newly created directory:</p>
+
+<pre><code>mkdir /etc/cassandra/conf/.keystore
+cd /etc/cassandra/conf/.keystore
+</code></pre></li>
+
+<li><p>Create a configuration file for openssl to help automate the certificate creation process. Copy the contents below into a new file called <code>rootCAcert.conf</code>. Replace the values for <code>examplePassword</code>, <code>US</code>, <code>WA</code>, <code>Seattle</code> with your specific information:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/.keystore/rootCAcert.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">[</span> <span class="nb">req</span> ]
+<span class="nb">distinguished_name</span>     = req_distinguished_name
+<span class="nb">prompt</span>                 = no
+<span class="nb">output_password</span>        = examplePassword
+<span class="nb">default_bits</span>           = <span class="m">4096</span>
+
+<span class="err">[</span> <span class="nb">req_distinguished_name</span> ]
+<span class="nb">C</span>                      = US
+<span class="nb">ST</span>                     = WA
+<span class="nb">L</span>                      = Seattle
+<span class="nb">OU</span>                     = Cluster_Name
+<span class="nb">CN</span>                     = Cluster_Name_MasterCA</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create the public and private key files.</p>
+
+<pre><code>openssl req -config rootCAcert.conf -new -x509 -nodes -keyout ca-cert.key -out ca-cert.cert -days 365
+</code></pre></li>
+
+<li><p>Generate a keystore for each node in your cluster. Below, the command sequence is demonstrated as if two nodes comprised this cluster.</p>
+
+<pre><code>keytool -genkeypair -keyalg RSA -alias node1 -keystore node1-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname &quot;CN=node1, OU=[cluster_name]&quot;
+keytool -genkeypair -keyalg RSA -alias node2 -keystore node2-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname &quot;CN=node2, OU=[cluster_name]&quot;
+</code></pre></li>
+
+<li><p>Verify the key. A successful verification will print out the certificate fingerprint. Repeat this command for each certificate file.</p>
+
+<pre><code>keytool -list -keystore node1-keystore.jks -storepass [password]
+</code></pre></li>
+
+<li><p>Generate the signing-request file. Repeat this command for each node in your cluster, using each .jks file for the <code>-keystore</code> option. Below, the command sequence is demonstrated as if two nodes comprised this cluster.</p>
+
+<pre><code>keytool -certreq -keystore node1-keystore.jks -alias node1 -file node1-cert.csr -keypass cassandra -storepass cassandra -dname &quot;CN=node1, OU=[cluster_name]&quot;
+keytool -certreq -keystore node2-keystore.jks -alias node2 -file node2-cert.csr -keypass cassandra -storepass cassandra -dname &quot;CN=node2, OU=[cluster_name]&quot;
+</code></pre></li>
+
+<li><p>Sign each node&rsquo;s certificate. Run the following command for each node in your cluster, using each .csr file you created earlier. Set the certificate to expire in 365 days for best practice. Below, the command sequence is demonstrated as if two nodes comprised this cluster.</p>
+
+<pre><code>openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node1-cert.csr -out node1-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
+openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node2-cert.csr -out node2-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
+</code></pre></li>
+
+<li><p>Verify the certificates generated for each node.</p>
+
+<pre><code>openssl verify -CAfile ca-cert.cert node1-signed.cert
+</code></pre></li>
+
+<li><p>Import the original certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.</p>
+
+<pre><code>keytool -importcert -keystore node1-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
+keytool -importcert -keystore node2-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
+</code></pre></li>
+
+<li><p>Now, import the signed certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.</p>
+
+<pre><code>keytool -importcert -keystore node1-keystore.jks -alias node1 -file node1-signed.cert -noprompt -keypass cassandra -storepass cassandra
+keytool -importcert -keystore node2-keystore.jks -alias node2 -file node2-signed.cert -noprompt -keypass cassandra -storepass cassandra
+</code></pre></li>
+
+<li><p>Create a Cassandra server truststore file. This essentially acts as a certificate authority, allowing all nodes whose client certificates were signed here to communicate.</p>
+
+<pre><code>keytool -importcert -keystore cassandra-truststore.jks -alias truststore -file ca-cert.cert -noprompt -keypass [password] -storepass [password]
+</code></pre></li>
+</ol>
+
+<h2 id="copy-files-to-each-node-in-the-cluster">Copy Files to Each Node in The Cluster</h2>
+
+<p>Copy the truststore file and keystore files into Cassandra&rsquo;s <code>conf</code> directory for each node. Depending on your installation, the <code>conf</code> directory could be located at <code>/etc/cassandra/conf</code>, or <code>/etc/cassandra</code>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you receive a &ldquo;Permission denied&rdquo; error upon executing the following command, your destination server user does not have permissions to access Cassandra&rsquo;s config directory.</div>
+</blockquote>
+
+
+<pre><code>scp ~/.keystore/cassandra-truststore.jks username@&lt;dest_server_public_ip&gt;:/cassandra/config/directory/cassandra-truststore.jks
+scp ~/.keystore/[Cluster_Name].jks username@&lt;dest_server_public_ip&gt;:/cassandra/config/directory/[Cluster_Name]-keystore.jks
+</code></pre>
+
+<p>Use the <code>-i</code> option if your destination server requires a certificate to login.</p>
+
+<pre><code>scp -i /local_path/to/private_key_file ~/.keystore/cassandra-truststore.jks username@&lt;dest_server_public_ip&gt;:/cassandra/config/directory/cassandra-truststore.jks
+</code></pre>
+
+<h2 id="configure-encryption-settings">Configure Encryption Settings</h2>
+
+<p>Edit the <code>cassandra.yaml</code> file on each node to match the following. Replace text in [brackets] with the indicated information.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/cassandra/conf/cassandra.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">server_encryption_options<span class="p">:</span><span class="w">
+</span><span class="w">    </span>internode_encryption<span class="p">:</span><span class="w"> </span>all<span class="w">
+</span><span class="w">    </span>keystore<span class="p">:</span><span class="w"> </span>/etc/cassandra/conf/<span class="p">[</span>keystore_file.jks<span class="p">]</span><span class="w">
+</span><span class="w">    </span>keystore_password<span class="p">:</span><span class="w"> </span>cassandra<span class="w">
+</span><span class="w">    </span>truststore<span class="p">:</span><span class="w"> </span>/etc/cassandra/conf/<span class="p">[</span>truststore_file.jks<span class="p">]</span><span class="w">
+</span><span class="w">    </span>truststore_password<span class="p">:</span><span class="w"> </span>cassandra<span class="w">
+</span><span class="w">    </span><span class="c"># More advanced defaults below:</span><span class="w">
+</span><span class="w">    </span>protocol<span class="p">:</span><span class="w"> </span>TLS<span class="w">
+</span><span class="w">    </span>algorithm<span class="p">:</span><span class="w"> </span>SunX<span class="m">509</span><span class="w">
+</span><span class="w">    </span>store_type<span class="p">:</span><span class="w"> </span>JKS<span class="w">
+</span><span class="w">    </span>cipher_suites<span class="p">:</span><span class="w"> </span><span class="p">[</span>TLS_RSA_WITH_AES_128_CBC_SHA<span class="p">,</span>TLS_RSA_WITH_AES_256_CBC_SHA<span class="p">]</span><span class="w">
+</span><span class="w">    </span>require_client_auth<span class="p">:</span><span class="w"> </span><span class="kc">true</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>You may want to configure the <em>internode_encryption</em> setting to better meet the needs of your specific environment. A breakdown of available values are shown below:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Property</th>
+<th align="center">Property description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">all</td>
+<td align="center">All traffic between nodes is encrypted.</td>
+</tr>
+
+<tr>
+<td align="center">none</td>
+<td align="center">No traffic is encrypted.</td>
+</tr>
+
+<tr>
+<td align="center">dc</td>
+<td align="center">Only traffic between datacenters is encrypted.</td>
+</tr>
+
+<tr>
+<td align="center">rack</td>
+<td align="center">Only traffic between server racks is encrypted.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="verify-ssl-setup">Verify SSL Setup</h2>
+
+<p>Run the following commands on each server node.</p>
+
+<ol>
+<li><p>Reboot Cassandra</p>
+
+<pre><code>systemctl restart cassandra
+</code></pre></li>
+
+<li><p>Verify the nodes are online and communicating.</p>
+
+<pre><code>nodetool status
+</code></pre></li>
+
+<li><p>Check log file to verify ssl encryption status.</p>
+
+<pre><code>grep SSL /var/log/cassandra/system.log 2&gt;&amp;1 | tail -1
+</code></pre></li>
+</ol>
+
+<p>If successful, your console output should read similar to the following:</p>
+
+<pre><code>INFO  [main] 2017-07-19 14:35:14,212 MessagingService.java:521 - Starting Encrypted Messaging Service on SSL port 7001
+</code></pre>
+
+<h3 id="automate-ssl-certificate-generation">Automate SSL Certificate Generation</h3>
+
+<p>If you have many Cassandra nodes for which to create and distribute certificates, the process outlined above can quickly become tedious. Now that you understand how SSL certificates are generated for Cassandra, the process can be automated with a bash script. You can <a href="https://github.com/Darkstar90/cassandra-keygen">automate the process with a script</a>. The rest of this guide shows you how to use the SSL certificate generator to automate the generation of SSL certificates.</p>
+
+<ol>
+<li><p>Navigate to any folder and pull the script from Github:</p>
+
+<pre><code>git pull https://github.com/Darkstar90/cassandra-keygen.git
+</code></pre></li>
+
+<li><p>Run the script with the <code>-h</code> or <code>--help</code> option:</p>
+
+<pre><code>bash cassandra-keygen.sh --help
+</code></pre></li>
+
+<li><p>The output of the command will demonstrate the capabilities of the script and define its usage. The script has 3 modes:</p>
+
+<pre><code>a. Generate Node Certificates
+b. Import Node Certificates
+c. Generate Truststore
+</code></pre></li>
+</ol>
+
+<p>An example usage of each mode is demonstrated below, for a cluster of 6 nodes:</p>
+
+<p><strong>Generate Node Certificates</strong></p>
+
+<pre><code>bash cassandra-keygen.sh  --nodes 6 --directory /etc/cassandra/conf/.keystore --cluster Cassandra_Cluster --password cassandra --sslconfig /etc/cassandra/conf/rootCAcert.conf --keysize 4096
+</code></pre>
+
+<p><strong>Import Node Certificates</strong></p>
+
+<pre><code>bash cassandra-keygen.sh -n 6 -d /etc/cassandra/conf/.keystore -p cassandra
+</code></pre>
+
+<p><strong>Generate Truststore</strong></p>
+
+<pre><code>bash cassandra-keygen.sh --directory /etc/cassandra/conf/.keystore --truststore cassandra
+</code></pre>
+
+<p><strong>Do All Actions</strong></p>
+
+<pre><code>bash cassandra-keygen.sh  --nodes 6 --directory /etc/cassandra/conf/.keystore --cluster Cassandra_Cluster --password cassandra --truststore cassandra --sslconfig /etc/cassandra/conf/rootCAcert.conf --keysize 4096
+</code></pre>
+
+<h3 id="where-to-go-from-here">Where to Go From Here</h3>
+
+<p>Now that your Cassandra cluster is up and running with node-to-node SSL encryption, you are prepared to deploy production-ready databases. Logging into each node in the cluster with <code>cqlsh</code> can also be accomplished with encryption. See the &ldquo;[Client-to-node encryption]&rdquo; link the external resources section for information on setting that up. <a href="http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html">Client-to-node encryption</a></p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html">How data is distributed across a cluster</a></li>
+
+<li><a href="http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html">Client-to-node encryption</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/deploy-scalable-cassandra/">How to Install Apache Cassandra on Ubuntu 17.04 and CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/redis/install-and-configure-redis-on-centos-7/">Install and Configure Redis on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-apache-cassandra">What is Apache Cassandra</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#prepare-the-cassandra-nodes-for-clustering">Prepare the Cassandra Nodes for Clustering</a></li>
+<li><a href="#edit-firewall-settings">Edit Firewall Settings</a>
+<ul>
+<li><a href="#open-cassandra-communication-ports">Open Cassandra Communication Ports</a></li>
+</ul></li>
+<li><a href="#test-the-cluster-setup">Test the Cluster Setup</a>
+<ul>
+<li><a href="#boot-cassandra">Boot Cassandra</a></li>
+</ul></li>
+<li><a href="#enable-node-to-node-encryption">Enable Node-to-Node Encryption</a>
+<ul>
+<li><a href="#generate-ssl-files">Generate SSL Files</a></li>
+</ul></li>
+<li><a href="#copy-files-to-each-node-in-the-cluster">Copy Files to Each Node in The Cluster</a></li>
+<li><a href="#configure-encryption-settings">Configure Encryption Settings</a></li>
+<li><a href="#verify-ssl-setup">Verify SSL Setup</a>
+<ul>
+<li><a href="#automate-ssl-certificate-generation">Automate SSL Certificate Generation</a></li>
+<li><a href="#where-to-go-from-here">Where to Go From Here</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

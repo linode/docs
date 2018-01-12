@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Linode Beginner&#39;s Guide</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Beginner&#39;s Guide to Linode&#39;s Platform answers common configuration questions about the Linode cloud.">
+        <meta name="keywords" content="linode beginners guide, linux beginner, linode beginner, Linode guide">
+        
+        <meta property="og:title" content="Linode Beginner&#39;s Guide">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/linode-beginners-guide/">
+        <meta property="og:description" content="Beginner&#39;s Guide to Linode&#39;s Platform answers common configuration questions about the Linode cloud.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/linode-beginners-guide/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  Linode Beginner&#39;s Guide
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Linode Beginner&#39;s Guide</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-03-02T00:00:00Z">Thursday, March 2, 2017</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-beginners-guide%2f&via=linode&text=Linode%20Beginner%26%2339%3bs%20Guide" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-beginners-guide%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-beginners-guide%2f&t=Linode%20Beginner%27s%20Guide" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/linode-beginners-guide.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/linode-beginners-guide.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>If you&rsquo;re relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you&rsquo;ve just created your first Linode account, please first refer to our <a href="/docs/getting-started/">Getting Started</a> Guide and return here once your Linode has been deployed.</p>
+
+<p><img src="/docs/assets/linode-beginners-guide.png" alt="Linode Beginners Guide" /></p>
+
+<h2 id="how-do-i-log-into-my-linode">How do I log into my Linode?</h2>
+
+<p>By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the <a href="/docs/getting-started/#connect-to-your-linode-via-ssh">connecting to your Linode with SSH</a> section of our <a href="/docs/getting-started/">Getting Started</a> guide.</p>
+
+<h2 id="how-do-i-host-websites-on-my-linode">How do I host websites on my Linode?</h2>
+
+<p>Since you have full root access to your Linode, you&rsquo;re free to choose between a number of popular web servers to host your websites. If you&rsquo;d like to install a full LAMP stack (including support for PHP/Perl/Python scripting and databases), our <a href="/docs/lamp-guides/">LAMP guides</a> will explain each step of the process. If you&rsquo;d just like to host a site that consists of static pages, these guides explain the installation of a few popular web server packages:</p>
+
+<ul>
+<li><a href="/docs/websites/apache/">Hosting Websites with Apache</a> - Apache is the most popular web server software on the Internet.</li>
+<li><a href="/docs/websites/nginx">Hosting Websites with Nginx</a> - Nginx is a fast, scalable web server that is well suited for both static and dynamic content.</li>
+<li><a href="/docs/websites/lighttpd/">Hosting Websites with Lighttpd</a> - Lighttpd is popular with users who want a very small, lightweight web server.</li>
+</ul>
+
+<h2 id="how-can-i-send-and-receive-email-with-my-linode">How can I send and receive email with my Linode?</h2>
+
+<p>If you&rsquo;d prefer to leave the management of your email to a third party, you may follow our <a href="/docs/email/google-mail/">Google Apps guide</a>. Those desiring to operate their own mail server will find these guides helpful:</p>
+
+<ul>
+<li><a href="/docs/email/postfix/">Postfix Guides</a> - Information on using the highly popular Postfix MTA (mail transfer agent).</li>
+<li><a href="/docs/email/zimbra/">Zimbra Guides</a> - Instructions for deploying Zimbra, a unified messaging system that includes email and calendar.</li>
+<li><a href="/docs/email/citadel/">Citadel Groupware</a> - An easy to use &ldquo;all in one&rdquo; email system with a web-based administration panel.</li>
+</ul>
+
+<h2 id="does-my-linode-have-a-control-panel">Does my Linode have a control panel?</h2>
+
+<p>We provide a base system install of the Linux distribution of your choice. Although there isn&rsquo;t a control panel installed by default, you&rsquo;re welcome to obtain and install one if you like. You may wish to try an open-source control panel; we have numerous <a href="/docs/websites/cms">control panel guides</a> available to assist you with getting one installed.</p>
+
+<p>Please note that we do <em>not</em> sell control panel licenses. If you decide you&rsquo;d like to use a commercial product, you&rsquo;ll need to obtain a license for it separately.</p>
+
+<h2 id="how-do-i-upload-files-to-my-linode">How do I upload files to my Linode?</h2>
+
+<p>By default, SSH is enabled on all newly deployed Linodes. You may use any file transfer program that supports the SFTP standard to upload files. We&rsquo;ve created guides for some commonly used programs:</p>
+
+<ul>
+<li><a href="/docs/networking/file-transfer/transfer-files-winscp">WinSCP</a> - Windows 95 through Windows 10</li>
+<li><a href="/docs/networking/file-transfer/transfer-files-cyberduck">Cyberduck</a> - Mac OS X</li>
+<li><a href="/docs/tools-reference/file-transfer/filezilla">Filezilla</a> - Available on all major desktop platforms, including Linux-based operating systems</li>
+</ul>
+
+<h2 id="how-can-i-download-a-backup-of-my-linode">How can I download a backup of my Linode?</h2>
+
+<p>First, you might want to give the <a href="http://www.linode.com/backups/">Linode Backup Service</a> a try. It&rsquo;s a fast, flexible and cost-effective way to make extra copies of your data. That said, the old saying &ldquo;you can never have too many backups&rdquo; is certainly true. In case you&rsquo;d like to &ldquo;roll your own&rdquo; solution, we&rsquo;ve created guides that explain various ways of creating backups of your Linode&rsquo;s filesystems:</p>
+
+<ul>
+<li><a href="/docs/tools-reference/tools/introduction-to-rsync/">Introduction to Rsync</a> - Using <code>rsync</code> to mirror files to another server.</li>
+<li><a href="/docs/security/backups/using-rdiff-backup-with-sshfs/">Using Rdiff-backup with SSHFS</a> - An easy approach to using the <code>rdiff-backup</code> utility to maintain differential backups.</li>
+<li><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk">Duplicating a Disk</a> - Creating an exact copy of a disk in the Linode Manager.</li>
+<li><a href="/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh">Copying a Disk Over SSH</a> - How to download an exact binary image of your Linode&rsquo;s disk over SSH.</li>
+</ul>
+
+<h2 id="how-can-i-install-software-on-my-linode">How can I install software on my Linode?</h2>
+
+<p>Please refer to our guide on <a href="/docs/tools-reference/linux-package-management/">Linux package management</a> for distribution-specific instructions on getting software installed on your Linode. Since you have full root access to your system, you&rsquo;re allowed to install anything that complies with our <a href="http://www.linode.com/tos">terms of service</a>.</p>
+
+<h2 id="how-do-i-add-another-ip-address">How do I add another IP address?</h2>
+
+<p>You may add an additional public IP address from the &ldquo;Remote Access&rdquo; tab in the Linode Manager. After you&rsquo;ve added a new IP address, you must <a href="/docs/networking/linux-static-ip-configuration/">configure static networking</a> or enable <a href="/docs/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles">Network Helper</a> and reboot your Linode before it can be used.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the &ldquo;Support&rdquo; tab of the Linode Manager explaining the reason for the new IP.</div>
+</blockquote>
+
+
+<p>If you&rsquo;d like to take advantage of our private networking feature, you may add a private IP to your Linode from the &ldquo;Remote Access&rdquo; tab of the Linode Manager. Private IP addresses are not publicly accessible, although they are accessible from other Linodes in the same datacenter. Although we take measures to prevent others from intercepting your private IP traffic, you may still wish to configure a firewall to allow access from only the Linodes that you operate.</p>
+
+<h2 id="how-do-i-set-the-reverse-dns-for-an-ip-address">How do I set the reverse DNS for an IP address?</h2>
+
+<p>You may use the &ldquo;Reverse DNS&rdquo; link on the &ldquo;Remote Access&rdquo; tab in the Linode Manager. Please note that the value you specify needs to match an A record or CNAME in DNS pointing to your Linode&rsquo;s IP address. It may take up to 48 hours for reverse DNS updates to take effect.</p>
+
+<h2 id="why-does-my-linode-keep-crashing">Why does my Linode keep crashing?</h2>
+
+<p>You may be running out of memory, disk space, or other resources. Have a look at our <a href="/docs/troubleshooting/">troubleshooting guide</a> for tips on diagnosing problems and easy steps for fixing common issues.</p>
+
+<p>If an application is crashing, be sure to check its error logs. These are typically located within an application-specific directory under <code>/var/log</code>.</p>
+
+<h2 id="why-is-my-connection-to-my-linode-slow-or-broken">Why is my connection to my Linode slow or broken?</h2>
+
+<p>First, check to be sure that the service (SSH, HTTP, etc.) you&rsquo;re trying to access is running. If your Linode runs a firewall, <a href="/docs/security/firewalls/control-network-traffic-with-iptables#view-your-current-iptables-rules">check your firewall rules</a> to ensure that you&rsquo;re allowing traffic to the desired destination. If this doesn&rsquo;t help, generate <a href="/docs/networking/diagnostics/diagnosing-network-issues-with-mtr">MTR reports</a> to and from your Linode, and submit them via the &ldquo;Support&rdquo; tab in the Linode Manager. You may need to use <a href="/docs/networking/using-the-linode-shell-lish/">Lish</a> if you&rsquo;re having problems reaching your Linode via normal networking.</p>
+
+<h2 id="how-can-i-upgrade-or-downgrade-my-linode">How can I upgrade or downgrade my Linode?</h2>
+
+<p>Resizing your Linode is automated via the &ldquo;Resize&rdquo; tab in the Linode Manager, pending availability for the plan you wish to move to in your datacenter. If you&rsquo;re downgrading, please make sure you&rsquo;ve resized your disk images to fit within your desired plan&rsquo;s disk space allocation before issuing the resize job. For more information, refer to our guide on <a href="/docs/migrate-to-linode/disk-images/resizing-a-linode">resizing a Linode</a></p>
+
+<h2 id="how-can-i-test-downloads-speeds-from-different-datacenters">How can I test downloads speeds from different datacenters?</h2>
+
+<p>You may use our <a href="http://www.linode.com/speedtest/">speed test</a> page to check latency and download speeds from your location to each of our datacenters. Many customers with a large Asia-Pacific presence find that our Singapore and Tokyo facilities work best, while those with a visitor base in Europe tend to prefer our London or Frankfurt datacenters.</p>
+
+<h2 id="can-i-transfer-my-linode-to-another-datacenter">Can I transfer my Linode to another datacenter?</h2>
+
+<p>Yes! Any time you&rsquo;d like to transfer your Linode, you may open a ticket via the &ldquo;Support&rdquo; tab in the Linode Manager to request a DC migration. Your disks and configuration profiles will move with your Linode, although your IP addresses will need to change. Once we stage your migration, you&rsquo;ll see a &ldquo;migration pending&rdquo; link in the Linode Manager, which you may use at your convenience to migrate your Linode.</p>
+
+<h2 id="where-can-i-learn-about-linux-basics">Where can I learn about Linux basics?</h2>
+
+<p>For those just getting started with Linux systems, we&rsquo;ve created a series of guides that will help explain basic concepts:</p>
+
+<ul>
+<li><a href="/docs/tools-reference/introduction-to-linux-concepts/">Introduction to Linux Concepts</a> - An introduction to Linux and Unix-like systems.</li>
+<li><a href="/docs/tools-reference/linux-users-and-groups">Linux Users and Groups</a> - An introduction to the principal concepts and use of the users and groups system.</li>
+<li><a href="/docs/networking/ssh/using-the-terminal/">Using the Terminal</a> - Introducing the command line interface known as the shell or terminal.</li>
+<li><a href="/docs/tools-reference/linux-package-management/">Linux Package Management</a> - How to install software on your Linode.</li>
+<li><a href="/docs/security/securing-your-server">Securing your Server</a> - Keeping your Linode safe from unauthorized access or abuse.</li>
+</ul>
+
+<h2 id="where-can-i-get-help-with-something-not-covered-here">Where can I get help with something not covered here?</h2>
+
+<p>We always recommend consulting our excellent <a href="https://forum.linode.com">user community</a> first when faced with a question that doesn&rsquo;t seem to be addressed in our documentation. There is also an active community of users available to help on <a href="https://www.linode.com/chat">IRC</a>. If you get stuck you may also open a <a href="https://www.linode.com/contact">support</a> ticket from the &ldquo;Support&rdquo; tab in the Linode Manager.</p>
+
+            
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#how-do-i-log-into-my-linode">How do I log into my Linode?</a></li>
+<li><a href="#how-do-i-host-websites-on-my-linode">How do I host websites on my Linode?</a></li>
+<li><a href="#how-can-i-send-and-receive-email-with-my-linode">How can I send and receive email with my Linode?</a></li>
+<li><a href="#does-my-linode-have-a-control-panel">Does my Linode have a control panel?</a></li>
+<li><a href="#how-do-i-upload-files-to-my-linode">How do I upload files to my Linode?</a></li>
+<li><a href="#how-can-i-download-a-backup-of-my-linode">How can I download a backup of my Linode?</a></li>
+<li><a href="#how-can-i-install-software-on-my-linode">How can I install software on my Linode?</a></li>
+<li><a href="#how-do-i-add-another-ip-address">How do I add another IP address?</a></li>
+<li><a href="#how-do-i-set-the-reverse-dns-for-an-ip-address">How do I set the reverse DNS for an IP address?</a></li>
+<li><a href="#why-does-my-linode-keep-crashing">Why does my Linode keep crashing?</a></li>
+<li><a href="#why-is-my-connection-to-my-linode-slow-or-broken">Why is my connection to my Linode slow or broken?</a></li>
+<li><a href="#how-can-i-upgrade-or-downgrade-my-linode">How can I upgrade or downgrade my Linode?</a></li>
+<li><a href="#how-can-i-test-downloads-speeds-from-different-datacenters">How can I test downloads speeds from different datacenters?</a></li>
+<li><a href="#can-i-transfer-my-linode-to-another-datacenter">Can I transfer my Linode to another datacenter?</a></li>
+<li><a href="#where-can-i-learn-about-linux-basics">Where can I learn about Linux basics?</a></li>
+<li><a href="#where-can-i-get-help-with-something-not-covered-here">Where can I get help with something not covered here?</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

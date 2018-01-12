@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install A SHOUTcast DNAS Server on Linux</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This tutorial will guide you through setup and configuration of a SHOUTcast DNAS server for media streaming on Linux.">
+        <meta name="keywords" content="shoutcast,  internet radio,  streaming media,  streaming audio">
+        
+        <meta property="og:title" content="How to Install A SHOUTcast DNAS Server on Linux">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/media-servers/how-to-install-shoutcast-dnas-server-on-linux/">
+        <meta property="og:description" content="This tutorial will guide you through setup and configuration of a SHOUTcast DNAS server for media streaming on Linux.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/media-servers/how-to-install-shoutcast-dnas-server-on-linux/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/media-servers/">Media Servers</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install A SHOUTcast DNAS Server on Linux
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install A SHOUTcast DNAS Server on Linux</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-06-21T00:00:00Z">Wednesday, June 21, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmedia-servers%2fhow-to-install-shoutcast-dnas-server-on-linux%2f&via=linode&text=How%20to%20Install%20A%20SHOUTcast%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmedia-servers%2fhow-to-install-shoutcast-dnas-server-on-linux%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fmedia-servers%2fhow-to-install-shoutcast-dnas-server-on-linux%2f&t=How%20to%20Install%20A%20SHOUTcast%20DNAS%20Server%20on%20Linux" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/media-servers/how-to-install-shoutcast-dnas-server-on-linux.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/media-servers/how-to-install-shoutcast-dnas-server-on-linux.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>SHOUTcast is software designed for streaming media over the internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our <a href="/docs/platform/how-to-use-block-storage-with-your-linode">Block Storage</a> service with this setup.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Be sure to <a href="http://www.shoutcast.com/broadcast-tools">check the broadcast tools download page</a> for the newest version of SHOUTcast.</div>
+</blockquote>
+
+
+<h2 id="shoutcast-dnas-software">SHOUTcast DNAS Software</h2>
+
+<p>The SHOUTcast DNAS (Distributed Network Audio Server) software is the server version of the software that allows you to broadcast to listeners. To use SHOUTcast, you&rsquo;ll need to download and install SHOUTcast DNAS on your Linode.</p>
+
+<h3 id="download-and-install-shoutcast">Download and Install SHOUTcast</h3>
+
+<p>There are several versions of this software, so make sure you are downloading the correct one. The Linux version is offered in both 32-bit and 64-bit versions. You&rsquo;ll need to <a href="http://www.shoutcast.com/broadcast-tools">download</a> whichever version corresponds to the operating system you have installed on your Linode.</p>
+
+<ol>
+<li><p>Create a user for running SHOUTcast, so you are not running it as root. Enter the following command:</p>
+
+<pre><code>adduser shoutcast
+</code></pre></li>
+
+<li><p>Change to the new user&rsquo;s home directory by entering the following command:</p>
+
+<pre><code>cd /home/shoutcast
+</code></pre></li>
+
+<li><p>Create a directory for SHOUTcast:</p>
+
+<pre><code>mkdir sc
+</code></pre></li>
+
+<li><p>Now we can download the DNAS package. In this example, we will download the 32-bit version:</p>
+
+<pre><code>wget http://download.nullsoft.com/shoutcast/tools/sc_serv2_linux_07_31_2011.tar.gz
+</code></pre></li>
+
+<li><p>Extract the SHOUTcast files to the new directory by entering the following command:</p>
+
+<pre><code>tar -xzf sc_serv2_linux_07_31_2011.tar.gz -C sc
+</code></pre></li>
+
+<li><p>Change the ownership from <code>root</code> to the SHOUTcast user:</p>
+
+<pre><code>chown -R shoutcast.shoutcast /home/shoutcast/sc
+</code></pre></li>
+</ol>
+
+<p>The SHOUTcast DNAS software is now installed on your Linode.</p>
+
+<h3 id="configure-shoutcast">Configure SHOUTcast</h3>
+
+<p>Now, you&rsquo;ll want to modify the configuration. This is necessary to specify passwords and set the SHOUTcast port. Here&rsquo;s how to configure SHOUTcast:</p>
+
+<ol>
+<li><p>Open the SHOUTcast configuration file:</p>
+
+<pre><code>nano sc/sc_serv_basic.conf
+</code></pre></li>
+
+<li><p>This will bring up the configuration file for editing, as shown below.</p>
+
+<dl class="file">
+<dt>
+
+
+		/home/shoutcast/sc/sc_serv_basic.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">; NOTE: for any relative paths specified are relative to
+; sc_serv and not to where the conf file is being stored
+
+; here we will setup where the log and other related files
+; will be stored. make sure that these folders exist else
+; sc_serv will throw an error and will close itself down.
+; we will make the logs save to the sc_serv2 directory
+logfile=logs/sc_serv.log
+w3clog=logs/sc_w3c.log
+banfile=control/sc_serv.ban
+ripfile=control/sc_serv.rip
+
+
+; for testing we will make the server only work locally
+; (i.e. localhost / 127.0.0.1) though if this is left out
+; or set to publicserver=always then we attempt to make a
+; connection to the YP for listing - do not forget to add
+; in a &#39;streamauthhash&#39; value for any public streams made
+;publicserver=never
+
+
+; if you&#39;re wanting to use a different port to use for any
+; connections then you can use this option e.g. to use 80
+; otherwise port 8000 is used as the default to listen on.
+;portbase=80
+
+
+; password used by sc_trans or the Winamp dsp plug-in
+; NOTE: remember to change this to something else
+password=testing
+
+
+; password used for accessing the administation pages
+; NOTE: remember to change this to something else
+adminpassword=changeme
+
+
+; now we will specify the details of the stream we&#39;re going
+; to serve which can be done as follows
+streamid=1
+streampath=/test.aac
+
+; or
+
+; it can be done like this which is how it needs to be done
+; if you are going to provide multiple streams from sc_serv
+;streamid_1=1
+;streampath_1=/test.aac
+;streamid_2=2
+;streampath_2=/test2.aac</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Set the <code>password</code> and <code>adminpassword</code> variables to whatever you want them to be.</p></li>
+
+<li><p>The <code>portbase</code> variable should be set to use a port you are not using for anything else. The default port for SHOUTcast is 8000.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you set the <code>portbase</code> variable to anything besides 8000, be sure to uncomment it by deleting the semicolon in front of the variable.</div>
+</blockquote>
+</li>
+
+<li><p>Save the changes to the SHOUTcast configuration file by pressing Control-X, and then Y.</p></li>
+</ol>
+
+<p>Now that the configuration is set and saved, we can start the server.</p>
+
+<h3 id="start-shoutcast">Start SHOUTcast</h3>
+
+<p>Now, you can start the SHOUTcast server. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>You&rsquo;ll want to run your shoutcast in a <a href="/docs/linux-tools/utilities/screen">screen session</a>. Let&rsquo;s jump into a screen session by entering the following command:</p>
+
+<pre><code>screen
+</code></pre></li>
+
+<li><p>Start the SHOUTcast server by entering the following command:</p>
+
+<pre><code>./sc_serv sc_serv_simple.conf
+</code></pre></li>
+
+<li><p>After you issue the start command, you should see the startup output ending with:</p>
+
+<pre><code>2011-11-02 14:50:03     I       msg:[MICROSERVER] Listening for connection on port 8000
+2011-11-02 14:50:03     I       msg:[MICROSERVER] Listening for connection on port 8001
+</code></pre></li>
+
+<li><p>You can detach from your screen session at this point. To do so, hold down the Control key and press A, let go, and then press D.</p></li>
+
+<li><p>You should be back at the command prompt outside of your screen session. If you need to reattach later on, simply type:</p>
+
+<pre><code>screen -raAd
+</code></pre></li>
+</ol>
+
+<p>Your SHOUTcast server is now running! You can now connect to it and begin your broadcast.</p>
+
+<h2 id="shoutcast-transcoder">SHOUTcast Transcoder</h2>
+
+<p>The SHOUTcast Transcoder allows you to schedule DJ play times, broadcast an automatic playlist in a specific time slot, schedule time slots for relayed broadcasts, etc.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>To encode your streams in MP3 format, you <em>must</em> <a href="http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding">purchase a license key from WinAmp, which costs \$5 USD</a>.</div>
+</blockquote>
+
+
+<h3 id="download-and-install-shoutcast-transcoder">Download and Install SHOUTcast Transcoder</h3>
+
+<p>We&rsquo;ll use the same shoutcast user to set up the Transcoder software. Here&rsquo;s how to download and install the transcoder:</p>
+
+<ol>
+<li><p>Change directories by entering the following command:</p>
+
+<pre><code>cd /home/shoutcast
+</code></pre></li>
+
+<li><p>Create a new directory for the transcoder by entering the following command:</p>
+
+<pre><code>mkdir sct
+</code></pre></li>
+
+<li><p>Download the SHOUTcast transcoder archive by entering the following command:</p>
+
+<pre><code>wget http://download.nullsoft.com/shoutcast/tools/sc_trans_linux_10_07_2011.tar.gz
+</code></pre></li>
+
+<li><p>Extract the SHOUTcast transcoder files by entering the following command:</p>
+
+<pre><code>tar -xzf sc_trans_linux_10_07_2011.tar.gz -C sct
+</code></pre></li>
+
+<li><p>Change ownership from <code>root</code> to the SHOUTcast user:</p>
+
+<pre><code>chown -R shoutcast.shoutcast /home/shoutcast/sct
+</code></pre></li>
+
+<li><p>Change directories by entering the following command:</p>
+
+<pre><code>cd sct
+</code></pre></li>
+
+<li><p>Change permissions by entering the following command:</p>
+
+<pre><code>chmod a+x sc_trans
+</code></pre></li>
+</ol>
+
+<p>The SHOUTcast transcoder is now installed on your Linode.</p>
+
+<h3 id="configure-the-shoutcast-transcoder">Configure the SHOUTcast Transcoder</h3>
+
+<p>This example will walk you through a basic configuration.</p>
+
+<ol>
+<li><p>Open the configuration file by entering the following command:</p>
+
+<pre><code>nano /home/shoutcast/sct/sc_trans_basic.conf
+</code></pre></li>
+
+<li><p>You can modify the bitrate to change the sound quality of the music and limit the amount of bandwidth consumed. If you purchase MP3 licensing, you can modify the encoder section to add the MP3 encoding and your unlock data:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/shoutcast/sct/sc_trans_basic.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">; for testing we will only setup a single encoder though it
+; is easy to add in additional encoder configurations and
+; we are using an aac plus encoder as the default due to
+; the licensing requirements for mp3 encoding as detailed
+; in sc_trans.txt - section 2.5).
+encoder_1=aacp
+encoder_2=mp3
+bitrate_1=56000
+bitrate_2=56000
+
+unlockkeyname=YourUnlockName
+unlockkeycode=YourUnlockCode</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Next, modify the sc_trans to sc_serv connection details:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/shoutcast/sct/sc_trans_basic.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">; this is where we define the details required for sc_trans
+; to connect to the sc_serv instance being used where the
+; details must match those specified in sc_serv_basic.conf
+outprotocol_1=3
+serverip_1=127.0.0.1
+; default is 8000, if not change to sc_serv&#39;s &#39;portbase&#39;
+serverport_1=8000
+; this is the same as &#39;password&#39; in sc_serv_basic.conf
+password_1=testing
+; this is the same as &#39;streamid&#39; in sc_serv_basic.conf for
+; the stream we are acting as the source for
+streamid_1=1
+; this is a name for the source we&#39;re creating and is used
+; with the AJAX control api or can be left blank to get a
+; generic name created in the form of &#39;endpointX&#39; where &#39;X&#39;
+; is the index of the created source from sc_trans lists.
+endpointname_1=/Bob</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>This step is optional, but you can also update your stream information:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/shoutcast/sct/sc_trans_basic.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">; here you would provide any information to fill in details
+; provided to clients about the stream. it us up to you what
+; is entered though do not do anything which will annoy, etc
+streamtitle=My Test Server
+streamurl=http://www.shoutcast.com
+genre=Misc</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Set your playlist file for an automated stream:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/shoutcast/sct/sc_trans_basic.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">; here we specify a playlist to use as the master list from
+; which to play files from.
+playlistfile=playlists/main.lst</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Now set the port, username, and password for the transcoder admin panel access:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/home/shoutcast/sct/sc_trans_basic.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">; these options will allow you access the admin interfaces
+; of sc_trans though also allows the &#39;testui&#39; example to be
+; accessed. remember to change the password, etc as needed
+adminport=7999
+adminuser=admin
+adminpassword=goaway</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save the changes to the SHOUTcast configuration file by pressing Control-X, and then Y.</p></li>
+
+<li><p>If you are using an automated playlist, upload your music files to the <code>/home/shoutcast/sct/music</code> directory.</p></li>
+
+<li><p>If you are using an automated playlist, you&rsquo;ll also need to create a playlist file. Here is an example:</p>
+
+<dl class="file">
+<dt>
+
+
+		/home/shoutcast/sct/playlists/playlist.lst 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># This example playlist is used as the main playlist sc_trans will use to pick
+</span><span class="c1"># out the files it will use to create its output for the source we generate.
+</span><span class="c1">#
+</span><span class="c1"># Also remember to use the correct path format for the OS you are using and to
+</span><span class="c1"># ensure that the files you want to play are present in the location you choose
+</span><span class="c1"># e.g.
+</span><span class="c1"></span>../music/shoutcast.mp3
+<span class="c1">#
+</span><span class="c1"># In this example we will just assume that all of the files associated to the
+</span><span class="c1"># playlist are in one folder and all have an mp3 extension though there is no
+</span><span class="c1"># reason why you cannot explicitly specify files to use or to reference a tool.
+</span><span class="c1"># See sc_trans.txt - section 7.1 for more information on how playlists work.
+</span><span class="c1"></span>
+<span class="c1"># Remember to change this to reference the files you want to use when trying
+</span><span class="c1"></span># the sc_trans_playlist.conf example which is best tried with full length files</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<h3 id="start-shoutcast-transcoder">Start SHOUTcast Transcoder</h3>
+
+<p>Once you have the transcoder configured and ready to go, you need to start it. To run the transcoder as a daemon, simply run this command, substituting <code>sc_trans_basic.conf</code> for whatever configuration file you are using:</p>
+
+<pre><code>./sc_trans daemon ./sc_trans_basic.conf
+</code></pre>
+
+<p>If no errors appear, you should see output similar to the line below, where XXXX is the PID:</p>
+
+<pre><code>sc_trans going daemon with PID [XXXX]
+</code></pre>
+
+<p>To shut down the transcoder, you&rsquo;ll just need to issue a kill command:</p>
+
+<pre><code>kill -15 PID
+</code></pre>
+
+<h2 id="shoutcast-source-dsp">SHOUTcast Source DSP</h2>
+
+<p>SHOUTcast&rsquo;s Source DSP plugin was developed for use with WinAmp version 5.5 and newer. This plugin gives you the ability to use WinAmp as a source for your sc_serv (DNAS) or sc_trans (Transcoder). It will also allow you to capture an audio input from your sound card and its line-in or microphone inputs. You will need a working installation of either the DNAS by itself, or the Transcoder feeding into a DNAS installation, before you can use the DSP WinAmp plugin. The download for the DSP plugin is near the bottom of the <a href="http://www.shoutcast.com/broadcast-tools">broadcast tools page</a>.</p>
+
+<p>Instructions for installation and configuration are located in the <a href="http://wiki.winamp.com/wiki/Source_DSP_Plug-in#Installing_the_Plug-in">WinAmp wiki</a>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.shoutcast.com">SHOUTcast Home Page</a></li>
+
+<li><a href="http://wiki.winamp.com/wiki/SHOUTcast_Getting_Started_Guide">SHOUTcast Getting Started Guide</a></li>
+
+<li><a href="http://www.shoutcast.com/broadcast-tools">SHOUTcast Broadcast Tools</a></li>
+
+<li><a href="http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding">SHOUTcast Transcoder MP3 Licensing</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#shoutcast-dnas-software">SHOUTcast DNAS Software</a>
+<ul>
+<li><a href="#download-and-install-shoutcast">Download and Install SHOUTcast</a></li>
+<li><a href="#configure-shoutcast">Configure SHOUTcast</a></li>
+<li><a href="#start-shoutcast">Start SHOUTcast</a></li>
+</ul></li>
+<li><a href="#shoutcast-transcoder">SHOUTcast Transcoder</a>
+<ul>
+<li><a href="#download-and-install-shoutcast-transcoder">Download and Install SHOUTcast Transcoder</a></li>
+<li><a href="#configure-the-shoutcast-transcoder">Configure the SHOUTcast Transcoder</a></li>
+<li><a href="#start-shoutcast-transcoder">Start SHOUTcast Transcoder</a></li>
+</ul></li>
+<li><a href="#shoutcast-source-dsp">SHOUTcast Source DSP</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

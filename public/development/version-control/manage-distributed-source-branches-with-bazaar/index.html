@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Manage Distributed Source Branches with Bazaar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Using the Bazaar version management system.">
+        <meta name="keywords" content="bzr, bazaar, vcs, scm, dcvs">
+        
+        <meta property="og:title" content="Manage Distributed Source Branches with Bazaar">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/version-control/manage-distributed-source-branches-with-bazaar/">
+        <meta property="og:description" content="Using the Bazaar version management system.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/version-control/manage-distributed-source-branches-with-bazaar/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/version-control/">Version Control</a>
+  
+</li>
+
+
+<li>
+  
+  Manage Distributed Source Branches with Bazaar
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Manage Distributed Source Branches with Bazaar</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-05-23T00:00:00Z">Monday, May 23, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fmanage-distributed-source-branches-with-bazaar%2f&via=linode&text=Manage%20Distributed%20Source%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fmanage-distributed-source-branches-with-bazaar%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fmanage-distributed-source-branches-with-bazaar%2f&t=Manage%20Distributed%20Source%20Branches%20with%20Bazaar" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/version-control/manage-distributed-source-branches-with-bazaar.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/version-control/manage-distributed-source-branches-with-bazaar.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Bazaar is a distributed version control system similar to <a href="/docs/linux-tools/version-control/git">git</a>. Bazaar allows developers to track the progress of source code and collaborate on a single object of work without depending on a centralized server to coordinate their activity. Unlike git, Bazaar&rsquo;s interface will be familiar to users of a centralized version control system like <a href="/docs/linux-tools/version-control/svn">Subversion</a>.</p>
+
+<p>Like all distributed version control systems, Bazaar can work &ldquo;offline,&rdquo; and does not require a connection to a central repository to perform commits, consult previous versions of the history, or perform other operations on the local &ldquo;branch&rdquo; of project. Publishing &ldquo;branches&rdquo; is also straightforward.</p>
+
+<p>This document provides an introduction to all aspects of the Bazaar version control system: beginning with the installation of Bazaar, moving through several standard Bazaar-based workflows and concluding with a review of common Bazaar commands. However, before we begin discussing the use and operating of Bazaar we assume that you have followed our <a href="/docs/getting-started/">getting started guide</a>. If you&rsquo;re new to Linux server administration you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts">introduction to Linux concepts guide</a>, the <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>.</p>
+
+<h2 id="installing-bazaar">Installing Bazaar</h2>
+
+<p>Make sure your package repositories and installed programs are up to date by issuing the following commands:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre>
+
+<p>Because there is no server component for Bazaar, you only need to install Bazaar on the systems that need to interact with the contents of the Bazaar repository. If you are only storing a copy of your project on your Linode you needn&rsquo;t install Bazaar on that system.</p>
+
+<p>If you do need to manipulate Bazaar projects on your Debian or Ubuntu powered-Linode, or use a Debian or Ubuntu system for your work you can install Bazaar with the following command:</p>
+
+<pre><code>apt-get install bzr
+</code></pre>
+
+<p>On Ubuntu, install bzrtools and a Python plugin called Paramiko: type:</p>
+
+<pre><code>apt-get install bzrtools python-paramiko
+</code></pre>
+
+<p>If you need to use Bazaar on your CentOS-powered Linode, you must enable the <a href="https://fedoraproject.org/wiki/EPEL">EPEL</a> repository before installing Bazaar. Issue the following sequence of commands:</p>
+
+<pre><code>rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+yum install bzr bzrtools
+</code></pre>
+
+<p>For Gentoo systems you can install Bazaar by issuing the following command:</p>
+
+<pre><code>emerge dev-util/bzr
+emerge dev-util/bzrtools
+emerge dev-python/paramiko
+</code></pre>
+
+<p>To install Bazaar on Arch Linux systems, issue the following command:</p>
+
+<pre><code>pacman -S bzr bzrtools paramiko
+</code></pre>
+
+<p>The Bazaar developers also provide application builds for <a href="http://wiki.bazaar.canonical.com/WindowsDownloads">Windows</a> and <a href="http://wiki.bazaar.canonical.com/MacOSXDownloads">Mac OS X</a> that include all of the software necessary for running Bazaar. Additionally these application contain a number of GUI tools for manipulating projects managed with Bazaar. You can learn more about <a href="http://wiki.bazaar.canonical.com/3rdPartyTools">3rd party tools</a> for using Bazaar on the upstream wiki.</p>
+
+<h2 id="using-bazaar-to-manage-projects">Using Bazaar to Manage Projects</h2>
+
+<p>This section covers many common operations and tasks that you may encounter during typical Bazaar usage. This will guide you through common Bazaar workflows: beginning with branch creation creating a branch, continuing with creating commits to that branch and an overview of common usage scenarios, and finally concluding with branch publication. Consider the following section for a more direct guide to individual <a href="/docs/development/version-control/manage-distributed-source-branches-with-bazaar#common-bazaar-commands">Bazaar commands</a>.</p>
+
+<h3 id="initializing-a-project-and-creating-commits">Initializing a Project and Creating Commits</h3>
+
+<p>To manage a new project with Bazaar, issue the following sequence of commands:</p>
+
+<pre><code>mkdir caper/
+cd caper/
+echo &quot;Readme, Initial Commit&quot; &gt; README
+bzr init
+</code></pre>
+
+<p>This creates the directory <code>caper/</code> in the current directory, moves into that directory. The <code>echo</code> command creates the <code>README</code> file with some example text. Finally the <code>bzr init</code> makes this directory a versioned branch.</p>
+
+<p>Since Bazaar is not yet aware of the <code>README</code> file, it is unable to manage this file. Issue the <code>bzr status</code> command to check on the status of the current branch. The result will resemble the following:</p>
+
+<pre><code>unknown:
+README
+</code></pre>
+
+<p>To make Bazaar aware of this file issue the <code>bzr add</code> command. When successful, Bazaar will offer the following output: <code>added README</code>. By default Bazaar will add all unknown files. However, if you only want to add some files, but not others in the current directory, you can specify those file names as arguments to the <code>bzr add</code> command. To add <em>only</em> the <code>README</code> file, issue the following command:</p>
+
+<pre><code>bzr add README
+</code></pre>
+
+<p>If you run the <code>bzr status</code> command here, you would see the following:</p>
+
+<pre><code>added:
+README
+</code></pre>
+
+<p>To create a commit, or save local changes to the Bazaar branch, issue the <code>bzr commit</code> command. This will open a text editor so you may create a commit message. Commit messages give allow you to describe the changes since the last commit. These notes can help your team understand the work. After creating, saving, and exiting the editor, Bazaar will output the following message to inform you that the commit was successful:</p>
+
+<pre><code>Committed revision 1.
+</code></pre>
+
+<p>Commits in Bazaar are stored sequentially and identified by their number. You can use this number later to reference this moment in your project&rsquo;s history. If you would like to create a commit without needing to open a text editor you can use a command in the following form:</p>
+
+<pre><code>bzr commit -m &quot;Created new README file&quot;
+</code></pre>
+
+<p>To see Bazaar&rsquo;s log of your commit issue the <code>bzr log</code> command. The output will be similar to the following:</p>
+
+<pre><code>$ bzr log
+------------------------------------------------------------
+revno: 1
+committer: username &lt;username@example.com&gt;
+branch nick: caper
+timestamp: Fri 2010-01-08 21:45:31 +0000
+message:
+  Created new README file
+</code></pre>
+
+<p>At any point during your work with a Bazaar managed project you can issue the command <code>bzr diff</code> to see the difference between the current state of your repositories files and the last commit to the repository. Use this command liberally to compare the state of your current changeset relative to the last committed changeset before you create new commits and while you work.</p>
+
+<h3 id="publishing-branches">Publishing Branches</h3>
+
+<p>While Bazaar is capable of maintaining project histories on a single system for a single user, distributed version control systems like Bazaar are epically designed for coordinating the efforts of multiple contributors working on multiple systems. Bazaar provides a number of methods for collaborating with other developers.</p>
+
+<p>The simplest way to share changes between users is to generate a patch using the <code>bzr diff</code> command. Consider the command:</p>
+
+<pre><code>bzr diff -r12..20 &gt; ~/new-feature.r20.patch
+</code></pre>
+
+<p>This creates a file named <code>new-feature.r20.patch</code> that you can distribute to your collaborators. The option <code>-r12..20</code> specifies that the &ldquo;base revision&rdquo; of the patch is revision number 12 and the final commit to be included in the patch is revision number 20. In turn, you collaborators can use the following command to apply your patch:</p>
+
+<pre><code>bzr patch ~/new--feature.r20.patch
+</code></pre>
+
+<p>Bazaar also includes the ability to use more &ldquo;centralized&rdquo; workflows, which allows contributors to a project to have a single shared repository that the entire team can use to publish changes. Shared repositories allow for a more fluid method of sharing changes between developers making it feasible for team members to always have the most up to date iteration of a document, without impacting individual workflows. To create a shared remote Bazaar project issue a command in the following form:</p>
+
+<pre><code>bzr init-repo --no-trees sftp://username@example.com/srv/bzr/morris-shared
+</code></pre>
+
+<p>In this command, the <code>init-repo</code> command with the <code>--no-trees</code> option, creates a new empty repository on the remote machine without a working copy. In this example <code>username</code> would be replaced with your username, <code>example.com</code> would correspond with the domain name of your server, and <code>/svn/bzr/morris-shared</code> would be the path for the new repository on the remote server. To publish changes to the remote repository issue the following command:</p>
+
+<pre><code>bzr push sftp://username@example.com/srv/bzr/morris-shared
+</code></pre>
+
+<p>The <code>push</code> command sends local updates to the remote Bazaar project. If the remote project <em>does</em> have a working copy (i.e. it was created without the <code>--no-trees</code> option.), <code>push</code> will not update the working copy of the receiving project. Bazaar uses the <code>sftp</code> protocol, which is included by default with OpenSSH and is in turn active by default on all Linode systems. If your repository does not have a default remote, Bazaar will set the first location that you successfully push to as the default. Append the option <code>--remember</code> to <code>push</code> operations change the default remote location of your local repository.</p>
+
+<p>Once published you can allow others to create local branches from this centralized repository. On the remote systems issue the following command:</p>
+
+<pre><code>bzr branch sftp://fore@example.com/srv/bzr/morris-shared
+</code></pre>
+
+<p>In this case, your system will need a user account for the user <code>fore</code> and additional user accounts for whatever users that require access to your project. Be sure to deploy <a href="/docs/tools-reference/linux-users-and-groups">user groups and permissions</a> with prudence. You can also offer read only access to a Bazaar repository over HTTP by configuring a <a href="/docs/web-servers">web-server</a> to provide access to the Bazaar project. Simply alter the branch command to resemble the following, depending on your web server configuration:</p>
+
+<pre><code>bzr branch http://bzr.example.com/morris-shared
+</code></pre>
+
+<p>Throughout the course of working on the project, contributors will commit changes on their local machines and push these changes to the central instance of the project. In order to maintain an up to date copy of the project, users must regularly &ldquo;pull&rdquo; changes from the central repository and update the current working copy. The easiest way to accomplish this is to issue the following command:</p>
+
+<pre><code>bzr pull http://bzr.example.com/morris-shared
+</code></pre>
+
+<p>This command fetches and integrates changes to the remote repository into the current repository and updates the working copy to reflect the most up to date revision of the remote repository. This <strong>only</strong> works when the local branch has not diverged from the remote branch and the only updates needed are &ldquo;fast-forwards.&rdquo; If your local repository has a default remote repository, then you can omit the location specified in this command.</p>
+
+<p>If there have been commits published to the remote repository <em>and</em> commits to the local branch, then pull will not succeed. To merge the divergent branches, issue the following command:</p>
+
+<pre><code>bzr merge http://bzr.example.com/morris-shared
+</code></pre>
+
+<p>The <code>merge</code> command uses a three-way-merge system to integrate the histories of both the remote repository and the local repository. Often Bazaar is able to perform the merge automatically without intervention from a user. Sometimes, however, the change sets overlap too much and Bazaar is unable to resolve the conflicts. In these cases, you must manually resolve the changes to the files. When the merge has completed and the new merged state of the project is satisfactory, create a commit to save the merged state of the repository.</p>
+
+<p>Bazaar will <em>never</em> create a &ldquo;merge commit&rdquo; following a merge, and it is a good idea to create a commit at this point in your project&rsquo;s history. While some version control systems automatically create a commit if the merge succeeds without conflict, Bazaar does not. Rather, Bazaar allows individual commits to function as markers of known states, and acknowledges that automated merges, even if they don&rsquo;t raise conflicts, are not always &ldquo;successful.&rdquo; When merges produce conflict, use the <code>bzr resolve</code> command to inform Bazaar that the conflicts have been resolved. When the state of the repository has recovered from the merge, you can run <code>bzr push</code> to publish your changes.</p>
+
+<p>At this point, the basic workflow repeats through a sequence of <code>pull</code>, <code>commit</code>, <code>merge</code> and <code>push</code> operations depending on the needs and processes that you and your collaborators deploy. If a merge, or any other operation, creates any unintended or undesirable operation, you can use the <code>bzr revert</code> command to &ldquo;rewind&rdquo; the state of the repository. Without argument, this will simply revert the state of the working copy to the last commit. To revert further, issue a command in the following form:</p>
+
+<pre><code>bzr revert -r42
+</code></pre>
+
+<p>In this example, <code>-r42</code> tells Bazaar to revert to revision number 42. If you only want to revert a single file or group of files, you can append these files as arguments at the end of the revert command. See below for a more comprehensive list of commands.</p>
+
+<h2 id="common-bazaar-commands">Common Bazaar Commands</h2>
+
+<p>The following list of commands provides an outline of common Bazaar operations including the commands used above:</p>
+
+<ul>
+<li><code>bzr init</code> initializes Bazaar management for the current directory, and all sub-directories.</li>
+<li><code>bzr add</code> makes all unknown files in the current directory known to Bazaar, and will cause them to be included in the next commit. You can specify individual files as arguments to <code>bzr add</code> if you want to selectively add files to the system.</li>
+<li><code>bzr status</code> generates a report of the current state of the local branch.</li>
+<li><code>bzr commit</code> opens a text editor to allow you to enter a message, and then creates a commit or saves the changeset in the Bazaar project.</li>
+<li><code>bzr commit -m &quot;[commit-message]&quot;</code> creates a commit with the message <code>[commit-message]</code>.</li>
+<li><code>bzr mv [versioned-file] [new-location]</code> moves the <code>[versioned-file]</code> to the location specified by <code>[new-location]</code>.</li>
+<li><code>bzr remove [file]</code> removes the specified file or files. If there are changes to the file in the current working copy, Bazaar <strong>will not</strong> delete the file and will instead make the file unknown to the project and unversioned. If the current copy of the specified file has been unchanged since the last commit, Bazaar will make the file unknown to the project and remove the file. The history of the removed file will remain in Bazaar&rsquo;s database.</li>
+<li><code>bzr log</code> generates a log of every commit in sequence and outputs this log to standard out.</li>
+<li><code>bzr help [command]</code> the Bazaar <code>help</code> command provides embedded documentation that can help you understand the syntax and usage of a specific command.</li>
+<li><code>bzr merge [location]</code> instructs Bazaar to merge changes from the branch specified by <code>[location]</code> into the working copy. The location may specify either a local branch of the current working copy or a remote branch published on the Internet. This uses a three-way-merge algorithm to automatically merge changes; however, manual intervention is sometimes required when both branches have overlapping changes. When the merge has been completed, you must then run a <code>bzr commit</code> to save the merge in the repository.</li>
+<li><code>bzr pull</code> performs a fast-forward update of the local working copy from its branch parent. Fast-forward updates are ones where the most recent commit in the local copy is &ldquo;behind&rdquo; the most recent update to the remote branch.</li>
+<li><code>bzr update</code> merges the contents of the remote branch into the local branch and may cause conflicts if Bazaar&rsquo;s three-way-merge cannot resolve the commits automatically. If there are uncommitted changes to the working copy before the <code>update</code> they will still need to be committed afterwords.</li>
+<li><code>bzr push</code> performs the equivalent of a <code>bzr update</code> on the remote mirror of the branch. This does not update the working copy of that branch.</li>
+<li><code>bzr uncommit</code> &ldquo;rewinds&rdquo; the branch to the last commit, but does not alter any of the files in the working copy. Use this option to change commit messages or collapse a series of commits into a single change set. Specify the <code>--revision=[revision-number]</code> option to rewind the branch to an arbitrary commit.</li>
+<li><code>bzr revert [file]</code> takes the specified file and reverts the contents of that file to the previous version of the file as contained in the previous commit. Specify the <code>--revision=[revision-number]</code> option to revert a file to an arbitrary commit. Bazaar will backup reverted changes unless the <code>--no-backup</code> option is used.</li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://bazaar.canonical.com/en/">The Bazaar Project</a></li>
+
+<li><a href="http://doc.bazaar.canonical.com/latest/en/user-guide/">Official Bazaar User Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/version-control/manage-distributed-version-control-with-mercurial/">Manage Distributed Version Control with Mercurial</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/">How to Install Git and Clone a GitHub Repository</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/">How to Install Git on Linux, Mac or Windows</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/how-to-configure-git/">Getting Started with Git</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#installing-bazaar">Installing Bazaar</a></li>
+<li><a href="#using-bazaar-to-manage-projects">Using Bazaar to Manage Projects</a>
+<ul>
+<li><a href="#initializing-a-project-and-creating-commits">Initializing a Project and Creating Commits</a></li>
+<li><a href="#publishing-branches">Publishing Branches</a></li>
+</ul></li>
+<li><a href="#common-bazaar-commands">Common Bazaar Commands</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

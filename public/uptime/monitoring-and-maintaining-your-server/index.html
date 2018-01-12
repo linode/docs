@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Monitoring and Maintaining Your Server</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Our guide to monitoring and maintaining your server.">
+        <meta name="keywords" content="monitor, monitoring, maintaining, maintenance">
+        
+        <meta property="og:title" content="Monitoring and Maintaining Your Server">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/monitoring-and-maintaining-your-server/">
+        <meta property="og:description" content="Our guide to monitoring and maintaining your server.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/monitoring-and-maintaining-your-server/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  Monitoring and Maintaining Your Server
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Monitoring and Maintaining Your Server</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-02-22T00:00:00Z">Wednesday, February 22, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring-and-maintaining-your-server%2f&via=linode&text=Monitoring%20and%20Maintaining%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring-and-maintaining-your-server%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring-and-maintaining-your-server%2f&t=Monitoring%20and%20Maintaining%20Your%20Server" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/monitoring-and-maintaining-your-server.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/monitoring-and-maintaining-your-server.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Now that your Linode is up and running, it&rsquo;s time to think about monitoring and maintaining your server. This guide introduces the essential tools and skills you&rsquo;ll need to keep your server in tip-top shape. You&rsquo;ll learn how to monitor the availability and performance of your system, manage your logs, and update your server&rsquo;s software.</p>
+
+<h2 id="availability-monitoring">Availability Monitoring</h2>
+
+<p>The <em>availability</em> of your servers, and the websites and web applications you host on them, can be critically important. If you generate income from a blog or charge subscription fees for your web application, downtime can have a severe impact on your bottom line. Using an availability monitoring tool can help you rapidly detect and resolve service disruptions, thereby mitigating the impact on your web sites and web applications.</p>
+
+<h3 id="assessing-your-needs">Assessing Your Needs</h3>
+
+<p>Not everyone needs to monitor the availability of their server. For example, if you use your Linode to host a personal picture gallery website for friends and family, the occasional service interruption probably won&rsquo;t bother you. The small inconvenience of your website going offline for a few minutes doesn&rsquo;t justify the time it would take to set up and configure an availability monitoring tool.</p>
+
+<p>If you depend on your website or web application for your livelihood, an availability monitoring tool is practically a necessity. Once set up, the tool actively watches your servers and services and alerts you when they&rsquo;re unavailable. You&rsquo;ll be able to troubleshoot the problem and restore service as quickly as possible.</p>
+
+<p>Whether you use one Linode or dozens of them, mission-critical servers and services should be watched by an independent monitoring tool that can keep tabs on their availability. The tool should have an automated method of detecting service-related incidents and be able to notify you via email, text message, or SMS. That way you&rsquo;ll know that a server or service is down within minutes of it having failed.</p>
+
+<h3 id="finding-the-right-tool">Finding the Right Tool</h3>
+
+<p>There are several different availability monitoring tools available. Your decision should be based on how many servers you&rsquo;ll be monitoring:</p>
+
+<ul>
+<li><strong>Multiple Servers</strong>: If you run more than one server, <a href="/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8">Nagios</a> makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.</li>
+<li><strong>Single Server</strong>: If you only run a single server, you might want to use a third-party service to monitor your Linode. (You could install Nagios, but if your server goes down, Nagios will go down with it.) You could also use a network diagnostic tool like <a href="/docs/linux-tools/mtr">MTR</a> to diagnose and isolate networking errors.</li>
+<li><strong>Linode Longview</strong>: <a href="/docs/platform/longview/longview">Longview</a> is Linode&rsquo;s own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.</li>
+</ul>
+
+<p>If you need an availability monitoring tool for one or more server, take a look at Nagios or MTR now.</p>
+
+<h3 id="configuring-shutdown-watchdog">Configuring Shutdown Watchdog</h3>
+
+<p>Shutdown Watchdog, also known as <em>Lassie</em>, is a Linode Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Lassie is not technically an availability monitoring tool, but it can help get your Linode back online fast if it&rsquo;s accidentally powered off.</p>
+
+<p>Here&rsquo;s how to turn Lassie on and off:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select your Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Click the <strong>Settings</strong> tab. The Shutdown Watchdog settings appear, as shown below.</li>
+</ol>
+
+<p><a href="/docs/assets/1107-monitor3.png"><img src="/docs/assets/1105-monitor3-small.png" alt="Configuring Shutdown Watchdog" /></a></p>
+
+<ol>
+<li>Select an option from the <strong>Lassie is currently</strong> menu, as shown below.</li>
+<li>Click <strong>Save Changes</strong>.</li>
+</ol>
+
+<p>You have successfully configured Lassie. If you turned the feature on, your Linode will automatically reboot if it is powered off unexpectedly in the future.</p>
+
+<h2 id="performance-monitoring">Performance Monitoring</h2>
+
+<p><em>Performance</em> monitoring tools record vital server and service performance metrics. Similar to a vehicle&rsquo;s dashboard, which has gauges for things like speed and oil pressure, performance monitoring tools provide valuable insight into the inner workings of your virtual server. With practice, you&rsquo;ll be able to review this information and determine whether your server is in good health.</p>
+
+<h3 id="getting-started-in-the-linode-manager">Getting Started in the Linode Manager</h3>
+
+<p>If you&rsquo;re new to performance monitoring, you can get started by logging in to the Linode Manager. There are four simple graphs available on the Dashboard and in the Graphs section:</p>
+
+<ul>
+<li><strong>CPU Utilization:</strong> Monitor how your Linode&rsquo;s CPU cores are being utilized. Note that each of your Linode&rsquo;s CPU cores is capable of 100% utilization, which means you could see this graph spike well over 100%, depending on your Linode plan size.</li>
+<li><strong>Network Traffic:</strong> Keep tabs on how much incoming and outgoing bandwidth your server is using.</li>
+<li><strong>IPv6 Network Traffic:</strong> Wondering if any of your visitors are using IPv6? Check this graph to see how much bandwidth has been transferred over IPv6.</li>
+<li><strong>Disk IO:</strong> Watch for <a href="/docs/troubleshooting/troubleshooting/#is-there-a-disk-io-bottleneck">disk input/output bottlenecks</a>.</li>
+</ul>
+
+<p>When you first start monitoring the graphs, you won&rsquo;t know what numbers are normal. Don&rsquo;t worry. With time and practice, you&rsquo;ll learn what the graphs are supposed to look like when your server is operating normally. Then you&rsquo;ll be able to spot performance abnormalities before they turn into full-blown problems.</p>
+
+<h3 id="configuring-linode-manager-email-alerts">Configuring Linode Manager Email Alerts</h3>
+
+<p>The Linode Manager allows you to configure <em>email alerts</em> that automatically notify you via email if certain performance thresholds are reached. For example, if you set the threshold for CPU Usage to 90% percent, you&rsquo;ll be notified if your Linode&rsquo;s average CPU usage is greater than 90% for over 2 hours.</p>
+
+<p>Here&rsquo;s how to turn on and customize the alerts:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linodes</strong> tab.</li>
+<li>Select your Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Click the <strong>Settings</strong> tab. The <em>Email Alert Thresholds</em> settings appear, as shown below.</li>
+</ol>
+
+<p><a href="/docs/assets/1103-monitor2.png"><img src="/docs/assets/1104-monitor2-small.png" alt="Configuring Linode Manager Email Alerts" /></a></p>
+
+<ol>
+<li>To enable an email alert, select the <strong>Enabled</strong> checkbox.</li>
+<li>To configure the threshold for an alert, set a value in the text field.</li>
+<li>Click <strong>Save Changes</strong> to save the email alert thresholds.</li>
+</ol>
+
+<p>You have successfully configured email alerts in the Linode Manager.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you receive an email threshold alert from the Linode Manager, don&rsquo;t panic. There&rsquo;s not necessarily anything wrong with your Linode. For example, your server may be operating above the threshold if you&rsquo;re compiling software or if a major website just linked to your blog.</div>
+</blockquote>
+
+
+<h3 id="using-linode-longview">Using Linode Longview</h3>
+
+<p>Our custom monitoring and graphing tool <a href="/docs/platform/longview/longview">Longview</a> can give you a detailed breakdown of system performance and resource usage. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. On our platform, Longview, in conjunction with the Linode Manager email alerts, can help you to know quickly when your system is overloaded, and find out why.</p>
+
+<h3 id="using-third-party-tools">Using Third-Party Tools</h3>
+
+<p>The graphs in the Linode Manager provide basic information for things like CPU utilization and bandwidth consumption. That&rsquo;s good information as far as it goes, but it won&rsquo;t sate the appetite of true geeks who crave detailed statistics on a server&rsquo;s disk, network, system, and service performance. For that kind of information, you&rsquo;ll need to install and configure a third-party performance monitoring tool.</p>
+
+<p>There are several free third-party performance monitoring tools available for your Linode:</p>
+
+<ul>
+<li>Munin: Munin is a system and network monitoring tool that generates graphs of resource usage in an accessible web based interface. Munin also makes it possible to monitor multiple Linodes with a single installation.</li>
+<li>Cacti: If you have advanced monitoring needs, try Cacti. It allows you to monitor larger systems and more complex deployments with its plugin framework and web-based interface.</li>
+<li><a href="/docs/server-monitoring/nagios">Nagios</a>: Nagios is primarily used as an availability monitoring tool, but it can also be configured to monitor performance. For more information, check out the <a href="http://exchange.nagios.org/directory/Addons/Graphing-and-Trending">graphing and trending add-ons</a>.</li>
+</ul>
+
+<p>If you need a third-party performance monitoring tool, take a look at Munin, Cacti, or Nagios now.</p>
+
+<h2 id="managing-logs">Managing Logs</h2>
+
+<p>Important events that occur on your system — things like login attempts or services being restarted — are recorded in your server&rsquo;s <em>logs</em>. Similar to car maintenance records and completed tax forms, which provide a paper trail in the event of a problem or discrepancy, log files keep track of system events. You might review logs when troubleshooting errors, tracking usage, or investigating unusual behavior on your system. Of course, it&rsquo;s easy to forget about log files until you need them. Do yourself a favor by automating log rotation and implementing a log monitoring utility now!</p>
+
+<h3 id="rotating-logs">Rotating Logs</h3>
+
+<p>As more and more events are logged, the log files on your server get bigger and bigger. Left unchecked, those files can start consuming a surprising amount of disk space. Enter <a href="/docs/linux-tools/utilities/logrotate">logrotate</a>, a utility that automatically archives and compresses current log files after a certain interval, creates new log files, and deletes the <em>really</em> old log files. After you configure <code>logrotate</code>, your system will automatically handle the entire process.</p>
+
+<p>Use the <a href="/docs/linux-tools/utilities/logrotate">logrotate guide</a> to get started.</p>
+
+<h3 id="monitoring-system-logs">Monitoring System Logs</h3>
+
+<p>It&rsquo;s important to keep an eye on the events recorded in your system logs. But unless you&rsquo;re the type of person who loves scanning through hundreds of lines of log entries, you won&rsquo;t want to open log files unless absolutely necessary. Fortunately, there&rsquo;s an easier way to learn about the most important system events fast. <a href="/docs/server-monitoring/logwatch">Logwatch</a> is a customizable utility that can automatically parse system logs and email you detailed reports highlighting notable events.</p>
+
+<p>Use the <a href="/docs/server-monitoring/logwatch">Logwatch guides</a> to get started.</p>
+
+<h2 id="updating-software">Updating Software</h2>
+
+<p>Linux distributions are frequently updated to fix bugs, add new features, and patch security vulnerabilities. To take advantage of the new packages and patches, you&rsquo;ll need to remember to perform some simple steps every once in a while. This section shows you what to do.</p>
+
+<h3 id="updating-installed-packages">Updating Installed Packages</h3>
+
+<p>You learned about the importance of regularly updating your server&rsquo;s packages in the <a href="/docs/getting-started">Getting Started</a> quick start guide. It&rsquo;s worth mentioning here again. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.</p>
+
+<p>To check for software updates and install them in Ubuntu or Debian, enter the following commands, one by one:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;re using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our <a href="/docs/using-linux/package-management">Linux Package Management guide</a>.</div>
+</blockquote>
+
+
+<p>There are ways to automate the installation of software updates, but this is not recommended. You should always manually review the lists of available patches before installing updates.</p>
+
+<h3 id="applying-kernel-updates">Applying Kernel Updates</h3>
+
+<p>When you first sign up for Linode and create a virtual server, the Linode Manager automatically creates a <a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles">configuration profile</a> with the latest kernel selected. We <a href="http://www.linode.com/kernels/">update the kernels</a> as necessary and make them available in the Linode Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.</p>
+
+<p>Here&rsquo;s how to check for a new kernel and start using it on your Linode:</p>
+
+<ol>
+<li><p>First, check what version kernel your Linode is currently using. Log in to your Linode and execute the following command:</p>
+
+<pre><code>cat /proc/version
+</code></pre></li>
+
+<li><p>Examine the output and remember the version number (in this case, 3.15.4). It should match the latest available version of the kernel in the Linode Manager, as you&rsquo;ll see in just a minute:</p>
+
+<pre><code>Linux version 3.15.4-x86_64-linode45 (maker@build) (gcc version 4.4.5 (Debian 4.4.5-8) ) #1 SMP Mon Jul 7 08:42:36 EDT 2014
+</code></pre></li>
+
+<li><p>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</p></li>
+
+<li><p>Click the <strong>Linodes</strong> tab.</p></li>
+
+<li><p>Select your Linode. The Linode&rsquo;s dashboard appears.</p></li>
+
+<li><p>Select the active configuration profile by clicking the link, as shown below.</p></li>
+</ol>
+
+<p><a href="/docs/assets/1195-monitor6-1.png"><img src="/docs/assets/1195-monitor6-1.png" alt="Selecting the active configuration profile" /></a></p>
+
+<ol>
+<li>From the <strong>Kernel</strong> menu, verify that <strong>Latest 64 bit</strong> is selected, as shown below.</li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Be sure to select the correct kernel (32- or 64-bit) for your distribution. The 64-bit kernels are available by selecting <strong>Latest 64 bit</strong>.</div>
+</blockquote>
+
+
+<p><a href="/docs/assets/1194-monitor7.png"><img src="/docs/assets/1194-monitor7.png" alt="Selecting the latest kernel" /></a></p>
+
+<ol>
+<li>If the latest current kernel is not selected, select it now. And if the currently selected kernel&rsquo;s version number doesn&rsquo;t match the number you found in step 2 of this procedure, you&rsquo;ll need to reboot your Linode to start using the new kernel.</li>
+<li>If you selected a new kernel, click <strong>Save Changes</strong>. The Linode&rsquo;s dashboard appears.</li>
+<li>Click <strong>Reboot</strong> to reboot your Linode and start using the new kernel.</li>
+</ol>
+
+<p>After your Linode starts up, it will be using the most up-to-date kernel available.</p>
+
+<h3 id="upgrading-to-a-new-release">Upgrading to a New Release</h3>
+
+<p>Linux distributions such as Ubuntu and Fedora use version numbers to identify the individual versions, or <em>releases</em>, of the operating system. It&rsquo;s important to know which release your server is running, as releases are usually supported for one or more years. After support for your release is discontinued, you won&rsquo;t be able to download or apply critical security packages, which can put your server at risk.</p>
+
+<p>There are two ways to upgrade a Linode running an unsupported release. You can upgrade your existing server to the next release, or you can create a new Linode with the newest release available and transfer your files from the old server:</p>
+
+<ul>
+<li>To upgrade your server, use one of our <a href="/docs/upgrading">Upgrading Guides</a> or check the distribution&rsquo;s website for instructions.</li>
+<li>To create a new Linode and transfer your files from the old server, use our <a href="/docs/getting-started">Getting Started</a> guide and then <a href="/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode">migrate the disk</a> from the old server to transfer the files, or use an FTP client.</li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Check the distribution&rsquo;s website to learn when support for your release will be discontinued. Ubuntu offers a <em>long-term support</em> (LTS) release that is supported for five years.</div>
+</blockquote>
+
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/uptime/monitoring/how-to-install-graphite-and-grafana-on-ubuntu-14-04/">Deploy Graphite with Grafana on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9/">Install Icinga2 Monitoring on Debian 9</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8/">Install Nagios 4 on Ubuntu and Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/top-htop-iotop/">Using top to Monitor Server Performance</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/monitoring-servers-with-munin-on-ubuntu-11-04-natty/">Monitoring Servers with Munin on Ubuntu 11.04 (Natty) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#availability-monitoring">Availability Monitoring</a>
+<ul>
+<li><a href="#assessing-your-needs">Assessing Your Needs</a></li>
+<li><a href="#finding-the-right-tool">Finding the Right Tool</a></li>
+<li><a href="#configuring-shutdown-watchdog">Configuring Shutdown Watchdog</a></li>
+</ul></li>
+<li><a href="#performance-monitoring">Performance Monitoring</a>
+<ul>
+<li><a href="#getting-started-in-the-linode-manager">Getting Started in the Linode Manager</a></li>
+<li><a href="#configuring-linode-manager-email-alerts">Configuring Linode Manager Email Alerts</a></li>
+<li><a href="#using-linode-longview">Using Linode Longview</a></li>
+<li><a href="#using-third-party-tools">Using Third-Party Tools</a></li>
+</ul></li>
+<li><a href="#managing-logs">Managing Logs</a>
+<ul>
+<li><a href="#rotating-logs">Rotating Logs</a></li>
+<li><a href="#monitoring-system-logs">Monitoring System Logs</a></li>
+</ul></li>
+<li><a href="#updating-software">Updating Software</a>
+<ul>
+<li><a href="#updating-installed-packages">Updating Installed Packages</a></li>
+<li><a href="#applying-kernel-updates">Applying Kernel Updates</a></li>
+<li><a href="#upgrading-to-a-new-release">Upgrading to a New Release</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

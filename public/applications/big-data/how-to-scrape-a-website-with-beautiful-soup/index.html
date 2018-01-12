@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Scrape a Website with BeautifulSoup</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows you how to use Beautiful Soup with a database to scrape data from Craigslist over an extended period of time and create an excel spreadsheet from the accumulated data.">
+        <meta name="keywords" content="beautiful soup, python, scraping, tinydb, data">
+        
+        <meta property="og:title" content="How to Scrape a Website with BeautifulSoup">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/big-data/how-to-scrape-a-website-with-beautiful-soup/">
+        <meta property="og:description" content="Beautiful Soup is a Python library that helps make it easy to scrape websites for data. This guide shows how to set up Beautiful Soup to collect data over an extended period of time, then export the results to a spreadsheet.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/big-data/how-to-scrape-a-website-with-beautiful-soup/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/big-data/">Big Data</a>
+  
+</li>
+
+
+<li>
+  
+  How to Scrape a Website with BeautifulSoup
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Scrape a Website with BeautifulSoup</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-12-11T00:00:00Z">Monday, December 11, 2017</time> by Jared Kobos</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Luis Cortés
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fbig-data%2fhow-to-scrape-a-website-with-beautiful-soup%2f&via=linode&text=How%20to%20Scrape%20a%20Website%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fbig-data%2fhow-to-scrape-a-website-with-beautiful-soup%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fbig-data%2fhow-to-scrape-a-website-with-beautiful-soup%2f&t=How%20to%20Scrape%20a%20Website%20with%20BeautifulSoup" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/big-data/how-to-scrape-a-website-with-beautiful-soup.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/big-data/how-to-scrape-a-website-with-beautiful-soup.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/beautifulsoup/BeautifulSoup.jpg" alt="Beautiful Soup" /></p>
+
+<h2 id="what-is-beautiful-soup">What is Beautiful Soup?</h2>
+
+<p><a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a> is a Python library that parses HTML or XML documents into a tree structure that makes it easy to find and extract data. It is often used for scraping data from websites.</p>
+
+<p>Beautiful Soup features a simple, Pythonic interface and automatic encoding conversion to make it easy to work with website data.</p>
+
+<p>Web pages are structured documents, and Beautiful Soup gives you the tools to walk through that complex structure and extract bits of that information. In this guide, you will write a Python script that will scrape Craigslist for motorcycle prices. The script will be set up to run at regular intervals using a cron job, and the resulting data will be exported to an Excel spreadsheet for trend analysis. You can easily adapt these steps to other websites or search queries by substituting different URLs and adjusting the script accordingly.</p>
+
+<h2 id="install-beautiful-soup">Install Beautiful Soup</h2>
+
+<h3 id="install-python">Install Python</h3>
+
+
+<!-- Installation instructions for Python 3. -->
+
+<ol>
+<li><p>Download and install Miniconda:</p>
+
+<pre><code>curl -OL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86.64.sh
+</code></pre></li>
+
+<li><p>You will be prompted several times during the installation process. Review the terms and conditions and select &ldquo;yes&rdquo; for each prompt.</p></li>
+
+<li><p>Check your Python version:</p>
+
+<pre><code>python --version
+</code></pre></li>
+</ol>
+
+
+
+<h3 id="install-beautiful-soup-and-dependencies">Install Beautiful Soup and Dependencies</h3>
+
+<ol>
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre></li>
+
+<li><p>Install the latest version of Beautiful Soup using pip:</p>
+
+<pre><code>pip install beautifulsoup4
+</code></pre></li>
+
+<li><p>Install dependencies:</p>
+
+<pre><code>pip install tinydb urllib3 xlsxwriter lxml
+</code></pre></li>
+</ol>
+
+<h2 id="build-a-web-scraper">Build a Web Scraper</h2>
+
+<h3 id="required-modules">Required Modules</h3>
+
+<p>The <code>BeautifulSoup</code> class from <code>bs4</code> will handle the parsing of the web pages. The <code>datetime</code> module provides for the manipulation of dates. <code>Tinydb</code> provides an API for a NoSQL database and the <code>urllib3</code> module is used for making http requests. Finally, the <code>xlsxwriter</code> API is used to create an excel spreadsheet.</p>
+
+<p>Open <code>craigslist.py</code> in a text editor and add the necessary import statements:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">tinydb</span> <span class="kn">import</span> <span class="n">TinyDB</span><span class="p">,</span> <span class="n">Query</span>
+<span class="kn">import</span> <span class="nn">urllib3</span>
+<span class="kn">import</span> <span class="nn">xlsxwriter</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="add-global-variables">Add Global Variables</h3>
+
+<p>After the import statements, add global variables and configuration options:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">(</span><span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">InsecureRequestWarning</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;https://elpaso.craigslist.org/search/mcy?sort=date&#39;</span>
+<span class="n">total_added</span> <span class="o">=</span> <span class="mi">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p><code>url</code> stores the URL of the webpage to be scraped, and <code>total_added</code> will be used to keep track of the total number of results added to the database. The <code>urllib3.disable_warnings()</code> function ignores any SSL certificate warnings.</p>
+
+<h3 id="retrieve-the-webpage">Retrieve the Webpage</h3>
+
+<p>The <code>make_soup</code> function makes a GET request to the target url and converts the resulting HTML into a BeautifulSoup object:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">make_soup</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">PoolManager</span><span class="p">()</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;GET&#34;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;lxml&#39;</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>urllib3</code> library has excellent exception handling; if <code>make_soup</code> throws any errors, check the
+<a href="https://urllib3.readthedocs.io/en/latest/">urllib3 docs</a> for detailed information.</p>
+
+<p>Beautiful Soup has different parsers available which are more or less strict about how the webpage is structured. The <em>lxml</em> parser is sufficient for the example script in this guide, but depending on your needs you may need to check the other options described in the <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">official documentation</a>.</p>
+
+<h3 id="process-the-soup-object">Process the Soup Object</h3>
+
+<p>An object of class <code>BeautifulSoup</code> is organized in a tree structure. In order to access the data you are interested in, you will have to be familiar with how the data is organized in the original HTML document. Go to the initial website in a browser, right click and select <strong>View page source</strong> (or <strong>Inspect</strong>, depending on your browser) to review the structure of the data that you would like to scrape:</p>
+
+<dl class="file">
+<dt>
+
+
+		https://elpaso.craigslist.org/search/mcy?sort=date 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;result-row&#34;</span> <span class="na">data-pid</span><span class="o">=</span><span class="s">&#34;6370204467&#34;</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://elpaso.craigslist.org/mcy/d/ducati-diavel-dark/6370204467.html&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;result-image gallery&#34;</span> <span class="na">data-ids</span><span class="o">=</span><span class="s">&#34;1:01010_8u6vKIPXEsM,1:00y0y_4pg3Rxry2Lj,1:00F0F_2mAXBoBiuTS&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;result-price&#34;</span><span class="p"></span><span class="p">&gt;</span>$12791<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;result-info&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;icon icon-star&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;screen-reader-text&#34;</span><span class="p"></span><span class="p">&gt;</span>favorite this post<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">time</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;result-date&#34;</span> <span class="na">datetime</span><span class="o">=</span><span class="s">&#34;2017-11-01 19:38&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Wed 01 Nov 07:38:13 PM&#34;</span><span class="p"></span><span class="p">&gt;</span>Nov  1<span class="p">&lt;</span><span class="p">/</span><span class="nt">time</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://elpaso.craigslist.org/mcy/d/ducati-diavel-dark/6370204467.html&#34;</span> <span class="na">data-id</span><span class="o">=</span><span class="s">&#34;6370204467&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;result-title hdrlnk&#34;</span><span class="p"></span><span class="p">&gt;</span>Ducati Diavel | Dark<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;result-meta&#34;</span><span class="p"></span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;result-price&#34;</span><span class="p"></span><span class="p">&gt;</span>$12791<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;result-tags&#34;</span><span class="p"></span><span class="p">&gt;</span>
+            pic
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;maptag&#34;</span> <span class="na">data-pid</span><span class="o">=</span><span class="s">&#34;6370204467&#34;</span><span class="p"></span><span class="p">&gt;</span>map<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;banish icon icon-trash&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p"></span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;screen-reader-text&#34;</span><span class="p"></span><span class="p">&gt;</span>hide this posting<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;unbanish icon icon-trash red&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;restore-link&#34;</span><span class="p"></span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;restore-narrow-text&#34;</span><span class="p"></span><span class="p">&gt;</span>restore<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;restore-wide-text&#34;</span><span class="p"></span><span class="p">&gt;</span>restore this posting<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="p">/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">li</span><span class="p">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<ol>
+<li><p>Select the web page snippets by selecting just the <strong>li</strong> html tags and further narrow down the choices by selecting only those <strong>li</strong> tags that have a class of <strong>result-row</strong>. The <strong>results</strong> variable contains all the web page snippets that match this criteria:</p>
+
+<pre><code>results = soup.find_all(&quot;li&quot;, class_=&quot;result-row&quot;)
+</code></pre></li>
+
+<li><p>Attempt to create a record according to the structure of the target snippet. If the structure doesn&rsquo;t match, then Python will throw an exception which will cause it to skip this record and snippet:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">rec</span> <span class="o">=</span> <span class="p">{</span>
+<span class="sa"></span><span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;data-pid&#39;</span><span class="p">],</span>
+<span class="sa"></span><span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span>
+<span class="sa"></span><span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="n">clean_money</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">span</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">()),</span>
+<span class="sa"></span><span class="s1">&#39;webpage&#39;</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;href&#39;</span><span class="p">],</span>
+<span class="sa"></span><span class="s1">&#39;pic&#39;</span><span class="p">:</span> <span class="n">clean_pic</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;data-ids&#39;</span><span class="p">]),</span>
+<span class="sa"></span><span class="s1">&#39;descr&#39;</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+<span class="sa"></span><span class="s1">&#39;createdt&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Use Beautiful Soup&rsquo;s array notation to access attributes of an HTML element:</p>
+
+<pre><code>'pid': result['data-pid']
+</code></pre></li>
+
+<li><p>Other data attributes may be nested deeper in the HTML strucure, and can be accessed using a combination of dot and array notation. For example, the date a result was posted is stored in <code>datetime</code>, which is a data attribute of the <code>time</code> element, which is a child of a <code>p</code> tag that is a child of <code>result</code>. To access this value use the following format:</p>
+
+<pre><code>'date': result.p.time['datetime']
+</code></pre></li>
+
+<li><p>Sometimes the information needed is the tag content (in between the start and end tags). To access the tag content BeautifulSoup provides the <code>string</code> method:</p>
+
+<pre><code>&lt;span class=&quot;result-price&quot;&gt;$12791&lt;/span&gt;
+</code></pre>
+
+<p>can be accessed with:</p>
+
+<pre><code>'cost': clean_money(result.a.span.string.strip())
+</code></pre>
+
+<p>The value here is further processed by using the Python <code>strip()</code> function, as well as a custom function <code>clean_money</code> that removes the dollar sign.</p></li>
+
+<li><p>Most items for sale on Craigslist include pictures of the item. The custom function <code>clean_pic</code> is used to assign the first picture&rsquo;s URL to <strong>pic</strong>:</p>
+
+<pre><code>'pic': clean_pic(result.a['data-ids'])
+</code></pre></li>
+
+<li><p>Metadata can be added to the record. For example, you can add a field to track when a particular record was created:</p>
+
+<pre><code>'createdt': datetime.datetime.now().isoformat()
+</code></pre></li>
+
+<li><p>Use the Query object to check if a record already exists in the database before inserting it. This avoids creating duplicate records.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">Result</span> <span class="o">=</span> <span class="n">Query</span><span class="p">()</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">Result</span><span class="o">.</span><span class="n">pid</span> <span class="o">==</span> <span class="n">rec</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;pid&#34;</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">s1</span><span class="p">:</span>
+    <span class="n">total_added</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">print</span> <span class="p">(</span><span class="sa"></span><span class="s2">&#34;Adding ... &#34;</span><span class="p">,</span> <span class="n">total_added</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<h3 id="error-handling">Error Handling</h3>
+
+<p>Two types of errors are important to handle. These are not errors in the script, but instead are errors in the structure of the snippet that cause Beautiful Soup&rsquo;s API to throw an error.</p>
+
+<p>An <code>AttributeError</code> will be thrown when the dot notation doesn&rsquo;t find a sibling tag to the current HTML tag. For example, if a particular snippet does not have the anchor tag, then the <strong>cost</strong> key will throw an error, because it transverses and therefore requires the anchor tag.</p>
+
+<p>The other error is a <code>KeyError</code>. It will be thrown if a required HTML tag attribute is missing. For example, if there is no <strong>data-pid</strong> attribute in a snippet, the <strong>pid</strong> key will throw an error.</p>
+
+<p>If either of these errors occurs when parsing a result, that result will be skipped to ensure that a malformed snippet isn&rsquo;t inserted into the database:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">)</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+    <span class="k">pass</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="cleaning-functions">Cleaning Functions</h3>
+
+<p>These are two short custom functions to clean up the snippet data. The <code>clean_money</code> function strips any dollar signs from its input:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">clean_money</span><span class="p">(</span><span class="n">amt</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">amt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;$&#34;</span><span class="p">,</span><span class="sa"></span><span class="s2">&#34;&#34;</span><span class="p">))</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>clean_pic</code> function generates a URL for accessing the first image in each search result:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">clean_pic</span><span class="p">(</span><span class="n">ids</span><span class="p">):</span>
+    <span class="n">idlist</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;,&#34;</span><span class="p">)</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">idlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;1:&#34;</span><span class="p">,</span><span class="sa"></span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa"></span><span class="s2">&#34;https://images.craigslist.org/</span><span class="si">%s</span><span class="s2">_300x300.jpg&#34;</span> <span class="o">%</span> <span class="n">code</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The function extracts and cleans the id of the first image, then adds it to the base URL.</p>
+
+<h3 id="write-data-to-an-excel-spreadsheet">Write Data to an Excel Spreadsheet</h3>
+
+<p>The <code>make_excel</code> function takes the data in the database and writes it to an Excel spreadsheet.</p>
+
+<ol>
+<li><p>Add spreadsheet variables:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">Headlines</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s2">&#34;Pid&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Date&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Cost&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Webpage&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Pic&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Desc&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Created Date&#34;</span><span class="p">]</span>
+<span class="n">row</span> <span class="o">=</span> <span class="mi">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <strong>Headlines</strong> variable is a list of titles for the columns in the spreadsheet. The <strong>row</strong> variable tracks the current spreadsheet
+row.</p></li>
+
+<li><p>Use <code>xlswriter</code> to open a workbook and add a worksheet to receive the data.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">workbook</span> <span class="o">=</span> <span class="n">xlsxwriter</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;motorcycle.xlsx&#39;</span><span class="p">)</span>
+<span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Prepare the worksheet:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span> <span class="c1"># pid</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># date</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># cost</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># webpage</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># picture</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>  <span class="c1"># Description</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># created date</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The first 2 items are always the same in the <code>set_column</code> method. That is because it is setting the attributes of a section of columns from the first indicated column to the next. The last value is the width of the column in characters.</p></li>
+
+<li><p>Write the column headers to the worksheet:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Headlines</span><span class="p">):</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Write the records to the database:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">db</span><span class="o">.</span><span class="nb">all</span><span class="p">():</span>
+    <span class="n">row</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;pid&#39;</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write_url</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;webpage&#39;</span><span class="p">],</span> <span class="n">string</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;Web Page&#39;</span><span class="p">)</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write_url</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;pic&#39;</span><span class="p">],</span> <span class="n">string</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;Picture&#34;</span> <span class="p">)</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;descr&#39;</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;createdt&#39;</span><span class="p">]</span> <span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Most of the fields in each row can be written using <code>worksheet.write</code>; <code>worksheet.write_url</code> is used for the listing and image URLs. This makes the resulting links clickable in the final spreadsheet.</p></li>
+
+<li><p>Close the Excel workbook:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python">    <span class="n">workbook</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<h3 id="main-routine">Main Routine</h3>
+
+<p>The main routine will iterate through every page of search results and run the <strong>soup_process</strong> function on each page. It also keeps track of the total number of database entries added in the global variable <strong>total_added</strong>, which is updated in the <strong>soup_process</strong> function and displayed once the scrape is complete. Finally, it creates a TinyDB database <code>db.json</code> and stores the parsed data; when the scrape is complete, the database is passed to the <strong>make_excel</strong> function to be written to a spreadsheet.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">total_added</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">TinyDB</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;db.json&#34;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">url</span><span class="p">:</span>
+        <span class="k">print</span> <span class="p">(</span><span class="sa"></span><span class="s2">&#34;Web Page: &#34;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">soup_process</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
+        <span class="n">nextlink</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;link&#34;</span><span class="p">,</span> <span class="n">rel</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;next&#34;</span><span class="p">)</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nextlink</span><span class="p">):</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">nextlink</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+
+    <span class="k">print</span> <span class="p">(</span><span class="sa"></span><span class="s2">&#34;Added &#34;</span><span class="p">,</span><span class="n">total_added</span><span class="p">)</span>
+
+    <span class="n">make_excel</span><span class="p">(</span><span class="n">db</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>A sample run might look like the following. Notice that each page has the index embedded in the URL. This is how Craigslist knows where the next page of data starts:</p>
+
+<pre><code>$ python3 craigslist.py
+Web Page:  https://elpaso.craigslist.org/search/mcy?sort=date
+Adding ...  1
+Adding ...  2
+Adding ...  3
+Web Page:  https://elpaso.craigslist.org/search/mcy?s=120&amp;sort=date
+Web Page:  https://elpaso.craigslist.org/search/mcy?s=240&amp;sort=date
+Web Page:  https://elpaso.craigslist.org/search/mcy?s=360&amp;sort=date
+Web Page:  https://elpaso.craigslist.org/search/mcy?s=480&amp;sort=date
+Web Page:  https://elpaso.craigslist.org/search/mcy?s=600&amp;sort=date
+Added  3
+</code></pre>
+
+<h2 id="set-up-cron-to-scrape-automatically">Set up Cron to Scrape Automatically</h2>
+
+<p>This section will set up a cron task to run the scraping script automatically at regular intervals. The data</p>
+
+<ol>
+<li><p>Log in to your machine as a normal user:</p>
+
+<pre><code>ssh normaluser@&lt;Linode Public IP&gt;
+</code></pre></li>
+
+<li><p>Make sure the complete <code>craigslist.py</code> script is in the home directory:</p>
+
+<dl class="file">
+<dt>
+
+
+		craigslist.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">  1</span><span class="lnt">  2</span><span class="lnt">  3</span><span class="lnt">  4</span><span class="lnt">  5</span><span class="lnt">  6</span><span class="lnt">  7</span><span class="lnt">  8</span><span class="lnt">  9</span><span class="lnt"> 10</span><span class="lnt"> 11</span><span class="lnt"> 12</span><span class="lnt"> 13</span><span class="lnt"> 14</span><span class="lnt"> 15</span><span class="lnt"> 16</span><span class="lnt"> 17</span><span class="lnt"> 18</span><span class="lnt"> 19</span><span class="lnt"> 20</span><span class="lnt"> 21</span><span class="lnt"> 22</span><span class="lnt"> 23</span><span class="lnt"> 24</span><span class="lnt"> 25</span><span class="lnt"> 26</span><span class="lnt"> 27</span><span class="lnt"> 28</span><span class="lnt"> 29</span><span class="lnt"> 30</span><span class="lnt"> 31</span><span class="lnt"> 32</span><span class="lnt"> 33</span><span class="lnt"> 34</span><span class="lnt"> 35</span><span class="lnt"> 36</span><span class="lnt"> 37</span><span class="lnt"> 38</span><span class="lnt"> 39</span><span class="lnt"> 40</span><span class="lnt"> 41</span><span class="lnt"> 42</span><span class="lnt"> 43</span><span class="lnt"> 44</span><span class="lnt"> 45</span><span class="lnt"> 46</span><span class="lnt"> 47</span><span class="lnt"> 48</span><span class="lnt"> 49</span><span class="lnt"> 50</span><span class="lnt"> 51</span><span class="lnt"> 52</span><span class="lnt"> 53</span><span class="lnt"> 54</span><span class="lnt"> 55</span><span class="lnt"> 56</span><span class="lnt"> 57</span><span class="lnt"> 58</span><span class="lnt"> 59</span><span class="lnt"> 60</span><span class="lnt"> 61</span><span class="lnt"> 62</span><span class="lnt"> 63</span><span class="lnt"> 64</span><span class="lnt"> 65</span><span class="lnt"> 66</span><span class="lnt"> 67</span><span class="lnt"> 68</span><span class="lnt"> 69</span><span class="lnt"> 70</span><span class="lnt"> 71</span><span class="lnt"> 72</span><span class="lnt"> 73</span><span class="lnt"> 74</span><span class="lnt"> 75</span><span class="lnt"> 76</span><span class="lnt"> 77</span><span class="lnt"> 78</span><span class="lnt"> 79</span><span class="lnt"> 80</span><span class="lnt"> 81</span><span class="lnt"> 82</span><span class="lnt"> 83</span><span class="lnt"> 84</span><span class="lnt"> 85</span><span class="lnt"> 86</span><span class="lnt"> 87</span><span class="lnt"> 88</span><span class="lnt"> 89</span><span class="lnt"> 90</span><span class="lnt"> 91</span><span class="lnt"> 92</span><span class="lnt"> 93</span><span class="lnt"> 94</span><span class="lnt"> 95</span><span class="lnt"> 96</span><span class="lnt"> 97</span><span class="lnt"> 98</span><span class="lnt"> 99</span><span class="lnt">100</span><span class="lnt">101</span><span class="lnt">102</span><span class="lnt">103</span><span class="lnt">104</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">tinydb</span> <span class="kn">import</span> <span class="n">TinyDB</span><span class="p">,</span> <span class="n">Query</span>
+<span class="kn">import</span> <span class="nn">urllib3</span>
+<span class="kn">import</span> <span class="nn">xlsxwriter</span>
+
+<span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">(</span><span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">InsecureRequestWarning</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;https://elpaso.craigslist.org/search/mcy?sort=date&#39;</span>
+<span class="n">total_added</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">make_soup</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">PoolManager</span><span class="p">()</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;GET&#34;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">total_added</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">TinyDB</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;db.json&#34;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">url</span><span class="p">:</span>
+        <span class="k">print</span> <span class="p">(</span><span class="sa"></span><span class="s2">&#34;Web Page: &#34;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">soup_process</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
+        <span class="n">nextlink</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;link&#34;</span><span class="p">,</span> <span class="n">rel</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;next&#34;</span><span class="p">)</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nextlink</span><span class="p">):</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">nextlink</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+
+    <span class="k">print</span> <span class="p">(</span><span class="sa"></span><span class="s2">&#34;Added &#34;</span><span class="p">,</span><span class="n">total_added</span><span class="p">)</span>
+
+    <span class="n">make_excel</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">soup_process</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">total_added</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">make_soup</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;li&#34;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;result-row&#34;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">rec</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="sa"></span><span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;data-pid&#39;</span><span class="p">],</span>
+                <span class="sa"></span><span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span>
+                <span class="sa"></span><span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="n">clean_money</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">span</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">()),</span>
+                <span class="sa"></span><span class="s1">&#39;webpage&#39;</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;href&#39;</span><span class="p">],</span>
+                <span class="sa"></span><span class="s1">&#39;pic&#39;</span><span class="p">:</span> <span class="n">clean_pic</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;data-ids&#39;</span><span class="p">]),</span>
+                <span class="sa"></span><span class="s1">&#39;descr&#39;</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="sa"></span><span class="s1">&#39;createdt&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+            <span class="p">}</span>
+
+            <span class="n">Result</span> <span class="o">=</span> <span class="n">Query</span><span class="p">()</span>
+            <span class="n">s1</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">Result</span><span class="o">.</span><span class="n">pid</span> <span class="o">==</span> <span class="n">rec</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;pid&#34;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">s1</span><span class="p">:</span>
+                <span class="n">total_added</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">print</span> <span class="p">(</span><span class="sa"></span><span class="s2">&#34;Adding ... &#34;</span><span class="p">,</span> <span class="n">total_added</span><span class="p">)</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">)</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">soup</span>
+
+<span class="k">def</span> <span class="nf">clean_money</span><span class="p">(</span><span class="n">amt</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">amt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;$&#34;</span><span class="p">,</span><span class="sa"></span><span class="s2">&#34;&#34;</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">clean_pic</span><span class="p">(</span><span class="n">ids</span><span class="p">):</span>
+    <span class="n">idlist</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;,&#34;</span><span class="p">)</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">idlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;1:&#34;</span><span class="p">,</span><span class="sa"></span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa"></span><span class="s2">&#34;https://images.craigslist.org/</span><span class="si">%s</span><span class="s2">_300x300.jpg&#34;</span> <span class="o">%</span> <span class="n">code</span>
+
+<span class="k">def</span> <span class="nf">make_excel</span><span class="p">(</span><span class="n">db</span><span class="p">):</span>
+    <span class="n">Headlines</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s2">&#34;Pid&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Date&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Cost&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Webpage&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Pic&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Desc&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Created Date&#34;</span><span class="p">]</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">workbook</span> <span class="o">=</span> <span class="n">xlsxwriter</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;motorcycle.xlsx&#39;</span><span class="p">)</span>
+    <span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">()</span>
+
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span> <span class="c1"># pid</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># date</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># cost</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># webpage</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># picture</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>  <span class="c1"># Description</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># created date</span>
+
+    <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Headlines</span><span class="p">):</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">db</span><span class="o">.</span><span class="nb">all</span><span class="p">():</span>
+        <span class="n">row</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;pid&#39;</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write_url</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;webpage&#39;</span><span class="p">],</span> <span class="n">string</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;Web Page&#39;</span><span class="p">)</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write_url</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;pic&#39;</span><span class="p">],</span> <span class="n">string</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;Picture&#34;</span> <span class="p">)</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;descr&#39;</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;createdt&#39;</span><span class="p">]</span> <span class="p">)</span>
+
+    <span class="n">workbook</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">main</span><span class="p">(</span><span class="n">url</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Add a cron tab entry as the user:</p>
+
+<pre><code>crontab -e
+</code></pre></li>
+</ol>
+
+<p>This sample entry will run the python program every day at 6:30 am.</p>
+
+<pre><code>30 6 * * * /usr/bin/python3 /home/normaluser/craigslist.py
+</code></pre>
+
+<p>The python program will write the <code>motorcycle.xlsx</code> spreadsheet in <code>/home/normaluser/</code>.</p>
+
+<h2 id="retrieve-the-excel-report">Retrieve the Excel Report</h2>
+
+<p><strong>On Linux</strong></p>
+
+<p>Use scp to copy <code>motorcycle.xlsx</code> from the remote machine that is running your python program to this machine:</p>
+
+<pre><code>scp normaluser@&lt;Linode Public IP&gt;:/home/normaluser/motorcycle.xlsx .
+</code></pre>
+
+<p><strong>On Windows</strong></p>
+
+<p>Use Firefox&rsquo;s built-in sftp capabilities. Type the following URL in the address bar and it will request a password. Choose the spreadsheet from the directory listing that appears.</p>
+
+<pre><code>sftp://normaluser@&lt;Linode Public IP&gt;/home/normaluser
+</code></pre>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/big-data/how-to-move-machine-learning-model-to-production/">How to Move Your Machine Learning Model to Production</a></li>
+    
+    
+    
+    <li><a href="/docs/development/create-a-python-virtualenv-on-ubuntu-1610/">Create a Python Virtual Environment on Ubuntu 16.10 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/">Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/">Apache and mod_wsgi on Ubuntu 14.04 (Trusty Tahr)</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-stack-on-debian-8/">Install a LEMP (Linux, Nginx, MariaDB, PHP) Stack on Debian 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-beautiful-soup">What is Beautiful Soup?</a></li>
+<li><a href="#install-beautiful-soup">Install Beautiful Soup</a>
+<ul>
+<li><a href="#install-python">Install Python</a></li>
+<li><a href="#install-beautiful-soup-and-dependencies">Install Beautiful Soup and Dependencies</a></li>
+</ul></li>
+<li><a href="#build-a-web-scraper">Build a Web Scraper</a>
+<ul>
+<li><a href="#required-modules">Required Modules</a></li>
+<li><a href="#add-global-variables">Add Global Variables</a></li>
+<li><a href="#retrieve-the-webpage">Retrieve the Webpage</a></li>
+<li><a href="#process-the-soup-object">Process the Soup Object</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#cleaning-functions">Cleaning Functions</a></li>
+<li><a href="#write-data-to-an-excel-spreadsheet">Write Data to an Excel Spreadsheet</a></li>
+<li><a href="#main-routine">Main Routine</a></li>
+</ul></li>
+<li><a href="#set-up-cron-to-scrape-automatically">Set up Cron to Scrape Automatically</a></li>
+<li><a href="#retrieve-the-excel-report">Retrieve the Excel Report</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

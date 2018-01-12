@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to use the Elastic Stack (Elasticsearch, Logstash, and Kibana) to collect, log, and visualize security data and threat alerts through Wazuh, part of OSSEC Intrusion Detection.">
+        <meta name="keywords" content="ossec, elk stack, elk,ossec-hids">
+        
+        <meta property="og:title" content="Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/">
+        <meta property="og:description" content="An Elastic Stack combines Elasticsearch, Logstash, and Kibana. With the help of Wazuh endpoint security, this guide shows how to visualize server security data on your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-17T00:00:00Z">Tuesday, October 17, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://www.linkedin.com/in/andrew-lescher-87027940/">Andrew Lescher
+    
+    <i class="fa fa-linkedin"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fvisualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh%2f&via=linode&text=Visualize%20Server%20Security%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fvisualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fvisualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh%2f&t=Visualize%20Server%20Security%20on%20CentOS%207%20with%20an%20Elastic%20Stack%20and%20Wazuh" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/elastic-stack-security-title.jpg" alt="Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh" title="Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh" /></p>
+
+<h2 id="what-are-elasticsearch-elk-stack-and-wazuh">What are Elasticsearch, ELK Stack, and Wazuh?</h2>
+
+<p>An Elastic Stack, formerly known as an ELK Stack, is a combination of Elasticsearch, Logstash, and Kibana. In this tutorial, you will learn how to install and link together ElasticSearch, Logstash, Kibana, with Wazuh OSSEC to help monitor and visualize security threats to your machine. The resulting structure can be broken down into three core components that work with Wazuh&rsquo;s endpoint security:</p>
+
+<ul>
+<li><p><strong>Elasticsearch</strong></p>
+
+<ul>
+<li>The heart of the Elastic Stack, Elasticsearch provides powerful search and analytical capabilities. It stores and retrieves data collected by Logstash.</li>
+</ul></li>
+
+<li><p><strong>Logstash</strong></p>
+
+<ul>
+<li>Ingests data from multiple sources and passes it along to Elasticsearch which acts as a central database.</li>
+</ul></li>
+
+<li><p><strong>Kibana</strong></p>
+
+<ul>
+<li>A self-hosted, web-based tool which provides a multitude of methods to visualize and represent data stored in Elasticsearch.</li>
+</ul></li>
+</ul>
+
+<h2 id="what-is-wazuh-ossec">What is Wazuh OSSEC</h2>
+
+<p>Wazuh is an open source branch of the orignal <a href="https://ossec.github.io/">OSSEC HIDS</a> developed for integration into the Elastic Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, as well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Many of the steps in this guide require root privileges. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services. Use <code>sudo</code> wherever necessary.</p></li>
+
+<li><p>Your Linode should have at least <a href="https://www.linode.com/pricing">4GB of RAM</a>. While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.</p></li>
+
+<li><p>Install nginx or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:</p>
+
+<ul>
+<li><a href="/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi">Install a LEMP Stack on CentOS 7 with FastCGI</a></li>
+<li><a href="/docs/web-servers/lamp/lamp-on-centos-7">LAMP on CentOS 7</a></li>
+</ul></li>
+
+<li><p>Configure your webserver for virtual domain hosting:</p>
+
+<p><strong>nginx</strong></p>
+
+<ul>
+<li><a href="/docs/web-servers/nginx/how-to-configure-nginx">How to Configure nginx</a></li>
+</ul>
+
+<p><strong>Apache</strong></p>
+
+<ul>
+<li><a href="/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics">Apache Configuration Basics</a></li>
+</ul></li>
+</ol>
+
+<h2 id="update-system-and-install-pre-requisites">Update System and Install Pre-requisites</h2>
+
+<ol>
+<li><p>Update system packages:</p>
+
+<pre><code>yum update -y &amp;&amp; yum upgrade -y
+</code></pre></li>
+
+<li><p>Install Java 8 JDK:</p>
+
+<pre><code>yum install java-1.8.0-openjdk.x86_64
+</code></pre></li>
+
+<li><p>Verify the Java installation by checking the version:</p>
+
+<pre><code>java -version
+</code></pre>
+
+<p>Your output should be similar to:</p>
+
+<p><em>Output</em></p>
+
+<pre><code>openjdk version &quot;1.8.0_144&quot;
+OpenJDK Runtime Environment (IcedTea 3.5.1) (suse-13.3-x86_64)
+OpenJDK 64-Bit Server VM (build 25.144-b01, mixed mode)
+</code></pre></li>
+
+<li><p>Install curl:</p>
+
+<pre><code>yum install curl
+</code></pre></li>
+</ol>
+
+<h2 id="install-wazuh">Install Wazuh</h2>
+
+<ol>
+<li><p>Create the <code>wazuh.repo</code> repository file and paste the text below:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/yum.repos.d/wazuh.repo 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>wazuh_repo<span class="o">]</span>
+<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">gpgkey</span><span class="o">=</span>https://packages.wazuh.com/key/GPG-KEY-WAZUH
+<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Wazuh
+<span class="nv">baseurl</span><span class="o">=</span>https://packages.wazuh.com/yum/el/<span class="nv">$releasever</span>/<span class="nv">$basearch</span>
+<span class="nv">protect</span><span class="o">=</span><span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Install Wazuh Manager:</p>
+
+<pre><code>yum install wazuh-manager
+</code></pre></li>
+
+<li><p>Install Wazuh API:</p>
+
+<ol>
+<li><p>Install the NodeJS repository:</p>
+
+<pre><code>curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+</code></pre></li>
+
+<li><p>Install NodeJS:</p>
+
+<pre><code>yum install nodejs
+</code></pre></li>
+
+<li><p>Install Wazuh API:</p>
+
+<pre><code>yum install wazuh-api
+</code></pre></li>
+</ol></li>
+</ol>
+
+<h2 id="install-elasticsearch-logstash-and-kibana">Install Elasticsearch, Logstash, and Kibana</h2>
+
+<p>Install the Elastic Stack via RPM files to get the latest versions of all the software. Be sure to check the <a href="https://www.elastic.co/downloads">Elastic website</a> for more recent software versions. Adjust the commands below to match.</p>
+
+<h3 id="install-elasticsearch">Install Elasticsearch</h3>
+
+<ol>
+<li><p>Download the Elasticsearch RPM into the <code>/opt</code> directory:</p>
+
+<pre><code>cd /opt
+curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.2.rpm
+</code></pre></li>
+
+<li><p>Install Elasticsearch:</p>
+
+<pre><code>rpm -ivh elasticsearch-5.5.2.rpm
+</code></pre></li>
+
+<li><p>Enable the Elasticsearch service to start on system boot:</p>
+
+<pre><code>systemctl enable elasticsearch
+systemctl start elasticsearch
+</code></pre></li>
+
+<li><p>Load the Wazuh Elasticsearch template. Replace <code>exampleIP</code> with your Linode&rsquo;s public IP address:</p>
+
+<pre><code>curl https://raw.githubusercontent.com/wazuh/wazuh-kibana-app/master/server/startup/integration_files/template_file.json | curl -XPUT 'http://exampleIP:9200/_template/wazuh' -H 'Content-Type: application/json' -d @-
+</code></pre></li>
+</ol>
+
+<h3 id="install-logstash">Install Logstash</h3>
+
+<ol>
+<li><p>Download the Logstash RPM into the <code>/opt</code> directory:</p>
+
+<pre><code>cd /opt
+curl https://artifacts.elastic.co/downloads/logstash/logstash-5.5.2.rpm
+</code></pre></li>
+
+<li><p>Install Logstash:</p>
+
+<pre><code>rpm -ivh logstash-5.5.2.rpm
+</code></pre></li>
+
+<li><p>Enable Logstash on system boot:</p>
+
+<pre><code>systemctl daemon-reload
+systemctl enable logstash
+systemctl start logstash
+</code></pre></li>
+
+<li><p>Download the Wazuh config and template files for Logstash:</p>
+
+<pre><code>curl -so /etc/logstash/conf.d/01-wazuh.conf https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/logstash/01-wazuh.conf
+curl -so /etc/logstash/wazuh-elastic5-template.json https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/elasticsearch/wazuh-elastic5-template.json
+</code></pre></li>
+
+<li><p>Modify the <code>01-wazuh.conf</code> file to indicate a single-host architecture. Replicate the contents below into your own file. The changes consist of commenting out the <code>Remote Wazuh Manager</code> section and uncommenting the <code>Local Wazuh Manager</code> section:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/logstash/conf.d/01-wazuh.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Wazuh - Logstash configuration file
+</span><span class="c1">## Remote Wazuh Manager - Filebeat input
+</span><span class="c1">#input {
+</span><span class="c1">#    beats {
+</span><span class="c1">#        port =&gt; 5000
+</span><span class="c1">#        codec =&gt; &#34;json_lines&#34;
+</span><span class="c1">##        ssl =&gt; true
+</span><span class="c1">##        ssl_certificate =&gt; &#34;/etc/logstash/logstash.crt&#34;
+</span><span class="c1">##        ssl_key =&gt; &#34;/etc/logstash/logstash.key&#34;
+</span><span class="c1">#    }
+</span><span class="c1">#}
+</span><span class="c1"># Local Wazuh Manager - JSON file input
+</span><span class="c1"></span>input <span class="o">{</span>
+   file <span class="o">{</span>
+       <span class="nb">type</span> <span class="o">=</span>&gt; <span class="s2">&#34;wazuh-alerts&#34;</span>
+       <span class="nv">path</span> <span class="o">=</span>&gt; <span class="s2">&#34;/var/ossec/logs/alerts/alerts.json&#34;</span>
+       <span class="nv">codec</span> <span class="o">=</span>&gt; <span class="s2">&#34;json&#34;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+. . .</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Add the Logstash user to the &ldquo;ossec&rdquo; group to allow access to restricted files:</p>
+
+<pre><code>usermod -aG ossec logstash
+</code></pre></li>
+</ol>
+
+<p><strong>For CentOS 6 and RHEL 6 Only:</strong></p>
+
+<ol>
+<li><p>Edit <code>/etc/logstash/startup.options</code> to change the <code>LS_GROUP=logstash</code> to <code>LS_GROUP=ossec</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/logstash/startup.options 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">. . .
+<span class="c1"># user and group id to be invoked as
+</span><span class="c1"></span><span class="nv">LS_USER</span><span class="o">=</span>logstash
+<span class="nv">LS_GROUP</span><span class="o">=</span>logstash
+. . .</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Update the service with the new parameters:</p>
+
+<pre><code>/usr/share/logstash/bin/system-install
+</code></pre></li>
+
+<li><p>Restart Logstash:</p>
+
+<pre><code>systemctl restart logstash
+</code></pre></li>
+</ol>
+
+<h3 id="install-kibana">Install Kibana</h3>
+
+<ol>
+<li><p>Download the Kibana RPM into the <code>/opt</code> directory:</p>
+
+<pre><code>cd /opt
+curl https://artifacts.elastic.co/downloads/kibana/kibana-5.5.2-x86_64.rpm
+</code></pre></li>
+
+<li><p>Install Kibana:</p>
+
+<pre><code>rpm -ivh kibana-5.5.2-x86_64.rpm
+</code></pre></li>
+
+<li><p>Enable Kibana on system boot:</p>
+
+<pre><code>systemctl enable kibana
+systemctl start kibana
+</code></pre></li>
+
+<li><p>Install the Wazuh app for Kibana:</p>
+
+<pre><code>/usr/share/kibana/bin/kibana-plugin install https://packages.wazuh.com/wazuhapp/wazuhapp.zip
+</code></pre>
+
+<p>The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled.</p></li>
+
+<li><p>If you will access Kibana remotely, configure it to listen on your IP address. Replace the following values with the correct parameters. If you are accessing Kibana from a local host, you can leave the <code>server.host</code> value alone.</p>
+
+<p>{: .table .table-striped .table-bordered }
+| Value           | Parameter                                                                                  |
+| :&mdash;&mdash;&mdash;&mdash;-: | :&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-: |
+| server.port     | Change this value if the default port, <code>5601</code>, is in use.                                  |
+| server.host     | Set this value to your Linode&rsquo;s external IP address.                                       |
+| server.name     | This value is used for display purposes only. Set to anything you wish, or leave it alone. |
+| logging.dest    | Specify a location to log program information. <code>/var/log/kibana.log</code> is recommended.       |
+| :&mdash;&mdash;&mdash;&mdash;-: | :&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-: |</p>
+
+<p>You may modify other values in this file as you see fit, but this configuration should work for most.</p></li>
+
+<li><p>Restart Kibana:</p>
+
+<pre><code>systemctl restart kibana
+</code></pre></li>
+</ol>
+
+<h2 id="configure-the-elastic-stack">Configure the Elastic Stack</h2>
+
+<p>The Elastic Stack will require some tuning before it can be accessed via the Wazuh API.</p>
+
+<ol>
+<li><p>Enable memory locking in Elasticsearch to mitigate poor performance. Uncomment or add this line to <code>/etc/elasticsearch/elasticsearch.yml</code>:</p>
+
+<pre><code>bootstrap.memory_lock: true
+</code></pre></li>
+
+<li><p>Edit locked memory allocation. Follow the instructions under the appropriate init system used in your system:</p>
+
+<p><strong>SystemD</strong></p>
+
+<p>Edit the systemd init file and add the following line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/systemd/system/multi-user.target.wants/elasticsearch.service 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">. . .
+<span class="nv">LimitMEMLOCK</span><span class="o">=</span>infinity
+. . .</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p><strong>System V</strong></p>
+
+<p>Edit the <code>/etc/sysconfig/elasticsearch</code> file for RPM or <code>/etc/default/elasticsearch</code> for Debian and Ubuntu. Add or change the following line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/sysconfig/elasticsearch or /etc/default/elasticsearch 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">. . .
+<span class="nv">MAX_LOCKED_MEMORY</span><span class="o">=</span>unlimited
+. . .</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Configure the Elasticsearch heap size based on your Linode&rsquo;s resources. This figure will determine how much memory Elasticsearch is allowed to consume. Keep the following rules in mind:</p>
+
+<ul>
+<li>No more than 50% of available RAM</li>
+<li>No more than 32GB of RAM</li>
+<li>The <code>-Xmsg</code> and <code>-Xmxg</code> values must be the same in order to avoid performance issues.</li>
+</ul>
+
+<p>Open the <code>jvm.options</code> file and navigate to the block shown here:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/elasticsearch/jvm.options 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">. . .
+<span class="c1"># Xms represents the initial size of total heap space
+</span><span class="c1"># Xmx represents the maximum size of total heap space
+</span><span class="c1"></span>
+-Xms4g
+-Xmx4g
+. . .</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This configures Elasticsearch with 4GB of allotted RAM. You may also use the <code>M</code> letter to specify megabytes, <code>Xms4096M</code> in this example. View your current RAM consumption with the <code>htop</code> command. If you do not have htop installed, install it with your distribution&rsquo;s package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.</p></li>
+</ol>
+
+<h2 id="configure-a-reverse-proxy">Configure a Reverse Proxy</h2>
+
+<p>A reverse proxy server allows you to secure the Kibana web interface with SSL and limit access to others. Instructions are provided for nginx and Apache. The instructions assume you have your webserver configured to host virtual domains.</p>
+
+<h3 id="set-up-a-reverse-proxy-server-to-host-kibana-as-a-subdomain">Set up a Reverse Proxy Server to Host Kibana as a Subdomain</h3>
+
+<p>If you have SSL encryption enabled on your domain, follow the instructions in the <strong>SSL</strong> section. If not, follow the instructions included in the <strong>Non SSL</strong> section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended.</p>
+
+<h4 id="nginx">nginx</h4>
+
+<ol>
+<li><p>Navigate to your nginx virtual host config directory. Create a new virtual host config file and name it something similar to <code>kibana.conf</code>. Add the contents below to this file. If you do not have a domain name available, replace the <code>server_name</code> parameter value with your Linode&rsquo;s external IP address:</p>
+
+<p><strong>Non SSL</strong></p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/conf.d or /etc/nginx/conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+    listen <span class="m">80</span><span class="p">;</span>
+    <span class="c1"># Remove the line below if you do not have IPv6 enabled.
+</span><span class="c1"></span>    listen <span class="o">[</span>::<span class="o">]</span>:80<span class="p">;</span>
+    server_name kibana.exampleIPorDomain<span class="p">;</span>
+
+    location / <span class="o">{</span>
+        proxy_pass http://exampleIPorDomain:5601<span class="p">;</span>
+        proxy_http_version <span class="m">1</span>.1<span class="p">;</span>
+        proxy_set_header Upgrade <span class="nv">$http_upgrade</span><span class="p">;</span>
+        proxy_set_header Connection <span class="s1">&#39;upgrade&#39;</span><span class="p">;</span>
+        proxy_set_header Host <span class="nv">$host</span><span class="p">;</span>
+        proxy_cache_bypass <span class="nv">$http_upgrade</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    auth_basic <span class="s2">&#34;Restricted Access&#34;</span><span class="p">;</span>
+    auth_basic_user_file /etc/nginx/htpasswd.users<span class="p">;</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p><strong>SSL</strong></p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/conf.d or /etc/nginx/conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+  listen <span class="m">80</span><span class="p">;</span>
+  <span class="c1"># Remove the line below if you do note have IPv6 enabled.
+</span><span class="c1"></span>  listen <span class="o">[</span>::<span class="o">]</span>:80<span class="p">;</span>
+  server_name kibana.exampleIPorDomain<span class="p">;</span>
+
+  location / <span class="o">{</span>
+      proxy_pass http://exampleIPorDomain:5601<span class="p">;</span>
+      proxy_http_version <span class="m">1</span>.1<span class="p">;</span>
+      proxy_set_header Upgrade <span class="nv">$http_upgrade</span><span class="p">;</span>
+      proxy_set_header Connection <span class="s1">&#39;upgrade&#39;</span><span class="p">;</span>
+      proxy_set_header Host <span class="nv">$host</span><span class="p">;</span>
+      proxy_cache_bypass <span class="nv">$http_upgrade</span><span class="p">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+server <span class="o">{</span>
+  listen <span class="m">443</span> ssl<span class="p">;</span>
+
+  <span class="c1"># Remove the line below if you do not have IPv6 enabled.
+</span><span class="c1"></span>  listen <span class="o">[</span>::<span class="o">]</span>:443 ssl<span class="p">;</span>
+  server_name kibana.exampleIPorDomain<span class="p">;</span>
+
+  location / <span class="o">{</span>
+      proxy_pass http://exampleIPorDomain:5601<span class="p">;</span>
+      proxy_http_version <span class="m">1</span>.1<span class="p">;</span>
+      proxy_set_header Upgrade <span class="nv">$http_upgrade</span><span class="p">;</span>
+      proxy_set_header Connection <span class="s1">&#39;upgrade&#39;</span><span class="p">;</span>
+      proxy_set_header Host <span class="nv">$host</span><span class="p">;</span>
+      proxy_cache_bypass <span class="nv">$http_upgrade</span><span class="p">;</span>
+  <span class="o">}</span>
+
+  ssl_certificate /path/to/ssl/certificate.crt<span class="p">;</span>
+  ssl_certificate_key /path/to/ssl/certificate.key<span class="p">;</span>
+
+  auth_basic <span class="s2">&#34;Restricted Access&#34;</span><span class="p">;</span>
+  auth_basic_user_file /etc/nginx/htpasswd.users<span class="p">;</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Secure your Kibana site with a login page. Create a <strong>.htpasswd</strong> file first if you do not have one:</p>
+
+<pre><code>touch /etc/nginx/htpasswd.users
+htpasswd -c /etc/nginx/.htpasswd.users YourNewUsername
+chmod 644 /etc/nginx/.htpasswd.users
+</code></pre></li>
+
+<li><p>Restart the nginx server to load the new configuration:</p>
+
+<pre><code>systemctl restart nginx
+</code></pre></li>
+</ol>
+
+<h3 id="apache">Apache</h3>
+
+<ol>
+<li><p>In order for Apache to function as a reverse proxy, <em>mod_proxy</em> must be installed. Check that the following modules are enabled by running the <code>httpd -M</code> command:</p>
+
+<pre><code>httpd -M
+</code></pre>
+
+<ul>
+<li>proxy_module</li>
+<li>lbmethod_byrequests_module</li>
+<li>proxy_balancer_module</li>
+<li>proxy_http_module</li>
+</ul></li>
+
+<li><p>Enable the necessary mods in Apache. Open <code>00-proxy.conf</code> and verify that the lines below are included:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/httpd/conf.modules.d/00-proxy.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">. . .
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so
+LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+. . .</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Create a new virtual config file for the Kibana site. Add the contents below to this file. If you do not have a domain name available, replace the <code>server_name</code> parameter value with your Linode&rsquo;s public IP address. Replace <code>kibana.exampleIPorDomain</code> and <code>http://exampleIPorDomain</code> with your specific values:</p>
+
+<p><strong>Non SSL</strong></p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/httpd/sites-available/kibana.conf or /etc/apache2/sites-available/kibana.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;VirtualHost *:80&gt;
+  ServerName kibana.exampleIPorDomain
+  ProxyPreserveHost On
+
+  ProxyPass / http://exampleIPorDomain:5601
+  ProxyPassReverse / http://exampleIPorDomain:5601
+
+  &lt;Directory <span class="s2">&#34;/&#34;</span>&gt;
+      AuthType Basic
+      AuthName <span class="s2">&#34;Restricted Content&#34;</span>
+      AuthUserFile /etc/apache2/.htpasswd
+      Require valid-user
+  &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p><strong>SSL</strong></p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/httpd/sites-available/kibana.conf or /etc/apache2/sites-available/kibana.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;VirtualHost *:80&gt;
+  ServerName kibana.exampleIPorDomain
+  ProxyPreserveHost On
+
+  ProxyPass / http://exampleIPorDomain:5601
+  ProxyPassReverse / http://exampleIPorDomain:5601
+
+  &lt;Directory <span class="s2">&#34;/&#34;</span>&gt;
+      AuthType Basic
+      AuthName <span class="s2">&#34;Restricted Content&#34;</span>
+      AuthUserFile /etc/apache2/.htpasswd
+      Require valid-user
+  &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443
+  ServerName kibana.exampleIPorDomain
+  ProxyPreserveHost On
+
+  ProxyPass / http://exampleIPorDomain:5601
+  ProxyPassReverse / http://exampleIPorDomain:5601
+
+  SSLEngine on
+  SSLProtocol all -SSLv2
+  SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM
+
+  SSLCertificateFile /path/to/cert_file/ssl.crt
+  SSLCertificateKeyFile /path/to/ssl/private.key
+  SSLCertificateChainFile /path/to/ssl/server.ca.pem
+
+  &lt;Directory <span class="s2">&#34;/&#34;</span>&gt;
+      AuthType Basic
+      AuthName <span class="s2">&#34;Restricted Content&#34;</span>
+      AuthUserFile /etc/apache2/.htpasswd
+      Require valid-user
+  &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Secure your Kibana site with a login page. Create a <strong>.htpasswd</strong> file first if you do not have one:</p>
+
+<pre><code>touch /etc/apache2/htpasswd.users
+htpasswd -c /etc/apache2/.htpasswd.users YourNewUsername
+chmod 644 /etc/apache2/.htpasswd.users
+</code></pre></li>
+
+<li><p>Restart Apache:</p>
+
+<pre><code>systemctl restart httpd
+</code></pre></li>
+</ol>
+
+<h3 id="add-the-kibana-subdomain-to-the-dns-manager">Add the Kibana Subdomain to the DNS Manager</h3>
+
+<p>The new Kibana subdomain will need to be configured in the Linode DNS Manager.</p>
+
+<ol>
+<li><p>Login to the Linode Manager and select your Linode VPS. Click on <em>DNS Manager</em>. Add a new A/AAA record for the subdomain. Refer to the table below for the field values.</p>
+
+<p>{: .table .table-striped .table-bordered }
+| Field | Value |
+| :&mdash;&mdash;&mdash;&mdash;-: | :&mdash;&mdash;&mdash;&ndash;: |
+| Hostname | Enter your subdomain name here - ex. kibana |
+| IP Address | Set this value to your Linode&rsquo;s external IP address. |
+| TTL | Set this to 5 minutes. |
+| :&mdash;&mdash;&mdash;&mdash;-: | :&mdash;&mdash;&mdash;&ndash;: |</p></li>
+
+<li><p>Click <strong>Save Changes</strong>.</p></li>
+</ol>
+
+<h2 id="open-the-kibana-port">Open the Kibana Port</h2>
+
+<p>Kibana&rsquo;s default access port, <code>5601</code>, must be opened for TCP traffic. Instructions are presented below for UFW, Iptabes, and FirewallD.</p>
+
+<p><strong>UFW</strong></p>
+
+<pre><code>ufw allow 5601/tcp comment &quot;Kibana port&quot;
+</code></pre>
+
+<p><strong>iptables</strong></p>
+
+<pre><code>iptables -A INPUT -p tcp --dport 5601 -m comment --comment &quot;Kibana port&quot; -j ACCEPT
+</code></pre>
+
+<p>{: .note}
+&gt; To avoid losing iptables rules after a server reboot, save your rules to a file using <code>iptables-save</code>, or install iptables-persistent to automatically save rules.</p>
+
+<p><strong>FirewallD</strong></p>
+
+<pre><code>firewall-cmd --add-port=5601/tcp --permanent
+</code></pre>
+
+<h2 id="connect-the-elastic-stack-with-the-wazuh-api">Connect the Elastic Stack with the Wazuh API</h2>
+
+<p>Now you are ready to access the API and begin making use of your OSSEC Elastic Stack!</p>
+
+<ol>
+<li><p>The Wazuh API requires users to provide credentials in order to login. Navigate to <code>/var/ossec/api/configuration/auth</code>. Replace <code>NewUserName</code> whatever user name you choose. Set a password following the system prompts:</p>
+
+<pre><code>sudo node htpasswd -c user NewUserName
+</code></pre></li>
+
+<li><p>Restart the Wazuh API:</p>
+
+<pre><code>systemctl restart wazuh-api
+</code></pre></li>
+
+<li><p>Check the status of all daemon components and verify that they are running:</p>
+
+<pre><code>systemctl -l status wazuh-api
+systemctl -l status wazuh-manager
+systemctl -l status elasticsearch
+systemctl -l status logstash
+systemctl -l status kibana
+systemctl -l status nginx
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><pre><code>If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. Find the rules and decoders in the `/var/ossec/ruleset` directory. To disable, rename the file to any other file extension.
+</code></pre>
+</div>
+</blockquote>
+</li>
+
+<li><p>In a web browser, navigate to the Kibana homepage. If you created a subdomain for Kibana, the URL will be similar to <code>kibana.exampleIPorDomain</code>. You can also reach Kibana by navigating to your server&rsquo;s IP address and specifying port <code>5601</code>. Login with the credentials you setup for your Kibana site.</p></li>
+
+<li><p>If everything is working correctly, you should have landed on the <strong>Discover</strong> page. Navigate to the <strong>Wazuh</strong> page using the left hand side menu. You will be immediately presented with the API configuration page. Underneath the <strong>ADD NEW API</strong> button, enter the user credentials you created for Wazuh. For URL and Port, enter you URL or IP and <code>55000</code>, then click <strong>SAVE</strong>.</p></li>
+</ol>
+
+<h2 id="where-to-go-from-here">Where To Go From Here</h2>
+
+<p>Your OSSEC Elastic Stack setup is now complete! At this point, you will want to customize and configure your OSSEC rules to better suit the needs of your environment. The Wazuh API contains pre-configured charts and queries, and more information on how to use them can be found in the official Wazuh documentation.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://documentation.wazuh.com/current/index.html">Wazuh Official Documentation</a></li>
+
+<li><a href="http://ossec-docs.readthedocs.io/en/latest/index.html">OSSEC Official Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/">Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-are-elasticsearch-elk-stack-and-wazuh">What are Elasticsearch, ELK Stack, and Wazuh?</a></li>
+<li><a href="#what-is-wazuh-ossec">What is Wazuh OSSEC</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#update-system-and-install-pre-requisites">Update System and Install Pre-requisites</a></li>
+<li><a href="#install-wazuh">Install Wazuh</a></li>
+<li><a href="#install-elasticsearch-logstash-and-kibana">Install Elasticsearch, Logstash, and Kibana</a>
+<ul>
+<li><a href="#install-elasticsearch">Install Elasticsearch</a></li>
+<li><a href="#install-logstash">Install Logstash</a></li>
+<li><a href="#install-kibana">Install Kibana</a></li>
+</ul></li>
+<li><a href="#configure-the-elastic-stack">Configure the Elastic Stack</a></li>
+<li><a href="#configure-a-reverse-proxy">Configure a Reverse Proxy</a>
+<ul>
+<li><a href="#set-up-a-reverse-proxy-server-to-host-kibana-as-a-subdomain">Set up a Reverse Proxy Server to Host Kibana as a Subdomain</a>
+<ul>
+<li><a href="#nginx">nginx</a></li>
+</ul></li>
+<li><a href="#apache">Apache</a></li>
+<li><a href="#add-the-kibana-subdomain-to-the-dns-manager">Add the Kibana Subdomain to the DNS Manager</a></li>
+</ul></li>
+<li><a href="#open-the-kibana-port">Open the Kibana Port</a></li>
+<li><a href="#connect-the-elastic-stack-with-the-wazuh-api">Connect the Elastic Stack with the Wazuh API</a></li>
+<li><a href="#where-to-go-from-here">Where To Go From Here</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

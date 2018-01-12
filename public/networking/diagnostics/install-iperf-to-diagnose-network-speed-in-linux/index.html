@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install iPerf to Diagnose Network Speed in Linux</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This tutorial will teach you how to install iPerf, and use its common commands and basic configuration to diagnose your network speed.">
+        <meta name="keywords" content="networking, diagnostic, speed, iperf">
+        
+        <meta property="og:title" content="Install iPerf to Diagnose Network Speed in Linux">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/diagnostics/install-iperf-to-diagnose-network-speed-in-linux/">
+        <meta property="og:description" content="This tutorial will teach you how to install iPerf, and use its common commands and basic configuration to diagnose your network speed.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/diagnostics/install-iperf-to-diagnose-network-speed-in-linux/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/diagnostics/">Diagnosing Network Issues</a>
+  
+</li>
+
+
+<li>
+  
+  Install iPerf to Diagnose Network Speed in Linux
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install iPerf to Diagnose Network Speed in Linux</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-02-28T00:00:00Z">Tuesday, February 28, 2017</time> by Nick Brewer</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdiagnostics%2finstall-iperf-to-diagnose-network-speed-in-linux%2f&via=linode&text=Install%20iPerf%20to%20Diagnose%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdiagnostics%2finstall-iperf-to-diagnose-network-speed-in-linux%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fdiagnostics%2finstall-iperf-to-diagnose-network-speed-in-linux%2f&t=Install%20iPerf%20to%20Diagnose%20Network%20Speed%20in%20Linux" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/diagnostics/install-iperf-to-diagnose-network-speed-in-linux.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/diagnostics/install-iperf-to-diagnose-network-speed-in-linux.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Linux systems administrators and network administrators often find diagnosing network speed degradation complicated, as there are very few tools available to diagnose these issues. iPerf is a command-line tool used in the diagnostics of network speed issues.</p>
+
+<p><img src="/docs/assets/diagnosing-network-speed-with-iperf.png" alt="Install iPerf to Diagnose Network Speed in Linux" title="Install iPerf to Diagnose Network Speed in Linux" /></p>
+
+<p>iPerf measures the maximum network throughput a server can handle. It is particularly useful when experiencing network speed issues, as you can use iPerf to determine which server is unable to reach maximum throughput.</p>
+
+<h2 id="install-iperf">Install iPerf</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The installation section assumes that you are the <code>root</code> user. If you are not using the super user, you will need to use <code>sudo</code> before each command.</div>
+</blockquote>
+
+
+<h3 id="debian-and-ubuntu">Debian and Ubuntu</h3>
+
+<p>You can use <code>apt-get</code> to install iPerf on Debian and Ubuntu:</p>
+
+<pre><code>apt-get install iperf
+</code></pre>
+
+<h3 id="fedora-centos">Fedora/CentOS</h3>
+
+<p><strong>For CentOS</strong></p>
+
+<p>CentOS repositories do not have iPerf by default. Use the <a href="https://fedoraproject.org/wiki/EPEL">EPEL</a> repository, which is a repository used to install third-party software packages on RedHat systems such as RHEL and CentOS:</p>
+
+<pre><code>yum install epel-release
+</code></pre>
+
+<p><strong>For Both</strong></p>
+
+<pre><code>yum update
+yum install iperf
+</code></pre>
+
+<h3 id="arch-linux">Arch Linux</h3>
+
+<p>To install iPerf on your Arch Linux instance run:</p>
+
+<pre><code>pacman -S iperf
+</code></pre>
+
+<h3 id="opensuse">openSUSE</h3>
+
+<p>Use <code>zypper</code> to install iPerf on openSUSE:</p>
+
+<pre><code>zypper install iperf
+</code></pre>
+
+<h3 id="gentoo">Gentoo</h3>
+
+<p>Use Portage to install iPerf on your Gentoo instance:</p>
+
+<pre><code>emerge iperf
+</code></pre>
+
+<p>If you have not yet run <code>emerge --sync</code> you may need to do so before it will allow you to install the iPerf package. Additionally, by default you will need to substitute each <code>iperf</code> command with <code>/usr/bin/iperf3</code>. This path may differ dependent on your iPerf version.</p>
+
+<h2 id="how-to-use-iperf">How to Use iPerf</h2>
+
+<p>iPerf must be installed on both computers between which you are testing the connection. If you are using a Unix or Linux-based operating system on your personal computer, you may be able to install iPerf on your local machine. If you are testing the throughput of your Linode, however, it&rsquo;s better to use another server as the end point, as your local ISP may impose network restrictions that can affect the results of your test.</p>
+
+<h3 id="tcp-clients-servers">TCP Clients &amp; Servers</h3>
+
+<p>iPerf requires two systems because one system must act as a server, while the other acts as a client. The client connects to the server you&rsquo;re testing the speed of.</p>
+
+<ol>
+<li><p>On the Linode you wish to test, launch iPerf in server mode:</p>
+
+<pre><code>iperf -s
+</code></pre>
+
+<p>You should see output similar to:</p>
+
+<pre><code> ------------------------------------------------------------
+ Server listening on TCP port 5001
+ TCP window size: 85.3 KByte (default)
+ ------------------------------------------------------------
+</code></pre></li>
+
+<li><p>On your second Linode, connect to the first. Replace <code>198.51.100.5</code> with the first Linode&rsquo;s IP address.</p>
+
+<pre><code>iperf -c 198.51.100.5
+</code></pre>
+
+<p>The output should be similar to:</p>
+
+<pre><code>------------------------------------------------------------
+Client connecting to 198.51.100.5, TCP port 5001
+TCP window size: 45.0 KByte (default)
+------------------------------------------------------------
+[  3] local 198.51.100.6 port 50616 connected with 198.51.100.5 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
+</code></pre></li>
+
+<li><p>You will also see the connection and results on your iPerf server. This will look similar to:</p>
+
+<pre><code>------------------------------------------------------------
+Server listening on TCP port 5001
+TCP window size: 85.3 KByte (default)
+------------------------------------------------------------
+[  4] local 198.51.100.5 port 5001 connected with 198.51.100.6 port 50616
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
+</code></pre></li>
+
+<li><p>To stop the iPerf server process, press <code>CTRL + c</code>.</p></li>
+</ol>
+
+<h3 id="udp-clients-servers">UDP Clients &amp; Servers</h3>
+
+<p>Using iPerf, you can also test the maximum throughput achieved via UDP connections.</p>
+
+<ol>
+<li><p>Start a UDP iPerf server:</p>
+
+<pre><code>iperf -s -u
+</code></pre>
+
+<p>The output will be similar to:</p>
+
+<pre><code>------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+</code></pre></li>
+
+<li><p>Connect your client to your iPerf UDP server. Replace <code>198.51.100.5</code> with your IP address:</p>
+
+<pre><code>iperf -c 198.51.100.5 -u
+</code></pre>
+
+<p>The <code>-u</code> option we&rsquo;ve passed tells iPerf that we are connecting via UDP. This is important, because we want to see the maximum throughput achieved via UDP. The output should be similar to:</p>
+
+<pre><code>------------------------------------------------------------
+Client connecting to 198.51.100.5, UDP port 5001
+Sending 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 198.51.100.6 port 58070 connected with 198.51.100.5 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  1.25 MBytes  1.05 Mbits/sec
+[  3] Sent 893 datagrams
+[  3] Server Report:
+[  3]  0.0-10.0 sec  1.25 MBytes  1.05 Mbits/sec   0.084 ms    0/  893 (0%)
+</code></pre>
+
+<p>Looking at the output we have received, <code>1.05 Mbits/sec</code> is considerably less than what we received on the TCP tests. It is also considerably less than the maximum outbound bandwidth cap provided by the 1GB Linode. This is because iPerf limits the bandwidth for UDP clients to 1 Mbit per second by default.</p></li>
+
+<li><p>You can change this with the <code>-b</code> flag, replacing the number after with the maximum bandwidth rate you wish to test against. If you are testing for network speed, we recommend setting this number above the maximum bandwidth cap provided by Linode. For example, this test was run on a 1GB Linode:</p>
+
+<pre><code>iperf -c 198.51.100.5 -u -b 1000m
+</code></pre>
+
+<p>This tells the client that we want to achieve a maximum of 1000 Mbits per second if possible. The <code>-b</code> flag only works when using UDP connections, since iPerf does not set a bandwidth limit on the TCP clients.</p>
+
+<p>The output should be similar to:</p>
+
+<pre><code>------------------------------------------------------------
+Client connecting to 198.51.100.5, UDP port 5001
+Sending 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 198.51.100.5 port 52308 connected with 198.51.100.5 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec   966 MBytes   810 Mbits/sec
+[  3] Sent 688897 datagrams
+[  3] Server Report:
+[  3]  0.0-10.0 sec   966 MBytes   810 Mbits/sec   0.001 ms    0/688896 (0%)
+[  3]  0.0-10.0 sec  1 datagrams received out-of-order
+</code></pre>
+
+<p>Now that is considerably better than the 1.05 Mbits/sec we were seeing earlier!</p></li>
+</ol>
+
+<h3 id="bidirectional-tests">Bidirectional Tests</h3>
+
+<p>In some cases, you may want to test both servers for the maximum amount of throughput. This can easily be done using the built-in bidirectional testing feature iPerf offers.</p>
+
+<p>Run the following command to test both connections:</p>
+
+<pre><code>iperf -c 198.51.100.5 -d
+</code></pre>
+
+<p>The result is that iPerf will start a server and a client connection on the original client server (198.51.100.6). Once this has been done, iPerf will connect the original iPerf server to the client connection, which is now acting as both a server connection and a client connection. This will look similar</p>
+
+<pre><code>------------------------------------------------------------
+Server listening on TCP port 5001
+TCP window size: 85.3 KByte (default)
+------------------------------------------------------------
+------------------------------------------------------------
+Client connecting to 198.51.100.5, TCP port 5001
+TCP window size:  351 KByte (default)
+------------------------------------------------------------
+[  3] local 198.51.100.6 port 50618 connected with 198.51.100.5 port 5001
+[  5] local 198.51.100.6 port 5001 connected with 198.51.100.5 port 58650
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
+[  3]  0.0-10.2 sec  1.28 GBytes  1.08 Gbits/sec
+</code></pre>
+
+<p>On the original iPerf server, you will see:</p>
+
+<pre><code>------------------------------------------------------------
+Client connecting to 198.51.100.6, TCP port 5001
+TCP window size:  153 KByte (default)
+------------------------------------------------------------
+[  6] local 198.51.100.5 port 58650 connected with 198.51.100.6 port 5001
+[  6]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
+[  5]  0.0-10.2 sec  1.28 GBytes  1.08 Gbits/sec
+</code></pre>
+
+<h3 id="options">Options</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">-f</td>
+<td align="left">Change the format in which the tests are run. For example, you can use <code>-f k</code> to get results in Kbits per second instead of Mbits per second. Valid options include <code>m</code> (Mbits, default), <code>k</code> (Kbits), <code>K</code> (KBytes), and <code>M</code> (MBytes).</td>
+</tr>
+
+<tr>
+<td align="left">-V</td>
+<td align="left">Forces iPerf to use IPv6 rather than IPv4.</td>
+</tr>
+
+<tr>
+<td align="left">-i</td>
+<td align="left">Changes the interval between periodic bandwidth tests. For example, <code>-i 60</code> will make a new bandwidth report every 60 seconds. The default is zero, which performs one bandwidth test.</td>
+</tr>
+
+<tr>
+<td align="left">-p</td>
+<td align="left">Changes the port. When not specified, the default port is 5001. You must use this flag on both the client and server.</td>
+</tr>
+
+<tr>
+<td align="left">-B</td>
+<td align="left">Binds iPerf to a specific interface or address. If passed through the server command, the incoming interface will be set. If passed through the client command, the outgoing interface will be set.</td>
+</tr>
+</tbody>
+</table>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://iperf.fr">iPerf Official Website</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/">How to Configure OpenVPN Access Server to Tunnel Traffic</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/configure-firewall-with-ufw/">How to Configure a Firewall with UFW</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/install-openvpn-access-server-on-linux/">Install OpenVPN Access Server on Linux for Secure Communications</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/">Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04/">Provide Authoritative DNS Services with NSD on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#install-iperf">Install iPerf</a>
+<ul>
+<li><a href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
+<li><a href="#fedora-centos">Fedora/CentOS</a></li>
+<li><a href="#arch-linux">Arch Linux</a></li>
+<li><a href="#opensuse">openSUSE</a></li>
+<li><a href="#gentoo">Gentoo</a></li>
+</ul></li>
+<li><a href="#how-to-use-iperf">How to Use iPerf</a>
+<ul>
+<li><a href="#tcp-clients-servers">TCP Clients &amp; Servers</a></li>
+<li><a href="#udp-clients-servers">UDP Clients &amp; Servers</a></li>
+<li><a href="#bidirectional-tests">Bidirectional Tests</a></li>
+<li><a href="#options">Options</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

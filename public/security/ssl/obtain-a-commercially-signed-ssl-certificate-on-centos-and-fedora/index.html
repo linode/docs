@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Obtain a Commercially Signed SSL Certificate on CentOS and Fedora</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Prepare and Submit a Request to Obtain a Commercially Signed SSL Certificate on CentOS or Fedora">
+        <meta name="keywords" content="ssl certificate, ssl cert, commercial, csr, centos, fedora">
+        
+        <meta property="og:title" content="Obtain a Commercially Signed SSL Certificate on CentOS and Fedora">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora/">
+        <meta property="og:description" content="Prepare and Submit a Request to Obtain a Commercially Signed SSL Certificate on CentOS or Fedora">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/ssl/">SSL Certificates</a>
+  
+</li>
+
+
+<li>
+  
+  Obtain a Commercially Signed SSL Certificate on CentOS and Fedora
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Obtain a Commercially Signed SSL Certificate on CentOS and Fedora</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-08-19T00:00:00Z">Friday, August 19, 2016</time> by Nick Brewer</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fssl%2fobtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora%2f&via=linode&text=Obtain%20a%20Commercially%20Signed%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fssl%2fobtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fssl%2fobtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora%2f&t=Obtain%20a%20Commercially%20Signed%20SSL%20Certificate%20on%20CentOS%20and%20Fedora" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>SSL/TLS encryption is the standard for securing web traffic. This guide will show you how to install a commercial SSL certificate on your Linode running CentOS or Fedora. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature.</p>
+
+<p>If you intend to use your SSL certificate on a website powered by Apache, continue to our <a href="/docs/security/ssl/ssl-apache2-centos">SSL Certificates with Apache on CentOS 7</a> guide once you&rsquo;ve completed the process outlined here.</p>
+
+<p>For an SSL setup with Nginx, please start with our <a href="/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx">Nginx and SSL</a> guide.</p>
+
+<p>If hosting multiple websites with commercial SSL certificates on the same IP address, use the <a href="https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI">Server Name Identification (SNI) extension</a> of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to <a href="/docs/platform/support">contact support</a> to request an additional IP address.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ul>
+<li><p>Complete our <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/securing-your-server">Securing Your Server</a> guides.</p></li>
+
+<li><p>Ensure that your packages are up to date.</p>
+
+<ul>
+<li><p>On CentOS and Fedora 21 or below:</p>
+
+<pre><code>sudo yum update
+</code></pre></li>
+
+<li><p>On Fedora 22 and above:</p>
+
+<pre><code>sudo dnf upgrade
+</code></pre></li>
+</ul></li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>The steps in this guide require root privileges. Be sure to run the steps below as <strong>root</strong> or with the <code>sudo</code> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</p>
+
+<p>Replace each instance of <code>example.com</code> in this guide with your site&rsquo;s domain name.</p>
+</div>
+</blockquote>
+
+
+<h2 id="create-a-certificate-signing-request">Create a Certificate Signing Request</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>While some Certificate Authorities (CA) will automatically include the &ldquo;www&rdquo; subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a <a href="https://en.wikipedia.org/wiki/Wildcard_certificate">wildcard certificate</a>.</div>
+</blockquote>
+
+
+<p>Issue the following commands to navigate to the <code>/etc/ssl</code> directory, and create a certificate signing request (CSR) for the site that will be using SSL. Change <code>example.com</code> to reflect the fully qualified domain name (FQDN) of the site you intend to use with SSL. Leave the challenge password blank:</p>
+
+<pre><code>cd /etc/ssl/
+openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout /etc/pki/tls/private/example.com.key -out example.com.csr
+</code></pre>
+
+<p>After the first command changes directories, the second command creates a <code>.csr</code> file under the <code>/etc/ssl</code> directory, and a <code>.key</code> file under <code>/etc/pki/tls/private</code> using these options:</p>
+
+<ul>
+<li><p><code>-nodes</code> instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the passphrase in the console each time the application using it is restarted.</p></li>
+
+<li><p><code>-days</code> determines the length of time in days that the certificate is being issued for. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA).</p></li>
+
+<li><p><code>rsa:</code> allows you to specify the size of the RSA key. In this case we&rsquo;ve chosen 2048 bits as this is the recommended minimum size.</p></li>
+
+<li><p><code>-sha256</code> ensures that the certificate request is generated using 265-bit SHA (Secure Hash Algorithm).</p></li>
+</ul>
+
+<p>Here are the values we entered for our example certificate. Note that you can ignore the &lsquo;extra&rsquo; attributes:</p>
+
+<pre><code>Generating a 2048 bit RSA private key
+......................................................++++++
+....++++++
+writing new private key to 'example.com.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:New Jersey
+Locality Name (eg, city) []:Absecon
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyDomain, LLC
+Organizational Unit Name (eg, section) []:Web Services
+Common Name (eg, YOUR name) []:example.com
+Email Address []:support@example.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+</code></pre>
+
+<p>Restrict the private key&rsquo;s file properties to be read only by owner:</p>
+
+<pre><code>chmod 400 /etc/pki/tls/private/example.com.key
+</code></pre>
+
+<p>You may now submit the file ending in <code>.csr</code> to a commercial SSL provider for signing. You will receive a signed file after the CA signs the request. Save this file as <code>/etc/pki/tls/certs/example.com.crt</code>.</p>
+
+<p>Restrict the signed certificate&rsquo;s file properties as well:</p>
+
+<pre><code>chmod 400 /etc/pki/tls/certs/example.com.crt
+</code></pre>
+
+<h2 id="get-the-ca-root-certificate">Get the CA Root Certificate</h2>
+
+<p>Most modern distributions come with common root CA certificates installed as part of the &ldquo;ca-certificates&rdquo; package. To check if this package is installed, run:</p>
+
+<pre><code>yum list installed ca-certificates
+</code></pre>
+
+<p>The ca-certificates package comes with a bundle of root certs located under <code>/etc/pki/tls/certs/ca-bundle.crt</code> that can be used with many prevalent certificate authorities. If you&rsquo;re using an older distribution that does not have the ca-certificates package, you will need to download your root certificate from the CA that issued it. Some standard commercial certificate authorities are:</p>
+
+<ul>
+<li><a href="https://knowledge.verisign.com/support/ssl-certificates-support/index.html">Verisign</a></li>
+<li><a href="http://www.thawte.com/roots/index.html">Thawte</a></li>
+<li><a href="http://www.globalsign.com/en//">Globalsign</a></li>
+<li><a href="https://support.comodo.com/index.php?_m=downloads&amp;_a=view&amp;parentcategoryid=1&amp;pcid=0&amp;nav=0">Comodo</a></li>
+</ul>
+
+<h2 id="add-your-root-certificate-to-the-ca-bundle">Add Your Root Certificate to the CA Bundle</h2>
+
+<p>You can add root certificates to the bundle by enabling dynamic CA configuration:</p>
+
+<pre><code>update-ca-trust force-enable
+</code></pre>
+
+<p>Next copy the certificate file to the appropriate directory, and update the bundle:</p>
+
+<pre><code>cp root-example.crt /etc/pki/ca-trust/source/anchors/
+update-ca-trust extract
+</code></pre>
+
+<h2 id="prepare-a-chained-ssl-certificate">Prepare a Chained SSL Certificate</h2>
+
+<p>In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. Because of this, you can choose to <em>chain</em> roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with <code>.crt</code> (collectively referred to as a &ldquo;chained SSL certificate&rdquo;), they must be linked into one file, in a specific order, to ensure full compatibility with most browsers. The example below uses a chained SSL certificate that was signed by Comodo.</p>
+
+<p>Prepare your chained SSL certificate:</p>
+
+<pre><code>cat example.com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt &gt; www.mydomain.com.crt
+</code></pre>
+
+<p>The contents of the resulting file will appear similar to the following:</p>
+
+<pre><code>-----BEGIN CERTIFICATE-----
+MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
+................................................................
+ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
+DCQzME2NkT1ZdW8fdz+Y
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
+................................................................
+j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
+................................................................
+Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
+................................................................
+6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
+-----END CERTIFICATE-----
+</code></pre>
+
+<p>Use this table to better visualize the command entered to prepare the chained SSL certificate:</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Certificate Type:</strong></th>
+<th align="left"><strong>Issued to:</strong></th>
+<th align="left"><strong>Issued by:</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>End-user Certificate</td>
+<td align="left">example.com</td>
+<td align="left">Comodo LLC</td>
+</tr>
+
+<tr>
+<td>Intermediate Certificate 1</td>
+<td align="left">Comodo LLC</td>
+<td align="left">COMODORSADomainValidationSecureServerCA</td>
+</tr>
+
+<tr>
+<td>Intermediate Certificate 2</td>
+<td align="left">COMODORSADomainValidationSecureServerCA</td>
+<td align="left">COMODORSAAddTrustCA</td>
+</tr>
+
+<tr>
+<td>Root certificate</td>
+<td align="left">COMODORSAAddTrustCA</td>
+<td align="left">AddTrustExternalCARoot</td>
+</tr>
+</tbody>
+</table>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.openssl.org/docs/">OpenSSL Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu/">Obtain a Commercially Signed SSL Certificate on Debian &amp; Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora/">Create a Self-Signed Certificate on CentOS and Fedora</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/install-openvpn-access-server-on-linux/">Install OpenVPN Access Server on Linux for Secure Communications</a></li>
+    
+    
+    
+    <li><a href="/docs/security/security-patches/patching-glibc-for-the-ghost-vulnerability/">Upgrading glibc for the GHOST Vulnerability</a></li>
+    
+    
+    
+    <li><a href="/docs/security/security-patches/disabling-sslv3-for-poodle/">Disabling SSLv3 for POODLE</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#create-a-certificate-signing-request">Create a Certificate Signing Request</a></li>
+<li><a href="#get-the-ca-root-certificate">Get the CA Root Certificate</a></li>
+<li><a href="#add-your-root-certificate-to-the-ca-bundle">Add Your Root Certificate to the CA Bundle</a></li>
+<li><a href="#prepare-a-chained-ssl-certificate">Prepare a Chained SSL Certificate</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

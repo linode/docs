@@ -1,0 +1,176 @@
+#!/bin/sh -e
+#
+# /etc/init.d/solr -- startup script for Apache Solr
+#
+#
+### BEGIN INIT INFO
+# Provides:          solr
+# Required-Start:    $local_fs $remote_fs $network
+# Required-Stop:     $local_fs $remote_fs $network
+# Should-Start:      $named
+# Should-Stop:       $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start Solr
+# Description:       Start Apache Solr jetty server
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+NAME=solr
+DESC="Solr search engine"
+JETTY_HOME=/opt/solr-4.10.4/example
+START_JAR="$JETTY_HOME/start.jar"
+
+if [ `id -u` -ne 0 ]; then
+        echo "You need root privileges to run this script"
+        exit 1
+fi
+
+# Make sure jetty is started with system locale
+if [ -r /etc/default/locale ]; then
+        . /etc/default/locale
+        export LANG
+fi
+
+. /lib/lsb/init-functions
+
+if [ -r /etc/default/rcS ]; then
+        . /etc/default/rcS
+fi
+            
+# Run Jetty as this user ID (default: jetty)
+# Set this to an empty string to prevent Jetty from starting automatically
+SOLR_USER=solr
+
+SOLR_GROUP=solr
+
+export JAVA="/usr/bin/java"
+
+# Extra options to pass to the JVM
+# Set java.awt.headless=true if JAVA_OPTIONS is not set so the
+# Xalan XSL transformer can work without X11 display on JDK 1.4+
+# It also sets the maximum heap size to 256M to deal with most cases.
+JAVA_OPTIONS="-Djava.awt.headless=true"
+
+# Timeout in seconds for the shutdown of all webapps
+JETTY_SHUTDOWN=30
+
+JETTY_STOP_PORT=17935
+JETTY_STOP_KEY=stopsolr
+JETTY_ARGS="-Djetty.home=$JETTY_HOME -DSTOP.PORT=$JETTY_STOP_PORT -DSTOP.KEY=$JETTY_STOP_KEY"
+
+# Define other required variables
+PIDFILE="/var/run/$NAME.pid"
+WEBAPPDIR="$JETTY_HOME/webapps"
+
+##################################################
+# Do the action
+##################################################
+case "$1" in
+    start)
+        log_daemon_msg "Starting $DESC." "$NAME"
+        if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
+                        --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
+
+                if [ -f $PIDFILE ] ; then
+                      log_warning_msg "$PIDFILE exists, but solr was not running. Ignoring $PIDFILE"
+                fi
+
+                start-stop-daemon --start --pidfile "$PIDFILE" --chuid "$SOLR_USER:$SOLR_GROUP" \
+                    --chdir "$JETTY_HOME" --background --make-pidfile --startas $JAVA -- \
+                    $JAVA_OPTIONS $JETTY_ARGS -jar $START_JAR --daemon
+
+                log_daemon_msg "$DESC started" "$NAME"
+
+                sleep 5
+                if start-stop-daemon --test --start --pidfile "$PIDFILE" \
+                        --user $SOLR_USER --group $SOLR_GROUP  --startas "$JAVA" > /dev/null; then
+                        log_end_msg 1
+                else
+                        log_end_msg 0
+                fi
+
+        else
+                log_warning_msg "(already running)."
+                log_end_msg 0
+                exit 1
+        fi
+        ;;
+
+    stop)
+        log_daemon_msg "Stopping $DESC." "$NAME"
+
+        if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
+                --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
+                if [ -x "$PIDFILE" ]; then
+                      log_warning_msg "(not running but $PIDFILE exists)."
+                else
+                        log_warning_msg "(not running)."
+                fi
+        else
+                start-stop-daemon --quiet --stop \
+                        --pidfile "$PIDFILE" --user "$SOLR_USER" --group "$SOLR_GROUP" \
+                        --startas $JAVA -- $JAVA_OPTIONS $JETTY_ARGS -jar $START_JAR --stop > /dev/null
+
+                while ! start-stop-daemon --quiet --test --start \
+                            --pidfile "$PIDFILE" --user "$SOLR_USER" --group "$SOLR_GROUP" \
+                            --startas "$JAVA" > /dev/null; do
+                        sleep 1
+                        log_progress_msg "."
+                        JETTY_SHUTDOWN=`expr $JETTY_SHUTDOWN - 1` || true
+                        if [ $JETTY_SHUTDOWN -ge 0 ]; then
+                                start-stop-daemon --oknodo --quiet --stop \
+                                        --pidfile "$PIDFILE" --user "$SOLR_USER" --group "$SOLR_GROUP" \
+                                        --startas $JAVA -- $JAVA_OPTIONS $JETTY_ARGS -jar $START_JAR --stop
+                        else
+                                log_progress_msg " (killing) "
+                                start-stop-daemon --stop --signal 9 --oknodo \
+                                        --quiet --pidfile "$PIDFILE" \
+                                        --user "$SOLR_USER" --group "$SOLR_GROUP"
+                        fi
+                done
+                rm -f "$PIDFILE"
+                log_daemon_msg "$DESC stopped." "$NAME"
+                log_end_msg 0
+        fi
+        ;;
+
+    status)
+        if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
+                --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
+
+                if [ -f "$PIDFILE" ]; then
+                    log_success_msg "$DESC is not running, but pid file exists."
+                        exit 1
+                else
+                    log_success_msg "$DESC is not running."
+                        exit 3
+                fi
+        else
+                log_success_msg "$DESC is running with pid `cat $PIDFILE`"
+        fi
+        ;;
+
+    restart|force-reload)
+        if ! start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
+                --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
+                $0 stop $*
+                sleep 1
+        fi
+        $0 start $*
+        ;;
+
+    try-restart)
+        if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
+                --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
+                $0 start $*
+        fi
+        ;;
+
+    *)
+        log_success_msg "Usage: $0 {start|stop|restart|force-reload|try-restart|status}"
+        exit 1
+        ;;
+esac
+
+exit 0

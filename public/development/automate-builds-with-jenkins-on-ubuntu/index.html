@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Automate Builds with Jenkins on Ubuntu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This how-to guide lets you create easy automation workflows with Jenkins.">
+        <meta name="keywords" content="jenkins, pipeline, ci, automation">
+        
+        <meta property="og:title" content="How to Automate Builds with Jenkins on Ubuntu">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/automate-builds-with-jenkins-on-ubuntu/">
+        <meta property="og:description" content="Jenkins builds pipelines that automate setup, testing and deploying applications. Following this guide will expedite your Continuous Integration and Continuous Delivery (CI/CD) process in a basic workflow.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/automate-builds-with-jenkins-on-ubuntu/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  How to Automate Builds with Jenkins on Ubuntu
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Automate Builds with Jenkins on Ubuntu</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-15T00:00:00Z">Wednesday, November 15, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Damaso Sanoja
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fautomate-builds-with-jenkins-on-ubuntu%2f&via=linode&text=How%20to%20Automate%20Builds%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fautomate-builds-with-jenkins-on-ubuntu%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fautomate-builds-with-jenkins-on-ubuntu%2f&t=How%20to%20Automate%20Builds%20with%20Jenkins%20on%20Ubuntu" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/automate-builds-with-jenkins-on-ubuntu.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/automate-builds-with-jenkins-on-ubuntu.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><a href="https://jenkins.io">Jenkins</a> is an open-source automation server that allows you to build pipelines to automate the process of building, testing, and deploying applications. In this guide, you will implement a basic workflow to speed up your Continuous Integration and Continuous Delivery (CI/CD) process.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode’s hostname and timezone.</p></li>
+
+<li><p>Complete the sections of our <a href="/docs/security/securing-your-server/">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system (this guide uses Ubuntu 16.04):</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="preliminary-assumptions">Preliminary Assumptions</h2>
+
+<p>This guide is oriented toward DevOps professionals and thus presumes:</p>
+
+<ol>
+<li><p>A Workstation machine will be used for local development and testing.</p></li>
+
+<li><p>A remote Linode Server will be used for the Jenkins Server.</p></li>
+
+<li><p>Both will use Ubuntu 16.04 Operating System.</p></li>
+
+<li><p>Jenkins will be used mainly through the newer <a href="https://jenkins.io/projects/blueocean/">Blue Ocean</a> web interface.</p></li>
+
+<li><p>The workstation and the remote Linode will each need Docker installed beforehand. See our <a href="/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment">guide</a> for detailed instructions.</p></li>
+
+<li><p>For the purpose of this guide only a Jenkins Master Server will be used.</p></li>
+
+<li><p>You will need a GitHub account already created, similar procedures can be used for Bitbucket and GitLab.</p></li>
+
+<li><p>You will also need a Docker Hub or similar registry account.</p></li>
+</ol>
+
+<h2 id="understanding-how-jenkins-works">Understanding How Jenkins Works</h2>
+
+<p>Before starting automating your entire workflow, it&rsquo;s necessary to understand the basic CI/CD process. The following image illustrates it:</p>
+
+<!----- This image is likely copyrighted and should be removed. Editor please review. JSK -->
+
+<p><img src="/docs/assets/jenkins/jenkins-workflow.jpg" alt="Blue Ocean Workflow" /></p>
+
+<p>As you can see the most basic process consist of three phases: build - test - deploy. Each time you make changes on your distributed version control system you trigger an automation cycle on the Jenkins server. The entire set of instructions for running the process is on the <code>Jenkinsfile</code> located at the root of your source repository. That single file tells the server <em>what</em> to do, <em>when</em> to do it and <em>how</em> you want those tasks to be performed.</p>
+
+<h2 id="write-an-example-nodejs-application">Write an Example NodeJS Application</h2>
+
+<p>As mentioned in the previous section, the automation process starts by making a commit to a Version Control System.</p>
+
+<p>Create a new repository in GitHub. This guide will use a simple NodeJS application to showcase how Jenkins Pipelines works, select your <code>.gitignore</code> accordingly and don&rsquo;t forget to initialize it with a <code>README</code>:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-gh-new-repo.png" alt="New GitHub repository" /></p>
+
+<p>Clone the new repository to your local workstation:</p>
+
+<pre><code> git clone git@github.com:&lt;GITHUB_USERNAME&gt;/jenkins-guide.git
+</code></pre>
+
+<p>Open your favorite text editor and create the file <code>app.js</code> in the root of your repository. Add the following content:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/jenkins-guide/app.js 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="c1">// Server connection
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">9000</span><span class="p">;</span>
+<span class="k">const</span> <span class="nx">HOST</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span><span class="p">;</span>
+
+<span class="c1">// Application content
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">os</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Windows&#39;</span><span class="p">,</span><span class="s1">&#39;macOS&#39;</span><span class="p">,</span><span class="s1">&#39;Linux&#39;</span><span class="p">]</span>
+
+<span class="c1">// Web Server
+</span><span class="c1"></span><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">os</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Console output
+</span><span class="c1"></span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="nx">HOST</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Running on http://</span><span class="si">${</span><span class="nx">HOST</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This application uses the <em>Express</em> web server to deliver a single JSON output to the browser on port 9000. Next, save the <code>test.js</code> file to the same location on the root of your folder.</p>
+
+<dl class="file">
+<dt>
+
+
+		~/jenkins-guide/test.js 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">supertest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;supertest&#34;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">should</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;should&#34;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">supertest</span><span class="p">.</span><span class="nx">agent</span><span class="p">(</span><span class="s2">&#34;http://nodeapp-dev:9000&#34;</span><span class="p">);</span>
+
+<span class="c1">// Unit Test
+</span><span class="c1"></span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&#34;Webapp Status&#34;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+
+  <span class="c1">// Test 1 - HTTP status
+</span><span class="c1"></span>  <span class="nx">it</span><span class="p">(</span><span class="s2">&#34;Expect HTTP status 200&#34;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">){</span>
+    <span class="nx">server</span>
+    <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="s2">&#34;Content-type&#34;</span><span class="p">,</span><span class="sr">/text/</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Test 2 - Control Tests
+</span><span class="c1"></span>  <span class="nx">it</span><span class="p">(</span><span class="s2">&#34;Mocha Control Test&#34;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">){</span>
+      <span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">exactly</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">.</span><span class="nb">Number</span><span class="p">();</span>
+        <span class="nx">done</span><span class="p">();</span>
+  <span class="p">});</span>
+
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This is a simplified test suite that uses <code>supertest</code> and <code>should</code>. It only has two tests: the first checks the HTTP status, expecting it to be 200. The second is not a real test but a control that always passes.</p>
+
+<p>This example will use two Docker containers, one to serve <code>app.js</code> using Express and the other exclusively for the test suite using Mocha. Each image will have its own folder containing the respective <code>Dockerfile</code> and <code>package.json</code>.</p>
+
+<ol>
+<li><p>Create a directory for each image:</p>
+
+<pre><code>mkdir express-image test-image
+</code></pre></li>
+
+<li><p>Create the <code>Dockerfile</code> and <code>package.json</code> for the <code>express-image</code>.</p>
+
+<dl class="file">
+<dt>
+
+
+		~/jenkins-guide/express-image/Dockerfile 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">FROM node:6-alpine
+
+<span class="c1"># Create server working directory
+</span><span class="c1"></span>RUN mkdir -p /home/node/app
+WORKDIR /home/node/app
+
+<span class="c1"># Install server dependencies
+</span><span class="c1"></span>COPY /express-image/package.json /home/node/app
+RUN npm install
+
+<span class="c1"># Copy node Application
+</span><span class="c1"></span>COPY app.js /home/node/app
+
+<span class="c1"># Open port
+</span><span class="c1"></span>EXPOSE <span class="m">9000</span>
+
+CMD <span class="o">[</span><span class="s2">&#34;npm&#34;</span>, <span class="s2">&#34;start&#34;</span><span class="o">]</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This image runs by default <code>app.js</code> when launched. You can think of it as the &ldquo;dockerized&rdquo; version of the web application.</p></li>
+
+<li><p>The Dockerfile copies a <code>package.json</code> file from the root of your project directory into the new image; create this file and add the following content:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/jenkins-guide/express-image/package.json 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;express-image&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Example Node Application&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Your name&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;repository&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;git&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;git+https://github.com/&lt;YOUR_USERNAME&gt;/&lt;REPOSITORY_NAME&gt;.git&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;ISC&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node app.js&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;dependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;express&#34;</span><span class="p">:</span> <span class="s2">&#34;^4.13.3&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create the <code>Dockerfile</code> for the <code>test-image</code>.</p>
+
+<dl class="file">
+<dt>
+
+
+		~/jenkins-guide/test-image/Dockerfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">FROM node:6-alpine
+
+# Create Reports directory
+RUN mkdir -p /JUnit
+
+# Create server working directory
+RUN mkdir -p /home/node/tests
+WORKDIR /home/node/tests
+
+# Install app dependencies
+COPY /test-image/package.json /home/node/tests
+RUN npm install
+
+# Copy test source
+COPY test.js /home/node/tests
+
+EXPOSE 9000
+
+CMD [&#34;npm&#34;, &#34;test&#34;]</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This image creates a Report folder (which will be used later) and installs dependencies from <code>package.json</code>. On start, it executes the Mocha tests.</p></li>
+
+<li><p>Add a <code>package.json</code> file for your testing image:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/jenkins-guide/test-image/package.json 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">{
+  &#34;name&#34;: &#34;test-image&#34;,
+  &#34;version&#34;: &#34;1.0.0&#34;,
+  &#34;description&#34;: &#34;This is a Mocha Test Server&#34;,
+  &#34;scripts&#34;: {
+    &#34;mocha&#34;: &#34;mocha --reporter spec test.js&#34;,
+    &#34;test&#34;: &#34;mocha --reporter mocha-junit-reporter --reporter-options mochaFile=/JUnit/reports.xml test.js&#34;
+  },
+  &#34;repository&#34;: {
+    &#34;type&#34;: &#34;git&#34;,
+    &#34;url&#34;: &#34;git+https://github.com/&lt;YOUR_USERNAME&gt;/&lt;YOUR_REPOSITORY&gt;.git&#34;
+  },
+  &#34;author&#34;: &#34;Your name&#34;,
+  &#34;license&#34;: &#34;ISC&#34;,
+  &#34;bugs&#34;: {
+    &#34;url&#34;: &#34;https://github.com/&lt;YOUR_USERNAME&gt;/&lt;YOUR_REPOSITORY&gt;/issues&#34;
+  },
+  &#34;homepage&#34;: &#34;https://github.com/&lt;YOUR_USERNAME&gt;/&lt;YOUR_REPOSITORY&gt;#readme&#34;,
+    &#34;dependencies&#34;: {
+    &#34;mocha&#34;: &#34;^4.0.1&#34;,
+    &#34;mocha-junit-reporter&#34;: &#34;^1.15.0&#34;,
+    &#34;should&#34;: &#34;^13.1.3&#34;,
+    &#34;supertest&#34;: &#34;^3.0.0&#34;
+  }
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This JSON file contains all the necessary dependencies, including <code>mocha-junit-reporter</code> that will be needed by Jenkins for tests storage. Notice that the test script is configured with the <code>mochaFile</code> option that uses the image&rsquo;s report folder specified in the <code>Dockerfile</code>.</p>
+
+<p>Your final project distribution will be similar to this:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-nodejs-tree.png" alt="Project tree view" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The approach of the folder structure and the implementation of two Docker containers is unusual, but used for pedagogical reasons to showcase Jenkins Pipelines features.</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="run-your-application-manually">Run Your Application Manually</h3>
+
+<p>Before starting the real automation process you first need to understand what to automate.</p>
+
+<ol>
+<li><p>Assuming you are on the root of your repository start by building your images:</p>
+
+<pre><code>sudo docker build -f express-image/Dockerfile -t nodeapp-dev:trunk .
+sudo docker build -f test-image/Dockerfile -t test-image:latest .
+</code></pre></li>
+
+<li><p>You will need to start your <code>nodeapp-dev</code> container first. The flag <code>--network</code> is used to avoid conflicts with the other container network. Notice that port 9000 is opened and  <code>-d</code> flag is used to run it in detached mode. Once started you can open your browser and enter the address: <a href="http://localhost:9000">http://localhost:9000</a> to check it.</p>
+
+<pre><code>sudo docker run --name nodeapp-dev --network=&quot;bridge&quot; -d -p 9000:9000 nodeapp-dev:trunk
+</code></pre>
+
+<p><img src="/docs/assets/jenkins/jenkins-app-mozilla-output.png" alt="app.js Mozilla output" /></p></li>
+
+<li><p>Next, start the <code>test-image</code> container. It&rsquo;s important to use the same network along with the <code>--link</code> flag in order to communicate with <code>nodeapp-dev</code>. You will notice that a volume will be mounted: the container&rsquo;s report folder <code>JUnit</code> will be mounted on the current repository root of the host. This is necessary to write the <code>reports.xml</code> in the host machine. First run it in interactive mode using the <code>-it</code> flag to output the results to <code>stdout</code>.</p>
+
+<pre><code>sudo docker run --name test-image -v $PWD:/JUnit --network=&quot;bridge&quot; --link=nodeapp-dev -it -p 9001:9000 test-image:latest npm run mocha
+</code></pre>
+
+<p><img src="/docs/assets/jenkins/jenkins-testing-console-output.png" alt="Mocha test console output" /></p></li>
+
+<li><p>Now remove the container (you may need <code>sudo -i</code>), and run it again in detached mode to test the <code>JUnit</code> output. The <code>reports.xml</code> file should be saved afterwards.</p>
+
+<pre><code>sudo docker rm -f test-image
+sudo docker run --name test-image -v $PWD:/JUnit --network=&quot;bridge&quot; --link=nodeapp-dev -d -p 9001:9000 test-image:latest
+</code></pre></li>
+
+<li><p>After testing your application you can publish it in a public registry. First change its tag to something more appropriate.</p>
+
+<pre><code>sudo docker tag nodeapp-dev:trunk &lt;YOUR_DOCKERHUB_USERNAME&gt;/nodeapp-prod:latest
+</code></pre></li>
+
+<li><p>Assuming you are already logged in to Docker Hub, push your image to the registry.</p>
+
+<pre><code>sudo docker push &lt;YOUR_DOCKERHUB_USERNAME&gt;/nodeapp-prod:latest
+</code></pre></li>
+
+<li><p>Alternatively, you could save your compressed image for further distribution.</p>
+
+<pre><code>sudo docker save &lt;YOUR_DOCKERHUB_USERNAME&gt;/nodeapp-prod:latest | gzip &gt; nodeapp-prod-golden.tar.gz
+</code></pre></li>
+
+<li><p>Do some clean-up. Stop both containers, use <code>sudo -i</code> if necessary.</p>
+
+<pre><code>sudo docker stop test-image nodeapp-dev
+</code></pre></li>
+
+<li><p>And finally, prune your system.</p>
+
+<pre><code>sudo docker system prune -f
+</code></pre></li>
+</ol>
+
+<p>You just finished the entire &ldquo;Build - Test - Deploy&rdquo; process for this fictional web application. Now it&rsquo;s time to automate it.</p>
+
+<h2 id="install-jenkins-and-blue-ocean-plugin">Install Jenkins and Blue Ocean Plugin</h2>
+
+<p>Jenkins offers many installation options:</p>
+
+<ul>
+<li>You can download the self-executable <code>jenkins.war</code> from project&rsquo;s site. This is a quick and effective solution to work with Jenkins with few pre-requisites, but harder to maintain and update.</li>
+<li>You can pull the <a href="https://hub.docker.com/r/jenkins/jenkins/">official Docker image</a> and run Jenkins from there. This method requires extra configuration, especially for &ldquo;Docker in Docker&rdquo; functionality.</li>
+<li>Finally, you can use the <em>project-maintained</em> package. This offers the benefit of easier upgrading.</li>
+</ul>
+
+<p>This guide will use the third method to install Jenkins onto your remote Linode.</p>
+
+<h3 id="install-jenkins">Install Jenkins</h3>
+
+<p>Using the package maintained by the Jenkins project allows you to use a more recent version than the one included in your distribution&rsquo;s package manager.</p>
+
+<ol>
+<li><p>Download and add the repository key for the current stable version of Jenkins:</p>
+
+<pre><code>wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+</code></pre></li>
+
+<li><p>Now include the new repository to your <code>sources.list</code>:</p>
+
+<pre><code>sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ &gt; /etc/apt/sources.list.d/jenkins.list'
+</code></pre></li>
+
+<li><p>Update your system using <code>apt</code> as usual and install Jenkins:</p>
+
+<pre><code>sudo apt update
+sudo apt install jenkins
+</code></pre></li>
+
+<li><p>Now that you have Jenkins installed, you will need to give its user permission to run Docker commands:</p>
+
+<pre><code>sudo usermod -aG docker jenkins
+</code></pre></li>
+
+<li><p>Controlling your daemon is straightforward using: <code>sudo service jenkins</code> with the options <code>start</code>, <code>stop</code>, <code>restart</code>, or <code>status</code>. Start your service to check the installation:</p>
+
+<pre><code>sudo service jenkins start
+</code></pre></li>
+
+<li><p>If everything works as expected then enable the service on start-up.</p>
+
+<pre><code>sudo systemctl enable jenkins
+</code></pre></li>
+
+<li><p>Use the Linode Manager to reboot your server to apply these changes.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>It&rsquo;s out of the scope of this guide to establish security parameters for Jenkins remote installation. However, be aware of these critical points that need to be addressed in a production environment:</p>
+
+<ul>
+<li>When you add <code>jenkins</code> user to the Docker group you are technically giving it <code>root</code> permissions.</li>
+<li>You must enforce Firewall policies for Jenkins connections.</li>
+<li>It&rsquo;s extremely important to secure the connection between your local workstation and your remote Linode running Jenkins. You can achieve this using SSL and a reverse proxy (like Apache or Nginx), or by using a VPN.</li>
+</ul>
+</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="set-up-jenkins">Set up Jenkins</h2>
+
+<ol>
+<li><p>Use your browser to navigate to default server address:</p>
+
+<pre><code>http://&lt;LINODE_IP_OR_HOSTNAME&gt;:8080
+</code></pre>
+
+<p>The first screen you should see would be similar to this:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-unlock.png" alt="Unlocking Jenkins" /></p></li>
+
+<li><p>Copy the temporary administrator password and use it to log in:</p>
+
+<pre><code>sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+</code></pre></li>
+
+<li><p>Choose <strong>Install suggested plugins</strong> to start downloading the standard plugins:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-customize.png" alt="Customize Jenkins" /></p>
+
+<p><img src="/docs/assets/jenkins/jenkins-standard-plugins.png" alt="Standard Plugins" /></p></li>
+
+<li><p>When the plugin installation finishes, you will be asked to create a new administrative user:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-admin-user.png" alt="First Admin User" /></p></li>
+
+<li><p>If everything goes without errors, you will see:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-ready.png" alt="Jenkins Ready" /></p></li>
+
+<li><p>Click on <strong>Start using Jenkins</strong> to display the application dashboard:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-dashboard.png" alt="Jenkins Main Dashboard" /></p></li>
+
+<li><p>As mentioned earlier, this guide will use the new Blue Ocean interface, so you will need to click the <strong>Manage Jenkins</strong> link on the sidebar:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-manage-sidebar.png" alt="Manage Jenkins link" /></p></li>
+
+<li><p>A new menu will appear. Click on <strong>Manage Plugins</strong>:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-manage-plugins.png" alt="Manage Plugins link" /></p></li>
+
+<li><p>Click on the <strong>Available</strong> tab and filter the results searching for Blue Ocean.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-filter-plugins.png" alt="Filter Plugins" /></p></li>
+
+<li><p>Check the box corresponding to Blue Ocean plugin and then click the button <strong>Install without restart</strong>.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-box.png" alt="Install Blue Ocean" /></p></li>
+
+<li><p>You should see the installation progress. Once it&rsquo;s finished click the <strong>Go back to the top page</strong> link, then click the <strong>Open Blue Ocean</strong> link in the sidebar.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-link.png" alt="Blue Ocean link" /></p></li>
+
+<li><p>You&rsquo;ll then see the new Blue Ocean dashboard:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-dashboard.png" alt="Blue Ocean Dashboard" /></p></li>
+</ol>
+
+<h2 id="scripted-vs-declarative-pipeline-syntax">Scripted vs. Declarative Pipeline Syntax</h2>
+
+<p>Jenkins offers two different choices for the <code>Jenkinsfile</code> syntax:</p>
+
+<ul>
+<li>The legacy Scripted Pipeline syntax.</li>
+<li>The newer Declarative Pipeline syntax.</li>
+</ul>
+
+<p>Both have support for continuous delivery and Jenkins plugins. Scripted syntax is based on the Groovy programming environment so is more complete. On the other hand, Declarative syntax &ldquo;was created to offer a simpler and more opinionated syntax for authoring Jenkins Pipeline&rdquo; and thus is intended for everyday automation builds. You can learn more about syntax comparison in the Jenkins documentation [here].(<a href="https://jenkins.io/doc/book/pipeline/syntax/#compare">https://jenkins.io/doc/book/pipeline/syntax/#compare</a>)</p>
+
+<p>This guide will use the Declarative syntax to illustrate Jenkins processes because it&rsquo;s designed to be easier to implement and understand.</p>
+
+<h2 id="jenkinsfile-structure">Jenkinsfile structure</h2>
+
+<p>Declarative Pipeline syntax is very intuitive, the most basic layout would be similar to the one shown below:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-declarative-syntax-basics.png" alt="Basic Declarative Syntax" /></p>
+
+<p><code>pipeline</code>: all files should start with this declaration at the top. Indicates the start of the new Pipeline.
+<code>agent</code>: defines the working environment, usually a Docker image. The <code>any</code> statement indicates the pipeline can use any available agent.
+<code>stages</code>: this block is a collection of <code>stage</code> directives.
+<code>stage</code>: groups one or more &ldquo;steps&rdquo;. You can use as many stages as needed, this is useful when you are working in complex models that need detailed debugging &ldquo;per stage&rdquo;.
+<code>steps</code>: here you define your actions. A stage can group many steps, and each step is usually linked to one specific task/command.</p>
+
+<p>Code blocks are delimited by curly brackets {} and no semicolons are used. Each statement has to be in its own line, and the heart of the <code>Jenkinsfile</code> are the steps you perform. Some common steps are:</p>
+
+<ul>
+<li>Running scripts or code commands.</li>
+<li>Compile code.</li>
+<li>Run tests.</li>
+<li>Push or pull from your source control.</li>
+<li>Transfer archives.</li>
+<li>Create Docker images, dockerize applications, pull images.</li>
+<li>Almost any action you can think of is possible through steps.</li>
+</ul>
+
+<p>All this actions can be executed inside your <code>agent</code> or you can also instruct Jenkins to remotely perform any of them via SSH. As you can see there are endless automation possibilities. In a simple scenario, only one pipeline executing its stages sequentially is enough to achieve the desired final state, but you can define pipelines to run in parallel if needed. For detailed information about Jenkins Declarative Pipeline Syntax, see the official <a href="https://jenkins.io/doc/book/pipeline/syntax/">documentation.</a></p>
+
+<h2 id="start-working-with-pipelines">Start Working with Pipelines</h2>
+
+<ol>
+<li><p>Create your first <code>Jenkinsfile</code> in the <code>jenkins-guide</code> directory on your client workstation. This is only a template, but it contains all the necessary code to start your Pipeline:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/jenkins-guide/Jenkinsfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">pipeline {
+    agent any
+        stages {
+            stage(&#39;Build&#39;) {
+                steps {
+                    echo &#39;This is the Build Stage&#39;
+                }
+            }
+            stage(&#39;Test&#39;) {
+                steps {
+                    echo &#39;This is the Testing Stage&#39;
+                }
+            }
+            stage(&#39;Deploy&#39;) {
+                steps {
+                    echo &#39;This is the Deploy Stage&#39;
+                }
+            }
+        }
+    }</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Push your commit to GitHub:</p>
+
+<pre><code>git add . &amp;&amp; git commit -m &quot;Jenkinsfile template&quot; &amp;&amp; git push origin master
+</code></pre></li>
+
+<li><p>Return to your Blue Ocean Dashboard and click on <strong>Create a new Pipeline</strong> button:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-dashboard.png" alt="Blue Ocean Dashboard" /></p></li>
+
+<li><p>Select GitHub as your CVS:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-gh-pipeline.png" alt="GitHub pipeline" /></p></li>
+
+<li><p>You will be asked to connect with your GitHub account by means of an access key. Click on the link to create that key.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-gh-connect.png" alt="GitHub connect" /></p></li>
+
+<li><p>Next you will need to login to your GitHub account, give a description to the token and generate it. You will be presented with a screen similar to this:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-gh-token.png" alt="GitHub token" /></p></li>
+
+<li><p>Copy the token value and then paste it into the field on the Blue Ocean tab. Then click the <strong>Connect</strong> button:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-token.png" alt="GitHub authentication BO" /></p></li>
+
+<li><p>If you have multiple organization accounts along with your personal account, then you will need to choose which organization contains your repository:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-organizations.png" alt="GitHub Organization" /></p></li>
+
+<li><p>After choosing your repository location, click on the <strong>Create Pipeline</strong> button. That will trigger your first build automatically.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-first-build-01.png" alt="First Build" /></p></li>
+
+<li><p>Click on the build to see your detailed Pipeline.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-first-build-02.png" alt="First Build" /></p></li>
+</ol>
+
+<p>From here you can obtain valuable information regarding: 1) your build number, 2) the console output for each step, 3) selecting stages for further analysis, 4) browsing through tabs with information about commit changes, tests results and artifacts stored, 5) replaying your build, 6) editing your pipeline visually, and 7) go to your pipeline settings.</p>
+
+<h3 id="automate-your-entire-process-with-jenkins">Automate Your Entire Process with Jenkins</h3>
+
+<p>The <code>Jenkinsfile</code> template uses a very basic pipeline structure with only three stages. You can customize it to accommodate as many stages as needed. The final Pipeline structure is dictated by the project complexity and the development guidelines you must follow. Since you&rsquo;ve already walked through the NodeJS example, you know how to design a pipeline that automates each stage. For the purpose of this guide, the resulting pipeline should:</p>
+
+<ul>
+<li>Build Stage
+
+<ul>
+<li>Create both images and abort any further testing or deployment if an error is encountered.</li>
+<li>Inform the appropriate department in case of failure.</li>
+</ul></li>
+<li>Test Stage
+
+<ul>
+<li>Perform the automatic Mocha test suite.</li>
+<li>Publish the <code>nodeapp-dev</code> image for easier distribution and manual quality tests.</li>
+<li>Inform the appropriate department depending on the outcome of the automatic tests: success, unstable (failure of any automatic test) or total failure of the stage.</li>
+</ul></li>
+<li>Deploy Stage
+
+<ul>
+<li>Will run only if the commit is performed on the <code>master</code> branch and tests stage completed successfully.</li>
+<li>Changes the image tag before publish.</li>
+<li>Deploys the dockerized application to Docker Hub.</li>
+<li>Save a compressed &lsquo;golden&rsquo; image for further distribution.</li>
+</ul></li>
+<li>Reports Stage
+
+<ul>
+<li>Saves the <code>JUnit</code> file and <code>reports.xml</code> for detailed analysis.</li>
+<li>Saves the <code>nodeapp-prod-golden.tar.gz</code> compressed image to a persistent location.</li>
+</ul></li>
+<li>Clean-up Stage
+
+<ul>
+<li>Stop all containers.</li>
+<li>Prune the system.</li>
+<li>Cleans the Jenkins workspace.</li>
+</ul></li>
+</ul>
+
+<h3 id="commit-changes-to-your-pipeline">Commit Changes to Your Pipeline</h3>
+
+<p>Start by editing your Jenkinsfile and pasting the following pipeline. Replace <code>&lt;DockerHub Username&gt;</code> with your own information.</p>
+
+<dl class="file">
+<dt>
+
+
+		~/jenkins-guide/Jenkinsfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">  1</span><span class="lnt">  2</span><span class="lnt">  3</span><span class="lnt">  4</span><span class="lnt">  5</span><span class="lnt">  6</span><span class="lnt">  7</span><span class="lnt">  8</span><span class="lnt">  9</span><span class="lnt"> 10</span><span class="lnt"> 11</span><span class="lnt"> 12</span><span class="lnt"> 13</span><span class="lnt"> 14</span><span class="lnt"> 15</span><span class="lnt"> 16</span><span class="lnt"> 17</span><span class="lnt"> 18</span><span class="lnt"> 19</span><span class="lnt"> 20</span><span class="lnt"> 21</span><span class="lnt"> 22</span><span class="lnt"> 23</span><span class="lnt"> 24</span><span class="lnt"> 25</span><span class="lnt"> 26</span><span class="lnt"> 27</span><span class="lnt"> 28</span><span class="lnt"> 29</span><span class="lnt"> 30</span><span class="lnt"> 31</span><span class="lnt"> 32</span><span class="lnt"> 33</span><span class="lnt"> 34</span><span class="lnt"> 35</span><span class="lnt"> 36</span><span class="lnt"> 37</span><span class="lnt"> 38</span><span class="lnt"> 39</span><span class="lnt"> 40</span><span class="lnt"> 41</span><span class="lnt"> 42</span><span class="lnt"> 43</span><span class="lnt"> 44</span><span class="lnt"> 45</span><span class="lnt"> 46</span><span class="lnt"> 47</span><span class="lnt"> 48</span><span class="lnt"> 49</span><span class="lnt"> 50</span><span class="lnt"> 51</span><span class="lnt"> 52</span><span class="lnt"> 53</span><span class="lnt"> 54</span><span class="lnt"> 55</span><span class="lnt"> 56</span><span class="lnt"> 57</span><span class="lnt"> 58</span><span class="lnt"> 59</span><span class="lnt"> 60</span><span class="lnt"> 61</span><span class="lnt"> 62</span><span class="lnt"> 63</span><span class="lnt"> 64</span><span class="lnt"> 65</span><span class="lnt"> 66</span><span class="lnt"> 67</span><span class="lnt"> 68</span><span class="lnt"> 69</span><span class="lnt"> 70</span><span class="lnt"> 71</span><span class="lnt"> 72</span><span class="lnt"> 73</span><span class="lnt"> 74</span><span class="lnt"> 75</span><span class="lnt"> 76</span><span class="lnt"> 77</span><span class="lnt"> 78</span><span class="lnt"> 79</span><span class="lnt"> 80</span><span class="lnt"> 81</span><span class="lnt"> 82</span><span class="lnt"> 83</span><span class="lnt"> 84</span><span class="lnt"> 85</span><span class="lnt"> 86</span><span class="lnt"> 87</span><span class="lnt"> 88</span><span class="lnt"> 89</span><span class="lnt"> 90</span><span class="lnt"> 91</span><span class="lnt"> 92</span><span class="lnt"> 93</span><span class="lnt"> 94</span><span class="lnt"> 95</span><span class="lnt"> 96</span><span class="lnt"> 97</span><span class="lnt"> 98</span><span class="lnt"> 99</span><span class="lnt">100</span><span class="lnt">101</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">pipeline {
+    environment {
+      DOCKER = credentials(&#39;docker-hub&#39;)
+    }
+  agent any
+  stages {
+// Building your Test Images
+    stage(&#39;BUILD&#39;) {
+      parallel {
+        stage(&#39;Express Image&#39;) {
+          steps {
+            sh &#39;docker build -f express-image/Dockerfile \
+            -t nodeapp-dev:trunk .&#39;
+          }
+        }
+        stage(&#39;Test-Unit Image&#39;) {
+          steps {
+            sh &#39;docker build -f test-image/Dockerfile \
+            -t test-image:latest .&#39;
+          }
+        }
+      }
+      post {
+        failure {
+            echo &#39;This build has failed. See logs for details.&#39;
+        }
+      }
+    }
+// Performing Software Tests
+    stage(&#39;TEST&#39;) {
+      parallel {
+        stage(&#39;Mocha Tests&#39;) {
+          steps {
+            sh &#39;docker run --name nodeapp-dev --network=&#34;bridge&#34; -d \
+            -p 9000:9000 nodeapp-dev:trunk&#39;
+            sh &#39;docker run --name test-image -v $PWD:/JUnit --network=&#34;bridge&#34; \
+            --link=nodeapp-dev -d -p 9001:9000 \
+            test-image:latest&#39;
+          }
+        }
+        stage(&#39;Quality Tests&#39;) {
+          steps {
+            sh &#39;docker login --username $DOCKER_USR --password $DOCKER_PSW&#39;
+            sh &#39;docker tag nodeapp-dev:trunk &lt;DockerHub Username&gt;/nodeapp-dev:latest&#39;
+            sh &#39;docker push &lt;DockerHub Username&gt;/nodeapp-dev:latest&#39;
+          }
+        }
+      }
+      post {
+        success {
+            echo &#39;Build succeeded.&#39;
+        }
+        unstable {
+            echo &#39;This build returned an unstable status.&#39;
+        }
+        failure {
+            echo &#39;This build has failed. See logs for details.&#39;
+        }
+      }
+    }
+// Deploying your Software
+    stage(&#39;DEPLOY&#39;) {
+          when {
+           branch &#39;master&#39;  //only run these steps on the master branch
+          }
+            steps {
+                    retry(3) {
+                        timeout(time:10, unit: &#39;MINUTES&#39;) {
+                            sh &#39;docker tag nodeapp-dev:trunk &lt;DockerHub Username&gt;/nodeapp-prod:latest&#39;
+                            sh &#39;docker push &lt;DockerHub Username&gt;/nodeapp-prod:latest&#39;
+                            sh &#39;docker save &lt;DockerHub Username&gt;/nodeapp-prod:latest | gzip &gt; nodeapp-prod-golden.tar.gz&#39;
+                        }
+                    }
+
+            }
+            post {
+                failure {
+                    sh &#39;docker stop nodeapp-dev test-image&#39;
+                    sh &#39;docker system prune -f&#39;
+                    deleteDir()
+                }
+            }
+    }
+// JUnit reports and artifacts saving
+    stage(&#39;REPORTS&#39;) {
+      steps {
+        junit &#39;reports.xml&#39;
+        archiveArtifacts(artifacts: &#39;reports.xml&#39;, allowEmptyArchive: true)
+        archiveArtifacts(artifacts: &#39;nodeapp-prod-golden.tar.gz&#39;, allowEmptyArchive: true)
+      }
+    }
+// Doing containers clean-up to avoid conflicts in future builds
+    stage(&#39;CLEAN-UP&#39;) {
+      steps {
+        sh &#39;docker stop nodeapp-dev test-image&#39;
+        sh &#39;docker system prune -f&#39;
+        deleteDir()
+      }
+    }
+  }
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This complete Jenkinsfile is written using declarative syntax. If you read it carefully, you will notice that it describes the same procedure used during the application deployment done in a previous section. This section will analyze the Jenkinsfile in more detail.</p>
+
+<h3 id="agent-and-environmental-variables">Agent and Environmental Variables</h3>
+
+<p>The first block defines a globally available environmental variable called <code>DOCKER</code>. You can tell it applies globally because is inside the pipeline block but outside the stages block. Next comes the <code>agent</code>, a statement that means Jenkins can use any (server) agent.</p>
+
+<dl class="file">
+<dt>
+
+
+		~/jenkins-guide/Jenkinsfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">pipeline {
+    environment {
+      DOCKER = credentials(&#39;docker-hub&#39;)
+    }
+  agent any</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The <code>DOCKER</code> definition is done through the <em>credentials</em> feature. This allows you to use confidential login information without including it in the Jenkinsfile. To configure this key pair:</p>
+
+<ol>
+<li><p>Click on the gear icon (Pipeline Settings).</p></li>
+
+<li><p>You will see the project&rsquo;s settings page, click on the <strong>Credentials</strong> link at the bottom of the sidebar menu.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-pipeline-settings-sidebar.png" alt="Project Pipeline Settings" /></p></li>
+
+<li><p>In the next screen you can choose the scope of the credentials you want to configure. This can be limited to the current project or can be defined to be global. In this case you want Docker Hub login information to be global. Click on the <strong>Add Credentials</strong> link on the left sidebar.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-global-credentials.png" alt="Global Credentials" /></p></li>
+
+<li><p>You will be redirected to a screen similar to the screenshot below. There you need to enter your Docker Hub username, password and enter a unique identifier (ID) for this credential. The chosen one for this example was <code>docker-hub</code>. Once you save your credentials you can use them anywhere in the Pipeline.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-user-pwd.png" alt="Username and Password" /></p></li>
+</ol>
+
+<p>In the example pipeline, <code>DOCKER = credentials('docker-hub')</code> creates two environmental variables, <code>DOCKER_USER</code> and <code>DOCKER_PWD</code> that can be used to log in your Docker Hub account.</p>
+
+<h3 id="build-stage">Build Stage</h3>
+
+<p>The first thing you will notice about the <code>parallel</code> code block is that it&rsquo;s self-explanatory&ndash;it will run sub-stages in parallel. This is useful for building two Docker images at the same with the same shell commands you used before. Each image is declared in its own step which is also part of an independent stage.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/jenkins-guide/Jenkinsfile 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">// Building your Test Images
+    stage<span class="o">(</span><span class="s1">&#39;BUILD&#39;</span><span class="o">)</span> <span class="o">{</span>
+      parallel <span class="o">{</span>
+        stage<span class="o">(</span><span class="s1">&#39;Express Image&#39;</span><span class="o">)</span> <span class="o">{</span>
+          steps <span class="o">{</span>
+            sh <span class="s1">&#39;docker build -f express-image/Dockerfile \
+</span><span class="s1">            -t nodeapp-dev:trunk .&#39;</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+        stage<span class="o">(</span><span class="s1">&#39;Test-Unit Image&#39;</span><span class="o">)</span> <span class="o">{</span>
+          steps <span class="o">{</span>
+            sh <span class="s1">&#39;docker build -f test-image/Dockerfile \
+</span><span class="s1">            -t test-image:latest .&#39;</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+      post <span class="o">{</span>
+        failure <span class="o">{</span>
+            <span class="nb">echo</span> <span class="s1">&#39;This build has failed. See logs for details.&#39;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>After closing the parallel stage you encounter the <code>post</code> conditionals. <code>Post</code> means the definitions applies to the whole <code>BUILD</code> stage. In this case only the <code>failure</code> condition is set, so it will only run if any part of the <code>BUILD</code> stage fails. Configuring the different tools that Jenkins provides for communications is beyond the scope of this guide.</p>
+
+<h3 id="test-stage">Test Stage</h3>
+
+<p>The testing stage also uses parallel execution:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/jenkins-guide/Jenkinsfile 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">// Performing Software Tests
+    stage(&#39;TEST&#39;) {
+      parallel {
+        stage(&#39;Mocha Tests&#39;) {
+          steps {
+            sh &#39;docker run --name nodeapp-dev --network=&#34;bridge&#34; -d \
+            -p 9000:9000 nodeapp-dev:trunk&#39;
+            sh &#39;docker run --name test-image -v $PWD:/JUnit --network=&#34;bridge&#34; \
+            --link=nodeapp-dev -d -p 9001:9000 \
+            test-image:latest&#39;
+          }
+        }
+        stage(&#39;Quality Tests&#39;) {
+          steps {
+            sh &#39;docker login --username $DOCKER_USR --password $DOCKER_PSW&#39;
+            sh &#39;docker tag nodeapp-dev:trunk &lt;DockerHub Username&gt;/nodeapp-dev:latest&#39;
+            sh &#39;docker push &lt;DockerHub Username&gt;/nodeapp-dev:latest&#39;
+          }
+        }
+      }
+      post {
+        success {
+            echo &#39;Build succeeded.&#39;
+
+        }
+        unstable {
+            echo &#39;This build returned an unstable status.&#39;
+        }
+        failure {
+            echo &#39;This build has failed. See logs for details.&#39;
+        }
+      }
+    }</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>Mocha Tests</code> stage starts the two images and performs the automatic tests, resulting in a <code>reports.xml</code> file saved into Jenkins workspace. On the other hand, the <code>Quality Tests</code> stage publishes the <code>trunk</code> version of your application to Docker Hub. It first issues the Docker login command (using the pre-defined credentials), then changes the image tag, and pushes it.</p>
+
+<p>Once again, you have the <code>post</code> code block but this time it has notifications for successful completion, unstable and failure. Keep in mind you can use any code here, not just notifications.</p>
+
+<h3 id="deploy-stage">Deploy Stage</h3>
+
+<p>This stage introduces a different type of block: <code>when</code>. As the name implies, this clause executes only if a certain condition is met. In the case of this example, the code only runs if changes to the master branch are detected. Commits to other branches won&rsquo;t trigger this step of the pipeline.</p>
+
+<p>Inside the steps you can optionally configure the <code>retry</code> and <code>timeout</code> arguments. Our above example shows a nested usage where the image build process has a timeout of 10 minutes and a total of three retries in case the timer expires.</p>
+
+<p>The <code>post</code> block has been designed to run a cleanup in case of failure. No notifications are set for this stage.</p>
+
+<h3 id="reports-and-cleanup-stages">Reports and Cleanup Stages</h3>
+
+<p>The final two stages of your pipeline are comparatively simple. The <code>junit</code> statement allows Jenkins to use the <code>reports.xml</code> file generated by your Mocha image, and the <code>archiveArtifacts</code> command saves the report and application file to a persistent location. By default, that location is <code>JENKINS_HOME/var/lib/jenkins/jobs/&lt;REPOSITORY&gt;/branches/master/builds/lastStableBuild</code>. You can configure a custom location in Jenkins General Settings if needed.</p>
+
+<h3 id="working-with-branches">Working with Branches</h3>
+
+<p>It&rsquo;s time to commit the complete Jenkinsfile to your Jenkins server and trigger a run of the new pipeline. In order to test the <code>when</code> block discussed earlier, the changes will be pushed to  a different branch.</p>
+
+<ol>
+<li><p>Create a new branch on your local repository:</p>
+
+<pre><code>git checkout -b trunk
+</code></pre></li>
+
+<li><p>Stage, commit, and push the files to the Jenkins Server:</p>
+
+<pre><code>git add . &amp;&amp; git commit -m &quot;Jenkinsfile complete Pipeline&quot; &amp;&amp; git push origin trunk
+</code></pre></li>
+
+<li><p>Click on the gear icon (Pipeline settings) on your Blue Ocean Dashboard and then click on <strong>Scan Repository Now</strong> link:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-scan-repository.png" alt="Scan Repository Now" /></p></li>
+
+<li><p>Return to your Pipeline view to watch your stages run in parallel:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-parallel-execution.png" alt="Parallel Execution" /></p></li>
+
+<li><p>Once finished, you will see your entire Pipeline. Notice that this commit was submitted as branch, and because of that, the <code>DEPLOY</code> stage was skipped, which is expected.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-successful-trunk-01.png" alt="Successful Pipeline 01" /></p></li>
+
+<li><p>If you navigate through the menu tabs, you can check the test results and the artifacts stored:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-all-test-passing.png" alt="Test Results" /></p>
+
+<p><img src="/docs/assets/jenkins/jenkins-artifacts.png" alt="Artifacts Stored" /></p></li>
+</ol>
+
+<h3 id="configure-automatic-triggers">Configure Automatic Triggers</h3>
+
+<p>You can set Jenkins to scan your repository periodically. To do so just click again on the gear icon on the Pipeline view and then click the <strong>Configure</strong> link. There are many options available. Find <strong>Scan Repository Triggers</strong> and check the box <strong>Periodically if not otherwise run</strong>. You can chose any amount of time and for this example, one minute will be selected.</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-scan-gh.png" alt="Repository Triggers" /></p>
+
+<h3 id="failing-tests-unstable-pipeline">Failing Tests (Unstable Pipeline)</h3>
+
+<p>Up to this point, everything should work as expected without error. But what happens when an error is encountered?</p>
+
+<ol>
+<li>Edit <code>app.js</code> in your local workstation. On the server, change the root address <code>/</code> with <code>/ERROR</code>. This will cause an error 404 on the <code>express</code> server (page not found) so the test will fail.</li>
+</ol>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/jenkins-guide/app.js 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// Web Server
+</span><span class="c1"></span><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/ERROR&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">os</span><span class="p">);</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<ol>
+<li><p>Commit your changes to the Jenkins Server:</p>
+
+<pre><code>git add . &amp;&amp; git commit -m &quot;404 error&quot; &amp;&amp; git push origin trunk
+</code></pre></li>
+
+<li><p>There is no need to manually scan your repository because you already setup Jenkins to do it automatically every minute. Wait for the trigger. After running you should see something similar to this:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-unstable-pipeline.png" alt="Unstable Pipeline" /></p></li>
+
+<li><p>Navigate to the <strong>Tests</strong> tab and click on the chevron for a complete console output:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-unstable-results.png" alt="Test Unstable" /></p></li>
+
+<li><p>Close your view (upper right &ldquo;X&rdquo;) and you will return to the Repository view.</p></li>
+
+<li><p>Fix the <code>app.js</code> file and save.</p></li>
+</ol>
+
+<h3 id="failing-stages">Failing Stages</h3>
+
+<p>Now, induce an error on the <code>BUILD</code> stage.</p>
+
+<ol>
+<li><p>Edit your <code>express-image/package.json</code>. Change the express package name to <code>express-ERROR</code> to simulate a mistyping.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/jenkins-guide/express-image/package.json 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;dependencies&#34;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&#34;express-ERROR&#34;</span><span class="p">:</span> <span class="s2">&#34;^4.13.3&#34;</span>
+  <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Push your changes to the Jenkins Server:</p>
+
+<pre><code>git add . &amp;&amp; git commit -m &quot;express-image Build error&quot; &amp;&amp; git push origin trunk
+</code></pre></li>
+
+<li><p>In the pipeline view click on <code>BUILD</code> stage and the on <strong>Shell Script</strong> to see the console output:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-failed-build.png" alt="Failed BUild" /></p></li>
+
+<li><p>Scroll down and check the error:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-bo-failed-build-msg.png" alt="Failed Build Msg" /></p></li>
+
+<li><p>Fix the error in <code>express-image/package.json</code>.</p></li>
+</ol>
+
+<h3 id="merging-pull-requests">Merging Pull Requests</h3>
+
+<p>Merge the <code>trunk</code> branch into <code>master</code>. This will trigger a run of the full pipeline, including the deploy stage:</p>
+
+<pre><code>git checkout master
+git merge trunk
+git push origin master
+</code></pre>
+
+<p><img src="/docs/assets/jenkins/jenkins-successful-master.png" alt="Successful Trunk Merge" /></p>
+
+<h2 id="outside-blue-ocean-dashboard">Outside Blue Ocean Dashboard</h2>
+
+<p>Blue Ocean interface is still under development, which means that many aspects of Jenkins are not managed by the new interface. Below are some of the most common screens.</p>
+
+<ol>
+<li><p>Click on the gear icon to enter at your repository menu. Once there, click on the <strong>Status</strong> link in the left sidebar. You will see your branches and some general information:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-project-status.png" alt="Project Status" /></p></li>
+
+<li><p>If you click on <code>master</code> branch you will see a more detailed dashboard:</p>
+
+<p><img src="/docs/assets/jenkins/jenkins-master-details.png" alt="Master Details" /></p>
+
+<p>From this view you can review a lot of useful information like logs, artifacts, changes, trends of test results, and much more.</p></li>
+</ol>
+
+<h2 id="the-road-ahead">The Road Ahead</h2>
+
+<p>This guide has covered the basic automation workflow with Jenkins and Blue Ocean, but there is a lot more you can do. Just to mention a few possibilities:</p>
+
+<ul>
+<li>The JUnit plugin has the ability to publish XML formatted test reports (generated by test tools) and integrate those trends and reports into Blue Ocean for analysis.</li>
+<li>Besides the Jenkins GUI and new Blue Ocean GUI you can work with Jenkins CLI if that suits you best.</li>
+<li>Pipelines have support for custom functions which can be used for complex data validation, testing, monitoring, and more.</li>
+<li>Parallel pipelines can be executed to accelerate certain processes as well as triggering the pipeline to run only if a specific branch is checked.</li>
+<li>The <code>post</code> (or any other section) can benefit from useful built-in functions like email, Slack, or HipChat notifications. As usual, you decide what triggers notifications, whether a successful build, a build failure, a change, or a custom condition.</li>
+<li>You can also use a different <code>agent</code> for specific <code>stages</code>, for example one for database tasks, one for compiling code, one for webapp updating, etc.</li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://jenkins.io/doc/">Jenkins User Documentation</a></li>
+
+<li><a href="https://jenkins.io/doc/book/blueocean/">Blue Ocean Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/">Use Puppet Modules to Create a LAMP Stack</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/vagrant-linode-environments/">Using Vagrant to Manage Linode Environments</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/creating-your-first-chef-cookbook/">Creating Your First Chef Cookbook</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/beginners-guide-chef/">A Beginner&#39;s Guide to Chef</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/stackscripts/">Automate Deployment with StackScripts</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#preliminary-assumptions">Preliminary Assumptions</a></li>
+<li><a href="#understanding-how-jenkins-works">Understanding How Jenkins Works</a></li>
+<li><a href="#write-an-example-nodejs-application">Write an Example NodeJS Application</a>
+<ul>
+<li><a href="#run-your-application-manually">Run Your Application Manually</a></li>
+</ul></li>
+<li><a href="#install-jenkins-and-blue-ocean-plugin">Install Jenkins and Blue Ocean Plugin</a>
+<ul>
+<li><a href="#install-jenkins">Install Jenkins</a></li>
+</ul></li>
+<li><a href="#set-up-jenkins">Set up Jenkins</a></li>
+<li><a href="#scripted-vs-declarative-pipeline-syntax">Scripted vs. Declarative Pipeline Syntax</a></li>
+<li><a href="#jenkinsfile-structure">Jenkinsfile structure</a></li>
+<li><a href="#start-working-with-pipelines">Start Working with Pipelines</a>
+<ul>
+<li><a href="#automate-your-entire-process-with-jenkins">Automate Your Entire Process with Jenkins</a></li>
+<li><a href="#commit-changes-to-your-pipeline">Commit Changes to Your Pipeline</a></li>
+<li><a href="#agent-and-environmental-variables">Agent and Environmental Variables</a></li>
+<li><a href="#build-stage">Build Stage</a></li>
+<li><a href="#test-stage">Test Stage</a></li>
+<li><a href="#deploy-stage">Deploy Stage</a></li>
+<li><a href="#reports-and-cleanup-stages">Reports and Cleanup Stages</a></li>
+<li><a href="#working-with-branches">Working with Branches</a></li>
+<li><a href="#configure-automatic-triggers">Configure Automatic Triggers</a></li>
+<li><a href="#failing-tests-unstable-pipeline">Failing Tests (Unstable Pipeline)</a></li>
+<li><a href="#failing-stages">Failing Stages</a></li>
+<li><a href="#merging-pull-requests">Merging Pull Requests</a></li>
+</ul></li>
+<li><a href="#outside-blue-ocean-dashboard">Outside Blue Ocean Dashboard</a></li>
+<li><a href="#the-road-ahead">The Road Ahead</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

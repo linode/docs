@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install a Custom Distribution on a Linode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install a Custom Distribution or Linux Appliance on your KVM Linode.">
+        <meta name="keywords" content="custom distro, custom distribution, advanced Linux, kvm">
+        
+        <meta property="og:title" content="Install a Custom Distribution on a Linode">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/">
+        <meta property="og:description" content="Install a Custom Distribution or Linux Appliance on your KVM Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/custom-kernels-distros/">Run Custom Kernels and Distribution Templates on Linode Instances</a>
+  
+</li>
+
+
+<li>
+  
+  Install a Custom Distribution on a Linode
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install a Custom Distribution on a Linode</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-06-26T00:00:00Z">Monday, June 26, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-a-custom-distribution-on-a-linode%2f&via=linode&text=Install%20a%20Custom%20Distribution%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-a-custom-distribution-on-a-linode%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2fcustom-kernels-distros%2finstall-a-custom-distribution-on-a-linode%2f&t=Install%20a%20Custom%20Distribution%20on%20a%20Linode" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>This guide will show you how to install and configure a custom distribution on your Linode.</p>
+
+<p><img src="/docs/assets/install-a-custom-distribution-on-a-linode.png" alt="Install a Custom Distribution on a Linode" title="Install a Custom Distribution on a Linode" /></p>
+
+<p>For the sake of organization, it has been split into two main sections:</p>
+
+<ul>
+<li><p><a href="#install-a-custom-distribution">Install a Custom Distribution</a>: shows you how to use the advantages of <strong>Direct Disk Boot</strong> to easily install the custom distribution.</p></li>
+
+<li><p><a href="#linode-manager-compatibility">Linode Manager Compatibility</a>: builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the <a href="/docs/platform/linode-backup-service">Linode Backup Service</a>.</p></li>
+</ul>
+
+<p>This guide will use Debian 8 (Jessie) as an example, but the steps provided are generic in nature and should work with most distributions.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide entails installing a custom Linux distribution on your KVM Linode. If you&rsquo;re currently running a Xen Linode, you can <a href="/docs/platform/kvm-reference/#how-to-enable-kvm">upgrade to KVM</a>, or follow our older guide on <a href="/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode">Running a Custom Linux Distribution on a Xen Linode</a>.</div>
+</blockquote>
+
+
+<h2 id="advantages-of-kvm-on-linode">Advantages of KVM on Linode</h2>
+
+<p>Linodes running on our KVM hypervisor offer several advantages over Xen, particularly for those looking to install a custom operating system:</p>
+
+<ul>
+<li><p><strong>Direct Disk Boot:</strong> Direct disk booting allows you to boot from any disk with a Master Boot Record (MBR). This can be especially useful for operating systems that do not make use of the Grub bootloader, such as <a href="/docs/tools-reference/custom-kernels-distros/install-freebsd-on-linode">FreeBSD</a>.</p></li>
+
+<li><p><strong>Full Virtualization:</strong> Our KVM hypervisor offers a full virtualization option that simulates the experience of running directly from hardware. This can be useful for non-standard configurations.</p></li>
+
+<li><p><strong>Glish:</strong> KVM introduces the <a href="/docs/networking/use-the-graphic-shell-glish">Glish</a> graphical console, which makes it easy to access your distribution&rsquo;s installer directly from a disk.</p></li>
+</ul>
+
+<h2 id="install-a-custom-distribution">Install a Custom Distribution</h2>
+
+<p>In this section you&rsquo;ll install your custom distro onto a raw disk, with the <em>direct disk boot</em> option. The end result will be a working custom install; however, it will not support disk resizing from within the Linode Manager, nor will it be compatible with the Backup Service.</p>
+
+<h3 id="prepare-your-linode">Prepare your Linode</h3>
+
+<ol>
+<li><p><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk">Create two raw, unformatted disk images</a> from the Linode&rsquo;s Dashboard:</p>
+
+<ul>
+<li>A disk labeled <strong>Installer</strong>. The size of this disk will depend upon the size of your distribution&rsquo;s installer, but it&rsquo;s recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size, giving us plenty of room for the Debian network installer.</li>
+<li>A disk labelled <strong>Boot</strong>. If you <em>don&rsquo;t</em> plan to complete the next section on Linode Manager compatibility, this can take up the rest of the free space available on your Linode.</li>
+</ul>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div><strong>Important</strong>: If you intend to continue to the next section on <a href="#linode-manager-compatibility">Linode Manager Compatibility</a>, you should make your boot disk no larger than necessary - in this example we&rsquo;ll install Debian to a 2000MB disk.</div>
+</blockquote>
+</li>
+
+<li><p><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles">Create two configuration profiles</a> and disable the options under <strong>Filesystem / Boot Helpers</strong> for each of them, as well as the <a href="/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog">Lassie</a> shutdown watchdog under the <strong>Settings</strong> menu. Both profiles will use the <strong>Direct Disk</strong> option from the <strong>Kernel</strong> dropdown menu:</p>
+
+<p><strong>Installer profile</strong></p>
+
+<ul>
+<li>Label: Installer</li>
+<li>Kernel: Direct Disk</li>
+<li>/dev/sda: <em>Boot</em> disk image.</li>
+<li>/dev/sdb: <em>Installer</em> disk image.</li>
+<li>root / boot device: Standard /dev/sdb</li>
+</ul>
+
+<p><strong>Boot profile</strong></p>
+
+<ul>
+<li>Label: Boot</li>
+<li>Kernel: Direct Disk</li>
+<li>/dev/sda: <em>Boot</em> disk image.</li>
+<li>root / boot device: Standard /dev/sda</li>
+</ul></li>
+</ol>
+
+<h3 id="download-and-install-image">Download and Install Image</h3>
+
+<ol>
+<li><p>Boot into <a href="/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode">Rescue Mode</a> with your <em>Installer</em> disk mounted to <code>/dev/sda</code>, and connect to your Linode using the <a href="/docs/networking/using-the-linode-shell-lish">Lish Console</a>.</p></li>
+
+<li><p>Once in Rescue Mode, download your installation media and copy it to your <em>Installer</em> disk. In this example we&rsquo;re using the Debian network installer, but you can replace the URL in the first command with the location of the image you want to install:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>As an additional security step, you can use the keys provided in the same directory as the <code>iso</code> to <a href="https://www.debian.org/CD/verify">verify the authenticity</a> of the image.</div>
+</blockquote>
+
+
+<pre><code>wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
+dd if=mini.iso of=/dev/sda
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you would prefer to write the installer directly to the disk as it downloads, use:</p>
+
+<p>curl <a href="http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso">http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso</a> | dd of=/dev/sda</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Reboot into your <em>Installer</em> configuration profile, and open the <a href="/docs/networking/use-the-graphic-shell-glish">Glish</a> graphical console from the <strong>Remote Access</strong> tab in your Linode&rsquo;s Dashboard. You&rsquo;ll see your distribution&rsquo;s installer, and you can begin the install process.</p></li>
+
+<li><p>During your installer&rsquo;s partitioning/installation phase, be sure to instruct it to use the <code>/dev/sda</code> volume. Most installers will create separate root and swap partitions, but you can adjust this as needed.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Some installers offer an option to place <code>/boot</code> on a separate partition. If you intend to make use of the steps in the <a href="#linode-manager-compatibility">second part</a> of this guide for Linode Manager compatibility, it&rsquo;s important that your <code>/boot</code> directory is located on the same partition as your root filesystem.</div>
+</blockquote>
+</li>
+
+<li><p>Once the installation completes, reboot into your <em>Boot</em> profile and open the Glish console. You will have access to a login prompt:</p>
+
+<p><a href="/docs/assets/custom-distro-glish.png"><img src="/docs/assets/custom-distro-glish-small.png" alt="Custom Distro Glish" /></a></p></li>
+</ol>
+
+<h3 id="configure-grub-for-lish-access">Configure Grub for Lish Access</h3>
+
+<p>At this point you can connect to your Linode via SSH or the Glish graphical console, however you will not be able to connect to your Linode using the Lish serial console. To fix this, update the following settings in your <code>/etc/default/grub</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/default/grub 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GRUB_TIMEOUT</span><span class="o">=</span><span class="m">10</span>
+<span class="nv">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="s2">&#34;console=ttyS0,19200n8&#34;</span>
+<span class="nv">GRUB_TERMINAL</span><span class="o">=</span>serial
+<span class="nv">GRUB_DISABLE_LINUX_UUID</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">GRUB_SERIAL_COMMAND</span><span class="o">=</span><span class="s2">&#34;serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Once you&rsquo;ve finished editing <code>grub</code>, issue the appropriate command to apply your changes to your Grub configuration:</p>
+
+<ul>
+<li><p>Ubuntu and Debian:</p>
+
+<pre><code>update-grub
+</code></pre></li>
+
+<li><p>CentOS and Fedora:</p>
+
+<pre><code>grub2-mkconfig -o /boot/grub2/grub.cfg
+</code></pre></li>
+
+<li><p>Arch Linux and Gentoo:</p>
+
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre></li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;re still not able to access your Linode via Lish after updating your GRUB configuration, a reboot may be required. If this is the case, make sure you&rsquo;re rebooting into your <em>Boot</em> configuration profile.</div>
+</blockquote>
+
+
+<h2 id="linode-manager-compatibility">Linode Manager Compatibility</h2>
+
+<p>If you&rsquo;ve followed the steps so far, you should have a working custom distribution with raw disks, using the <em>direct disk</em> boot option. While this setup is functional, it&rsquo;s not compatible with several features of the Linode Manager that require the ability to mount your filesystem, such as:</p>
+
+<ul>
+<li><p><strong>Disk Resizing:</strong> Since the Linode Manager cannot determine the amount of <em>used</em> storage space on a raw disk, it can only increase the size. The Linode Manager cannot be used to make a raw disk smaller, and it cannot resize the filesystem on the disk - this would need to be done manually.</p></li>
+
+<li><p><strong>Backups:</strong> The Linode Backup Service needs to be able to mount your filesystem, and does not support partitioned disks.</p></li>
+
+<li><p><strong>Helpers:</strong> Several helpful features within the Linode Manager, such as <a href="/docs/platform/accounts-and-passwords#resetting-the-root-password">root password resets</a> and <a href="/docs/platform/network-helper">Network Helper</a>, need access to your filesystem in order to make changes.</p></li>
+</ul>
+
+<p>This section covers how to move your custom installation over to an <strong>ext4</strong> formatted disk so it can take advantage of these tools.</p>
+
+<h3 id="prepare-your-linode-1">Prepare your Linode</h3>
+
+<ol>
+<li><p><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk">Create a new ext4 disk</a>. The new disk should be large enough to accommodate the root filesystem that was created on your raw disk. You can make this as large as you&rsquo;d like, but you should leave enough space for a separate swap partition. For our example, we&rsquo;ll name this disk <em>Boot-New</em>.</p></li>
+
+<li><p>From the <strong>Create a new Disk</strong> page, create a swap disk by choosing <em>swap</em> for the disk type. The size of this disk will depend upon your needs, but it&rsquo;s recommended that you make it between 256-512MB to start. We&rsquo;ll label this disk <em>Swap</em>.</p></li>
+
+<li><p><a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles">Create a new configuration profile</a> with a name of your choice. For this example, we&rsquo;ll call the new profile <em>Installer-New</em> and it will use the following options:</p>
+
+<p><strong>Installer-New profile</strong></p>
+
+<ul>
+<li>Label: Installer-New</li>
+<li>Kernel: GRUB 2</li>
+<li>/dev/sda: <em>Boot-New</em> disk image.</li>
+<li>/dev/sdb: <em>Swap</em> disk image.</li>
+<li>root / boot device: Standard /dev/sda</li>
+</ul></li>
+</ol>
+
+<h3 id="update-your-fstab">Update your fstab</h3>
+
+<p>You should still be booted into your <em>Boot</em> profile using direct disk boot. Before you update your <code>/etc/fstab</code> file, make sure you know the current root partition of your custom distro. You can use the <code>lsblk</code> command to confirm which partition has <code>/</code> as its mount point:</p>
+
+<pre><code>root@custom-kvm:~# lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+fd0      2:0    1    4K  0 disk
+sda      8:0    0  7.8G  0 disk
+└─sda1   8:1    0  7.5G  0 part /
+sr0     11:0    1 1024M  0 rom
+</code></pre>
+
+<p>In this case, we can see that the <code>/dev/sda1</code> partition is the location of our root filesystem. Next, update your <code>/etc/fstab</code> file to match the following:</p>
+
+<pre><code># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;
+proc        /proc        proc    defaults                       0 0
+/dev/sda   /            ext4    noatime,errors=remount-ro      0 1
+/dev/sdb   none         swap    sw
+</code></pre>
+
+<p>Depending upon your distribution, it may use different parameters for your root disk under the &ldquo;options&rdquo; section. These can be adjusted as needed. Note that we&rsquo;re using <code>/dev/sda</code> instead of the <code>sda1</code> root partition that was identified previously.</p>
+
+<h3 id="configure-grub">Configure Grub</h3>
+
+<ol>
+<li><p>Confirm the location of your <code>grub.cfg</code> file. Some distributions (notably, CentOS and Fedora) place this file under the <code>/boot/grub2</code> directory, while others have it under <code>/boot/grub</code>. Your new setup will use our <em>Grub 2</em> mode, which looks for a configuration file under <code>/boot/grub/grub.cfg</code>. You can confirm if your <code>grub.cfg</code> is located in the necessary spot with the <code>ls</code> command:</p>
+
+<pre><code>ls -la /boot/grub/grub.cfg
+</code></pre>
+
+<p>If your distro places its Grub configuration under this directory, you should receive output similar to the following:</p>
+
+<pre><code>root@custom-kvm:~# ls -la /boot/grub/grub.cfg
+-r--r--r-- 1 root root 5235 Dec 28 08:05 /boot/grub/grub.cfg
+</code></pre></li>
+
+<li><p>If the Grub config is located under <code>/boot/grub2</code> instead, create a symlink to provide the correct configuration to the bootloader:</p>
+
+<pre><code>mkdir /boot/grub
+ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
+</code></pre></li>
+
+<li><p>Update your <code>grub.cfg</code> file, replacing all instances of <code>/dev/sda1</code> with <code>/dev/sda</code>. Note that this command will need to be adjusted if your root filesystem is located on a partition other than <code>/dev/sda1</code>:</p>
+
+<pre><code>sed -i -e 's$/dev/sda1$/dev/sda$g' /boot/grub/grub.cfg
+</code></pre>
+
+<p>Keep in mind that if your <code>grub.cfg</code> is located under <code>/boot/grub2</code>, you should adjust this command to reflect that.</p></li>
+</ol>
+
+<h3 id="transfer-your-root-filesystem-to-your-ext4-disk">Transfer your Root Filesystem to your Ext4 Disk</h3>
+
+<p>Now that you&rsquo;ve updated the necessary configuration files, you&rsquo;re ready to move your root filesystem to the ext4 disk you created previously. To get started, boot your Linode into <a href="/docs/troubleshooting/rescue-and-rebuild">Rescue Mode</a> with the following disk assignments:</p>
+
+<ul>
+<li><em>Boot</em> disk mounted to <code>/dev/sda</code></li>
+<li><em>Boot-New</em> disk mounted to <code>/dev/sdb</code></li>
+</ul>
+
+<p>In Rescue Mode, connect via Lish and transfer your root filesystem from the <code>/dev/sda1</code> partition to your new ext4 disk:</p>
+
+<pre><code>dd if=/dev/sda1 of=/dev/sdb bs=1M
+</code></pre>
+
+<p>Once the transfer completes, reboot into your <em>Installer-New</em> profile. You now have a custom distribution that works with the Linode Manager&rsquo;s extra features. In order to make use of the Backup Service, you&rsquo;ll need to remove the raw disks that were used during the installation process.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-nixos-on-linode/">Install and Configure NixOS on a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode/">Install a Custom Distribution on a Xen Linode - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/">Install Alpine Linux on your Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/">Install CoreOS on Your Linode - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/">Run a Distribution-Supplied Kernel on a KVM Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#advantages-of-kvm-on-linode">Advantages of KVM on Linode</a></li>
+<li><a href="#install-a-custom-distribution">Install a Custom Distribution</a>
+<ul>
+<li><a href="#prepare-your-linode">Prepare your Linode</a></li>
+<li><a href="#download-and-install-image">Download and Install Image</a></li>
+<li><a href="#configure-grub-for-lish-access">Configure Grub for Lish Access</a></li>
+</ul></li>
+<li><a href="#linode-manager-compatibility">Linode Manager Compatibility</a>
+<ul>
+<li><a href="#prepare-your-linode-1">Prepare your Linode</a></li>
+<li><a href="#update-your-fstab">Update your fstab</a></li>
+<li><a href="#configure-grub">Configure Grub</a></li>
+<li><a href="#transfer-your-root-filesystem-to-your-ext4-disk">Transfer your Root Filesystem to your Ext4 Disk</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

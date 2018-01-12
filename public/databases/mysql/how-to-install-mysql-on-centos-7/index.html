@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install MySQL on CentOS 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Getting started with MySQL on CentOS 7">
+        <meta name="keywords" content="MySQL on Linux, CentOS, cloud, cloud hosting, Linux, MySQL, database, MariaDB, install MySQL, secure MySQL, mysqltuner">
+        
+        <meta property="og:title" content="How to Install MySQL on CentOS 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/mysql/how-to-install-mysql-on-centos-7/">
+        <meta property="og:description" content="Getting started with MySQL on CentOS 7">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/mysql/how-to-install-mysql-on-centos-7/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/mysql/">MySQL</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install MySQL on CentOS 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install MySQL on CentOS 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-05T00:00:00Z">Tuesday, September 5, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fhow-to-install-mysql-on-centos-7%2f&via=linode&text=How%20to%20Install%20MySQL%20on%20CentOS%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fhow-to-install-mysql-on-centos-7%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2fmysql%2fhow-to-install-mysql-on-centos-7%2f&t=How%20to%20Install%20MySQL%20on%20CentOS%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/mysql/how-to-install-mysql-on-centos-7.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/mysql/how-to-install-mysql-on-centos-7.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/how-to-install-mysql-on-centos-7.png" alt="Install MySQL on CentOS 7" title="Install MySQL on CentOS 7" /></p>
+
+<p>MySQL is a popular database management system used for web and server applications. However, MySQL is no longer in CentOS&rsquo;s repositories and MariaDB has become the default database system offered. MariaDB is considered a <a href="https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/">drop-in replacement </a> for MySQL and would be sufficient if you just need a database system in general. See our <a href="/docs/databases/mariadb/how-to-install-mariadb-on-centos-7">MariaDB in CentOS 7</a> guide for installation instructions.</p>
+
+<p>If you nonetheless prefer MySQL, this guide will introduce how to install, configure and manage it on a Linode running CentOS 7.</p>
+
+<p>Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a <a href="https://www.linode.com/pricing#high-memory">high memory Linode</a> for such setups.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Ensure that you have followed the <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/security/securing-your-server">Securing Your Server</a> guides, and the Linode&rsquo;s <a href="/docs/getting-started#setting-the-hostname">hostname is set</a>.</p>
+
+<p>To check your hostname run:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo yum update
+</code></pre></li>
+
+<li><p>You will need <code>wget</code> to complete this guide. It can be installed as follows:</p>
+
+<pre><code>yum install wget
+</code></pre></li>
+</ol>
+
+<h2 id="install-mysql">Install MySQL</h2>
+
+<p>MySQL must be installed from the <a href="https://dev.mysql.com/downloads/repo/yum/">community repository</a>.</p>
+
+<ol>
+<li><p>Download and add the repository, then update.</p>
+
+<pre><code>wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+yum update
+</code></pre></li>
+
+<li><p>Install MySQL as usual and start the service. During installation, you will be asked if you want to accept the results from the .rpm file&rsquo;s GPG verification. If no error or mismatch occurs, enter <code>y</code>.</p>
+
+<pre><code>sudo yum install mysql-server
+sudo systemctl start mysqld
+</code></pre></li>
+</ol>
+
+<p>MySQL will bind to localhost (127.0.0.1) by default. Please reference our <a href="/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access">MySQL remote access guide</a> for information on connecting to your databases using SSH.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Allowing unrestricted access to MySQL on a public IP not advised but you may change the address it listens on by modifying the <code>bind-address</code> parameter in <code>/etc/my.cnf</code>. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.</div>
+</blockquote>
+
+
+<h2 id="harden-mysql-server">Harden MySQL Server</h2>
+
+<ol>
+<li><p>Run the <code>mysql_secure_installation</code> script to address several security concerns in a default MySQL installation.</p>
+
+<pre><code>sudo mysql_secure_installation
+</code></pre></li>
+</ol>
+
+<p>You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer <code>yes</code> to these options. You can read more about the script in the <a href="https://dev.mysql.com/doc/refman/5.6/en/mysql-secure-installation.html">MySQL Reference Manual</a>.</p>
+
+<h2 id="using-mysql">Using MySQL</h2>
+
+<p>The standard tool for interacting with MySQL is the <code>mysql</code> client which installs with the <code>mysql-server</code> package. The MySQL client is used through a terminal.</p>
+
+<h3 id="root-login">Root Login</h3>
+
+<ol>
+<li><p>To log in to MySQL as the root user:</p>
+
+<pre><code>mysql -u root -p
+</code></pre></li>
+
+<li><p>When prompted, enter the root password you assigned when the mysql_secure_installation script was run.</p>
+
+<p>You&rsquo;ll then be presented with a welcome header and the MySQL prompt as shown below:</p>
+
+<pre><code>mysql&gt;
+</code></pre></li>
+
+<li><p>To generate a list of commands for the MySQL prompt, enter <code>\h</code>. You&rsquo;ll then see:</p>
+
+<pre><code>List of all MySQL commands:
+Note that all text commands must be first on line and end with ';'
+?         (\?) Synonym for `help'.
+clear     (\c) Clear command.
+connect   (\r) Reconnect to the server. Optional arguments are db and host.
+delimiter (\d) Set statement delimiter. NOTE: Takes the rest of the line as new delimiter.
+edit      (\e) Edit command with $EDITOR.
+ego       (\G) Send command to mysql server, display result vertically.
+exit      (\q) Exit mysql. Same as quit.
+go        (\g) Send command to mysql server.
+help      (\h) Display this help.
+nopager   (\n) Disable pager, print to stdout.
+notee     (\t) Don't write into outfile.
+pager     (\P) Set PAGER [to_pager]. Print the query results via PAGER.
+print     (\p) Print current command.
+prompt    (\R) Change your mysql prompt.
+quit      (\q) Quit mysql.
+rehash    (\#) Rebuild completion hash.
+source    (\.) Execute an SQL script file. Takes a file name as an argument.
+status    (\s) Get status information from the server.
+system    (\!) Execute a system shell command.
+tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
+use       (\u) Use another database. Takes database name as argument.
+charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
+warnings  (\W) Show warnings after every statement.
+nowarning (\w) Don't show warnings after every statement.
+
+For server side help, type 'help contents'
+
+mysql&gt;
+</code></pre></li>
+</ol>
+
+<h3 id="create-a-new-mysql-user-and-database">Create a New MySQL User and Database</h3>
+
+<ol>
+<li><p>In the example below, <code>testdb</code> is the name of the database, <code>testuser</code> is the user, and <code>password</code> is the user&rsquo;s password.</p>
+
+<pre><code>create database testdb;
+create user 'testuser'@'localhost' identified by 'password';
+grant all on testdb.* to 'testuser' identified by 'password';
+</code></pre>
+
+<p>You can shorten this process by creating the user <em>while</em> assigning database permissions:</p>
+
+<pre><code>create database testdb;
+grant all on testdb.* to 'testuser' identified by 'password';
+</code></pre></li>
+
+<li><p>Then exit MySQL.</p>
+
+<pre><code>exit
+</code></pre></li>
+</ol>
+
+<h3 id="create-a-sample-table">Create a Sample Table</h3>
+
+<ol>
+<li><p>Log back in as <code>testuser</code>.</p>
+
+<pre><code>mysql -u testuser -p
+</code></pre></li>
+
+<li><p>Create a sample table called <em>customers</em>. This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer&rsquo;s name.</p>
+
+<pre><code>use testdb;
+create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+</code></pre></li>
+
+<li><p>Then exit MySQL.</p>
+
+<pre><code>exit
+</code></pre></li>
+</ol>
+
+<h2 id="reset-the-mysql-root-password">Reset the MySQL Root Password</h2>
+
+<p>If you forget your root MySQL password, it can be reset.</p>
+
+<ol>
+<li><p>Stop the current MySQL server instance, then restart it with an option to not ask for a password.</p>
+
+<pre><code>sudo systemctl stop mysqld
+sudo mysqld_safe --skip-grant-tables &amp;
+</code></pre></li>
+
+<li><p>Reconnect to the MySQL server with the MySQL root account.</p>
+
+<pre><code>mysql -u root
+</code></pre></li>
+
+<li><p>Use the following commands to reset root&rsquo;s password. Replace <code>password</code> with a strong password.</p>
+
+<pre><code>use mysql;
+update user SET PASSWORD=PASSWORD(&quot;password&quot;) WHERE USER='root';
+flush privileges;
+exit
+</code></pre></li>
+
+<li><p>Then restart MySQL.</p>
+
+<pre><code>sudo systemctl start mysqld
+</code></pre></li>
+</ol>
+
+<h2 id="tune-mysql">Tune MySQL</h2>
+
+<p><a href="https://github.com/major/MySQLTuner-perl">MySQL Tuner</a> is a Perl script that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will give.</p>
+
+<ol>
+<li><p>Download MySQL Tuner to your home directory.</p>
+
+<pre><code>wget https://raw.githubusercontent.com/major/MySQLTuner-perl/master/mysqltuner.pl
+</code></pre></li>
+
+<li><p>To run it:</p>
+
+<pre><code>perl ./mysqltuner.pl
+</code></pre>
+
+<p>You will be asked for the MySQL root user&rsquo;s name and password. The output will show two areas of interest: General recommendations and Variables to adjust.</p></li>
+</ol>
+
+<p>MySQL Tuner is an excellent starting point to optimize a MySQL server but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MySQL on your Linode.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://dev.mysql.com/doc/refman/5.6/en/index.html">MySQL 5.6 Reference Manual</a></li>
+
+<li><a href="http://us2.php.net/manual/en/book.mysql.php">PHP MySQL Manual</a></li>
+
+<li><a href="http://sql-info.de/mysql/examples/Perl-DBI-examples.html">Perl DBI examples for DBD::mysql</a></li>
+
+<li><a href="http://mysql-python.sourceforge.net/MySQLdb.html">MySQLdb User&rsquo;s Guide</a></li>
+
+<li><a href="http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance">MySQL Tuner Tutorial</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/mysql/how-to-install-mysql-on-centos-6/">How to Install MySQL on CentOS 6</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/how-to-install-mysql-on-debian-8/">How to Install MySQL on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/how-to-install-mysql-on-debian-7/">How to Install MySQL on Debian 7</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mariadb/how-to-install-mariadb-on-centos-7/">How to Install MariaDB on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/install-mysql-on-ubuntu-14-04/">Install MySQL on Ubuntu 14.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-mysql">Install MySQL</a></li>
+<li><a href="#harden-mysql-server">Harden MySQL Server</a></li>
+<li><a href="#using-mysql">Using MySQL</a>
+<ul>
+<li><a href="#root-login">Root Login</a></li>
+<li><a href="#create-a-new-mysql-user-and-database">Create a New MySQL User and Database</a></li>
+<li><a href="#create-a-sample-table">Create a Sample Table</a></li>
+</ul></li>
+<li><a href="#reset-the-mysql-root-password">Reset the MySQL Root Password</a></li>
+<li><a href="#tune-mysql">Tune MySQL</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

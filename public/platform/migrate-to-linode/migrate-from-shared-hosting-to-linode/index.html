@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Migrate from Shared Hosting to Linode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Migrate your website from a shared host to a Linode cloud server running a LAMP stack.">
+        <meta name="keywords" content="shared hosting, migrate, website migration">
+        
+        <meta property="og:title" content="Migrate from Shared Hosting to Linode">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/migrate-to-linode/migrate-from-shared-hosting-to-linode/">
+        <meta property="og:description" content="Migrate your website from a shared host to a Linode cloud server running a LAMP stack.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/migrate-to-linode/migrate-from-shared-hosting-to-linode/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/migrate-to-linode/">Migrate to Linode</a>
+  
+</li>
+
+
+<li>
+  
+  Migrate from Shared Hosting to Linode
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Migrate from Shared Hosting to Linode</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-19T00:00:00Z">Tuesday, September 19, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fmigrate-to-linode%2fmigrate-from-shared-hosting-to-linode%2f&via=linode&text=Migrate%20from%20Shared%20Hosting%20to%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fmigrate-to-linode%2fmigrate-from-shared-hosting-to-linode%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fmigrate-to-linode%2fmigrate-from-shared-hosting-to-linode%2f&t=Migrate%20from%20Shared%20Hosting%20to%20Linode" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/migrate-to-linode/migrate-from-shared-hosting-to-linode.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/migrate-to-linode/migrate-from-shared-hosting-to-linode.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/migrate-from-shared-hosting-to-linode.png" alt="Migrate from Shared Hosting to Linode" title="Migrate from Shared Hosting to Linode" /></p>
+
+<p>This guide walks you through the steps to migrate your website from a shared hosting provider to a Linode running a LAMP stack. A Linode server gives you much more power and flexibility than a shared host, but these advantages come at the cost of increased complexity and system administration responsibility.</p>
+
+<p>The biggest change between shared hosting and Linode&rsquo;s cloud is that with Linode you have full administrative access to the server without intervention. This means that you will be solely responsible for keeping your software updated and your valuable data backed up. Our <a href="/docs/">Guides and Tutorials</a> area contains all of the information you&rsquo;ll need for basic <a href="/docs/tools-reference/linux-system-administration-basics">server administration</a>, <a href="/docs/security/securing-your-server">security hardening</a> and <a href="/content/security/backups/backing-up-your-data">system backups</a>.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<p>This guide makes three assumptions:</p>
+
+<ul>
+<li>You already have a Linode account.</li>
+<li>You know how to sign in to the <a href="https://manager.linode.com/">Linode Manager</a>.</li>
+<li>You have a basic knowledge of how to use SSH.</li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Because this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you&rsquo;re unsure whether or not your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.</div>
+</blockquote>
+
+
+<p>See our <a href="/docs/getting-started">Getting Started</a> guide for more information on signing up and setting up your Linode.</p>
+
+<h2 id="prepare-your-domain-name-to-move">Prepare Your Domain Name to Move</h2>
+
+<p>An optional but recommended first step is to lower the <em>Time to Live</em> (TTL) setting for your domain, so the migration won&rsquo;t have a negative impact on your site&rsquo;s visitors. TTL tells DNS caching servers how long to save information about your domain. Because DNS addresses don&rsquo;t often change server IP addresses, default TTL is typically about 24 hours.</p>
+
+<p>When changing servers, however, you want a shorter TTL to make sure that when you update your domain information, it takes effect quickly. Otherwise, your domain could resolve to your old server&rsquo;s IP address for up to 24 hours.</p>
+
+<ol>
+<li><p>Locate your current <em>nameservers</em> in your shared hosting provider&rsquo;s account control panel. If you&rsquo;re not sure what your nameservers are, you can find out with a <a href="http://www.internic.net/whois.html">Whois Search tool</a>. You will see several nameservers listed, probably all at the same company.</p>
+
+<p><a href="/docs/assets/1424-internic_whois_nameserver-3.png"><img src="/docs/assets/1424-internic_whois_nameserver-3.png" alt="Version control overview." /></a></p></li>
+
+<li><p>Contact your domain registrar for details on how to shorten the TTL for your domain. Every provider is a little different, so you may have to ask for instructions.</p></li>
+
+<li><p>Make a note of your current TTL. It will be listed in seconds, so you need to divide by 3600 to get the number of hours (e.g. 86,400 seconds = 24 hours). This is the amount of time that you need to wait between now and when you actually move your domain.</p></li>
+
+<li><p>Adjust your TTL to its shortest setting. For example, 300 seconds is equal to 5 minutes, so that&rsquo;s a good choice if it&rsquo;s available.</p></li>
+
+<li><p>Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our <a href="/docs/networking/dns/dns-manager-overview/#set-the-time-to-live-or-ttl">DNS guide</a>.</p></li>
+</ol>
+
+<h2 id="back-up-your-website">Back Up Your Website</h2>
+
+<p>The next step is to back up your site from your old server to your local computer. You can do this multiple ways, although you may find it easiest to work directly through your host&rsquo;s control panel from your web browser. The location of your website on the server will vary among hosting providers, though it should be something along the lines of <code>/home/account_name/public_html</code>.</p>
+
+<p>You may want to explore whether the application you use for your website has its own backup instructions, such as the combination of <a href="https://codex.wordpress.org/WordPress_Backups">WordPress</a> and <a href="http://docs.phpmyadmin.net/en/latest/faq.html?highlight=backup#how-can-i-backup-my-database-or-table">phpMyAdmin</a>, for example. Regardless of the backup method, every website is made up of files and databases so you can use the instructions in this section to back up every type of website.</p>
+
+<p>If you have a MySQL or MariaDB database on your old server, you will need to back it up, too. Your old host probably has a control panel that will allow you to make an easy backup of your database. Contact that host for instructions if you are not sure how to do it. If your old host does not have a database backup solution, you can follow our instructions to <a href="/docs/databases/mysql/backup-options">Back Up Your MySQL Databases</a> using the command line.</p>
+
+<p><strong>Shared Host&rsquo;s Control Panel</strong></p>
+
+<p><a href="https://documentation.cpanel.net/display/ALD/Backup%20Wizard">CPanel</a> and <a href="http://docs.plesk.com/en-US/12.5/administrator-guide/website-management/backing-up-and-recovering-websites/">Plesk</a> have their own backup methods, in addition to being able to create a single <em>.tar.gz</em> or <em>.zip</em> file from within their file managers for you to download.</p>
+
+<p><strong>Terminal (Linux / OS X)</strong></p>
+
+<p>Linux and OS X can use <a href="https://en.wikipedia.org/wiki/Secure_copy">SCP</a> natively from the command line. To download your client&rsquo;s tarball to your local user&rsquo;s home directory using SCP:</p>
+
+<pre><code>scp example_user@server_ip_address:/home/account_name/public_html ~/
+</code></pre>
+
+<p><strong>FileZilla (Linux / OS X / Windows)</strong></p>
+
+<p>See <a href="/docs/tools-reference/file-transfer/filezilla">our Filezilla guide</a> to use it for your site backups.</p>
+
+<h2 id="install-a-basic-web-server-on-your-linode">Install a Basic Web Server on Your Linode</h2>
+
+<p>The next step is to build the software environment needed for your site to function properly. Once that&rsquo;s complete, you can install a content management system of your choice such as <a href="https://wordpress.org/">WordPress</a> or <a href="https://www.drupal.com/">Drupal</a>. There are many possibilities; see our <a href="https://linode.com/docs/web-servers/">web servers</a> guides for available options. This guide will assume the use of a LAMP stack, one of the most common web server configurations.</p>
+
+<h3 id="lamp-stack">LAMP Stack</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29">LAMP</a> stands for the following:</p>
+
+<ul>
+<li><strong>Linux:</strong> A LAMP stack will work on most common Linux distributions. While there will be no discernible difference to your site&rsquo;s users, each distro has advantages and disadvantages to consider. See our [LAMP Guides] section for installation instructions on various distros.</li>
+<li><strong>Apache:</strong> A web server that handles HTTP and HTTPS internet traffic.</li>
+<li><strong>MySQL:</strong> A database server.</li>
+<li><strong>PHP:</strong> A software language that allows you to create and configure dynamic website content.</li>
+</ul>
+
+<p>To install a LAMP stack on Ubuntu, follow the steps in our <a href="https://linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/">How to Install a LAMP Stack on Ubuntu 16.04</a> guide.</p>
+
+<h2 id="get-your-website-live">Get Your Website Live</h2>
+
+<p>Once you&rsquo;ve installed all the underlying software for your Linode, you can upload your website to the new server. This will replace the Apache test page shown earlier with your actual website.</p>
+
+<ol>
+<li><p>Follow the steps in our <a href="/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts">hosting a website</a> guide to configure name-based virtual hosts for Apache on your Linode.</p></li>
+
+<li><p>Upload your website&rsquo;s files from your local computer to <code>/var/www/html/example.com/public_html</code> on your Linode. The process to do this is similar to how you downloaded your site&rsquo;s files to your local computer when creating a backup from your shared host. The only differences are the source and destination of the transfer.</p>
+
+<p>For example, to <em>upload</em> to your Linode using SCP on Linux or OS X:</p>
+
+<pre><code>scp ~/example.com example_user@server_ip_address:/var/www/html/example.com/public_html
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><code>example_user</code> should be the user on your Linode you want to log in as, and <code>example.com</code> should be replaced by your domain name.</div>
+</blockquote>
+
+
+<p>If you have a database, you&rsquo;ll need to upload it to your Linode. If you&rsquo;re more comfortable using a control panel, you may want to <a href="/docs/databases/mysql/">install phpMyAdmin</a> at this point. You can also <a href="/docs/databases/mysql/back-up-your-mysql-databases/#restoring-an-entire-dbms-from-backup">restore your database</a> using the command line.</p></li>
+
+<li><p>Now check your website&rsquo;s IP address in your browser. Your website should be displayed.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Your website may not yet function completely correctly if it is URL-dependent. A website created with WordPress is an example of a URL-dependent website. Because you&rsquo;re using the IP address instead of the URL, WordPress gets confused. It should start working correctly once you move your domain to point to Linode.</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="a-note-about-email">A Note About Email</h3>
+
+<p>A Linode can run both your web server and an <a href="/docs/mailserver">email server</a> for your site. If you use a separate email host like Google Apps, you will need to make sure you preserve the correct <em>MX records</em> for email when you move your domain. If you use a mail service at your old host, you may need to consider where you&rsquo;re going to move your email.</p>
+
+<h2 id="move-your-domain">Move Your Domain</h2>
+
+<p>The last step in your migration is to point your domain at your Linode&rsquo;s IP address. If you decided to shorten your TTL, make sure you&rsquo;ve waited out the original time period.</p>
+
+<ol>
+<li><p>Follow our instructions on <a href="/docs/networking/dns/dns-manager-overview#add-a-domain-zone">adding a domain zone</a> to create DNS records at Linode for your domain.</p></li>
+
+<li><p>If you use a third-party email service, edit the default MX records.</p></li>
+
+<li><p>Log in to your domain registrar&rsquo;s control panel and update the name servers to use Linode&rsquo;s:</p>
+
+<ul>
+<li><code>ns1.linode.com</code></li>
+<li><code>ns2.linode.com</code></li>
+<li><code>ns3.linode.com</code></li>
+<li><code>ns4.linode.com</code></li>
+<li><code>ns5.linode.com</code></li>
+</ul></li>
+
+<li><p>Wait five minutes (or the time you set for your TTL) for the domain to propagate. If you did not shorten your TTL, this may take up to 48 hours.</p></li>
+
+<li><p>Navigate to your domain in a web browser. It should now show the website from Linode, rather than your old host. If you can&rsquo;t tell the difference, you can use the <a href="http://www.kloth.net/services/dig.php">DIG utility</a>. It should show the IP address for your Linode.</p></li>
+
+<li><p><a href="/docs/networking/dns/setting-reverse-dns">Set reverse DNS</a> for your domain so you don&rsquo;t have mail problems.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;re having trouble seeing your site at the new IP address, you may need to try visiting it in a different browser, or in a private browsing session. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.</div>
+</blockquote>
+</li>
+</ol>
+
+<p>Your website is now fully migrated to Linode. It is a good idea to wait a few days before cancelling your shared hosting service to make sure that everything is running smoothly, and you don&rsquo;t need to obtain more files from your shared host.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Your server is only as secure as you make it. Follow our <a href="/docs/securing-your-server">Securing Your Server</a> guide to make sure your Linode is hardened against unauthorized access.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/disk-images/switch-to-a-64-bit-linux-kernel/">Switch to a 64-bit Linux Kernel</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#prepare-your-domain-name-to-move">Prepare Your Domain Name to Move</a></li>
+<li><a href="#back-up-your-website">Back Up Your Website</a></li>
+<li><a href="#install-a-basic-web-server-on-your-linode">Install a Basic Web Server on Your Linode</a>
+<ul>
+<li><a href="#lamp-stack">LAMP Stack</a></li>
+</ul></li>
+<li><a href="#get-your-website-live">Get Your Website Live</a>
+<ul>
+<li><a href="#a-note-about-email">A Note About Email</a></li>
+</ul></li>
+<li><a href="#move-your-domain">Move Your Domain</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

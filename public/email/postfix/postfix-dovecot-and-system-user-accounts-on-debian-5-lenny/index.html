@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use system user accounts, postfix, and dovecot to provide">
+        <meta name="keywords" content="postfix, dovecot, system users, email">
+        
+        <meta property="og:title" content="Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny/">
+        <meta property="og:description" content="Use system user accounts, postfix, and dovecot to provide">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/postfix/">Postfix</a>
+  
+</li>
+
+
+<li>
+  
+  Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2012-10-08T00:00:00Z">Monday, October 8, 2012</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2fpostfix-dovecot-and-system-user-accounts-on-debian-5-lenny%2f&via=linode&text=Postfix%2c%20Dovecot%2c%20and%20System%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2fpostfix-dovecot-and-system-user-accounts-on-debian-5-lenny%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2fpostfix-dovecot-and-system-user-accounts-on-debian-5-lenny%2f&t=Postfix%2c%20Dovecot%2c%20and%20System%20User%20Accounts%20on%20Debian%205%20%28Lenny%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Postfix is a popular mail transfer agent or &ldquo;MTA&rdquo;. This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the <a href="/docs/email/postfix/gateway-debian-5-lenny">Basic Email Gateway with Postfix</a> document to install a more minimal email system.</p>
+
+<h1 id="set-the-hostname">Set the Hostname</h1>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p>
+
+<h1 id="install-software">Install Software</h1>
+
+<p>Issue the following commands to install any outstanding package updates:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<p>Issue the following command to install all required software:</p>
+
+<pre><code>apt-get install libsasl2-2 libsasl2-modules sasl2-bin postfix dovecot-common dovecot-imapd dovecot-pop3d
+</code></pre>
+
+<p>During the installation process, the package manager will prompt you for the responses to a few questions to complete the Postfix installation. To the first question regarding the type of mail server you want to configure, select &ldquo;Internet Site&rdquo; and continue as in the following image:</p>
+
+<p><a href="/docs/assets/87-postfix-courier-mysql-02-mail-server-type-2.png"><img src="/docs/assets/87-postfix-courier-mysql-02-mail-server-type-2.png" alt="Selecting the Postfix mail server configuration type on a Debian 5 (Lenny) system." /></a></p>
+
+<p>The next prompt will ask for the system mail name. This should correspond to the fully qualified domain name (FQDN) that points to your Linode&rsquo;s IP address. In this example, we&rsquo;re using a machine specific hostname for our server. Set the reverse DNS for your Linode&rsquo;s IP address to the fully qualified domain name you assign as the system mail name. You will be able to send mail from additional domains as configured later in this document. See the following example:</p>
+
+<p><a href="/docs/assets/88-postfix-courier-mysql-02-mail-server-type-3.png"><img src="/docs/assets/88-postfix-courier-mysql-02-mail-server-type-3.png" alt="Selecting the Postfix system mail name on a Debian 5 (Lenny) system." /></a></p>
+
+<h1 id="sasl-authentication">SASL Authentication</h1>
+
+<p>Edit the <code>/etc/default/saslauthd</code> file to allow the SASL authentication daemon to start. Uncommon or add the following line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/default/saslauthd 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">START</span><span class="o">=</span><span class="s">yes</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Create the <code>/etc/postfix/sasl/smtpd.conf</code> file, and insert the following line:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/postfix/sasl/smtpd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">pwcheck_method: saslauthd</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Issue the following command to start the SASL daemon for the first time:</p>
+
+<pre><code>/etc/init.d/saslauthd start
+</code></pre>
+
+<h1 id="configure-ssl">Configure SSL</h1>
+
+<p>SSL or TLS provides a method of encrypting the communication between your remote users and your mail servers. While this does not encrypt your email messages from end to end, it does ensure that your login credentials are transmitted securely and that communications are secure between your client machine and the email server.</p>
+
+<p>Issue the following sequence of commands to install the prerequisites and <a href="/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate">generate a self-signed SSL certificate</a>:</p>
+
+<pre><code>apt-get install openssl
+openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/postfix.pem -keyout /etc/ssl/postfix.key
+</code></pre>
+
+<p>Be sure to generate a certificate with a &ldquo;Common Name&rdquo; that corresponds to the host name that your users will connect your mail server (e.g. <code>mail.example.com</code>).</p>
+
+<p>Mail clients may have an issue with certificates generated in this manner because they are not signed by a recognized certificate authority. Consider our documentation for generating <a href="/docs/security/ssl/obtaining-a-commercial-ssl-certificate">commercial ssl certificates</a> if you need a commercially verified certificate.</p>
+
+<p>You can use any SSL certificate with Postfix. If you already have a commercial certificate or another SSL certificate for your web server, you can use these <code>.pem</code> and <code>.key</code> files.</p>
+
+<h1 id="postfix">Postfix</h1>
+
+<h3 id="configure-outbound-mail-service">Configure Outbound Mail Service</h3>
+
+<p>Edit the <code>/etc/postfix/main.cf</code> file to edit or add the following lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">smtpd_tls_cert_file</span><span class="o">=</span><span class="s">/etc/ssl/postfix.pem</span>
+<span class="na">smtpd_tls_key_file</span><span class="o">=</span><span class="s">/etc/ssl/postfix.key</span>
+
+<span class="na">smtp_use_tls</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">smtpd_use_tls</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">smtp_tls_note_starttls_offer</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">smtpd_tls_loglevel</span> <span class="o">=</span> <span class="s">1</span>
+<span class="na">smtpd_tls_received_header</span> <span class="o">=</span> <span class="s">yes</span>
+
+<span class="na">smtpd_sasl_type</span> <span class="o">=</span> <span class="s">dovecot</span>
+<span class="na">smtpd_sasl_path</span> <span class="o">=</span> <span class="s">private/auth</span>
+<span class="na">smtpd_sasl_auth_enable</span> <span class="o">=</span> <span class="s">yes</span>
+
+<span class="na">smtpd_sasl_security_options</span> <span class="o">=</span> <span class="s">noanonymous</span>
+<span class="na">smtpd_sasl_local_domain</span> <span class="o">=</span> <span class="s">$myhostname</span>
+<span class="na">smtpd_sasl_application_name</span> <span class="o">=</span> <span class="s">smtpd</span>
+<span class="na">broken_sasl_auth_clients</span> <span class="o">=</span> <span class="s">yes</span>
+
+<span class="na">smtpd_recipient_restrictions</span> <span class="o">=</span> <span class="s">reject_unknown_sender_domain, reject_unknown_recipient_domain, reject_unauth_pipelining, permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>These settings make it possible for the SASL authentication process to interact with Postfix, and for Postfix to use the SSL certificate generated above. If you&rsquo;re using an SSL certificate with a different name, modify the first two lines of this configuration section.</p>
+
+<p>When all modifications to the Postfix configuration are complete, issue the following command to restart Postfix to allow these configuration changes to take effect:</p>
+
+<pre><code>/etc/init.d/postfix restart
+</code></pre>
+
+<p>At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your <a href="/docs/tools-reference/linux-users-and-groups/">system user accounts</a>.</p>
+
+<p>Consider the <a href="/docs/email/postfix/gateway-debian-5-lenny">basic email gateway guide</a> for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.</p>
+
+<h3 id="configure-mail-delivery">Configure Mail Delivery</h3>
+
+<p>The above Postfix configuration makes it possible to <em>send</em> mail using postfix. If your server receives email, Postfix requires additional configuration to deliver mail locally. Edit the <code>main.cf</code> file to insert or modify the following configuration directives:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">myhostname</span> <span class="o">=</span> <span class="s">lollipop.example.com</span>
+<span class="na">virtual_alias_maps</span> <span class="o">=</span> <span class="s">hash:/etc/postfix/virtual</span>
+<span class="na">home_mailbox</span> <span class="o">=</span> <span class="s">mail/</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Issue the following command to ensure that new user accounts have a <code>~/mail</code> directory:</p>
+
+<pre><code>mkdir /etc/skel/mail/
+</code></pre>
+
+<p>Every existing user that receives email will also need to make their own <code>Maildir</code>, by issuing the following command:</p>
+
+<pre><code>mkdir ~/mail/
+</code></pre>
+
+<p>Create a <code>/etc/postfix/virtual</code> file to map incoming email addresses to their destinations. Consider the following example:</p>
+
+<dl class="file">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/etc/postfix/virtual</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote>
+<p><a href="mailto:username@example.com">username@example.com</a> username <a href="mailto:username@example.net">username@example.net</a> username <a href="mailto:username@example.com">username@example.com</a> username</p>
+
+<p><a href="mailto:fore@example.com">fore@example.com</a> <a href="mailto:foreman@example.com">foreman@example.com</a> <a href="mailto:fore@example.net">fore@example.net</a> <a href="mailto:foreman@example.com">foreman@example.com</a> <a href="mailto:fore@example.com">fore@example.com</a> <a href="mailto:foreman@example.com">foreman@example.com</a></p>
+
+<p><a href="mailto:team@example.com">team@example.com</a> username, <a href="mailto:foreman@example.com">foreman@example.com</a> <a href="mailto:team@example.net">team@example.net</a> username, <a href="mailto:foreman@example.com">foreman@example.com</a> <a href="mailto:team@example.com">team@example.com</a> username, <a href="mailto:foreman@example.com">foreman@example.com</a></p>
+</blockquote>
+
+<p>Here, all mail sent to the three addresses beginning with the characters <code>username@</code> are delivered to the local user &ldquo;username&rdquo; and deposited to a Maildir in the <code>/home/username/mail/</code> directory. The three addresses that begin with the characters <code>fore@</code> are delivered to the email address <code>foreman@example.com</code>. The final set of three email addresses beginning with <code>team@</code> are both delivered locally and sent to the <code>foreman@example.com</code> email address.</p>
+
+<p>You can add additional lines in the same format as the above to control how all incoming email is delivered to local or external destinations. Remember that incoming email has no firm relationship to the name of the user account.</p>
+
+<p>Edit the <code>/etc/alias</code> file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to <code>root</code> will be delivered to the <code>username</code> user&rsquo;s mail box.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/etc/aliases</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote>
+<p>root: username</p>
+</blockquote>
+
+<p>When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:</p>
+
+<pre><code>postalias /etc/alias
+</code></pre>
+
+<blockquote>
+<p>postmap /etc/postfix/virtual /etc/init.d/postfix restart</p>
+</blockquote>
+
+<h1 id="dovecot">Dovecot</h1>
+
+<p>Dovecot is a contemporary POP3/IMAP server that makes it possible to access and download mail from your mail server remotely onto your local system.</p>
+
+<h3 id="configure-remote-mail-access">Configure Remote Mail Access</h3>
+
+<p>Issue the following command to create a back up of the default <code>/etc/dovecot/dovecot.conf</code> file and remove the original. Then recreate it using the following template:</p>
+
+<pre><code>cp /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf-backup
+rm /etc/dovecot/dovecot.conf
+</code></pre>
+
+<dl class="file">
+<dt>
+
+</dt>
+<dd>
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/etc/dovecot/dovecot.conf</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote>
+<p>protocols = imap imaps pop3 pop3s log_timestamp = &ldquo;%Y-%m-%d %H:%M:%S &ldquo; mail_privileged_group = mail ssl_cert_file = /etc/ssl/postfix.pem ssl_key_file = /etc/ssl/postfix.key mail_location = maildir:~/mail:LAYOUT=fs</p>
+
+<p>protocol imap { }</p>
+
+<dl>
+<dt>protocol pop3 {</dt>
+<dd>pop3_uidl_format = %08Xu%08Xv</dd>
+</dl>
+
+<p>}</p>
+
+<dl>
+<dt>protocol managesieve {</dt>
+<dd>sieve=~/.dovecot.sieve sieve_storage=~/sieve</dd>
+</dl>
+
+<p>}</p>
+
+<dl>
+<dt>auth default {</dt>
+<dd>mechanisms = plain login passdb pam { } userdb passwd { } socket listen { client { path = /var/spool/postfix/private/auth mode = 0660 user = postfix group = postfix } }</dd>
+</dl>
+
+<blockquote>
+<p>}</p>
+</blockquote>
+
+<p>dict { }</p>
+
+<p>plugin { }</p>
+</blockquote>
+
+<p>Modify the <code>ssl</code> configuration directives if you&rsquo;re using ssl certificates located at alternate paths. Once configured, issue the following command to restart the Dovecot instance:</p>
+
+<pre><code>/etc/init.d/dovecot restart
+</code></pre>
+
+<p>You may now access email by configuring a local email client to contact the server you have set up. Authentication credentials are the same as the system user accounts. These accounts can be configured outside of this document at any time.</p>
+
+<h1 id="organize-mail-services">Organize Mail Services</h1>
+
+<p>This document describes a complete email system configuration. How you use and manage your system from this point forward is beyond the scope of this document. At the same time, we do encourage you to give some thought to the organization of your user accounts and email delivery. Keeping a well organized and easy to manage system is crucial for sustainable use of this system.</p>
+
+<p>Organizational structure is crucial in this kind of deployment because delivery of inbound email addresses are configured independently of user accounts. Furthermore, email accounts and user accounts need not correspond or reference each other. This may be confusing for some users. To help resolve this confusion you may want to establish a systematic convention for email addresses and corresponding user accounts to the mail server.</p>
+
+<p>Remember that system user accounts may provide access to other services on the system. Unless this access is specifically prohibited, all system user accounts will have SSH access to the server using the same credentials that are used for logging into the email services.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="/docs/email/postfix/gateway-debian-5-lenny">Basic Email Gateway with Postfix on Debian 5 (Lenny)</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/installing-mail-filtering-for-ubuntu-12-04/">Installing Mail Filtering for Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-5-lenny/">Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/">Configure SPF and DKIM With Postfix on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/">Troubleshooting Problems with Postfix, Dovecot, and MySQL</a></li>
+    
+    
+    
+    <li><a href="/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-12-04-precise-pangolin/">Manage Email Lists with GNU Mailman on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#install-software">Install Software</a></li>
+<li><a href="#sasl-authentication">SASL Authentication</a></li>
+<li><a href="#configure-ssl">Configure SSL</a></li>
+<li><a href="#postfix">Postfix</a>
+<ul>
+<li>
+<ul>
+<li><a href="#configure-outbound-mail-service">Configure Outbound Mail Service</a></li>
+<li><a href="#configure-mail-delivery">Configure Mail Delivery</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#dovecot">Dovecot</a>
+<ul>
+<li>
+<ul>
+<li><a href="#configure-remote-mail-access">Configure Remote Mail Access</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#organize-mail-services">Organize Mail Services</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using Fetchmail to Retrieve Email</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Manage email retrieval via multiple protocols with Fetchmail.">
+        <meta name="keywords" content="mail, fetchmail, unix, esr, mda">
+        
+        <meta property="og:title" content="Using Fetchmail to Retrieve Email">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/clients/using-fetchmail-to-retrieve-email/">
+        <meta property="og:description" content="Manage email retrieval via multiple protocols with Fetchmail.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/clients/using-fetchmail-to-retrieve-email/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/clients/">Email Clients</a>
+  
+</li>
+
+
+<li>
+  
+  Using Fetchmail to Retrieve Email
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using Fetchmail to Retrieve Email</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-09-11T00:00:00Z">Wednesday, September 11, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fclients%2fusing-fetchmail-to-retrieve-email%2f&via=linode&text=Using%20Fetchmail%20to%20Retrieve%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fclients%2fusing-fetchmail-to-retrieve-email%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fclients%2fusing-fetchmail-to-retrieve-email%2f&t=Using%20Fetchmail%20to%20Retrieve%20Email" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/clients/using-fetchmail-to-retrieve-email.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/clients/using-fetchmail-to-retrieve-email.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/using-fetchmail-to-retrieve-email.jpg" alt="Using Fetchmail to Retrieve Email" title="Using Fetchmail to Retrieve Email" /></p>
+
+<p>The <code>fetchmail</code> program is a classic UNIX and Unix-like utility used to retrieve email from remote servers and deliver it to local users on a server. There are a number of different scenarios where fetchmail is used. Fetchmail is a popular tool for manually downloading email from a POP or IMAP server for personal use on a local machine. Another common application uses fetchmail to create an &ldquo;email gateway,&rdquo; where email is collected from a number of different accounts or from a large centralized server and provided to the user in a manageable situation.</p>
+
+<p>If you&rsquo;re new to Linode we always recommend completing our <a href="/docs/getting-started/">getting started guide</a> before beginning a tutorial. If you&rsquo;re new to Linux we also recommend considering the <a href="/docs/beginners-guide/">beginners guide</a> and the many documents in the <a href="/docs/tools-reference/">Tools &amp; Reference</a> section. If you need a more full featured email stack, consider one of our other <a href="/content/email/">email guides</a>.</p>
+
+<h2 id="installing-fetchmail">Installing Fetchmail</h2>
+
+<p>Fetchmail must be installed on whatever computer you need to download mail <em>to</em>. This document is applicable for users of desktop Linux who need to download email from their Linodes and users who need to download email to their Linodes from external sources. Fetchmail runs on nearly every UNIX like operating system and is even installed by default on Apple&rsquo;s Macintosh OS X system.</p>
+
+<p>To install <code>fetchmail</code> on Debian and Ubuntu systems, issue the following command:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+apt-get install fetchmail
+</code></pre>
+
+<p>To install <code>fetchmail</code> on CentOS and Fedora systems, issue the following command:</p>
+
+<pre><code>yum install fetchmail
+</code></pre>
+
+<p>To install <code>fetchmail</code> on Arch Linux systems, issue the following command:</p>
+
+<pre><code>pacman -S fetchmail
+</code></pre>
+
+<p>To install <code>fetchmail</code> on Gentoo Linux systems, issue the following command:</p>
+
+<pre><code>emerge fetchmail
+</code></pre>
+
+<p>Once installed you can begin to configure fetchmail.</p>
+
+<h2 id="introduction-to-fetchmailrc-syntax">Introduction to .fetchmailrc Syntax</h2>
+
+<p>Fetchmail processes configuration options specified on the command line by default. More conventionally, however, administrators store settings in the <code>~/.fetchmailrc</code> file. Still, any options specified in the command line will override directives set in the configuration file.</p>
+
+<p>You can specify a number of different accounts in your <code>~/.fetchmailrc</code> and even use fetchmail to deliver email to a number of different local users. Let&rsquo;s consider a number of examples, beginning with a very simple line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		.fetchmailrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">poll example.com protocol pop3 username <span class="s2">&#34;username&#34;</span> password <span class="s2">&#34;XXX&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This assumes that the username on the remote pop3 server is the same as the local user. In this case, mail will be delivered to the default system mail spool using in an <code>mbox</code> format and located at <code>/var/mail/username</code>. Allow us to consider the following example:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		.fetchmailrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">poll mail.example.com protocol pop3:
+     username <span class="s2">&#34;admin&#34;</span> password <span class="s2">&#34;dir3cti0n&#34;</span> is <span class="s2">&#34;username&#34;</span> here<span class="p">;</span>
+     username <span class="s2">&#34;fore&#34;</span> password <span class="s2">&#34;0rd3r&#34;</span> is <span class="s2">&#34;foreman&#34;</span> here<span class="p">;</span>
+
+poll mail.example.org protocol pop3 with option sslproto <span class="s1">&#39;&#39;</span>:
+     user <span class="s2">&#34;betty&#34;</span> password <span class="s2">&#34;p1nk&#34;</span> mda <span class="s2">&#34;/usr/bin/procmail -d %T&#34;</span>:   user <span class="s2">&#34;betty&#34;</span> password <span class="s2">&#34;p1nk&#34;</span> mda <span class="s2">&#34;/usr/bin/procmail -d %T&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In the first specification, fetchmail is told to check the <code>mail.example.com</code> server, using the POP3 protocol, for the users <code>admin</code> and <code>fore</code>.&rdquo; Also, the &ldquo;<code>is &quot;[username]&quot; here;</code> directive is used to clarify the relationship between a remote user (i.e. <code>admin</code> and <code>fore</code>) and users on the local machine (i.e. <code>username</code> and <code>foreman</code>).</p>
+
+<p>In the second example, a single account (i.e. <code>betty</code>) is retrieved from the remote server (i.e. <code>mail.dexample.org</code>) and passed to the MDA <code>procmail</code> utility. Additionally, account has the <code>sslproto</code> option is enabled to encrypt this traffic using <code>ssl</code>.</p>
+
+<p>Fetchmail requires that the <code>~/.fetchmailrc</code> file have the <a href="/docs/tools-reference/linux-users-and-groups">access permissions</a> of 600. Permissions of 600 equate to read and writeable by the user account which &ldquo;owns&rdquo; the file with no permissions granted to group or other users. To achieve this, issue the following command:</p>
+
+<pre><code>chmod 600 ~/.fetchmailrc
+</code></pre>
+
+<h2 id="using-special-syntaxes-for-additional-clarity">Using Special Syntaxes for Additional Clarity</h2>
+
+<p>Fetchmail provides a number of syntactic niceties in an effort to make <code>.fetchmailrc</code> files easier to read. For instance, the words <code>and</code>, <code>with</code>, <code>has</code>, <code>wants</code>, and <code>options</code> are ignored by fetchmail. Additionally, the punctuation characters <code>:</code>, <code>;</code>, and <code>,</code> are ignored when <code>fetchmail</code> reads the configuration file.</p>
+
+<p>While it is possible to specify credentials for a server on one line, more often configurations are specified over a number of different lines. Fetchmail is insensitive to whitespace except when it occurs in quoted strings, although in these circumstances it&rsquo;s possible to escape carriage return characters with backslashes. All characters following a <code>#</code> character on any given line are considered comments and ignored by fetchmail.</p>
+
+<p>Entries for new servers begin with the word <code>poll</code>. Fetchmail will check all &ldquo;poll&rdquo; entries for new mail every time it runs. You can specify server entries with the work <code>skip</code> and cause fetchmail to ignore these entries unless they are specified on the command line. This <code>skip</code> functionality is intended make it easy to disable checking mail servers that have gone off line or for testing purposes.</p>
+
+<h2 id="running-fetchmail-for-one-user">Running Fetchmail for One User</h2>
+
+<p>Once the <code>.fetchmailrc</code> file is configured, fetchmail can be invoked simply by issuing the following command:</p>
+
+<pre><code>fetchmail
+</code></pre>
+
+<p>When invoked from the command line, fetchmail will <code>poll</code> all of the configured servers from the <code>.fetchmailrc</code> file and deliver the messages to the default mail spool for that user in <code>/var/mail/</code> or hand the messages off to the specified <code>mda</code> command.</p>
+
+<p>Fetchmail will deliver the message to the current user&rsquo;s mailbox under the following conditions:</p>
+
+<ul>
+<li>There is no <code>mda</code> is specified for the account in question in the <code>.fetchmailrc</code>.</li>
+<li>There are no local users are specified with the <code>is &quot;[local-user]&quot; here;</code> syntax in the account specification within the <code>.fetchmailrc</code> file.</li>
+<li>There are no corresponding local users for the remote usernames on the server.</li>
+</ul>
+
+<p>If fetchmail is running as the root user, it will drop privileges to deliver messages to specific user accounts. If fetchmail is unable to deliver messages as root it will deposit them in the system&rsquo;s &ldquo;postmaster&rdquo; account. The postmaster account defaults to postmaster, and the mail spool is located at <code>/var/mail/postmaster</code>, unless modified by a global option.</p>
+
+<p>When fetchmail has completed this process it will quit until it is invoked again. If you want fetchmail to run as a daemon process, consider using the daemon option, either by specifying a global option as described below or by specifying the <code>-d</code> option on the command line. For example:</p>
+
+<pre><code>fetchmail -d 300
+</code></pre>
+
+<p>In the above example, fetchmail will poll mail sources for new mail every 300 seconds, or once every five minutes.</p>
+
+<h2 id="global-settings">Global Settings</h2>
+
+<p>In addition to the configuration options described above, fetchmail provides a number of additional &ldquo;global&rdquo; configuration options. These allow you to configure the behavior of fetchmail with regards to all of the servers that it polls. These options are included at the beginning of the file and begin with the word <code>set</code>. Here is an example:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		.fetchmailrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> daemon <span class="o">[</span>seconds<span class="o">]</span> <span class="nb">set</span> postmaster <span class="s2">&#34;username&#34;</span>
+
+<span class="nb">set</span> logfile <span class="s2">&#34;\~/logs/fetchmail.log&#34;</span> <span class="nb">set</span> syslog</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The following sections will explain the functionality of these settings.</p>
+
+<h3 id="daemon-mode">Daemon Mode</h3>
+
+<p>The <code>daemon</code> setting with an interval specification (in seconds,) will cause fetchmail to daemonize itself and run as a background service. In this mode, each mail server will be polled on the interval specified. If you need to poll from different accounts with different frequencies you can specify the <code>interval $NUM</code> where <code>$NUM</code> is the number of intervals. Consider the following excerpt:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		.fetchmailrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> daemon <span class="m">60</span>
+
+poll mail.example.com protocol pop3 with option interval <span class="m">3</span>:
+     user <span class="s2">&#34;admin&#34;</span> password <span class="s2">&#34;r00t&#34;</span> mda <span class="s2">&#34;/usr/bin/procmail -d %T&#34;</span>
+
+poll mail.example.org protocol pop3 with option ssl, interval <span class="m">20</span>:
+     user <span class="s2">&#34;feedback&#34;</span> password <span class="s2">&#34;h3ck1e&#34;</span> mda <span class="s2">&#34;/usr/bin/procmail -d %T&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example the <code>daemon</code> is set to run every 60 seconds. Fetchmail is set to poll the <code>example.com</code> server every second interval, or every three minutes. At the same time, the <code>example.org</code> account will be polled every 20 intervals, or once every twenty minutes.</p>
+
+<h3 id="postmaster">Postmaster</h3>
+
+<p>The <code>set postmaster</code> option allows you to configure where otherwise undeliverable will be delivered. Given the following example:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		.fetchmailrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> postmaster <span class="s2">&#34;username&#34;</span>
+
+poll email.example.com protocol pop3:
+     username <span class="s2">&#34;username&#34;</span> password <span class="s2">&#34;dir3cti0n&#34;</span><span class="p">;</span>
+     username <span class="s2">&#34;fore&#34;</span> password <span class="s2">&#34;0rd3r&#34;</span><span class="p">;</span>
+     username <span class="s2">&#34;gigs&#34;</span> password <span class="s2">&#34;p@rty&#34;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Assuming that there are system user accounts for <code>username</code> and <code>fore</code>, mail downloaded from these accounts will be deposited in <code>/var/mail/username</code> and <code>/var/mail/fore</code> respectively. However, if there is no system account for a <code>gigs</code> user this mail would be deposited in the <code>username</code> user&rsquo;s mail spool (i.e. <code>/var/mail/username</code>) because the <code>username</code> user is set as the postmaster for this fetchmail session.</p>
+
+<h3 id="logging">Logging</h3>
+
+<p>When invoked from the command line, <code>fetchmail</code> generates output regarding its activities to standard out. If this is undesirable behavior you can use the logging directives to specify an alternate record keeping behavior. Let us consider the following directives:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		.fetchmailrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> syslog <span class="nb">set</span> logfile <span class="s2">&#34;\~/logs/fetchmail.log&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The first directive tells fetchmail to store all logging information in the system log. The location of this log may vary depending on your system configuration, but is typically located in <code>/var/log/mail.log</code>. The <code>logfile</code> directive allows the user to specify a file in which to store logging information. In this example logs are kept in the <code>logs/</code> directory and <code>fetchmail.log</code> of the user&rsquo;s home directory for the user account that executes fetchmail.</p>
+
+<h2 id="additional-fetchmail-functionality">Additional Fetchmail Functionality</h2>
+
+<p>This document has only covered a minimal subset of fetcmhail&rsquo;s functionality. Indeed fetchmail is renowned for its extreme flexibility and versatility. This section will provide an overview of this functionality.</p>
+
+<h3 id="alternate-mail-protocols">Alternate Mail Protocols</h3>
+
+<p>Typically, fetchmail is used to retrieve email from POP3 mailboxes; however, it also contains support for alternate protocols. Supported protocols include IMAP, POP3 with Kerberos, and ESTMTP. Example syntax for displaying alternate protocols is as follows:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		.fetchmailrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">poll email.example.com protocol imap:
+     username <span class="s2">&#34;username&#34;</span> password <span class="s2">&#34;dir3cti0n&#34;</span><span class="p">;</span>
+poll mail.example.org protocol kpop:
+     username <span class="s2">&#34;fore&#34;</span> password <span class="s2">&#34;0rd3r&#34;</span><span class="p">;</span>
+poll email.example.net protocol etrn:
+     username <span class="s2">&#34;gigs&#34;</span> password <span class="s2">&#34;p@rty&#34;</span><span class="p">;</span>
+poll mail.example.info protocol auto:
+     username <span class="s2">&#34;gigs&#34;</span> password <span class="s2">&#34;p@rty&#34;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Fetchmail is able to deduce which variant of the IMAP protocol is used. The <code>KPOP</code> option forces fetchmail to authenticate to a POP3 protocol with Kerberos V4 authentication on port 1109. The <code>ETRN</code> option allows fetchmail to receive email with the ESMTP protocol. You can also specify <code>auto</code> as a protocol option. In this case, fetchmail will try to determine which protocol your server supports when connecting.</p>
+
+<h3 id="alternate-methods-for-authentication">Alternate Methods for Authentication</h3>
+
+<p>Fetchmail provides a number of alternate options for authenticating to your mail server, if you are uncomfortable storing your passwords in your <code>.fetchmailrc</code> file. First, fetchmail will look in a <code>~/.netrc</code> file for log in credentials, before prompting for passwords on the command line. An example <code>.netrc</code> file is as follows:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		.netrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">machine email.example.com
+        login username
+        password d1r3ct1on
+machine mail.example.org
+        login jeff
+        password d@nc3
+machine mail.example.net
+        login gigs
+        p@RFI3s</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>ftp</code> UNIX utility also uses the <code>.netrc</code> file, so you can use this feature to avoid duplicating. If usernames are not provided in a <code>.netrc</code> file or in <code>.fetchmailrc</code>, fetchmail will try to connect to the remote server using the current user&rsquo;s username on the local system to connect to the remote server. The fetchmail program accepts alternate usernames with the <code>-u</code> option. This command takes the following syntax:</p>
+
+<pre><code>fetchmail -u username example.com
+</code></pre>
+
+<p>In this example, fetchmail will connect with the username <code>username</code> to the server at <code>example.com</code>. All of these authentication options, including specifying credentials in the <code>.fetchmailrc</code> will allow fetchmail to successfully retrieve email. However, in contemporary deployments, specifying usernames and passwords in the <code>.fetchmailrc</code> file is the most popular and efficient option by far.</p>
+
+<h3 id="workflows-with-fetchmail">Workflows with Fetchmail</h3>
+
+<p>The deployment profile of programs like <code>fetchmail</code> has changed a great deal in recent history. Where once users needed a program like fetchmail to retrieve email from their Internet service providers, it is now very plausible to run your own fully fledged email server. Fetchmail also predates the development and proliferation of web-based email and &ldquo;Email as a Service&rdquo; providers like Fastmail.fm and Google&rsquo;s Gmail offerings.</p>
+
+<p>Nevertheless, programs like fetchmail remain useful in some contexts. Fetchmail is often used to retrieve email from email service providers and download this data to users&rsquo; local machines. Other users deploy fetchmail as part of scripts or running in daemon mode to deliver mail to a small private IMAP service, for example. This makes it possible to access mail that is delivered to multiple addresses that are not hosted on the email gateway. Fetchmail makes it possible to centralize and collect email from a number of different sources into a single manageable archive, without needing to control the configuration and routing of mail on those remote servers. In this way, fetchmail remains a valuable and useful tool.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://mailfilter.sourceforge.net/">Mailfilter MDA</a></li>
+
+<li><a href="http://www.courier-mta.org/maildrop/">Maildrop MDA</a></li>
+
+<li><a href="http://www.procmail.org/">Procmail MDA</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/iredmail/install-iredmail-on-ubuntu/">Install iRedmail, Open-Source Mail Server, on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/email/installing-mail-filtering-for-ubuntu-12-04/">Installing Mail Filtering for Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/">View and Follow the End of Text Files with tail</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/tools/create-file-system-links-with-ln/">Create File System Links with ln</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed/">Manipulate Text from the Command Line with sed</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#installing-fetchmail">Installing Fetchmail</a></li>
+<li><a href="#introduction-to-fetchmailrc-syntax">Introduction to .fetchmailrc Syntax</a></li>
+<li><a href="#using-special-syntaxes-for-additional-clarity">Using Special Syntaxes for Additional Clarity</a></li>
+<li><a href="#running-fetchmail-for-one-user">Running Fetchmail for One User</a></li>
+<li><a href="#global-settings">Global Settings</a>
+<ul>
+<li><a href="#daemon-mode">Daemon Mode</a></li>
+<li><a href="#postmaster">Postmaster</a></li>
+<li><a href="#logging">Logging</a></li>
+</ul></li>
+<li><a href="#additional-fetchmail-functionality">Additional Fetchmail Functionality</a>
+<ul>
+<li><a href="#alternate-mail-protocols">Alternate Mail Protocols</a></li>
+<li><a href="#alternate-methods-for-authentication">Alternate Methods for Authentication</a></li>
+<li><a href="#workflows-with-fetchmail">Workflows with Fetchmail</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

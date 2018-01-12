@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Copying a Disk Over SSH</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Our guide to copying a disk over SSH">
+        <meta name="keywords" content="copy, disk, ssh">
+        
+        <meta property="og:title" content="Copying a Disk Over SSH">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/disk-images/copying-a-disk-image-over-ssh/">
+        <meta property="og:description" content="Our guide to copying a disk over SSH">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/disk-images/copying-a-disk-image-over-ssh/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/disk-images/">Disks, Migrations &amp; File Systems</a>
+  
+</li>
+
+
+<li>
+  
+  Copying a Disk Over SSH
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Copying a Disk Over SSH</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-12-07T00:00:00Z">Thursday, December 7, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fdisk-images%2fcopying-a-disk-image-over-ssh%2f&via=linode&text=Copying%20a%20Disk%20Over%20SSH" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fdisk-images%2fcopying-a-disk-image-over-ssh%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fdisk-images%2fcopying-a-disk-image-over-ssh%2f&t=Copying%20a%20Disk%20Over%20SSH" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/disk-images/copying-a-disk-image-over-ssh.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/disk-images/copying-a-disk-image-over-ssh.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>You can use SSH to copy a Linode&rsquo;s disk to a system that resides on a different network. This is an effective way to back up your Linode&rsquo;s disks to a personal computer or another server. In this guide, you&rsquo;ll learn how to use SSH to copy a Linode&rsquo;s disk to a local system.</p>
+
+<p><img src="/docs/assets/copying_a_disk_over_ssh_smg.png" alt="Our guide to copying a disk over SSH" title="Our guide to copying a disk over SSH" /></p>
+
+<h2 id="preparing-the-receiving-computer">Preparing the Receiving Computer</h2>
+
+<p>Verify that the receiving computer has SSH installed. (Most Linux/Unix-like systems have it installed by default.) If you&rsquo;re running Windows locally, you may wish to set up the <a href="http://www.cygwin.com/">Cygwin</a> compatibility layer to provide a reasonably complete Unix-like environment.</p>
+
+<h2 id="starting-your-linode-in-rescue-mode">Starting Your Linode in Rescue Mode</h2>
+
+<p>Before you initiate the transfer, start your Linode in <em>Rescue Mode</em> and start SSH by following these guides:</p>
+
+<ol>
+<li><a href="/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode">Start your Linode in Rescue Mode</a>.</li>
+<li><a href="/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode">Connecting to a Linode Running in Rescue Mode via LISH</a>.</li>
+<li><a href="/docs/troubleshooting/rescue-and-rebuild/#starting-ssh">Start the SSH server on your Linode</a>.</li>
+</ol>
+
+<h2 id="copying-the-disk">Copying the Disk</h2>
+
+<p>Now that the Linode is running in Rescue Mode, you can transfer the disk from the Linode to the receiving machine over SSH:</p>
+
+<ol>
+<li><p>Enter the following command on the receiving machine. Replace <code>123.45.67.89</code> with the Linode&rsquo;s IP address and <code>/home/archive/linode.img</code> with the path where you want to store the disk:</p>
+
+<pre><code>ssh root@123.45.67.89 &quot;dd if=/dev/sda &quot; | dd of=/home/archive/linode.img
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The device <code>/dev/sda</code> is used for Linodes running on top of KVM. If you Linode is still using XEN, then throughout this guide you must use <code>/dev/xvda</code> instead.</div>
+</blockquote>
+</li>
+
+<li><p>The receiving machine will connect to the Linode. Type <code>yes</code> and press Enter to continue connecting:</p>
+
+<pre><code>The authenticity of host '123.45.67.89 (123.45.67.89)' can't be established.
+RSA key fingerprint is 39:6b:eb:05:f1:28:95:f0:da:63:17:9e:6b:6b:11:4a.
+Are you sure you want to continue connecting (yes/no)? yes
+</code></pre></li>
+
+<li><p>Enter the root password for the Linode:</p>
+
+<pre><code>Warning: Permanently added '123.45.67.89' (RSA) to the list of known hosts.
+root@123.45.67.89's password:
+</code></pre>
+
+<p>The transfer starts, and you&rsquo;ll see output similar to the following:</p>
+
+<pre><code>4096000+0 records in
+4096000+0 records out
+2097152000 bytes (2.1 GB) copied, 371.632 seconds, 5.6 MB/s
+4096000+0 records in
+4096000+0 records out
+2097152000 bytes (2.1 GB) copied, 364.002 s, 5.8 MB/s
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Copying your disk can take a while. Please be patient. If you have a slow internet connection, add the <code>-C</code> option to the SSH command; this enables gzip compression for data transfer. If you receive a <code>Write failed: Broken pipe</code> error, repeat this step.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="verifying-the-disk">Verifying the Disk</h2>
+
+<p>Once the copy has completed, you can verify it by mounting the image on the receiving machine.</p>
+
+<ol>
+<li><p>Log in to the receiving machine as <code>root</code> by entering the following command and entering the <code>root</code> user&rsquo;s password:</p>
+
+<pre><code>su
+</code></pre></li>
+
+<li><p>Make a directory on the receiving machine by entering the following command:</p>
+
+<pre><code>mkdir linode
+</code></pre></li>
+
+<li><p>Mount the disk by entering the following command, replacing <code>linode.img</code> with the name of the disk:</p>
+
+<pre><code>mount -o loop linode.img linode
+</code></pre></li>
+
+<li><p>View the directories stored on the disk by entering the following command:</p>
+
+<pre><code>ls linode/
+</code></pre>
+
+<p>You should see the directories on the disks, similar to the ones shown below, indicating that everything has transferred:</p>
+
+<pre><code>bin   dev  home  lost+found  mnt  proc  sbin     srv  tmp  var
+boot  etc  lib   media       opt  root  selinux  sys  usr
+</code></pre></li>
+</ol>
+
+<p>You have successfully transferred your Linode&rsquo;s disk to another host using SSH.</p>
+
+<h2 id="uploading-the-disk">Uploading the Disk</h2>
+
+<p>Once you have a copy of your Linode&rsquo;s disk you may want to upload that copy from your local machine to a Linode in the future.</p>
+
+<ol>
+<li><p>Prepare your empty Linode by creating a new disk. Access your Linode through the Linode Manager and select <strong>Create a new disk</strong>:</p>
+
+<p><a href="/docs/assets/copydisk-create-disk-full.png"><img src="/docs/assets/copydisk-create-disk.png" alt="Create a new disk" /></a></p></li>
+
+<li><p>Enter a descriptive name in the <strong>Label</strong> field, and be sure the <strong>Size</strong> is large enough to hold the contents of the disk you are uploading. Click <strong>Save Changes</strong>.</p></li>
+
+<li><p><a href="#starting-your-linode-in-rescue-mode">Boot the Linode in Rescue Mode and start SSH</a></p></li>
+
+<li><p>From your <strong>receiving machine</strong> issue the following command, replacing <code>/home/archive/linode.img/</code> with your disk image&rsquo;s path, and <code>123.45.67.89</code> with your Linode&rsquo;s IP.</p>
+
+<pre><code>dd if=/home/archive/linode.img | ssh root@123.45.67.89 &quot;dd of=/dev/sda&quot;
+</code></pre>
+
+<p>When the transfer is done, you will see an output similar to this:</p>
+
+<pre><code>49807360+0 records in
+49807360+0 records out
+25501368320 bytes transferred in 9468.878375 secs (2693177 bytes/sec)
+49807360+0 records in
+49807360+0 records out
+25501368320 bytes (26 GB) copied, 9462.12 s, 2.7 MB/s
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Copying your disk can take a while. Please be patient. If you receive a <code>Write failed: Broken pipe</code> error, repeat this step.</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="verifying-the-disk-1">Verifying the Disk</h3>
+
+<p>As above, you will want to verify the disk by mounting it on the receiving Linode. Log in to your Linode through SSH.</p>
+
+<ol>
+<li><p>Make a new directory for the disk:</p>
+
+<pre><code>mkdir linode
+</code></pre></li>
+
+<li><p>Mount the disk:</p>
+
+<pre><code>mount /dev/sda linode
+</code></pre></li>
+
+<li><p>View the directories in the disk:</p>
+
+<pre><code>ls linode/
+</code></pre>
+
+<p>The output should be similar to below:</p>
+
+<pre><code>bin   dev  home  lib64       media  opt   root  sbin     srv  tmp  var
+boot  etc  lib   lost+found  mnt    proc  run   selinux  sys  usr
+</code></pre></li>
+</ol>
+
+<h3 id="expanding-the-filesystem">Expanding the Filesystem</h3>
+
+<p>If the disk you created on the receiving Linode is larger than the source disk (for example you&rsquo;re transferring a disk from a smaller linode to a larger linode), you&rsquo;ll have to resize the filesystem in order to make use of the new space.</p>
+
+<p>You can check if this is necessary by comparing the space reported by the filesystem:</p>
+
+<pre><code># df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda         24G   19G  4.0G  83% /
+</code></pre>
+
+<p>To the space reported by the disk:</p>
+
+<pre><code># lsblk
+NAME  MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda     8:0    0   30G  0 disk /
+</code></pre>
+
+<p>In the above example, the values in the <strong>Size</strong> column don&rsquo;t match. Although the disk is 30GB (the Linode Manager will also show the disk as 30GB), the filesystem can only see 24G. To use all available space on the new disk, execute the following from Rescue Mode:</p>
+
+<pre><code>e2fsck -f /dev/sda
+resize2fs /dev/sda
+</code></pre>
+
+<h3 id="create-the-swap-disk">Create the Swap Disk</h3>
+
+<p>If your Linode still has enough space for a swap disk, simply <a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk">create</a> one from your Linode&rsquo;s Dashboard by selecting <code>swap</code> from the <strong>Type</strong> drop down menu. A swap disk is typically between 256MB and 512MB in size, but can be made larger or smaller depending upon your needs. If all of the free space on your Linode is assigned to the disk you created previously, <a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk">resize</a> the disk to make enough room for the swap disk, and then follow the steps to <a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk">create</a> it.</p>
+
+<h3 id="booting-from-the-disk">Booting from the Disk</h3>
+
+<p>You will now need to create a new configuration profile on the receiving Linode to boot from.</p>
+
+<ol>
+<li><p>From within your Linode Manager, select your Linode and select <strong>Create a New Configuration Profile</strong>.</p>
+
+<p><a href="/docs/assets/1064-migration6.png"><img src="/docs/assets/1065-migration6-small.png" alt="Selecting the configuration profile" /></a></p></li>
+
+<li><p>Enter the name for the configuration profile in the <strong>Label</strong> field, and in the <strong>Block Device Assignment</strong> section set the <code>/dev/sda</code> to the new disk you created earlier in this section of the guide. Set <code>/dev/sdb</code> to the swap image. Save changes.</p></li>
+
+<li><p>Return to the Linode&rsquo;s dashboard manager, and select the configuration profile that you just created. Click <strong>Reboot</strong> to start the Linode using the disk you just transferred.</p></li>
+</ol>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/how-to-use-yubikey-for-two-factor-ssh-authentication/">How to use a YubiKey for Two-Factor Secure Shell Authentication</a></li>
+    
+    
+    
+    <li><a href="/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/">Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/">Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/security/use-luks-for-full-disk-encryption/">How to Use LUKS for Full Disk Encryption on Linux</a></li>
+    
+    
+    
+    <li><a href="/docs/security/gpg-key-for-ssh-authentication/">How to use a GPG key for SSH authentication</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#preparing-the-receiving-computer">Preparing the Receiving Computer</a></li>
+<li><a href="#starting-your-linode-in-rescue-mode">Starting Your Linode in Rescue Mode</a></li>
+<li><a href="#copying-the-disk">Copying the Disk</a></li>
+<li><a href="#verifying-the-disk">Verifying the Disk</a></li>
+<li><a href="#uploading-the-disk">Uploading the Disk</a>
+<ul>
+<li><a href="#verifying-the-disk-1">Verifying the Disk</a></li>
+<li><a href="#expanding-the-filesystem">Expanding the Filesystem</a></li>
+<li><a href="#create-the-swap-disk">Create the Swap Disk</a></li>
+<li><a href="#booting-from-the-disk">Booting from the Disk</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

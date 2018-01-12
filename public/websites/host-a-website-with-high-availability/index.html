@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Host a Website with High Availability</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to configure a highly available web server stack">
+        <meta name="keywords" content="high availability, web server, failover,  ">
+        
+        <meta property="og:title" content="Host a Website with High Availability">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/host-a-website-with-high-availability/">
+        <meta property="og:description" content="How to configure a highly available web server stack">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/host-a-website-with-high-availability/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  Host a Website with High Availability
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Host a Website with High Availability</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-06-07T00:00:00Z">Wednesday, June 7, 2017</time> by Angel Guarisma</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fhost-a-website-with-high-availability%2f&via=linode&text=Host%20a%20Website%20with%20High%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fhost-a-website-with-high-availability%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fhost-a-website-with-high-availability%2f&t=Host%20a%20Website%20with%20High%20Availability" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/host-a-website-with-high-availability.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/host-a-website-with-high-availability.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/host-a-website-with-high-availability-title-graphic.jpg" alt="Host a Website with High Availability" title="Host a Website with High Availability" /></p>
+
+<p>When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.</p>
+
+<p>In this guide, we&rsquo;ll explain how to host a highly available website with Wordpress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our <a href="/docs/websites/introduction-to-high-availability">introduction to high availability</a>.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>We will be using a total of nine nodes, or servers, all running CentOS 7, and all within the same datacenter. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting the hostname and timezone for each Linode you create.</p></li>
+
+<li><p>You should also be familiar with our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we&rsquo;ll be handling that step in our guide.</p></li>
+
+<li><p>The Linodes we will create during this guide will use the following hostname conventions:</p>
+
+<ul>
+<li>File system nodes - <code>gluster1</code>, <code>gluster2</code>, <code>gluster3</code></li>
+<li>Database nodes - <code>galera1</code>, <code>galera2</code>, <code>galera3</code></li>
+<li>Application nodes - <code>app1</code>, <code>app2</code>, <code>app3</code></li>
+</ul>
+
+<p>You can call your nodes anything you like, but try to keep the naming consistent for organizational purposes. When you see one of the above names, be sure to substitute the hostname you configured for the corresponding node.</p></li>
+
+<li><p>To create a private network among your Linodes, you&rsquo;ll need a <a href="/docs/networking/remote-access#adding-private-ip-addresses">private IP address</a> for each.</p></li>
+
+<li><p>Remember to update each Linode&rsquo;s package repositories before attempting to install software:</p>
+
+<pre><code>yum update
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Most steps in this guide require root privileges. Be sure you&rsquo;re entering the commands as root, or using <code>sudo</code> if you&rsquo;re using a limited user account. If you’re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="glusterfs">GlusterFS</h2>
+
+<p>Our first step in creating a high-availability setup is to install and configure a file system using GlusterFS. In this section, we&rsquo;ll be using three 2GB Linodes named <code>gluster1</code>, <code>gluster2</code>, and <code>gluster3</code>.</p>
+
+<p>Edit the <code>/etc/hosts</code> file on each Linode to match the following, substituting your own private IP addresses, fully qualified domain names, and host names:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">192.168.1.2    gluster1.yourdomain.com    gluster1
+192.168.3.4    gluster2.yourdomain.com    gluster2
+192.168.5.6    gluster3.yourdomain.com    gluster3</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="install-glusterfs">Install GlusterFS</h3>
+
+<p>These steps should be run on each file system node in your cluster.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>GlusterFS generates a UUID upon installation. Do not clone a single Linode to replicate your GlusterFS installation; it must be installed separately on each node.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Add the <code>centos-release-gluster37</code> repository, which will allow you to install the GlusterFS server edition package:</p>
+
+<pre><code>yum install epel-release
+yum install centos-release-gluster37
+yum install glusterfs-server
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>When installing <code>glusterfs-server</code>, you may be prompted to verify a GPG key from the CentOS Storage SIG repository. Before running the third command, you can manually import the GPG key:</p>
+
+<p>rpm &ndash;import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Start the GlusterFS daemon:</p>
+
+<pre><code>systemctl start glusterd
+</code></pre></li>
+</ol>
+
+<h3 id="configure-glusterfs">Configure GlusterFS</h3>
+
+<ol>
+<li><p>Create a <em>trusted storage pool</em>. A storage pool is a trusted network of file servers that will communicate to share data. You only need to run this command on one of your nodes. We&rsquo;ll use <code>gluster1</code> in this example, probing each of the other nodes we want to add to our storage pool:</p>
+
+<pre><code>gluster peer probe gluster2
+gluster peer probe gluster3
+</code></pre></li>
+
+<li><p>On each Linode, create a directory to store the files to be replicated. We&rsquo;ll use <code>/data/example-volume</code>, but you can create this directory wherever you like, and with a name of your choosing:</p>
+
+<pre><code>mkdir -p /data/example-volume
+</code></pre></li>
+
+<li><p>Create a distributed replicated volume. This step needs to be done on only one of the nodes in your pool. In this example, we&rsquo;re using the hostname and volume name configuration we used above, so replace those names with the ones you chose:</p>
+
+<pre><code>gluster volume create example-volume replica 3 gluster1:/data/example-volume gluster2:/data/example-volume gluster3:/data/example-volume force
+</code></pre></li>
+
+<li><p>Start the volume to enable replication among servers in your pool. Replace <code>example-volume</code> with the name you chose:</p>
+
+<pre><code>gluster volume start example-volume
+</code></pre>
+
+<p>You can check the configuration by running <code>gluster volume info</code>. If everything is working correctly, the output should resemble the following. Check that each brick is listed here:</p>
+
+<pre><code>Volume Name: example-volume
+Type: Replicate
+Volume ID: 1b5ce8e2-2e1e-4207-b8c9-b704ef8a6ebc
+Status: Started
+Number of Bricks: 1 x 3 = 3
+Transport-type: tcp
+Bricks:
+Brick1: gluster1:/data/example-volume
+Brick2: gluster2:/data/example-volume
+Brick3: gluster3:/data/example-volume
+Options Reconfigured:
+performance.readdir-ahead: on
+</code></pre></li>
+</ol>
+
+<h3 id="add-firewall-rules">Add Firewall Rules</h3>
+
+<p>Run the following commands on each Linode in your pool.</p>
+
+<ol>
+<li><p>Start <code>firewalld</code>:</p>
+
+<pre><code>systemctl start firewalld
+</code></pre></li>
+
+<li><p>Add firewall rules that allow GlusterFS service to communicate between your trusted servers. Replace the IP addresses below with the private IP addresses of your hosts:</p>
+
+<pre><code>firewall-cmd --zone=internal --add-service=glusterfs --permanent
+firewall-cmd --zone=internal --add-source=192.168.1.2/32 --permanent
+firewall-cmd --zone=internal --add-source=192.168.3.4/32 --permanent
+firewall-cmd --zone=internal --add-source=192.168.5.6/32 --permanent
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In the Linode Manger, you may notice that the netmask for your private IP addresses is /17. Firewalld does not recognize this, so a /32 prefix should be used instead.</div>
+</blockquote>
+</li>
+
+<li><p>Reload your firewall configuration:</p>
+
+<pre><code>firewall-cmd --reload
+</code></pre></li>
+
+<li><p>Enable the <code>firewalld</code> and <code>glusterd</code> services to have them start automatically upon booting:</p>
+
+<pre><code>systemctl enable firewalld glusterd
+</code></pre></li>
+</ol>
+
+<h3 id="test-replication">Test Replication</h3>
+
+<p>This section will explain how to test file replication between servers in your pool. Testing in this manner should not be done in a live production environment.</p>
+
+<ol>
+<li><p>Mount the volume on one of your hosts. In this example, we&rsquo;ll use <code>gluster1</code>, but you can use any file system node:</p>
+
+<pre><code>mount -t glusterfs gluster1:/example-volume /mnt
+</code></pre></li>
+
+<li><p>Create an empty file called <code>test</code> within <code>/mnt</code>, where we mounted the volume. Do <strong>not</strong> write directly to <code>/data/example-volume</code> or its subdirectories.</p>
+
+<pre><code>touch /mnt/test
+</code></pre></li>
+
+<li><p>From your other file system nodes, check the contents of your volume:</p>
+
+<pre><code>ls /data/example-volume
+</code></pre>
+
+<p>If replication is working properly, the <code>test</code> file you created on the mounted volume should now show up on your other hosts.</p></li>
+
+<li><p>Remember to delete the test file from <code>/mnt</code> (on the same host used to create it) and unmount the volume before using GlusterFS in production:</p>
+
+<pre><code>rm /mnt/test
+umount /mnt
+</code></pre></li>
+</ol>
+
+<h2 id="galera-with-xtradb">Galera with XtraDB</h2>
+
+<p>Now that we have a replicated file system, we can begin to set up our database cluster. In this section, we&rsquo;ll be using a cluster of Percona XtraDB database servers with Galera replication.</p>
+
+<p>We&rsquo;ll use three 2GB Linodes with hostnames <code>galera1</code>, <code>galera2</code>, and <code>galera3</code> as our database nodes. Create these now if you have not already, and edit the <code>/etc/hosts</code> file on each to add the following, replacing the private IP addresses, fully qualified domain names, and hostnames of your database nodes:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">192.168.1.2    galera1.yourdomain.com    galera1
+192.168.3.4    galera2.yourdomain.com    galera2
+192.168.5.6    galera3.yourdomain.com    galera3</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You will need an additional private IP address for one of your database nodes, as we&rsquo;ll be using it as a <em>floating IP</em> for failover in a later section. To request an additional private IP address, you&rsquo;ll need to <a href="/docs/platform/support/">contact support</a>.</div>
+</blockquote>
+
+
+<h3 id="install-galera-and-xtradb">Install Galera and XtraDB</h3>
+
+<ol>
+<li><p>Remove the <code>mysql-libs</code> package from each node:</p>
+
+<pre><code>yum remove mysql-libs
+</code></pre></li>
+
+<li><p>Install the following packages on each database node:</p>
+
+<pre><code>yum install epel-release
+yum install https://www.percona.com/redir/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
+yum install Percona-XtraDB-Cluster-56 Percona-XtraDB-Cluster-shared-56
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>When installing <code>Percona-XtraDB-Cluster-56</code> and <code>Percona-XtraDB-Cluster-shared-56</code>, you will be prompted to verify a GPG key from the Percona repository. Before running the third command, you can manually import the GPG key:</p>
+
+<p>rpm &ndash;import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage</p>
+</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="configure-your-galera-cluster">Configure Your Galera Cluster</h3>
+
+<p>We will configure the cluster to use XtraBackup for <em>state snapshot transfer</em> (SST), which is a more efficient way of syncing data between database nodes than other alternatives like <code>rsync</code> or <code>mysqldump</code>.</p>
+
+<ol>
+<li><p>Make the following changes to <code>/etc/my.cnf</code> on each of your database nodes:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/my.cnf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">[mysqld]
+bind_address                   = 0.0.0.0
+
+...
+
+wsrep_cluster_address          = gcomm://galera1,galera2,galera3 #use your hostnames here
+wsrep_provider                 = /usr/lib64/galera3/libgalera_smm.so
+wsrep_slave_threads            = 8
+wsrep_cluster_name             = Cluster
+wsrep_node_name                = galera1
+
+...
+
+wsrep_node_address             = 192.168.x.x
+
+...
+
+wsrep_sst_method               = xtrabackup-v2
+wsrep_sst_auth                 = sstuser:password</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The values for <code>wsrep_node_name</code> and <code>wsrep_node_address</code> should be configured individually for each node, using the private IP address for that node and its hostname. The rest of the lines should match on all your database nodes.</p>
+
+<p>In the line beginning with <code>wsrep_sst_auth</code>, replace <code>password</code> with a secure password of your choosing and keep it in a safe place. It will be needed later.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The <code>xtrabackup-v2</code> service accesses the database as <code>sstuser</code>, authenticating using <code>password</code> to log into MySQL to grab backup locks for replication.</div>
+</blockquote>
+</li>
+
+<li><p>On your first database node, start MySQL as the primary component in your cluster. This process is known as <em>bootstrapping</em>; this tells the database node to start as the primary component that the other nodes in the cluster will use as a reference point when they join the cluster and sync their data:</p>
+
+<pre><code>systemctl start mysql@bootstrap
+</code></pre>
+
+<p>This command should be run only when bringing up a cluster for the first time, <em>not</em> for reconnecting nodes to an existing cluster.</p></li>
+
+<li><p>On the first node, enter your MySQL shell:</p>
+
+<pre><code>mysql
+</code></pre>
+
+<p>Create a database user and enable replication. Replace <code>password</code> with the password you set in Step 1:</p>
+
+<pre><code>CREATE USER 'sstuser'@'localhost' IDENTIFIED BY 'password';
+GRANT RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT ON *.* TO 'sstuser'@'localhost';
+FLUSH PRIVILEGES;
+</code></pre></li>
+
+<li><p>On your other nodes, start MySQL normally to have them join the cluster:</p>
+
+<pre><code>systemctl start mysql
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you want to learn more about <code>xtrabackup</code> privileges their <a href="https://www.percona.com/doc/percona-xtrabackup/2.4/using_xtrabackup/privileges.html">documentation</a> is a good place to start.</div>
+</blockquote>
+
+
+<h3 id="test-database-replication">Test Database Replication</h3>
+
+<p>Now that your database nodes are configured, we can test to make sure they&rsquo;ve all joined the cluster and are replicating properly.</p>
+
+<ol>
+<li><p>Enter the MySQL shell on any database node, using the <code>mysql</code> command. Run the following command in MySQL to check the status of your cluster:</p>
+
+<pre><code>SHOW STATUS LIKE 'wsrep_cluster%';
+</code></pre>
+
+<p>If your cluster has been configured properly, your output should resemble the following, showing the expected value of <code>3</code> for <code>wsrep_cluster_size</code>, and <code>wsrep_cluster_status</code> should show <code>Primary</code>:</p>
+
+<pre><code>+--------------------------+--------------------------------------+
+| Variable_name            | Value                                |
++--------------------------+--------------------------------------+
+| wsrep_cluster_conf_id    | 3                                    |
+| wsrep_cluster_size       | 3                                    |
+| wsrep_cluster_state_uuid | a3dab288-3275-11e6-a26f-42e24e1d7125 |
+| wsrep_cluster_status     | Primary                              |
++--------------------------+--------------------------------------+
+4 rows in set (0.00 sec)
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you add or remove nodes to and from the cluster in the future, you may notice the value for <code>wsrep_cluster_conf_id</code> increases each time. This value is the number of changes the cluster&rsquo;s configuration has gone through, and does not directly affect functionality. The above value of <code>3</code> is only an example.</div>
+</blockquote>
+</li>
+
+<li><p>Create a test database:</p>
+
+<pre><code>CREATE DATABASE testdb;
+</code></pre></li>
+
+<li><p>On a different database node, enter the <code>mysql</code> cli and check whether you can see the database you created:</p>
+
+<pre><code>SHOW DATABASES;
+</code></pre>
+
+<p>This should output a table that includes the <code>testdb</code> database, confirming that the databases are synchronized:</p>
+
+<pre><code>+--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| test               |
+| testdb             |
++--------------------+
+4 rows in set (0.00 sec)
+</code></pre>
+
+<p>You can run the same command on any other database nodes to check that replication is occurring across the entire cluster.</p></li>
+
+<li><p>Exit the MySQL CLI on all nodes:</p>
+
+<pre><code>quit
+</code></pre></li>
+</ol>
+
+<h3 id="secure-mysql">Secure MySQL</h3>
+
+<p>For greater security, run the MySQL secure installation from <strong>one</strong> of your nodes:</p>
+
+<pre><code>mysql_secure_installation
+</code></pre>
+
+<p>This will display a series of prompts that will allow you to set your MySQL root user password, remove anonymous users, disable remote root login, remove a default test database, and reload privileges. Additional details on each item will be provided in the prompts. After reading each prompt, it is recommended that you answer <em>yes</em> to all of the questions for a secure installation.</p>
+
+<h3 id="add-firewall-rules-1">Add Firewall Rules</h3>
+
+<p>Run the following commands on each database node.</p>
+
+<ol>
+<li><p>Create and edit <code>/etc/firewalld/services/galera.xml</code> to match the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/firewalld/services/galera.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;service&gt;
+  &lt;short&gt;Galera Replication&lt;/short&gt;
+  &lt;description&gt;Galera Master-Master Replication and State Transfer&lt;/description&gt;
+  &lt;port protocol=&#34;tcp&#34; port=&#34;4567&#34;/&gt;
+  &lt;port protocol=&#34;tcp&#34; port=&#34;4568&#34;/&gt;
+  &lt;port protocol=&#34;tcp&#34; port=&#34;4444&#34;/&gt;
+&lt;/service&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Start <code>firewalld</code>:</p>
+
+<pre><code>systemctl start firewalld
+</code></pre></li>
+
+<li><p>Add firewall rules that allow Galera and MySQL service to communicate between your trusted servers. Replace the IP addresses below with the private IP addresses of your database nodes:</p>
+
+<pre><code>firewall-cmd --zone=internal --add-service=mysql --permanent
+firewall-cmd --zone=internal --add-service=galera --permanent
+firewall-cmd --zone=internal --add-source=192.168.1.2/32 --permanent
+firewall-cmd --zone=internal --add-source=192.168.3.4/32 --permanent
+firewall-cmd --zone=internal --add-source=192.168.5.6/32 --permanent
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>In the Linode Manger, you may notice that the netmask for your private IP addresses is /17. Firewalld does not recognize this, so a /32 prefix should be used instead.</div>
+</blockquote>
+</li>
+
+<li><p>Reload your firewall configuration and enable the <code>firewalld</code> service to start automatically on boot:</p>
+
+<pre><code>firewall-cmd --reload
+systemctl enable firewalld
+</code></pre></li>
+</ol>
+
+<h2 id="apache-servers">Apache Servers</h2>
+
+<p>With file system and database clusters set up, you&rsquo;ll now need web servers to deliver your sites or applications. For our application nodes, we&rsquo;ll use three 2GB Linodes with the hostnames <code>app1</code>, <code>app2</code>, and <code>app3</code>.</p>
+
+<p>Before you start, edit the <code>/etc/hosts</code> file on each application node to include the private IP address and hostname for each application node and for the file system nodes we set up previously:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">192.168.0.1    app1.yourdomain.com        app1
+192.168.2.3    app2.yourdomain.com        app2
+192.168.4.5    app3.yourdomain.com        app3
+
+192.168.1.2    gluster1.yourdomain.com    gluster1
+192.168.3.4    gluster2.yourdomain.com    gluster2
+192.168.5.6    gluster3.yourdomain.com    gluster3</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="install-apache">Install Apache</h3>
+
+<p>Install the Apache HTTPD web server package on each of your three application nodes:</p>
+
+<pre><code>yum install httpd
+</code></pre>
+
+<p>At this point, you may also tune your Apache instances to optimize performance based on your site or application&rsquo;s needs. This step is optional, however, and is beyond the scope of this guide. Check <a href="/docs/websites/apache-tips-and-tricks/tuning-your-apache-server">Tuning Your Apache Server</a> for more information.</p>
+
+<h3 id="add-firewall-rules-2">Add Firewall Rules</h3>
+
+<p>Run the following commands to start your firewall, enable it on boot, and configure firewall rules to allow web traffic on port 80. To enable HTTPS traffic, run the third command again, substituting <code>https</code> for <code>http</code>, before reloading the rules:</p>
+
+<pre><code>systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --permanent --add-service=http
+firewall-cmd --reload
+</code></pre>
+
+<h3 id="allow-private-traffic-to-glusterfs-nodes">Allow Private Traffic to GlusterFS Nodes</h3>
+
+<p>To allow our application servers to communicate with the networked file system, we&rsquo;ll need to add firewall rules to the file system nodes. On each of your GlusterFS nodes, enter the following commands, substituting the private IP address of each application node:</p>
+
+<pre><code>firewall-cmd --zone=internal --add-source=192.168.0.1/32 --permanent
+firewall-cmd --zone=internal --add-source=192.168.2.3/32 --permanent
+firewall-cmd --zone=internal --add-source=192.168.4.5/32 --permanent
+</code></pre>
+
+<p>After these rules have been set, reload the firewall rules on each file system node:</p>
+
+<pre><code>firewall-cmd --reload
+</code></pre>
+
+<h3 id="mount-the-gluster-filesystem">Mount the Gluster Filesystem</h3>
+
+<p>Next, we&rsquo;ll mount the Gluster volume on our application servers. The steps in this section should be performed on each Apache server node.</p>
+
+<ol>
+<li><p>Install <code>glusterfs-fuse</code>:</p>
+
+<pre><code>yum install glusterfs-fuse
+</code></pre></li>
+
+<li><p>Add the following line to <code>/etc/fstab</code>, substituting your own GlusterFS hostnames for <code>gluster1</code>, <code>gluster2</code> and <code>gluster3</code>, and your volume name for <code>example-volume</code> if appropriate:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/fstab 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">gluster1:/example-volume  /srv/www  glusterfs defaults,_netdev,backup-volfile-servers=gluster2:gluster3 0 0</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Create the <code>/srv/www/</code> directory and mount the volume to it:</p>
+
+<pre><code>mkdir /srv/www
+mount /srv/www
+</code></pre></li>
+
+<li><p>Set the document root to <code>/srv/www</code> so that Apache serves content from the Gluster volume. Edit your <code>welcome.conf</code> file to match the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/httpd/conf.d/welcome.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+    <span class="nb">DocumentRoot</span> <span class="s2">&#34;/srv/www&#34;</span>
+    <span class="nt">&lt;Directory</span> <span class="s">/srv/www</span><span class="nt">&gt;</span>
+        <span class="nb">Require</span> <span class="k">all</span> granted
+        <span class="nb">Options</span> Indexes FollowSymLinks Multiviews
+    <span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span>
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Start the Apache server:</p>
+
+<pre><code>systemctl start httpd
+</code></pre></li>
+
+<li><p>You may also want to enable Apache to start on boot, although this is optional:</p>
+
+<pre><code>systemctl enable httpd
+</code></pre></li>
+</ol>
+
+<h3 id="test-your-configuration">Test Your Configuration</h3>
+
+<p>Your Apache servers should now be capable of serving files and applications from your Gluster volume. To test whether everything is connected properly, you can create a test file and check whether it&rsquo;s accessible by all of your application servers. On any one of your application nodes, create a blank file in the directory where you mounted your volume:</p>
+
+<pre><code>touch /srv/www/testfile
+</code></pre>
+
+<p>In a web browser, enter the public IP address of any of your Apache servers. You should see a page titled &ldquo;Index of /&rdquo; with a list consisting of <code>testfile</code>. Make sure that the same list is visible when using the public IP of all of your Apache servers.</p>
+
+<p>To test redundancy of your file system, you can stop the Gluster daemon on your <code>gluster1</code> node:</p>
+
+<pre><code>systemctl stop glusterd
+</code></pre>
+
+<p>Follow the above steps again, creating another test file and checking whether it is visible from your application nodes&rsquo; public IPs. Because the GlusterFS volume is replicated and distributed, and we set backup volumes for our Apache servers, taking down one GlusterFS node should not affect the accessibility of your files.</p>
+
+<p>When you&rsquo;re finished, be sure to remove the test files. Do this for any additional test files you created as well:</p>
+
+<pre><code>rm /srv/www/testfile
+</code></pre>
+
+<p>Remember to bring <code>gluster1</code>&rsquo;s Gluster daemon back up before continuing:</p>
+
+<pre><code>systemctl start glusterd
+</code></pre>
+
+<h2 id="keepalived">Keepalived</h2>
+
+<p>So far, we&rsquo;ve successfully configured a redundant web stack, with three layers of nodes performing a series of tasks. Gluster automatically handles monitoring, and we configured the failover for the file system nodes in our application nodes&rsquo; <code>/etc/fstab</code> files. Next, we&rsquo;ll use keepalived to handle database failover.</p>
+
+<p>Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In this section, you will be using the additional private IP address, or <em>floating IP</em> from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn&rsquo;t request an additional private IP in the Galera section, <a href="https://www.linode.com/docs/platform/support/">contact support</a> and do so before continuing.</p>
+
+<p>We&rsquo;ve added the floating IP address to <code>galera1</code>, but in practice, it can be configured to any of your database nodes.</p>
+
+<p>No additional Linodes will be created in this section, and all configuration will be done on your database nodes. Before you begin, install <code>keepalived</code> on all of your database nodes:</p>
+
+<pre><code>yum install keepalived
+</code></pre>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Make sure that <a href="/docs/platform/network-helper">Network Helper</a> is turned <strong>OFF</strong> on your database nodes before proceeding.</div>
+</blockquote>
+
+
+<h3 id="configure-ip-failover">Configure IP Failover</h3>
+
+<p>First, we&rsquo;ll configure IP failover on <code>galera2</code> and <code>galera3</code> to take on the floating IP address from <code>galera1</code> in the event that it fails.</p>
+
+<ol>
+<li><p>Go to the <strong>Remote Access</strong> tab in the Linode Manager for <code>galera2</code>, and click &ldquo;IP Failover&rdquo; under your public IP addresses.</p></li>
+
+<li><p>You&rsquo;ll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for <code>galera1</code>, which we will now refer to as the floating IP address, and click <strong>Save Changes</strong>.</p></li>
+
+<li><p>Repeat the above steps to configure IP failover for <code>galera3</code> as well. Make sure to select the same IP address.</p></li>
+</ol>
+
+<h3 id="configure-keepalived">Configure Keepalived</h3>
+
+<ol>
+<li><p>Edit the following line in your <code>/etc/sysconfig/keepalived</code> file on all database nodes, adding <code>-P</code> to enable virtual router redundancy protocol:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/sysconfig/keepalived 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">KEEPALIVED_OPTIONS=&#34;-D -P&#34;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>On all database nodes, back up <code>keepalived.conf</code>:</p>
+
+<pre><code>mv /etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf.backup
+</code></pre></li>
+
+<li><p>On all database nodes, replace the original file with the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/keepalived/keepalived.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">! Configuration File for keepalived
+global_defs {
+    notification_email {
+    }
+
+    router_id LVS_DBCLUSTER
+}
+
+vrrp_script chk_pxc {
+    script &#34;/usr/bin/clustercheck clustercheck example_password 0&#34;
+    interval 15
+    fall 4
+    rise 2
+}
+
+vrrp_instance VI_1 {
+    state BACKUP
+    nopreempt
+    interface eth0
+    virtual_router_id 51
+    priority 50
+    advert_int 1
+    track_interface {
+        eth0
+    }
+    track_script {
+        chk_pxc
+    }
+    authentication {
+        auth_type PASS
+        auth_pass example_password
+    }
+    unicast_src_ip  192.168.0.1
+    unicast_peer {
+    192.168.2.3
+    192.168.4.5
+    }
+
+    virtual_ipaddress {
+    192.168.9.9/17
+    }
+    notify_master &#34;/bin/echo &#39;now master&#39; &gt; /tmp/keepalived.state&#34;
+    notify_backup &#34;/bin/echo &#39;now backup&#39; &gt; /tmp/keepalived.state&#34;
+    notify_fault &#34;/bin/echo &#39;now fault&#39; &gt; /tmp/keepalived.state&#34;
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>In the lines beginning with <code>script</code> and <code>auth_pass</code>, change <code>example_password</code> to a secure password of your choosing. In the <code>virtual_ipaddress</code> block, replace <code>192.168.9.9</code> with the floating IP address you configured previously. Be sure to include the <code>/17</code> netmask on this line. These sections, and the rest of the file, should be the same on all database nodes.</p>
+
+<p>In the line beginning with <code>unicast_src_ip</code>, change <code>192.168.0.1</code> to the private IP address of the node you are configuring. In the <code>unicast_peer</code> block, change the IP addresses to the private IP addresses of the other two nodes. Note that these sections will be slightly different depending on which node you are configuring.</p></li>
+
+<li><p>Open the MySQL shell using the password set when we <a href="#secure-mysql">secured MySQL</a>:</p>
+
+<pre><code>mysql -u root -p
+</code></pre></li>
+
+<li><p>Create the user <code>clustercheck</code>, replacing <code>example_password</code> with the password configured in step 3:</p>
+
+<pre><code>GRANT USAGE ON *.* to 'clustercheck'@'localhost' IDENTIFIED BY 'example_password';
+FLUSH PRIVILEGES;
+</code></pre>
+
+<p>This step only needs to be done on one database node. Once complete, exit the MySQL CLI using <code>quit</code>.</p></li>
+
+<li><p>On all of your database nodes, add the following entry to your firewall configuration, within the <code>&lt;zone&gt;</code> block:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/firewalld/zones/internal.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;rule&gt;</span>
+    <span class="nt">&lt;protocol</span> <span class="na">value=</span><span class="s">&#34;vrrp&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;accept</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/rule&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Reload your firewall rules:</p>
+
+<pre><code>firewall-cmd --reload
+</code></pre></li>
+
+<li><p>Start the <code>keepalived</code> service and enable it to load at boot time:</p>
+
+<pre><code>systemctl start keepalived
+systemctl enable keepalived
+</code></pre></li>
+
+<li><p>Reboot each of your three database nodes to bring up the failover configuration. It is important to do this one at a time, otherwise you may bring down the entire cluster, in which case you would need to bootstrap MySQL and add each node to the cluster again.</p></li>
+</ol>
+
+<p>Congratulations! You&rsquo;ve successfully installed and configured keepalived. Your database nodes will now be able to fail over if one goes down, ensuring high availability.</p>
+
+<h2 id="nodebalancer">Nodebalancer</h2>
+
+<p>The final step in creating a highly available website or application is to load balance traffic to the application servers. In this step, we&rsquo;ll use a NodeBalancer to distribute traffic between the application servers to ensure that no single server gets overloaded. NodeBalancers are highly available by default, and do not constitute a single point of failure.</p>
+
+<p>For instructions on how to install this component, follow our guide on <a href="/docs/platform/nodebalancer/getting-started-with-nodebalancers">getting started with NodeBalancers</a>. Be sure to use the <em>private</em> IP addresses of your application servers when adding nodes to your backend.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Nodebalancers are an add-on service. Be aware that adding a Nodebalancer will create an additional monthly charge to your account. Please see our <a href="/docs/platform/billing-and-payments#additional-linode-services">Billing and Payments</a> guide for more information.</div>
+</blockquote>
+
+
+<h2 id="wordpress-optional">Wordpress (Optional)</h2>
+
+<p>If you&rsquo;re installing WordPress to manage your new highly available website, we&rsquo;ll explain how to do so here. If you&rsquo;re using your cluster to serve a custom application, website, or for another purpose, you may skip this section.</p>
+
+<ol>
+<li><p>Install the MariaDB package on all three of your application nodes. This provides a MySQL client from which to read and write to your Galera cluster:</p>
+
+<pre><code>yum install mariadb
+</code></pre></li>
+
+<li><p>On one of your database nodes, enter the MySQL shell with the <code>mysql -u root -p</code> command. From there, enter the following to allow communication with your database nodes. Replace <code>password</code> with a secure password of your choosing:</p>
+
+<pre><code>CREATE DATABASE wordpress;
+CREATE USER'wordpress'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'%';
+FLUSH PRIVILEGES;
+</code></pre></li>
+
+<li><p>On all of your application servers, install PHP and the necessary dependencies:</p>
+
+<pre><code>yum install php php-mysql php-gd
+</code></pre></li>
+
+<li><p>Restart Apache on each of your application nodes:</p>
+
+<pre><code>systemctl restart httpd
+</code></pre></li>
+
+<li><p>On <em>just one</em> of your application servers, install the latest version of Wordpress into <code>/srv/www</code> and extract it:</p>
+
+<pre><code>cd /srv/www
+wget http://wordpress.org/latest.tar.gz
+tar -xvf latest.tar.gz
+</code></pre>
+
+<p>Optionally, you can create a backup of your original Wordpress archive in case you need to reinstall it at a later time:</p>
+
+<pre><code>mv latest.tar.gz wordpress-`date &quot;+%Y-%m-%d&quot;`.tar.gz
+</code></pre></li>
+
+<li><p>On all of your application servers, change ownership of the <code>/srv/www</code> directory to the Apache user:</p>
+
+<pre><code>chown -R apache:apache /srv/www
+</code></pre></li>
+
+<li><p>Restart Apache on all of your application servers:</p>
+
+<pre><code>systemctl restart httpd
+</code></pre></li>
+
+<li><p>In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the Wordpress admin panel. Use <code>wordpress</code> as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instruction, see our guide on <a href="/docs/websites/cms/how-to-install-and-configure-wordpress#configure-wordpress">Installing and Configuring WordPress</a>.</p></li>
+</ol>
+
+<p>Congratulations! You&rsquo;ve successfully configured a highly available Wordpress site, and you&rsquo;re ready to start publishing content. For more information, feel free to reference our <a href="/docs/websites/cms/how-to-install-and-configure-wordpress">Wordpress configuration guide</a>.</p>
+
+<h2 id="dns-records">DNS Records</h2>
+
+<p>The NodeBalancer in the above system directs all incoming traffic to the application servers. As such, its IP address will be the one you should use when configuring your DNS records. To find this information, visit the <strong>NodeBalancers</strong> tab in the Linode Manager and look in the &ldquo;IP Address&rdquo; section.</p>
+
+<p>For more information on DNS configuration, refer to our <a href="/docs/networking/dns/dns-records-an-introduction">introduction to DNS records</a> and our guide on how to use the <a href="/docs/networking/dns/dns-manager-overview">DNS Manager</a>.</p>
+
+<h2 id="configuration-management">Configuration Management</h2>
+
+<p>Because a high availability configuration involves so many different components, you may want to consider additional software to help you manage the cluster and create new nodes when necessary. For more information on the options available for managing your nodes, see our guides on <a href="https://www.linode.com/docs/applications/salt/install-salt">Salt</a>, <a href="https://www.linode.com/docs/applications/chef/beginners-guide-chef">Chef</a>, <a href="https://www.linode.com/docs/applications/puppet/set-up-puppet-master-agent">Puppet</a>, and <a href="https://www.linode.com/content/applications/ansible/getting-started-with-ansible">Ansible</a>. You can also refer to our guide on <a href="https://www.linode.com/content/platform/automating-server-builds">Automating Server Builds</a> for an overview of how to choose a solution that is right for you.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.gluster.org/">GlusterFS</a></li>
+
+<li><a href="https://galeracluster.com/">Galera Cluster</a></li>
+
+<li><a href="https://httpd.apache.org/">Apache Web Server</a></li>
+
+<li><a href="http://www.keepalived.org/">Keepalived</a></li>
+
+<li><a href="https://www.percona.com/doc/percona-xtrabackup/2.4/index.html">XtraBackup</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/introduction-to-high-availability/">Introduction to High Availability</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/">How to Use HAProxy for Load Balancing</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/caddy/install-and-configure-caddy-on-centos-7/">Install and Configure Caddy on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/">Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-on-ubuntu-14-04/">Apache Web Server on Ubuntu 14.04 LTS</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#glusterfs">GlusterFS</a>
+<ul>
+<li><a href="#install-glusterfs">Install GlusterFS</a></li>
+<li><a href="#configure-glusterfs">Configure GlusterFS</a></li>
+<li><a href="#add-firewall-rules">Add Firewall Rules</a></li>
+<li><a href="#test-replication">Test Replication</a></li>
+</ul></li>
+<li><a href="#galera-with-xtradb">Galera with XtraDB</a>
+<ul>
+<li><a href="#install-galera-and-xtradb">Install Galera and XtraDB</a></li>
+<li><a href="#configure-your-galera-cluster">Configure Your Galera Cluster</a></li>
+<li><a href="#test-database-replication">Test Database Replication</a></li>
+<li><a href="#secure-mysql">Secure MySQL</a></li>
+<li><a href="#add-firewall-rules-1">Add Firewall Rules</a></li>
+</ul></li>
+<li><a href="#apache-servers">Apache Servers</a>
+<ul>
+<li><a href="#install-apache">Install Apache</a></li>
+<li><a href="#add-firewall-rules-2">Add Firewall Rules</a></li>
+<li><a href="#allow-private-traffic-to-glusterfs-nodes">Allow Private Traffic to GlusterFS Nodes</a></li>
+<li><a href="#mount-the-gluster-filesystem">Mount the Gluster Filesystem</a></li>
+<li><a href="#test-your-configuration">Test Your Configuration</a></li>
+</ul></li>
+<li><a href="#keepalived">Keepalived</a>
+<ul>
+<li><a href="#configure-ip-failover">Configure IP Failover</a></li>
+<li><a href="#configure-keepalived">Configure Keepalived</a></li>
+</ul></li>
+<li><a href="#nodebalancer">Nodebalancer</a></li>
+<li><a href="#wordpress-optional">Wordpress (Optional)</a></li>
+<li><a href="#dns-records">DNS Records</a></li>
+<li><a href="#configuration-management">Configuration Management</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

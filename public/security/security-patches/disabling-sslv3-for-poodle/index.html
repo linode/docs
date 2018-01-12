@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Disabling SSLv3 for POODLE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Instructions on disabling SSLv3 to protect against the POODLE vulnerability">
+        <meta name="keywords" content="sslv3, poodle, security, patch, ubuntu, debian, centos, fedora">
+        
+        <meta property="og:title" content="Disabling SSLv3 for POODLE">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/security-patches/disabling-sslv3-for-poodle/">
+        <meta property="og:description" content="Instructions on disabling SSLv3 to protect against the POODLE vulnerability">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/security-patches/disabling-sslv3-for-poodle/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/security-patches/">Security Patches</a>
+  
+</li>
+
+
+<li>
+  
+  Disabling SSLv3 for POODLE
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Disabling SSLv3 for POODLE</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-10-20T00:00:00Z">Monday, October 20, 2014</time> by Dave Russell</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fsecurity-patches%2fdisabling-sslv3-for-poodle%2f&via=linode&text=Disabling%20SSLv3%20for%20POODLE" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fsecurity-patches%2fdisabling-sslv3-for-poodle%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fsecurity-patches%2fdisabling-sslv3-for-poodle%2f&t=Disabling%20SSLv3%20for%20POODLE" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/security-patches/disabling-sslv3-for-poodle.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/security-patches/disabling-sslv3-for-poodle.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Padding Oracle On Downgraded Legacy Encryption (POODLE) was released with the CVE identifier of <a href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566">CVE-2014-3566</a>. The vulnerability was found in SSL protocol 3.0, unlike <a href="/docs/security/security-patches/patching-openssl-for-the-heartbleed-vulnerability">Heartbleed</a> which was found in OpenSSL.</p>
+
+<p>SSL protocol 3.0 makes use of CBC-mode ciphers that allow for man-in-the-middle attacks using padding-oracle stacks. These attacks target the CBC ciphers to retrieve plain-text output from otherwise encrypted information.</p>
+
+<p>There is some good news. Most connections are using TLS and not SSL. However, sometimes there are problems negotiating a TLS session, and then the web servers, browsers, and other applications must downgrade to SSL.</p>
+
+<p>In order to resolve this issue, we must disable SSLv3 for applications. Unfortunately, there is no way to do this for an entire server at once. You will need to edit each individual configuration separately.</p>
+
+<h2 id="the-impact-of-disabling-sslv3">The Impact of Disabling SSLv3</h2>
+
+<p>There&rsquo;s little impact for most people in disabling SSLv3 because they are not relying on SSLv3 to make connections via SSL/TLS. The large majority relies on TLS.</p>
+
+<p>In the future, browsers such as Google Chrome and FireFox will have SSLv3 disabled at release. It is also advisable to disable SSLv3 on home browsers, not only server applications.</p>
+
+<h2 id="testing-for-sslv3">Testing for SSLv3</h2>
+
+<p>There are several ways to determine if a service running over SSL will allow SSLv3. An easy method is to use the OpenSSL command line client. Run the command:</p>
+
+<pre><code>openssl s_client -connect example.com:443 -ssl3
+</code></pre>
+
+<p>Remember to replace <code>example.com</code> with your domain or IP address, and <code>443</code> with any alternate port you may be using for your SSL connection. Check the output for the text:</p>
+
+<pre><code>routines:SSL3_READ_BYTES:sslv3 alert handshake failure
+</code></pre>
+
+<p>If you see this, the service you have tested does not support SSLv3. It is safe from the vulnerability.</p>
+
+<h2 id="disabling-sslv3">Disabling SSLv3</h2>
+
+<p>Unfortunately, there is no simple way to go about this. There&rsquo;s no patch to install, and the only way to resolve this is to disable SSLv3 in any application that may use it.</p>
+
+<p>While we do not know the configuration of your Linode, we would be happy to assist you via support ticket if you have any questions about disabling SSLv3 on a specific application that is not provided below.</p>
+
+<p>The POODLE vulnerability only works if the browser of the client and the server&rsquo;s connection are both supporting SSLv3. Therefore, by disabling SSLv3 on your system, you are also protecting your client(s) from the vulnerability.</p>
+
+<h3 id="apache">Apache</h3>
+
+<p>If you&rsquo;re running an Apache web server that currently allows SSLv3, you will need to edit the Apache configuration. On Debian and Ubuntu systems the file is <code>/etc/apache2/mods-available/ssl.conf</code>. On CentOS and Fedora the file is <code>/etc/httpd/conf.d/ssl.conf</code>. You will need to add the following line to your Apache configuration with other SSL directives.</p>
+
+<pre><code>SSLProtocol All -SSLv2 -SSLv3
+</code></pre>
+
+<p>This will allow all protocols except SSLv2 and SSLv3. You can test your configuration change with the command:</p>
+
+<pre><code>apachectl configtest
+</code></pre>
+
+<p>You will then need to restart your Apache instance. On Ubuntu and Debian:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre>
+
+<p>On CentOS and Fedora:</p>
+
+<pre><code>systemctl restart httpd
+</code></pre>
+
+<p>For more information about configuring Apache to disallow SSLv2 and SSLv3, please see their <a href="https://httpd.apache.org/docs/2.2/mod/mod_ssl.html#sslprotocol">Mod_SSL Documentation</a></p>
+
+<h3 id="apache-on-cpanel-whm">Apache on cPanel/WHM</h3>
+
+<p>cPanel/WHM does not allow you to edit the Apache configuration files, and will overwrite most changes that are made to them. However, cPanel/WHM does give the option of configuring SSL cipher suites for Apache within the control panel.</p>
+
+<p>In order to change the Apache cipher suites, follow these steps:</p>
+
+<ol>
+<li><p>In WHM, type <code>apache</code> into the left-hand sidebar&rsquo;s search field. You will see <code>Apache Configuration</code> in the menu list. After clicking <code>Apache Configuration</code>, navigate to <code>Global Configuration</code>. It is the first option on the page in cPanel 11.44+.</p></li>
+
+<li><p>The first option is <code>SSL Cipher Suite</code>, and you will need to modify the current SSL Cipher Suite to include <code>-SSLv3</code>. An example of this is shown below.</p>
+
+<p>ALL:!ADH:RC4+RSA:+HIGH:+MEDIUM:-LOW:-SSLv2:-SSLv3:-EXP:!kEDH</p></li>
+
+<li><p>After saving the page, you will be asked to rebuild and restart Apache. Your changes should take effect after Apache has been rebuilt and restarted.</p></li>
+</ol>
+
+<h3 id="nginx">NGINX</h3>
+
+<p>If you&rsquo;re running an NGINX web server that currently uses SSLv3, you need to edit the NGINX configuration (<code>nginx.conf</code>). You will need to add the following line to your <code>server</code> directive:</p>
+
+<pre><code>ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+</code></pre>
+
+<p>This will deactivate SSLv3 from being used on NGINX. If you&rsquo;re unable to find the server directive in <code>nginx.conf</code>, you may need to locate your VirtualHost configuration file.</p>
+
+<p>You will also need to restart your NGINX server:</p>
+
+<pre><code>sudo service nginx restart
+</code></pre>
+
+<p>For more information about NGINX&rsquo;s SSL protocol setting, please see their <a href="http://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_protocols">NGX HTTP SSL Module Documentation</a>.</p>
+
+<h3 id="hiawatha">Hiawatha</h3>
+
+<p>If you&rsquo;re using the security-focused <a href="https://www.hiawatha-webserver.org/">Hiawatha web server</a>, it&rsquo;s likely that SSLv3 is already disabled by default. But if for some reason you&rsquo;re running an older version that does allow SSLv3, you can use the <code>MinSSLversion</code> setting in <code>hiawatha.conf</code>:</p>
+
+<pre><code>MinSSLversion = TLS1.0
+# or TLS1.1 or TLS1.2
+</code></pre>
+
+<p>Then restart Hiawatha. For example, in Debian or Ubuntu:</p>
+
+<pre><code>sudo service hiawatha restart
+</code></pre>
+
+<p>For more information on Hiawatha&rsquo;s configuration settings, see the <a href="https://www.hiawatha-webserver.org/manpages">manual page</a>.</p>
+
+<h3 id="postfix-smtp">Postfix SMTP</h3>
+
+<p>If your Postfix installation is set up for <code>opportunistic SSL</code>, which means that encryption is not enforced and plain text is accepted, you do not need to change anything. However, if you are running Postfix in <code>mandatory SSL</code> mode, you will need to adjust your configuration to reflect the following change:</p>
+
+<pre><code>smtpd_tls_mandatory_protocols=!SSLv2,!SSLv3
+</code></pre>
+
+<p>You&rsquo;ll want to look in the <code># TLS parameters</code> section of <code>/etc/postfix/main.cf</code>. This will force Postfix SMTP to not use SSLv3 or SSLv2. You will also need to restart Postfix:</p>
+
+<pre><code>sudo service postfix restart
+</code></pre>
+
+<p>For more information about Postfix&rsquo;s <code>smtpd_tls_mandatory_protocols</code> setting, please see their <a href="http://www.postfix.org/postconf.5.html#smtpd_tls_mandatory_protocols">Postfix Configuration Parameters</a> documentation.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The Postfix documentation has not yet been adjusted to disallow SSLv3.</div>
+</blockquote>
+
+
+<h3 id="dovecot">Dovecot</h3>
+
+<p>This will only work in Dovecot versions 2.1 and above. Add the following line to <code>/etc/dovecot/local.conf</code> or a new file in <code>/etc/dovecot/conf.d/10-ssl.conf</code>:</p>
+
+<pre><code>ssl_protocols = !SSLv2 !SSLv3
+</code></pre>
+
+<p>Then restart Dovecot:</p>
+
+<pre><code>sudo service dovecot restart
+</code></pre>
+
+<p>If you are running a version of Dovecot before 2.1, you will need to edit the source code of Dovecot.</p>
+
+<h3 id="haproxy">HAProxy</h3>
+
+<p>In order to disable SSLv3 in HAProxy, you must be using HAProxy 1.5+, as SSL is not supported in earlier versions of HAProxy. Edit the <code>/etc/haproxy.cfg</code> file and find the line that starts with <code>bind</code> and refers to port 443 (SSL). Append that line with <code>no-sslv3</code>.</p>
+
+<p>An example of this line would be:</p>
+
+<pre><code>bind :443 ssl crt &lt;crt&gt; ciphers &lt;ciphers&gt; no-sslv3
+</code></pre>
+
+<p>You can learn more about HAProxy&rsquo;s <code>no-sslv3</code> cipher in their <a href="https://cbonte.github.io/haproxy-dconv/configuration-1.5.html#5.1-no-sslv3">HAProxy Configuration Manual</a>.</p>
+
+<h3 id="openvpn">OpenVPN</h3>
+
+<p>According to a forum posted on <a href="https://forums.openvpn.net/topic17268.html">OpenVPN</a>, OpenVPN has announced that, because they use TLSv1.0, their platform is not vulnerable to POODLE.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/security-patches/patching-glibc-for-the-ghost-vulnerability/">Upgrading glibc for the GHOST Vulnerability</a></li>
+    
+    
+    
+    <li><a href="/docs/security/security-patches/patching-bash-for-the-shellshock-vulnerability/">Upgrading Bash for the Shellshock Vulnerability</a></li>
+    
+    
+    
+    <li><a href="/docs/security/security-patches/patching-openssl-for-the-heartbleed-vulnerability/">Patching OpenSSL for the Heartbleed Vulnerability</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/install-openvpn-access-server-on-linux/">Install OpenVPN Access Server on Linux for Secure Communications</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/cloud-storage/dropbox/">Installing and Configuring Dropbox</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#the-impact-of-disabling-sslv3">The Impact of Disabling SSLv3</a></li>
+<li><a href="#testing-for-sslv3">Testing for SSLv3</a></li>
+<li><a href="#disabling-sslv3">Disabling SSLv3</a>
+<ul>
+<li><a href="#apache">Apache</a></li>
+<li><a href="#apache-on-cpanel-whm">Apache on cPanel/WHM</a></li>
+<li><a href="#nginx">NGINX</a></li>
+<li><a href="#hiawatha">Hiawatha</a></li>
+<li><a href="#postfix-smtp">Postfix SMTP</a></li>
+<li><a href="#dovecot">Dovecot</a></li>
+<li><a href="#haproxy">HAProxy</a></li>
+<li><a href="#openvpn">OpenVPN</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

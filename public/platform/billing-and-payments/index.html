@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Billing and Payments</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Our guide to billing and payments.">
+        <meta name="keywords" content="billing, payments">
+        
+        <meta property="og:title" content="Billing and Payments">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/billing-and-payments/">
+        <meta property="og:description" content="Our guide to billing and payments.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/billing-and-payments/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  Billing and Payments
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Billing and Payments</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-03-15T00:00:00Z">Wednesday, March 15, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fbilling-and-payments%2f&via=linode&text=Billing%20and%20Payments" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fbilling-and-payments%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2fbilling-and-payments%2f&t=Billing%20and%20Payments" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/billing-and-payments.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/billing-and-payments.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>We&rsquo;ve done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn&rsquo;t answered here, please feel free to <a href="/docs/support">contact support</a>.</p>
+
+<h2 id="how-hourly-billing-works">How Hourly Billing Works</h2>
+
+<p>All services are billed automatically at the end of the month. If you used a service for the entirety of the past month, you&rsquo;ll be billed the <strong>monthly cap</strong> amount for that service. If you used a service for only part of the past month, you&rsquo;ll be billed at the <strong>hourly</strong> rate for that service. If your usage during any given month hits the monthly cap for the service, hourly billing stops. You&rsquo;ll never be billed more than the monthly cap for any service, excluding network <a href="#transfer-overages">transfer overages</a>. In other words, if you&rsquo;ve used a service for the entire month, you&rsquo;ll have a predictable amount on your bill.</p>
+
+<h2 id="linode-cloud-hosting-and-backups">Linode Cloud Hosting and Backups</h2>
+
+<h3 id="standard-plans">Standard Plans</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Service</th>
+<th align="left">Hourly Rate</th>
+<th align="left">Monthly</th>
+<th align="left">Backups Hourly Rate</th>
+<th align="left">Backups Monthly</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Linode 1GB</td>
+<td align="left">$0.0075/hr</td>
+<td align="left">$5/mo</td>
+<td align="left">$0.0019/hr</td>
+<td align="left">$2/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 2GB</td>
+<td align="left">$0.015/hr</td>
+<td align="left">$10/mo</td>
+<td align="left">$0.004/hr</td>
+<td align="left">$2.50/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 4GB</td>
+<td align="left">$0.03/hr</td>
+<td align="left">$20/mo</td>
+<td align="left">$0.008/hr</td>
+<td align="left">$5/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 8GB</td>
+<td align="left">$0.06/hr</td>
+<td align="left">$40/mo</td>
+<td align="left">$0.015/hr</td>
+<td align="left">$10/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 12GB</td>
+<td align="left">$0.12/hr</td>
+<td align="left">$80/mo</td>
+<td align="left">$0.03/hr</td>
+<td align="left">$20/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 24GB</td>
+<td align="left">$0.24/hr</td>
+<td align="left">$160/mo</td>
+<td align="left">$0.06/hr</td>
+<td align="left">$40/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 48GB</td>
+<td align="left">$0.48/hr</td>
+<td align="left">$320/mo</td>
+<td align="left">$0.12/hr</td>
+<td align="left">$80/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 64GB</td>
+<td align="left">$0.72/hr</td>
+<td align="left">$480/mo</td>
+<td align="left">$0.18/hr</td>
+<td align="left">$120/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 80GB</td>
+<td align="left">$0.96/hr</td>
+<td align="left">$640/mo</td>
+<td align="left">$0.24/hr</td>
+<td align="left">$160/mo</td>
+</tr>
+</tbody>
+</table>
+
+<p>Full specs of each plan can be found on our <a href="https://www.linode.com/pricing#standard">pricing page</a></p>
+
+<h3 id="high-memory-plans">High Memory Plans</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Service</th>
+<th align="left">Hourly Rate</th>
+<th align="left">Monthly</th>
+<th align="left">Backups Hourly Rate</th>
+<th align="left">Backups Monthly</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Linode 16GB</td>
+<td align="left">$0.09/hr</td>
+<td align="left">$60/mo</td>
+<td align="left">$0.008/hr</td>
+<td align="left">$5/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 32GB</td>
+<td align="left">$0.18/hr</td>
+<td align="left">$120/mo</td>
+<td align="left">$0.015/hr</td>
+<td align="left">$10/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 60GB</td>
+<td align="left">$0.36/hr</td>
+<td align="left">$240/mo</td>
+<td align="left">$0.03/hr</td>
+<td align="left">$20/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 104GB</td>
+<td align="left">$0.72/hr</td>
+<td align="left">$480/mo</td>
+<td align="left">$0.06/hr</td>
+<td align="left">$40/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode 200GB</td>
+<td align="left">$1.44/hr</td>
+<td align="left">$960/mo</td>
+<td align="left">$0.09/hr</td>
+<td align="left">$60/mo</td>
+</tr>
+</tbody>
+</table>
+
+<p>Full specs of each plan can be found on our <a href="https://www.linode.com/pricing#high_memory">pricing page</a></p>
+
+<h3 id="additional-linode-services">Additional Linode Services</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Service</th>
+<th align="left">Hourly Rate</th>
+<th align="left">Monthly</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Additional IP</td>
+<td align="left">$0.0015/hr</td>
+<td align="left">$1/mo</td>
+</tr>
+
+<tr>
+<td align="left">Linode Managed</td>
+<td align="left">$0.15/hr</td>
+<td align="left">$100/mo</td>
+</tr>
+
+<tr>
+<td align="left">NodeBalancer</td>
+<td align="left">$0.03/hr</td>
+<td align="left">$20/mo</td>
+</tr>
+
+<tr>
+<td align="left">Longview Pro 3</td>
+<td align="left">$0.03/hr</td>
+<td align="left">$20/mo</td>
+</tr>
+
+<tr>
+<td align="left">Longview Pro 10</td>
+<td align="left">$0.06/hr</td>
+<td align="left">$40/mo</td>
+</tr>
+
+<tr>
+<td align="left">Longview Pro 40</td>
+<td align="left">$0.15/hr</td>
+<td align="left">$100/mo</td>
+</tr>
+
+<tr>
+<td align="left">Longview Pro 100</td>
+<td align="left">$0.30/hr</td>
+<td align="left">$200/mo</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a <a href="#transfer-overages">transfer overage</a> charge beyond the monthly cap.</p>
+
+<p>Due to the <a href="http://en.wikipedia.org/wiki/IPv4_address_exhaustion">impending exhaustion of the IPv4 address space</a>, Linode requires users to provide technical justification. To add another public IP address, please <a href="/docs/support">contact support</a> with your justification.</p>
+</div>
+</blockquote>
+
+
+<h2 id="viewing-current-balance">Viewing Current Balance</h2>
+
+<p>To view your current balance, follow the steps below. This shows you the sum of all Linode services used so far in the month, down to the hour.</p>
+
+<ol>
+<li>Log in to the <a href="http://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>Account</strong> tab.</li>
+
+<li><p>In the <strong>Account</strong> tab, in the <strong>Recent Billing Activity and Account Balance</strong> section, you can see the <strong>Current Balance</strong>:</p>
+
+<p><a href="/docs/assets/1623-manager_account.png"><img src="/docs/assets/1622-manager_account_sm.png" alt="This customer has a $45.60 outstanding balance, shown next to the Current Balance." /></a></p></li>
+</ol>
+
+<p>Here, you can keep track of your outstanding balance. In the example above, the customer has used $45.60 worth of Linode services in the month so far. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.</p>
+
+<h2 id="mid-month-billing">Mid-Month Billing</h2>
+
+<p>You may receive a mid-month bill from Linode if you reach a certain threshold of Linode services used within a single month. For many users, this amount will be <strong>$50.00</strong>, although your account history with Linode can adjust that amount. In general, a history of on-time payments to Linode will increase the threshold amount. In the example image in the previous section, the user received a mid-month bill for $50.16 on February 9th.</p>
+
+<p>What does a mid-month bill mean? Your existing active services will stay active. However, you must pay the mid-month bill before you can activate additional Linode services. Once your payment is processed, you may continue adding new services.</p>
+
+<h2 id="if-my-linode-is-powered-off-will-i-be-billed">If My Linode is Powered Off, Will I Be Billed?</h2>
+
+<p>If your Linode is powered off, but is still added as a service on your account, you will still be billed for it. This is because Linode maintains your saved data and reserves your ability to use other resources like RAM, network capacity, etc. even when your Linode is powered off. You will be billed for any other active Linode service, such as Longview Pro or an extra IP, as well.</p>
+
+<p>If you want to stop being billed for a particular Linode service, you need to <a href="#removing-services">remove</a> it from your account entirely.</p>
+
+<h2 id="payment-methods">Payment Methods</h2>
+
+<p>We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which <em>must</em> be in USD) made out to &ldquo;Linode, LLC&rdquo; and sent to our <a href="http://www.linode.com/contact#contact-address">office address</a>. Please <a href="/docs/support">contact support</a> before paying with check or money order. Note that we do not accept bank/wire transfers.</p>
+
+<p>The following video will show you how to make a payment via PayPal:</p>
+
+<iframe width="825" height="465" src="https://www.youtube.com/embed/9BG6CGsIZwc?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>PayPal payments can only be made <strong>after</strong> an account is opened with an initial payment from a credit or debit card.</div>
+</blockquote>
+
+
+<p>If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.</p>
+
+<h2 id="making-a-payment">Making a Payment</h2>
+
+<p>You can use the Linode Manager to pay an outstanding balance or prepay for Linode services. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="http://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Account</strong> tab.</li>
+<li>Click the <strong>Make a Payment</strong> tab.</li>
+<li>Enter the amount of money you would like to pay in the <strong>Amount to Charge</strong> field.</li>
+<li>Enter the CVV number on the back of you credit card in the <strong>CVV</strong> field.</li>
+<li>Click <strong>Continue</strong>. A verification prompt appears.</li>
+<li>Click <strong>Charge Credit Card</strong>.</li>
+</ol>
+
+<p>The payment may take a few minutes to be applied to your account. Click the <strong>Account</strong> subtab to view your new account balance.</p>
+
+<h2 id="transfer-overages">Transfer Overages</h2>
+
+<p>If you exceed your monthly network transfer quota, your account will be billed for $0.02/GB at the end of the current month.</p>
+
+<h2 id="transfer-proration">Transfer Proration</h2>
+
+<p>Your Linode&rsquo;s transfer quota is prorated based on its creation date. This means that a Linode you create mid-month will have a lower transfer quota than what&rsquo;s listed on our <a href="https://www.linode.com/pricing">pricing page</a>, depending on how much time remains in the month.</p>
+
+<p>The prorated transfer quota is reset at the beginning of the following month.</p>
+
+<h2 id="accessing-billing-history">Accessing Billing History</h2>
+
+<p>All of your billing history is stored in the Linode Manager. Here&rsquo;s how to access it:</p>
+
+<ol>
+<li>Log in to the <a href="http://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>Account</strong> tab.</li>
+<li>Select the <strong>Billing History</strong> tab.</li>
+</ol>
+
+<p>Select an invoice to view the charges for a particular month. You can also download invoices in PDF format.</p>
+
+<h2 id="referral-credits">Referral Credits</h2>
+
+<p>You can receive service credit by referring new users to Linode. When you refer someone who maintains at least one active Linode for 90 days, your account will be issued a $20 service credit. Here&rsquo;s how to find your account referral code and URL:</p>
+
+<ol>
+<li>Log in to the <a href="http://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>my profile</strong> link.</li>
+<li>Select the <strong>Referrals</strong> tab.</li>
+<li>The referral code and URL are listed under the <strong>Referrals</strong> section. You can provide the code to friends and use the URL on your website to generate referrals.</li>
+</ol>
+
+<p>Referral service credits must be used to purchase Linode services, and cannot be refunded as cash.</p>
+
+<h2 id="updating-credit-card-information">Updating Credit Card Information</h2>
+
+<p>Keep your credit card information up to date to prevent service interruptions. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="http://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Account</strong> tab.</li>
+<li>Click the <strong>Update Credit Card</strong> tab.</li>
+<li>Enter your credit card number and the card&rsquo;s expiration date.</li>
+<li>Click <strong>Update Credit Card</strong>.</li>
+</ol>
+
+<p>Your credit card information will be updated.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the <a href="#making-a-payment">Making a Payment</a> section for more information.</div>
+</blockquote>
+
+
+<h2 id="removing-services">Removing Services</h2>
+
+<p>Our services are provided without a contract, so you&rsquo;re free to remove services from your account at any time. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="http://manager.linode.com">Linode Manager</a>.</li>
+<li>To remove a Linode from your account, click the <strong>Linodes</strong> tab, and then select the <strong>Remove</strong> link next to the Linode you want to remove.</li>
+<li>To remove extras from your account, click the <strong>Linodes</strong> tab, select a Linode, click the <strong>Extras</strong> tab, and then select the <strong>Remove</strong> link.</li>
+<li>To remove a NodeBalancer from your account, click the <strong>NodeBalancers</strong> tab, and then select the <strong>Remove</strong> link next to the NodeBalancer you want to remove.</li>
+<li>To remove the Linode Backup Service, go to the <strong>Backups</strong> tab in your Linode&rsquo;s Dashboard, and click the <strong>Cancel Backups</strong> link at the bottom of the page.</li>
+</ol>
+
+<h2 id="canceling-your-account">Canceling Your Account</h2>
+
+<p>You can cancel your account and receive a refund. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="http://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Accounts</strong> tab.</li>
+<li>At the bottom of the page, select the <strong>Cancel this Account</strong> link. The cancel account webpage appears.</li>
+<li>If you have a prepaid service credit on your account at the time of cancellation, you are entitled to a refund, minus a $5 processing fee. To request a refund, enter a note in the text field. Note that credits from sources other than prepaying cannot be refunded.</li>
+<li>Select the confirmation checkbox.</li>
+<li>Click the <strong>Cancel this Account Immediately</strong> checkbox.</li>
+</ol>
+
+<p>Your account will be canceled and all of your services will be deactivated.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the <strong>Linodes</strong> tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the <a href="#removing-services">Removing Services</a> section for more information.</div>
+</blockquote>
+
+
+<h2 id="more-information">More Information</h2>
+
+<p>If you&rsquo;ve signed up before hourly billing, please check out our <a href="/docs/prepaid-billing">Prepaid Billing</a> guide for more information.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/upgrade-to-hourly-billing/">Upgrade to Hourly Billing</a></li>
+    
+    
+    
+    <li><a href="/docs/platform/prepaid-billing-and-payments-legacy/">Prepaid Billing and Payments (Legacy) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#how-hourly-billing-works">How Hourly Billing Works</a></li>
+<li><a href="#linode-cloud-hosting-and-backups">Linode Cloud Hosting and Backups</a>
+<ul>
+<li><a href="#standard-plans">Standard Plans</a></li>
+<li><a href="#high-memory-plans">High Memory Plans</a></li>
+<li><a href="#additional-linode-services">Additional Linode Services</a></li>
+</ul></li>
+<li><a href="#viewing-current-balance">Viewing Current Balance</a></li>
+<li><a href="#mid-month-billing">Mid-Month Billing</a></li>
+<li><a href="#if-my-linode-is-powered-off-will-i-be-billed">If My Linode is Powered Off, Will I Be Billed?</a></li>
+<li><a href="#payment-methods">Payment Methods</a></li>
+<li><a href="#making-a-payment">Making a Payment</a></li>
+<li><a href="#transfer-overages">Transfer Overages</a></li>
+<li><a href="#transfer-proration">Transfer Proration</a></li>
+<li><a href="#accessing-billing-history">Accessing Billing History</a></li>
+<li><a href="#referral-credits">Referral Credits</a></li>
+<li><a href="#updating-credit-card-information">Updating Credit Card Information</a></li>
+<li><a href="#removing-services">Removing Services</a></li>
+<li><a href="#canceling-your-account">Canceling Your Account</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use lighttpd to Host Multiple Websites on Ubuntu 16.04 (Xenial Xerus)">
+        <meta name="keywords" content="lighttpd, web server, web hosting">
+        
+        <meta property="og:title" content="Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/">
+        <meta property="og:description" content="Use lighttpd to Host Multiple Websites on Ubuntu 16.04 (Xenial Xerus)">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/lighttpd/">Hosting Websites with Lighttpd</a>
+  
+</li>
+
+
+<li>
+  
+  Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-05-19T00:00:00Z">Thursday, May 19, 2016</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2flighttpd%2fuse-lighttpd-web-server-on-ubuntu-16-04%2f&via=linode&text=Use%20lighttpd%20Web%20Server%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2flighttpd%2fuse-lighttpd-web-server-on-ubuntu-16-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2flighttpd%2fuse-lighttpd-web-server-on-ubuntu-16-04%2f&t=Use%20lighttpd%20Web%20Server%20on%20Ubuntu%2016.04%20%28Xenial%20Xerus%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Lighttpd provides a lightweight web server that is capable of serving large loads while using less memory than servers like Apache. It&rsquo;s commonly deployed on high traffic sites, including WhatsApp and xkcd.</p>
+
+<p>This guide explains how to install and configure the lighttpd (&ldquo;lighty&rdquo;) web server on Ubuntu 16.04 (Xenial Xerus). Consult the resources at the end for more information about deploying other services commonly found in web server stacks.</p>
+
+<p><img src="/docs/assets/using_lighttpd_web_server_on_ubuntu_1604_xenial_xerus.png" alt="Use lighttpd Web Server on Ubuntu 16.04" title="Use lighttpd Web Server on Ubuntu 16.04" /></p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with and complete the <a href="/docs/getting-started/">Getting Started Guide</a>, setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the <a href="/docs/security/securing-your-server">Securing Your Server Guide</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>If you&rsquo;re switching from a different web server like Apache, remember to turn off the other server for testing purposes, or <a href="#configure-lighttpd">configure lighttpd</a> to use an alternate port until it&rsquo;s configured properly.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>apt-get update &amp;&amp; apt-get upgrade
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps required in this guide require root privileges. Be sure to run the steps below as <strong>root</strong> or with the <code>sudo</code> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups guide</a>.</div>
+</blockquote>
+
+
+<h2 id="install-lighttpd">Install Lighttpd</h2>
+
+<p>Install the server from the Ubuntu package repository:</p>
+
+<pre><code>apt-get install lighttpd
+</code></pre>
+
+<p>Once the server is installed, make sure that it&rsquo;s running and is enabled. Visit <code>http://198.51.100.10:80</code> in your browser, replacing <code>198.51.100.10</code> with your Linode&rsquo;s IP address. If you configured lighttpd to run on an alternate port for testing, be sure to replace <code>80</code> with this port. You&rsquo;ll see a placeholder page for lighttpd that contains some important information:</p>
+
+<ul>
+<li>Configuration files are located in <code>/etc/lighttpd</code>.</li>
+<li>By default, the &ldquo;DocumentRoot&rdquo; (where all HTML files are stored) is located in the <code>/var/www</code> directory. You&rsquo;ll be able to configure this later.</li>
+<li>Ubuntu provides helper scripts to enable and disable server modules without directly editing the config file: <code>lighty-enable-mod</code> and <code>lighty-disable-mod</code>.</li>
+</ul>
+
+<h2 id="configure-lighttpd">Configure Lighttpd</h2>
+
+<p>The main lighttpd configuration file is located at <code>/etc/lighttpd/lighttpd.conf</code>. This file provides a list of server modules to be loaded and allows you to change global settings for the web server.</p>
+
+<p>The first directive in the configuration is <code>server.modules</code>, which lists modules to be loaded upon starting or reloading the lighttpd server. To disable a module, add a <code>#</code> at the beginning of the corresponding line to comment it out. Remove the <code>#</code> to enable the module. Modules can also be added to this list. For example, in the default file, you can enable the <code>mod_rewrite</code> (rewriting URL requests) module by uncommenting the appropriate line, or add <code>mod_auth</code> to enable the authentication module. Note that these modules will be loaded in the order they appear.</p>
+
+<p>Following the <code>server.modules</code> block is a list of other settings to configure the server and its modules. Most directives are self-explanatory, but not all available options are listed by default and you may want to add them, depending on your needs. A few performance settings you may want to add yourself include:</p>
+
+<ul>
+<li><code>server.max-connections</code> - Specifies how many concurrent connections will be supported</li>
+<li><code>server.max-keep-alive-requests</code> - Sets the maximum number of requests within a keep alive session before the connection is terminated</li>
+<li><code>server.max-worker</code> - Specifies the number of worker processes to spawn. If you&rsquo;re familiar with Apache, a worker is analogous to a child process.</li>
+<li><code>server.bind</code> - Defines the IP address, hostname, or path to the socket lighttpd will listen on. Multiple lines can be created to listen on different IP addresses. The default setting is to bind to all interfaces.</li>
+</ul>
+
+<p>Some settings depend on certain modules. For example, <code>url.rewrite</code> requires that <code>mod_rewrite</code> be enabled because it is specific to that module. However, for ease of use, most modules have their own configuration files and can be enabled and disabled via command line rather than by editing the configuration file.</p>
+
+<h3 id="enable-and-disable-modules-via-command-line">Enable and Disable Modules via Command Line</h3>
+
+<p>For ease of use, you may wish to enable and disable modules via the command line. Lighttpd provides a simple method to do this, so the configuration doesn&rsquo;t need to be edited every time a new module is needed.</p>
+
+<p>Run <code>lighty-enable-mod</code> from the command line to see a list of available modules and a list of already enabled modules, as well as a prompt to enable a module. This can also be accomplished in one line. For example, to enable the <code>auth</code> authentication module:</p>
+
+<pre><code>lighty-enable-mod auth
+</code></pre>
+
+<p>This command creates a symbolic link to the module&rsquo;s configuration file in <code>/etc/lighttpd/conf-enabled</code>, which is read by a script in the main configuration file. To edit the configuration for a specific module, look for its <code>.conf</code> file in <code>/etc/lighttpd/conf-available</code>.</p>
+
+<p>There are many additional modules that are included in separate Ubuntu packages. Some useful ones are:</p>
+
+<ul>
+<li><code>lighttpd-mod-mysql-vhost</code> - Manages virtual hosts using a MySQL database. This module works well when you need to manage a large number of virtual hosts</li>
+<li><code>lighttpd-mod-webdav</code> - Supports WebDAV extensions to HTTP for distributed authoring of HTTP resources</li>
+<li><code>lighttpd-mod-magnet</code> - Controls the request handling module</li>
+</ul>
+
+<p>When you have installed these packages you will be able to enable them using <code>lighty-enable-mod</code>.</p>
+
+<p>Restart lighttpd to load changes:</p>
+
+<pre><code>systemctl restart lighttpd.service
+</code></pre>
+
+<p>For a comprehensive list of available options and modules, refer to the lighttpd project&rsquo;s documentation on <a href="https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ConfigurationOptions">configuration options</a>.</p>
+
+<h2 id="virtual-host-setup-with-simple-vhost">Virtual Host Setup with Simple Vhost</h2>
+
+<p>This section covers configuration for simple virtual hosting. The <code>simple-vhost</code> module allows you to set up virtual hosts with respective document roots in user-defined folders named for the domains, below a server root. Ensure that all other virtual hosting modules are turned off before proceeding.</p>
+
+<ol>
+<li><p>Begin by enabling <code>simple-vhost</code>:</p>
+
+<pre><code>lighty-enable-mod simple-vhost
+</code></pre></li>
+
+<li><p>Restart lighttpd to load your changes:</p>
+
+<pre><code>systemctl restart lighttpd.service
+</code></pre></li>
+
+<li><p>Modify the following settings in your <code>/etc/lighttpd/conf-available/10-simple-vhost.conf</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/lighttpd/conf-available/10-simple-vhost.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lighty" data-lang="lighty"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lighty" data-lang="lighty"><span class="k">simple-vhost.server-root</span> <span class="o">=</span> <span class="s2">&#34;/var/www/html&#34;</span>
+<span class="k">simple-vhost.document-root</span> <span class="o">=</span> <span class="s2">&#34;htdocs&#34;</span>
+<span class="k">simple-vhost.default-host</span> <span class="o">=</span> <span class="s2">&#34;example.com&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>server-root</code> defines the base directory under which all virtual host directories are created.</p>
+
+<p>The <code>document-root</code> defines the subdirectory under the host directory that contains the pages to be served. This is comparable to the <code>public_html</code> directory in some Apache configurations, but is called <code>htdocs</code> in the above configuration.</p>
+
+<p>If lighttpd receives a request and cannot find a matching directory, it serves content from the <code>default-host</code>.</p>
+
+<p>In the above configuration, requests are checked against existing directory names within <code>/var/www/html</code>. If a directory matching the requested domain exists, the result is served from the corresponding <code>htdocs</code>. If it doesn&rsquo;t exist, content is served from <code>htdocs</code> within the <code>default-host</code> directory.</p>
+
+<p>To clarify this concept, suppose that <code>/var/www/html</code> contains only the directories <code>exampleA.com</code> and <code>example.com</code>, both of which contain <code>htdocs</code> folders with content:</p>
+
+<ul>
+<li>If a request is made for the URL <code>exampleA.com</code>, content will be served from <code>/var/www/html/exampleA.com/htdocs</code>.</li>
+<li>If a request is made for a URL which resolves to the server, but does not have a directory, content will be served from <code>/var/www/html/example.com/htdocs</code>, since <code>example.com</code> is the default host.</li>
+</ul>
+
+<p>For subdomains, create host directories for each subdomain in the same way. For instance, to use <code>exampleSub</code> as a subdomain of <code>exampleA.com</code>, create a directory called <code>exampleSub.exampleA.com</code> with a <code>htdocs</code> directory for content. Be sure to add <a href="https://www.linode.com/docs/networking/dns/dns-manager-overview">DNS records</a> for any subdomains you plan to use.</p></li>
+
+<li><p>Restart the web server again to reload changes:</p>
+
+<pre><code>systemctl restart lighttpd.service
+</code></pre></li>
+</ol>
+
+<p>For more examples, consult the <a href="https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModSimpleVhost">lighttpd official documentation</a>.</p>
+
+<h2 id="virtual-host-setup-with-enhanced-vhost">Virtual Host Setup with Enhanced Vhost</h2>
+
+<p>Enhanced virtual hosting works slightly differently than Simple by building the document root based on a pattern containing wildcards. Be sure that all other virtual hosting modules are disabled before beginning.</p>
+
+<ol>
+<li><p>Run the following command to enable the enhanced virtual hosting module:</p>
+
+<pre><code>lighty-enable-mod evhost
+</code></pre></li>
+
+<li><p>Restart lighttpd to load the configuration changes:</p>
+
+<pre><code>systemctl restart lighttpd.service
+</code></pre></li>
+
+<li><p>To accomplish the same directory structure with <code>evhost</code> as with <code>simple-vhost</code> above, you need to modify the <code>/etc/lighttpd/conf-available/10-evhost.conf</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/lighttpd/conf-available/10-evhost.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lighty" data-lang="lighty"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lighty" data-lang="lighty"><span class="k">evhost.path-pattern</span> <span class="o">=</span> <span class="s2">&#34;/var/www/html/%0/htdocs/&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Modify the <code>server.document-root</code> in the main lighttpd configuration file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/lighttpd/lighttpd.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lighty" data-lang="lighty"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lighty" data-lang="lighty"><span class="k">server.document-root</span> <span class="o">=</span> <span class="s2">&#34;/var/www/html/example.com/htdocs&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>With the configuration you set in Steps 3 and 4, if <code>example.com</code> is requested, and <code>/var/www/html/example.com/htdocs/</code> is found, that directory becomes the document root when serving requests. The <code>0%</code> in the path pattern specifies that a request will be checked against host files named in the format of domain and Top Level Domain (TLD). The <code>server.document-root</code> directive specifies a default host that is used when a matching directory does not exist.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>These steps configure <code>server.document-root</code> to <code>/var/www/html</code>. According to lighttpd documentation, this <a href="https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModEVhost#A-Bad-Example">may expose your server to a vulnerability</a> in which authentication can be bypassed in certain situations. If improperly configured, this may also redirect unmatched requests to the lighttpd index page rather than the default host of your choosing.</div>
+</blockquote>
+</li>
+
+<li><p>Restart lighttpd to load the configuration changes:</p>
+
+<pre><code>systemctl restart lighttpd.service
+</code></pre></li>
+</ol>
+
+<p>The naming convention for these virtual hosts is derived from the domain names. Take the following web address as an example: <code>http://exampleSub2.exampleSub.exampleA.com/</code> We read domain names from highest level on the right, to lowest on the left. So <code>com</code> is the TLD, <code>exampleA</code> is the domain, <code>exampleSub</code> is the subdomain 1 name, and <code>exampleSub2</code> is the subdomain 2 name.</p>
+
+<p>To modify the host directory format lighttpd recognizes, define the pattern that gets passed to the directory in which the content lives. The following table shows what host directory format is used as the document root for each pattern. It also shows which host file will be used to serve content, using the above URL as an example request:</p>
+
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Host Directory Format</th>
+<th>Document Root Path</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>%0</td>
+<td>Domain name and TLD</td>
+<td>/var/www/html/example.com/htdocs</td>
+</tr>
+
+<tr>
+<td>%1</td>
+<td>TLD only</td>
+<td>/var/www/html/com/htdocs</td>
+</tr>
+
+<tr>
+<td>%2</td>
+<td>Domain name without TLD</td>
+<td>/var/www/html/example/htdocs</td>
+</tr>
+
+<tr>
+<td>%3</td>
+<td>Subdomain 1 name</td>
+<td>/var/www/html/exampleSub/htdocs</td>
+</tr>
+
+<tr>
+<td>%4</td>
+<td>Subdomain 2 name</td>
+<td>/var/www/html/exampleSub2/htdocs</td>
+</tr>
+
+<tr>
+<td>%_</td>
+<td>Full domain name</td>
+<td>/var/www/html/exampleSub2.exampleSub.example.com/htdocs</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="create-virtual-host-directories">Create Virtual Host Directories</h2>
+
+<p>Whether using <code>simple-vhost</code> or <code>evhost</code>, you&rsquo;ll need to create directories before lighttpd can use them to serve content. Once the required directives are configured as above, create the required directories, replacing <code>example.com</code> with your domain name:</p>
+
+<pre><code>mkdir -p /var/www/html/example.com/htdocs/
+</code></pre>
+
+<p>The following command will create two additional virtual hosts for .net and .org top level domains:</p>
+
+<pre><code>mkdir -p /var/www/html/{example.net/htdocs,example.org/htdocs}
+</code></pre>
+
+<p>The following command will create two additional virtual hosts for the subdomains from the <code>evhost</code> example:</p>
+
+<pre><code>mkdir -p /var/www/html/{exampleSub/htdocs,exampleSub2/htdocs}
+</code></pre>
+
+<h2 id="virtual-hosting-best-practices">Virtual Hosting Best Practices</h2>
+
+<p>The way you set up virtual hosting on your web server depends upon what kind of sites you host, their traffic, the number of domains, and their workflows. We recommend hosting all of your domains in a centralized directory (e.g., <code>/var/www/html</code>) and then symbolically linking these directories into more useful locations.</p>
+
+<p>For instance, you can create a series of &ldquo;web editor&rdquo; user accounts. You may then link the document root of each domain into a folder in the home folder of the editor for that domain. For the user account <code>example-user</code> that manages the <code>example.com</code> site:</p>
+
+<pre><code>ln -s /home/example-user/example.com/ /var/www/html/example.com
+</code></pre>
+
+<p>You can also use symbolic links to cause multiple virtually hosted domains to host the same files. For example, to get <code>example.org</code> to point to <code>example.com</code>&rsquo;s files, create the following link:</p>
+
+<pre><code>ln -s /var/www/html/example.org/ /var/www/html/example.com
+</code></pre>
+
+<p>No matter what you decide, we recommend developing a systematic method for organizing virtual hosting to simplify any modifications to your system.</p>
+
+<h2 id="run-scripts-with-fastcgi">Run Scripts with FastCGI</h2>
+
+<p>If you need your web server to execute dynamic content, you may run these scripts using FastCGI. To run a script, FastCGI externalizes the interpreter from the web server rather than running the scripts &ldquo;inside&rdquo; the web server. This is in contrast to approaches such as <code>mod_perl</code>, <code>mod_python</code>, and <code>mod_php</code>, but in high-traffic situations this way is often more efficient.</p>
+
+<p>To set up FastCGI, make sure that an interpreter is installed on your system for your language of choice:</p>
+
+<p>To install Python:</p>
+
+<pre><code>apt-get install python
+</code></pre>
+
+<p>To install Ruby:</p>
+
+<pre><code>apt-get install ruby
+</code></pre>
+
+<p>To install PHP 7 for CGI interfaces:</p>
+
+<pre><code>apt-get install php7.0-cgi
+</code></pre>
+
+<p>Perl version 5.22.1 is included in Ubuntu 16.04 by default. Depending on the software you intend to run, you may need to install and set up a database system as well.</p>
+
+<p>Lighttpd will send CGI requests to CGI handlers on the basis of file extensions, which can be forwarded to individual handlers. You may also forward requests for one extension to multiple servers and lighttpd will automatically load balance these FastCGI connections.</p>
+
+<p>For example, if you install the <code>php7.0-cgi</code> package and enable FastCGI with <code>lighty-enable-mod fastcgi-php</code> then a default FastCGI handler will be configured in the file <code>/etc/lighttpd/conf-enabled/15-fastcgi-php.conf</code>. Though the handler will likely require specific customization, the default settings offer an effective example:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/lighttpd/conf-enabled/15-fastcgi-php.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lighty" data-lang="lighty"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lighty" data-lang="lighty"><span class="k">fastcgi.server</span>   <span class="o">+=</span> <span class="p">(</span> <span class="s2">&#34;.php&#34;</span> <span class="o">=&gt;</span>
+        <span class="p">((</span>
+                <span class="s2">&#34;bin-path&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;/usr/bin/php-cgi&#34;</span><span class="p">,</span>
+                <span class="s2">&#34;socket&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;/var/run/lighttpd/php.socket&#34;</span><span class="p">,</span>
+                <span class="s2">&#34;max-procs&#34;</span> <span class="o">=&gt;</span> <span class="m">1</span><span class="p">,</span>
+                <span class="s2">&#34;bin-environment&#34;</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                        <span class="s2">&#34;PHP_FCGI_CHILDREN&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;4&#34;</span><span class="p">,</span>
+                        <span class="s2">&#34;PHP_FCGI_MAX_REQUESTS&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;10000&#34;</span>
+                <span class="p">),</span>
+                <span class="s2">&#34;bin-copy-environment&#34;</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                        <span class="s2">&#34;PATH&#34;</span><span class="p">,</span> <span class="s2">&#34;SHELL&#34;</span><span class="p">,</span> <span class="s2">&#34;USER&#34;</span>
+                <span class="p">),</span>
+                <span class="s2">&#34;broken-scriptfilename&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;enable&#34;</span>
+        <span class="p">))</span>
+<span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>To map more than one file extension to a single FastCGI handler, add the following entry to your configuration file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/lighttpd/conf-enabled/15-fastcgi-php.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lighty" data-lang="lighty"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lighty" data-lang="lighty"><span class="k">fastcgi.map-extensions</span> <span class="o">=</span> <span class="p">(</span> <span class="s2">&#34;.[ALT-EXTENSION]&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;.[EXTENSION]&#34;</span> <span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h2 id="things-to-keep-in-mind">Things to Keep in Mind</h2>
+
+<p>While lighttpd is an effective and capable web server there are two caveats regarding its behavior:</p>
+
+<p>Server side includes, which allow you to dynamically include content from one file in another, do not function in lighttpd in the same way as they do in Apache&rsquo;s <code>mod_ssi</code>. While it is an effective method for quickly assembling content, lighttpd&rsquo;s script handling via SSI is not a recommended work flow. See <a href="http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModSSI">lighttpd project documentation on mod_ssi</a>.</p>
+
+<p>Because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (e.g., <code>mod_perl</code>, <code>mod_python</code>, <code>mod_php</code>). For more information, consult the <a href="http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI">lighttpd project documentation on optimizing FastCGI performance</a>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI">Optimizing FastCGI Performance (lighttpd wiki)</a></li>
+
+<li><a href="http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI">mod_fastcgi Documentation (lighttpd wiki)</a></li>
+
+<li><a href="http://www.howtoforge.com/howtos/lighttpd">HowtoForge Guides for lighttpd (howtoforge.com)</a></li>
+
+<li><a href="http://www.cyberciti.biz/tips/category/lighttpd">NixCraft Guides for Ligttpd (nixcraft)</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/">lighttpd Web Server on Ubuntu 12.04 (Precise) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/caddy/install-and-configure-caddy-on-centos-7/">Install and Configure Caddy on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/host-a-website-with-high-availability/">Host a Website with High Availability</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-on-ubuntu-14-04/">Apache Web Server on Ubuntu 14.04 LTS</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-debian-8/">Apache Web Server on Debian 8 (Jessie)</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-lighttpd">Install Lighttpd</a></li>
+<li><a href="#configure-lighttpd">Configure Lighttpd</a>
+<ul>
+<li><a href="#enable-and-disable-modules-via-command-line">Enable and Disable Modules via Command Line</a></li>
+</ul></li>
+<li><a href="#virtual-host-setup-with-simple-vhost">Virtual Host Setup with Simple Vhost</a></li>
+<li><a href="#virtual-host-setup-with-enhanced-vhost">Virtual Host Setup with Enhanced Vhost</a></li>
+<li><a href="#create-virtual-host-directories">Create Virtual Host Directories</a></li>
+<li><a href="#virtual-hosting-best-practices">Virtual Hosting Best Practices</a></li>
+<li><a href="#run-scripts-with-fastcgi">Run Scripts with FastCGI</a></li>
+<li><a href="#things-to-keep-in-mind">Things to Keep in Mind</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Icinga2 Monitoring on Debian 9</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows you how to install and configure Icinga2 and Icinga Web 2 on Debian 9 to monitor your Linode services and performance.">
+        <meta name="keywords" content="debian, icinga, monitoring, icinga2">
+        
+        <meta property="og:title" content="Install Icinga2 Monitoring on Debian 9">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9/">
+        <meta property="og:description" content="This guide will show you how to install and configure Icinga2 to monitor your system">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/monitoring/">Server Monitoring</a>
+  
+</li>
+
+
+<li>
+  
+  Install Icinga2 Monitoring on Debian 9
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Icinga2 Monitoring on Debian 9</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-12-12T00:00:00Z">Tuesday, December 12, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="mailto:linuxboxgo@gmail.com">Matt Vass
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2finstall-icinga2-monitoring-on-debian-9%2f&via=linode&text=Install%20Icinga2%20Monitoring%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2finstall-icinga2-monitoring-on-debian-9%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2finstall-icinga2-monitoring-on-debian-9%2f&t=Install%20Icinga2%20Monitoring%20on%20Debian%209" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/icinga/Icinga2.jpg" alt="Install Icinga2 Monitoring on Debian 9" title="Install Icinga2 Monitoring on Debian 9" /></p>
+
+<h2 id="what-is-icinga2">What is Icinga2?</h2>
+
+<p>Icinga, previously a fork of the popular Nagios monitoring system, is an open source network monitoring application that can be used to monitor critical services and systems on your Linode. Icinga2 can monitor hosts in a network or it can verify network external protocols, such as the state of an HTTP server, mail server, file share service, or others.</p>
+
+<p>Icinga2 can be configured to monitor internal systems state and check the load, the memory, the disk free space or other internal parameters via Icinga agents deployed in every node that needs to me monitored. Icinga can also be configured to send notifications and alerts via email or SMS to the system administrators defined in contacts.</p>
+
+<p>This guide shows how to install and configure the latest version Icinga2 web monitoring tool on Debian 9 to monitor network infrastructure.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for creating a Linode with Debian 9, and setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Many of the commands in this guide require root privileges. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services. Use <code>sudo</code> wherever necessary.</p></li>
+
+<li><p>Configure a <a href="/docs/web-servers/lamp/lamp-on-debian-8-jessie/">LAMP Stack</a>.</p></li>
+
+<li><p><a href="/docs/email/">Configure a mail server</a> in order to have Icinga send email alerts.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<h2 id="use-opcache-to-increase-load-speed">Use OPCache to Increase Load Speed</h2>
+
+<p>To increase the load speed of your application via OPCache plugin available in PHP7, append the following OPCache settings at the bottom of the PHP configuration:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">opcache.enable=1
+opcache.enable_cli=1
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=10000
+opcache.memory_consumption=128
+opcache.save_comments=1
+opcache.revalidate_freq=1</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Restart the Apache daemon to apply the new changes:</p>
+
+<pre><code>systemctl restart apache2
+</code></pre>
+
+<h2 id="configure-icinga2-databases">Configure Icinga2 Databases</h2>
+
+<ol>
+<li><p>Install the backend database needed by Icinga2 monitoring web application and Icinga Web 2 frontend to store users, contacts and other collected data. Execute the following command to install MariaDB database and PHP module needed to access MySQL database in Debian 9:</p>
+
+<pre><code>apt install php7.0-mysql mariadb-server mariadb-client
+</code></pre></li>
+
+<li><p>Log in to the MySQL console and secure the MariaDB root account:</p>
+
+<pre><code>mysql -h localhost
+use mysql;
+update user set plugin='' where user='root';
+flush privileges;
+exit
+</code></pre></li>
+
+<li><p>Further secure the MariaDB database with the <code>mysql_secure_installation</code> script. This script will ask a series of questions designed to secure the MariaDB database: change MySQL root password, remove anonymous users, disable remote root logins, and delete the test database:</p>
+
+<pre><code>sudo mysql_secure_installation
+</code></pre></li>
+
+<li><p>Log back in to the database console and create the database for Icinga2:</p>
+
+<pre><code>mysql –u root -p
+</code></pre></li>
+
+<li><p>Create a user with a strong password to manage Icinga2 application database, by issuing the following commands. You should replace <code>icingadb</code>, <code>icinga-user</code>, and <code>strongpassword</code> in this example with your own database name and credentials:</p>
+
+<pre><code>create database icingadb;
+grant all privileges on icingadb.* to 'icinga_user'@'localhost' identified by 'strongpassword';
+flush privileges
+</code></pre></li>
+
+<li><p>Create the second MySQL database used by Icinga2 web to store its interface users and groups. As in the previous step, replace the database name and credentials accordingly and choose a strong password for database user. You can use the same MySQL user account to manage both databases simultaneously (<code>icinga_user'@'localhost</code>):</p>
+
+<pre><code>create database icinga_users;
+grant all privileges on icinga_users.* to 'icinga_user'@'localhost' identified by 'strongpassword';
+exit
+</code></pre></li>
+</ol>
+
+<h2 id="install-icinga2">Install Icinga2</h2>
+
+<p>Install Icinga2 and the Icinga2 MySQL module for accessing MariaDB database backend:</p>
+
+<pre><code>apt install icinga2 icinga2-ido-mysql
+</code></pre>
+
+<p>During the installation, when asked:</p>
+
+<ul>
+<li><p>If Icinga2 should use the MySQL module,</p>
+
+<ul>
+<li>Choose <strong>Yes</strong> from the prompt.</li>
+</ul></li>
+
+<li><p>To configure a database for <code>icinga2-ido-mysql</code> with <code>dbconfig-common</code> option,</p>
+
+<ul>
+<li>Choose <strong>No</strong> from the prompt.</li>
+</ul></li>
+</ul>
+
+<p>After Icinga2 has been installed, start the Icinga2 service and check the daemon status:</p>
+
+<pre><code>systemctl start icinga2.service
+systemctl status icinga2.service
+</code></pre>
+
+<h2 id="install-the-icinga2-web-interface">Install the Icinga2 Web Interface</h2>
+
+<p>In order to manage Icinga2 via the web interface, install the Icinga2 web interface and Command Line Interface (CLI) packages:</p>
+
+<pre><code>apt install icingaweb2 icingacli
+</code></pre>
+
+<p>Restart the Icinga2 daemon and verify the Icinga2 daemon status:</p>
+
+<pre><code>systemctl restart icinga2.service
+systemctl status icinga2.service
+</code></pre>
+
+<p>Install the MySQL schema required Icinga2 database:</p>
+
+<pre><code>mysql -u root icingadb -p &lt; /usr/share/icinga2-ido-mysql/schema/mysql.sql
+</code></pre>
+
+<p>Edit the Icinga2 MySQL IDO configuration file and add Icinga2 engine database credentials, as shown in the following example. Use the credentials of the first database created in the <a href="#configure-icinga2-databases">earlier database creation step</a>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/icinga2/features-enabled/ido-mysql.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">library &#34;db_ido_mysql&#34;
+
+object IdoMysqlConnection &#34;ido-mysql&#34; {
+  user = &#34;icinga_user&#34;,
+  password = &#34;strongpassword&#34;,
+  host = &#34;localhost&#34;,
+  database = &#34;icingadb&#34;
+}</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Save the file and restart the Icinga2 daemon:</p>
+
+<pre><code>systemctl restart icinga2.service
+</code></pre>
+
+<p>Create an Icinga Web 2 log directory and add the proper file system permissions to grant the Icinga2 group write permissions:</p>
+
+<pre><code>mkdir -p /var/log/icingaweb2/
+chgrp -R icingaweb2 /var/log/icingaweb2/
+chmod -R 775 /var/log/icingaweb2/
+</code></pre>
+
+<h2 id="configure-icinga2-via-web-interface">Configure Icinga2 via Web Interface</h2>
+
+<ol>
+<li><p>Generate an installation token. Save it somewhere easily accessible. You will need to use it to access the Icinga2 setup:</p>
+
+<pre><code>icingacli setup token create
+</code></pre>
+
+<p>The output of this command should be something like:</p>
+
+<pre><code>The newly generated setup token is: 4358c2c0d345673c
+</code></pre>
+
+<ul>
+<li><p>To show the generated token in case you’ve forgotten or you haven’t noted yet:</p>
+
+<p>icingacli setup token show</p></li>
+</ul></li>
+
+<li><p>Open a browser on your local machine and navigate to <code>http://exampleIP/icingaweb2/setup</code>. Replace <code>exampleIP</code> with your Linode&rsquo;s IP address.</p></li>
+
+<li><p>In the first installation stage, add the token generated earlier:</p>
+
+<p><img src="/docs/assets/icinga/icinga-installation-token.png" alt="Icinga Installation Token" title="Icinga Installation Token" /></p></li>
+
+<li><p>On the next screen, select and enable the <strong>Doc</strong> and <strong>Monitoring</strong> modules and press <strong>Next</strong> to continue:</p>
+
+<p><img src="/docs/assets/icinga/icinga-docs-and-modules.png" alt="Select Doc and Monitoring Modules" title="Select Doc and Monitoring Modules" /></p></li>
+
+<li><p>Icinga2 will check your system requirements and PHP modules to see if all requirements are met before continuing with the installation and configuration process. Scroll down to the end of the page and press <strong>Next</strong> to continue.</p></li>
+
+<li><p>Choose <strong>Authentication Type = Database</strong>:</p>
+
+<p><img src="/docs/assets/icinga/icinga-database-authentication-type.png" alt="Choose the &quot;Database&quot; Authentication Type" title="Choose the &quot;Database&quot; Authentication Type" /></p></li>
+
+<li><p>Use the information from the second database created earlier to add the credentials needed to access the Icinga2 database for storing web interface users and groups. Use <code>icingaweb_db</code> as a name for this resource and leave the <strong>Host</strong>, <strong>Port</strong> and <strong>Character</strong> set variables as default. Do not enable <strong>Persistent</strong> and <strong>SSL</strong> option. Press <strong>Validate Configuration</strong> button to validate the database. After the database has been validated successfully, press <strong>Next</strong> to continue to the next phase of Icinga2’s configuration process:</p>
+
+<p><img src="/docs/assets/icinga/icinga-database-resource-info.png" alt="Database Resource Information" title="Database Resource Information" /></p></li>
+
+<li><p>Define a name for the database authentication backend (you can use the default value) and press <strong>Next</strong>.</p></li>
+
+<li><p>Add a username with a strong password in order to log in to the Icinga2 web interface and further manage the Icinga2 engine and press <strong>Next</strong>.</p></li>
+
+<li><p>Adjust the Icinga2 application and logging configurations using these settings, then press <strong>Next</strong>:</p>
+
+<ul>
+<li><p>Check <strong>Show Stacktraces</strong></p></li>
+
+<li><p>Storage Type = <strong>Database</strong></p></li>
+
+<li><p>Logging Type = <strong>File</strong></p></li>
+
+<li><p>Logging Level = <strong>Error</strong></p></li>
+
+<li><p>File path = <code>/var/log/icingaweb2/icingaweb2.log</code></p></li>
+</ul></li>
+
+<li><p>Review the information report and press <strong>Next</strong> to continue:</p>
+
+<p><img src="/docs/assets/icinga/icinga-configuration-summary.png" alt="Icinga Configuration Summary" title="Icinga Configuration Summary" /></p></li>
+
+<li><p>Press <strong>Next</strong> to continue setting up Icinga2 engine monitoring module.</p></li>
+
+<li><p>Add a name for the Icinga2 Backend, select <strong>IDO</strong> as Backend Type and press <strong>Next</strong>.</p></li>
+
+<li><p>Add the Icinga2 engine database credentials in order to setup the IDO resource environment. After adding the Icinga2 database credentials, press <strong>Validate Configuration</strong> to validate the Icinga2 Monitoring IDO Resource. After the <strong>Successfully validated</strong> message appears, press <strong>Next</strong>.</p></li>
+
+<li><p>Configure the Icinga2 Command Transport module with the following settings and press <strong>Next</strong>:</p>
+
+<ul>
+<li><p><strong>Transport Name</strong> = icinga2</p></li>
+
+<li><p><strong>Transport Type</strong> = Local Command File</p></li>
+
+<li><p><strong>Command File</strong> = <code>/var/run/icinga2/cmd/icinga2.cmd</code></p></li>
+</ul></li>
+
+<li><p>Use the default values or configure the monitoring security environment variables to sensitive information and press <strong>Next</strong>.</p></li>
+
+<li><p>The next screen shows a detailed report of the current configuration. A message will also show you that Icinga2 Monitoring module has been successfully configured. Review the configuration and press <strong>Finish</strong> to complete the setup process.</p>
+
+<p>After the installation and setup process completes, a message informs you that Icinga Web 2 has been successfully set up.</p></li>
+
+<li><p>Log in to Icinga Web 2 to exit the setup process and log in to Icinga Web 2 login webpage:</p>
+
+<p><img src="/docs/assets/icinga/icinga-set-up-success-login.png" alt="Icinga Successfully Set up - &quot;Login to Icinga Web 2&quot; button" title="Icinga Successfully Set up - 'Login to Icinga Web 2' button" /></p>
+
+<p>You will be directed to the Icinga Web 2 Dashboard, where you should see the default services and Linode resources that are currently monitored by the Icinga2 engine:</p>
+
+<p><img src="/docs/assets/icinga/icinga-dashboard-current-incidents.png" alt="Icinga Dashboard and Current Incidents" title="Icinga Dashboard and Current Incidents" /></p></li>
+</ol>
+
+<h2 id="secure-the-icinga-web-2-interface-via-tls">Secure the Icinga Web 2 Interface Via TLS</h2>
+
+<p>To access Icinga2 monitoring application via HTTPS protocol, enable the Apache SSL module, SSL site configuration file, and Apache rewrite module:</p>
+
+<pre><code>a2enmod ssl rewrite
+a2ensite default-ssl.conf
+</code></pre>
+
+<p>Edit the Apache sites-enabled default configuration file and add the following lines after the <code>DocumentRoot</code> to enable URL rewrite rules:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-enabled/000-default.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Directory</span> <span class="s">/var/www/html</span><span class="nt">&gt;</span>
+  <span class="nb">Options</span> +FollowSymlinks
+  <span class="nb">AllowOverride</span> <span class="k">All</span>
+  <span class="nb">Require</span> <span class="k">all</span> granted
+<span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Restart the Apache daemon to apply the new configuration file:</p>
+
+<pre><code>systemctl restart apache2
+</code></pre>
+
+<p>In a local browser, visit your domain name or Linode&rsquo;s IP address. Because you’re using the self-signed certificate generated by Apache, the browser will show an error warning. Accept the warning to access the Icinga Web 2 dashboard.</p>
+
+<h3 id="force-traffic-through-https">Force Traffic through HTTPS</h3>
+
+<p>To force visitors to browse the Icinga Web 2 interface via HTTPS, create a new <code>.htaccess</code> file in your web root with the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/html/.htaccess 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-conf" data-lang="conf">&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
+&lt;/IfModule&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<h2 id="create-firewall-rules-to-enable-https-traffic">Create Firewall Rules to Enable HTTPS Traffic</h2>
+
+<p>Add a new rule to allow HTTPS traffic to pass through the firewall.</p>
+
+<p><strong>UFW</strong></p>
+
+<pre><code>ufw allow 443/tcp
+</code></pre>
+
+<p><strong>IPtables</strong></p>
+
+<pre><code>iptables -I INPUT -p tcp --destination-port 443 -j ACCEPT
+systemctl iptables-persistent save
+systemctl iptables-persistent reload
+</code></pre>
+
+<h2 id="that-s-all">That’s All!</h2>
+
+<p>You have successfully installed, set up, and secured the Icinga2 engine monitoring application and Icinga Web 2 Interface on Debian 9.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.icinga.com/docs/icinga2/latest/doc/01-about/">Official Icinga Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/">Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu/">Obtain a Commercially Signed SSL Certificate on Debian &amp; Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8/">Install Nagios 4 on Ubuntu and Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/how-to-install-graphite-and-grafana-on-ubuntu-14-04/">Deploy Graphite with Grafana on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/configure-firewall-with-ufw/">How to Configure a Firewall with UFW</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-icinga2">What is Icinga2?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#use-opcache-to-increase-load-speed">Use OPCache to Increase Load Speed</a></li>
+<li><a href="#configure-icinga2-databases">Configure Icinga2 Databases</a></li>
+<li><a href="#install-icinga2">Install Icinga2</a></li>
+<li><a href="#install-the-icinga2-web-interface">Install the Icinga2 Web Interface</a></li>
+<li><a href="#configure-icinga2-via-web-interface">Configure Icinga2 via Web Interface</a></li>
+<li><a href="#secure-the-icinga-web-2-interface-via-tls">Secure the Icinga Web 2 Interface Via TLS</a>
+<ul>
+<li><a href="#force-traffic-through-https">Force Traffic through HTTPS</a></li>
+</ul></li>
+<li><a href="#create-firewall-rules-to-enable-https-traffic">Create Firewall Rules to Enable HTTPS Traffic</a></li>
+<li><a href="#that-s-all">That’s All!</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

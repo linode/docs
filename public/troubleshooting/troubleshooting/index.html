@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Troubleshooting</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Our guide to performing basic troubleshooting.">
+        <meta name="keywords" content="troubleshooting">
+        
+        <meta property="og:title" content="Troubleshooting">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/troubleshooting/troubleshooting/">
+        <meta property="og:description" content="Our guide to performing basic troubleshooting.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/troubleshooting/troubleshooting/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/troubleshooting/">Troubleshooting</a>
+  
+</li>
+
+
+<li>
+  
+  Troubleshooting
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Troubleshooting</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-03-06T00:00:00Z">Monday, March 6, 2017</time> by Nick Brewer</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftroubleshooting%2ftroubleshooting%2f&via=linode&text=Troubleshooting" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftroubleshooting%2ftroubleshooting%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftroubleshooting%2ftroubleshooting%2f&t=Troubleshooting" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/troubleshooting/troubleshooting.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/troubleshooting/troubleshooting.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>We know it&rsquo;s frustrating when you run into problems with your Linode. That&rsquo;s why we&rsquo;ve created this introductory troubleshooting checklist. Use it to diagnose and resolve basic issues with your Linode through a process of elimination. Here&rsquo;s how:</p>
+
+<ul>
+<li>Select the issue that best describes your problem</li>
+<li>Follow the troubleshooting steps in the order they are presented</li>
+<li>Once you&rsquo;ve identified a problem, try fixing it with the suggested solutions</li>
+<li>If you can&rsquo;t find your problem in this guide, take a look at the <a href="/docs/troubleshooting">troubleshooting manuals</a></li>
+</ul>
+
+<p>If the issue you&rsquo;re experiencing isn&rsquo;t listed here, or if the recommended solution doesn&rsquo;t help, please feel free to <a href="/docs/support">contact our Support team</a>.</p>
+
+<h2 id="linode-is-slow-or-unresponsive">Linode is Slow or Unresponsive</h2>
+
+<p>Use the following checklist if your Linode is running slowly or is completely unresponsive when you try to connect.</p>
+
+<h3 id="is-the-linode-powered-on">Is the Linode powered on?</h3>
+
+<p>You can turn off a Linode, just like a physical computer. If you attempt to connect to your Linode when it&rsquo;s powered off, nothing will happen. To start troubleshooting, verify that your Linode is powered on. Here&rsquo;s how to check:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linode</strong> tab. A list of your Linodes appears.</li>
+
+<li><p>Select a Linode. The Linode&rsquo;s dashboard appears, as shown below.</p>
+
+<p><a href="/content/assets/953-troubleshooting1-1.png"><img src="/content/assets/952-troubleshooting1-1-small.png" alt="Check Linode boot status." /></a></p></li>
+
+<li><p>Review the <em>Server Status</em> box on the sidebar to determine whether or not the server is powered on.</p></li>
+
+<li><p>If the server is powered off, click the <strong>Boot</strong> button to turn it on. Wait a couple of minutes for the server to boot.</p></li>
+</ol>
+
+<p>If your Linode is already powered on, please continue to the next section.</p>
+
+<h3 id="can-you-ping-the-linode">Can you ping the Linode?</h3>
+
+<p>Now that you&rsquo;ve established that your Linode is turned on, you should verify that it is connected to the Internet and responding to ICMP packets. Here&rsquo;s how:</p>
+
+<ol>
+<li>Open a terminal application on your computer.</li>
+
+<li><p>Enter the following command, replacing <code>123.456.789.0</code> with the IP address of your Linode:</p>
+
+<pre><code>ping 123.456.789.0
+</code></pre></li>
+
+<li><p>The terminal application should be able to ping your server, as shown below:</p>
+
+<pre><code>beaver:.ssh linodedemo$ ping 123.456.789.0
+PING 123.456.789.0 (123.456.789.0): 56 data bytes
+64 bytes from 123.456.789.0: icmp_seq=0 ttl=47 time=94.589 ms
+64 bytes from 123.456.789.0: icmp_seq=1 ttl=47 time=89.512 ms
+64 bytes from 123.456.789.0: icmp_seq=2 ttl=47 time=90.714 ms
+</code></pre></li>
+
+<li><p>If you cannot ping the server, there may be a problem. Skip to the next section and try accessing the Linode with LISH. By default, your server is configured to respond to <code>ping</code>, but if you configured your firewall to block ICMP packets, the absence of a response is normal.</p></li>
+
+<li><p>If there is packet loss or high latency, follow the instructions in <a href="#id3">Are you experiencing network issues?</a> This section can help you diagnose and isolate networking errors.</p></li>
+</ol>
+
+<p>If you can successfully ping the server, please to continue to the next section.</p>
+
+<h3 id="can-you-log-in-to-lish">Can you log in to LISH?</h3>
+
+<p>To verify that your Linode is operating correctly, you should try to log in with the Linode Shell (LISH), which provides out of band access to your Linode from the Linode Manager. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linode</strong> tab. A list of your Linodes appears.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Click the <strong>Remote Access</strong> tab.</li>
+<li>Select the <strong>Launch Lish Console</strong> link. The LISH console window appears.</li>
+<li>Log in as <code>root</code> or another user. If you don&rsquo;t see a login prompt, press Enter. If you can&rsquo;t log in, <a href="/docs/platform/accounts-and-passwords/#resetting-the-root-password">reset the root password</a> and try again.</li>
+
+<li><p>If the console is not responding, <a href="/docs/support">contact Linode support</a>.</p>
+
+<p>If you can log in, continue to the next section, even if there are error messages visible on the console.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For more information about LISH, see <a href="/docs/networking/using-the-linode-shell-lish">this guide</a>.</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="is-your-disk-full">Is your disk full?</h3>
+
+<p>If your Linode&rsquo;s disk is full, this can cause performance degradation and instability for your applications. Use the following command to determine the free space on your Linode&rsquo;s filesystem:</p>
+
+<pre><code>df -h
+</code></pre>
+
+<p>The output will look similar to this:</p>
+
+<pre><code>Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       189G  166G   14G  93% /
+devtmpfs        3.9G     0  3.9G   0% /dev
+tmpfs           3.9G   16K  3.9G   1% /dev/shm
+tmpfs           3.9G  399M  3.6G  10% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
+tmpfs           799M     0  799M   0% /run/user/1000
+</code></pre>
+
+<p>In this example, you can see that the root filesystem is 93% full. Here&rsquo;s a command you can use to list all files over 200MB on your root filesystem:</p>
+
+<pre><code>sudo find / -xdev -type f -size +200M -exec ls -lah {} \;
+</code></pre>
+
+<p>You can adjust the <code>+200M</code> value in this command as needed, to search for files above a specific size.</p>
+
+<h4 id="deleted-files">Deleted Files</h4>
+
+<p>If a service deletes a file that it is no longer using, the file remains on your disk until the next time the service has been rebooted. In this example you&rsquo;ll see how deleted files belonging to Apache can take up space.</p>
+
+<p>Use the following command to check for deleted files that are currently open:</p>
+
+<pre><code>sudo lsof | grep deleted  | numfmt --field=8 --to=iec
+</code></pre>
+
+<p>This command will check the output of <code>lsof</code> for files marked as deleted, and will convert the file sizes so that they&rsquo;re more easily readable. In this example Apache is holding on to several old files:</p>
+
+<pre><code>apache2   32341         www-data   13u      REG                8,0          0        24K /tmp/.ZendSem.OmCTIC (deleted)
+apache2   32341         www-data   14w      REG               0,19          0       243M /run/lock/apache2/proxy.13748 (deleted)
+apache2   32341         www-data   15w      REG               0,19          0       243M /run/lock/apache2/mpm-accept.13748 (deleted)
+apache2   32342         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
+apache2   32342         www-data   13u      REG                8,0          0        24K /tmp/.ZendSem.OmCTIC (deleted)
+apache2   32342         www-data   14w      REG               0,19          0       243M /run/lock/apache2/proxy.13748 (deleted)
+apache2   32342         www-data   15wW     REG               0,19          0       243M /run/lock/apache2/mpm-accept.13748 (deleted)
+apache2   32343         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
+</code></pre>
+
+<p>To free up this space, you can simply restart the Apache process on your Linode.</p>
+
+<h3 id="is-the-linode-out-of-memory">Is the Linode out of memory?</h3>
+
+<p>The applications on your Linode require a certain amount of physical memory to function correctly. If all of the available physical memory is consumed, your Linode could slow down, display out of memory errors, or become unresponsive. Here&rsquo;s how to tell if your Linode is out of memory:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linode</strong> tab. A list of your Linodes appears.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Click the <strong>Remote Access</strong> tab.</li>
+<li>Select the <strong>Launch Lish Console</strong> link. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or upgrade to larger plan.</li>
+
+<li><p>Your Linode might be out of memory even if you do not see any error messages in the LISH console. Execute the following command in the LISH console or a terminal window to determine whether or not your Linode still has free memory available:</p>
+
+<pre><code>free -m
+</code></pre></li>
+
+<li><p>Examine the output. The free memory available (in megabytes) is shown in the <em>-/+ buffers/cache</em> column and the <em>free</em> row, as shown below.</p>
+
+<p><a href="/docs/assets/941-troubleshooting3-1.png"><img src="/docs/assets/941-troubleshooting3-1.png" alt="Check free memory." /></a></p></li>
+
+<li><p>A lack of free memory may indicate that an application is consuming all of your available memory. To see a list of running processes sorted by memory usage, execute the following command in the LISH console or a terminal window:</p>
+
+<pre><code>ps -eo pmem,pcpu,rss,vsize,args --sort -pmem | less
+</code></pre></li>
+
+<li><p>If an application is consuming all of your available memory, you have three options. You can kill the application, change the application&rsquo;s settings to reduce its memory footprint, or <a href="/docs/upgrading">upgrade your Linode</a> to a larger plan.</p></li>
+
+<li><p>To reduce the memory footprint of common applications like Apache and MySQL, see <a href="/docs/troubleshooting/memory-networking">Troubleshooting Memory and Networking Issues</a>.</p></li>
+</ol>
+
+<p>If your Linode is not out of memory, continue to the next section.</p>
+
+<h3 id="are-you-experiencing-network-issues">Are you experiencing network issues?</h3>
+
+<p>Network issues between your desktop computer and the data center can make your server appear slow or unavailable. You can check for issues with <em>upstream providers</em> by following the instructions in <a href="/docs/linux-tools/mtr">Diagnosing Network Issues with MTR</a> to generate <em>my traceroute</em> (MTR) reports. MTR combines the functionality of the ping and traceroute programs in a single tool that can help diagnose and isolate networking problems. If the MTR reports indicate that there is a networking issue, use the following list to try resolving the issue yourself before contacting Linode support:</p>
+
+<ul>
+<li>Most routing issues displayed in MTR reports are temporary and clear up within 24 hours.</li>
+<li>If you have experienced degraded service for an extended period of time, you can contact a service provider about the issues you&rsquo;re experiencing. Be sure to send MTR reports and any other relevant data.</li>
+<li>Network congestion over long distances and during peak times is normal. We recommended positioning hosts and resources as geographically close to the targeted audience as possible.</li>
+</ul>
+
+<p>When contacting <a href="/docs/support">Linode support</a> for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network&rsquo;s IP address. You can use a website such as <a href="http://www.whatsmyip.org/">whatsmyip.org</a> to determine the IP address of your local network. If you&rsquo;re not able to connect to your Linode over SSH, you can connect using the <a href="/docs/networking/using-the-linode-shell-lish">Lish</a> console to generate a report.</p>
+
+<h3 id="is-there-a-disk-i-o-bottleneck">Is there a Disk I/O bottleneck?</h3>
+
+<p>Disk input/output (I/O) bottlenecks can occur when an application or service is reading or writing an excessive amount of information to disk and the processor has to wait to process the information. High I/O wait can significantly slow down your server. Here&rsquo;s how to tell if your server currently has an I/O bottleneck:</p>
+
+<ol>
+<li>Open a terminal window and log in to your Linode via SSH.</li>
+
+<li><p>Enter <code>top</code> to access the <code>top</code> monitoring utility. The screen shown below appears.</p>
+
+<p><a href="/docs/assets/939-troubleshooting2.png"><img src="/docs/assets/939-troubleshooting2.png" alt="Check for Disk I/O bottleneck." /></a></p></li>
+
+<li><p>Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.</p></li>
+
+<li><p>If your I/O wait percentage is above zero, verify that your server has enough free memory available. In many cases, high I/O is an indication that your server has started &ldquo;swapping,&rdquo; or using disk space as memory.</p></li>
+
+<li><p>If your server has free memory available and is not using swap space, use <code>iotop</code> or <a href="/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance">vmstat</a> to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You must run <code>iotop</code> as <code>root</code> or with <code>sudo</code>.</div>
+</blockquote>
+</li>
+
+<li><p>If you cannot determine the source of the IO bottleneck, contact <a href="/docs/support">Linode support</a> for assistance.</p></li>
+</ol>
+
+<p>Since <code>top</code> only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues <em>before</em> they become major problems. See the guides in <a href="/docs/uptime/monitoring/">Server Monitoring</a> for instructions on setting up a server monitoring utility.</p>
+
+<h2 id="website-is-not-loading">Website is Not Loading</h2>
+
+<p>Use the following checklist if your website is not loading when you try to connect to it.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You should follow all steps in the <a href="#linode-is-slow-or-unresponsive">Linode is Slow or Unresponsive</a> section before using this checklist.</div>
+</blockquote>
+
+
+<h3 id="have-you-added-dns-records">Have you added DNS records?</h3>
+
+<p>To host a website with a domain name, you must set the domain&rsquo;s name servers to point to Linode. You also need to add DNS records for the domain in the Linode Manager. For instructions, see <a href="/docs/websites/hosting-a-website/#add-dns-records">Adding DNS Records</a>. Please note that it can take up to 24 hours for DNS changes to be reflected.</p>
+
+<p>Continue to the next section if you have pointed your domain name at Linode, added DNS records, and waited at least 24 hours.</p>
+
+<h3 id="is-the-web-server-running">Is the web server running?</h3>
+
+<p>A web server like Apache should automatically start when you boot your Linode and stay running until you shut it down. However, web servers occasionally crash and need to be manually restarted. If your website is unresponsive, you should verify that the web server is running. Here&rsquo;s how:</p>
+
+<ol>
+<li>Open a terminal window and log in to your Linode via SSH.</li>
+
+<li><p>If you are running Apache, enter the following command. (If you are using a different web server, replace <code>apache2</code> with the name of your web server.) :</p>
+
+<pre><code>sudo service apache2 status
+</code></pre></li>
+
+<li><p>If Apache is running, you will see the following status message:</p>
+
+<pre><code>Apache is running (pid 25931)
+</code></pre></li>
+
+<li><p>If Apache is not running, try starting it by entering the following command:</p>
+
+<pre><code>sudo service apache2 start
+</code></pre></li>
+
+<li><p>Apache should start normally. If it doesn&rsquo;t, you&rsquo;ll need to troubleshoot the issue to resolution.</p></li>
+</ol>
+
+<p>If the web server is running, continue to the next section.</p>
+
+<h3 id="is-the-database-running">Is the database running?</h3>
+
+<p>The database running on your Linode is an integral part of many content management systems, like WordPress and Drupal. Like the web server, databases occasionally crash and need to be manually restarted. If your website is unresponsive, you should verify that the database is running. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>If you are running MySQL, enter the following command. (If you are using a different database, replace <code>mysql</code> with the name of your database.) :</p>
+
+<pre><code>sudo service mysql status
+</code></pre></li>
+
+<li><p>If MySQL is running, you will see the following status message:</p>
+
+<pre><code>mysql start/running, process 20611
+</code></pre></li>
+
+<li><p>If MySQL is not running, try starting it by entering the following command:</p>
+
+<pre><code>sudo service mysql start
+</code></pre></li>
+
+<li><p>MySQL should start normally. If it doesn&rsquo;t, you&rsquo;ll need to troubleshoot the issue to resolution.</p></li>
+</ol>
+
+<p>If the database is running, continue to the next section.</p>
+
+<h3 id="is-port-80-or-443-blocked">Is port 80 or 443 blocked?</h3>
+
+<p>All web traffic is transferred over ports 80 and 443, so it&rsquo;s important to leave these ports open in your server&rsquo;s firewall. (Port 443 is generally only used for secure traffic encrypted with an SSL certificate.) If you previously configured an <code>iptables</code> firewall for your server and your website is unresponsive, you should check the firewall rules and verify that those ports are not blocked. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Check your Linode&rsquo;s default firewall rules by entering the following command:</p>
+
+<pre><code>sudo iptables -L -nv
+</code></pre></li>
+
+<li><p>Examine the output. If you previously configured a firewall with <code>iptables</code>, you should see the lines shown below:</p>
+
+<pre><code>0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    tcp dpt:80
+0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    tcp dpt:443
+</code></pre></li>
+
+<li><p>If those lines are not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in <a href="/docs/securing-your-server/#configure-a-firewall">Creating a Firewall</a> to revise and implement new firewall rules.</p></li>
+
+<li><p>Check for default <code>ACCEPT</code> and catch-all rules that send traffic transferred over ports 80 or 443 to <code>DROP</code> or <code>REJECT</code>.</p></li>
+</ol>
+
+<p>If your firewall is not blocking ports 80 or 443, continue to the next section.</p>
+
+<h3 id="are-the-files-in-correct-directory">Are the files in correct directory?</h3>
+
+<p>If your website is unavailable, verify that you uploaded the files for the website to the correct directory on your server. By default, Apache looks for files in <code>/usr/local/apache2</code>, but if you followed the instructions in the <a href="/docs/hosting-website">Hosting a Website</a> guide, you&rsquo;ll want to place your files in <code>~/public/example.com/public</code>, where <code>example.com</code> is the name of your domain name.</p>
+
+<p>If the files are in the correct directory, continue to the next section.</p>
+
+<h3 id="are-virtual-hosts-correctly-configured">Are virtual hosts correctly configured?</h3>
+
+<p>If you&rsquo;re hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for <a href="/docs/websites/hosting-a-website#configure-name-based-virtual-hosts">Configuring Name Based Virtual Hosts</a> and the <a href="/docs/web-servers">web server reference manuals</a>.</p>
+
+<h3 id="did-you-add-a-new-ip-address">Did you add a new IP address?</h3>
+
+<p>If you recently added a new IP address for an SSL certificate and it&rsquo;s not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for <a href="/docs/websites/hosting-a-website#configure-name-based-virtual-hosts">Configuring Name Based Virtual Hosts</a> and the <a href="/docs/web-servers">web server reference manuals</a>.</p>
+
+<h2 id="can-t-connect-via-ssh-or-ftp">Can&rsquo;t Connect via SSH or FTP</h2>
+
+<p>Use the following checklist if you cannot connect to your Linode via SSH or an FTP client application.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You should follow all steps in the <a href="#linode-is-slow-or-unresponsive">Linode is Slow or Unresponsive</a> section before using this checklist.</div>
+</blockquote>
+
+
+<h3 id="are-you-using-telnet-or-ftp">Are you using Telnet or FTP?</h3>
+
+<p>Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) - the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see <a href="/docs/getting-started#connect-to-your-linode-via-ssh">Connecting to Your Linode</a>.</p>
+
+<h3 id="is-port-22-blocked">Is port 22 blocked?</h3>
+
+<p>The SSH and SFTP protocols operate over port 22, so you will not be able to connect to your Linode if that port is blocked by your firewall rules. If you previously configured an <code>iptables</code> firewall for your server and you cannot connect to your server with a SSH or SFTP client, you should check the firewall rules and verify that those ports are not blocked. Here&rsquo;s how:</p>
+
+<ol>
+<li><p>Check your Linode&rsquo;s default firewall rules by entering the following command:</p>
+
+<pre><code>sudo iptables -L -nv
+</code></pre></li>
+
+<li><p>Examine the output. If you previously configured a firewall with <code>iptables</code>, you should see the line shown below:</p>
+
+<pre><code>0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    state NEW tcp dpt:22
+</code></pre></li>
+
+<li><p>If that line is not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in <a href="/docs/securing-your-server#configure-a-firewall">Securing Your Server</a> to revise and implement new firewall rules.</p></li>
+
+<li><p>Check for default <code>ACCEPT</code> and catch-all rules that send traffic transferred over port 22 to <code>DROP</code> or <code>REJECT</code>.</p></li>
+</ol>
+
+<h2 id="forgot-my-username-or-password">Forgot My Username or Password</h2>
+
+<h3 id="linode-user-root-password">Linode User/Root Password</h3>
+
+<p>If you&rsquo;ve forgotten the password for the root user on your Linode, you can follow the our steps for <a href="/docs/platform/accounts-and-passwords/#resetting-the-root-password">resetting the root password</a> from the Linode Manager.</p>
+
+<p>Once you have access to your Linode as the root user, you can reset the password for any additional system users with the <code>passwd</code> command. In this case, we&rsquo;ll reset the password for the <code>example</code> user:</p>
+
+<pre><code>passwd example
+</code></pre>
+
+<h3 id="linode-manager-user">Linode Manager User</h3>
+
+<ul>
+<li><p>If you forget your Linode Manager username, you can confirm it by supplying your email address <a href="https://manager.linode.com/session/forgot/username">here</a>.</p></li>
+
+<li><p>Assuming you know your Linode Manager username, but you&rsquo;ve forgotten the password, you can retrieve it <a href="https://manager.linode.com/session/forgot/password">here</a>.</p></li>
+</ul>
+
+<p>If you&rsquo;ve followed these steps, but you&rsquo;re still having trouble accessing your account, please <a href="/docs/platform/support#contacting-linode-support">contact Support</a>.</p>
+
+<h2 id="linode-manager-is-displaying-incorrect-information">Linode Manager is Displaying &ldquo;Incorrect&rdquo; Information</h2>
+
+<p>Use the following checklist if the Linode Manager is displaying &ldquo;incorrect&rdquo; information.</p>
+
+<h3 id="did-you-recently-change-your-account">Did you recently change your account?</h3>
+
+<p>If you recently created a new account, resized an existing Linode, or added extra bandwidth, the bandwidth displayed in the Linode Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan&rsquo;s bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan&rsquo;s bandwidth is available.</p>
+
+<h3 id="did-you-add-additional-storage">Did you add additional storage?</h3>
+
+<p>If you recently upgraded your plan, your Linode won&rsquo;t be able to take advantage of the additional space until you resize the disk. You can use the Linode Manager to see if there&rsquo;s additional storage space available for disks:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Linode</strong> tab. A list of your Linodes appears.</li>
+<li>Select a Linode. The Linode&rsquo;s dashboard appears.</li>
+<li>Examine the <em>Storage</em> pane on the sidebar, as shown below. If you have free storage space, you can allocate that space to your existing disks.</li>
+</ol>
+
+<p><a href="/docs/assets/944-troubleshooting4-1.png"><img src="/docs/assets/944-troubleshooting4-1.png" alt="Resize disks." /></a></p>
+
+<p>Follow our steps for <a href="/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk">resizing a disk</a> to take advantage of the extra space.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/platform/longview/longview/">Longview</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/dns/use-dig-to-perform-manual-dns-queries/">Use dig to Perform Manual DNS Queries</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/linux-system-administration-basics/">Linux System Administration Basics</a></li>
+    
+    
+    
+    <li><a href="/docs/troubleshooting/troubleshooting-common-apache-issues/">Troubleshooting Common Apache Issues</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#linode-is-slow-or-unresponsive">Linode is Slow or Unresponsive</a>
+<ul>
+<li><a href="#is-the-linode-powered-on">Is the Linode powered on?</a></li>
+<li><a href="#can-you-ping-the-linode">Can you ping the Linode?</a></li>
+<li><a href="#can-you-log-in-to-lish">Can you log in to LISH?</a></li>
+<li><a href="#is-your-disk-full">Is your disk full?</a>
+<ul>
+<li><a href="#deleted-files">Deleted Files</a></li>
+</ul></li>
+<li><a href="#is-the-linode-out-of-memory">Is the Linode out of memory?</a></li>
+<li><a href="#are-you-experiencing-network-issues">Are you experiencing network issues?</a></li>
+<li><a href="#is-there-a-disk-i-o-bottleneck">Is there a Disk I/O bottleneck?</a></li>
+</ul></li>
+<li><a href="#website-is-not-loading">Website is Not Loading</a>
+<ul>
+<li><a href="#have-you-added-dns-records">Have you added DNS records?</a></li>
+<li><a href="#is-the-web-server-running">Is the web server running?</a></li>
+<li><a href="#is-the-database-running">Is the database running?</a></li>
+<li><a href="#is-port-80-or-443-blocked">Is port 80 or 443 blocked?</a></li>
+<li><a href="#are-the-files-in-correct-directory">Are the files in correct directory?</a></li>
+<li><a href="#are-virtual-hosts-correctly-configured">Are virtual hosts correctly configured?</a></li>
+<li><a href="#did-you-add-a-new-ip-address">Did you add a new IP address?</a></li>
+</ul></li>
+<li><a href="#can-t-connect-via-ssh-or-ftp">Can&rsquo;t Connect via SSH or FTP</a>
+<ul>
+<li><a href="#are-you-using-telnet-or-ftp">Are you using Telnet or FTP?</a></li>
+<li><a href="#is-port-22-blocked">Is port 22 blocked?</a></li>
+</ul></li>
+<li><a href="#forgot-my-username-or-password">Forgot My Username or Password</a>
+<ul>
+<li><a href="#linode-user-root-password">Linode User/Root Password</a></li>
+<li><a href="#linode-manager-user">Linode Manager User</a></li>
+</ul></li>
+<li><a href="#linode-manager-is-displaying-incorrect-information">Linode Manager is Displaying &ldquo;Incorrect&rdquo; Information</a>
+<ul>
+<li><a href="#did-you-recently-change-your-account">Did you recently change your account?</a></li>
+<li><a href="#did-you-add-additional-storage">Did you add additional storage?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

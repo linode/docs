@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use OpenVPN to securely connect separate networks on an Ubuntu 12.04 (Precise) or Debian 7 Linode.">
+        <meta name="keywords" content="openvpn, networking, vpn, ubuntu, ubuntu precise, 12.04, debian 7, debian">
+        
+        <meta property="og:title" content="Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/">
+        <meta property="og:description" content="Use OpenVPN to securely connect separate networks on an Ubuntu 12.04 (Precise) or Debian 7 Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/">IPs, Networking &amp; Domains</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/networking/vpn/">VPNs: Virtual Private Networks</a>
+  
+</li>
+
+
+<li>
+  
+  Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-02-17T00:00:00Z">Monday, February 17, 2014</time> by Alex Fornuto</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2fsecure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7%2f&via=linode&text=Secure%20Communications%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2fsecure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fnetworking%2fvpn%2fsecure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7%2f&t=Secure%20Communications%20with%20OpenVPN%20on%20Ubuntu%2012.04%20%28Precise%29%20and%20Debian%207" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>OpenVPN, or Open Virtual Private Network, is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a local network without making them publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.</p>
+
+<p>Before installing OpenVPN, we assume that you have followed our <a href="/docs/getting-started/">Getting Started Guide</a>. If you&rsquo;re new to Linux server administration you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts">Introduction to Linux Concepts Guide</a>, <a href="/docs/beginners-guide/">Beginner&rsquo;s Guide</a> and <a href="/content/using-linux/administration-basics">Administration Basics Guide</a>. If you&rsquo;re concerned about securing on your Linode, you might be interested in our <a href="/content/security/basics">Security Basics</a> article as well.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For many private networking tasks, we suggest that you consider the functions of the OpenSSH package which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. For example, see <a href="/docs/networking/ssh-filesystems">Using SSHFS on Linux and MacOS X</a> or our guide on <a href="/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing">Setting up an SSH Tunnel</a> for more information. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.</div>
+</blockquote>
+
+
+<h2 id="how-openvpn-works">How OpenVPN Works</h2>
+
+<p>Once configured, the OpenVPN server encrypts traffic between your local computer and your Linode&rsquo;s local network. While all other traffic is handled in the conventional manner, the VPN allows traffic on non-public interfaces to be securely passed through your Linode. This means you can connect to the local area network in your Linode&rsquo;s data center. Using OpenVPN in this manner is supported by the default configuration</p>
+
+<p><a href="/docs/assets/1359-BasicVPNTraffic.jpg"><img src="/docs/assets/1359-BasicVPNTraffic.jpg" alt="Splash screen for TunnelBlick." /></a></p>
+
+<p>With the additional configuration we will set up at the end of this guide, all traffic coming from your local computer can be tunneled through the VPN server. This can be used to circumvent local traffic restrictions, or to mask the traffic coming from your computer.</p>
+
+<p><a href="/docs/assets/1360-FullTunneling.jpg"><img src="/docs/assets/1360-FullTunneling.jpg" alt="Splash screen for TunnelBlick." /></a></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Please note that only one public IP address is required to use OpenVPN</div>
+</blockquote>
+
+
+<h2 id="installing-openvpn">Installing OpenVPN</h2>
+
+<p>Follow these instructions to install OpenVPN:</p>
+
+<ol>
+<li><p>Update your package repositories with the following command:</p>
+
+<pre><code>apt-get update
+</code></pre></li>
+
+<li><p>Update your installed programs:</p>
+
+<pre><code>apt-get upgrade
+</code></pre></li>
+
+<li><p>Install the OpenVPN software with the following command:</p>
+
+<pre><code>apt-get install openvpn
+</code></pre></li>
+
+<li><p>The OpenVPN package provides a set of encryption-related tools called <strong>easy-rsa</strong>. In order for OpenVPN to function properly, these scripts should be located in the <code>/etc/openvpn/</code> directory. This is possible with the following command:</p>
+
+<pre><code>cd /etc/openvpn/ &amp;&amp; make-cadir easy-rsa
+</code></pre>
+
+<p>Most of the relevant configuration for the OpenVPN public key infrastructure is contained in <code>/etc/openvpn/easy-rsa/</code>. We will create several files in this directory used to define the OpenVPN server and client security.</p></li>
+</ol>
+
+<h3 id="initializing-the-public-key-infrastructure-pki">Initializing the Public Key Infrastructure (PKI)</h3>
+
+<p>In this section, you will initialize the certificate authority and the public key infrastructure:</p>
+
+<ol>
+<li><p>Move into the <code>/etc/openvpn/easy-rsa/</code> directory:</p>
+
+<pre><code>cd /etc/openvpn/easy-rsa/
+</code></pre></li>
+
+<li><p>Create a symbolic link from <code>openssl-1.0.0.cnf</code> to <code>openssl.cnf</code>:</p>
+
+<pre><code>ln -s openssl-1.0.0.cnf openssl.cnf
+</code></pre></li>
+
+<li><p>Source the <code>vars</code> script:</p>
+
+<pre><code>source ./vars
+</code></pre>
+
+<p>This will return <code>NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/keys</code></p></li>
+
+<li><p>Execute the <code>clean-all</code> script.</p>
+
+<pre><code>./clean-all
+</code></pre></li>
+
+<li><p>Execute the <code>build-ca</code> script. At each prompt, fill out the information to be used in your certificate.</p>
+
+<pre><code>./build-ca
+</code></pre></li>
+</ol>
+
+<p>After doing this, your PKI should be configured properly.</p>
+
+<h3 id="generating-certificates-and-private-keys">Generating Certificates and Private Keys</h3>
+
+<p>With the certificate authority generated, you can generate the private key for the server and certificates for all the VPN clients.</p>
+
+<ol>
+<li><p>Create the key with the following command:</p>
+
+<pre><code>./build-key-server server
+</code></pre></li>
+
+<li><p>You will be prompted for additional information. Change the default values as necessary. By default, the <code>Common Name</code> for this key will be <strong>server</strong>. The challenge password and company names are optional and can be left blank.</p></li>
+
+<li><p>When you&rsquo;ve completed the question section, confirm the signing of the certificate and the <code>certificate requests certified</code> by answering <strong>yes</strong> to these questions.</p></li>
+
+<li><p>With the private keys generated, create certificates for all of your VPN clients. Issue the following command:</p>
+
+<pre><code>./build-key client1
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Anyone with access to <code>client1.key</code> will be able to access your VPN. To better protect against this scenario, you can issue <code>./build-key-pass client1</code> instead to build a client key which is encrypted with a passphrase.</div>
+</blockquote>
+</li>
+
+<li><p>Repeat the previous step for each client, replacing <code>client1</code> with an appropriate identifier.</p></li>
+</ol>
+
+<p>You should generate a unique key for every user of the VPN. Each key should have its own unique identifier, but all other information can remain the same. If you need to add users to your OpenVPN at any time, repeat step 4 to create additional keys.</p>
+
+<h3 id="generating-diffie-hellman-parameters">Generating Diffie Hellman Parameters</h3>
+
+<p>The <strong>Diffie Hellman Parameters</strong> govern the method of key exchange used by the OpenVPN server. By creating a .pem file, you create the parameters by which the OpenVPN server will initiate secured connections with the clients.</p>
+
+<p>Issue the following command to generate the <code>.pem</code> file:</p>
+
+<pre><code>./build-dh
+</code></pre>
+
+<p>This should produce the following output:</p>
+
+<pre><code>Generating DH parameters, 1024 bit long safe prime, generator 2
+This is going to take a long time
+</code></pre>
+
+<p>This will be followed by a quantity of seemingly random output. Once it brings you back to a command prompt, the task has succeeded. In the <code>keys</code> subdirectory it&rsquo;s created a file called <code>dh1024.pem</code> which will be used to generate secure connections to the VPN server&rsquo;s clients.</p>
+
+<h3 id="relocating-secure-keys">Relocating Secure Keys</h3>
+
+<p>Move all of the secure keys to their proper locations by following these instructions:</p>
+
+<ol>
+<li><p>The <code>/etc/openvpn/easy-rsa/keys/</code> directory contains all of the keys and certificates for the server and its clients generated using the <code>easy-rsa</code> tools. Copy the following certificate and key files to the remote client machines, using <strong>scp</strong> or another <a href="/docs/tools-reference/linux-system-administration-basics#upload-files-to-a-remote-server">means of transferring</a>:</p>
+
+<ul>
+<li><code>ca.crt</code></li>
+<li><code>client1.crt</code></li>
+<li><code>client1.key</code></li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Transfer these keys with the utmost attention to security. Anyone who has the key or is able to intercept an unencrypted copy of the key will be able to gain full access to your virtual private network. Typically we recommend that you encrypt the keys for transfer, either by using a protocol like SSH, or by encrypting them with the PGP tool.</div>
+</blockquote>
+</li>
+
+<li><p>On your server, change to the <code>/etc/openvpn/easy-rsa/keys</code> directory:</p>
+
+<pre><code>cd /etc/openvpn/easy-rsa/keys
+</code></pre></li>
+
+<li><p>Copy the keys to the <code>/etc/openvpn</code> directory of the server so the OpenVPN server process can access them:</p>
+
+<pre><code>cp ca.crt ca.key dh1024.pem server.crt server.key /etc/openvpn
+</code></pre></li>
+</ol>
+
+<p>Keeping control of these files is of the utmost importance to the integrity of your server. If you ever need to move or back up these keys, ensure that they&rsquo;re encrypted and secured. If these files become compromised, they must be recreated along with all client keys.</p>
+
+<h3 id="revoking-client-certificates">Revoking Client Certificates</h3>
+
+<p>If you need to remove a user&rsquo;s access to the VPN server, follow these instructions:</p>
+
+<ol>
+<li><p>Run the <code>vars</code> script. Note that for this script to function properly your working (current) directory must be /etc/openvpn/easy-rsa/ :</p>
+
+<pre><code>source ./vars
+</code></pre></li>
+
+<li><p>Run the <code>revoke-full</code> script, substituting <strong>client1</strong> with the name of the certificate you want to revoke:</p>
+
+<pre><code>./revoke-full client1
+</code></pre></li>
+</ol>
+
+<p>This will revoke the ability of all users using the <code>client1</code> certificate to access the VPN. Make sure you don&rsquo;t accidentally revoke access for someone who still needs it, and who uses that certificate.</p>
+
+<h3 id="configuring-server-and-client-settings">Configuring Server and Client Settings</h3>
+
+<p>In this section, you&rsquo;ll create two important configuration files. One is for the server and defines the scope and settings for the VPN. The other is for your local computer, and defines the settings you will pass on to your VPN client. For each client connecting to the VPN you will need to generate a separate configuration file.</p>
+
+<ol>
+<li><p>Configure your server file. There&rsquo;s an example file in <code>/usr/share/doc/openvpn/examples/sample-config-files</code> which you&rsquo;ll use as a starting point. First, extract and copy the file to the <code>/etc/openvpn/</code> directory:</p>
+
+<pre><code>gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz &gt;/etc/openvpn/server.conf
+</code></pre></li>
+
+<li><p>Copy the <code>client.conf</code> file to your home directory:</p>
+
+<pre><code>cp client.conf ~/
+</code></pre></li>
+
+<li><p>Move to your home directory:</p>
+
+<pre><code>cd ~
+</code></pre></li>
+
+<li><p>Open your <code>~/client.conf</code> file for editing, and update the <code>remote</code> line to reflect the OpenVPN server&rsquo;s name:</p>
+
+<pre><code>nano ~/client.conf
+</code></pre>
+
+<dl class="file">
+<dt>
+
+
+		~/client.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># The hostname/IP and port of the server.
+</span><span class="c1"># You can have multiple remote entries
+</span><span class="c1"># to load balance between the servers.
+</span><span class="c1"></span>
+remote example.com <span class="m">1194</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>In the same file, <code>client.conf</code>, edit the <code>cert</code> and <code>key</code> lines to reflect the name of your key. In this example we use <code>client1</code> for the file name.</p>
+
+<dl class="file">
+<dt>
+
+
+		~/client.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># SSL/TLS parms.
+</span><span class="c1"># See the server config file for more
+</span><span class="c1"># description.  It&#39;s best to use
+</span><span class="c1"># a separate .crt/.key file pair
+</span><span class="c1"># for each client.  A single ca
+</span><span class="c1"># file can be used for all clients.
+</span><span class="c1"></span>ca ca.crt
+cert client1.crt
+key client1.key</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Copy the <code>~/client.conf</code> file to your client system.</p></li>
+
+<li><p>Repeat the entire key generation and distribution process for every user and every key that will connect to your network.</p></li>
+
+<li><p>To start the OpenVPN server, run the following command:</p>
+
+<pre><code>service openvpn start
+</code></pre></li>
+</ol>
+
+<p>This will scan the <code>/etc/openvpn</code> directory on the server for files with a <code>.conf</code> extension. For every file that it finds, it will create and run a VPN daemon (server).</p>
+
+<h2 id="installing-client-side-software">Installing Client-Side Software</h2>
+
+<p>The process for connecting to the VPN varies depending on the specific operating system and distribution running on the <em>client</em> machine. You will need to install the right OpenVPN package for your client operating system.</p>
+
+<p>Most network management tools provide some facility for managing connections to a VPN. Configure connections to your OpenVPN through the same interface where you might configure wireless or ethernet connections. If you choose to install and manage OpenVPN manually, you will need to place the <code>client1.conf</code> file and the requisite certificate files in the <em>local</em> machine&rsquo;s <code>/etc/openvpn</code> directory, or equivalent location.</p>
+
+<p>If you use OS X on a Mac, we have found that the <a href="http://code.google.com/p/tunnelblick/">Tunnelblick</a> tool provides an easy method for managing OpenVPN connections. If you use Windows, the <a href="http://openvpn.se/">OpenVPN GUI</a> tool may be an effective tool for managing your connections too. Linux desktop users can install the OpenVPN package and use the network management tools that come with the desktop environment.</p>
+
+<p>Here we will go through installing Tunneblick on OSX:</p>
+
+<ol>
+<li>To download the latest version of Tunnelblick, <a href="https://tunnelblick.net/downloads.html#Tunnelblick_Stable_Release">click here</a>. After opening the dmg file you can drag it into applications or open it immediately and it will copy itself.</li>
+
+<li><p>After starting, you will see this splash screen:</p>
+
+<p><img src="/docs/assets/1346-tunnelblick2.png" alt="Splash screen for TunnelBlick." /></p>
+
+<p>At the next screen click the <strong>I have configuration files</strong> button.</p>
+
+<p><img src="/docs/assets/1342-tunnelblick1.png" alt="Splash screen for TunnelBlick." /></p></li>
+
+<li><p>At the next screen, click <strong>OpenVPN Configuration(s)</strong>:</p>
+
+<p><a href="/docs/assets/1347-tunnelblick3.png"><img src="/docs/assets/1347-tunnelblick3.png" alt="Splash screen for TunnelBlick." /></a></p></li>
+
+<li><p>Tunnelblick will open a Finder window into which you can copy the client.conf and client1 ca, crt, and key files you created on the Linode and copied to this client machine. Follow the rest of the instructions shown in Tunnelblick to create and install your Tunnelblick configuration file.</p></li>
+</ol>
+
+<h2 id="connecting-to-the-vpn">Connecting to the VPN</h2>
+
+<p>If you are using Tunnelblick, click on the tray icon to initiate the connection:</p>
+
+<p><a href="/docs/assets/1351-tunnelblick7.png"><img src="/docs/assets/1351-tunnelblick7.png" alt="Splash screen for TunnelBlick." /></a></p>
+
+<p>A notification will show you the status as it connects:</p>
+
+<p><a href="/docs/assets/1353-tunnelblick9.png"><img src="/docs/assets/1353-tunnelblick9.png" alt="Splash screen for TunnelBlick." /></a></p>
+
+<h3 id="accessing-your-linode-over-the-vpn">Accessing your Linode over the VPN</h3>
+
+<p>Once you&rsquo;re connected to your VPN, you can SSH to another Linode over the private network. If you want to access files directly from your Linode, you will need to install a compatible network file sharing protocol, like <a href="https://help.ubuntu.com/community/Samba/SambaServerGuide">Samba</a>, <a href="https://help.ubuntu.com/community/SettingUpNFSHowTo">NFS</a>, or <a href="https://help.ubuntu.com/community/AppleTalk">Appletalk</a>.</p>
+
+<h3 id="tunneling-all-connections-through-the-vpn">Tunneling All Connections through the VPN</h3>
+
+<p>By deploying the following configuration, you will be able to forward <em>all</em> traffic from client machines through your Linode, and encrypt it with transport layer security (TLS/SSL) between the client machine and the Linode.</p>
+
+<ol>
+<li><p>Uncomment the following parameter by removing the semicolon to the <code>/etc/openvpn/server.conf</code> file to enable full tunneling:</p>
+
+<pre><code>nano /etc/openvpn/server.conf
+</code></pre>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/openvpn/server.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">push <span class="s2">&#34;redirect-gateway def1 bypass-dhcp&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Edit the <code>/etc/sysctl.conf</code> file to uncomment or add the following line to ensure that your system can forward IPv4 traffic:</p>
+
+<pre><code>nano /etc/sysctl.conf
+</code></pre>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/sysctl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Issue the following command to set this variable for the current session:</p>
+
+<pre><code>echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+</code></pre></li>
+
+<li><p>Issue the following set of commands, one line at a time, to configure <code>iptables</code> to properly forward traffic through the VPN:</p>
+
+<pre><code>iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
+iptables -A FORWARD -j REJECT
+iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+iptables -A INPUT -i tun+ -j ACCEPT
+iptables -A FORWARD -i tun+ -j ACCEPT
+iptables -A INPUT -i tap+ -j ACCEPT
+iptables -A FORWARD -i tap+ -j ACCEPT
+</code></pre></li>
+
+<li><p>Add the same <code>iptables</code> rules to your system&rsquo;s <code>/etc/rc.local</code> file, so they will be recreated following your next reboot cycle:</p>
+
+<pre><code>nano /etc/rc.local
+</code></pre>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/rc.local 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh -e
+</span><span class="cp"></span><span class="c1">#
+</span><span class="c1"># [...]
+</span><span class="c1">#
+</span><span class="c1"></span>
+iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -s <span class="m">10</span>.8.0.0/24 -j ACCEPT
+iptables -A FORWARD -j REJECT
+iptables -t nat -A POSTROUTING -s <span class="m">10</span>.8.0.0/24 -o eth0 -j MASQUERADE
+iptables -A INPUT -i tun+ -j ACCEPT
+iptables -A FORWARD -i tun+ -j ACCEPT
+iptables -A INPUT -i tap+ -j ACCEPT
+iptables -A FORWARD -i tap+ -j ACCEPT
+
+<span class="nb">exit</span> <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This will enable all client traffic except for DNS queries to be forwarded through the VPN.</p></li>
+
+<li><p>To forward DNS traffic through the VPN, you will need to install the <code>dnsmasq</code> package and modify the <code>/etc/opnevpn/server.conf</code> package. Install and configure the <code>dnsmasq</code> package with the following command:</p>
+
+<pre><code>apt-get install dnsmasq &amp;&amp; dpkg-reconfigure resolvconf
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you are using Debian 7, replace this command with <code>apt-get install dnsmasq resolvconf</code> and skip steps 7 through 9</div>
+</blockquote>
+</li>
+
+<li><p>You will be presented with a series of options in an ncurses menu. First, choose <strong>yes</strong> to prepare <code>/etc/resolv.conf</code> for dynamic updates.</p>
+
+<p><a href="/docs/assets/1338-curses1.png"><img src="/docs/assets/1338-curses1.png" alt="A curses menu." /></a></p></li>
+
+<li><p>At the next option select <strong>No</strong>. This means that you will need to update <code>/etc/network/interfaces</code> but won&rsquo;t need to remove the workaround afterwards.</p>
+
+<p><a href="/docs/assets/1339-curses2.png"><img src="/docs/assets/1339-curses2.png" alt="A curses menu." /></a></p></li>
+
+<li><p>The third menu simply warns you that a reboot will be required to prevent a known bug.</p>
+
+<p><a href="/docs/assets/1340-curses3.png"><img src="/docs/assets/1340-curses3.png" alt="A curses menu." /></a></p></li>
+
+<li><p>Modify its configuration so that dnsmasq is not listening on a public interface. Open <code>/etc/dnsmasq.conf</code> for editing, and make sure the following lines are uncommented and have the appropriate values:</p>
+
+<pre><code>nano /etc/dnsmasq.conf
+</code></pre>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dnsmasq.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">listen-address<span class="o">=</span><span class="m">10</span>.8.0.1
+
+bind-interfaces</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Now that dnsmasq is configured, you will need to add two new lines to /etc/network/interfaces. First, go to the Linode&rsquo;s <strong>Remote Access</strong> page, shown below. You&rsquo;ll need the IP addresses listed under <strong>DNS Resolvers</strong> for the <code>dns-nameservers</code> line:</p>
+
+<p><a href="/docs/assets/1341-resolvers.png"><img src="/docs/assets/1341-resolvers.png" alt="DNS resolvers in the Linode Manager." /></a></p></li>
+
+<li><p>Open the interfaces file and insert the addresses listed under <strong>DNS Resolvers</strong>:</p>
+
+<pre><code>nano /etc/network/interfaces
+</code></pre>
+
+<p><dl class="file-excerpt">
+<dt>
+
+
+		/etc/network/interfaces 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># The primary network interface
+</span><span class="c1"></span>auto eth0
+iface eth0 inet dhcp
+
+dns-search members.linode.com
+dns-nameservers <span class="m">97</span>.107.133.4 <span class="m">207</span>.192.69.4 <span class="m">207</span>.192.69.5</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+~</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;re not utilizing IPv6, you can omit the addresses starting with 2600:</div>
+</blockquote>
+</li>
+
+<li><p>When your system boots, dnsmasq will try to start before the OpenVPN tun device has been enabled. This will cause dnsmasq to fail at boot. To rectify this, modify your <code>/etc/rc.local</code> file to add a line that will restart dnsmasq after all the init scripts have finished. You should place the restart command after your iptables rules:</p>
+
+<pre><code>nano /etc/rc.local
+</code></pre>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/rc.local 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/etc/init.d/dnsmasq restart
+
+<span class="nb">exit</span> <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Add the following line to the <code>/etc/openvpn/server.conf</code> file:</p>
+
+<pre><code>nano /etc/openvpn/server.conf
+</code></pre>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/openvpn/server.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">push <span class="s2">&#34;dhcp-option DNS 10.8.0.1&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart the Linode:</p>
+
+<pre><code>reboot
+</code></pre></li>
+</ol>
+
+<p>To test your connection, connect to the VPN connection from your local machine, then access one of the many <a href="http://www.whatismyip.com/">websites that will display your public IP address</a>. If the IP address displayed doesn&rsquo;t match the IP address of your Linode, your traffic is not being filtered through your Linode or encrypted by the VPN. If the IP matches, network traffic from your local machine is being filtered through your Linode and encrypted over the VPN, and you have successfully completed your OpenVPN setup!</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://openvpn.net/index.php/open-source/documentation/howto.html">Official OpenVPN Documentation</a></li>
+
+<li><a href="http://code.google.com/p/tunnelblick/">Tunnelblick OS X OpenVPN Client</a></li>
+
+<li><a href="http://openvpn.se/">OpenVPN GUI for Windows</a></li>
+
+<li><a href="http://projects.gnome.org/NetworkManager/">Network Manager GNOME Configuration Management Tool</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/vpn/install-openvpn-access-server-on-linux/">Install OpenVPN Access Server on Linux for Secure Communications</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-10-maverick/">Secure Communications with OpenVPN on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-04-lucid/">Secure Communications with OpenVPN on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/secure-communications-with-openvpn-on-debian-5-lenny/">Secure Communications with OpenVPN on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-9-10-karmic/">Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#how-openvpn-works">How OpenVPN Works</a></li>
+<li><a href="#installing-openvpn">Installing OpenVPN</a>
+<ul>
+<li><a href="#initializing-the-public-key-infrastructure-pki">Initializing the Public Key Infrastructure (PKI)</a></li>
+<li><a href="#generating-certificates-and-private-keys">Generating Certificates and Private Keys</a></li>
+<li><a href="#generating-diffie-hellman-parameters">Generating Diffie Hellman Parameters</a></li>
+<li><a href="#relocating-secure-keys">Relocating Secure Keys</a></li>
+<li><a href="#revoking-client-certificates">Revoking Client Certificates</a></li>
+<li><a href="#configuring-server-and-client-settings">Configuring Server and Client Settings</a></li>
+</ul></li>
+<li><a href="#installing-client-side-software">Installing Client-Side Software</a></li>
+<li><a href="#connecting-to-the-vpn">Connecting to the VPN</a>
+<ul>
+<li><a href="#accessing-your-linode-over-the-vpn">Accessing your Linode over the VPN</a></li>
+<li><a href="#tunneling-all-connections-through-the-vpn">Tunneling All Connections through the VPN</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

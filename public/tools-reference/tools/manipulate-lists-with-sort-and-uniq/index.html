@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Manipulate Lists with sort and uniq</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use the sort and uniq Linux utilities to manage and order">
+        <meta name="keywords" content="linux, common commands, sort, uniq, shell, bash">
+        
+        <meta property="og:title" content="Manipulate Lists with sort and uniq">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/tools/manipulate-lists-with-sort-and-uniq/">
+        <meta property="og:description" content="Use the sort and uniq Linux utilities to manage and order">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/tools/manipulate-lists-with-sort-and-uniq/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/tools/">Tools</a>
+  
+</li>
+
+
+<li>
+  
+  Manipulate Lists with sort and uniq
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Manipulate Lists with sort and uniq</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-04-19T00:00:00Z">Tuesday, April 19, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fmanipulate-lists-with-sort-and-uniq%2f&via=linode&text=Manipulate%20Lists%20with%20sort%20and%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fmanipulate-lists-with-sort-and-uniq%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fmanipulate-lists-with-sort-and-uniq%2f&t=Manipulate%20Lists%20with%20sort%20and%20uniq" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/tools/manipulate-lists-with-sort-and-uniq.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/tools/manipulate-lists-with-sort-and-uniq.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The Linux utilities <code>sort</code> and <code>uniq</code> are useful for ordering and manipulating data in text files and as part of shell scripting. The <code>sort</code> command takes a list of items and sorts them alphabetically and numerically. The <code>uniq</code> command takes a list of items and removes adjacent duplicate lines. Though narrow in their focus, both of these tools are useful in a number of different command line operations.</p>
+
+<p><img src="/docs/assets/manipulate_lists_with_sort_and_uniq_smg.png" alt="Title graphic" /></p>
+
+<h2 id="usage">Usage</h2>
+
+<h3 id="sort">sort</h3>
+
+<p>The <code>sort</code> command accepts input from a text file or standard output and outputs the lines of the input sorted. Sorted text is sent to standard output and printed on the terminal unless redirected. <code>sort</code> commands take the following format:</p>
+
+<pre><code>sort ~/roster.txt
+</code></pre>
+
+<p><code>sort</code> also accepts input from other commands as in the following example:</p>
+
+<pre><code>grep -i &quot;retired&quot; ~/roster.txt | sort
+</code></pre>
+
+<p>This uses <a href="/docs/tools-reference/search-and-filter-text-with-grep">grep</a> to filter the <code>~/roster.txt</code> file for the string <code>retired</code>, regardless of case. These results are sent to <code>sort</code>, which reorders this output alphabetically.</p>
+
+<p>In the default configuration, this <code>sort</code> prints the output on the terminal. To write this content to a file, redirect the output as in the following example:</p>
+
+<pre><code>grep -i &quot;retired&quot; ~/roster.txt | sort &gt; ~/retired-roster.txt
+</code></pre>
+
+<p>Here, the sorted output is written to the <code>~/retired-roster.txt</code> file.</p>
+
+<h3 id="uniq">uniq</h3>
+
+<p>The <code>uniq</code> command takes input and removes repeated lines in a file or input. Because <code>uniq</code> only removes identical adjacent lines, it is often used in conjunction with <code>sort</code> to remove non-adjacent duplicate lines.</p>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="reorder-lists-with-sort">Reorder Lists with sort</h3>
+
+<p>Consider the following example:</p>
+
+<pre><code>$ cat names-list.txt
+Richard Longly
+Joni Governor
+Michael Bitley
+Michael Watts
+Beth Thompson
+Sarah O'Malley
+beth thompson
+Thompson Geller
+Bartram Miller
+Earnest Quail
+Erin Governor
+sarah o'malley
+Aaron Smith
+Aaron Smith
+Erin Smith
+erin smyth
+Gil Watson
+Joni Governor
+
+$ sort names-list.txt
+Aaron Smith
+Aaron Smith
+Bartram Miller
+beth thompson
+Beth Thompson
+Earnest Quail
+Erin Governor
+erin smith
+Erin Smith
+Gil Watson
+Joni Governor
+Joni Governor
+Michael Bitley
+Michael Watts
+Richard Longly
+sarah o'malley
+Sarah O'Malley
+Thompson Geller
+</code></pre>
+
+<p>Sort simply reorders the list alphabetically and outputs the sorted list to the standard output. Capital letters are ordered <em>after</em> lower case letters.</p>
+
+<p>You can reverse the order of <code>sort</code> output with the <code>-r</code> option, as follows:</p>
+
+<pre><code>$ sort -r names-list.txt
+Thompson Geller
+Sarah O'Malley
+sarah o'malley
+Richard Longly
+Michael Watts
+Michael Bitley
+Joni Governor
+Joni Governor
+Gil Watson
+erin smyth
+Erin Smith
+Erin Governor
+Earnest Quail
+Beth Thompson
+beth thompson
+Bartram Miller
+Aaron Smith
+Aaron Smith
+</code></pre>
+
+<h3 id="scramble-list-order-with-sort">Scramble List Order with sort</h3>
+
+<p><code>sort</code> can scramble the order of lines using the <code>-R</code> option. Using the same example as above, consider the following output:</p>
+
+<pre><code>$ sort -R names-list.txt
+beth thompson
+Richard Longly
+Beth Thompson
+Michael Watts
+Erin Smith
+Michael Bitley
+Bartram Miller
+Thompson Geller
+sarah o'malley
+Sarah O'Malley
+Erin Governor
+Earnest Quail
+Joni Governor
+Joni Governor
+Gil Watson
+erin smyth
+Aaron Smith
+Aaron Smith
+</code></pre>
+
+<p>The &ldquo;random&rdquo; order is determined by using a cryptographic hash of the contents of lines, which produces a fast &ldquo;scrambled&rdquo; order. Identical lines are always printed adjacently to each other.</p>
+
+<p><code>sort</code> can scramble a list using the system&rsquo;s random number generator <code>/dev/random</code> or psudo-random number generator <code>/dev/urandom</code>. Consider the output of the following commands:</p>
+
+<pre><code>$ sort -R names-list.txt --random-source=/dev/urandom
+Beth Thompson
+Erin Governor
+Richard Longly
+Aaron Smith
+Aaron Smith
+Thompson Geller
+Joni Governor
+Joni Governor
+Earnest Quail
+erin smyth
+sarah o'malley
+Sarah O'Malley
+Erin Smith
+Michael Watts
+beth thompson
+Michael Bitley
+Bartram Miller
+Gil Watson
+
+$ sort -R names-list.txt --random-source=/dev/urandom
+erin smyth
+beth thompson
+Richard Longly
+Sarah O'Malley
+Joni Governor
+sarah o'malley
+Joni Governor
+Gil Watson
+Earnest Quail
+Erin Smith
+Erin Governor
+Michael Watts
+Michael Bitley
+Bartram Miller
+Beth Thompson
+Thompson Geller
+Aaron Smith
+Aaron Smith
+</code></pre>
+
+<h3 id="ignore-case-when-reordering-with-sort">Ignore Case when reordering with sort</h3>
+
+<p>The <code>-f</code> option for <code>sort</code> forces sort to ignore the case of a letter when ordering lines. The sorting algorithm used by <code>sort</code> is &ldquo;unstable&rdquo; in the default operation because lines judged to be identical may be printed out of order with regards to their original place. The effects of this are particularly apparent in this use case:</p>
+
+<pre><code>$ cat names-list.txt
+Richard Longly
+Joni Governor
+Michael Bitley
+Michael Watts
+Beth Thompson
+Sarah O'Malley
+beth thompson
+Thompson Geller
+Bartram Miller
+Earnest Quail
+Erin Governor
+sarah o'malley
+Aaron Smith
+Aaron Smith
+Erin Smith
+erin smyth
+Gil Watson
+Joni Governor
+
+$ sort -f names-list.txt
+Aaron Smith
+Aaron Smith
+Bartram Miller
+beth thompson
+Beth Thompson
+Earnest Quail
+Erin Governor
+Erin Smith
+erin smyth
+Gil Watson
+Joni Governor
+Joni Governor
+Michael Bitley
+Michael Watts
+Richard Longly
+sarah o'malley
+Sarah O'Malley
+Thompson Geller
+
+$ sort -fs names-list.txt
+Aaron Smith
+Aaron Smith
+Bartram Miller
+Beth Thompson
+beth thompson
+Earnest Quail
+Erin Governor
+Erin Smith
+erin smyth
+Gil Watson
+Joni Governor
+Joni Governor
+Michael Bitley
+Michael Watts
+Richard Longly
+Sarah O'Malley
+sarah o'malley
+Thompson Geller
+</code></pre>
+
+<h3 id="remove-duplicate-lines-with-uniq">Remove Duplicate Lines with uniq</h3>
+
+<p>To remove duplicate adjacent lines in a file, send the output of <code>sort</code> to the <code>uniq</code> command, as in the following example (using the above example):</p>
+
+<pre><code>%  sort names-list.txt| uniq
+Aaron Smith
+Bartram Miller
+beth thompson
+Beth Thompson
+Earnest Quail
+Erin Governor
+Erin Smith
+erin smyth
+Gil Watson
+Joni Governor
+Michael Bitley
+Michael Watts
+Richard Longly
+sarah o'malley
+Sarah O'Malley
+Thompson Geller
+</code></pre>
+
+<p>The <code>-u</code> option for <code>sort</code> achieves the same result:</p>
+
+<pre><code>$  sort -u names-list.txt
+Aaron Smith
+Bartram Miller
+beth thompson
+Beth Thompson
+Earnest Quail
+Erin Governor
+Erin Smith
+erin smyth
+Gil Watson
+Joni Governor
+Michael Bitley
+Michael Watts
+Richard Longly
+sarah o'malley
+Sarah O'Malley
+Thompson Geller
+</code></pre>
+
+<h3 id="ignore-case-differences-when-removing-duplicate-lines-with-uniq">Ignore Case Differences when Removing Duplicate Lines with uniq</h3>
+
+<p><code>sort</code> and <code>uniq</code> provide the ability to ignore case differences when dropping duplicate adjacent lines. The stability of the sorting method used can affect the final output generated. Consider the following examples:</p>
+
+<pre><code>$ sort names-list.txt | uniq -i
+Aaron Smith
+Bartram Miller
+beth thompson
+Earnest Quail
+Erin Governor
+Erin Smith
+erin smyth
+Gil Watson
+Joni Governor
+Michael Bitley
+Michael Watts
+Richard Longly
+sarah o'malley
+Thompson Geller
+
+$ sort -fs names-list.txt | uniq -i
+Aaron Smith
+Bartram Miller
+Beth Thompson
+Earnest Quail
+Erin Governor
+Erin Smith
+erin smyth
+Gil Watson
+Joni Governor
+Michael Bitley
+Michael Watts
+Richard Longly
+Sarah O'Malley
+Thompson Geller
+</code></pre>
+
+<h3 id="count-the-number-of-duplicate-lines-with-uniq">Count the Number of Duplicate Lines with uniq</h3>
+
+<p>The <code>-c</code> option for <code>uniq</code> counts the number of occurrences of a line in a file. Consider the following example:</p>
+
+<pre><code>% sort names-list.txt | uniq -ic
+      2 Aaron Smith
+      1 Bartram Miller
+      2 beth thompson
+      1 Earnest Quail
+      1 Erin Governor
+      1 Erin Smith
+      1 erin smyth
+      1 Gil Watson
+      2 Joni Governor
+      1 Michael Bitley
+      1 Michael Watts
+      1 Richard Longly
+      2 sarah o'malley
+      1 Thompson Geller
+</code></pre>
+
+<p>As above, you can combine the <code>-c</code> and <code>-i</code> options to ignore the case differences.</p>
+
+<h3 id="print-duplicate-lines-with-uniq">Print Duplicate Lines with uniq</h3>
+
+<p>The <code>-D</code> option inverts the behavior of <code>uniq</code>, and prints only the duplicated lines, as follows:</p>
+
+<pre><code>$ sort names-list.txt | uniq -iD
+Aaron Smith
+Aaron Smith
+beth thompson
+Beth Thompson
+Joni Governor
+Joni Governor
+sarah o'malley
+Sarah O'Malley
+</code></pre>
+
+<p>In cases like this, you may send the output of one <code>uniq</code> command through another <code>uniq</code> command. Consider the following:</p>
+
+<pre><code>$ sort names-list.txt | uniq -iD | uniq -i
+Aaron Smith
+beth thompson
+Joni Governor
+sarah o'malley
+
+$ sort names-list.txt | uniq -D | uniq -i
+Aaron Smith
+Joni Governor
+</code></pre>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/">View and Follow the End of Text Files with tail</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/tools/view-the-beginning-of-text-files-with-head/">View the Beginning of Text Files with head</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/tools/create-file-system-links-with-ln/">Create File System Links with ln</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/install-selinux-on-ubuntu/">How to Install SELinux on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/how-to-use-wget/">How to Use Wget</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#sort">sort</a></li>
+<li><a href="#uniq">uniq</a></li>
+</ul></li>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#reorder-lists-with-sort">Reorder Lists with sort</a></li>
+<li><a href="#scramble-list-order-with-sort">Scramble List Order with sort</a></li>
+<li><a href="#ignore-case-when-reordering-with-sort">Ignore Case when reordering with sort</a></li>
+<li><a href="#remove-duplicate-lines-with-uniq">Remove Duplicate Lines with uniq</a></li>
+<li><a href="#ignore-case-differences-when-removing-duplicate-lines-with-uniq">Ignore Case Differences when Removing Duplicate Lines with uniq</a></li>
+<li><a href="#count-the-number-of-duplicate-lines-with-uniq">Count the Number of Duplicate Lines with uniq</a></li>
+<li><a href="#print-duplicate-lines-with-uniq">Print Duplicate Lines with uniq</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

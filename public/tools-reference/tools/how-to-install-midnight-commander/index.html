@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Use Midnight Commander, a Visual File Manager</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to install and use Midnight Commander, a text user-interface file manager.">
+        <meta name="keywords" content="midnight commander,  file manager,  text user-interface,  TUI">
+        
+        <meta property="og:title" content="How to Use Midnight Commander, a Visual File Manager">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/tools/how-to-install-midnight-commander/">
+        <meta property="og:description" content="This guide shows how to install and use Midnight Commander, a text user-interface file manager.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/tools/how-to-install-midnight-commander/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/tools/">Tools</a>
+  
+</li>
+
+
+<li>
+  
+  How to Use Midnight Commander, a Visual File Manager
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Use Midnight Commander, a Visual File Manager</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-12T00:00:00Z">Tuesday, September 12, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Alexandru Andrei
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fhow-to-install-midnight-commander%2f&via=linode&text=How%20to%20Use%20Midnight%20Commander%2c%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fhow-to-install-midnight-commander%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2ftools%2fhow-to-install-midnight-commander%2f&t=How%20to%20Use%20Midnight%20Commander%2c%20a%20Visual%20File%20Manager" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/tools/how-to-install-midnight-commander.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/tools/how-to-install-midnight-commander.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/midnight_commander.jpg" alt="Midnight Commander" /></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>For beginners, managing files on their Linux servers from the command line can be intimidating, time-consuming, and sometimes even risky. More experienced users might want to switch to better suited tools for dealing with files and directories in many different locations. One tool that can help both Linux newbies and veterans is Midnight Commander, a <em>Text User Interface</em> (TUI) file manager.</p>
+
+<p>A TUI facilitates interaction between users and their systems in a visually oriented way instead of typing commands. While lacking in visual components compared to a graphical user interface (GUI), a TUI offers windows, panels, menus, and mouse support.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<p>The methods in this tutorial have been tested on Debian 9. There is no special requirement to install Midnight Commander, and it works on all Linux distributions. While this file manager should work in almost identically on all Linux distributions, a particular distro may not package the exact same Midnight Commander version (4.8.18, in this case). This may result in small behavioral differences on other operating systems.</p>
+
+<h2 id="install-midnight-commander">Install Midnight Commander</h2>
+
+<p>First, install the utility:</p>
+
+<ol>
+<li><p>On Debian or Ubuntu run:</p>
+
+<pre><code>sudo apt-get install mc
+</code></pre></li>
+
+<li><p>On CentOS, the command is:</p>
+
+<pre><code>sudo yum install mc
+</code></pre></li>
+</ol>
+
+<h2 id="launch-midnight-commander">Launch Midnight Commander</h2>
+
+<ol>
+<li><p>To start Midnight Commander with the command prompt:</p>
+
+<pre><code>mc
+</code></pre>
+
+<p>Keep in mind that running as root is not a good idea unless you need to modify or delete files/directories owned by this user. In most cases, reading or copying objects owned by root doesn&rsquo;t require special privileges, so try to run <code>mc</code> as a regular user.</p>
+
+<p><img src="/docs/assets/midnight-commander-full-screen.png" alt="Midnight Commander TUI" /></p></li>
+
+<li><p>By default, Midnight Commander uses a blue background color and highlights important menu items. To turn off color:</p>
+
+<pre><code>mc --nocolor
+</code></pre></li>
+</ol>
+
+<p><img src="/docs/assets/midnight-commander-nocolor.png" alt="Midnight Commander - No Color Mode" /></p>
+
+<h2 id="interact-with-screen-elements">Interact With Screen Elements</h2>
+
+<ol>
+<li><p>The file manager is vertically split into two panels. The logic behind this is that copy and move operations are done from one place to another. At the bottom, you will see ten labeled rectangles:</p>
+
+<p><strong>Help</strong>, <strong>Menu</strong>, <strong>View</strong>, (+ 7 more)</p>
+
+<p>The numbers preceding each label represent the function key you need to press to perform those actions. For example pressing <strong>F10</strong> will quit the program and return to your shell.</p></li>
+
+<li><p>Above those ten buttons, you&rsquo;ll see <code>your_user@your_hostname:~$</code>. This allows you to type commands in your current working directory. Try it now, type:</p>
+
+<pre><code>touch test
+</code></pre>
+
+<p>After you press <strong>ENTER</strong>, you&rsquo;ll see a new file appear in your active panel. Now, delete it without typing any commands. Use the arrow keys, pressing <strong>UP</strong> or <strong>DOWN</strong> until the file named <code>test</code> is highlighted. Now press <strong>F8</strong>. A dialog box pops up and asks for confirmation. Press <strong>ENTER</strong>. If you press <strong>F8</strong> by mistake this gives you chance to cancel the action.</p>
+
+<p><img src="/docs/assets/midnight-commander-delete-confirmation.png" alt="Midnight Commander Delete Confirmation Dialog" /></p></li>
+
+<li><p>At the top of the screen, you can see a colored bar with text:
+<strong>Left</strong>, <strong>File</strong>, <strong>Command</strong>, <strong>Options</strong>, <strong>Right</strong>.</p>
+
+<p>These are drop-down menus that can be accessed by pressing <strong>F9</strong> and then navigating with your arrow keys. Press <strong>F9</strong> and then the <strong>DOWN</strong> arrow key multiple times until <strong>Tree</strong> is highlighted. Press <strong>ENTER</strong>. The panel has now changed to tree view.</p></li>
+
+<li><p>Once you hit the <strong>F9</strong> key, some letters get highlighted, e.g., <strong>C</strong> in <strong>C</strong>ommand. These are keys that you can press to navigate the menus faster. Let&rsquo;s return to your previous view: press <strong>F9</strong> then <strong>l</strong> (L) and then <strong>g</strong> to get back to <strong>File listing</strong>. When an input field is selected, hold <strong>ALT</strong> down before pressing on the highlighted letter.</p></li>
+
+<li><p>Shortcut keys are a combination of keys pressed together that allow you to quickly access specific actions. For example, try pressing <strong>CTRL+O</strong>. This lets you focus on the command line or see previous command output while Midnight Commander runs in the background. You can quickly return to its interface by hitting the same key combination.</p></li>
+
+<li><p>You can also use your mouse pointer to click on interface elements.</p></li>
+</ol>
+
+<h2 id="use-the-two-panels-to-work-with-files-and-directories">Use the Two Panels to Work with Files and Directories</h2>
+
+<ol>
+<li><p>Switch between the left and the right vertical panels by pressing <strong>TAB</strong>.</p></li>
+
+<li><p>Close Midnight Commander by pressing <strong>F10</strong>. Open a temporary working directory in both panels:</p>
+
+<pre><code>cd /tmp &amp;&amp; mc
+</code></pre>
+
+<p>This is a directory containing temporary files that will be deleted at next boot, so we can experiment freely here.</p></li>
+
+<li><p>Create a directory by pressing <strong>F7</strong>. Name this <code>test</code>.</p></li>
+
+<li><p>Using your arrow keys, navigate to <code>test</code> and press <strong>ENTER</strong> (after creating a directory, this should already be highlighted).</p></li>
+
+<li><p>Create nine empty files:</p>
+
+<pre><code>touch file{1..9}
+</code></pre></li>
+
+<li><p>Say you want to copy three files from <code>/tmp/test</code> to <code>/tmp</code>. Use the arrow keys to navigate to <code>file1</code>. Once it&rsquo;s highlighted press <strong>INSERT</strong> three times. Pressing <strong>F5</strong> and then <strong>ENTER</strong> will copy all three files to the working directory opened in the opposite panel.</p>
+
+<p><img src="/docs/assets/midnight-commander-highlighting-and-copying-files.png" alt="Midnight Commander - Highlighting and Copying Files" /></p>
+
+<p>Alternate ways to make selections are: holding down <strong>SHIFT</strong> and then pressing <strong>UP</strong> or <strong>DOWN</strong> arrow key.</p>
+
+<ul>
+<li><code>*</code> to inverse the selection</li>
+<li><code>-</code> to deselect all objects that match a pattern (e.g., typing <code>f*</code> will deselect every file or directory whose names start with &ldquo;f&rdquo;)</li>
+<li><code>+</code> to select by pattern</li>
+</ul>
+
+<p>In these patterns, <code>*</code> stands for zero or more characters while <code>?</code> stands for one character. So &ldquo;f*e&rdquo; would match &ldquo;fe&rdquo;, &ldquo;file&rdquo;, &ldquo;fiiiile&rdquo; or anything else starting with &ldquo;f&rdquo; and ending with &ldquo;e&rdquo;. &ldquo;a?c&rdquo; would match &ldquo;abc&rdquo;, &ldquo;adc&rdquo;, &ldquo;azc&rdquo; but will not match &ldquo;ac&rdquo;. There needs to be exactly one character between &ldquo;a&rdquo; and &ldquo;c.&rdquo;</p>
+
+<p>If you prefer to use the mouse, then right clicking will make individual selections. Holding down the right click and dragging will select multiple entries.</p></li>
+
+<li><p>Pressing <strong>F4</strong> will open a file in the default editor. On Debian you will get this output if you never used an editor before:</p>
+
+<div class="file">
+<p>Select an editor.  To change later, run &lsquo;select-editor&rsquo;.
+1. /bin/nano        &lt;&mdash;- easiest
+2. /usr/bin/mcedit
+3. /usr/bin/vim.basic
+4. /usr/bin/vim.tiny</p>
+
+<p>Choose 1-4 [1]:</p>
+
+</div>
+
+<p>It&rsquo;s recommended you choose <strong>2</strong> here since <code>mcedit</code> integrates with Midnight Commander and is easier to use than <code>nano</code>. A large amount of functions can be accessed by pressing <strong>F9</strong> to activate the editor&rsquo;s menu. Press <strong>F10</strong> to exit the utility or <strong>ESC</strong> two times.</p>
+
+<p><img src="/docs/assets/midnight-commander-mcedit.png" alt="Midnight Commander's Editor mcedit with Syntax Highlighting Active" /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Actions can be cancelled in MC by pressing the <strong>ESC</strong> key twice.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="useful-tips-and-tricks">Useful Tips and Tricks</h2>
+
+<ol>
+<li><p>Accessing the parent directory or &ldquo;going up&rdquo; one level can be a bit tedious because you have to scroll/navigate all the way up to the <strong>/..</strong> entry. Press <strong>F9</strong>, followed by <strong>o</strong> and then <strong>p</strong>. This will take you to <strong>Panel options</strong> where you can activate <strong>Lynx-like motion</strong>. (Highlight it and press space or click it with your mouse.) With this on, you can now go up a directory by simply pressing your <strong>LEFT</strong> arrow key and enter a directory by pressing the <strong>RIGHT</strong> arrow key.</p>
+
+<p><img src="/docs/assets/midnight-commander-panel-options.png" alt="Midnight Commander Panel Options" /></p></li>
+
+<li><p>Another tool that can save you time is Midnight Commander&rsquo;s user menu. Go back to <code>/tmp/test</code> where you created nine files. Press <strong>F2</strong> and bring up the user menu. Select <strong>Compress the current subdirectory (tar.gz)</strong>. After you choose the name for the archive, this will be created in <code>/tmp</code> (one level up from the directory being compressed). If you highlight the .tar.gz file and press <strong>ENTER</strong> you&rsquo;ll notice it will open like a regular directory. This allows you to browse archives and extract files by simply copying them (<strong>F5</strong>) to the opposite panel&rsquo;s working directory.</p>
+
+<p><img src="/docs/assets/midnight-commander-user-menu.png" alt="Midnight Commander User Menu" /></p></li>
+
+<li><p>To find out the size of a directory (actually, the size of all the files it contains), highlight the directory and then press <strong>CTRL+SPACE</strong>.</p></li>
+
+<li><p>To search, go up in your directory tree until you reach the top level, <code>/</code>, called root directory. Now press <strong>F9</strong>, then <strong>c</strong>, followed by <strong>f</strong>. After the <strong>Find File</strong> dialog opens, type <code>*.gz</code>. This will find any accessible gzip archive on the system. In the results dialog, press <strong>l</strong> (L) for <strong>Panelize</strong>. All the results will be fed to one of your panels so you can easily browse, copy, view and so on. If you enter a directory from that list, you lose the list of found files, but you can easily return to it with <strong>F9</strong>, <strong>l</strong> (L) then <strong>z</strong> (to select <strong>Panelize</strong> from the <strong>Left</strong> menu).</p>
+
+<p><img src="/docs/assets/midnight-commander-find-file-dialog.png" alt="Midnight Commander - Find File Dialog" /></p></li>
+
+<li><p>Managing files is not always done locally. Midnight Commander also supports accessing remote filesystems through SSH&rsquo;s <em>Secure File Transfer Protocol, SFTP</em>. This way you can easily transfer files between servers.</p>
+
+<p>Press <strong>F9</strong>, followed by <strong>l</strong> (L), then select the <strong>SFTP link</strong> menu entry. In the dialog box titled <strong>SFTP to machine</strong> enter <code>sftp://example@203.0.113.0</code>. Replace <code>example</code> with the username you have created on the remote machine and <code>203.0.113.1</code> with the IP address of your server. This will work only if the server at the other end accepts password logins. If you&rsquo;re logging in with SSH keys, then you&rsquo;ll first need to create and/or edit <code>~/.ssh/config</code>. It could look something like this:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/.ssh/config 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">Host</span> sftp_server
+    <span class="nb">HostName</span> <span class="m">203.0.113.1</span>
+    <span class="nb">Port</span> <span class="m">22</span>
+    <span class="nb">User</span> your_user
+    <span class="nb">IdentityFile</span> ~/.ssh/id_rsa</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>You can choose whatever you want as the <strong>Host</strong> value, it&rsquo;s only an identifier. <strong>IdentityFile</strong> is the path to your private SSH key.</p>
+
+<p>After the config file is setup, access your SFTP server by typing the identifier value you set after <strong>Host</strong> in the <strong>SFTP to machine</strong> dialog. In this example, enter <code>sftp_server</code>.</p></li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Midnight Commander has many more features than those presented here. Before making many customizations to the default settings, it&rsquo;s a good idea to backup your settings by copying <code>~/.config/mc/</code> to your local computer. You can also clone these settings to other servers by copying them to the same location.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://midnight-commander.org/">Midnight Commander</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-midnight-commander">Install Midnight Commander</a></li>
+<li><a href="#launch-midnight-commander">Launch Midnight Commander</a></li>
+<li><a href="#interact-with-screen-elements">Interact With Screen Elements</a></li>
+<li><a href="#use-the-two-panels-to-work-with-files-and-directories">Use the Two Panels to Work with Files and Directories</a></li>
+<li><a href="#useful-tips-and-tricks">Useful Tips and Tricks</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

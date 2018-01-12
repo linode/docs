@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Open Web Analytics (OWA): Install &amp; Launch on Your Server</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu with this guide.">
+        <meta name="keywords" content="‘open, web, analytics,owa,Centos,mysql,debian,ubuntu’">
+        
+        <meta property="og:title" content="Open Web Analytics (OWA): Install &amp; Launch on Your Server">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/analytics/open-web-analytics-install-and-launch-on-your-server/">
+        <meta property="og:description" content="Install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu with this guide.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/analytics/open-web-analytics-install-and-launch-on-your-server/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/analytics/">Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  Open Web Analytics (OWA): Install &amp; Launch on Your Server
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Open Web Analytics (OWA): Install &amp; Launch on Your Server</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-01-05T00:00:00Z">Tuesday, January 5, 2016</time> by Alex Fornuto</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Douglas Colby
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fanalytics%2fopen-web-analytics-install-and-launch-on-your-server%2f&via=linode&text=Open%20Web%20Analytics%20%28OWA%29%3a%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fanalytics%2fopen-web-analytics-install-and-launch-on-your-server%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fanalytics%2fopen-web-analytics-install-and-launch-on-your-server%2f&t=Open%20Web%20Analytics%20%28OWA%29%3a%20Install%20%26%20Launch%20on%20Your%20Server" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/analytics/open-web-analytics-install-and-launch-on-your-server.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/analytics/open-web-analytics-install-and-launch-on-your-server.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>Open Web Analytics (OWA) is an open-source alternative to commercial web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.</p>
+
+<h2 id="before-you-begin">Before you Begin</h2>
+
+<ol>
+<li><p>This guide assumes that you have your Linode already set up and running, that you have followed:</p>
+
+<ul>
+<li>The <a href="/docs/getting-started">Getting Started</a> guide.</li>
+<li>The <a href="/docs/security/securing-your-server">Securing Your Server</a> guides.</li>
+<li>That the Linode&rsquo;s <a href="/docs/getting-started#setting-the-hostname">hostname is set</a> and has a FQDN.</li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>The steps required in this guide require root privileges. Be sure to run the steps below as <strong>root</strong> or with the <code>sudo</code> prefix. For more information on privileges see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</p>
+
+<p>Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the Remote Access Tab next to your public IP address.</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Make sure your system is up-to-date:</p>
+
+<ul>
+<li><p><strong>CentOS</strong></p>
+
+<pre><code>yum update
+</code></pre></li>
+
+<li><p><strong>Debian &amp; Ubuntu</strong></p>
+
+<pre><code>apt-get update &amp;&amp; apt-get upgrade
+</code></pre></li>
+</ul></li>
+
+<li><p>Install the supporting software packages:</p>
+
+<ul>
+<li><p><strong>CentOS</strong></p>
+
+<pre><code>yum install httpd php php-mysql mysql-server mariadb-server
+</code></pre></li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This command is designed to work with CentOS 6, which uses MySQL as the default database and CentOS 7 which uses MariaDB. You will get a notice when installing that the other package is not available.</div>
+</blockquote>
+
+
+<ul>
+<li><p><strong>Debian &amp; Ubuntu</strong></p>
+
+<pre><code>apt-get install apache2 php5 php5-mysql mysql-server
+</code></pre></li>
+</ul></li>
+
+<li><p>CentOS users will need to enable and activate the <code>httpd</code> and <code>mariadb</code> services:</p>
+
+<ul>
+<li><p><strong>CentOS 7</strong></p>
+
+<pre><code>systemctl enable mariadb
+systemctl start mariadb
+systemctl enable httpd
+systemctl start httpd
+</code></pre></li>
+
+<li><p><strong>CentOS 6</strong></p>
+
+<pre><code>chkconfig mysqld on
+service mysqld start
+chkconfig httpd on
+service httpd start
+</code></pre></li>
+</ul>
+
+<p>Debian and Ubuntu users will need to restart the Apache2 daemon:</p>
+
+<pre><code>service apache2 restart
+</code></pre></li>
+</ol>
+
+<h2 id="set-up-mysql">Set up MySQL</h2>
+
+<ol>
+<li><p>Run <code>mysql_secure_installation</code> to secure your database:</p>
+
+<pre><code>mysql_secure_installation
+</code></pre>
+
+<p>You should answer yes to most of the prompts. CentOS users, make sure to set a strong password for the root user since it is initially blank. This is the root user for <code>mysql</code> and is not related to the system&rsquo;s root user.</p></li>
+
+<li><p>Enter the MySQL CLI:</p>
+
+<pre><code>mysql -u root -p
+</code></pre>
+
+<p>You&rsquo;ll need to enter the password you set in the step above, or when you installed <code>mysql-server</code>.</p></li>
+
+<li><p>Create a database named <code>owadb</code>:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">owadb</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>Create a user named <code>owadbuser</code>. Replace the example password, <code>owadbpassword</code>, with a strong password of your choice. This information will be needed later to configure OWA.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">owadb</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="n">owadbuser</span><span class="o">@</span><span class="n">localhost</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;owadbpassword&#39;</span><span class="p">;</span></code></pre></div></li>
+
+<li><p>Exit the MySQL CLI:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">FLUSH</span> <span class="k">PRIVILEGES</span><span class="p">;</span></code></pre></div>
+
+<pre><code>quit
+</code></pre></li>
+</ol>
+
+<h2 id="owa">OWA</h2>
+
+<h3 id="install">Install</h3>
+
+<ol>
+<li><p>Navigate to your document root folder for your webserver, usually <code>/var/www/html</code> by default.:</p>
+
+<pre><code>cd /var/www/html
+</code></pre></li>
+
+<li><p>Download the OWA package:</p>
+
+<pre><code>wget https://github.com/padams/Open-Web-Analytics/archive/1.5.7.tar.gz
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Version 1.5.7 is the current version and may be different by the time you read this. Please check <a href="http://www.openwebanalytics.com/">The Open Web Analytics</a> site for the latest information.</div>
+</blockquote>
+</li>
+
+<li><p>Unpack the downloaded file:</p>
+
+<pre><code>tar xf 1.*.tar.gz
+</code></pre></li>
+
+<li><p>Change ownership of the <code>owa</code> folder to the Apache daemon user:</p>
+
+<ul>
+<li><p><strong>CentOS</strong></p>
+
+<pre><code>chown -R apache:apache Open*
+</code></pre></li>
+
+<li><p><strong>Debian &amp; Ubuntu</strong></p>
+
+<pre><code>chown -R www-data:www-data Open*
+</code></pre></li>
+</ul></li>
+
+<li><p><strong>Recommended:</strong> Rename the OWA folder:</p>
+
+<pre><code>mv Open-Web-Analytics-1.5.7 owa
+</code></pre></li>
+
+<li><p>Delete the tar file:</p>
+
+<pre><code>rm -rf 1.*.tar.gz
+</code></pre></li>
+</ol>
+
+<h3 id="configure">Configure</h3>
+
+<ol>
+<li><p>Navigate to the OWA installation page in your webbrowser. Replace <code>your.domain</code> with your Linode&rsquo;s IP address or FQDN:</p>
+
+<pre><code>http://your.domain/owa/
+</code></pre></li>
+
+<li><p>After clicking on <strong>Let&rsquo;s Get Started</strong>, you should see a configuration page for your OWA installation. OWA will automatically fill in the first field with the path to your OWA installation. You will need to fill in the other fields on the page with the information you set in the MySQL CLI:</p>
+
+<p><a href="/docs/assets/owa-install.png"><img src="/docs/assets/owa-install_small.png" alt="Open Web Analytics set up screen." /></a></p></li>
+
+<li><p>Click <strong>Continue&hellip;</strong>.</p></li>
+
+<li><p>Create a user account and define a domain to track. You will log in to see your OWA statistics through this user account.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>This process will display your password in plaintext once complete. Be careful if performing these steps in a public location.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="using-owa">Using OWA</h2>
+
+<p>You will need to create site profiles and add JavaScript or PHP code to your website pages to use OWA.</p>
+
+<ol>
+<li><p>Log in to your OWA installation. In your browser go to:</p>
+
+<pre><code>http://your.domain/owa/index.php
+</code></pre></li>
+
+<li><p>The first time you login OWA will present you with a tracking tag (a code snippet) for the domain you defined when you created your user account. This code should be added to the html pages of the site you wish to track.</p></li>
+
+<li><p>Once the tracking tag has been added to your website pages, analysis data can be viewed under the &ldquo;Reporting&rdquo; section (click the button at the top of the page) which will take you to the Sites Roster page.</p></li>
+
+<li><p>To add more sites to track, click &ldquo;Add New&rdquo; at the top left of the page.</p></li>
+
+<li><p>On the resulting page you will see near the top a section named &ldquo;Add a New Tracked Site Profile&rdquo;. Enter the domain name of the site you want to track and click Save Profile. The other two fields are for your information only and are, therefore, optional.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>You must click &ldquo;Save Profile&rdquo; before trying to enter any of the settings below this button. Failure to do so will result in a  blank white page and your new site not being added. Recovery simply requires a click of the back button in your browser.</div>
+</blockquote>
+</li>
+
+<li><p>Click on &ldquo;Reporting&rdquo; in the top left corner to return to the Sites Roster page. In the list of tracked sites, find your new site and click &ldquo;Get Tracking Code&rdquo;.</p></li>
+
+<li><p>Copy the tracking code in the language of your choice (JavaScript or PHP) and paste the code into your websites&rsquo; pages. Now whenever someone loads a page with the tracking code, OWA will know about it and the data will show up in the reports.</p></li>
+
+<li><p>Click &ldquo;View Reports&rdquo; in the Sites Roster page and begin happy analyzing!</p></li>
+</ol>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.openwebanalytics.com">OWA Website</a></li>
+
+<li><a href="http://www.openwebanalytics.com/?page_id=4">OWA Forum</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/">Monitor an nginx Web Server Using the Elastic Stack on Centos 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before you Begin</a></li>
+<li><a href="#set-up-mysql">Set up MySQL</a></li>
+<li><a href="#owa">OWA</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+</ul></li>
+<li><a href="#using-owa">Using OWA</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

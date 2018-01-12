@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using Apache for Proxy and Clustering Services on CentOS 5</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to cluster Apache web servers and proxy requests for content to external servers on Centos 5.">
+        <meta name="keywords" content="clusters, proxy, proxy pass, apache, httpd">
+        
+        <meta property="og:title" content="Using Apache for Proxy and Clustering Services on CentOS 5">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-centos-5/">
+        <meta property="og:description" content="How to cluster Apache web servers and proxy requests for content to external servers on Centos 5.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-centos-5/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/">Website Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/websites/proxies/">Proxies</a>
+  
+</li>
+
+
+<li>
+  
+  Using Apache for Proxy and Clustering Services on CentOS 5
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Using Apache for Proxy and Clustering Services on CentOS 5</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-04-29T00:00:00Z">Friday, April 29, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fproxies%2fusing-apache-for-proxy-and-clustering-services-on-centos-5%2f&via=linode&text=Using%20Apache%20for%20Proxy%20and%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fproxies%2fusing-apache-for-proxy-and-clustering-services-on-centos-5%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fwebsites%2fproxies%2fusing-apache-for-proxy-and-clustering-services-on-centos-5%2f&t=Using%20Apache%20for%20Proxy%20and%20Clustering%20Services%20on%20CentOS%205" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-centos-5.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-centos-5.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard <a href="/docs/web-servers/apache/configuration/configuration-basics">configuration system</a>, it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a front end server to mange clusters of web servers.</p>
+
+<p>This guide provides a number of configuration examples and suggestions for using Apache as a front end server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on <a href="/docs/web-servers/apache/installation/centos-5">installing Apache</a> before continuing with this guide. Additionally, consider our <a href="/docs/getting-started/">getting started</a> and <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> documents if you are new to Linode, and our <a href="/content/using-linux/administration-basics">administration basics</a> guide if you are new to Linux server administration.</p>
+
+<h2 id="case-one-separating-static-content-from-dynamic-content">Case One: Separating Static Content from Dynamic Content</h2>
+
+<p>In this configuration, Apache provides two or more virtual hosts which perform different functions. Here we might configure our site to use <code>static.example.com</code> for hosting static resources for direct delivery like images, JavaScript, CSS files, media files, and static HTML, while using <code>example.com</code> to host dynamic content including CGI scripts and PHP pages. In this kind of system it becomes easy to move the <code>static</code> subdomain to another Linode instance or content delivery system without modifying any internal configuration.</p>
+
+<p>To accomplish this, insert the following configuration directives into your Virtual Hosting configuration:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">static.example.com:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerAdmin</span> admin@example.com
+    <span class="nb">ServerName</span> static.example.com
+    <span class="nb">DocumentRoot</span> <span class="sx">/srv/www/static.example.com/public_html/</span>
+    <span class="nb">ErrorLog</span> <span class="sx">/srv/www/static.example.com/logs/error.log</span>
+    <span class="nb">CustomLog</span> <span class="sx">/srv/www/static.example.com/logs/access.log</span> combined
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Create the necessary directories by issuing the following commands:</p>
+
+<pre><code>mkdir -p /srv/www/static.example.com/public_html/
+mkdir -p /srv/www/static.example.com/logs/
+</code></pre>
+
+<p>Reload the web server configuration to create the virtual host. Issue the following command at this point and at any point after you&rsquo;ve made changes to an Apache configuration file:</p>
+
+<pre><code>/etc/init.d/httpd reload
+</code></pre>
+
+<p>Now, place the static files in the <code>/srv/www/static.example.com/public_html/</code> folder and ensure all static content is served from URLs that begin with <code>http://static.example.com/</code>. You must create an <a href="/docs/networking/dns/dns-records-an-introduction#a-and-aaaa">A Record</a> that points to your Linode&rsquo;s IP for the <code>static.example.com</code> domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.</p>
+
+<h2 id="case-two-using-proxypass-to-delegate-services-to-alternate-machines">Case Two: Using ProxyPass to Delegate Services to Alternate Machines</h2>
+
+<p>In our guide to using <a href="/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5">multiple web servers with ProxyPass</a> we outline a method for configuring multiple websites using Apache&rsquo;s <code>mod_proxy</code>. Follow this guide, particularly the section regarding configuring <a href="/docs/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/#enabling-the-proxy-module">mod_proxy</a> to ensure that <code>mod_proxy</code> is active.</p>
+
+<p>Once <code>mod_proxy</code> is enabled and configured, you can insert the following directives into your virtual hosting configuration:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">ProxyPass</span> <span class="sx">/static/</span> http://static.example.com/
+<span class="nb">ProxyPass</span> <span class="sx">/media</span> http://media.example.com
+<span class="nb">ProxyPass</span> <span class="sx">/wiki/static/</span> !
+<span class="nb">ProxyPass</span> <span class="sx">/wiki/</span> http://application.example.com/</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>When added to the virtual host configuration for the <code>example.com</code> domain, these directives will have the following effects.</p>
+
+<ul>
+<li>All requests for resources located at <code>http://example.com/static/</code> will be served by the server running at <code>http://static.example.com</code>. As a result, a request from the user&rsquo;s perspective for <code>http://example.com/static/screen.css</code> will return the resource located at <code>http://static.example.com/screen.css</code>. Requests without a trailing slash (i.e. <code>http://example.com/static</code>) will not be passed to an external server.</li>
+<li>All requests for resources located at <code>/media</code> and paths &ldquo;below&rdquo; this location will return resources located at <code>http://media.example.com</code>. This functions the same as the <code>ProxyPass</code> for <code>static</code> above, except it does not include the trailing slash for either domain name. Either form is acceptable, but both the local server address and the proxied URL must agree to ensure that the number of slashes is correct.</li>
+<li>Requests for <code>http://example.com/wiki/static/</code> will <strong>not</strong> be proxied to <code>http://application.example.com/static/</code> and will be served or processed by the current virtual host, in a manner described outside of the current excerpt. Use the <code>!</code> directive instead of a URL to add an exception for a subdirectory of a directory that is to be proxy passed. Proxy exclusions must be declared before proxy passes.</li>
+<li>Requests for resources located below <code>/wiki/</code> will be passed to the external server located at <code>http://application.example.com/</code> in the conventional manner as described for <code>/static/</code> and <code>/media</code>. Note that exclusions <em>must</em> be declared before proxy passes are declared.</li>
+</ul>
+
+<p>In essence, the <code>ProxyPass</code> directive in this manner allows you to distribute serving HTTP resources amongst a larger pool of machines. At the same time, end users will still see a unified and coherent website hosted on a single domain.</p>
+
+<h2 id="case-three-proxy-only-some-requests-to-a-back-end">Case Three: Proxy only Some Requests to a Back End</h2>
+
+<p>While using <code>ProxyPass</code> directives allows you to distribute resources by directory amongst a collection of back end servers, this kind of architecture only makes sense for some kinds of deployments. In many situations, administrators might like to have much more fine-grained control over the requests passed to external servers. In conjunction with <a href="/docs/web-servers/apache/configuration/rewriting-urls">mod_rewrite</a>, we can configure <code>mod_proxy</code> to more flexibly pass requests to alternate backends.</p>
+
+<p>Before continuing, ensure that you&rsquo;ve completed the ProxyPass guide, particularly the section regarding configuring <code>mod_proxy</code>. Do not forget to create and configure the <code>/etc/httpd/conf.d/proxy.conf</code> file.</p>
+
+<p>Once <code>mod_proxy</code> is enabled and properly configured, ensure that it is configured properly. You can insert the following directives into your virtual hosting configuration. Consider the following example Virtual Hosting configuration:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">example.com:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerName</span> example.com
+    <span class="nb">ServerAlias</span> www.example.com
+    <span class="nb">DocumentRoot</span> <span class="sx">/srv/www/example.com/public_html/</span>
+
+    <span class="nb">ErrorLog</span> <span class="sx">/srv/www/example.com/logs/error.log</span>
+    <span class="nb">CustomLog</span> <span class="sx">/srv/www/example.com/logs/access.log</span> combined
+
+    <span class="nb">RewriteEngine</span> <span class="k">On</span>
+    <span class="nb">RewriteRule</span> ^/blog/(.*)\.php$ http://app.example.com/blog/$1.php [proxy]
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example all requests for resources that end with <code>.php</code> are proxied to <code>http://app.example.com/blog/</code>. This would include requests for <code>http://example.com/blog/index.php</code> and <code>http://example.com/blog/archive/index.php</code>, but not <code>http://example.com/blog/screen.css</code> or <code>http://example.com/blog/</code> itself. All requests that do not end in <code>.php</code> will be served from resources located in the <code>DocumentRoot</code>. The <code>[proxy]</code> flags tell Apache that the rewritten URL should be passed to the Proxy module; this is equivalent to using the <code>last</code> directive as well. When a match is made, rewriting stops and the request is processed.</p>
+
+<p>While this method of specifying resources for proxying is much more limited in some respects, it does allow you to very specifically control and distribute HTTP requests among a group of servers. Use the above example and the others that follow as inspiration when constructing the rewrite rules for your deployment:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">RewriteRule</span> ^/(.*)\.js$ http://static.example.com/javascript/$1.js [proxy]
+<span class="nb">RewriteRule</span> ^/(.*)\.css$ http://static.example.com/styles/$1.css [proxy]
+<span class="nb">RewriteRule</span> ^/(.*)\.jpg$ http://static.example.com/images/$1.jpg [proxy]
+
+<span class="nb">RewriteRule</span> ^/blog/(.*)\.php$ http://app.example.com/wordpress/$1.php [proxy]
+<span class="nb">RewriteRule</span> ^/wiki/(.*)$ http://app.example.com/mediawiki/$1 [proxy]</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In the first group we present three examples of requests for specific types of files that will be proxied to various directories in the <code>http://static.example.com/</code> host. Note that the entire contents of the parenthetical (e.g. <code>(.*)</code> in this case) will be passed to the proxy host. If you do not capture the extension of a request in the regular expression, you must add it to the rewritten location. Using the first example, assuming these rewrite rules are in the <code>example.com</code> virtual host, requests for <code>http://example.com/toggle.js</code> and <code>http://example.com/blog/js/functions.js</code> are passed to <code>http://static.example.com/javascript/toggle.js</code> and <code>http://static.example.com/javascript/blog/js/functions.js</code>.</p>
+
+<p>In the second group of examples, rather than passing the entire request back to a proxy, we choose to only pass a part of the request. In the first rule of this group, a request for <code>http://example.com/blog/index.php</code> would be served from <code>http://app.example.com/wordpress/index.php</code>. However a request for <code>http://example.com/wordpress/style.css</code> would not be be passed to <code>app.example.com</code>; indeed, given the earlier rules, this request would be passed to <code>http://static.example.com/styles/wordpress/style.css</code>. In the second rule in this example, every request for a resource that begins with <code>http://example.com/wiki/</code> would be passed to <code>http://app.example.com/mediawiki/</code>. With this rewrite rule, both <code>http://example.com/wiki/index.php</code> and <code>http://example.com/wiki/info/about.html</code> would be rewritten as <code>http://app.example.com/mediawiki/index.php</code> and <code>http://app.example.com/mediawiki/info/about.html</code>.</p>
+
+<p>In order to ensure that your rewrite rules function as predicted, keep in mind the following:</p>
+
+<ul>
+<li>If you use the extension to match the request and pass it to a specific backend server and the backend server expects files with extensions, you must add those extensions to the second part of the rewrite rule.</li>
+<li>When a rewrite rule with a <code>proxy</code> flag is used and a request matches that rewrite rule, the request will be passed to <code>mod_proxy</code> even if a more precise rewrite rule matches further down in the configuration. Ensure that your rules are arranged such that less specific rewrite rules are declared after more precise ones to avoid unintentional conflicts.</li>
+</ul>
+
+<h2 id="case-four-forward-all-non-static-content-to-an-external-server">Case Four: Forward All Non-Static Content to an External Server</h2>
+
+<p>Using <code>mod_rewrite</code> to direct requests to proxied resources gives administrators a great deal of power and fine grained control over where and how requests are passed to the back end servers. At the same time, it can add a great deal of complexity to the configuration of the web-server that may be difficult to manage. Minor updates and small changes to configuration can have large and unintended impacts on the function of a website. For this reason it is always crucial that you fully test your configuration before the initial deployment or before you deploy <em>any</em> updates.</p>
+
+<p>The following case presents a more streamlined and simple proxy and rewrite example. Consider the following configuration directives:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">example.com:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerName</span> example.com
+    <span class="nb">ServerAlias</span> www.example.com
+    <span class="nb">DocumentRoot</span> <span class="sx">/srv/www/example.com/public_html/</span>
+
+    <span class="nb">ErrorLog</span> <span class="sx">/srv/www/example.com/logs/error.log</span>
+    <span class="nb">CustomLog</span> <span class="sx">/srv/www/example.com/logs/access.log</span> combined
+
+    <span class="nb">RewriteEngine</span> <span class="k">On</span>
+    <span class="nb">RewriteCond</span> <span class="sx">/srv/www/example.com/public_html</span>%{REQUEST_FILENAME} !-f
+    <span class="nb">RewriteRule</span> ^/(.*)$ http://app.example.com/$1 [proxy]
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, the <code>RewriteCond</code> controls the behavior of the <code>RewriteEngine</code> so that requests for resources will <em>only</em> be passed to the proxied server (e.g. <code>http://app.example.com/</code>) if there is no file in the <code>/srv/www/example.com/public_html/</code> directory that matches the request. All other requests are passed to <code>http://app.example.com/</code>. This kind of configuration is quite useful in situations where your deployment&rsquo;s dynamic content is powered by an application specific HTTP server but also requires static content that can be more efficiently served directly from Apache.</p>
+
+<h2 id="case-five-deploy-an-apache-proxy-cluster">Case Five: Deploy an Apache Proxy Cluster</h2>
+
+<p>All of the previous cases presented in this document outline configurations for using <code>mod_proxy</code> in various configurations to make it possible to use your Apache HTTP server as a front end for a more complex architecture. This case takes this one step further by allowing Apache to proxy requests to a group of identical backend servers, and thus be able to handle a much larger load.</p>
+
+<p>Ensure that you have a <code>/etc/httpd/conf.d/proxy.conf</code> file as described in the <a href="/docs/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/#enabling-the-proxy-module">mod_proxy</a> documentation. Do not forget to reload the Apache configuration again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">example.com:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerName</span> example.com
+    <span class="nb">ServerAlias</span> www.example.com
+
+    <span class="nb">ErrorLog</span> <span class="sx">/srv/www/example.com/logs/error.log</span>
+    <span class="nb">CustomLog</span> <span class="sx">/srv/www/example.com/logs/access.log</span> combined
+
+    <span class="nt">&lt;Proxy</span> <span class="s">balancer://cluster</span><span class="nt">&gt;</span>
+        <span class="nb">BalancerMember</span> http://app1.example.com
+        <span class="nb">BalancerMember</span> http://app2.example.com
+        <span class="nb">BalancerMember</span> http://app3.example.com
+        <span class="nb">BalancerMember</span> http://app4.example.com
+        <span class="nb">BalancerMember</span> http://app5.example.com
+    <span class="nt">&lt;/Proxy</span><span class="s"></span><span class="nt">&gt;</span>
+
+    <span class="nb">ProxyPass</span> / balancer://cluster/
+
+    <span class="c"># ProxyPass / balancer://cluster/ lbmethod=byrequests</span>
+    <span class="c"># ProxyPass / balancer://cluster/ lbmethod=bytraffic</span>
+    <span class="c"># ProxyPass / balancer://cluster/ lbmethod=bybusyness</span>
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this case we establish a cluster of services running on hosts named <code>app1.example.com</code> through <code>app5.example.com</code>. You can specify any host name or IP and port combination when creating the initial cluster. The <code>BalancerMember</code> directive also takes all of the arguments of the <a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html#proxypass">ProxyPass directive</a> which allow you to customize and limit the behavior of each cluster component. Variables like <code>min=</code>, <code>max=</code>, and <code>Max=</code> allow you to control &ldquo;minimum&rdquo; and &ldquo;maximum&rdquo; limits for sessions as well as a &ldquo;soft maximum&rdquo; which sets a soft maximum after which additional connections will be subject to a time to live. Once the cluster is established simply use the <code>ProxyPass</code> directive as described in earlier cases to pass requests to the cluster.</p>
+
+<p>The <code>lbmethod=</code> argument to the <code>ProxyPass</code> directive controls the method by which Apache distributes requests to the back end server. There are three options displayed in commented lines (e.g. beginning with hash marks, <code>#</code>). The first, <code>lbmethod=byrequests</code>, is the default and equivalent to not specifying a <code>lbmethod=</code> argument. <code>byrequests</code> distributes requests so that each backend server receives the same number of requests or the configured share of the requests. By contrast the <code>bytraffic</code> and <code>bybusyness</code> methods attempt to distribute the traffic between different cluster elements by assessing the amount of actual traffic and load, respectively, on each backend. Test each method with your deployment to ensure that you select the most useful load balancer method.</p>
+
+<p>Apache also contains a &ldquo;Balancer Manager&rdquo; interface that you can use to monitor the status of the cluster. Begin by including the following location directive in the virtual host where your cluster is configured:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Location</span> <span class="s">/balancer-manager</span><span class="nt">&gt;</span>
+    <span class="nb">SetHandler</span> balancer-manager
+    <span class="nb">Order</span> Deny,Allow
+    <span class="nb">Deny</span> from <span class="k">all</span>
+    <span class="nb">Allow</span> from <span class="m">192.168.1.233</span>
+<span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Modify the <code>Allow from</code> directive to allow access <em>only</em> from your current local machine&rsquo;s IP address, and read more about <a href="/docs/web-servers/apache/configuration/rule-based-access-control">rule-based access control</a>. Now visit <code>/balancer-manager</code> of the domain of your virtual host (e.g. <code>example.com</code>,) in our example <code>http://example.com/balancer-manager</code> to use Apache&rsquo;s tools for managing your cluster. Ensure that the <code>/balancer-manager</code> location is <strong>not</strong> established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a front end!</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">Official Apache Documentation for Proxy Pass</a></li>
+
+<li><a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html">Official Apache Documentation for Proxy Balancer</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-12-04-precise-pangolin/">Using Apache for Proxy and Clustering Services on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-fedora-14/">Using Apache for Proxy and Clustering Services on Fedora 14 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-10-maverick/">Using Apache for Proxy and Clustering Services on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-04-lucid/">Using Apache for Proxy and Clustering Services on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/proxies/using-apache-for-proxy-and-clustering-services-on-debian-5-lenny/">Using Apache for Proxy and Clustering Services on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#case-one-separating-static-content-from-dynamic-content">Case One: Separating Static Content from Dynamic Content</a></li>
+<li><a href="#case-two-using-proxypass-to-delegate-services-to-alternate-machines">Case Two: Using ProxyPass to Delegate Services to Alternate Machines</a></li>
+<li><a href="#case-three-proxy-only-some-requests-to-a-back-end">Case Three: Proxy only Some Requests to a Back End</a></li>
+<li><a href="#case-four-forward-all-non-static-content-to-an-external-server">Case Four: Forward All Non-Static Content to an External Server</a></li>
+<li><a href="#case-five-deploy-an-apache-proxy-cluster">Case Five: Deploy an Apache Proxy Cluster</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

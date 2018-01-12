@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Access Google Drive from Linode with Ubuntu 14.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Access Google Drive from your Linode with Ubuntu 14.04">
+        <meta name="keywords" content="google, drive, console, fuse, apt, ubuntu">
+        
+        <meta property="og:title" content="Access Google Drive from Linode with Ubuntu 14.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/cloud-storage/access-google-drive-linode/">
+        <meta property="og:description" content="Access Google Drive from your Linode with Ubuntu 14.04">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/cloud-storage/access-google-drive-linode/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/cloud-storage/">Cloud Storage</a>
+  
+</li>
+
+
+<li>
+  
+  Access Google Drive from Linode with Ubuntu 14.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Access Google Drive from Linode with Ubuntu 14.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-03-17T00:00:00Z">Thursday, March 17, 2016</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  Scott Sumner
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2faccess-google-drive-linode%2f&via=linode&text=Access%20Google%20Drive%20from%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2faccess-google-drive-linode%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fcloud-storage%2faccess-google-drive-linode%2f&t=Access%20Google%20Drive%20from%20Linode%20with%20Ubuntu%2014.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/cloud-storage/access-google-drive-linode.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/cloud-storage/access-google-drive-linode.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>If you&rsquo;ve used Google Drive, you know that it can be an indispensable tool for remote file access. While one of the standard counter-arguments to remote storage is &ldquo;just carry a flash drive,&rdquo; that only works until you need to add a file to your Linode. This guide will show you how to install and configure a great piece of free software to access your Google Drive from your Linode running Ubuntu version 14.04 or newer.</p>
+
+<p><strong>Google-drive-ocamlfuse (OCamlfuse)</strong> uses the Drive API to scan and access your Google Drive contents. A majority of the following steps involve authorizing its use and applying that authorization to the copy running on your Linode. Once it has been installed and authorized, you will have real-time access to your Google Drive via Linode.</p>
+
+<p>Before beginning, you should be familiar with our guides on <a href="/docs/getting-started">getting started</a> and <a href="/docs/security/securing-your-server">securing your server</a>, particularly if your Google Drive contains sensitive personal information. This guide is intended to be run as a non-root user, with sudo privileges required for some steps.</p>
+
+<h2 id="install-software">Install Software</h2>
+
+<p>First, we will add the repository where OCamlfuse lives in our Linode. Once that&rsquo;s done, we update so the changes are visible to us and then install normally.</p>
+
+<ol>
+<li><p>Add the repository:</p>
+
+<pre><code>sudo add-apt-repository ppa:alessandro-strada/ppa
+</code></pre></li>
+
+<li><p>Update apt:</p>
+
+<pre><code>sudo apt-get update
+</code></pre></li>
+
+<li><p>Install the application:</p>
+
+<pre><code>sudo apt-get install google-drive-ocamlfuse
+</code></pre></li>
+</ol>
+
+<h2 id="access-the-google-drive-api">Access the Google Drive API</h2>
+
+<p>Next, we&rsquo;re going to enable API access to Google Drive and create a set of credentials. These steps require a web browser on your local computer, and access to the Google account with which your Drive is associated.</p>
+
+<ol>
+<li><p>Visit the Google API developer&rsquo;s console on your desktop at <a href="https://console.developers.google.com/project">https://console.developers.google.com/project</a></p>
+
+<p><img src="/docs/assets/drive_console.png" alt="The Google Developers console." /></p></li>
+
+<li><p>Create a project. Click <strong>Create Project</strong>, then give the project a name and click <strong>Create</strong> again:</p>
+
+<p><img src="/docs/assets/API_console_new_project.png" alt="The new project window. I called my project Google Drive Linode" /></p>
+
+<p>Google will take a moment to create the project, and when it&rsquo;s complete you&rsquo;ll arrive at the dashboard:</p>
+
+<p><a href="/docs/assets/API_dashboard.png"><img src="/docs/assets/API-dashboard-small.png" alt="The project &quot;dashboard&quot;" /></a></p></li>
+
+<li><p>Enable the Google Drive API. Click <strong>APIs &amp; auth</strong>, then <strong>APIs</strong> when the menu expands. You&rsquo;ll see a list like the one below. Click on <strong>Drive API</strong>:</p>
+
+<p><a href="/docs/assets/google_API_screen.png"><img src="/docs/assets/google_API_screen-small.png" alt="The API list." /></a></p>
+
+<p>If you don&rsquo;t see the <strong>Drive API</strong> on the list as pictured, you may need to search for it. After you&rsquo;ve selected it, click the blue <strong>Enable</strong> button at the top of the page.</p>
+
+<p><img src="/docs/assets/drive_enable_API.png" alt="The Google Drive API description." /></p></li>
+
+<li><p>Click <strong>Credentials</strong> in the menu on the left side of the page. Then click <strong>Add New Credential</strong>.</p>
+
+<p><img src="/docs/assets/new_oauth2.jpg" alt="The credentials screen." /></p>
+
+<p>Click <strong>Configure consent screen</strong>. Google assumes you are writing a piece of software so it wants some information about it.</p>
+
+<p><a href="/docs/assets/new_configure_screen.jpg"><img src="/docs/assets/new_configure_screen_small.jpg" alt="Creating a client ID." /></a></p>
+
+<p>The product name field is required, but you can leave everything else blank. Then click <strong>Save</strong> at the bottom of the page.</p>
+
+<p><img src="/docs/assets/new_product_name.jpg" alt="Configuring the Google Drive API project. I named mine &quot;Google Drive Linode link&quot;" /></p>
+
+<p>Now click <strong>Other</strong> for the application type. Google will ask for a name again - you may use the default or choose a name you&rsquo;ll easily associate with this project. Then click <strong>Create</strong>.</p>
+
+<p><img src="/docs/assets/new_other_application.jpg" alt="Selecting where this API key will be used" /></p>
+
+<p>Click <strong>Credentials</strong> on the menu on the left side of the screen, and select your project from the list. You will now be able to view your <strong>Client ID</strong> and <strong>Client secret</strong> strings:</p>
+
+<p><img src="/docs/assets/new_credentials.jpg" alt="The Client ID and Client secret strings generated by google." /></p></li>
+</ol>
+
+<h2 id="authorize-ocamlfuse-access">Authorize OCamlfuse Access</h2>
+
+<p>Next, we&rsquo;ll provide the credentials for your Drive API to OCamlfuse in your Linode, authorizing it to access your Google Drive.</p>
+
+<ol>
+<li><p>Authorize your Google Drive link, replacing <code>client-ID</code> and <code>client-secret</code> with those you received from the Google API Manager in the steps above:</p>
+
+<pre><code>google-drive-ocamlfuse -headless -label me -id client-ID -secret client-secret
+</code></pre>
+
+<p>The output from this command will give you a long URL. Copy it and paste it for use in step 2:</p>
+
+<pre><code>Please, open the following URL in a web browser: https://accounts.google.com/o/oauth2/auth?client_id=URL_SNIPPED
+Please enter the verification code:
+</code></pre></li>
+
+<li><p>Google will ask for permission to allow this new application (OCamlfuse) to access your Google Drive. Click <strong>Accept</strong> to receive the verification code:</p>
+
+<p><img src="/docs/assets/google_authorization.png" alt="The permission request screen from google." /></p></li>
+
+<li><p>Copy/paste the verification code back to OCamlfuse in your Linode.</p></li>
+</ol>
+
+<h2 id="choose-where-google-drive-will-mount">Choose Where Google Drive Will Mount</h2>
+
+<p>The following steps will create an empty directory where Google Drive will live. All of your Google Drive files and folders will appear here.</p>
+
+<ol>
+<li><p>Create a mount point. The following will create it in your home folder, but you may choose a different path:</p>
+
+<pre><code>mkdir ~/google-drive
+</code></pre></li>
+
+<li><p>Mount your Google Drive:</p>
+
+<pre><code>google-drive-ocamlfuse -label me google-drive
+</code></pre></li>
+</ol>
+
+<p>And you&rsquo;re done! The directory <code>google-drive</code> will now reflect the contents of your Google Drive! The first time you access the folder it may take a few minutes to synchronize, depending on the content on your drive. However, after the initial sync, access is almost immediate.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>If the contents of your Google Drive do not load automatically, it&rsquo;s likely that your credentials have expired. If this happens:</p>
+
+<ol>
+<li><p>On your local computer, visit <strong><a href="http://console.developers.google.com">http://console.developers.google.com</a></strong> If you&rsquo;ve created other projects on the Developers Console, be sure to select the one you created above.</p></li>
+
+<li><p>Click <strong>APIs &amp; Auth</strong>.</p></li>
+
+<li><p>Click <strong>Credentials</strong> from the menu on the left side of the page. From there, select the client ID from the list, which will be identified by your project name.</p></li>
+
+<li><p>Click <strong>Reset secret</strong>.</p></li>
+
+<li><p>Repeat the steps to <a href="#authorize-ocamlfuse-access">authorize OCamlfuse access on your Linode</a>.</p></li>
+
+<li><p>Remount your Google Drive:</p>
+
+<pre><code>google-drive-ocamlfuse -label me google-drive
+</code></pre></li>
+</ol>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/">Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/">How to Install and Configure Redmine on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/">Custom Compiled Kernel on Debian &amp; Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/development/install-java-on-ubuntu-16-04/">Install Java on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/security/install-openvas-on-ubuntu-16-04/">Install OpenVAS 8 on Ubuntu 16.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#install-software">Install Software</a></li>
+<li><a href="#access-the-google-drive-api">Access the Google Drive API</a></li>
+<li><a href="#authorize-ocamlfuse-access">Authorize OCamlfuse Access</a></li>
+<li><a href="#choose-where-google-drive-will-mount">Choose Where Google Drive Will Mount</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

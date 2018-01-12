@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to use a GPG key for SSH authentication</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Generate a GPG key-pair, and convert it to an SSH key for authentication with your Linode.">
+        <meta name="keywords" content="gpg, ssh, authentication, ssh-agent, gpg-agent, yubikey, smartcard, ssh key">
+        
+        <meta property="og:title" content="How to use a GPG key for SSH authentication">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/gpg-key-for-ssh-authentication/">
+        <meta property="og:description" content="Generate a GPG key-pair, and convert it to an SSH key for authentication with your Linode.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/gpg-key-for-ssh-authentication/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  How to use a GPG key for SSH authentication
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to use a GPG key for SSH authentication</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-10-03T00:00:00Z">Monday, October 3, 2016</time> by Alex Fornuto</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/huw">Huw Evans
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fgpg-key-for-ssh-authentication%2f&via=linode&text=How%20to%20use%20a%20GPG%20key%20for%20SSH%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fgpg-key-for-ssh-authentication%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fgpg-key-for-ssh-authentication%2f&t=How%20to%20use%20a%20GPG%20key%20for%20SSH%20authentication" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/gpg-key-for-ssh-authentication.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/gpg-key-for-ssh-authentication.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/gpg-key-for-ssh-authentication/How_to_use_a_GPG_key_smg.jpg" alt="GPG key for SSH Authentication" /></p>
+
+<p>You may be familiar with <a href="/docs/security/use-public-key-authentication-with-ssh">public key authentication</a> for Secure Shell (SSH) on your Linode. But you may not have known that you can also use a GNU Privacy Guard (GPG) keypair to authenticate with SSH.</p>
+
+<p>The chief benefit of this method is that instead of having separate keys for GPG messaging and SSH authentication, they can both belong to the same GPG keyring. This configuration really shines, however, when used with a <a href="https://en.wikipedia.org/wiki/OpenPGP_card">GPG smartcard</a> or <a href="https://www.yubico.com/products/yubikey-hardware/">YubiKey</a>, because the card/dongle can store the underlying private key and only authenticate SSH sessions when it&rsquo;s plugged in. WIRED reported that <a href="http://www.wired.com/2013/10/facebook-yubikey/">engineers at Facebook use this method</a> for authenticating with local servers, so why shouldn&rsquo;t you?</p>
+
+<p>This guide will show you how to generate a GPG key, set up your computer to serve it in place of an SSH key, and put the new public key onto your server for authentication. It will also detail how to optionally move your GPG private key onto a smartcard or YubiKey to prevent authentication when the device isn&rsquo;t plugged into your computer.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide will only work on UNIX-based (Linux &amp; OS X) machines! The process is very complicated on Windows but may be possible with some research.</div>
+</blockquote>
+
+
+<p>This guide assumes:</p>
+
+<ul>
+<li>You have a fully functional Linode</li>
+<li>You have followed the <a href="/docs/getting-started">Getting Started</a> and <a href="/docs/security/securing-your-server">Securing Your Server</a> guides, and updated your Linode with <code>sudo apt-get update &amp;&amp; sudo apt-get upgrade</code>)</li>
+<li>You are familiar with the <a href="/docs/tools-reference/introduction-to-linux-concepts#so-youre-staring-at-a-shell-prompt">command line</a></li>
+</ul>
+
+<p>You don&rsquo;t necessarily need to be familiar with <a href="/docs/security/use-public-key-authentication-with-ssh">SSH public key authentication</a> or <a href="https://en.wikipedia.org/wiki/GNU_Privacy_Guard">GPG encryption</a>, but an understanding of their operation will help you out if you run into problems.</p>
+
+<h2 id="generate-a-gpg-keypair">Generate a GPG Keypair</h2>
+
+<p>This section explains how to generate a new GPG keypair. If you already have one, you may skip these steps, as the next section will include instructions for how to create a subkey to use specifically for authentication. You will just need the 8-digit ID for your existing key to do so.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>As an additional security measure, this process may be undertaken on an offline (non network-connected) machine or single-use Virtual Machine (VM). After installing the pre-requisite packages and <em>only</em> the pre-requisite packages, disconnect it from the network and continue with the steps below.</div>
+</blockquote>
+
+
+<p>All of these steps should be performed on a local machine, <em>not</em> your Linode.</p>
+
+<ol>
+<li><p>Install GPG:</p>
+
+<p>On Debian and its derivatives:</p>
+
+<pre><code>sudo apt-get install gnupg2
+</code></pre>
+
+<p>On OS X:</p>
+
+<p><a href="https://gpgtools.org">GPGTools</a> provides the simplest implementation of GPG for OS X. Otherwise, you could run <code>brew install gnupg2</code> if you have <a href="https://brew.sh">Homebrew</a>.</p>
+
+<p>On other operating systems, this process should be fairly clear. GPG is likely already installed, but if it isn&rsquo;t, a quick internet search should give you the instructions you need.</p></li>
+
+<li><p>Open a command prompt and execute:</p>
+
+<pre><code>gpg2 --gen-key
+</code></pre></li>
+
+<li><p>When prompted to select the kind of key you want, select <code>(1) RSA and RSA</code>.</p></li>
+
+<li><p>When asked for a keysize, type <code>4096</code>. If you want to store your key on a YubiKey Neo or certain smartcards, you may be restricted to a 2048-bit key size, so ensure that you aware of limitations for your device, if applicable.</p></li>
+
+<li><p>Choose an expiration period that you think will be suitable for this key. <strong>After that date, the key will no longer work, so choose carefully.</strong></p></li>
+
+<li><p>Enter your full name, email address, and a comment (if you want). Select <code>O</code> for &lsquo;Okay&rsquo;.</p></li>
+
+<li><p>After looking over your shoulders for secret agents, enter a long and secure passphrase that will be used to encrypt your key in local storage. Write this down somewhere you know to be physically secure while your computer generates the keypair.</p></li>
+</ol>
+
+<p>Once this is done, your output should resemble the following:</p>
+
+<pre><code>$ gpg2 --gen-key
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection? 1
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048) 4096
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      &lt;n&gt;  = key expires in n days
+      &lt;n&gt;w = key expires in n weeks
+      &lt;n&gt;m = key expires in n months
+      &lt;n&gt;y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Sun Apr  9 18:27:05 2017 AEST
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: Your Name
+Email address: you@yoursite.net
+Comment: Test for GPG -&gt; SSH
+You selected this USER-ID:
+    &quot;Your Name (Test for GPG -&gt; SSH) &lt;you@yoursite.net&gt;&quot;
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
+You need a Passphrase to protect your secret key.
+
+We need to generate a lot of random bytes. It is a good idea to perform some other action (type on the keyboard, move the mouse, utilize the disks) during the prime generation; this gives the random number generator a better chance to gain enough entropy.
+gpg: key 71735D23 marked as ultimately trusted
+public and secret key created and signed.
+
+pub   4096R/71735D23 2016-04-09 [expires: 2017-04-09]
+      Key fingerprint = 4B63 8069 E016 F6E9 35BA  24B9 FFDD B2DF 7173 5D23
+uid       [ultimate] Your Name (Test for GPG -&gt; SSH) &lt;you@yoursite.net&gt;
+sub   4096R/693C5635 2016-04-09 [expires: 2017-04-09]
+</code></pre>
+
+<p>This process has created a master GPG key and a subkey for encrypting messages and files. To authenticate with SSH, we need to generate a second subkey for authentication.</p>
+
+<h3 id="generating-the-authentication-subkey">Generating the Authentication Subkey</h3>
+
+<ol>
+<li><p>In a command prompt or terminal, type:</p>
+
+<pre><code>gpg2 --expert --edit-key key-id
+</code></pre>
+
+<p>Replace <code>key-id</code> with the eight-character string output from the key generation process. This will be found in the line beginning with <code>pub</code>. In the example above, the ID is <code>71735D23</code>.</p></li>
+
+<li><p>At the new <code>gpg&gt;</code> prompt, enter:</p>
+
+<pre><code>addkey
+</code></pre></li>
+
+<li><p>When prompted, enter your passphrase.</p></li>
+
+<li><p>When asked for the type of key you want, select: <code>(8) RSA (set your own capabilities)</code>.</p></li>
+
+<li><p>Enter <code>S</code> to toggle the &lsquo;Sign&rsquo; action off.</p></li>
+
+<li><p>Enter <code>E</code> to toggle the &lsquo;Encrypt&rsquo; action off.</p></li>
+
+<li><p>Enter <code>A</code> to toggle the &lsquo;Authenticate&rsquo; action on. The output should now include <code>Current allowed actions: Authenticate</code>, with nothing else on that line.</p></li>
+
+<li><p>Enter <code>Q</code> to continue.</p></li>
+
+<li><p>When asked for a keysize, choose <code>4096</code>. The same limitation from Step 4 in the first section applies, so ensure your card/YubiKey can support this key size.</p></li>
+
+<li><p>Enter an expiration date, just as before. You should probably keep this the same as the first one. If you choose a lower expiration date, your main private key will continue to function but your SSH authentication will break on this date.</p></li>
+
+<li><p>When you&rsquo;re sure all of the information entered is correct, enter <code>y</code> at the <code>Really create? (y/N)</code> prompt to complete the process.</p></li>
+
+<li><p>Once the key is created, enter <code>quit</code> to leave the gpg prompt, and <code>y</code> at the prompt to save changes.</p></li>
+</ol>
+
+<p>Your terminal should now look like this:</p>
+
+<pre><code>$ gpg2 --expert --edit-key 71735D23
+
+Secret key is available.
+
+pub  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09  usage: SC
+                     trust: ultimate      validity: ultimate
+sub  4096R/693C5635  created: 2016-04-09  expires: 2017-04-09  usage: E
+[ultimate] (1). Your Name (Test for GPG -&gt; SSH) &lt;you@yoursite.net&gt;
+
+gpg&gt; addkey
+Key is protected.
+
+You need a passphrase to unlock the secret key for
+user: &quot;Your Name (Test for GPG -&gt; SSH) &lt;you@yoursite.net&gt;&quot;
+4096-bit RSA key, ID 71735D23, created 2016-04-09
+
+Please select what kind of key you want:
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+   (5) Elgamal (encrypt only)
+   (6) RSA (encrypt only)
+   (7) DSA (set your own capabilities)
+   (8) RSA (set your own capabilities)
+Your selection? 8
+
+Possible actions for a RSA key: Sign Encrypt Authenticate
+Current allowed actions: Sign Encrypt
+
+   (S) Toggle the sign capability
+   (E) Toggle the encrypt capability
+   (A) Toggle the authenticate capability
+   (Q) Finished
+
+Your selection? S
+
+Possible actions for a RSA key: Sign Encrypt Authenticate
+Current allowed actions: Encrypt
+
+   (S) Toggle the sign capability
+   (E) Toggle the encrypt capability
+   (A) Toggle the authenticate capability
+   (Q) Finished
+
+Your selection? E
+
+Possible actions for a RSA key: Sign Encrypt Authenticate
+Current allowed actions:
+
+   (S) Toggle the sign capability
+   (E) Toggle the encrypt capability
+   (A) Toggle the authenticate capability
+   (Q) Finished
+
+Your selection? A
+
+Possible actions for a RSA key: Sign Encrypt Authenticate
+Current allowed actions: Authenticate
+
+   (S) Toggle the sign capability
+   (E) Toggle the encrypt capability
+   (A) Toggle the authenticate capability
+   (Q) Finished
+
+Your selection? Q
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048) 4096
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      &lt;n&gt;  = key expires in n days
+      &lt;n&gt;w = key expires in n weeks
+      &lt;n&gt;m = key expires in n months
+      &lt;n&gt;y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Sun Apr  9 18:49:58 2017 AEST
+Is this correct? (y/N) y
+Really create? (y/N) y
+We need to generate a lot of random bytes. It is a good idea to perform some other action (type on the keyboard, move the mouse, utilize the disks) during the prime generation; this gives the random number generator a better chance to gain enough entropy.
+
+pub  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09  usage: SC
+                     trust: ultimate      validity: ultimate
+sub  4096R/693C5635  created: 2016-04-09  expires: 2017-04-09  usage: E
+sub  4096R/48B9C23C  created: 2016-04-09  expires: 2017-04-09  usage: A
+[ultimate] (1). Your Name (Test for GPG -&gt; SSH) &lt;you@yoursite.net&gt;
+
+gpg&gt; quit
+Save changes? (y/N) y
+</code></pre>
+
+<h3 id="secure-your-gpg-key">Secure Your GPG Key</h3>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>If you fail to back up or otherwise secure your key, any hardware failure will lead to you being unable to access your Linode with this key. If you lock out password access through SSH, you&rsquo;ll need to use <a href="/docs/networking/using-the-linode-shell-lish">Lish</a> to regain access.</div>
+</blockquote>
+
+
+<p>You should always have a backup of your private key in case something goes wrong and you end up locked out of everything that requires it. This private key, along with the instructions in this guide, will be enough to get your setup working again if you need to start afresh on a new computer.</p>
+
+<ol>
+<li><p>Back up your <code>~/.gnupg</code> folder with the following command, replacing <code>USB_DEVICE</code> with the name of your device:</p>
+
+<pre><code>cp -r ~/.gnupg/ /Volumes/USB_DEVICE/
+</code></pre>
+
+<p>This assumes you have a storage device mounted at <code>/Volumes/USB_DEVICE/</code>. Different operating systems may use different naming conventions for this path. You can safely ignore any <code>Operation not supported on socket</code> warnings that appear when you enter this command.</p></li>
+
+<li><p>Back up your private key, replacing <code>key-id</code> with the eight-character key ID for your private key:</p>
+
+<pre><code>gpg2 -a --export-secret-key key-id &gt;&gt; /Volumes/USB_DEVICE/key-id.master.key
+</code></pre></li>
+
+<li><p>Back up your subkeys, replacing <code>key-id</code> with the eight-character key ID for each subkey:</p>
+
+<pre><code>gpg2 -a --export-secret-subkeys key-id &gt;&gt; /Volumes/USB_DEVICE/&lt;key id&gt;.sub.key
+</code></pre></li>
+</ol>
+
+<p>If something bad happens and you lose your keys, you can re-import them by overwriting the <code>~/.gnupg</code> directory with your copy, and using:</p>
+
+<pre><code>gpg2 --allow-secret-key-import --import key-file
+</code></pre>
+
+<p>Be sure to replace <code>key-file</code> with the location of each of your files.</p>
+
+<h3 id="export-your-public-key">Export Your Public Key</h3>
+
+<p>If you&rsquo;re working on a VM or offline machine, you&rsquo;ll also need to export your public key to be reimported later:</p>
+
+<pre><code>gpg2 -a --export key-id &gt;&gt; /Volumes/USB_DEVICE/key-id.public.key
+</code></pre>
+
+<p>Be sure to replace <code>key-id</code> with your own key ID.</p>
+
+<p>You can reimport it with the ever-handy <code>gpg2 --import key-file</code> command.</p>
+
+<h2 id="move-your-key-to-a-smartcard-or-yubikey-optional">Move Your Key to a Smartcard or YubiKey (Optional)</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;re using a brand new YubiKey, you&rsquo;ll need to enable OpenPGP Card / CCID Mode first. This can be done through the YubiKey Personlisation Tool, or by running <code>ykpersonalise -m82</code>. <code>ykpersonalise</code> can be installed through your package manager.</div>
+</blockquote>
+
+
+<h3 id="secure-your-card">Secure Your Card</h3>
+
+<p>It is assumed that you have already configured your card/YubiKey&rsquo;s (herein referred to as &lsquo;GPG device&rsquo;) owner information. It is highly recommended that you secure your card before you start this section.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Some of these commands may ask for a PIN or Admin PIN. The default PIN is usually <code>123456</code>, and the default Admin PIN is usually <code>12345678</code>. If these don&rsquo;t work, contact the manufacturer or review online documentation.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Plug in the device and execute:</p>
+
+<pre><code>gpg2 --card-edit
+</code></pre></li>
+
+<li><p>Enable admin commands:</p>
+
+<pre><code>admin
+</code></pre></li>
+
+<li><p>Enter the password change menu:</p>
+
+<pre><code>passwd
+</code></pre></li>
+
+<li><p>Change the password to your device by selecting <code>2 - unblock PIN</code>. This will unblock your PIN, and prompt you to change it. This PIN will be required every time you want to access your GPG key (e.g. every time you authenticate with SSH), and has a limit of eight characters.</p></li>
+
+<li><p>Change the admin PIN by selecting <code>3 - change Admin PIN</code>. This PIN is required to make administrative changes, like in step 2, and has a limit of 6 characters. For optimum security, never store this PIN in a digital location, since it will be unnecessary for daily use of the YubiKey.</p></li>
+
+<li><p>Exit these menus by selecting <code>Q</code> and then typing <code>quit</code>.</p></li>
+</ol>
+
+<p>For reference, your window should resemble the following. This example is abbreviated:</p>
+
+<pre><code>$ gpg2 --card-edit
+gpg/card&gt; admin
+Admin commands are allowed
+
+gpg/card&gt; passwd
+gpg: OpenPGP card no. D0000000000000000000000000000000 detected
+
+1 - change PIN
+2 - unblock PIN
+3 - change Admin PIN
+4 - set the Reset Code
+Q - quit
+
+Your selection? 1
+PIN changed.
+Your selection? 3
+PIN changed.
+Your selection? q
+
+gpg/card&gt; quit
+</code></pre>
+
+<h3 id="transfer-your-subkey">Transfer Your Subkey</h3>
+
+<ol>
+<li><p>Enter the key edit menu from a normal command prompt, replacing <code>key-id</code> with your own key ID:</p>
+
+<pre><code>gpg2 --edit-key key-id
+</code></pre></li>
+
+<li><p>Switch to the private key editor:</p>
+
+<pre><code>toggle
+</code></pre></li>
+
+<li><p>Select only the authentication subkey:</p>
+
+<pre><code>key 2
+</code></pre>
+
+<p>Remember, if you have more subkeys this command should be changed as appropriate.</p></li>
+
+<li><p>Transfer the key:</p>
+
+<pre><code>keytocard
+</code></pre></li>
+
+<li><p>Select <code>(3) Authentication key</code> to store your key on the third slot of the device. If this is not an option, ensure that you&rsquo;ve selected the appropriate subkey.</p></li>
+
+<li><p>Enter your passphrase.</p></li>
+
+<li><p>Type <code>save</code> to exit this menu.</p></li>
+
+<li><p>If you&rsquo;re working on a VM or offline machine, export the subkey stubs (pointers so GPG knows your subkeys are on the device):</p>
+
+<pre><code>gpg -a --export-secret-subkeys key-id &gt;&gt; /Volumes/USB_DEVICE/key-id.stubs.gpg
+</code></pre>
+
+<p>Be sure to substitute your own key ID for <code>key-id</code>. You can reimport these with an ordinary <code>gpg2 --import &lt;stub file&gt;</code> on your private machine.</p></li>
+</ol>
+
+<p>After all this, your output should resemble the following:</p>
+
+<pre><code>$ gpg2 --edit-key 71735D23
+
+Secret key is available.
+
+pub  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09  usage: SC
+                 trust: ultimate      validity: ultimate
+sub  4096R/693C5635  created: 2016-04-09  expires: 2017-04-09  usage: E
+sub  4096R/48B9C23C  created: 2016-04-09  expires: 2017-04-09  usage: A
+[ultimate] (1) Your Name &lt;you@yoursite.net&gt;
+
+gpg&gt; toggle
+
+sec  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09
+ssb  4096R/693C5635  created: 2016-04-09  expires: never
+ssb  4096R/48B9C23C  created: 2016-04-09  expires: never
+(1) Your Name &lt;you@yoursite.net&gt;
+
+gpg&gt; key 2
+
+sec  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09
+ssb  4096R/693C5635  created: 2016-04-09  expires: never
+ssb* 4096R/48B9C23C  created: 2016-04-09  expires: never
+(1) Your Name &lt;you@yoursite.net&gt;
+
+gpg&gt; keytocard
+Signature key ....: none
+Encryption key....: none
+Authentication key: none
+
+Please select where to store the key:
+   (3) Authentication key
+Your selection? 3
+
+You need a passphrase to unlock the secret key for
+user: &quot;Your Name &lt;you@yoursite.net&gt;&quot;
+4096-bit RSA key, ID 71735D23, created 2016-04-09
+
+gpg&gt; save
+</code></pre>
+
+<p>Congratulations! You&rsquo;ve successfully transferred your authentication subkey to your device.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>If you weren&rsquo;t using a VM or offline machine, back up your local copies of the private keys, delete them, and ensure that the rest of the keys are still on the card.</div>
+</blockquote>
+
+
+<h2 id="serve-your-gpg-key-instead-of-an-ssh-key">Serve Your GPG key Instead of an SSH key</h2>
+
+<p>In this section, we&rsquo;ll configure your local machine so the connection between GPG and SSH works properly.</p>
+
+<p>Return to your local machine, import all of the appropriate GPG keys and insert the appropriate GPG device. Install GPG if you don&rsquo;t already have it on your local computer (e.g. if you performed all the above steps on a VM).</p>
+
+<ol>
+<li><p>Edit the <code>~/.bash_profile</code> file (or similar shell startup file) to include:</p>
+
+<p><strong>Linux:</strong></p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/.bash_profile 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> -f <span class="s2">&#34;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.gpg-agent-info&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+     <span class="nb">source</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.gpg-agent-info&#34;</span>
+       <span class="nb">export</span> GPG_AGENT_INFO
+       <span class="nb">export</span> SSH_AUTH_SOCK
+       <span class="nb">export</span> SSH_AGENT_PID
+<span class="k">else</span>
+    <span class="nb">eval</span> <span class="k">$(</span> gpg-agent --daemon --write-env-file ~/.gpg-agent-info <span class="k">)</span>
+<span class="k">fi</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p><strong>OS X</strong></p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/.bash_profile 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> -f ~/.gpg-agent-info <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">source</span> ~/.gpg-agent-info
+<span class="k">if</span> <span class="o">[</span> -S <span class="s2">&#34;</span><span class="si">${</span><span class="nv">GPG_AGENT_INFO</span><span class="p">%%:*</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">export</span> GPG_AGENT_INFO
+    <span class="nb">export</span> SSH_AUTH_SOCK
+    <span class="nb">export</span> SSH_AGENT_PID
+<span class="k">else</span>
+    <span class="nb">eval</span> <span class="k">$(</span> gpg-agent --daemon --write-env-file ~/.gpg-agent-info <span class="k">)</span>
+<span class="k">fi</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This ensures that SSH can &lsquo;see&rsquo; your GPG keys and automatically starts <code>gpg-agent</code> as needed.</p></li>
+
+<li><p>Edit or create <code>~/.gnupg/gpg-agent.conf</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/.gnupg/gpg-agent.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">default-cache-ttl <span class="m">600</span>
+max-cache-ttl <span class="m">7200</span>
+enable-ssh-support
+write-env-file ~/.gpg-agent-info</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you&rsquo;re on OS X and previously installed <a href="https://gpgtools.org/">GPGTools</a>, you can also add the line:</p>
+
+<pre><code>pinentry-program /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
+</code></pre>
+
+<p>This allows you to use the PIN entry program provided by GPGTools.</p></li>
+
+<li><p>Restart the GPG agent:</p>
+
+<pre><code>sudo killall gpg-agent
+gpg-agent --daemon --write-env-file ~/.gpg-agent-info --enable-ssh-support
+source ~/.gpg-agent-info
+</code></pre></li>
+</ol>
+
+<h2 id="add-the-new-key-to-your-linode">Add the New Key to Your Linode</h2>
+
+<p>The steps from the previous sections will take your GPG keys and pipe them through SSH so they can be used for authentication. The result of this process is that you&rsquo;ve created a new RSA public key for use with SSH authentication.</p>
+
+<ol>
+<li><p>On your local machine, extract the public key:</p>
+
+<pre><code>ssh-add -L
+</code></pre>
+
+<p>You should see a long output of alphanumeric characters. If you see <code>The agent has no identities</code>, try the steps to restart the GPG agent from above.</p></li>
+
+<li><p>Copy the whole string of output, including <code>ssh-rsa</code>. If you see multiple strings beginning with <code>ssh-rsa</code>, copy the one that ends with <code>cardno:</code>. It might look like this:</p>
+
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDxAZn1IQ2cBxIbgwksWOfkAMKKLa3cUYMkbQBaR9Nw4CfoLs8xiu0Kb8oN4JH6p+E4C1MrlmFQuMZbVzs9JseV2pe6kw0xKQgLINopyF6letzCOEzPH7THicxyQc35vMIa8JTAMU6X3hpzzSUVSQGKDljj+c4XayTZCVQVg2Yqc67Vdm+4q4OQCU7Fns73KWmqwsdYtuyk74yPWjAvKkEaW7I9d3TLKVI8LLdzC6FoP2jJyGEoqxWEf2yL0eWelmJi/ikLJFSdXvdVCzvyI3dTeNqEdaisKQ0SJ7W0ysH1Os2hYyxBazWonMYI/T8Sh9J21xcWGmBumFTIcsbLEP17tojR4ttFq69ebtJIMkbPo0e+u4gWdvM44MyWsDm8jkKDuqNcduGIhF0dFY57niq4TEv5+Yvya2gwqBS4ttq/NlUAseL4zAcaP+kpDae4GMiRXwpFAiKA3ctn6/gf5QLvcAHMz62ASHeo9gG9t6n0eGUzBD/lv0qMsaYgmxfgIpqoU6Sr1w2EVp8TYjIVAaO/96Kljb2v9mB+0/BTO7gxJicxUNYQLOhEYdMnbr0bFNAG93hlUiq5eGTTG7nn1mre2OHWyGB8fZN9EukbMeFicgFTxgl3ddQawjn1Qb6u//ZpSCD++IH4HQCjz1fI9r+yZ+6CqfUrM0PI+dwAfcL4pw== cardno:000500001BDE
+</code></pre></li>
+
+<li><p>Paste this into a new file (for example, <code>~/gpg-key.pub</code>) and save it.</p></li>
+
+<li><p>Copy the file to your Linode:</p>
+
+<pre><code>scp ~/gpg-key.pub you@yoursite.net:/home/you/.ssh/gpg-key.pub
+</code></pre></li>
+
+<li><p>Log into your Linode and append the key to the <code>authorized_hosts</code> file:</p>
+
+<pre><code>ssh you@yoursite.net &quot;echo `cat ~/.ssh/gpg-key.pub` &gt;&gt; ~/.ssh/authorized_keys&quot;
+</code></pre></li>
+</ol>
+
+<p>You&rsquo;re done! Disconnect, and all new logins should now use your GPG key instead of a passphrase. This SSH key can also be used with GitHub, Bitbucket, other SSH-based Version Control Systems, or anywhere else that accepts SSH keys.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://gist.github.com/abeluck/3383449">Securely set up smartcard</a></li>
+
+<li><a href="https://incenp.org/notes/2015/gnupg-for-ssh-authentication.html">Instructions for GPG 2.1</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/how-to-use-yubikey-for-two-factor-ssh-authentication/">How to use a YubiKey for Two-Factor Secure Shell Authentication</a></li>
+    
+    
+    
+    <li><a href="/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/">Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/">Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/remote-desktop/running-graphic-software-xforwarding-debian/">Run Graphic Software on Your Linode with X-Forwarding on Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/remote-desktop/run-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04/">Run Graphic Software on your Linode with X-Forwarding on Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#generate-a-gpg-keypair">Generate a GPG Keypair</a>
+<ul>
+<li><a href="#generating-the-authentication-subkey">Generating the Authentication Subkey</a></li>
+<li><a href="#secure-your-gpg-key">Secure Your GPG Key</a></li>
+<li><a href="#export-your-public-key">Export Your Public Key</a></li>
+</ul></li>
+<li><a href="#move-your-key-to-a-smartcard-or-yubikey-optional">Move Your Key to a Smartcard or YubiKey (Optional)</a>
+<ul>
+<li><a href="#secure-your-card">Secure Your Card</a></li>
+<li><a href="#transfer-your-subkey">Transfer Your Subkey</a></li>
+</ul></li>
+<li><a href="#serve-your-gpg-key-instead-of-an-ssh-key">Serve Your GPG key Instead of an SSH key</a></li>
+<li><a href="#add-the-new-key-to-your-linode">Add the New Key to Your Linode</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

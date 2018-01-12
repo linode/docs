@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Linode Manager Security Controls</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to use two-factor authentication and other security controls in the Linode Manager.">
+        <meta name="keywords" content="two-factor authentication, password, security, Linode Manager, token">
+        
+        <meta property="og:title" content="Linode Manager Security Controls">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/linode-manager-security-controls/">
+        <meta property="og:description" content="How to use two-factor authentication and other security controls in the Linode Manager.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/linode-manager-security-controls/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Linode Manager Security Controls
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Linode Manager Security Controls</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-10-23T00:00:00Z">Thursday, October 23, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2flinode-manager-security-controls%2f&via=linode&text=Linode%20Manager%20Security%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2flinode-manager-security-controls%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2flinode-manager-security-controls%2f&t=Linode%20Manager%20Security%20Controls" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/linode-manager-security-controls.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/linode-manager-security-controls.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>The <a href="https://manager.linode.com">Linode Manager</a> is the gateway to all of your Linode products and services, and you should take steps to protect it from unauthorized access. This guide documents several Linode Manager features that can help mitigate your risk. Whether you&rsquo;re worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Linode Manager&rsquo;s built-in security tools can help. You&rsquo;ll start by enabling two-factor authentication to protect your account with a physical token, setting up an IP address whitelist, and then configuring security event notifications for your Linode Manager account. You&rsquo;ll also learn how to control API access, configure user accounts, and force password expirations.</p>
+
+<h2 id="two-factor-authentication">Two-Factor Authentication</h2>
+
+<p>Two-factor authentication increases the security of your Linode Manager account by requiring two forms of authentication — something you have, and something you know. You&rsquo;re already familiar with this concept if you&rsquo;ve ever used a debit card at an ATM machine. The debit card is something you have, and the PIN access code is something you know. You need both the debit card and the PIN to access your bank account.</p>
+
+<p>If you enable this optional feature in the Linode Manager, you&rsquo;ll access your Linode Manager account using your smartphone as a physical token in addition to your username and password. This additional layer of security reduces the risk that an unauthorized individual will gain access to your Linode Manager account.</p>
+
+<h3 id="selecting-a-token-application">Selecting a Token Application</h3>
+
+<p>Before you enable two-factor authentication in the Linode Manager, you should select a token application for your smartphone. We&rsquo;ll use Google Authenticator as an example in this guide, but you can use any application that supports the Time-based One-Time Password (TOTP) algorithm. For example, you can use any of the following applications:</p>
+
+<ul>
+<li><a href="http://support.google.com/accounts/bin/answer.py?hl=en&amp;answer=1066447">Google Authenticator</a> (iPhone/Android/BlackBerry)</li>
+<li><a href="http://guide.duosecurity.com/third-party-accounts">Duo Mobile</a> (iPhone/Android)</li>
+<li><a href="https://aws.amazon.com/iam/details/mfa/">Amazon AWS MFA</a> (Android)</li>
+<li><a href="https://appworld.blackberry.com/webstore/docs/22517879/?lang=en">Authomator</a> (BlackBerry 10)</li>
+</ul>
+
+<p>Install one of these applications on your smartphone before continuing.</p>
+
+<h3 id="enabling">Enabling</h3>
+
+<p>You&rsquo;ll need to enable two-factor authentication to start using it with your Linode Manager account. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>my profile</strong> link.</li>
+
+<li><p>Enter your password, and then click <strong>Authenticate</strong>.</p>
+
+<p><a href="/docs/assets/1271-manager_reauth_linodedemo.png"><img src="/docs/assets/1271-manager_reauth_linodedemo.png" alt="Re-enter your password." /></a></p></li>
+
+<li><p>Select the <strong>Password &amp; Authentication</strong> tab.</p></li>
+
+<li><p>In the <strong>Two-Factor Authentication</strong> section, click <strong>Enable Two-Factor Authentication</strong>, as shown below.</p>
+
+<p><a href="/docs/assets/1269-manager_2factor_disabled.png"><img src="/docs/assets/1286-manager_2factor_disabled-2.png" alt="Two-Factor Authentication." /></a></p></li>
+
+<li><p>The window shown below appears. Write down the <strong>Secret Key</strong> and store it in a safe place.</p>
+
+<p><a href="/docs/assets/1291-manager_2factor_key_qr-4.png"><img src="/docs/assets/1291-manager_2factor_key_qr-4.png" alt="The key and QR code for two-factor authentication." /></a></p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Do not refresh this page until you have configured Google Authenticator on your phone. The key will be shown only once. If you get locked out of your account, <a href="/docs/support">contact support</a> to regain access.</div>
+</blockquote>
+</li>
+
+<li><p>On your smartphone, open Google Authenticator.</p></li>
+
+<li><p>Tap the plus (<strong>+</strong>) button, as shown below.</p>
+
+<p><a href="/docs/assets/1277-google_auth_start_crop.png"><img src="/docs/assets/1287-google_auth_start_crop-2.png" alt="The Google Authenticator start screen." /></a></p></li>
+
+<li><p>Tap <strong>Time Based</strong>, as shown below.</p>
+
+<p><a href="/docs/assets/1276-google_auth_scan_crop.png"><img src="/docs/assets/1288-google_auth_scan_crop-2.png" alt="Add a new account in Google Authenticator." /></a></p></li>
+
+<li><p>Tap <strong>Scan Barcode</strong>.</p></li>
+
+<li><p>Point your smartphone&rsquo;s camera at the barcode on your computer screen. The app creates a new token for your Linode Manager login automatically. It will be labeled <strong>LinodeManager:user</strong>, as shown below.</p>
+
+<p><a href="/docs/assets/1278-google_auth_token_crop.png"><img src="/docs/assets/1289-google_auth_token_crop-2.png" alt="Your token in Google Authenticator. You can enter the key manually instead if you prefer not to scan the barcode." /></a></p></li>
+
+<li><p>Verify that your Linode Manager login has been added to Google Authenticator, and that it is generating a new token every 30 seconds.</p></li>
+
+<li><p>In the Linode Manager, enter the token from your smartphone in the <strong>Generated Token</strong> field, and then click <strong>Confirm my token, and enable two-factor auth</strong>.</p></li>
+</ol>
+
+<p>That&rsquo;s it! You&rsquo;ve successfully enabled two-factor authentication and set up token generation on your smartphone.</p>
+
+<h3 id="logging-in">Logging In</h3>
+
+<p>Now that you have set up two-factor authentication for your account, you&rsquo;ll need to have your token handy whenever you log in to your account. Here&rsquo;s how to log in to the Linode Manager with two-factor authentication enabled:</p>
+
+<ol>
+<li>Open the <a href="https://manager.linode.com">Linode Manager</a> in your web browser.</li>
+
+<li><p>On your smartphone, open Google Authenticator, and then select your <strong>LinodeManager:user</strong> account, as shown below.</p>
+
+<p><a href="/docs/assets/1278-google_auth_token_crop.png"><img src="/docs/assets/1289-google_auth_token_crop-2.png" alt="Your token in Google Authenticator." /></a></p></li>
+
+<li><p>In your web browser, enter your username and password and click <strong>Log in</strong>. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1270-manager_login_token_470042.png"><img src="/docs/assets/1270-manager_login_token_470042.png" alt="Enter your token." /></a></p></li>
+
+<li><p>Enter your token, and then click <strong>Authenticate</strong>. Checking the box below the authentication option will add your computer to the trusted computer list for 30 days, and generate a confirmation email to the address on file for your account.</p></li>
+</ol>
+
+<p>You have successfully logged in to the Linode Manager using two-factor authentication.</p>
+
+<h3 id="scratch-code">Scratch Code</h3>
+
+<p>It&rsquo;s also suggested that you generate a one-time use scratch code. In the event that your smartphone is unavailable or the token is lost, you can use this code one time to log back in to the Linode Manager and regenerate the secret key. By default the scratch code is disabled.</p>
+
+<ol>
+<li><p>Click on the <strong>generate</strong> link to create a code.</p>
+
+<p><a href="/docs/assets/1361-manager_2fa_enabled.png"><img src="/docs/assets/1364-manager_2fa_enabled_sm.png" alt="Generate Scratch Code." /></a></p></li>
+
+<li><p>A pop-up window will appear asking you to confirm the action. Click <strong>OK</strong>.</p>
+
+<p><a href="/docs/assets/1362-warning_generate_scratchcode.png"><img src="/docs/assets/1362-warning_generate_scratchcode.png" alt="Confirmation Window." /></a></p></li>
+
+<li><p>The scratch code is displayed. This code will be displayed only once, so write it down and store it somewhere safe.</p>
+
+<p><a href="/docs/assets/1363-manager_scratchcode_enabled.png"><img src="/docs/assets/1365-manager_scratchcode_enabled_sm.png" alt="Confirmation Window." /></a></p></li>
+</ol>
+
+<h3 id="generating-a-new-key">Generating a New Key</h3>
+
+<p>The Linode Manager allows you to generate a new secret key for your two-factor authentication token device. This is a good way to start using a new smartphone as your two-factor token device. Here&rsquo;s how to generate a new secret key:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>My Profile</strong> link.</li>
+<li>Enter your password, and then click <strong>Authenticate</strong>.</li>
+<li>Select the <strong>Password &amp; Authentication</strong> tab.</li>
+
+<li><p>In the <em>Two-Factor Authentication</em> section, click <strong>Regenerate Secret Key</strong>, as shown below.</p>
+
+<p><a href="/docs/assets/1361-manager_2fa_enabled.png"><img src="/docs/assets/1364-manager_2fa_enabled_sm.png" alt="Regenerate Secret Key." /></a></p></li>
+</ol>
+
+<p>A new secret key and barcode will be generated for your account and displayed on the screen. Follow the instructions in the <a href="#enabling">Enabling Two-Factor Authentication</a> section to add the new key to your smartphone.</p>
+
+<h3 id="disabling">Disabling</h3>
+
+<p>You can disable two-factor authentication for your Linode Manager account at any time. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>my profile</strong> link.</li>
+<li>Enter your password, and then click <strong>Authenticate</strong>.</li>
+<li>Select the <strong>Password &amp; Authentication</strong> tab.</li>
+
+<li><p>In the <strong>Two-Factor Authentication</strong> section, select <strong>Disable</strong>, as shown below.</p>
+
+<p><a href="/docs/assets/1292-2f-disable-1.png"><img src="/docs/assets/1292-2f-disable-1.png" alt="Disabling Two-Factor Authentication." /></a></p></li>
+
+<li><p>A confirmation window appears asking if you want to disable two-factor authentication. Click <strong>OK</strong>.</p></li>
+</ol>
+
+<p>You have successfully disabled the two-factor authentication feature for your Linode Manager account.</p>
+
+<h3 id="recovery-procedure">Recovery Procedure</h3>
+
+<p>If you lose your token and get locked out of the Linode Manager, email <a href="mailto:support@linode.com">support@linode.com</a> to regain access to your account.</p>
+
+<p>Should you need us to disable your Two-Factor Authentication, the following information is required:</p>
+
+<ol>
+<li>An image of the front and back of the payment card currently associated with your account, which clearly shows the last 6 digits, expiration date, and cardholder name.</li>
+<li>An image of the front and back of a matching government-issued photo ID.</li>
+</ol>
+
+<h2 id="ip-address-whitelisting">IP Address Whitelisting</h2>
+
+<p>The IP Address Whitelist feature protects your Linode Manager account from unauthorized access attempts by accepting connections only from the IP addresses you specify. It&rsquo;s easy to use. Just enable the feature, add your IP address, and log in. If you ever attempt to log in from an IP address that is not on the whitelist, you&rsquo;ll receive an email notification — you can click the link in the email message to add the new IP address to the whitelist.</p>
+
+<h3 id="enabling-1">Enabling</h3>
+
+<p>The first step is enabling the IP address whitelist feature in the Linode Manager. Here&rsquo;s how:</p>
+
+<ol>
+<li>Find your computer&rsquo;s or router&rsquo;s IP address.</li>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>my profile</strong> link.</li>
+<li>Enter your password, and then click <strong>Authenticate</strong>.</li>
+<li>Select the <strong>Password &amp; Authentication</strong> tab.</li>
+
+<li><p>In the <em>Account Security</em> section, select <strong>Enabled</strong> from the <strong>Status</strong> menu, as shown below.</p>
+
+<p><a href="/docs/assets/1294-2f-whitelist-1.png"><img src="/docs/assets/1294-2f-whitelist-1.png" alt="Enabling the IP address whitelist feature." /></a></p></li>
+
+<li><p>Click <strong>Save security setting</strong>. The IP address whitelist feature will be enabled.</p></li>
+
+<li><p>In the <em>Account Security</em> section, select the <strong>Edit Whitelist</strong> link to add your IP address, as shown below.</p>
+
+<p><a href="/docs/assets/1295-2f-whitelist-2.png"><img src="/docs/assets/1295-2f-whitelist-2.png" alt="Enabling the IP address whitelist feature." /></a></p></li>
+
+<li><p>Enter your IP address and netmask, and then click <strong>Add IP</strong>. You can add as many IP addresses as you want.</p></li>
+</ol>
+
+<p>The IP address whitelist feature is now enabled for your Linode Manager account.</p>
+
+<h3 id="adding-additional-ip-addresses-remotely">Adding Additional IP Addresses Remotely</h3>
+
+<p>Now that the IP address whitelist feature is enabled and you&rsquo;ve added one or more IP addresses, your Linode Manager account is protected from unauthorized access attempts originating from any IP address not on the whitelist. However, it is easy to add additional IP addresses to the whitelist when you&rsquo;re away from home. Just attempt to log in to the Linode Manager from the new IP address and you&rsquo;ll receive an email notification — click the link in the email message to add the new IP address to the whitelist. You can also add additional IP addresses using the <strong>my profile</strong> page in the Linode Manager, as described in the previous section.</p>
+
+<h3 id="disabling-1">Disabling</h3>
+
+<p>You can disable the IP address whitelist feature at any time. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>my profile</strong> link.</li>
+<li>Enter your password, and then click <strong>Authenticate</strong>.</li>
+<li>Select the <strong>Password &amp; Authentication</strong> tab.</li>
+
+<li><p>In the <em>Account Security</em> section, select <strong>Disabled</strong> from the <strong>Status</strong> menu, as shown below.</p>
+
+<p><a href="/docs/assets/1296-2f-whitelist-3.png"><img src="/docs/assets/1296-2f-whitelist-3.png" alt="Disabling the IP address whitelist feature." /></a></p></li>
+
+<li><p>Click <strong>Save security setting</strong>.</p></li>
+</ol>
+
+<p>The IP address whitelist feature is disabled. From now on you will be able to log in to the Linode Manager from any IP address.</p>
+
+<h2 id="security-event-notifications">Security Event Notifications</h2>
+
+<p>By default, the Linode Manager automatically notifies you via email when any Linode jobs are added to the <em>Host Job Queue</em>. Referred to as <em>event notifications</em>, this security control can help you monitor your Linode Manager account&rsquo;s activity. You can also subscribe to an RSS feed, or disable email event notifications entirely. This section shows you how to configure event notifications.</p>
+
+<h3 id="email">Email</h3>
+
+<p>You can enable and disable event notifications sent via email in the Linode Manager. This feature is enabled for all accounts by default, but you can disable it or reenable it at any time. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>my profile</strong> link.</li>
+<li>Enter your password, and then click <strong>Authenticate</strong>.</li>
+<li>Select the <strong>Notifications</strong> tab.</li>
+
+<li><p>In the <em>Linode Events Email</em> section, click <strong>Toggle Event Email Notifications</strong>, as shown below.</p>
+
+<p><a href="/docs/assets/1297-2f-events-1.png"><img src="/docs/assets/1297-2f-events-1.png" alt="Toggling the Events Email Notification." /></a></p></li>
+</ol>
+
+<p>If the events email notification was enabled before you clicked the button, it is now disabled, and vice versa.</p>
+
+<h3 id="rss">RSS</h3>
+
+<p>The event notifications for your Linode Manager account are also available as an RSS feed. The URL is displayed in the Linode Manager on your profile — you can add it to any RSS reader. You can also regenerate the URL. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Select the <strong>my profile</strong> link.</li>
+<li>Enter your password, and then click <strong>Authenticate</strong>.</li>
+<li>Select the <strong>Notifications</strong> tab.</li>
+
+<li><p>The RSS feed URL is displayed in the <em>Linode Events RSS</em> section, as shown below.</p>
+
+<p><a href="/docs/assets/1298-2f-events-2.png"><img src="/docs/assets/1298-2f-events-2.png" alt="Finding the RSS event notifications URL." /></a></p></li>
+
+<li><p>To regenerate the URL for the RSS feed, click <strong>Generate a new RSS key</strong>.</p></li>
+</ol>
+
+<p>If you regenerated the URL for the RSS feed, you will need to update it in your RSS reader.</p>
+
+<h2 id="api-access">API Access</h2>
+
+<p>The <a href="https://www.linode.com/api/">Linode API</a> is a programmatic interface for many of the features available in the Linode Manager. It&rsquo;s an indispensable tool for developers, but it&rsquo;s also a potential attack vector. For this reason, the Linode Manager provides two security controls for your account&rsquo;s API key. First, you can generate a new API key if you suspect that your existing key has been compromised. And if you&rsquo;re not using the API key, you can remove access to it altogether.</p>
+
+<p>For details on generating and removing API keys, please see the <a href="/docs/api/key">API Key</a> article.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>If you&rsquo;ve completed this guide, you&rsquo;ve proactively taken steps to protect your Linode Manager account. But don&rsquo;t stop here! There are a couple other steps that some users should take to secure their Linode Manager accounts. Take some time and work through the following action items outlined in our other guides.</p>
+
+<h3 id="configuring-user-accounts">Configuring User Accounts</h3>
+
+<p>Organizations that have multiple individuals accessing the same Linode Manager account should create separate <em>user accounts</em> for each individual. Once you&rsquo;ve created the accounts, you can assign permissions to restrict access to certain areas of the control panel. This is useful for groups that need to grant all team members access to the Linode Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information. For more information, see our guide on <a href="/docs/accounts-and-passwords">Accounts and Passwords</a>.</p>
+
+<h3 id="forcing-password-expirations">Forcing Password Expirations</h3>
+
+<p>Some organizations have policies that require users to change their passwords every so often. The Linode Manager can be configured to force users to change their passwords every 1, 3, 6, or 12 months. For more information, see the documentation on <a href="/docs/platform/accounts-and-passwords/#passwords">Passwords in the Linode Manager</a>.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/networking/vpn/set-up-a-streisand-gateway/">How to Set Up a Streisand Gateway</a></li>
+    
+    
+    
+    <li><a href="/docs/security/advanced-ssh-server-security/">Use Advanced OpenSSH Features to Harden Access to Your Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/introduction-to-firewalld-on-centos/">Introduction to FirewallD on CentOS</a></li>
+    
+    
+    
+    <li><a href="/docs/uptime/monitoring/monitor-systems-logwatch/">Monitor System Logs with Logwatch</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/protecting-your-linode-using-tcp-wrappers/">Protecting Your Linode with TCP Wrappers</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#two-factor-authentication">Two-Factor Authentication</a>
+<ul>
+<li><a href="#selecting-a-token-application">Selecting a Token Application</a></li>
+<li><a href="#enabling">Enabling</a></li>
+<li><a href="#logging-in">Logging In</a></li>
+<li><a href="#scratch-code">Scratch Code</a></li>
+<li><a href="#generating-a-new-key">Generating a New Key</a></li>
+<li><a href="#disabling">Disabling</a></li>
+<li><a href="#recovery-procedure">Recovery Procedure</a></li>
+</ul></li>
+<li><a href="#ip-address-whitelisting">IP Address Whitelisting</a>
+<ul>
+<li><a href="#enabling-1">Enabling</a></li>
+<li><a href="#adding-additional-ip-addresses-remotely">Adding Additional IP Addresses Remotely</a></li>
+<li><a href="#disabling-1">Disabling</a></li>
+</ul></li>
+<li><a href="#security-event-notifications">Security Event Notifications</a>
+<ul>
+<li><a href="#email">Email</a></li>
+<li><a href="#rss">RSS</a></li>
+</ul></li>
+<li><a href="#api-access">API Access</a></li>
+<li><a href="#next-steps">Next Steps</a>
+<ul>
+<li><a href="#configuring-user-accounts">Configuring User Accounts</a></li>
+<li><a href="#forcing-password-expirations">Forcing Password Expirations</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

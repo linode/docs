@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use this guide to install Puppet with MySQL modules and Puppet Hiera configuration manifests to manage MySQL in a variety of environments.">
+        <meta name="keywords" content="puppet installation, configuration change management, server automation, mysql, database, hiera">
+        
+        <meta property="og:title" content="Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/">
+        <meta property="og:description" content="Use this guide to install Puppet with MySQL modules and Puppet Hiera configuration manifests to manage MySQL in a variety of environments.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/configuration-management/">Configuration Management</a>
+  
+</li>
+
+
+<li>
+  
+  Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-09-11T00:00:00Z">Monday, September 11, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://tjll.net">Tyler Langlois
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2finstall-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04%2f&via=linode&text=Install%20and%20Manage%20MySQL%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2finstall-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2finstall-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04%2f&t=Install%20and%20Manage%20MySQL%20Databases%20with%20Puppet%20Hiera%20on%20Ubuntu%2016.04" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/puppet/manage-mysql-with-puppet-hiera.jpg" alt="Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04" title="Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04" /></p>
+
+<p><a href="https://puppetlabs.com/">Puppet</a> is a configuration management system that helps simplify the use and deployment of different types of software, making system administration more reliable and replicable. In this guide, we use Puppet to manage an installation of <a href="https://www.mysql.com/">MySQL</a>, a popular relational database used for applications such as WordPress, Ruby on Rails, and others. <a href="https://docs.puppet.com/hiera/">Hiera</a> is a method of defining configuration values that Puppet will use to simplify MySQL configuration.</p>
+
+<p>In this guide, you&rsquo;ll use Puppet to deploy <a href="https://docs.puppet.com/puppet/latest/modules_fundamentals.html">modules</a> on your server. At the end, you will have MySQL installed, configured, and ready to use for a variety of applications that require a database backend.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, see the <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>A <a href="https://www.linode.com/pricing">Linode 1GB</a> plan should be sufficient to run MySQL. Consider using a larger plan if you plan to use MySQL heavily, or for more than just a simple personal website.</p></li>
+
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<h2 id="install-and-configure-puppet">Install and Configure Puppet</h2>
+
+<p>Follow these steps to set up Puppet for single-host, local-only deployment. If you need to configure more than one server or to deploy a Puppet master, follow our <a href="/docs/applications/configuration-management/install-and-configure-puppet">multi-server Puppet guide</a>.</p>
+
+<h3 id="install-the-puppet-package">Install the Puppet Package</h3>
+
+<ol>
+<li><p>Install the <code>puppetlabs-release</code> repository to add the Puppet packages:</p>
+
+<pre><code>wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+sudo dpkg -i puppetlabs-release-pc1-xenial.deb
+</code></pre></li>
+
+<li><p>Update the apt package index to make the Puppet Labs repository packages available, then install Puppet. This will install the <code>puppet-agent</code> package, which provides the <code>puppet</code> executable within in a compatible Ruby environment:</p>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt install puppet-agent=1.10.4-1xenial
+</code></pre></li>
+
+<li><p>Confirm the version of Puppet installed:</p>
+
+<pre><code>puppet --version
+</code></pre>
+
+<p>Note that the <code>puppet-agent</code> package includes a different version of Puppet, which is expected:</p>
+
+<pre><code>4.10.4
+</code></pre></li>
+</ol>
+
+<h3 id="install-the-puppet-mysql-module">Install the Puppet MySQL Module</h3>
+
+<p><a href="https://forge.puppet.com/">Puppet Forge</a> is a collection of <em>modules</em> that aid in the installation of different types of software. The <a href="https://forge.puppet.com/puppetlabs/mysql">MySQL module</a> handles the installation and configuration of MySQL without you needing to manage various configuration files and services by hand.</p>
+
+<ol>
+<li><p>Install the MySQL module:</p>
+
+<pre><code>sudo -i puppet module install puppetlabs-mysql --version 3.11
+</code></pre>
+
+<p>This will install the <code>mysql</code> module into the default path <code>/etc/puppetlabs/code/environments/production/modules/</code>.</p></li>
+</ol>
+
+<h3 id="puppet-mysql-manifest">Puppet MySQL Manifest</h3>
+
+<p>This guide uses a Puppet <em>manifest</em> to provide Puppet with installation and configuration instructions. Alternatively, you can configure <a href="/docs/applications/configuration-management/install-and-configure-puppet">a Puppet master</a>.</p>
+
+<p>While the entirety of a Puppet <em>manifest</em> can contain the desired configuration for a host, values for Puppet <em>classes</em> or <em>types</em> can also be defined in a Hiera configuration file to simplify writing Puppet manifests in most cases. In this example, the <code>mysql::server</code> class parameters will be defined in Hiera, but the class must first be applied to the host.</p>
+
+<p>To apply the <code>mysql::server</code> class to all hosts by default, create the following Puppet manifest:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppetlabs/code/environments/production/manifests/site.pp 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-puppet" data-lang="puppet"><span class="k">include</span> <span class="p">::</span><span class="na">mysql</span><span class="p">::</span><span class="na">server</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Note that <code>site.pp</code> is the default manifest file. Without a qualifying <code>node { .. }</code> line, this applies the class to any host applying the manifest. Puppet now knows to apply the <code>mysql::server</code> class, but still needs values for resources like databases, users, and other settings. Configure Hiera to provide these values in the next section.</p>
+
+<h2 id="install-and-configure-puppet-hiera">Install and Configure Puppet Hiera</h2>
+
+<p>To understand how Hiera works, consider this excerpt from the default <code>hiera.yaml</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/puppetlabs/puppet/hiera.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span><span class="p">:</span>backends<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>yaml<span class="w">
+</span><span class="w"></span><span class="p">:</span>hierarchy<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span><span class="s2">&#34;nodes/%{::trusted.certname}&#34;</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>common</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This Hiera configuration instructs Puppet to accept variable values from <code>nodes/%{::trusted.certname}.yaml</code>. If your Linode&rsquo;s hostname is <code>examplehostname</code>, define a file called <code>nodes/examplehostname.yaml</code>). Any variables found in yaml files higher in the hierarchy are preferred, while any variable names that do not exist in those files will fall-through to files lower in the hierarchy (in this example, <code>common.yaml</code>).</p>
+
+<p>The following configuration will define Puppet variables in <code>common.yaml</code> to inject variables into the <code>mysql::server</code> class.</p>
+
+<h3 id="initial-hiera-configuration">Initial Hiera Configuration</h3>
+
+<p>Hiera configuration files are formatted as yaml, with keys defining the Puppet parameters to inject their associated values. To get started,  set the MySQL root password. The following example of a Puppet manifest is one way to control this password:</p>
+
+<p><dl class="file">
+<dt>
+
+
+		:   ~~~ pp 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">We can also define the root password with the following Hiera configuration file. Create the following yaml file and note how the <span class="sb">`</span>root_password<span class="sb">`</span> parameter is defined as Hiera yaml:
+
+&lt;dl <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;file&#34;</span>&gt;
+&lt;dt&gt;
+
+&lt;/dt&gt;
+&lt;dd&gt;
+
+
+&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;highlight&#34;</span>&gt;&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;chroma&#34;</span>&gt;
+&lt;table <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lntable&#34;</span>&gt;&lt;tr&gt;&lt;td <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lntd&#34;</span>&gt;
+&lt;pre <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;chroma&#34;</span>&gt;&lt;code <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;language-bash&#34;</span> data-lang<span class="o">=</span><span class="s2">&#34;bash&#34;</span>&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lnt&#34;</span>&gt;1&lt;/span&gt;&lt;span <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lnt&#34;</span>&gt;2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;lntd&#34;</span>&gt;
+&lt;pre <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;chroma&#34;</span>&gt;&lt;code <span class="nv">class</span><span class="o">=</span><span class="s2">&#34;language-bash&#34;</span> data-lang<span class="o">=</span><span class="s2">&#34;bash&#34;</span>&gt;/etc/puppetlabs/code/environments/production/hieradata/common.yaml
+:&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+ yaml
+    mysql::server::root_password: examplepassword
+    ~~~</p>
+
+<p>Replace <code>examplepassword</code> with the secure password of your choice. Run Puppet to set up MySQL with default settings and the chosen root password:</p>
+
+<pre><code>sudo -i puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
+</code></pre>
+
+<p>Puppet will output its progress before completing. To confirm MySQL has been configured properly, run a command:</p>
+
+<pre><code>mysql -u root -p -e 'select version();'
+</code></pre>
+
+<p>Enter the password and MySQL returns its version:</p>
+
+<pre><code>+-------------------------+
+| version()               |
++-------------------------+
+| 5.7.19-0ubuntu0.16.04.1 |
++-------------------------+
+</code></pre>
+
+<h3 id="define-mysql-resources">Define MySQL Resources</h3>
+
+<p>Using Hiera, we can define the rest of the MySQL configuration entirely in yaml. The following steps will create a database and user for use in a Wordpress installation.</p>
+
+<ol>
+<li><p>Create a pre-hashed MySQL password. Replace the password <code>wordpresspassword</code> in this example, and when prompted for a the root MySQL password, use the first root password chosen in the previous section to authenticate. Note the string starting with a <code>*</code> that the command returns for Step 2:</p>
+
+<pre><code>mysql -u root -p -NBe 'select password(&quot;wordpresspassword&quot;)'
+*E62D3F829F44A91CC231C76347712772B3B9DABC
+</code></pre></li>
+
+<li><p>With the MySQL password hash ready, we can define Hiera values. The following yaml defines parameters to create a database called <code>wordpress</code> and a user named <code>wpuser</code> that has permission to connect from <code>localhost</code>. The yaml also defines a <code>GRANT</code> allowing <code>wpuser</code> to operate on the <code>wordpress</code> database with <code>ALL</code> permissions:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppetlabs/code/environments/production/hieradata/common.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">mysql<span class="p">::</span>server<span class="p">::</span>root_password<span class="p">:</span><span class="w"> </span>examplepassword<span class="w">
+</span><span class="w"></span>mysql<span class="p">::</span>server<span class="p">::</span>databases<span class="p">:</span><span class="w">
+</span><span class="w">  </span>wordpress<span class="p">:</span><span class="w">
+</span><span class="w">    </span>ensure<span class="p">:</span><span class="w"> </span>present<span class="w">
+</span><span class="w"></span>mysql<span class="p">::</span>server<span class="p">::</span>users<span class="p">:</span><span class="w">
+</span><span class="w">  </span>wpuser@localhost<span class="p">:</span><span class="w">
+</span><span class="w">    </span>ensure<span class="p">:</span><span class="w"> </span>present<span class="w">
+</span><span class="w">    </span>password_hash<span class="p">:</span><span class="w"> </span><span class="s1">&#39;*E62D3F829F44A91CC231C76347712772B3B9DABC&#39;</span><span class="w">
+</span><span class="w"></span>mysql<span class="p">::</span>server<span class="p">::</span>grants<span class="p">:</span><span class="w">
+</span><span class="w">  </span>wpuser@localhost/wordpress.*<span class="p">:</span><span class="w">
+</span><span class="w">    </span>ensure<span class="p">:</span><span class="w"> </span>present<span class="w">
+</span><span class="w">    </span>privileges<span class="p">:</span><span class="w"> </span>ALL<span class="w">
+</span><span class="w">    </span>table<span class="p">:</span><span class="w"> </span>wordpress.*<span class="w">
+</span><span class="w">    </span>user<span class="p">:</span><span class="w"> </span>wpuser@localhost</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Re-run Puppet:</p>
+
+<pre><code>sudo -i puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
+</code></pre></li>
+
+<li><p>The <code>wpuser</code> should now be able to connect to the <code>wordpress</code> database. To verify, connect to the MySQL daemon as the user <code>wpuser</code> to the <code>wordpress</code> database:</p>
+
+<pre><code>mysql -u wpuser -p wordpress
+</code></pre>
+
+<p>After you enter the password for <code>wpuser</code>, exit the MySQL prompt:</p>
+
+<pre><code>exit
+</code></pre></li>
+</ol>
+
+<h3 id="add-hierarchies-for-specific-environments">Add Hierarchies for Specific Environments</h3>
+
+<p>Additional configurations can be added that will only be applied to specific environments. For example, backup jobs may only be applied for hosts in a certain region, or specific databases can be created in a particular deployment.</p>
+
+<p>In the following example, Puppet will configure the MySQL server with one additional database, but only if that server&rsquo;s distribution is Debian-based.</p>
+
+<ol>
+<li><p>Modify <code>hiera.yaml</code> to contain the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppetlabs/puppet/hiera.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span><span class="p">:</span>backends<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>yaml<span class="w">
+</span><span class="w">  </span><span class="p">:</span>hierarchy<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span><span class="s2">&#34;%{facts.os.family}&#34;</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>common</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This change instructs Hiera to look for Puppet parameters first in <code>&quot;%{facts.os.family}.yaml&quot;</code> and then in <code>common.yaml</code>. The first, fact-based element of the hierarchy is dynamic, and dependent upon the host that Puppet and Hiera control. In this Ubuntu-based example, Hiera will look for <code>Debian.yaml</code>, while on a distribution such as CentOS, the file <code>RedHat.yaml</code> will automatically be referenced instead.</p></li>
+
+<li><p>Create the following yaml file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/puppetlabs/code/environments/production/hieradata/Debian.yaml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">lookup_options<span class="p">:</span><span class="w">
+</span><span class="w">  </span>mysql<span class="p">::</span>server<span class="p">::</span>databases<span class="p">:</span><span class="w">
+</span><span class="w">    </span>merge<span class="p">:</span><span class="w"> </span>deep<span class="w">
+</span><span class="w">
+</span><span class="w">  </span>mysql<span class="p">::</span>server<span class="p">::</span>databases<span class="p">:</span><span class="w">
+</span><span class="w">    </span>ubuntu-backup<span class="p">:</span><span class="w">
+</span><span class="w">      </span>ensure<span class="p">:</span><span class="w"> </span>present</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Though similar to the <code>common.yaml</code> file defined in previous steps, this file will add the <code>ubuntu-backup</code> database <em>only</em> on Debian-based hosts (like Ubuntu). In addition, the <code>lookup_options</code> setting ensures that the <code>mysql::server:databases</code> parameter is <em>merged</em> between <code>Debian.yaml</code> and <code>common.yaml</code> so that all databases are managed. Without <code>lookup_options</code> set to deeply merge these hashes, only the most specific hierarchy file will be applied to the host, in this case, <code>Debian.yaml</code>.</p>
+
+<ul>
+<li><p>Alternatively, because our Puppet manifest is short, we can test the same command using the <code>-e</code> flag to apply an inline manifest:</p>
+
+<pre><code>sudo -i puppet apply -e 'include ::mysql::server'
+</code></pre></li>
+</ul></li>
+
+<li><p>Run Puppet and observe the changes:</p>
+
+<pre><code>sudo -i puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
+</code></pre></li>
+
+<li><p>Verify that the new database exists:</p>
+
+<pre><code>mysql -u root -p -e 'show databases;'
+</code></pre>
+
+<p>This includes the new <code>ubuntu-backup</code> database:</p>
+
+<pre><code>+---------------------+
+| Database            |
++---------------------+
+| information_schema  |
+| mysql               |
+| performance_schema  |
+| sys                 |
+| ubuntu-backup       |
+| wordpress           |
++---------------------+
+</code></pre></li>
+</ol>
+
+<p>Congratulations! You can now control your Puppet configuration via highly configurable Hiera definitions.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://puppetlabs.com/">Puppet Labs</a></li>
+
+<li><a href="https://docs.puppetlabs.com/puppet/">Puppet Open Source Documentation</a></li>
+
+<li><a href="https://forge.puppet.com/">The Puppet Forge</a></li>
+
+<li><a href="https://docs.puppet.com/hiera/">Hiera documentation</a></li>
+
+<li><a href="https://docs.puppet.com/facter/">Facter</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-and-configure-puppet/">Install and Configure Puppet</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/">Install a Chef Server Workstation on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mariadb/mariadb-setup-debian/">How to Set Up MariaDB on Debian 9</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/use-cpanel-to-manage-domains-and-databases/">Use cPanel to Manage Domains and Databases</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu/">Install and Configure MySQL Workbench on Ubuntu 16.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-and-configure-puppet">Install and Configure Puppet</a>
+<ul>
+<li><a href="#install-the-puppet-package">Install the Puppet Package</a></li>
+<li><a href="#install-the-puppet-mysql-module">Install the Puppet MySQL Module</a></li>
+<li><a href="#puppet-mysql-manifest">Puppet MySQL Manifest</a></li>
+</ul></li>
+<li><a href="#install-and-configure-puppet-hiera">Install and Configure Puppet Hiera</a>
+<ul>
+<li><a href="#initial-hiera-configuration">Initial Hiera Configuration</a></li>
+<li><a href="#define-mysql-resources">Define MySQL Resources</a></li>
+<li><a href="#add-hierarchies-for-specific-environments">Add Hierarchies for Specific Environments</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

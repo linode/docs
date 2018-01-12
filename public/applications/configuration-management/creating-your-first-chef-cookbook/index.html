@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Creating Your First Chef Cookbook</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Learn how to create Chef cookbooks by creating a LAMP stack in Chef">
+        <meta name="keywords" content="chef, automation, cookbooks, opscode, lamp, lamp stack, beginner, server automation">
+        
+        <meta property="og:title" content="Creating Your First Chef Cookbook">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/configuration-management/creating-your-first-chef-cookbook/">
+        <meta property="og:description" content="Learn how to create Chef cookbooks by creating a LAMP stack in Chef">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/configuration-management/creating-your-first-chef-cookbook/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/configuration-management/">Configuration Management</a>
+  
+</li>
+
+
+<li>
+  
+  Creating Your First Chef Cookbook
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Creating Your First Chef Cookbook</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-06-10T00:00:00Z">Wednesday, June 10, 2015</time> by Elle Krout</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fcreating-your-first-chef-cookbook%2f&via=linode&text=Creating%20Your%20First%20Chef%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fcreating-your-first-chef-cookbook%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fcreating-your-first-chef-cookbook%2f&t=Creating%20Your%20First%20Chef%20Cookbook" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/configuration-management/creating-your-first-chef-cookbook.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/configuration-management/creating-your-first-chef-cookbook.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Cookbooks are one of the key components in Chef. They describe the <em>desired state</em> of your nodes, and allow Chef to push out the changes needed to achieve this state. Creating a cookbook can seem like an arduous task at first, given the sheer amount of options provided and areas to configure, so in this guide we will walk through the creation of one of the first things people often learn to configure: A LAMP stack.</p>
+
+<p><img src="/docs/assets/creating-your-first-chef-cookbook.png" alt="Creating Your First Chef Cookbook" /></p>
+
+<p>Prior to using this guide, be sure to set up Chef with the <a href="/docs/applications/chef/setting-up-chef-ubuntu-14-04">Setting Up a Chef Server, Workstation, and Node</a> guide, and, if needed, review the <a href="/docs/applications/chef/beginners-guide-chef">Beginner&rsquo;s Guide to Chef</a>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide assumes all nodes are using Ubuntu 14.04. Recipes can be adapted for use on multiple systems, but that is outside the scope of this guide.</div>
+</blockquote>
+
+
+<h2 id="create-the-cookbook">Create the Cookbook</h2>
+
+<ol>
+<li><p>From your workstation, move to your chef-repo:</p>
+
+<pre><code>cd chef-repo
+</code></pre></li>
+
+<li><p>Create the cookbook. In this instance the cookbook is titled <code>lamp-stack</code>:</p>
+
+<pre><code>knife cookbook create lamp-stack
+</code></pre></li>
+
+<li><p>Move to your cookbook&rsquo;s newly-created directory:</p>
+
+<pre><code>cd cookbooks/lamp-stack
+</code></pre></li>
+
+<li><p>If you list the files located in the newly-created cookbook, you will see that a number of directories and files have been created:</p>
+
+<pre><code>attributes    definitions  libraries    providers  recipes    templates
+CHANGELOG.md  files        metadata.rb  README.md  resources
+</code></pre>
+
+<p>For more information about these directories see the <a href="/docs/applications/chef/beginners-guide-chef">Beginner&rsquo;s Guide to Chef</a>.</p></li>
+</ol>
+
+<h2 id="default-rb">default.rb</h2>
+
+<p>The <code>default.rb</code> file in <code>recipes</code> contains the &ldquo;default&rdquo; recipe resources.</p>
+
+<p>Because each section of the LAMP stack (Apache, MySQL, and PHP) will have its own recipe, the <code>default.rb</code> file is used to prepare your servers.</p>
+
+<ol>
+<li><p>From within your <code>lamp-stack</code> directory, navigate to the <code>recipes</code> folder:</p>
+
+<pre><code>cd recipes
+</code></pre></li>
+
+<li><p>Open <code>default.rb</code> and add the Ruby command below, which will run system updates:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipe/default.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="c1">#</span>
+<span class="c1"># Cookbook Name:: lamp-stack</span>
+<span class="c1"># Recipe:: default</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+
+<span class="n">execute</span> <span class="s2">&#34;update-upgrade&#34;</span> <span class="k">do</span>
+  <span class="n">command</span> <span class="s2">&#34;apt-get update &amp;&amp; apt-get upgrade -y&#34;</span>
+  <span class="n">action</span> <span class="ss">:run</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Recipes are comprised of a series of <em>resources</em>. In this case, the <em>execute</em> resource is used, which calls for a command to be executed once. The <code>apt-get update &amp;&amp; apt-get upgrade -y</code> commands are defined in the <code>command</code> section, and the <code>action</code> is set to <code>:run</code> the commands.</p>
+
+<p>This is one of the simpler Chef recipes to write, and a good way to start out. Any other start-up procedures that you deem important can be added to the file by mimicking the above code pattern.</p></li>
+
+<li><p>To test the recipe, add the LAMP stack cookbook to the Chef server:</p>
+
+<pre><code>knife cookbook upload lamp-stack
+</code></pre></li>
+
+<li><p>Add the recipe to your chosen node&rsquo;s run <em>list</em>, replacing <code>nodename</code> with your node&rsquo;s name:</p>
+
+<pre><code>knife node run_list add nodename &quot;recipe[lamp-stack]&quot;
+</code></pre>
+
+<p>Because this is the default recipe, the recipe name does not need to be defined after <code>lamp-stack</code> in the code above.</p></li>
+
+<li><p>Access your chosen node and run the <em>chef-client</em>:</p>
+
+<pre><code>chef-client
+</code></pre>
+
+<p>It should output a successful Chef run. If not, review your code for any errors, usually defined in the output of the chef-client run.</p></li>
+</ol>
+
+<h2 id="apache">Apache</h2>
+
+<h3 id="install-and-enable">Install and Enable</h3>
+
+<ol>
+<li><p>Create a new file under <code>/recipes</code> called <code>apache.rb</code>. This will contain all of your Apache configuration information.</p></li>
+
+<li><p>Open the file, and define the <em>package</em> resource to install Apache:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">package</span> <span class="s2">&#34;apache2&#34;</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="ss">:install</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Again, this is a very basic recipe. The <em>package</em> resource calls to a package (apache2). This value must be a legitimate package name. The action is <em>install</em> because Apache is being installed in this step. There is no need for additional values to run the install.</p></li>
+
+<li><p>Apache will also need to be set to turn on at reboot, and start. In the same file, add the additional lines of code:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">service</span> <span class="s2">&#34;apache2&#34;</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="o">[</span><span class="ss">:enable</span><span class="p">,</span> <span class="ss">:start</span><span class="o">]</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This uses the <em>service</em> resource, which calls on the Apache service; the <em>enable</em> action enables it upon startup, whereas <em>start</em> will start Apache.</p>
+
+<p>Save and close the <code>apache.rb</code> file.</p></li>
+
+<li><p>To test the Apache recipe, update the LAMP Stack recipe on the server:</p>
+
+<pre><code>knife cookbook upload lamp-stack
+</code></pre></li>
+
+<li><p>Add the recipe to a node&rsquo;s run-list, replaceing <code>nodename</code> with your chosen node&rsquo;s name:</p>
+
+<pre><code>knife node run_list add nodename &quot;recipe[lamp-stack::apache]&quot;
+</code></pre>
+
+<p>Because this is not the <code>default.rb</code> recipe the recipe name, <em>apache</em>, must be appended to the recipe value.</p></li>
+
+<li><p>From that <strong>node</strong>, run the chef-client:</p>
+
+<pre><code>chef-client
+</code></pre>
+
+<p>If the recipe fails due to a syntax error, Chef will note it during the output.</p></li>
+
+<li><p>After a successful chef-client run, check to see if Apache is running:</p>
+
+<pre><code>service apache2 status
+</code></pre>
+
+<p>It should say that apache2 is running.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Repeat steps 5-7 to upload the cookbook and run chef-client as needed through the rest of this guide to ensure your recipes are working properly and contain no errors. Remember to replace the recipe name in the run list code when adding a new recipe.</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="configure-virtual-hosts">Configure Virtual Hosts</h3>
+
+<p>After the initial installation Apache needs to be configured, starting with its virtual hosts files. This configuration is based off of the <a href="/docs/websites/lamp/lamp-server-on-ubuntu-14-04">LAMP Server on Ubuntu 14.04</a> guide.</p>
+
+<ol>
+<li><p>Because multiple websites may need to be configured, Chef&rsquo;s attributes feature will be used to define certain aspects of the virtual hosts file(s). Open a <code>default.rb</code> file under the <code>attributes</code> directory in your cookbook.</p></li>
+
+<li><p>Within <code>default.rb</code>, create the default values of the cookbook:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/attributes/default.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">default</span><span class="o">[</span><span class="s2">&#34;lamp-stack&#34;</span><span class="o">][</span><span class="s2">&#34;sites&#34;</span><span class="o">][</span><span class="s2">&#34;example.com&#34;</span><span class="o">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;port&#34;</span> <span class="o">=&gt;</span> <span class="mi">80</span><span class="o"></span><span class="p">,</span> <span class="s2">&#34;servername&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;example.com&#34;</span><span class="p">,</span> <span class="s2">&#34;serveradmin&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;webmaster@example.com&#34;</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The prefix <em>default</em> defines that these are the normal values to be used in the <em>lamp-stack</em> where the <em>site</em> <em>example.com</em> will be called upon. This can be seen as a hierarchy: Under the cookbook itself are the site(s), which are then defined by their URL.</p>
+
+<p>The following values in the array (defined by curly brackets) are the values that will be used to configure the virtual hosts file. Apache will be set to listen on port 80, and use the listed values for its server name, and administrator email.</p>
+
+<p>Should you have more than one available website or URL (for example, <em>example.org</em>), this syntax should be mimicked for the second URL:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/attributes/default.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">default</span><span class="o">[</span><span class="s2">&#34;lamp-stack&#34;</span><span class="o">][</span><span class="s2">&#34;sites&#34;</span><span class="o">][</span><span class="s2">&#34;example.com&#34;</span><span class="o">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;port&#34;</span> <span class="o">=&gt;</span> <span class="mi">80</span><span class="o"></span><span class="p">,</span> <span class="s2">&#34;servername&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;example.com&#34;</span><span class="p">,</span> <span class="s2">&#34;serveradmin&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;webmaster@example.com&#34;</span> <span class="p">}</span>
+<span class="n">default</span><span class="o">[</span><span class="s2">&#34;lamp-stack&#34;</span><span class="o">][</span><span class="s2">&#34;sites&#34;</span><span class="o">][</span><span class="s2">&#34;example.org&#34;</span><span class="o">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;port&#34;</span> <span class="o">=&gt;</span> <span class="mi">80</span><span class="o"></span><span class="p">,</span> <span class="s2">&#34;servername&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;example.org&#34;</span><span class="p">,</span> <span class="s2">&#34;serveradmin&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;webmaster@example.org&#34;</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Return to your <code>apache.rb</code> file under <code>recipes</code> to call the attributes that were just defined. Do this with the <em>node</em> resource:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="c1">#Install &amp; enable Apache</span>
+
+<span class="n">package</span> <span class="s2">&#34;apache2&#34;</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="ss">:install</span>
+<span class="k">end</span>
+
+<span class="n">service</span> <span class="s2">&#34;apache2&#34;</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="o">[</span><span class="ss">:enable</span><span class="p">,</span> <span class="ss">:start</span><span class="o">]</span>
+<span class="k">end</span>
+
+
+<span class="c1"># Virtual Hosts Files</span>
+
+<span class="n">node</span><span class="o">[</span><span class="s2">&#34;lamp-stack&#34;</span><span class="o">][</span><span class="s2">&#34;sites&#34;</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">sitename</span><span class="p">,</span> <span class="n">data</span><span class="o">|</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This calls in the values under <code>[&quot;lamp-stack&quot;][&quot;sites&quot;]</code>. Code added to this block will be generated for <em>each</em> value, which is defined by the word <em>sitename</em>. The <em>data</em> value calls the values that are listed in the array of each <em>sitename</em> attribute.</p></li>
+
+<li><p>Within the node resource, define a document root. This root will be used to define the public HTML files, and any log files that will be generated:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">node</span><span class="o">[</span><span class="s2">&#34;lamp-stack&#34;</span><span class="o">][</span><span class="s2">&#34;sites&#34;</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">sitename</span><span class="p">,</span> <span class="n">data</span><span class="o">|</span>
+  <span class="n">document_root</span> <span class="o">=</span> <span class="s2">&#34;/var/www/html/</span><span class="si">#{</span><span class="n">sitename</span><span class="si">}</span><span class="s2">&#34;</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>However, this does not create the directory itself. To do so, the <em>directory</em> resource should be used, with a <em>true</em> recursive value so all directories leading up to the <code>sitename</code> will be created. A permissions value of <code>0755</code> will allow for the file owner to have full access to the directory, while group and regular users will have read and execute privileges:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">node</span><span class="o">[</span><span class="s2">&#34;lamp-stack&#34;</span><span class="o">][</span><span class="s2">&#34;sites&#34;</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">sitename</span><span class="p">,</span> <span class="n">data</span><span class="o">|</span>
+  <span class="n">document_root</span> <span class="o">=</span> <span class="s2">&#34;/var/www/html/</span><span class="si">#{</span><span class="n">sitename</span><span class="si">}</span><span class="s2">&#34;</span>
+
+  <span class="n">directory</span> <span class="n">document_root</span> <span class="k">do</span>
+    <span class="n">mode</span> <span class="s2">&#34;0755&#34;</span>
+    <span class="n">recursive</span> <span class="kp">true</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>The template feature will be used to generate the needed virtual hosts files. From the main directory of your lamp-stack cookbook navigate to <em>templates</em>, and then <em>default</em>:</p>
+
+<pre><code>cd ~/chef-repo/cookbooks/lamp-stack/templates/default
+</code></pre></li>
+
+<li><p>Create a virtual hosts file called <code>virtualhosts.erb</code>. Instead of inputting the true values, use Ruby variables. Ruby variables are identified by <code>&lt;%= @brackets %&gt;</code> around them and the <code>@</code> symbol. Note the variable names you use, they will need to be defined in the recipe file:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/templates/default/virtualhosts.erb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-erb" data-lang="erb"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-erb" data-lang="erb">&lt;VirtualHost *:&lt;%= @port %&gt;&gt;
+        ServerAdmin &lt;%= @serveradmin %&gt;
+        ServerName &lt;%= @servername %&gt;
+        ServerAlias www.&lt;%= @servername %&gt;
+        DocumentRoot &lt;%= @document_root %&gt;/public_html
+        ErrorLog &lt;%= @document_root %&gt;/logs/error.log
+        &lt;Directory &lt;%= @document_root %&gt;/public_html&gt;
+                Require all granted
+        &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Some variables should look familiar. They were created in step 2, when naming default attributes.</div>
+</blockquote>
+</li>
+
+<li><p>Return to the <code>apache.rb</code> recipe. In the space after the <em>directory</em> resource, use the <em>template</em> resource to call upon the template file just created:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="c1">#Virtual Hosts Files</span>
+
+<span class="n">node</span><span class="o">[</span><span class="s2">&#34;lamp-stack&#34;</span><span class="o">][</span><span class="s2">&#34;sites&#34;</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">sitename</span><span class="p">,</span> <span class="n">data</span><span class="o">|</span>
+  <span class="n">document_root</span> <span class="o">=</span> <span class="s2">&#34;/var/www/html/</span><span class="si">#{</span><span class="n">sitename</span><span class="si">}</span><span class="s2">&#34;</span>
+
+  <span class="n">directory</span> <span class="n">document_root</span> <span class="k">do</span>
+    <span class="n">mode</span> <span class="s2">&#34;0755&#34;</span>
+    <span class="n">recursive</span> <span class="kp">true</span>
+  <span class="k">end</span>
+
+  <span class="n">template</span> <span class="s2">&#34;/etc/apache2/sites-available/</span><span class="si">#{</span><span class="n">sitename</span><span class="si">}</span><span class="s2">.conf&#34;</span> <span class="k">do</span>
+    <span class="n">source</span> <span class="s2">&#34;virtualhosts.erb&#34;</span>
+    <span class="n">mode</span> <span class="s2">&#34;0644&#34;</span>
+    <span class="n">variables</span><span class="p">(</span>
+      <span class="ss">:document_root</span> <span class="o">=&gt;</span> <span class="n">document_root</span><span class="p">,</span>
+      <span class="ss">:port</span> <span class="o">=&gt;</span> <span class="n">data</span><span class="o">[</span><span class="s2">&#34;port&#34;</span><span class="o">]</span><span class="p">,</span>
+      <span class="ss">:serveradmin</span> <span class="o">=&gt;</span> <span class="n">data</span><span class="o">[</span><span class="s2">&#34;serveradmin&#34;</span><span class="o">]</span><span class="p">,</span>
+      <span class="ss">:servername</span> <span class="o">=&gt;</span> <span class="n">data</span><span class="o">[</span><span class="s2">&#34;servername&#34;</span><span class="o">]</span>
+    <span class="p">)</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The name of the template resource should be the location where the virtual host file is placed on the nodes. The <code>source</code> is the name of the template file. Mode <code>0644</code> gives the owner read and write privileges, and everyone else read privileges. The values defined in the <code>variables</code> section are taken from the attributes file, and are the same values that are called upon in the template.</p></li>
+
+<li><p>The sites now need to be enabled in Apache, and the server restarted. This <em>only</em> should occur if there are changes to the virtual hosts, so the <code>notifies</code> value should be added to the <em>template</em> resource. What <code>notifies</code> does is notify Chef when things have changed, and <strong>only then</strong> runs the commands:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">template</span> <span class="s2">&#34;/etc/apache2/sites-available/</span><span class="si">#{</span><span class="n">sitename</span><span class="si">}</span><span class="s2">.conf&#34;</span> <span class="k">do</span>
+  <span class="n">source</span> <span class="s2">&#34;virtualhosts.erb&#34;</span>
+  <span class="n">mode</span> <span class="s2">&#34;0644&#34;</span>
+  <span class="n">variables</span><span class="p">(</span>
+    <span class="ss">:document_root</span> <span class="o">=&gt;</span> <span class="n">document_root</span><span class="p">,</span>
+    <span class="ss">:port</span> <span class="o">=&gt;</span> <span class="n">data</span><span class="o">[</span><span class="s2">&#34;port&#34;</span><span class="o">]</span><span class="p">,</span>
+    <span class="ss">:serveradmin</span> <span class="o">=&gt;</span> <span class="n">data</span><span class="o">[</span><span class="s2">&#34;serveradmin&#34;</span><span class="o">]</span><span class="p">,</span>
+    <span class="ss">:servername</span> <span class="o">=&gt;</span> <span class="n">data</span><span class="o">[</span><span class="s2">&#34;servername&#34;</span><span class="o">]</span>
+  <span class="p">)</span>
+  <span class="n">notifies</span> <span class="ss">:restart</span><span class="p">,</span> <span class="s2">&#34;service[apache2]&#34;</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>notifies</code> command names the <code>:action</code> to be committed, then the resource, and resource name in square brackets.</p></li>
+
+<li><p><code>notifies</code> can also call on <code>execute</code> commands, which will run <code>a2ensite</code>and enable the sites we&rsquo;ve made virtual hosts files for. Add the following <code>execute</code> command <strong>above</strong> the <em>template</em> resource code to create the <code>a2ensite</code> script:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">directory</span> <span class="n">document_root</span> <span class="k">do</span>
+  <span class="n">mode</span> <span class="s2">&#34;0755&#34;</span>
+  <span class="n">recursive</span> <span class="kp">true</span>
+<span class="k">end</span>
+
+<span class="n">execute</span> <span class="s2">&#34;enable-sites&#34;</span> <span class="k">do</span>
+  <span class="n">command</span> <span class="s2">&#34;a2ensite </span><span class="si">#{</span><span class="n">sitename</span><span class="si">}</span><span class="s2">&#34;</span>
+  <span class="n">action</span> <span class="ss">:nothing</span>
+<span class="k">end</span>
+
+<span class="n">template</span> <span class="s2">&#34;/etc/apache2/sites-available/</span><span class="si">#{</span><span class="n">sitename</span><span class="si">}</span><span class="s2">.conf&#34;</span> <span class="k">do</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The <code>action :nothing</code> directive means the resource will wait to be called on. Add it to the <em>template</em> resource code to use it, <strong>above</strong> the previous <code>notifies</code> line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">notifies</span> <span class="ss">:run</span><span class="p">,</span> <span class="s2">&#34;execute[enable-sites]&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>The paths referenced in the virtual hosts files need to be created. Once more, this is done with the <em>directory</em> resource, and should be added before the final <code>end</code> tag:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">directory</span> <span class="s2">&#34;/var/www/html/</span><span class="si">#{</span><span class="n">sitename</span><span class="si">}</span><span class="s2">/public_html&#34;</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="ss">:create</span>
+<span class="k">end</span>
+
+<span class="n">directory</span> <span class="s2">&#34;/var/www/html/</span><span class="si">#{</span><span class="n">sitename</span><span class="si">}</span><span class="s2">/logs&#34;</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="ss">:create</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<h3 id="apache-configuration">Apache Configuration</h3>
+
+<p>With the virtual hosts files configured and your website enabled, you next want to configure Apache to efficiently run on your servers. Do this by enabling and configuring a multi-processing module (MPM), and editing <code>apache2.conf</code>.</p>
+
+<p>The MPMs are all located in the <code>mods_available</code> directory of Apache. In this example the <em>event</em> MPM will be used, located at <code>/etc/apache2/mods-available/mpm_event.conf</code>. If we were planning on deploying to nodes of varying size we would create a template file to replace the original, which would allow for more customization of specific variables. In this instance, a <em>cookbook file</em> will be used to edit the file.</p>
+
+<p>Cookbook files are static documents that are run against the document in the same locale on your servers &ndash; if any changes are made, it makes a backup of the original file and replaces it with the new one.</p>
+
+<ol>
+<li><p>To create a cookbook file navigate to <code>files/default</code> from your cookbook&rsquo;s main directory.</p>
+
+<pre><code>cd ~/chef-repo/cookbooks/lamp-stack/files/default/
+</code></pre></li>
+
+<li><p>Create a file called <code>mpm_event.conf</code> and copy the MPM event configuration into it, changing any needed values:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/files/default/mpm_event.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;IfModule</span> <span class="s">mpm_event_module</span><span class="nt">&gt;</span>
+        <span class="nb">StartServers</span>        <span class="m">2</span>
+        <span class="nb">MinSpareThreads</span>     <span class="m">6</span>
+        <span class="nb">MaxSpareThreads</span>     <span class="m">12</span>
+        <span class="nb">ThreadLimit</span>         <span class="m">64</span>
+        <span class="nb">ThreadsPerChild</span>     <span class="m">25</span>
+        <span class="nb">MaxRequestWorkers</span>   <span class="m">25</span>
+        <span class="nb">MaxConnectionsPerChild</span>  <span class="m">3000</span>
+<span class="nt">&lt;/IfModule</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Return to <code>apache.rb</code>, and use the <em>cookbook_file</em> resource to call the file we just created. Because the MPM will need to be enabled, we&rsquo;ll use the <code>notifies</code> command again, this time to execute <code>a2enmod mpm_event</code>. Add this to the <em>end</em> of the <code>apache.rb</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">execute</span> <span class="s2">&#34;enable-event&#34;</span> <span class="k">do</span>
+  <span class="n">command</span> <span class="s2">&#34;a2enmod mpm_event&#34;</span>
+  <span class="n">action</span> <span class="ss">:nothing</span>
+<span class="k">end</span>
+
+<span class="n">cookbook_file</span> <span class="s2">&#34;/etc/apache2/mods-available/mpm_event.conf&#34;</span> <span class="k">do</span>
+  <span class="n">source</span> <span class="s2">&#34;mpm_event.conf&#34;</span>
+  <span class="n">mode</span> <span class="s2">&#34;0644&#34;</span>
+  <span class="n">notifies</span> <span class="ss">:run</span><span class="p">,</span> <span class="s2">&#34;execute[enable-event]&#34;</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Within the <code>apache2.conf</code> the <code>KeepAlive</code> value should be set to <code>off</code>, which is the only change made within the file. This can be altered through templates or cookbook files, although in this instance a simple <code>sed</code> command will be used, paired with the <em>execute</em> resource:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">execute</span> <span class="s2">&#34;keepalive&#34;</span> <span class="k">do</span>
+  <span class="n">command</span> <span class="s2">&#34;sed -i &#39;s/KeepAlive On/KeepAlive Off/g&#39; /etc/apache2/apache2.conf&#34;</span>
+  <span class="n">action</span> <span class="ss">:run</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Your <code>apache.rb</code> is now finished! An example of the final file is located <a href="/docs/assets/apache.rb">here</a>.</p></li>
+</ol>
+
+<h2 id="mysql">MySQL</h2>
+
+<h3 id="download-the-mysql-library">Download the MySQL Library</h3>
+
+<ol>
+<li><p>The Chef Supermarket has an OpsCode-maintained <a href="https://supermarket.chef.io/cookbooks/mysql">MySQL cookbook</a> that sets up MySQL lightweight resources/providers (LWRPs) to be used. Download and install the cookbook:</p>
+
+<pre><code>knife cookbook site install mysql
+</code></pre>
+
+<p>This will also install any and all dependencies required to use the cookbook. These dependencies include the <code>smf</code> and <code>yum-mysql-community</code> cookbooks, which in turn depend on the <code>rbac</code> and <code>yum</code> cookbooks.</p></li>
+
+<li><p>Upload these cookbooks to the server:</p>
+
+<pre><code>knife cookbook upload mysql --include-dependencies
+</code></pre></li>
+
+<li><p>From the main directory of your LAMP stack cookbook, open the <code>metadata.rb</code> file and add a dependency to the MySQL cookbook:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/metadata.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">depends          <span class="s1">&#39;mysql&#39;</span>, <span class="s1">&#39;~&gt; 6.0&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Check the MySQL Cookbook&rsquo;s <a href="https://supermarket.chef.io/cookbooks/mysql">Supermarket page</a> to ensure this is the latest version.</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="create-and-encrypt-your-mysql-password">Create and Encrypt Your MySQL Password</h3>
+
+<p>Chef contains a feature knows as <em>data bags</em>. Data bags store information, and can be encrypted to store passwords, and other sensitive data.</p>
+
+<ol>
+<li><p>Generate a secret key:</p>
+
+<pre><code>openssl rand -base64 512 &gt; ~/chef-repo/.chef/encrypted_data_bag_secret
+</code></pre></li>
+
+<li><p>Upload this key to your node&rsquo;s <code>/etc/chef</code> directory, either manually by <code>scp</code> (an example can be found in the <a href="/docs/applications/chef/setting-up-chef-ubuntu-14-04#add-the-rsa-private-keys">Setting Up Chef</a> guide), or through the use of a recipe and cookbook file.</p></li>
+
+<li><p>Create a <code>mysql</code> data bag that will contain the file <code>rtpass.json</code> for the root password:</p>
+
+<pre><code>knife data bag create mysql rtpass.json --secret-file ~/chef-repo/.chef/encrypted_data_bag_secret
+</code></pre>
+
+<p>You will be asked to edit the <code>rtpass.json</code> file:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/data_bags/mysql/rtpass.json 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;rtpass2.json&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;password&#34;</span><span class="p">:</span> <span class="s2">&#34;password123&#34;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Replace <code>password123</code> with a secure password.</p></li>
+
+<li><p>Confirm that the <code>rtpass.json</code> file was created:</p>
+
+<pre><code>knife data bag show mysql
+</code></pre>
+
+<p>It should output <code>rtpass.json</code>. To ensure that is it encrypted run:</p>
+
+<pre><code>knife data bag show mysql rtpass.json
+</code></pre>
+
+<p>The output will be unreadable due to encryption, and should resemble:</p>
+
+<pre><code>WARNING: Encrypted data bag detected, but no secret provided for decoding.  Displaying encrypted data.
+id:       rtpass.json
+password:
+  cipher:         aes-256-cbc
+  encrypted_data: wpEAb7TGUqBmdB1TJA/5vyiAo2qaRSIF1dRAc+vkBhQ=
+
+  iv:             E5TbF+9thH9amU3QmGxWmw==
+
+  version:        1
+user:
+  cipher:         aes-256-cbc
+  encrypted_data: VLA00Wrnh9DrZqDcytvo0HQUG0oqI6+6BkQjHXp6c0c=
+
+  iv:             6V+3ROpW9RG+/honbf/RUw==
+
+  version:        1
+</code></pre></li>
+</ol>
+
+<h3 id="set-up-mysql">Set Up MySQL</h3>
+
+<p>With the MySQL library downloaded and an encrypted root password prepared, you can now set up the recipe to download and configure MySQL.</p>
+
+<ol>
+<li><p>Open a new file in <code>recipes</code> called <code>mysql.rb</code> and define the data bag that will be used:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/mysql.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">mysqlpass</span> <span class="o">=</span> <span class="n">data_bag_item</span><span class="p">(</span><span class="s2">&#34;mysql&#34;</span><span class="p">,</span> <span class="s2">&#34;rtpass.json&#34;</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Thanks to the LWRPs provided through the MySQL cookbook, the initial installation and database creation for MySQL can be done in one resource:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/mysql.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">mysqlpass</span> <span class="o">=</span> <span class="n">data_bag_item</span><span class="p">(</span><span class="s2">&#34;mysql&#34;</span><span class="p">,</span> <span class="s2">&#34;rtpass.json&#34;</span><span class="p">)</span>
+
+<span class="n">mysql_service</span> <span class="s2">&#34;mysqldefault&#34;</span> <span class="k">do</span>
+  <span class="n">initial_root_password</span> <span class="n">mysqlpass</span><span class="o">[</span><span class="s2">&#34;password&#34;</span><span class="o">]</span>
+  <span class="n">action</span> <span class="o">[</span><span class="ss">:create</span><span class="p">,</span> <span class="ss">:start</span><span class="o">]</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p><code>mysqldefault</code> is the name of the MySQL service for this container. The <code>inital_root_password</code> calls to the value defined in the text above, while the action creates the database and starts the MySQL service.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>When running MySQL from your nodes you will need to define the socket:</p>
+
+<p>mysql -S /var/run/mysqldefault/mysqld.sock -p</p>
+</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="php">PHP</h2>
+
+<ol>
+<li><p>Under the recipes directory create a new file, <code>php.rb</code>. The commands below will install PHP and all the required packages for working with Apache and MySQL:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/php.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">package</span> <span class="s2">&#34;php5&#34;</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="ss">:install</span>
+<span class="k">end</span>
+
+<span class="n">package</span> <span class="s2">&#34;php-pear&#34;</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="ss">:install</span>
+<span class="k">end</span>
+
+<span class="n">package</span> <span class="s2">&#34;php-mysql&#34;</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="ss">:install</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>For easy configuration the <code>php.ini</code> file will be created and used as a cookbook file, much like the MPM module above. You can either:</p>
+
+<ul>
+<li>Add the PHP recipe, run the chef-client, and copy the file from a node (located in <code>/etc/php5/apache2/php.ini</code>), or:</li>
+<li>Copy it from <a href="/docs/assets/chef_php.ini">here</a>. The file should be moved to the <code>chef-repo/cookbooks/lamp-stack/files/default/</code> directory. This can also be turned into a template, if that better suits your configuration.</li>
+</ul></li>
+
+<li><p><code>php.ini</code> is a large file. Search and edit the following values to best suit your Linodes. The values suggested below are for 2GB Linodes:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/files/default/php.ini 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="x">max_execution_time = 30
+</span><span class="x">memory_limit = 128M
+</span><span class="x">error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+</span><span class="x">display_errors = Off
+</span><span class="x">log_errors = On
+</span><span class="x">error_log = /var/log/php/error.log
+</span><span class="x">register_globals = Off
+</span><span class="x">max_input_time = 30</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Return to <code>php.rb</code> and add the cookbook file to the recipe:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/php.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">cookbook_file</span> <span class="s2">&#34;/etc/php5/apache2/php.ini&#34;</span> <span class="k">do</span>
+  <span class="n">source</span> <span class="s2">&#34;php.ini&#34;</span>
+  <span class="n">mode</span> <span class="s2">&#34;0644&#34;</span>
+  <span class="n">notifies</span> <span class="ss">:restart</span><span class="p">,</span> <span class="s2">&#34;service[apache2]&#34;</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Because of the changes made to <code>php.ini</code>, a <code>/var/log/php</code> directory needs to be made and its ownership set to the Apache user. This is done through a <code>notifies</code> command and <em>execute</em> resource, as done previously:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/chef-repo/cookbooks/lamp-stack/recipes/php.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">execute</span> <span class="s2">&#34;chownlog&#34;</span> <span class="k">do</span>
+  <span class="n">command</span> <span class="s2">&#34;chown www-data /var/log/php&#34;</span>
+  <span class="n">action</span> <span class="ss">:nothing</span>
+<span class="k">end</span>
+
+<span class="n">directory</span> <span class="s2">&#34;/var/log/php&#34;</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="ss">:create</span>
+  <span class="n">notifies</span> <span class="ss">:run</span><span class="p">,</span> <span class="s2">&#34;execute[chownlog]&#34;</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The PHP recipe is now done! View an example of the <code>php.rb</code> file <a href="/docs/assets/php.rb">here</a>.</p></li>
+
+<li><p>Ensure that your Chef server contains the updated cookbook, and your node&rsquo;s run list is up-to-date:</p>
+
+<pre><code>knife cookbook upload lamp-stack
+knife node run_list add nodename &quot;recipe[lamp-stack],recipe[lamp-stack::apache],recipe[lamp-stack::mysql],recipe[lamp-stack::php]&quot;
+</code></pre></li>
+</ol>
+
+<p>Congratulations! You have just created a LAMP Stack cookbook. Through this guide, you should have learned to use the execute, package, service, node, directory, template, cookbook_file, and mysql_service resources within a recipe, as well as download and use LWRPs, create encrypted data bags, upload/update your cookbooks to the server, and use attributes, templates, and cookbook files, giving you a strong basis in Chef and cookbook creation for future projects.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.chef.io">Chef</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/configuration-management/beginners-guide-chef/">A Beginner&#39;s Guide to Chef</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/">Use Puppet Modules to Create a LAMP Stack</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/">Install a Chef Server Workstation on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-arch-linux/">How to Install a LAMP Stack on Arch Linux</a></li>
+    
+    
+    
+    <li><a href="/docs/development/automate-builds-with-jenkins-on-ubuntu/">How to Automate Builds with Jenkins on Ubuntu</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#create-the-cookbook">Create the Cookbook</a></li>
+<li><a href="#default-rb">default.rb</a></li>
+<li><a href="#apache">Apache</a>
+<ul>
+<li><a href="#install-and-enable">Install and Enable</a></li>
+<li><a href="#configure-virtual-hosts">Configure Virtual Hosts</a></li>
+<li><a href="#apache-configuration">Apache Configuration</a></li>
+</ul></li>
+<li><a href="#mysql">MySQL</a>
+<ul>
+<li><a href="#download-the-mysql-library">Download the MySQL Library</a></li>
+<li><a href="#create-and-encrypt-your-mysql-password">Create and Encrypt Your MySQL Password</a></li>
+<li><a href="#set-up-mysql">Set Up MySQL</a></li>
+</ul></li>
+<li><a href="#php">PHP</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

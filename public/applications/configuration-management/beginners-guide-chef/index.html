@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>A Beginner&#39;s Guide to Chef</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="A look into Chef&#39;s primary components, features, and configurations for the new Chef user">
+        <meta name="keywords" content="chef, automation, chefdk, chef server, chef development kit, cookbooks, beginners, server automation, configuration management">
+        
+        <meta property="og:title" content="A Beginner&#39;s Guide to Chef">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/configuration-management/beginners-guide-chef/">
+        <meta property="og:description" content="A look into Chef&#39;s primary components, features, and configurations for the new Chef user">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/configuration-management/beginners-guide-chef/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/configuration-management/">Configuration Management</a>
+  
+</li>
+
+
+<li>
+  
+  A Beginner&#39;s Guide to Chef
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">A Beginner&#39;s Guide to Chef</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-06-10T00:00:00Z">Wednesday, June 10, 2015</time> by Elle Krout</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fbeginners-guide-chef%2f&via=linode&text=A%20Beginner%26%2339%3bs%20Guide%20to%20Chef" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fbeginners-guide-chef%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fconfiguration-management%2fbeginners-guide-chef%2f&t=A%20Beginner%27s%20Guide%20to%20Chef" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/configuration-management/beginners-guide-chef.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/configuration-management/beginners-guide-chef.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><em>Chef</em> is an automation platform that &ldquo;turns infrastructure into code,&rdquo; allowing organizations or persons with large frameworks to generate a process that will save time and effort when making changes to part or all of their server fleet.</p>
+
+<p><img src="/docs/assets/a_beginners_guide_to_chef_smg.jpg" alt="Chef for beginners" /></p>
+
+<p>Chef works with three core components: The Chef server, workstations, and nodes. The Chef server is the hub of Chef operations, where changes are stored for use. Workstations are static computers or virtual servers where all code is created or changed. There can been as many workstations as needed, whether this be one per person or otherwise. Finally, nodes are the servers that need to be managed by Chef &ndash; these are the machines that changes are being pushed to, generally a fleet of multiple machines that require the benefits of an automation program.</p>
+
+<p><a href="/docs/assets/chef_graph.png"><img src="/docs/assets/chef_graph-small.png" alt="Chef Workflow" /></a></p>
+
+<p>These three components communicate in a mostly-linear fashion, with any changes being pushed from workstations to the Chef server, and then pulled from the server to the nodes. In turn, information about the node passes to the server to determine which files are different from the current settings and need to be updated.</p>
+
+<p>If you wish to farther explore Chef please see the guides <a href="/docs/applications/chef/setting-up-chef-ubuntu-14-04">Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04</a> and <a href="/docs/applications/chef/creating-your-first-chef-cookbook">Creating Your First Chef Cookbook</a>.</p>
+
+<h2 id="the-chef-server">The Chef Server</h2>
+
+<p>The Chef server is the primary mode of communication between the workstations where your infrastructure is coded, and the nodes where it is deployed. All configuration files, cookbooks, metadata, and other information are stored on the server. The Chef server also keeps information regarding the state of all nodes at the time of the last <a href="#chef-client">chef-client</a> run.</p>
+
+<p>Any changes made must pass through the Chef server to be deployed. Prior to accepting or pushing changes, it verifies that the nodes and workstations are paired with the server through the use of authorization keys, and then allows for communication between the workstations and nodes.</p>
+
+<h3 id="bookshelf">Bookshelf</h3>
+
+<p>The Bookshelf is a versioned repository where cookbooks are stored on the Chef server (generally located at <code>/var/opt/opscode/bookshelf</code>; full root access is needed). When a cookbook is uploaded to the Chef server, the new version is compared to the one already stored; if there are changes, a new version is stored. The Chef server only stores one copy of a file or template at once, meaning if resources are shared between cookbooks and cookbook versions, they will not be stored multiple times.</p>
+
+<h2 id="workstations">Workstations</h2>
+
+<p>Workstations are where users create, test, and maintain cookbooks and policies that will be pushed to nodes. Cookbooks created on workstations can be used privately by one organization, or uploaded to the Chef Supermarket for others to use. Similarly, workstations can be used to download cookbooks created by other Chef users and found in the Supermarket.</p>
+
+<p>Workstations are set up to use the <em>Chef Development Kit</em> (ChefDK), and can be located on virtual servers or on physical workstation computers. Workstations are set to interact with only one Chef server, and most work will be done in the <code>chef-repo</code> directory located on the workstation.</p>
+
+<h3 id="chef-repo">chef-repo</h3>
+
+<p>The <code>chef-repo</code> directory is the specific area of the workstation where cookbooks are authored and maintained. The <code>chef-repo</code> is always version-controlled, most often through the use of Git, and stores information and history that will be used on nodes, such as cookbooks, environments, roles, and data bags. Chef is able to communicate with the server from the <code>chef-repo</code> and push any changes via the use of the <code>knife</code> command, which is included in the ChefDK.</p>
+
+<p>Originally the <code>chef-repo</code> had to be pulled from GitHub using git commands, but that action is now integrated into Chef through the use of the <code>chef generate repo chef-repo</code> command.</p>
+
+<h3 id="knife">Knife</h3>
+
+<p>The <code>knife</code> command communicates between the <code>chef-repo</code> located on a workstation and the Chef server. <code>knife</code> is configured with the <code>knife.rb</code> file, and is used from the workstation:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/chef-repo/.chef/knife.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">log_level</span>                <span class="ss">:info</span>
+<span class="n">log_location</span>             <span class="no">STDOUT</span>
+<span class="n">node_name</span>                <span class="s1">&#39;username&#39;</span>
+<span class="n">client_key</span>               <span class="s1">&#39;~/chef-repo/.chef/username.pem&#39;</span>
+<span class="n">validation_client_name</span>   <span class="s1">&#39;shortname-validator&#39;</span>
+<span class="n">validation_key</span>           <span class="s1">&#39;~/chef-repo/.chef/shortname.pem&#39;</span>
+<span class="n">chef_server_url</span>          <span class="s1">&#39;https://123.45.67.89/organizations/shortname&#39;</span>
+<span class="n">syntax_check_cache_path</span>  <span class="s1">&#39;~/chef-repo/.chef/syntax_check_cache&#39;</span>
+<span class="n">cookbook_path</span> <span class="o">[</span> <span class="s1">&#39;~/chef-repo/cookbooks&#39;</span> <span class="o">]</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>The default <code>knife.rb</code> file is defined with the following properties:</p>
+
+<ul>
+<li><strong>log_level:</strong> The amount of logging that will be stored in the log file. The default value, <code>:info</code>, notes that any informational messages will be logged. Other values include <code>:debug:</code>, <code>:warn</code>, <code>:error</code>, and <code>:fatal</code>.</li>
+<li><strong>log_location:</strong> The location of the log file. The default value, <code>STOUT</code> is for <em>standard output logging</em>. If set to another value standard output logging will still be performed.</li>
+<li><strong>node_name:</strong>  The username of the person using the workstation. This user will need a valid authorization key located on the workstation.</li>
+<li><strong>client_key:</strong> The location of the user&rsquo;s authorization key.</li>
+<li><strong>validation_client_name:</strong> The name for the server validation key that will determine whether a node is registered with the Chef server. These values must match during a chef-client run.</li>
+<li><strong>validation_key:</strong> The path to your organization&rsquo;s validation key.</li>
+<li><strong>chef_server_url:</strong> The URL of the Chef server, with <code>shortname</code> being the defined shortname of your organization. This can also be an IP address. <code>/organizations/shortname</code> must be included in the URL.</li>
+<li><strong>syntax_check_cache_path:</strong> The location in which <code>knife</code> stores information about files that have been checked for appropriate Ruby syntax.</li>
+<li><strong>cookbook_path:</strong> The path to the cookbook directory.</li>
+</ul>
+
+<h2 id="nodes">Nodes</h2>
+
+<p>A <em>node</em> is a system configured to run the chef-client. This can be any system, as long as it is being maintained by Chef.</p>
+
+<p>Nodes are validated through the <code>validator.pem</code> and <code>client.pem</code> certificates that are created on the node when it is bootstrapped. All nodes must be bootstrapped over SSH as either the root user or a user with elevated privileges.</p>
+
+<p>Nodes are kept up-to-date through the use of the chef-client, which runs a convergence between the node and the Chef server. What cookbooks and roles the node will take on depends on the run list and environment set for the node in question.</p>
+
+<h3 id="chef-client">chef-client</h3>
+
+<p>The chef-client checks the current configuration of the node against the recipes and policies stored in the Chef server and brings the node up to match. The process begins with the chef-client checking the node&rsquo;s <a href="#run-lists">run list</a>, loading the cookbooks required, then checking and syncing the cookbooks with the current configuration of the node.</p>
+
+<p>The chef-client must be run with elevated privileges in order to properly configure the node, and should be run periodically to ensure that the server is always up to date &ndash; often this is achieved through a cron job or by setting up the chef-client to run as a service.</p>
+
+<h3 id="run-lists">Run Lists</h3>
+
+<p>Run lists define what cookbooks a node will use. The run list is an ordered list of all cookbooks and recipes that the chef-client needs to pull from the Chef server to run on a node. Run lists are also used to define <a href="http://docs.chef.io/server_manage_roles.html">roles</a>, which are used to define patterns and attributes across nodes.</p>
+
+<h3 id="ohai">Ohai</h3>
+
+<p>Ohai collects information regarding nodes for the Chef server. It is required to be present on every node, and is installed as part of the bootstrap process.</p>
+
+<p>The information gathered includes network and memory usage, CPU data, kernel data, hostnames, FQDNs, and other automatic attributes that need to remain unchanged during the chef-client run.</p>
+
+<h2 id="environments">Environments</h2>
+
+<p>Chef environments exist to mimic real-life workflow, allowing for nodes to be organized into different &ldquo;groups&rdquo; that define the role the node plays in the fleet. This allows for users to combine environments and versioned cookbooks to have different attributes for different nodes. For example, if testing a shopping cart, you may not want to test any changes on the live website, but with a &ldquo;development&rdquo; set of nodes.</p>
+
+<p>Environments are defined in <code>chef-repo/environments</code> and saved as Ruby or JSON files.</p>
+
+<p>As a Ruby file:</p>
+
+<dl class="file">
+<dt>
+
+
+		chef-repo/environments/environame.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="nb">name</span> <span class="s2">&#34;environmentname&#34;</span>
+<span class="n">description</span> <span class="s2">&#34;environment_description&#34;</span>
+<span class="n">cookbook_versions</span>  <span class="s2">&#34;cookbook&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;cookbook_version&#34;</span>
+<span class="n">default_attributes</span> <span class="s2">&#34;node&#34;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&#34;attribute&#34;</span> <span class="o">=&gt;</span> <span class="o">[</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span> <span class="s2">&#34;etc.&#34;</span> <span class="o">]</span> <span class="p">}</span>
+<span class="n">override_attributes</span> <span class="s2">&#34;node&#34;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&#34;attribute&#34;</span> <span class="o">=&gt;</span> <span class="o">[</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span> <span class="s2">&#34;etc.&#34;</span> <span class="o">]</span> <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>As a JSON:</p>
+
+<dl class="file">
+<dt>
+
+
+		chef-repo/environments/environame.json 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;environmentname&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;a description of the environment&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;cookbook_versions&#34;</span><span class="p">:</span> <span class="p">{</span>
+
+  <span class="p">},</span>
+  <span class="nt">&#34;json_class&#34;</span><span class="p">:</span> <span class="s2">&#34;Chef::Environment&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;chef_type&#34;</span><span class="p">:</span> <span class="s2">&#34;environment&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;default_attributes&#34;</span><span class="p">:</span> <span class="p">{</span>
+
+  <span class="p">},</span>
+  <span class="nt">&#34;override_attributes&#34;</span><span class="p">:</span> <span class="p">{</span>
+
+  <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>All nodes are automatically set to the &ldquo;default&rdquo; environment upon bootstrap. To change this, the environment should be defined in the <code>client.rb</code> file found in <code>/etc/chef</code> on the nodes.</p>
+
+<h2 id="cookbooks">Cookbooks</h2>
+
+<p>Cookbooks are the main component of configuring nodes on a Chef infrastructure. Cookbooks contain values and information about the <em>desired state</em> of a node, not how to get to that desired state &ndash; Chef does all the work for that, through their extensive libraries.</p>
+
+<p>Cookbooks are comprised of recipes, metadata,  attributes, resources, templates, libraries, and anything else that assists in creating a functioning system, with attributes and recipes being the two core parts of creating a cookbook. Components of a cookbook should be modular, keeping recipes small and related.</p>
+
+<p>Cookbooks can and should be version controlled. Versions can help when using environments and allow for the easier tracking of changes that have been made to the cookbook.</p>
+
+<h3 id="recipes">Recipes</h3>
+
+<p>Recipes are the fundamental part of cookbooks. Recipes are written in Ruby and contain information in regards to everything that needs to be run, changed, or created on a node. Recipes work as a collection of <em>resources</em> that determine the configuration or policy of a node, with resources being a configuration element of the recipe. For a node to run a recipe, it must be on that node&rsquo;s run list.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<p>Attributes define specific values about a node and its configuration. These values are used to override default settings, and are loaded in the order cookbooks are listed in the run list. Often attributes are used in conjunction with templates and recipes to define settings.</p>
+
+<h3 id="files">Files</h3>
+
+<p>These are static files that can be uploaded to nodes. Files can be configuration and set-up files, scripts, website files &ndash; anything that does not been to have different values on different nodes.</p>
+
+<h3 id="libraries">Libraries</h3>
+
+<p>Although Chef comes with a number of libraries built in, additional libraries can be defined. Libraries are what bring recipes to life: If a recipe is the <em>desired state</em> of a node, than added libraries contain the behind-the-scenes information Chef needs for the nodes to reach this state. Libraries are written in Ruby, and can also be used to expand on any functionalities that Chef already contains.</p>
+
+<h3 id="providers-and-resources">Providers and Resources</h3>
+
+<p>Providers and resources are also used to define new functionality to use in Chef recipes. A <em>resource</em> defines a set of actions and attributes, whereas  <em>provider</em> informs the chef-client how to commit each action.</p>
+
+<h3 id="templates">Templates</h3>
+
+<p>Templates are embedded Ruby files (.erb) that allows for content based on the node itself and other variables generated when the chef-client is run and the template is used to create or update a file.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.chef.io">Chef</a></li>
+
+<li><a href="/docs/applications/chef/setting-up-chef-ubuntu-14-04">Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04</a></li>
+
+<li><a href="/docs/applications/chef/creating-your-first-chef-cookbook">Creating Your First Chef Cookbook</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/configuration-management/creating-your-first-chef-cookbook/">Creating Your First Chef Cookbook</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/">Use Puppet Modules to Create a LAMP Stack</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/">Install a Chef Server Workstation on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/development/automate-builds-with-jenkins-on-ubuntu/">How to Automate Builds with Jenkins on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/">Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#the-chef-server">The Chef Server</a>
+<ul>
+<li><a href="#bookshelf">Bookshelf</a></li>
+</ul></li>
+<li><a href="#workstations">Workstations</a>
+<ul>
+<li><a href="#chef-repo">chef-repo</a></li>
+<li><a href="#knife">Knife</a></li>
+</ul></li>
+<li><a href="#nodes">Nodes</a>
+<ul>
+<li><a href="#chef-client">chef-client</a></li>
+<li><a href="#run-lists">Run Lists</a></li>
+<li><a href="#ohai">Ohai</a></li>
+</ul></li>
+<li><a href="#environments">Environments</a></li>
+<li><a href="#cookbooks">Cookbooks</a>
+<ul>
+<li><a href="#recipes">Recipes</a></li>
+<li><a href="#attributes">Attributes</a></li>
+<li><a href="#files">Files</a></li>
+<li><a href="#libraries">Libraries</a></li>
+<li><a href="#providers-and-resources">Providers and Resources</a></li>
+<li><a href="#templates">Templates</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Setup a Terraria Linux Server</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Terraria is a two-dimensional sandbox game similar to Minecraft that allows players to explore, build, and battle in an open world. This guide will outline everything required to run a Terraria server for yourself or others to play on">
+        <meta name="keywords" content="terraria, steam, minecraft, gaming">
+        
+        <meta property="og:title" content="How to Setup a Terraria Linux Server">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/game-servers/host-a-terraria-server-on-your-linode/">
+        <meta property="og:description" content="Run a Terraria server for yourself and your friends to play on. This guide will teach you setup and configuration for Linux distributions.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/game-servers/host-a-terraria-server-on-your-linode/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/game-servers/">Game Servers</a>
+  
+</li>
+
+
+<li>
+  
+  How to Setup a Terraria Linux Server
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Setup a Terraria Linux Server</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-04-03T00:00:00Z">Monday, April 3, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/tylerjl">Tyler Langlois
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fhost-a-terraria-server-on-your-linode%2f&via=linode&text=How%20to%20Setup%20a%20Terraria%20Linux%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fhost-a-terraria-server-on-your-linode%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fgame-servers%2fhost-a-terraria-server-on-your-linode%2f&t=How%20to%20Setup%20a%20Terraria%20Linux%20Server" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/game-servers/host-a-terraria-server-on-your-linode.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/game-servers/host-a-terraria-server-on-your-linode.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/terraria-server.png" alt="Hosta a Terraria Server on Your Linode" title="Hosta a Terraria Server on Your Linode" /></p>
+
+<p><a href="https://terraria.org/">Terraria</a> is a two-dimensional sandbox game, similar to <a href="https://minecraft.net/">Minecraft</a>, which allows players to explore, build, and battle in an open world. In 2015, the Terraria developers announced <a href="http://terraria.org/news/terraria-1-3-0-8-now-for-mac-linux-too">support for Linux</a>, which means that players can host their own standalone Terraria servers.</p>
+
+<p>This guide outlines the steps required to run a Terraria server for yourself and others to play on. These steps are compatible with any Linux distribution that uses <a href="https://www.freedesktop.org/wiki/Software/systemd/">systemd</a>. This includes recent versions of CentOS, Debian and Ubuntu, Arch Linux and Fedora.</p>
+
+<p>Due to Terraria&rsquo;s system requirements, a Linode with at least two CPU cores and adequate RAM is required. For this reason, we recommend using our <a href="https://www.linode.com/pricing">4GB plan or higher</a> when following this guide. If your Linode does not meet Terraria&rsquo;s minimum requirements, the process will crash intermittently.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services. <strong>Do not</strong> follow the <em>Configuring a Firewall</em> section in the Securing Your Server Guide&ndash;we will configure the firewall for a Terraria server in the next section.</p></li>
+
+<li><p>Update your operating system&rsquo;s packages.</p></li>
+</ol>
+
+<h2 id="configure-a-firewall-for-terraria">Configure a Firewall for Terraria</h2>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Terraria only uses IPv4 and does not use IPv6.</div>
+</blockquote>
+
+
+<h3 id="firewalld">Firewalld</h3>
+
+<p>Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our <a href="/docs/security/firewalls/introduction-to-firewalld-on-centos">guide on using firewalld</a> for more information.</p>
+
+<ol>
+<li><p>Enable and start firewalld:</p>
+
+<pre><code>sudo systemctl enable firewalld &amp;&amp; sudo systemctl start firewalld
+</code></pre>
+
+<p>You should be using the public zone by default. Verify with:</p>
+
+<pre><code>sudo firewall-cmd --get-active-zones
+</code></pre></li>
+
+<li><p>Create a firewalld service file for Terraria:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/firewalld/services/terraria.xml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nt">&lt;?xml</span> <span class="s">version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?</span><span class="nt">&gt;</span>
+<span class="nt">&lt;service</span><span class="s"></span><span class="nt">&gt;</span>
+  <span class="nt">&lt;short</span><span class="s"></span><span class="nt">&gt;</span><span class="err">Terraria</span><span class="nt">&lt;/short</span><span class="s"></span><span class="nt">&gt;</span>
+  <span class="nt">&lt;description</span><span class="s"></span><span class="nt">&gt;</span><span class="nb">Open</span> TCP port <span class="m">7777</span> for incoming Terraria client connections.&lt;/description&gt;
+  <span class="nt">&lt;port</span> <span class="s">protocol=&#34;tcp&#34; port=&#34;7777&#34;/</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/service</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Enable the firewalld service, reload firewalld and verify that the Terraria service is being used:</p>
+
+<pre><code>sudo firewall-cmd --zone=public --permanent --add-service=terraria
+sudo firewall-cmd --reload
+sudo firewall-cmd --zone=public --permanent --list-services
+</code></pre>
+
+<p>The output of the last command should be similar to:</p>
+
+<pre><code>dhcpv6-client ssh terraria
+</code></pre></li>
+</ol>
+
+<h3 id="ufw">UFW</h3>
+
+<p><a href="/docs/security/firewalls/configure-firewall-with-ufw">UFW (Uncomplicated Firewall)</a> is an iptables controller packaged with Ubuntu, but it&rsquo;s not installed in Debian by default.</p>
+
+<ol>
+<li><p>If needed, install UFW:</p>
+
+<pre><code>sudo apt install ufw
+</code></pre></li>
+
+<li><p>Add SSH and a rule for Terraria. It&rsquo;s important you add rules before enabling UFW. If you don&rsquo;t, you&rsquo;ll terminate your SSH session and will need to access your Linode using <a href="https://www.linode.com/docs/networking/using-the-linode-shell-lish/">Lish</a>:</p>
+
+<pre><code>sudo ufw allow ssh
+sudo ufw allow 7777/tcp
+</code></pre></li>
+
+<li><p>After your rules are added, enable UFW. Next, remove the Terraria rule for IPv6 since it&rsquo;s not needed:</p>
+
+<pre><code>sudo ufw enable
+sudo ufw delete 4
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The second command in this step, <code>sudo ufw delete 4</code> references the fourth rule in your UFW ruleset. If you need to configure additional rules for different services, adjust this as necessary. You can see your UFW ruleset with <code>sudo ufw status</code> to make sure you&rsquo;re removing the correct rule.</div>
+</blockquote>
+</li>
+</ol>
+
+<h3 id="iptables">iptables</h3>
+
+<p>To manually configure iptables without using a controller, see our <a href="https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables">iptables guide</a> for a general ruleset.</p>
+
+<ol>
+<li><p>You&rsquo;ll also want to add the rule below for Terraria:</p>
+
+<pre><code>sudo iptables -A INPUT -p tcp --dport 7777 -j ACCEPT
+</code></pre></li>
+
+<li><p>Verify with:</p>
+
+<pre><code>sudo iptables -vL
+</code></pre></li>
+</ol>
+
+<h2 id="install-and-configure-terraria">Install and Configure Terraria</h2>
+
+<ol>
+<li><p>Change your working directory to <code>/opt</code> and download the Terraria tarball. You&rsquo;ll need to check <a href="http://terraria.gamepedia.com/Server#How_to_.28Linux.29">Terraria&rsquo;s website</a> for the current release version. Right-click and copy the link to use with <code>curl</code> or <code>wget</code>. We&rsquo;ll use 1.3.4.4 as an example in this guide:</p>
+
+<pre><code>cd /opt &amp;&amp; sudo curl -O http://terraria.org/server/terraria-server-1344.zip
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Before you install Terraria, be sure the version you download is the same as the clients that will be connecting to it.</div>
+</blockquote>
+</li>
+
+<li><p>You will need the <code>unzip</code> utility to decompress the .zip file. Install it using your distribution&rsquo;s package manager:</p>
+
+<p><strong>Debian/Ubuntu:</strong></p>
+
+<pre><code>sudo apt install unzip
+</code></pre>
+
+<p><strong>CentOS:</strong></p>
+
+<pre><code>sudo yum install unzip
+</code></pre></li>
+
+<li><p>Extract the archive and set the necessary permissions:</p>
+
+<pre><code>sudo unzip terraria-server-1344.zip
+sudo mv /opt/Dedicated\ Server/Linux /opt/terraria
+sudo rm -rf Dedicated\ Server/
+sudo chown -R root:root /opt/terraria
+sudo chmod +x /opt/terraria/TerrariaServer.bin.x86_64
+</code></pre></li>
+
+<li><p>Running daemons under discrete users is a good practice. Create a <code>terraria</code> user from which to run the game server:</p>
+
+<pre><code>sudo useradd -r -m -d /srv/terraria terraria
+</code></pre></li>
+
+<li><p>Terraria has a server configuration file that you can edit with options such as automatic world creation, server passwords, difficulty, <a href="http://terraria.gamepedia.com/Server#serverconfig">and other options</a>. Create a copy of the default file so you have something to revert back to if you run into problems:</p>
+
+<pre><code>sudo mv /opt/terraria/serverconfig.txt /opt/terraria/serverconfig.txt.bak
+</code></pre>
+
+<p>Create a new server configuration file for yourself. The options below will automatically create and serve <code>MyWorld</code> when the game server starts up. Note that you should change <code>MyWorld</code> to a world name of your choice.</p>
+
+<dl class="file">
+<dt>
+
+
+		/opt/terraria/serverconfig.txt 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">world</span><span class="o">=</span><span class="s">/srv/terraria/Worlds/MyWorld.wld</span>
+<span class="na">autocreate</span><span class="o">=</span><span class="s">1</span>
+<span class="na">worldname</span><span class="o">=</span><span class="s">MyWorld</span>
+<span class="na">worldpath</span><span class="o">=</span><span class="s">/srv/terraria/Worlds</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+</ol>
+
+<h2 id="managing-the-terraria-service">Managing the Terraria Service</h2>
+
+<h3 id="screen">Screen</h3>
+
+<p>Terraria runs an interactive console as part of its server process. While useful, accessing this console can be challenging when operating game servers under service managers. The problem can be solved by running Terraria in a <a href="https://www.gnu.org/software/screen/">screen session</a> that will enable you to send arbitrary commands to the listening admin console within Screen.</p>
+
+<p>Install Screen with the system&rsquo;s package manager:</p>
+
+<p><strong>CentOS:</strong></p>
+
+<pre><code>sudo yum install screen
+</code></pre>
+
+<p><strong>Debian/Ubuntu:</strong></p>
+
+<pre><code>sudo apt install screen
+</code></pre>
+
+<h3 id="systemd">systemd</h3>
+
+<p>It&rsquo;s useful to have an automated way to start, stop, and bring up Terraria on boot. This is important if the system restarts unexpectedly.</p>
+
+<p>Create the following file to define the <code>terraria</code> systemd service:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/systemd/system/terraria.service 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">server daemon for terraria</span>
+
+<span class="k">[Service]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">forking</span>
+<span class="na">User</span><span class="o">=</span><span class="s">terraria</span>
+<span class="na">KillMode</span><span class="o">=</span><span class="s">none</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/screen -dmS terraria /bin/bash -c &#34;/opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt&#34;</span>
+<span class="na">ExecStop</span><span class="o">=</span><span class="s">/usr/local/bin/terrariad exit</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<ul>
+<li><p><strong>ExecStart</strong> instructs systemd to spawn a screen session containing the 64-bit <code>TerrariaServer</code> binary, which starts the daemon. <code>KillMode=none</code> is used to ensure that systemd does not prematurely kill the server before it has had a chance to save and shut down gracefully.</p></li>
+
+<li><p><strong>ExecStop</strong> calls a script to send the <code>exit</code> command to Terraria, which tell the server to ensure that the world is saved before shutting down. In the next section, we&rsquo;ll create a script which will send the necessary commands to the running Terraria server.</p></li>
+</ul>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>This script is intended to save your world in the event that you reboot the operating system within the Linode. It is <strong>not</strong> intended to save your progress if you reboot your Linode from the Linode Manager. If you must reboot your Linode, first stop the Terraria service using <code>sudo systemctl stop terraria</code>. This will save your world, and then you can reboot from the Linode Manager.</div>
+</blockquote>
+
+
+<h3 id="create-a-script-for-basic-terraria-administration">Create a Script for Basic Terraria Administration</h3>
+
+<p>The Terraria administration script needs two primary functions:</p>
+
+<ul>
+<li>Attaching to the running screen session, which offers a helpful administration console.</li>
+<li>The ability to broadcast input into the screen session so the script can be run to save the world, exit the server, etc.</li>
+</ul>
+
+<ol>
+<li><p>Create a <code>terrariad</code> file, enter the following script, then save and close:</p>
+
+<dl class="file">
+<dt>
+
+
+		/usr/local/bin/terrariad 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
+</span><span class="cp"></span>
+<span class="nv">send</span><span class="o">=</span><span class="s2">&#34;`printf \&#34;</span><span class="nv">$*</span><span class="s2">\r\&#34;`&#34;</span>
+<span class="nv">attach</span><span class="o">=</span><span class="s1">&#39;script /dev/null -qc &#34;screen -r terraria&#34;&#39;</span>
+<span class="nv">inject</span><span class="o">=</span><span class="s2">&#34;screen -S terraria -X stuff </span><span class="nv">$send</span><span class="s2">&#34;</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;attach&#34;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$attach</span><span class="s2">&#34;</span> <span class="p">;</span> <span class="k">else</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$inject</span><span class="s2">&#34;</span> <span class="p">;</span> <span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;`stat -c &#39;%u&#39; /var/run/screen/S-terraria/`&#34;</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="nv">$UID</span><span class="s2">&#34;</span> <span class="o">]</span>
+<span class="k">then</span>
+    <span class="nv">$cmd</span>
+<span class="k">else</span>
+    su - terraria -c <span class="s2">&#34;</span><span class="nv">$cmd</span><span class="s2">&#34;</span>
+<span class="k">fi</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Verify that you can execute the script:</p>
+
+<pre><code>sudo chmod +x /usr/local/bin/terrariad
+</code></pre></li>
+</ol>
+
+<p>This script permits you to both:</p>
+
+<ul>
+<li>Attach to the console for direct administration, and</li>
+<li>Send the console commands like <code>save</code> or <code>exit</code> while it&rsquo;s running without needing to attach at all (useful when services like systemd need to send server commands).</li>
+</ul>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Throughout the rest of this guide, you may encounter &ldquo;command not found&rdquo; errors when running the <code>terrariad</code> command. This may result from the directory <code>/usr/local/bin/</code> not being found in the <code>$PATH</code> when running sudo commands, which can occur with some Linux distributions. You can work around this problem by calling the script with the full path. For example, instead of running <code>sudo terrariad attach</code>, use <code>sudo /usr/local/bin/terrariad attach</code>.</div>
+</blockquote>
+
+
+<h2 id="running-terraria">Running Terraria</h2>
+
+<h3 id="start-and-enable-the-terraria-server">Start and Enable the Terraria Server</h3>
+
+<p>Now that the game server is installed, the scripts are written, and the service is ready, the server can be started with a single command:</p>
+
+<pre><code>sudo systemctl start terraria
+</code></pre>
+
+<p>The first time you run the server, it will generate the world defined earlier. This will take a while, so give it time before trying to connect. To watch the world generation progress, use:</p>
+
+<pre><code>sudo terrariad attach
+</code></pre>
+
+<p>In addition to starting and stopping the <code>terraria</code> service, systemd can also use the service file created earlier to automatically start Terraria on boot.</p>
+
+<p>To enable the service at startup:</p>
+
+<pre><code>sudo systemctl enable terraria
+</code></pre>
+
+<p>If the operating system is restarted for any reason, Terraria will launch itself on reboot.</p>
+
+<h3 id="server-status">Server Status</h3>
+
+<p>To check if the server is running, use the command:</p>
+
+<pre><code>sudo systemctl status terraria
+</code></pre>
+
+<p>The output should be similar to:</p>
+
+<pre><code><div class="file">
+● terraria.service
+   Loaded: loaded (/etc/systemd/system/terraria.service; disabled)
+   Active: active (running) since Tue 2017-03-07 17:37:03 UTC; 7s ago
+  Process: 31143 ExecStart=/usr/bin/screen -dmS terraria /bin/bash -c /opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt (code=exited, status=0/SUCCESS)
+ Main PID: 31144 (screen)
+   CGroup: /system.slice/terraria.service
+           ├─31144 /usr/bin/SCREEN -dmS terraria /bin/bash -c /opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt
+           └─31145 /opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt
+</div>
+</code></pre>
+
+<h3 id="stop-the-server">Stop the Server</h3>
+
+<p>If you ever need to shut down Terraria, use the following command to save the world and shut down the game server:</p>
+
+<pre><code>sudo systemctl stop terraria
+</code></pre>
+
+<h3 id="attach-to-the-console">Attach to the Console</h3>
+
+<p>In the course of running your server, you may need to attach to the console to do things like kick players or change the message of the day (MOTD). To enter the Terraria server console with the <code>terrariad</code> script use:</p>
+
+<pre><code>sudo terrariad attach
+</code></pre>
+
+<p>Type <code>help</code> to get a list of commands. Once you&rsquo;re done, use the keyboard shortcut <strong>CTRL+A</strong> then <strong>D</strong> to detach from the screen session and leave it running in the background. More keyboard shortcuts for Screen can be found in the <a href="http://www.gnu.org/software/screen/manual/html_node/Default-Key-Bindings.html#Default-Key-Bindings">Screen default key bindings documentation</a>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://terraria.gamepedia.com/Terraria_Wiki">Terraria Wiki</a></li>
+
+<li><a href="http://terraria.gamepedia.com/Server">Terraria Wiki: Server</a></li>
+
+<li><a href="http://terraria.gamepedia.com/Guide:Setting_up_a_Terraria_server">Terraria Wiki: Setting up a Terraria Server</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/game-servers/install-black-mesa-on-debian-or-ubuntu/">Install Black Mesa on Debian or Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/install-steamcmd-for-a-steam-game-server/">Install SteamCMD for a Steam Game Server</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/">Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/minecraft-with-bungee-cord/">How to Set Up BungeeCord to Link Spigot Servers</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/minecraft-with-spigot-ubuntu/">Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#configure-a-firewall-for-terraria">Configure a Firewall for Terraria</a>
+<ul>
+<li><a href="#firewalld">Firewalld</a></li>
+<li><a href="#ufw">UFW</a></li>
+<li><a href="#iptables">iptables</a></li>
+</ul></li>
+<li><a href="#install-and-configure-terraria">Install and Configure Terraria</a></li>
+<li><a href="#managing-the-terraria-service">Managing the Terraria Service</a>
+<ul>
+<li><a href="#screen">Screen</a></li>
+<li><a href="#systemd">systemd</a></li>
+<li><a href="#create-a-script-for-basic-terraria-administration">Create a Script for Basic Terraria Administration</a></li>
+</ul></li>
+<li><a href="#running-terraria">Running Terraria</a>
+<ul>
+<li><a href="#start-and-enable-the-terraria-server">Start and Enable the Terraria Server</a></li>
+<li><a href="#server-status">Server Status</a></li>
+<li><a href="#stop-the-server">Stop the Server</a></li>
+<li><a href="#attach-to-the-console">Attach to the Console</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Install and Configure Graylog2 on Debian 9</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to install and configure Graylog2, a log management and analysis tool with Elasticsearch and MongoDB, on Debian 9 server.">
+        <meta name="keywords" content="Graylog, Install Graylog, Graylog Debian">
+        
+        <meta property="og:title" content="How to Install and Configure Graylog2 on Debian 9">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/uptime/monitoring/how-to-install-and-configure-graylog2-on-debian-9/">
+        <meta property="og:description" content="Graylog is a powerful, free, open-source log management and analysis tool that can be used for monitoring SSH logins and unusual activity to debugging applications. This guide shows you how to install and configure Graylog2 with Elasticsearch and MongoDB on a Debian 9 server.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/uptime/monitoring/how-to-install-and-configure-graylog2-on-debian-9/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/">Uptime &amp; Analytics</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/uptime/monitoring/">Server Monitoring</a>
+  
+</li>
+
+
+<li>
+  
+  How to Install and Configure Graylog2 on Debian 9
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Install and Configure Graylog2 on Debian 9</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-08-15T00:00:00Z">Tuesday, August 15, 2017</time> by Hitesh Jethva</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/hitjethva">Hitesh Jethva
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fhow-to-install-and-configure-graylog2-on-debian-9%2f&via=linode&text=How%20to%20Install%20and%20Configure%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fhow-to-install-and-configure-graylog2-on-debian-9%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fuptime%2fmonitoring%2fhow-to-install-and-configure-graylog2-on-debian-9%2f&t=How%20to%20Install%20and%20Configure%20Graylog2%20on%20Debian%209" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/uptime/monitoring/how-to-install-and-configure-graylog2-on-debian-9.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/uptime/monitoring/how-to-install-and-configure-graylog2-on-debian-9.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<h2 id="what-is-graylog">What is Graylog?</h2>
+
+<p>Graylog is a powerful, free, open-source log management and analysis tool that can be used for monitoring SSH logins and unusual activity to debugging applications. It is based on Java, Elasticsearch, and MongoDB and provides a beautiful web interface for centralized log management and log analysis.</p>
+
+<p>Graylog uses Elasticsearch for searching and storing the log messages, and MongoDB to store the meta information and configuration. Graylog collects, indexes and analyzes the logs from various inputs and displays them through a web interface. Compared to other log monitoring tools, Graylog is a more finished and enterprise-ready tool out of the box.</p>
+
+<p>This guide shows you how to install and configure Graylog2 with Elasticsearch and MongoDB on a Debian 9 server.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The steps in this guide require root privileges. Be sure to run the steps below as <code>root</code> or with the <code>sudo</code> prefix. For more information on privileges, see our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Not all required dependencies are available in the standard repository, so you will need to add Debian Backports to the list of package sources:</p>
+
+<pre><code>echo &quot;deb http://ftp.debian.org/debian jessie-backports main&quot; &gt; /etc/apt/sour0es.list.d/backports.list
+</code></pre></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>apt update &amp;&amp; apt upgrade
+</code></pre></li>
+</ol>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+<li>Linode running Debian 9.</li>
+<li>Minimum 4 GB RAM installed on your Linode.</li>
+</ul>
+
+<h2 id="install-java">Install Java</h2>
+
+<p>Both Graylog and Elasticsearch are Java-based, so you will need to install the latest version of Java on your system.</p>
+
+<ol>
+<li><p>Install the latest version of Java:</p>
+
+<pre><code>apt-get install openjdk-8-jre-headless -y
+</code></pre></li>
+
+<li><p>Once Java is installed, check the Java version:</p>
+
+<pre><code>java -version
+</code></pre>
+
+<p>You should see the following output on your screen:</p>
+
+<pre><code>java version &quot;1.8.0_131&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.131-b11, mixed mode)
+</code></pre></li>
+
+<li><p>Install additional packages to your system:</p>
+
+<pre><code>apt-get install apt-transport-https uuid-runtime pwgen -y
+</code></pre></li>
+</ol>
+
+<h2 id="install-and-configure-elasticsearch">Install and Configure Elasticsearch</h2>
+
+<p>Graylog uses Elasticsearch for storing the log messages and also offers a searching facility. By default, Elasticsearch is not available in Debian 9 repository. So, you will need to add Elasticsearch repository to your system.</p>
+
+<ol>
+<li><p>Download and install the GPG key:</p>
+
+<pre><code>wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+</code></pre></li>
+
+<li><p>Add the Elasticsearch repository to apt:</p>
+
+<pre><code>echo &quot;deb https://packages.elastic.co/elasticsearch/2.x/debian stable main&quot; | tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
+</code></pre></li>
+
+<li><p>Update the repository:</p>
+
+<pre><code>apt-get update -y
+</code></pre></li>
+
+<li><p>After the system finishes updating, install Elasticsearch:</p>
+
+<pre><code>apt-get install elasticsearch -y
+</code></pre></li>
+
+<li><p>Start The Elasticsearch service, and enable the service to start on boot:</p>
+
+<pre><code>systemctl start elasticsearch
+systemctl enable elasticsearch
+</code></pre></li>
+
+<li><p>Next, you will need to edit <code>elasticsearch.yml</code>. It&rsquo;s located in the <code>/etc/elasticsearch/</code> directory:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/elasticsearch/elasticsearch.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cluster.name: graylog
+network.host: <span class="m">127</span>.0.0.1
+discovery.zen.ping.timeout: 10s
+discovery.zen.ping.multicast.enabled: <span class="nb">false</span>
+discovery.zen.ping.unicast.hosts: <span class="o">[</span><span class="s2">&#34;127.0.0.1:9300&#34;</span><span class="o">]</span>
+script.inline: <span class="nb">false</span>
+script.indexed: <span class="nb">false</span>
+script.file: false</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide uses Elasticsearch on a single server. If you are using Elasticsearch on a different server, replace the IP address 127.0.0.1 with your server IP address. Refer to the Elasticsearch documentation for security best practices.</div>
+</blockquote>
+
+
+<p>Save and close the file, then restart the Elasticsearch service:</p>
+
+<pre><code>systemctl restart elasticsearch
+</code></pre>
+
+<p>Make sure the restart doesn&rsquo;t return errors. Elasticsearch should be running properly at this point.</p></li>
+
+<li><p>Once Elasticsearch restarts, it should be listening on HTTP port <code>9200</code>, The cluster nodes communicate on <code>9300</code>. You can check the response by running the following command:</p>
+
+<pre><code>curl -X GET http://localhost:9200
+</code></pre></li>
+
+<li><p>You can also test the health of the Elasticsearch:</p>
+
+<pre><code>curl -XGET 'http://localhost:9200/_cluster/health?pretty=true'
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>For a complete list of the REST API endpoints, refer to the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html">Elasticsearch documentation</a></div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="install-mongodb">Install MongoDB</h2>
+
+<p>Graylog uses MongoDB as a database to store meta-information and configurations. MongoDB is available in the Debian 9 repository, by default. Install MongoDB:</p>
+
+<pre><code>apt-get install mongodb-server -y
+</code></pre>
+
+<p>After completing the install, proceed to installing the Graylog server.</p>
+
+<h2 id="install-and-configure-graylog-server">Install and Configure Graylog Server</h2>
+
+<p>In order to install the Graylog server, you need to download and install the Graylog repository to your system.</p>
+
+<ol>
+<li><p>Download and install the Graylog repository:</p>
+
+<pre><code>wget https://packages.graylog2.org/repo/packages/graylog-2.2-repository_latest.deb
+dpkg -i graylog-2.2-repository_latest.deb
+</code></pre></li>
+
+<li><p>Update the Graylog repository, then install the Graylog server:</p>
+
+<pre><code>apt-get update -y
+apt-get install graylog-server -y
+</code></pre></li>
+
+<li><p>You will need to set a password-secret and hash password for the root user. First, set a password-secret using the <code>pwgen</code> command:</p>
+
+<pre><code>pwgen -N 1 -s 96
+</code></pre>
+
+<p>Running this will output a series random letters and numbers:</p>
+
+<pre><code>nNPjRmvyyyPc0YKySXhkebfwUYvW2dQz7kD1GxBq7qhJre1eIAySsUbmlYNKiYZnHquHPu8pTswvc3MFSVDrwn5AmdwOSMri
+</code></pre>
+
+<p>Set a hash password for the root user. Use the following command, making sure to replace <code>hashedpassword</code> with your desired password.</p>
+
+<pre><code>echo -n hashedpassword | sha256sum
+</code></pre>
+
+<p>You should see the following output:</p>
+
+<pre><code>4c941dd2a116bf235e943771ad16c4e8877d75c597936accf168e08c5f93ce24
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You will need this password to log in to the Graylog web interface.</div>
+</blockquote>
+</li>
+
+<li><p>Open the Graylog servers main configuration file: <code>server.conf</code>, located in the <code>/etc/graylog/server/</code> directory. Replace <code>root_password_sha2</code> and <code>password_sercret</code> with the console output from above:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/graylog/server/server.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">is_master</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="nv">node_id_file</span> <span class="o">=</span> /etc/graylog/server/node-id
+<span class="nv">password_secret</span> <span class="o">=</span> nNPjRmvyyyPc0YKySXhkebfwUYvW2dQz7kD1GxBq7qhJre1eIAySsUbmlYNKiYZnHquHPu8pTswvc3MFSVDrwn5AmdwOSMri
+<span class="nv">root_username</span> <span class="o">=</span> admin
+<span class="nv">root_password_sha2</span> <span class="o">=</span> 4c941dd2a116bf235e943771ad16c4e8877d75c597936accf168e08c5f93ce24
+<span class="nv">root_timezone</span> <span class="o">=</span> UTC
+<span class="nv">plugin_dir</span> <span class="o">=</span> /usr/share/graylog-server/plugin
+<span class="nv">rest_listen_uri</span> <span class="o">=</span> http://0.0.0.0:9000/api/
+<span class="nv">rest_enable_cors</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="nv">web_listen_uri</span> <span class="o">=</span> http://0.0.0.0:9000/
+<span class="nv">rotation_strategy</span> <span class="o">=</span> count
+<span class="nv">elasticsearch_max_docs_per_index</span> <span class="o">=</span> <span class="m">20000000</span>
+<span class="nv">elasticsearch_max_number_of_indices</span> <span class="o">=</span> <span class="m">7</span>
+<span class="nv">retention_strategy</span> <span class="o">=</span> delete
+<span class="nv">elasticsearch_shards</span> <span class="o">=</span> <span class="m">4</span>
+<span class="nv">elasticsearch_replicas</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">elasticsearch_index_prefix</span> <span class="o">=</span> graylog
+<span class="nv">allow_leading_wildcard_searches</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="nv">allow_highlighting</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="nv">elasticsearch_cluster_name</span> <span class="o">=</span> graylog
+<span class="nv">elasticsearch_discovery_zen_ping_unicast_hosts</span> <span class="o">=</span> <span class="m">127</span>.0.0.1:9300
+<span class="nv">elasticsearch_http_enabled</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="nv">elasticsearch_network_host</span> <span class="o">=</span> <span class="m">0</span>.0.0.0
+<span class="nv">elasticsearch_discovery_initial_state_timeout</span> <span class="o">=</span> 3s
+<span class="nv">elasticsearch_analyzer</span> <span class="o">=</span> standard
+<span class="nv">output_batch_size</span> <span class="o">=</span> <span class="m">500</span>
+<span class="nv">output_flush_interval</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">output_fault_count_threshold</span> <span class="o">=</span> <span class="m">5</span>
+<span class="nv">output_fault_penalty_seconds</span> <span class="o">=</span> <span class="m">30</span>
+<span class="nv">ring_size</span> <span class="o">=</span> <span class="m">65536</span>
+<span class="nv">inputbuffer_ring_size</span> <span class="o">=</span> <span class="m">65536</span>
+<span class="nv">inputbuffer_processors</span> <span class="o">=</span> <span class="m">2</span>
+<span class="nv">inputbuffer_wait_strategy</span> <span class="o">=</span> blocking
+<span class="nv">processbuffer_processors</span> <span class="o">=</span> <span class="m">5</span>
+<span class="nv">outputbuffer_processors</span> <span class="o">=</span> <span class="m">3</span>
+<span class="nv">processor_wait_strategy</span> <span class="o">=</span> blocking
+<span class="nv">message_journal_enabled</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="nv">message_journal_dir</span> <span class="o">=</span> /var/lib/graylog-server/journal
+<span class="nv">async_eventbus_processors</span> <span class="o">=</span> <span class="m">2</span>
+<span class="nv">lb_recognition_period_seconds</span> <span class="o">=</span> <span class="m">3</span>
+<span class="nv">alert_check_interval</span> <span class="o">=</span> <span class="m">60</span>
+<span class="nv">mongodb_uri</span> <span class="o">=</span> mongodb://localhost/graylog
+<span class="nv">mongodb_max_connections</span> <span class="o">=</span> <span class="m">1000</span>
+<span class="nv">mongodb_threads_allowed_to_block_multiplier</span> <span class="o">=</span> <span class="m">5</span>
+<span class="nv">transport_email_enabled</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="nv">content_packs_dir</span> <span class="o">=</span> /usr/share/graylog-server/contentpacks
+<span class="nv">content_packs_auto_load</span> <span class="o">=</span> grok-patterns.json
+<span class="nv">proxied_requests_thread_pool_size</span> <span class="o">=</span> <span class="m">32</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Save the file when you are finished.
+Finally, start the Graylog server and enable it to start at boot:</p>
+
+<pre><code>systemctl start graylog-server
+systemctl enable graylog-server
+</code></pre></li>
+
+<li><p>Check the Graylog if the server log is working:</p>
+
+<pre><code>tail -f /var/log/graylog-server/server.log
+</code></pre></li>
+</ol>
+
+<h2 id="access-graylog">Access Graylog</h2>
+
+<p>Graylog is now up and running, It&rsquo;s time to access the Graylog web interface.</p>
+
+<ol>
+<li><p>Open your web browser and navigate to the URL: <code>http://192.168.0.102:9000</code> where <code>192.168.0.102</code> is the public IP address of your linode. You will be redirected to the Graylog login page as shown below:</p>
+
+<p><a href="/docs/assets/Screenshot-of-graylog-login-page.png"><img src="/docs/assets/Screenshot-of-graylog-login-page_small.png" alt="Graylog Login Page" /></a></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Consider limiting Graylog access to a private network, if you are deploying Graylog in a production environment. In the context of this guide, instances of <code>192.168.0.102</code> can be replaced with the Linode&rsquo;s public IP address to access on the browser.</div>
+</blockquote>
+</li>
+
+<li><p>Provide the username <code>admin</code> and password as the <code>hashedpassword</code> generated earlier, then click on the <strong>Sign In</strong> button. You should see the Graylog default dashboard:</p>
+
+<p><a href="/docs/assets/Screenshot-of-graylog-dashboard.png"><img src="/docs/assets/Screenshot-of-graylog-dashboard_small.png" alt="Graylog Dashboard" /></a></p></li>
+
+<li><p>Configure Graylog Input to receive the logs from external source. Click on <em>System &gt; Inputs</em>. Then select <strong>Syslog UDP</strong> from the drop down, click on the <strong>Launch new input</strong> button. You should see the following image:</p>
+
+<p><a href="/docs/assets/Screenshot-of-graylog-syslog-input.png"><img src="/docs/assets/Screenshot-of-graylog-syslog-input_small.png" alt="Graylog Add Input" /></a></p></li>
+
+<li><p>Fill in all of the details shown below. When you finish click on the <strong>Save</strong> button, you should see the local input in the following image:</p>
+
+<p><a href="/docs/assets/Screenshot-of-graylog-input-dashboard.png"><img src="/docs/assets/Screenshot-of-graylog-input-dashboard_small.png" alt="Graylog Input Dashboard" /></a></p></li>
+
+<li><p>Your Graylog input is configured and listening on port <code>8514</code>. Now, you will need to configure rsyslog to send system logs to the newly created input. To do this, edit the <code>rsyslog.conf</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/rsyslog.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">$template</span> GRAYLOGRFC5424,<span class="s2">&#34;%protocol-version% %timestamp:::date-rfc3339% %HOSTNAME% %app-name% %procid% %msg%\n&#34;</span>
+*.* @192.168.0.102:8514<span class="p">;</span>GRAYLOGRFC5424</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Save and close the file when you are finished, then restart your server with the Linode Manager to apply these changes.</p></li>
+
+<li><p>After restarting, log in to your Graylog server web interface and click on <em>System &gt; Inputs</em>. Then, click on the <strong>Show received messages</strong> button. You should see the syslog messages in the following image:</p>
+
+<p><a href="/docs/assets/Screenshot-of-graylog-server-messeges.png"><img src="/docs/assets/Screenshot-of-graylog-server-messeges_small.png" alt="Graylog Log Messages" /></a></p></li>
+</ol>
+
+<h3 id="next-steps">Next steps</h3>
+
+<p>You now have a fully configured a Graylog server. Graylog can be used to monitor logs of any size. So whether your use case is security, IT, development &amp; devops, or anything else. Graylog will house your log data in one central location.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://docs.graylog.org/en/2.3/">Graylog Server Documentation</a></li>
+
+<li><a href="https://www.elastic.co/guide/index.html">Elasticsearch</a></li>
+
+</ul>
+
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-graylog">What is Graylog?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#install-java">Install Java</a></li>
+<li><a href="#install-and-configure-elasticsearch">Install and Configure Elasticsearch</a></li>
+<li><a href="#install-mongodb">Install MongoDB</a></li>
+<li><a href="#install-and-configure-graylog-server">Install and Configure Graylog Server</a></li>
+<li><a href="#access-graylog">Access Graylog</a>
+<ul>
+<li><a href="#next-steps">Next steps</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Install Nginx and a StartSSL Certificate on Debian 7 (Wheezy)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install Nginx and Deploy a StartSSL Certificate on Debian 7 (Wheezy).">
+        <meta name="keywords" content="startssl, nginx, install nginx, ssl certificate, debian 7, wheezy, nginx repositories, certificate signing request,  CSR, domain name)">
+        
+        <meta property="og:title" content="Install Nginx and a StartSSL Certificate on Debian 7 (Wheezy)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/">
+        <meta property="og:description" content="Install Nginx and Deploy a StartSSL Certificate on Debian 7 (Wheezy).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/">Web Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/web-servers/nginx/">Nginx</a>
+  
+</li>
+
+
+<li>
+  
+  Install Nginx and a StartSSL Certificate on Debian 7 (Wheezy)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Install Nginx and a StartSSL Certificate on Debian 7 (Wheezy)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2015-07-13T00:00:00Z">Monday, July 13, 2015</time> by Ryan Laverdiere</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://github.com/capecodrailfan">Ryan Laverdiere
+    
+    <i class="fa fa-github"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2finstall-nginx-and-a-startssl-certificate-on-debian-7-wheezy%2f&via=linode&text=Install%20Nginx%20and%20a%20StartSSL%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2finstall-nginx-and-a-startssl-certificate-on-debian-7-wheezy%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fweb-servers%2fnginx%2finstall-nginx-and-a-startssl-certificate-on-debian-7-wheezy%2f&t=Install%20Nginx%20and%20a%20StartSSL%20Certificate%20on%20Debian%207%20%28Wheezy%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>This guide is going to show you how to install the latest stable version of Nginx on Debian Wheezy. It will also deploy a free SSL certificate from StartSSL that will get you an A on the <a href="https://www.ssllabs.com/ssltest/">Qualys SSL Labs SSL Server Test</a>. In order to achieve an &ldquo;A&rdquo; on the test, we are going to configure Nginx to prefer server ciphers, only use strong ciphers, and disable vulnerable protocols SSLv2 and SSLv3.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>This article assumes that you already have Debian 7 Wheezy running on a Linode. If you do not, follow the <a href="https://www.linode.com/docs/getting-started">Getting Started guide</a> and them come back here.</p>
+
+<p>Please note, in order to obtain an SSL certificate for your Linode, you must have registered a domain name, and have access to an email account like webmaster@yourdomain.com. This is necessary for StartSSL to verify that you have control of the domain you are requesting an SSL certificate for.</p>
+
+<p>All of the commands below should be executed as the <code>root</code> user.</p>
+
+<h3 id="add-the-nginx-debian-repository-to-your-linode-package-sources">Add the Nginx Debian Repository to Your Linode Package Sources</h3>
+
+<ol>
+<li><p>Create a new file in <code>/etc/apt/sources.list.d/</code> that instructs the package manager to download packages from the Nginx repositories using your favorite text editor. Here we&rsquo;ll use <code>nano</code>, but you could also use <code>vi</code> or <code>emacs</code>. If you have not used Nano before, I highly recommend reading <a href="https://www.linode.com/docs/tools-reference/tools/using-nano">Using Nano</a> before continuing.</p>
+
+<pre><code>nano /etc/apt/sources.list.d/nginx.list
+</code></pre></li>
+
+<li><p>Add the following lines to the file. Save your changes and exit your text editor.</p>
+
+<pre><code>deb http://nginx.org/packages/debian/ wheezy nginx
+deb-src http://nginx.org/packages/debian/ wheezy nginx
+</code></pre></li>
+
+<li><p>Download the PGP key used to sign the packages in the Nginx repository using wget:</p>
+
+<pre><code>wget http://nginx.org/keys/nginx_signing.key
+</code></pre></li>
+
+<li><p>Import the PGP key into the keyring used by the package manager to verify the authenticity of packages downloaded from the repository:</p>
+
+<pre><code>apt-key add nginx_signing.key
+</code></pre></li>
+
+<li><p>Delete the PGP key from the file system:</p>
+
+<pre><code>rm nginx_signing.key
+</code></pre></li>
+
+<li><p>Update your list of available packages:</p>
+
+<pre><code>apt-get update
+</code></pre></li>
+</ol>
+
+<h3 id="install-nginx">Install Nginx</h3>
+
+<ol>
+<li><p>Instruct the package manager to install the Nginx package:</p>
+
+<pre><code>apt-get install nginx
+</code></pre></li>
+</ol>
+
+<h3 id="generate-a-private-key-and-certificate-signing-request-csr">Generate a Private Key and Certificate Signing Request (CSR)</h3>
+
+<ol>
+<li><p>Create a directory to store your certificate and private key. On Debian systems, the default location for storing certificates and private keys is in <code>/etc/ssl/</code>. To keep things simple we are going to create a new <code>/etc/ssl/nginx</code> directory to store your certificate and private key for Nginx:</p>
+
+<pre><code>mkdir /etc/ssl/nginx
+</code></pre></li>
+
+<li><p>Navigate to the newly created directory:</p>
+
+<pre><code>cd /etc/ssl/nginx
+</code></pre></li>
+
+<li><p>Generate a 2048 bit RSA private key. If you are paranoid you could change 2048 to 4096 to create a 4096 bit private key. Currently, most certificate authorities are requring customers to use a 2048 bit or higher RSA private key.</p>
+
+<pre><code>openssl genrsa -out server.key 2048
+</code></pre></li>
+
+<li><p>Generate a certificate signing request (CSR). When prompted for a <code>Common Name</code>, be sure to enter the domain name that you will be using to access your Linode, all other fields can be filled as you see fit. Optionally, you may enter a sub domain, for instance www.yourdomain.com. This must be a domain that you have control over and which you can receive email sent to webmaster@yourdomain.com. Any certificate issued for <em>yourname</em>.yourdomain.com is also valid for yourdomain.com.</p>
+
+<pre><code>openssl req -new -key server.key -out server.csr
+</code></pre>
+
+<p><a href="/docs/assets/1751-CSR.jpg"><img src="/docs/assets/1751-CSR.jpg" alt="CSR Creation" /></a></p></li>
+</ol>
+
+<h3 id="sign-up-with-startssl">Sign-up With StartSSL</h3>
+
+<ol>
+<li><p>Launch a web browser and naviagte to the <a href="https://www.startssl.com/?app=12">StartSSL Control Panel</a>. If this is your first time requesting a certificate from StartSSL, click on the &ldquo;Sign-up&rdquo; button. If you have already requested a certificate from StartSSL, log into your account, and skip to the next section.</p>
+
+<p><a href="/docs/assets/1752-StartSSL-Control-Panel.jpg"><img src="/docs/assets/1752-StartSSL-Control-Panel-Preview.jpg" alt="StartSSL Control Panel" /></a></p></li>
+
+<li><p>Provide the requested information and a click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;</p>
+
+<p><a href="/docs/assets/1753-StartSSL-Register.jpg"><img src="/docs/assets/1753-StartSSL-Register.jpg" alt="StartSSL Sign-up Page" /></a></p></li>
+
+<li><p>A verification code will be sent to the email address provided. Log into your email account and provide the verification code. Then click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;.</p></li>
+
+<li><p>Once your email address has been verified. Choose to generate a high grade private key. This private key and certificate pair will be used to identify you to StartSSL. If you ever loose it, you will be unable to regain access to your account, make sure to backup this certificate and private key.</p>
+
+<p><a href="/docs/assets/1754-StartSSL-Generate-Private-Key.jpg"><img src="/docs/assets/1754-StartSSL-Generate-Private-Key.jpg" alt="StartSSL Generate Private Key Page" /></a></p></li>
+
+<li><p>Click &ldquo;Install &gt;&gt; &gt;&gt;&rdquo; to install your personal certificate into your browser to identify yourself to StartSSL.</p>
+
+<p><a href="/docs/assets/1755-StartSSL-Install-Certificate.jpg"><img src="/docs/assets/1755-StartSSL-Install-Certificate.jpg" alt="StartSSL Certificate Installation Page" /></a></p></li>
+
+<li><p>Click &ldquo;Finish &gt;&gt; &gt;&gt;&rdquo;.</p></li>
+</ol>
+
+<p>You should now be logged into your StartSSL account.</p>
+
+<h3 id="verify-your-domain-name-with-startssl">Verify Your Domain Name with StartSSL</h3>
+
+<ol>
+<li><p>If you have already verified your domain name within the past 30 days, you may skip to the next step. Click on the &ldquo;Validations Wizard&rdquo; button in your StartSSL account.</p></li>
+
+<li><p>Select &ldquo;Domain Name Validation&rdquo; and click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;.</p>
+
+<p><a href="/docs/assets/1756-StartSSL-Validation-Wizard.jpg"><img src="/docs/assets/1756-StartSSL-Validation-Wizard-Preview.jpg" alt="StartSSL Validation Wizard Start Page" /></a></p></li>
+
+<li><p>Enter your domain name and click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;.</p>
+
+<p><a href="/docs/assets/1757-StartSSL-Validation-Wizard-Domain.jpg"><img src="/docs/assets/1757-StartSSL-Validation-Wizard-Domain-Preview.jpg" alt="StartSSL Validation Wizard Domain Name Validation Page" /></a></p></li>
+
+<li><p>Choose an email address @ your domain that you access to and click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;. Note that the domain being used for this tutorial has been omitted from the screenshot below.</p>
+
+<p><a href="/docs/assets/1758-StartSSL-Validation-Wizard-Email.jpg"><img src="/docs/assets/1758-StartSSL-Validation-Wizard-Email-Preview.jpg" alt="StartSSL Validation Wizard Domain Control Email Validation Page" /></a></p></li>
+
+<li><p>A verification code should be sent to the email address selected. Access your email account and provide the verification code and click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;.</p>
+
+<p><a href="/docs/assets/1759-StartSSL-Validation-Wizard-Validation.jpg"><img src="/docs/assets/1759-StartSSL-Validation-Wizard-Validation-Preview.jpg" alt="StartSSL Validation Wizard Email Verification Code Page" /></a></p></li>
+
+<li><p>Your domain has now been verified. Click &ldquo;Finish &gt;&gt; &gt;&gt;&rdquo;.</p>
+
+<p><img src="/docs/assets/1760-StartSSL-Validation-Wizard-Complete-Preview.jpg" alt="StartSSL Validation Wizard Complete Page" /></p></li>
+</ol>
+
+<h3 id="submit-your-certificate-signing-request-to-startssl">Submit Your Certificate Signing Request to StartSSL</h3>
+
+<ol>
+<li><p>Click on the &ldquo;Certificates Wizard&rdquo; button in your StartSSL account.</p></li>
+
+<li><p>From the &ldquo;Certificate Target&rdquo; drop down menu select &ldquo;Web Server SSL/TLS Certicate&rdquo; and click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;.</p>
+
+<p><a href="/docs/assets/1761-StartSSL-Certificates-Wizard-Target.jpg"><img src="/docs/assets/1761-StartSSL-Certificates-Wizard-Target-Preview.jpg" alt="StartSSL Certificates Wizard Start" /></a></p></li>
+
+<li><p>Click &ldquo;Skip &gt;&gt; &gt;&gt;&rdquo; to skip generating a RSA private key. In the previous step an RSA private key was generated before creating a certificate signing request.</p>
+
+<p><a href="/docs/assets/1762-StartSSL-Certificates-Wizard-Private-Key.jpg"><img src="/docs/assets/1762-StartSSL-Certificates-Wizard-Private-Key-Preview.jpg" alt="StartSSL Certificates Wizard Skip Creating a RSA Private Key" /></a></p></li>
+
+<li><p>Using the text editor of your choice, open up your certificate signing request and copy it. If you&rsquo;re using Putty on Windows, highlight the entire certificate signing request to copy it to the clipboard, then exit the text editor.</p>
+
+<pre><code>nano /etc/ssl/nginx/server.csr
+</code></pre></li>
+
+<li><p>Paste your certificate signing request into the empty text box and then click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;.</p>
+
+<p><a href="/docs/assets/1763-StartSSL-Certificates-Wizard-CSR.jpg"><img src="/docs/assets/1763-StartSSL-Certificates-Wizard-CSR-Preview.jpg" alt="StartSSL Certificates Wizard Submit CSR" /></a></p></li>
+
+<li><p>Click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;.</p>
+
+<p><img src="/docs/assets/1764-StartSSL-Certificates-Wizard-CSR-Received-Preview.jpg" alt="StartSSL Certificates Wizard CSR Received" /></p></li>
+
+<li><p>Choose the domain you would like a certificate for and click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;.</p>
+
+<p><img src="/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain-Preview.jpg" alt="StartSSL Certificates Wizard CSR Domain Selection" /></p></li>
+
+<li><p>Enter the sub domain you entered when creating the CSR before (ex. www.yourdomain.com, server1.yourdomain.com), or if your entered yourdomain.com before, enter www into this field to make your certificate valid for www.yourdomain.com as well. Then click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;.</p>
+
+<p><a href="/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain.jpg"><img src="/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain-Preview.jpg" alt="StartSSL Certificates Wizard Choose a SubDomain" /></a></p></li>
+
+<li><p>Click &ldquo;Continue &gt;&gt; &gt;&gt;&rdquo;.</p>
+
+<p><a href="/docs/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready.jpg"><img src="/docs/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready-Preview.jpg" alt="StartSSL Certificates Wizard CSR Ready for Issuing Certificate" /></a></p></li>
+
+<li><p>Once your certificate has been issued paste the certificate into a new server.crt file. Then save your changes and exit the editor.</p>
+
+<pre><code>nano /etc/ssl/nginx/server.crt
+</code></pre></li>
+
+<li><p>You can now exit the StartSSL website.</p></li>
+</ol>
+
+<h3 id="gather-additional-required-certificate-files">Gather Additional Required Certificate Files</h3>
+
+<ol>
+<li><p>Navigate to the directory you are storing your certificate and private key in:</p>
+
+<pre><code>cd /etc/ssl/nginx
+</code></pre></li>
+
+<li><p>Download the StartSSL CA Certificate using wget:</p>
+
+<pre><code>wget http://www.startssl.com/certs/ca.pem
+</code></pre></li>
+
+<li><p>Download the StartSSL Intermediate CA Certificate using wget:</p>
+
+<pre><code>wget http://www.startssl.com/certs/sub.class1.server.ca.pem
+</code></pre></li>
+
+<li><p>Create a unified CA Certificate file:</p>
+
+<pre><code>cat sub.class1.server.ca.pem &gt;&gt; ca.pem
+</code></pre></li>
+
+<li><p>Delete the no longer needed StartSSL Intermediate CA Certificate file:</p>
+
+<pre><code>rm -rf sub.class1.server.ca.pem
+</code></pre></li>
+
+<li><p>Create a single file containing your signed certificate and the StartSSL CA certificates for Nginx:</p>
+
+<pre><code>cat server.crt ca.pem &gt; nginx.crt
+</code></pre></li>
+</ol>
+
+<h3 id="install-your-startssl-certificate">Install Your StartSSL Certificate</h3>
+
+<ol>
+<li><p>By default, Nginx is configured to only serve HTTP requests on TCP port 80. You need to configure Nginx to server HTTPS requests on TCP port 443. Open up the sample Nginx SSL virtual host configuration file.</p>
+
+<pre><code>nano /etc/nginx/conf.d/example_ssl.conf
+</code></pre></li>
+
+<li><p>Adjust your configuration so it matches the example below.</p>
+
+<pre><code># HTTPS server
+#
+server {
+    listen       443 ssl;
+    server_name  YOUR DOMAIN OR SUB DOMAIN NAME HERE;
+
+    ssl_certificate      /etc/ssl/nginx/nginx.crt;
+    ssl_certificate_key  /etc/ssl/nginx/server.key;
+
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout  5m;
+
+    ssl_ciphers  &quot;EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !EXPORT !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS&quot;;
+    ssl_prefer_server_ciphers   on;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+}
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The changes are to <code>server_name</code>, <code>ssl_certificate</code>, <code>ssl_certificate_key</code>, <code>ssl_session_cache</code>, <code>ssl_ciphers</code>, and the removal of # signs. Also note, the addition of <code>ssl_protocols</code>.</div>
+</blockquote>
+</li>
+
+<li><p>Restart Nginx to apply your changes.</p>
+
+<pre><code>service nginx restart
+</code></pre></li>
+</ol>
+
+<h3 id="test">Test</h3>
+
+<p>Launch a web browser and navigate to <a href="https://yourdomainorsubdomainhere">https://yourdomainorsubdomainhere</a> and you should see the default nginx page. Please note, this will not work until you have created an A record for your hostname at your domain provider pointing to the IP address of your Linode. Please contact your domain provider if you need assistance.</p>
+
+<p><a href="/docs/assets/1768-Up-And-Running.jpg"><img src="/docs/assets/1768-Up-And-Running.jpg" alt="Up and Running" /></a></p>
+
+<p>You have successfully installed the latest version of Nginx and configured your free StartSSL SSL Certificate. You can now run an <a href="https://www.ssllabs.com/ssltest/">SSL test</a> on your server and get an A! Now you can place any files you would like Nginx to make available in the /usr/share/nginx/html folder.</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/">Install nginx and a StartSSL Certificate on Debian 8 (Jessie)</a></li>
+    
+    
+    
+    <li><a href="/docs/game-servers/minecraft-with-mcmyadmin-on-debian/">Installing McMyAdmin for Minecraft on Debian</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/">How to Install Nginx on Debian 7 (Wheezy)</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-debian-7/">Apache Web Server on Debian 7 (Wheezy)</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/enable-ssl-for-https-configuration-on-nginx/">Enable SSL for HTTPS Configuration on nginx</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#add-the-nginx-debian-repository-to-your-linode-package-sources">Add the Nginx Debian Repository to Your Linode Package Sources</a></li>
+<li><a href="#install-nginx">Install Nginx</a></li>
+<li><a href="#generate-a-private-key-and-certificate-signing-request-csr">Generate a Private Key and Certificate Signing Request (CSR)</a></li>
+<li><a href="#sign-up-with-startssl">Sign-up With StartSSL</a></li>
+<li><a href="#verify-your-domain-name-with-startssl">Verify Your Domain Name with StartSSL</a></li>
+<li><a href="#submit-your-certificate-signing-request-to-startssl">Submit Your Certificate Signing Request to StartSSL</a></li>
+<li><a href="#gather-additional-required-certificate-files">Gather Additional Required Certificate Files</a></li>
+<li><a href="#install-your-startssl-certificate">Install Your StartSSL Certificate</a></li>
+<li><a href="#test">Test</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

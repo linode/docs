@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use Google Authenticator to enable two-factor authentication for SSH connections.">
+        <meta name="keywords" content="two factor authentication, ssh, google authenticator, ubuntu, debian">
+        
+        <meta property="og:title" content="Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/">
+        <meta property="og:description" content="Use Google Authenticator to enable two-factor authentication for SSH connections.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/security/">Security, Upgrades &amp; Backups</a>
+  
+</li>
+
+
+<li>
+  
+  Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-11-18T00:00:00Z">Friday, November 18, 2016</time> by Phil Zona</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fuse-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8%2f&via=linode&text=Use%20One-Time%20Passwords%20for%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fuse-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fsecurity%2fuse-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8%2f&t=Use%20One-Time%20Passwords%20for%20Two-Factor%20Authentication%20with%20SSH%20on%20Ubuntu%2016.04%20and%20Debian%208" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>In this guide, you&rsquo;ll learn how to use one-time passwords for two-factor authentication with SSH on Ubuntu 16.04 and Debian 8.</p>
+
+<p><img src="/docs/assets/two-factor-authentication-ubuntu-debian-title.png" alt="Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8" title="Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8" /></p>
+
+<p>No matter what kind of data you&rsquo;re hosting, securing access to your Linode is a critical step in preventing your information from falling into the wrong hands. By default, you will need a password to log in, and you may also configure a key pair for even greater security. However, another option exists to complement these methods: time-based one-time passwords (<em>TOTPs</em>).</p>
+
+<p>TOTPs allow you to enable two-factor authentication for SSH with single-use passwords that change every 30 seconds. By combining this method with a regular password or publickey (or both), you can add an extra layer of security, further ensuring your server is sufficiently protected.</p>
+
+<p>This guide will explain how to install the necessary software, configure your system to use two-factor authentication (2FA), and use your new time-based one-time password (TOTP) in combination with existing security features.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>This guide is meant to be used with Linodes running Ubuntu 16.04 or Debian 8. Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, and remove unnecessary network services. This guide will explain a different way to harden SSH access, but you may use a keypair in addition for even greater protection.</p></li>
+
+<li><p>You will need a smartphone or another client device with an authenticator application such as <a href="https://en.wikipedia.org/wiki/Google_Authenticator">Google Authenticator</a> or <a href="https://www.authy.com/">Authy</a>. Many other options exist, and this guide should be compatible with nearly all of them.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="install-google-authenticator">Install Google Authenticator</h2>
+
+<p>In this section, we&rsquo;ll install the Google Authenticator package, which is included in the default repositories of both Ubuntu 16.04 and Debian 8. This software will generate keys on your Linode, which will then be paired with an app on a client device (often a smartphone) to generate single-use passwords that expire after a set period of time.</p>
+
+<p>To install Google Authenticator:</p>
+
+<pre><code>sudo apt-get install libpam-google-authenticator
+</code></pre>
+
+<p>Although we are using the Google Authenticator package, the keys it generates are compatible with other authentication apps.</p>
+
+<h2 id="generate-a-key">Generate a Key</h2>
+
+<p>Now that you&rsquo;ve installed the package, you&rsquo;ll use it to generate keys. These keys are then used by software on client devices to generate time-based one-time passwords (TOTPs). To understand the difference between these passwords and the ones you already use, let&rsquo;s break down the concept of a TOTP:</p>
+
+<ul>
+<li><strong>Time-based</strong> - The generated password will change every 30-60 seconds. This means that if an attacker tries to use brute force, they&rsquo;ll almost certainly run out of time before new credentials are needed to gain access.</li>
+<li><strong>One-time</strong> - The password will be valid for a single authentication only, thus minimizing the risk of a replay attack. Even if your TOTP is intercepted upon sending it to the server, it will no longer be valid after you&rsquo;ve logged in.</li>
+</ul>
+
+<p>The following instructions will generate a password for the user running the commands. If you are configuring two-factor authentication for multiple users, perform these steps for each user.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Be sure to have your phone or mobile device ready, since this is where you&rsquo;ll add the password to your authenticator app. If you haven&rsquo;t downloaded an authenticator app, do so before proceeding.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Run the <code>google-authenticator</code> program:</p>
+
+<pre><code>google-authenticator
+</code></pre>
+
+<p>A prompt will appear asking you to specify whether you&rsquo;d like to use a time-based authentication (as opposed to counter-based). Choose &ldquo;yes&rdquo; by entering <code>y</code> at the prompt.</p></li>
+
+<li><p>You should see a <a href="https://en.wikipedia.org/wiki/QR_code">QR code</a> in your terminal:</p>
+
+<p><img src="/docs/assets/google-authenticator-ubuntu.png" alt="The Google Authenticator QR Code and keys on Ubuntu 16.04." /></p>
+
+<p>Using the authenticator app on your phone or mobile device, scan the code. A new entry should be added to your authenticator app in the format <code>username@hostname</code>.</p>
+
+<p>You&rsquo;ll also see a &ldquo;secret key&rdquo; below the QR code. You may enter this into the app manually, instead of scanning the QR code, to add your account.</p></li>
+
+<li><p>Record your emergency scratch codes in a secure location. These codes can be used for authentication if you lose your device, but be aware that each code is only valid <strong>once</strong>.</p></li>
+
+<li><p>You&rsquo;ll be prompted to answer the following questions:</p>
+
+<pre><code>Do you want me to update your &quot;/home/exampleuser/.google_authenticator&quot; file (y/n)
+</code></pre>
+
+<p>This specifies whether the authentication settings will be set for this user. Answer <code>y</code> to create the file that stores these settings.</p>
+
+<pre><code>Do you want to disallow multiple uses of the same authentication
+token? This restricts you to one login about every 30s, but it increases
+your chances to notice or even prevent man-in-the-middle attacks (y/n)
+</code></pre>
+
+<p>This makes your token a true one-time password, preventing the same password from being used twice. For example, if you set this to &ldquo;no,&rdquo; and your password was intercepted while you logged in, someone may be able to gain entry to your server by entering it before the time expires. We <strong>strongly</strong> recommend answering <code>y</code>.</p>
+
+<pre><code>By default, tokens are good for 30 seconds and in order to compensate for
+possible time-skew between the client and the server, we allow an extra
+token before and after the current time. If you experience problems with poor
+time synchronization, you can increase the window from its default
+size of 1:30min to about 4min. Do you want to do so (y/n)
+</code></pre>
+
+<p>This setting accounts for time syncing issues across devices. Unless you have reason to believe that your phone or device may not sync properly, answer <code>n</code>.</p>
+
+<pre><code>If the computer that you are logging into isn't hardened against brute-force
+login attempts, you can enable rate-limiting for the authentication module.
+By default, this limits attackers to no more than 3 login attempts every 30s.
+Do you want to enable rate-limiting (y/n)
+</code></pre>
+
+<p>This setting prevents attackers from using brute force to guess your token. Although the time limit should be enough to prevent most attacks, this will ensure that an attacker only has three chances per 30 seconds to guess your password. We recommend answering <code>y</code>.</p></li>
+
+<li><p><strong>Before you log out</strong>, review the <a href="#configure-authentication-settings">next section</a> carefully to avoid getting locked out of your Linode.</p></li>
+</ol>
+
+<p>Congratulations! You have finished generating your key and adding it to your client, but some additional configuration is needed before these settings will go into effect. Carefully read the following section in this guide for instructions on how to require two-factor authentication for all SSH login attempts.</p>
+
+<h2 id="configure-authentication-settings">Configure Authentication Settings</h2>
+
+<p>The TOTP authentication methods in this guide use <em>PAM</em>, or Pluggable Authentication Modules. <a href="http://www.linux-pam.org/">PAM</a> integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you&rsquo;re using additional software (i.e., programs that aren&rsquo;t built into the Linux distro), you&rsquo;ll need to configure PAM to properly authenticate users.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won&rsquo;t be locked out of your Linode. You can also use <a href="/docs/networking/using-the-linode-shell-lish">Lish</a> to regain access.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Open <code>/etc/pam.d/sshd</code> with sudo privileges, and add the following lines to the end of the file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/pam.d/sshd 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">auth    required      pam_unix.so     no_warn try_first_pass
+auth    required      pam_google_authenticator.so</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The first line tells PAM to authenticate with a normal Unix user password before other methods. The second line specifies an additional method of authentication, which in this case, is the TOTP software we installed earlier.</p></li>
+
+<li><p>Edit <code>/etc/ssh/sshd_config</code> to include the following lines, replacing <code>example-user</code> with any system user for which you&rsquo;d like to enable two-factor authentication. Comments (preceded by #) are included here, but should not be added to your actual configuration file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/ssh/sshd_config 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># This line already exists in the file, and should be changed from &#39;no&#39; to &#39;yes&#39;
+</span><span class="c1"></span>ChallengeResponseAuthentication yes
+
+...
+
+<span class="c1"># These lines should be added to the end of the file
+</span><span class="c1"></span>Match User example-user
+    AuthenticationMethods keyboard-interactive</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you created TOTPs for multiple users, and you&rsquo;d like to have them all use two-factor authentication, create additional <code>Match User</code> blocks for each  user, duplicating the command format shown above.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you want to enforce two-factor authentication globally, you can use the <code>AuthenticationMethods</code> directive by itself, outside of a <code>Match User</code> block. However, this should not be done until two-factor credentials have been provided to all users.</div>
+</blockquote>
+</li>
+
+<li><p>Restart the SSH daemon to apply these changes:</p>
+
+<pre><code>sudo systemctl restart ssh
+</code></pre></li>
+</ol>
+
+<p>Congratulations! Two-factor authentication is now enabled. When you connect to your Linode via SSH, the authentication process will proceed as follows:</p>
+
+<p><img src="/docs/assets/two-factor-authentication-diagram.png" alt="Two-factor authentication with SSH login." title="Two-factor authentication with SSH login." /></p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If your SSH client disconnects before you can enter your two-factor token, check if PAM is enabled for SSH. You can do this by editing <code>/etc/ssh/sshd_config</code>: look for <code>UsePAM</code> and set it to <code>yes</code>. Don&rsquo;t forget to restart the SSH daemon.</div>
+</blockquote>
+
+
+<h2 id="combine-two-factor-and-public-key-authentication">Combine Two-Factor and Public Key Authentication</h2>
+
+<p>This section is optional. If you&rsquo;d like to use <a href="/docs/security/use-public-key-authentication-with-ssh">public key authentication</a> instead of a password with TOTP, perform these steps:</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Confirm that your public key has been copied to your Linode before completing this section. View installed SSH keys by entering <code>ssh-add -l</code> in your terminal.</div>
+</blockquote>
+
+
+<ol>
+<li><p>Set <code>PasswordAuthentication</code> to <code>no</code> and modify the <code>AuthenticationMethods</code> line in <code>/etc/ssh/sshd_config</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/ssh/sshd_config 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">PasswordAuthentication no
+...
+Match User example-user
+    AuthenticationMethods publickey,keyboard-interactive</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Configure this setting in the <code>AuthenticationMethods</code> directive for each user as appropriate. When any of these users log in, they will need to provide their SSH key and they will be authenticated via TOTP, as well. Be sure to restart your SSH daemon to apply these changes.</p></li>
+
+<li><p>Next, you&rsquo;ll need to make changes to your PAM configuration. Comment out or omit the following lines in your <code>/etc/pam.d/sshd</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/pam.d/sshd 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># @include common-auth
+</span><span class="c1"></span>...
+# auth    required      pam_unix.so     no_warn try_first_pass</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+
+<p>That&rsquo;s it! You should now be able to log in using your SSH key as the first method of authentication and your verification code as the second. To test your configuration, log out and try to log in again via SSH. You should be asked for your 6-digit verification code only, since the key authentication will not produce a prompt.</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>If you or a user on your system use this method, be sure that the SSH key and authenticator app are on different devices. This way, if one device is lost or compromised, your credentials will still be separate and the security of two-factor authentication will remain intact.</div>
+</blockquote>
+
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>First, be sure you have followed our guide to <a href="/docs/security/securing-your-server">Securing Your Server</a>. Although there is no single, foolproof method to protecting your data, firewalls and services like <a href="/docs/security/using-fail2ban-for-security/">Fail2Ban</a> are a great way to minimize risk.</p>
+
+<p>When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you&rsquo;ve configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can&rsquo;t easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use <a href="/docs/networking/using-the-linode-shell-lish">Lish</a> to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as <a href="/docs/security/use-public-key-authentication-with-ssh">public key authentication</a>, in the interim.</p>
+
+<p>While two-factor authentication may be a valuable security feature, total security is an ongoing process, not an end goal that can be achieved by adding extra layers of authentication. To provide the best protection for your data, take care to follow security best practices at all times.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://en.wikipedia.org/wiki/One-time_password">One-Time Passwords</a></li>
+
+<li><a href="http://www.linux-pam.org/">Linux PAM Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/">Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu/">Obtain a Commercially Signed SSL Certificate on Debian &amp; Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/security/firewalls/configure-firewall-with-ufw/">How to Configure a Firewall with UFW</a></li>
+    
+    
+    
+    <li><a href="/docs/networking/vpn/install-openvpn-access-server-on-linux/">Install OpenVPN Access Server on Linux for Secure Communications</a></li>
+    
+    
+    
+    <li><a href="/docs/websites/cms/turbocharge-wordpress-search-with-solr/">Turbocharge Your WordPress Search Using Solr</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-google-authenticator">Install Google Authenticator</a></li>
+<li><a href="#generate-a-key">Generate a Key</a></li>
+<li><a href="#configure-authentication-settings">Configure Authentication Settings</a></li>
+<li><a href="#combine-two-factor-and-public-key-authentication">Combine Two-Factor and Public Key Authentication</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

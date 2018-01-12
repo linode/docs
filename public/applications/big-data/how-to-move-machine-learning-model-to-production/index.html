@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Move Your Machine Learning Model to Production</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how to use an existing deep learning model as part of a production application. A pre-trained model is included as an API endpoint for a Flask app.">
+        <meta name="keywords" content="deep learning, big data, python, keras, flask, machine learning, neural networks">
+        
+        <meta property="og:title" content="How to Move Your Machine Learning Model to Production">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/big-data/how-to-move-machine-learning-model-to-production/">
+        <meta property="og:description" content="Use an pre-trained deep learning model as part of a production application.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/big-data/how-to-move-machine-learning-model-to-production/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/big-data/">Big Data</a>
+  
+</li>
+
+
+<li>
+  
+  How to Move Your Machine Learning Model to Production
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Move Your Machine Learning Model to Production</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-10-10T00:00:00Z">Tuesday, October 10, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fbig-data%2fhow-to-move-machine-learning-model-to-production%2f&via=linode&text=How%20to%20Move%20Your%20Machine%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fbig-data%2fhow-to-move-machine-learning-model-to-production%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fbig-data%2fhow-to-move-machine-learning-model-to-production%2f&t=How%20to%20Move%20Your%20Machine%20Learning%20Model%20to%20Production" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/big-data/how-to-move-machine-learning-model-to-production.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/big-data/how-to-move-machine-learning-model-to-production.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/machine-learning/Machine_Learning_Model.jpg" alt="How to Move Your Machine Learning Model to Production" /></p>
+
+<p>Developing, training, and tuning a deep learning model for a particular problem, such as natural language processing (NLP) or image recognition, requires time and resources. It also often involves using powerful processors to train the model on large datasets. However, once the model is working well, using it to generate predictions on new data is much simpler and less computationally expensive. The only difficulty is in moving the model from its development environment into a production app.</p>
+
+<p>This guide will show you how to create a simple Flask API that will use machine learning to identify handwritten digits. The API will use a simple deep learning model trained on the famous MNIST dataset.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<p>This guide uses Ubuntu 16.04 in the examples. Modify the commands as needed for your distribution. The scripts in this guide are written in Python 3, but should also work on Python 2.</p>
+
+<h2 id="set-up-a-python-virtual-environment">Set Up a Python Virtual Environment</h2>
+
+<p>You will be using Python both to create a model and to deploy the model to a Flask API. It is a good idea to set up virtual environments for each purpose, so that any changes you make to your Python configuration won&rsquo;t affect the rest of your system.</p>
+
+<ol>
+<li><p>Download and install Miniconda, a lightweight version of Anaconda. Follow the instructions in the terminal and allow Anaconda to add a PATH location to <code>.bashrc</code>:</p>
+
+<pre><code>wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Anaconda3-5.0.0.1-Linux-x86_64.sh
+source .bashrc
+</code></pre></li>
+
+<li><p>Create and activate a new Python virtual environment:</p>
+
+<pre><code>conda create -n deeplearning python
+source activate deeplearning
+</code></pre>
+
+<p>If these commands are successful, your terminal prompt will now be prefaced with <code>(deeplearning)</code>.</p></li>
+
+<li><p>Install dependencies inside the virtual environment:</p>
+
+<pre><code>conda install keras tensorflow h5py pillow flask numpy
+</code></pre></li>
+</ol>
+
+<p>If you would like to experiment with the model, you may want to use a Jupyter notebook. See our <a href="/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy">Install a Jupyter Notebook Server</a> guide for more details.</p>
+
+<h2 id="prepare-a-model">Prepare a Model</h2>
+
+<p>Training complicated models on large datasets is usually done on specialized machines with powerful GPUs (Graphical Processing Units). In order to focus on the deployment process, this guide will quickly build a simple model on a manageable dataset, so that it can be trained quickly even on a laptop or basic Linode.</p>
+
+<h3 id="mnist-database">MNIST Database</h3>
+
+<p>Training a computer to recognize handwritten numbers was an important task in early machine learning. This kind of classifier is used by many organizations, including the U.S. Post Office, to automate the input and processing of information. A famous dataset used for this task is the MNIST database, which contains 70,000 images of handwritten digits (for comparison, the ImageNet database, commonly used in machine learning applications, has more than 10 million images). Each 28x28 pixel image consists of a single digit that has been preprocessed and labeled. For more information about MNIST, see the <a href="http://yann.lecun.com/exdb/mnist/">official site</a>.</p>
+
+<p>Many different models, from simple linear classifiers to complicated neural networks, have been trained on MNIST. Currently, the best models are able to achieve an <a href="https://en.wikipedia.org/wiki/MNIST_database">error rate of only 0.21%</a>. This guide will use a simple CNN (Convolutional Neural Network) that can achieve an accuracy of about 97%.</p>
+
+<h3 id="create-a-deep-learning-model-with-keras">Create a Deep Learning Model with Keras</h3>
+
+<p>Keras is a deep learning library for Python. It provides an object-oriented interface that can work with a variety of deep learning frameworks, including Theano and Tensorflow.</p>
+
+<p>Since developing and training a deep learning model is beyond the scope of this tutorial, the code below is provided without explanation. The model is a simplified version of the example from <a href="https://elitedatascience.com/keras-tutorial-deep-learning-in-python">Elite Data Science&rsquo;s excellent tutorial</a>. If you don&rsquo;t have a background in deep learning and are interested in learning more, you can complete that tutorial and then skip to the <a href="#flask-api">Flask API</a> section of this guide.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command <code>wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5</code></div>
+</blockquote>
+
+
+<p>Older versions of Keras require deleting optimizer weights in the pre-trained model. If the pre-trained model is downloaded from GitHub, the script below checks and removes optimizer weights.</p>
+
+<dl class="file">
+<dt>
+
+
+		optimizer-weights.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">h5py</span>
+<span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;my_model.h5&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;r+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">if</span> <span class="sa"></span><span class="s1">&#39;optimizer_weights&#39;</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="k">del</span> <span class="n">f</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;optimizer_weights&#39;</span><span class="p">]</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<ol>
+<li><p>Create a directory for the model:</p>
+
+<pre><code>mkdir ~/models &amp;&amp; cd ~/models
+</code></pre></li>
+
+<li><p>Create a Python script to build and train your model:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/models/mnist_model.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Flatten</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Convolution2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span>
+<span class="kn">from</span> <span class="nn">keras.utils</span> <span class="kn">import</span> <span class="n">np_utils</span>
+<span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
+
+<span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">)</span>
+<span class="n">X_test</span>  <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">/=</span> <span class="mi">255</span>
+<span class="n">X_test</span> <span class="o">/=</span> <span class="mi">255</span>
+
+<span class="n">Y_train</span> <span class="o">=</span> <span class="n">np_utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">Y_test</span> <span class="o">=</span> <span class="n">np_utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Convolution2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;relu&#39;</span><span class="p">,</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span><span class="n">dim_ordering</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;th&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span>
+              <span class="n">optimizer</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span>
+          <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">nb_epoch</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;my_model.h5&#39;</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Run the script:</p>
+
+<pre><code>python ./mnist_model.py
+</code></pre>
+
+<p>There may be a warning message as shown below from a pip or conda installation which means installing from source could offer superior performance.</p>
+
+<div class="file">
+The TensorFlow library wasn&rsquo;t compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+</div>
+
+<p>If the script executes successfully, you should see the <code>my_model.h5</code> file in the <code>models</code> directory. The <code>model.save()</code> command in Keras allows you to save both the model architecture and the trained weights.</p></li>
+</ol>
+
+<h2 id="flask-api">Flask API</h2>
+
+<p>Once a model has been trained, using it to generate predictions is much simpler. In this section you will build a simple Python API with Flask. The API will have a single endpoint: it will accept POST requests with an image attached, then use the model you saved in the previous section to identify the handwritten digit in the image.</p>
+
+<ol>
+<li><p>Create a directory for the Flask API:</p>
+
+<pre><code>sudo mkdir -p /var/www/flaskapi/flaskapi &amp;&amp; cd /var/www/flaskapi/flaskapi
+</code></pre></li>
+
+<li><p>Copy the pre-trained model to the root of the Flask app:</p>
+
+<pre><code>sudo cp ~/models/my_model.h5 /var/www/flaskapi/flaskapi
+</code></pre></li>
+
+<li><p>Create <code>/var/www/flaskapi/flaskapi/__init__.py</code> in a text editor and add the following:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/flaskapi/flaskapi/__init__.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">PIL</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;/var/www/flaskapi/flaskapi/my_model.h5&#39;</span><span class="p">)</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;/predict&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;POST&#34;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">predict_image</span><span class="p">():</span>
+        <span class="c1"># Preprocess the image so that it matches the training input</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">)))</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">)</span>
+
+        <span class="c1"># Use the loaded model to generate a prediction.</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+        <span class="c1"># Prepare and send the response.</span>
+        <span class="n">digit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+        <span class="n">prediction</span> <span class="o">=</span> <span class="p">{</span><span class="sa"></span><span class="s1">&#39;digit&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">digit</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This time, the only module you need to import from Keras is <code>load_model</code>, which reads <code>my_model.h5</code> and loads the model and weights. Once the model is loaded, the <code>predict()</code> function will generate a set of probabilities for each of the numbers from 0-9, indicating the likelihood that the digit in the image matches each number. The <code>argmax</code> function from the Numpy library returns the number with the highest probability: the number that the model thinks is the most likely match.</p>
+
+<p>The format of the inputs to the model must be exactly the same as the images used in training. The training images were 28x28 pixel greyscale images, represented as an array of floats with the shape (1,28,28) (color images would have been (3,28,28)). This means that any image you submit to the model must be resized to this exact shape. This preprocessing can be done on either the client-side or server-side, but for simplicity the example API above handles the processing.</p></li>
+</ol>
+
+<h2 id="install-mod-wsgi">Install mod_wsgi</h2>
+
+<p>Apache modules are typically installed with the system installation of Apache. However, <code>mod_wsgi</code> can be installed within Python in order to use the appropriate virtual environment.</p>
+
+<ol>
+<li><p>Install Apache and development headers:</p>
+
+<pre><code>sudo apt install apache2-dev apache2
+</code></pre></li>
+
+<li><p>Install <code>mod_wsgi</code> as a Python module for Apache:</p>
+
+<pre><code>wget https://pypi.python.org/packages/aa/43/f851abaad631aee69206e29cebf9f8bf0ddb9c22dbd6e583f1f8f44e6d43/mod_wsgi-4.5.20.tar.gz
+tar -xvf mod_wsgi-4.5.20.tar.gz
+cd mod_wsgi-4.5.20
+python setup.py install
+</code></pre></li>
+
+<li><p>Use <code>mod_wsgi-express</code> to find the installation path:</p>
+
+<pre><code>mod_wsgi-express module-config
+</code></pre>
+
+<p>The output should be similar to:</p>
+
+<pre><code>LoadModule wsgi_module &quot;/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so&quot;
+</code></pre>
+
+<p>WSGIPythonHome &ldquo;/home/linode/miniconda3/envs/deeplearning&rdquo;</p></li>
+
+<li><p>Create a <code>wsgi.load</code> file in the Apache <code>mods-available</code> directory. Copy the <code>LoadModule</code> directive from above and paste it into the file:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apache2/mods-available/wsgi.load 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">LoadModule wsgi_module <span class="s2">&#34;/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Enable the mod:</p>
+
+<pre><code>a2enmod wsgi
+</code></pre></li>
+</ol>
+
+<h2 id="set-up-virtual-hosting-for-flask-api">Set Up Virtual Hosting for Flask API</h2>
+
+<ol>
+<li><p>Create a <code>flaskapi.wsgi</code> file with settings for your app:</p>
+
+<dl class="file">
+<dt>
+
+
+		/var/www/flaskapi/flaskapi/flaskapi.wsgi 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/python
+</span><span class="cp"></span>import sys
+sys.path.insert<span class="o">(</span><span class="m">0</span>,<span class="s2">&#34;/var/www/flaskapi/&#34;</span><span class="o">)</span>
+
+from flaskapi import app as application</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Configure a virtual host for your app. Create <code>flaskapi.conf</code> in Apache&rsquo;s <code>sites-available</code> directory and add the following content, replacing <code>example.com</code> with your Linode&rsquo;s public IP address. For the <code>WSGIDaemonProcess</code> directive, set the Python home path to the output of <code>mod_wsgi-express module-config</code> under <code>WSGIPythonHome</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apache2/sites-available/flaskapi.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;Directory</span> <span class="s">/var/www/flaskapi/flaskapi</span><span class="nt">&gt;</span>
+  <span class="nb">Require</span> <span class="k">all</span> granted
+<span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span>
+<span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+  <span class="nb">ServerName</span> example.com
+  <span class="nb">ServerAdmin</span> admin@example.com
+  <span class="nb">WSGIDaemonProcess</span> flaskapi python-home=/home/linode/miniconda3/envs/deeplearning
+  <span class="nb">WSGIScriptAlias</span> / <span class="sx">/var/www/flaskapi/flaskapi/flaskapi.wsgi</span>
+  <span class="nb">ErrorLog</span> <span class="sx">/var/www/html/example.com/logs/error.log</span>
+  <span class="nb">CustomLog</span> <span class="sx">/var/www/html/example.com/logs/access.log</span> combined
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Create a <code>logs</code> directory:</p>
+
+<pre><code>sudo mkdir -p /var/www/html/example.com/logs
+</code></pre></li>
+
+<li><p>Activate the new site and restart Apache:</p>
+
+<pre><code>sudo a2dissite 000-default.conf
+sudo a2ensite flaskapi.conf
+sudo systemctl restart apache2
+</code></pre></li>
+</ol>
+
+<h2 id="test-the-api">Test the API</h2>
+
+<p>Your API endpoint should now be ready to accept POST requests with an image attached. In theory the API should be able to identify any image of an isolated handwritten digit. However, in order to obtain accurate predictions, the preprocessing steps used by the MNIST researchers should be replicated on every image submitted to the model. This would include calculating the center of pixel density and using that to center the digit within the image, as well as applying anti-aliasing. In order to quickly test the API, you can use <code>curl</code> to submit an image from the MNIST test set.</p>
+
+<ol>
+<li><p>Right click and download the image below onto your local machine:</p>
+
+<p><img src="/docs/assets/machine-learning/7.png" alt="MNIST 7" title="MNIST 7" /></p></li>
+
+<li><p>From your local machine, use <code>curl</code> to POST the image to your API. Replace the IP address with the public IP address of your Linode, and provide the absolute path to the downloaded image in place of <code>/path/to/7.png</code>:</p>
+
+<pre><code>curl -F 'file=@/path/to/7.png' 192.0.2.0/predict
+</code></pre>
+
+<p>If successful, you will receive a JSON response that correctly identifies the digit in the image:</p>
+
+<pre><code>{ 'digit' : 7 }
+</code></pre>
+
+<p>The first request may appear to take some time because <code>mod_wsgi</code> uses lazy loading of the Flask application.</p></li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Most production machine learning solutions involve a longer pipeline than demonstrated in this guide. For example, you could add a different endpoint with a deep learning classifier for identifying digits in a larger image. Each detected digit would then be passed to the <code>/predict</code> endpoint, so that your application could interpret a series of handwritten digits, such as a phone number, for example.</p>
+
+<p>The API produced in this guide also lacks many features that a real-world application would need, including error handling and dealing with bulk image requests. To make the service more useful, the full preprocessing used by MNIST should be applied to each image.</p>
+
+<p>In addition, images submitted to the API could be used as a source of data to further train and refine your model. In this case, you could configure the API to copy each submitted image, along with the model&rsquo;s prediction, to a database for later analysis. See the links in <strong>More Information</strong> if you are interested in these topics.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://conda.io/miniconda.html">Miniconda</a></li>
+
+<li><a href="https://keras.io/">Keras Documentation</a></li>
+
+<li><a href="http://course.fast.ai/">Fast AI Deep Learning Course</a></li>
+
+<li><a href="https://www.tensorflow.org/tutorials/">TensorFlow Tutorials</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/big-data/how-to-scrape-a-website-with-beautiful-soup/">How to Scrape a Website with BeautifulSoup</a></li>
+    
+    
+    
+    <li><a href="/docs/development/create-a-python-virtualenv-on-ubuntu-1610/">Create a Python Virtual Environment on Ubuntu 16.10 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/big-data/big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm/">Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/">Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/">Apache and mod_wsgi on Ubuntu 14.04 (Trusty Tahr)</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#set-up-a-python-virtual-environment">Set Up a Python Virtual Environment</a></li>
+<li><a href="#prepare-a-model">Prepare a Model</a>
+<ul>
+<li><a href="#mnist-database">MNIST Database</a></li>
+<li><a href="#create-a-deep-learning-model-with-keras">Create a Deep Learning Model with Keras</a></li>
+</ul></li>
+<li><a href="#flask-api">Flask API</a></li>
+<li><a href="#install-mod-wsgi">Install mod_wsgi</a></li>
+<li><a href="#set-up-virtual-hosting-for-flask-api">Set Up Virtual Hosting for Flask API</a></li>
+<li><a href="#test-the-api">Test the API</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

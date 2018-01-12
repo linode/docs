@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>How to Unbundle nginx from Omnibus GitLab for Serving Multiple Websites</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Unbundle the default nginx server from Omnibus Gitlab and install and configure your own to enable virtual hosting.">
+        <meta name="keywords" content="version control,  git,  gitlab,  install gitlab on ubuntu,  how to manage repositories with gitlab">
+        
+        <meta property="og:title" content="How to Unbundle nginx from Omnibus GitLab for Serving Multiple Websites">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/">
+        <meta property="og:description" content="Unbundle the default nginx server from Omnibus Gitlab and install and configure your own to enable virtual hosting.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/version-control/">Version Control</a>
+  
+</li>
+
+
+<li>
+  
+  How to Unbundle nginx from Omnibus GitLab for Serving Multiple Websites
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">How to Unbundle nginx from Omnibus GitLab for Serving Multiple Websites</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-06-21T00:00:00Z">Wednesday, June 21, 2017</time> by Phil Zona</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://twitter.com/programarivm">Jordi Bassagañas
+    
+    <i class="fa fa-twitter"></i>
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fhow-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites%2f&via=linode&text=How%20to%20Unbundle%20nginx%20from%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fhow-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fversion-control%2fhow-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites%2f&t=How%20to%20Unbundle%20nginx%20from%20Omnibus%20GitLab%20for%20Serving%20Multiple%20Websites" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p>Omnibus GitLab is a software package (or software stack) that allows you to easily install and run GitLab on your Linode.
+This guide walks you through the process of installing and setting up your own nginx server on a typical Omnibus installation. Using the method outlined here, you are not forced to use Omnibus&rsquo;s default settings, and can create as many virtual hosts as you need for hosting multiple websites and apps on the same server as your GitLab.</p>
+
+<p>Preconfigured software stacks sometimes bring a series of challenges to those who need to customize specific settings. If you require more control over your installation, consider <a href="/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr">installing GitLab from source</a>. This application stack could benefit from large amounts of disk space, so also consider using our <a href="/docs/platform/how-to-use-block-storage-with-your-linode">Block Storage</a> service with this setup.</p>
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with Linode&rsquo;s <a href="/docs/getting-started">Getting Started guide</a> and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> guide to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>This guide has been tested with Ubuntu 14.04 LTS and 16.04 LTS. Some commands will be slightly different for each version, so be sure to read each step carefully for version-specific instructions.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you’re not familiar with the <code>sudo</code> command, visit our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups guide</a> for more information.</div>
+</blockquote>
+
+
+<h2 id="install-omnibus-gitlab">Install Omnibus GitLab</h2>
+
+<p>If you&rsquo;re already running an Omnibus GitLab environment <a href="https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md">upgrade to the newest version</a> and proceed to the next section, <a href="#unbundle-nginx-from-omnibus-gitlab">Unbundle nginx from Omnibus</a>. If you&rsquo;re installing GitLab for the first time, continue with the steps in this section.</p>
+
+<p>Note that nginx cannot be disabled in older versions of GitLab Community Edition (CE). If you currently have an older version of GitLab CE installed, we recommend that you upgrade incrementally to avoid issues.</p>
+
+<ol>
+<li><p>Install the dependencies:</p>
+
+<pre><code>sudo apt-get install curl openssh-server ca-certificates postfix
+</code></pre></li>
+
+<li><p>While installing Postfix, you&rsquo;ll be asked to configure a few basic settings. On the first <a href="https://en.wikipedia.org/wiki/Ncurses">ncurses</a> screen, select <strong>Internet Site</strong> as the mail configuration. On the second screen, enter your fully qualified domain name (FQDN). This will be used to send email to users when configuring new accounts and resetting passwords. The rest of the mail options will be configured automatically.</p></li>
+
+<li><p>Add the GitLab CE repository and install the <code>gitlab-ce</code> package:</p>
+
+<pre><code>curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+sudo apt-get install gitlab-ce
+</code></pre>
+
+<p>You can view the contents of the script in its entirety on the <a href="https://packages.gitlab.com/gitlab/gitlab-ce/install">GitLab website</a> if you&rsquo;re hesitant to run it sight-unseen. The <a href="https://about.gitlab.com/downloads/">GitLab downloads page</a> also contains alternative download methods if you&rsquo;re still not comfortable running their script.</p></li>
+</ol>
+
+<h2 id="unbundle-nginx-from-omnibus-gitlab">Unbundle nginx from Omnibus GitLab</h2>
+
+<ol>
+<li><p>To unbundle nginx from GitLab, we&rsquo;ll need to disable the version included in the Omnibus package. Add the following lines to <code>/etc/gitlab/gitlab.rb</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/gitlab/gitlab.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Unbundle nginx from Omnibus GitLab
+</span><span class="c1"></span>nginx<span class="o">[</span><span class="s1">&#39;enable&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="c1"># Set your Nginx&#39;s username
+</span><span class="c1"></span>web_server<span class="o">[</span><span class="s1">&#39;external_users&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;www-data&#39;</span><span class="o">]</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Reconfigure GitLab to apply the changes:</p>
+
+<pre><code>sudo gitlab-ctl reconfigure
+</code></pre></li>
+</ol>
+
+<p>For more information on how to customize Omnibus nginx, visit the <a href="https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md">official nginx documentation</a>.</p>
+
+<h2 id="install-ruby-passenger-and-nginx">Install Ruby, Passenger, and nginx</h2>
+
+<p>Now that GitLab&rsquo;s bundled nginx has been disabled, the next step is to install and configure the web server from scratch.</p>
+
+<ol>
+<li><p>Since GitLab is written in Ruby, install Ruby on your system:</p>
+
+<pre><code>sudo apt-get install ruby
+sudo gem install rubygems-update
+sudo update_rubygems
+</code></pre></li>
+
+<li><p>We&rsquo;ll also need to install <a href="https://en.wikipedia.org/wiki/Phusion_Passenger">Phusion Passenger</a>, a web application server for Ruby. Install Phusion Passenger&rsquo;s PGP key:</p>
+
+<pre><code>sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
+</code></pre></li>
+
+<li><p>Add Passenger&rsquo;s APT repository by adding the following lines to <code>/etc/apt/sources.list.d/passenger.list</code>:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apt/sources.list.d/passenger.list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you&rsquo;re using Ubuntu 16.04, replace <code>trusty</code> with <code>xenial</code> in the above command.</div>
+</blockquote>
+</li>
+
+<li><p>Update your package repositories:</p>
+
+<pre><code>sudo apt-get update
+</code></pre></li>
+
+<li><p>Install Passenger and nginx:</p>
+
+<pre><code>sudo apt-get install nginx-extras passenger
+</code></pre></li>
+
+<li><p>Enable the new Passenger module by uncommenting the <code>include /etc/nginx/passenger.conf;</code> line from the <code>/etc/nginx/nginx.conf</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/nginx/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">include</span> <span class="sx">/etc/nginx/passenger.conf</span>;</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Finally, restart nginx. On Ubuntu 14.04:</p>
+
+<pre><code>sudo service nginx restart
+</code></pre>
+
+<p>On Ubuntu 16.04:</p>
+
+<pre><code>sudo systemctl restart nginx
+</code></pre></li>
+</ol>
+
+<p>For further information, please refer to <a href="https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/" title="Installing Passenger + nginx">Installing Passenger + nginx on Ubuntu 14.04 LTS (with APT)</a>.</p>
+
+<h2 id="create-a-new-virtual-host">Create a New Virtual Host</h2>
+
+<p>In this section, we&rsquo;ll create a new virtual host to serve GitLab. Since we&rsquo;ve unbundled nginx, we&rsquo;ll also be able to configure other virtual hosts for other websites and apps.</p>
+
+<ol>
+<li><p>Copy the default virtual host file to a new virtual host file, replacing <code>example.com</code> with your virtual host:</p>
+
+<pre><code>sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/example.com
+</code></pre></li>
+
+<li><p>Edit your new virtual host file to match the following, replacing <code>example.com</code> with your own hostname:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/nginx/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">upstream gitlab <span class="o">{</span>
+    server unix:/var/opt/gitlab/gitlab-rails/sockets/gitlab.socket<span class="p">;</span>
+<span class="o">}</span>
+
+	    server <span class="o">{</span>
+    listen <span class="m">80</span><span class="p">;</span>
+    server_name example.com<span class="p">;</span>
+    server_tokens off<span class="p">;</span> <span class="c1"># don&#39;t show the version number, a security best practice
+</span><span class="c1"></span>    root /opt/gitlab/embedded/service/gitlab-rails/public<span class="p">;</span>
+
+    <span class="c1"># Increase this if you want to upload large attachments
+</span><span class="c1"></span>    <span class="c1"># Or if you want to accept large git objects over http
+</span><span class="c1"></span>    client_max_body_size 250m<span class="p">;</span>
+
+    <span class="c1"># individual nginx logs for this gitlab vhost
+</span><span class="c1"></span>    access_log  /var/log/nginx/gitlab_access.log<span class="p">;</span>
+    error_log   /var/log/nginx/gitlab_error.log<span class="p">;</span>
+
+    location / <span class="o">{</span>
+        proxy_redirect off<span class="p">;</span>
+        proxy_set_header Host <span class="nv">$http_host</span><span class="p">;</span>
+        proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+        proxy_set_header X-Real-IP <span class="nv">$remote_addr</span><span class="p">;</span>
+        proxy_pass http://gitlab<span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Enable your new virtual host by symbolically linking it to <code>sites-enabled</code> (change <code>example.com</code>):</p>
+
+<pre><code>sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
+</code></pre></li>
+
+<li><p>Restart nginx to load your changes. On Ubuntu 14.04:</p>
+
+<pre><code>sudo service nginx restart
+</code></pre>
+
+<p>On Ubuntu 16.04:</p>
+
+<pre><code>sudo systemctl restart nginx
+</code></pre></li>
+
+<li><p>Since nginx needs to access GitLab, add the <code>www-data</code> user to the <code>gitlab-www</code> group:</p>
+
+<pre><code>sudo usermod -aG gitlab-www www-data
+</code></pre></li>
+</ol>
+
+<p>Congratulations! You have turned a default Omnibus GitLab server into a multi-purpose one. To serve additional websites and apps using your newly unbundled nginx server, simply create additional virtual hosts above, and configure them to your needs. For more information, please refer to our guide on <a href="/docs/websites/nginx/how-to-configure-nginx">how to configure nginx</a>.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md">Updating GitLab via Omnibus GitLab</a></li>
+
+<li><a href="https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/">Installing Passenger + nginx</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/">Install a Chef Server Workstation on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/">Install GitLab on Ubuntu 14.04 (Trusty Tahr)</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/introduction-to-version-control/">Introduction to Version Control</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/manage-distributed-version-control-with-mercurial/">Manage Distributed Version Control with Mercurial</a></li>
+    
+    
+    
+    <li><a href="/docs/development/version-control/manage-source-code-versions-with-subversion/">Manage Source Code Versions with Subversion</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="http://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-omnibus-gitlab">Install Omnibus GitLab</a></li>
+<li><a href="#unbundle-nginx-from-omnibus-gitlab">Unbundle nginx from Omnibus GitLab</a></li>
+<li><a href="#install-ruby-passenger-and-nginx">Install Ruby, Passenger, and nginx</a></li>
+<li><a href="#create-a-new-virtual-host">Create a New Virtual Host</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

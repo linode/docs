@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Catalyst and mod_perl</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Building dynamic websites and applications with Catalyst.">
+        <meta name="keywords" content="Catalyst, dynamic content, web applications">
+        
+        <meta property="og:title" content="Catalyst and mod_perl">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/frameworks/catalyst-and-modperl/">
+        <meta property="og:description" content="Building dynamic websites and applications with Catalyst.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/frameworks/catalyst-and-modperl/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/frameworks/">Web Application Frameworks</a>
+  
+</li>
+
+
+<li>
+  
+  Catalyst and mod_perl
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Catalyst and mod_perl</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-09-27T00:00:00Z">Friday, September 27, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fcatalyst-and-modperl%2f&via=linode&text=Catalyst%20and%20mod_perl" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fcatalyst-and-modperl%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fcatalyst-and-modperl%2f&t=Catalyst%20and%20mod_perl" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/frameworks/catalyst-and-modperl.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/frameworks/catalyst-and-modperl.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>The Catalyst web framework is a contemporary Perl-based MVC, or Model View Controller. Like similar projects such as <a href="/docs/frameworks/">Django</a>, <a href="/docs/frameworks/">Ruby On Rails</a>, and <a href="/docs/frameworks/seaside/">Seaside</a>, Catalyst promotes efficient and rapid development, clear application logic, and web centric development paradigms. If you are used to developing applications with Perl and would like to develop modern web applications, you may consider using the Catalyst framework.</p>
+
+<p>In this document, we outline deploying applications developed with Catalyst using the Apache web server and the <code>mod_perl</code> method of running Perl applications embedded in the web server process. Before installing Catalyst, we assume that you have followed our <a href="/docs/getting-started/">getting started guide</a>. If you are new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts/">introduction to Linux concepts guide</a>, <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>.</p>
+
+<h1 id="installing-catalyst">Installing Catalyst</h1>
+
+<p>Although the Catalyst framework is packaged and included in the repositories of a number of major Linux-based operating system distributions, this document provides a procedure for installing the Catalyst framework from CPAN repositories. This will ensure that your application will have access to the most recently developed features.</p>
+
+<h3 id="preparing-the-system-for-catalyst">Preparing the System for Catalyst</h3>
+
+<p>If you have not yet installed a development tool chain including Perl and its dependencies, issue the following commands on Debian and Ubuntu systems to install this software and make sure that your system&rsquo;s package database and installed software are up to date:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+apt-get install perl build-essential curl
+</code></pre>
+
+<p>Similarly on CentOS and Fedora systems, use the following commands to update the system and install the required software:</p>
+
+<pre><code>yum update
+yum groupinstall &quot;Development Tools&quot;
+yum install perl perl-devel curl gcc wget
+</code></pre>
+
+<p>On Arch Linux systems issue the following commands to download the latest package database and install the Perl dependencies:</p>
+
+<pre><code>pacman -Sy
+pacman -S perl base-devel curl
+</code></pre>
+
+<p>This document will install all of the required modules for Catalyst using the <a href="/docs/linux-tools/utilities/cpanm">CPAN Minus</a> interface for CPAN. Install CPAN Minus by issuing the following sequence of commands:</p>
+
+<pre><code>cd /opt/
+curl https://github.com/miyagawa/cpanminus/raw/master/cpanm &gt; cpanm
+chmod +x cpanm
+ln -s /opt/cpanm /usr/bin/
+</code></pre>
+
+<p>Issue the following command to install the required Catalyst dependencies from the CPAN. Do not be alarmed if this process takes a few moments:</p>
+
+<pre><code>cpanm --sudo --skip-installed Catalyst::Runtime Catalyst::Devel Catalyst::Engine::Apache
+</code></pre>
+
+<h3 id="installing-additional-dependencies">Installing Additional Dependencies</h3>
+
+<p>Your application may require additional dependencies and Perl modules. You will want to return to the CPAN Minus interface to install these dependencies before continuing with your deployment. Install additional modules by issuing commands in the following form:</p>
+
+<pre><code>cpanm --sudo --skip-installed [Module::Name]
+</code></pre>
+
+<p><code>[Module::Name]</code> represents the name of the module that you need to install. If your Catalyst application depends on a database system, you will also need to <a href="/docs/databases/mysql/debian-5-lenny">install MySQL</a> or <a href="/docs/databases/postgresql/debian-5-lenny">PostgreSQL</a>.</p>
+
+<h3 id="setting-up-the-apache-server-with-mod-perl">Setting up the Apache Server with mod_perl</h3>
+
+<p>Once the required Catalyst and database dependencies are installed, we will continue to install the Apache HTTP server and its <code>mod_perl</code> module. For more information regarding general purpose configuration, consider our more in-depth documentation for <a href="/docs/web-servers/apache/installation/debian-5-lenny">installing Apache</a> and <a href="/docs/web-servers/apache/configuration/">configuring the HTTP server</a>. If you have not already installed these packages, issue the following command:</p>
+
+<pre><code>apt-get install apache2 libapache2-mod-perl2 apache2-mpm-prefork
+</code></pre>
+
+<p>In Catalyst deployments, you will need to restart the Apache web server before beginning, and then again in order to deploy new code. To restart the web server, issue the following command:</p>
+
+<pre><code>/etc/init.d/apache2 restart
+</code></pre>
+
+<h1 id="deploying-catalyst-applications">Deploying Catalyst Applications</h1>
+
+<p>For the purposes of this document we will assume that you have configured virtual hosting for the domain <code>example.com</code> in the manner described in the <a href="/docs/web-servers/apache/installation/debian-5-lenny">installing Apache</a> document. Please note that you can only deploy one Catalyst application in a given instance of Apache.</p>
+
+<h3 id="configuring-apache-and-mod-perl">Configuring Apache and mod_perl</h3>
+
+<p>Within your Apache virtual host configuration, set the following directives.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">PerlSwitches</span> -I/srv/www/example.com/application/lib/
+<span class="nt">&lt;Perl</span><span class="s"></span><span class="nt">&gt;</span>
+   <span class="nb">use</span> lib qw( <span class="sx">/srv/www/example.com/application/lib/</span> );
+<span class="nt">&lt;/Perl</span><span class="s"></span><span class="nt">&gt;</span>
+<span class="nb">PerlModule</span> application
+
+<span class="nt">&lt;Location</span> <span class="s">/</span><span class="nt">&gt;</span>
+    <span class="nb">SetHandler</span>          modperl
+    <span class="nb">PerlResponseHandler</span> application
+<span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Alter this example to include the path to your Catalyst application&rsquo;s <code>lib/</code> directory. The <code>&lt;Location&gt;</code> specified above ensures that all responses that begin with a slash will be handled by <code>modperl</code>, and thus the Catalyst application. The <code>&lt;Perl&gt;</code> directive block provides the Perl process embedded in the web server process information regarding the path of your Catalyst application. The <code>PerlModule</code> directive forces Apache to load your application in memory when it starts, which allows for significantly faster execution times.</p>
+
+<h3 id="serve-static-content-directly-from-apache">Serve Static Content Directly From Apache</h3>
+
+<p>It may be more effective to serve some resources directly from Apache without using the <code>modperl</code> handler. Include the following or equivalent lines in your virtual hosting configuration:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nb">DocumentRoot</span> <span class="sx">/srv/www/example.com/public_html</span>
+<span class="nt">&lt;Location</span> <span class="s">/static</span><span class="nt">&gt;</span>
+    <span class="nb">SetHandler</span> default-handler
+<span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>With these lines, requests for the resources <code>http://example.com/static/style.css</code> and <code>http://example.com/static/bkgrnd.jpg</code> will be served from the resources <code>/srv/www/example.com/public_html/static/style.css</code> and <code>/srv/www/example.com/public_html/static/bkgrnd.jpg</code> respectively. You can add exemptions for multiple locations within your virtual host by using the <code>SetHandler</code> directive within location specific configuration sections. Ensure that the <code>&lt;Location&gt;</code> directive is inserted after the <code>mod_perl</code> configuration.</p>
+
+<h3 id="apache-virtual-hosting-configuration">Apache Virtual Hosting Configuration</h3>
+
+<p>The following example represents a complete and fully functional virtual hosting configuration that combines elements from the previous three examples:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		Apache Virtual Host Configuration 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+     <span class="nb">ServerAdmin</span> admin@example.com
+     <span class="nb">ServerName</span> example.com
+     <span class="nb">ServerAlias</span> www.example.com
+
+     <span class="nb">ErrorLog</span> <span class="sx">/srv/www/example.com/logs/error.log</span>
+     <span class="nb">CustomLog</span> <span class="sx">/srv/www/example.com/logs/access.log</span> combined
+
+         <span class="nb">DocumentRoot</span> <span class="sx">/srv/www/example.com/public_html/</span>
+
+         <span class="nb">PerlSwitches</span> -I/srv/www/example.com/application/lib/
+         <span class="nt">&lt;Perl</span><span class="s"></span><span class="nt">&gt;</span>
+            <span class="nb">use</span> lib qw( <span class="sx">/srv/www/example.com/application/lib/</span> );
+         <span class="nt">&lt;/Perl</span><span class="s"></span><span class="nt">&gt;</span>
+
+         <span class="nb">PerlModule</span> application
+         <span class="nt">&lt;Location</span> <span class="s">/</span><span class="nt">&gt;</span>
+            <span class="nb">SetHandler</span>          modperl
+            <span class="nb">PerlResponseHandler</span> application
+         <span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span>
+
+         <span class="nt">&lt;Location</span> <span class="s">/static</span><span class="nt">&gt;</span>
+            <span class="nb">SetHandler</span> default-handler
+         <span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span>
+         <span class="nt">&lt;Location</span> <span class="s">/images</span><span class="nt">&gt;</span>
+            <span class="nb">SetHandler</span> default-handler
+         <span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span>
+         <span class="nt">&lt;Location</span> <span class="s">/media</span><span class="nt">&gt;</span>
+            <span class="nb">SetHandler</span> default-handler
+         <span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span>
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, all requests are handled by the Catalyst application except for requests for resources located beneath <code>/static</code>, <code>/images</code>, and <code>/media</code>. Requests for resources in these locations are served from the file system located beneath the <code>DocumentRoot</code>, which is <code>/srv/www/example.com/public_html/</code> in this example.</p>
+
+<p>Congratulations, you have now successfully configured a system for deploying Catalyst powered web applications!</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.catalystframework.org/">Catalyst Web Framework Home Page</a></li>
+<li><a href="http://search.cpan.org/dist/Catalyst-Manual/">Catalyst Manual</a></li>
+<li><a href="http://dev.catalystframework.org/wiki/#Get_Started">Catalyst Getting Started Guide</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/">Install a LEMP Stack on CentOS 7 with FastCGI</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-server-on-debian-7-wheezy/">LEMP Server on Debian 7 (Wheezy)</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-stack-on-debian-8/">Install a LEMP (Linux, Nginx, MariaDB, PHP) Stack on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/run-php-cgi-apache-centos-6/">Run PHP with CGI and Apache on CentOS 6 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/run-php-cgi-apapache-debian-7/">Run PHP with CGI and Apache on Debian 7 (Wheezy) - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#installing-catalyst">Installing Catalyst</a>
+<ul>
+<li>
+<ul>
+<li><a href="#preparing-the-system-for-catalyst">Preparing the System for Catalyst</a></li>
+<li><a href="#installing-additional-dependencies">Installing Additional Dependencies</a></li>
+<li><a href="#setting-up-the-apache-server-with-mod-perl">Setting up the Apache Server with mod_perl</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#deploying-catalyst-applications">Deploying Catalyst Applications</a>
+<ul>
+<li>
+<ul>
+<li><a href="#configuring-apache-and-mod-perl">Configuring Apache and mod_perl</a></li>
+<li><a href="#serve-static-content-directly-from-apache">Serve Static Content Directly From Apache</a></li>
+<li><a href="#apache-virtual-hosting-configuration">Apache Virtual Hosting Configuration</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

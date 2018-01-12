@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Manage Projects with Redmine on Ubuntu 10.04 LTS (Lucid)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Installing and configuring Redmine, an open source project management system on an Ubuntu 10.04 LTS (Lucid) Linode running nginx.">
+        <meta name="keywords" content="redmine, redmine ubuntu 10.04, redmine linux, project management software, redmine postgresql">
+        
+        <meta property="og:title" content="Manage Projects with Redmine on Ubuntu 10.04 LTS (Lucid)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/applications/project-management/manage-projects-with-redmine-on-ubuntu-10-04-lts-lucid/">
+        <meta property="og:description" content="Installing and configuring Redmine, an open source project management system on an Ubuntu 10.04 LTS (Lucid) Linode running nginx.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/applications/project-management/manage-projects-with-redmine-on-ubuntu-10-04-lts-lucid/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/">Applications</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/applications/project-management/">Project Management</a>
+  
+</li>
+
+
+<li>
+  
+  Manage Projects with Redmine on Ubuntu 10.04 LTS (Lucid)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Manage Projects with Redmine on Ubuntu 10.04 LTS (Lucid)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2011-06-07T00:00:00Z">Tuesday, June 7, 2011</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fproject-management%2fmanage-projects-with-redmine-on-ubuntu-10-04-lts-lucid%2f&via=linode&text=Manage%20Projects%20with%20Redmine%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fproject-management%2fmanage-projects-with-redmine-on-ubuntu-10-04-lts-lucid%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fapplications%2fproject-management%2fmanage-projects-with-redmine-on-ubuntu-10-04-lts-lucid%2f&t=Manage%20Projects%20with%20Redmine%20on%20Ubuntu%2010.04%20LTS%20%28Lucid%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/applications/project-management/manage-projects-with-redmine-on-ubuntu-10-04-lts-lucid.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/applications/project-management/manage-projects-with-redmine-on-ubuntu-10-04-lts-lucid.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>This guide will help you install Redmine on your Ubuntu 10.04 LTS (Lucid) Linode. It is assumed that you&rsquo;ve already followed the steps outlined in our <a href="/docs/getting-started/">getting started guide</a>. Please make sure you&rsquo;re logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain &ldquo;example.com&rdquo; is used. Please be sure to replace it with your own domain name wherever it is found.</p>
+
+<h1 id="set-the-hostname">Set the Hostname</h1>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p>
+
+<h1 id="install-rails-packages-and-nginx-with-phusion-passenger">Install Rails Packages and nginx with Phusion Passenger</h1>
+
+<p>Issue the following commands to update your local package database and install any outstanding updates.</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre>
+
+<p>Issue the following command to install packages required for Ruby on Rails and other components.</p>
+
+<pre><code>apt-get install wget build-essential ruby1.8 ruby1.8-dev irb1.8 rdoc1.8 zlib1g-dev libpcre3-dev libopenssl-ruby1.8 libzlib-ruby libssl-dev libcurl4-openssl-dev libpq-dev postgresql subversion
+</code></pre>
+
+<p>Create symbolic links to the installed version of Ruby:</p>
+
+<pre><code>ln -s /usr/bin/ruby1.8 /usr/bin/ruby
+ln -s /usr/bin/irb1.8 /usr/bin/irb
+</code></pre>
+
+<p>Fetch and install RubyGems version 1.5.3 by issuing the following commands:</p>
+
+<pre><code>wget http://rubyforge.org/frs/download.php/74343/rubygems-1.5.3.tgz
+tar -xf rubygems*tgz
+cd rubygems*
+ruby setup.rb
+ln -s /usr/bin/gem1.8 /usr/bin/gem
+</code></pre>
+
+<p>Install some required gems:</p>
+
+<pre><code>gem install -v=1.1.0 rack
+gem install fastthread
+gem install -v=2.3.5 rails
+gem install -v=0.4.2 i18n
+gem install postgres
+gem install pg
+</code></pre>
+
+<p>Proceed to the <a href="http://www.modrails.com/install.html">Phusion Passenger</a> site and locate the link for the current source code tarball. Download it as follows (substitute the link for the current version):</p>
+
+<pre><code>cd /opt
+wget http://rubyforge.org/frs/download.php/74471/passenger-3.0.5.tar.gz
+tar xzvf passenger*.gz
+</code></pre>
+
+<p>Run the Phusion Passenger installer for Nginx:</p>
+
+<pre><code>cd passenger*/bin
+./passenger-install-nginx-module
+</code></pre>
+
+<p>You&rsquo;ll be greeted by the Phusion Passenger nginx installer program. Press &ldquo;Enter&rdquo; to continue with the installation. When prompted for the Nginx installation method, we recommend you choose &ldquo;1&rdquo; to allow the installer to automatically download, compile, and install nginx for you. Unless you have specific needs that would necessitate passing custom options to nginx at compile time, this is the safest way to proceed. Please do <strong>not</strong> remove the Passenger files from <code>opt</code> after the install. They need to stay in place or your install will not function correctly.</p>
+
+<p>Next, create the file <code>/etc/init.d/nginx</code> with the following contents:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/init.d/nginx 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span><span class="lnt">28</span><span class="lnt">29</span><span class="lnt">30</span><span class="lnt">31</span><span class="lnt">32</span><span class="lnt">33</span><span class="lnt">34</span><span class="lnt">35</span><span class="lnt">36</span><span class="lnt">37</span><span class="lnt">38</span><span class="lnt">39</span><span class="lnt">40</span><span class="lnt">41</span><span class="lnt">42</span><span class="lnt">43</span><span class="lnt">44</span><span class="lnt">45</span><span class="lnt">46</span><span class="lnt">47</span><span class="lnt">48</span><span class="lnt">49</span><span class="lnt">50</span><span class="lnt">51</span><span class="lnt">52</span><span class="lnt">53</span><span class="lnt">54</span><span class="lnt">55</span><span class="lnt">56</span><span class="lnt">57</span><span class="lnt">58</span><span class="lnt">59</span><span class="lnt">60</span><span class="lnt">61</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="c1">### BEGIN INIT INFO
+</span><span class="c1"># Provides:          nginx
+</span><span class="c1"># Required-Start:    $all
+</span><span class="c1"># Required-Stop:     $all
+</span><span class="c1"># Default-Start:     2 3 4 5
+</span><span class="c1"># Default-Stop:      0 1 6
+</span><span class="c1"># Short-Description: starts the nginx web server
+</span><span class="c1"># Description:       starts nginx using start-stop-daemon
+</span><span class="c1">### END INIT INFO
+</span><span class="c1"></span>
+<span class="nv">PATH</span><span class="o">=</span>/opt/nginx/sbin:/sbin:/bin:/usr/sbin:/usr/bin
+<span class="nv">DAEMON</span><span class="o">=</span>/opt/nginx/sbin/nginx
+<span class="nv">NAME</span><span class="o">=</span>nginx
+<span class="nv">DESC</span><span class="o">=</span>nginx
+
+<span class="nb">test</span> -x <span class="nv">$DAEMON</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">0</span>
+
+<span class="c1"># Include nginx defaults if available
+</span><span class="c1"></span><span class="k">if</span> <span class="o">[</span> -f /etc/default/nginx <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+        . /etc/default/nginx
+<span class="k">fi</span>
+
+<span class="nb">set</span> -e
+
+<span class="k">case</span> <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> in
+  start<span class="o">)</span>
+        <span class="nb">echo</span> -n <span class="s2">&#34;Starting </span><span class="nv">$DESC</span><span class="s2">: &#34;</span>
+        start-stop-daemon --start --quiet --pidfile /opt/nginx/logs/<span class="nv">$NAME</span>.pid <span class="se">\
+</span><span class="se"></span>                --exec <span class="nv">$DAEMON</span> -- <span class="nv">$DAEMON_OPTS</span>
+        <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">.&#34;</span>
+        <span class="p">;;</span>
+  stop<span class="o">)</span>
+        <span class="nb">echo</span> -n <span class="s2">&#34;Stopping </span><span class="nv">$DESC</span><span class="s2">: &#34;</span>
+        start-stop-daemon --stop --quiet --pidfile /opt/nginx/logs/<span class="nv">$NAME</span>.pid <span class="se">\
+</span><span class="se"></span>                --exec <span class="nv">$DAEMON</span>
+        <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">.&#34;</span>
+        <span class="p">;;</span>
+  restart<span class="p">|</span>force-reload<span class="o">)</span>
+        <span class="nb">echo</span> -n <span class="s2">&#34;Restarting </span><span class="nv">$DESC</span><span class="s2">: &#34;</span>
+        start-stop-daemon --stop --quiet --pidfile <span class="se">\
+</span><span class="se"></span>                /opt/nginx/logs/<span class="nv">$NAME</span>.pid --exec <span class="nv">$DAEMON</span>
+        sleep <span class="m">1</span>
+        start-stop-daemon --start --quiet --pidfile <span class="se">\
+</span><span class="se"></span>                /opt/nginx/logs/<span class="nv">$NAME</span>.pid --exec <span class="nv">$DAEMON</span> -- <span class="nv">$DAEMON_OPTS</span>
+        <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">.&#34;</span>
+        <span class="p">;;</span>
+  reload<span class="o">)</span>
+          <span class="nb">echo</span> -n <span class="s2">&#34;Reloading </span><span class="nv">$DESC</span><span class="s2"> configuration: &#34;</span>
+          start-stop-daemon --stop --signal HUP --quiet --pidfile     /opt/nginx/logs/<span class="nv">$NAME</span>.pid <span class="se">\
+</span><span class="se"></span>              --exec <span class="nv">$DAEMON</span>
+          <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">.&#34;</span>
+          <span class="p">;;</span>
+      *<span class="o">)</span>
+            <span class="nv">N</span><span class="o">=</span>/etc/init.d/<span class="nv">$NAME</span>
+            <span class="nb">echo</span> <span class="s2">&#34;Usage: </span><span class="nv">$N</span><span class="s2"> {start|stop|restart|reload|force-reload}&#34;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+            <span class="nb">exit</span> <span class="m">1</span>
+            <span class="p">;;</span>
+<span class="k">esac</span>
+<span class="nb">exit</span> <span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Issue the following commands the make the script executable and set it to start on boot:</p>
+
+<pre><code>chmod +x /etc/init.d/nginx
+update-rc.d -f nginx defaults
+</code></pre>
+
+<h1 id="optional-proxy-redmine-with-apache">Optional: Proxy Redmine with Apache</h1>
+
+<p>If you&rsquo;re already running Apache on your Linode, you&rsquo;ll need to tell nginx to run on a different port and proxy requests for your Redmine installation back to it. If you&rsquo;re running another web server, you&rsquo;ll need to perform similar steps to modify its configuration to support this. This section is entirely optional, and only applies to Apache users.</p>
+
+<p>Issue the following commands to enable proxy support:</p>
+
+<pre><code>a2enmod proxy
+a2enmod proxy_http
+/etc/init.d/apache2 restart
+</code></pre>
+
+<p>Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our <a href="/docs/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/">Ubuntu 10.04 LAMP guide</a>. Remember to replace &ldquo;12.34.56.78&rdquo; with your Linode&rsquo;s IP address, <code>support@example.com</code> with your administrative email address, and &ldquo;redmine.example.com&rdquo; with your Redmine domain.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/apache2/sites-available/redmine.example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+     <span class="nb">ServerAdmin</span> support@example.com
+     <span class="nb">ServerName</span> redmine.example.com
+
+     <span class="nb">ProxyPass</span> / http://localhost:8080/
+     <span class="nb">ProxyPassReverse</span> / http://localhost:8080/
+
+     <span class="c"># Uncomment the line below if your site uses SSL.</span>
+     <span class="c">#SSLProxyEngine On</span>
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Issue the following commands to enable the site and reload Apache:</p>
+
+<pre><code>a2ensite redmine.example.com
+/etc/init.d/apache2 reload
+</code></pre>
+
+<p>Next, you&rsquo;ll need to tell nginx to run on a different port. Edit your nginx configuration file, setting the following value:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/opt/nginx/conf/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">listen</span> <span class="mi">8080</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h1 id="install-and-configure-redmine">Install and Configure Redmine</h1>
+
+<h3 id="obtain-redmine">Obtain Redmine</h3>
+
+<p>Check the <a href="http://www.redmine.org/wiki/redmine/Download">Redmine project site</a> to find the current version number for the stable branch. Issue the following commands to use <code>svn</code> to check out the code, replacing the URL on the last line with an updated URL if necessary.</p>
+
+<pre><code>mkdir -p /srv/www/redmine.example.com
+cd /srv/www/redmine.example.com/
+svn co http://redmine.rubyforge.org/svn/branches/1.1-stable redmine-1.1
+mv redmine-1.1 redmine
+</code></pre>
+
+<p>You can use <code>svn up</code> from the <code>redmine</code> directory to keep it up to date in the future.</p>
+
+<h3 id="create-and-configure-the-database">Create and Configure the Database</h3>
+
+<p>Switch to the <code>postgres</code> user and start up the <code>psql</code> shell by issuing the following commands:</p>
+
+<pre><code>su - postgres
+psql
+</code></pre>
+
+<p>Issue these commands in the <code>psql</code> shell to set up the database for Redmine. Be sure to specify a unique, strong password in place of &ldquo;changeme&rdquo;.</p>
+
+<pre><code>CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD 'changeme' NOINHERIT VALID UNTIL 'infinity';
+CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine TEMPLATE=template0;
+\q
+exit
+cd redmine
+</code></pre>
+
+<p>Create the file <code>config/database.yml</code> with the following contents, replacing &ldquo;changeme&rdquo; with the password you assigned in the last step.</p>
+
+<dl class="file">
+<dt>
+
+
+		config/database.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">production<span class="p">:</span><span class="w">
+</span><span class="w">  </span>adapter<span class="p">:</span><span class="w"> </span>postgresql<span class="w">
+</span><span class="w">  </span>database<span class="p">:</span><span class="w"> </span>redmine<span class="w">
+</span><span class="w">  </span>host<span class="p">:</span><span class="w"> </span>localhost<span class="w">
+</span><span class="w">  </span>username<span class="p">:</span><span class="w"> </span>redmine<span class="w">
+</span><span class="w">  </span>password<span class="p">:</span><span class="w"> </span>changeme<span class="w">
+</span><span class="w">  </span>encoding<span class="p">:</span><span class="w"> </span>utf<span class="m">8</span><span class="w">
+</span><span class="w">  </span>schema_search_path<span class="p">:</span><span class="w"> </span>public</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Issue the following commands to complete database configuration:</p>
+
+<pre><code>chmod 600 config/database.yml
+rake config/initializers/session_store.rb
+RAILS_ENV=production rake db:migrate
+RAILS_ENV=production rake redmine:load_default_data
+</code></pre>
+
+<p>If you receive an error message after issuing the <code>rake db:migrate</code> command, edit the <code>config/environment.rb</code> file to include the following excerpt between the bootstrap and initializer sections. After editing the file, retry the <code>rake db:migrate</code> command.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		config/environment.rb 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">Gem</span><span class="o">::</span><span class="no">VERSION</span> <span class="o">&gt;=</span> <span class="s2">&#34;1.3.6&#34;</span>
+    <span class="k">module</span> <span class="nn">Rails</span>
+        <span class="k">class</span> <span class="nc">GemDependency</span>
+            <span class="k">def</span> <span class="nc"></span><span class="o"></span><span class="nf">requirement</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="k">super</span>
+                <span class="p">(</span><span class="n">r</span> <span class="o">==</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Requirement</span><span class="o">.</span><span class="n">default</span><span class="p">)</span> <span class="p">?</span> <span class="kp">nil</span> <span class="p">:</span> <span class="n">r</span>
+            <span class="k">end</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<h3 id="configure-email-service">Configure Email Service</h3>
+
+<p>Issue the following commands to install <code>exim4</code> and configure it for outgoing Internet email delivery. You can skip Exim installation if you already have an SMTP server configured that accepts unauthenticated locally sent mail, although you will still need to create Redmin&rsquo;s email configuration file as shown at the end of the section.</p>
+
+<pre><code>apt-get install exim4
+dpkg-reconfigure exim4-config
+</code></pre>
+
+<p>Select &ldquo;internet site&rdquo; as the type of mail configuration to use:</p>
+
+<p><a href="/docs/assets/707-exim4-config-02.png"><img src="/docs/assets/707-exim4-config-02.png" alt="Exim general configuration on Ubuntu 10.04." /></a></p>
+
+<p>Specify your systems&rsquo;s fully qualified domain name as the system mail name:</p>
+
+<p><a href="/docs/assets/708-exim4-config-03.png"><img src="/docs/assets/708-exim4-config-03.png" alt="Exim system mail name configuration on Ubuntu 10.04." /></a></p>
+
+<p>Enter &ldquo;127.0.0.1&rdquo; when asked for the IP address to listen on for SMTP connections. For purposes of allowing Redmine to send mail, we only want to listen on localhost.</p>
+
+<p><a href="/docs/assets/709-exim4-config-04.png"><img src="/docs/assets/709-exim4-config-04.png" alt="Exim IP address configuration on Ubuntu 10.04." /></a></p>
+
+<p>Enter &ldquo;localhost.localdomain&rdquo; and your fully qualified domain name when asked for the list of recipient domains.</p>
+
+<p><a href="/docs/assets/710-exim4-config-05.png"><img src="/docs/assets/710-exim4-config-05.png" alt="Exim destination domains configuration on Ubuntu 10.04." /></a></p>
+
+<p>Relay domains and machines should be left blank.</p>
+
+<p><a href="/docs/assets/711-exim4-config-06.png"><img src="/docs/assets/711-exim4-config-06.png" alt="Exim relay domains configuration on Ubuntu 10.04." /></a></p>
+
+<p><a href="/docs/assets/712-exim4-config-07.png"><img src="/docs/assets/712-exim4-config-07.png" alt="Exim relay machines configuration on Ubuntu 10.04." /></a></p>
+
+<p>Specify &ldquo;No&rdquo; when asked about DNS queries.</p>
+
+<p><a href="/docs/assets/713-exim4-config-08.png"><img src="/docs/assets/713-exim4-config-08.png" alt="Exim DNS queries configuration on Ubuntu 10.04." /></a></p>
+
+<p>When asked about maildirs versus mbox format, you may choose either. Maildirs are increasingly preferred by many modern mail tools.</p>
+
+<p><a href="/docs/assets/714-exim4-config-09.png"><img src="/docs/assets/714-exim4-config-09.png" alt="Exim maildirs or mbox configuration on Ubuntu 10.04." /></a></p>
+
+<p>Specify &ldquo;No&rdquo; when asked whether to split the configuration into smaller files.</p>
+
+<p><a href="/docs/assets/715-exim4-config-10.png"><img src="/docs/assets/715-exim4-config-10.png" alt="Exim config file splitting configuration on Ubuntu 10.04." /></a></p>
+
+<p>Enter &ldquo;root&rdquo; and an email address at your domain for the postmaster mail query.</p>
+
+<p><a href="/docs/assets/716-exim4-config-11.png"><img src="/docs/assets/716-exim4-config-11.png" alt="Exim postmaster configuration on Ubuntu 10.04." /></a></p>
+
+<p>Create the file <code>config/email.yml</code> and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.</p>
+
+<dl class="file">
+<dt>
+
+
+		config/email.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">production<span class="p">:</span><span class="w">
+</span><span class="w">  </span>delivery_method<span class="p">:</span><span class="w"> </span><span class="p">:</span>smtp<span class="w">
+</span><span class="w">  </span>smtp_settings<span class="p">:</span><span class="w">
+</span><span class="w">    </span>address<span class="p">:</span><span class="w"> </span><span class="m">127.0</span>.<span class="m">0.1</span><span class="w">
+</span><span class="w">    </span>port<span class="p">:</span><span class="w"> </span><span class="m">25</span><span class="w">
+</span><span class="w">    </span>domain<span class="p">:</span><span class="w"> </span>redmine.example.com<span class="w">
+</span><span class="w">    </span>authentication<span class="p">:</span><span class="w"> </span><span class="p">:</span>none</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This completes email configuration for your Redmine installation.</p>
+
+<h3 id="final-configuration-and-testing">Final Configuration and Testing</h3>
+
+<p>We&rsquo;ll create a &ldquo;redmine&rdquo; user to manage the installation. Issue the following commands to set ownership and permissions on your Redmine files, taking care to assign a unique, strong password for the Redmine user:</p>
+
+<pre><code>adduser redmine
+cd /srv/www/redmine.example.com/
+chown -R redmine:redmine *
+cd redmine
+chmod -R 755 files log tmp public/plugin_assets
+</code></pre>
+
+<p>Edit the file <code>/opt/nginx/conf/nginx.conf</code>, setting the &ldquo;user&rdquo; parameter to &ldquo;redmine&rdquo;:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/opt/nginx/conf/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">user</span> <span class="s">redmine</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Add a server section after the first example server as follows. If you&rsquo;re proxying to nginx from another web server, be sure to change the <code>listen</code> directive to <code>listen 8080;</code> instead of the default. Be sure to replace &ldquo;redmine.example.com&rdquo; with the domain for your Redmine site.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/opt/nginx/conf/nginx.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+     <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+     <span class="kn">server_name</span>  <span class="s">redmine.example.com</span><span class="p">;</span>
+     <span class="kn">root</span> <span class="s">/srv/www/redmine.example.com/redmine/public/</span><span class="p">;</span>
+     <span class="kn">access_log</span> <span class="s">/srv/www/redmine.example.com/redmine/log/access.log</span><span class="p">;</span>
+     <span class="kn">error_log</span> <span class="s">/srv/www/redmine.example.com/redmine/log/error.log</span><span class="p">;</span>
+     <span class="kn">index</span> <span class="s">index.html</span><span class="p">;</span>
+     <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">passenger_enabled</span> <span class="no">on</span><span class="p">;</span>
+        <span class="kn">allow</span> <span class="s">all</span><span class="p">;</span>
+     <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Start nginx:</p>
+
+<pre><code>/etc/init.d/nginx start
+</code></pre>
+
+<p>Your Redmine installation should be accessible at <code>http://redmine.example.com</code>; if you encounter issues, please refer to your log files for a listing of any errors that may have occurred. The default login is username &ldquo;admin&rdquo; and password &ldquo;admin&rdquo;. You should change the admin password immediately. Congratulations, you&rsquo;ve installed Redmine for project management on your Linode!</p>
+
+<h1 id="monitor-for-software-updates-and-security-notices">Monitor for Software Updates and Security Notices</h1>
+
+<p>When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.</p>
+
+<p>Please monitor the Redmine project issue queue and news feed to ensure that you are aware of all updates to the software and can upgrade appropriately or apply patches and recompile as needed:</p>
+
+<ul>
+<li><a href="http://www.redmine.org/projects/redmine/issues">Redmine News Feed</a></li>
+<li><a href="http://www.redmine.org/projects/redmine/news">Redmine Issue Queue</a></li>
+</ul>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.redmine.org/wiki/redmine/Guide">Redmine Guide</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/applications/project-management/manage-projects-with-redmine-on-debian-5-lenny/">Manage Projects with Redmine on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/manage-projects-with-redmine-on-ubuntu-11-04-natty/">Manage Projects with Redmine on Ubuntu 11.04 (Natty) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/manage-projects-with-redmine-on-debian-6-squeeze/">Manage Projects with Redmine on Debian 6 (Squeeze) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/manage-projects-with-redmine-on-ubuntu-9-10-karmic/">Manage Projects with Redmine on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/">How to Install and Configure Redmine on Ubuntu 16.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#install-rails-packages-and-nginx-with-phusion-passenger">Install Rails Packages and nginx with Phusion Passenger</a></li>
+<li><a href="#optional-proxy-redmine-with-apache">Optional: Proxy Redmine with Apache</a></li>
+<li><a href="#install-and-configure-redmine">Install and Configure Redmine</a>
+<ul>
+<li>
+<ul>
+<li><a href="#obtain-redmine">Obtain Redmine</a></li>
+<li><a href="#create-and-configure-the-database">Create and Configure the Database</a></li>
+<li><a href="#configure-email-service">Configure Email Service</a></li>
+<li><a href="#final-configuration-and-testing">Final Configuration and Testing</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#monitor-for-software-updates-and-security-notices">Monitor for Software Updates and Security Notices</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

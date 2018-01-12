@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide will show how to use Elasticsearch, Logstash, and Kibana to collect and visualize web server logs.">
+        <meta name="keywords" content="apache debian 8, linux web server, elasticsearch, logstash, kibana, elk stack, elastic stack">
+        
+        <meta property="og:title" content="Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/">
+        <meta property="og:description" content="The Elastic Stack - Elasticsearch, Logstash, &amp; Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/elasticsearch/">Elasticsearch Guides, Tutorials, and Resources – Linode</a>
+  
+</li>
+
+
+<li>
+  
+  Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-11-06T00:00:00Z">Monday, November 6, 2017</time> by Linode</small>
+  
+  <small class="contributed-by">Contributed by
+  
+  <a href="https://tjll.net">Tyler Langlois
+    
+  </a>
+  
+  </small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2felasticsearch%2fvisualize-apache-web-server-logs-using-elastic-stack-on-debian-8%2f&via=linode&text=Visualize%20Apache%20Web%20Server%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2felasticsearch%2fvisualize-apache-web-server-logs-using-elastic-stack-on-debian-8%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2felasticsearch%2fvisualize-apache-web-server-logs-using-elastic-stack-on-debian-8%2f&t=Visualize%20Apache%20Web%20Server%20Logs%20Using%20an%20Elastic%20Stack%20on%20Debian%208" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8.md">Edit File</a>
+	</p>
+</div>
+            <hr />
+
+<p><em>This is a Linode Community guide. If you&rsquo;re an expert on something for which we need a guide, you too can <a href="/docs/contribute">get paid to write for us.</a></em></p>
+
+<hr />
+
+            
+
+            
+
+<p><img src="/docs/assets/elastic-stack-visualize-server-logs-title.jpg" alt="Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8" title="Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8" /></p>
+
+<h2 id="what-is-an-elastic-stack">What is an Elastic Stack?</h2>
+
+<p>The <a href="https://www.elastic.co/">Elastic</a> stack, which includes Elasticsearch, Logstash, and Kibana, is a troika of tools that provides a free and open-source solution that searches, collects and analyzes data from any source and in any format and visualizes it in real time.</p>
+
+<p>This guide will explain how to install all three components and use them to explore Apache web server logs in Kibana, the browser-based component that visualizes data.</p>
+
+<p>This guide will walk through the installation and set up of version 5 of the Elastic stack, which is the latest at time of this writing.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with <code>sudo</code>. If you&rsquo;re not familiar with the <code>sudo</code> command, you can check our <a href="/docs/tools-reference/linux-users-and-groups">Users and Groups</a> guide.</div>
+</blockquote>
+
+
+<h2 id="before-you-begin">Before You Begin</h2>
+
+<ol>
+<li><p>Familiarize yourself with our <a href="/docs/getting-started">Getting Started</a> guide and complete the steps for setting your Linode&rsquo;s hostname and timezone.</p></li>
+
+<li><p>Follow the steps in our <a href="/docs/web-servers/apache/apache-web-server-debian-8">Apache Web Server on Debian 8 (Jessie)</a> guide to set up and configure Apache on your server.</p></li>
+
+<li><p>This guide will use <code>sudo</code> wherever possible. Complete the sections of our <a href="/docs/security/securing-your-server">Securing Your Server</a> to create a standard user account, harden SSH access and remove unnecessary network services.</p></li>
+
+<li><p>Update your system:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></li>
+</ol>
+
+<h2 id="install-openjdk-8">Install OpenJDK 8</h2>
+
+<p>Elasticsearch requires the most recent versions of Java, and will not run with the default OpenJDK version available on Debian Jessie. Install the <code>jessie-backports</code> source in order to get OpenJDK 8:</p>
+
+<ol>
+<li><p>Add Jessie backports to your list of APT sources:</p>
+
+<pre><code>echo deb http://ftp.debian.org/debian jessie-backports main | sudo tee -a /etc/apt/sources.list.d/jessie-backports.list
+</code></pre></li>
+
+<li><p>Update the APT package cache:</p>
+
+<pre><code>sudo apt-get update
+</code></pre></li>
+
+<li><p>Install OpenJDK 8:</p>
+
+<pre><code>sudo apt-get install -y -t jessie-backports openjdk-8-jre-headless ca-certificates-java
+</code></pre></li>
+
+<li><p>Make sure your system is using the updated version of Java. Run the following command and choose <code>java-8-openjdk-amd64/jre/bin/java</code> from the dialogue menu that opens:</p>
+
+<pre><code>sudo update-alternatives --config java
+</code></pre></li>
+</ol>
+
+<h2 id="install-elastic-apt-repository">Install Elastic APT Repository</h2>
+
+<p>The Elastic package repositories contain all of the necessary packages for this tutorial, so install it first before proceeding with the individual services.</p>
+
+<ol>
+<li><p>Install the official Elastic APT package signing key:</p>
+
+<pre><code>wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+</code></pre></li>
+
+<li><p>Install the <code>apt-transport-https</code> package, which is required to retrieve deb packages served over HTTPS on Debian 8:</p>
+
+<pre><code>sudo apt-get install apt-transport-https
+</code></pre></li>
+
+<li><p>Add the APT repository information to your server&rsquo;s list of sources:</p>
+
+<pre><code>echo &quot;deb https://artifacts.elastic.co/packages/5.x/apt stable main&quot; | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+</code></pre></li>
+
+<li><p>Refresh the list of available packages:</p>
+
+<pre><code>sudo apt-get update
+</code></pre></li>
+</ol>
+
+<h2 id="install-elastic-stack">Install Elastic Stack</h2>
+
+<p>Before configuring and loading log data, install each piece of the stack, individually.</p>
+
+<h3 id="elasticsearch">Elasticsearch</h3>
+
+<ol>
+<li><p>Install the <code>elasticsearch</code> package:</p>
+
+<pre><code> sudo apt-get install elasticsearch
+</code></pre></li>
+
+<li><p>Set the JVM heap size to approximately half of your server&rsquo;s available memory. For example, if your server has 1GB of RAM, change the <code>Xms</code> and <code>Xmx</code> values in the <code>/etc/elasticsearch/jvm.options</code> file to the following, and leave the other values in this file unchanged:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/elasticsearch/jvm.options 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="err">-</span><span class="nb">Xms512m</span>
+-Xmx512m</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Start and enable the <code>elasticsearch</code> service:</p>
+
+<pre><code> sudo systemctl enable elasticsearch
+ sudo systemctl start elasticsearch
+</code></pre></li>
+
+<li><p>Wait a few moments for the service to start, then confirm that the Elasticsearch API is available:</p>
+
+<pre><code> curl localhost:9200
+</code></pre>
+
+<p>Elasticsearch may take some time to start up. If you need to determine whether the service has started successfully or not, you can use the <code>systemctl status elasticsearch</code> command to see the most recent logs. The Elasticsearch REST API should return a JSON response similar to the following:</p>
+
+<pre><code> {
+   &quot;name&quot; : &quot;e5iAE99&quot;,
+   &quot;cluster_name&quot; : &quot;elasticsearch&quot;,
+   &quot;cluster_uuid&quot; : &quot;lzuLNZa0Qo-7_puJZZjR4Q&quot;,
+   &quot;version&quot; : {
+     &quot;number&quot; : &quot;5.5.2&quot;,
+     &quot;build_hash&quot; : &quot;b2f0c09&quot;,
+     &quot;build_date&quot; : &quot;2017-08-14T12:33:14.154Z&quot;,
+     &quot;build_snapshot&quot; : false,
+     &quot;lucene_version&quot; : &quot;6.6.0&quot;
+   },
+   &quot;tagline&quot; : &quot;You Know, for Search&quot;
+ }
+</code></pre></li>
+</ol>
+
+<h3 id="logstash">Logstash</h3>
+
+<p>Install the <code>logstash</code> package:</p>
+
+<pre><code> sudo apt-get install logstash
+</code></pre>
+
+<h3 id="kibana">Kibana</h3>
+
+<p>Install the <code>kibana</code> package:</p>
+
+<pre><code> sudo apt-get install kibana
+</code></pre>
+
+<h2 id="configure-elastic-stack">Configure Elastic Stack</h2>
+
+<h3 id="elasticsearch-1">Elasticsearch</h3>
+
+<p>By default, Elasticsearch will create five shards and one replica for every index that&rsquo;s created. When deploying to production, these are reasonable settings to use. In this tutorial, only one server is used in the Elasticsearch setup, so multiple shards and replicas are unncessary. Changing these defaults can avoid unecessary overhead.</p>
+
+<ol>
+<li><p>Create a temporary JSON file with an <em>index template</em> that instructs Elasticsearch to set the number of shards to one and number of replicas to zero for all matching index names (in this case, a wildcard <code>*</code>):</p>
+
+<dl class="file">
+<dt>
+
+
+		template.json 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span><span class="lnt">9</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;template&#34;</span><span class="p">:</span> <span class="s2">&#34;*&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;settings&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;index&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;number_of_shards&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&#34;number_of_replicas&#34;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Use <code>curl</code> to create an index template with these settings that&rsquo;ll be applied to all indices created hereafter:</p>
+
+<pre><code>curl -XPUT http://localhost:9200/_template/defaults -d @template.json
+</code></pre></li>
+
+<li><p>Elasticsearch should return:</p>
+
+<pre><code>{&quot;acknowledged&quot;:true}
+</code></pre></li>
+</ol>
+
+<h3 id="logstash-1">Logstash</h3>
+
+<p>In order to collect Apache access logs, Logstash must be configured to watch any necessary files and then process them, eventually sending them to Elasticsearch. This configuration file assumes that a site has been set up according to the previously mentioned <a href="/docs/web-servers/apache/apache-web-server-debian-8">Apache Web Server on Debian 8 (Jessie)</a> guide to find the correct log path.</p>
+
+<ol>
+<li><p>Create the following Logstash configuration:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/logstash/conf.d/apache.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aconf" data-lang="aconf"><span class="nb">input</span> {
+  <span class="nb">file</span> {
+    <span class="nb">path</span> =&gt; &#39;/var/www/*/logs/access.log&#39;
+  <span class="err">}</span>
+<span class="err">}</span>
+
+<span class="nb">filter</span> {
+  <span class="nb">grok</span> {
+    <span class="nb">match</span> =&gt; { <span class="s2">&#34;message&#34;</span> =&gt; <span class="s2">&#34;%{COMBINEDAPACHELOG}&#34;</span> }
+  <span class="err">}</span>
+<span class="err">}</span>
+
+<span class="nb">output</span> {
+  <span class="nb">elasticsearch</span> { }
+<span class="err">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Start and enable <code>logstash</code>:</p>
+
+<pre><code>sudo systemctl enable logstash
+sudo systemctl start logstash
+</code></pre></li>
+</ol>
+
+<h3 id="kibana-1">Kibana</h3>
+
+<ol>
+<li><p>Open <code>/etc/kibana/kibana.yml</code>. Uncomment the following two lines and replace <code>localhost</code> with the public IP address of your Linode. If you have a firewall enabled on your server, make sure that the server accepts connections on port <code>5601</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/kibana/kibana.yml 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">server.port: <span class="m">5601</span>
+server.host: <span class="s2">&#34;localhost&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Enable and start the Kibana service:</p>
+
+<pre><code>sudo systemctl enable kibana
+sudo systemctl start kibana
+</code></pre></li>
+
+<li><p>In order for Kibana to find log entries to configure an <em>index pattern</em>, logs must first be sent to Elasticsearch. With the three daemons started, log files should be collected with Logstash and stored in Elasticsearch. To generate logs, issue several requests to Apache:</p>
+
+<pre><code>for i in `seq 1 5` ; do curl localhost ; sleep 0.2 ; done
+</code></pre></li>
+
+<li><p>Next, open Kibana in your browser. Kibana listens for requests on port <code>5601</code>, so depending on your Linode&rsquo;s configuration, you may need to port-forward Kibana through SSH. The landing page should look similar to the following:</p>
+
+<p><img src="/docs/assets/elastic-stack-debian-8-kibana-index-pattern.png" alt="Kibana 5 Index Pattern Configuration" title="Kibana 5 Index Pattern Configuration" /></p>
+
+<p>This screen permits you to create an index pattern, which is a way for Kibana to know which indices to search for when browsing logs and creating dashboards. The default value of <code>logstash-*</code> matches the default indices created by Logstash. Clicking &ldquo;Create&rdquo; on this screen is enough to configure Kibana and begin reading logs.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as &ldquo;Last 15 Minutes&rdquo;). If at any point, log entries no longer are shown in the Kibana interface, click this timespan and choose a wider range, such as &ldquo;Last Hour&rdquo; or &ldquo;Last 1 Hour&rdquo; or &ldquo;Last 4 Hours,&rdquo; to see as many logs as possible.</div>
+</blockquote>
+</li>
+</ol>
+
+<h2 id="view-logs">View Logs</h2>
+
+<p>After the previously executed <code>curl</code> commands created entries in the Apache access logs, Logstash will have indexed them in Elasticsearch. These are now visible in Kibana.</p>
+
+<p>The &ldquo;Discover&rdquo; tab on the left-hand side of Kibana&rsquo;s interface (which should be open by default after configuring your index pattern) should show a timeline of log events:</p>
+
+<p><img src="/docs/assets/elastic-stack-debian-8-kibana-discover.png" alt="Kibana 5 Discover Tab" title="Kibana 5 Discover Tab" /></p>
+
+<p>Over time, and as other requests are made to the web server via <code>curl</code> or a browser, additional logs can be seen and searched from Kibana. The Discover tab is a good way to familiarize yourself with the structure of the indexed logs and determine what to search and analyze.</p>
+
+<p>In order to view the details of a log entry, click the drop-down arrow to see individual document fields:</p>
+
+<p><img src="/docs/assets/elastic-stack-debian-8-kibana-field-dropdown.png" alt="Kibana 5 Document Fields" title="Kibana 5 Document Fields" /></p>
+
+<p>Fields represent the values parsed from the Apache logs, such as <code>agent</code>, which represents the <code>User-Agent</code> header, and <code>bytes</code>, which indicates the size of the web server response.</p>
+
+<h3 id="analyze-logs">Analyze Logs</h3>
+
+<p>Before continuing, generate a couple of dummy 404 log events in your web server logs to demonstrate how to search and analyze logs within Kibana:</p>
+
+<pre><code>for i in `seq 1 2` ; do curl localhost/notfound-$i ; sleep 0.2 ; done
+</code></pre>
+
+<h4 id="search-data">Search Data</h4>
+
+<p>The top search bar within the Kibana interface allows you to search for queries following the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl-query-string-query.html#query-string-syntax">query string syntax</a> to find results.</p>
+
+<p>For example, to find the 404 error requests you generated from among 200 OK requests, enter the following in the search box:</p>
+
+<pre><code>response:404
+</code></pre>
+
+<p>Then, click the magnifying glass search button.</p>
+
+<p><img src="/docs/assets/elastic-stack-debian-8-kibana-search-bar.png" alt="Kibana 5 Search Bar" title="Kibana 5 Search Bar" /></p>
+
+<p>The user interface will now only return logs that contain the &ldquo;404&rdquo; code in their response field.</p>
+
+<h4 id="analyze-data">Analyze Data</h4>
+
+<p>Kibana supports many types of Elasticsearch queries to gain insight into indexed data. For example, consider the traffic that resulted in a &ldquo;404 - not found&rdquo; response code. Using <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html">aggregations</a>, useful summaries of data can be extracted and displayed natively in Kibana.</p>
+
+<p>To create one of these visualizations, begin by selecting the &ldquo;Visualize&rdquo; tab:</p>
+
+<p><img src="/docs/assets/elastic-stack-debian-8-kibana-visualize-tab.png" alt="Kibana 5 Visualize Tab" title="Kibana 5 Visualize Tab" /></p>
+
+<p>Then, select one of the icons to create a visualization:</p>
+
+<p><img src="/docs/assets/elastic-stack-debian-8-kibana-create-visualization.png" alt="Kibana 5 Create Visualization" title="Kibana 5 Create Visualization" /></p>
+
+<p>Select &ldquo;Pie&rdquo; to create a new pie chart:</p>
+
+<p><img src="/docs/assets/elastic-stack-debian-8-kibana-pie-chart.png" alt="Kibana 5 Select Pie Chart Visualization" title="Kibana 5 Select Pie Chart Visualization" /></p>
+
+<p>Then select the <code>logstash-*</code> index pattern to determine from where the data for the pie chart will come:</p>
+
+<p><img src="/docs/assets/elastic-stack-debian-8-kibana-vis-index.png" alt="Kibana 5 Select Pie Chart Index" title="Kibana 5 Select Pie Chart Index" /></p>
+
+<p>At this point, a pie chart should appear in the interface ready to be configured. Follow these steps to configure the visualization in the user interface pane that appears to the left of the pie chart:</p>
+
+<ul>
+<li>Select &ldquo;Split Slices&rdquo; to create more than one slice in the visualization.</li>
+<li>From the &ldquo;Aggregation&rdquo; drop-down menu, select &ldquo;Terms&rdquo; to indicate that unique terms of a field will be the basis for each slice of the pie chart.</li>
+<li>From the &ldquo;Field&rdquo; drop-down menu, select <code>response.keyword</code>. This indicates that the <code>response</code> field will determine the size of the pie chart slices.</li>
+<li>Finally, click the &ldquo;Play&rdquo; button to update the pie chart and complete the visualization.</li>
+</ul>
+
+<p><img src="/docs/assets/elastic-stack-debian-8-kibana-finished-pie.png" alt="Kibana 5 Select Pie Chart Configuration" title="Kibana 5 Select Pie Chart Configuration" /></p>
+
+<p>Observe that only a portion of requests have returned a 404 response code (remember to change the aforementioned time span if your curl requests occurred earlier than you are currently viewing). This approach of collecting summarized statistics about the values of fields within your logs can be similarly applied to other fields, such as the http verb (GET, POST, etc.), or can even create summaries of numerical data, such as the total amount of bytes transferred over a given time period.</p>
+
+<p>If you wish to save this visualization for use later use, click the &ldquo;Save&rdquo; button near the top of the browser window to name the visualization and save it permanently to Elasticsearch.</p>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<p>Although this tutorial has provided an overview of each piece of the Elastic stack, more reading is available to learn additional ways to process and view data, such as additional Logstash filters to enrich log data, or other Kibana visualizations to present data in new and useful ways.</p>
+
+<p>Comprehensive documentation for each piece of the stack is available from the Elastic web site:</p>
+
+<ul>
+<li>The <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">Elasticsearch reference</a> contains additional information regarding how to operate Elasticsearch, including clustering, managing indices, and more.</li>
+<li>The <a href="https://www.elastic.co/guide/en/logstash/current/index.html">Logstash documentation</a> contains useful information on additional plug-ins that can further process raw data, such as geolocating IP addresses, parsing user-agent strings, and other plug-ins.</li>
+<li><a href="https://www.elastic.co/guide/en/kibana/current/index.html">Kibana&rsquo;s documentation pages</a> provide additional information regarding how to create useful visualizations and dashboards.</li>
+</ul>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="https://www.elastic.co/guide/index.html">Elastic Documentation</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-web-server-debian-8/">Apache Web Server on Debian 8 (Jessie)</a></li>
+    
+    
+    
+    <li><a href="/docs/security/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/">Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-2-web-server-on-debian-6-squeeze/">Apache 2 Web Server on Debian 6 (Squeeze) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-2-web-server-on-fedora-14/">Apache 2 Web Server on Fedora 14 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/apache/apache-2-web-server-on-fedora-13/">Apache 2 Web Server on Fedora 13 - Deprecated</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-an-elastic-stack">What is an Elastic Stack?</a></li>
+<li><a href="#before-you-begin">Before You Begin</a></li>
+<li><a href="#install-openjdk-8">Install OpenJDK 8</a></li>
+<li><a href="#install-elastic-apt-repository">Install Elastic APT Repository</a></li>
+<li><a href="#install-elastic-stack">Install Elastic Stack</a>
+<ul>
+<li><a href="#elasticsearch">Elasticsearch</a></li>
+<li><a href="#logstash">Logstash</a></li>
+<li><a href="#kibana">Kibana</a></li>
+</ul></li>
+<li><a href="#configure-elastic-stack">Configure Elastic Stack</a>
+<ul>
+<li><a href="#elasticsearch-1">Elasticsearch</a></li>
+<li><a href="#logstash-1">Logstash</a></li>
+<li><a href="#kibana-1">Kibana</a></li>
+</ul></li>
+<li><a href="#view-logs">View Logs</a>
+<ul>
+<li><a href="#analyze-logs">Analyze Logs</a>
+<ul>
+<li><a href="#search-data">Search Data</a></li>
+<li><a href="#analyze-data">Analyze Data</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#further-reading">Further Reading</a></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Linux Users and Groups</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="An introduction to the principal concepts and use of the users and groups system in Linux systems.">
+        <meta name="keywords" content="users, permissions, access control lists, chmod, chown, linux">
+        
+        <meta property="og:title" content="Linux Users and Groups">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/tools-reference/linux-users-and-groups/">
+        <meta property="og:description" content="An introduction to the principal concepts and use of the users and groups system in Linux systems.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/tools-reference/linux-users-and-groups/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/tools-reference/">Tools &amp; Reference</a>
+  
+</li>
+
+
+<li>
+  
+  Linux Users and Groups
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Linux Users and Groups</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-03-23T00:00:00Z">Thursday, March 23, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2flinux-users-and-groups%2f&via=linode&text=Linux%20Users%20and%20Groups" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2flinux-users-and-groups%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2ftools-reference%2flinux-users-and-groups%2f&t=Linux%20Users%20and%20Groups" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/tools-reference/linux-users-and-groups.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/tools-reference/linux-users-and-groups.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide will provide you with an explanation of what permissions are, how they work, and how to manage them. A number of examples will be provided to illustrate how to set and change permissions for both users and groups.</p>
+
+<p><img src="/docs/assets/linux_users_and_groups.png" alt="Linux Users and Groups" title="Linux Users and Groups" /></p>
+
+<h2 id="what-are-user-and-group-permissions">What are User and Group Permissions?</h2>
+
+<p>Linux/Unix operating systems have the ability to multitask in a manner similar to other operating systems. However, Linux&rsquo;s major difference from other operating systems is its ability to have multiple users. Linux was designed to allow more than one user to have access to the system at the same time. In order for this multiuser design to work properly, there needs to be a method to protect users from each other. This is where permissions come in to play.</p>
+
+<h3 id="read-write-execute-permissions">Read, Write &amp; Execute Permissions</h3>
+
+<p>Permissions are the &ldquo;rights&rdquo; to act on a file or directory. The basic rights are read, write, and execute.</p>
+
+<ul>
+<li>Read - a readable permission allows the contents of the file to be viewed. A read permission on a directory allows you to list the contents of a directory.</li>
+<li>Write - a write permission on a file allows you to modify the contents of that file. For a directory, the write permission allows you to edit the contents of a directory (e.g. add/delete files).</li>
+<li>Execute - for a file, the executable permission allows you to run the file and execute a program or script. For a directory, the execute permission allows you to change to a different directory and make it your current working directory. Users usually have a default group, but they may belong to several additional groups.</li>
+</ul>
+
+<h3 id="viewing-file-permissions">Viewing File Permissions</h3>
+
+<p>To view the permissions on a file or directory, issue the command <code>ls -l &lt;directory/file&gt;</code>. Remember to replace the information in the <strong>&lt; &gt;</strong> with the actual file or directory name. Below is sample output for the <code>ls</code> command:</p>
+
+<pre><code>-rw-r--r-- 1 root root 1031 Nov 18 09:22 /etc/passwd
+</code></pre>
+
+<p>The first ten characters show the access permissions. The first dash (-) indicates the type of file (d for directory, s for special file, and - for a regular file). The next three characters (<strong>rw-</strong>) define the owner&rsquo;s permission to the file. In this example, the file owner has read and write permissions only. The next three characters (<strong>r&ndash;</strong>) are the permissions for the members of the same group as the file owner (which in this example is read only). The last three characters (<strong>r&ndash;</strong>) show the permissions for all other users and in this example it is read only.</p>
+
+<h2 id="working-with-users-groups-and-directories">Working with Users, Groups, and Directories</h2>
+
+<p>The following sections will go over the commands needed to create, delete, and modify user accounts. Groups will be covered, as well as commands for creating and deleting directories. You will be provided with the commands and descriptions needed for working with users, groups, and directories.</p>
+
+<h3 id="creating-and-deleting-user-accounts">Creating and Deleting User Accounts</h3>
+
+<p>To create a new standard user, use the <code>useradd</code> command. The syntax is as follows:</p>
+
+<pre><code>useradd &lt;name&gt;
+</code></pre>
+
+<p>The useradd command utilizes a variety of variables, some of which are shown in the table below:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>-d &lt;home_dir&gt;</code></td>
+<td align="left">home_dir will be used as the value for the user&rsquo;s login directory</td>
+<td align="left"><code>useradd &lt;name&gt; -d /home/&lt;user's home&gt;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>-e &lt;date&gt;</code></td>
+<td align="left">the date when the account will expire</td>
+<td align="left"><code>user add &lt;name&gt;** -e &lt;YYYY-MM-DD&gt;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>-f &lt;inactive&gt;</code></td>
+<td align="left">the number of days before the account expires</td>
+<td align="left"><code>useradd &lt;name&gt; -f &lt;0 or -1&gt;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>-s &lt;shell&gt;</code></td>
+<td align="left">sets the default shell type</td>
+<td align="left"><code>useradd &lt;name&gt; -s /bin/&lt;shell&gt;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>You will need to set a password for the new user by using the <code>passwd</code> command. Note, you will need root privileges to change a user password. The syntax is as follows:</p>
+
+<pre><code>passwd &lt;username&gt;
+</code></pre>
+
+<p>The user will be able to change their password at any time using the <code>passwd</code> command with the syntax. Below is an example:</p>
+
+<pre><code>$ passwd
+Changing password for lmartin.
+(current) UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+</code></pre>
+
+<p>There is another way of creating user accounts that might be easier for first-time administrators. However, you may need to install a new package. The installation command for Debian/Ubuntu is as follows:</p>
+
+<pre><code>apt-get install adduser
+</code></pre>
+
+<p>The adduser command automatically creates a home directory and sets the default group, shell, etc. To create a new standard user with the <code>adduser</code> command the syntax is as follows:</p>
+
+<pre><code>adduser &lt;name&gt;
+</code></pre>
+
+<p>Once you enter the command you will receive a series of prompts; most of this information is optional. However, you should include at least the user&rsquo;s name (for this example the user name is cjones) and of course a password.</p>
+
+<pre><code>root@localhost:~# adduser cjones
+  Adding user `cjones' ...
+  Adding new group `cjones' (1001) ...
+  Adding new user `cjones' (1001) with group `cjones' ...
+  Creating home directory `/home/cjones' ...
+  Copying files from `/etc/skel' ...
+  Enter new UNIX password:
+  Retype new UNIX password:
+  passwd: password updated successfully
+  Changing the user information for cjones
+  Enter the new value, or press ENTER for the default
+      Full Name []: Chuck Jones
+      Room Number []: 213
+      Work Phone []: 856-555-1212
+      Home Phone []:
+      Other []:
+  Is the information correct? [Y/n] Y
+</code></pre>
+
+<p>It is important to note that security should always be taken very seriously. Therefore, it is strongly recommended to use unique passwords for each account. Never share or give your password to other users.</p>
+
+<p>To remove a user account, enter the following command:</p>
+
+<pre><code>userdel &lt;name&gt;
+</code></pre>
+
+<p>Issuing the command above will only delete the user&rsquo;s account. Their files and home directory will not be deleted.</p>
+
+<p>To remove the user, their home folder, and their files, use this command:</p>
+
+<pre><code>userdel -r &lt;name&gt;
+</code></pre>
+
+<h3 id="understanding-sudo">Understanding Sudo</h3>
+
+<p>Root is the super user and has the ability to do anything on a system. Therefore, in order to have protection against potential damage sudo is used in place of root. Sudo allows users and groups access to commands they normally would not be able to use. Sudo will allow a user to have administration privileges without logging in as root. A sample of the sudo command is as follows:</p>
+
+<pre><code>sudo apt-get install &lt;package&gt;
+</code></pre>
+
+<p>Before using sudo, it may need to be installed if it is not part of your distribution. The command for Debian is as follows:</p>
+
+<pre><code>apt-get install sudo
+</code></pre>
+
+<p>For CentOS, the command is as follows:</p>
+
+<pre><code>yum install sudo
+</code></pre>
+
+<p>In order to provide a user with sudo ability, their name will need to be added to the sudoers file. This file is very important and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system.</p>
+
+<p>Therefore the <code>visudo</code> command should be used to edit the sudoers file. At a command line, log into your system as root and enter the command <code>visudo</code>.</p>
+
+<p>Below is the portion of the sudoers file that shows the users with sudo access.</p>
+
+<pre><code># User privilege specification
+root    ALL=(ALL:ALL) ALL
+cjones  ALL=(ALL:ALL) ALL
+kbrown  ALL=(ALL:ALL) ALL
+lmartin ALL=(ALL:ALL) ALL
+</code></pre>
+
+<p>After you have given your user account sudo privileges, save the sudoers file and log out as root. Now log in as your user and test the privileges as your user with sudo access. When a new user needs sudo access, you will now be able to edit the sudoers file with your own login using the following command:</p>
+
+<pre><code>sudo visudo
+</code></pre>
+
+<h3 id="working-with-groups">Working with Groups</h3>
+
+<p>Linux uses groups as a way to organize users. Groups organize collections of accounts, primarily as a security measure. Control of group membership is administered through the <code>/etc/group</code> file, which shows a list of groups and its members. Every user has a default or primary group. When a user logs in, the group membership is set for their primary group. This means that when a user launches a program or creates a file, both the file and the running program will be associated with the user&rsquo;s current group membership. A user may access other files in other groups, as long as they are also a member of that group and the access permissions are set. To run programs or create a file in a different group, the user must run the <code>newgrp</code> command to switch their current group. A sample of the newgrp command is as follows:</p>
+
+<pre><code>$ newgrp &lt;marketing&gt;
+</code></pre>
+
+<p>If the user entering the above-referenced command is a member of the <strong>marketing</strong> group in the <code>/etc/group</code> file, then the current group membership will change. It is important to note that any files created will now be associated with the <strong>marketing</strong> group rather than the user&rsquo;s primary group. Users may also change their group by using the <code>chgrp</code> command. The syntax for the chgrp command is as follows:</p>
+
+<pre><code>$ chgrp &lt;newgroup&gt;
+</code></pre>
+
+<h3 id="creating-and-removing-directories">Creating and Removing Directories</h3>
+
+<p>To make a directory use the command:</p>
+
+<pre><code>mkdir &lt;directory name&gt;
+</code></pre>
+
+<p>To make a directory and set the permissions at the same time, use the following option and syntax:</p>
+
+<pre><code>mkdir -m a=rwx &lt;directory name&gt;
+</code></pre>
+
+<p>The <strong>-m</strong> option is short for mode, and <strong>a=rwx</strong> means that all users have read, write, and execute permissions on the directory. To see a complete list of all options for the mkdir command enter <code>man mkdir</code> at a command prompt.</p>
+
+<p>To remove a file, use the following:</p>
+
+<pre><code>rm &lt;file&gt;
+</code></pre>
+
+<p>To remove a directory:</p>
+
+<pre><code>rm -r &lt;directory name&gt;
+</code></pre>
+
+<p>It is important to note that if you remove a directory all the files inside will be deleted as well.</p>
+
+<h3 id="changing-directory-and-file-permissions">Changing Directory and File Permissions</h3>
+
+<p>To view file permissions and ownership on files and directories, use the <code>ls -al</code> command. The <code>a</code> option is to show hidden files or all files, and the <code>l</code> option is for the long listing. The output will be similar to the following:</p>
+
+<pre><code>drwxr-xr-x 2 user user 4096 Jan  9 10:11 documents
+-rw-r--r-- 1 user user  675 Jan  7 12:05 .profile
+drwxr-xr-x 4 user user 4096 Jan  7 14:55 public
+</code></pre>
+
+<p>The first column with the ten letters and dashes shows the permissions of the file or directory. The second column (with the single number) indicates the number of files or directories contained in the directory. The next column indicates the owner, followed by the group name, the size, date, and time of last access, and finally the name of the file . For example, using the first line from the output above, the details are as follows:</p>
+
+<pre><code>`drwxr-xr-x` are the permissions
+`2` is the number of files or directories
+`user` is the owner
+`user` is the group
+`4096` is the size
+`Jan  9 10:11` is the date/time of last access
+`documents` is the directory
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Since a directory itself is a file, any directory will always show <code>4096</code> as it&rsquo;s size. This does not reflect the size of the contents of the directory.</div>
+</blockquote>
+
+
+<h3 id="chmod-command">Chmod Command</h3>
+
+<p>The command <code>chmod</code> is short for change mode. Chmod is used to change permissions on files and directories. The command <code>chmod</code> may be used with either letters or numbers (also known as octal) to set the permissions. The letters used with chmod are in the table below:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Letter</th>
+<th align="left">Permission</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">r</td>
+<td align="left">Read</td>
+</tr>
+
+<tr>
+<td align="left">w</td>
+<td align="left">Write</td>
+</tr>
+
+<tr>
+<td align="left">x</td>
+<td align="left">Execute</td>
+</tr>
+
+<tr>
+<td align="left">X</td>
+<td align="left">Execute (only if file is a directory)</td>
+</tr>
+
+<tr>
+<td align="left">s</td>
+<td align="left">Set user or group ID on execution</td>
+</tr>
+
+<tr>
+<td align="left">t</td>
+<td align="left">Save program text on swap device</td>
+</tr>
+
+<tr>
+<td align="left">u</td>
+<td align="left">Current permissions the file has for owner</td>
+</tr>
+
+<tr>
+<td align="left">g</td>
+<td align="left">Current permissions the file has for users in the same group</td>
+</tr>
+
+<tr>
+<td align="left">o</td>
+<td align="left">Current permissions the file has for others not in the group</td>
+</tr>
+</tbody>
+</table>
+
+<p>It is important to remember that the first character of the first column of a file listing denotes whether it is a directory or a file. The other nine characters are the permissions for the file/directory. The first three characters are for the user, the next three are for the group, and the last three are for others. The example <strong>drwxrw-r&ndash;</strong> is broken down as follows:</p>
+
+<blockquote>
+<p><strong>d</strong> is a directory</p>
+
+<p><strong>rwx</strong> the user has read, write, and execute permissions</p>
+
+<p><strong>rw-</strong> the group has read and write permissions</p>
+
+<p><strong>r&ndash;</strong> all others have read only permissions</p>
+</blockquote>
+
+<p>Note that the dash (-) denotes permissions are removed. Therefore, with the &ldquo;all others&rdquo; group, r&ndash; translates to read permission only, the write and execute permissions were removed.</p>
+
+<p>Conversely, the plus sign (+) is equivalent to granting permissions: <code>chmod u+r,g+x &lt;filename&gt;</code></p>
+
+<p>The example above translates as follows:</p>
+
+<pre><code>u is for user
+r is for read
+g is for group
+x is for execute
+</code></pre>
+
+<p>In other words, the user was given read permission and the group was given execute permission for the file. Note, when setting multiple permissions for a set, a comma is required between sets.</p>
+
+<h3 id="chmod-octal-format">Chmod Octal Format</h3>
+
+<p>To use the octal format, you have to calculate the permissions for each portion of the file or directory. The first ten characters mentioned above will correspond to a four digit numbers in octal. The execute permission is equal to the number one (1), the write permission is equal to the number two (2), and the read permission is equal to the number four (4). Therefore, when you use the octal format, you will need to calculate a number between 0 and 7 for each portion of the permission. A table has been provided below for clarification.</p>
+
+<p><img src="/docs/assets/1502-octal-format-clarified.png" alt="Octal format for permissions." /></p>
+
+<p>Although octal format may seem difficult to understand, it is easy to use once you get the gist of it. However, setting permissions with r, w, and x may be easier. Below are examples of how to use both letters and octal format to set permissions on a file or directory.</p>
+
+<blockquote>
+<p>Sample syntax: <code>chmod &lt;octal or letters&gt; &lt;file/directory name&gt;</code></p>
+
+<p>Letter format: <code>chmod go-rwx Work</code> (Deny rwx permission for the group and others)</p>
+</blockquote>
+
+<p>The output of ls -al after the chmod command above would looks as follows:</p>
+
+<pre><code>dr-------- 2 user user 4096 Dec 17 14:38 Work
+</code></pre>
+
+<p>Octal format: <code>chmod 444 Work</code></p>
+
+<p>The output of ls -al after the chmod command above would look as follows:</p>
+
+<pre><code>dr--r--r-- 2 user user 4096 Dec 17 14:38 Work
+</code></pre>
+
+<p>An octal table showing the numeric equivalent for permissions is provided below.</p>
+
+<p><img src="/docs/assets/1487-numeric-permissions.png" alt="Numeric permissions table." /></p>
+
+<h3 id="additional-file-permissions">Additional File Permissions</h3>
+
+<p>In addition to the most common read/write/execute file permissions, there are some additional modes that you might find useful, specifically the <em>+t</em> mode (<em>sticky bit</em>) and the <em>+s</em> mode (<em>setuid bit</em>). These functions describe the behavior of files and executables in multi-user situations.</p>
+
+<p>When set on a file or directory, the <em>sticky bit</em>, or <em>+t</em> mode, means that only the owner (or root) can delete the file, regardless of which users have write access to this file/directory by way of group membership or ownership. This is useful when a file or directory is owned by a group through which a number of users share write access to a given set of files.</p>
+
+<p>To set the sticky bit on a file named <code>/root/sticky.txt</code>, issue the following command:</p>
+
+<pre><code>chmod +t /root/sticky.txt
+</code></pre>
+
+<p>To remove the sticky bit from a file, use the <code>chmod -t</code> command. Note, to change the sticky bit, you need to be either root or the file owner. The root user will be able to delete files regardless of the status of the sticky bit.</p>
+
+<p>The <em>setuid</em> bit, or <em>+s</em>, when set on files allows users with permissions to execute a given file the ability to run that file with the permissions of file owner. For instance, if the file <code>work</code> was owned by the <code>root</code> user and the <code>marketing</code> group, members of the <code>marketing</code> group could run the <code>work</code> program as if they were the root user. This may pose potential security risks in some cases and executables should be properly evaluated before receiving the <code>+s</code> flag. To set the <code>+s</code> bit on a file named <code>/usr/bin/work</code>, issue the following command:</p>
+
+<pre><code>chmod g+s /usr/bin/work
+</code></pre>
+
+<p>In contrast to the <em>+s</em> mode for the ownership of a file, the effect of the <em>+s</em> mode on a directory is somewhat different. Files created in <em>+s</em> directories receive the ownership of that directory&rsquo;s user and group, rather than the ownership of the user that created the file and their default group. To set the <em>setguid</em> (group id) option on a directory, use the following command:</p>
+
+<pre><code>chmod g+s /var/doc-store/
+</code></pre>
+
+<p>To set the <em>setuid</em> (user id) for a directory named <code>/var/doc-store</code>, issue the following command:</p>
+
+<pre><code>chmod o+s /var/doc-store/
+</code></pre>
+
+<h3 id="changing-file-ownership">Changing File Ownership</h3>
+
+<p>By default, all files are &ldquo;owned&rdquo; by the user who creates them and by that user&rsquo;s default group. To change the ownership of a file, use the <code>chown</code> command in the <code>chown user:group /path/to/file</code> format. In the following example, the ownership of the &ldquo;list.html&rdquo; file will be changed to the &ldquo;cjones&rdquo; user in the &ldquo;marketing&rdquo; group:</p>
+
+<pre><code>chown cjones:marketing list.html
+</code></pre>
+
+<p>To change the ownership of a directory and all the files contained inside, use the recursive option with the <code>-R</code> flag. In the following example, change the ownership of <code>/srv/smb/leadership/</code> to the &ldquo;cjones&rdquo; user in the &ldquo;marketing&rdquo; group:</p>
+
+<pre><code>chown -R cjones:marketing /srv/smb/leadership/
+</code></pre>
+
+<h1 id="leveraging-users-and-groups">Leveraging Users and Groups</h1>
+
+<p>In many cases, user permissions are used to provide your system with greater security without any direct interaction. Many operating systems create specific system user accounts for different packages during the installation process.</p>
+
+<p>The best practice is to give each user their own login to your system. This protects each user&rsquo;s files from all other users. Furthermore, using specific accounts for users allows more accurate system logging, particularly when combined with tools like <code>sudo</code>. We recommend avoiding situations where more than one individual knows the password for a user account for maximum security.</p>
+
+<p>In contrast, groups are useful for allowing multiple independent user accounts to collaborate and share files. If you create groups on a machine for common tasks on a per-task basis (e.g. web editors, contributors, content submitters, support) and add relevant users to the relevant groups, these users can all edit and run the same set of files without sharing these files with the world. Use of the <code>chown</code> command with file permissions of 770 and 740 would help accomplish this goal.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://www.cae.wisc.edu/linaccounts">User Account and Group Management @ UWISC&rsquo;s Center for Computer Aided Engineering</a></li>
+
+<li><a href="http://www.debianadmin.com/users-and-groups-administration-in-linux.html">Users and Groups Administration in Linux @ DebianAdmin</a></li>
+
+<li><a href="http://www.onlineconversion.com/html_chmod_calculator.htm">Online Chmod Calculator</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/quick-answers/linux/install-selinux-on-ubuntu/">How to Install SELinux on Ubuntu</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linux/how-to-use-wget/">How to Use Wget</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/resize-a-linode-disk/">Resize a Linode Disk</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/">Deploy an Image to a Linode</a></li>
+    
+    
+    
+    <li><a href="/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/">Reset the Root Password on your Linode</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-are-user-and-group-permissions">What are User and Group Permissions?</a>
+<ul>
+<li><a href="#read-write-execute-permissions">Read, Write &amp; Execute Permissions</a></li>
+<li><a href="#viewing-file-permissions">Viewing File Permissions</a></li>
+</ul></li>
+<li><a href="#working-with-users-groups-and-directories">Working with Users, Groups, and Directories</a>
+<ul>
+<li><a href="#creating-and-deleting-user-accounts">Creating and Deleting User Accounts</a></li>
+<li><a href="#understanding-sudo">Understanding Sudo</a></li>
+<li><a href="#working-with-groups">Working with Groups</a></li>
+<li><a href="#creating-and-removing-directories">Creating and Removing Directories</a></li>
+<li><a href="#changing-directory-and-file-permissions">Changing Directory and File Permissions</a></li>
+<li><a href="#chmod-command">Chmod Command</a></li>
+<li><a href="#chmod-octal-format">Chmod Octal Format</a></li>
+<li><a href="#additional-file-permissions">Additional File Permissions</a></li>
+<li><a href="#changing-file-ownership">Changing File Ownership</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#leveraging-users-and-groups">Leveraging Users and Groups</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

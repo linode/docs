@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Linode Managed</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="How to configure service monitoring with Linode Managed.">
+        <meta name="keywords" content="linode managed, service monitoring">
+        
+        <meta property="og:title" content="Linode Managed">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/platform/linode-managed/">
+        <meta property="og:description" content="How to configure service monitoring with Linode Managed.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/platform/linode-managed/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/platform/">Linode Platform</a>
+  
+</li>
+
+
+<li>
+  
+  Linode Managed
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Linode Managed</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-05-10T00:00:00Z">Saturday, May 10, 2014</time> by Zack Buhman</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-managed%2f&via=linode&text=Linode%20Managed" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-managed%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fplatform%2flinode-managed%2f&t=Linode%20Managed" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/platform/linode-managed.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/platform/linode-managed.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><a href="https://www.linode.com/managed/">Linode Managed</a> is a <sup>24</sup>&frasl;<sub>7</sub> incident response service. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, we&rsquo;ll monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>First, you&rsquo;ll need to <a href="https://www.linode.com/managed/">sign up for Linode Managed</a>. Once Linode Managed is enabled for your account, you&rsquo;ll see the <strong>Managed</strong> tab when you log in to the Linode Manager, as shown below. You&rsquo;ll use this interface to interact with Linode Managed and monitor your servers.</p>
+
+<p><a href="/docs/assets/1198-managed_overview.png"><img src="/docs/assets/1198-managed_overview.png" alt="The Linode Managed interface." /></a></p>
+
+<ol>
+<li><strong>History:</strong> Review the historical availability of your monitored services at a glance. If any of your services were unavailable at any time within the past 10 days, you will see those outages here.</li>
+<li><strong>Monitoring:</strong> Add new services that will be monitored by Linode Managed, and check the status of the services you have already added. You can also edit, temporarily disable, and remove services.</li>
+<li><strong>Contacts:</strong> Add information for individuals that should be contacted when an incident is detected.</li>
+<li><strong>Credentials:</strong> Access Linode&rsquo;s public SSH key to install it on your server, and add the credentials for your monitored services.</li>
+<li><strong>Issues and Notifications:</strong> Open support tickets are displayed here.</li>
+<li><strong>Service Status:</strong> See which of your services are currently up and down.</li>
+<li><strong>Graphs:</strong> Monitor the combined network traffic, CPU usage, and IO operations of all of your Linodes.</li>
+</ol>
+
+<h3 id="initial-configuration-checklist">Initial Configuration Checklist</h3>
+
+<p>You&rsquo;ll need to perform several of the tasks outlined in this guide to start using Linode Managed:</p>
+
+<ol>
+<li>Verify that your servers are responding to ping ICMP echo requests.</li>
+<li><a href="#adding-the-public-key">Install Linode&rsquo;s public SSH key on all of your servers.</a></li>
+<li><a href="#adding-service-credentials">Add credentials for the services you want to monitor.</a></li>
+<li><a href="#contacts">Specify contacts and groups.</a></li>
+<li><a href="#adding-a-new-service">Add services to be monitored.</a></li>
+</ol>
+
+<p>Once you&rsquo;ve completed these steps, you&rsquo;ll have successfully configured Linode Managed.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Misconfiguration of Linode Managed could prevent us from properly monitoring your services, resolving incidents when they are detected, or contacting you when an incident is detected.</div>
+</blockquote>
+
+
+<h2 id="credentials">Credentials</h2>
+
+<p>To take full advantage of Linode Managed, you should upload <em>credentials</em> to your server and the Linode Manager website. This will allow our support staff to log in to your servers and access your services when an issue is detected.</p>
+
+<h3 id="adding-the-public-key">Adding the Public Key</h3>
+
+<p>Linode provides a public SSH key that you can add to your server. Install the key, and our support staff will be able to log in to your server as <code>root</code> or another user. This is an important component of the Linode Managed service - you should add Linode&rsquo;s public key to all of your servers.</p>
+
+<p>First, copy the public key to your computer&rsquo;s clipboard. Here&rsquo;s how:</p>
+
+<ol>
+<li>Log in to the <a href="https://manager.linode.com">Linode Manager</a>.</li>
+<li>Click the <strong>Managed</strong> tab.</li>
+
+<li><p>Click the <strong>Credentials</strong> tab. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1196-managed_credential3.png"><img src="/docs/assets/1196-managed_credential3.png" alt="The Linode Managed credential interface." /></a></p></li>
+
+<li><p>Copy Linode&rsquo;s public key to your clipboard.</p></li>
+</ol>
+
+<p>Now that you&rsquo;ve copied the public key, you need to install it on your server. There are two ways to install the public key: As the <code>root</code> user, or as another non-root user.</p>
+
+<h4 id="installing-as-root">Installing as Root</h4>
+
+<p>Installing the public SSH key for the <code>root</code> user is the easiest way to add Linode&rsquo;s public key to your server. However, if your server&rsquo;s SSH configuration doesn&rsquo;t allow <em>root login</em>, you may want to skip to the next section to add the public key to another user&rsquo;s account.</p>
+
+<p>Here&rsquo;s how to install Linode&rsquo;s SSH key for the <code>root</code> user:</p>
+
+<ol>
+<li>Open a terminal window and <a href="/docs/getting-started#connect-to-your-linode-via-ssh">log in to your Linode via SSH</a>.</li>
+
+<li><p>Log in as <code>root</code> by entering the following command:</p>
+
+<pre><code>su
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>If you followed the instructions in the <a href="/docs/securing-your-server">Securing Your Server</a> guide to disable root login via SSH, you will need to reenable that feature to install the public key for the <code>root</code> user. Follow <a href="/docs/security/securing-your-server/#ssh-daemon-options">these instructions</a> to edit the <code>sshd_config</code> file and reenable root login via SSH.</div>
+</blockquote>
+</li>
+
+<li><p>Open the <code>authorized_keys</code> file for editing by entering the following command:</p>
+
+<pre><code>nano /root/.ssh/authorized_keys
+</code></pre></li>
+
+<li><p>Paste Linode&rsquo;s public key in to the file.</p></li>
+
+<li><p>Save the changes to the <code>authorized_keys</code> file by pressing <strong>Control-X</strong>, and then <strong>Y</strong>.</p></li>
+</ol>
+
+<p>You have successfully added Linode&rsquo;s public key for the <code>root</code> user. Repeat this process on every Linode you want to monitor with Linode Managed.</p>
+
+<h4 id="installing-as-another-user">Installing as Another User</h4>
+
+<p>You can also install Linode&rsquo;s public SSH key for another non-root user. This allows you to disable SSH <em>root login</em> and still allow our support staff to log in to your servers.</p>
+
+<p>Here&rsquo;s how to install Linode&rsquo;s SSH key as a non-root user:</p>
+
+<ol>
+<li>Open a terminal window and <a href="/docs/getting-started#connect-to-your-linode-via-ssh">log in to your Linode via SSH</a>.</li>
+<li>If you haven&rsquo;t already created a non-root user on your server, you should do so now. See <a href="/docs/security/securing-your-server/#add-a-limited-user-account">Adding a New User</a> for instructions. Make sure you add the user to the admin group.</li>
+
+<li><p>Open the <code>sudoers</code> file for editing by entering the following command:</p>
+
+<pre><code>sudo visudo
+</code></pre></li>
+
+<li><p>Type <code>i</code> to enter <em>insert mode</em>.</p></li>
+
+<li><p>In the <em>User privilege specification</em> section of the file, add the following line, replacing <code>example_user</code> with your user name:</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/sudoers 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">User privilege specification example_user <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD: ALL</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl></li>
+
+<li><p>Press <strong>Esc</strong> to exit insert mode.</p></li>
+
+<li><p>Type <code>:wq</code> to save and quit the file.</p></li>
+
+<li><p>Add the <a href="/docs/platform/linode-managed/#adding-the-public-key">Managed public key</a> to the <code>/home/user/.ssh/authorized_keys</code> file for this user.</p></li>
+
+<li><p>Add this user to the <a href="/docs/platform/linode-managed/#adding-service-credentials">Account Credentials</a> list.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Make sure this user is not in any groups that are in <code>/etc/sudoers</code>, as this may override the passwordless sudo setting.</div>
+</blockquote>
+</li>
+</ol>
+
+<p>You have successfully added Linode&rsquo;s public key for the user. Repeat this process on every Linode you want to monitor with Linode Managed.</p>
+
+<h3 id="specifying-linode-ssh-settings">Specifying Linode SSH Settings</h3>
+
+<p>To allow our support staff to log in to your servers when an issue is detected, you&rsquo;ll need to specify the SSH settings for each of your Linodes. Here&rsquo;s how to add the SSH settings to Linode Managed:</p>
+
+<ol>
+<li><p>From the <strong>Managed</strong> tab, click the <strong>Linodes</strong> tab. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1301-ssh_settings1.png"><img src="/docs/assets/1301-ssh_settings1.png" alt="The Linode SSH settings interface." /></a></p></li>
+
+<li><p>From the <strong>SSH Access</strong> menu, select <strong>Enabled</strong>. If this setting is selected, the Linode Managed team will log in to your server when an issue is detected.</p></li>
+
+<li><p>Enter a username in the <strong>SSH User</strong> field. The specified user needs to have Linode&rsquo;s public SSH key installed. For instructions, see <a href="#adding-the-public-key">Adding the Public Key</a>.</p></li>
+
+<li><p>From the <strong>SSH IP</strong> menu, select a public IP address that the Linode Managed team can use to reach your Linode via SSH.</p></li>
+
+<li><p>In the <strong>SSH Port</strong> field, enter the Linode&rsquo;s SSH port. The default port is 22.</p></li>
+
+<li><p>Repeat steps 1-5 for all of your other Linodes.</p></li>
+
+<li><p>Click <strong>Update settings</strong> to save your settings.</p></li>
+</ol>
+
+<p>You have successfully added the SSH settings for your Linodes. The Linode Managed team can now log in to your servers when an issue is detected.</p>
+
+<h3 id="adding-service-credentials">Adding Service Credentials</h3>
+
+<p>Many of the services running on your server can only be accessed with the appropriate username and password combination. To provide Linode&rsquo;s staff with access to those services, you should add <em>credentials</em> for the services to Linode Managed. All credentials are securely stored in our encrypted database.</p>
+
+<p>Here&rsquo;s how to add a service credential to Linode Managed:</p>
+
+<ol>
+<li><p>From the <strong>Managed</strong> tab, click the <strong>Credentials</strong> tab. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1191-managed_credential1.png"><img src="/docs/assets/1191-managed_credential1.png" alt="The Linode Managed credential interface." /></a></p></li>
+
+<li><p>Select the <strong>Add an Account Credential</strong> link. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1192-managed_credential2.png"><img src="/docs/assets/1192-managed_credential2.png" alt="The Linode Managed credential interface." /></a></p></li>
+
+<li><p>In the <strong>Label</strong> field, enter a descriptive name for the credential. For example, if you are entering the MySQL <code>root</code> password, you might enter &ldquo;MySQL Root&rdquo;.</p></li>
+
+<li><p>In the <strong>Optional User Name</strong> field, enter a username for the credential.</p></li>
+
+<li><p>In the <strong>Password/Passphrase</strong> field, enter the password or passphrase for the credential.</p></li>
+
+<li><p>Click <strong>Save Changes</strong>.</p></li>
+</ol>
+
+<p>You have successfully added the credential to Linode Managed. You&rsquo;ll select the credential later, when you add a new service to be monitored.</p>
+
+<h2 id="contacts">Contacts</h2>
+
+<p>Linode Managed allows you to specify <em>contacts</em> that will be contacted if an issue is detected with one of your services. Contacts are categorized in to groups and linked to specific services. The idea is to create separate groups for the administrators responsible for your different services and systems. For example, you could add all of your database administrators to a group called <em>DBAs</em> and then link that group to your MySQL service. That way, when Linode Managed detects an issue with MySQL, all of your database administrators will be notified at the same time.</p>
+
+<p>Here&rsquo;s how to add a contact to Linode Managed:</p>
+
+<ol>
+<li><p>From the <strong>Managed</strong> tab, click the <strong>Contacts</strong> tab. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1188-managed_contacts1.png"><img src="/docs/assets/1188-managed_contacts1.png" alt="The Linode Managed contacts interface." /></a></p></li>
+
+<li><p>Select the <strong>Add a Contact</strong> link. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1190-managed_contacts2-1.png"><img src="/docs/assets/1190-managed_contacts2-1.png" alt="The Linode Managed contacts interface." /></a></p></li>
+
+<li><p>In the <strong>Name</strong> field, enter the individual&rsquo;s name.</p></li>
+
+<li><p>In the <strong>Email</strong> field, enter the individual&rsquo;s email address.</p></li>
+
+<li><p>Enter the individual&rsquo;s phone numbers in the <strong>Phone 1</strong> and <strong>Phone 2</strong> fields. We may call the individual if we need additional information to troubleshoot an issue on your servers.</p></li>
+
+<li><p>In the <strong>Group</strong> field, enter a group name. As described at the beginning of this section, groups can hold multiple contacts. Ideally, you&rsquo;ll combine all of the individuals responsible for a particular service or system into one group.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>This is a required field, so even if you&rsquo;re the only user on the account, you&rsquo;ll still need to create a group for yourself.</div>
+</blockquote>
+</li>
+
+<li><p>Click <strong>Save Changes</strong>.</p></li>
+</ol>
+
+<p>You have successfully added an contact to Linode Managed. You&rsquo;ll select the contact groups later, when you add a new service to be monitored.</p>
+
+<h2 id="services">Services</h2>
+
+<p>Linode Managed monitors the <em>services</em> running on your Linodes. Setting up services is an essential step in the configuration process - Linode Managed can&rsquo;t monitor anything until you add services to be monitored.</p>
+
+<h3 id="adding-a-new-service">Adding a New Service</h3>
+
+<p>Here&rsquo;s how to add a new service to Linode Managed:</p>
+
+<ol>
+<li><p>From the <strong>Managed</strong> tab, click the <strong>Monitoring</strong> tab. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1184-addservice1-2.png"><img src="/docs/assets/1184-addservice1-2.png" alt="The Linode Managed monitoring interface." /></a></p></li>
+
+<li><p>Select the <strong>Add a Service to Monitor</strong> link. The webpage shown below appears.</p>
+
+<p><a href="/docs/assets/1183-addservice2.png"><img src="/docs/assets/1183-addservice2.png" alt="Adding a new service to be monitoring." /></a></p></li>
+
+<li><p>Enter a label for your service in the <strong>Label</strong> field. Being descriptive will help our team fix the service if it becomes unavailable.</p></li>
+
+<li><p><em>Optional:</em> Select a group name from the <strong>Consult with</strong> menu to ensure that Linode can contact you or members of your team if we need help fixing this service.</p></li>
+
+<li><p>From the <strong>Monitor Type</strong> menu, select <strong>URL</strong> to monitor a website or <strong>TCP Connection</strong> to monitor a service running on your Linode.</p></li>
+
+<li><p>If you selected <strong>URL</strong> from the <strong>Monitor Type</strong> menu, enter a URL in the <strong>URL</strong> field. If you selected <strong>TCP Connection</strong> enter the TCP address and, optionally, a port number in the <strong>TCP</strong> field.</p></li>
+
+<li><p><em>Optional:</em> Enter a string in the <strong>Response body match</strong> field to automatically check for the string in the URL or TCP response.</p></li>
+
+<li><p>In the <strong>Response timeout</strong> field, enter the time (in seconds) for the request to timeout if it does not receive a response.</p></li>
+
+<li><p>In the <strong>Notes</strong> field, add any notes or additional information about this service. The more information we have about the service and how it&rsquo;s configured, the more likely it is that our staff will be able to resolve any issues that may arise.</p></li>
+
+<li><p><em>Optional:</em> Select this checkbox to indicate that you have <a href="#adding-the-public-key">copied Linode&rsquo;s public SSH key to your server</a>. This step is optional, but highly recommended. If you do not copy our public key to your server, we will not be able to log in and troubleshoot issues.</p></li>
+
+<li><p>Select a credential from the <strong>Link a Credential</strong> menu. See <a href="#adding-service-credentials">these instructions to learn how to add a credential for a service</a>.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>You can select and save more than one credential for a service.</div>
+</blockquote>
+</li>
+
+<li><p>Click <strong>Save Changes</strong> to start monitoring the service.</p></li>
+</ol>
+
+<p>You have successfully added a service to Linode Managed. We&rsquo;ll start monitoring the service in a couple minutes.</p>
+
+<h3 id="looking-at-an-example-service">Looking at an Example Service</h3>
+
+<p>To help you get started, we&rsquo;ve provided an example service monitoring configuration for the Apache web server. In this examine, Linode Managed will continuously monitor the URL provided to verify that the service is responding correctly. This is a great way to monitor the availability of a website.</p>
+
+<p><a href="/docs/assets/1197-managed_example.png"><img src="/docs/assets/1197-managed_example.png" alt="An example Linode Managed service." /></a></p>
+
+<p>Here are the example values:</p>
+
+<ul>
+<li><strong>Label:</strong> We entered a descriptive name for the service (&ldquo;Apache&rdquo;) instead of something generic, like &ldquo;Web Server.&rdquo; Make your labels as descriptive and specific as possible so that our support staff can quickly respond to incidents.</li>
+<li><strong>Consult with:</strong> This is the group of individuals that will be contacted if an issue is detected with the service. <a href="#contacts">Click here</a> to learn more about creating contacts and groups.</li>
+<li><strong>Monitor type:</strong> We selected <em>URL</em> to monitor a website hosted on our server.</li>
+<li><strong>URL / TCP Address:</strong> Since we selected <em>URL</em>, we entered the IP address of our server, which returns our website. You could also enter a domain name in this field.</li>
+<li><strong>Response body match:</strong> Linode Managed will attempt to reach the web server at the IP address we provided earlier, and then it will perform a string match against the value provided in this field. In this case, Linode Managed looks for the string &ldquo;It works!&rdquo; - the service check fails if the match fails.</li>
+<li><strong>Response timeout:</strong> In this case, the service check fails if a response is not received within 10 seconds.</li>
+<li><strong>Notes:</strong> You should provide information about what the service does and suggestions about how we may be able to fix the service.</li>
+<li><strong>Credentials:</strong> No credentials are needed for Apache. For services that do require credentials, see <a href="#adding-service-credentials">our instructions</a> to learn how to add them.</li>
+</ul>
+
+<h3 id="temporarily-disabling-service-monitoring">Temporarily Disabling Service Monitoring</h3>
+
+<p>Since Linode Managed continuously monitors your services for availability, you should temporarily disable monitoring for a service that you plan to modify. For example, you should disable monitoring for the Apache web server before modifying the Apache configuration file and restarting the service. Here&rsquo;s how to temporarily disable service monitoring:</p>
+
+<ol>
+<li>From the <strong>Managed</strong> tab, click the <strong>Monitoring</strong> tab.</li>
+
+<li><p>Find the service that you want to temporarily disable, and then select the <strong>Disable</strong> link. The dashboard will indicate that service&rsquo;s monitoring status is <strong>Disabled</strong>, as shown below.</p>
+
+<p><a href="/docs/assets/1186-disableservice1-2.png"><img src="/docs/assets/1186-disableservice1-2.png" alt="Adding a new service to be monitoring." /></a></p></li>
+</ol>
+
+<p>The service is now temporarily disabled. Linode Managed won&rsquo;t resume monitoring this service until you reenable monitoring, as described in the next section.</p>
+
+<h3 id="reenabling-disabled-services">Reenabling Disabled Services</h3>
+
+<p>When you&rsquo;re finished modifying the service, you&rsquo;ll need to reenable monitoring. Here&rsquo;s how to reenable monitoring for a disabled service:</p>
+
+<ol>
+<li>From the <strong>Managed</strong> tab, click the <strong>Monitoring</strong> tab.</li>
+
+<li><p>Find the disabled service, and then select the <strong>Enable</strong> link. The dashboard will indicate that the service&rsquo;s status is <strong>Pending</strong>, as shown below.</p>
+
+<p><a href="/docs/assets/1187-pending1.png"><img src="/docs/assets/1187-pending1.png" alt="Adding a new service to be monitoring." /></a></p></li>
+</ol>
+
+<p>Linode Managed is now monitoring the service again. The service will be checked in a couple minutes - if it&rsquo;s available, the dashboard will indicate that the service&rsquo;s status is <strong>OK</strong>.</p>
+
+<h3 id="removing-services">Removing Services</h3>
+
+<p>If you decide to remove or stop using a service on your Linode that is being monitored, you should also remove the service from Linode Managed. For example, you should remove the Apache service from Linode Managed if you decide to start using Linode as a dedicated database server. Here&rsquo;s how to remove services from Linode Managed so that they are no longer monitored:</p>
+
+<ol>
+<li>From the <strong>Managed</strong> tab, click the <strong>Monitoring</strong> tab.</li>
+<li>Find the service that you want to remove, and then select the <strong>Remove</strong> link.</li>
+</ol>
+
+<p>Linode Managed has stopped actively monitoring the service.</p>
+
+            
+
+            
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#getting-started">Getting Started</a>
+<ul>
+<li><a href="#initial-configuration-checklist">Initial Configuration Checklist</a></li>
+</ul></li>
+<li><a href="#credentials">Credentials</a>
+<ul>
+<li><a href="#adding-the-public-key">Adding the Public Key</a>
+<ul>
+<li><a href="#installing-as-root">Installing as Root</a></li>
+<li><a href="#installing-as-another-user">Installing as Another User</a></li>
+</ul></li>
+<li><a href="#specifying-linode-ssh-settings">Specifying Linode SSH Settings</a></li>
+<li><a href="#adding-service-credentials">Adding Service Credentials</a></li>
+</ul></li>
+<li><a href="#contacts">Contacts</a></li>
+<li><a href="#services">Services</a>
+<ul>
+<li><a href="#adding-a-new-service">Adding a New Service</a></li>
+<li><a href="#looking-at-an-example-service">Looking at an Example Service</a></li>
+<li><a href="#temporarily-disabling-service-monitoring">Temporarily Disabling Service Monitoring</a></li>
+<li><a href="#reenabling-disabled-services">Reenabling Disabled Services</a></li>
+<li><a href="#removing-services">Removing Services</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

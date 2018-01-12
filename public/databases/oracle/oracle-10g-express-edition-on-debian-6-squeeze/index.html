@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Oracle 10g Express Edition on Debian 6 (Squeeze)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Install Oracle 10g to power server-side applications and web apps on Debian 6 (Squeeze).">
+        <meta name="keywords" content="oracle debian squeeze, oracle 10g debian 6, oracle debian 6, oracle debian, oracle linux, sql database, relational database, rdbms, oracle 10g">
+        
+        <meta property="og:title" content="Oracle 10g Express Edition on Debian 6 (Squeeze)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/databases/oracle/oracle-10g-express-edition-on-debian-6-squeeze/">
+        <meta property="og:description" content="Install Oracle 10g to power server-side applications and web apps on Debian 6 (Squeeze).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/databases/oracle/oracle-10g-express-edition-on-debian-6-squeeze/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/">Database Management Systems</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/databases/oracle/">Oracle 10g XE</a>
+  
+</li>
+
+
+<li>
+  
+  Oracle 10g Express Edition on Debian 6 (Squeeze)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Oracle 10g Express Edition on Debian 6 (Squeeze)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-08-13T00:00:00Z">Wednesday, August 13, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2foracle%2foracle-10g-express-edition-on-debian-6-squeeze%2f&via=linode&text=Oracle%2010g%20Express%20Edition%20on%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2foracle%2foracle-10g-express-edition-on-debian-6-squeeze%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdatabases%2foracle%2foracle-10g-express-edition-on-debian-6-squeeze%2f&t=Oracle%2010g%20Express%20Edition%20on%20Debian%206%20%28Squeeze%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/databases/oracle/oracle-10g-express-edition-on-debian-6-squeeze.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/databases/oracle/oracle-10g-express-edition-on-debian-6-squeeze.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Debian 6 (Squeeze) Linode.</p>
+
+<p>It is assumed that you&rsquo;ve followed the steps outlined in our <a href="/docs/getting-started/">getting started guide</a>. All configuration will be performed in a terminal session; make sure you&rsquo;re logged into your Linode as root via SSH.</p>
+
+<p><strong>Please note:</strong> Depending on the amount of memory your Linode has, Oracle may require up to a 1,024 MB swap partition. While we normally do not advise using a swap partition larger than 256 MB, in this case it&rsquo;s a good idea to resize your existing swap to 1,025 MB before proceeding with Oracle installation (the extra MB avoids differences in how megabytes are calculated).</p>
+
+<p>To do this, log into the Linode Manager and shut down your Linode. Once your Linode is completely shut down, click the swap disk under the &ldquo;Disks&rdquo; heading in the Dashboard. Then change the size to 1,025 MB. If you&rsquo;re already using all of your allocated disk space, you may need to shrink your main disk first to accommodate the larger swap image.</p>
+
+<h1 id="configure-networking-and-set-the-hostname">Configure Networking and Set the Hostname</h1>
+
+<p>Oracle is very picky about the system hostname with respect to what interfaces it will listen on. You&rsquo;ll be using a private IP on your Linode and setting the hostname a bit differently than usual to account for this, with the added benefit of being able to connect to your Oracle database from other Linodes in the same datacenter.</p>
+
+<p>First, make sure your Linode has a private IP address assigned to it. To do so, visit the &ldquo;Remote Access&rdquo; tab in the Linode Manager. If you need to add a private IP, reboot your Linode after doing so before proceeding with the next step.</p>
+
+<p>Edit your network interfaces file to define your public and private IPs. Change the values shown below to match your Linode&rsquo;s network configuration, paying special attention to the subnet mask for the private IP.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/network/interfaces 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address <span class="m">69</span>.164.198.62
+netmask <span class="m">255</span>.255.255.0
+gateway <span class="m">69</span>.164.198.1
+
+auto eth0:0
+iface eth0:0 inet static
+address <span class="m">192</span>.168.146.68
+netmask <span class="m">255</span>.255.128.0</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Make sure your <code>/etc/hosts</code> file contains valid entries. You can use the following example for reference; substitute your Linode&rsquo;s IP addresses and hostname information for the values shown below.</p>
+
+<dl class="file">
+<dt>
+
+
+		/etc/hosts 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="m">127</span>.0.0.1        localhost.localdomain        localhost
+<span class="m">69</span>.164.198.62    saturn.example.com           saturn
+<span class="m">192</span>.168.146.68   oracle</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Issue the following commands to set the system hostname:</p>
+
+<pre><code>echo &quot;oracle&quot; &gt; /etc/hostname
+hostname -F /etc/hostname
+</code></pre>
+
+<p>Although you&rsquo;d normally set the system hostname to the short version of its fully qualified domain name, in this case it should be set to &ldquo;oracle&rdquo; to avoid issues with database connections. To complete network configuration, issue the following command:</p>
+
+<pre><code>ifdown -a &amp;&amp; ifup -a
+</code></pre>
+
+<p>You can use the <code>ip addr show</code> command to verify your network interfaces. If everything looks correct, you may proceed to Oracle installation.</p>
+
+<h1 id="install-required-software">Install Required Software</h1>
+
+<h3 id="add-the-oracle-gpg-key-and-update-repositories">Add the Oracle GPG Key and Update Repositories</h3>
+
+<p>Installing the Oracle XE GPG key ensures that you will get verified Oracle software packages from <code>apt</code>. Issue the following command to import the key:</p>
+
+<pre><code>wget http://oss.oracle.com/el4/RPM-GPG-KEY-oracle  -O- | apt-key add -
+</code></pre>
+
+<p>Add the following repository to your <code>/etc/apt/sources.list</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apt/sources.list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">deb http://oss.oracle.com/debian unstable main non-free</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Since you added a new repository, issue the following commands to update your package lists and install any outstanding updates:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<h3 id="install-oracle-xe">Install Oracle XE</h3>
+
+<p>Install Oracle XE by running the following command:</p>
+
+<pre><code>apt-get install oracle-xe
+</code></pre>
+
+<p>After the installation has finished, you must configuration Oracle by issuing the following command:</p>
+
+<pre><code>/etc/init.d/oracle-xe configure
+</code></pre>
+
+<p>You will be asked to specify a system user password and the ports you would like Oracle to listen on. You may leave the port options at their default values. Reboot your Linode to make sure everything comes back up correctly. Once you&rsquo;ve logged back in via SSH, you can verify that the Oracle listener process is functioning correctly by issuing the following command:</p>
+
+<pre><code>netstat -an | grep 1521
+</code></pre>
+
+<p>You should see output resembling the following:</p>
+
+<pre><code>tcp        0      0 0.0.0.0:1521            0.0.0.0:*               LISTEN
+tcp        0      0 192.168.146.68:38803    192.168.146.68:1521     ESTABLISHED
+tcp        0      0 192.168.146.68:1521     192.168.146.68:38803    ESTABLISHED
+</code></pre>
+
+<h1 id="connect-to-the-oracle-xe-home-page">Connect to the Oracle XE Home Page</h1>
+
+<p>Oracle is managed via a web interface, which is installed with the oracle-xe package. By default, it listens on the local address <code>127.0.0.1</code> at port 8080. Since you most likely do not have a window manager or web browser installed on your Linode, you must connect to your Oracle home page remotely.</p>
+
+<p>You can do this by using our <a href="/docs/databases/oracle/ssh-tunnel">Oracle SSH tunnel script</a>. After your tunnel is started, you can connect to the admin page at the URL <code>http://127.0.0.1:8080/apex</code>. Log in with the username &ldquo;SYSTEM&rdquo; and the password you specified during Oracle configuration. You&rsquo;ll be presented with a page similar to this one:</p>
+
+<p><a href="/docs/assets/379-oracle-xe-admin-page.png"><img src="/docs/assets/379-oracle-xe-admin-page.png" alt="The Oracle XE administration home page." /></a></p>
+
+<h1 id="manage-oracle-from-the-command-line">Manage Oracle from the Command Line</h1>
+
+<p>The Oracle XE installation comes bundled with a command line tool called <code>sqlplus</code>, which is roughly equivalent to the MySQL client. We highly recommend using your Oracle XE Home Page over an SSH tunnel to administer your Oracle instance, however you may find <code>sqlplus</code> useful.</p>
+
+<p>First, you&rsquo;ll need to locate the <code>tnsnames.ora</code> file. Issue the following command:</p>
+
+<pre><code>find / -name tnsnames.ora
+</code></pre>
+
+<p>You may find more than one location for this file; ignore the version located in a &ldquo;samples&rdquo; directory if it&rsquo;s listed. Edit <code>tnsnames.ora</code>, setting a valid entry for &ldquo;HOST&rdquo; to match the one assigned to your Linode&rsquo;s hostname (&ldquo;oracle&rdquo; in our example).</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		tnsnames.ora 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">XE</span> <span class="o">=</span>
+  <span class="o">(</span><span class="nv">DESCRIPTIONx</span> <span class="o">=</span>
+    <span class="o">(</span><span class="nv">ADDRESS</span> <span class="o">=</span> <span class="o">(</span><span class="nv">PROTOCOL</span> <span class="o">=</span> TCP<span class="o">)(</span><span class="nv">HOST</span> <span class="o">=</span> oracle<span class="o">)(</span><span class="nv">PORT</span> <span class="o">=</span> <span class="m">1521</span><span class="o">))</span>
+    <span class="o">(</span><span class="nv">CONNECT_DATA</span> <span class="o">=</span>
+      <span class="o">(</span><span class="nv">SERVER</span> <span class="o">=</span> DEDICATED<span class="o">)</span>
+      <span class="o">(</span><span class="nv">SERVICE_NAME</span> <span class="o">=</span> XE<span class="o">)</span>
+    <span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Next, edit the <code>listener.ora</code> file from the same directory:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		listener.ora 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LISTENER</span> <span class="o">=</span>
+  <span class="o">(</span><span class="nv">DESCRIPTION_LIST</span> <span class="o">=</span>
+    <span class="o">(</span><span class="nv">DESCRIPTION</span> <span class="o">=</span>
+      <span class="o">(</span><span class="nv">ADDRESS</span> <span class="o">=</span> <span class="o">(</span><span class="nv">PROTOCOL</span> <span class="o">=</span> IPC<span class="o">)(</span><span class="nv">KEY</span> <span class="o">=</span> EXTPROC_FOR_XE<span class="o">))</span>
+      <span class="o">(</span><span class="nv">ADDRESS</span> <span class="o">=</span> <span class="o">(</span><span class="nv">PROTOCOL</span> <span class="o">=</span> TCP<span class="o">)(</span><span class="nv">HOST</span> <span class="o">=</span> oracle<span class="o">)(</span><span class="nv">PORT</span> <span class="o">=</span> <span class="m">1521</span><span class="o">))</span>
+    <span class="o">)</span>
+  <span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>If you had to modify either file, restart Oracle by issuing the following command:</p>
+
+<pre><code>/etc/init.d/oracle-xe restart
+</code></pre>
+
+<p>Next, locate the <code>sqlplus.sh</code> shell script with the following command:</p>
+
+<pre><code>find / -name sqlplus.sh
+</code></pre>
+
+<p>Once you have located <code>sqlplus.sh</code>, you can use it to start the sqlplus tool. In this example, <code>sqlplus.sh</code> is located in <code>/usr/lib/oracle/xe/app/oracle/product/10.2.0/server/config/scripts/</code>.</p>
+
+<pre><code>/usr/lib/oracle/xe/app/oracle/product/10.2.0/server/config/scripts/sqlplus.sh
+</code></pre>
+
+<p>Once sqlplus has started, you&rsquo;ll need to connect to your Oracle XE instance. Issue the following <code>sqlplus</code> command:</p>
+
+<pre><code>CONNECT SYSTEM/yourpassword@oracle
+</code></pre>
+
+<p>Once you have successfully logged in, you may perform most Oracle tasks and query your databases. Oracle commands and syntax differ from those of MySQL. If you are new to Oracle or come from a MySQL background, we recommend that you read the <a href="http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25610/toc.htm">Oracle getting started guide</a> to get a better idea of how Oracle commands work and, more importantly, how the Oracle structure is laid out. The <code>exit</code> command will return you to a normal shell prompt.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html">Oracle XE Home Page</a></li>
+<li><a href="http://www.oracle.com/pls/db102/homepage">Oracle XE 10g Documentation</a></li>
+<li><a href="http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25610/toc.htm">Oracle XE Getting Started Guide</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/databases/oracle/oracle-10g-express-edition-on-debian-5-lenny/">Oracle 10g Express Edition on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/oracle/oracle-10g-express-edition-on-ubuntu-10-10-maverick/">Oracle 10g Express Edition on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/oracle/oracle-10g-express-edition-on-ubuntu-9-10-karmic/">Oracle 10g Express Edition on Ubuntu 9.10 (Karmic) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/oracle/oracle-10g-express-edition-on-ubuntu-10-04-lts-lucid/">Oracle 10g Express Edition on Ubuntu 10.04 LTS (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/">How to Install PostgreSQL Relational Databases on CentOS 7</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#configure-networking-and-set-the-hostname">Configure Networking and Set the Hostname</a></li>
+<li><a href="#install-required-software">Install Required Software</a>
+<ul>
+<li>
+<ul>
+<li><a href="#add-the-oracle-gpg-key-and-update-repositories">Add the Oracle GPG Key and Update Repositories</a></li>
+<li><a href="#install-oracle-xe">Install Oracle XE</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#connect-to-the-oracle-xe-home-page">Connect to the Oracle XE Home Page</a></li>
+<li><a href="#manage-oracle-from-the-command-line">Manage Oracle from the Command Line</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

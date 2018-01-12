@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Web.py on Debian 6 (Squeeze)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Use the Web.py Python framework to develop powerful and innovative web applications on Debian 6 (Squeeze).">
+        <meta name="keywords" content="web.py, web applications, python, web frameworks">
+        
+        <meta property="og:title" content="Web.py on Debian 6 (Squeeze)">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/development/frameworks/webpy-on-debian-6-squeeze/">
+        <meta property="og:description" content="Use the Web.py Python framework to develop powerful and innovative web applications on Debian 6 (Squeeze).">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/development/frameworks/webpy-on-debian-6-squeeze/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/">Development</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/development/frameworks/">Web Application Frameworks</a>
+  
+</li>
+
+
+<li>
+  
+  Web.py on Debian 6 (Squeeze)
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Web.py on Debian 6 (Squeeze)</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2013-09-27T00:00:00Z">Friday, September 27, 2013</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fwebpy-on-debian-6-squeeze%2f&via=linode&text=Web.py%20on%20Debian%206%20%28Squeeze%29" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fwebpy-on-debian-6-squeeze%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2fdevelopment%2fframeworks%2fwebpy-on-debian-6-squeeze%2f&t=Web.py%20on%20Debian%206%20%28Squeeze%29" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/development/frameworks/webpy-on-debian-6-squeeze.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/development/frameworks/webpy-on-debian-6-squeeze.md">Edit File</a>
+	</p>
+</div>
+            
+            
+<blockquote class="deprecated">
+	<strong class="callout-title">Deprecated</strong>
+	<div>This guide has been deprecated and is no longer being maintained.</div>
+	<div>
+		
+	</div>
+</blockquote>
+
+
+            
+
+<p>Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site &ldquo;Reddit,&rdquo; web.py is a powerful option for developing systems for the web.</p>
+
+<p>This guide assumes that have you followed the <a href="/docs/getting-started/">getting started guide</a> prior to beginning. If you are new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts/">introduction to Linux concepts guide</a>, <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and <a href="/content/using-linux/administration-basics">administration basics guide</a>. Furthermore a background in Python programing will be useful as you begin to develop applications with Web.py</p>
+
+<h1 id="set-the-hostname">Set the Hostname</h1>
+
+<p>Before you begin installing and configuring the components described in this guide, please make sure you&rsquo;ve followed our instructions for <a href="/docs/getting-started#setting-the-hostname">setting your hostname</a>. Issue the following commands to make sure it is set properly:</p>
+
+<pre><code>hostname
+hostname -f
+</code></pre>
+
+<p>The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).</p>
+
+<h1 id="installing-web-py">Installing Web.py</h1>
+
+<h3 id="install-prerequisites">Install Prerequisites</h3>
+
+<p>Before beginning with Web.py, we must issue the following commands to ensure your system&rsquo;s package repositories are up to date and the latest versions of all software are installed:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<p>Issue the following command to install the Apache HTTP Server:</p>
+
+<pre><code>apt-get install apache2
+</code></pre>
+
+<p>The application you develop using Web.py may require additional dependencies that you can discover and install using your system&rsquo;s <a href="/docs/using-linux/package-management#debian-and-ubuntu-package-management">package management tool</a>. The following command will install the PostgreSQL database and appropriate database drivers:</p>
+
+<pre><code>apt-get install python-psycopg2 postgresql
+</code></pre>
+
+<p>For more information about installing and using the PostgreSQL database, <a href="/docs/databases/postgresql/debian-6-squeeze">consider our documentation</a>. Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:</p>
+
+<pre><code>apt-get install python-pysqlite2 sqlite3
+</code></pre>
+
+<h3 id="install-web-py">Install Web.py</h3>
+
+<p>There are a number of different ways to install and deploy the Web.py framework. The Debian software repositories include a version of Web.py in the 0.2x series, packaged as <code>python-webpy</code>. However, for the purpose of this guide we will install the framework from source. Issue the following commands to download and install the latest released version:</p>
+
+<pre><code>cd /opt/
+wget http://webpy.org/static/web.py-0.34.tar.gz
+tar -xzvf web.py-0.34.tar.gz
+cd /opt/web.py-0.34/
+python setup.py install
+</code></pre>
+
+<p>Make sure you&rsquo;re downloading the latest release by checking the <a href="http://webpy.org/">Web.py site</a>. Following a new release of the framework, follow the same procedure as above, but substitute the new version number from the project&rsquo;s website. Alternately, issue the following sequence of commands to use git to download the latest development version of Web.py.</p>
+
+<pre><code>apt-get install git-core
+cd /opt/
+git clone git://github.com/webpy/webpy.git
+cd /opt/webpy/
+python setup.py install
+</code></pre>
+
+<p>When you want to upgrade to the latest development version, issue the following sequence of commands:</p>
+
+<pre><code>cd /opt/webpy/
+git clean -f
+git pull
+python setup.py install
+</code></pre>
+
+<p>This method will ensure that you are always running the most up-to-date version of the code, but does not allow you to take advantage of any release testing that the Web.py developers may provide.</p>
+
+<h1 id="create-a-basic-application-with-web-py">Create a Basic Application with Web.py</h1>
+
+<p>There are a number of examples of basic applications developed using the web.py framework. The &ldquo;main&rdquo; application file is typically called &ldquo;code.py&rdquo;. Consider the following, &ldquo;Hello World&rdquo; application:</p>
+
+<dl class="file">
+<dt>
+
+
+		code.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">web</span>
+
+<span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa"></span><span class="s1">&#39;/(.*)&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;hello&#39;</span>
+<span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">application</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="nb">globals</span><span class="p">())</span>
+
+<span class="k">class</span> <span class="nc">hello</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;World&#39;</span>
+        <span class="k">return</span> <span class="sa"></span><span class="s1">&#39;Hello, &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sa"></span><span class="s1">&#39;!&#39;</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>Save this file at <code>/srv/www/example.com/application/code.py</code> or the equivalent path depending on your virtual hosting deployment, and proceed with the deployment of the application.</p>
+
+<h1 id="deploy-web-py-applications">Deploy Web.py Applications</h1>
+
+<p>Web.py provides a number of different possibilities for deploying and hosting applications. This document will describe a deployment using the Apache web server and the <code>mod_wsgi</code> process. However, you may choose to deploy your Web.py application using whatever web server and application interface method you are most comfortable with: nginx, lighttpd, or Cherokee with FastCGI, CGI, or embedded python interpreters are all viable options.</p>
+
+<p>WSGI is an evolution of the CGI standard, and has performance comparable to FastCGI and embedded interpreter application deployments. Install the required Apache module with the following command:</p>
+
+<pre><code>apt-get install libapache2-mod-wsgi
+</code></pre>
+
+<p>Issue the following command to ensure that the required modules are enabled within Apache:</p>
+
+<pre><code>a2enmod rewrite
+</code></pre>
+
+<p>WSGI requires a slight modification to your web.py application. Add the following lines to the end of the <code>code.py</code> file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		code.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">app</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">application</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="nb">globals</span><span class="p">(),</span> <span class="n">autoreload</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">wsgifunc</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Consider the following Apache VirtualHost configuration for a <code>mod_wsgi</code> powered Web.py application:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/apache2/sites-available/example.com 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerAdmin</span> username@example.com
+    <span class="nb">ServerName</span> example.com
+    <span class="nb">ServerAlias</span> www.example.com
+    <span class="nb">DocumentRoot</span> <span class="sx">/srv/www/example.com/public_html/</span>
+    <span class="nb">ErrorLog</span> <span class="sx">/srv/www/example.com/logs/error.log</span>
+    <span class="nb">CustomLog</span> <span class="sx">/srv/www/example.com/logs/access.log</span> combined
+
+    <span class="nb">WSGIScriptAlias</span> / <span class="sx">/srv/www/example.com/application</span>
+    <span class="nb">Alias</span> <span class="sx">/static</span> <span class="sx">/srv/www/example.com/public_html</span>
+
+    <span class="nt">&lt;Directory</span> <span class="s">/srv/www/example.com/application</span><span class="nt">&gt;</span>
+      <span class="nb">SetHandler</span> wsgi-script
+      <span class="nb">Options</span> ExecCGI FollowSymLinks
+    <span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span>
+
+    <span class="nb">AddType</span> text/html .py
+
+    <span class="nt">&lt;Location</span> <span class="s">/</span><span class="nt">&gt;</span>
+      <span class="nb">RewriteEngine</span> <span class="k">on</span>
+      <span class="nb">RewriteBase</span> /
+      <span class="nb">RewriteCond</span> %{REQUEST_URI} !^/static
+      <span class="nb">RewriteCond</span> %{REQUEST_URI} !^(/.*)+code.py/
+      <span class="nb">RewriteRule</span> ^(.*)$ code.py/$1 [PT]
+    <span class="nt">&lt;/Location</span><span class="s"></span><span class="nt">&gt;</span>
+<span class="nt">&lt;/VirtualHost</span><span class="s"></span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Ensure that this virtual host has been enabled, and issue the following commands to enable this virtual host, disable the default site, and restart the server:</p>
+
+<pre><code>a2ensite ducklignton.org
+</code></pre>
+
+<blockquote>
+<p>a2dissite default /etc/init.d/apache2 restart</p>
+</blockquote>
+
+<p>In the above example, requests for the <code>example.com</code> domain will be handled by WSGI, with the application files located in <code>/srv/www/example.com/application</code>. All static files can be stored in <code>/srv/www/example.com/public_html</code> and served directly by Apache. Furthermore, the rewrite rules convert requests so that paths beneath <code>example.com</code> are handled by the Web.py application without including <code>code.py</code> in the URL. For example, the request for <code>http://example.com/about</code> would be processed as <code>http://example.com/code.py/about</code> but requests for <code>http://example.com/static</code> would not be rewritten and content would be served from <code>/srv/www/example.com/public_html</code>.</p>
+
+<h1 id="build-a-database-driven-application-with-web-py">Build a Database Driven Application with Web.py</h1>
+
+<p>The &ldquo;Hello World&rdquo; application above is functional, but isn&rsquo;t able to store or access persistent data in a database system. The following example is simple but inserts and retrieves data from a database system. Consider the following code:</p>
+
+<dl class="file">
+<dt>
+
+
+		code.py 
+
+
+</dt>
+<dd>
+
+
+
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">web</span>
+
+<span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa"></span><span class="s1">&#39;/(.*)&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;hello&#39;</span>
+<span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">application</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="nb">globals</span><span class="p">())</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">database</span><span class="p">(</span><span class="n">dbn</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;postgres&#39;</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;webpy&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;webpy&#39;</span><span class="p">,</span> <span class="n">pw</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;webweb&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">hello</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notetext</span><span class="p">):</span>
+        <span class="n">notetext</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">notes</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;a note&#34;</span><span class="p">)</span>
+        <span class="n">notes</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="n">notetext</span><span class="p">,</span> <span class="n">what</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;notes&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">notes</span><span class="p">:</span>
+            <span class="n">notes</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;a note is found&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">notes</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;no notes are found&#39;</span>
+        <span class="k">return</span> <span class="n">notes</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">application</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="nb">globals</span><span class="p">(),</span> <span class="n">autoreload</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">wsgifunc</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>This program connects to the PostgreSQL database &ldquo;webpy&rdquo; and looks in the table &ldquo;notes&rdquo; for a note that matches the text &ldquo;a note.&rdquo; If the note is found, the program returns the text &ldquo;a note is found&rdquo;; otherwise, the page will return &ldquo;no notes are found.&rdquo; Make sure there is a role, or user, in your PostgreSQL database called &ldquo;webpy&rdquo; with the credentials specified on the <code>db</code> line of this example.</p>
+
+<p>At the PosgreSQL prompt, issue the following commands to the PostgreSQL shell statement to create the required database and tables. The &ldquo;webpy&rdquo; user for PostgreSQL must already exist:</p>
+
+<pre><code>CREATE DATABASE webpy;
+GRANT ALL ON notes TO webpy;
+\c webpy
+CREATE TABLE notes (note_id int, notes varchar);
+</code></pre>
+
+<p>While the application is running you can issue the following SQL statements to PostgreSQL to modify the output of the above script:</p>
+
+<pre><code>INSERT INTO notes VALUES (1, 'a note');
+
+DELETE FROM notes WHERE note_id=1;
+</code></pre>
+
+<p>Congratulations on the development of your new Web.py application!</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+
+<ul>
+<li><a href="http://webpy.org/">The Web.py Project Home Page</a></li>
+<li><a href="http://webpy.org/docs/0.3">Official Web.py Documentation</a></li>
+<li><a href="/docs/web-servers/apache/configuration/rewriting-urls">Rewrite URLs in Apache with Mod_Rewrite</a></li>
+<li><a href="http://code.google.com/p/modwsgi/wiki/ConfigurationDirectives">WSGI Configuration Options</a></li>
+</ul>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/development/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/">Web.py on Ubuntu 12.04 (Precise Pangolin) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/webpy-on-ubuntu-10-10-maverick/">Web.py on Ubuntu 10.10 (Maverick) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/webpy-on-ubuntu-10-04-lucid/">Web.py on Ubuntu 10.04 (Lucid) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/development/frameworks/webpy-on-debian-5-lenny/">Web.py on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/web-servers/lemp/lemp-server-on-debian-7-wheezy/">LEMP Server on Debian 7 (Wheezy)</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li><a href="#set-the-hostname">Set the Hostname</a></li>
+<li><a href="#installing-web-py">Installing Web.py</a>
+<ul>
+<li>
+<ul>
+<li><a href="#install-prerequisites">Install Prerequisites</a></li>
+<li><a href="#install-web-py">Install Web.py</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#create-a-basic-application-with-web-py">Create a Basic Application with Web.py</a></li>
+<li><a href="#deploy-web-py-applications">Deploy Web.py Applications</a></li>
+<li><a href="#build-a-database-driven-application-with-web-py">Build a Database Driven Application with Web.py</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

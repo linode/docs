@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Retrieve Email Using Getmail</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="This guide shows how-to configure getmail to download email from remote servers.">
+        <meta name="keywords" content="email, getmail, mda">
+        
+        <meta property="og:title" content="Retrieve Email Using Getmail">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/clients/retrieve-email-using-getmail/">
+        <meta property="og:description" content="This guide shows how-to configure getmail to download email from remote servers.">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/clients/retrieve-email-using-getmail/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/clients/">Email Clients</a>
+  
+</li>
+
+
+<li>
+  
+  Retrieve Email Using Getmail
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Retrieve Email Using Getmail</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2017-08-22T00:00:00Z">Tuesday, August 22, 2017</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fclients%2fretrieve-email-using-getmail%2f&via=linode&text=Retrieve%20Email%20Using%20Getmail" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fclients%2fretrieve-email-using-getmail%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fclients%2fretrieve-email-using-getmail%2f&t=Retrieve%20Email%20Using%20Getmail" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/clients/retrieve-email-using-getmail.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/clients/retrieve-email-using-getmail.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p>Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of <a href="/docs/email/fetchmail/">fetchmail</a>. Getmail provides a simple and efficient tool for downloading email from POP (Post Office Protocol) and IMAP (Internet Messaged Access Protocol) servers.</p>
+
+<p>You can use getmail to download email from your Linode&rsquo;s mail server powered by <a href="/docs/email/citadel/">Citadel</a> or <a href="/docs/email/postfix/">Dovecot</a> or you can use getmail on your Linode to download email from one or more third-party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.</p>
+
+<p>Before getting started with Getmail, we assume that you have followed our <a href="/docs/getting-started/">getting started guide</a>. If you&rsquo;re new to Linux server administration, you may be interested in our <a href="/docs/tools-reference/introduction-to-linux-concepts/">introduction to Linux concepts guide</a>, <a href="/docs/beginners-guide/">beginner&rsquo;s guide</a> and the <a href="/content/using-linux/administration-basics">administration basics guide</a>.</p>
+
+<h2 id="install-getmail">Install Getmail</h2>
+
+<p>Before proceeding, make sure your system is up to date. If you&rsquo;re using Arch or Gentoo, you&rsquo;ll want to refresh your repositories. If you&rsquo;re using Debian, Ubuntu, CentOS, or Fedora, you&rsquo;ll want to update your repositories and upgrade all packages to their latest versions. Select from the following commands, depending on what operating system you&rsquo;re running:</p>
+
+<p>Debian or Ubuntu:</p>
+
+<pre><code>apt-get update
+apt-get upgrade --show-upgraded
+</code></pre>
+
+<p>CentOS or Fedora:</p>
+
+<pre><code>yum update
+</code></pre>
+
+<p>Arch:</p>
+
+<pre><code>pacman -Sy
+</code></pre>
+
+<p>Gentoo:</p>
+
+<pre><code>emerge --sync
+</code></pre>
+
+<p>Since getmail is included by default in most distributions&rsquo; software repositories, its installation is straightforward. Issue the following command to install getmail on:</p>
+
+<p>Debian or Ubuntu:</p>
+
+<pre><code>apt-get install getmail4
+</code></pre>
+
+<p>Gentoo:</p>
+
+<pre><code>emerge getmail
+</code></pre>
+
+<p>Arch:</p>
+
+<pre><code>pacman -S getmail
+</code></pre>
+
+<p>For CentOS, you will need to install the RPMForge Repo before you can install getmail. Download the rpmforge-release package. Choose either the 32-bit or the 64-bit version:</p>
+
+<p>32 Bit:</p>
+
+<pre><code>wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.i686.rpm
+</code></pre>
+
+<p>64 Bit:</p>
+
+<pre><code>wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm
+</code></pre>
+
+<p>Install DAG&rsquo;s GPG key:</p>
+
+<pre><code>rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
+</code></pre>
+
+<p>Verify the package you have downloaded:</p>
+
+<pre><code>rpm -K rpmforge-release-0.5.2-2.el6.rf.*.rpm
+</code></pre>
+
+<p>Install the package:</p>
+
+<pre><code>rpm -i rpmforge-release-0.5.2-2.el6.rf.*.rpm
+</code></pre>
+
+<p>Lastly, install getmail using yum:</p>
+
+<pre><code>yum install getmail
+</code></pre>
+
+<p>With getmail installed successfully, you can begin to configure mail retrieval.</p>
+
+<h2 id="basic-getmail-configuration">Basic Getmail Configuration</h2>
+
+<p>All getmail configuration occurs in the <code>.getmail/</code> folder in the user&rsquo;s home directory. The configuration is stored in a <code>getmailrc</code> file. If you need to check multiple accounts, specify each account as a file beneath the <code>~/.getmail/</code> directory. Create the required directories and files, and set their permissions with the following commands:</p>
+
+<pre><code>mkdir ~/.getmail/
+chmod 700 ~/.getmail/
+touch ~/.getmail/getmailrc
+</code></pre>
+
+<p>The following file provides a basic template for a getmail configuration file:</p>
+
+<dl class="file">
+<dt>
+
+
+		~/.getmail/getmailrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>retriever<span class="o">]</span>
+<span class="nb">type</span> <span class="o">=</span> SimplePOP3SSLRetriever
+<span class="nv">server</span> <span class="o">=</span> pop.example.com
+<span class="nv">port</span> <span class="o">=</span> <span class="m">995</span>
+<span class="nv">username</span> <span class="o">=</span> foreman
+<span class="nv">password</span> <span class="o">=</span> s1d30fd4nc3r6
+
+<span class="o">[</span>destination<span class="o">]</span>
+<span class="nb">type</span> <span class="o">=</span> Maildir
+<span class="nv">path</span> <span class="o">=</span> ~/mail/
+
+<span class="o">[</span>options<span class="o">]</span>
+<span class="nv">delete</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="nv">message_log</span> <span class="o">=</span> ~/.getmail/log-foreman-example</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+<p>In this example we see the following features:</p>
+
+<ul>
+<li>Mail is downloaded using the POP3S, or POP3 with SSL method. Consider using the <code>SimpleIMAPSSLRetriever</code> for IMAP with SSL mail accounts. If your mail server does not support SSL, use the <code>SimplePOP3Retriever</code> or <code>SimpleIMAPRetriever</code> types.</li>
+<li>The mail server, port number, and log in credentials are specified in the <code>[retriever]</code> directive. In this case, the server is located at <code>pop.example.com</code> and runs on port <code>110</code>. The account credentials are for the user <code>foreman</code> with the password <code>s1d30fd4nc3r6</code>.</li>
+
+<li><p>The mail will be delivered into a <code>Maildir</code> formatted mailbox, located at <code>~/mail/</code>. Note that this will deliver mail into the <code>mail/</code> directory in the home directory (e.g. <code>/home/foreman/mail/</code>) of the user that runs <code>getmail</code>. Ensure that your Maildir exists before running <code>getmail</code> for the first time. Issue the following command to create a Maildir in <code>~/mail/</code> directory:</p>
+
+<pre><code>mkdir -p ~/mail/cur/
+mkdir -p ~/mail/new/
+mkdir -p ~/mail/tmp/
+</code></pre></li>
+
+<li><p>The option <code>delete = true</code> tells getmail to remove the mail from the server after it retrieves messages. If you would like to simply copy the messages from the server and leave them intact on the server set this value to <code>false</code>.</p></li>
+
+<li><p>A log of getmail operations is logged at <code>~/.getmail/log-foreman-example</code> in the home directory of the user who executes getmail.</p></li>
+</ul>
+
+<p>Modify the required options to suit the needs of your desired deployment. This includes: retriever type, server information, authentication credentials, mailbox destinations and log locations. When your <code>~/.getmail/getmailrc</code> configuration is complete, you can run getmail by issuing the following command at a regular user prompt:</p>
+
+<pre><code>getmail
+</code></pre>
+
+<p>Congratulations! You&rsquo;ve successfully configured getmail in a basic mail delivery setup.</p>
+
+<h2 id="advanced-getmail-configuration">Advanced Getmail Configuration</h2>
+
+<p>Getmail is capable of delivering mail in a number of different situations beyond just downloading email from a single mail account. This section provides an overview of several more advanced uses of getmail.</p>
+
+<h3 id="use-an-external-filtering-utility">Use an External Filtering Utility</h3>
+
+<p>If you want to use an external program to filter the email retrieved from getmail, modify the destination configuration options in the <code>getmailrc</code> file to resemble the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		~/.getmail/getmailrc 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>destination<span class="o">]</span>
+<span class="nb">type</span> <span class="o">=</span> MDA_external
+<span class="nv">path</span> <span class="o">=</span> /usr/bin/procmail
+<span class="nv">arguments</span> <span class="o">=</span> <span class="o">(</span><span class="s2">&#34;-f&#34;</span>, <span class="s2">&#34;%(sender)&#34;</span><span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>In this example, when getmail retrieves mail, it is passed to <code>procmail</code> for additional filtering rather than delivering directly to a Maildir. Procmail, like other mail delivery agents (MDAs) performs additional filtering after mail has been retrieved and before it is delivered to a users&rsquo; mail store. You may use getmail with any MDA of your choice.</p>
+
+<h3 id="check-multiple-email-accounts">Check Multiple Email Accounts</h3>
+
+<p>If you want to retrieve mail from more than one server, create a getmail configuration file for each server from which you need to download email. Then, when you call getmail, issue the command in the following form:</p>
+
+<pre><code>getmail --rcfile getmailrc0 --rcfile getmailrc1 --rcfile /home/foreman/mail/getmailrc
+</code></pre>
+
+<p>You can specify as many <code>rcfiles</code> as you like on the command line in this format. If a path is not specified getmail assumes the files are located in the <code>~/.getmail/</code> directory. In the above example, the files <code>getmailrc0</code> and <code>getmailrc1</code> are located in the <code>~/.getmail/</code> directory.</p>
+
+<p>The final file is located in the <code>/home/foreman/mail</code> directory and is specified with an absolute path. In this manner you may specify as many accounts as you need, and organize your configuration files with whatever system makes the most sense in context of your deployment.</p>
+
+<h3 id="check-email-regularly-using-cron">Check Email Regularly Using Cron</h3>
+
+<p>If you would like your system to check for email regularly, you can run the <code>getmail</code> command regularly with cron. For a more detailed explanation of cron, you may consider the <a href="/docs/linux-tools/utilities/cron">introduction to cron</a> guide. To add the &ldquo;cron job&rdquo;, issue the following command to edit your cronjobs:</p>
+
+<pre><code>crontab -e
+</code></pre>
+
+<p>Add an entry to poll getmail every five minutes by adding the following line to the crontab:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		crontab 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">*/5 * * * * getmail --quiet</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>Adding this line will cause getmail to retrieve new mail as specified in the <code>~/.getmail/getmailrc</code> file every five minutes. The <code>quiet</code> flag suppresses all non-error output, which is desirable when running in a &ldquo;daemon&rdquo; mode. You may specify any option for the cronjob that you can specify on the command line, including multiple <code>getmailrc</code> files. After the crontab is properly configured, save the file. Getmail will now retrieve new mail every five minutes as specified in the appropriate <code>getmailrc</code> files.</p>
+
+            
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+
+<li><a href="http://pyropus.ca/software/getmail/documentation.html">Official Getmail Documentation</a></li>
+
+<li><a href="http://mailfilter.sourceforge.net/">Mailfilter MDA</a></li>
+
+<li><a href="http://www.courier-mta.org/maildrop/">Maildrop MDA</a></li>
+
+<li><a href="http://www.procmail.org/">Procmail MDA</a></li>
+
+</ul>
+
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/">Configure SPF and DKIM With Postfix on Debian 8</a></li>
+    
+    
+    
+    <li><a href="/docs/email/clients/install-roundcube-on-ubuntu-14-04/">Install Roundcube on Ubuntu 14.04</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/email-with-postfix-dovecot-and-mariadb-on-centos-7/">Email with Postfix, Dovecot and MariaDB on CentOS 7</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-6/">Email with Postfix, Dovecot and MySQL on CentOS 6</a></li>
+    
+    
+    
+    <li><a href="/docs/email/iredmail/install-iredmail-on-ubuntu/">Install iRedmail, Open-Source Mail Server, on Ubuntu</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#install-getmail">Install Getmail</a></li>
+<li><a href="#basic-getmail-configuration">Basic Getmail Configuration</a></li>
+<li><a href="#advanced-getmail-configuration">Advanced Getmail Configuration</a>
+<ul>
+<li><a href="#use-an-external-filtering-utility">Use an External Filtering Utility</a></li>
+<li><a href="#check-multiple-email-accounts">Check Multiple Email Accounts</a></li>
+<li><a href="#check-email-regularly-using-cron">Check Email Regularly Using Cron</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>

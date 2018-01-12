@@ -1,0 +1,2290 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Troubleshooting Problems with Postfix, Dovecot, and MySQL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Our guide to testing and troubleshooting Postfix, Dovecot, and MySQL">
+        <meta name="keywords" content="postfix, dovecot, mysql">
+        
+        <meta property="og:title" content="Troubleshooting Problems with Postfix, Dovecot, and MySQL">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://linode.com/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/">
+        <meta property="og:description" content="Our guide to testing and troubleshooting Postfix, Dovecot, and MySQL">
+        <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+        
+        
+        <meta name="twitter:card" content="summary">
+        
+        <meta name="twitter:site" content="@linode">
+        <link rel="alternate" type="application/rss" href="https://linode.com/docs/index.xml">
+
+        
+             <link href="/docs/build/stylesheets/home.css" rel='stylesheet' type='text/css'>
+
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="https://linode.com/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchLabel" id="ds-search-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="ds-search-input">
+				<div class="input-group col-md-12">
+					<input id="ds-search" type="text" class="form-control input-lg" placeholder="Search" />
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" id="ds-search-btn-modal" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+				<ul class="list-group" id="ds-search-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> 
+         
+        <header>
+            <nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com"><img id="navbar-logo" src="/docs/media/images/header/linode-logo.svg" style="height:57px"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class='nav-home'></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul >
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul >
+                <li><a href="https://blog.linode.com">Blog</a></li>
+                <li><a href="http://status.linode.com">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+            <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+        </header>
+        
+<section class="primary first-section">
+  <div class="container">
+    <div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+
+
+
+
+
+
+
+<li>
+  
+  <a href="https://linode.com/docs/">Guides &amp; Tutorials</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/">Email Server Guides</a>
+  
+</li>
+
+
+<li>
+  
+  <a href="https://linode.com/docs/email/postfix/">Postfix</a>
+  
+</li>
+
+
+<li>
+  
+  Troubleshooting Problems with Postfix, Dovecot, and MySQL
+  
+</li>
+
+    </ol>
+  </div>
+</div>
+
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            <h1 class="doc-title" itemprop="headline">Troubleshooting Problems with Postfix, Dovecot, and MySQL</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2014-03-24T00:00:00Z">Monday, March 24, 2014</time> by Linode</small>
+  
+</p>
+
+           <div class="row">
+            <div class="col-sm-9"><div markdown="0" class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+</div>
+            <div class="col-sm-3"><div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2ftroubleshooting-problems-with-postfix-dovecot-and-mysql%2f&via=linode&text=Troubleshooting%20Problems%20with%20%e2%80%a6" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2ftroubleshooting-problems-with-postfix-dovecot-and-mysql%2f" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2flinode.com%2fdocs%2femail%2fpostfix%2ftroubleshooting-problems-with-postfix-dovecot-and-mysql%2f&t=Troubleshooting%20Problems%20with%20Postfix%2c%20Dovecot%2c%20and%20MySQL" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div></div>
+            </div>
+            <div class="library-github" markdown="0">
+	<i class="fa fa-github"></i>
+	<strong>Contribute on GitHub</strong>
+	<p>
+		
+		<a href="https://github.com/linode/docs">View Project</a> |
+		<a href="https://github.com/linode/docs/blob/master/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql.md">View File</a> |
+		<a href="https://github.com/linode/docs/edit/master/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql.md">Edit File</a>
+	</p>
+</div>
+            
+            
+
+            
+
+<p><img src="/docs/assets/troubleshooting-problems-with-postfix-dovecot-and-mysql.jpg" alt="Troubleshooting Problems with Postfix, Dovecot, and MySQL" title="Troubleshooting Problems with Postfix, Dovecot, and MySQL" /></p>
+
+<p>This guide is a companion to the <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql">Postfix, Dovecot, and MySQL</a> installation guide. Because setting up a mail server is tricky, we&rsquo;ve created this companion troubleshooting guide to help you work through and resolve any problems you might be experiencing. By the time you reach the end of this guide, you&rsquo;ll know how to debug problems with your Postfix, Dovecot, and MySQL mail server.</p>
+
+<p>The first section, Troubleshooting Checklist, has a top-down approach to troubleshooting that will help you find specific errors for your mail server. The second section, Step-by-Step Configuration, uses a bottom-up approach that shows you how to get a basic mail server functioning and then gradually add more features.</p>
+
+<h2 id="troubleshooting-checklist">Troubleshooting Checklist</h2>
+
+<p>Correctly diagnosing a problem is the first step in solving it. At first glance, many mail server errors can seem quite general. Usually the first sign of a problem is that you try to create a test mail account and can&rsquo;t connect. This section is a crash course in finding mail server errors. We recommend reading through the following sections in order, because they progress from general to more specific troubleshooting techniques.</p>
+
+<h3 id="are-postfix-and-dovecot-running">Are Postfix and Dovecot Running?</h3>
+
+<p>Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, <a href="/docs/troubleshooting/memory-networking#diagnosing-and-fixing-memory-issues">resource overuse</a> is the most likely cause of stopped services. It doesn&rsquo;t hurt to check your resource use to rule out that problem. However, when you&rsquo;re just setting up a new mail server, it&rsquo;s more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.</p>
+
+<p>To check that Postfix and Dovecot are running and to find startup errors, follow these steps:</p>
+
+<ol>
+<li><p>Run this command to check that Postfix is running:</p>
+
+<pre><code>service postfix status
+</code></pre>
+
+<p>You should see the following output:</p>
+
+<pre><code>* postfix is running
+</code></pre></li>
+
+<li><p>Next, run this command to check that Dovecot is running:</p>
+
+<pre><code>service dovecot status
+</code></pre>
+
+<p>You should see output similar to the following:</p>
+
+<pre><code>dovecot start/running, process 2241
+</code></pre></li>
+
+<li><p>Examine the results. If you see no output, or output that says <code>stop/waiting</code> or <code>not running</code>, the service is not running. The next step is to try restarting the services.</p></li>
+
+<li><p>Try to restart the services. Restarting Postfix and Dovecot is also a good troubleshooting procedure even if they&rsquo;re currently running, because then you can examine the startup messages, which can give you troubleshooting clues. Enter the following command to restart Postfix:</p>
+
+<pre><code>service postfix restart
+</code></pre>
+
+<p>You should see the following messages:</p>
+
+<pre><code>* Stopping Postfix Mail Transport Agent postfix                    [ OK ]
+* Starting Postfix Mail Transport Agent postfix                    [ OK ]
+</code></pre></li>
+
+<li><p>Execute the following command to restart Dovecot:</p>
+
+<pre><code>service dovecot restart
+</code></pre>
+
+<p>You should see the following messages:</p>
+
+<pre><code>dovecot stop/waiting
+dovecot start/running, process 31171
+</code></pre></li>
+
+<li><p>Examine the results. If you get an error, or the restart message for Dovecot doesn&rsquo;t include a new process ID, there&rsquo;s something preventing the service from starting.</p></li>
+
+<li><p>If you received a specific error from the restart attempt, search for it online.</p></li>
+
+<li><p>Check the applications&rsquo; startup logs to see more detailed messages. Postfix&rsquo;s stop and start messages are logged in <code>/var/log/mail.log</code> (along with all its other messages). Enter the following command to view the most recent lines in the log:</p>
+
+<pre><code>tail /var/log/mail.log
+</code></pre>
+
+<p>On a normal restart, you should see the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/log/mail.log 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">May <span class="m">22</span> <span class="m">15</span>:41:59 godel postfix/master<span class="o">[</span><span class="m">19624</span><span class="o">]</span>: terminating on signal <span class="m">15</span>
+May <span class="m">22</span> <span class="m">15</span>:41:59 godel postfix/master<span class="o">[</span><span class="m">20232</span><span class="o">]</span>: daemon started -- version <span class="m">2</span>.9.6, configuration /etc/postfix</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Dovecot&rsquo;s default startup log is also in <code>/var/log/mail.log</code>. On a normal restart, you should see the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/log/mail.log 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">May <span class="m">22</span> <span class="m">17</span>:46:54 master: Warning: Killed with signal <span class="m">15</span> <span class="o">(</span>by <span class="nv">pid</span><span class="o">=</span><span class="m">1</span> <span class="nv">uid</span><span class="o">=</span><span class="m">0</span> <span class="nv">code</span><span class="o">=</span><span class="nb">kill</span><span class="o">)</span>
+May <span class="m">22</span> <span class="m">17</span>:48:09 master: Info: Dovecot v2.0.19 starting up <span class="o">(</span>core dumps disabled<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>If you moved the Dovecot logs, the normal Dovecot startup messages will be in <code>/var/log/dovecot.log</code> instead. If you can&rsquo;t find the Dovecot logs, locate them with the following command:</p>
+
+<p>doveadm log find</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>If you don&rsquo;t see these normal startup messages, check for errors instead. Search for errors online.</p></li>
+
+<li><p>If there&rsquo;s a problem during Dovecot&rsquo;s startup, you should also check <code>/var/log/upstart/dovecot.log</code>. On a normal startup, nothing will be logged to this file. However, if there is a startup problem, an entry will be added in this log which can be quite helpful. To view this file, run the following command:</p>
+
+<pre><code>tail /var/log/upstart/dovecot.log
+</code></pre>
+
+<p>Here&rsquo;s an example where a syntax error in the <code>/etc/dovecot/conf.d/10-master.conf</code> file has been identified:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/log/upstart/dovecot.log 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">doveconf: Fatal: Error in configuration file /etc/dovecot/conf.d/10-master.conf line <span class="m">36</span>: Unexpected <span class="s1">&#39;}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>If you find a syntax error, open up the offending file and look at the line mentioned (Line 36 in the example above). It&rsquo;s actually fairly common to get syntax errors during the Dovecot setup process, because there are so many different files and a lot of nested brackets.</p></li>
+
+<li><p>Use <a href="http://notepad-plus-plus.org">Notepad++</a> or some other program that can easily match brackets to help you fix the error. Or, you could restore the appropriate default configuration file (named with .orig, if you were following the main setup guide).</p></li>
+</ol>
+
+<h3 id="check-the-logs">Check the Logs</h3>
+
+<p>If Postfix, Dovecot, and MySQL are running, the next troubleshooting step is to check the mail logs. By default, all of the incoming and outgoing connections and any associated errors get logged in <code>/var/log/mail.log</code>. One of the most helpful ways to view the log file is with the <code>tail</code> command, which when combined with the <code>-f</code> flag, shows you the most recent part of the log live as it&rsquo;s updated.</p>
+
+<ol>
+<li><p>Start tailing the log by entering the following command:</p>
+
+<pre><code>tail -f /var/log/mail.log
+</code></pre></li>
+
+<li><p>Send yourself a test message or make a connection to the mail server.</p></li>
+
+<li><p>View the log as it updates with the relevant information.</p></li>
+
+<li><p>To stop tailing, press <strong>CTRL-C</strong>.</p></li>
+</ol>
+
+<p>If you see an error or warning in the log, copy it. Search for that exact error online (without the details specific to your server), and you&rsquo;ll likely be able to find a solution or additional troubleshooting help.</p>
+
+<h3 id="enable-verbose-logs">Enable Verbose Logs</h3>
+
+<p>The default mail log may not contain all the information you need. In that case, the next step is to enable verbose logging for Postfix and Dovecot, and to separate the Postfix and Dovecot logs into two separate files so they&rsquo;re easier to sort through. The Postfix log will document messages that are relayed to or from outside servers, and the Dovecot log will record authorization attempts.</p>
+
+<h4 id="dovecot">Dovecot</h4>
+
+<p>Follow these instructions to enable verbose logging for Dovecot and change the log location to <code>/var/log/dovecot.log</code>:</p>
+
+<ol>
+<li><p>Open the /etc/dovecot/conf.d/10-logging.conf file for editing by entering the following command:</p>
+
+<pre><code>nano /etc/dovecot/conf.d/10-logging.conf
+</code></pre></li>
+
+<li><p>Add this line to set the new file path for the log:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-logging.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">log_path</span> <span class="o">=</span> /var/log/dovecot.log</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Uncomment the <code>auth_verbose</code> and <code>mail_debug</code> lines, and then set them to <code>yes</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-logging.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">auth_verbose</span> <span class="o">=</span> yes
+
+<span class="nv">mail_debug</span> <span class="o">=</span> yes</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save your changes.</p></li>
+
+<li><p>Restart Dovecot by entering the following command:</p>
+
+<pre><code>service dovecot restart
+</code></pre></li>
+</ol>
+
+<p>The Dovecot log will now display more information about authorization attempts and inbox connections. You can view the new log at <code>/var/log/dovecot.log</code>. Remember to disable verbose logging when you&rsquo;re done troubleshooting so your server doesn&rsquo;t fill up with logs.</p>
+
+<h4 id="postfix">Postfix</h4>
+
+<p>Follow these instructions to enable verbose logging for Postfix:</p>
+
+<ol>
+<li><p>Open the <code>/etc/postfix/master.cf</code> files for editing by entering the following command:</p>
+
+<pre><code>nano /etc/postfix/master.cf
+</code></pre></li>
+
+<li><p>Add a <code>-v</code> to the <code>smtp</code> line to enable verbose logging:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/master.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ==========================================================================
+</span><span class="c1"># service type  private unpriv  chroot  wakeup  maxproc command + args
+</span><span class="c1">#               (yes)   (yes)   (yes)   (never) (100)
+</span><span class="c1"># ==========================================================================
+</span><span class="c1"></span>smtp      inet  n       -       -       -       -       smtpd -v</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save your changes.</p></li>
+
+<li><p>Restart Postfix by entering the following command:</p>
+
+<pre><code>service postfix restart
+</code></pre></li>
+</ol>
+
+<p>The Postfix log will now display more information about messages that are coming from or going to outside servers. You can still view the log at <code>/var/log/mail.log</code>. Remember to disable verbose logging when you&rsquo;re done troubleshooting so your server doesn&rsquo;t fill up with logs.</p>
+
+<h3 id="check-port-availability">Check Port Availability</h3>
+
+<p>Sometimes email problems occur because the mail server and mail client aren&rsquo;t talking to each other on the same ports. For mail to get from client to server, or vice versa, both have to be using the same ports, and those ports also have to be open along the internet route between the two. If you are following the accompanying <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql">Postfix, Dovecot, and MySQL</a> installation guide, you should be using the following ports:</p>
+
+<ul>
+<li>25, 465, or 587 with TLS encryption for outgoing mail (SMTP)</li>
+<li>993 with SSL encryption for incoming IMAP</li>
+<li>995 with SSL encryption for incoming POP3</li>
+</ul>
+
+<p>First, check your mail client settings and make sure that you have the correct ports and security settings selected.</p>
+
+<p>Next, use the Telnet tool to check that ports are open both on your Linode and on the route between your client and your Linode. The same test should be run on both your Linode and your home computer. First we&rsquo;ll present how to run the test from both locations, and then we&rsquo;ll discuss the implications.</p>
+
+<h4 id="checking-from-a-linode">Checking from a Linode</h4>
+
+<p>To test on your Linode, follow these steps:</p>
+
+<ol>
+<li>Establish an SSH connection to your Linode.</li>
+
+<li><p>Run the following command, replacing <code>12.34.56.78</code> with your Linode&rsquo;s IP address:</p>
+
+<pre><code>telnet 12.34.56.78 25
+</code></pre></li>
+
+<li><p>Exit Telnet by pressing <strong>CTRL-]</strong>, then enter <code>quit</code>.</p></li>
+
+<li><p>Repeat Step 2 for ports 465, 587, 993, and 995.</p></li>
+</ol>
+
+<p>Read the discussion of Telnet outcomes below, and use the output shown at the end of this section to analyze your results.</p>
+
+<h4 id="checking-from-a-mac">Checking from a Mac</h4>
+
+<p>To run a Telnet test on a Mac, follow these steps:</p>
+
+<ol>
+<li>Open the Terminal application.</li>
+
+<li><p>Run the following command, replacing <code>12.34.56.78</code> with your Linode&rsquo;s IP address:</p>
+
+<pre><code>telnet 12.34.56.78 25
+</code></pre></li>
+
+<li><p>Exit Telnet by pressing <strong>CTRL-]</strong>, then enter <code>quit</code>.</p></li>
+
+<li><p>Repeat Step 2 for ports 465, 587, 993, and 995.</p></li>
+</ol>
+
+<p>Read the discussion of Telnet outcomes below, and use the output shown at the end of this section to analyze your results.</p>
+
+<h4 id="checking-from-a-pc">Checking from a PC</h4>
+
+<p>To run a Telnet test on a Windows computer, follow these steps. You will need to start by installing Telnet, since it doesn&rsquo;t come with Windows by default:</p>
+
+<ol>
+<li>Open the Control Panel.</li>
+<li>Select <strong>Programs</strong>.</li>
+<li>From <strong>Programs and Features</strong>, select <strong>Turn Windows features on or off</strong>.</li>
+<li>Select <strong>Telnet Client</strong> from the menu.</li>
+<li>Click <strong>OK</strong>.</li>
+<li>Wait while the changes are applied.</li>
+<li>Open the command prompt.</li>
+
+<li><p>Run the following command, replacing <code>12.34.56.78</code> with your Linode&rsquo;s IP address:</p>
+
+<pre><code>telnet 12.34.56.78 25
+</code></pre></li>
+
+<li><p>Exit Telnet by pressing <strong>CTRL-]</strong>, then enter <code>quit</code>.</p></li>
+
+<li><p>Repeat Step 8 for ports 465, 587, 993, and 995.</p></li>
+</ol>
+
+<p>Read the discussion of Telnet outcomes below, and analyze your results according to the output shown below.</p>
+
+<h4 id="analyzing-the-results">Analyzing the Results</h4>
+
+<p>If the test is successful, you should see output similar to the following:</p>
+
+<pre><code>Trying 12.34.56.78...
+Connected to li468-222.members.linode.com.
+Escape character is '^]'.
+220 host.example.com ESMTP Postfix (Ubuntu)
+</code></pre>
+
+<p>To cancel the connection, press <strong>CTRL-]</strong>, then enter <code>quit</code>. If the test fails, you will see a <code>Connection refused</code> message and Telnet will quit on its own.</p>
+
+<p>If you run the test on your Linode and it fails, you should check that you&rsquo;ve configured the ports properly in your mail server setup (see Steps 33-34 in the <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql#dovecot">Dovecot section</a> of the setup guide), that you&rsquo;ve enabled ports 465 and 587 (see Steps 26-30 in the <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql#postfix">Postfix section</a> of the setup guide), and that you don&rsquo;t have any <a href="/docs/security/firewalls/iptables">Firewall rules</a> in place that block them.</p>
+
+<p>If you run the test on your Linode and it succeeds, but the test from your home computer fails, that indicates that the ports are being blocked somewhere on the network between your home computer and your Linode. It could be at your router, your ISP (Internet Service Provider), someone else&rsquo;s ISP, etc. The best way to diagnose networking issues is to generate an <a href="/docs/linux-tools/mtr">MTR report</a>.</p>
+
+<p>If the Telnet tests on your Linode and your home computer both succeed, and your mail client settings are correct, you can probably rule out any problems with ports.</p>
+
+<h3 id="verifying-your-login-credentials">Verifying Your Login Credentials</h3>
+
+<p>Next we&rsquo;ll focus on your login credentials. If they aren&rsquo;t configured properly, this can cause problems:</p>
+
+<ul>
+<li>Username and password are not accepted in your mail client</li>
+<li>Prompted for your password over and over again</li>
+<li>Unable to connect to the mail server</li>
+</ul>
+
+<p>The first and easiest step is re-entering your username and password in your mail client. Make sure you use the full username, including the <code>@example.com</code> part. Usernames and passwords are case-sensitive. If you&rsquo;re sure that you&rsquo;ve entered the information correctly in your mail client, authorization may not be configured properly on the server side.</p>
+
+<p>The next thing to check is that your username and password are entered properly in the correct MySQL table. You can run the <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql#testing">MySQL tests</a> from the main setup article to make sure your tables are set up appropriately. You can also delete and re-add the appropriate row from the <strong>mailserver.virtual_users</strong> table to make sure the password was entered correctly. If the information is correct in the MySQL table, it may be that Dovecot is not configured to look up authorization credentials in the right location.</p>
+
+<p>Dovecot includes an administrative tool which is very helpful in troubleshooting issues with login credentials. The <code>doveadm user</code> command lets you see the user database result for the username, user ID, group ID, and mailbox location for each email user. Reading the output from this tool tells you the database where Dovecot is looking for authorized users. If Dovecot is not looking for the expected database, you&rsquo;ll need to change the authorization-related settings in Dovecot so that it is using MySQL to look up users, and not some other user database.</p>
+
+<ol>
+<li><p>Run the <code>doveadm</code> command to look up your email user (including the <code>@example.com</code> part):</p>
+
+<pre><code>doveadm user email1@example.com
+</code></pre>
+
+<p>If everything is working correctly, you should see output like this:</p>
+
+<pre><code>userdb: email1@example.com
+  uid       : 5000
+  gid       : 5000
+  home      : /var/mail/vhosts/example.com/email1
+</code></pre>
+
+<p>If instead you get:</p>
+
+<pre><code>userdb lookup: user email1@example.com doesn't exist
+</code></pre>
+
+<p>This could indicate that 1) You didn&rsquo;t enter the email address correctly in the MySQL table - but we just checked that, so it could also be that 2) Dovecot is not looking for your user database in the right place.</p></li>
+
+<li><p>If Dovecot can&rsquo;t find the users in MySQL, it may still be looking for system users rather than virtual users. See if you get a response for your own SSH user:</p>
+
+<pre><code>doveadm user myuser
+</code></pre>
+
+<p>Dovecot should <strong>not</strong> find output for your system user. If it does, it will look like this:</p>
+
+<pre><code>userdb: myuser
+  system_groups_user: myuser
+  uid       : 1000
+  gid       : 1000
+  home      : /home/myuser
+</code></pre></li>
+
+<li><p>If you do get this type of output, you need to adjust your Dovecot settings related to virtual users. If you don&rsquo;t get output for the system users either, this still indicates that you have some kind of error in the Dovecot settings related to users. Go back to the <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql#dovecot">Dovecot section</a> of the main setup guide and pay special attention to the sections having to do with virtual users and the MySQL settings.</p></li>
+</ol>
+
+<h2 id="step-by-step-configuration">Step-by-Step Configuration</h2>
+
+<p>For some troubleshooting scenarios, you may find that a top-down approach doesn&rsquo;t help you find the root cause of the problem. Sometimes, what you need is a bottom-up approach.</p>
+
+<p>The bottom-up approach presented here breaks up the complex task of building a mail server into smaller chunks. This has two benefits. First, each section focuses on just a few mail server functions and includes fewer details, which makes it easier to understand. By the end of the project, you should have a deep understanding of how the mail server works. Second, each chunk adds a discrete amount of testable functionality to the mail server. This makes it easier to find errors by limiting the scope of their possible locations. For example, if your mail server was working after you completed &ldquo;Basic Dovecot,&rdquo; but is failing its tests after &ldquo;Virtual Domains and Users,&rdquo; you know that the error is related to something you did in that section.</p>
+
+<p>The second part of this guide presents a step-by-step mail server build organized by function, progressing from core functions to more peripheral ones, with tests at each step. You should have the <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql">main setup guide</a> open at the same time, because we will be referring back to it. As you read the main setup guide, you&rsquo;ll notice that we are installing items in a different order here. The main guide is designed for a streamlined approach that avoids editing the same file multiple times. This guide is focused on a deeper understanding of each component, so you will sometimes need to jump around to different sections of the main guide for reference. Once you successfully complete a stage, I suggest that you make a <a href="/docs/platform/backup-service">system-level backup</a> so you can get back to that point easily!</p>
+
+<blockquote class="caution">
+  <strong class="callout-title">Caution</strong>
+  <div>Keep in mind that the earlier builds presented here are functional, but should not be considered production-ready for security and functionality reasons, mainly because passwords are sent in plain text, and/or outgoing SMTP is not enabled.</div>
+</blockquote>
+
+
+<p>Throughout this section, we will provide links to the appropriate <a href="http://www.postfix.org/documentation.html">Postfix</a> and <a href="http://wiki2.dovecot.org/">Dovecot</a> documentation. These are great jumping-off points.</p>
+
+<h3 id="setting-up">Setting Up</h3>
+
+<p>Read the <a href="/docs/getting-started">Getting Started</a> guide. Follow the steps outlined in that section before installing your mail server.</p>
+
+<p>You may also want to log into your server as the root user, so you don&rsquo;t have to type &ldquo;sudo&rdquo; for each command. You can log in as root by entering the following command:</p>
+
+<pre><code>su
+</code></pre>
+
+<h3 id="basic-postfix">Basic Postfix</h3>
+
+<p>In this section, you&rsquo;ll install Postfix and configure it to deliver mail for your system user at your domain, which is the most basic configuration. You&rsquo;ll also send a test message and view it using Mailutils.</p>
+
+<ol>
+<li><p>Install Postfix by entering the following command:</p>
+
+<pre><code>apt-get install postfix
+</code></pre></li>
+
+<li><p>When prompted, select <strong>Internet Site</strong> for the configuration. (See Steps 6 &amp; 7 from the <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql#installing-packages">Installing Packages</a> section of the primary guide, for this step and the next.)</p></li>
+
+<li><p>Enter your fully-qualified domain name or any domain name that resolves to the server.</p></li>
+
+<li><p>Open <code>/etc/postfix/main.cf</code> for editing, and add your domain(s) to the <code>mydestination</code> line. If your hostname and hosts files were set up correctly before installing Postfix, this list should already include your full-qualified domain name and several references to localhost, which you can leave as they are.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">mydestination</span> <span class="o">=</span> example.com, localhost</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart Postfix by entering the following command:</p>
+
+<pre><code>service postfix restart
+</code></pre>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Use that command whenever the instructions tell you to restart Postfix. Substitute <code>dovecot</code> for <code>postfix</code> when the instructions tell you to restart Dovecot.</div>
+</blockquote>
+</li>
+
+<li><p>Send your Linux system user a test message. This is the same user that you use for SSH. You should use the format &lt;<strong>myuser@example.com</strong>&gt;.</p></li>
+
+<li><p>Install Mailutils by entering the following command:</p>
+
+<pre><code>apt-get install mailutils
+</code></pre></li>
+
+<li><p>Check your messages with Mailutils by entering the following command. You must be logged in as your own user, so drop out of root for now if you logged in as root earlier.</p>
+
+<pre><code>mail
+</code></pre></li>
+
+<li><p>Type the number of the message you want to read.</p></li>
+
+<li><p>Type <code>quit</code> when you want to exit your system user&rsquo;s inbox.</p></li>
+</ol>
+
+<p>If you succeeded in sending your system user a test message, you have successfully installed Postfix and configured it for the most basic mail delivery. By default, it delivers mail only for system users, and mail is stored in a file called <code>/var/mail/myuser</code>.</p>
+
+<h3 id="basic-dovecot">Basic Dovecot</h3>
+
+<p>In this section, you&rsquo;ll install Dovecot and set it up so you can check your email for your system user over an IMAP or POP3 connection, which is the most basic configuration. This section is based on Dovecot&rsquo;s <a href="http://wiki2.dovecot.org/BasicConfiguration">Basic Configuration Guide</a>, which is a great reference.</p>
+
+<ol>
+<li><p>Install Dovecot and its IMAP and POP3 packages by entering the following command:</p>
+
+<pre><code>apt-get install dovecot-core dovecot-imapd dovecot-pop3d
+</code></pre></li>
+
+<li><p>Open <code>/etc/dovecot/conf.d/10-mail.conf</code> for editing, and set the <code>mail_location</code> to the line shown below. This setting should direct Dovecot to look for mail in the same location where Postfix stores the mail, which should be <code>/var/mail/myuser</code> by default (Dovecot uses the variable <code>%u</code> so the correct username is used in the path). The mailbox format is designated as <code>mbox</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-mail.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">mail_location</span> <span class="o">=</span> mbox:~/mail:INBOX<span class="o">=</span>/var/mail/%u</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Also in <code>/etc/dovecot/conf.d/10-mail.conf</code>, set the <code>mail_privileged_group</code> to <code>mail</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-mail.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">mail_privileged_group</span> <span class="o">=</span> mail</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>In <code>/etc/dovecot/conf.d/10-auth.conf</code>, allow plain-text authentication by setting <code>disable_plaintext_auth</code> to <code>no</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-auth.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">disable_plaintext_auth</span> <span class="o">=</span> no</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>In <code>/etc/pam.d/dovecot</code>, tell Dovecot to use standard UNIX authentication. This means that your SSH username and password will also work for mail. Edit the file so it contains only the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/pam.d/dovecot 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">auth required pam_unix.so nullok account required pam_unix.so</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart Dovecot.</p></li>
+
+<li><p>Send yourself another test message.</p></li>
+
+<li><p>Check your email. You can use either Telnet or a mail client. At this stage, your email address will be for your system user (<a href="mailto:myuser@example.com">myuser@example.com</a>), and your username and password will be the same as they are for SSH (no <code>@example.com</code> part in the username at this stage). Your connection type will be standard (non-secure) and your password will be plain. You will probably have to set up your mail client manually, rather than through a wizard.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The Telnet and mail client tests will not work for <code>root</code>. Use a different system user.</div>
+</blockquote>
+
+
+<p>If you succeeded in checking your mail over an IMAP or POP3 connection, you have successfully installed Dovecot and configured it for the most basic inbox access.</p>
+
+<h3 id="virtual-domains-and-users">Virtual Domains and Users</h3>
+
+<p>Now that Postfix and Dovecot are working, you should set up virtual domains and users. Having virtual users for mail is an important step forward in the security and convenience of your mail server, because it eliminates the need to create a system user for everyone who needs a mailbox. It also makes it easier to add new domains and users to the mail server.</p>
+
+<p>You&rsquo;ll need to make quite a few configuration changes related to virtual domains and users in both Postfix and Dovecot. Postfix and Dovecot both need to be configured for virtual domains and users at the same time, because you&rsquo;re changing the mailbox location, which needs to be coordinated between them. Here&rsquo;s a general checklist of what you&rsquo;ll be configuring in this section:</p>
+
+<ul>
+<li>Make two new static files with the virtual user information (usernames, passwords, mailbox locations), one for Postfix and one for Dovecot. (You can&rsquo;t use the same file because they require different parameters and formatting.) You didn&rsquo;t need to write out your own authentication information before, because Postfix and Dovecot were just reading from the system authentication, but you need it now for virtual user authentication. Eventually you&rsquo;ll be saving this information in MySQL databases, but it&rsquo;s simpler to set it up in flat files for now.</li>
+<li>Tell Postfix and Dovecot to use the virtual users.</li>
+<li>List the virtual domains in the Postfix configuration file, instead of using the <code>mydestination</code> line.</li>
+<li>Create the new mailboxes in their new locations. They used to be at <code>/var/mail/myuser</code>, but now they will be at <code>/var/mail/vhosts/example.com/user/</code>. This has the added bonus of letting you have the same username at different domains: for example, you can now have <a href="mailto:jane@example.com">jane@example.com</a> and <a href="mailto:jane@example.net">jane@example.net</a> be two different mailboxes.</li>
+<li>Tell Postfix and Dovecot to use the new mailbox locations.</li>
+<li>Grant one system user, called <code>vmail</code>, access to all the mailboxes, rather than having each system user own its own mailbox.</li>
+</ul>
+
+<p>You may want to reference <a href="http://www.postfix.org/VIRTUAL_README.html">Postfix&rsquo;s Virtual Readme</a> and <a href="http://wiki2.dovecot.org/VirtualUsers">Dovecot&rsquo;s wiki page on virtual users</a> as you work through this section.</p>
+
+<ol>
+<li><p>Create a virtual users file for Postfix. This will list all the email addresses and their delivery locations relative to the <code>virtual_mailbox_base</code> parameter (which gets configured in <code>/etc/postfix/main.cf</code>, which we&rsquo;ll get to momentarily). We&rsquo;re calling the file <code>/etc/postfix/virtual_users_list</code>, and it should look something like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/virtual_users_list 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">email1@example.com example.com/email1/
+email2@example.com example.com/email2/</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Create a virtual users file for Dovecot. This will list all your email usernames (just use the email addresses) and their passwords in plain text (obviously this is not production-ready). It should look something like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/users 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">email1@example.com:<span class="o">{</span>Plain<span class="o">}</span>firstpassword
+email2@example.com:<span class="o">{</span>Plain<span class="o">}</span>secondpassword</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>This list allows Dovecot to check the usernames and passwords for virtual users before granting them access to their inboxes.</p></li>
+
+<li><p>Edit Postfix&rsquo;s main configuration file, <code>/etc/postfix/main.cf</code>. Remove every domain except <code>localhost</code> from the <code>mydestination</code> parameter. Create a new parameter called <code>virtual_mailbox_domains</code> and add your domains:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">virtual_mailbox_domains</span> <span class="o">=</span> example.com, hostname, hostname.example.com, localhost.example.com</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>There can be no overlap between the <code>mydestination</code> and <code>virtual_mailbox_domains</code> lists.</div>
+</blockquote>
+</li>
+
+<li><p>Also in <code>/etc/postfix/main.cf</code>, add the line <code>virtual_mailbox_base</code> and set it to <code>/var/mail/vhosts</code> so mail gets delivered to the new mailboxes. The final part of the path for each user is in the <code>virtual_users_list</code> file from Step 1.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">virtual_mailbox_base</span> <span class="o">=</span> /var/mail/vhosts</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Also in <code>/etc/postfix/main.cf</code>, add the line <code>virtual_mailbox_maps</code> and set it to the virtual users file you created in Step 1. It is a &ldquo;hash&rdquo; type file. If you&rsquo;re following this example exactly, it will be:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">virtual_mailbox_maps</span> <span class="o">=</span> hash:/etc/postfix/virtual_users_list</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>However, you can name this file anything you want, and set the <code>virtual_mailbox_maps</code> parameter accordingly.</p></li>
+
+<li><p>The last change for <code>/etc/postfix/main.cf</code> in this section is to set up the new <code>vmail</code> system user. This user will own the virtual mailboxes. Add the following new lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">virtual_minimum_uid</span> <span class="o">=</span> <span class="m">100</span>
+<span class="nv">virtual_uid_maps</span> <span class="o">=</span> static:5000
+<span class="nv">virtual_gid_maps</span> <span class="o">=</span> static:5000</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Let&rsquo;s take a moment to sum up all the changes that you just made in <code>/etc/postfix/main.cf</code>. You removed all the domains except <code>localhost</code> from the <code>mydestination</code> parameter, and added several new lines for the virtual domains and users, which should look like this (add the <code>#Virtual domains</code> comment if desired):</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Virtual domains
+</span><span class="c1"></span><span class="nv">virtual_mailbox_domains</span> <span class="o">=</span> example.com, host
+<span class="nv">virtual_mailbox_base</span> <span class="o">=</span> /var/mail/vhosts
+<span class="nv">virtual_mailbox_maps</span> <span class="o">=</span> hash:/etc/postfix/virtual_users_list
+<span class="nv">virtual_minimum_uid</span> <span class="o">=</span> <span class="m">100</span>
+<span class="nv">virtual_uid_maps</span> <span class="o">=</span> static:5000
+<span class="nv">virtual_gid_maps</span> <span class="o">=</span> static:5000</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Now that you&rsquo;ve made all the changes in the Postfix configuration files, you should make sure Postfix is reading the new settings with the following command:</p>
+
+<pre><code>postmap /etc/postfix/virtual_users_list
+</code></pre></li>
+
+<li><p>Make the <code>vmail</code> user and group:</p>
+
+<pre><code>groupadd -g 5000 vmail
+useradd -g vmail -u 5000 vmail -d /var/mail
+</code></pre></li>
+
+<li><p>Make the directory <code>/var/mail/vhosts/example.com/email1</code> for every email address. You&rsquo;ll have to start by making the <code>vhosts</code> directory and then work your way down. You can use <code>mkdir</code> with the <code>-p</code> flag if desired.</p></li>
+
+<li><p>Change the ownership of the <code>/var/mail</code> directory and everything below it to the <code>vmail</code> user and group:</p>
+
+<pre><code>chown -R vmail:vmail /var/mail
+</code></pre>
+
+<p>Great! Now the proper folders actually exist for mail delivery, and the user that owns those folders matches the one we told Postfix to use when writing new mail to the server.</p></li>
+
+<li><p>Restart Postfix.</p></li>
+
+<li><p>Try sending yourself a test message. Check <code>/var/log/mail.log</code>; you should see something like this:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/var/log/mail.log 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">Mar  <span class="m">8</span> <span class="m">18</span>:01:27 host postfix/virtual<span class="o">[</span><span class="m">4418</span><span class="o">]</span>: E2C7528420: <span class="nv">to</span><span class="o">=</span>&lt;email1@example.com&gt;, <span class="nv">relay</span><span class="o">=</span>virtual, <span class="nv">delay</span><span class="o">=</span><span class="m">0</span>.01, <span class="nv">delays</span><span class="o">=</span><span class="m">0</span>.01/0/0/0, <span class="nv">dsn</span><span class="o">=</span><span class="m">2</span>.0.0, <span class="nv">status</span><span class="o">=</span>sent <span class="o">(</span>delivered to maildir<span class="o">)</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<p>The part that says <code>relay=virtual</code> means you&rsquo;ve got virtual domains and users set up properly.</p></li>
+
+<li><p>Next up is Dovecot. First, update the <code>mail_location</code> in <code>/etc/dovecot/conf.d/10-mail.conf</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-mail.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">passdb <span class="o">{</span>
+  <span class="nv">driver</span> <span class="o">=</span> passwd-file
+  <span class="nv">args</span> <span class="o">=</span> <span class="nv">username_format</span><span class="o">=</span>%u /etc/dovecot/users
+<span class="o">}</span>
+userdb <span class="o">{</span>
+  <span class="nv">driver</span> <span class="o">=</span> static
+  <span class="nv">args</span> <span class="o">=</span> <span class="nv">uid</span><span class="o">=</span>vmail <span class="nv">gid</span><span class="o">=</span>vmail <span class="nv">home</span><span class="o">=</span>/var/mail/vhosts/%d/%n
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>The <code>passdb</code> section details how email users can authenticate. The <code>driver</code> line tells Dovecot you&rsquo;re using a flat file, and the <code>args</code> line tells it where it is and what format to expect. (This is the <code>/etc/dovecot/users</code> file you made in Step 2.)</p>
+
+<p>The <code>userdb</code> line tells Dovecot where to find the mail on the server and which system user it should use to access the mail files. Since the format for each mailbox&rsquo;s location is the same, the <code>userdb</code> can be static. You&rsquo;re telling it to use the <code>vmail</code> user to access the mailboxes. Finally, the <code>home=</code> parameter tells Dovecot to look for mail in <code>var/mail/vhosts/example.com/user</code>. This setting MUST match the <code>virtual_mailbox_base</code> + <code>/etc/postfix/virtual_users_list</code> relative path in Postfix&rsquo;s settings. You have to tell Dovecot to look for mail in the same place you told Postfix to put the mail.</p>
+</div>
+</blockquote>
+</li>
+
+<li><p>Now you just need to tell Dovecot to use <code>auth-passwdfile.conf.ext</code> instead of <code>auth-system.conf.ext</code>, so it uses that lovely new password file you created in Step 2. In <code>/etc/dovecot/conf.d/10-auth.conf</code>, add <code>#</code> to comment out the system user file, and remove <code>#</code> to enable the passwdfile config file:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-auth.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!include auth-system.conf.ext
+</span><span class="cp"></span>!include auth-passwdfile.conf.ext</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart Dovecot.</p></li>
+
+<li><p>Send yourself another test message.</p></li>
+
+<li><p>See if you can check your email with IMAP or POP3; you can use a mail client or Telnet. You should now be able to use your email address and email password to log in, rather than your system username and password.</p>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Remember that these three paths have to match: the <code>virtual_mailbox_base</code> + <code>/etc/postfix/virtual_users_list</code> relative path in Postfix&rsquo;s settings, the <code>mail_location</code> in Dovecot, and the <code>home=</code> in Dovecot.</div>
+</blockquote>
+</li>
+</ol>
+
+<p>If your most recent test worked, you have now set up both Postfix and Dovecot successfully with virtual domains and users.</p>
+
+<h3 id="dovecot-s-lmtp-for-local-delivery">Dovecot&rsquo;s LMTP for Local Delivery</h3>
+
+<p>Now that you have virtual domains and users working, it&rsquo;s time to update the local delivery agent. By default, Postfix uses its own built-in LDA. We&rsquo;re going to switch to using Dovecot&rsquo;s LMTP (Local Mail Transfer Protocol) service instead. To do this, we have to set up a socket in Dovecot which Postfix can use.</p>
+
+<p>See <a href="http://wiki2.dovecot.org/HowTo/PostfixDovecotLMTP">Dovecot&rsquo;s wiki article about LMTP</a> for the official documentation.</p>
+
+<ol>
+<li><p>Install <code>dovecot-lmtpd</code> by entering the following command:</p>
+
+<pre><code>apt-get install dovecot-lmtpd
+</code></pre></li>
+
+<li><p>In <code>/etc/dovecot/dovecot.conf</code>, add or modify the <code>protocols</code> line to look like the following. If you need to add the line, you can add it below <code>!include_try /usr/share/dovecot/protocols.d/*.protocol</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/dovecot.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">protocols</span> <span class="o">=</span> imap pop3 lmtp</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Carefully edit the existing <code>service lmtp</code> section of <code>/etc/dovecot/conf.d/10-master.conf</code> to look like the following, which will enable the socket:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-master.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">service lmtp <span class="o">{</span>
+ unix_listener /var/spool/postfix/private/dovecot-lmtp <span class="o">{</span>
+   <span class="nv">mode</span> <span class="o">=</span> <span class="m">0600</span>
+   <span class="nv">user</span> <span class="o">=</span> postfix
+   <span class="nv">group</span> <span class="o">=</span> postfix
+  <span class="o">}</span>
+  <span class="c1"># Create inet listener only if you can&#39;t use the above UNIX socket
+</span><span class="c1"></span>  <span class="c1">#inet_listener lmtp {
+</span><span class="c1"></span>    <span class="c1"># Avoid making LMTP visible for the entire internet
+</span><span class="c1"></span>    <span class="c1">#address =
+</span><span class="c1"></span>    <span class="c1">#port =
+</span><span class="c1"></span>  <span class="c1">#}
+</span><span class="c1"></span><span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Make sure you count your brackets. An extra or missing bracket in this section will produce a syntax error that prevents Dovecot from starting.</div>
+</blockquote>
+</li>
+
+<li><p>Restart Dovecot.</p></li>
+
+<li><p>Make sure the socket exists:</p>
+
+<pre><code>ls /var/spool/postfix/private/dovecot-lmtp
+</code></pre></li>
+
+<li><p>Now, tell Postfix to use the new socket for local delivery. In <code>/etc/postfix/main.cf</code>, set this line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">virtual_transport</span> <span class="o">=</span> lmtp:unix:private/dovecot-lmtp</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart Postfix.</p></li>
+
+<li><p>Send yourself a test message. Make sure you can still receive mail.</p></li>
+</ol>
+
+<h3 id="authentication-hand-off-from-postfix-to-dovecot">Authentication Hand-off from Postfix to Dovecot</h3>
+
+<p>By default, Postfix won&rsquo;t let you send email unless you&rsquo;re logged into the server directly. This is a good default, because you don&rsquo;t want to become a spam hub. However, you want to loosen a production server&rsquo;s settings slightly to let authenticated email users send mail. As a precursor to that, you need to set up authentication for Postfix. Since Dovecot already does a great job handling authentication when users want to check their email, you&rsquo;ll let it handle authentication for Postfix as well.</p>
+
+<p>This process is very similar to the one for LMTP, because you&rsquo;re first creating a socket in Dovecot and then telling Postfix to use it. For more information, see <a href="http://wiki2.dovecot.org/HowTo/PostfixAndDovecotSASL">Dovecot&rsquo;s wiki article about Postfix and SASL</a>.</p>
+
+<ol>
+<li><p>Carefully edit <code>/etc/dovecot/conf.d/10-master.conf</code> to look like the following, which will enable the socket:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-master.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">service auth <span class="o">{</span>
+  <span class="c1"># auth_socket_path points to this userdb socket by default. It&#39;s typically
+</span><span class="c1"></span>  <span class="c1"># used by dovecot-lda, doveadm, possibly imap process, etc. Its default
+</span><span class="c1"></span>  <span class="c1"># permissions make it readable only by root, but you may need to relax these
+</span><span class="c1"></span>  <span class="c1"># permissions. Users that have access to this socket are able to get a list
+</span><span class="c1"></span>  <span class="c1"># of all usernames and get results of everyone&#39;s userdb lookups.
+</span><span class="c1"></span>  unix_listener /var/spool/postfix/private/auth <span class="o">{</span>
+    <span class="nv">mode</span> <span class="o">=</span> <span class="m">0666</span>
+    <span class="nv">user</span> <span class="o">=</span> postfix
+    <span class="nv">group</span> <span class="o">=</span> postfix
+  <span class="o">}</span>
+
+  unix_listener auth-userdb <span class="o">{</span>
+    <span class="nv">mode</span> <span class="o">=</span> <span class="m">0600</span>
+    <span class="nv">user</span> <span class="o">=</span> vmail
+    <span class="c1">#group =
+</span><span class="c1"></span>  <span class="o">}</span>
+
+  <span class="c1"># Postfix smtp-auth
+</span><span class="c1"></span>  <span class="c1">#unix_listener /var/spool/postfix/private/auth {
+</span><span class="c1"></span>  <span class="c1">#  mode = 0666
+</span><span class="c1"></span>  <span class="c1">#}
+</span><span class="c1"></span>
+  <span class="c1"># Auth process is run as this user.
+</span><span class="c1"></span>  <span class="c1">#user = $default_internal_user
+</span><span class="c1"></span><span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>Again, watch your brackets.</div>
+</blockquote>
+</li>
+
+<li><p>In the <code>service auth-worker</code> section, set <code>user</code> to <code>vmail</code>.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-master.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">service auth-worker <span class="o">{</span>
+  <span class="c1"># Auth worker process is run as root by default, so that it can access
+</span><span class="c1"></span>  <span class="c1"># /etc/shadow. If this isn&#39;t necessary, the user should be changed to
+</span><span class="c1"></span>  <span class="c1"># $default_internal_user.
+</span><span class="c1"></span>  <span class="nv">user</span> <span class="o">=</span> vmail
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart Dovecot.</p></li>
+
+<li><p>Check that /var/spool/postfix/private/auth exists by entering the following command:</p>
+
+<pre><code>ls /var/spool/postfix/private/auth
+</code></pre></li>
+
+<li><p>Now you&rsquo;ll configure Postfix to use Dovecot&rsquo;s authentication. For more information, see <a href="http://www.postfix.org/SASL_README.html#server_dovecot">Postfix&rsquo;s Dovecot SASL guide</a> and <a href="http://www.postfix.org/SASL_README.html#server_sasl_enable">Postfix&rsquo;s guide on enabling SASL</a>. Add the following lines to <code>/etc/postfix/main.cf</code>. This tells Postfix the authentication type, the location of the socket, and that SASL authentication should be enabled:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">smtpd_sasl_type</span> <span class="o">=</span> dovecot
+<span class="nv">smtpd_sasl_path</span> <span class="o">=</span> private/auth
+<span class="nv">smtpd_sasl_auth_enable</span> <span class="o">=</span> yes</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart Postfix.</p></li>
+
+<li><p>Send yourself a test message and make sure you can still receive it.</p></li>
+</ol>
+
+<p>If your test succeeds, you&rsquo;ve just finished setting up Dovecot&rsquo;s LMTP service as your local delivery agent.</p>
+
+<h3 id="ssl-encryption">SSL Encryption</h3>
+
+<p>Now that authentication is set up, let&rsquo;s make sure the authentication process is secure. To do this, you&rsquo;ll require all authentication attempts to be encrypted with SSL or STARTTLS. For more information, see <a href="http://wiki2.dovecot.org/SSL">Dovecot&rsquo;s wiki article on SSL encryption</a>.</p>
+
+<ol>
+<li><p>Open <code>/etc/dovecot/conf.d/10-ssl.conf</code> for editing, and then set <code>ssl</code> to <code>required</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-ssl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">ssl</span> <span class="o">=</span> required</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Also in <code>/etc/dovecot/conf.d/10-ssl.conf</code>, check the paths to the SSL certificate and key. They should be set to Dovecot&rsquo;s certificate and key by default. If that&rsquo;s what you&rsquo;re using, leave these settings be. Otherwise, update the paths to the certificate and key you want to use.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-ssl.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">ssl_cert</span> <span class="o">=</span> &lt;/etc/ssl/certs/dovecot.pem
+<span class="nv">ssl_key</span> <span class="o">=</span> &lt;/etc/ssl/private/dovecot.pem</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Verify that your SSL certificate and key are in the locations specified in the previous step.</p></li>
+
+<li><p>Disable plain-text authentication. In <code>/etc/dovecot/conf.d/10-auth.conf</code>, set the following line:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-auth.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">disable<span class="se">\_</span>plaintext<span class="se">\_</span><span class="nv">auth</span> <span class="o">=</span> yes</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Disable the unencrypted ports for IMAP and POP3 so that the server won&rsquo;t accept unencrypted connections. In <code>/etc/dovecot/conf.d/10-master.conf</code>, set:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-master.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">service imap-login <span class="o">{</span>
+   inet_listener imap <span class="o">{</span>
+     <span class="nv">port</span> <span class="o">=</span> <span class="m">0</span>
+   <span class="o">}</span>
+ ...
+ <span class="o">}</span>
+
+ service pop3-login <span class="o">{</span>
+   inet_listener pop3 <span class="o">{</span>
+     <span class="nv">port</span> <span class="o">=</span> <span class="m">0</span>
+   <span class="o">}</span>
+ ...
+ <span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Leave the <code>imaps</code> and <code>pop3s</code> ports alone (they&rsquo;re commented out). Their default settings are fine; you&rsquo;ll be able to use 993 for secure IMAP and 995 for secure POP3.</p></li>
+
+<li><p>Restart Dovecot.</p></li>
+
+<li><p>Try to connect to your server on Ports 110 and 143 (we recommend using Telnet). This should fail, because we just disabled the unencrypted ports.</p></li>
+
+<li><p>Try to check your mail with SSL encryption turned on and Port 993 or 995. This should succeed.</p></li>
+</ol>
+
+<p>If you can&rsquo;t connect on 110 and 143, and you can connect on 993 and 995 with SSL turned on, you&rsquo;ve succeeded in forcing encryption for all your authentication connections. Note that you will not be able to log in via Telnet at this point - you&rsquo;re just testing the ports.</p>
+
+<h3 id="smtp">SMTP</h3>
+
+<p>Now that you&rsquo;ve got authentication set up securely, you need to configure SMTP. Right now, Postfix will relay emails only if they&rsquo;re addressed to a domain on the server or they&rsquo;re sent by system users, which is sufficient for incoming mail. For outgoing mail, though, you&rsquo;ll want to ease the relaying restrictions so that authenticated users can send email anywhere.</p>
+
+<ol>
+<li><p>Open <code>/etc/postfix/main.cf</code> for editing, and then add the <code>smtpd_recipient_restrictions</code> line as shown below:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">smtpd_recipient_restrictions</span> <span class="o">=</span> permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>The <code>smtpd_recipient_restrictions</code> line lists the criteria Postfix uses to decide which emails it can relay. <code>permit_sasl_authenticated</code> allows authenticated users to send mail. It should be listed first. Next we have <code>permit_mynetworks</code>, which allows users who are already logged into the server to send mail. Finally, <code>reject_unauth_destination</code> prevents your server from delivering mail for domains for which it is not configured. <strong>Never remove this last setting!</strong> Basically, this means that authenticated users and local users are always allowed to send mail anywhere. Non-authenticated and non-local users are allowed to send mail only to domains for which this server is responsible. These restrictions prevent your server from being used as an open relay that can send spam from anyone to anywhere.</div>
+</blockquote>
+</li>
+
+<li><p>You&rsquo;ll also want to force outgoing authentication to be encrypted. Still in <code>/etc/postfix/main.cf</code>, set the following lines:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">smtpd_tls_cert_file</span><span class="o">=</span>/etc/ssl/certs/dovecot.pem
+<span class="nv">smtpd_tls_key_file</span><span class="o">=</span>/etc/ssl/private/dovecot.pem
+<span class="nv">smtpd_use_tls</span><span class="o">=</span>yes
+<span class="nv">smtpd_tls_auth_only</span> <span class="o">=</span> yes</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div>First, you&rsquo;re going to tell Postfix to use Dovecot&rsquo;s SSL certificate and key, because some mail clients will choke if the certificates for the incoming and outgoing servers don&rsquo;t match. Then you&rsquo;re telling Postfix to use (only) TLS encryption. This means that users can connect on the standard port (25), but before they are allowed to send any authentication information, they have to establish an encrypted connection.</div>
+</blockquote>
+</li>
+
+<li><p>Make a copy of the <code>/etc/postfix/master.cf</code> file:</p>
+
+<pre><code>cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
+</code></pre></li>
+
+<li><p>Open the configuration file for editing by entering the following command:</p>
+
+<pre><code>nano /etc/postfix/master.cf
+</code></pre></li>
+
+<li><p>Locate and uncomment the two lines starting with <code>submission</code> and <code>smtps</code>. This will allow you to send mail securely on ports 587 and 465, in addition to port 25 (which is also secure with our SSL setup). The first section of your <code>/etc/postfix/master.cf</code> file should resemble the following:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/master.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1</span><span class="lnt"> 2</span><span class="lnt"> 3</span><span class="lnt"> 4</span><span class="lnt"> 5</span><span class="lnt"> 6</span><span class="lnt"> 7</span><span class="lnt"> 8</span><span class="lnt"> 9</span><span class="lnt">10</span><span class="lnt">11</span><span class="lnt">12</span><span class="lnt">13</span><span class="lnt">14</span><span class="lnt">15</span><span class="lnt">16</span><span class="lnt">17</span><span class="lnt">18</span><span class="lnt">19</span><span class="lnt">20</span><span class="lnt">21</span><span class="lnt">22</span><span class="lnt">23</span><span class="lnt">24</span><span class="lnt">25</span><span class="lnt">26</span><span class="lnt">27</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#
+</span><span class="c1"># Postfix master process configuration file.  For details on the format
+</span><span class="c1"># of the file, see the master(5) manual page (command: &#34;man 5 master&#34;).
+</span><span class="c1">#
+</span><span class="c1"># Do not forget to execute &#34;postfix reload&#34; after editing this file.
+</span><span class="c1">#
+</span><span class="c1"># ==========================================================================
+</span><span class="c1"># service type  private unpriv  chroot  wakeup  maxproc command + args
+</span><span class="c1">#               (yes)   (yes)   (yes)   (never) (100)
+</span><span class="c1"># ==========================================================================
+</span><span class="c1"></span>smtp      inet  n       -       -       -       -       smtpd
+<span class="c1">#smtp      inet  n       -       -       -       1       postscreen
+</span><span class="c1">#smtpd     pass  -       -       -       -       -       smtpd
+</span><span class="c1">#dnsblog   unix  -       -       -       -       0       dnsblog
+</span><span class="c1">#tlsproxy  unix  -       -       -       -       0       tlsproxy
+</span><span class="c1"></span>submission inet n       -       -       -       -       smtpd
+<span class="c1">#  -o syslog_name=postfix/submission
+</span><span class="c1">#  -o smtpd_tls_security_level=encrypt
+</span><span class="c1">#  -o smtpd_sasl_auth_enable=yes
+</span><span class="c1">#  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+</span><span class="c1">#  -o milter_macro_daemon_name=ORIGINATING
+</span><span class="c1"></span>smtps     inet  n       -       -       -       -       smtpd
+<span class="c1">#  -o syslog_name=postfix/smtps
+</span><span class="c1">#  -o smtpd_tls_wrappermode=yes
+</span><span class="c1">#  -o smtpd_sasl_auth_enable=yes
+</span><span class="c1">#  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+</span><span class="c1"></span>#  -o <span class="nv">milter_macro_daemon_name</span><span class="o">=</span>ORIGINATING</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Save the changes you&rsquo;ve made to the <code>/etc/postfix/master.cf</code> file.</p></li>
+
+<li><p>Restart Postfix.</p></li>
+
+<li><p>Set up your mail client to connect to your Linode as an outgoing mail server. You should use TLS encryption, or STARTTLS if you have that option, over ports 25, 465, or 587. Your username and password are the same as they are for incoming mail. Try sending a test message.</p></li>
+</ol>
+
+<blockquote class="note">
+  <strong class="callout-title">Note</strong>
+  <div><p>You will no longer be able to use Telnet for testing. If you want to run a manual test for troubleshooting purposes, you can use <a href="http://www.openssl.org/docs/apps/s_client.html">openssl</a> instead. Your command should look like this (you can test on ports 465 and 587 as well):</p>
+
+<p>openssl s_client -connect example.com:25 -starttls smtp</p>
+</div>
+</blockquote>
+
+
+<p>Your mail server is now perfectly viable and secure. If you&rsquo;re happy storing all your domains and users in flat files, you can stop here. However, for the sake of making long-term maintenance easier, we suggest that you store your lists of domains, users, and aliases in MySQL databases instead.</p>
+
+<h3 id="mysql-for-virtual-domains-users-and-aliases">MySQL for Virtual Domains, Users, and Aliases</h3>
+
+<p>The final step in getting your mail server up to speed is to make it compatible with MySQL.</p>
+
+<ol>
+<li><p>Install MySQL and the necessary components for Postfix and Dovecot:</p>
+
+<pre><code>apt-get install mysql-server postfix-mysql dovecot-mysql
+</code></pre></li>
+
+<li><p>Create the three MySQL tables <code>virtual_domains</code>, <code>virtual_users</code>, and <code>virtual_aliases</code> and populate them with your data, by following the entire <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql#mysql">MySQL section</a> in the main setup guide. If you prefer not to use the MySQL command line, you can install phpMyAdmin and use that instead.</p></li>
+
+<li><p>Open <code>/etc/postfix/main.cf</code> for editing. Comment out the existing <code>virtual_mailbox_domains</code> and <code>virtual_mailbox_maps</code> lines and add these instead:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/postfix/main.cf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Virtual domains, users, and aliases
+</span><span class="c1"></span><span class="nv">virtual_mailbox_domains</span> <span class="o">=</span> mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
+<span class="nv">virtual_mailbox_maps</span> <span class="o">=</span> mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
+<span class="nv">virtual_alias_maps</span> <span class="o">=</span> mysql:/etc/postfix/mysql-virtual-alias-maps.cf</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Follow Steps 11-25 in the <a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql#postfix">Postfix section</a> of the main setup guide to create the <code>/etc/postfix/mysql-virtual-mailbox-domains.cf</code>, <code>/etc/postfix/mysql-virtual-mailbox-maps.cf</code>, and <code>/etc/postfix/mysql-virtual-alias-maps.cf</code> files. You will also test that Postfix can find all of this information, using the <code>postmap</code> commands.</p></li>
+
+<li><p>Now for Dovecot. Create the file <code>/etc/dovecot/conf.d/auth-sql.conf.ext</code>. You will make a new <code>passdb</code> section that directs Dovecot to use MySQL for authentication. The <code>userdb</code> section will be identical to the one we had before, since the mailboxes aren&rsquo;t moving.</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/auth-sql.conf.ext 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span><span class="lnt">8</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">passdb <span class="o">{</span>
+  <span class="nv">driver</span> <span class="o">=</span> sql
+  <span class="nv">args</span> <span class="o">=</span> /etc/dovecot/dovecot-sql.conf.ext
+<span class="o">}</span>
+userdb <span class="o">{</span>
+  <span class="nv">driver</span> <span class="o">=</span> static
+  <span class="nv">args</span> <span class="o">=</span> <span class="nv">uid</span><span class="o">=</span>vmail <span class="nv">gid</span><span class="o">=</span>vmail <span class="nv">home</span><span class="o">=</span>/var/mail/vhosts/%d/%n
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Open <code>/etc/dovecot/dovecot-sql.conf.ext</code> for editing, uncomment the lines shown below, and update them with the appropriate MySQL connection information:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/dovecot-sql.conf.ext 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">driver</span> <span class="o">=</span> mysql
+<span class="nv">connect</span> <span class="o">=</span> <span class="nv">host</span><span class="o">=</span><span class="m">127</span>.0.0.1 <span class="nv">dbname</span><span class="o">=</span>mailserver <span class="nv">user</span><span class="o">=</span>mailuser <span class="nv">password</span><span class="o">=</span>mailuserpass
+<span class="nv">default_pass_scheme</span> <span class="o">=</span> SHA512-CRYPT
+<span class="nv">password_query</span> <span class="o">=</span> SELECT email as user, password FROM virtual_users WHERE <span class="nv">email</span><span class="o">=</span><span class="s1">&#39;%u&#39;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Open <code>/etc/dovecot/conf.d/10-auth.conf</code> for editing. Comment out the <code>!include auth-passwdfile.conf.ext</code> line and uncomment the <code>!include auth-sql.conf.ext</code> line. This switches your authentication from the flat file to the database:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-auth.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span><span class="lnt">6</span><span class="lnt">7</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!include auth-system.conf.ext
+</span><span class="cp"></span>!include auth-sql.conf.ext
+<span class="cp">#!include auth-ldap.conf.ext
+</span><span class="cp">#!include auth-passwdfile.conf.ext
+</span><span class="cp">#!include auth-checkpassword.conf.ext
+</span><span class="cp">#!include auth-vpopmail.conf.ext
+</span><span class="cp"></span>#!include auth-static.conf.ext</code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Change the owner and group of the <code>/etc/dovecot/</code> directory to <code>vmail</code> and <code>dovecot</code>, recursively:</p>
+
+<pre><code>chown -R vmail:dovecot /etc/dovecot
+</code></pre></li>
+
+<li><p>Change the permissions on the <code>/etc/dovecot/</code> directory recursively:</p>
+
+<pre><code>chmod -R o-rwx /etc/dovecot
+</code></pre></li>
+
+<li><p>Open <code>/etc/dovecot/conf.d/10-master.conf</code> for editing and, in the <code>service auth</code> section, set <code>user = dovecot</code>, below the line <code># Auth process is run as this user.</code>:</p>
+
+<dl class="file-excerpt">
+<dt>
+
+
+		/etc/dovecot/conf.d/10-master.conf 
+
+
+</dt>
+<dd>
+
+
+
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1</span><span class="lnt">2</span><span class="lnt">3</span><span class="lnt">4</span><span class="lnt">5</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">service auth <span class="o">{</span>
+...
+  <span class="c1"># Auth process is run as this user.
+</span><span class="c1"></span>  <span class="nv">user</span> <span class="o">=</span> dovecot
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+
+<li><p>Restart Dovecot.</p></li>
+
+<li><p>Verify that you can still send and receive mail. Check your logs if you run into any errors.</p></li>
+</ol>
+
+<p>Now you should be caught up with the main guide and have a fully functioning Postfix, Dovecot, and MySQL mail server. Congratulations!</p>
+
+            
+
+            
+
+<h2>See Also</h2>
+<ul>
+    
+    
+    <li><a href="/docs/email/installing-mail-filtering-for-ubuntu-12-04/">Installing Mail Filtering for Ubuntu 12.04 - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny/">Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-5-lenny/">Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny) - Deprecated</a></li>
+    
+    
+    
+    <li><a href="/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/">Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04</a></li>
+    
+    
+    
+    <li><a href="/docs/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu/">Install and Configure MySQL Workbench on Ubuntu 16.04</a></li>
+    
+    
+</ul>
+
+
+            
+            
+<p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              <div markdown="0" class="doc-sidebar-inner" >
+  <div class="input-group">
+	<label class="sr-only" for="q">Search guides and tutorials</label>
+	<input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides..."/>
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-blue" id="ds-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+</div>
+</div>
+
+                
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library toc-long nav navbar" id="markdown-toc">
+                    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#troubleshooting-checklist">Troubleshooting Checklist</a>
+<ul>
+<li><a href="#are-postfix-and-dovecot-running">Are Postfix and Dovecot Running?</a></li>
+<li><a href="#check-the-logs">Check the Logs</a></li>
+<li><a href="#enable-verbose-logs">Enable Verbose Logs</a>
+<ul>
+<li><a href="#dovecot">Dovecot</a></li>
+<li><a href="#postfix">Postfix</a></li>
+</ul></li>
+<li><a href="#check-port-availability">Check Port Availability</a>
+<ul>
+<li><a href="#checking-from-a-linode">Checking from a Linode</a></li>
+<li><a href="#checking-from-a-mac">Checking from a Mac</a></li>
+<li><a href="#checking-from-a-pc">Checking from a PC</a></li>
+<li><a href="#analyzing-the-results">Analyzing the Results</a></li>
+</ul></li>
+<li><a href="#verifying-your-login-credentials">Verifying Your Login Credentials</a></li>
+</ul></li>
+<li><a href="#step-by-step-configuration">Step-by-Step Configuration</a>
+<ul>
+<li><a href="#setting-up">Setting Up</a></li>
+<li><a href="#basic-postfix">Basic Postfix</a></li>
+<li><a href="#basic-dovecot">Basic Dovecot</a></li>
+<li><a href="#virtual-domains-and-users">Virtual Domains and Users</a></li>
+<li><a href="#dovecot-s-lmtp-for-local-delivery">Dovecot&rsquo;s LMTP for Local Delivery</a></li>
+<li><a href="#authentication-hand-off-from-postfix-to-dovecot">Authentication Hand-off from Postfix to Dovecot</a></li>
+<li><a href="#ssl-encryption">SSL Encryption</a></li>
+<li><a href="#smtp">SMTP</a></li>
+<li><a href="#mysql-for-virtual-domains-users-and-aliases">MySQL for Virtual Domains, Users, and Aliases</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                </div>
+              </div>
+              
+              <div class="library-rss">
+  <a href="https://linode.com/docs/index.xml"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+
+              <div markdown="0" class="library-signup">
+  <form action="//linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a&SIGNUP=library-website"
+    method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm"
+    placeholder="Email address" required="" />
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a"
+      tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+      <input type="checkbox" value="4" name="group[13][4]"
+      id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe"
+    name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <footer>
+            <section class="neutral some-space">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Get paid to write for Linode.</h3>
+				<p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="/docs/contribute">earn up to $300 for every guide you write</a> and we publish.</p>
+			</div>
+		</div>
+	</div>
+</section>
+            <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://linode.com/docs/">Resources</a></h5>
+        <ul>
+          <li><a href="https://linode.com/docs/">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br />
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        &copy; 2017 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </footer>
+        
+             <script src="/docs/build/js/libs.js" type="text/javascript"></script>
+<script src="/docs/build/js/main.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+
+
+        
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+
+    </body>
+</html>
