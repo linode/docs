@@ -9,7 +9,7 @@ published: 2017-11-29
 modified: 2017-11-30
 modified_by:
   name: Linode
-title: 'Deploying Kubernetes Clusters with Rancher '
+title: 'Using Rancher'
 external_resources:
   - '[Link Title 1](http://www.example.com)'
   - '[Link Title 2](http://www.example.net)'
@@ -23,13 +23,9 @@ Rancher Server is installed using Docker, the entire project is run on two conta
 
 ### Install Docker CE
 
-You will need a Linode with Docker CE installed to follow along with the steps in this guide.
+You will need a Linode with Docker CE installed to follow along with the steps in this guide. Rancher uses specific versions of Docker to interface with Kubernetes. 
 
-{{< section file="/shortguides/docker/install_docker_ce.md" >}}
-
-### Install Docker Compose
-
-{{< section file="/shortguides/docker/install_docker_compose.md" >}}
+    curl https://releases.rancher.com/install-docker/17.03.sh | sh
 
 
 ### Modify Permissions
@@ -78,11 +74,36 @@ You will be taken to the catalog, where Rancher lists all of the applications th
 
 ![Rancher Catalog](/docs/assets/Rancher/catalog.png)
 
-#### Installing Wordpress with Rancher
+#### Installing the Ghost Blogging Engine
 
-In the catalog, find the Wordpress icon, and click it. Configure the appropriate settings, and press launch. 
+As an example, install the Ghost blog platform. This will showcase Rancher's interaction with Docker. In the catalog, select Ghost, leave the default settings and click the create button. 
 
-![wordpress screen](/docs/assets/Rancher/wordpress_screen.png)
-![wordpress config](/docs/assets/Rancher/wordpress_config.png)
+![wordpress screen](/docs/assets/Rancher/rancher_ghost.png)
+
+Now, query your Linode with `docker ps`, and you Docker will show you what containers are now working on the machine:
+
+    
+    144d0a07c315        rancher/pause-amd64@sha256:3b3a29e3c90ae7762bdf587d19302e62485b6bef46e114b741f7d75dba023bd3                  "/pause"                 44 seconds ago       Up 42 seconds                                          k8s_rancher-pause_ghost-ghost-1-c9fb3da6_default_afe1ff4d-f7ce-11e7-a624-0242ac110002_0
+    fddce07374a0        ghost@sha256:77b1b1cbe16ae029dee383e7bd0932bd2ca0bd686e206cb1abd14e84555088d2                                "docker-entrypoint..."   44 seconds ago       Up 43 seconds
+
+Finally, navigating to the ip address of your Linode from the browser will result in the Ghost landing page. You have just used Rancher to deploy a containered Ghost service.
+
+Clicking on the Ghost container in Rancher will take you to this screen:
+
+![Rancher Options](/docs/assets/Rancher/rancher_options.png)
+
+This page monitors performance, and offers you options to manage each individual containe. Everything from spawning a shell within the container, to changing environment variables can be handled from within this page. Remove the application on the Apps screen by pressing **Delete**
+
+The applications in Rancher's catalog are Dockerfiles, these Dockerfiles are viewable and editable from within Rancher. The DockerFiles define the "stack", or the fleet of individual containers neccesary to bring up a service, and groups them in one place.
+
+![Rancher Stacks](/docs/assets/Rancher/rancher_stack.png)
+
+
+#### Launching Services From Rancher
+
+You can launch individual custom containers with Rancher in the **containers** section of the application:
+
+![rancher config](/docs/assets/Rancher/rancher_container_config.png)
+
 
 
