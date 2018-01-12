@@ -159,21 +159,21 @@ WantedBy=multi-user.target
 
 3.  Enable and start the Gunicorn service:
 
-            sudo systemctl start gunicorn
-            sudo systemctl enable gunicorn
+        sudo systemctl start gunicorn
+        sudo systemctl enable gunicorn
 
 4.  Restart nginx and reload the daemon:
 
-            sudo systemctl daemon-reload
-            sudo systemctl restart nginx
+        sudo systemctl daemon-reload
+        sudo systemctl restart nginx
 
 5.  Use [Letsencrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
 
-           sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
+        sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
 6.  Remove the default Nginx Server Blocks (Virtual Host) and the default Nginix index file to add new AskBot server blocks:
 
-           sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
+        sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
 
 7.  Add new `askbot` Nginx Server Blocks (Virtual Host) to run AskBot in the production environment:
 
