@@ -51,12 +51,12 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the `root` user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager).
 
 1. Disable NetworkManager before running the install script:
-        
+
         systemctl stop NetworkManager.service
         systemctl disable NetworkManager.service
         systemctl enable network.service
         systemctl start network.service
- 
+
 2. Issue the following command to download and install cPanel. Note that the installation process may take a long time to complete:
 
         cd /home && curl -o latest -L https://securedownloads.cpanel.net/latest && sh latest
