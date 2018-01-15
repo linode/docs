@@ -42,7 +42,7 @@ Search engine results rank HTTPS-capable websites higher than sites available on
 server {
     listen         80;
     server_name    example.com www.example.com;
-    return         301 https://example.com$request_uri; 
+    return         301 https://example.com$request_uri;
     return         301 https://www.example.com$request_uri;
     }
 
@@ -260,7 +260,7 @@ server {
     listen              80;
     listen              [::]:80;
     server_name         example.com www.example.com;
-    return 301          https://example.com$request_uri; 
+    return 301          https://example.com$request_uri;
     return 301          https://www.example.com$request_uri;
     }
 

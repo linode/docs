@@ -97,7 +97,7 @@ server {
 
 ## Configure Multiple Sites with a Single Certificate
 
-Scenario: You have a certificate that is valid for multiple domains, such as a wildcard certificate or a certificate using *SubjectAltName*. 
+Scenario: You have a certificate that is valid for multiple domains, such as a wildcard certificate or a certificate using *SubjectAltName*.
 
 In this scenario, the directives in the `http { }` block given [above](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-your-http-block) stay the same. You'll need two separate configuration files in `/etc/nginx/conf.d/`, one for each site the credentials will protect. In them it is necessary to specify the IP address for each site with the `listen` directive. You do not want to use `default_server` if you have two different websites with different IPs.
 
@@ -132,7 +132,7 @@ server {
 
 Scenario: You have two (or more) completely independent websites you want to serve with two (or more) different TLS certificate/key pairs.
 
-1.  Make sure your certificate storage is organized well. Below is an example: 
+1.  Make sure your certificate storage is organized well. Below is an example:
 
         /root/certs
         ├── example1.com
@@ -189,4 +189,4 @@ server {
 
 ## Part 4: TLS Best Practices For NGINX
 
-Now that you've got NGINX serving your site over HTTPS, do not simply use the above configurations as-is. It only gets HTTPS working on your server and is inherently insecure without further configuration. To harden your server's handling of TLS connections, move on to part 4 of this series: [TLS Deployment Best Practices for NGINX](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/). 
+Now that you've got NGINX serving your site over HTTPS, do not simply use the above configurations as-is. It only gets HTTPS working on your server and is inherently insecure without further configuration. To harden your server's handling of TLS connections, move on to part 4 of this series: [TLS Deployment Best Practices for NGINX](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/).
