@@ -5,7 +5,7 @@ author:
 description: 'Configure and optimize NGINX.'
 keywords: ["nginx", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/configure-nginx-for-optimized-performance/',web-servers/nginx/how-to-configure-nginx/']
+aliases: ['web-servers/nginx/configure-nginx-for-optimized-performance/','web-servers/nginx/how-to-configure-nginx/']
 modified: 2018-01-09
 modified_by:
   name: Linode
