@@ -6,7 +6,7 @@ description: Our guide to billing and payments.
 keywords: ["billing", "payments"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['billing-and-payments/']
-modified: 2017-03-15
+modified: 2018-01-15
 modified_by:
   name: Linode
 published: 2014-02-28
@@ -88,7 +88,7 @@ What does a mid-month bill mean? Your existing active services will stay active.
 
 ## If My Linode is Powered Off, Will I Be Billed?
 
-If your Linode is powered off, but is still added as a service on your account, you will still be billed for it. This is because Linode maintains your saved data and reserves your ability to use other resources like RAM, network capacity, etc. even when your Linode is powered off. You will be billed for any other active Linode service, such as Longview Pro or an extra IP, as well.
+**If your Linode is powered off you will still be billed for it.** Linode maintains your saved data and reserves your ability to use other resources like RAM and network capacity, even when your Linode is powered off. You will also be billed for any other active Linode service, such as Longview Pro or extra IP's.
 
 If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
 
