@@ -34,7 +34,7 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [hig
 
 - Update your system:
 
-      sudo yum update
+        sudo yum update
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
