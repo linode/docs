@@ -257,7 +257,7 @@ The StackScript system provides a basic markup specification that interfaces wit
 The UDF tags are explained in the table below:
 
 |Label    | Description           | Requirements
-|--------------------------------------------
+|:--------|:----------------------|:---------
 |name     | The variable name     | Alphanumeric, len <64, must be unique
 |label    | The question to ask   | Text 0-255
 |default  | The default value     | If not specified then this UDF is required
