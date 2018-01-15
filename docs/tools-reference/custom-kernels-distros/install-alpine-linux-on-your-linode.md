@@ -158,8 +158,8 @@ set default="Alpine Linux"
 set timeout=0
 
 menuentry "Alpine Linux" {
-    linux /vmlinuz-grsec root=/dev/sdb modules=sd-mod,usb-storage,ext4 console=ttyS0 quiet
-    initrd /initramfs-grsec
+    linux /vmlinuz-hardened root=/dev/sdb modules=sd-mod,usb-storage,ext4 console=ttyS0 quiet
+    initrd /initramfs-hardened
 }
 
 {{< /file >}}
