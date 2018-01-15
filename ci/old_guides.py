@@ -1,10 +1,12 @@
 from tabulate import tabulate
 from operator import itemgetter
 import yaml
+import sys
 import regex
 import glob
 
 def parse_yaml(filestring):
+    """Use the yaml module to parse a filestring."""
     reg = regex.compile(r'^---(.*?)---',flags=regex.DOTALL)
     match = regex.search(reg, filestring)
     if not match: return {}
@@ -15,6 +17,7 @@ def parse_yaml(filestring):
         return {}
 
 def make_record(yaml):
+    """Create a dictionary object from yaml front matter"""
     if 'title' in yaml:
         title = yaml['title']
     else:
@@ -26,7 +29,15 @@ def make_record(yaml):
     return record
 
 
-def find_old_guides():
+def find_old_guides(count=20):
+    """Print a list of the 20 oldest guides in the library.
+
+    Results are sorted by modification date (in front matter)
+    and deprecated guides are ignored.
+
+    Command line arguments:
+    count: number of guides to list (default: 20)
+    """
     old_guides = []
     guides_scanned = 0
     rootdir = 'docs'
@@ -42,9 +53,13 @@ def find_old_guides():
                 old_guides.append(record)
     print(str(guides_scanned) + " guides scanned.")
     old_guides.sort(key=itemgetter('updated'))
-    oldest_guides = old_guides[0:20]
+    oldest_guides = old_guides[0:count]
     print(tabulate(oldest_guides))        
 
 
 if __name__ == '__main__':
-    find_old_guides()
+    if len(sys.argv) > 1:
+        count = int(sys.argv[1])
+    else:
+        count = 20
+    find_old_guides(count)
