@@ -30,7 +30,7 @@ This guide will use a Raspberry Pi 3 with a [Sense HAT](https://www.raspberrypi.
 
 Thingsboard runs on Java 8, and the Oracle JDK is recommended.
 
-{{< section file="/shortguides/java/install-java-jdk.md" >}}
+{{< content "install-java-jdk.md" >}}
 
 ### Set Up PostgreSQL
 
