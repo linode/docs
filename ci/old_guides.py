@@ -7,6 +7,7 @@ import glob
 
 def parse_yaml(filestring):
     """Use the yaml module to parse a filestring."""
+
     reg = regex.compile(r'^---(.*?)---',flags=regex.DOTALL)
     match = regex.search(reg, filestring)
     if not match: return {}
@@ -18,6 +19,7 @@ def parse_yaml(filestring):
 
 def make_record(yaml):
     """Create a dictionary object from yaml front matter"""
+    
     if 'title' in yaml:
         title = yaml['title']
     else:
@@ -27,7 +29,6 @@ def make_record(yaml):
         'updated': yaml['modified']        
     }
     return record
-
 
 def find_old_guides(count=20):
     """Print a list of the 20 oldest guides in the library.
