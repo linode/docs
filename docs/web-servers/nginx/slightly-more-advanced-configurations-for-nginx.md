@@ -63,6 +63,8 @@ server {
 
 ## Basic Caching
 
+NGINX can cache files served by web applications and frameworks such as WordPress, Drupal, PHP and Ruby. Though covering caching at this point steps out of the basic workflow so far (we've not set up any application with data to cache), it's worth mentioning here briefly.
+
 For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_proxy_module.html), [NGINX admin guide](https://www.nginx.com/resources/admin-guide/content-caching/), and the [NGINX blog](https://www.nginx.com/blog/nginx-caching-guide/).
 
 1. Create a folder to store cache content:
@@ -71,27 +73,31 @@ For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_ht
 
 2.  Add the `proxy_cache_path` directive to NGINX's `http { }` block. Make sure the file path references the folder you just created above. The full directive with options we're using is:
 
-        proxy_cache_path /var/www/example.com/cache/ keys_zone=one:10m inactive=60m use_temp_path=off;
+        proxy_cache_path /var/www/example.com/cache/ keys_zone=one:10m max_size=500m inactive=24h use_temp_path=off;
 
     - `keys_zone=one:10m` sets a 10 megabyte shared storage zone (simply called *one*, but you can change this for your needs) for cache keys and metadata.
 
-    - `inactive=60m` removes anything from the cache which has not been access in the last 60 minutes.
+    - `max_size=500m` sets the actual cache size at 500 MB.
+
+    - `inactive=24h` removes anything from the cache which has not been access in the last 24 hours.
 
     - `use_temp_path=off` writes cache files directly to the cache path. [Recommended by NGNIX](https://www.nginx.com/blog/nginx-caching-guide/).
 
 
 3.  Add the following to your site configuration's `server { }` block. If you changed the name of the storage zone in the step above, make sure you change the directive below from *one* to the zone name you chose.
 
+    Replace *application* with the URL and port of your upstream service whose files you wish to cache. For example, you would fill in `127.0.0.1:9000` if using [WordPress](https://www.nginx.com/resources/wiki/start/topics/recipes/wordpress/) or `127.0.0.1:2638` with (Ghost](https://docs.ghost.org/v1/docs/config#section-server).
+
     {{< file "/etc/nginx/conf.d/example.com" nginx >}}
 proxy_cache one;
     location / {
-    proxy_pass http://localhost:8000;
+    proxy_pass http://application;
     }
 {{< /file >}}
 
 4.  Should you need to clear the cache, [the easiest way](http://nginx.2469901.n2.nabble.com/best-way-to-empty-nginx-cache-td3017271.html#a3017429) is with the command:
 
-        find /var/www/example.com/cache/ -type f -exec rm {}\;
+        find /var/www/example.com/cache/ -type f -delete
         
     If you want more than just a basic cache clear, you can use the [proxy_cache_purge](https://www.nginx.com/products/nginx/caching/#purging) directive.
 
