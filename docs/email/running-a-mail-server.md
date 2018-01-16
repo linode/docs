@@ -3,17 +3,18 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Our guide to running a mail server on your Linode.'
-keywords: ["mail server", "linode guide", "running a mail server", "linode quickstart guide"]
+og_description: 'This guide explains how to install a mail server on your Linode and create mail accounts for your own domains'
+keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['mailserver/']
-modified: 2014-04-13
+modified: 2017-01-17
 modified_by:
   name: Alex Fornuto
 published: 2013-06-05
 title: Running a Mail Server
 ---
 
-If you've followed along with the quick start guides up to this point, you've managed to [install Linux](/docs/getting-started), [secure your Linode](/docs/securing-your-server), and [start hosting a website](/docs/hosting-website). Now it's time to set up email. This guide explains how to install a mail server on your Linode and create mail accounts for your own domains. First, we'll help you decide whether to run your own mail server or let a third-party mail service handle it for you. Then we'll show you how a mail server works, present common mail server configurations, and provide basic instructions for getting a mail server up and running.
+This guide provides an overview of installing a mail server on your Linode and create mail accounts for your own domains. First, we'll help you decide whether to run your own mail server or let a third-party mail service handle it for you. Then we'll show you how a mail server works, present common mail server configurations, and provide basic instructions for getting a mail server up and running.
 
 ![Running a Mail Server](/docs/assets/mail_server_tg.png "Running a Mail Server")
 
@@ -54,7 +55,7 @@ If the prospect of managing your own mail server is too daunting, you should con
 -   [Google Apps](http://www.google.com/intl/en/enterprise/apps/business/) uses the top-notch Gmail interface and has great uptime. It's paid and the IMAP implementation is unusual. We have a [guide](/docs/email/google-mail) on how to use Google Apps with your Linode.
 -   [Office 365](https://login.microsoftonline.com/) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
-If you decide to use an outside mail service, you will still need to set up [DNS](/docs/networking/dns/dns-manager) for your mail, using the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](/docs/networking/dns/dns-manager) for your mail and use the settings provided by the third-party mail service.
 
 ## How Mail Servers Work
 
@@ -157,7 +158,7 @@ If you use Linode's [DNS Manager](/docs/dns-manager), you'll need to point your 
 
 SPF records help establish the legitimacy of your mail server and reduce the chances of spoofing, which occurs when someone fakes the headers on an email to make it look like it's coming from your domain, even though the message did not originate from your Linode. Spammers sometimes try to do this to get around spam filters. An SPF record for your domain tells other receiving mail servers which outgoing server(s) are valid sources of email, so they can reject spoofed email from your domain that has originated from unauthorized servers.
 
-In your SPF record, you should list all the mail servers from which you send mail, and then exclude all the others. Your SPF record will have a domain or subdomain, TTL (time to live, type (which is TXT, or SPF if your name server supports it), and text (which starts with "v=spf1" and contains the SPF record settings).
+In your SPF record, you should list all the mail servers from which you send mail, and then exclude all the others. Your SPF record will have a domain or subdomain, TTL (time to live, type (which is TXT, or SPF if your name server supports it), and text (which starts with "v=spf1" and contains the SPF record settings)).
 
 If your Linode is the only mail server you use, you should be able to use the example record below. With this SPF record, the receiving server will check the IP addresses of both the sending server and the IP address of `example.com`. If the IPs match, the check passes. If not, the check will "soft fail" (i.e., the message will be marked but will not automatically be rejected for failing the SPF check).
 
@@ -219,7 +220,7 @@ If you're using a firewall, be sure to edit the rules for your mail server's por
 
 ### Webmail
 
-Webmail is a type of mail client that can be installed on your server and accessed from a web browser. It allows your users to access their email from your website (example: `http://example.com/mail` anywhere they have access to the Internet. Running a web server is a prerequisite for running a webmail client, so you should follow the [Hosting a Website](/docs/hosting-website) guide if you want to run webmail on your Linode, in addition to installing a mail server.
+Webmail is a type of mail client that can be installed on your server and accessed from a web browser. It allows your users to access their email from your website (example: `http://example.com/mail`) anywhere they have access to the Internet. Running a web server is a prerequisite for running a webmail client, so you should follow the [Hosting a Website](/docs/hosting-website) guide if you want to run webmail on your Linode, in addition to installing a mail server.
 
 Here are some of the most popular webmail clients:
 
