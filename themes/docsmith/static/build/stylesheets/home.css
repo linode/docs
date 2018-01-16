@@ -11693,6 +11693,37 @@ blockquote strong {
 .doc .h6 + .h6 {
   margin-top: 0px;
 }
+.doc h1 a,
+.doc h2 a,
+.doc h3 a,
+.doc h4 a,
+.doc h5 a,
+.doc h6 a,
+.doc .h1 a,
+.doc .h2 a,
+.doc .h3 a,
+.doc .h4 a,
+.doc .h5 a,
+.doc .h6 a {
+  padding-left: 10px;
+  opacity: 0;
+}
+.doc h1:hover a,
+.doc h2:hover a,
+.doc h3:hover a,
+.doc h4:hover a,
+.doc h5:hover a,
+.doc h6:hover a,
+.doc .h1:hover a,
+.doc .h2:hover a,
+.doc .h3:hover a,
+.doc .h4:hover a,
+.doc .h5:hover a,
+.doc .h6:hover a {
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
 .doc h1,
 .doc .h1 {
   font-size: 38px;
@@ -19236,6 +19267,28 @@ fieldset[disabled] .resumator-basic-widget input[type="button"].active {
   outline: 0;
   text-decoration: none;
 }
+div#os-tabs .btn {
+  border: 1px solid #dadada;
+  padding: 10px;
+  width: 200px;
+  background-color: white;
+  color: black;
+}
+div#os-tabs .btn.current {
+  outline: none;
+  border-color: #9ecaed;
+  -webkit-box-shadow: 0 0 10px #9ecaed;
+          box-shadow: 0 0 10px #9ecaed;
+  max-height: inherit;
+}
+div#os-tabs span {
+  font-family: "Lato", sans-serif;
+}
+.macinstall,
+.linuxinstall,
+.windowsinstall {
+  font-size: 1.08rem;
+}
 .btn-full {
   width: 100%;
 }
@@ -20308,6 +20361,37 @@ div.library-tile .tile-title + .lead {
 #article-body .h6 + .h6 {
   margin-top: 0px;
 }
+#article-body h1 a,
+#article-body h2 a,
+#article-body h3 a,
+#article-body h4 a,
+#article-body h5 a,
+#article-body h6 a,
+#article-body .h1 a,
+#article-body .h2 a,
+#article-body .h3 a,
+#article-body .h4 a,
+#article-body .h5 a,
+#article-body .h6 a {
+  padding-left: 10px;
+  opacity: 0;
+}
+#article-body h1:hover a,
+#article-body h2:hover a,
+#article-body h3:hover a,
+#article-body h4:hover a,
+#article-body h5:hover a,
+#article-body h6:hover a,
+#article-body .h1:hover a,
+#article-body .h2:hover a,
+#article-body .h3:hover a,
+#article-body .h4:hover a,
+#article-body .h5:hover a,
+#article-body .h6:hover a {
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
 #article-body h1,
 #article-body .h1 {
   font-size: 38px;
@@ -21077,6 +21161,7 @@ h1.contribute {
 /* Styling of Table of Contents. */
 #doc-sidebar-container #doc-sidebar {
   margin-top: 10px;
+  max-width: 100%;
 }
 #doc-sidebar-container #doc-sidebar-toc li.active > a {
   color: #005170;
@@ -21086,6 +21171,9 @@ h1.contribute {
 }
 #doc-sidebar-container .affix {
   top: 0px;
+}
+#doc-sidebar-container .affix-bottom {
+  position: relative;
 }
 /* Adapted from 
  https://bootsnipp.com/snippets/featured/share-on-social-networks
@@ -21174,6 +21262,26 @@ blockquote > div > div.btn-copy > .copy-code {
 }
 .form_elem_email {
   color: black;
+}
+.alert-banner {
+  font-size: 22px;
+  background-color: #7c9fb3;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 10px 0;
+}
+.alert-banner a {
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+}
+.alert-banner a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+.alert-banner i {
+  padding: 0 15px;
 }
 /* Background */
 .chroma {

@@ -61,7 +61,7 @@ The sample app will use the `http.server` module (available for Python 3.4 and a
 
 ### Install Python
 
-{{< section file="/shortguides/install_python_miniconda.md" >}}
+{{< content "install_python_miniconda.md" >}}
 
 ### Create a Sample App
 

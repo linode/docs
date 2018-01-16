@@ -27,11 +27,11 @@ Generally the containers in an application built using Docker Compose will all r
 
 You will need a Linode with Docker CE installed to follow along with the steps in this guide.
 
-{{< section file="/shortguides/docker/install_docker_ce.md" >}}
+{{< content "install_docker_ce.md" >}}
 
 ### Install Docker Compose
 
-{{< section file="/shortguides/docker/install_docker_compose.md" >}}
+{{< content "install_docker_compose.md" >}}
 
 ## Basic Usage
 

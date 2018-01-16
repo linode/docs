@@ -1,3 +1,19 @@
+---
+author:
+  name: Sam Foo
+  email: sfoo@linode.com
+description: 'Shortguide for installing Docker CE'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+keywords: ["docker", "containers", "docker CE"]
+modified: 2018-01-05
+modified_by:
+  name: Sam Foo
+title: "How to Install Docker CE"
+published: 2018-01-08
+shortguide: true
+show_on_rss_feed: false
+---
+
 <!-- Install Docker CE using the official Docker repositories. -->
 
 1.  As of this writing, the recommended Docker installation is Docker CE. Remove any older installations of Docker that may be on your system:
@@ -18,10 +34,10 @@
 
     You should see output similar to the following:
 
-		pub   4096R/0EBFCD88 2017-02-22
-			  Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
-		uid                  Docker Release (CE deb) <docker@docker.com>
-		sub   4096R/F273FCD8 2017-02-22
+        pub   4096R/0EBFCD88 2017-02-22
+              Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+        uid                  Docker Release (CE deb) <docker@docker.com>
+        sub   4096R/F273FCD8 2017-02-22
 
 5.  Add the `stable` Docker repository:
 

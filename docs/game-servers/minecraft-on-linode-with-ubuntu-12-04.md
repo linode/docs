@@ -24,14 +24,14 @@ Running your own Minecraft server allows you to control whom you play with, and 
 
 In this guide, we will show you how to install the official or *Vanilla* server version of Minecraft, but you can use the same instructions for [Craftbukkit](http://dl.bukkit.org/downloads/craftbukkit/) or [Spigot](http://www.spigotmc.org/), which are popular versions of Minecraft that allow plugins and customization. We will also show you how to create a new user to run the Minecraft server.
 
-# Preparation
+## Preparation
 
 In this section, we'll prepare your Linode for installing the Minecraft server.
 
 -   We recommend that you install the Minecraft on at least a Linode 2GB so it runs smoothly.
 -   We will also be installing Oracle Java Runtime Environment (JRE) 7 as a prerequisite.
 
-### Updating Packages
+### Update Your System
 
 1.  Log in to your Linode via [SSH](/docs/getting-started#ssh-overview).
 2.  Gain administrator privileges:
@@ -43,7 +43,7 @@ In this section, we'll prepare your Linode for installing the Minecraft server.
         apt-get update
         apt-get upgrade
 
-### Installing Oracle JRE
+### Install Oracle JRE
 
 This guide uses Oracle JRE 7, which offers the best performance for your Minecraft server, but is not available in Ubuntu's repositories. The website [webupd8.org](http://www.webupd8.org/) has provided instructions for installing the official version on Debian-based systems, including Ubuntu. The full guide is [here](http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html).
 
@@ -82,7 +82,7 @@ For convenience, all the necessary commands for installing JRE 7 are also listed
 
 If you don’t see this output or you get errors, refer to webupd8.org’s [guide](http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html) for more steps. Or if you prefer, you can download the installer for Oracle’s JRE [directly from Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html), and install it on your own.
 
-# Installing and Setting Up Minecraft
+## Install and Set Up Minecraft
 
 There are many popular versions of the Minecraft server, but for this guide we'll be using the official version. You can follow these same steps with the third-party servers as well. One of the more popular versions is Craftbukkit. The list of available CraftBukkit versions is available [here](http://dl.bukkit.org/downloads/craftbukkit/).
 
@@ -176,7 +176,7 @@ To leave this screen session running in the background, type **CTRL-a** and then
         2013-09-22 23:37:54 [INFO] Preparing spawn area: 95%
         2013-09-22 23:37:55 [INFO] Done (29.209s)! For help, type "help" or "?"
 
-# Configuring Your Minecraft Client
+## Configure Your Minecraft Client
 
 For you and your friends to play Minecraft, you will all need to install the Minecraft client on your computers.
 
@@ -199,7 +199,7 @@ Sometimes the Minecraft Client will show a newly-added server as unavailable the
 
 Congratulations! You’ve created a working Minecraft server. Feel free to look around and begin playing, but remember that your work isn’t done yet, and your server is not yet fully configured. Once you’re ready, log out and continue with this guide.
 
-# Configuring Your New Minecraft Server
+## Configure Your Minecraft Server
 
 Once you’re ready to continue and have logged out of your server, log back in to your Linode.
 
@@ -275,7 +275,7 @@ Any time you modify these files while the game is running, you will need to stop
 
 The directories `world`, `world_nether`, and `world-the-end` contain the map and player data for those realms in your game. We suggest [backing up](/docs/platform/backup-service) these directories on a regular basis so that you can revert to previous versions in case of catastrophe or [griefing](http://www.minecraftwiki.net/wiki/Griefing). These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the *nether* and *the end* will not be created until a player goes to this area on the server.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
