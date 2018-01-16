@@ -19,6 +19,7 @@ external_resources:
  - '[Portainer](https://portainer.io/)'
 ---
 
+![WebDev_Image](/docs/assets/webdev-remote-devices/Linode_WebDev.jpg)
 
 This guide will walk you through the necessary steps to configure your Linode to be an efficient remote development environment. You will then connect to this environment using a tablet and edit a simple web application using `ssh` and a text editor.
 
