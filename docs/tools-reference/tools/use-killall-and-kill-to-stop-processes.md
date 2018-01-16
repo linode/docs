@@ -50,41 +50,47 @@ This sends `SIGTERM` to the PID specified. You may specify multiple PIDs on the 
 
 ### System Signals
 
-You may use `kill` and `killall` to send any of the following signals.
+The `kill` command does not terminal a process directly. Rather a signal is sent to the process where the process will have instructions to follow if it receives a given signal. The best way to have a reference of all available signals is through the man pages:
 
-1.  `SIGHUP`
-2.  `SIGINT`
-3.  `SIGQUIT`
-4.  `SIGILL`
-5.  `SIGTRAP`
-6.  `SIGABRT`
-7.  `SIGIOT`
-8.  `SIGFPE`
-9.  `SIGKILL`
-10. `SIGUSR1`
-11. `SIGSEGV`
-12. `SIGUSR2`
-13. `SIGPIPE`
-14. `SIGALRM`
-15. `SIGTERM`
-16. `SIGSTKFLT`
-17. `SIGCHLD`
-18. `SIGCONT`
-19. `SIGSTOP`
-20. `SIGSTP`
-21. `SIGTTIN`
-22. `SIGTTOU`
-23. `SIGURG`
-24. `SIGXCPU`
-25. `SIGXFSZ`
-26. `SIGVTALRM`
-27. `SIGPROF`
-28. `SIGWINCH`
-29. `SIGIO` and `SIGPOLL`
-30. `SIGPWR`
-31. `SIGSYS`
+    man 7 signal
 
-Issue one of the following commands to get a list of all of the available signals:
+{{< output >}}
+Standard signals
+    Linux  supports  the standard signals listed below.  Several signal numbers are architecture-dependent, as indicated in the "Value" column.  (Where
+    three values are given, the first one is usually valid for alpha and sparc, the middle one for x86, arm, and most other architectures, and the last
+    one for mips.  (Values for parisc are not shown; see the Linux kernel source for signal numbering on that architecture.)  A dash (-) denotes that a
+    signal is absent on the corresponding architecture.
+
+    First the signals described in the original POSIX.1-1990 standard.
+
+    Signal     Value     Action   Comment
+    ──────────────────────────────────────────────────────────────────────
+    SIGHUP        1       Term    Hangup detected on controlling terminal
+                                  or death of controlling process
+    SIGINT        2       Term    Interrupt from keyboard
+    SIGQUIT       3       Core    Quit from keyboard
+    SIGILL        4       Core    Illegal Instruction
+    SIGABRT       6       Core    Abort signal from abort(3)
+    SIGFPE        8       Core    Floating-point exception
+    SIGKILL       9       Term    Kill signal
+    SIGSEGV      11       Core    Invalid memory reference
+    SIGPIPE      13       Term    Broken pipe: write to pipe with no
+                                  readers; see pipe(7)
+    SIGALRM      14       Term    Timer signal from alarm(2)
+    SIGTERM      15       Term    Termination signal
+    SIGUSR1   30,10,16    Term    User-defined signal 1
+    SIGUSR2   31,12,17    Term    User-defined signal 2
+    SIGCHLD   20,17,18    Ign     Child stopped or terminated
+    SIGCONT   19,18,25    Cont    Continue if stopped
+    SIGSTOP   17,19,23    Stop    Stop process
+    SIGTSTP   18,20,24    Stop    Stop typed at terminal
+    SIGTTIN   21,21,26    Stop    Terminal input for background process
+    SIGTTOU   22,22,27    Stop    Terminal output for background process
+
+    The signals SIGKILL and SIGSTOP cannot be caught, blocked, or ignored.
+{{< /output >}}
+
+Another method to get all of the available signals without descriptions:
 
     kill -l
     killall -l
@@ -110,6 +116,10 @@ This command filters the list of all processes that are currently running for th
     ps auxf
 
 Once you have obtained the PID or process name, use `killall` or `kill` to terminate the process as above.
+
+Another option to find the PID is though `pgrep`.
+
+    pgrep [process name]
 
 ## Verify Process Termination
 
