@@ -120,7 +120,7 @@ By default, Thingsboard listens on `localhost:8080`. For security purposes, it i
 
 2.  Open `/etc/nginx/sites-enabled/default` in a text editor and edit it as follows. Replace `example.com` with the public IP address or FQDN of your Linode.
 
-    {{< file "/etc/nginx/sites-enabled/default" conf >}}
+    {{< file "/etc/nginx/sites-enabled/default" nginx >}}
 server {
     listen 80;
     listen [::]:80;
