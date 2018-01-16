@@ -63,7 +63,7 @@ server {
 
 ## Basic Caching
 
-NGINX can cache files served by web applications and frameworks such as WordPress, Drupal, PHP and Ruby. Though covering caching at this point steps out of the basic workflow so far (we've not set up any application with data to cache), it's worth mentioning here briefly.
+NGINX can cache files served by web applications and frameworks such as WordPress, Drupal and Ruby on Rails. Though covering caching at this point steps out of the basic workflow so far (we've not set up any application with data to cache), it's worth mentioning here briefly.
 
 For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_proxy_module.html), [NGINX admin guide](https://www.nginx.com/resources/admin-guide/content-caching/), and the [NGINX blog](https://www.nginx.com/blog/nginx-caching-guide/).
 
