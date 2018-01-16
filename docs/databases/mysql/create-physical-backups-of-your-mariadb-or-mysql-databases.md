@@ -2,7 +2,6 @@
 author:
   name: Linode
   email: docs@linode.com
-<<<<<<< HEAD
 description: "Create a physical MySQL backup databases by copying the relevant filesystem parts. Useful for recovering inaccessible databases."
 keywords: ["mysql", "mariadb", backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -63,7 +62,6 @@ The steps in this guide require root privileges. Log in as the root user with `s
         tar zxvf /opt/db-backups/db-archive.tar.gz -C .
 
 4.  Move the current contents of `/var/lib/mysql` to another location if you want to keep them for any reason, or delete them entirely. Create a new empty `mysql` folder to restore your backed up DMBS into.
->>>>>>> 58c72422fa0a13bf52e5e1688087a4e742c3bbd2
 
         mv /var/lib/mysql /var/lib/mysql-old
         mkdir /var/lib/mysql
