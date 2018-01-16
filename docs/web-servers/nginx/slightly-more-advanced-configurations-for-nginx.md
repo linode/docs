@@ -61,7 +61,7 @@ server {
         nginx -s reload
 
 
-## Enable Basic Caching
+## Basic Caching
 
 For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_proxy_module.html), [NGINX admin guide](https://www.nginx.com/resources/admin-guide/content-caching/), and the [NGINX blog](https://www.nginx.com/blog/nginx-caching-guide/).
 
@@ -88,6 +88,12 @@ proxy_cache one;
     proxy_pass http://localhost:8000;
     }
 {{< /file >}}
+
+4.  Should you need to clear the cache, [the easiest way](http://nginx.2469901.n2.nabble.com/best-way-to-empty-nginx-cache-td3017271.html#a3017429) is with the command:
+
+        find /var/www/example.com/cache/ -type f -exec rm {}\;
+        
+    If you want more than just a basic cache clear, you can use the [proxy_cache_purge](https://www.nginx.com/products/nginx/caching/#purging) directive.
 
 
 ## HTTP Response Header Fields
