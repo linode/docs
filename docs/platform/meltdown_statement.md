@@ -38,7 +38,7 @@ Our current infrastructure status for each vulnerability is listed in our Meltdo
 
 ### What does “Phase Complete” in the Linode Manager mean?
 
-Maintenance for the Meltdown and Spectre vulnerabilities is happening in multiple phases, which are described in our Meltdown and Spectre document found here. As each phase is completed for the physical host on which your Linode resides, we will display progress updates in the Linode Manager. 
+Maintenance for the Meltdown and Spectre vulnerabilities is happening in multiple phases, which are described in our Meltdown and Spectre document found here. As each phase is completed for the physical host on which your Linode resides, we will display progress updates in the Linode Manager.
 
 To fully mitigate the Meltdown and Spectre vulnerabilities, additional maintenance will be required in the future. When the future maintenance has been scheduled, we will provide additional information.
 
