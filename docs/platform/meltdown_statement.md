@@ -6,7 +6,7 @@ description: "Intel recently disclosed two vulnerabilities that affect processor
 keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-11
-modified: 2018-01-11
+modified: 2018-01-17
 modified_by:
   name: Linode
 title: 'What You Need to Do to Mitigate Meltdown and Spectre'
