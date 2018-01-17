@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2010-01-28
 title: Securely Administer Oracle XE with an SSH Tunnel
+deprecated: true
 external_resources:
  - '[Using PuTTY](/docs/networking/using-putty)'
  - '[Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)'
