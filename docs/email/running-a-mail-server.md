@@ -16,7 +16,7 @@ title: Running a Mail Server
 
 This guide offers an overview of installing a mail server on your Linode. This guide covers creating mail accounts, common mail server configurations, and basic overviews of tools relevant to hosting an email webserver. 
 
-![Running a Mail Server](/docs/assets/mail_server_tg.png "Running a Mail Server")
+![Running a Mail Server](/docs/assets/mail_server_tg.png "Running Mail Server")
 
 ## Should You Run a Mail Server?
 
