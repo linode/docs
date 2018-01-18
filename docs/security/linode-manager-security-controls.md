@@ -232,7 +232,7 @@ If you regenerated the URL for the RSS feed, you will need to update it in your 
 
 The [Linode API](https://www.linode.com/api/) is a programmatic interface for many of the features available in the Linode Manager. It's an indispensable tool for developers, but it's also a potential attack vector. For this reason, the Linode Manager provides two security controls for your account's API key. First, you can generate a new API key if you suspect that your existing key has been compromised. And if you're not using the API key, you can remove access to it altogether.
 
-For details on generating and removing API keys, please see the [API Key](/docs/api/key) article.
+For details on generating and removing API keys, please see the [API Key](/docs/platform/api/api-key/) article.
 
 ## Next Steps
 If you've completed this guide, you've proactively taken steps to protect your Linode Manager account. But don't stop here! There are a couple other steps that some users should take to secure their Linode Manager accounts. Take some time and work through the following action items outlined in our other guides.

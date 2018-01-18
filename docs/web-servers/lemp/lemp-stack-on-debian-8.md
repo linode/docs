@@ -22,14 +22,14 @@ external_resources:
 This document describes a compatible alternative to the **LAMP** (Linux, Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
 Prior to installing your LEMP stack ensure that:
 
--   You have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+-   You have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 -   You have a hostname and *fully-qualified domain name* (FQDN) configured on your Linode. To ensure this is set run:
 
         hostname
@@ -43,7 +43,7 @@ Prior to installing your LEMP stack ensure that:
 
 ## Install the Nginx Web Server
 
-There are several ways to install Nginx. The method used here retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. For other options to install Nginx, you can read our [Installing Nginx on Debian 8](/docs/websites/nginx/nginx-web-server-debian-8) guide.
+There are several ways to install Nginx. The method used here retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. For other options to install Nginx, you can read our [Installing Nginx on Debian 8](/docs/websites/nginx/nginx-web-server-debian-8/) guide.
 
 Install Nginx:
 
@@ -86,7 +86,7 @@ server {
 
     The source file is saved, and the site can be re-enabled at any time.
 
-For more information regarding Nginx configuration options, check out our [Overview of Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration).
+For more information regarding Nginx configuration options, check out our [Overview of Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/).
 
 ## Deploy PHP with FastCGI
 
