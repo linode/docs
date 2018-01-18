@@ -20944,6 +20944,9 @@ div.library-tile .tile-title + .lead {
 .library-rss a {
   font-size: 14px;
 }
+.library-rss a:hover {
+  color: #737373;
+}
 #img-modal-image {
   max-width: 1200px;
   max-height: 700px;
@@ -21159,6 +21162,12 @@ h1.contribute {
   margin: 0 auto;
 }
 /* Styling of Table of Contents. */
+#doc-sidebar-container {
+  position: webkit-sticky;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+}
 #doc-sidebar-container #doc-sidebar {
   margin-top: 10px;
   max-width: 100%;
@@ -21168,12 +21177,6 @@ h1.contribute {
 }
 #doc-sidebar-container #doc-sidebar-toc .toc-long ul > li > ul > li > ul {
   display: none;
-}
-#doc-sidebar-container .affix {
-  top: 0px;
-}
-#doc-sidebar-container .affix-bottom {
-  position: relative;
 }
 /* Adapted from 
  https://bootsnipp.com/snippets/featured/share-on-social-networks
