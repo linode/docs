@@ -158,8 +158,8 @@ set default="Alpine Linux"
 set timeout=0
 
 menuentry "Alpine Linux" {
-    linux /vmlinuz-grsec root=/dev/sdb modules=sd-mod,usb-storage,ext4 console=ttyS0 quiet
-    initrd /initramfs-grsec
+    linux /vmlinuz-hardened root=/dev/sdb modules=sd-mod,usb-storage,ext4 console=ttyS0 quiet
+    initrd /initramfs-hardened
 }
 
 {{< /file >}}
@@ -256,22 +256,21 @@ features="ata ide scsi virtio base ext4"
 
         apk add sudo
 
-5.  Configure `sudo` to allow users in the sudo group to temporarily elevate their privileges:
+5.  Configure `sudo` to allow users in the wheel group to temporarily elevate their privileges:
 
-        echo "%sudo   ALL=(ALL) ALL" >> /etc/sudoers
+        echo "%wheel   ALL=(ALL) ALL" >> /etc/sudoers
 
     Alternatively, you can allow passwordless sudo. However, this is not recommended in most cases:
 
-        echo "%sudo   ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+        echo "%wheel   ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
     {{< caution >}}
 This configuration is less secure, and generally not recommended.
 {{< /caution >}}
 
-6.  Create the sudo group and add your new user to it:
+6.  Add your new user to the wheel group:
 
-        addgroup sudo
-        adduser example-user sudo
+        adduser example-user wheel
 
 7.  Install and configure the SSH daemon (SSHD). Alpine has a simple setup script to handle this:
 
