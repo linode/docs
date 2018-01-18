@@ -2,7 +2,7 @@
 
 ## Our Pledge
 
-In order to encourage an open and welcoming environment, we as contributors and maintainers pledge to make participation in our project and our community a harassment-free experience for everyone, regardless of: 
+In order to encourage an open and welcoming environment, we as contributors and maintainers pledge to make participation in our project and our community a harassment-free experience for everyone, regardless of:
 
 * age
 * body size
@@ -18,7 +18,7 @@ In order to encourage an open and welcoming environment, we as contributors and 
 
 ## Our Standards
 
-You can contribute to creating a positive environment in many ways. For example you can: 
+You can contribute to creating a positive environment in many ways. For example you can:
 
 * use welcoming and inclusive language
 * be respectful of differing viewpoints and experiences
@@ -27,7 +27,7 @@ You can contribute to creating a positive environment in many ways. For example 
 * show empathy towards other community members
 * be helpful and understanding
 
-You should not: 
+You should not:
 
 * use sexualized language or imagery
 * make unwelcome sexual advances
