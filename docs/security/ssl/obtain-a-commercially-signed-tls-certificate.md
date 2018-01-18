@@ -15,54 +15,56 @@ title: 'Obtain a Commercially Signed TLS Certificate'
 
 If you intend to host a publicly accessible website which will use HTTPS, then you will want to install a commercially signed TLS certificate so people visiting your site don't get warnings in their browser about an unsafe connection.
 
-There are currently two primary ways to do this: The easiest and least method is to sign your certificate using [Let's Encrypt](https://letsencrypt.org/). However, this isn't a viable option for everyone.
+There are currently two primary ways to do this: The easiest method is to sign your certificate using [Let's Encrypt](https://letsencrypt.org/). The [CertBot](https://certbot.eff.org/) tool makes obtaining and renewing certificates through Let's Encrypt extremely simple. However, this isn't a viable option for everyone.
 
-If you need Domain Validation or Extended Validation certificates, you then must create a certificate signing request for submission to a certificate authority such as Thawte or Verisign. This is the second method for obtaining a signed TLS certificate, and the one which this guide focuses on. Some CAs allow you to create a CSR directly through their web interface after you register an account with them. That's certainly a usability advantage over manually creating the CSR on your server or local computer as this guide instructs.
+If you need [Domain Validation](https://en.wikipedia.org/wiki/Domain-validated_certificate) or [Extended Validation certificates](https://en.wikipedia.org/wiki/Extended_Validation_Certificate), you must create a certificate signing request for submission to a certificate authority such as Thawte or Verisign. This is the second method for obtaining a signed TLS certificate, and the one which this guide focuses on. Some CAs allow you to create a CSR directly through their web interface after you register an account with them. That's certainly a usability advantage over manually creating the CSR on your server or local computer as this guide instructs.
 
-Concerning which CA to choose to sign your CSR, that is up to you. Research certificate authorities thoroughly before deciding on a company which will be used for things such as protecting customers' personal information via HTTPS, cryptographically signing emails, or granting access to internal platforms.
+Research certificate authorities thoroughly before deciding on a company which will be used for things such as protecting customers' personal information via HTTPS, cryptographically signing emails, or granting access to internal platforms.
 
 If you intend to use your SSL certificate on a website served by Apache or NGINX, see our guides for doing that (Apache, [NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections)) once you’ve completed the process outlined here.
 
 ## Create a Certificate Signing Request (CSR)
 
-1.  Change users to the `root` user and change directories to where you want to create the certificate information. The `home` directory is usually fine to start with:
+1.  Change users to the `root` user and move to a directory where you want to create the certificate information:
 
         su - root
-        cd ~/home
+        mkdir /root/certs/ && cd /root/certs/
 
 2.  Create the server key and CSR:
 
-    openssl req -new -newkey rsa:4096 -days 365 -nodes -keyout example.com.key -out example.com.csr
+        openssl req -new -newkey rsa:4096 -days 365 -nodes -keyout example.com.key -out example.com.csr
 
     After entering the command, you will be prompted to add identifying information for your website or organization to the certificate. Since this certificate is being created to be passed on to a certificate authority for signing, the information needs to be accurate.
 
     Here is an example of the output. You may safely leave the `extra attributes` blank, just press *Enter* to bypass each one.
 
-        root@localhost:~# openssl req -new -newkey rsa:4096 -days 365 -nodes -keyout example.com.key -out example.com.csr
-        Generating a 4096 bit RSA private key
-        ..+++
-        ......................................+++
-        writing new private key to 'example.com.key'
-        -----
-        You are about to be asked to enter information that will be incorporated
-        into your certificate request.
-        What you are about to enter is what is called a Distinguished Name or a DN.
-        There are quite a few fields but you can leave some blank
-        For some fields there will be a default value,
-        If you enter '.', the field will be left blank.
-        -----
-        Country Name (2 letter code) [AU]:US
-        State or Province Name (full name) [Some-State]:PA
-        Locality Name (eg, city) []:Philadelphia
-        Organization Name (eg, company) [Internet Widgits Pty Ltd]:Linode
-        Organizational Unit Name (eg, section) []:Docs
-        Common Name (e.g. server FQDN or YOUR name) []:hostname.example.com
-        Email Address []:admin@example.com
+    {{< output >}}
+root@localhost:~# openssl req -new -newkey rsa:4096 -days 365 -nodes -keyout example.com.key -out example.com.csr
+Generating a 4096 bit RSA private key
+..+++
+......................................+++
+writing new private key to 'example.com.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:PA
+Locality Name (eg, city) []:Philadelphia
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Linode
+Organizational Unit Name (eg, section) []:Docs
+Common Name (e.g. server FQDN or YOUR name) []:hostname.example.com
+Email Address []:admin@example.com
 
-        Please enter the following 'extra' attributes
-        to be sent with your certificate request
-        A challenge password []:
-        An optional company name []:
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+{{< /output >}}
 
     Here's a breakdown of the OpenSSL options used in that command. There are many others available, but these will create you something basic which will be good for a year. For more info, see `man openssl` in your terminal.
 
@@ -70,7 +72,7 @@ If you intend to use your SSL certificate on a website served by Apache or NGINX
 
     * `-sha256` generate the certificate request using 265-bit SHA (Secure Hash Algorithm).
 
-    * `-days` determines the length of time in days that the certificate is being issued for. For a self-signed certificate, this value can be increased as necessary.
+    * `-days` determines the length of time in days that the certificate is being issued for. For a commercial certificate, this value should be less than 730 (2 years).
 
     * `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the passphrase in the console each time the application using it is restarted.
 
@@ -102,14 +104,12 @@ This is when you must submit the certificate signing request to the CA for it to
 
 3.  After a few days, the signed certificate will be available for you to download and install into your server.
 
-If you intend to use your TLS certificate with Apache or NGINX, see our guides: ****
-
 
 ## Prepare a Chained SSL Certificate
 
-In some cases, CAs have not submitted a Trusted Root CA certificate to some or all browser vendors. Because of this, you can choose to *chain* roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt` (collectively referred to as a "chained SSL certificate"), they must be linked into one file, in a specific order, to ensure full compatibility with most browsers. The example below uses a chained SSL certificate that was signed by Comodo.
+Many CAs will issue certificates from an intermediate authority, which must be combined with the root certificate. If you receive several files from your CA ending with `.crt` (collectively referred to as a "chained SSL certificate"), they must be linked into one file, in a specific order, to ensure full compatibility with most browsers. The example below uses a chained SSL certificate that was signed by Comodo.
 
-To combine the individual certificates into one:
+To combine the individual certificates:
 
     cat example.com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt
 
@@ -140,9 +140,9 @@ The contents of the resulting file will appear similar to the following:
 
 Use this table to better visualize the command entered to prepare the chained certificate:
 
-| **Certificate Type:**      | **Issued to:**                          | **Issued by:**                          |
-|----------------------------|:----------------------------------------|:----------------------------------------|
-| End-user Certificate       | example.com                             | Comodo LLC                              |
-| Intermediate Certificate 1 | Comodo LLC                              | COMODORSADomainValidationSecureServerCA |
-| Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
-| Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |
+| **Certificate Type:**      | **Issued to:**                          | **Issued by:**                             |
+|----------------------------|:----------------------------------------|:------------------------------------------ |
+| End-user Certificate       | example.com                             | Comodo LLC                                 |
+| Intermediate Certificate 1 | Comodo LLC                              | COMODORSA DomainValidation SecureServerCA  |
+| Intermediate Certificate 2 | COMODORSA DomainValidation SecureServerCA | COMODORSA AddTrustCA                     |
+| Root certificate           | COMODORSA AddTrustCA                     | AddTrust ExternalCARoot                   |

@@ -30,9 +30,9 @@ The internet has no shortage of sites, posts, Gists and other places listing vas
 
 However, rarely are these configurations tested to deduce if there is in fact a performance increase. Of those that are, the author's use case may be completely different than yours, so there's no guarantee you'll experience the same benefit using their configuration.
 
-Favor simplicity and your own results; do not blindly follow tuning guides you find on the internet which haphazardly present their configuration as one-size-fits-all advice. There are some config options which are virtually universal, and we use many of those in this series. Beyond that, you could actually be decreasing your server's performance and/or security.
+Favor simplicity and your own results; do not blindly follow tuning guides you find on the internet which haphazardly present their configuration as one-size-fits-all advice. There are some config options which are virtually universal, many of which are described in this series. Beyond that, you could actually be decreasing your server's performance and/or security.
 
-Truly advanced system tuning for web services, such as adjusting Linux kernel parameters and TCP stack functionality, is out of the scope of this series. If you would like to explore the topic further though, take a look at [this NGINX blog post](https://www.nginx.com/blog/tuning-nginx/) to start.
+Truly advanced system tuning for web services, such as adjusting Linux kernel parameters and TCP stack functionality, is out of the scope of this series. If you would like to explore the topic further, take a look at [this NGINX blog post](https://www.nginx.com/blog/tuning-nginx/) for more information.
 
 
 ## Hosting Multiple Websites
@@ -52,14 +52,15 @@ server {
     error_log    logs/example2.error error;
 
     root         /var/www/example2.com/;
-        ...
+
     }
 {{< /file >}}
 
-2.  Then reload NGINX. Your second website should be visible at its domain and/or IP address:
+2.  Reload NGINX:
 
         nginx -s reload
 
+    Your second website should be visible at its domain and/or IP address.
 
 ## Basic Caching
 
@@ -71,9 +72,11 @@ For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_ht
 
         mkdir /var/www/example.com/cache/
 
-2.  Add the `proxy_cache_path` directive to NGINX's `http { }` block. Make sure the file path references the folder you just created above. The full directive with options we're using is:
+2.  Add the `proxy_cache_path` directive to NGINX's `http` block. Make sure the file path references the folder you just created above.
 
-        proxy_cache_path /var/www/example.com/cache/ keys_zone=one:10m max_size=500m inactive=24h use_temp_path=off;
+      {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+proxy_cache_path /var/www/example.com/cache/ keys_zone=one:10m max_size=500m inactive=24h use_temp_path=off;
+{{< /file-excerpt >}}
 
     - `keys_zone=one:10m` sets a 10 megabyte shared storage zone (simply called *one*, but you can change this for your needs) for cache keys and metadata.
 
@@ -81,45 +84,48 @@ For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_ht
 
     - `inactive=24h` removes anything from the cache which has not been access in the last 24 hours.
 
-    - `use_temp_path=off` writes cache files directly to the cache path. [Recommended by NGNIX](https://www.nginx.com/blog/nginx-caching-guide/).
+    - `use_temp_path=off` writes cache files directly to the cache path. This setting is [recommended by NGNIX](https://www.nginx.com/blog/nginx-caching-guide/).
 
 
-3.  Add the following to your site configuration's `server { }` block. If you changed the name of the storage zone in the step above, make sure you change the directive below from *one* to the zone name you chose.
+3.  Add the following to your site configuration's `server` block. If you changed the name of the storage zone in the step above, make sure you change the directive below from *one* to the zone name you chose.
 
-    Replace *application* with the URL and port of your upstream service whose files you wish to cache. For example, you would fill in `127.0.0.1:9000` if using [WordPress](https://www.nginx.com/resources/wiki/start/topics/recipes/wordpress/) or `127.0.0.1:2638` with (Ghost](https://docs.ghost.org/v1/docs/config#section-server).
+    Replace *ip-address* and *port* with the URL and port of the upstream service whose files you wish to cache. For example, you would fill in `127.0.0.1:9000` if using [WordPress](https://www.nginx.com/resources/wiki/start/topics/recipes/wordpress/) or `127.0.0.1:2638` with (Ghost](https://docs.ghost.org/v1/docs/config#section-server).
 
     {{< file "/etc/nginx/conf.d/example.com" nginx >}}
 proxy_cache one;
     location / {
-    proxy_pass http://application;
+    proxy_pass http://ip-address:port;
     }
 {{< /file >}}
 
 4.  Should you need to clear the cache, [the easiest way](http://nginx.2469901.n2.nabble.com/best-way-to-empty-nginx-cache-td3017271.html#a3017429) is with the command:
 
         find /var/www/example.com/cache/ -type f -delete
-        
+
     If you want more than just a basic cache clear, you can use the [proxy_cache_purge](https://www.nginx.com/products/nginx/caching/#purging) directive.
 
 
 ## HTTP Response Header Fields
 
-Use *[add_header](https://nginx.org/en/docs/http/ngx_http_headers_module.html)* directives in your configuration carefully. Unlike other directives, an `add_header` directive is not inherited from parent configuration blocks if you have the directive in both, meaning an `add_header` directive in a `server { }` block will cancel out any in your `http { }` area.
+Use *[add_header](https://nginx.org/en/docs/http/ngx_http_headers_module.html)* directives in your configuration carefully. Unlike other directives, an `add_header` directive is not inherited from parent configuration blocks if you have the directive in both, meaning an `add_header` directive in a `server` block will override any in your `http` area.
 
 For this reason, you should include them in one of two different ways:
 
-- Put all `add_header` directives in the `http { }` block. This isn't practical if you don't want every header directive to apply to every site in your configuration.
+- Put all `add_header` directives in the `http` block. This isn't practical unless you want every header directive to apply to every site in your configuration.
 
--  Add the desired `add_header` directives only to the `server { }` block (or an [include](https://nginx.org/en/docs/ngx_core_module.html#include) file) of the site you want those directives to apply to. This is the best scenario if you have multiple websites and want some header directives applied to some sites, but not all sites you're hosting.
+-  Add the desired `add_header` directives only to the `server` block (or an [include](https://nginx.org/en/docs/ngx_core_module.html#include) file) of the site you want those directives to apply to. This is the best scenario if you have multiple websites and want some header directives applied to some sites, but not all sites you're hosting.
 
 Below are some of the more universally-applicable header modifications. There are many more available, and you should read through the [OWASP Secure Headers Project](https://www.owasp.org/index.php/OWASP_Secure_Headers_Project) for more information.
 
 
 ### Disable Content Sniffing
 
-Content sniffing allows browsers to inspect a byte stream in order to determine the file format of its contents. It is generally used to help sites that do not correctly identify the MIME type of their web content, but it also presents a vulnerability to cross-site scripting and other attacks. To disable content sniffing, add the following line to your configuration's `http { }` block:
+Content sniffing allows browsers to inspect a byte stream in order to determine the file format of its contents. It is generally used to help sites that do not correctly identify the MIME type of their web content, but it also presents a vulnerability to cross-site scripting and other attacks. To disable content sniffing, add the following line to your configuration's `http` block:
 
+{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+http {
     add_header X-Content-Type-Options nosniff;
+{{< /file-excerpt >}}
 
 ### Limit or Disable Content Embedding
 
@@ -218,4 +224,4 @@ http {
 
 ## Part 3: Enable TLS for HTTPS Connections
 
-If a well-running HTTP site is all you're looking for, the this page's configuration recap will meet that requirement. If you plan to serve your site over HTTPS, then move to part 3 of this series: [Enable TLS for HTTPS Connections](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/).
+If a well-running HTTP site is all you're looking for, the configurations in this guide will meet that requirement. If you plan to serve your site over HTTPS, then move to part 3 of this series: [Enable TLS for HTTPS Connections](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/).
