@@ -118,9 +118,9 @@ By default, Thingsboard listens on `localhost:8080`. For security purposes, it i
 
         sudo apt install nginx
 
-2.  Open `/etc/nginx/sites-enabled/default` in a text editor and edit it as follows. Replace `example.com` with the public IP address or FQDN of your Linode.
+2.  Create `/etc/nginx/conf.d/thingsboard.conf` in a text editor and edit it as follows. Replace `example.com` with the public IP address or FQDN of your Linode.
 
-    {{< file "/etc/nginx/sites-enabled/default" nginx >}}
+    {{< file "/etc/nginx/conf.d/thingsboard.conf" nginx >}}
 server {
     listen 80;
     listen [::]:80;
@@ -228,7 +228,7 @@ You should now be able to run the script from the command line to transmit tempe
 
 1.  Copy the script to `/usr/bin/` (or another location in your $PATH) and make it executable:
 
-        cp thingsboard.py /usr/bin/thingsboard.py
+        sudo cp thingsboard.py /usr/bin/thingsboard.py
         sudo chmod +x /usr/bin/thingsboard.py
 
 2.  Create a service file to run the Python script as a service:
@@ -257,7 +257,7 @@ WantedBy=multi-user.target
 ## Send Data with cURL
 
 {{< note >}}
-Skip this section if you are using a Raspberyy Pi.
+Skip this section if you are using a Raspberry Pi.
 {{< /note >}}
 
 1.  Create a sample JSON file with dummy data:
