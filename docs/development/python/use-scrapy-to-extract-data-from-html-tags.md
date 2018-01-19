@@ -201,7 +201,7 @@ class LinkCheckerSpider(scrapy.Spider):
 
 ### Add Request Meta Information
 
-The Spider will traverse links in queue recursively. When parsing a downloaded page, it does not have any information about the previously parsed pages such as which page was linking the the new one. To pass more information to the `parse` method, Scrapy provides a `Request.meta()` method that attaches some key/value pairs to the request. They are available in the response object in the `parse()` method.
+The Spider will traverse links in queue recursively. When parsing a downloaded page, it does not have any information about the previously parsed pages such as which page was linking the new one. To pass more information to the `parse` method, Scrapy provides a `Request.meta()` method that attaches some key/value pairs to the request. They are available in the response object in the `parse()` method.
 
 The meta information is used for two purposes:
 
