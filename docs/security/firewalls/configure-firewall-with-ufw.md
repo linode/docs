@@ -12,6 +12,8 @@ published: 2015-11-17
 title: How to Configure a Firewall with UFW
 ---
 
+## What is UFW?
+
 UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in Arch Linux, Debian or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
 ![How to Configure a Firewall with UFW](/docs/assets/ufw_tg.png "How to Configure a Firewall with UFW")
