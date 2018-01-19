@@ -276,7 +276,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
 ## Test Odoo
 
-1.  Open a new browser window and enter in the address bar:
+1.  Open a new browser window and visit the address:
 
         http://<your_domain_or_IP_address>:8069
 
