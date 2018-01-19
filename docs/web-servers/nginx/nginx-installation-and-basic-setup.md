@@ -121,11 +121,11 @@ NGINX's version number is visible by default with any connection made to the ser
 
 Server tokens enabled:
 
-![NGNINX server tokens enabled](/docs/assets/nginx-server-tokens-enabled.jpg)
+![NGNINX server tokens enabled](/docs/assets/nginx-basics/nginx-server-tokens-enabled.jpg)
 
 Server tokens disabled:
 
-![NGINX server tokens disabled](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg)
+![NGINX server tokens disabled](/docs/assets/nginx-basics/404_Not_Found_Server_Tokens_Off.jpg)
 
 Add the following line to the `http { }` block of `/etc/nginx/nginx.conf`:
 
