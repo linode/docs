@@ -19,7 +19,6 @@ A single NGINX installation can host multiple websites. Any number of them can u
 
 Transport Layer Security (TLS) is the successor to Secure Socket Layer (SSL), and provides stronger HTTPS access to web servers from browsers and other devices. This guide outlines several scenarios for how to add a TLS certificate to your site's NGINX configuration.
 
-
 ## Before You Begin
 
 - This guide is Part 3 of our *Getting Started with NGINX* series and you will need a working NGINX setup with your site accessible via HTTP. If do not already have that, then complete at least [Part 1: Basic Installation and Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) before going further.
@@ -72,7 +71,7 @@ With only one site to work with, simply use the `http` block configuration [abov
 1. As an example, below is a basic site configuration which works with the `http` block given above:
 
     {{< note >}}
-This `server { }` block makes your site available over IPv4 and IPv6 but *only* over HTTPS-you will have no HTTP access. You will also need to type `https://` into the browser to access your site. This is only a starting step, you likely wouldn't want to use this configuration without HSTS or redirecting HTTP requests to port 443. We'll get to those in part 4 of this series.
+This `server` block makes your site available over IPv4 and IPv6 but *only* over HTTPS-you will have no HTTP access. You will also need to type `https://` into the browser to access your site. This is only a starting step, you likely wouldn't want to use this configuration without HSTS or redirecting HTTP requests to port 443. We'll get to those in part 4 of this series.
 {{< /note >}}
 
     {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
@@ -137,7 +136,7 @@ Scenario: You have two (or more) completely independent websites you want to ser
             ├── example2.com.crt
             └── example2.com.key
 
-2.  Configure the `http` block of your `nginx.conf` as shown [above](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-your-http-block), but **without the certificate and key locations**. Those will instead go in the individual site's `server { }` block since the locations are different for each site. The result should be:
+2.  Configure the `http` block of your `nginx.conf` as shown [above](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-your-http-block), but **without the certificate and key locations**. Those will instead go in the individual site's `server` block since the locations are different for each site. The result should be:
 
     {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
 
@@ -149,7 +148,7 @@ http {
 }
 {{< /file-excerpt >}}
 
-3.  Add the `ssl_certificate` and `ssl_certificate_key` directives to each `server { }` block with the correct path to each site's certificate and key file.
+3.  Add the `ssl_certificate` and `ssl_certificate_key` directives to each `server` block with the correct path to each site's certificate and key file.
 
     {{< file-excerpt "/etc/nginx/conf.d/example1.com.conf" nginx >}}
 server {

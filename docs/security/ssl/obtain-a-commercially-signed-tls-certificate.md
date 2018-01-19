@@ -72,7 +72,7 @@ An optional company name []:
 
     * `-sha256` generate the certificate request using 265-bit SHA (Secure Hash Algorithm).
 
-    * `-days` determines the length of time in days that the certificate is being issued for. For a commercial certificate, this value should be less than 730 (2 years).
+    * `-days` determines the length of time in days that the certificate is being issued for. For a commercial certificate, this value should be no higher than 730 (2 years).
 
     * `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the passphrase in the console each time the application using it is restarted.
 
