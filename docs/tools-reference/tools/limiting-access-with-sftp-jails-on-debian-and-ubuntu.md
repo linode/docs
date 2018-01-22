@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Restricting remote users to their home directories, only allowing access to SFTP for transferring files.'
-og_description: 'SFTP Jails restricits remote users to their home directories.' 
+og_description: 'SFTP Jails restricits remote users to their home directories.'
 keywords: ["sftp", "sftp jail", "openssh", "ssh jail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/sftp-jails/']
@@ -86,14 +86,14 @@ Your users should now be able to log into their accounts via SFTP and transfer f
 1. From the terminal use sftp:
 
         sftp username@<Your_Linodes_IP>
-    
+
     You can use the `help` command to see what commands you have access too within the SFTP shell. You have the ability to `pwd`, `cd` and `ls`, for instance. There are also commands like `lpwd`, that will print the **local** working directory. In the local home directory type `touch test.txt`
 
 2. Transfer local files to the remote system:
 
         cd docs
         put test.txt
-       
+
 3. Transfer files to the local system from the remote system:
 
         get test.txt
@@ -103,6 +103,6 @@ Your users should now be able to log into their accounts via SFTP and transfer f
         sftp> put test.txt /tmp/
         Uploading test.txt to /tmp/
         remote open("/tmp/"): Failure
-        
-5. Exit the session with the `exit` command. 
+
+5. Exit the session with the `exit` command.
 
