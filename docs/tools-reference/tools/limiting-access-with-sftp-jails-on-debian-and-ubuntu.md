@@ -7,7 +7,7 @@ og_description: 'SFTP Jails restricits remote users to their home directories.'
 keywords: ["sftp", "sftp jail", "openssh", "ssh jail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/sftp-jails/']
-modified: 2014-04-16
+modified: 2018-01-22
 modified_by:
   name: Linode
 published: 2010-01-06
