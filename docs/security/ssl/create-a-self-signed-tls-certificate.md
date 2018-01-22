@@ -31,26 +31,28 @@ Self-signed TLS certificates are suitable for personal use or applications used 
 
     Here is an example of the output:
 
-        root@localhost:~# openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out MyCertificate.crt -keyout MyKey.key
-        Generating a 4096 bit RSA private key
-        ..............................................................................+++
-        ..............................................+++
-        writing new private key to 'MyKey.key'
-        -----
-        You are about to be asked to enter information that will be incorporated
-        into your certificate request.
-        What you are about to enter is what is called a Distinguished Name or a DN.
-        There are quite a few fields but you can leave some blank
-        For some fields there will be a default value,
-        If you enter '.', the field will be left blank.
-        -----
-        Country Name (2 letter code) [AU]:US
-        State or Province Name (full name) [Some-State]:PA
-        Locality Name (eg, city) []:Philadelphia
-        Organization Name (eg, company) [Internet Widgits Pty Ltd]:Linode
-        Organizational Unit Name (eg, section) []:Docs
-        Common Name (e.g. server FQDN or YOUR name) []:hostname.example.com
-        Email Address []:admin@example.com
+    {{< output >}}
+root@localhost:~# openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out MyCertificate.crt -keyout MyKey.key
+Generating a 4096 bit RSA private key
+..............................................................................+++
+..............................................+++
+writing new private key to 'MyKey.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:PA
+Locality Name (eg, city) []:Philadelphia
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Linode
+Organizational Unit Name (eg, section) []:Docs
+Common Name (e.g. server FQDN or YOUR name) []:hostname.example.com
+Email Address []:admin@example.com
+{{< /output >}}
 
     Here's a breakdown of the OpenSSL options used in that command. There are many others available, but these will create you something basic which will be good for a year. For more info, see `man openssl` in your terminal.
 

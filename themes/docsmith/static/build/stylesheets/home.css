@@ -11693,6 +11693,37 @@ blockquote strong {
 .doc .h6 + .h6 {
   margin-top: 0px;
 }
+.doc h1 a,
+.doc h2 a,
+.doc h3 a,
+.doc h4 a,
+.doc h5 a,
+.doc h6 a,
+.doc .h1 a,
+.doc .h2 a,
+.doc .h3 a,
+.doc .h4 a,
+.doc .h5 a,
+.doc .h6 a {
+  padding-left: 10px;
+  opacity: 0;
+}
+.doc h1:hover a,
+.doc h2:hover a,
+.doc h3:hover a,
+.doc h4:hover a,
+.doc h5:hover a,
+.doc h6:hover a,
+.doc .h1:hover a,
+.doc .h2:hover a,
+.doc .h3:hover a,
+.doc .h4:hover a,
+.doc .h5:hover a,
+.doc .h6:hover a {
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
 .doc h1,
 .doc .h1 {
   font-size: 38px;
@@ -20329,6 +20360,37 @@ div.library-tile .tile-title + .lead {
 #article-body .h5 + .h6,
 #article-body .h6 + .h6 {
   margin-top: 0px;
+}
+#article-body h1 a,
+#article-body h2 a,
+#article-body h3 a,
+#article-body h4 a,
+#article-body h5 a,
+#article-body h6 a,
+#article-body .h1 a,
+#article-body .h2 a,
+#article-body .h3 a,
+#article-body .h4 a,
+#article-body .h5 a,
+#article-body .h6 a {
+  padding-left: 10px;
+  opacity: 0;
+}
+#article-body h1:hover a,
+#article-body h2:hover a,
+#article-body h3:hover a,
+#article-body h4:hover a,
+#article-body h5:hover a,
+#article-body h6:hover a,
+#article-body .h1:hover a,
+#article-body .h2:hover a,
+#article-body .h3:hover a,
+#article-body .h4:hover a,
+#article-body .h5:hover a,
+#article-body .h6:hover a {
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
 }
 #article-body h1,
 #article-body .h1 {
