@@ -1,0 +1,20 @@
+{{ define "main" }}
+<section class="primary first-section some-space-bottom">
+  <div class="container">
+    <div class="row pad-xs">
+      <div class="col-sm-8">
+        {{ partial "breadcrumb" . }}
+      </div>
+      <div class="col-sm-4 library-breadcrumb-search">
+        {{ partial "search_form" . }}
+      </div>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1">
+      <h1 class="text-center">{{ .Title }}</h1>
+      <p class="text-center lead">{{ .Description | markdownify }}</p>
+    </div>
+  </div>
+</div>
+</section>
+{{ partial "articles_and_categories" . }}
+{{ end }}

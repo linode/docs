@@ -1,0 +1,13 @@
+{{$file := .Get 0}}
+{{ if .Page.Params.os }}
+{{$class := .Get 1}}
+{{ with .Site.GetPage "page" $file }}
+<div class="{{ $class }}install" >
+{{ .Content }}
+</div>
+{{ end }}
+{{else}}
+{{ with .Site.GetPage "page" $file }}
+{{ .Content }}
+{{ end }}
+{{ end }}
