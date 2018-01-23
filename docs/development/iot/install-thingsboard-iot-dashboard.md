@@ -16,7 +16,7 @@ external_resources:
   - '[Thingsboard Github Repo](https://github.com/thingsboard/thingsboard)'
 ---
 
-[Thingsboard](https://thingsboard.io/) is an open source platform for collecting and visualizing data from Internet of Things devices. Data from any number of devices can be sent to a cloud server, where it can be viewed or shared through a highly customizable dashboard.
+[Thingsboard](https://thingsboard.io/) is an open source platform for collecting and visualizing data from Internet of Things devices. Data from any number of devices can be sent to a cloud server where it can be viewed or shared through a highly customizable dashboard.
 
 This guide will show how to install Thingsboard on a Linode and use a Raspberry Pi to send simple telemetry data to a cloud dashboard.
 
@@ -25,8 +25,6 @@ This guide will use a Raspberry Pi 3 with a [Sense HAT](https://www.raspberrypi.
 {{< /note >}}
 
 ## Install Thingsboard
-
-### Install Java
 
 Thingsboard runs on Java 8, and the Oracle JDK is recommended.
 
@@ -101,7 +99,7 @@ spring:
     password: "${SPRING_DATASOURCE_PASSWORD:thingsboard}"
 {{< /file-excerpt >}}
 
-5.  Run the installation script:
+5.  Run this installation script:
 
         sudo /usr/share/thingsboard/bin/install/install.sh --loadDemo
 
@@ -112,13 +110,13 @@ spring:
 
 ## NGINX Reverse Proxy
 
-By default, Thingsboard listens on `localhost:8080`. For security purposes, it is better to serve the dashboard through a reverse proxy. This guide will use NGINX, but Apache can also be used.
+Thingsboard listens on `localhost:8080`, by default. For security purposes, it's  better to serve the dashboard through a reverse proxy. This guide will use NGINX, but any webserver can be used. 
 
 1.  Install NGINX:
 
         sudo apt install nginx
 
-2.  Create `/etc/nginx/conf.d/thingsboard.conf` in a text editor and edit it as follows. Replace `example.com` with the public IP address or FQDN of your Linode.
+2.  Create `/etc/nginx/conf.d/thingsboard.conf` with a text editor and edit it to match the example below. Replace `example.com` with the public IP address or FQDN of your Linode.
 
     {{< file "/etc/nginx/conf.d/thingsboard.conf" nginx >}}
 server {
@@ -144,11 +142,11 @@ server {
 
 ## Set Up Thingsboard Device
 
-1.  Navigate to your Linode's IP address in a web browser. You should see the Thingsboard login page:
+1.  Navigate to your Linode's IP address with a web browser. You should see the Thingsboard login page:
 
     ![Thingsboard Login](/docs/assets/thingsboard/login.png)
 
-    The demo account is `tenant@thingsboard.org` and the password is `tenant`. You should change this to a more secure password after you have signed in.
+    The demo account login `tenant@thingsboard.org` and the password is `tenant`. You should change this to a more secure password after you have signed in.
 
 2.  From the main menu, click on the **Devices** icon, then click the **+** icon in the lower right to add a new device.
 
@@ -159,7 +157,7 @@ server {
 ## Configure Raspberry Pi
 
 {{< note >}}
-The following steps assume that you have terminal access to a Raspberry Pi, and that the Sense HAT and its libraries are already configured. For more information on getting started with the Sense HAT, see the Raspberry Pi [official documentation](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat). If you would prefer to use `curl` to send mock data to Thingsboard, you can skip this section.
+The following steps assume that you have terminal access to a Raspberry Pi, and that Sense HAT and its libraries are already configured. For more information on getting started with Sense HAT, see the Raspberry Pi [official documentation](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat). If you would prefer to use `curl` to send mock data to Thingsboard, you can skip this section.
 {{< /note >}}
 
 ### Basic Python Script
@@ -224,9 +222,9 @@ while True:
 
 ### Create a Systemd Service
 
-You should now be able to run the script from the command line to transmit temperature, pressure, and humidity data once per minute. However, to make sure that data is sent continually, it is a good idea to enable a new service that will run the script automatically whenever the server is restarted.
+You should now be able to run the script from the command line to transmit temperature, pressure, and humidity data once per minute. However, to make sure that data is sent continually, it's a good idea to enable a new service that will run the script automatically whenever the server is restarted.
 
-1.  Copy the script to `/usr/bin/` (or another location in your $PATH) and make it executable:
+1.  Copy the script to `/usr/bin/` and make it executable:
 
         sudo cp thingsboard.py /usr/bin/thingsboard.py
         sudo chmod +x /usr/bin/thingsboard.py
