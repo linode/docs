@@ -51,13 +51,17 @@ All nodes will run under Ubuntu 16.04 LTS, if you plan to use a different operat
 
         sudo apt-get update && sudo apt-get upgrade
 
+4.  Install `software-properties-common`:
+
+        sudo apt install software-properties-common
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
-## About Firewall Rules
+## Firewall Rules
 
-This article comprises the deployment of a cloud stack, firewall rules can vary depending on your particular security concerns. As a reference, you will need to setup this minimal rules on your nodes:
+If you want to configure a firewall for your Linodes, you will want to make sure the following ports are open:
 
 | Node | Open TCP Ports |
 | ------------ |:--------:|
@@ -69,21 +73,21 @@ Ports `22`, `80` and `5432` are the default for SSH, HTTP and PostgreSQL communi
 
         sudo ufw allow 22/tcp
 
-That example opens SSH port in your firewall. For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](https://linode.com/docs/security/firewalls/configure-firewall-with-ufw/).
+For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](https://linode.com/docs/security/firewalls/configure-firewall-with-ufw/).
 
-## Why You Need an Odoo Stack
+## Why Use an Odoo Stack
 
 First, let's take a look at the traditional Odoo standalone installation:
 
 ![Odoo Stand Alone Deployment](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/odoo-deployment-01.png)
 
-As you can see the main components of the Odoo "stack" are:
+As you can see the main components of the Odoo stack are:
 
 * **Nginx** (reverse proxy) - totally optional. Can direct traffic from Internet (port 80) to default Odoo webserver port (8069 or 8070).
 * **Odoo** - is the core application, responsible of almost all logic operations.
 * **PostgreSQL** database - is in charge of main data storage as well as main components (modules) objects.
 
-Is you are planning to use Odoo in a small office with few users then that deployment is totally viable. But what happens if your use case include a high demand environment with dozens or hundreds of users connecting from different locations? What if you need a HA deployment or simply you want an scalable solution? In that case a single server won't offer the best fit.
+Is you are planning to use Odoo in a small office with few users then that deployment is totally viable. But what happens if your use case include a high demand environment with dozens or hundreds of users connecting from different locations? What if you need a HA deployment or simply you want a scalable solution? In that case a single server won't offer the best fit.
 
 ![Odoo Multi-Server Deployment](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/odoo-deployment-02.png)
 
@@ -102,9 +106,9 @@ This article will show you the step-by-step process to deploy a production-like 
 
 ## Hostname Assignment
 
-The Odoo 11 stack will use the following FQDN convention:
+In order to simplify communication between your Linodes, edit `/etc/hosts` for each server. You can use private IPs if the Linodes are all in the same data center, or FQDNs if available. This guide will use the following FQDN conventions:
 
-| Node | Static IP | FQDN |
+| Node | IP Address | FQDN |
 | ------------ |:--------:| :-----------:|
 | Nginx Reverse Proxy | 10.1.2.10 | proxy.yourdomain.com |
 | Odoo 11 Production | 10.1.3.10 | odoo.yourdomain.com |
@@ -113,11 +117,6 @@ The Odoo 11 stack will use the following FQDN convention:
 | PostgreSQL Prod. Slave | 10.1.1.20 | slavedb.yourdomain.com |
 | PostgreSQL Stage Master | 10.1.1.30 | stage-masterdb.yourdomain.com |
 | PostgreSQL Stage Slave | 10.1.1.40 | stage-slavedb.yourdomain.com |
-
-
-For each node in the stack you will need to edit the `/etc/hosts` file:
-
-        sudo nano /etc/hosts
 
 1. For the PostgreSQL Production Master:
 
@@ -219,9 +218,9 @@ PostgreSQL version 9.6 offers significant improvements for database replication 
 
 ### Create PostgreSQL users
 
-Here start the difference with the standalone Odoo installation. You will need to create the PostgreSQL user for Odoo on all Database nodes but you will also need to create a special user for replication tasks in the **Master** node of Production and Stage Linodes.
+You will need to create the PostgreSQL user for Odoo on all Database nodes but you will also need to create a special user for replication tasks in the **Master** node of Production and Stage Linodes.
 
-Let's begin with the PostgreSQL user needed for Odoo communications, you must create this user on **Master** and **Slave** nodes (Production and Stage):
+Begin with the PostgreSQL user needed for Odoo communications. You must create this user on **Master** and **Slave** nodes (Production and Stage):
 
 1. Switch to the `postgres` user and create the database user `odoo` in charge of all operations (provide a strong password and save it in a secure location, you need need it later) :
 
@@ -241,9 +240,9 @@ Note that this user has less privileges than the `odoo` user this is because the
 
 1. Stop the PostgreSQL service on all nodes (this is **very** important):
 
-        sudo service postgresql stop
+        sudo systemctl stop postgresql
 
-2. The next step is to edit the `pg_hba.conf` file to allow PostgreSQL nodes to communicate to each other. Each line provides the client authentication permissions to connect to an specific database. Start adding the following lines to the Production **Master** database server. For example, the first line allows the **Slave** to connect to the **Master** node using `replicauser` the last line grants to the `odoo` user the rights connect to "all" databases within this server:
+2. Edit the `pg_hba.conf` file to allow PostgreSQL nodes to communicate to each other. Each line provides the client authentication permissions to connect to an specific database. Start adding the following lines to the Production **Master** database server. For example, the first line allows the **Slave** to connect to the **Master** node using `replicauser` the last line grants to the `odoo` user the rights connect to "all" databases within this server:
 
     {{< file-excerpt "/etc/postgresql/9.6/main/pg_hba.conf" conf >}}
 host    replication     replicauser      slavedb.yourdomain.com         md5
@@ -338,7 +337,7 @@ hot_standby = on
 
 {{< /file-excerpt >}}
 
-As you can see the file looks very similar to the previous one with the exception of `hot_standby = on` which specifies that this server can connect and run queries during recovery.
+The file is very similar to the previous one with the exception of `hot_standby = on` which specifies that this server can connect and run queries during recovery.
 
 ### Syncronize Master and Slave Node Data
 
@@ -346,17 +345,17 @@ Follow this procedure for Production and Stage PostgreSQL Linodes:
 
 1. Double check that your **Slave** PostgreSQL service is not running.
 
-        sudo service postgresql stop
+        sudo systemctl status postgresql
 
 2. Start your **Master** PostgreSQL service:
 
-        sudo service postgresql start
+        sudo systemctl start postgresql
 
 3. Rename your **Slave's** data directory before continuing:
 
         sudo mv /var/lib/postgresql/9.6/main /var/lib/postgresql/9.6/main_old
 
-4. Perform a backup of the data directory from **Master** node to the **Slave** node using the PostgreSQL backup utility:
+4. Create a backup of the data directory from **Master** node to the **Slave** node using the PostgreSQL backup utility:
 
         sudo -u postgres pg_basebackup -h masterdb.yourdomain.com --xlog-method=stream \
          -D /var/lib/postgresql/9.6/main/ -U replicauser -v -P
@@ -385,9 +384,9 @@ restore_command = 'cp /var/lib/postgresql/9.6/main/archive/%f %p'
 trigger_file = '/tmp/postgresql.trigger.5432'
 {{< /file >}}
 
-3. Now you can finally start the PostgreSQL service on the **Slave** node:
+3. Start the PostgreSQL service on the **Slave** node:
 
-        sudo service postgresql start
+        sudo systemctl start postgresql
 
 The parameters are self-explanatory, you are configuring your slave to perform the inverse operation (restore) from what you did in the previous section. Is out of the scope of this guide to discuss a full fail-over configuration, but can add more options as needed as described in the [PostgreSQL documentation for recovery.](https://www.postgresql.org/docs/9.6/static/recovery-config.html)
 
@@ -419,17 +418,17 @@ This test not only confirms that replication is working but also that `odoo` use
 
 Now that you tested your database backend it's time to enable the nodes to start the service on startup:
 
-        sudo service postgresql enable
+        sudo systemctl enable postgresql
 
 Congratulations! You just finished your PostgreSQL installation.
 
-## Nginx Setup
+## NGINX Setup
 
-Installation can't be easier, just run from Nginx Linode:
+Install NGINX from the Ubuntu repositories:
 
         sudo apt install nginx
 
-In this implementation the only purpose of Nginx is to "direct traffic" to the appropriate Linode:
+In this implementation the only purpose of Nginx is to direct traffic to the appropriate Linode:
 
 * Traffic from Internet pointed to `http://yourdomain.com` >> will be directed to the static address: `http://10.1.3.10:8070` (Odoo Production Linode).
 * Trafiic from Internet pointed to `http://odoo-stage.yourdomain.com` >> will be directed to the static address: `http://10.1.3.20:8070` (odoo Stage Linode).
@@ -489,8 +488,7 @@ From the configuration files you can see that the Production Odoo Linode is set 
 
 To enable the service on startup use the same procedure as for PostgreSQL:
 
-        sudo service nginx enable
-
+        sudo systemctl enable nginx
 
 ## Odoo 11 Setup
 
@@ -633,7 +631,7 @@ WantedBy=multi-user.target
 
 1.  Change the `odoo-server` service permissions and ownership so only root can write to it, while the `odoo` user will only be able to read and execute it.
 
-        sudo chmod 755 /lib/systemd/system/odoo-server.service \ 
+        sudo chmod 755 /lib/systemd/system/odoo-server.service \
         && sudo chown root: /lib/systemd/system/odoo-server.service
 
 2.  Since the `odoo` user will run the application, change its ownership accordingly.
@@ -646,26 +644,26 @@ WantedBy=multi-user.target
 
 4.  Finally, protect the server configuration file. Change its ownership and permissions so no other non-root user can access it:
 
-        sudo chown odoo: /etc/odoo-server.conf \ 
+        sudo chown odoo: /etc/odoo-server.conf \
         && sudo chmod 640 /etc/odoo-server.conf
 
 ### Testing your Odoo Stack
 
 1.  Confirm that everything is working as expected. First, start the Odoo server:
 
-        sudo service odoo-server start
+        sudo systemctl start odoo-server
 
 2.  Check the service status to make sure it's running:
 
-        sudo service odoo-server status
+        sudo systemctl status odoo-server
 
 3.  Verify that the Odoo server is able to stop properly:
 
-        sudo service odoo-server stop
+        sudo systemctl stop odoo-server
 
 4.  Run a service status check again to make sure there were no errors:
 
-        sudo service odoo-server status
+        sudo systemctl status odoo-server
 
 5. Open a new browser window and enter in the address bar:
 
@@ -693,7 +691,7 @@ If you didn't change the Administrative password in `odoo-server.conf` a warning
 
         \l
 
-    ![Odoo 11 Database List](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/odoo-11-db-test.png)   
+    ![Odoo 11 Database List](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/odoo-11-db-test.png)
 
 10. Congratulations! Your Odoo 11 implementation is working!
 
@@ -737,7 +735,7 @@ At this point you have at least two easy solutions to backup/transfer your produ
 
 2. An alternative approach is to use a similar procedure as described in the section: "Syncronize Master and Slave Node data" but this time you will synchronize "Master production to Master stage" nodes. You already have everything in place, you just need to stop the (master) Stage node database service, move/rename/delete its current data and then run the `pg_basebackup` utility:
 
-        sudo service postgresql stop
+        sudo systemctl stop postgresql
 
         sudo mv /var/lib/postgresql/9.6/main /var/lib/postgresql/9.6/main_old
 
@@ -763,7 +761,7 @@ If all your tests pass, you can safely update your production installation.
 
 1.  From your production Linode download the new code from source:
 
-        cd /opt/odoo \ 
+        cd /opt/odoo \
         && sudo git fetch origin 11.0
 
 2.  Apply the changes to your repository:
