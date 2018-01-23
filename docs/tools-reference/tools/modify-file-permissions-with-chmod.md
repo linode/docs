@@ -66,7 +66,7 @@ Consider the following invocation of `chmod`:
 
     chmod g+w ~/group-project.txt
 
-This grants all members of the usergroup that owns the file `~/group-project.txt` write permissions. Other possible opens for which member to change permissions are shown below:
+This grants all members of the usergroup that owns the file `~/group-project.txt` write permissions. Other possible options to change permissions of targeted users are:
 
 Who (Letter) | Meaning
 -------------|---------
