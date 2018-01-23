@@ -23,7 +23,7 @@ external_resources:
 ## What is tmux?
 
 
-Tmux, is a **terminal multiplexer**. Tmux creates a host **server** on your Linode, and connects to it with a client window. When the client is disconnected, the server keeps running. When you reconnect to your Linode after rebooting your computer or losing your Internet connection, you can reattach to the tmux session and find the files you were working with still open, and the processes you had running are still active.
+Tmux is a **terminal multiplexer**. Tmux creates a host **server** on your Linode, and connects to it with a client window. When the client is disconnected, the server keeps running. When you reconnect to your Linode after rebooting your computer or losing your Internet connection, you can reattach to the tmux session and find the files you were working with still open, and the processes you had running are still active.
 
 tmux is also often used as a container for processes that should always be on. For example you might run a game server or an IRC client with tmux.
 
@@ -31,9 +31,9 @@ tmux is also often used as a container for processes that should always be on. F
 
 Install tmux with your distribution's package manager:
 
-1.  To install tmux on Debian 9 or Ubuntu 16.04:
+To install tmux on Debian 9 or Ubuntu 16.04:
 
-        sudo apt install tmux
+    sudo apt install tmux
 
 ## Attach and Detach from a tmux Session
 
