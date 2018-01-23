@@ -12,7 +12,7 @@ modified_by:
 title: 'How to Install Go on Ubuntu'
 ---
 
-The Go programming language is a popular language that is currently developed by Google, and used to write  modern applications like Docker, Kubernetes, and Caddy. Go is a compiled, statically typed language, similar to the C programming language. 
+The Go programming language is a popular language that is currently developed by Google, and used to write  modern applications like Docker, Kubernetes, and Caddy. Go is a compiled, statically typed language, similar to the C programming language.
 
 
 ## Install Go
@@ -26,10 +26,10 @@ The Go programming language is a popular language that is currently developed by
         a4da5f4c07dfda8194c4621611aeb7ceaab98af0b38bfb29e1be2ebb04c3556c  go1.9.3.linux-amd64.tar.gz
 
     {{< note >}}
-At the time of this writing the output above should correspond with version `1.9.3` of the Go binary. 
+At the time of this writing the output above should correspond with version `1.9.3` of the Go binary.
 {{</ note >}}
 
-3. Extract the tarball: 
+3. Extract the tarball:
 
         tar -xvf go1.9.3.linux-amd64.tar.gz
 
@@ -56,7 +56,7 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 According to [the official documentation](https://golang.org/doc/install#testing), the following steps are the recommended way to test the success of the installation:
 
-1. In your home directory create a folder named `go`, this will be your workspace: 
+1. In your home directory create a folder named `go`, this will be your workspace:
 
         mkdir go
 
@@ -79,13 +79,13 @@ func main() {
 
         go build
 4. Run the newly created file:
-    
+
         ./hello
 
-5. The console should now output: 
+5. The console should now output:
 
         hello, world
 
-If this test works you have succesffuly installed the Go programming language onto your Linode. 
+If this test works you have succesffuly installed the Go programming language onto your Linode.
 
-  
+
