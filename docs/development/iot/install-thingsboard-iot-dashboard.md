@@ -110,7 +110,7 @@ spring:
 
 ## NGINX Reverse Proxy
 
-Thingsboard listens on `localhost:8080`, by default. For security purposes, it's  better to serve the dashboard through a reverse proxy. This guide will use NGINX, but any webserver can be used. 
+Thingsboard listens on `localhost:8080`, by default. For security purposes, it's  better to serve the dashboard through a reverse proxy. This guide will use NGINX, but any webserver can be used.
 
 1.  Install NGINX:
 
