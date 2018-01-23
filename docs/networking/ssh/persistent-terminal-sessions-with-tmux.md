@@ -29,7 +29,7 @@ tmux is also often used as a container for processes that should always be on. F
 
 ## Install tmux
 
-Install tmux with your distribution's package manager:
+Install tmux with your distribution's package manager.
 
 To install tmux on Debian 9 or Ubuntu 16.04:
 
