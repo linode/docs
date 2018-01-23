@@ -2,11 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you a brief command to create a self-signed TLS certificate with OpenSSL.'
+description: 'This guide shows how to create a self-signed TLS certificate with OpenSSL.'
 keywords: ["ssl", "tls", "https", "certificate", "self"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/ssl/create-a-self-signed-certificate-on-centos-and-fedora/','security/ssl/create-a-self-signed-certificate-on-debian-and-ubuntu/','security/ssl/how-to-make-a-selfsigned-ssl-certificate/']
-modified: 2018-01-09
+modified: 2018-01-23
 modified_by:
   name: Linode
 published: 2018-01-09
@@ -32,6 +32,18 @@ Self-signed TLS certificates are suitable for personal use or for applications t
 
     You will be prompted to add identifying information about your website or organization to the certificate. Since a self-signed certificate won't be used publicly, this information isn't necessary. If this certificate will be passed on to a certificate authority for signing, the information needs to be as accurate as possible.
 
+    The following is a breakdown of the OpenSSL options used in this command. There are many other options available, but these will create a basic certificate which will be good for a year. For more information, see `man openssl` in your terminal.
+
+    * `-newkey rsa:4096`: Create a 4096 bit RSA key for use with the certificate. `RSA 2048` is the default on more recent versions of OpenSSL but to be sure of the key size, you should specify it during creation.
+
+    * `-x509`: Create a self-signed certificate.
+
+    * `-sha256`: Generate the certificate request using 265-bit SHA (Secure Hash Algorithm).
+
+    * `-days`: Determines the length of time in days that the certificate is being issued for. For a self-signed certificate, this value can be increased as necessary.
+
+    * `-nodes`: Create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the passphrase in the console each time the application using it is restarted.
+
     Here is an example of the output:
 
     {{< output >}}
@@ -56,18 +68,6 @@ Organizational Unit Name (eg, section) []:Docs
 Common Name (e.g. server FQDN or YOUR name) []:hostname.example.com
 Email Address []:admin@example.com
 {{< /output >}}
-
-    Here's a breakdown of the OpenSSL options used in that command. There are many others available, but these will create you something basic which will be good for a year. For more info, see `man openssl` in your terminal.
-
-    * `-newkey rsa:4096`: Create a 4096 bit RSA key for use with the certificate. `RSA 2048` is the default on more recent versions of OpenSSL but to be sure of the key size, you should specify it during creation.
-
-    * `-x509`: Create a self-signed certificate.
-
-    * `-sha256`: Generate the certificate request using 265-bit SHA (Secure Hash Algorithm).
-
-    * `-days`: Determines the length of time in days that the certificate is being issued for. For a self-signed certificate, this value can be increased as necessary.
-
-    * `-nodes`: Create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the passphrase in the console each time the application using it is restarted.
 
 3.  Restrict the key's permissions so that only `root` can access it:
 
