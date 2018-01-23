@@ -15,10 +15,13 @@ title: 'Create a Self-Signed TLS Certificate'
 
 ![Create a Self-Signed Certificate title graphic](/docs/assets/create-a-self-signed-tls-certificate-title-graphic.jpg "Create a Self-Signed Certificate title graphic")
 
-Self-signed TLS certificates are suitable for personal use or applications used internally within an organization. If you intend to use your SSL certificate on a website served by Apache or NGINX, see our guides for doing that (Apache, [NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/x)) once you’ve completed the process outlined here.
+## What is a Self-Signed TLS Certificate?
 
+Self-signed TLS certificates are suitable for personal use or for applications that are used internally within an organization. If you intend to use your SSL certificate on a website, see our guide on enabling TLS for [NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/) once you’ve completed the process outlined in this guide.
 
-1.  Change users to the `root` user and change directories to where you want to create the certificate and key pair. That location will vary depending on your end use. Here we'll use `/root/certs`.
+## Create the Certificate
+
+1.  Change to the `root` user and change to the directory in which you want to create the certificate and key pair. That location will vary depending on your needs. Here we'll use `/root/certs`:
 
         su - root
         mkdir /root/certs && cd /root/certs
@@ -27,7 +30,7 @@ Self-signed TLS certificates are suitable for personal use or applications used 
 
         openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out MyCertificate.crt -keyout MyKey.key
 
-    After entering the command, you will be prompted to add identifying information for your website or organization to the certificate. Since a self-signed cert won't be used publicly, this information isn't necessary. However, if this certificate were being created to be passed on to a certificate authority for signing, the information would need to be as accurate as possible.
+    You will be prompted to add identifying information about your website or organization to the certificate. Since a self-signed certificate won't be used publicly, this information isn't necessary. If this certificate will be passed on to a certificate authority for signing, the information needs to be as accurate as possible.
 
     Here is an example of the output:
 
@@ -56,15 +59,15 @@ Email Address []:admin@example.com
 
     Here's a breakdown of the OpenSSL options used in that command. There are many others available, but these will create you something basic which will be good for a year. For more info, see `man openssl` in your terminal.
 
-    * `-newkey rsa:4096` tells OpenSSL to create a 4096 bit RSA key for use with the certificate. RSA 2048 is the default on more recent versions of OpenSSL but to be sure of the key size, you should specify it during creation.
+    * `-newkey rsa:4096`: Create a 4096 bit RSA key for use with the certificate. `RSA 2048` is the default on more recent versions of OpenSSL but to be sure of the key size, you should specify it during creation.
 
-    * `-x509` tells OpenSSL to create a self-signed certificate.
+    * `-x509`: Create a self-signed certificate.
 
-    * `-sha256` generate the certificate request using 265-bit SHA (Secure Hash Algorithm).
+    * `-sha256`: Generate the certificate request using 265-bit SHA (Secure Hash Algorithm).
 
-    * `-days` determines the length of time in days that the certificate is being issued for. For a self-signed certificate, this value can be increased as necessary.
+    * `-days`: Determines the length of time in days that the certificate is being issued for. For a self-signed certificate, this value can be increased as necessary.
 
-    * `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the passphrase in the console each time the application using it is restarted.
+    * `-nodes`: Create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the passphrase in the console each time the application using it is restarted.
 
 3.  Restrict the key's permissions so that only `root` can access it:
 
