@@ -62,8 +62,9 @@ If you decide to use an outside mail service, you will still need to set up [DNS
 
 Every mail server that lets you send and receive email with a local mail client has three separate software components:
 
-* **MTA**: The *Mail Transfer Agent* relays mail between your Linode and the wider Internet, whether it's delivering an outside email to one of your users, or sending an email from one of your users. Accepted incoming mail gets added to the MTA's queue on the server. 
-* **MDA**: The *Mail Delivery Agent* takes mail from the MTA's queue and saves it to individual mailboxes on your Linode. 
+* **MTA**: The *Mail Transfer Agent* relays mail between your Linode and the wider Internet, whether it's delivering an outside email to one of your users, or sending an email from one of your users. Accepted incoming mail gets added to the MTA's queue on the server.
+
+* **MDA**: The *Mail Delivery Agent* takes mail from the MTA's queue and saves it to individual mailboxes on your Linode.
 
 * **IMAP/POP3 Server**: Manages users and their mailboxes as they check their email over IMAP/POP3 connections.
 
@@ -136,7 +137,7 @@ You can also use a free self-signed certificate if you are comfortable with the 
 
 ### Software Installation
 
-Install and configure the MTA, MDA, and IMAP/POP3 server. To help manage domains, email addresses, user credentials, aliases, etc., install a database server like MySQL or PostgreSQL. 
+Install and configure the MTA, MDA, and IMAP/POP3 server. To help manage domains, email addresses, user credentials, aliases, etc., install a database server like MySQL or PostgreSQL.
 
 For detailed configuration instructions, see our [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide.
 
