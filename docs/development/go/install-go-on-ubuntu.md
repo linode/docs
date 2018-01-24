@@ -5,8 +5,8 @@ author:
 description: 'This guide will show you how to install the Go programming language on Ubuntu'
 keywords: ["Go", "Go Programming", "Golang", "Ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-30-01
-modified: 2018-31-01
+published: 2018-01-30
+modified: 2018-01-31
 modified_by:
   name: Linode
 title: 'How to Install Go on Ubuntu'
