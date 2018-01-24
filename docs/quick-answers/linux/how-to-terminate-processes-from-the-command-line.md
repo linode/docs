@@ -17,7 +17,7 @@ While there are graphical utilities such as Activity Monitor on Mac OS or Task M
 
 ### Find Process ID
 
-A common pattern for ending a process is though the process ID (PID). There are a variety of ways to find out the PID.
+A common pattern for ending a process is though the process ID (PID). There are a variety of ways to find the PID.
 
 If the process name is known, `pgrep` will search currently running processes for the name.
 

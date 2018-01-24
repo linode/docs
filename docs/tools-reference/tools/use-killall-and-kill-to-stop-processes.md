@@ -15,7 +15,7 @@ title: Use Killall and Kill Commands to Stop Processes on Linux
 
 `killall` is a tool for ending running processes on your system based on name. In contrast, `kill` terminates processes based on process ID number or "PID." `kill` and `killall` can also send specific system signals to processes. Use `killall` and `kill` in conjunction with tools including `ps` to manage processes and end processes that have become stuck or unresponsive when necessary.
 
-![Use Killall and Kill Commands to Stop Processes on Linux](/docs/assets/use-killall-and-kill-commands-to-stop-processes-on-linux.png "Use Killall and Kill Commands to Stop Processes on Linx")
+![Use Killall and Kill Commands to Stop Processes on Linux](/docs/assets/use-killall-and-kill-commands-to-stop-processes-on-linux.png "Use Killall and Kill Commands to Stop Processes on Linux")
 
 ## Usage
 
@@ -50,15 +50,15 @@ This sends `SIGTERM` to the PID specified. You may specify multiple PIDs on the 
 
 ### System Signals
 
-The `kill` command does not terminal a process directly. Rather a signal is sent to the process where the process will have instructions to follow if it receives a given signal. The best way to have a reference of all available signals is through the man pages:
+The `kill` command does not terminate a process directly. Rather, a signal is sent to the process where the process will have instructions to follow if it receives a given signal. The best way to have a reference of all available signals is through the man pages:
 
     man 7 signal
 
 {{< output >}}
 Standard signals
-    Linux  supports  the standard signals listed below.  Several signal numbers are architecture-dependent, as indicated in the "Value" column.  (Where
+    Linux  supports the standard signals listed below. Several signal numbers are architecture-dependent, as indicated in the "Value" column. Where
     three values are given, the first one is usually valid for alpha and sparc, the middle one for x86, arm, and most other architectures, and the last
-    one for mips.  (Values for parisc are not shown; see the Linux kernel source for signal numbering on that architecture.)  A dash (-) denotes that a
+    one for mips. (Values for parisc are not shown; see the Linux kernel source for signal numbering on that architecture.)  A dash (-) denotes that a
     signal is absent on the corresponding architecture.
 
     First the signals described in the original POSIX.1-1990 standard.
@@ -127,7 +127,8 @@ The `-w` option to the `killall` command causes `killall` to wait until the proc
 
     killall -w irssi
 
-This command issues the `SIGTERM` system signal to the process with a name that matches `irssi`.`killall` will wait until the matched processes have ended. If no process matches the name specified, `killall` returns an error message, as below:
+This command issues the `SIGTERM` system signal to a background process with a name that matches `irssi`.`killall` will wait until the matched processes have ended. If no process matches the name specified, `killall` returns an error message, as below:
 
     $ killall -w irssi
     irssi: no process found
+
