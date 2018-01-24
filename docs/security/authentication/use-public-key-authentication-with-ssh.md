@@ -47,15 +47,15 @@ If you accidentally lock yourself out of your Linode this way, you can use [Lish
 
         ssh-keygen
 
-	**Optional:** to increase the security of your key, increase the size with the `-b` flag. The minimum value is 768 bytes and the default, if you do not use the flag, is 2048 bytes. We recommend a 4096 byte key:
+    **Optional:** to increase the security of your key, increase the size with the `-b` flag. The minimum value is 768 bytes and the default, if you do not use the flag, is 2048 bytes. We recommend a 4096 byte key:
 
-		ssh-keygen -b 4096
+        ssh-keygen -b 4096
 
 2.  Answer all questions when prompted. You can accept the defaults for everything except the passphrase. When you get to the passphrase question, enter a series of letters and numbers for the passphrase twice; once to enter the new passphrase and once to confirm.
 
-	**Important:** make a note of your passphrase, as you will need it later.
+    **Important:** make a note of your passphrase, as you will need it later.
 
-	You may accept the defaults for the other questions by pressing *Return* when prompted:
+    You may accept the defaults for the other questions by pressing *Return* when prompted:
 
         user@linode: ssh-keygen -b 4096
         Generating public/private rsa key pair.
@@ -81,7 +81,7 @@ Please note that the following steps are performed on your remote location/Linod
 
         mkdir .ssh
 
-	The following steps are performed on your local machine/PC:
+    The following steps are performed on your local machine/PC:
 
 3.  Copy the *public key* into the `~/.ssh/authorized_keys` file on the **remote machine**, using the following command. Substitute your own SSH user and host names:
 
