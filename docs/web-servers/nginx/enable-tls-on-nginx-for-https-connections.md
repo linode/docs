@@ -6,33 +6,36 @@ description: 'Install a TLS certificate into NGINX for HTTPS access.'
 keywords: ["ssl", "tls", "nginx", "https", "certificate"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/']
-modified: 2018-01-09
+modified: 2018-01-23
 modified_by:
   name: Linode
 published: 2018-01-09
 title: 'Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections'
 ---
 
-![HTTPS Configuration on NGINX](/docs/assets/nginx-ssl/Enable_SSL_nginx.jpg)
+![Enable TLS for HTTPS Connections](/docs/assets/nginx-ssl/Enable_SSL_nginx.jpg "Enable TLS for HTTPS Connections")
 
-A single NGINX installation can host multiple websites. Any number of them can use the same TLS certificate and key, or a cert/key pair exclusively their own.
+A single NGINX installation can host multiple websites. Any number of them can use the same TLS certificate and key, or a certificate/key pair exclusively their own.
 
-Transport Layer Security (TLS) is the successor to Secure Socket Layer (SSL), and provides stronger HTTPS access to web servers from browsers and other devices. This guide outlines several scenarios for how to add a TLS certificate to your site's NGINX configuration.
+## What is TLS?
+
+Transport Layer Security (TLS) is the successor to Secure Socket Layer (SSL), and provides stronger HTTPS access to web servers from browsers and other devices.
+
+This guide outlines several scenarios for how to add a TLS certificate to your site's NGINX configuration.
 
 ## Before You Begin
 
-- This guide is Part 3 of our *Getting Started with NGINX* series and you will need a working NGINX setup with your site accessible via HTTP. If do not already have that, then complete at least [Part 1: Basic Installation and Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) before going further.
+* This guide is Part 3 of our *Getting Started with NGINX* series and you will need a working NGINX setup with your site accessible via HTTP. If do not already have that, complete at least [Part 1: Basic Installation and Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) before going further.
 
-- You will need root access to the system, or a user account with `sudo` privileges.
+* You will need root access to the system, or a user account with `sudo` privileges.
 
-- You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. You can alternatively use a commercial certificate chain if that's what your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/docs/security/ssl/create-a-self-signed-tls-certificate) or a [certificate signing request](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate).
+* You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. You can alternatively use a commercial certificate chain if that's what your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/docs/security/ssl/create-a-self-signed-tls-certificate) or a [certificate signing request](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate).
 
-- If you compiled NGINX from source code, ensure that it was compiled with `--with-http_ssl_module`. Verify in the output of `nginx -V`.
+* If you compiled NGINX from source code, ensure that it was compiled with `--with-http_ssl_module`. Verify in the output of `nginx -V`.
 
+## TLS Credentials Storage Location
 
-## Credentials Storage Location
-
-There is no official or unanimously preferred place to store your site's TLS certificate and key. The certificate is sent to each device that connects to the server, so it's not a private file. The key, however, is.
+There is no official or unanimously preferred place to store your site's TLS certificate (`.crt`) and key (`.key`). The certificate is sent to each device that connects to the server, so it's not a private file. The key, however, is.
 
 Wherever you decide to store your certificate/key pair, you want them to remain untouched by system updates and secured against other system users. As an example, we'll store them in `/root/certs/` but **whatever location you decide, you should back up that folder**.
 
@@ -46,12 +49,11 @@ Wherever you decide to store your certificate/key pair, you want them to remain 
 
         chmod 400 /root/certs/example.com/example.com.key
 
-
 ## Configure Your http Block
 
-Directives you want NGINX to apply to all sites on your server should go into the `http` block of `nginx.conf`, including SSL/TLS directives. The directives below assume one website, or all sites on the server, using the same certificate and key.
+If there are directives that you want NGINX to apply to all sites on your server, add them to the `http` block of `nginx.conf`. Include SSL/TLS directives. The directives below assume one website, or all sites on the server, use the same certificate and key.
 
-If you have multiple sites with their own HTTPS credentials, and/or are using a setup with both HTTP and HTTPS sites, you'll want to move the `ssl_certificate` and `ssl_certificate_key` directives into the `server` block for the appropriate site (`.pem` format can also be used).
+If you have multiple sites with their own HTTPS credentials, or are using a setup with both HTTP and HTTPS sites, move the `ssl_certificate` and `ssl_certificate_key` directives into the `server` block for the appropriate site (`.pem` format can also be used).
 
 {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
 http {
@@ -61,17 +63,16 @@ http {
     ssl_protocols       TLSv1.1 TLSv1.2;
 {{< /file-excerpt >}}
 
-
 ## Configure a Single Site
 
 Scenario: You have a certificate issued for one domain, and a single website you'd like NGINX to serve over HTTPS.
 
-With only one site to work with, simply use the `http` block configuration [above](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-your-http-block). In this scenario, you do not need to add `ssl_*` directives to the site's configuration file. However, you do need to tell NGINX that the site should be listening on port 443 for HTTPS connections instead of port 80. See the [SSL module](https://nginx.org/en/docs/http/ngx_http_ssl_module.html) section of the NGINX docs for more information.
+With only one site to work with, simply use the `http` block configuration [above](#configure-your-http-block). In this scenario, you do not need to add `ssl_*` directives to the site's configuration file. However, you do need to tell NGINX that the site should be listening on port `443` for HTTPS connections instead of port `80`. See the [SSL module](https://nginx.org/en/docs/http/ngx_http_ssl_module.html) section of the NGINX docs for more information.
 
 1. As an example, below is a basic site configuration which works with the `http` block given above:
 
     {{< note >}}
-This `server` block makes your site available over IPv4 and IPv6 but *only* over HTTPS-you will have no HTTP access. You will also need to type `https://` into the browser to access your site. This is only a starting step, you likely wouldn't want to use this configuration without HSTS or redirecting HTTP requests to port 443. We'll get to those in part 4 of this series.
+This `server` block makes your site available over IPv4 and IPv6 but only over HTTPS. You will not have HTTP access. You will also need to type `https://` into the browser to access your site. This is only a starting step, you likely wouldn't want to use this configuration without HSTS or redirecting HTTP requests to port `443`. We'll get to those in [Part 4](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/) of this series.
 {{< /note >}}
 
     {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
