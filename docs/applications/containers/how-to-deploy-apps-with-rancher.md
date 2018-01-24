@@ -14,6 +14,8 @@ external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
 ---
 
+## What is Rancher?
+
 Rancher is a tool that streamlines container usage on a host. Rancher sits on top of Docker and Kubernetes, giving you the ability to stand up clusters of containers with the push of a button. The web front-end gives the you and your users access to an impressive catalog of ready-to-go containerized tools that can be deployed from within Rancher.
 
 This guide shows you how to install [Rancher](http://rancher.com/quick-start/), then deploy services with Docker and Kubernetes.
