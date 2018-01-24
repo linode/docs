@@ -19,14 +19,13 @@ external_resources:
   - '[PostgreSQL 9.6 Documentation](https://www.postgresql.org/docs/9.6/static/index.html)'
 ---
 
+![Install a Odoo 11 Stack on Ubuntu 16.04 using Linode](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode.png)
 
 ## What is Odoo?
 
-![Install a Odoo 11 Stack on Ubuntu 16.04 using Linode](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode.png)
-
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a suite of over 10,000 open source apps for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface, making it easy to automate and manage your company's processes.
 
-For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu](https://linode.com/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/) guide for details). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 11 cluster in which the Odoo server and PostgreSQL database are hosted on separate Linodes, with database replication for extra
+For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu](https://linode.com/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/) guide for details). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 11 cluster in which the Odoo server and PostgreSQL database are hosted on separate Linodes, with database replication for added performance and reliability.
 
 ## System Requirements
 
@@ -35,7 +34,7 @@ This guide will require the following *minimal* Linode specifications:
 * PostgreSQL databases (master and slave) - Linode **2GB**
 * Odoo 11 web application - Linode **1GB**
 
-Keep in mind that your implementation may need higher plans depending on the number of end-users you want to serve and the number of modules you plan to incorporate.
+Keep in mind that your implementation may need more nodes or higher-memory plans depending on the number of end-users you want to serve and the number of modules you plan to incorporate.
 
 {{< note >}}
 All nodes will run under Ubuntu 16.04 LTS, if you plan to use a different operating system (like CentOS) then be aware that you will need to adapt the arguments and commands as necessary.
@@ -344,7 +343,7 @@ Enable the `postgresql` service on both **masterdb** and **slavedb**:
 
 ## Odoo 11 Setup
 
-In this section you will configure your Odoo 11 web application to work with Nginx Reverse Proxy and PostgreSQL database backend. The procedure is similar to the one used in our guide: [Install Odoo 10 on Ubuntu 16.04](https://linode.com/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/) but some important differences are in place.
+In this section you will configure your Odoo 11 web application to work with the PostgreSQL database backend.
 
 ### Create Odoo User
 
@@ -388,19 +387,19 @@ This guide will use a separate file for logging Odoo activity:
         pkg-config libtiff5-dev libjpeg8-dev libjpeg-dev zlib1g-dev libfreetype6-dev \
         liblcms2-dev liblcms2-utils libwebp-dev tcl8.6-dev tk8.6-dev libyaml-dev fontconfig
 
-6.  Install Odoo 11 specific Python dependencies, please note the use of `pip3` instead of `pip`.
+6.  Install Odoo 11 specific Python dependencies:
 
         sudo -H pip3 install --upgrade pip
         sudo -H pip3 install -r /opt/odoo/doc/requirements.txt
         sudo -H pip3 install -r /opt/odoo/requirements.txt
 
-7. Install Less CSS via nodejs and npm, please notice that you'll use Node version 6.x instead of version 4.x from previous guide:
+7. Install Less CSS via nodejs and npm:
 
         sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
         && sudo apt-get install -y nodejs \
         && sudo npm install -g less less-plugin-clean-css
 
-8. Download to a suitable location `wkhtmltopdf` stable package. Unlike previous guides the stable package is now a *Linux Generic amd64 binary* and not an Ubuntu-specific Debian package. By the time of this writing the latest version is 0.12.4, please check in Github for a newer version and change the link accordingly:
+8. Download the `wkhtmltopdf` stable package. As of this writing the latest version is 0.12.4; replace the version number in the following command with the latest release on [Github](https://github.com/wkhtmltopdf/wkhtmltopdf/releases/):
 
         cd /tmp
         wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
@@ -414,17 +413,13 @@ This guide will use a separate file for logging Odoo activity:
         sudo mv wkhtmltox/bin/wk* /usr/bin/ \
         && sudo chmod a+x /usr/bin/wk*
 
-{{< note >}}
-While wkhtmltopdf version 0.12.2.4 is available in the official Ubuntu 16.04 repository, we don't advise installing it from there due to the large number of dependencies including: `xserver`, `gstreamer`, `libcups`, `wayland`, `qt5` and many more.
-{{< /note >}}
-
 ### Odoo Server Configuration
 
-1.  Copy the included configuration file to a more convenient location, changing its name to `odoo-server.conf`
+1.  Copy the included configuration file to `/etc` and change its name to `odoo-server.conf`
 
         sudo cp /opt/odoo/debian/odoo.conf /etc/odoo-server.conf
 
-2.  Next, modify the configuration file. The complete file should look similar to this, depending on your deployment needs:
+2.  Modify the configuration file. The complete file should look similar to the following, depending on your deployment needs:
 
     {{< file "/etc/odoo-server.conf" conf >}}
 [options]
@@ -432,20 +427,20 @@ admin_passwd = admin
 db_host = masterdb.yourdomain.com
 db_port = False
 db_user = odoo
-db_password = <ODOO_DB_STRONG_PWD>
+db_password = odoo_password
 addons_path = /opt/odoo/addons
 logfile = /var/log/odoo/odoo-server.log
 xmlrpc_port = 8070
 {{< /file >}}
 
 *  `admin_passwd ` - This is the password that allows administrative operations within Odoo GUI. Be sure to change `admin` to something more secure.
-*  `db_host` - This is the PostgreSQL **Master** server FQDN.
+*  `db_host` - This is the **masterdb** FQDN.
 *  `db_port` - Odoo uses PostgreSQL default port `5432`, change this only if you're using custom PostgreSQL settings.
-*  `db_user` - Name of the PostgreSQL database user. In this case we used the default name, but if you used a different name when creating your user, substitute that here.
+*  `db_user` - Name of the PostgreSQL database user.
 *  `db_password` - Use the PostgreSQL `odoo` user password you created previously.
 *  `addons_path` - This is the default addons path, you can add custom paths separating them with commas: `</path/to/custom/modules>`
 *  `logfile`. This is the path to your Odoo logfiles.
-*  `xmlrpc_port`. This is the port used to receive traffic from the Nginx reverse proxy. This argument must match any value used during Nginx configuration, specifically `proxy_pass`.
+*  `xmlrpc_port`. This is the port that Odoo will listen on.
 
 ### Create an Odoo Service
 
@@ -513,6 +508,10 @@ WantedBy=multi-user.target
 
     ![Odoo 11 welcome screen](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/odoo-11-welcome.png)
 
+    {{< note >}}
+The first time you create a database, Odoo may take several minutes to load all of its add-ons. Do not reload the page during this process.
+{{< /note >}}
+
 ### Enable the Odoo Service
 
 1.  Enable the `odoo-server` service to start automatically on reboot:
@@ -543,7 +542,7 @@ You therefore have two options to backup or transfer your production database:
 
             sudo -u postgres pg_basebackup -h <masterdb public ip> --xlog-method=stream -D /var/lib/postgresql/9.6/main/ -U replicauser -v -P
 
-### Updating Odoo Modules
+### Update Odoo Modules
 
 Once you have restored, transfered or synchronized your production database to the testing server you can update Odoo modules:
 
