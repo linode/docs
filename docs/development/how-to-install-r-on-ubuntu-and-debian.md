@@ -13,13 +13,13 @@ published: 2018-01-23
 title: 'How to install R on Ubuntu and Debian'
 ---
 
-[R is a programming language](https://www.r-project.org/about.html) used for statistical analysis in addition to data visualization. The language is highly extensible with the [Comprehensible R Archive Network(CRAN)](https://cran.r-project.org/) that hosts various R packages to produce publication quality figures, specialized computational tools, and more.
+[R is a programming language](https://www.r-project.org/about.html) used for statistical analysis in addition to data visualization. The language is highly extensible with the [Comprehensive R Archive Network(CRAN)](https://cran.r-project.org/) that hosts various R packages to produce publication quality figures, specialized computational tools, and more.
 
 Although R can be installed through the default Debian or Ubuntu repository, the method outlined in this guide will ensure having the most up-to-date stable release.
 
 ## Install R on Ubuntu 16.04 and Debian 9
 
-1.  Open `/etc/apt/source.list` and add the following line to the end of the file:
+1.  Open `/etc/apt/sources.list` and add the following line to the end of the file:
 
     Ubuntu:
 
@@ -131,7 +131,7 @@ Selection:
 
 ## RStudio IDE Desktop
 
-The R interpreter lacks features such as a debugger which may be needed for larger projects. RStudio is an IDE that comes with many tools for development right out of the box..
+The R interpreter lacks features such as a debugger which may be needed for larger projects. RStudio is an IDE that comes with many tools for development right out of the box.
 
 1.  Download RStudio as a Debian package.
 
