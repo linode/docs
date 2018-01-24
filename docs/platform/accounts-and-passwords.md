@@ -64,6 +64,7 @@ Here's how to set a user's access permissions:
 
     {{< note >}}
 Granting access to settings denoted with a dollar sign ($) will allow the user perform actions that incur billing costs, such as adding or resizing a Linode.
+
 {{< /note >}}
 
 6.  Select checkboxes in the other sections to allow the user to access certain features and sections of the Linode Manager.
