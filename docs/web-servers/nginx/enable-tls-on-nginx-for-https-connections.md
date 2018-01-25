@@ -29,13 +29,13 @@ This guide outlines several scenarios for how to add a TLS certificate to your s
 
 * You will need root access to the system, or a user account with `sudo` privileges.
 
-* You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. You can alternatively use a commercial certificate chain if that's what your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/docs/security/ssl/create-a-self-signed-tls-certificate) or a [certificate signing request](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate).
+* You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. Alternatively, use a commercial certificate chain if your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/docs/security/ssl/create-a-self-signed-tls-certificate) or a [certificate signing request](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate).
 
 * If you compiled NGINX from source code, ensure that it was compiled with `--with-http_ssl_module`. Verify in the output of `nginx -V`.
 
 ## TLS Credentials Storage Location
 
-There is no official or unanimously preferred place to store your site's TLS certificate (`.crt`) and key (`.key`). The certificate is sent to each device that connects to the server, so it's not a private file. The key, however, is.
+There is no official or unanimously preferred place to store your site's TLS certificate (`.crt`) and key (`.key`). The certificate is sent to each device that connects to the server, so it's not a private file. The key, however, is private.
 
 Wherever you decide to store your certificate/key pair, you want them to remain untouched by system updates and secured against other system users. As an example, we'll store them in `/root/certs/` but **whatever location you decide, you should back up that folder**.
 
@@ -49,7 +49,7 @@ Wherever you decide to store your certificate/key pair, you want them to remain 
 
         chmod 400 /root/certs/example.com/example.com.key
 
-## Configure Your http Block
+## Configure the http Block for HTTPS
 
 If there are directives that you want NGINX to apply to all sites on your server, add them to the `http` block of `nginx.conf`. Include SSL/TLS directives. The directives below assume one website, or all sites on the server, use the same certificate and key.
 
@@ -63,17 +63,13 @@ http {
     ssl_protocols       TLSv1.1 TLSv1.2;
 {{< /file-excerpt >}}
 
-## Configure a Single Site
+## Configure a Single HTTPS Site
 
 Scenario: You have a certificate issued for one domain, and a single website you'd like NGINX to serve over HTTPS.
 
-With only one site to work with, simply use the `http` block configuration [above](#configure-your-http-block). In this scenario, you do not need to add `ssl_*` directives to the site's configuration file. However, you do need to tell NGINX that the site should be listening on port `443` for HTTPS connections instead of port `80`. See the [SSL module](https://nginx.org/en/docs/http/ngx_http_ssl_module.html) section of the NGINX docs for more information.
+With only one site to work with, simply use the `http` block configuration [in the previous section](#configure-your-http-block). In this scenario, you do not need to add `ssl_*` directives to the site's configuration file. However, you do need to tell NGINX that the site should be listening on port `443` for HTTPS connections instead of port `80`. See the [SSL module](https://nginx.org/en/docs/http/ngx_http_ssl_module.html) section of the NGINX docs for more information.
 
 1. As an example, below is a basic site configuration which works with the `http` block given above:
-
-    {{< note >}}
-This `server` block makes your site available over IPv4 and IPv6 but only over HTTPS. You will not have HTTP access. You will also need to type `https://` into the browser to access your site. This is only a starting step, you likely wouldn't want to use this configuration without HSTS or redirecting HTTP requests to port `443`. We'll get to those in [Part 4](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/) of this series.
-{{< /note >}}
 
     {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
@@ -83,20 +79,23 @@ server {
     root                /var/www/example.com;
 {{< /file-excerpt >}}
 
+    This is only a starting step. This `server` block makes your site available over IPv4 and IPv6 but only over HTTPS. You will not have HTTP access.
+
+    You will also need to include `https://` to access your site, and you likely wouldn't want to use this configuration without HSTS or without redirecting HTTP requests to port `443`. We'll get to those in [Part 4](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/) of this series.
+
 2.  Reload your configuration after making changes to NGINX's config files:
 
         nginx -s reload
 
-3.  Go to your site's address or Linode's IP in a web browser-making sure you use `https://` in the URL. Your site should load over HTTPS. If you're using a self-signed certificate, the browser will warn of an insecure connection but you'll be able to bypass that and still connect.
+3.  From a web browser, go to your site's domain or IP address `https://example.com`. Your site should load over HTTPS. If you're using a self-signed certificate, the browser will warn that the connection is insecure. Bypass the warning and connect anyway.
 
+## Configure Multiple Sites with a Single SSL Certificate
 
-## Configure Multiple Sites with a Single Certificate
+**Scenario:** You have a certificate that is valid for multiple domains, such as a wildcard certificate or a certificate using *SubjectAltName*.
 
-Scenario: You have a certificate that is valid for multiple domains, such as a wildcard certificate or a certificate using *SubjectAltName*.
+In this scenario, the directives in the `http` block given in the [Configure Your HTTP Block](#configure-your-http-block) section stay the same. You'll need two separate configuration files in `/etc/nginx/conf.d/`, one for each site the credentials will protect. In them it is necessary to specify the IP address for each site with the `listen` directive. You do not want to use `default_server` if you have two different websites with different IPs.
 
-In this scenario, the directives in the `http` block given [above](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-your-http-block) stay the same. You'll need two separate configuration files in `/etc/nginx/conf.d/`, one for each site the credentials will protect. In them it is necessary to specify the IP address for each site with the `listen` directive. You do not want to use `default_server` if you have two different websites with different IPs.
-
-1.  The sites `example1.com`, `example2.com` are served using the same certificate and key we placed into `/root/certs/example.com/` [earlier](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#credentials-storage-location).
+1.  The sites `example1.com`, `example2.com` are served using the same certificate and key we placed into `/root/certs/example.com/` [earlier](#credentials-storage-location).
 
     {{< file-excerpt "/etc/nginx/conf.d/example1.com.conf" nginx >}}
 server {
@@ -122,25 +121,23 @@ server {
 
 3.  Both sites should now be accessible by HTTPS. If you use your browser to inspect the certificate properties, you'll see the one cert is serving both sites.
 
+## Configure Multiple Sites with Different SSL Certificates
 
-## Configure Multiple Sites with Different Certificates
-
-Scenario: You have two (or more) completely independent websites you want to serve with two (or more) different TLS certificate/key pairs.
+**Scenario:** You have two (or more) completely independent websites you want to serve with a matching number of different TLS certificate/key pairs.
 
 1.  Make sure your certificate storage is organized well. Below is an example:
 
         /root/certs
-        ├── example1.com
+        ├── example1.com/
         │   ├── example1.com.crt
         │   └── example1.com.key
-        └── example2.com
+        └── example2.com/
             ├── example2.com.crt
             └── example2.com.key
 
-2.  Configure the `http` block of your `nginx.conf` as shown [above](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-your-http-block), but **without the certificate and key locations**. Those will instead go in the individual site's `server` block since the locations are different for each site. The result should be:
+2.  Configure the `http` block of your `nginx.conf` as shown [above](#configure-your-http-block), but **without the certificate and key locations**. Those will go in the individual site's `server` block since the locations are different for each site. The result should be:
 
     {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
-
 http {
     ssl_ciphers         EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH;
     ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
@@ -181,7 +178,8 @@ server {
 
 5.  Both sites should be accessible over HTTPS, but using your browser to inspect the certificates will show that site `example1.com` is using `example1.com.crt`, and `example2.com` is using `example2.com.crt`.
 
-
 ## Part 4: TLS Best Practices For NGINX
 
-Now that you've got NGINX serving your site over HTTPS, do not simply use the above configurations as-is. It only gets HTTPS working on your server and is inherently insecure without further configuration. To harden your server's handling of TLS connections, move on to part 4 of this series: [TLS Deployment Best Practices for NGINX](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/).
+Now that you've got NGINX serving your site over HTTPS, do not simply use the above configurations as-is. It only gets HTTPS working on your server and is inherently insecure without further configuration.
+
+To harden your server's handling of TLS connections, continue to Part 4 of this series: [TLS Deployment Best Practices for NGINX](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/).
