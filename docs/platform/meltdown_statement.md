@@ -64,11 +64,11 @@ Yes, but while rebooting with the new kernel will help prepare your Linode for t
 
 ### Linode Infrastructure Status
 
-| **Exploit**  | **Fix**  | **Information**  |
-|---|---|---|
-| **Meltdown**  | In progress   | Patching in progress.   |
-| **Spectre-V1**  |  No | No patch is available yet.   |
-| **Spectre-V2**   |  No | No patch is available yet.   |
+| **Exploit**    | **Fix**  | **Information**            |
+|----------------|----------|----------------------------|
+| **Meltdown**   | Deployed | Patching is complete.      |
+| **Spectre-V1** |    No    | No patch is available yet. |
+| **Spectre-V2** |    No    | No patch is available yet. |
 
 ## What does this mean for Linode Customers?
 
