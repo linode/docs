@@ -13,8 +13,6 @@ published: 2018-01-09
 title: 'Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections'
 ---
 
-![Enable TLS for HTTPS Connections](/docs/assets/nginx-ssl/Enable_SSL_nginx.jpg "Enable TLS for HTTPS Connections")
-
 A single NGINX installation can host multiple websites. Any number of them can use the same TLS certificate and key, or a certificate/key pair exclusively their own.
 
 ## What is TLS?
