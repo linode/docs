@@ -48,7 +48,7 @@ This guide will use the official NGINX instructions for installing pre-built bin
 
 2.  Open `/etc/apt/sources.list` in a text editor and add the following two lines. Replace **codename** with the codename of your Ubuntu version (for example **xenial** for Ubuntu 16.04).
 
-      {{< file-excerpt "/etc/apt/sources.list" conf >}}
+    {{< file-excerpt "/etc/apt/sources.list" conf >}}
 deb http://nginx.org/packages/mainline/ubuntu/ codename nginx
 deb-src http://nginx.org/packages/mainline/ubuntu/ codename nginx
 {{< /file-excerpt >}}
