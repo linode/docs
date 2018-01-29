@@ -3,10 +3,11 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Restricting remote users to their home directories, only allowing access to SFTP for transferring files.'
+og_description: 'SFTP Jails restricits remote users to their home directories.'
 keywords: ["sftp", "sftp jail", "openssh", "ssh jail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/sftp-jails/']
-modified: 2014-04-16
+modified: 2018-01-29
 modified_by:
   name: Linode
 published: 2010-01-06
@@ -16,7 +17,7 @@ external_resources:
 - '[An Introduction to Users and Groups](/docs/tools-reference/linux-users-and-groups)'
 ---
 
-As the system administrator for your Linode, you may want to give your users the ability to securely upload files to your server. The most common way to do this is to allow file transfers via SFTP, which uses SSH to provide encryption. This means you need to give your users SSH logins. But, by default, SSH users are able to view your Linode's entire filesystem, which may not be desirable.
+As the system administrator for your Linode, you may want to give your users the ability to securely upload files to your server. The most common way to do this is to allow file transfers via Secure File Transfer Protocol (SFTP), which uses SSH to provide encryption. This requires that you give your users SSH logins. However, by default SSH users are able to view your Linode's entire filesystem, which may not be desirable.
 
 ![Limiting Access with SFTP Jails on Debian and Ubuntu](/docs/assets/limiting-access-with-sftp-jails-on-debian-and-ubuntu.png)
 
@@ -26,21 +27,19 @@ These instructions will work for Ubuntu 9.04, Debian 5, and later. Unfortunately
 
 ## Configure OpenSSH
 
-First, you need to configure OpenSSH.
-
 1.  Edit your `/etc/ssh/sshd_config` file with your favorite text editor:
 
         vim /etc/ssh/sshd_config
 
 2.  Add or modify the `Subsystem sftp` line to look like the following:
 
-    {{< file-excerpt "/etc/ssh/sshd\_config" >}}
+    {{< file-excerpt "/etc/ssh/sshd_config" >}}
 Subsystem sftp internal-sftp
 {{< /file-excerpt >}}
 
 3.  Add this block of settings to the end of the file:
 
-    {{< file-excerpt "/etc/ssh/sshd\_config" >}}
+    {{< file-excerpt "/etc/ssh/sshd_config" >}}
 Match Group filetransfer
     ChrootDirectory %h
     X11Forwarding no
@@ -48,17 +47,17 @@ Match Group filetransfer
     ForceCommand internal-sftp
 {{< /file-excerpt >}}
 
-   Save the changes to your file.
+    Save the changes to your file.
 
 4.  Restart OpenSSH:
 
         service ssh restart
 
-OpenSSH has been successfully modified.
+    OpenSSH has been successfully modified.
 
 ## Modify User Accounts
 
-In this section, we'll set up the correct new groups, ownership, and permissions for your user accounts.
+This section will set up the correct groups, ownership, and permissions for your user accounts.
 
 1.  Create a system group for users whom you want to restrict to SFTP access:
 
@@ -78,4 +77,29 @@ In this section, we'll set up the correct new groups, ownership, and permissions
         mkdir docs public_html
         chown username:filetransfer *
 
-Your users should now be able to log into their accounts via SFTP and transfer files to and from their assigned subdirectories, but they shouldn't be able to see the rest of your Linode's filesystem.
+    Your users should now be able to log into their accounts via SFTP and transfer files to and from their assigned subdirectories, but they shouldn't be able to see the rest of your Linode's filesystem.
+
+## Use SFTP
+
+1. Use `sftp` from the terminal:
+
+        sftp username@<Your_Linodes_IP>
+
+    You can use the `help` command to see what commands you have access too within the SFTP shell. You have the ability to `pwd`, `cd` and `ls`, for instance. There are also commands like `lpwd`, that will print the **local** working directory. In the local home directory type `touch test.txt`
+
+2. Transfer local files to the remote system:
+
+        cd docs
+        put test.txt
+
+3. Transfer files to the local system from the remote system:
+
+        get test.txt
+
+4. You can test the file permissions by navigating to a different directory within the SFTP shell, and trying to transfer a file.
+
+        sftp> put test.txt /tmp/
+        Uploading test.txt to /tmp/
+        remote open("/tmp/"): Failure
+
+5. Exit the session with the `exit` command.
