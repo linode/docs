@@ -6,16 +6,20 @@ description: 'RStudio Server is a the web based version of RStudio for a desktop
 og_description: 'RStudio Server is a the web based version of RStudio for a desktop environment. Gain access to your R development environment from anywhere in the world.'
 keywords: ['R', 'statistic', 'R Foundation', 'data visualization']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-01-23
+modified: 2018-01-29
 modified_by:
   name: Linode
-published: 2018-01-23
+published: 2018-01-29
 title: 'How to Deploy RStudio Server Using an NGINX Reverse Proxy'
 ---
 
+## What is RStudio Server?
+
+[RStudio](https://www.rstudio.com) is an integrated development environment (IDE) for [R](https://www.r-project.org/), an open source statistical computing language. It includes debugging and plotting tools that make it easy to write, debug, and run R scripts. The IDE is available in both desktop and server configurations. By hosting the server configuration (RStudio Server) on a Linode, you can access the IDE from any computer with internet access. Since data analysis often uses large datasets and can be computationally expensive, keeping your data and running R scripts from a remote server can be more efficient than working from your personal computer. In addition, a professional edition is available that allows project sharing and simultaneous code editing for multiple users.
+
 ## Before You Begin
 
-This guide assumes an R installation version of R 3.0.1+ and will be installing RStudio Server 1.1. See our guide on [installing R on Ubuntu and Debian](/docs/development/how-to-install-r-on-ubuntu-and-debian) for steps on installing the latest version of R.
+This guide assumes an R installation version of R 3.0.1+ and will show how to install RStudio Server 1.1. See our guide on [installing R on Ubuntu and Debian](/docs/development/r/how-to-install-r-on-ubuntu-and-debian) for steps on installing the latest version of R.
 
 The steps in this guide are for Ubuntu 16.04 and should be adapted to your specfic distribution installation.
 
@@ -25,7 +29,7 @@ The steps in this guide are for Ubuntu 16.04 and should be adapted to your specf
 
         wget https://download2.rstudio.org/rstudio-server-1.1.414-amd64.deb
 
-2.  Install and use the gDebi package installer for the downloaded Debian package file.
+2.  Install and use the gDebi package installer for the downloaded Debian package file:
 
         sudo apt install gdebi
         sudo gdebi rstudio-server-1.1.414-amd64.deb
@@ -46,37 +50,41 @@ Jan 23 21:18:44 localhost systemd[1]: Starting RStudio Server...
 Jan 23 21:18:44 localhost systemd[1]: Started RStudio Server.
 {{< /output >}}
 
-3.  On a browser, navigate to your Linode's public ip address on port 8787, `public-ip:8787`. The users and passwords are the same from the login credits of the Linux users.
+3.  In a browser, navigate to your Linode's public IP address on port 8787 (i.e. `public-ip:8787`). Use your Unix user's username and password to log in when prompted:
 
     ![RStudio Server Login](/docs/assets/R/rstudio-server-login.png)
 
-4.  Instead of binding the RStudio server to the public IP, set RStudio Server to listen on localhost in the `rserver.conf` file.
+4.  Because you will be accessing RStudio through a reverse proxy, set RStudio Server to listen on localhost instead of a public IP. Open the the `rserver.conf` file and add the following content:
 
     {{< file-excerpt "/etc/rstudio/rserver.conf" >}}
 # Server Configuration File
 www-address=127.0.0.1
 {{< /file-excerpt >}}
 
-5.  Configuration for each individual session can also be set. For example, the default session timeout is two hours. Change this to 30 minutes to conserve server resources.
+5.  You can also set the configuration for each individual session. For example, the default session timeout is two hours. Change this to 30 minutes to conserve server resources:
 
     {{< file-excerpt "/etc/rstudio/rsession.conf" >}}
 # R Session Configuration File
 session-timeout-minutes=30
 {{< /file-excerpt >}}
 
-6.  Changes to the configuration files can be checked:
+6.  Check your configuration:
 
         sudo rstudio-server verify-installation
 
-    If there are no issues, restart RStudio server to apply the changes.
+7.  If there are no issues, restart RStudio server to apply the changes:
 
         sudo rstudio-server restart
 
-## Set up the Reverse Proxy
+## Set Up the Reverse Proxy
 
-Running Rstudio server under a reverse proxy offers benefits such as being able to pick the URL endpoints and load balancing.
+Running Rstudio server behind a reverse proxy offers benefits such as being able to pick the URL endpoints and load balancing.
 
-1.  Under the http block of `nginx.conf`, add the following configuration:
+1.  Install NGINX:
+
+        sudo apt install nginx
+
+2.  Open `nginx.conf` in a text edirot and add the following configuration:
 
     {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
 http {
@@ -90,7 +98,7 @@ http {
 }
 {{< /file-excerpt >}}
 
-2.  Create an NGINX configuration in `/etc/nginx/conf.d/` called `rstudio.conf` with the following configuration. Replace `example.com` with the public IP address or FDQN of your Linode.
+3.  Create an NGINX configuration in `/etc/nginx/conf.d/` called `rstudio.conf` with the following configuration. Replace `example.com` with the public IP address or FDQN of your Linode:
 
     {{< file-excerpt "/etc/nginx/conf.d/rstudio.conf" nginx >}}
 server {
@@ -110,14 +118,18 @@ server {
 }
 {{< /file-excerpt >}}
 
-3.  Check the NGINX configuration by:
+4.  Check the NGINX configuration:
 
         sudo nginx -t
 
-4.  If there are no errors, restart NGINX to apply the changes.
+5.  If there are no errors, restart NGINX to apply the changes:
 
         sudo systemctl restart nginx
 
-5.  On a browser, navigate to the public IP or FDQN of your Linode. After logging in, the RStudio IDE should be available from your browser.
+6.  In a browser, navigate to the public IP or FDQN of your Linode. After logging in, the RStudio IDE should be available from your browser:
 
     ![Rstudio Screen](/docs/assets/R/rstudio-server-page.png)
+
+{{< note >}}
+If Rstudio does not load in the browser, you may need to clear your browser cache.
+{{< /note >}}

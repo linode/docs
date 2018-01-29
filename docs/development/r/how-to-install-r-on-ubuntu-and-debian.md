@@ -2,20 +2,23 @@
 author:
   name: Sam Foo
   email: docs@linode.com
-description: 'R is a programming language used heavily for statistical analysis and data visualization. Learn how to install this on your Linode.'
-og_description: 'R is a programming language used heavily for statistical analysis and data visualization. Learn how to install this on your Linode.'
-keywords: ['R', 'statistic', 'R Foundation', 'data visualization']
+description: 'R is a programming language commonly used for statistical analysis and data visualization. Learn how to install the base R package on your Linode.'
+og_description: 'R is a programming language commonly used for statistical analysis and data visualization. Learn how to install the base R package on your Linode.'
+keywords: ['R', 'statistics', 'R Foundation', 'data visualization']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-01-23
+modified: 2018-01-29
 modified_by:
   name: Linode
-published: 2018-01-23
+published: 2018-01-29
 title: 'How to install R on Ubuntu and Debian'
 ---
 
-[R is a programming language](https://www.r-project.org/about.html) used for statistical analysis in addition to data visualization. The language is highly extensible with the [Comprehensive R Archive Network(CRAN)](https://cran.r-project.org/) that hosts various R packages to produce publication quality figures, specialized computational tools, and more.
 
-Although R can be installed through the default Debian or Ubuntu repository, the method outlined in this guide will ensure having the most up-to-date stable release.
+## What is R?
+
+[R is a programming language](https://www.r-project.org/about.html) used for statistical analysis in addition to data visualization. The language is highly extensible through the [Comprehensive R Archive Network(CRAN)](https://cran.r-project.org/), which hosts more than 10,000 R packages for producing publication quality figures, specialized computational tools, and more.
+
+Although R can be installed through the default Debian or Ubuntu repository, the method outlined in this guide will ensure that you install the most up-to-date stable release.
 
 ## Install R on Ubuntu 16.04 and Debian 9
 
@@ -40,11 +43,11 @@ Although R can be installed through the default Debian or Ubuntu repository, the
         sudo apt install dirmngr
         sudo apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
 
-3.  Update the repository.
+3.  Update the repository:
 
         sudo apt update
 
-4.  Install the R binaries.
+4.  Install the R binaries:
 
         sudo apt install r-base
 
@@ -54,7 +57,7 @@ Although R can be installed through the default Debian or Ubuntu repository, the
 
         R
 
-2.  The interpreter will open with some information about the version. Enter `install.packages("ggplot2")`
+2.  The interpreter will open with some information about the version. Enter `install.packages("ggplot2")`:
 
     {{< output >}}
 R version 3.4.3 (2017-11-30) -- "Kite-Eating Tree"
@@ -78,7 +81,7 @@ Type 'q()' to quit R.
 > install.packages("ggplot2")
 {{< /output >}}
 
-3.  A list of available mirrors should appear. Pick the closest location to maximize transfer speeds.
+3.  A list of available mirrors should appear. Pick the closest location to maximize transfer speeds:
 
     {{< output >}}
 --- Please select a CRAN mirror for use in this session ---
@@ -124,20 +127,22 @@ HTTPS CRAN mirror
 Selection:
 {{< /output >}}
 
-4.  When quitting the interpreter, there will be a prompt to save the workspace image. If yes, this will save all the user defined objects for the next session.
+4.  When quitting the interpreter, you will be prompted to save the workspace image. If you choose yes, this will save all the user defined objects for the next session:
 
-        > q()
-        Save workspace image? [y/n/c]:
+    {{< output >}}
+> q()
+Save workspace image? [y/n/c]:
+{{< /output >}}
 
 ## RStudio IDE Desktop
 
 The R interpreter lacks features such as a debugger which may be needed for larger projects. RStudio is an IDE that comes with many tools for development right out of the box.
 
-1.  Download RStudio as a Debian package.
+1.  Download RStudio as a Debian package:
 
         wget https://download1.rstudio.org/rstudio-xenial-1.1.414-amd64.deb
 
-2.  Install via:
+2.  Install the package:
 
         sudo dpkg -i rstudio-xenial-1.1.414-amd64.deb
 
@@ -146,5 +151,3 @@ If there are missing dependencies, those can be installed with the following com
 
     sudo apt install -f
 {{< /note >}}
-
-
