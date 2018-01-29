@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2012-10-11
 title: 'Use Cacti to Monitor Resource Utilization on Ubuntu 12.04'
-external_links:
+external_resources:
  - '[Cacti Website](http://www.cacti.net/index.php)'
  - '[Cacti Users Plugin Community](http://cactiusers.org/index.php)'
  - '[Linux Security Basics](/docs/security/basics)'

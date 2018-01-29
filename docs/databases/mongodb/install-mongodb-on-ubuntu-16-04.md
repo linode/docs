@@ -135,7 +135,7 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
     Keep these credentials in a safe place for future reference. The output will display all the information written to the database except the password:
 
-        {{< output >}}
+    {{< output >}}
 Successfully added user: {
     "user" : "mongo-admin",
     "roles" : [

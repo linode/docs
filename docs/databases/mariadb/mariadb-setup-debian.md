@@ -44,7 +44,7 @@ In this section, you will install MariaDB and set the password for the MariaDB r
 
 3.  Download and execute the script:
 
-		curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
+        curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
 
 4.  Update your sources list:
 
@@ -224,11 +224,11 @@ MySQL Tuner is a useful tool that connects to a running instance of MariaDB and 
 
 1.  Install MySQL Tuner by issuing the following command:
 
-      apt install mysqltuner
+        apt install mysqltuner
 
 2.  Run MySQL tuner with the following command:
 
-      mysqltuner
+        mysqltuner
 
 ## Reset MariaDB's Root Password
 

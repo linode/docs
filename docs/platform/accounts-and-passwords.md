@@ -58,12 +58,13 @@ Here's how to set a user's access permissions:
 3.  Enter your password and click **Authenticate**. The *User Manager* webpage appears.
 4.  Locate the user in the list and select the **Edit Permissions** link. The webpage shown below appears.
 
-[![Configure permissions for a user in the Linode Manager.](/docs/assets/922-user1-small.png)](/docs/assets/921-user1.png)
+    [![Configure permissions for a user in the Linode Manager.](/docs/assets/922-user1-small.png)](/docs/assets/921-user1.png)
 
 5.  Select checkboxes in the **Global Grants** section to allow the user to add Linodes, Domains, and NodeBalancers to the account, create StackScripts, access all billing information, and cancel the entire account.
 
- {{< note >}}
-Granting access to settings denoted with a dollar sign (\$) will allow the user perform actions that incur billing costs, such as adding or resizing a Linode.
+    {{< note >}}
+Granting access to settings denoted with a dollar sign ($) will allow the user perform actions that incur billing costs, such as adding or resizing a Linode.
+
 {{< /note >}}
 
 6.  Select checkboxes in the other sections to allow the user to access certain features and sections of the Linode Manager.

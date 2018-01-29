@@ -3,7 +3,7 @@ author:
   name: Angel
   email: docs@linode.com
 description: 'This Quick Answer guide shows you how to install SELinux on Ubuntu after you uninstall AppArmor'
-keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
+keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system", "lassie"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-06-30
 modified_by:

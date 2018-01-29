@@ -3,7 +3,7 @@
 	<strong>Contribute on GitHub</strong>
 	<p>
 		{{ $path := .Params.path | default .Path }}
-		<a href="https://github.com/linode/docs">View Project</a> |
+        <a href="https://github.com/linode/docs/issues/new?title={{ .Params.title }}%20Proposed%20Changes&amp;body=Link%3A&nbsp;https%3A%2F%2Flinode.com{{ .URL }}%0A%23%23%20Issue%0A%0A%23%23%20Suggested%20Fix%0A&amp;labels=inaccurate guide">Report an Issue</a> |
 		<a href="https://github.com/linode/docs/blob/master/docs/{{ $path }}">View File</a> |
 		<a href="https://github.com/linode/docs/edit/master/docs/{{ $path }}">Edit File</a>
 	</p>

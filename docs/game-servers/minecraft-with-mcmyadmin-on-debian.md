@@ -34,7 +34,7 @@ Now see [Securing Your Server](/docs/security/securing-your-server/) again and c
 
 **IPv4**
 
-    {{< file-excerpt "iptables" >}}
+{{< file-excerpt "iptables" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -74,7 +74,7 @@ By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default M
 
 If you choose *not* to use IPv6 on your Minecraft server, then it needs only basic IPv6 firewall rules.
 
-    {{< file-excerpt "iptables" >}}
+{{< file-excerpt "iptables" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic

@@ -335,7 +335,7 @@ COMMIT
 {{< /file >}}
 
 
-**Optional:** If you plan to use [Linode Longview](/docs/platform/longview/longview) or [Linode's NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers), add the respective rule after the section for allowing HTTP and HTTPS connections:
+**Optional:** If you plan to use [Linode Longview](/docs/platform/longview/longview/) or [Linode's NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), add the respective rule after the section for allowing HTTP and HTTPS connections:
 
     # Allow incoming Longview connections from longview.linode.com
     -A INPUT -s 96.126.119.66 -m state --state NEW -j ACCEPT
@@ -621,7 +621,7 @@ To verify the rules are applied and available after the system reboot use the co
 
 ## Network Lock-out
 
-When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](https://www.linode.com/docs/networking/using-the-linode-shell-lish) in the Linode Manager. The following steps will guide you through using the GUI interface of your Linode to gain access to your server:
+When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](https://www.linode.com/docs/networking/using-the-linode-shell-lish) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
 
 1.  Connect to your Linode Manager.
 2.  Click on the Remote Access tab.

@@ -13,6 +13,8 @@ published: 2015-11-12
 title: Use Puppet Modules to Create a LAMP Stack
 ---
 
+![Use Puppet Modules to Create a LAMP Stack](/docs/assets/puppet-modules/Use_Puppet_Modules_to_Create_a_LAMP_Stack_smg.jpg)
+
 Within Puppet, modules are the building blocks of your servers' configurations. Modules install and configure packages, create directories, and generate any other server changes that the user includes in the module. A Puppet module aims to perform all parts of a certain task, such as downloading the Apache package, configuring all files, changing the MPM data, and setting up virtual hosts. Modules are, in turn, broken down into classes that are `.pp` files meant to simplify the module into various tasks and improve the module's readability for any future users.
 
 In this guide, Apache and PHP modules will be created from scratch, and a MySQL module will be adapted from the Puppet Lab's MySQL module found on the [Puppet Forge](https://forge.puppetlabs.com/). These steps will create a full LAMP stack on your server and provide an overview of the various ways modules can be utilized.

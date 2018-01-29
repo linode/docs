@@ -3,7 +3,7 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: "Use the Linode Manager's GRUB 2 boot setting to run your distribution's native Linux kernel"
-keywords: ["kvm", "custom linux", " kernel", "custom linode", "grub", "grub 2"]
+keywords: ["kvm", "custom linux", " kernel", "custom linode", "grub", "grub 2", "lassie"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 modified: 2017-03-03
 modified_by:

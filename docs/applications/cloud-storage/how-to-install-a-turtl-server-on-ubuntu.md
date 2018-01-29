@@ -132,7 +132,7 @@ QuickLisp is to Lisp what `pip` is to Python. Turtl loads its dependencies for t
 
 The successful execution of the above steps will open the CCL environment with the following output:
 
-    {{< output >}}
+{{< output >}}
 ==== quicklisp quickstart 2015-01-28 loaded ====
 
 To continue with installation, evaluate: (quicklisp-quickstart:install)

@@ -1,5 +1,73 @@
 (function($) {
 
+    $("pre").each(function () {
+      // Separate selector for file excerts
+      if (!$(this).closest("td").length) {
+        $(this).before('<div class="btn-copy" />');
+      };
+    });
+
+    // Select odd to omit line numbers in pre tags
+    $("tr td.lntd:odd pre").each(function () {
+        $(this).before('<div class="btn-copy" />');
+    });
+
+    function generate_copy_code_buttons() {
+      var $copy_button = $("<a>", {"class": "copy-code"}).append(
+        $("<span>", {"class": "glyphicon glyphicon-copy", "text": ""})
+      );
+
+      $(".btn-copy").prepend($copy_button);
+      var clipboard = new Clipboard(".copy-code", {
+        target: function(trigger) {
+          return trigger.parentNode.nextElementSibling;
+        }
+      })
+
+      clipboard.on('success', function(e) {
+        setTooltip(e.trigger, 'Copied!');
+        hideTooltip(e.trigger);
+      });
+
+      clipboard.on('error', function(e) {
+        setTooltip(e.trigger, 'Press Ctrl + c');
+        hideTooltip(e.trigger);
+      });
+    };
+
+    generate_copy_code_buttons();
+
+    // Use bootstrap tooltip for on-click message
+    // https://stackoverflow.com/questions/37381640/tooltips-highlight-animation-with-clipboard-js-click/37395225
+    $(".copy-code").tooltip({
+      trigger: 'click'
+    });
+
+    function setTooltip(btn, message) {
+      $(btn).tooltip('hide')
+        .attr('data-original-title', message)
+        .tooltip('show');
+    };
+
+    function hideTooltip(btn) {
+      setTimeout(function () {
+        // Destroy tooltip in case of consecutive presses
+        $(btn).tooltip('destroy');
+      }, 500);
+    };
+
+    // Forgive me for I have sinned
+    $("pre").hover(
+      function () {
+        $(this).prev('.btn-copy').find('.copy-code').css({"opacity": 1, "transition": "opacity .25s ease-in-out"});
+      }, function () {
+        $(this).prev('.btn-copy').find('.copy-code').css("opacity", "");
+      });
+
+})(jQuery);
+
+(function($) {
+
     Page = {
         isMobile: function() {
             return $(window).width() <= 768;
@@ -67,14 +135,17 @@
         });
     }
 
-
 })(jQuery);
+
 (function($) {
 
     function search(query, searchStore) {
-        var result = searchStore.index.search(query);
+        // Fuzzy search with sensitivity set to one character
+        var result = searchStore.index.search(query + '~1');
         var resultList = $('#ds-search-list');
         resultList.empty();
+        var deprecatedResults = [];
+        var hiddenGuide = [];
         for (var i = 0; i < result.length; i++) {
             var item = result[i];
 
@@ -83,11 +154,34 @@
                 break;
             }
 
-            var title = searchStore.store[item.ref]
+            var title = searchStore.store[item.ref].title
             var url = item.ref
-            var searchitem = '<li class="list-group-item"><a href="' + url + '">' + title + '</li>';
-            resultList.append(searchitem);
+            var badge = ''
+            var deprecated = searchStore.store[item.ref].deprecated
+            var shortguide = searchStore.store[item.ref].shortguide
+            if (deprecated) {
+              badge = '<span class="search-deprecated">DEPRECATED</span>'
+             }
+            var searchitem = '<li class="list-group-item"><a href="' + url + '">' + title + badge + '</a></li>';
+            // Deprecated search results to end of list
+            if (deprecated) {
+              deprecatedResults.push(searchitem)
+            }
+            else if (shortguide) {
+              hiddenGuide.push(searchitem)
+            }
+            else {
+              resultList.append(searchitem)
+            }
+            console.log(shortguide);
         }
+
+        deprecatedResults.forEach(function(result) {
+          resultList.append(result);
+          resultList = resultList.filter(function(val) {
+                return hiddenGuide.indexOf(val) == -1;
+            });
+        });
         resultList.show();
     }
 
@@ -123,7 +217,13 @@
                 var setupSearch = function(json) {
                     var searchStore = {}
                     searchStore.index = lunr.Index.load(json.index);
-                    searchStore.store = json.store
+                    searchStore.store = json.store;
+
+                    if (window.location.pathname == '/docs/search/' && Page.param('q')) {
+                        var query = decodeURIComponent(Page.param('q').replace(/\+/g, '%20'));
+                        toggleAndSearch(searchStore, query);
+                    };
+
                     $(document).on('keypress', '#ss_keyword', function(e) {
                         if (e.keyCode !== 13) {
                             return
@@ -133,13 +233,9 @@
 
                     });
 
-                    $(document).on('keypress', '#ds-search', function(e) {
-                        if (e.keyCode !== 13) {
-                            return
-                        }
+                    $('#ds-search').keyup(function(e) {
                         var query = $(this).val();
                         search(query, searchStore);
-
                     });
 
                     $(document).on('click', '#ds-search-btn', function(e) {
@@ -151,7 +247,6 @@
                         query = $('#ds-search').val();
                         search(query, searchStore);
                     });
-
                 }
 
                 $.getJSON('/docs/build/lunr.json', setupSearch);
@@ -179,29 +274,6 @@
             var footer = $('footer');
             var bottom = Math.round($(document).height() - footer.offset().top) + 80;
 
-            toc.affix({
-                offset: {
-                    top: toc.offset().top,
-                    bottom: bottom
-                }
-            });
-
-
-            // Workaround for https://github.com/twbs/bootstrap/issues/16045
-            toc.on("affixed.bs.affix", function() {
-                var style = $(this).attr("style");
-                style = style.replace("position: relative;", "");
-                $(this).attr("style", style)
-            });
-
-
-            var resizeFn = function() {
-                toc.css('width', $('#doc-sidebar-container').width());
-            };
-
-            resizeFn();
-            $(window).resize(resizeFn);
-
             /* activate scrollspy menu */
             var $body = $(document.body);
             var navHeight = toc.outerHeight(true) + 10;
@@ -211,7 +283,7 @@
                 offset: navHeight
             });
 
-            /*  scrollspy Table of contents, adapted from https://www.bootply.com/100983 
+            /*  scrollspy Table of contents, adapted from https://www.bootply.com/100983
                 license: MIT
                 author: bootply.com
              */

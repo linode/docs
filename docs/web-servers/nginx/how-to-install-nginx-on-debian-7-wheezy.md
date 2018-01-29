@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2014-01-28
 title: 'How to Install Nginx on Debian 7 (Wheezy)'
-external_links:
+external_resources:
  - '[Linode Nginx Documentation](/docs/web-servers/nginx/)'
  - '[Nginx Community Documentation](http://wiki.nginx.org)'
 ---

@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ partial "anchor" . }}
 <section class="primary first-section">
   <div class="container">
     {{ partial "breadcrumb" . }}
@@ -12,11 +13,13 @@
           <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
             {{ partial "article_header" . }}
            <div class="row">
+            {{ if ne .Params.promo false }}
             <div class="col-sm-9">{{ partial "signup" . }}</div>
             <div class="col-sm-3">{{ partial "share" . }}</div>
+            {{ end }}
             </div>
             {{ partial "github" . }}
-            {{ partial "contribute_header" . | markdownify }}
+            {{ partial "operating_systems" . }}
             {{ partial "deprecated" . }}
             {{ .Content }}
             {{ partial "more" . }}
@@ -26,21 +29,7 @@
             {{ end }}
             {{ partial "license" . }}
           </div>
-          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
-            <div id="doc-sidebar">
-              {{ partial "sidebar_search" . }}
-                {{ with .TableOfContents }}
-              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
-                <h3 id="doc-sidebar-title">In This Guide:</h3>
-                <div class="sidebar sidebar-library{{ if ge (len .) 1500 }} toc-long{{ end }} nav navbar" id="markdown-toc">
-                    {{ . }}
-                </div>
-              </div>
-              {{ end }}
-              {{ partial "rss" . }}
-              {{ partial "monthly_updates" . }}
-            </div>
-          </div>
+          {{ partial "sidebar" . }}
         </div>
       </div>
     </div>

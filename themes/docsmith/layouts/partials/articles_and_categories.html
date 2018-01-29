@@ -1,11 +1,12 @@
 {{ with .Pages }}
+{{ $filtered := where . "Params.shortguide" "!=" true }}
 {{ $class := cond (eq (len $.Sections) 0) "primary"  "neutral" }}
 <section class="{{ $class }}">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         {{ $len := len . }}
-        {{ range $i, $article := . }}
+        {{ range $i, $article := $filtered }}
 
         {{ if modBool $i 2 }}<div class="row">{{ end }}
 
@@ -33,6 +34,7 @@
         <h2 class="h3"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
         <ul class="list-group article-list">
           {{ $pages := where .Pages ".Params.deprecated" "!=" true }}
+          {{ $pages := $pages | intersect (where .Pages ".Params.shortguide" "!=" true) }}
           {{ range $pages }}
           <li class="list-group-item library-article-item"><h3 class="h5"><a href="{{ .Permalink }}">{{ .Title }}{{ if .Params.has_video }}&nbsp;<i class="fa fa-youtube-play"></i>{{ end }}</a></h3></li>
           {{ end }}

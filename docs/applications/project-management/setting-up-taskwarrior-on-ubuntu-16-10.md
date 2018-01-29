@@ -1,5 +1,5 @@
 ---
-Deprecated: true
+deprecated: true
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com

@@ -38,10 +38,10 @@ This is where the files will be located if you install nginx from the package ma
 Before we begin, make sure you have completed the following:
 
 -   Follow the [Getting Started](/docs/getting-started/) guide.
--   Install the [nginx server](/docs/websites/nginx/nginx-web-server-debian-8).
--   The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+-   Install the [nginx server](/docs/websites/nginx/nginx-web-server-debian-8/).
+-   The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 
-If you're new to Linux server administration, you may also be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
+If you're new to Linux server administration, you may also be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics/).
 
 ## Before You Start
 
@@ -53,7 +53,7 @@ Sometimes, server configuration files can get so corrupted or convoluted that th
 
     cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
 
-For even better restoration options, we recommend making regular [backups](/docs/platform/backup-service) of your nginx configuration. You might want to store your entire `/etc/nginx/` directory in a [Git](/docs/linux-tools/version-control/git) repository so you can save the original settings and all the versions from all your different changes. Another option is to periodically create dated copies of your files. You can accomplish this by issuing the following command:
+For even better restoration options, we recommend making regular [backups](/docs/platform/backup-service/) of your nginx configuration. You might want to store your entire `/etc/nginx/` directory in a [Git](/docs/linux-tools/version-control/git/) repository so you can save the original settings and all the versions from all your different changes. Another option is to periodically create dated copies of your files. You can accomplish this by issuing the following command:
 
     cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.$(date "+%b_%d_%Y_%H.%M.%S")
 

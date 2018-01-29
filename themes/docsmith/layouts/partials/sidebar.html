@@ -1,0 +1,15 @@
+<div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+  <div id="doc-sidebar">
+    {{ partial "sidebar_search" . }}
+      {{ with .TableOfContents }}
+    <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+      <h3 id="doc-sidebar-title">In This Guide:</h3>
+      <div class="sidebar sidebar-library{{ if ge (len .) 1500 }} toc-long{{ end }} nav navbar" id="markdown-toc">
+          {{ . }}
+      </div>
+    </div>
+    {{ end }}
+    {{ partial "rss" . }}
+    {{ partial "monthly_updates" . }}
+  </div>
+</div>

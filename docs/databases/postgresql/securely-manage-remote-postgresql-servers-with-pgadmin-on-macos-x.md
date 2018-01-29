@@ -16,6 +16,8 @@ external_resources:
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 ---
 
+![Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/assets/pgadmin-mac/Securely_Manage_Remote_PostgreSQL_Servers_with_pgAdmin_on_Mac_OS_X_smg.jpg)
+
 pgAdmin is a free, open-source PostgreSQL database administration GUI for Microsoft Windows, Apple Mac OS X and Linux systems. It offers excellent capabilities with regard to database server information retrieval, development, testing, and ongoing maintenance. This guide will help you get up and running with pgAdmin on Mac OS X, providing secure access to remote PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode in accordance with our [PostgreSQL installation guides](/docs/databases/postgresql/).
 
 ## Install pgAdmin

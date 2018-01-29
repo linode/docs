@@ -20,7 +20,7 @@ external_resources:
 
 Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide shows you how to install a LAMP stack on Debian 8 (Jessie).
 
-![LAMP on Debian 8 (Jessie)](/docs/assets/lamp-on-debian-8.png "LAMP on Debian 8 (Jessie)")
+![LAMP on Debian 8](/docs/assets/lamp-on-debian-8.png "LAMP on Debian 8")
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.

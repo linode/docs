@@ -6,7 +6,7 @@ description: 'Odoo is an open-source suite of over 5,500 business applications. 
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP", "Odoo 10", "Ubuntu 16.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-04-04
-modified: 2017-04-04
+modified: 2018-01-02
 modified_by:
   name: Linode
 title: 'Install Odoo 10 on Ubuntu 16.04'
@@ -276,7 +276,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
 ## Test Odoo
 
-1.  Open a new browser window and enter in the address bar:
+1.  Open a new browser window and visit the address:
 
         http://<your_domain_or_IP_address>:8069
 
@@ -329,15 +329,15 @@ Clone the updated Odoo source which is different from your older production inst
 
 ### Testing Environment Configuration
 
-The advantage of using the same server is that all dependencies are already meet. What is next is to configure the server accordingly.
+The advantage of using the same server is that all dependencies have already been met. What is next is to configure the server accordingly.
 
 1.  Copy the original configuration file from the source to appropiate location:
 
         sudo cp /opt/odoo/debian/odoo.conf /etc/odoo-server-te.conf
 
-2.  Modify the configuration file, paying attention to changes from previous installation especially the inclusion of `logfile` and the communication port:
+2.  Modify the configuration file. There are several small changes from the previous installation, including the inclusion of `logfile` and a specified communication port:
 
-    {{< file "/etc/odoo-server.conf" conf >}}
+    {{< file "/etc/odoo-server-te.conf" conf >}}
 [options]
 admin_passwd = admin
 db_host = False
@@ -376,7 +376,7 @@ WantedBy=multi-user.target
 
 ### Change File Ownership and Permissions
 
-Just as you did before, set permissions for the testing environment:
+Set permissions for the testing environment:
 
     sudo chmod 755 /lib/systemd/system/odoo-server-te.service
     sudo chown root: /lib/systemd/system/odoo-server-te.service

@@ -75,7 +75,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
         AllowOverride All
     </Directory>
 
-		</VirtualHost>
+</VirtualHost>
 
 {{< /file-excerpt >}}
 
@@ -169,21 +169,16 @@ The value for `date.timezone` will vary based on your system's time zone. Refer 
 
 4.  Create the log directory for PHP and give the Apache user ownership:
 
-    sudo mkdir /var/log/php
-    sudo chown apache /var/log/php
+        sudo mkdir /var/log/php
+        sudo chown apache /var/log/php
 
 5.  Because you installed a PHP module for Apache in Step 2, restart the web server to apply the changes and allow Apache to serve PHP pages:
 
-    sudo systemctl restart httpd
+        sudo systemctl restart httpd
 
 6.  **Optional**: You may want to take this opportunity to create a `phpinfo.php` page to ensure that PHP is active and working properly with Apache:
 
-{{< file >}}
-/var/www/html/example.com/public_html/phpinfo.php
-
-{{< /file >}}
-
-{{< file-excerpt "/var/www/html/example.com/public_html/phpinfo.php" php >}}
+    {{< file-excerpt "/var/www/html/example.com/public_html/phpinfo.php" php >}}
 <?php phpinfo(); ?>
 {{< /file-excerpt >}}
 
