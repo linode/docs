@@ -3,10 +3,11 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Restricting remote users to their home directories, only allowing access to SFTP for transferring files.'
+og_description: 'SFTP Jails restricits remote users to their home directories.'
 keywords: ["sftp", "sftp jail", "openssh", "ssh jail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/sftp-jails/']
-modified: 2014-04-16
+modified: 2018-01-22
 modified_by:
   name: Linode
 published: 2010-01-06
@@ -34,13 +35,13 @@ First, you need to configure OpenSSH.
 
 2.  Add or modify the `Subsystem sftp` line to look like the following:
 
-    {{< file-excerpt "/etc/ssh/sshd\_config" >}}
+    {{< file-excerpt "/etc/ssh/sshd_config" >}}
 Subsystem sftp internal-sftp
 {{< /file-excerpt >}}
 
 3.  Add this block of settings to the end of the file:
 
-    {{< file-excerpt "/etc/ssh/sshd\_config" >}}
+    {{< file-excerpt "/etc/ssh/sshd_config" >}}
 Match Group filetransfer
     ChrootDirectory %h
     X11Forwarding no
@@ -79,3 +80,29 @@ In this section, we'll set up the correct new groups, ownership, and permissions
         chown username:filetransfer *
 
 Your users should now be able to log into their accounts via SFTP and transfer files to and from their assigned subdirectories, but they shouldn't be able to see the rest of your Linode's filesystem.
+
+## Use SFTP on your Linode
+
+1. From the terminal use sftp:
+
+        sftp username@<Your_Linodes_IP>
+
+    You can use the `help` command to see what commands you have access too within the SFTP shell. You have the ability to `pwd`, `cd` and `ls`, for instance. There are also commands like `lpwd`, that will print the **local** working directory. In the local home directory type `touch test.txt`
+
+2. Transfer local files to the remote system:
+
+        cd docs
+        put test.txt
+
+3. Transfer files to the local system from the remote system:
+
+        get test.txt
+
+4. You can test the file permissions by navigating to a different directory within the SFTP shell, and trying to transfer a file.
+
+        sftp> put test.txt /tmp/
+        Uploading test.txt to /tmp/
+        remote open("/tmp/"): Failure
+
+5. Exit the session with the `exit` command.
+
