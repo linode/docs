@@ -6,7 +6,7 @@ description: "Intel recently disclosed two vulnerabilities that affect processor
 keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-11
-modified: 2018-01-11
+modified: 2018-01-17
 modified_by:
   name: Linode
 title: 'What You Need to Do to Mitigate Meltdown and Spectre'
@@ -15,25 +15,60 @@ external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'
   - '[How to Install Software Updates](/docs/getting-started/#install-software-updates)'
   - '[Reboot Survival Guide](/docs/uptime/reboot-survival-guide/)'
+  - '[Linode Blog: CPU Vulnerabilities: Meltdown & Spectre](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/)'
 ---
 
 ## Summary
 
 Virtually every processor manufactured in the last 23 years is potentially affected by two recently discovered processor vulnerabilities: Meltdown and Spectre. Linode is continuing to implement patches on datacenter equipment. In the meantime, update your Linux kernel and reboot to help protect your system.
 
-### What Should I Do?
+## FAQ
+
+### Can this maintenance be postponed or rescheduled?
+
+No. Due to the critical nature and logistical requirements of these updates, we aren’t able to reschedule or push back the provided maintenance windows. Our team is working around the clock to have our infrastructure patched against the Meltdown and Spectre vulnerabilities as quickly as possible.
+
+### Can I start this maintenance early?
+
+No. Unlike our scheduled migrations, you won’t be able to initiate the maintenance early.
+
+### What’s Linode’s current status on patching these vulnerabilities?
+
+Our current infrastructure status for each vulnerability is listed in our Meltdown and Spectre document found [in the chart below](#linode-infrastructure-status).
+
+### What does “Phase Complete” in the Linode Manager mean?
+
+Maintenance for the Meltdown and Spectre vulnerabilities is happening in multiple phases, which are described in our Meltdown and Spectre document found here. As each phase is completed for the physical host on which your Linode resides, we will display progress updates in the Linode Manager.
+
+To fully mitigate the Meltdown and Spectre vulnerabilities, additional maintenance will be required in the future. When the future maintenance has been scheduled, we will provide additional information.
+
+You can find more information and stay updated on our progress by checking out the [What Should I Do?](#what-should-i-do) section below.
+
+### When will the next maintenance phase take place?
+
+We don't yet have an ETA on when the next round of maintenance will begin. Once we do, we'll provide additional information in the Linode Manager, as well as through Support tickets.
+
+### Is there anything that I need to do?
+
+Yes. To further protect your Linode, we strongly recommend that you verify it is configured to boot using the `4.14.11` or newer kernel, which includes patches to help address these vulnerabilities. If your Linode’s Configuration Profile is set to utilize our latest kernel, your kernel will automatically be updated to the patched version upon rebooting.
+
+### Can I reboot my Linode with the new kernel to avoid the maintenance?
+
+Yes, but while rebooting with the new kernel will help prepare your Linode for the upcoming maintenance and help protect you against Meltdown, it will not replace the need for this maintenance. In order to fully address the vulnerabilities, we will need to perform maintenance on our infrastructure as scheduled. We will update the status of our maintenance phases within the Linode Manager and [in the chart below](#linode-infrastructure-status).
+
+## What Should I Do?
 
 * Visit our [Reboot Survival Guide](/docs/uptime/reboot-survival-guide/) to prepare for a graceful reboot.
-* [Update your kernel](/docs/platform/meltdown_statement/#how-to-reboot-into-an-updated-kernel) and reboot.
+* [Update your kernel](#how-to-reboot-into-an-updated-linode-kernel) and reboot.
 * [Follow our blog for updates](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/).
 
 ### Linode Infrastructure Status
 
-| **Exploit**  | **Fix**  | **Information**  |
-|---|---|---|
-| **Meltdown**  | In progress   | Patching in progress.   |
-| **Spectre-V1**  |  No | No patch is available yet.   |
-| **Spectre-V2**   |  No | No patch is available yet.   |
+| **Exploit**    | **Fix**  | **Information**            |
+|----------------|----------|----------------------------|
+| **Meltdown**   | Deployed | Patching is complete.      |
+| **Spectre-V1** |    No    | No patch is available yet. |
+| **Spectre-V2** |    No    | No patch is available yet. |
 
 ## What does this mean for Linode Customers?
 

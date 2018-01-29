@@ -41,6 +41,7 @@ If you plan to use a domain name for nameservers for which you will also be host
 
 cPanel needs to run on the CentOS kernel. To configure your Linode to boot the CentOS kernel instead of the default Linode kernel, edit the CentOS configuration profile and select GRUB2 from the Boot Settings menu. Save the changes and reboot your Linode. For more information, [see our guide](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel#recommended-distributions) on running the distribution-supplied kernel on a Linode.
 
+
 ## Install cPanel
 
 {{< note >}}
@@ -49,11 +50,18 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the `root` user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager).
 
-1. Issue the following command to download and install cPanel. Note that the installation process may take a long time to complete:
+1. Disable NetworkManager before running the install script:
+
+        systemctl stop NetworkManager.service
+        systemctl disable NetworkManager.service
+        systemctl enable network.service
+        systemctl start network.service
+
+2. Issue the following command to download and install cPanel. Note that the installation process may take a long time to complete:
 
         cd /home && curl -o latest -L https://securedownloads.cpanel.net/latest && sh latest
 
-2. Verify the cPanel license:
+3. Verify the cPanel license:
 
         /usr/local/cpanel/cpkeyclt
 

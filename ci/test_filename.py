@@ -4,7 +4,7 @@ import itertools
 # Cartesian product of file names and extensions
 # e.g. README.txt, README.md, CHANGELOG.txt, CHANGELOG.md ...
 file_extensions = ['txt', 'md']
-names = ['README', 'CHANGELOG', 'CONTRIBUTING', 'LICENSE']
+names = ['README', 'CHANGELOG', 'CONTRIBUTING', 'LICENSE', 'CODE_OF_CONDUCT']
 exempt_files = [('.'.join(x)) for x in itertools.product(names, file_extensions)]
 
 def test_filename(md_filepath):

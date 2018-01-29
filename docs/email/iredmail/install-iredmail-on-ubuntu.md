@@ -17,7 +17,6 @@ title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 ---
 
 
-
 ## Why Run a Mail Server?
 
 Running your own mail server has many benefits. It allows you to manage the size of your mailboxes and attachments, run hourly/daily email backups, view mail logs, and gives you the freedom to use any domain name available. The drawback is usually the in-depth and sometimes complicated process of installing all the necessary parts. This guide uses a streamlined process, the iRedMail install script, and should have you up and running your mail server in under 15 minutes.
@@ -402,7 +401,7 @@ Familiarize yourself with the various files, configs, and settings listed in the
 [s]:https://code.google.com/p/iredmail/wiki/DNS_SPF
 [m]:http://www.mail-tester.com
 [r]:/docs/networking/dns/configure-your-linode-for-reverse-dns/
-[c]:https://www.linode.com/docs/websites/ssl/obtaining-a-commercial-ssl-certificate
+[c]:https://www.linode.com/docs/security/ssl/obtaining-a-commercial-ssl-certificate/
 [a]:https://www.linode.com/docs/networking/dns/introduction-to-dns-records#mx
 [f]:http://www.iredmail.org/forum/post30654.html#p30654
 [p]:http://wiki.policyd.org/_detail/policyd_web_gui.png?id=screenshots

@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Terraform to deploy Linodes containing pre-configured application environmets built using Docker or Packer, for example, or from manual configuration.'
-og_description: 'Use Terraform to deploy Linodes containing pre-configured application environmets built using Docker or Packer, for example, or from manual configuration.'
+description: 'Use Terraform to deploy Linodes containing pre-configured application environments such as Docker or from a manual configuration.'
+og_description: 'Use Terraform to deploy Linodes containing pre-configured application environments such as Docker or from a manual configuration.'
 keywords: ["Linode", "terraform", "plugin", "infrastructure"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-06
