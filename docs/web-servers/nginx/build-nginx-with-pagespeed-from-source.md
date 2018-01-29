@@ -36,7 +36,7 @@ There are currently two ways to get PageSpeed and NGINX working together:
 
 ## Considerations for a Self-Compiled NGINX Installation
 
-**Filesystem Locations**: When you compile NGINX from source, the entire installation, including configuration files, is located at `/usr/local/nginx/nginx/`. This is in contrast to an installation from your distribution's repository or NGINX's, which places its configuration files in `/etc/nginx/`. 
+**Filesystem Locations**: When you compile NGINX from source, the entire installation, including configuration files, is located at `/usr/local/nginx/nginx/`. This is in contrast to an installation from your distribution's repository or NGINX's, which places its configuration files in `/etc/nginx/`.
 
 **Built-in Modules**: When you compile NGINX from source, no additional modules are included by default, not even for HTTPS. Below you can see the output of `nginx -V` using the PageSpeed automated install command on Ubuntu 16.04 with no additional modules or options specified. Note that you even need to call the binary with the exact path, because the system is unaware of the installation.
 
