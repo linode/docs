@@ -2,32 +2,34 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to install the Go programming language on Ubuntu'
+description: 'This guide shows how to install the Go programming language on Ubuntu.'
+og_description: 'Go is a statically typed, compiled programming language developed by Google. This guide will show you how to install Go on Ubuntu.'
 keywords: ["Go", "Go Programming", "Golang", "Ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-30
-modified: 2018-01-31
+published: 2018-01-29
+modified: 2018-01-29
 modified_by:
   name: Linode
 title: 'How to Install Go on Ubuntu'
 ---
 
-The Go programming language is a popular language that is currently developed by Google, and used to write  modern applications like Docker, Kubernetes, and Caddy. Go is a compiled, statically typed language, similar to the C programming language.
+## What is Go?
 
+[Go](https://golang.org/) is a compiled, statically typed programming language developed by Google. Many modern applications, including Docker, Kubernetes, and Caddy, are written in Go.
 
 ## Install Go
 
-1. Use `curl` or `wget` to download the current binary for Go from the official [download pagge](https://golang.org/dl/). The package should download very quickly:
+1. Use `curl` or `wget` to download the current binary for Go from the official [download page](https://golang.org/dl/). As of this writing, the current version is 1.9.3. Check the download page for updates, and replace `1.9.3` with the most recent stable version if necesssary.
 
         curl -O https://storage.googleapis.com/golang/go1.9.3.linux-amd64.tar.gz
 
 2. Verify the `.tar` file using `sha256sum`:
 
-        a4da5f4c07dfda8194c4621611aeb7ceaab98af0b38bfb29e1be2ebb04c3556c  go1.9.3.linux-amd64.tar.gz
+        sha256sum go1.9.3.linux-amd64.tar.gz
 
-    {{< note >}}
-At the time of this writing the output above should correspond with version `1.9.3` of the Go binary.
-{{</ note >}}
+    {{< output >}}
+a4da5f4c07dfda8194c4621611aeb7ceaab98af0b38bfb29e1be2ebb04c3556c  go1.9.3.linux-amd64.tar.gz
+{{< /output >}}
 
 3. Extract the tarball:
 
@@ -42,11 +44,10 @@ At the time of this writing the output above should correspond with version `1.9
 
 1. Using a text editor, open the `~/.profile` file and add the following two lines to the bottom of the file:
 
-
-    {{< output >}}
+    {{< file-excerpt "~/.profile" conf >}}
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-{{</ output >}}
+{{< /file-excerpt >}}
 
 2. Save the file, and load the commands into the current shell instance:
 
@@ -64,6 +65,7 @@ According to [the official documentation](https://golang.org/doc/install#testing
 
         mkdir -p go/src/hello && cd go/src/hello
         touch hello.go
+
     {{< file "hello.go" go >}}
 package main
 
@@ -72,20 +74,16 @@ import "fmt"
 func main() {
     fmt.Printf("hello, world\n")
 }
-
 {{</ file >}}
 
 3. Build the `hello.go` file:
 
         go build
-4. Run the newly created file:
+
+4. Run the script:
 
         ./hello
 
-5. The console should now output:
-
-        hello, world
-
-If this test works you have succesffuly installed the Go programming language onto your Linode.
-
-
+    {{< output >}}
+hello, world
+{{< /output >}}
