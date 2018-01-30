@@ -21,7 +21,7 @@ Block Storage is currently in a free public beta for Linodes in our Newark and F
 {{< caution >}}
 -  Linode's backup services do not cover block storage volumes. You must execute your own backups for this data.
 
--  Your Linode must be running in Paravirtualizaion mode. Currently Block storage does not support Full-virtualization.
+-  Your Linode must be running in Paravirtualizaion mode. Block storage currently does not support Full-virtualization.
 {{< /caution >}}
 
 ## How to Add a Block Storage Volume to a Linode
