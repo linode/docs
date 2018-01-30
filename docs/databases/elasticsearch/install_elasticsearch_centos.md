@@ -23,7 +23,7 @@ shortguide: true
 [elasticsearch-6.x] name=Elastic repository for 6.x packages baseurl=https://artifacts.elastic.co/packages/6.x/yum gpgcheck=1 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch enabled=1 autorefresh=1 type=rpm-md
 {{< /file-excerpt >}}
 
-3.  Update the yum cache to ensure any new packages become available:
+3.  Update the yum cache to ensure the latest packages will be installed:
 
         sudo yum update
         Debian Based Distributions
@@ -32,17 +32,17 @@ shortguide: true
 
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 
-5.  Install the elasticsearch package:
+5.  Install the `elasticsearch` package:
 
         sudo yum install -y elasticsearch
 
-6.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the Xms and Xmx values in the /etc/elasticsearch/jvm.options file to 512m, and leave the other values in this file unchanged:
+6.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the Xms and Xmx values in the `/etc/elasticsearch/jvm.options` file to `512m`, and leave the other values in this file unchanged:
 
     {{< file "/etc/elasticsearch/jvm.options" aconf >}}
 -Xms512m -Xmx512m
 {{< /file >}}
 
-7.  Start and enable the elasticsearch service:
+7.  Enable and start the `elasticsearch` service:
 
         sudo systemctl enable elasticsearch
         sudo systemctl start elasticsearch
@@ -51,7 +51,7 @@ shortguide: true
 
         curl localhost:9200
 
-  The Elasticsearch REST API should return a JSON response similar to the following:
+    The Elasticsearch REST API should return a JSON response similar to the following:
 
     {{< output >}}
 {
@@ -71,6 +71,6 @@ shortguide: true
 }
 {{</ output >}}
 
-    {{< note >}}
-Elasticsearch may take some time to start up. If you need to determine whether the service has started successfully or not, you can use the `systemctl status elasticsearch` command to see the most recent logs.
-{{< /note >}}
+9.  To determine whether or not the service has started successfully, view the most recent logs:
+
+        systemctl status elasticsearch

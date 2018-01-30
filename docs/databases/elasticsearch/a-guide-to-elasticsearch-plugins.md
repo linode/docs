@@ -5,7 +5,7 @@ author:
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-description: 'This guide will show how to install a variety of useful Elasticsearch plugins.'
+description: 'This guide shows how to install a variety of useful Elasticsearch plugins.'
 og_description: 'Elasticsearch supports a wide variety of plugins which enable more powerful search features. This guide will explore how to manage, install, and use these plugins to better leverage Elasticsearch for different use cases.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
@@ -82,7 +82,7 @@ The remainder of this guide will walk through several plugins and common use cas
 
 There are a number of tools that can be used to issue this request. The simplest approach would be to use `curl` from the command line:
 
-    `curl -H'Content-Type: application/json' -XPOST localhost:9200/exampleindex/doc/1 -d '{ "message": "this the value for the message field" }'`
+    curl -H'Content-Type: application/json' -XPOST localhost:9200/exampleindex/doc/1 -d '{ "message": "this the value for the message field" }'
 
 Other alternatives include the [vim-rest-console](https://github.com/diepm/vim-rest-console), the Emacs plugin [es-mode](https://github.com/dakrone/es-mode), or the [Console](https://www.elastic.co/guide/en/kibana/current/console-kibana.html) plugin for Kibana. Use whichever tool is most convenient for you.
 

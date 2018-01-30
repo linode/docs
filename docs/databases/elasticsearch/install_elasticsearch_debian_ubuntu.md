@@ -13,9 +13,6 @@ published: 2018-01-09
 shortguide: true
 ---
 
-
-The Elastic package repositories contain the necessary Elasticsearch package.
-
 1.  Install the official Elastic APT package signing key:
 
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
@@ -36,14 +33,14 @@ The Elastic package repositories contain the necessary Elasticsearch package.
 
         sudo apt-get install -y elasticsearch
 
-6.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file to 512m. Leave the other values in this file unchanged:
+6.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file to `512m`. Leave the other values in this file unchanged:
 
     {{< file "/etc/elasticsearch/jvm.options" conf >}}
 -Xms512m
 -Xmx512m
 {{< /file >}}
 
-7.  Start and enable the `elasticsearch` service:
+7.  Enable and start the `elasticsearch` service:
 
         sudo systemctl enable elasticsearch
         sudo systemctl start elasticsearch
@@ -72,6 +69,6 @@ The Elastic package repositories contain the necessary Elasticsearch package.
 }
 {{</ output >}}
 
-    {{< note >}}
-Elasticsearch may take some time to start up. If you need to determine whether the service has started successfully or not, you can use the `systemctl status elasticsearch` command to see the most recent logs.
-{{< /note >}}
+9.  To determine whether or not the service has started successfully, view the most recent logs:
+
+        systemctl status elasticsearch
