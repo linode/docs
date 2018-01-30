@@ -3,23 +3,18 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Create a physical MySQL backup databases by copying the relevant filesystem parts. Useful for recovering inaccessible databases."
-keywords: ["mysql", "mariadb", backup", "mysqldump"]
+keywords: ["mysql", "mariadb", backup", "back up", mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-28
-modified_by:
-  name: Linode
-published: 2018-01-09
+published: 2018-01-30
 title: Create Physical Backups of your MariaDB or MySQL Databases
 external_resources:
  - '[Backup and Restore Overview; MariaDB Library](https://mariadb.com/kb/en/library/backup-and-restore-overview/)'
  - '[Database Backup Methods; MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/backup-methods.html)'
 ---
 
-## Why Use Physical Backups for MySQL?
+While the `mysqldump` tool is the preferred backup method for a MariaDB or MySQL database or database system it only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, the database can still be copied directly.
 
 A *physical backup* is often necessary in situations when you only have access to a recovery environment (such as [Finnix](/docs/troubleshooting/finnix-rescue-mode)) where you mount your system's disks as external storage devices. If you want to read about *logical backups* using `mysqldump`, [see our guide](/docs/databases/mysql/use-mysqldump-to-back-up-your-mysql-databases) on the topic.
-
-While the `mysqldump` tool is the preferred backup method for a MariaDB or MySQL database or database system, there are cases which require a different approach. `mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, the database can still be copied directly.
 
 For simplification, the name MySQL will be used throughout this guide but the instructions will work for both MySQL and MariaDB.
 
@@ -29,7 +24,7 @@ The steps in this guide require root privileges. Log in as the root user with `s
 
 ## Create a Backup
 
-1.  If you are not running in recovery mode, stop the `mysql` service:
+1.  If you are not running in recovery mode (a Finnix session), stop the `mysql` service:
 
         systemctl stop mysql
 

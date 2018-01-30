@@ -20,74 +20,97 @@ external_resources:
  - '[MySQL''s Grant Statement, Official Documentation](http://dev.mysql.com/doc/refman/5.1/en/grant.html)'
 ---
 
-MySQL is often a centralized data store for large amounts of mission critical data. This makes regular backups of your MySQL database one of the most important disaster recovery tasks a system administrator can perform. This guide addresses a number of methods for backing up and restoring your database.
+MySQL is an open source relational database management system (DBMS) which is frequently deployed in a wide assortment of contexts. Most frequently it is deployed as part of the [LAMP Stack](/docs/lamp-guides). The database system is also easy to use and highly portable and is, in the context of many applications, extremely efficient. As MySQL is often a centralized data store for large amounts of mission critical data, making regular backups of your MySQL database is one of the most important disaster recovery tasks a system administrator can perform. This guide addresses a number of distinct methods for creating back ups of your database as well as restoring databases from backups.
 
-## Before You Begin
+![Back Up Your MySQL Databases](/docs/assets/back_up_your_mysql-databases.png "Back Up Your MySQL Databases")
 
-This guide assumes:
-
-1.  You already have a [MySQL Database](/docs/databases/mysql/) installed and populated with data.
-
-2.  You are logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/linux-users-and-groups/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Before beginning the installation process, we assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/linux-users-and-groups/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Backup Methodology
 
-Most backups in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups.
+Most backups of MySQL databases in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the `mysqldump` tool, as in a recovery environment like [Finnix](/docs/troubleshooting/finnix-rescue-mode) or in situations where the local instance of the MySQL server will not start.
 
-Be sure to note the following:
+Nevertheless, this guide provides a mere overview of the `mysqldump` tool, as there are many options for and uses of `mysqldump` that fall beyond the scope of this document. We encourage you to become familiar with all of the procedures covered in this document, and to continue your exploration of `mysqldump` beyond the cases described here. Be sure to note the following:
 
 -   The `*.sql` files created with `mysqldump` can be restored at any time. You can even edit the database `.sql` files manually (with great care!) using your favorite text editor.
 -   If your databases only make use of the MyISAM storage engine, you can substitute the `mysqldump` command with the faster `mysqlhotcopy`.
 
-Other methods are provided in this guide for situations when you do not have access to the `mysqldump` tool, such as in a recovery environment like [Finnix](/docs/troubleshooting/finnix-rescue-mode) or in situations where the local instance of the MySQL server will not start.
+## Creating Backups of the Entire Database Management System (DBMS)
 
-## Back Up the Entire Database Management System (DBMS)
+It is often necessary to take a back up (or "dump") of an entire database management system along with all databases and tables, including the system databases which hold the users, permissions and passwords.
 
-It is often necessary to take a back up (or "dump") of an entire database management system, along with all databases and tables, and including the system databases which hold the users, permissions, and passwords.
+### Option 1: Create Backups of an Entire Database Management System Using the mysqldump Utility
 
-### Option 1: Using the mysqldump Utility
-
-The most straightforward method for creating a coherent backup of an entire MySQL database management system is to use the `mysqldump` utility. The command below will will prompt you for a password before beginning, and add a timestamp to the filename of the database dump. Replace `root` with the mysql user you will run backups as.
+The most straight forward method for creating a single coherent backup of the entire MySQL database management system uses the `mysqldump` utility from the command line. The syntax for creating a database dump with a current timestamp is as follows:
 
     mysqldump --all-databases > dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -p
 
-This can be automated by adding a line to `/etc/crontab`. Replace `root` and `PASSWORD` with the username and password you would like to run the backup as. Also ensure that there is no space between the `-p` flag and the password entry.
+This command will prompt you for a password before beginning the database backup in the current directory. This process can take anywhere from a few seconds to a few hours depending on the size of your databases.
+
+Automate this process by adding a line to `crontab`:
 
     0 1 * * * /usr/bin/mysqldump --all-databases > dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -pPASSWORD
 
-### Option 2: Copying the MySQL Data Directory
+For the example above, use `which mysqldump` to confirm the correct path to the command, and replace `root` with the mysql user you would like to run backups as, and `PASSWORD` with the correct password for that user.
 
-`mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, the database can be directly copied.
+{{< note >}}
+In the crontab example, ensure that there is no space between the -P flag, and your password entry.
+{{< /note >}}
 
-1.  If you're attempting this method on your running host system, stop the MySQL service before going further.
+### Option 2: Create Backups of an Entire DBMS Using Copies of the MySQL Data Directory
 
-2.  Most distribution's version of MySQL create the data directory at `/var/lib/mysql/`. If that doesn't exist, examine the `/etc/mysql/my.cnf` file for a path to the data directory.
+While the `mysqldump` tool is the preferred backup method, there are a couple of cases that require a different approach. `mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, we can copy MySQL's database directly. This method is often necessary in situations where you only have access to a recovery environment like [Finnix](/docs/troubleshooting/finnix-rescue-mode) with your system's disks mounted in that file system. If you're attempting this method on your system itself, ensure that the database is **not** running. Issue a command that resembles the following:
 
-3.  Create a location to store the backup if you don't already have one. A backup directory located in `/opt` is used as an example.
+    /etc/init.d/mysqld stop
 
-    sudo mkdir -p /opt/db-backups/DB-system
+On most distribution's version of MySQL, the data directory is located in the `/var/lib/mysql/` directory. If this directory doesn't exist examine the `/etc/mysql/my.cnf` file for a path to the data directory. Alternatively, you can search your file system for the data directory by issuing the following command:
 
-4.  Create a tarball of the `/var/lib/mysql` directory in the storage area from the previous step:
+    find / -name mysql
 
-        sudo tar czvf /opt/db-backups/DB-system/DB-system-$(date +%F).tar.gz /var/lib/mysql/*
+Once you have located your MySQL data directory you can copy it to a backup location. The following example assumes that the MySQL data directory is located at `/var/lib/mysql/`:
 
-5.  Restart the MySQL service if you stopped it in step 1.
+    cp -R /var/lib/mysql/* /opt/database/backup-1266871069/
 
-## Back Up a Single Database
+In this case, we have recursively copied the contents of the data directory (e.g. `/var/lib/mysql/`) to a directory within the `/opt/` hierarchy (e.g. `/opt/database/backup-1266871069/`). This directory must exist before initiating the copy operation. Consider the following sequence of operations:
 
-When backing up the entire database system isn't necessary, you can dump a specific database using the `mysqldump` tool. The command will resemble the following, and back up database `DB1` to the directory the command is run from.
+    /etc/init.d/mysql stop
+    mkdir -p /opt/database/backup-1266872202/
+    cp -R /var/lib/mysql/* /opt/database/backup-1266872202/
 
-    mysqldump -u username -p -h localhost DB1 > DB1-backup.sql
+These commands begin by stopping the MySQL server daemon, then creating a directory named `/opt/database/backup-1266872202/`, and performing a recursive copy of the data directory. Note that we've chosen to use the `backup-[time_t]` naming convention for our examples. Substitute the paths' above for your preferred organization and naming scheme. The `cp` command does not produce output and can take some time to complete depending on the size of your database. Do not be alarmed if it takes a while to complete. When the copy operation is finished, you may want to archive the data directory into a "tar" archive to make it easier to manage and move between machines. Issue the following commands to create the archive:
 
-You will be prompted for a password before `mysqldump` begins it's backup process. Depending on the size of the database, it could take a while to complete.
+    cd /opt/database/backup-1266872202
+    tar -czfv * > /opt/mysqlBackup-1266872202.tar.gz
 
-## Backing Up a Single Table
+Once the tarball is created, you can easily [transfer the file](/docs/using-linux/administration-basics#upload-files-to-a-remote-server) in the manner that is most convenient for you. Don't forget to restart the MySQL server daemon again if needed:
 
-### Option 1: Use mysqldump
+    /etc/init.d/mysql start
 
-This operation allows you to create a backup of a single database table. The following example will back up the table `Table1` from the `DB1` database.
+## Creating Backups of a Single Database
 
-     mysqldump -u username -ppassword -h localhost DB1 Table1 \> DB1-Table1.sql
+In many cases, creating a back up of the entire database server isn't required. In some cases such as upgrading a web application, the installer may recommend making a backup of the database in case the upgrade adversely affects the database. Similarly, if you want to create a "dump" of a specific database to move that database to a different server, you might consider the following method.
+
+When possible, use the `mysqldump` tool to export a "dump" of a single database. This command will resemble the following:
+
+    mysqldump -u username -ps3cr1t -h localhost danceLeaders > 1266861650-danceLeaders.sql
+
+The above example is like the example in the previous section, except rather than using the `--all-databases` option, this example specifies a particular database name. In this case we create a back up of the `danceLeaders` database. The form of this command, in a more plain notation is as follows:
+
+    mysqldump -u [username] -p[password] -h [host] [databaseName] > [backup-name].sql
+
+For an additional example, we will backup the database named `customer` using the root database account by issuing the following command:
+
+    mysqldump -u root -p -h localhost customer > customerBackup.sql
+
+You will be prompted for a password before `mysqldump` begins it's backup process. As always the backup file, in this case `customerBackup.sql`, is created in the directory where you issue this command. The `mysqldump` command can complete in a few seconds or a few hours depending on the size of the database and the load on the host when running the backup.
+
+## Creating Backups of a Single Table
+
+### Option 1: Create Backups of a Single Table Using the mysqldump Utility
+
+This operation, like previous uses of the `mysqldump` utility in this document, allows you to create a backup of a single database table. Continuing our earlier examples the following example allows you to back up the table `usernameRecords` in the `danceLeaders` database.
+
+     mysqldump -u username -ps3cr1t -h localhost danceLeaders usernameRecords \> 1266861650-danceLeaders-usernameRecords.sql
 
 The above example is like the example in the previous section, except that we've added a table name specification to the command to specify the name of the table that we want to back up. The form of this command in a more plain notation is as follows:
 
@@ -97,7 +120,7 @@ For an additional example, we will backup the table named "order" from the datab
 
     mysqldump -u root -p -h localhost customer order > customerBackup-order.sql
 
-You will be prompted for a password before `mysqldump` begins its backup process. As always, the backup file (in this case `DB2-backup.sql`) is created in the directory where you issue this command. The `mysqldump` command can complete in a few seconds or a few hours depending on the size of the database and the load on the host when running the backup.
+You will be prompted for a password before `mysqldump` begins its backup process. As always, the backup file (in this case `customerBackup.sql`) is created in the directory where you issue this command. The `mysqldump` command can complete in a few seconds or a few hours depending on the size of the database and the load on the host when running the backup.
 
 ### Option 2: Create Backups of a Single Table Using the MySQL Client and an OUTFILE Statement
 
@@ -383,3 +406,4 @@ LOAD DATA INFILE 'customerOrderBackup.sql' INTO TABLE order;
     This process can take anywhere from a few seconds to many hours depending on the size of your table. The duration of this operation depends on your system's load and the size of the table that you are restoring. It may complete in a few seconds, or it may take many hours. After you have verified that your data was imported successfully, you can log out:
 
         quit
+
