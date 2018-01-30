@@ -32,11 +32,11 @@ You will need a Linode with Docker and Docker Compose installed to complete this
 
 ### Install Docker
 
-{{< section file="/shortguides/docker/install_docker_ce.md" >}}
+{{< content "install_docker_ce.md" >}}
 
 ### Install Docker Compose
 
-{{< section file="/shortguides/docker/install_docker_compose.md" >}}
+{{< content "install_docker_compose.md" >}}
 
 ## Prepare the Environment
 
@@ -62,7 +62,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 2.  Create the `nginx.conf` referenced in the Dockerfile:
 
-    {{< file "/nginx/nginx.conf" conf >}}
+    {{< file "/nginx/nginx.conf" nginx >}}
 user  nginx;
 worker_processes 1;
 error_log  /dev/stdout info;
@@ -166,7 +166,7 @@ ENTRYPOINT ["/usr/local/bin/gunicorn", "--bind", ":8000", "linode:app", "--reloa
 
 3.  Create `web/linode.py` and add the example app script:
 
-    {{< file "web/linode.py" >}}
+    {{< file "web/linode.py" python >}}
 from flask import Flask
 import logging
 import psycopg2
