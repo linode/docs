@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Practical examples for using split to divide large files into multiple smaller files.'
+og_description: 'split is a Unix command line utility for dividing large files into smaller files. This guide provides basic and advanced examples along with explanations of the most common options and parameters.'
 keywords: ["split", "files"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: []
@@ -12,6 +13,7 @@ modified_by:
 og_description: “Learn how to use split for practical applications including dividing larger files into smaller files.”
 published: 2018-01-29
 title: How to Split Files with split
+external_resources:
 ---
 
 ## What is split?
@@ -52,13 +54,13 @@ example line 10
 example.txt  moby-dick.txt  xaa  xab  xac  xad  xae  xaf  xag
 {{< /output >}}
 
-    The new files present in the directory (`xaa`, `xab`, etc.) each contain a portion of the original file. By default, `split` divides a file into subfiles of 1000 lines each. The original `moby-dick.txt` file had 16,000 lines, resulting in 16 subfiles as output.
+    The new files present in the directory (`xaa`, `xab`, etc.) each contain a portion of the original file. By default, `split` divides a file into subfiles of 1000 lines each. The original `moby-dick.txt` file had 16,000 lines, resulting in 16 subfiles.
 
 ## Options and Parameters
 
 #### Prefix
 
-The first argument to `split` is the name of the file, as demonstrated above. An optional second argument allows you to specify the prefix for the outputted files. By default, this value is `x`.
+The first argument to `split` is the name of the file, as demonstrated above. An optional second argument allows you to specify the prefix for the output files. By default, this value is `x`.
 
     split moby-dick.txt moby-dick
 
@@ -82,7 +84,7 @@ The `-b` (or `--size`) option divides files by size rather than number of lines.
 
     split -b 100k moby-dick.txt
 
-You can specify this value by megabytes (m), gigabytes (g), terabytes (t), and so on (P, E, Z, up to Y for yottabytes).
+You can specify this value in megabytes (m), gigabytes (g), terabytes (t), and so on (P, E, Z, up to Y for yottabytes).
 
 #### Split by Number of Files
 
@@ -124,26 +126,6 @@ example-0  example-1  example-2  example-3  example.txt
 
     split -n 10/100 moby-dick.txt
 
-{{< output >}}
-ut every time ! "
+Like many shell commands, `split` can also accept input from the output of another command using the pipe operator:
 
-" Ay, ay, sir ! There she blows ! there there thar she
-blows bowes bo-o-o-s ! "
-
-" How far off ? "
-
-c&lt; Two miles and a half."
-
-" Thunder and lightning ! so near ! Call all hands ! "
-
-J. Ross Browne's Etchings of a
-Whaling Cruise. 1846.
-
-4 The Whale-ship Globe, on board of which vessel occurred
-the horrid transactions we are about to relate, belonged to
-the island of Nantucket.'
-{{< /output >}}
-
-Like many shell commands, `split` can also accept input from the output of another command using the pipe operator. To divide a log file into separate entries of 100 lines each as the log is written, use the following command:
-
-    tail -f /var/log/syslog | split -l 100
+    grep whale moby-dick.txt | split -l 100
