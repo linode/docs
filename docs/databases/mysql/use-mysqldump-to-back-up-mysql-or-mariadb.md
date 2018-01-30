@@ -76,7 +76,7 @@ password = MySQL root user's password
 0 1 * * * /usr/bin/mysqldump mysqldump --defaults-extra-file=/home/example_user/.my.cnf -u root --single-transaction --quick --lock-tables=false --all-databases > full-backup-$(date +%F).sql
 {{< /file >}}
 
-    For more information on cron, see the [cron(8)](https://linux.die.net/man/8/cron) and [cron(5)](https://linux.die.net/man/5/crontab) manual pages. 
+    For more information on cron, see the [cron(8)](https://linux.die.net/man/8/cron) and [cron(5)](https://linux.die.net/man/5/crontab) manual pages.
 
 ## Restore a Backup
 
