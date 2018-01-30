@@ -5,7 +5,7 @@ author:
 description: 'Alpine Linux is a small, security-oriented Linux distro. This guide explains how to install and configure Alpine Linux on a Linode'
 keywords: ["alpine", "alpine linux", "custom", "custom distro", "install alpine linux", "alpine linux packages"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-modified: 2017-01-18
+modified: 2018-01-18
 modified_by:
   name: Linode
 published: 2016-09-22
