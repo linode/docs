@@ -6,8 +6,8 @@ description: 'This guide will show how to track and visualize data from an Inter
 og_description: 'This guide shows how to install the Thingsboard open source dashboard for Internet of Things devices. A Raspberry Pi is used to demonstrate sending data to the cloud dashboard.'
 keywords: ["iot", "raspberry pi", "internet of things", "dashboard"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-01-08
-modified: 2017-01-08
+published: 2018-01-30
+modified: 2018-01-30
 modified_by:
   name: Linode
 title: 'View IoT Data with Thingsboard'
