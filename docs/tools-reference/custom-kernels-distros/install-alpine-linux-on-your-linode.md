@@ -7,7 +7,7 @@ keywords: ["alpine", "alpine linux", "custom", "custom distro", "install alpine 
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 modified: 2017-01-18
 modified_by:
-  name:
+  name: Linode
 published: 2016-09-22
 title: 'Install Alpine Linux on your Linode'
 contributor:

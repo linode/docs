@@ -5,28 +5,28 @@ author:
 description: This tutorial explains how to use Linode's block storage service.
 keywords: ["block storage", " volume", " media", " resize", " storage", " disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-06-16
+modified: 2018-01-30
 modified_by:
   name: Linode
 published: 2017-06-16
 title: How to Use Block Storage with Your Linode
 ---
 
-Linode's block storage service allows you to attach additional storage volumes to your Linode. A single volume can range from 1 to 1024 gigabytes in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight volumes can be attached to a single linode, be it new or currently-existing, so you do not need to recreate your server to add a block storage volume.
+![Block storage title graphic](/docs/assets/block-storage-title-graphic.png)
 
-
-{{< caution >}}
-Linode's backup services do NOT cover block storage volumes.
-You MUST execute your own backups for this data.
-{{< /caution >}}
+Linode's block storage service allows you to attach additional storage volumes to your Linode. A single volume can range from 1 to 1024 gigabytes in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight volumes can be attached to a single Linode, be it new or already existing, so you do not need to recreate your server to add a block storage volume.
 
 Block Storage is currently in a free public beta for Linodes in our Newark and Fremont datacenters. Any feedback you can give on the service would also be helpful and is appreciated.
 
-![Block storage title graphic](/docs/assets/block-storage-title-graphic.png)
+{{< caution >}}
+-  Linode's backup services do not cover block storage volumes. You must execute your own backups for this data.
+
+-  Your Linode must be running in Paravirtualizaion mode. Currently Block storage does not support Full-virtualization.
+{{< /caution >}}
 
 ## How to Add a Block Storage Volume to a Linode
 
-This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap space mounted as `/dev/sdb`. In this scenario, the block storage volume will be available to the operating system as `/dev/disk/by-id/scsi-0Linode_Volume_EXAMPLE`, where `EXAMPLE` is a name you assign the volume. Storage volumes can be added when your Linode is already running, and will show immediately in `/dev/disk/by-id/`.
+This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap space mounted as `/dev/sdb`. In this scenario, the block storage volume will be available to the operating system as `/dev/disk/by-id/scsi-0Linode_Volume_EXAMPLE`, where `EXAMPLE` is a label you assign the volume in the Linode Manager. Storage volumes can be added when your Linode is already running, and will show immediately in `/dev/disk/by-id/`.
 
 ### Add a Volume from the Linode Dashboard
 
