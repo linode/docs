@@ -407,7 +407,7 @@ You can test your installation successfully by opening a browser and typing the 
 
 There are multiple ways for setting Apache HTTP to direct calls to WildFly (mod_jk, mod_proxy, mod_cluster), the decision mainly to select mod_jk was based on [this article](http://www.programering.com/a/MTO3gDMwATg.html) that its content is distributed across several sites, you will find detailed pros & cons.
 
-1.  `mod_jk` provided by Tomcat needs to be built on the server, thats why you need to install build & make tools to your linode using following command:
+1.  `mod_jk` provided by Tomcat needs to be built on the server, that's why you need to install build & make tools to your Linode using following command:
 
         sudo yum install httpd-devel gcc gcc-c++ make libtool
         sudo ln -s /usr/bin/apxs /usr/sbin/apxs
@@ -471,7 +471,7 @@ JKShmFile     /var/tmp/jk-runtime-status
         sudo systemctl restart httpd
 
 
-7.  Try the URL `http://123.45.67.89/jkstatus`, repalcing `123.45.67.89` with your Linode IP. It should display a page for "JK Status Manager".
+7.  Try the URL `http://123.45.67.89/jkstatus`, replacing `123.45.67.89` with your Linode IP. It should display a page for "JK Status Manager".
 
 8.  We need to configure WildFly for accepting calls from Apache HTTP, Open the admin console, and selection the **Configuration** Menu -> **Web** -> **HTTP**. Then click the **View** link beside the **default-server**.
 

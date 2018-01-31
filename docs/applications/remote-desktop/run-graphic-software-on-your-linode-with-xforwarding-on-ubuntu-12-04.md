@@ -32,7 +32,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo apt-get update
         sudo apt-get upgrade
 
-2.  One of the great things about using a Linux distribution with a dependancy-aware package manager is that you can just install the application you want to run, and it will make sure you have all the required software. If you're installing a graphic utility, that will include X. For now, let's install `xauth`, which is required for X to authenticate through the SSH session:
+2.  One of the great things about using a Linux distribution with a dependency-aware package manager is that you can just install the application you want to run, and it will make sure you have all the required software. If you're installing a graphic utility, that will include X. For now, let's install `xauth`, which is required for X to authenticate through the SSH session:
 
         sudo apt-get install xauth
 

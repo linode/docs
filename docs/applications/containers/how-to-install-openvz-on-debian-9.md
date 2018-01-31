@@ -310,7 +310,7 @@ VE_LAYOUT=simfs
     - Provide a nameserver. Google's nameserver (8.8.8.8) should be sufficient.
     - If you have trouble booting into your virtual environment, you may try changing **VE_LAYOUT** back to "ploop" from "simfs."
 
-    You may also configure other options at your discrection, such as SWAP and RAM allocation. Save and close when finished.
+    You may also configure other options at your discretion, such as SWAP and RAM allocation. Save and close when finished.
 
     {{< file "/etc/vz/conf/101.conf" >}}
 . . .
