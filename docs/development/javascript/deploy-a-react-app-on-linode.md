@@ -3,6 +3,7 @@ author:
   name: Phil Zona
   email: phil.b.zona@gmail.com
 description: 'Learn to deploy a locally developed React application to your Linode using Rsync.'
+og_description: 'Use Rsync to deploy a React application from your local computer to a Linode.'
 keywords: ['react','reactjs','deploy','rsync']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-31
@@ -22,7 +23,7 @@ external_resources:
 
 [React](https://reactjs.org/) is a popular JavaScript library for building user interfaces. While React is often used as a frontend for more complex applications, it's also powerful enough to be used for full client-side applications on its own.
 
-Since a basic React app is essentially static (it consists of compiled HTML, CSS, and Javascript files), it is easy to deploy from a local computer to a Linode using [Rsync](https://rsync.samba.org/). This guide will show how to set up your Linode and local machine so that you can easily deploy your app whenever changes are made.
+Since a basic React app is static (it consists of compiled HTML, CSS, and Javascript files), it is easy to deploy from a local computer to a Linode using [Rsync](https://rsync.samba.org/). This guide will show how to set up your Linode and local machine so that you can easily deploy your app whenever changes are made.
 
 ## Before You Begin
 
@@ -58,7 +59,7 @@ The steps in this section should be performed on your Linode.
 
 ### Configure Web Server
 
-1.  Ensure your web server is configured to serve from the "work tree" file path we configured in the previous step.
+1.  Ensure your web server is configured to serve from the "work tree" file path configured in the previous step.
 
     If you're using Apache, this will be the `DocumentRoot` in your virtual host file:
 
@@ -99,7 +100,7 @@ server {
 
     If you don't have an existing project to use, you can create one at this stage using [create-react-app](https://github.com/facebookincubator/create-react-app).
 
-2.  Using a text editor, create a deployment bash script called `deploy` in your app's root directory. Replace `exampleuser` with the username of your limited user account, and `mydomain.com` with your Linode's FQDN or public IP address.
+2.  Using a text editor, create a deployment script called `deploy` in your app's root directory. Replace `exampleuser` with the username of your limited user account, and `mydomain.com` with your Linode's FQDN or public IP address.
 
     {{< file "~/myapp/deploy" bash >}}
 #!/bin/sh
@@ -129,10 +130,10 @@ echo "Deployment complete"
 
 5.  In a browser, navigate to your Linode's domain name or public IP address. If the deploy was successful, you should see your React app displayed.
 
-6.  Make a few changes to your app's `src` directory and then re-run the `deploy` script. Your changes should be visible in the browser after refreshing the page.
+6.  Make a few changes to your app's `src` directory and then re-run the `deploy` script. Your changes should be visible in the browser after reloading the page.
 
 ## Next Steps
 
-Deployment can be a complex topic and there are a number of factors to consider when working with production systems. This guide is meant to be a simple example for personal projects, and isn't necessarily suitable (on its own) for a large scale production application.
+Deployment can be a complex topic and there are many factors to consider when working with production systems. This guide is meant to be a simple example for personal projects, and isn't necessarily suitable (on its own) for a large scale production application.
 
-More advanced build tools such as [Travis](https://travis-ci.org/), [Jenkins](https://jenkins.io), and [Wercker](http://www.wercker.com/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deploy and deploying to multiple servers (such as test and production boxes). See our guides on [Jenkins](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/) and [Wercker](/docs/development/ci/how-to-develop-and-deploy-your-applications-using-wercker/) to get started.
+More advanced build and continuous integration tools such as [Travis](https://travis-ci.org/), [Jenkins](https://jenkins.io), and [Wercker](http://www.wercker.com/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deploy and deploying to multiple servers (such as test and production boxes). See our guides on [Jenkins](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/) and [Wercker](/docs/development/ci/how-to-develop-and-deploy-your-applications-using-wercker/) to get started.
