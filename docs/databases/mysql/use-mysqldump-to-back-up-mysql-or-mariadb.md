@@ -7,6 +7,9 @@ keywords: ["mysql", "mariadb", "backup", "back up", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['databases/mysql/backup-options/','security/backups/back-up-your-mysql-databases/','databases/mysql/back-up-your-mysql-databases/']
 published: 2018-01-30
+modified: 2018-01-30
+modified_by:
+  name: Linode
 title: 'Use mysqldump to Back Up MySQL or MariaDB'
 external_resources:
  - '[MySQL Database Backup Methods page](http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html)'
