@@ -139,11 +139,11 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
     - If you are **not** using key pair authentication, then copy the file directly off of the Chef Server. replace `user` with your username on the server, and `123.45.67.89` with the URL or IP of your Chef Server:
 
-        scp user@123.45.67.89:~/.chef/*.pem ~/chef-repo/.chef/
+            scp user@123.45.67.89:~/.chef/*.pem ~/chef-repo/.chef/
 
     - If you **are** using key pair authentication, then from your **local terminal** copy the .pem files from your server to your workstation using the `scp` command. Replace `user` with the appropriate username, and `123.45.67.89` with the URL or IP for your Chef Server and `987.65.43.21` with the URL or IP for your workstation:
 
-        scp -3 user@123.45.67.89:~/.chef/*.pem user@987.65.43.21:~/chef-repo/.chef/
+            scp -3 user@123.45.67.89:~/.chef/*.pem user@987.65.43.21:~/chef-repo/.chef/
 
 2.	Confirm that the files have been copied successfully by listing the contents of the `.chef` directory:
 
@@ -236,11 +236,11 @@ Bootstrapping a node installs the chef-client and validates the node, allowing i
 
     - As the node's root user, changing `password` to your root password and `nodename` to the desired name for your node. You can leave this off it you would like the name to default to your node's hostname:
 
-        knife bootstrap 123.45.67.89 -x root -P password --node-name nodename
+            knife bootstrap 123.45.67.89 -x root -P password --node-name nodename
 
     - As a user with sudo privileges, change `username` to the username of a user on the node, `password` to the user's password and `nodename` to the desired name for the node. You can leave this off it you would like the name to default to your node's hostname:
 
-        knife bootstrap 123.45.67.89 -x username -P password --sudo --node-name nodename
+            knife bootstrap 123.45.67.89 -x username -P password --sudo --node-name nodename
 
 2.	Confirm that the node has been bootstrapped by listing the nodes:
 
