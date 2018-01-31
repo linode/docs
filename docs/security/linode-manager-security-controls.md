@@ -32,13 +32,17 @@ If you enable this optional feature in the Linode Manager, you'll access your Li
 
 ### Select a Token Application
 
-Before you enable two-factor authentication in the Linode Manager, select a token application for your smartphone. We'll use Authy as an example in this guide, but you can use any application that supports the Time-based One-Time Password (TOTP) algorithm. For example, you can use any of the following applications:
+Before you enable two-factor authentication in the Linode Manager, select a token application for your smartphone. This guide will use Authy as an example, but you can use any application that supports the Time-based One-Time Password (TOTP) algorithm. For example, you can use any of the following applications:
 
 * [Authy](https://authy.com/features/setup/) (iOS/Android/Chrome)
 * [Google Authenticator](http://support.google.com/accounts/bin/answer.py?hl=en&answer=1066447) (iOS/Android/BlackBerry)
 * [Duo Mobile](http://guide.duosecurity.com/third-party-accounts) (iOS/Android)
 
 Install one of these applications on your smartphone before continuing.
+
+{{< note >}}
+Authy stores your authentication tokens (hashed for security) on their servers. This makes it possible for them to support backing up and restoring tokens, as well as making it easy to switch devices. However, some users may not be comfortable storing sensitive information in the cloud; for these users, Google Authenticator is a better choice, as the authentication keys are only stored locally.
+{{< /note >}}
 
 ### Enable Two-Factor Authentication
 
@@ -232,7 +236,7 @@ If you regenerated the URL for the RSS feed, you will need to update it in your 
 
 The [Linode API](https://www.linode.com/api/) is a programmatic interface for many of the features available in the Linode Manager. It's an indispensable tool for developers, but it's also a potential attack vector. For this reason, the Linode Manager provides two security controls for your account's API key. First, you can generate a new API key if you suspect that your existing key has been compromised. And if you're not using the API key, you can remove access to it altogether.
 
-For details on generating and removing API keys, please see the [API Key](/docs/api/key) article.
+For details on generating and removing API keys, please see the [API Key](/docs/platform/api/api-key/) article.
 
 ## Next Steps
 If you've completed this guide, you've proactively taken steps to protect your Linode Manager account. But don't stop here! There are a couple other steps that some users should take to secure their Linode Manager accounts. Take some time and work through the following action items outlined in our other guides.
