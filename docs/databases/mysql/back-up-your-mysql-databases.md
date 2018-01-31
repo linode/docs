@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
