@@ -26,16 +26,16 @@ external_resources:
 
 For simplicity, in the following we use the term *container* to describe the machine containers of LXD.
 
-The main benefits of LXD are the high density of containers that it can support and the performance it delivers. A computer with 2GB RAM can adequately support half a dozen containers. In addition, LXD officially supports the [container images of several major Linux distributions](https://us.images.linuxcontainers.org/). We can pick and choose the Linux distribution and exact version of that distribution to run in the container. 
+The main benefits of LXD are the high density of containers that it can support and the performance it delivers. A computer with 2GB RAM can adequately support half a dozen containers. In addition, LXD officially supports the [container images of several major Linux distributions](https://us.images.linuxcontainers.org/). We can pick and choose the Linux distribution and exact version of that distribution to run in the container.
 
-Once deployed, LXD allows the administrator to create separate containers for each website, for the database server, for the reverse-proxy and other services. Most services can be installed in a container. 
+Once deployed, LXD allows the administrator to create separate containers for each website, for the database server, for the reverse-proxy and other services. Most services can be installed in a container.
 
 This guide covers how to setup a Linode to work with LXD, how LXD works in practice and how to troubleshoot common issues.
 
 
 ## Before You Begin
 
-When setting up LXD, we decide where to store the data of the containers. In this guide, we cover two options. 
+When setting up LXD, we decide where to store the data of the containers. In this guide, we cover two options.
 
 1. The use of a Volume (through Block Storage).  See [How to Use Block Storage with Your Linode](/docs/platform/how-to-use-block-storage-with-your-linode/) for the list of datacenters that support Block Storage. Select this option if your preferred datacenter is in the list.
 
@@ -50,7 +50,7 @@ Subsequently, follow the following steps to set up the Linode.
 
 3.  Follow the [How to Use Block Storage with Your Linode](/docs/platform/how-to-use-block-storage-with-your-linode/) guide and create a block storage volume with size at least 20GB and attach to this Linode. Note down the device name. **Do not** format the volume and do not add it to /etc/fstab. ![Add a volume for Disk Storage](/docs/assets/lxd/add-volume-for-disk-storage.png "Add a volume for Disk Storage")
 
-4.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. 
+4.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
     This guide will use `sudo` wherever possible. In addition, *make sure* the standard user account has the username `ubuntu`.
 
@@ -103,12 +103,12 @@ If you are using part of the Linode disk, the device name looks like below for t
 
 ## Using LXD
 
-In the following, we see common tasks in the lifetime of a container. 
+In the following, we see common tasks in the lifetime of a container.
 
 To get a list of the containers,
 
         lxc list
- 
+
 {{< output >}}
 Generating a client certificate. This may take a minute...
 If this is your first time using LXD, you should also run: sudo lxd init
@@ -120,7 +120,7 @@ To start your first container, try: lxc launch ubuntu:16.04
 {{< /output >}}
 
 {{< note >}}
-There are no containers yet and the list is empty. 
+There are no containers yet and the list is empty.
 {{< /note >}}
 
 To get a list of the available container images,
@@ -153,17 +153,17 @@ The first two columns for the alias and the fingerprint provide an identifier th
 To launch a new container with the name `mycontainer`,
 
         lxc launch ubuntu:16.04 mycontainer
- 
+
 {{< output >}}
 Creating mycontainer
-Starting mycontainer 
+Starting mycontainer
 {{< /output >}}
 
 
 To get a new list of the containers,
 
         lxc list
- 
+
 {{< output >}}
 +-------------+---------+-----------------------+---------------------------+------------+-----------+
 |    NAME     |  STATE  |         IPV4          |          IPV6             |    TYPE    | SNAPSHOTS |
@@ -179,7 +179,7 @@ To execute a command in a container called mycontainer,
         lxc exec mycontainer -- apt upgrade
 
 {{< note >}}
-The characters `--` instruct the `lxc` command not to parse any more command-line parameters. It would be necessary to use `--` if the line was `lxc exec mycontainer -- ls -l` because otherwise the `lxc` command would try to interpret first the `-l` parameter and fail. It is good habit to use `--` in any case. 
+The characters `--` instruct the `lxc` command not to parse any more command-line parameters. It would be necessary to use `--` if the line was `lxc exec mycontainer -- ls -l` because otherwise the `lxc` command would try to interpret first the `-l` parameter and fail. It is good habit to use `--` in any case.
 {{< /note >}}
 
 To get a shell in a container,
@@ -258,11 +258,11 @@ If you plan to use a single website, then a single `iptables` rule to the websit
 
 ## How to resize a Linode to make space for LXD
 
-An alternative to using block storage for LXD is to use instead some of the free space of the Linode. 
-You can do so by rebuilding the Linode and allocating less space for the Linux distribution. Then, the resulting free space is used for LXD. 
+An alternative to using block storage for LXD is to use instead some of the free space of the Linode.
+You can do so by rebuilding the Linode and allocating less space for the Linux distribution. Then, the resulting free space is used for LXD.
 
 {{< caution >}}
-The following steps will destroy all data and wipe your Linode clean. Make sure that you have took backups of any important data. 
+The following steps will destroy all data and wipe your Linode clean. Make sure that you have took backups of any important data.
 {{< /caution >}}
 
 1. Visit the **Dashboard** of your Linode and click on the **Shut down** button to shutdown.
@@ -274,6 +274,6 @@ The following steps will destroy all data and wipe your Linode clean. Make sure 
 4. Visit the **Dashboard** of your Linode. Click **Edit** on the configuration profile. In the **Configuration Profile**/**Boot Settings**, select in the **Kernel** drop-down menu the entry **GRUB 2**. In the **Configuration Profile**/**Block Device Assignment**, at the device name **/dev/sdc** click on the drop-down menu to select the **LXD** disk that was created earlier. Finally, at the end of the page, click on the button **Save Changes**.
 ![Block Device Assignement](/docs/assets/lxd/block-device-assignment.png "Block Device Assignment")
 
-5. Visit the **Dashboard** of your Linode. Click on the **Boot** button to boot your Linode. 
+5. Visit the **Dashboard** of your Linode. Click on the **Boot** button to boot your Linode.
 
 Note that the device name of the disk with name **LXD** is `/dev/sdc`. This device name will be used when initializing LXD.
