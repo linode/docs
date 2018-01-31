@@ -42,7 +42,7 @@ Download and install MySQL workbench from the [downloads page](https://www.mysql
 There are `.deb` and `.rpm` packages available on the Workbench [download page](https://www.mysql.com/products/workbench/). Alternatively, some distributions have MySQL Workbench in their repositories.
 
 {{< note >}}
-The screenshots in this guide were taken in Ubuntu but once Workbench is installed on your system, the subsequent steps should be similar for other plaforms.
+The screenshots in this guide were taken in Ubuntu but once Workbench is installed on your system, the subsequent steps should be similar for other platforms.
 {{< /note >}}
 
 When you start MySQL Workbench, you'll land at the home screen. Once you configure your database servers, as we'll do next, then they'll have shortcuts on the home screen.
@@ -55,7 +55,7 @@ The first step after running MySQL Workbench is to add your Linode as a database
 
 1.  Click the **+** adjacent to **MySQL Connections** to get the **Setup New Connection** dialog:
 
-	[![The New Connection Dialog.](/docs/assets/workbenchHome-small.png)](/docs/assets/workbenchHome.png)
+    [![The New Connection Dialog.](/docs/assets/workbenchHome-small.png)](/docs/assets/workbenchHome.png)
 
     The settings you'll need:
 
@@ -91,11 +91,11 @@ Pay attention to the **Service** area of each dialog.  Use the appropriate passw
 
 3.  If all is well, you should get a **Connection Successful** message.
 
-	![Connection Successful!](/docs/assets/workbenchGoodConnection.png)
+    ![Connection Successful!](/docs/assets/workbenchGoodConnection.png)
 
 4.  Click **OK** to clear the message, then click **OK** again to add the connection.  You'll get a shortcut to the new connection on the home screen.
 
-	[![Shortcut to your database](/docs/assets/workbenchHomeWithLinode-small.png)](/docs/assets/workbenchHomeWithLinode.png)
+    [![Shortcut to your database](/docs/assets/workbenchHomeWithLinode-small.png)](/docs/assets/workbenchHomeWithLinode.png)
 
     If you have more than one Linode or other servers you administer, you can repeat this process to add all of your database servers.
 
@@ -133,23 +133,23 @@ The user you just created should be able to log in to MySQL via Workbench or any
 
 MySQL Workbench is deployed in safe mode by default. This will not allow certain types of queries--such as updates--without explicit IDs. To fix this, we need to turn off safe mode.
 
-1. Go to the menu and select **Edit**, then **Preferences**.
+1.  Go to the menu and select **Edit**, then **Preferences**.
 
-2. Select the **SQL Queries** tab.
+2.  Select the **SQL Queries** tab.
 
-	![The SQL Queries configuration page](/docs/assets/workbenchSQLqueries.png)
+    ![The SQL Queries configuration page](/docs/assets/workbenchSQLqueries.png)
 
-3. Uncheck the line beginning with **"Safe Updates".**
+3.  Uncheck the line beginning with **"Safe Updates".**
 
     {{< note >}}
 In some instances, this may instead be found under **SQL Editor**.
 {{< /note >}}
 
-4. Click **OK**.
+4.  Click **OK**.
 
-5. Close the database screen to return to home.
+5.  Close the database screen to return to home.
 
-6. Reconnect to the database.
+6.  Reconnect to the database.
 
 
 ## Creating and Populating Databases
@@ -160,9 +160,9 @@ Start by adding a new database that you can work with.
 
 1.  Click the **New Schema** button on the toolbar.
 
-	![The new schema button.  Make sure you click the one with a plus, not the one with an i](/docs/assets/workbenchToolbarNewSchema.png)
+    ![The new schema button.  Make sure you click the one with a plus, not the one with an i](/docs/assets/workbenchToolbarNewSchema.png)
 
-	[![The new schema dialog](/docs/assets/workbenchNewSchema-small.png)](/docs/assets/workbenchNewSchema.png)
+    [![The new schema dialog](/docs/assets/workbenchNewSchema-small.png)](/docs/assets/workbenchNewSchema.png)
 
     You only need a name to create the new database, but you can create an area for comments if you want. Default collation can be left blank, in which case MySQL will use the default.
 
@@ -172,7 +172,7 @@ Start by adding a new database that you can work with.
 
 3.  Click **Apply** again and you should get a **SQL Succesful** message.  Then click **Close**.
 
-	![Our SQL has been successfully applied!](/docs/assets/workbenchSQLsuccessful.png)
+    ![Our SQL has been successfully applied!](/docs/assets/workbenchSQLsuccessful.png)
 
     Now you're back at the main database screen, and you see that **phonebook** has been added to the schema list. Double-click on any item in the schema list to switch to that database.
 
@@ -184,7 +184,7 @@ MySQL stores its information in a table, which resembles a spreadsheet.
 
 1.  Click the **Add Table** button.
 
-	![The add table button](/docs/assets/workbenchMenuButton.png)
+    ![The add table button](/docs/assets/workbenchMenuButton.png)
 
     You'll get a screen that looks like this:
 
@@ -228,7 +228,7 @@ The first step to add table data is to open a table.
 
 1.  Right click on **employees** and select the top option, **SELECT ROWS - LIMIT 1000**.
 
-	![A blank table ready for data](/docs/assets/workbenchEmptyTable.png)
+    ![A blank table ready for data](/docs/assets/workbenchEmptyTable.png)
 
 2.  Double click on **NULL** under **lastName**.  At this point, you can start entering data.  You must press ENTER after each field to exit editing or else the field will revert to its previous value.
 
@@ -247,7 +247,7 @@ You can run a SQL query on a table by entering it at the top of the table view.
 
 2.  Click on the lightning bolt to run the query.  You should get results like this:
 
-	[![Who is named Bob?](/docs/assets/workbenchSQLresults-small.png)](/docs/assets/workbenchSQLresults.png)
+    [![Who is named Bob?](/docs/assets/workbenchSQLresults-small.png)](/docs/assets/workbenchSQLresults.png)
 
 ### Export / Import Data
 

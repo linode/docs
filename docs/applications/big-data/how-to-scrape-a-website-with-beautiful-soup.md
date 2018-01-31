@@ -146,7 +146,7 @@ rec = {
 
         'pid': result['data-pid']
 
-4.  Other data attributes may be nested deeper in the HTML strucure, and can be accessed using a combination of dot and array notation. For example, the date a result was posted is stored in `datetime`, which is a data attribute of the `time` element, which is a child of a `p` tag that is a child of `result`. To access this value use the following format:
+4.  Other data attributes may be nested deeper in the HTML structure, and can be accessed using a combination of dot and array notation. For example, the date a result was posted is stored in `datetime`, which is a data attribute of the `time` element, which is a child of a `p` tag that is a child of `result`. To access this value use the following format:
 
         'date': result.p.time['datetime']
 

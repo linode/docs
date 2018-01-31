@@ -48,7 +48,7 @@ On Debian 9 and later, run `sudo apt install dirmngr` before importing the key.
     | Ubuntu 16.04 | 0xF1656F24C74CD1D8 |   10.1  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.1/ubuntu xenial main
     | Ubuntu 16.04 | 0xF1656F24C74CD1D8 |   10.0  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.1/ubuntu xenial main
 
-    There may not be a released version for each distribution. e.g. Debian 8 has version 10.0 and 10.1 whereas Debian 9 has only 10.1 available. To see all available distributions, visit the MariaDB reporsitory [download page](https://downloads.mariadb.org/mariadb/repositories/).
+    There may not be a released version for each distribution. e.g. Debian 8 has version 10.0 and 10.1 whereas Debian 9 has only 10.1 available. To see all available distributions, visit the MariaDB repository [download page](https://downloads.mariadb.org/mariadb/repositories/).
 
 3.  Install MariaDB, Galera, and Rsync:
 

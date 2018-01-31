@@ -371,7 +371,7 @@ bindIp: 192.0.2.5
 
         mongo mongo-query-router:27017 -u mongo-admin -p --authenticationDatabase admin
 
-    If your query router has a different hostname, subsitute that in the command.
+    If your query router has a different hostname, substitute that in the command.
 
 3.  From the `mongos` interface, add each shard individually:
 
@@ -392,7 +392,7 @@ Before adding replica sets as shards, you must first configure the replica sets 
 
 ## Configure Sharding
 
-At this stage, the components of your cluster are all connected and communicating with one another. The final step is to enable sharding. Enabling sharding takes place in stages due to the organization of data in MongoDB. To understand how data will be distrubuted, let's briefly review the main data structures:
+At this stage, the components of your cluster are all connected and communicating with one another. The final step is to enable sharding. Enabling sharding takes place in stages due to the organization of data in MongoDB. To understand how data will be distributed, let's briefly review the main data structures:
 
 -   **Databases** - The broadest data structure in MongoDB, used to hold groups of related data.
 -   **Collections** - Analogous to tables in traditional relational database systems, collections are the data structures that comprise databases
@@ -406,7 +406,7 @@ First, we'll enable sharding at the database level, which means that collections
 
         mongo mongo-query-router:27017 -u mongo-admin -p --authenticationDatabase admin
 
-    If applicable, subsitute your own query router's hostname.
+    If applicable, substitute your own query router's hostname.
 
 2.  From the `mongos` shell, create a new database. We'll call ours `exampleDB`:
 
@@ -466,7 +466,7 @@ It's not always necessary to shard every collection in a database. Depending on 
 
 ## Test Your Cluster
 
-This section is optional. To ensure your data is being distributed evenly in the example database and collection we configured aboved, you can follow these steps to generate some basic test data and see how it is divided among the shards.
+This section is optional. To ensure your data is being distributed evenly in the example database and collection we configured above, you can follow these steps to generate some basic test data and see how it is divided among the shards.
 
 1.  Connect to the `mongo` shell on your query router if you're not already there:
 

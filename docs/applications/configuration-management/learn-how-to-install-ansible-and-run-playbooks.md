@@ -250,7 +250,7 @@ The following playbooks are for learning purposes only, and will NOT result in a
 
 3.  Write a playbook that creates a new normal user, adds in our public key, and adds the new user to the `sudoers` file.
 
-    We're introducing a new aspect of Ansible here: *variables*. Note the `vars:` entry and the `NORMAL_USER_NAME` line. You'll notice that it is reused twice in the file so that we only have to change it once. Replace `yourusername` with your choosen username, `localusername` in the path for the `authorized_key`, and the password hash.
+    We're introducing a new aspect of Ansible here: *variables*. Note the `vars:` entry and the `NORMAL_USER_NAME` line. You'll notice that it is reused twice in the file so that we only have to change it once. Replace `yourusername` with your chosen username, `localusername` in the path for the `authorized_key`, and the password hash.
 
     {{< file "initialize_basic_user.yml" yaml >}}
 ---
