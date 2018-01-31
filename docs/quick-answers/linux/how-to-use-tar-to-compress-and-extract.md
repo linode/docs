@@ -16,7 +16,7 @@ title: 'Extracting and Compressing Files with TAR'
 `tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux. Fundamentally, the function of these utilities is to take a large number of files, save them together in an archive, and compress the archive to save space.
 
 
-## Compress and Zip a Directory 
+## Compress and Zip a Directory
 
 1. Make a directory on your system:
 
@@ -28,7 +28,7 @@ title: 'Extracting and Compressing Files with TAR'
 
 3. Check for the newely compressed file:
 
-        ls 
+        ls
         tesdir/ testdir.tar
 
 4. Zip the file using `gzip`:
@@ -62,9 +62,9 @@ testdir/test.txt
 
 In these examples the flags that were used are:
 
-* `-c`: Creates a new archive in the form of a `tar` file. 
-* `-v`: Verbose flag, outputs a log after running the command. 
-* `-z`: Zips or unzips using `gzip`. 
+* `-c`: Creates a new archive in the form of a `tar` file.
+* `-v`: Verbose flag, outputs a log after running the command.
+* `-z`: Zips or unzips using `gzip`.
 * `-x`: Extracts a file from the archive.
 * `-f`: Defines STDOUT as the filename, or uses the next parameter.
 
