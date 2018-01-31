@@ -56,7 +56,7 @@ Minecraft version 1.12 is only compatible with OpenJDK 8. If you are using OpenJ
     Assign a secure password, and configure any additional [SSH hardening](/docs/security/use-public-key-authentication-with-ssh) options at this time.
 
 {{< note >}}
-If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
+If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
 
 -A INPUT -p tcp --dport 25565 -j ACCEPT
 {{< /note >}}
@@ -115,7 +115,7 @@ eula=true
 
 
 
-3.  To ensure that the Minecraft server runs independent of an SSH connection, execute `run.sh` from within a [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session:
+3.  To ensure that the Minecraft server runs independent of an SSH connection, execute `run.sh` from within a [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) session:
 
         screen /home/minecraft/run.sh
 

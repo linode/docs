@@ -154,7 +154,7 @@ If you forget your root MySQL password, it can be reset.
 
 1.  Stop the current MySQL server instance.
 
-        sudo systemctl stop mysql.serivce
+        sudo systemctl stop mysql.service
 
 2.  Use dpkg to re-run the configuration process MySQL goes through on first installation. You will again be asked to set a root password.
 

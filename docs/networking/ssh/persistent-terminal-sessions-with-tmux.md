@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Keep processes running even if your SSH connection drops. Examples on managing tmux sessions, windows and panes'
+description: 'Keep processes running even if your SSH connection drops. This guide includes examples on managing tmux sessions, windows and panes'
 og_description: 'This guide will show you how to use tmux the terminal multiplexer. tmux allows you to save terminal sessions, and manage multiple terminal sessions within one window'
 keywords: ['tmux','terminal','multiplexer','attach','detach','panes','sessions']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,18 +22,17 @@ external_resources:
 
 ## What is tmux?
 
+Tmux is a **terminal multiplexer**. It creates a host **server** on your Linode and connects to it with a client window. If the client is disconnected, the server keeps running. When you reconnect to your Linode after rebooting your computer or losing your Internet connection, you can reattach to the tmux session and the files you were working with will still be open, and the processes you had running will still be active.
 
-Tmux, is a **terminal multiplexer**. Tmux creates a host **server** on your Linode, and connects to it with a client window. When the client is disconnected, the server keeps running. When you reconnect to your Linode after rebooting your computer or losing your Internet connection, you can reattach to the tmux session and find the files you were working with still open, and the processes you had running are still active.
-
-tmux is also often used as a container for processes that should always be on. For example you might run a game server or an IRC client with tmux.
+By attaching multiple sessions, windows, and panes to a tmux server, you can organize your workflow and easily manage multiple tasks and processes.
 
 ## Install tmux
 
-Install tmux with your distribution's package manager:
+Install tmux with your distribution's package manager.
 
-1.  To install tmux on Debian 9 or Ubuntu 16.04:
+On Debian or Ubuntu:
 
-        sudo apt install tmux
+    sudo apt install tmux
 
 ## Attach and Detach from a tmux Session
 
@@ -83,7 +82,7 @@ When a tmux session starts, a single window is created by default. It is possibl
 | **exit** |  Close a window |
 | **Prefix** + **&**  | Force kill-all processes in an unresponsive window  |
 
-By default, tmux names each window according to the process that spawned it (most commonly bash). To give windows names that are easier to remember and work with, you can rename a window with **Prefix** +  <font size ="8">,</font> .
+By default, tmux names each window according to the process that spawned it (most commonly bash). To give windows names that are easier to remember and work with, you can rename a window with **Prefix + ,**.
 
 ## Manage tmux Panes
 

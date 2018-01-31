@@ -90,7 +90,7 @@ The current stable version of Docker Compose is 1.16.1. Check for the latest ver
 
         sudo dnf install mysql
 
-### Configure Docker
+## Configure Docker
 
 The Docker service will manage your containers, the container's host, Zipkin services, and your MYSQL server.
 
@@ -112,7 +112,7 @@ Our goal is to set up the Zipkin Server for:
 * Web service: showing searches of time data
 * lock down access to only our web and analyst machines.
 
-### Zipkin Server Firewall
+## Zipkin Server Firewall
 
 1. Create a new zone in our firewall called **zipkin**
 
@@ -142,7 +142,7 @@ Our goal is to set up the Zipkin Server for:
 
         sudo firewall-cmd --zone=zipkin --list-all
 
-### Docker-Compose Configuration
+## Docker-Compose Configuration
 
 The **docker-compose yml** files will control which system configuration we can use. We're going to select a MySQL configuration for storage.
 
@@ -229,7 +229,7 @@ volumes:
 
         docker-compose -f docker-init.yml down
 
-### Backup Span/Trace Data
+## Backup Span/Trace Data
 
 There are 2 different backup methods: using MySQL , and using sysadmin.
 
@@ -271,7 +271,7 @@ We can just zip or tar the exported database files on the host system. Since we 
 
 3.  Remember to start your Zipkin services if they're still needed. They will not restart even on a reboot because we have explicitly shut them down.
 
-#### Testing the Zipkin Service
+## Testing the Zipkin Service
 
 1.  Easiest way to do this is by using your web browser on your analyst machine. Log into your analyst machine, bring up your browser, and type in the following URL:
 

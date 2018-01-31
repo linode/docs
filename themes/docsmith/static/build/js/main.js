@@ -274,25 +274,6 @@
             var footer = $('footer');
             var bottom = Math.round($(document).height() - footer.offset().top) + 80;
 
-            toc.affix({
-                offset: {
-                    top: toc.offset().top,
-                    bottom: bottom
-                }
-            });
-
-            // Ensure sidebar width is responsive and constant when scrolling
-            $('#doc-sidebar').each(function () {
-                $(this).before('<div class="affix-container" />');
-            });
-
-            var resizeFn = function() {
-                toc.css('width', $('div.affix-container').width());
-            };
-
-            resizeFn();
-            $(window).resize(resizeFn);
-
             /* activate scrollspy menu */
             var $body = $(document.body);
             var navHeight = toc.outerHeight(true) + 10;
@@ -302,7 +283,7 @@
                 offset: navHeight
             });
 
-            /*  scrollspy Table of contents, adapted from https://www.bootply.com/100983 
+            /*  scrollspy Table of contents, adapted from https://www.bootply.com/100983
                 license: MIT
                 author: bootply.com
              */
