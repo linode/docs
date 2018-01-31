@@ -26,8 +26,8 @@ def md_index(path='.', extension='*.md'):
     Traverses root directory
     """
     index = []
-    exclude_dir = ['node_modules', 'archetypes']
-    exclude_file = ['_index.md']
+    exclude_dir = ['node_modules', 'archetypes', '.git']
+    exclude_file = ['_index.md','.gitignore']
     for root, dirnames, filenames in os.walk(path):
         dirnames[:] = [d for d in dirnames if d not in exclude_dir]
         for filename in fnmatch.filter(filenames, extension):
@@ -39,5 +39,26 @@ def md_index(path='.', extension='*.md'):
 
 @pytest.fixture(params=md_index())
 def md_filepath(request):
+    return request.param
+
+@pytest.fixture(scope='module', autouse=True)
+def full_index(path='.'):
+    """
+    Traverses root directory
+    includes assets/
+    """
+    index = []
+    exclude_dir = ['node_modules', 'archetypes', '.git']
+    exclude_file = ['.gitignore']
+    for root, dirnames, filenames in os.walk(path):
+        dirnames[:] = [d for d in dirnames if d not in exclude_dir]
+        for filename in filenames:
+            if filename in exclude_file:
+                continue
+            index.append(os.path.join(root, filename))
+    return index
+
+@pytest.fixture(params=full_index())
+def all_filepaths(request):
     return request.param
 

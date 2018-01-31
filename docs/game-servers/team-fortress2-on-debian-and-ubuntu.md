@@ -103,7 +103,7 @@ The `motd_default.txt` file can contain HTML and is displayed as a website upon 
 
 ### Server.cfg
 
-The file `~/Steam/tf2/tf/cfg/server.cfg` is what contains all of the settings you need to customize the loadout of your game. A `server.cfg` file is not needed to run the game but we have a sample config file [here](/docs/assets/team_fortress_2_server_config) which you can edit for your own use.
+The file `~/Steam/tf2/tf/cfg/server.cfg` is what contains all of the settings you need to customize the loadout of your game. A `server.cfg` file is not needed to run the game but we have a sample config file [here](/docs/assets/team_fortress_2_server_config.cfg) which you can edit for your own use.
 
 {{< note >}}
 For the configuration of this file, `0` means *off* and `1` means *on*.
