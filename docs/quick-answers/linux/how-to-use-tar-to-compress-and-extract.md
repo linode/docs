@@ -6,15 +6,14 @@ description: 'Tar, is a GNU utility that provides the ability to create tar arch
 og_description: 'This guide will detail how to compress and extract files using tar on the Unix filesystem'
 keywords: ["tar", "star", "GNU-Tar"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-28
-modified: 2018-01-29
+published: 2018-02-01
+modified: 2018-02-01
 modified_by:
   name: Linode
-title: 'Extracting and Compressing Files with TAR'
+title: 'Extract and Compress Files with TAR'
 ---
 
 `tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux. Fundamentally, the function of these utilities is to take a large number of files, save them together in an archive, and compress the archive to save space.
-
 
 ## Compress and Zip a Directory
 
@@ -29,7 +28,9 @@ title: 'Extracting and Compressing Files with TAR'
 3. Check for the newely compressed file:
 
         ls
-        tesdir/ testdir.tar
+  {{< output >}}
+tesdir testdir.tar
+{{< /output >}}
 
 4. Zip the file using `gzip`:
 
@@ -38,9 +39,11 @@ title: 'Extracting and Compressing Files with TAR'
 5. Checking for the file will now show:
 
         ls
-        testdir.tar.gz
+  {{< output >}}
+testdir.tar.gz
+{{< /output >}}
 
-    The file has now been compressed and ziped. You can see the difference in size between the two files like this:
+    The chained file extensions (.tar.gz) indicate that this is a compressed archive. You can see the difference in size between the two files:
 
     {{< output >}}
 [Docs@tar ]$ ls -l --block-size=KB
@@ -52,10 +55,9 @@ drwxrwxr-x 2 linode linode 5kB Jan 30 13:13 testdir
 6. Extract the directory:
 
         rm -r testdir
-        tar -xzvf testdir
+        tar -xzvf testdir.tar.gz
 
     {{< output >}}
-[Docs@tar]$ tar -xzvf testdir.tar.gz
 testdir/
 testdir/test.txt
 {{</ output >}}
@@ -76,7 +78,7 @@ Some of the common flags used with the `tar` command are:
 |-d |Show differences between an archive and a local filesystem.   |
 |-delete |Delete from the archive.   |
 |-r |Append files to the end of an archive.   |
-|-t |list the contents of an archive.   |
+|-t |List the contents of an archive.   |
 |-u |Append but don't overwrite the current archive.   |
 
 
