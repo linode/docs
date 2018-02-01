@@ -99,7 +99,6 @@ bootable
 bootloader
 bootup
 bootups
-bottem
 bounceback
 brackley
 bram
@@ -225,8 +224,6 @@ daemonized
 daemonizes
 daemonizing
 dahdi
-datacenter
-datacenters
 datadir
 dataset
 datasets
@@ -967,7 +964,6 @@ prestashop
 pritunl
 procmail
 procs
-programatically
 programmatically
 prosodyctl
 proto
@@ -989,7 +985,6 @@ px
 py
 pyamqp
 pyinotify
-pyintotify
 pypiserver
 python3
 pythonic
@@ -1127,13 +1122,11 @@ sharded
 sharding
 shellshock
 shinagawa1
-shortcod
 shortcode
 shortcodes
 shortguide
 shortguides
 shortname
-shouldn
 shoutcast
 simfs
 sintra
@@ -1156,7 +1149,6 @@ someuser
 spamassassin
 spamd
 spamhaus
-spamhuas
 spammy
 sparklines
 spectre
