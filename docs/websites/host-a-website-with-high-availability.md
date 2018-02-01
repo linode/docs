@@ -26,7 +26,7 @@ In this guide, we'll explain how to host a highly available website with Wordpre
 
 ## Before You Begin
 
-1.  We will be using a total of nine nodes, or servers, all running CentOS 7, and all within the same datacenter. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone for each Linode you create.
+1.  We will be using a total of nine nodes, or servers, all running CentOS 7, and all within the same data center. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone for each Linode you create.
 
 2.  You should also be familiar with our [Securing Your Server](/docs/security/securing-your-server) guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we'll be handling that step in our guide.
 

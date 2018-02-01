@@ -199,7 +199,7 @@ The configuration profile is removed from the dashboard.
 
 ## Cloning Disks and Configuration Profiles
 
-You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes, or migrate your Linode to a different datacenter. See our guide on [cloning your Linode](/docs/migrate-to-linode/disk-images/clone-your-linode) for more information.
+You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes, or migrate your Linode to a different data center. See our guide on [cloning your Linode](/docs/migrate-to-linode/disk-images/clone-your-linode) for more information.
 
 ## Potential Uses
 

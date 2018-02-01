@@ -52,9 +52,9 @@ To allow for consistent replication, each node will need to communicate with all
 
 There are two major ways to allow the members of your replica set to communicate.
 
-The first method is to use [private IP addresses](/docs/networking/remote-access#adding-private-ip-addresses) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same datacenter.
+The first method is to use [private IP addresses](/docs/networking/remote-access#adding-private-ip-addresses) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same data center.
 
-The second method is to simply use the public IP address assigned to each Linode. You'll need to use this method if your Linodes are located in different datacenters, although this is not recommended because network latency will have a negative impact on replication. If you must use public IP addresses, you should [configure SSL/TLS encryption](https://docs.mongodb.com/manual/tutorial/configure-ssl/) for data sent between your hosts, or configure them to communicate over a VPN.
+The second method is to simply use the public IP address assigned to each Linode. You'll need to use this method if your Linodes are located in different data centers, although this is not recommended because network latency will have a negative impact on replication. If you must use public IP addresses, you should [configure SSL/TLS encryption](https://docs.mongodb.com/manual/tutorial/configure-ssl/) for data sent between your hosts, or configure them to communicate over a VPN.
 
 Whether you're using public or private IP addresses to send data, you'll need to secure each Linode with a [firewall](/docs/security/firewalls/) before deploying your replica set into production.
 
