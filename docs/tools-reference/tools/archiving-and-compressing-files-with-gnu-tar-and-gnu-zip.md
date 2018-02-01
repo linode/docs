@@ -3,20 +3,21 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use GNU tools to compress and archive files.'
+og_description: 'Thise guide will show you how to use GNU tar and Gzip to compress and archive files.'
 keywords: ["tar", "gnu tar", "gzip", "gnu zip", "tar.gz. tgz", "file archive"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/common-commands/tar-gzip/']
-modified: 2011-08-22
+modified: 2018-01-29
 modified_by:
   name: Linode
-published: 2010-07-27
+published: 2010-01-30
 title: Archiving and Compressing files with GNU Tar and GNU Zip
 external_resources:
  - '[GNU tar](http://www.gnu.org/software/tar/)'
  - '[GNU gzip](http://www.gzip.org/)'
 ---
 
-`tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux-based systems. Fundamentally, the function of these utilities is to take a large number of files, save them together in an archive (i.e. as a single file), and compress the archive to save space. However, tar and gzip provide a multitude of features that may obfuscate even the most simple of operations.
+`tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux systems. Fundamentally, the function of these utilities is to take a large number of files, save them together in an archive (i.e. as a single file), and compress the archive to save space. However, tar and gzip provide a multitude of features that may obfuscate even the most simple of operations.
 
 This document provides an overview of `tar` and `gzip` usage, accompanied by a number of practical applications of these utilities. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [Tools & Reference](/docs/tools-reference/) series.
 
@@ -24,7 +25,7 @@ This document provides an overview of `tar` and `gzip` usage, accompanied by a n
 
 ## Using Tar and Gzip
 
-In this guide, `tar` and `gzip` refer to recent versions of "GNU tar" and "GNU gzip" which are included by default in all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
+In this guide, `tar` and `gzip` refer to recent versions of "GNU tar" and "GNU gzip" which are included by default in all images provided by Linode.
 
 ### The tar Command
 
