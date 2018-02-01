@@ -14,7 +14,7 @@ title: How to Use Block Storage with Your Linode
 
 ![How to Use Block Storage with Your Linode](/docs/assets/block-storage-title-graphic.png)
 
-Linode’s block storage service allows you to attach additional storage volumes to your Linode. A single volume can range from 10 GB to 10,000 GB in size and costs $0.10/GB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight volumes can be attached to a single Linode, be it new or already existing, so you do not need to recreate your server to add a Block Storage Volume.
+Linode’s block storage service allows you to attach additional storage volumes to your Linode. A single volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight volumes can be attached to a single Linode, be it new or already existing, so you do not need to recreate your server to add a Block Storage Volume.
 
 The Block Storage service is available now in production in the us-west/Fremont region only.
 
@@ -34,7 +34,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
     [![Linode Manager create a Volume](/docs/assets/bs-manager-create-new-volume-small.png)](/docs/assets/bs-manager-create-new-volume.png)
 
-2.  Assign the Block Storage Volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum volume size is 10,000 GB. When finished, click *Add this Volume!*:
+2.  Assign the Block Storage Volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum volume size is 10,000 GiB. When finished, click *Add this Volume!*:
 
     [![Linode Manager add a Volume](/docs/assets/bs-add-a-volume.png)](/docs/assets/bs-add-a-volume.png)
 
@@ -112,7 +112,7 @@ Storage volumes **cannot** be sized down, only up. Keep this in mind when sizing
 
 2.  Click the **Edit** option for the volume you want to resize.
 
-3.  Enter the new volume size. The minimum size is 10 GB and maximum is 10,000 GB. Then click **Save Changes**.
+3.  Enter the new volume size. The minimum size is 10 GiB and maximum is 10,000 GiB. Then click **Save Changes**.
 
     [![Linode Manager edit volume](/docs/assets/bs-resize-volume-small.png)](/docs/assets/bs-resize-volume.png)
 
