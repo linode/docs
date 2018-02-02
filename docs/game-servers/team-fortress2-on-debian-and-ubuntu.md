@@ -37,7 +37,7 @@ From the SteamCMD guide, two additional steps are needed specifically for TF2.
 
         sudo dpkg-reconfigure iptables-persistent
 
-3.  Install an additonal 32-bit package:
+3.  Install an additional 32-bit package:
 
         sudo apt-get install lib32tinfo5
 
@@ -49,7 +49,7 @@ From the SteamCMD guide, two additional steps are needed specifically for TF2.
 
 2.  From the SteamCMD prompt, login anonymously:
 
-		login anonymous
+        login anonymous
 
     Or log in with your Steam username:
 
@@ -57,8 +57,8 @@ From the SteamCMD guide, two additional steps are needed specifically for TF2.
 
 3.  Install TF2 to the `Steam` user's home directory:
 
-		force_install_dir ./tf2
-		app_update 232250
+        force_install_dir ./tf2
+        app_update 232250
 
     This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:
 
@@ -68,9 +68,9 @@ From the SteamCMD guide, two additional steps are needed specifically for TF2.
 
 4.  Quit SteamCMD:
 
-		quit
+        quit
 
-	{{< note >}}
+    {{< note >}}
 To update TF2, run the above 4 commands again.
 {{< /note >}}
 
@@ -84,11 +84,11 @@ In order to create a custom list of maps for your server, create `mapcycle.txt` 
 
 1.  Navigate to `Steam/tf2/tf/cfg`:
 
-		cd ~/Steam/tf2/tf/cfg
+        cd ~/Steam/tf2/tf/cfg
 
 2.  Copy `mapcycle_default.txt`:
 
-		cp mapcycle_default.txt mapcycle.txt
+        cp mapcycle_default.txt mapcycle.txt
 
 3. Open the file and add or remove maps as desired.
 
@@ -124,7 +124,7 @@ screen -S "Team Fortress 2 Server" ./srcds_run -game tf +map ctf_2fort.bsp
 
     When run, the script will change directories to `~/Steam/tf2` and execute TF2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
-	Optionally, replace `cft_2fort.bsp` with the name of your chosen map’s file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map selection.
+    Optionally, replace `cft_2fort.bsp` with the name of your chosen map’s file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map selection.
 
 2.  Make the script executable:
 
@@ -157,13 +157,13 @@ RCON allows you to make changes to your server from inside of the game.
 
 1.  To start using RCON, go to the **Options** setting in the game, and then select **Advanced...**
 
-	[![Enable the developer console.](/docs/assets/team-fortress-rcon-small.png)](/docs/assets/team-fortress-rcon.png)
+    [![Enable the developer console.](/docs/assets/team-fortress-rcon-small.png)](/docs/assets/team-fortress-rcon.png)
 
 2.  From here, check **Enable developer console** and apply these settings.
 
 3.  To make changes in-game, it is recommended that you switch to spectator mode, and then press the backtick button (<code>`</code>) to access the developer's console.
 
-	[![Press `~` to access the console](/docs/assets/team-fortress-rcon-console-small.png)](/docs/assets/team-fortress-rcon-console.png)
+    [![Press `~` to access the console](/docs/assets/team-fortress-rcon-console-small.png)](/docs/assets/team-fortress-rcon-console.png)
 
 4.  Log in to RCON by typing in `rcon_password` followed by your password.
 

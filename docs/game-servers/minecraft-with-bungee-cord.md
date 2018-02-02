@@ -52,18 +52,18 @@ On the Linode that is going to host BungeeCord:
 
 4.  Create another user for the BungeeCord proxy, so that it doesn't have the same privileges as your user. You'll need to keep this password for future reference.
 
-	    sudo adduser bungeecord
+        sudo adduser bungeecord
 
 ### Configuring the Firewall on the BungeeCord Node
 
 If you're using iptables or ufw to act as a firewall, you'll need to make a rule on the Linode running BungeeCord, to permit TCP on port 25565. This can be done by running:
 
-	sudo iptables -A INPUT -p tcp --dport 25565 -j ACCEPT
+    sudo iptables -A INPUT -p tcp --dport 25565 -j ACCEPT
 
 
 ### Configuring the Firewall on the Spigot Server Linodes
 
-For BungeeCord, the Spigot servers need to be in offline mode, as the BungeeCord proxy handles the authentication. This can make the servers vulnerable to people connecting directly, as they can connect with any username, potentially allowing for connection as a user with adminsitrative permissions. To prevent this, you can set up iptables to limit connections to only the BungeeCord server.
+For BungeeCord, the Spigot servers need to be in offline mode, as the BungeeCord proxy handles the authentication. This can make the servers vulnerable to people connecting directly, as they can connect with any username, potentially allowing for connection as a user with administrative permissions. To prevent this, you can set up iptables to limit connections to only the BungeeCord server.
 
 {{< note >}}
 This section assumes that you've only got a Spigot server running on each Linode. If you have other services, you'll need to modify the rules to allow them to continue working.
@@ -100,7 +100,7 @@ If you've configured your `iptables` firewall by following our [Securing Your Se
 
 Log into the BungeeCord Linode as the `bungeecord` user created earlier, and download BungeeCord:
 
-	wget -O BungeeCord.jar http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
+    wget -O BungeeCord.jar http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
 
 {{< note >}}
 This downloads the latest version of BungeeCord. You can find older versions for older Minecraft server versions, [here](http://ci.md-5.net/job/BungeeCord/).
@@ -110,8 +110,7 @@ This downloads the latest version of BungeeCord. You can find older versions for
 
 1.  Start BungeeCord up, allowing it to generate the configuration files:
 
-    	java -jar BungeeCord.jar
-
+        java -jar BungeeCord.jar
 
     After the prompt `[INFO] Listening on /0.0.0.0:25577` is displayed in the console, type `end` and press Enter.
 
@@ -119,7 +118,7 @@ This downloads the latest version of BungeeCord. You can find older versions for
 
 3.  Edit the following block of the configuration, in order to add our existing Spigot servers:
 
-	{{< file-excerpt "config.yml" yaml >}}
+    {{< file-excerpt "config.yml" yaml >}}
 servers:
   lobby:
     address: localhost:25565
@@ -137,7 +136,7 @@ servers:
     address: 203.0.113.112:25565
     restricted: false
     motd: 'Just another BungeeCord - Forced Host'
-	      games:
+          games:
  address: 203.0.113.198:25565
  restricted: false
  motd: 'Just another BungeeCord - Forced Host'
@@ -197,7 +196,7 @@ Connect to your BungeeCord address in Minecraft, and run `/server name` where `n
 
 To see who is online on any of the BungeeCord servers that you've linked, you can run:
 
-	/glist
+    /glist
 
 
 ## Troubleshooting
@@ -213,7 +212,7 @@ If there is an issue connecting, then it's important to check that the login ser
 
 If the server shows the MOTD and a ping in the server list, as per the image above, it's likely that the problem lies between BungeeCord and your Spigot servers. To check, you can log into your BungeeCord server, and you'll most likely see a line similar to the following in the logs, where the IP `198.51.100.0` is replaced by your IP. This shows that your client is successfully pinging the BungeeCord server:
 
-	00:20:34 [INFO] [/198.51.100.0:50677] <-> InitialHandler has connected
+    00:20:34 [INFO] [/198.51.100.0:50677] <-> InitialHandler has connected
 
 If the logs look similar to above, the following error is likely occurring:
 
@@ -239,6 +238,6 @@ If this happens, you should check that BungeeCord is actually running, and that 
 
 Assuming that the issue is not solved, the issue is likely to be the firewall. You can flush your firewalls with:
 
-	iptables -F
+    iptables -F
 
 You should try again to reconnect. If you can connect now, then you'll need to reconfigure the firewall as detailed above.

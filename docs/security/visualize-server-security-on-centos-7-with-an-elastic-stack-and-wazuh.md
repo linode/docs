@@ -39,7 +39,7 @@ An Elastic Stack, formerly known as an ELK Stack, is a combination of Elasticsea
 
 ## What is Wazuh OSSEC
 
-Wazuh is an open source branch of the orignal [OSSEC HIDS](https://ossec.github.io/) developed for integration into the Elastic Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, as well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.
+Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github.io/) developed for integration into the Elastic Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, as well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.
 
 ## Before You Begin
 

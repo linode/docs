@@ -80,7 +80,7 @@ If you've configured the firewall according to the [Securing Your Server](/docs/
     - **Username:** *pritunl*
     - **Password:** *pritunl*
 
-2.  The Inital Setup form will appear:
+2.  The Initial Setup form will appear:
 
     ![Pritunl setup screen](/docs/assets/pritunl-setup.png)
 
