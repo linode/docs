@@ -13,6 +13,8 @@ published: 2011-07-08
 title: NodeBalancer Reference Guide
 ---
 
+![NodeBalancer Reference Guide](/docs/assets/nodebalancer/NodeBalancer_Reference_Guide_smg.jpg)
+
 This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting Started Guide](/docs/platform/nodebalancer/getting-started-with-nodebalancers) for practical examples.
 
 ## Adding a NodeBalancer

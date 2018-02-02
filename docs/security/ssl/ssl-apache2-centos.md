@@ -15,6 +15,8 @@ external_resources:
  - '[Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)'
 ---
 
+![SSL Certificates with Apache on CentOS](/docs/assets/apache-ssl/SSL_Certificates_with_Apache_on_CentOS_7_smg.jpg)
+
 This guide will show you how to enable SSL to secure websites served through Apache on CentOS or Fedora.
 
 ## Before You Begin
