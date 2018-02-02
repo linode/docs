@@ -20,7 +20,7 @@ external_resources:
 
 ## Summary
 
-Virtually every processor manufactured in the last 23 years is potentially affected by two recently discovered processor vulnerabilities: Meltdown and Spectre. Linode is continuing to implement patches on datacenter equipment. In the meantime, update your Linux kernel and reboot to help protect your system.
+Virtually every processor manufactured in the last 23 years is potentially affected by two recently discovered processor vulnerabilities: Meltdown and Spectre. Linode is continuing to implement patches on data center equipment. In the meantime, update your Linux kernel and reboot to help protect your system.
 
 ## FAQ
 

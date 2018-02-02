@@ -40,7 +40,7 @@ FreeBSD is not officially supported by Linode at this time. This means that the 
 
 Begin by creating the Linode and making some preliminary changes.
 
-1.  Create your Linode in your preferred datacenter. For the purposes of this tutorial, we recommend turning [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
+1.  Create your Linode in your preferred data center. For the purposes of this tutorial, we recommend turning [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
 2.  [Create two disk images](https://www.linode.com/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk); both   should be in the RAW format.
 

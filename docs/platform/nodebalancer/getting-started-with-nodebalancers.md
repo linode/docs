@@ -47,7 +47,7 @@ Sticking with the simple web application example above, the backend Linode curre
 
 	[![The NodeBalancer tab.](/docs/assets/796-1.png)](/docs/assets/770-nodebalancer-tab.png)
 
-2.  For the example web application, only one NodeBalancer is needed. Add one in the same datacenter that your backend Linodes are located in. Once purchased, you will be able to see the public IP address that has been assigned to your NodeBalancer.
+2.  For the example web application, only one NodeBalancer is needed. Add one in the same data center that your backend Linodes are located in. Once purchased, you will be able to see the public IP address that has been assigned to your NodeBalancer.
 
 	[![The NodeBalancer has been added.](/docs/assets/797-2.png)](/docs/assets/772-nodebalancer-added.png)
 

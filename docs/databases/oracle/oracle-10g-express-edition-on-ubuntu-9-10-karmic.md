@@ -26,7 +26,7 @@ To do this, log into the Linode Manager and shut down your Linode. Once your Lin
 
 # Configure Networking and Set the Hostname
 
-Oracle is very picky about the system hostname with respect to what interfaces it will listen on. You'll be using a private IP on your Linode and setting the hostname a bit differently than usual to account for this, with the added benefit of being able to connect to your Oracle database from other Linodes in the same datacenter.
+Oracle is very picky about the system hostname with respect to what interfaces it will listen on. You'll be using a private IP on your Linode and setting the hostname a bit differently than usual to account for this, with the added benefit of being able to connect to your Oracle database from other Linodes in the same data center.
 
 First, make sure your Linode has a private IP address assigned to it. To do so, visit the "Remote Access" tab in the Linode Manager. If you need to add a private IP, reboot your Linode after doing so before proceeding with the next step.
 
