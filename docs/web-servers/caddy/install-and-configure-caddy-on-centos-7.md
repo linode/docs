@@ -45,7 +45,7 @@ external_resources:
         sudo yum install caddy
 
 {{< caution >}}
-Caddy has recently changed their [license](https://caddyserver.com/products/licenses). Please read over the license agreement to ensure that you are not violating the license with your project. 
+Caddy has recently changed their [license](https://caddyserver.com/products/licenses). Please read over the license agreement to ensure that you are not violating the license with your project.
 {{</ caution >}}
 ## Add Web Content
 
