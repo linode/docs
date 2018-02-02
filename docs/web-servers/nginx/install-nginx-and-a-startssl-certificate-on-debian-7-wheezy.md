@@ -71,7 +71,7 @@ All of the commands below should be executed as the ``root`` user.
 
         cd /etc/ssl/nginx
 
-3.  Generate a 2048 bit RSA private key. If you are paranoid you could change 2048 to 4096 to create a 4096 bit private key. Currently, most certificate authorities are requring customers to use a 2048 bit or higher RSA private key.
+3.  Generate a 2048 bit RSA private key. If you are paranoid you could change 2048 to 4096 to create a 4096 bit private key. Currently, most certificate authorities are requiring customers to use a 2048 bit or higher RSA private key.
 
         openssl genrsa -out server.key 2048
 
@@ -83,7 +83,7 @@ All of the commands below should be executed as the ``root`` user.
 
 ### Sign-up With StartSSL
 
-1.  Launch a web browser and naviagte to the [StartSSL Control Panel](https://www.startssl.com/?app=12). If this is your first time requesting a certificate from StartSSL, click on the "Sign-up" button. If you have already requested a certificate from StartSSL, log into your account, and skip to the next section.
+1.  Launch a web browser and navigate to the [StartSSL Control Panel](https://www.startssl.com/?app=12). If this is your first time requesting a certificate from StartSSL, click on the "Sign-up" button. If you have already requested a certificate from StartSSL, log into your account, and skip to the next section.
 
     [![StartSSL Control Panel](/docs/assets/1752-StartSSL-Control-Panel-Preview.jpg)](/docs/assets/1752-StartSSL-Control-Panel.jpg)
 
@@ -133,7 +133,7 @@ You should now be logged into your StartSSL account.
 
 1.  Click on the "Certificates Wizard" button in your StartSSL account.
 
-2.  From the "Certificate Target" drop down menu select "Web Server SSL/TLS Certicate" and click "Continue >> >>".
+2.  From the "Certificate Target" drop down menu select "Web Server SSL/TLS Certificate" and click "Continue >> >>".
 
     [![StartSSL Certificates Wizard Start](/docs/assets/1761-StartSSL-Certificates-Wizard-Target-Preview.jpg)](/docs/assets/1761-StartSSL-Certificates-Wizard-Target.jpg)
 

@@ -156,7 +156,7 @@ Should you decide to disable the demographics feature at a later date, simply re
 Change the `.html` ending to match the ending of your website's files.
 {{< /note >}}
 
-8.  To check that the code has been successfully inserted into your `.html` files, you can either open up your website in your browser and view the source code, or view a file in your terminal. The folllowing should appear in conjunction to your `<head>` tag:
+8.  To check that the code has been successfully inserted into your `.html` files, you can either open up your website in your browser and view the source code, or view a file in your terminal. The following should appear in conjunction to your `<head>` tag:
 
     {{< file-excerpt "/var/www/example.com/public_html/index.html" >}}
 <head><script type="text/javascript" src="javascript/ga.js"></script>

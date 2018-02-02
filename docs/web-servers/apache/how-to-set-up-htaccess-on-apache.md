@@ -174,7 +174,7 @@ The next parameter is the Unix path to the file that is requested in the URL. Th
 
 ###  Set the 404 Error Page
 
-When a visitor attempts to access a page or resource that doesn't exist (for example by following a broken link or typing an incorrect URL,) the server will respond with a 404 error code. It is important that users receive feedback explaning the error. By default, Apache will display an error page in the event of a 404 error.  However, most sites provide a customized error page. You can use .htaccess settings to let Apache know what error page you would like displayed whenever a user attempts to access a nonexistent page.
+When a visitor attempts to access a page or resource that doesn't exist (for example by following a broken link or typing an incorrect URL,) the server will respond with a 404 error code. It is important that users receive feedback explaining the error. By default, Apache will display an error page in the event of a 404 error.  However, most sites provide a customized error page. You can use .htaccess settings to let Apache know what error page you would like displayed whenever a user attempts to access a nonexistent page.
 
 1.  This will redirect all requests for nonexistent documents to a page in the project root directory called `404.html.  Open the .htaccess file and add the following line:
 

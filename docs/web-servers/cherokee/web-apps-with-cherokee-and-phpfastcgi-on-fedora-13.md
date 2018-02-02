@@ -135,7 +135,7 @@ Create a test PHP script as follows:
 {{< /file >}}
 
 
-Visit `/test.php` on your site to verfify PHP-FastCGI is operating correctly. Congratulations, you've successfully configured PHP-FastCGI for dynamic content using the Cherokee web server!
+Visit `/test.php` on your site to verify PHP-FastCGI is operating correctly. Congratulations, you've successfully configured PHP-FastCGI for dynamic content using the Cherokee web server!
 
 # More Information
 

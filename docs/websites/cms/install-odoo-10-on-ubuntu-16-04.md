@@ -331,7 +331,7 @@ Clone the updated Odoo source which is different from your older production inst
 
 The advantage of using the same server is that all dependencies have already been met. What is next is to configure the server accordingly.
 
-1.  Copy the original configuration file from the source to appropiate location:
+1.  Copy the original configuration file from the source to appropriate location:
 
         sudo cp /opt/odoo/debian/odoo.conf /etc/odoo-server-te.conf
 

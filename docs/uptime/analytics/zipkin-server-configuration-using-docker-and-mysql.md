@@ -19,7 +19,7 @@ external_resources:
 
 [Zipkin](http://zipkin.io/) is a used for capturing timing data, it also has a centralized repository, and a microweb server that allows you to display, and search through spans and traces of your distributed programs or websites.
 
-We can configure Zipkin by [deploying it in a Docker container](http://zipkin.io/pages/quickstart). Using this approach, we can match the latest version of Zipkin by just pulling down the latest images. You can Isolate the Docker service and dependencies to just the container(s), and chose where you want your data to persist. Most importantly, by using Docker, you can spend more time focused on data anlysis, instead of spending time on configuring a Zipkin as a service.
+We can configure Zipkin by [deploying it in a Docker container](http://zipkin.io/pages/quickstart). Using this approach, we can match the latest version of Zipkin by just pulling down the latest images. You can Isolate the Docker service and dependencies to just the container(s), and chose where you want your data to persist. Most importantly, by using Docker, you can spend more time focused on data analysis, instead of spending time on configuring a Zipkin as a service.
 
 ## Before You Begin
 
@@ -98,7 +98,7 @@ The Docker service will manage your containers, the container's host, Zipkin ser
 
 Docker is in charge of starting and stopping these services automatically when the host system is rebooted. it'll help us to map the ports from the container to the host's ports and it'll manage exporting the MySQL database files onto the host system. Docker can check to see if the container has failed, and restart it for us too. The host is in charge of running the actual Docker service and setting the firewall correctly.
 
-Notice that the Zipkin container will expose port 9411 for its service, and the MySQL container will expose port 3306. We'll use the Docker-compose yaml files to forward port 9411 to the host's port 9411, so that the container will be accesible on the internet.
+Notice that the Zipkin container will expose port 9411 for its service, and the MySQL container will expose port 3306. We'll use the Docker-compose yaml files to forward port 9411 to the host's port 9411, so that the container will be accessible on the internet.
 
 #### Zipkin Server Firewall Concepts
 
