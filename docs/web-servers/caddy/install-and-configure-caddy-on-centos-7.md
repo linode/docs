@@ -44,6 +44,9 @@ external_resources:
 
         sudo yum install caddy
 
+{{< caution >}}
+Caddy has recently changed their [license](https://caddyserver.com/products/licenses). Please read over the license agreement to ensure that you are not violating the license with your project. 
+{{</ caution >}}
 ## Add Web Content
 
 1.  Set up a home directory, **web root**, for your website:
