@@ -20,7 +20,7 @@ Caddy has recently updated their license, clearly defining what is considered pe
 
 ## Build Caddy
 
-Before you start, you have to have a current version of Go on your Linode, read our guide on [installing Go](/docs/development/go/install-go-on-ubunut.md).
+Before you start, you have to have a current version of Go on your Linode, read our guide on [installing Go](/docs/development/go/install-go-on-ubuntu.md).
 
 1. Pull Caddy from the source. If you followed our guide on installing Go, the `$GOPATH` is `/usr/local/go`, otherwise use `$GOPATH/drc`
 
