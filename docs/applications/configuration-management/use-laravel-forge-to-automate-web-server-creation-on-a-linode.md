@@ -69,7 +69,7 @@ If you want to be able to quickly deploy from Github, Gitlab or Bitbucket, you w
 
     **Server Size:** The size of the server.
 
-    **Region:** The datacenter where you want your server hosted. Choose a location close to where you expect the majority of users to be.
+    **Region:** The data center where you want your server hosted. Choose a location close to where you expect the majority of users to be.
 
     **PHP Version:** The installed PHP version.
 

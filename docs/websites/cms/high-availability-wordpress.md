@@ -297,7 +297,7 @@ port = 22
 
 1.  Visit the NodeBalancers tab in the Linode Manager.
 
-2.  If you have not done so already, add a NodeBalancer, ensuring that it is in the same datacenter as your back-end Linodes.
+2.  If you have not done so already, add a NodeBalancer, ensuring that it is in the same data center as your back-end Linodes.
 
 3.  Select your new NodeBalancer and click "Create Configuration." Edit your configuration settings as follows:
 

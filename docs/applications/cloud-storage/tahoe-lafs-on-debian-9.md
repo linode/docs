@@ -70,7 +70,7 @@ Introducers have a variety of advantages and disadvantages:
 *  Tell the joining machines about the currently active peers to which it can connect.
 *  Potential for a single point of failure. But,
 *  Without the introducers you would have to edit a configuration file on every node, and add a new IP address every time you insert another node into the grid.
-*  Allow you to configure multiple introducers to make your setup more reliable in the event of crashes or other unforeseen events, ideally, in different datacenters.
+*  Allow you to configure multiple introducers to make your setup more reliable in the event of crashes or other unforeseen events, ideally, in different data centers.
 
 After you get acquainted with the initial introducer setup, you can [read about additional introducers](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html#additional-introducer-definitions).
 

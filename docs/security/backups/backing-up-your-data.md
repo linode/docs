@@ -16,6 +16,8 @@ external_resources:
  - '[WebGnuru''s rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php)'
 ---
 
+![Backing Up Your Data](/docs/assets/backing-up-data/Backing_Up_Your_Data_smg.jpg)
+
 If you store any customer or personal data on a Linode, it's important to make regular backups. Data can become corrupted or inaccessible for any number of reasons - accidental deletions, misconfigurations, hacking, or software updates that don't play nicely with the rest of your configuration. Having a recent backup on hand makes it much easier to recover from these mishaps.
 
 ## Assess Your Needs
