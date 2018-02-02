@@ -16,7 +16,7 @@ external_resources:
 
 [Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).
 
-Caddy has recently updated their license, clearly defining what is considered personal or enterprise use. By using a Caddy binary to install Caddy, a commercial license is required for commercial or enterprise use. However, because the project is Apache licensed, by building it from source you have access to the original, apache [licensed web server.](https://twitter.com/mholt6/status/908041929438371840). 
+Caddy has recently updated their license, clearly defining what is considered personal or enterprise use. By using a Caddy binary to install Caddy, a commercial license is required for commercial or enterprise use. However, because the project is Apache licensed, by building it from source you have access to the original, apache [licensed web server.](https://twitter.com/mholt6/status/908041929438371840).
 
 ## Build Caddy
 
@@ -36,4 +36,4 @@ Before you start, you have to have a current version of Go on your Linode, read 
 
         sudo cp caddy /usr/bin/
 
-You have just installed the Caddy binary and can use Caddy as you would have any other time. Read our guide on [Installing and Configuring Caddy](/docs/web-servers/caddy/install-and-configure-caddy-on-centos-7), to learn more about Caddy. 
+You have just installed the Caddy binary and can use Caddy as you would have any other time. Read our guide on [Installing and Configuring Caddy](/docs/web-servers/caddy/install-and-configure-caddy-on-centos-7), to learn more about Caddy.
