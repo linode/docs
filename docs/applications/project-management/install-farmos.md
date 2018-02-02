@@ -9,7 +9,7 @@ published: 2017-09-09
 modified: 2017-09-20
 modified_by:
     name: Linode
-title: 'How to Install FarmOS a Farm Record Keeping Application'
+title: 'How to Install FarmOS - a Farm Recordkeeping Application'
 ---
 
 ![Farm_OS Banner](/docs/assets/FarmOS.png)
