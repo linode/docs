@@ -43,7 +43,7 @@ From the SteamCMD guide, two additional steps are needed specifically for Gmod.
 
         sudo firewall-cmd --zone=public --add-port=27000 27030/udp --permanent
 
-2.  Install an additonal 32-bit package:
+2.  Install an additional 32-bit package:
 
         sudo yum install ncurses-libs.i686
 
@@ -144,7 +144,7 @@ writeip
 
 2.  Note the collection ID. It is located at the end of the url, denoted by the 'X's here:
 
-    	http://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXX
+        http://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXX
 
 3.  Acquire a Steam API key from the [Steam API Keys](http://steamcommunity.com/dev/apikey) page. Note the key.
 

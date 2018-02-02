@@ -50,23 +50,23 @@ If you are unfamiliar with users, groups and file permissions, be sure to visit 
 
 To check if the `fuse` group exists run:
 
-	cat /etc/group | grep 'fuse'
+    cat /etc/group | grep 'fuse'
 
-If the group exists, execute the following command with `sudo`, subsituting your user account name in place of "someuser":
+If the group exists, execute the following command with `sudo`, substituting your user account name in place of "someuser":
 
-	sudo usermod -a -G fuse someuser
+    sudo usermod -a -G fuse someuser
 
 If the group does not exist it has to be created and added to the `fuse` group:
 
-	sudo groupadd fuse
-	sudo usermod -a -G fuse user
+    sudo groupadd fuse
+    sudo usermod -a -G fuse user
 
 Log out and log back in before proceeding using a normal user account.
 
 ### Mounting the Remote File System
 To mount a remote file system execute the command `sshfs`. The syntax for `sshfs` is:
 
-	sshfs [user@]host:[directory] mountpoint [options]
+    sshfs [user@]host:[directory] mountpoint [options]
 
 To Mount the home directory of a user named "user" on a remote server at "usersLinode.example.com", create a directory as a destination for the mounted folder.
 
@@ -74,12 +74,12 @@ To Mount the home directory of a user named "user" on a remote server at "usersL
 
 Then we use the `sshfs` command to mount the directory from our remote server, to the directory on our local client. The syntax for `sshfs` is: `sshfs [user@]host:[directory] mountpoint [options]` Read more about `sshfs` here: [sshfs Manual](https://linux.die.net/man/1/sshfs)
 
-	sshfs user@usersLinode.example.com:/home/user ssfhsExample
+    sshfs user@usersLinode.example.com:/home/user ssfhsExample
 
 
 You can also `sshfs` to your Linode server's IP address:
 
-	sshfs user@192.168.0.0:/home/user sshfsExample
+    sshfs user@192.168.0.0:/home/user sshfsExample
 
 To unmount the filesystem, use the `umount` command:
 

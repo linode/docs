@@ -28,7 +28,7 @@ However, the configuration process is time-consuming, especially for those with 
 
 Streisand uses open-source platform Ansible to automate much of the process that creates and configures a Linode. This means, unlike normal VPN setup, you should **not** create a Linode before beginning this guide, or go through the usual steps of connecting to and securing your server. All of the commands will be run from your local machine. You will, however, need the API key from your Linode account:
 
-1.  Open the Linode Manager and select "My Profile," in the upper right corner of the screen next to your account name. You will need to re-aunthenticate before viewing this section.
+1.  Open the Linode Manager and select "My Profile," in the upper right corner of the screen next to your account name. You will need to re-authenticate before viewing this section.
 
 2.  Select the "API Keys" tab on the far right of the menu.
 
@@ -119,7 +119,7 @@ Streisand will create a new Linode under your account early in the configuration
 {{< /caution >}}
 
 {{< note >}}
-You should not recieve any errors during the install. If you receive an error related to `Alert_cpu_threshold must be between 0 and 2000`, visit this [link](https://github.com/jlund/streisand/issues/626#issuecomment-319812261) to address the issue.
+You should not receive any errors during the install. If you receive an error related to `Alert_cpu_threshold must be between 0 and 2000`, visit this [link](https://github.com/jlund/streisand/issues/626#issuecomment-319812261) to address the issue.
 {{< /note >}}
 
 ## Connect to Your Streisand Gateway

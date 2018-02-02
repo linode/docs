@@ -21,7 +21,7 @@ external_resources:
 Infrastructure as code (IaC) is software that gives the developer the ability to build, manage, and provision computing environments with a high-level programming language. Some benefits of this technology are: enforcing DevOps best practices, process automation and the opportunity to use version control systems for greater visibility and collaboration within a team.
 
 Terraform stands out from other IaC solutions because it's an orchestration tool, which means *it's designed specifically for bare-metal server and virtual machines*. The configuration of the servers can be achieved using Terraform, but implementing specialized software for tasks like Puppet, Chef, or Ansible are easily done through a provisioner architecture.
-This guide will showcase Terraform, and its benefits when used in conjuction with Linode's cloud technology.
+This guide will showcase Terraform, and its benefits when used in conjunction with Linode's cloud technology.
 
 
 {{< caution >}}
