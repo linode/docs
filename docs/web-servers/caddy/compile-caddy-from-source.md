@@ -6,7 +6,7 @@ description: 'This guide will explain how to build Caddy from source'
 keywords: ["caddy", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
-modified: 2017-09-18
+modified: 2018-02-02
 modified_by:
   name: Linode
 title: 'How To Build Caddy From Source'
@@ -16,11 +16,11 @@ external_resources:
 
 [Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).
 
-Caddy has recently updated their license, clearly defining what is considered personal or enterprise use. By using a Caddy binary to install Caddy, a commercial license is required for commercial or enterprise use. However, because the project is Apache licensed, by building it from source you have access to the original, apache [licensed web server.](https://twitter.com/mholt6/status/908041929438371840).
+Caddy has recently updated their license, clearly defining what is considered personal or enterprise use. A commercial license is now required for commercial or enterprise use, including any installation that uses precompiled Caddy binaries. However, because the project is Apache licensed, by building it from source you have access to the original, [Apache-licensed web server.](https://twitter.com/mholt6/status/908041929438371840).
 
 ## Build Caddy
 
-Before you start, you have to have a current version of Go on your Linode, read our guide on [installing Go](/docs/development/go/install-go-on-ubuntu).
+You will need a current version of Go on your Linode. Read our guide on [installing Go](/docs/development/go/install-go-on-ubuntu).
 
 1. Pull Caddy from the source. If you followed our guide on installing Go, the `$GOPATH` is `/usr/local/go`, otherwise use `$GOPATH/drc`
 
@@ -32,8 +32,9 @@ Before you start, you have to have a current version of Go on your Linode, read 
 
         cd $GOPATH/src/go/src/github.com/mholt/caddy
         go run build.go -goos=linux -goarch=amd64
+
 3. When the build finishes you will have a Caddy binary in the current directory. Move the binary to `/usr/bin` so that Caddy can function correctly:
 
         sudo cp caddy /usr/bin/
 
-You have just installed the Caddy binary and can use Caddy as you would have any other time. Read our guide on [Installing and Configuring Caddy](/docs/web-servers/caddy/install-and-configure-caddy-on-centos-7), to learn more about Caddy.
+Caddy is now installed on your Linode. Read our guide on [Installing and Configuring Caddy](/docs/web-servers/caddy/install-and-configure-caddy-on-centos-7) to learn more about Caddy.
