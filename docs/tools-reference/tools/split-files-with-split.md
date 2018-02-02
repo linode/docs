@@ -17,7 +17,7 @@ title: How to Split Files with split
 
 ## What is split?
 
-The Unix command-line utility `split` functions like `grep` or `tail`. `split` allows you to divide a larger file into several smaller files.
+`split` is a Unix command-line utility similar to `grep` or `tail`. It allows you to divide a larger file into several smaller files.
 
 {{< note >}}
 Certain options for `split` will not work by default on MacOS because the GNU version of split does not come pre-installed. Use Homebrew to install `brew install coreutils` then invoke in GNU split via `gsplit`.
@@ -64,7 +64,7 @@ moby-dick.txt  xaa  xab  xac  xad  xae  xaf  xag  ...
 
 #### Prefix
 
-The first argument for `split` is the name of the file, as demonstrated above. An optional second argument allows you to specify the prefix for the output files. By default, this value is `x`.
+The first argument to `split` is the name of the file, as demonstrated above. An optional second argument allows you to specify the prefix for the output files. By default, this value is `x`.
 
     split moby-dick.txt moby-dick
 
