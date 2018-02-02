@@ -15,6 +15,8 @@ external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
+![Obtain a Commercially Signed SSL Certificate on CentOS and Fedora](/docs/assets/ssl-cert-centos/Obtain_a_Commercially_Signed_SSL_Certificate_on_CentOS_and_Fedora_smg.jpg)
+
 SSL/TLS encryption is the standard for securing web traffic. This guide will show you how to install a commercial SSL certificate on your Linode running CentOS or Fedora. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature.
 
 If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos) guide once you've completed the process outlined here.
