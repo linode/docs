@@ -20,6 +20,10 @@ external_resources:
 
 `split` is a Unix command-line utility like `grep` or `tail`. As its name implies, it allows you to divide a larger file into several smaller files.
 
+{{< note >}}
+Certain options for `split` will not work by default on MacOS because the GNU version of split does not come pre-installed. Use Homebrew to install `brew install coreutils` then invoke in GNU split via `gsplit`.
+{{< /note >}}
+
 ## Example Files
 
 1.  Create `example.txt` in a text editor and add the following content:
@@ -50,11 +54,12 @@ example line 10
 2.  Check your working directory:
 
         ls
+
     {{< output >}}
-example.txt  moby-dick.txt  xaa  xab  xac  xad  xae  xaf  xag
+moby-dick.txt  xaa  xab  xac  xad  xae  xaf  xag  ...
 {{< /output >}}
 
-    The new files present in the directory (`xaa`, `xab`, etc.) each contain a portion of the original file. By default, `split` divides a file into subfiles of 1000 lines each. The original `moby-dick.txt` file had 16,000 lines, resulting in 16 subfiles.
+    The new files present in the directory (`xaa`, `xab`, etc.) each contain a portion of the original file. By default, `split` divides a file into subfiles of 1000 lines each. The original `moby-dick.txt` file had 16,000 lines, resulting in 16 subfiles. The original `moby-dick.txt` file is left unchanged.
 
 ## Options and Parameters
 
@@ -66,13 +71,17 @@ The first argument to `split` is the name of the file, as demonstrated above. An
 
 Each of the outputted files will begin with `moby-dick`.
 
+{{< output >}}
+moby-dick.txt  moby-dickaa  moby-dickab  moby-dickac  ...
+{{< /output >}}
+
 #### Split by Number of Lines
 
 The `-l` option sets the length in lines of each subfile. This value is 1000 by default. The files output by the following command will each contain two lines of text:
 
     split -l 2 example.txt
 
-  {{< output >}}
+{{< output >}}
 $ cat xaa
 example line 1
 example line 2
@@ -98,9 +107,10 @@ Use the `-d` option to label the output files numerically rather than alphabetic
 
     split -l 2 -d example.txt
 
-  {{< output >}}
+{{< output >}}
 x00  x01  x02  x03  x04
 {{< /output >}}
+
 
 #### Set Suffix Length
 
