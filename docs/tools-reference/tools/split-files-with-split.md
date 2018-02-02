@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Practical examples for using split to divide large files into multiple smaller files.'
 og_description: 'split is a Unix command line utility for dividing large files into smaller files. This guide provides basic and advanced examples along with explanations of the most common options and parameters.'
-keywords: ["split", "files"]
+keywords: ["split", "files", "unix", "command-line"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: []
 modified: 2018-01-29
@@ -13,12 +13,11 @@ modified_by:
 og_description: “Learn how to use split for practical applications including dividing larger files into smaller files.”
 published: 2018-01-29
 title: How to Split Files with split
-external_resources:
 ---
 
 ## What is split?
 
-`split` is a Unix command-line utility like `grep` or `tail`. As its name implies, it allows you to divide a larger file into several smaller files.
+The Unix command-line utility `split` functions like `grep` or `tail`. `split` allows you to divide a larger file into several smaller files.
 
 {{< note >}}
 Certain options for `split` will not work by default on MacOS because the GNU version of split does not come pre-installed. Use Homebrew to install `brew install coreutils` then invoke in GNU split via `gsplit`.
@@ -41,7 +40,7 @@ example line 9
 example line 10
 {{< /file >}}
 
-2.  To demonstrate working with larger files, download the text of Moby Dick:
+2.  Download the text of Moby Dick to demonstrate working with larger files: 
 
         wget -O moby-dick.txt https://archive.org/stream/mobydickorwhale01melvuoft/mobydickorwhale01melvuoft_djvu.txt
 
@@ -65,11 +64,11 @@ moby-dick.txt  xaa  xab  xac  xad  xae  xaf  xag  ...
 
 #### Prefix
 
-The first argument to `split` is the name of the file, as demonstrated above. An optional second argument allows you to specify the prefix for the output files. By default, this value is `x`.
+The first argument for `split` is the name of the file, as demonstrated above. An optional second argument allows you to specify the prefix for the output files. By default, this value is `x`.
 
     split moby-dick.txt moby-dick
 
-Each of the outputted files will begin with `moby-dick`.
+Each of the files will begin with `moby-dick`.
 
 {{< output >}}
 moby-dick.txt  moby-dickaa  moby-dickab  moby-dickac  ...
@@ -93,7 +92,11 @@ The `-b` (or `--size`) option divides files by size rather than number of lines.
 
     split -b 100k moby-dick.txt
 
-You can specify this value in megabytes (m), gigabytes (g), terabytes (t), and so on (P, E, Z, up to Y for yottabytes).
+You can specify this value in different formats:
+
+- megabytes - **m**
+- gigabytes - **g**
+- terabytes - **t**
 
 #### Split by Number of Files
 
@@ -132,7 +135,7 @@ The following command combines the options above to split `example.txt` into 4 s
 example-0  example-1  example-2  example-3  example.txt
 {{< /output >}}
 
-`split` can also be used to display portions of files without creating subfiles. The following command will break Moby Dick into 100 pieces (without creating any new files) and display the 10th of those pieces:
+`split` can also be used to display portions of files **without** creating subfiles. The following command will break Moby Dick into 100 pieces (without creating any new files) and display the 10th of those pieces:
 
     split -n 10/100 moby-dick.txt
 
