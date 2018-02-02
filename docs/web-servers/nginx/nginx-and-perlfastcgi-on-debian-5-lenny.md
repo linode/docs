@@ -127,8 +127,8 @@ When you visit `http://www.example.com/test.pl` in your browser, your Perl envir
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [The nginx Homepage](http://nginx.org/)
+- [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
-- [Installing Nginx on Debian 5 (Lenny)](/docs/web-servers/nginx/installation/debian-5-lenny)
-- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Installing NGINX on Debian 5 (Lenny)](/docs/web-servers/nginx/installation/debian-5-lenny)
+- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)

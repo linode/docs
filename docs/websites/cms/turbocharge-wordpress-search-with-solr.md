@@ -28,7 +28,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 -   WordPress must be already installed and configured. If you have not yet installed WordPress, follow the [Manage Web Content with WordPress](/docs/websites/cms/manage-web-content-with-wordpress) guide.
 
--   Much of this guide assumes that Solr is being installed on the same server as WordPress; however, Solr can be installed on a second server for security or scalibility reasons. Alternate steps are provided should Solr be installed on a second server.
+-   Much of this guide assumes that Solr is being installed on the same server as WordPress; however, Solr can be installed on a second server for security or scalability reasons. Alternate steps are provided should Solr be installed on a second server.
 
 
 ## Install Java
@@ -418,7 +418,7 @@ If it shows similar output, Solr is installed and configured correctly:
 
 If Solr is installed on a different server from WordPress, repeat the test from the WordPress server by sending a request to the Solr server:
 
-	curl http://HOSTNAME-OR-IP-OF-SOLR-SERVER:8983/solr/collection1/select
+    curl http://HOSTNAME-OR-IP-OF-SOLR-SERVER:8983/solr/collection1/select
 
 
 ## Install and Configure WPSolr

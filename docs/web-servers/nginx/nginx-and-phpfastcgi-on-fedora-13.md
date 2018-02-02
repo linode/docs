@@ -44,7 +44,7 @@ Issue the following commands to update your system and install the nginx web ser
     chkconfig --level 35 nginx on
     service nginx start
 
-Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)). You should get the default ngnix page.
+Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com/)). You should get the default NGINX page.
 
 # Configure Your Site
 
@@ -158,8 +158,8 @@ When you visit `http://www.example.com/test.php` in your browser, the standard "
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [The nginx Homepage](http://nginx.org/)
+- [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
-- [Installing Nginx on Fedora 13](/docs/web-servers/nginx/installation/fedora-13)
-- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Installing NGINX on Fedora 13](/docs/web-servers/nginx/installation/fedora-13)
+- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)

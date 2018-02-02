@@ -20,7 +20,7 @@ Before installing Joomla, we assume that you have followed our [getting started 
 
 ## Installing Prerequisites
 
-After installing the [LAMP stack](/docs/lamp-guides/), you must attend to a few additional prerequsites to complete this Joomla installation. Ensure that your distribution provides `wget` and `unzip` tools. In Debian- and Ubuntu-based systems, issue the following command:
+After installing the [LAMP stack](/docs/lamp-guides/), you must attend to a few additional prerequisites to complete this Joomla installation. Ensure that your distribution provides `wget` and `unzip` tools. In Debian- and Ubuntu-based systems, issue the following command:
 
     apt-get update
     apt-get upgrade --show-upgraded

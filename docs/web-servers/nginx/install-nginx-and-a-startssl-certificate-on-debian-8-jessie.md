@@ -195,7 +195,7 @@ You should now be logged into your StartSSL account.
 
 1.  Click on the "Certificates Wizard" button in your StartSSL account.
 
-2.  Select "Web Server SSL/TLS Certicate" and click **Continue**.
+2.  Select "Web Server SSL/TLS Certificate" and click **Continue**.
 
     [![StartSSL Certificates Wizard Start](/docs/assets/startssl-certificate1.png)](/docs/assets/startssl-certificate1.png)
 

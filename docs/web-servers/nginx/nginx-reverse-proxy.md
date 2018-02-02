@@ -81,7 +81,7 @@ The sample app will use the `http.server` module (available for Python 3.4 and a
     {{< note >}}
 Python 2.7 has an equivalent module via `python -m SimpleHTTPServer 8000` that listens to all interfaces but does not have an option to bind to a specific address from the command line.
 
-Using the `http.server` module from Python 3.4 and above is highly recommanded as it allows a convenient way to bind to a specific IP. Some distributions may need to specify the Python version explicitly: `python3 -m http.server 8000 --bind 127.0.0.1`
+Using the `http.server` module from Python 3.4 and above is highly recommended as it allows a convenient way to bind to a specific IP. Some distributions may need to specify the Python version explicitly: `python3 -m http.server 8000 --bind 127.0.0.1`
 {{< /note >}}
 
 4.  Open a new terminal. Use `curl` to check the HTTP headers:
