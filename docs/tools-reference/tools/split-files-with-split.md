@@ -40,7 +40,7 @@ example line 9
 example line 10
 {{< /file >}}
 
-2.  Download the text of Moby Dick to demonstrate working with larger files: 
+2.  Download the text of Moby Dick to demonstrate working with larger files:
 
         wget -O moby-dick.txt https://archive.org/stream/mobydickorwhale01melvuoft/mobydickorwhale01melvuoft_djvu.txt
 
