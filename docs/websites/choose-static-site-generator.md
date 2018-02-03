@@ -616,5 +616,4 @@ good and enjoyable experience managing your website particularly if you are peri
 
 Each one of the static generators we mentioned in this article has their strengths and weaknesses so depending on your needs you can choose the right one for generating your website.
 
-Tough if you are just starting with static site generators, Jekyll may be the best option for you since it has a big community and as a result more tutorials.    
-
+Tough if you are just starting with static site generators, Jekyll may be the best option for you since it has a big community and as a result more tutorials.
