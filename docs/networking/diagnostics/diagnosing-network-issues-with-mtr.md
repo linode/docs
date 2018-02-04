@@ -244,7 +244,7 @@ Some networking issues are novel and require escalation to the operators of the 
 
 ### Destination Host Networking Improperly Configured
 
-In the next example, it appears that there is 100% loss to a the destination host because of an incorrectly configured router. At first glance it appears that the packets are not reaching the host but this is not the case.
+In the next example, it appears that there is 100% loss to the destination host because of an incorrectly configured router. At first glance it appears that the packets are not reaching the host but this is not the case.
 
     root@localhost:~# mtr --report www.google.com
     HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev

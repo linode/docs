@@ -123,7 +123,7 @@ This will automatically restart Garry's Mod when your server reboots.
 
 ### Server Config File
 
-The default `server.cfg` file is blank, and any configuration options you want to specify for the server must be added. This are optional, but below is a sane starting point.
+The default `server.cfg` file is blank, and any configuration options you want to specify for the server must be added. This is optional, but below is a sane starting point.
 
 {{< file "~/Steam/gmod/garrysmod/cfg/server.cfg" >}}
 hostname "server_hostname"
