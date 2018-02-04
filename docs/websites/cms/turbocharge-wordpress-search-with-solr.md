@@ -470,7 +470,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
     -   **Post types to be indexed**: Selecting all of them is recommended. **Post** indexes all blog posts, **page** all pages (such as about pages), and **attachment** all documents (such as PDFs and DOC files).
 
-    -   **Custom taxonomies to be indexed**: Generally there is no need to enter anything here; however, if Wordpress has been customized to organize blog posts in ways other than categories and tags, enter the name of the taxonomy here.
+    -   **Custom taxonomies to be indexed**: Generally there is no need to enter anything here; however, if WordPress has been customized to organize blog posts in ways other than categories and tags, enter the name of the taxonomy here.
 
     -   **Custom fields to be indexed**: Generally there is no need to select anything here.
 

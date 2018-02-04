@@ -401,7 +401,7 @@ While specific settings and privileges can be applied to a role when it's create
 
         ALTER ROLE examplerole CREATEDB;
 
-    A number of permissions can be applied when creating or altering a role. See the [PostgeSQL Documentation](https://www.postgresql.org/docs/9.2/static/sql-createrole.html) for more details.
+    A number of permissions can be applied when creating or altering a role. See the [PostgreSQL Documentation](https://www.postgresql.org/docs/9.2/static/sql-createrole.html) for more details.
 
 3.  Use `\du` to confirm your changes. You'll see that the "Create DB" attribute is listed next to the `examplerole` user:
 

@@ -197,7 +197,7 @@ application = app.wsgifunc()
 
 This program connects to the PostgreSQL database "webpy" and looks in the table "notes" for a note that matches the text "a note." If the note is found, the program returns the text "a note is found"; otherwise, the page will return "no notes are found." Make sure there is a role, or user, in your PostgreSQL database called "webpy" with the credentials specified on the `db` line of this example.
 
-At the PosgreSQL prompt, issue the following commands to the PostgreSQL shell statement to create the required database and tables. The "webpy" user for PostgreSQL must already exist:
+At the PostgreSQL prompt, issue the following commands to the PostgreSQL shell statement to create the required database and tables. The "webpy" user for PostgreSQL must already exist:
 
     CREATE DATABASE webpy;
     GRANT ALL ON notes TO webpy;

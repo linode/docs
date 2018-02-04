@@ -74,7 +74,7 @@ By default, .htaccess isn't available. To enable it you will need to edit the co
 By default, someone visiting your website can view the directory and file structure, and gain access to files on the web server. It's best practice to restrict directory access, so that a visitor to example.com would have to be familiar with files on the server in order to see them. One way you can restrict this is through .htaccess.
 
 ### Create .htaccess
-1.  CMS systems such as Wordpress create .htaccess configurations by default. This guide assumes that no .htaccess file exists, so you will have to create one manually. Navigate to your site's root directory:
+1.  CMS systems such as WordPress create .htaccess configurations by default. This guide assumes that no .htaccess file exists, so you will have to create one manually. Navigate to your site's root directory:
 
         cd /var/www/html/example.com/public_html
 

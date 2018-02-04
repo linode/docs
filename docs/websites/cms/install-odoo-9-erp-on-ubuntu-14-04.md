@@ -109,7 +109,7 @@ Install Python libraries using the following commands:
     sudo pip install -r /opt/odoo/doc/requirements.txt
     sudo pip install -r /opt/odoo/requirements.txt
 
-### Install Less CSS via nodejs and npm
+### Install Less CSS via Node.js and npm
 
 1.  Download the `nodejs` installation script from [nodesource](https://nodesource.com/):
 

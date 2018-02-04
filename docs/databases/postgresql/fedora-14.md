@@ -47,7 +47,7 @@ The current version of the database server will be installed, along with several
 
 # Configure PostgreSQL
 
-### Set the Postgresql Password
+### Set the PostgreSQL Password
 
 Set a password for the "postgres" user by issuing the following command (be sure to substitute your postgres password for "CHANGME" below):
 
@@ -128,7 +128,7 @@ Change it to the following to use password authentication:
 local all all md5
 {{< /file-excerpt >}}
 
-As root, restart the Postgresql service:
+As root, restart the PostgreSQL service:
 
     service postgresql restart
 
