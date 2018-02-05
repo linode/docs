@@ -310,7 +310,7 @@ As the name implies, Wercker applications correspond to each of your projects. B
 
 #### jClocks Example
 
-Similar to the configuration files, you have several environmental variables to setup.
+Similar to the configuration files, you have several environmental variables to set up.
 
 1.  For the first example you need a SSH key pair for communication with your Linode. Click on the **Environment** tab:
 

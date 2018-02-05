@@ -175,7 +175,7 @@ To see if a module is enabled, look in "conf" files for lines beginning with `Lo
 
 To disable an existing module (at your own risk) edit the file in question, and comment out the `LoadModule` statement by prefixing the line with a hash (e.g. `#`).
 
-To get a list of available Apache modules modules in the CentOS repository use the following commands:
+To get a list of available Apache modules in the CentOS repository use the following commands:
 
     yum search mod_
 
