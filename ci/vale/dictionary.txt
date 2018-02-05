@@ -245,7 +245,6 @@ deathmatch
 debconf
 declaratively
 deduplication
-deeplearning
 defragment
 deprovisioning
 descolada
