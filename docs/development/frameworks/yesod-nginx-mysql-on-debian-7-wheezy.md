@@ -196,7 +196,7 @@ We don't need to modify this configuration file, it's acceptable as is. So you o
 
 If your Linode has a firewall, the port ``3000`` is probably inaccessible from outside, so you will not be able to see your site at http://www.yoursite.com:3000/. This port is only for testing or developing, so don't open it on your firewall. Instead, you can set up an SSH tunnel on your Linode, and view your site at http://localhost:3000/ via this tunnel. Please check [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more details.
 
-You may have noticed that we haven't configure Nginx yet. In fact, Yesod applications contain an http server called Warp, which is written in Haskell, and has a very fast run-time. Without http servers like Apache or Nginx installed, you can run Yesod applications as standalones. This feature is similar to the Express framework on Node.js.
+You may have noticed that we haven't configure Nginx yet. In fact, Yesod applications contain an http server called Warp, which is written in Haskell, and has a very fast run-time. Without http servers like Apache or Nginx installed, you can run standalone Yesod applications. This feature is similar to the Express framework on Node.js.
 
 The initial setup of your first Yesod site has been finished. To start more advanced development of your Yesod site, please read [The Yesod Book](http://www.yesodweb.com/book/) for more details.
 
