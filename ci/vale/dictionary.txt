@@ -30,7 +30,6 @@ ansible
 antispam
 ap
 apache2
-apha
 appimage
 appletalk
 appserver
@@ -230,7 +229,6 @@ datasets
 datasource
 datastax
 datastore
-datbase
 datetime
 dav
 davfs
@@ -311,7 +309,6 @@ dvcs
 e2fsck
 ea04
 ead
-ebjabberd
 ecommerce
 ecute
 edu
@@ -484,9 +481,6 @@ hd0
 hdfs
 heartbleed
 hiera
-highlite
-hilight
-hilights
 hl2
 hl2
 hmac
@@ -684,7 +678,6 @@ loglevel
 logrotate
 logstash
 logwatch
-longivew
 longview
 lookups
 loopback
@@ -837,7 +830,6 @@ noloadbalance
 noninteractive
 nonprivileged
 nonrecursive
-nonrecusive
 nosync
 novell
 npm
@@ -1167,7 +1159,6 @@ ssl
 stackscript
 stackscripts
 stalkyard
-standalones
 starttls
 stateful
 statusbar
@@ -1252,7 +1243,6 @@ tmux
 todo
 togami
 tokenized
-tokyo2
 tokyo2
 tomacat
 tomcat6
@@ -1370,7 +1360,6 @@ webadmin
 webalizer
 webapp
 webapps
-webbrowser
 webcit
 webdata1
 webmail
