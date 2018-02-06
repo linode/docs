@@ -3,7 +3,6 @@ absecon
 abspath
 adc
 addon
-autovacuum
 addons
 addr
 addressfield
@@ -63,6 +62,7 @@ autorun
 autoscaling
 autossh
 autostart
+autovacuum
 auxprop
 avz
 awk
@@ -76,6 +76,7 @@ backports
 backreference
 backreferences
 backtick
+backticks
 bak
 bampton
 bandwdith
@@ -740,6 +741,7 @@ misconfigurations
 misconfigured
 mkdir
 mnesia
+moby
 modsecurity
 mongodb
 monit
