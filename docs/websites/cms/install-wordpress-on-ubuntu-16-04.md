@@ -188,7 +188,7 @@ upload_max_filesize = 2M
 
 ## Install Optional PHP Extensions
 
-WordPress, and many of its plugins, use PHP extensions that you'll need to install manually. This section is optional, but it will allow you to access some Wordpress features you may not have with a basic PHP installation.
+WordPress, and many of its plugins, use PHP extensions that you'll need to install manually. This section is optional, but it will allow you to access some WordPress features you may not have with a basic PHP installation.
 
 -   In order to modify photos or images in Wordpress, you'll need the PHP-GD extension. For example, when you upload an image to use as a header, you may need to crop the image to make it fit your page.
 
