@@ -13,7 +13,7 @@ modified_by:
 title: 'Build NGINX with PageSpeed From Source'
 ---
 
-[PageSpeed](https://www.modpagespeed.com/) is a set of modules for NGINX and Apache which optimize and measure page performance of websites. Optimization is done by 'minifying' static assets such as CSS and JavaScript, and this decreases page load time. [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) is another aspect of PageSpeed which measures your site's performance, and makes recommendations for further modifications based on the results.
+[PageSpeed](https://www.modpagespeed.com/) is a set of modules for NGINX and Apache which optimize and measure page performance of websites. Optimization is done by minifying static assets such as CSS and JavaScript, and this decreases page load time. [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) is another aspect of PageSpeed which measures your site's performance, and makes recommendations for further modifications based on the results.
 
 There are currently two ways to get PageSpeed and NGINX working together:
 
@@ -61,7 +61,7 @@ configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-p
 
 ## Build NGINX and PageSpeed
 
-The official [PageSpeed documentation](https://www.modpagespeed.com/doc/) gives a bash command which pulls script to automate the process, from installation of dependencies (with one exception), to compiling NGINX and PageSpeed, and installing them into the system.
+The official [PageSpeed documentation](https://www.modpagespeed.com/doc/build_ngx_pagespeed_from_source) gives a bash command which pulls script to automate the process, from installation of dependencies, with one exception, to compiling NGINX and PageSpeed, and installing them into the system.
 
 1.  If you plan to offer your website using TLS, install the SSL libraries needed to compile the HTTPS module for NGINX. In RedHat based distributions (CentOS, Fedora), the package is called `openssl-devel`. In Debian-based distributions, the library is `libssl-dev`.
 
