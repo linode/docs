@@ -578,6 +578,7 @@ jpg
 jre
 js
 json
+jumpbox
 jupyter
 kakfa
 kbits
@@ -718,7 +719,9 @@ minecraft
 miniconda
 miniconda3
 minification
+minikube
 minimalistic
+minio
 misconfiguration
 misconfigurations
 misconfigured
