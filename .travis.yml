@@ -7,28 +7,25 @@ matrix:
     include:
     - python: "3.6"
 
-before_install:
-    - echo "Installing Hugo 0.31.1"
-#    - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-#    - sudo apt install nodejs
-    - wget https://github.com/gohugoio/hugo/releases/download/v0.31/hugo_0.31_Linux-64bit.deb
-    - sudo dpkg -i hugo*.deb
-    - hugo version
-#    - sudo npm install --global gulp-cli
-#    - npm install
+jobs:
+  include:
+    - stage: vale
+      install: go get github.com/ValeLint/vale
+      script:
+        - vale --glob='*.{md}' docs
 
-install:
-    - echo "Install Vale, pytest, and pip"
-    - go get github.com/ValeLint/vale
-    - pip install -r ci/requirements.txt
-
-before_script:
-    - echo "Setting up local development server"
-    - hugo server &
-    - sleep 7
-
-script:
-    - echo "Checking for style guidelines"
-    - vale --glob='*.{md}' docs
-    - python -m pytest -n 2
+    - stage: scripts
+      install:
+        - echo "Installing Hugo 0.31.1"
+        - wget https://github.com/gohugoio/hugo/releases/download/v0.31/hugo_0.31_Linux-64bit.deb
+        - sudo dpkg -i hugo*.deb
+        - hugo version
+        - pip install -r ci/requirements.txt
+      before_script:
+        - echo "Setting up local development server"
+        - hugo server &
+        - sleep 7
+      script:
+        - echo "Checking for style guidelines"
+        - python -m pytest -n 2
 
