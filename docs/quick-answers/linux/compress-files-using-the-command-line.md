@@ -25,7 +25,7 @@ title: 'Archive, Compress, and Extract Files in Linux Using the Command Line'
 
         tar -cvf testdir.tar testdir/
 
-3.  Check for the newely archived file:
+3.  Check for the newly archived file:
 
         ls
 

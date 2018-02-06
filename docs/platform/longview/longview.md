@@ -42,7 +42,7 @@ The Longview client is [open source](https://github.com/linode/longview) and can
 
     It can take several minutes for data to start showing in the Manager but once it does, you'll see the graphs and charts populating with your Linode's metrics.
 
-    ![Linode Manager Longview data](/docs/assets/linode-manager-longview-running.png "Linode Manager Longivew running")
+    ![Linode Manager Longview data](/docs/assets/linode-manager-longview-running.png "Linode Manager Longview running")
 
 
 ### Manual Installation with yum or apt

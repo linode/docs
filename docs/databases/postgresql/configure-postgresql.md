@@ -57,7 +57,7 @@ The contents of the configuration file are broken up into different sections:
 |---|---|
 |File Locations   | Defines where values of the database will be stored   |
 |Connections and Authentications   | Allows you to define the settings for connections, security, and authentication   |
-|Resource Usage   | Defines the paramaters (memory, space) usable by PostgreSQL.   |
+|Resource Usage   | Defines the parameters (memory, space) usable by PostgreSQL.   |
 |Write Ahead Log   | Configures *Write-Ahead logging*, which if properly configured, can result in a lower amount of disk writes.   |
 |Replication   | Control the way replications and replication data is handled by the server.   |
 |Query Tuning   | This set of directives can help you optimize the process of querying to the database.   |
@@ -115,7 +115,7 @@ To allow a user on a remote system to log in to the `example` database using a n
 host    example         exampleuser      192.0.2.0             password
 {{< /file-excerpt >}}
 
-The entires in this table are read in order for each incoming connection attempt. The first entry that matches will be applied to the connection. As a result, more general configurations (matching all users, all databases, or all IP addresses) should come at the end of the file, and should generally have tighter restrictions. More specific matches with less stringent authentication methods (such as the example above) should be placed at the beginning of the list.
+The entries in this table are read in order for each incoming connection attempt. The first entry that matches will be applied to the connection. As a result, more general configurations (matching all users, all databases, or all IP addresses) should come at the end of the file, and should generally have tighter restrictions. More specific matches with less stringent authentication methods (such as the example above) should be placed at the beginning of the list.
 
 {{< note >}}
 See the [official pg_hba documentation](https://www.postgresql.org/docs/9.3/static/auth-pg-hba-conf.html) for details about each of the configuration options.

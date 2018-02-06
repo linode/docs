@@ -134,7 +134,7 @@ SSH logins for `root` are disabled by default in FreeBSD but standard system use
 
      [![FreeBSD Manual Configuration](/docs/assets/freebsd-manual-config-small.png)](/docs/assets/freebsd-manual-config.png)
 
-11.  This final step is required to enable Lish, Glish, and make a few other changes. Use your favorite text editor and insert the following at the bottem of `/boot/loader.conf`. (FreeBSD ships with `ee` and `nvi`, linked as `vi`)
+11.  This final step is required to enable Lish, Glish, and make a few other changes. Use your favorite text editor and insert the following at the bottom of `/boot/loader.conf`. (FreeBSD ships with `ee` and `nvi`, linked as `vi`)
 
      {{< file-excerpt "/boot/loader.conf" >}}
 boot_multicons="YES"

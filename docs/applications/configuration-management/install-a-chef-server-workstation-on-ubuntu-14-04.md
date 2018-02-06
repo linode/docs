@@ -232,7 +232,7 @@ With both the server and a workstation configured, it is possible to bootstrap y
 
 Bootstrapping a node installs the chef-client and validates the node, allowing it to read from the Chef server and make any needed configuration changes picked up by the chef-client in the future.
 
-1.	From your *workstation*, bootstrap the node either by using the node's root user, or a user with elevated privledges:
+1.	From your *workstation*, bootstrap the node either by using the node's root user, or a user with elevated privileges:
 
     - As the node's root user, changing `password` to your root password and `nodename` to the desired name for your node. You can leave this off it you would like the name to default to your node's hostname:
 

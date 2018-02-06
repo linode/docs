@@ -21,7 +21,7 @@ The Block Storage service is available now in production in the us-west/Fremont 
 {{< caution >}}
 -  Linode's backup services do not cover Block Storage Volumes. You must execute your own backups for this data.
 
--  Your Linode must be running in Paravirtualizaion mode. Block storage currently does not support Full-virtualization.
+-  Your Linode must be running in Paravirtualization mode. Block storage currently does not support Full-virtualization.
 {{< /caution >}}
 
 ## How to Add a Block Storage Volume to a Linode
