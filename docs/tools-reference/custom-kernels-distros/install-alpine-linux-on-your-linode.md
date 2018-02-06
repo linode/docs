@@ -124,7 +124,7 @@ In this section, we will modify critical system files. It is recommended that yo
 {{< /file >}}
 
 
-2.  Uncomment the line below to enable a serial console output. This gives you visibility over Lish when booting the intalled system.
+2.  Uncomment the line below to enable a serial console output. This gives you visibility over Lish when booting the installed system.
 
     {{< file-excerpt "/alpine/etc/inittab" >}}
 # Put a getty on the serial port

@@ -49,7 +49,7 @@ Instead of installing Apache, MySQL, and PHP separately, tasksel offers a conven
 
         sudo tasksel install lamp-server
 
-3.  Enter the prompt for a MySQL root password. See the steps below for Apache configurations, creating a virtual host, and installation of PHP modules for Wordpress installation.
+3.  Enter the prompt for a MySQL root password. See the steps below for Apache configurations, creating a virtual host, and installation of PHP modules for WordPress installation.
 
 ## Apache
 
@@ -224,8 +224,7 @@ The beginning of the `php.ini` file contains examples commented out with a semic
 
         sudo systemctl restart apache2
 
-
-	{{< note >}}
+    {{< note >}}
 If you plan on using your LAMP stack to host a WordPress server, download these PHP modules: `apt install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc`
 {{< /note >}}
 

@@ -20,7 +20,7 @@ title: How to Divide Files with split
 `split` is a Unix command-line utility similar to `grep` or `tail`. It allows you to divide a larger file into several smaller files.
 
 {{< note >}}
-Certain options for `split` will not work by default on MacOS because the GNU version of split does not come pre-installed. Use Homebrew to install `brew install coreutils` then invoke in GNU split via `gsplit`.
+Certain options for `split` will not work by default on macOS because the GNU version of split does not come pre-installed. Use Homebrew to install `brew install coreutils` then invoke in GNU split via `gsplit`.
 {{< /note >}}
 
 ## Example Files

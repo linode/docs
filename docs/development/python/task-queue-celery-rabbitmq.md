@@ -264,7 +264,7 @@ CELERY_BIN=/home/celery/miniconda3/bin/celery
         r2 = list.delay()
         r2.get(timeout=1)
 
-    Depending on how quickly you enter the commands, the worker for `list` task may finish before the worker for `download` task and you may not see the linode logo in the list. Have a look at log files, like in step 7, and you will see which worker handled each task.
+    Depending on how quickly you enter the commands, the worker for `list` task may finish before the worker for `download` task and you may not see the Linode logo in the list. Have a look at log files, like in step 7, and you will see which worker handled each task.
 
 ## Monitor your Celery Cluster
 

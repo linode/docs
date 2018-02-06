@@ -120,7 +120,7 @@ For more detailed information about the arguments to `askbot-setup`, user the `-
 
          sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /home/example_user/askbot/settings.py
 
-## Deploy AskBot with LetsEncrypt SSL
+## Deploy AskBot with Let's Encrypt SSL
 
 {{< note >}}
 This section requires that you have a Fully Qualified Domain Name (FQDN) that is configured to point to your Linode. In the examples below, replace `example.com` with your FQDN.
@@ -167,7 +167,7 @@ WantedBy=multi-user.target
         sudo systemctl daemon-reload
         sudo systemctl restart nginx
 
-5.  Use [Letsencrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
+5.  Use [Let's Encrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
 
         sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 

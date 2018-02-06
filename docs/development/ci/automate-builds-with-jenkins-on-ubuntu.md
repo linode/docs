@@ -64,11 +64,11 @@ Before starting automating your entire workflow, it's necessary to understand th
 
 As you can see the most basic process consist of three phases: build - test - deploy. Each time you make changes on your distributed version control system you trigger an automation cycle on the Jenkins server. The entire set of instructions for running the process is on the `Jenkinsfile` located at the root of your source repository. That single file tells the server *what* to do, *when* to do it and *how* you want those tasks to be performed.
 
-## Write an Example NodeJS Application
+## Write an Example Node.js Application
 
 As mentioned in the previous section, the automation process starts by making a commit to a Version Control System.
 
-Create a new repository in GitHub. This guide will use a simple NodeJS application to showcase how Jenkins Pipelines works, select your `.gitignore` accordingly and don't forget to initialize it with a `README`:
+Create a new repository in GitHub. This guide will use a simple Node.js application to showcase how Jenkins Pipelines works, select your `.gitignore` accordingly and don't forget to initialize it with a `README`:
 
 ![New GitHub repository](/docs/assets/jenkins/jenkins-gh-new-repo.png)
 
@@ -511,7 +511,7 @@ From here you can obtain valuable information regarding: 1) your build number, 2
 
 ### Automate Your Entire Process with Jenkins
 
-The `Jenkinsfile` template uses a very basic pipeline structure with only three stages. You can customize it to accommodate as many stages as needed. The final Pipeline structure is dictated by the project complexity and the development guidelines you must follow. Since you've already walked through the NodeJS example, you know how to design a pipeline that automates each stage. For the purpose of this guide, the resulting pipeline should:
+The `Jenkinsfile` template uses a very basic pipeline structure with only three stages. You can customize it to accommodate as many stages as needed. The final Pipeline structure is dictated by the project complexity and the development guidelines you must follow. Since you've already walked through the Node.js example, you know how to design a pipeline that automates each stage. For the purpose of this guide, the resulting pipeline should:
 
 * Build Stage
     - Create both images and abort any further testing or deployment if an error is encountered.

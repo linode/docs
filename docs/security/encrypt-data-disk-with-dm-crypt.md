@@ -34,7 +34,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     ![Debian Allocation](/docs/assets/dm-crypt/debian_allocation.png)
 
-2.  Go to the Linode manager dashboard, create a new disk and select **unformatted / raw** under **Type**:
+2.  Go to the Linode Manager dashboard, create a new disk and select **unformatted / raw** under **Type**:
 
     ![Data Disk](/docs/assets/dm-crypt/data_disk.png)
 

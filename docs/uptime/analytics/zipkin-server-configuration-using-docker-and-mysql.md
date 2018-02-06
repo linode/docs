@@ -81,7 +81,7 @@ The current stable version of Docker Compose is 1.16.1. Check for the latest ver
 
         sudo dnf install git
 
-7. Use git to retrieve the Zipkin Docker-compose yaml files at [openzipkin/docker-zipkin](https://github.com/openzipkin/docker-zipkin). This is one of the powerful features of Docker, these files hold all of the system level configurations we need, to run several different Zipkin configurations. Like, Zipkin with MySQL, Zipkin with elasticsearch, and Zipkin with Kakfa.
+7. Use git to retrieve the Zipkin Docker-compose YAML files at [openzipkin/docker-zipkin](https://github.com/openzipkin/docker-zipkin). This is one of the powerful features of Docker, these files hold all of the system level configurations we need, to run several different Zipkin configurations. Like, Zipkin with MySQL, Zipkin with elasticsearch, and Zipkin with Kakfa.
 
         cd ~
         git clone https://github.com/openzipkin/docker-zipkin.git
@@ -98,7 +98,7 @@ The Docker service will manage your containers, the container's host, Zipkin ser
 
 Docker is in charge of starting and stopping these services automatically when the host system is rebooted. it'll help us to map the ports from the container to the host's ports and it'll manage exporting the MySQL database files onto the host system. Docker can check to see if the container has failed, and restart it for us too. The host is in charge of running the actual Docker service and setting the firewall correctly.
 
-Notice that the Zipkin container will expose port 9411 for its service, and the MySQL container will expose port 3306. We'll use the Docker-compose yaml files to forward port 9411 to the host's port 9411, so that the container will be accessible on the internet.
+Notice that the Zipkin container will expose port 9411 for its service, and the MySQL container will expose port 3306. We'll use the Docker-compose YAML files to forward port 9411 to the host's port 9411, so that the container will be accessible on the internet.
 
 #### Zipkin Server Firewall Concepts
 
@@ -146,7 +146,7 @@ Our goal is to set up the Zipkin Server for:
 
 The **docker-compose yml** files will control which system configuration we can use. We're going to select a MySQL configuration for storage.
 
-1.  Copy the MySQL docker-compose yaml file to your home directory and rename it docker-init.yml as we're going to need to make a few changes:
+1.  Copy the MySQL docker-compose YAML file to your home directory and rename it docker-init.yml as we're going to need to make a few changes:
 
         cd ~
         cp docker-zipkin/docker-compose.yml docker-init.yml

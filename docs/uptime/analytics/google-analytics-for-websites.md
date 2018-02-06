@@ -43,7 +43,7 @@ Prior to adding Google Analytics to your website, you need to sign up and set up
 5.  You will then be given your **Tracking ID** and **tracking code**. Make note of both of these items, you will use them later.
 
 
-You can now add this code to your website through [PHP](#add-through-php), or an [external Javascript file](#add-through-external-javascript).
+You can now add this code to your website through [PHP](#add-through-php), or an [external JavaScript file](#add-through-external-javascript).
 
 ## Add Through PHP
 
@@ -110,15 +110,15 @@ If the `<body>` tag of your website contains other variables, please adjust the 
 
 You have now added Google Analytics to your website! It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.
 
-## Add Through External Javascript
+## Add Through External JavaScript
 
-If your website cannot use PHP (its files end in `.html`, `.htm`, or otherwise), you can insert the Google Analytics code through your terminal, using an external Javascript file and the `sed` command.
+If your website cannot use PHP (its files end in `.html`, `.htm`, or otherwise), you can insert the Google Analytics code through your terminal, using an external JavaScript file and the `sed` command.
 
 1.  Navigate to the directory your website is hosted in:
 
         cd /var/www/example.com/public_html
 
-2. (Optional) If you already have a Javascript folder, change directories to that folder. Otherwise, create a Javascript folder now:
+2. (Optional) If you already have a JavaScript folder, change directories to that folder. Otherwise, create a JavaScript folder now:
 
         mkdir javascript
 

@@ -292,6 +292,6 @@ If the service is running successfully, data should be transmitted to your Thing
 
 ## Next Steps
 
-The widgets provided by ThingsBoard can be easily edited, and it is possible to create new ones as well. Multiple widgets, representing multiple datastreams from multiple devices, can be combined to produce customized dashboards. These dashboards can then be made public, or shared with customers.
+The widgets provided by ThingsBoard can be easily edited, and it is possible to create new ones as well. Multiple widgets, representing multiple data streams from multiple devices, can be combined to produce customized dashboards. These dashboards can then be made public, or shared with customers.
 
 For more information on how to customize and set up widgets and dashboards, see the ThingsBoard [Widget Library](https://thingsboard.io/docs/user-guide/ui/widget-library/#time-series) and [Dashboard page](https://thingsboard.io/docs/user-guide/ui/dashboards/) The [ThingsBoard Github repo](https://github.com/thingsboard/thingsboard) also has images of example dashboards.

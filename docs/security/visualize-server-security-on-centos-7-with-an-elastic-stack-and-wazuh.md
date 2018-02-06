@@ -106,7 +106,7 @@ protect=1
 
 3. Install Wazuh API:
 
-    1. Install the NodeJS repository:
+    1. Install the Node.js repository:
 
             curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 

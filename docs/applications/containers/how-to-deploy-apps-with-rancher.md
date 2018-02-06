@@ -107,7 +107,7 @@ As an example, install the Ghost blog platform. This will showcase Rancher's int
 
 3.  Navigate to your Linode's IP address from the browser for the Ghost landing page.
 
-    You have just used Rancher to deploy a containered Ghost service.
+    You have just used Rancher to deploy a containerized Ghost service.
 
 4.  In the Rancher interface, click on the Ghost container:
 
