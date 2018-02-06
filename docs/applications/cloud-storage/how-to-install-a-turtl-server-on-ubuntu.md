@@ -17,7 +17,7 @@ title: 'How to Install a Turtl Server on Ubuntu'
 
 [Turtl](https://turtlapp.com/docs) is an open-source alternative to cloud-based storage services. With a focus on privacy, Turtl offers a place to store and access your passwords, bookmarks and pictures. Hosting your own Turtl server on a secure Linode allows you to monitor your own security.
 
-The Turtl server is written in Common Lisp, and the low-level encryption is derived from the Stanford Javascript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentation.
+The Turtl server is written in Common Lisp, and the low-level encryption is derived from the Stanford JavaScript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentation.
 
 
 ## Before You Begin

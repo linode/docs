@@ -60,7 +60,7 @@ Compiling from source code is the most advanced installation method, though it c
 
 ## Node Package Manager (NPM)
 
-A typical installation of Node.js includes the [Node Package Manager](https://github.com/npm/npm) (NPM). However, an exception is any Linux-distro-supplied version of Nodejs which would need the package `npm` installed. NPM is a package manager for Nodejs packages in the NPM repository. You can find extensive NPM documentation at [npmjs.com](https://docs.npmjs.com/).
+A typical installation of Node.js includes the [Node Package Manager](https://github.com/npm/npm) (NPM). However, an exception is any Linux-distro-supplied version of Node.js which would need the package `npm` installed. NPM is a package manager for Node.js packages in the NPM repository. You can find extensive NPM documentation at [npmjs.com](https://docs.npmjs.com/).
 
 ## Making a Quick Decision (the tl:dr)
 

@@ -746,7 +746,7 @@ The values represented in this guide are current as of publication, but are subj
     If the process fails, ensure that you do not already have an existing Storm image with the same name in the Linode Manager. If you do, delete it and run the command again, or recreate this image with a different name.
 
     {{< note >}}
-During this process, a short-lived 2GB linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is expected behavior.
+During this process, a short-lived 2GB Linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is expected behavior.
 {{< /note >}}
 
 ### Create a Storm Cluster

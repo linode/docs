@@ -154,7 +154,7 @@ SSL (Secure Sockets Layer) is the standard security technology for establishing 
 
     ![Linode API](/docs/assets/configuration-management/laravel_forge_adding_ssl.png)
 
-    Laravel Forge comes with LetsEncrypt which help us generate a free SSL certificate.
+    Laravel Forge comes with Let's Encrypt which help us generate a free SSL certificate.
 
 4. If you already have an SSL certificate, click on the Install Existing Certificate. Otherwise, select **LetsEncrypt (Beta)**.
 

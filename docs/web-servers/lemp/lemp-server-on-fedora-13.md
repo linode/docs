@@ -282,5 +282,5 @@ You may wish to consult the following resources for additional information on th
 - [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
 - [Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
 - [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/fedora-13)
-- [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/fedora-13)
+- [Use PostgreSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/fedora-13)
 - [Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/fedora-13)

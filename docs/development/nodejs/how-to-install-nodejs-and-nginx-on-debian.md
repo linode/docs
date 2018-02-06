@@ -220,7 +220,7 @@ Display the date and time.
 {{< /file >}}
 
 
-2.  Test the NGINX server at the IP address or domain. Use the "Go to test.js" button to test that the Node.js server is serving files. On the test page, the "Display the date and time" button will execute a client-side snippet of javascript to return the current time.
+2.  Test the NGINX server at the IP address or domain. Use the "Go to test.js" button to test that the Node.js server is serving files. On the test page, the "Display the date and time" button will execute a client-side snippet of JavaScript to return the current time.
 
 <br>
 [Node.js](http://nodejs.org) and [NGINX](http://nginx.com/) are now working together. Route requests to one server or the other depending on your needs. Node.js offers a large [API](http://nodejs.org/api) with many tools. With Node.js, a developer can stay within the JavaScript language while working client-side or server-side.

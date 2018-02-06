@@ -69,7 +69,7 @@ If you've configured the firewall according to the [Securing Your Server](/docs/
 
     [![Pritunl DB setup screen](/docs/assets/pritunl-db-setup-resized.png)](/docs/assets/pritunl-db-setup.png)
 
-3.  Connect to the database. The installer has already populated the mongoDB URI. If it looks correct, click **Save**.
+3.  Connect to the database. The installer has already populated the MongoDB URI. If it looks correct, click **Save**.
 
     Alternatively, you may enter any valid MongoDB URI to use as the database for Pritunl.
 
