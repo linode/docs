@@ -34,7 +34,7 @@ Although R can be installed through the default Debian or Ubuntu repository, the
 
 2.  Add the key ID for the CRAN network:
 
-    [UBuntu GPG key](https://cran.rstudio.com/bin/linux/ubuntu/):
+    [Ubuntu GPG key](https://cran.rstudio.com/bin/linux/ubuntu/):
 
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 

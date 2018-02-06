@@ -19,7 +19,7 @@ title: 'How to Install Go on Ubuntu'
 
 ## Install Go
 
-1. Use `curl` or `wget` to download the current binary for Go from the official [download page](https://golang.org/dl/). As of this writing, the current version is 1.9.3. Check the download page for updates, and replace `1.9.3` with the most recent stable version if necesssary.
+1. Use `curl` or `wget` to download the current binary for Go from the official [download page](https://golang.org/dl/). As of this writing, the current version is 1.9.3. Check the download page for updates, and replace `1.9.3` with the most recent stable version if necessary.
 
         curl -O https://storage.googleapis.com/golang/go1.9.3.linux-amd64.tar.gz
 
