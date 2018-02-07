@@ -18,7 +18,7 @@ external_resources:
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 ---
 
-![mysql_centOS6_banner](/docs/assets/How_to_Install_MySQL_on_CentOS_6_smg.jpg)
+![How to Install MySQL on CentOS 6](/docs/assets/How_to_Install_MySQL_on_CentOS_6_smg.jpg)
 
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running CentOS 6.
