@@ -1,32 +1,21 @@
 language: python
+python:
+  - "3.6"
+
 cache:
     pip: true
-    directories:
-    - node_modules
-matrix:
-    include:
-    - python: "3.6"
+
+env:
+  - TEST_SUITE=vale
+  - TEST_SUITE=pytest
 
 before_install:
-    - echo "Installing Hugo 0.31.1"
-#    - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-#    - sudo apt install nodejs
-    - wget https://github.com/gohugoio/hugo/releases/download/v0.31/hugo_0.31_Linux-64bit.deb
-    - sudo dpkg -i hugo*.deb
-    - hugo version
-#    - sudo npm install --global gulp-cli
-#    - npm install
-
-install:
-    - echo "Install pytest and pip"
-    - pip install -r ci/requirements.txt
-
-before_script:
-    - echo "Setting up local development server"
-    - hugo server &
-    - sleep 7
+  - if [ $TEST_SUITE == pytest ]; then
+      wget https://github.com/gohugoio/hugo/releases/download/v0.36/hugo_0.36_Linux-64bit.deb;
+      sudo dpkg -i hugo*.deb;
+      (hugo server &);
+    fi
+  - sleep 7
 
 script:
-    - echo "Checking for style guidelines"
-    - python -m pytest -n 2
-
+  - ./ci/scripts/$TEST_SUITE.sh
