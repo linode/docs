@@ -95,6 +95,10 @@ By default, Shiny Server uses `/srv/shiny-server/` as its site directory. Any Sh
 
         example.com:3838/Example
 
+    You should see your app displayed:
+
+    ![Shiny Demo App](/docs/assets/shiny/shiny3.png)
+
 ### Configuration
 
 Shiny Server's configuration file is stored at `/etc/shiny-server/shiny-server.conf`:
