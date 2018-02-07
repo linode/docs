@@ -18,7 +18,7 @@ external_resources:
 
 ## What is Shiny?
 
-[Shiny](https://shiny.rstudio.com/) is a library for the R programming language that allows you to create interactive web apps in native R, without needing to use web technologies such as HTML, CSS, or Javascipt frameworks. There are many ways to deploy Shiny apps to the web; this guide will use Shiny Server to host an example Shiny app on a Linode.
+[Shiny](https://shiny.rstudio.com/) is a library for the R programming language that allows you to create interactive web apps in native R, without needing to use web technologies such as HTML, CSS, or JavaScript frameworks. There are many ways to deploy Shiny apps to the web; this guide will use Shiny Server to host an example Shiny app on a Linode.
 
 ## Before You Begin
 
