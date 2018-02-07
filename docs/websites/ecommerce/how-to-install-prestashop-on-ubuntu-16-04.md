@@ -16,7 +16,7 @@ contributor:
 ---
 
 
-![Prestashop_banner](/docs/assets/PrestaShop.jpg)
+![How to Install PrestaShop of Ubuntu 16.04 LTS](/docs/assets/PrestaShop.jpg)
 
 ## What is PrestaShop?
 
