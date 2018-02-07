@@ -36,7 +36,7 @@ The first command should show your short hostname, and the second should show yo
 
 ## Installation Prerequisites
 
-Before beginning with the installation of this web application stack,issue the following commands to ensure that your system's package database is up to date and that all installed software is running with the latest version:
+Before beginning with the installation of this web application stack, issue the following commands to ensure that your system's package database is up to date and that all installed software is running with the latest version:
 
     sudo apt-get update
     sudo apt-get upgrade
