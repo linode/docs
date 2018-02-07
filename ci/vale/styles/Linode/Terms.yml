@@ -1,0 +1,30 @@
+extends: substitution
+message: Use '%s' instead of '%s'.
+level: error
+ignorecase: true
+swap:
+  '(?:LetsEncrypt|Let''s Encrypt)': Let's Encrypt
+  '(?:ReHat|RedHat)': RedHat
+  'Mac ?OS ?X': Mac OS X
+  'mongoDB': MongoDB
+  'node[.]?js': Node.js
+  'Post?gr?e(?:SQL)': PostgreSQL
+  'java[ -]?scripts?': JavaScript
+  centOS: CentOS
+  debian: Debian
+  fedora: Fedora
+  gentoo: Gentoo
+  homebrew: Homebrew
+  linode cli: Linode CLI
+  linode manager:  Linode Manager
+  linode: Linode
+  longview: Longview
+  macOS: macOS
+  miniconda: Miniconda
+  nodebalancer: NodeBalancer
+  nodebalancers: NodeBalancers
+  openSUSE: OpenSUSE
+  slackware: Slackware
+  ubuntu: Ubuntu
+  wordpress: WordPress
+  yaml: YAML
