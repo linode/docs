@@ -18,7 +18,8 @@ before_install:
 #    - npm install
 
 install:
-    - echo "Install pytest and pip"
+    - echo "Install Vale, pytest, and pip"
+    - go get github.com/ValeLint/vale
     - pip install -r ci/requirements.txt
 
 before_script:
@@ -28,5 +29,6 @@ before_script:
 
 script:
     - echo "Checking for style guidelines"
+    - vale --glob='*.{md}' docs
     - python -m pytest -n 2
 
