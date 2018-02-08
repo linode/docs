@@ -63,7 +63,7 @@ If you employ a firewall to specify what ports can be accessed on your Linode, p
 -   5222 - Client to Server (standard and encrypted)
 -   5223 - Client to Server (legacy SSL support)
 -   5229 - Flash Cross Domain (Flash client support)
--   7070 - HTTP Binding (unsecured HTTP connecitons)
+-   7070 - HTTP Binding (unsecured HTTP connections)
 -   7443 - HTTP Binding (secured HTTP connections)
 -   7777 - File Transfer Proxy (XMPP file transfers)
 -   9090 - Admin Console (unsecured)

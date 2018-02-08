@@ -2,8 +2,8 @@
 author:
   name: Sam Foo
   email: sfoo@linode.com
-description: 'Create a remote desktop on a Linode.'
-og_description: 'This guide will demonstrate how to deploy Apache Guacamole, a utility that allows you to create a virtual cloud desktop on Linode'
+description: 'Use Apache Guacamole, a clientless HTML5 web application, to access your virtual cloud desktop right from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode.'
+og_description: 'Use Apache Guacamole, a clientless HTML5 web application, to access your virtual cloud desktop right from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode.'
 keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS", "xfce", "unity"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-08
@@ -16,7 +16,7 @@ external_resources:
  - '[Apache Tomcat](https://tomcat.apache.org/)'
 ---
 
-![Apache Guacamole](/docs/assets/guacamole/Apache_Guacamole.jpg)
+![Virtual Cloud Desktop Using Apache Guacamole](/docs/assets/guacamole/Apache_Guacamole.jpg)
 
 Apache Guacamole is an HTML5 application useful for accessing a remote desktop through RDP, VNC, and other protocols. You can create a virtual cloud desktop where applications can be accessed through a web browser. This guide will cover the installation of Apache Guacamole through Docker, then access a remote desktop environment hosted on a Linode.
 

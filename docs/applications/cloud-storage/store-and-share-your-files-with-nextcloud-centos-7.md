@@ -106,7 +106,7 @@ gpgcheck=1
         yum-config-manager --enable remi-php71
         yum install php71-php php-mbstring php-zip php71-php-opcache php71-php-mysql php71-php-pecl-imagick php71-php-intl php71-php-mcrypt php71-php-pdo php-ZendFramework-Db-Adapter-Pdo-Mysql php71-php-pecl-zip php71-php-mbstring php71-php-gd php71-php-xml -y
 
-5.  The default file upload size PHP will allow is 2MB. Increase (or decrease) the allowed filesize to your preferred value. The example below will set a 512MB file upload size and no limit for the post size:
+5.  The default file upload size PHP will allow is 2MB. Increase (or decrease) the allowed file size to your preferred value. The example below will set a 512MB file upload size and no limit for the post size:
 
         sudo cp /etc/php.ini /etc/php.ini.bak
         sudo sed -i "s/post_max_size = 8M/post_max_size = 0/" /etc/php.ini

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide shows how to use an existing deep learning model as part of a production application. A pre-trained model is included as an API endpoint for a Flask app.'
 keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
-og_description: 'Use an pre-trained deep learning model as part of a production application.'
+og_description: 'Use a pre-trained deep learning model as part of a production application.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-09
 modified: 2017-10-10
@@ -43,7 +43,7 @@ You will be using Python both to create a model and to deploy the model to a Fla
 1.  Download and install Miniconda, a lightweight version of Anaconda. Follow the instructions in the terminal and allow Anaconda to add a PATH location to `.bashrc`:
 
         wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-        bash Anaconda3-5.0.0.1-Linux-x86_64.sh
+        bash Miniconda3-latest-Linux-x86_64.sh
         source .bashrc
 
 2.  Create and activate a new Python virtual environment:
@@ -218,7 +218,7 @@ Apache modules are typically installed with the system installation of Apache. H
     The output should be similar to:
 
         LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
-WSGIPythonHome "/home/linode/miniconda3/envs/deeplearning"
+        WSGIPythonHome "/home/linode/miniconda3/envs/deeplearning"
 
 4.  Create a `wsgi.load` file in the Apache `mods-available` directory. Copy the `LoadModule` directive from above and paste it into the file:
 

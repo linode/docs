@@ -87,7 +87,7 @@ Issue the following command to restart the Tomcat server, which will allow this 
 
     /etc/init.d/tomcat6 restart
 
-Congratulations! You know have a working Apache Tomcat installation.
+Congratulations! You now have a working Apache Tomcat installation.
 
 # More Information
 

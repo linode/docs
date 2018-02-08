@@ -58,7 +58,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
     {{< note >}}
 Should you encounter the error that there is "*no directory /var/run/fail2ban to contain the socket file /var/run/fail2ban/fail2ban.sock*", create the directory manually:
 
-'mkdir /var/run/fail2ban'
+    mkdir /var/run/fail2ban
 {{< /note >}}
 
 ### Debian
@@ -79,9 +79,10 @@ Should you encounter the error that there is "*no directory /var/run/fail2ban to
 
     {{< note >}}
 The current version of Sendmail in Debian Jessie has an [upstream bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=293017) which causes the following errors when installing `sendmail-bin`. The installation will hang for a minute, but then complete.
-Creating /etc/mail/sendmail.cf...
-ERROR: FEATURE() should be before MAILER() MAILER(`local') must appear after FEATURE(`always_add_domain')
-ERROR: FEATURE() should be before MAILER() MAILER(`local') must appear after FEATURE(`allmasquerade')
+
+    Creating /etc/mail/sendmail.cf...
+    ERROR: FEATURE() should be before MAILER() MAILER('local') must appear after FEATURE('always_add_domain')
+    ERROR: FEATURE() should be before MAILER() MAILER('local') must appear after FEATURE('allmasquerade')
 {{< /note >}}
 
 ### Fedora
@@ -298,7 +299,7 @@ The best way to understand how failregex works is to write one. Although we do n
 
         <HOST> - - \[(\d{2})
 
-    The following forward slash will then be called with a literal forward slash, followed by `\w{3}` which looks for a series of `3` apha-numeric characters (i.e., A-Z, 0-9, any case). The following forward slash should also be literal:
+    The following forward slash will then be called with a literal forward slash, followed by `\w{3}` which looks for a series of `3` alpha-numeric characters (i.e., A-Z, 0-9, any case). The following forward slash should also be literal:
 
         <HOST> - - \[(\d{2})/\w{3}/
 

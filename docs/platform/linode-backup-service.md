@@ -73,7 +73,7 @@ You'll manage your backups with a simple web interface in the Linode Manager. Th
 
 ## How Linode Backups Work
 
-Backups are stored on a separate system in the same datacenter as your Linode. The space required to store the backups is *not* subtracted from your storage space. You can store four backups of your Linode, three of which are automatically generated and rotated:
+Backups are stored on a separate system in the same data center as your Linode. The space required to store the backups is *not* subtracted from your storage space. You can store four backups of your Linode, three of which are automatically generated and rotated:
 
 -   **Daily backup:** Automatically initiated daily within the backup window you select. Less than 24 hours old.
 -   **Current week's backup:** Automatically initiated weekly within the backup window, on the day you select. Less than 7 days old.

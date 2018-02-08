@@ -50,7 +50,7 @@ If you have not added your limited user account to the `docker` group (with `sud
 
 | Docker Syntax | Description |
 |:-------------|:---------|
-| **docker run** -it user/image | Runs an image, creating a container and<br> changing the termihnal<br> to the terminal within the container. |
+| **docker run** -it user/image | Runs an image, creating a container and<br> changing the terminal<br> to the terminal within the container. |
 | **docker run** -p $HOSTPORT:$CONTAINERPORT -d user/image | Run an image in detached mode<br> with port forwarding. |
 | **`ctrl+p` then `ctrl+q`** | From within the container's command prompt,<br> detach and return to the host's prompt. |
 | **docker attach** [container name or ID] | Changes the command prompt<br> from the host to a running container. |

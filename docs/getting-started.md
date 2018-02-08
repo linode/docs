@@ -27,11 +27,11 @@ If you haven't already signed up for a Linode account, start here.
 
 1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
 2.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
-3.  Select a Linode plan and datacenter location
+3.  Select a Linode plan and data center location
 
     ![Available Linode plans](/docs/assets/linode-manager-select-plan.png)
 
-If you're unsure of which datacenter to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the datacenters to determine which of our facilities provides the best latency from your particular location.
+If you're unsure of which data center to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
 ## Provision Your Linode
 
@@ -197,7 +197,7 @@ Ubuntu may prompt you when the Grub package is updated. If prompted, select `kee
 
     emaint sync -a
 
-After running a sync, it may end with a message that you should upgrade Portage using a `--oneshot` emerge comand. If so, run the Portage update. Then update the rest of the system:
+After running a sync, it may end with a message that you should upgrade Portage using a `--oneshot` emerge command. If so, run the Portage update. Then update the rest of the system:
 
     emerge --uDN @world
 

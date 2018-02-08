@@ -21,23 +21,30 @@ def file_io(func):
     return wrapper
 
 @pytest.fixture(scope='module', autouse=True)
-def md_index(path='.', extension='*.md'):
+def file_index(path='.', extension=None):
     """
     Traverses root directory
     """
     index = []
-    exclude_dir = ['node_modules', 'archetypes']
-    exclude_file = ['_index.md']
+    exclude_dir = ['node_modules', 'archetypes', '.git']
+    exclude_file = ['_index.md','.gitignore']
     for root, dirnames, filenames in os.walk(path):
         dirnames[:] = [d for d in dirnames if d not in exclude_dir]
-        for filename in fnmatch.filter(filenames, extension):
+        if extension:
+            filter_ext = fnmatch.filter(filenames, extension)
+        else:
+            filter_ext = filenames #Filter nothing
+        for filename in filter_ext:
             if filename in exclude_file:
                 continue
             index.append(os.path.join(root, filename))
     return index
 
-
-@pytest.fixture(params=md_index())
+@pytest.fixture(params=file_index(extension='*.md'))
 def md_filepath(request):
+    return request.param
+
+@pytest.fixture(params=file_index(extension=None))
+def all_filepaths(request):
     return request.param
 

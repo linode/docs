@@ -17,7 +17,7 @@ external_resources:
  - '[Apache 2.2 CGI documentation](http://httpd.apache.org/docs/2.2/howto/cgi.html)'
 ---
 
-In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the proccess of setting up Apache and PHP CGI.
+In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the process of setting up Apache and PHP CGI.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -30,7 +30,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     To check your hostname, run:
 
         hostname
-	hostname -f
+        hostname -f
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
@@ -108,7 +108,7 @@ This may not be ideal if you have multiple users running publicly accessible scr
 
     {{< file-excerpt "Apache Virtual Hosting Configuration Block" apache >}}
 <IfModule mpm_itk_module>
-	   AssignUserId webeditor webgroup
+        AssignUserId webeditor webgroup
 </IfModule>
 
 {{< /file-excerpt >}}

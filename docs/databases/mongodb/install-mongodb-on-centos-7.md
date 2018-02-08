@@ -177,7 +177,7 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
         db.createUser({user: "example-user", pwd: "password", roles:[{role: "read", db: "user-data"}, {role:"readWrite", db: "exampleDB"}]})
 
-    To create additional users, repeat Steps 6 and 7 as the administrative user, creating new usernames, passwords and roles by substituing the appropriate values.
+    To create additional users, repeat Steps 6 and 7 as the administrative user, creating new usernames, passwords and roles by substituting the appropriate values.
 
 8.  Exit the mongo shell:
 

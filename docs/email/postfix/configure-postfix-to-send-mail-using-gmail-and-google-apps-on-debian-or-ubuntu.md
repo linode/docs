@@ -12,7 +12,7 @@ published: 2016-12-13
 title: Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu
 ---
 
-![configure_postfix_banner](/docs/assets/Configure_Postfix_to_Send_Mail_Using_Gmail_and_Google_Apps_on_Debian_or_Ubuntu_smg.jpg)
+![Configure Postfix to Send Mail Using Gmail and Google Apps](/docs/assets/Configure_Postfix_to_Send_Mail_Using_Gmail_and_Google_Apps_on_Debian_or_Ubuntu_smg.jpg)
 
 
 Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client to send or receive email. There are many reasons why you would want to configure Postfix to send email using Google Apps and Gmail. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a blacklist.

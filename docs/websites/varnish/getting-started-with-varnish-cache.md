@@ -272,7 +272,7 @@ set beresp.grace = 1h;
 
 #### Serve Varnish Cache from Another Linode (Optional)
 
-For added availability, consider serving Varnish cache from a separate Linode. In this case, the Varnish installation steps should be performed on a separate Linode in the same datacenter as the web server. Once installed, configure the Varnish backend `.host` value to point at the web server Linode's [private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Note that DNS records for your site should be pointed at the Varnish Linode, since this is where the client connects.
+For added availability, consider serving Varnish cache from a separate Linode. In this case, the Varnish installation steps should be performed on a separate Linode in the same data center as the web server. Once installed, configure the Varnish backend `.host` value to point at the web server Linode's [private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Note that DNS records for your site should be pointed at the Varnish Linode, since this is where the client connects.
 
 That's it! If everything went well, visitors to your site are now being served Varnish-cached content from memory, resulting in dramatic improvements to your site's speed.
 

@@ -82,12 +82,12 @@ Use the Ruby Version Manager (RVM) to install Ruby. Be sure to replace `2.4.2` i
 
 1.  Install NGINX:
 
-		sudo apt install nginx
+        sudo apt install nginx
 
 2.  Phusion hosts a repository containing the latest version of Phusion Passenger. To add this to the package manager, first install the Phusion PGP key:
 
-		sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
-		sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger stretch main > /etc/apt/sources.list.d/passenger.list'
+        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
+        sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger stretch main > /etc/apt/sources.list.d/passenger.list'
 
 3.  Enable HTTPS support for APT:
 
@@ -107,7 +107,7 @@ passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
 passenger_ruby /usr/bin/passenger_free_ruby;
 {{< /file-excerpt >}}
 
-	{{< note >}}
+    {{< note >}}
 If the file does not already exist, you will need to create it and add the lines manually.
 {{< /note >}}
 
@@ -143,13 +143,13 @@ If the application deployed uses MySQL, install the database server by following
         cd railsapp
         bundle install
 
-2.  Rails requires a Javascript runtime. Install Node JS:
+2.  Rails requires a JavaScript runtime. Install Node.js:
 
         sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
         sudo apt install nodejs
 
     {{< note >}}
-If your Gemfile already includes `therubyracer`, or you have another Javascript runtime on your system, you can skip this step.
+If your Gemfile already includes `therubyracer`, or you have another JavaScript runtime on your system, you can skip this step.
 {{< /note >}}
 
 3.  Open `/etc/nginx/sites-available/default` in a text editor and remove `default_server` from the first two lines of the `server` block:
@@ -168,7 +168,7 @@ server {
 
     The `passenger-config` command will generate several lines of output, similar to:
 
-	{{< output >}}
+    {{< output >}}
 passenger-config was invoked through the following Ruby interpreter:
   Command: /home/username/.rvm/gems/ruby-2.4.2/wrappers/ruby
   Version: ruby 2.4.2p198 (2017-09-14 revision 59899) [x86_64-linux]

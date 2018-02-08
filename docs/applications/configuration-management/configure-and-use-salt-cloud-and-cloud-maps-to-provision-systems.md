@@ -94,7 +94,7 @@ All configuration files store data in YAML format. Be careful with indentation -
 
 ### List Available Locations, Images and Sizes
 
-Before creating new instances, specify instance size: amount of system memory, CPU, and storage; location: physical location of datacenter; and image: operating system.
+Before creating new instances, specify instance size: amount of system memory, CPU, and storage; location: physical location of data center; and image: operating system.
 
 You can obtain this information with the following commands:
 

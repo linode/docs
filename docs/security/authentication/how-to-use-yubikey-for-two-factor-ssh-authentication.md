@@ -111,7 +111,7 @@ user4:vvddhfjjasui:vvfjidkflssd
 {{< /file >}}
 
 
-5. Add `auth required pam_yubico.so id=client id authfile=/etc/ssh/yubikeys` to the start of `/etc/pam.d/sshd`. Replace `client id` with the ID you retrieved when applying for an API key, and `secret key` with the secret key. If you only want single-factor authentication (either a YubiKey or a password), change `required` to `sufficient` to tell the system that a valid YubiKey will be enough to log in.
+5. Add `auth required pam_yubico.so id=<client id> key=<secret key> authfile=/etc/ssh/yubikeys` to the start of `/etc/pam.d/sshd`. Replace `<client id>` with the ID you retrieved when applying for an API key, and `<secret key>` with the secret key. If you only want single-factor authentication (either a YubiKey or a password), change `required` to `sufficient` to tell the system that a valid YubiKey will be enough to log in.
 
     {{< file-excerpt "/etc/pam.d/sshd" >}}
 # PAM configuration for the Secure Shell service

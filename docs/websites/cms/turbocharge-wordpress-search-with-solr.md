@@ -28,7 +28,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 -   WordPress must be already installed and configured. If you have not yet installed WordPress, follow the [Manage Web Content with WordPress](/docs/websites/cms/manage-web-content-with-wordpress) guide.
 
--   Much of this guide assumes that Solr is being installed on the same server as WordPress; however, Solr can be installed on a second server for security or scalibility reasons. Alternate steps are provided should Solr be installed on a second server.
+-   Much of this guide assumes that Solr is being installed on the same server as WordPress; however, Solr can be installed on a second server for security or scalability reasons. Alternate steps are provided should Solr be installed on a second server.
 
 
 ## Install Java
@@ -418,7 +418,7 @@ If it shows similar output, Solr is installed and configured correctly:
 
 If Solr is installed on a different server from WordPress, repeat the test from the WordPress server by sending a request to the Solr server:
 
-	curl http://HOSTNAME-OR-IP-OF-SOLR-SERVER:8983/solr/collection1/select
+    curl http://HOSTNAME-OR-IP-OF-SOLR-SERVER:8983/solr/collection1/select
 
 
 ## Install and Configure WPSolr
@@ -470,7 +470,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
     -   **Post types to be indexed**: Selecting all of them is recommended. **Post** indexes all blog posts, **page** all pages (such as about pages), and **attachment** all documents (such as PDFs and DOC files).
 
-    -   **Custom taxonomies to be indexed**: Generally there is no need to enter anything here; however, if Wordpress has been customized to organize blog posts in ways other than categories and tags, enter the name of the taxonomy here.
+    -   **Custom taxonomies to be indexed**: Generally there is no need to enter anything here; however, if WordPress has been customized to organize blog posts in ways other than categories and tags, enter the name of the taxonomy here.
 
     -   **Custom fields to be indexed**: Generally there is no need to select anything here.
 

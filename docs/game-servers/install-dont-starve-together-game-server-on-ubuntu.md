@@ -41,10 +41,9 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
 
         sudo dpkg-reconfigure iptables-persistent
 
-3.  Install some additonal 32-bit packages:
+3.  Install some additional 32-bit packages:
 
         sudo apt-get install libcurl4-gnutls-dev:i386
-
 
 ## Install Don’t Starve Together
 

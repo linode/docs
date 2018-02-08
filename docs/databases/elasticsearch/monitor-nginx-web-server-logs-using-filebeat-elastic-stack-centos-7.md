@@ -163,7 +163,7 @@ Install the `kibana` package:
 
 ### Elasticsearch
 
-By default, Elasticsearch will create five shards and one replica for every index that's created. When deploying to production, these are reasonable settings to use. In this tutorial, only one server is used in the Elasticsearch setup, so multiple shards and replicas are unncessary. Changing these defaults can avoid unecessary overhead.
+By default, Elasticsearch will create five shards and one replica for every index that's created. When deploying to production, these are reasonable settings to use. In this tutorial, only one server is used in the Elasticsearch setup, so multiple shards and replicas are unnecessary. Changing these defaults can avoid unnecessary overhead.
 
 1.  Create a temporary JSON file with an *index template* that instructs Elasticsearch to set the number of shards to one and number of replicas to zero for all matching index names (in this case, a wildcard `*`):
 

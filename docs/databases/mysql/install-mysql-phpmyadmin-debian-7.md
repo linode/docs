@@ -16,6 +16,8 @@ external_resources:
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
 ---
 
+![Install MySQL with phpMyAdmin on Debian](/docs/assets/phpmyadmin-debian-mysql/How_to_Install_MySQL_with_phpMyAdmin_on_Debian_7_smg.jpg)
+
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
 {{< note >}}

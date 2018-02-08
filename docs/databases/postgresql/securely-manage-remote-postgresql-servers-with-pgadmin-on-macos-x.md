@@ -42,7 +42,7 @@ Although PostgreSQL uses port 5432 for TCP connections, we're using the local po
 
     [![pgAdmin III default view on Mac OS X](/docs/assets/pg-admin-macosx-add-server.png)](/docs/assets/pg-admin-macosx-add-server.png)
 
-2.  If you're having problems connectiong you may need to check PostgreSQL's configuration to ensure it accepts connections. Modify the following lines in `/etc/postgresql/9.5/main/postgresql.conf` if necessary:
+2.  If you're having problems connecting, you may need to check PostgreSQL's configuration to ensure it accepts connections. Modify the following lines in `/etc/postgresql/9.5/main/postgresql.conf` if necessary:
 
     {{< file-excerpt "/etc/postgresql/9.5/main/postgresql.conf" aconf >}}
 listen_addresses = 'localhost'

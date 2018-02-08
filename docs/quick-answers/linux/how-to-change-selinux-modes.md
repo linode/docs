@@ -16,7 +16,7 @@ external_resources:
 - '[SELinux, CentOS Wiki](https://wiki.centos.org/HowTos/SELinux)'
 ---
 
-[Security Enhanced Linux](https://selinuxproject.org/page/Main_Page) is a Linux security module for [mandatory](https://en.wikipedia.org/wiki/Mandatory_access_control) or [role-baed](https://wiki.centos.org/HowTos/SELinux#head-91a597b2b6f140484d62d59a0b9a1dfea4dffc50) access control. SELinux is packaged with CentOS and Fedora by default, and can be running in one of three [modes](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Introduction-SELinux_Modes.html): *disabled*, *permissive* or *enforcing*.
+[Security Enhanced Linux](https://selinuxproject.org/page/Main_Page) is a Linux security module for [mandatory](https://en.wikipedia.org/wiki/Mandatory_access_control) or [role-based](https://wiki.centos.org/HowTos/SELinux#head-91a597b2b6f140484d62d59a0b9a1dfea4dffc50) access control. SELinux is packaged with CentOS and Fedora by default, and can be running in one of three [modes](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Introduction-SELinux_Modes.html): *disabled*, *permissive* or *enforcing*.
 
 Ideally, you want to keep SELinux in enforcing mode, but there may be times when you need to set it to permissive mode, or disable it altogether. Note that the *disabled* state means the daemon is still running and is still enforcing rules for [discretionary access control](https://en.wikipedia.org/wiki/Discretionary_access_control), however no MAC security policies are being used, and no violations are being logged.
 

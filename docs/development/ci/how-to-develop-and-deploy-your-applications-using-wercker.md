@@ -310,7 +310,7 @@ As the name implies, Wercker applications correspond to each of your projects. B
 
 #### jClocks Example
 
-Similar to the configuration files, you have several environmental variables to setup.
+Similar to the configuration files, you have several environmental variables to set up.
 
 1.  For the first example you need a SSH key pair for communication with your Linode. Click on the **Environment** tab:
 
@@ -368,7 +368,7 @@ Click the **Workflows** tab in the Wercker dashboard. The editor will show a sin
 
     ![Workflow screen](/docs/assets/wercker/wercker-workflow-01.jpg "Workflow screen")
 
-5.  Next you need to define the environmental variables, but this time you will do it inside each pipeline and not globally. On the Workflows tab, click the **deploy-docker** pipeline at the botton of the screen. Here you can create the variables. There are two variables from this example's `wercker.yml` that must be defined here: `DOCKER_USERNAME` and `DOCKER_PASSWORD`. Create them and mark the password as **protected**.
+5.  Next you need to define the environmental variables, but this time you will do it inside each pipeline and not globally. On the Workflows tab, click the **deploy-docker** pipeline at the bottom of the screen. Here you can create the variables. There are two variables from this example's `wercker.yml` that must be defined here: `DOCKER_USERNAME` and `DOCKER_PASSWORD`. Create them and mark the password as **protected**.
 
 6.  Select the **deploy-linode** pipeline and create an SSH key pair, similar to the last example. Remember to copy the public key to your remote server.
 
@@ -408,7 +408,7 @@ The final example demonstrates the Wercker CLI.
 
     ![Wercker CLI build](/docs/assets/wercker/wercker-cli-build.jpg "Wercker CLI build")
 
-    The output should be similar to the logs you saw on the Wercker dashboard. The difference is that you can check each step locally and detect any errors early in the process. The Wercler CLI replicates the SaaS behavior: it downloads specified images, builds, tests and shows errors. Since the CLI is a development tool intended to facilitate local testing, you will not be able to deploy the end result remotely.
+    The output should be similar to the logs you saw on the Wercker dashboard. The difference is that you can check each step locally and detect any errors early in the process. The Wercker CLI replicates the SaaS behavior: it downloads specified images, builds, tests and shows errors. Since the CLI is a development tool intended to facilitate local testing, you will not be able to deploy the end result remotely.
 
 3.  Build the application with Go:
 

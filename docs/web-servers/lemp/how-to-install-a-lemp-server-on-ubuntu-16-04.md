@@ -28,7 +28,7 @@ This guide describes an alternative to the *LAMP* (Linux, Apache, MySQL, and PHP
 
 - Update your system:
 
-      sudo apt-get update && sudo apt-get upgrade
+        sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups Guide](/docs/tools-reference/linux-users-and-groups).
@@ -84,7 +84,7 @@ index index.html index.php;
 {{< /file-excerpt >}}
 
 
-3.  The nginx example configuration uses `/var/www/` as a document root, but Ubuntu uses `/var/www/html` as a standard. Additionally, Linode guides encourage the standard practice of using a subdirectory called `public_html` to exclude web files that shouldn't be publicly accesible. Update the `root` directive to match these conventions:
+3.  The nginx example configuration uses `/var/www/` as a document root, but Ubuntu uses `/var/www/html` as a standard. Additionally, Linode guides encourage the standard practice of using a subdirectory called `public_html` to exclude web files that shouldn't be publicly accessible. Update the `root` directive to match these conventions:
 
     {{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
 root   /var/www/html/example.com/public_html;

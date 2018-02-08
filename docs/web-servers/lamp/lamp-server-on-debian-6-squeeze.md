@@ -117,7 +117,7 @@ Assuming that you have configured the DNS for your domain to point to your Linod
 
 ## Install and Configure MySQL Database Server
 
-MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development tool chains. It is used to store data for many popular applications, including Wordpress and Drupal.
+MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development tool chains. It is used to store data for many popular applications, including WordPress and Drupal.
 
 ### Install MySQL
 

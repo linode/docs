@@ -82,7 +82,7 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
         sudo chmod 644 apache2-roundcube.sample.conf
 
-5.  Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. [Let's Encrypt](https://letsencrypt.org/) offers browser trusted, free SSL certificates, but does not support [Extended Validatation](https://en.wikipedia.org/wiki/Extended_Validation_Certificate) (EV) or multi-domain ([wildcard](https://en.wikipedia.org/wiki/Wildcard_certificate)) certificates. To gain those features, a [commercial SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) must be used.
+5.  Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. [Let's Encrypt](https://letsencrypt.org/) offers browser trusted, free SSL certificates, but does not support [Extended Validation](https://en.wikipedia.org/wiki/Extended_Validation_Certificate) (EV) or multi-domain ([wildcard](https://en.wikipedia.org/wiki/Wildcard_certificate)) certificates. To gain those features, a [commercial SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) must be used.
 
 6.  Once you have your SSL certificate, edit the following options in `apache2-roundcube.sample.conf` to match your desired configuration:
 
@@ -151,7 +151,7 @@ PEAR is an acronym for "PHP Extension and Application Repository". Common PHP co
 
     PEAR will print an **install ok** confirmation message for each package that it successfully installs. In this case, a complete installation will look similar to this:
 
-  	{{< output >}}
+    {{< output >}}
 install ok: channel://pear.php.net/Auth_SASL-1.1.0
 install ok: channel://pear.php.net/Net_IDNA2-0.1.1
 install ok: channel://pear.php.net/Mail_Mime-1.10.2

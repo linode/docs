@@ -69,7 +69,7 @@ If you want to be able to quickly deploy from Github, Gitlab or Bitbucket, you w
 
     **Server Size:** The size of the server.
 
-    **Region:** The datacenter where you want your server hosted. Choose a location close to where you expect the majority of users to be.
+    **Region:** The data center where you want your server hosted. Choose a location close to where you expect the majority of users to be.
 
     **PHP Version:** The installed PHP version.
 
@@ -154,7 +154,7 @@ SSL (Secure Sockets Layer) is the standard security technology for establishing 
 
     ![Linode API](/docs/assets/configuration-management/laravel_forge_adding_ssl.png)
 
-    Laravel Forge comes with LetsEncrypt which help us generate a free SSL certificate.
+    Laravel Forge comes with Let's Encrypt which help us generate a free SSL certificate.
 
 4. If you already have an SSL certificate, click on the Install Existing Certificate. Otherwise, select **LetsEncrypt (Beta)**.
 

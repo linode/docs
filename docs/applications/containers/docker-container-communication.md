@@ -17,6 +17,8 @@ external_resources:
 - '[Connecting Containers](https://deis.com/blog/2016/connecting-docker-containers-1/)'
 ---
 
+![Connect Docker Containers](/docs/assets/connect-docker-containers/Connect_Docker_Containers.jpg)
+
 When using [Docker](https://www.docker.com) to containerize your applications, it is common practice to run each component of the application in a separate container. For example, a website might have a web server, application, and database, each running in its own container.
 
 Configuring the containers to communicate with each other and the host machine can be a challenge. This guide will use a simple example app to demonstrate the basics of Docker container communication. The app will consist of a Node.js app that reads data from a PostgreSQL database.
@@ -371,4 +373,4 @@ By default, Docker automatically assigns an IP address to each container and to 
 
 However, Docker also provides a number of convenient wrappers around these connections to help you speed up and simplify the connection process. You can connect your Docker host to a container with a unique hostname, or directly link two containers. Using Docker Compose can simplify this process even further by allowing you to declare connections in the `docker-compose.yml` file so that they are automatically established when the containers are brought up.
 
-There are other connection options that were not covered in this guide. For example, you can run a container using `--net="host"`, which will share that container's network stack with the Docker host: `localhost` on the container will point to `localhost` on the Docker host. You can also expose ports on each Docker container, or configre the default bridge network for more flexibility. For a more in-depth discussion of these options, see the links in the More Info section below.
+There are other connection options that were not covered in this guide. For example, you can run a container using `--net="host"`, which will share that container's network stack with the Docker host: `localhost` on the container will point to `localhost` on the Docker host. You can also expose ports on each Docker container, or configure the default bridge network for more flexibility. For a more in-depth discussion of these options, see the links in the More Info section below.

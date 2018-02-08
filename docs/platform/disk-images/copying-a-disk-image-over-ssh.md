@@ -144,7 +144,7 @@ As above, you will want to verify the disk by mounting it on the receiving Linod
 
 ### Expand the Filesystem
 
-If the disk you created on the receiving Linode is larger than the source disk (for example you're transferring a disk from a smaller linode to a larger linode), you'll have to resize the filesystem in order to make use of the new space.
+If the disk you created on the receiving Linode is larger than the source disk (for example you're transferring a disk from a smaller Linode to a larger Linode), you'll have to resize the filesystem in order to make use of the new space.
 
 You can check if this is necessary by comparing the space reported by the filesystem:
 

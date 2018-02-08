@@ -154,7 +154,7 @@ Version 1.5.7 is the current version and may be different by the time you read t
 
 ### Configure
 
-1.  Navigate to the OWA installation page in your webbrowser. Replace `your.domain` with your Linode's IP address or FQDN:
+1.  Navigate to the OWA installation page in your web browser. Replace `your.domain` with your Linode's IP address or FQDN:
 
         http://your.domain/owa/
 
