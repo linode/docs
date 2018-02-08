@@ -42,7 +42,7 @@ The Longview client is [open source](https://github.com/linode/longview) and can
 
     It can take several minutes for data to start showing in the Manager but once it does, you'll see the graphs and charts populating with your Linode's metrics.
 
-    ![Linode Manager Longview data](/docs/assets/linode-manager-longview-running.png "Linode Manager Longivew running")
+    ![Linode Manager Longview data](/docs/assets/linode-manager-longview-running.png "Linode Manager Longview running")
 
 
 ### Manual Installation with yum or apt
@@ -92,7 +92,7 @@ deb http://apt-longview.linode.com/ xenial main
 
         sudo mkdir /etc/linode/
 
-5.  Copy the API key from either the *Welcome to Longview!* modal window or the **Settings** tab of your Longivew client's overview page in the Linode Manager. Put the key into a file, replacing key in the command below with your own.
+5.  Copy the API key from either the *Welcome to Longview!* modal window or the **Settings** tab of your Longview client's overview page in the Linode Manager. Put the key into a file, replacing key in the command below with your own.
 
         echo '266096EE-CDBA-0EBB-23D067749E27B9ED' | sudo tee /etc/linode/longview.key
 
@@ -127,7 +127,7 @@ Once your system is set up as a Longview client, you will also have access to Li
 
 ### Updating Longview
 
-When an update is available for Longivew, you'll receive a notice of this as a banner at the top of the Linode Manager.
+When an update is available for Longview, you'll receive a notice of this as a banner at the top of the Linode Manager.
 
 - If you are using CentOS, Debian, or Ubuntu, the `linode-longview` package will update via the system's package manager, just like any other upstream package.
 

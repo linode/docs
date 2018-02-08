@@ -16,7 +16,7 @@ show_on_rss_feed: false
 
 <!-- Install Docker CE using the official Docker repositories. -->
 
-1.  As of this writing, the recommended Docker installation is Docker CE. Remove any older installations of Docker that may be on your system:
+1.  At the time of writing, the recommended Docker installation is Docker CE. Remove any older installations of Docker that may be on your system:
 
         apt remove docker docker-engine docker.io
 

@@ -207,7 +207,7 @@ No matter what you decide, we recommend developing some sort of systematic metho
 
 # Running Scripts with mod\_fastcgi
 
-If you need your web server to execute dynamic content, the preferred way to accomplish this with lighttpd is to run these scripts using FastCGI. To run a script, FastCGI externalizes the interpreter for the script for dynamic web applications from the web server rather than running the scripts "inside" the web server. This is in contrast to the common Apache-based approaches such as mod\_perl, mod\_python, and mod\_php. If you're familar with Apache this might seem foreign and/or antiquated, but in high-traffic situations doing things this way is often more efficient and effective.
+If you need your web server to execute dynamic content, the preferred way to accomplish this with lighttpd is to run these scripts using FastCGI. To run a script, FastCGI externalizes the interpreter for the script for dynamic web applications from the web server rather than running the scripts "inside" the web server. This is in contrast to the common Apache-based approaches such as mod_perl, mod_python, and mod_php. If you're familiar with Apache this might seem foreign and/or antiquated, but in high-traffic situations doing things this way is often more efficient and effective.
 
 To set up FastCGI you need to make sure that an interpreter is installed on your system that is capable of running your scripts. Perl version 5.10.0-19 is included in Ubuntu by default. Issue one of the following commands:
 

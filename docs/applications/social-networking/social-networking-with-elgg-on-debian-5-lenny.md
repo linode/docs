@@ -43,7 +43,7 @@ Run the following command to restart the Apache Web server so that `mod_rewrite`
 
     /etc/init.d/apache2 restart
 
-You're now ready to install Elgg. For the purposes of this guide, Elgg will be installed at the root level of an Apache virtual host. The `DocumentRoot` for the virtual host will be located at `/srv/www/example.com/public_html/` and the site will be located at `http://example.com/`. You will need to substitute these paths with the paths that you comfigured in your Elgg virtual host.
+You're now ready to install Elgg. For the purposes of this guide, Elgg will be installed at the root level of an Apache virtual host. The `DocumentRoot` for the virtual host will be located at `/srv/www/example.com/public_html/` and the site will be located at `http://example.com/`. You will need to substitute these paths with the paths that you configured in your Elgg virtual host.
 
 # Installing Elgg
 

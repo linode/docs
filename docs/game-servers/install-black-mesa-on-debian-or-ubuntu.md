@@ -95,7 +95,7 @@ At the time of writing this guide, Black Mesa has yet to share with customers an
 {{< /note >}}
 
 ### Server.cfg
-The **server.cfg** file contains the settings of your server. It is not needed because you can start the server every time by specifying desidered values using parameters.
+The **server.cfg** file contains the settings of your server. It is not needed because you can start the server every time by specifying desired values using parameters.
 
 {{< file-excerpt "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/server.cfg" java >}}
 // Black Mesa server.cfg file
@@ -248,7 +248,7 @@ You can read the entire list of parameters on the [Valve Wiki](https://developer
         wget http://www.metamodsource.net/mmsdrop/1.10/mmsource-1.10.7-git951-linux.tar.gz
 
       {{< note >}}
-This URL costantly changes as MetaMod is updated. Please check the downloads [page](http://www.metamodsource.net/snapshots) for the current URL.
+This URL constantly changes as MetaMod is updated. Please check the downloads [page](http://www.metamodsource.net/snapshots) for the current URL.
 {{< /note >}}
 
 3.  Extract the downloaded archive:

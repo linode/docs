@@ -37,7 +37,7 @@ Every term to the left of the TLD and separated by a period is considered a more
 
 ### Name Servers
 
-Choosing and specifying *name servers* is an essential part of domain ownership. If you don't, the Internet won't know where to find your DNS information, and your domain won't resolve. Name servers host a domain's DNS information in a text file called the *zone file*. They're are also known as Servers of Authority (SOAs). You can host your DNS information on name servers in one of several locations:
+Choosing and specifying *name servers* is an essential part of domain ownership. If you don't, the Internet won't know where to find your DNS information, and your domain won't resolve. Name servers host a domain's DNS information in a text file called the *zone file*. They're are also known as Start of Authority (SOA) records. You can host your DNS information on name servers in one of several locations:
 
 -   Linode (recommended)
 -   Your registrar

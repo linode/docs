@@ -16,7 +16,7 @@ external_resources:
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
-![apache_banner](/docs/assets/Apache_Web_Server_on_Debian_8_Jessie_smg.jpg)
+![How to Install and Configure Apache Web Server on Debian 8](/docs/assets/Apache_Web_Server_on_Debian_8_Jessie_smg.jpg)
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Debian 8.
 

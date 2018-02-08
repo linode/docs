@@ -95,7 +95,7 @@ Now you can read and write to files on the mounted disk.
 
 Change root is the process of changing your working root directory. When you change root (chroot) to your Linode root disk, you will be able to run commands as though you are logged into that system.
 
-Chroot will allow you to change user passwords, remove/install packages, and do other system maintanance and recovery tasks.
+Chroot will allow you to change user passwords, remove/install packages, and do other system maintenance and recovery tasks.
 
 Before you can use chroot, you need to mount your root disk with execute permissions:
 

@@ -80,7 +80,7 @@ These represent the interval of repetition with which tasks are processed. In or
 
 -   The `/` operator "steps through" or "skips" a specified units. Therefore `*/3` in the hour field, will run the specified job, at 12:00 am, 3:00am, 6:00am, 9:00am, 12:00pm, 3:00pm, 6:00pm, and 9:00pm. A `*/3` in the "day of month" field, runs the given task on the 3rd, 6th, 9th, 12th, 15th, 18th, 21st, and 29th of every month.
 -   The `,` operator allows you to specify a list of times for repetition. Comma separated lists of times must not contain a space.
--   The `-` operator specifies a range of values. `2-4` in the month field will run a task in Feburary, March, and April. `1-5` in the day of week field will run a task every weekday.
+-   The `-` operator specifies a range of values. `2-4` in the month field will run a task in February, March, and April. `1-5` in the day of week field will run a task every weekday.
 
 Fields in crontab entries are separated by spaces. If you are using special cron operators, be particularly careful to avoid unintentional spaces in your command.
 

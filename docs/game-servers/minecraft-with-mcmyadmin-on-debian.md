@@ -22,7 +22,7 @@ aliases: ['applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet--this guide includes firewall rules specifcally for a Minecraft server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet--this guide includes firewall rules specifically for a Minecraft server.
 
 3.  Update your system.
 
@@ -99,13 +99,13 @@ COMMIT
 
 1.  Install the Java Runtime Environment, OpenJDK:
 
-		sudo apt-get install openjdk-7-jre
+        sudo apt-get install openjdk-7-jre
 
-2.  [Mono](http://www.mono-project.com/). CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
+2.  [Mono](http://www.mono-project.com/) is an open source implementation of the .NET framework. CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
 
-		cd /usr/local
-		sudo wget http://mcmyadmin.com/Downloads/etc.zip
-		sudo unzip etc.zip; sudo rm etc.zip
+        cd /usr/local
+        sudo wget http://mcmyadmin.com/Downloads/etc.zip
+        sudo unzip etc.zip; sudo rm etc.zip
 
 ## Install and Start McMyAdmin
 
@@ -113,48 +113,48 @@ This section should be completed as your standard user, **not** as root. McMyAdm
 
 1.  Create the installation directory and change location to it.
 
-		mkdir ~/mcmyadmin && cd ~/mcmyadmin
+        mkdir ~/mcmyadmin && cd ~/mcmyadmin
 
 2.  Download the McMyAdmin installer. You will want to double check its [Download](https://www.mcmyadmin.com/#/download) page to be sure you're grabbing the latest version.
 
-		wget http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip
+        wget http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip
 
 3.  Extract the archive and delete the original zip file.
 
-		unzip MCMA2_glibc26_2.zip; rm MCMA2_glibc26_2.zip
+        unzip MCMA2_glibc26_2.zip; rm MCMA2_glibc26_2.zip
 
 4.  Start the initial configuration of McMyAdmin. Replace `PASSWORD` with a strong password which you want for admin access to McMyAdmin's web interface.
 
-		./MCMA2_Linux_x86_64 -setpass PASSWORD -configonly
+        ./MCMA2_Linux_x86_64 -setpass PASSWORD -configonly
 
-	This will return the output:
+    This will return the output:
 
-		The updater will download and install McMyAdmin to the current directory:
-		/home/your_user/mcmyadmin).
+        The updater will download and install McMyAdmin to the current directory:
+        /home/your_user/mcmyadmin).
 
-		Continue? [y/n] :
+        Continue? [y/n] :
 
-	Answer `y`. The installer will run and return you to the command prompt. If everything is as it should be, the only warning you'll see will be for a missing configuration file. As the output says, that would be normal since McMyAdmin was just started for the first time.
+    Answer `y`. The installer will run and return you to the command prompt. If everything is as it should be, the only warning you'll see will be for a missing configuration file. As the output says, that would be normal since McMyAdmin was just started for the first time.
 
 5.  Install screen, if it is not already installed.
 
-		sudo apt-get install screen
+        sudo apt-get install screen
 
 6.  Start a screen session for the McMyAdmin client.
 
-		screen -S mcma
+        screen -S mcma
 
 7.  Change into the McMyAdmin installation directory and start the program.
 
-		cd ~/mcmyadmin; ./MCMA2_Linux_x86_64
+        cd ~/mcmyadmin; ./MCMA2_Linux_x86_64
 
-	If successful, the last three lines of the output will be:
+    If successful, the last three lines of the output will be:
 
-		Notice	: McMyAdmin has started and is ready for use.
-		Notice	: This is the first time McMyAdmin has been started.
-		Notice	: You must complete the first-start wizard via the web interface.
+        Notice	: McMyAdmin has started and is ready for use.
+        Notice	: This is the first time McMyAdmin has been started.
+        Notice	: You must complete the first-start wizard via the web interface.
 
-	{{< note >}}
+    {{< note >}}
 To exit McMyAdmin and return to the command line, enter `/quit`.
 {{< /note >}}
 
@@ -164,16 +164,16 @@ To exit McMyAdmin and return to the command line, enter `/quit`.
 
 2.  Log in with the username `admin` and the password that you provided in the installation step.
 
-	![McMyAdmin Login Page](/docs/assets/mcmyadmin-login-page.png)
+    ![McMyAdmin Login Page](/docs/assets/mcmyadmin-login-page.png)
 
 3.  Once the initial configuration steps are completed, select your settings and then switch to the status page.
 
-	![McMyAdmin Configuration Page](/docs/assets/mcmyadmin-config-page.png)
+    ![McMyAdmin Configuration Page](/docs/assets/mcmyadmin-config-page.png)
 
 4.  Select *Start Server* and accept the Minecraft Server EULA.
 
-	![McMyAdmin Status Page](/docs/assets/mymyadmin-status-page.png)
+    ![McMyAdmin Status Page](/docs/assets/mymyadmin-status-page.png)
 
-	![McMyAdmin Server Started](/docs/assets/mcmyadmin-server-running.png)
+    ![McMyAdmin Server Started](/docs/assets/mcmyadmin-server-running.png)
 
 Congratulations, you now have McMyAdmin running on your Minecraft server!

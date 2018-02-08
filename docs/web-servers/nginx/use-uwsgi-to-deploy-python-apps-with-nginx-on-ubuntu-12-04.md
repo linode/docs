@@ -157,7 +157,7 @@ def application(environ, start_response):
 
         service nginx restart
 
-You can test by pointing a web browser to your domian. If you see `Hello World!` than you have successfully configured your Linode for uWSGI with Nginx!
+You can test by pointing a web browser to your domain. If you see `Hello World!` than you have successfully configured your Linode for uWSGI with Nginx!
 
 # Additional Application Servers
 

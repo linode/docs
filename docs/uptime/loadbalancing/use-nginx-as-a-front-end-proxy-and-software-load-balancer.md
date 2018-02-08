@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use Nginx as a Front-end Proxy and Software Load-Balancer.'
+description: 'Use NGINX as a Front-end Proxy and Software Load-Balancer.'
 keywords: ["apache", "nginx", "proxy", "load balancer", "load balancing", "web server", "http", "use nginx as proxy", "use nginx as load-balancer", "front-end proxy", "cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/', 'uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
@@ -10,48 +10,48 @@ modified: 2017-03-23
 modified_by:
   name: Linode
 published: 2010-05-11
-title: 'Use Nginx as a Front-end Proxy and Software Load Balancer'
+title: 'Use NGINX as a Front-end Proxy and Software Load Balancer'
 external_resources:
- - '[nginx Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
+ - '[NGINX Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
- - '[nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
-The nginx web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because ngnix uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
+The NGINX web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because NGINX uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
 
-![Use Nginx as a Front-end Proxy and Software Load Balancer](/docs/assets/use_nginx_as_a_frontend_proxy_and_software_load_balancer.png "Use Nginx as a Front-end Proxy and Software Load Balancer")
+![Use NGINX as a Front-end Proxy and Software Load Balancer](/docs/assets/use_nginx_as_a_frontend_proxy_and_software_load_balancer.png "Use Nginx as a Front-end Proxy and Software Load Balancer")
 
-Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/frameworks/seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using nginx as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
+Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/frameworks/seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using NGINX as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
 
-This document provides an overview of using nginx as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring nginx, please see our [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration) guide. If you want a simple nginx deployment with content that uses PHP or Perl scripts, consider following one of our [Installing Nginx](/docs/web-servers/nginx/) guides.
+This document provides an overview of using NGINX as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring NGINX, please see our [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration) guide. If you want a simple NGINX deployment with content that uses PHP or Perl scripts, consider following one of our [Installing NGINX](/docs/web-servers/nginx/) guides.
 
 ## Prerequisites
 
 Before we begin, make sure you have completed the following:
 
 -   Follow the [Getting Started](/docs/getting-started/) guide.
--   Install the [nginx server](/docs/web-servers/nginx/).
--   Familiarize yourself with [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration).
+-   Install the [NGINX server](/docs/web-servers/nginx/).
+-   Familiarize yourself with [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration).
 
 If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/tools-reference/introduction-to-linux-concepts) guide, [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics](/docs/using-linux/administration-basics) guide.
 
-## Front-End Proxy Services with Nginx: How It Works
+## Front-End Proxy Services with NGINX: How It Works
 
-When a request reaches the nginx front-end proxy server, here's an overview of the process that occurs:
+When a request reaches the NGINX front-end proxy server, here's an overview of the process that occurs:
 
-1.  nginx receives a request for a resource.
-2.  nginx sends a second *proxied* request to a specified server, and gets a response.
-3.  nginx returns the result of that request to the original requester.
+1.  NGINX receives a request for a resource.
+2.  NGINX sends a second *proxied* request to a specified server, and gets a response.
+3.  NGINX returns the result of that request to the original requester.
 
 ## Configure Apache for Port Listening
 
-In this section, you'll configure Apache to listen on an alternate port so it can respond to the nginx front end.
+In this section, you'll configure Apache to listen on an alternate port so it can respond to the NGINX front end.
 
 {{< note >}}
 This guide assumes you are using Apache 2.4. Some path names will be slightly different if you are using an older version.
 {{< /note >}}
 
-1.  The first thing you will configure is the port on which Apache listens. This needs to be a port other than 80, so that you can proxy requests to Apache on the alternate port. This has the added benefit of preventing conflicts between Apache and nginx listening on the same port. First, open up the `/etc/apache2/ports.conf` file for editing, and configure it as shown below:
+1.  The first thing you will configure is the port on which Apache listens. This needs to be a port other than 80, so that you can proxy requests to Apache on the alternate port. This has the added benefit of preventing conflicts between Apache and NGINX listening on the same port. First, open up the `/etc/apache2/ports.conf` file for editing, and configure it as shown below:
 
         sudo nano /etc/apache2/ports.conf
 
@@ -101,7 +101,7 @@ Listen 8000
 {{< /file-excerpt >}}
 
 
-3.  In the `/etc/apache2/apache2.conf` file, comment out the `LogFormat {User-Agent}` line. Then, add a forward so that Apache will log the original user’s IP address in the access logs instead of nginx's IP address (which would be listed as 127.0.0.1).
+3.  In the `/etc/apache2/apache2.conf` file, comment out the `LogFormat {User-Agent}` line. Then, add a forward so that Apache will log the original user’s IP address in the access logs instead of NGINX's IP address (which would be listed as 127.0.0.1).
 
         sudo nano /etc/apache2/apache2.conf
 
@@ -120,7 +120,7 @@ LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-A
 
         service apache restart
 
-6.  Edit the `/etc/nginx/proxy_params` file. These settings are a good starting point for optimal forwarding of proxy requests from Nginx to Apache:
+6.  Edit the `/etc/nginx/proxy_params` file. These settings are a good starting point for optimal forwarding of proxy requests from NGINX to Apache:
 
         sudo nano /etc/nginx/proxy_params
 
@@ -143,7 +143,7 @@ proxy_read_timeout 300;
 {{< /file >}}
 
 
-7.  Create the nginx `example.com` virtual host file at `/etc/nginx/sites-available/example.com`. Make sure you specify the same document root here that you did for Apache (for example, `/var/www/html/example.com`). This will ensure that nginx can deliver static files directly without passing the request to Apache. Static files (like JavaScript, CSS, images, PDF files, static HTML files, etc.) can be delivered much faster with nginx than Apache.
+7.  Create the NGINX `example.com` virtual host file at `/etc/nginx/sites-available/example.com`. Make sure you specify the same document root here that you did for Apache (for example, `/var/www/html/example.com`). This will ensure that NGINX can deliver static files directly without passing the request to Apache. Static files (like JavaScript, CSS, images, PDF files, static HTML files, etc.) can be delivered much faster with NGINX than Apache.
 
         sudo nano /etc/nginx/sites-available/example.com
 
@@ -174,7 +174,7 @@ server {
 
     There are some additional `location` directives to add in the `server` section of the `/etc/nginx/sites-available/example.com` file. You will probably need these directives, but it's possible that you may not, depending on your nginx and Apache configuration.
 
-8.  Add a `location` directive to make nginx refuse all requests for files beginning with the characters `.ht`. There's a similar directive in nearly every default Apache configuration. This directive is useful if your Apache deployment relies on settings from `.htaccess` and `.htpasswd`.
+8.  Add a `location` directive to make NGINX refuse all requests for files beginning with the characters `.ht`. There's a similar directive in nearly every default Apache configuration. This directive is useful if your Apache deployment relies on settings from `.htaccess` and `.htpasswd`.
 
     {{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
 location ~ /\.ht {
@@ -205,7 +205,7 @@ location / {
 
     **Response:** `http://192.168.3.105/teams/~example/wiki/PracticeSchedule/`
 
-10. For most conventional proxy setups, you will also want to add a `proxy_redirect` specification to your `location` directive blocks. This directive rewrites the HTTP headers that nginx receives from the proxy server to make them appear as if they were generated by the nginx server.
+10. For most conventional proxy setups, you will also want to add a `proxy_redirect` specification to your `location` directive blocks. This directive rewrites the HTTP headers that NGINX receives from the proxy server to make them appear as if they were generated by the NGINX server.
 
     {{< file-excerpt "example.com.vhost proxy location directive" nginx >}}
 location /pictures/ {
@@ -220,7 +220,7 @@ location /pictures/ {
 
 ## Software Load Balancing
 
-In addition to using nginx as a front-end proxy to pass requests to other web servers, nginx can also serve as the front end for clusters of servers, and even as a software load balancer.
+In addition to using NGINX as a front-end proxy to pass requests to other web servers, NGINX can also serve as the front end for clusters of servers, and even as a software load balancer.
 
 ### Basic HTTP Clustering
 
@@ -255,7 +255,7 @@ upstream appcluster {
 {{< /file-excerpt >}}
 
 
-In this example, in the `server` directive block, nginx is configured to listen for requests on a specific IP address and port (e.g. `192.0.2.0` and `80`), and respond to requests for the domains `example.com` and `www.example.com`. All requests for resources at this domain (e.g. `/`) will be passed to the `http://appcluster` server established in the `upstream` directive.
+In this example, in the `server` directive block, NGINX is configured to listen for requests on a specific IP address and port (e.g. `192.0.2.0` and `80`), and respond to requests for the domains `example.com` and `www.example.com`. All requests for resources at this domain (e.g. `/`) will be passed to the `http://appcluster` server established in the `upstream` directive.
 
 The `upstream` directive establishes the round-robin load balancer. Within this block eight servers are listed, each running on a distinct hostname and port combination.
 
@@ -265,7 +265,7 @@ The `upstream` directive establishes the round-robin load balancer. Within this 
 
 ### Advanced Load Balancing
 
-nginx also allows you to control the behavior of the `upstream` resource cluster beyond a simple round-robin setup. The simplest modification is to add the `ip_hash` directive to the configuration block. This causes requests from the same IP address to be routed to the same back-end server. Consider the following example excerpt:
+NGINX also allows you to control the behavior of the `upstream` resource cluster beyond a simple round-robin setup. The simplest modification is to add the `ip_hash` directive to the configuration block. This causes requests from the same IP address to be routed to the same back-end server. Consider the following example excerpt:
 
 {{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
 upstream appcluster {
@@ -279,7 +279,7 @@ upstream appcluster {
 {{< /file-excerpt >}}
 
 
-Here, the `ip_hash` directive causes nginx to attempt to match requests originating from a single IP address with the same back-end component. If a component server is unreachable, nginx will route those connections to an alternate component.
+Here, the `ip_hash` directive causes NGINX to attempt to match requests originating from a single IP address with the same back-end component. If a component server is unreachable, NGINX will route those connections to an alternate component.
 
  {{< note >}}
 If a server needs to be taken offline for an extended period of time, append the `down` argument, as shown in the entry for `galloway.example.com:8801`. This will prevent missed connections from attempting to hit a component of the server which is down.
@@ -301,11 +301,11 @@ upstream appcluster {
 {{< /file-excerpt >}}
 
 
-Using these arguments, you can use nginx to manage the behavior and distribution of load across a cluster of servers:
+Using these arguments, you can use NGINX to manage the behavior and distribution of load across a cluster of servers:
 
 -   By default, each server listed in an upstream cluster has a weight of `1`. The argument `weight=[number]` sets a specific weight. Higher numbers receive more weight.
 
-    In the example above, the components running on ports `8801` and `8802` are treated identically by nginx, as the default value for `weight` is `1`. The components running on `8803`, `8804`, and `8807` will receive twice as much traffic as the first two components. The components running on `8805` and `8806` will receive four times as much traffic as the ones on `8801` and `8802` and twice much traffic as the components on `8803`, `8804`, and `8807`.
+    In the example above, the components running on ports `8801` and `8802` are treated identically by NGINX, as the default value for `weight` is `1`. The components running on `8803`, `8804`, and `8807` will receive twice as much traffic as the first two components. The components running on `8805` and `8806` will receive four times as much traffic as the ones on `8801` and `8802` and twice much traffic as the components on `8803`, `8804`, and `8807`.
 
 -   `max_fails=[number]` specifies the number of unsuccessful attempts at communication with an upstream component before it is considered inoperative. To prevent components from ever being marked as inoperative, even if they are unreachable, set this value to `0`. The default value for `max_fails` is `1`.
 

@@ -34,7 +34,7 @@ These difficulties, along with the lack of support for some desired features suc
 
 ## What To Expect From NeoVim?
 
-During NeoVim's short life, two outstanding features have already been implemented: asynchronous plugins, and the Remote Procedure Call (RPC) API for controlling NeoVim programatically.
+During NeoVim's short life, two outstanding features have already been implemented: asynchronous plugins, and the Remote Procedure Call (RPC) API for controlling NeoVim programmatically.
 
 Asynchronous plugins make it possible for plugins to run as background processes without interfering with the main editor process.
 

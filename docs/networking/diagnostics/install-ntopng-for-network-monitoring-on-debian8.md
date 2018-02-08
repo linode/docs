@@ -40,7 +40,7 @@ In this tutorial you will configure and install ntopng on your Linode. The tutor
 
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with `sudo`. If two commands are presented in the same instance (seperated by `&&`), you must prefix each command with `sudo` (ex. `sudo [command] && sudo [command]`). For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with `sudo`. If two commands are presented in the same instance (separated by `&&`), you must prefix each command with `sudo` (ex. `sudo [command] && sudo [command]`). For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ### Add the ntopng Repository

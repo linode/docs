@@ -121,7 +121,7 @@ local all all md5
 {{< /file-excerpt >}}
 
 
-As root, restart the Postgresql service:
+As root, restart the PostgreSQL service:
 
     service postgresql restart
 

@@ -22,8 +22,6 @@ external_resources:
 
 ![Ansible](/docs/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg)
 
-# Getting started with Ansible: An Installation and Configuration Tutorial
-
 Consider the monotony of administering a server fleet; keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn't have to be that way.
 
 *[Ansible](http://www.ansible.com/home)* is a helpful tool that allows you to create groups of machines, describe how those machines should be configured or what actions should be taken on them, and issue all of these commands from a central location. It uses SSH, so nothing needs to be installed on the machines you are targeting. Ansible only runs on your main control machine, which can even be your laptop! It is a simple solution to a complicated problem.
@@ -40,25 +38,25 @@ Ansible only needs to be installed on the *control machine*, or the machine from
 
 Make sure that you have Python 2.x available on the control machine. Ansible is not compatible with Python 3, nor can you use Windows as the control machine. You can [build Ansible from source](https://github.com/ansible/ansible), or install the latest stable packages using the proper command below.
 
-- Mac OS X:
+### MacOS
 
-      sudo easy_install pip
-      sudo pip install ansible
+    sudo easy_install pip
+    sudo pip install ansible
 
-- CentOS/Fedora:
+### CentOS/Fedora
 
-      sudo yum install ansible
+    sudo yum install ansible
 
-  {{< note >}}
+{{< note >}}
 The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux.
 {{< /note >}}
 
-- Ubuntu:
+### Ubuntu
 
-      sudo apt-get install software-properties-common
-      sudo apt-add-repository ppa:ansible/ansible
-      sudo apt-get update
-      sudo apt-get install ansible
+    sudo apt-get install software-properties-common
+    sudo apt-add-repository ppa:ansible/ansible
+    sudo apt-get update
+    sudo apt-get install ansible
 
 
 ## First Steps to Configuring Ansible
@@ -100,21 +98,18 @@ You executed an Ansible command against one client, but it would be cumbersome t
 1.  By default, the inventory file is expected to be `/etc/ansible/hosts`. Create that path and file if it does not already exist.
 
 
-    {{< note >}}
-If you are running OS X, you may want to create your own Ansible directory elsewhere and then set the path in an Ansible configuration file:
+    If you are running OS X, you may want to create your own Ansible directory elsewhere and then set the path in an Ansible configuration file:
 
-mkdir ~/Path/To/ansible
-touch ~/Path/To/ansible/hosts
-touch ~/.ansible.cfg
+        mkdir ~/Path/To/ansible
+        touch ~/Path/To/ansible/hosts
+        touch ~/.ansible.cfg
 
-Open `~/.ansible.cfg` file and add the following lines:
+    Open `~/.ansible.cfg` file and add the following lines:
 
-{{< file-excerpt "> ~/.ansible.cfg" ini >}}
-[defaults]
-inventory = ~/Path/To/ansible/hosts
-{{< /note >}}
-
-{{< /file-excerpt >}}
+    {{< file-excerpt "~/.ansible.cfg" ini >}}
+    [defaults]
+    inventory = ~/Path/To/ansible/hosts
+    {{< /file-excerpt >}}
 
 
 2.  Add an entry to your hosts file, pointing to a server that you connected to in the previous section.  You can include multiple servers in this file, using either domains or IP addresses, and can even group them:
@@ -255,7 +250,7 @@ The following playbooks are for learning purposes only, and will NOT result in a
 
 3.  Write a playbook that creates a new normal user, adds in our public key, and adds the new user to the `sudoers` file.
 
-    We're introducing a new aspect of Ansible here: *variables*. Note the `vars:` entry and the `NORMAL_USER_NAME` line. You'll notice that it is reused twice in the file so that we only have to change it once. Replace `yourusername` with your choosen username, `localusername` in the path for the `authorized_key`, and the password hash.
+    We're introducing a new aspect of Ansible here: *variables*. Note the `vars:` entry and the `NORMAL_USER_NAME` line. You'll notice that it is reused twice in the file so that we only have to change it once. Replace `yourusername` with your chosen username, `localusername` in the path for the `authorized_key`, and the password hash.
 
     {{< file "initialize_basic_user.yml" yaml >}}
 ---

@@ -57,7 +57,7 @@ The instructions here must be executed on each Cassandra node to be clustered. A
     | seed_provider | This contains a comma-delimited list of each public IP address of each node to be clustered. Input the list in the line that reads `- seeds: "127.0.0.1"`.  |
     | listen_address | Other nodes in the cluster will use the IP address listed here to find each other. Change from `localhost` to the specific node's public IP address. |
     | rpc_address | The listen address for client communication. Change from "localhost" to the public IP address or loopback address of the node. |
-    | endpoint_snitch | Snitches determine how Cassandra replicates data. Change this to "GossipingPropertyFileSnitch," as this is more suitable to a multi-datacenter configuration. |
+    | endpoint_snitch | Snitches determine how Cassandra replicates data. Change this to "GossipingPropertyFileSnitch," as this is more suitable to a multi-data center configuration. |
     | auto_bootstrap | Add this property anywhere in the file. If you have yet to add data to your nodes - that is, you would start with a fresh cluster - set this to "false." If your node(s) already contains data, **do not** add this property. |
     | num_tokens | This property defines the proportion of data stored on each node. For nodes with equal hardware capabilities, this number should be set equally between them so the data is more likely to be evenly distributed. The default value of 256 is likely to ensure equal data distribution. For more information on this topic, see the "How data is distributed across a cluster" link in the "External Resources" section. |
 
@@ -75,7 +75,7 @@ auto_bootstrap: false
 {{< /file >}}
 
 
-3.  Edit the `cassandra-rackdc.properties` file. Assign each node the same datacenter and rack name:
+3.  Edit the `cassandra-rackdc.properties` file. Assign each node the same data center and rack name:
 
     {{< file "/etc/cassandra/conf/cassandra-rackdc.properties" properties >}}
 # These properties are used with GossipingPropertyFileSnitch and will
@@ -233,7 +233,7 @@ You may want to configure the *internode_encryption* setting to better meet the 
 |:----------:|:-------------:|
 | all | All traffic between nodes is encrypted. |
 | none | No traffic is encrypted. |
-| dc | Only traffic between datacenters is encrypted. |
+| dc | Only traffic between data centers is encrypted. |
 | rack | Only traffic between server racks is encrypted. |
 
 ## Verify SSL Setup

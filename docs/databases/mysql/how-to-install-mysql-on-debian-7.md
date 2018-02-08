@@ -19,7 +19,7 @@ external_resources:
  - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance/)'
 ---
 
-![mysql_debian7_banner](/docs/assets/How_to_Install_MySQL_on_Debian_7_smg.jpg)
+![How to Install MySQL on Debian 7](/docs/assets/How_to_Install_MySQL_on_Debian_7_smg.jpg)
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Debian 7 (Wheezy).
 

@@ -24,7 +24,7 @@ Ubuntu recommends waiting until the ".1" release of any version increment before
 
 # Upgrade Instructions
 
-You should stop as many services as possible before upgrading your system. This should include web server deaemons (Apache, nginx, etc), database servers (PostgreSQL, MySQL, etc), and any other non-critical services.
+You should stop as many services as possible before upgrading your system. This should include web server daemons (Apache, NGINX, etc), database servers (PostgreSQL, MySQL, etc), and any other non-critical services.
 
 If you are running Ubuntu 8.04 or 9.10, edit your `/etc/fstab` file to include the following line (see later notes on Ubuntu 9.04).
 

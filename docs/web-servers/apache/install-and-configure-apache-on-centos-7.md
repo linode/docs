@@ -17,7 +17,7 @@ external_resources:
 image: https://linode.com/docs/assets/apache-centos7-smg.png
 ---
 
-![apache_centOS7_banner](/docs/assets/How_to_Install_Apache_on_CentOS_7_smg.jpg)
+![How to Install and Configure Apache Web Server on CentOS 7](/docs/assets/How_to_Install_Apache_on_CentOS_7_smg.jpg)
 
 Apache is an [open-source web server](https://httpd.apache.org/ABOUT_APACHE.html) that can be configured to serve a single or multiple websites using the same Linode. This guide explains how to install and configure the Apache web server on CentOS 7.
 

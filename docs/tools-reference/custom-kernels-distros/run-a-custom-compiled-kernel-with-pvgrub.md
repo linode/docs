@@ -95,7 +95,7 @@ Once your configuration options are set, exit the configuration interface and an
 
         mv /boot/vmlinuz /boot/vmlinuz-3.19.3-custom
 
-3.  Create an `initrd` file. Aagain, adjust the filename to match your current kernel version:
+3.  Create an `initrd` file. Again, adjust the filename to match your current kernel version:
 
         mkinitrd -o initrd-3.19.3-custom.img
 

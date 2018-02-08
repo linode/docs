@@ -138,7 +138,7 @@ To start with, most users will want to run the configuration utility:
           19 - openSUSE Leap 42.2
          Choose[ 1-19 ] or Enter to skip>>
 
-         Default datacenter when deploying a new Linode. (Optional)
+         Default data center when deploying a new Linode. (Optional)
          Valid options are:
            1 - atlanta
            2 - dallas

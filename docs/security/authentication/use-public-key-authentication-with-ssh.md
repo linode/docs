@@ -47,15 +47,15 @@ If you accidentally lock yourself out of your Linode this way, you can use [Lish
 
         ssh-keygen
 
-	**Optional:** to increase the security of your key, increase the size with the `-b` flag. The minimum value is 768 bytes and the default, if you do not use the flag, is 2048 bytes. We recommend a 4096 byte key:
+    **Optional:** to increase the security of your key, increase the size with the `-b` flag. The minimum value is 768 bytes and the default, if you do not use the flag, is 2048 bytes. We recommend a 4096 byte key:
 
-		ssh-keygen -b 4096
+        ssh-keygen -b 4096
 
 2.  Answer all questions when prompted. You can accept the defaults for everything except the passphrase. When you get to the passphrase question, enter a series of letters and numbers for the passphrase twice; once to enter the new passphrase and once to confirm.
 
-	**Important:** make a note of your passphrase, as you will need it later.
+    **Important:** make a note of your passphrase, as you will need it later.
 
-	You may accept the defaults for the other questions by pressing *Return* when prompted:
+    You may accept the defaults for the other questions by pressing *Return* when prompted:
 
         user@linode: ssh-keygen -b 4096
         Generating public/private rsa key pair.
@@ -81,7 +81,7 @@ Please note that the following steps are performed on your remote location/Linod
 
         mkdir .ssh
 
-	The following steps are performed on your local machine/PC:
+    The following steps are performed on your local machine/PC:
 
 3.  Copy the *public key* into the `~/.ssh/authorized_keys` file on the **remote machine**, using the following command. Substitute your own SSH user and host names:
 
@@ -135,7 +135,7 @@ When PuTTYgen has finished downloading, it can be run immediately, without insta
 
 6.  Before you continue, you will need to copy the newly-created public key to Notepad. Just select the text and copy it to a new  text file. Be sure the file is saved in a location you remember, as you will need it later.
 
-    ![Copy the public key to a text file.](/docs/assets/1476-key-txt-file.png)
+    ![Copy the public key to a text file](/docs/assets/1476-key-txt-file.png)
 
     {{< caution >}}
 When saving the public key, make sure you save it in a plaintext format such as .txt. Other file formats such as .rtf and .doc may add extra characters to the key through encoding, which may prevent your keypair from matching. The public key should be a single line, with no breaks.
@@ -143,11 +143,11 @@ When saving the public key, make sure you save it in a plaintext format such as 
 
 7.  Enter a passphrase in the **Key passphrase** text field, and enter it again to confirm. The passphrase can be any string of letters and numbers. The passphrase should be something unique and not easily recognized. **Important:** make a note of your passphrase, as you will need it later.
 
-    ![Enter a new passphrase.](/docs/assets/1465-new-passphrase.png)
+    ![Enter a new passphrase](docs/assets/1465-new-passphrase.png)
 
 8.  After you have entered your passphrase, click on the **Save private key** button. This will save the private key to your PC.
 
-    ![Click on the Save private key button.](/docs/assets/1472-private-key-button.png)
+    ![Click on the Save private key button](/docs/assets/1472-private-key-button.png)
 
 9.  Keep the default location and name of the private key file and click on the **Save** button. Note that if you plan on creating multiple keys to connect to different SSH servers, you will need to save each pair of keys for each server with different names to prevent overwriting the key files. Make a note of the name and location of the private key. You'll need it in the next section.
 

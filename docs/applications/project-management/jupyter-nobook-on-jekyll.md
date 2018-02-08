@@ -267,7 +267,7 @@ Adding an image through markdown requires having the images stored in the projec
 
     ![GG Plot](/docs/assets/jekyll/jekyll_ggplot.png "GG Plot")
 
-    This is just an example. Adding interactive graphs using Javascript libraries is beyond the scope of this guide.
+    This is just an example. Adding interactive graphs using JavaScript libraries is beyond the scope of this guide.
 
 ### Use a CDN to Support MathJax
 

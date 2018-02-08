@@ -38,7 +38,7 @@ Your distro's repos will likely contain an LTS release of Node.js. This is a goo
 [NPM](#node-package-manager-npm) (Node Package Manager) is included with installations of Node.js by other methods, but not here; `npm` is a separate package from `nodejs` and must be installed separately.
 
 {{< note >}}
-Node.js from the distro's repositories in Debian 7 or 8, or Ubuntu 12.04 or 14.04 confict with the [Amateur Packet Radio Node program](https://packages.debian.org/jessie/node). In this scenario, calling Node.js requires that you use the command `nodejs -$option` instead of the standard `node -$option`. One workaround is to install the package `nodejs-legacy`, which maintains a symlink from `/usr/bin/node` to `/usr/bin/nodejs` so the normal `node` commands can be used.
+Node.js from the distro's repositories in Debian 7 or 8, or Ubuntu 12.04 or 14.04 conflict with the [Amateur Packet Radio Node program](https://packages.debian.org/jessie/node). In this scenario, calling Node.js requires that you use the command `nodejs -$option` instead of the standard `node -$option`. One workaround is to install the package `nodejs-legacy`, which maintains a symlink from `/usr/bin/node` to `/usr/bin/nodejs` so the normal `node` commands can be used.
 
 {{< /note >}}
 
@@ -60,8 +60,8 @@ Compiling from source code is the most advanced installation method, though it c
 
 ## Node Package Manager (NPM)
 
-A typical installation of Node.js includes the [Node Package Manager](https://github.com/npm/npm) (NPM). However, an exception is any Linux-distro-supplied version of Nodejs which would need the package `npm` installed. NPM is a package manager for Nodejs packages in the NPM repository. You can find extensive NPM documentation at [npmjs.com](https://docs.npmjs.com/).
+A typical installation of Node.js includes the [Node Package Manager](https://github.com/npm/npm) (NPM). However, an exception is any Linux-distro-supplied version of Node.js which would need the package `npm` installed. NPM is a package manager for Node.js packages in the NPM repository. You can find extensive NPM documentation at [npmjs.com](https://docs.npmjs.com/).
 
 ## Making a Quick Decision (the tl:dr)
 
-Still not sure which installation method to use? Then [NVM](#node-version-manager) will probably be your best choice to start with. NVM faciliates easy installation and maintenance of Node.js and NPM, presents no naming issues with other software, and easily manages multple installations of Node.js that can test your application before you push a Node.js update into your production environment.
+Still not sure which installation method to use? Then [NVM](#node-version-manager) will probably be your best choice to start with. NVM facilitates easy installation and maintenance of Node.js and NPM, presents no naming issues with other software, and easily manages multiple installations of Node.js that can test your application before you push a Node.js update into your production environment.

@@ -14,7 +14,7 @@ title: 'Upgrading to Debian 8 (Jessie)'
 
 Debian 8 (Jessie) is the most recent version of Debian, released in April 2015. This guide explains how to upgrade your system from Debian 7 (Wheezy) to Debian 8.
 
-Bear in mind that while package and distribution maintainers try to ensure cross-compatibility and problem-free upgrades, there is always the lingering possiblity of something not working out as planned. This is one reason why backing up your data is so important.
+Bear in mind that while package and distribution maintainers try to ensure cross-compatibility and problem-free upgrades, there is always the lingering possibility of something not working out as planned. This is one reason why backing up your data is so important.
 
 {{< note >}}
 If you use the Apache web server, be aware that Debian 8 moves from Apache 2.2 to 2.4. This version change requires several adjustments to configuration files, and can break an existing website. Please follow our [Upgrading Apache](/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4) guide before continuing.

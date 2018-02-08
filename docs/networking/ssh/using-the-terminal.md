@@ -206,7 +206,7 @@ If you append double ampersands (`&&`) to the end of a command, the shell will w
 
 ### Emacs Key Bindings
 
-In general, the `bash` terminal provides emacs-like key bindings for navigation. In addition to `C-n` and `C-p` to access next and previous commands in the history the following key binding make it easier to navigate the text in the bash-terminal (`C-` refers to a Control- modifer, and `M-` refers to a "meta" or Alt- modifier):
+In general, the `bash` terminal provides emacs-like key bindings for navigation. In addition to `C-n` and `C-p` to access next and previous commands in the history the following key binding make it easier to navigate the text in the bash-terminal (`C-` refers to a Control- modifier, and `M-` refers to a "meta" or Alt- modifier):
 
 -   `C-a` Cursor to the beginning of the line (`C-a a` in screen)
 -   `C-e` Cursor to the end of the line

@@ -155,7 +155,7 @@ When you visit `http://www.example.com/test.cgi` in your browser, your Perl envi
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [The nginx Homepage](http://nginx.org/)
+- [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
-- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)
