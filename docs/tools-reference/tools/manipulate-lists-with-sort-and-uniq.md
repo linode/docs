@@ -6,20 +6,20 @@ description: Use the sort and uniq Linux utilities to manage and order
 keywords: ["linux", "common commands", "sort", "uniq", "shell", "bash"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/common-commands/sort-uniq/']
-modified: 2018-01-16
+modified: 2018-01-23
 modified_by:
   name: Linode
 published: 2010-11-29
-title: Manipulate Lists with sort and uniq
+title: 'Manipulate Lists with sort and uniq'
 ---
+
+![Manipulate Lists with sort and uniq](/docs/assets/manipulate_lists_with_sort_and_uniq_smg.png "Manipulate Lists with sort and uniq")
+
+## What are sort and uniq?
 
 The Linux utilities `sort` and `uniq` are useful for ordering and manipulating data in text files and as part of shell scripting. The `sort` command takes a list of items and sorts them alphabetically and numerically. The `uniq` command takes a list of items and removes adjacent duplicate lines. Though narrow in their focus, both of these tools are useful in a number of different command line operations.
 
-![Title graphic](/docs/assets/manipulate_lists_with_sort_and_uniq_smg.png)
-
-## Usage
-
-### sort
+## How to Use sort
 
 The `sort` command accepts input from a text file or standard output, sorts the input by line, and outputs the result. Sorted text is sent to standard output and printed on the terminal unless redirected. `sort` commands take the following format:
 
@@ -37,13 +37,13 @@ In the default configuration, this `sort` prints the output on the terminal. To 
 
 Here, the sorted output is written to the `~/retired-roster.txt` file.
 
-### uniq
+## How to Use uniq
 
 The `uniq` command takes input and removes repeated lines. Because `uniq` only removes identical adjacent lines, it is often used in conjunction with `sort` to remove non-adjacent duplicate lines.
 
     sort ~/roster.txt | uniq
 
-## Examples
+## Sort and Uniq Examples
 
 The examples in this section will use the following text file as an input:
 
@@ -146,7 +146,7 @@ Aaron Smith
 
 The pseudo-random order is determined by using a cryptographic hash of the contents of lines, which produces a fast shuffle. Identical lines are always printed adjacently to each other.
 
-If you would prefer `sort` can scramble a list using the system's random number generator `/dev/random` or psudo-random number generator `/dev/urandom`. Consider the output of the following commands:
+If you prefer, `sort` can scramble a list using the system's random number generator `/dev/random` or pseudo-random number generator `/dev/urandom`. Consider the output of the following commands:
 
 {{< output >}}
 $ sort -R names-list.txt --random-source=/dev/random
