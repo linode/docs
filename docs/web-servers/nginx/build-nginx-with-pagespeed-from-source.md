@@ -6,21 +6,22 @@ description: 'Compile NGINX to use the PageSpeed module.'
 keywords: ["nginx","pagespeed","optimization"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604']
-published: 2018-01-29
-modified: 2018-01-29
+published: 2018-02-08
+modified: 2018-02-08
 modified_by:
   name: Linode
 title: 'Build NGINX with PageSpeed From Source'
 ---
+## What is Google PageSpeed?
 
-[PageSpeed](https://www.modpagespeed.com/) is a set of modules for NGINX and Apache which optimize and measure page performance of websites. Optimization is done by minifying static assets such as CSS and JavaScript, which decreases page load time. In addition, [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) is a tool that measures your site's performance, and makes recommendations for further modifications based on the results.
+[PageSpeed](https://www.modpagespeed.com/) is a set of modules for NGINX and Apache which optimize and measure page performance of websites. Optimization is done by minifying static assets such as CSS and JavaScript, which decreases page load time. [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) is a tool that measures your site's performance, and makes recommendations for further modifications based on the results.
 
 There are currently two ways to get PageSpeed and NGINX working together:
 
 -  Compile NGINX with support for PageSpeed, then compile PageSpeed.
 -  Compile PageSpeed as a [dynamic module](https://www.nginx.com/blog/compiling-dynamic-modules-nginx-plus/) to use with NGINX, whether NGINX was installed from source or a binary.
 
-**This guide will compile both NGINX and PageSpeed.** If you would prefer to use PageSpeed as a module for NGINX, see [this NGINX blog post](https://www.nginx.com/blog/optimize-website-google-pagespeed-dynamic-module-nginx-plus/) for instructions.
+This guide will show how to compile both NGINX and PageSpeed. If you would prefer to use PageSpeed as a module for NGINX, see [this NGINX blog post](https://www.nginx.com/blog/optimize-website-google-pagespeed-dynamic-module-nginx-plus/) for instructions.
 
 
 ## Before You Begin
@@ -38,7 +39,7 @@ There are currently two ways to get PageSpeed and NGINX working together:
 
 **Filesystem Locations**: When you compile NGINX from source, the entire installation, including configuration files, is located at `/usr/local/nginx/nginx/`. This is in contrast to an installation from a package manager, which places its configuration files in `/etc/nginx/`.
 
-**Built-in Modules**: When you compile NGINX from source, no additional modules are included by default, not even for HTTPS. Below you can see the output of `nginx -V` using the PageSpeed automated install command on Ubuntu 16.04 with no additional modules or options specified. Note that you even need to call the binary with the exact path, because the system is unaware of the installation.
+**Built-in Modules**: When you compile NGINX from source, no additional modules are included unless explicitly specified, which means that HTTPS is not supported by default. Below you can see the output of `nginx -V` using the PageSpeed automated install command on Ubuntu 16.04 with no additional modules or options specified.
 
 {{< output >}}
 root@localhost:~# /usr/local/nginx/sbin/nginx -V
@@ -47,7 +48,7 @@ built by gcc 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.5)
 configure arguments: --add-module=/root/incubator-pagespeed-ngx-latest-stable
 {{< /output >}}
 
-Contrast that with the same command run on the same Ubuntu system but with the binary installed from NGINX's repository (but built upstream on Ubuntu 14.04):
+Contrast this output with the same command run on the same Ubuntu system but with the binary installed from NGINX's repository:
 
 {{< output >}}
 root@localhost:~# nginx -V
@@ -61,9 +62,15 @@ configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-p
 
 ## Build NGINX and PageSpeed
 
-The official [PageSpeed documentation](https://www.modpagespeed.com/doc/build_ngx_pagespeed_from_source) gives a bash command which pulls script to automate the process, from installation of dependencies, with one exception, to compiling NGINX and PageSpeed, and installing them into the system.
+The official [PageSpeed documentation](https://www.modpagespeed.com/doc/build_ngx_pagespeed_from_source) provides a bash command which pulls script to automate the installation process.
 
-1.  If you plan to offer your website using TLS, install the SSL libraries needed to compile the HTTPS module for NGINX. In RedHat based distributions (CentOS, Fedora), the package is called `openssl-devel`. In Debian-based distributions, the library is `libssl-dev`:
+1.  If you plan to serve your website using TLS, install the SSL libraries needed to compile the HTTPS module for NGINX:
+
+    **CentOS/Fedora**
+
+        yum install openssl-devel
+
+    **Ubuntu/Debian**
 
         apt install libssl-dev
 
@@ -72,9 +79,9 @@ The official [PageSpeed documentation](https://www.modpagespeed.com/doc/build_ng
         bash <(curl -f -L -sS https://ngxpagespeed.com/install) \
         --nginx-version latest
 
-3.  During the build process, you'll be asked if you want to build NGINX with any additional modules. The PageSpeed module is already included, so you don't need to add it here. However, if you want your site to support HTTPS connections, paste the `--with-http_ssl_module` option into the prompt.
+3.  During the build process, you'll be asked if you want to build NGINX with any additional modules. The PageSpeed module is already included, so you don't need to add it here.
 
-    The options below are a recommended starting point; you can also add more specialized options for your particular use case. These options retain the directory paths, user and group names of pre-built NGINX binaries, and enables the SSL and HTTP/2 modules for HTTPS connections:
+    The options below are a recommended starting point; you can also add more specialized options for your particular use case. These options retain the directory paths, user and group names of pre-built NGINX binaries, and enable the SSL and HTTP/2 modules for HTTPS connections:
 
         --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-http_ssl_module --with-http_v2_module
 
@@ -150,11 +157,15 @@ WantedBy=multi-user.target
         systemctl enable nginx
         systemctl start nginx
 
-3.  Starting, stopping and reloading NGINX is the same as with any other systemd-controlled process.
+3.  NGINX can now be controlled as with any other systemd-controlled process:
+
+        systemctl stop nginx
+        systemctl restart nginx
+        systemctl status nginx
 
 **NGINX binary**
 
-You can use NGINX's binary to control the process directly without having to make a startup file for your init system.
+You can use NGINX's binary to control the process directly without making a startup file for your init system.
 
 1.  Start NGINX:
 
@@ -169,9 +180,12 @@ You can use NGINX's binary to control the process directly without having to mak
         /usr/sbin/nginx -s stop
 
 
-## Post-Installation Configuration
 
-1.  Since the compiled-in options specified above are different than the source's defaults, some additional configuration is necessary. Replace *example.com* in the following commands with your Linode's public IP address or domain name:
+## Configuration
+
+### NGINX
+
+1.  Since the compiled options specified above are different than the source's defaults, some additional configuration is necessary. Replace *example.com* in the following commands with your Linode's public IP address or domain name:
 
         useradd --no-create-home nginx
         mkdir -p /var/cache/nginx/client_temp
@@ -201,11 +215,11 @@ server {
 
 3.  Start NGINX:
 
-    systemd:
+    **systemd**:
 
         systemctl start nginx
 
-    Other init systems:
+    **Other init systems**:
 
         /usr/sbin/nginx
 
@@ -214,7 +228,7 @@ server {
     ![NGINX welcome page](/docs/assets/nginx-welcome.png "NGINX welcome page")
 
 
-## Configure PageSpeed
+### PageSpeed
 
 1.  Create PageSpeed's cache location and change its ownership to the `nginx` user and group:
 
