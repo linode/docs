@@ -25,7 +25,7 @@ title: 'Getting Started with NGINX - Part 2: (Slightly More) Advanced Configurat
 
 ## Configure NGINX to Your Needs
 
-The internet has no shortage of sites, posts, Gists and other places listing endless methods of "tuning", "tweaking", or "optimizing" procedures for NGINX.
+The internet has no shortage of sites, posts, and other places listing endless methods of "tuning", "tweaking", or "optimizing" procedures for NGINX.
 
 However, rarely are these configurations tested to deduce if there is in fact a performance increase. Of those that are, the author's use case may be completely different than yours, so there's no guarantee you'll experience the same benefit using their configuration.
 
