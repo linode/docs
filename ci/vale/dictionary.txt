@@ -421,6 +421,7 @@ getpwent
 gfx
 gfxmode
 girocco
+gist
 github
 gitignore
 gitlab
@@ -740,6 +741,7 @@ minimalistic
 misconfiguration
 misconfigurations
 misconfigured
+mitigations
 mkdir
 mnesia
 moby
@@ -1194,6 +1196,7 @@ svn
 symantec
 symfony
 symlink
+symlinked
 symlinking
 symlinks
 symvers
