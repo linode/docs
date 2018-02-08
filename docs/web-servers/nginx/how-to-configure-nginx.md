@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
@@ -38,8 +39,13 @@ This is where the files will be located if you install nginx from the package ma
 Before we begin, make sure you have completed the following:
 
 -   Follow the [Getting Started](/docs/getting-started/) guide.
+<<<<<<< HEAD
 -   Install the [nginx server](/docs/websites/nginx/nginx-web-server-debian-8/).
 -   The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+=======
+-   Install the [nginx server](/docs/web-servers/nginx/install-nginx-web-server-on-debian-8/).
+-   The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>>>>>>> f227acb57abd553462fb29cea66f81acc7f6b454
 
 If you're new to Linux server administration, you may also be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics/).
 
