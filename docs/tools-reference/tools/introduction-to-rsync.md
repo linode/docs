@@ -18,7 +18,7 @@ external_resources:
 
 [Rsync](https://rsync.samba.org/) is a command line utility which synchronizes files and folders from one location to another. Some workflows that can be implemented using rsync are updating a production host from a development machine, or using a cron job to call rsync to regularly back up data to a storage location. You can even use rsync to [migrate your server to Linode](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) from other providers.
 
-![rsync title graphic](/docs/assets/rsync-title-graphic.jpg)
+![Introduction to rsync](/docs/assets/rsync-title-graphic.jpg)
 
 Rsync is incremental, so once the initial operation has completed, successive backup operations complete very quickly. Only the differences between the source and the destination files are copied. This property of rsync makes it an ideal solution for automated operations.
 

@@ -21,7 +21,7 @@ external_resources:
 
 This document provides an overview of `tar` and `gzip` usage, accompanied by a number of practical applications of these utilities. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [Tools & Reference](/docs/tools-reference/) series.
 
-![Title graphic](/docs/assets/archiving_and_compressing_files_with_gnu_tar_and_gnu_zip_smg.png)
+![Archiving and Compressing files with GNU Tar and GNU Zip](/docs/assets/archiving_and_compressing_files_with_gnu_tar_and_gnu_zip_smg.png)
 
 ## Using Tar and Gzip
 
