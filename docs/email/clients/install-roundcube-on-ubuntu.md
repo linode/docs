@@ -18,7 +18,7 @@ external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
 ---
 
-![Install Roundcube on Ubuntu 16](/docs/assets/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")
+![Install Roundcube on Ubuntu 16.04 LTS](/docs/assets/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")
 
 ## What is Roundcube?
 
@@ -58,7 +58,7 @@ This section will cover installing Apache, MySQL, PHP and SSL on your Linode fro
 
         sudo mysql_secure_installation
 
-4.  Specify your Linode's time zone in the `/etc/php5/apache2/php.ini` PHP configuration file. If your server is not using UTC, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
+4.  Specify your Linode's time zone in the `/etc/php/7.0/apache2/php.ini` PHP configuration file. If your server is not using UTC, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
 
         sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php/7.0/apache2/php.ini
 
