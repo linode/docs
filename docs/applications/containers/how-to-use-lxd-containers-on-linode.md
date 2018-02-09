@@ -5,8 +5,8 @@ author:
 description: 'LXD is a container hypervisor that manages Linux Containers. Compared to other uses of Linux Containers, LXD manages machine containers which each work just like typical servers. This guide covers how to install, configure and use LXD on Linode.'
 keywords: ["container", "lxd", "lxc"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-29
-modified: 2017-11-30
+published: 2018-02-09
+modified: 2018-02-09
 modified_by:
   name: Linode
 title: 'How to use LXD containers on Linode'
@@ -22,22 +22,24 @@ external_resources:
 
 ## What is LXD?
 
-[LXD](https://linuxcontainers.org/lxd/) (pronounced LexDee) is a container hypervisor that manages Linux Containers. Compared to other implementations of Linux Containers, the LXD containers are *machine containers*. A machine container works and feels just like a typical server. Compared to virtual machines, an installation with LXD can accomodate more than ten times the density of KVM on the same hardware. As virtual machines can consolidate physical servers, machine containers can consolidate virtual machines. In constrast to virtual machines, a machine container reuses the running Linux kernel of the host and when it boots up, it only runs the rest of the software of a Linux distribution.
+[LXD](https://linuxcontainers.org/lxd/) (pronounced "Lex-Dee") is a container hypervisor that manages Linux Containers. Compared to other implementations of Linux Containers, the LXD containers are *machine containers*. A machine container works and feels just like a typical server. Compared to virtual machines, an installation with LXD can accommodate more than ten times the density of KVM on the same hardware.
 
-For simplicity, the term *container* is used throughout this guide to describe the LXD containers.
+As virtual machines can consolidate physical servers, machine containers can consolidate virtual machines. In contrast to virtual machines, a machine container reuses the running Linux kernel of the host and when it boots up, it only runs the rest of the software of a Linux distribution.
 
 The main benefits of LXD are the high density of containers that it can support and the performance it delivers. A computer with 2GB RAM can adequately support half a dozen containers. In addition, LXD officially supports the [container images of several major Linux distributions](https://us.images.linuxcontainers.org/). We can pick and choose the Linux distribution and exact version of that distribution to run in the container.
 
-Once deployed, LXD allows the administrator to create separate containers for each website, for the database server, for the reverse-proxy and other services. Most services can be installed in a container.
-
 This guide covers how to setup a Linode to work with LXD, how LXD works in practice and how to troubleshoot common issues.
+
+{{< note >}}
+For simplicity, the term *container* is used throughout this guide to describe the LXD containers.
+{{< /note >}}
 
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started) guide. If you are using a Block Storage Volume, **select** the image `Ubuntu 16.04 LTS` from the drop-down menu according to the instructions. If you are using a Disk, perform the tasks in the section below labeled *How to resize a Linode to make space for LXD*, then skip to Step 4.
+1.  Complete the [Getting Started](/docs/getting-started) guide. If you are using a Block Storage Volume, **select** the image `Ubuntu 16.04 LTS` from the drop-down menu according to the instructions.
 
-2.  This guide will use `sudo` wherever possible. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -45,11 +47,15 @@ This guide covers how to setup a Linode to work with LXD, how LXD works in pract
 
 ## Mount Storage Volume
 
-When setting up LXD, you can either store container data in an external volume (such as a Block Storage Volume) or in a Disk mounted to your Linode.
+When setting up LXD, you can either store container data in an [external volume](#block-storage-volume) (such as a Block Storage Volume) or in a [Disk](#disk) mounted to your Linode.
 
-**Block Storage Volume:**
+### Block Storage Volume
 
-1.  Follow the [How to Use Block Storage with Your Linode](/docs/platform/how-to-use-block-storage-with-your-linode/) guide and create a block storage volume with size at least 20GB and attach it to your Linode. Make a note of the device name and the path to the Volume. **Do not** format the volume and do not add it to /etc/fstab.
+1.  Follow the [How to Use Block Storage with Your Linode](/docs/platform/how-to-use-block-storage-with-your-linode/) guide and create a block storage volume with size *at least 20GB* and attach it to your Linode. Make a note of the device name and the path to the Volume.
+
+    {{< caution >}}
+**Do not** format the volume and do not add it to `/etc/fstab`.
+{{< /caution >}}
 
     ![Add a volume for Disk Storage](/docs/assets/lxd/add-volume-for-disk-storage.png "Add a volume for Disk Storage")
 
@@ -57,14 +63,14 @@ When setting up LXD, you can either store container data in an external volume (
 
 3.  Reboot your Linode from the Linode Manager.
 
-**Disk:**
+### Disk
 
-1.  In the Linode manager dashboard, find the **Disks** section and click **Create a new disk**.
+1.  In the Linode Manager, find the **Disks** section and click **Create a new disk**.
 
     ![Create a Linode Disk](/docs/assets/lxd/create_new_disk.png)
 
     {{< note >}}
-If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) in our Disk Images and Configuration Profiles guide for more information.
+If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) for more information.
 {{< /note >}}
 
 2.  Edit your Linode's Configuration Profile. Under **Block Device Assignment**, assign your new disk to `/dev/sdc`. Make a note of this path, which you will need when configuring LXD in the next section.
@@ -77,21 +83,21 @@ If your Linode's distribution disk already has 100% of the available disk space 
 
 ## Configure LXD
 
-1. Install the packages `lxd` and `zfsutils-linux`:
+1.  Install the packages `lxd` and `zfsutils-linux`:
 
         sudo apt install lxd zfsutils-linux
 
-2. Add your Unix user to the `lxd` group:
+2.  Add your Unix user to the `lxd` group:
 
         sudo usermod -a -G lxd username
 
-3. Start a new SSH session for this change to take effect:
+3.  Start a new SSH session for this change to take effect:
 
-4. Run `lxd init` to initialize LXD:
+4.  Run `lxd init` to initialize LXD:
 
         sudo lxd init
 
-  You will be prompted several times during the initialization process. Choose the defaults for all options **except** `Use existing block device?` For this option, select **yes** and then enter the path to the storage volume added in the previous section.
+    You will be prompted several times during the initialization process. Choose the defaults for all options **except** `Use existing block device?` For this option, select **yes** and then enter the path to the storage volume added in the previous section.
 
 ## Using LXD
 
@@ -133,10 +139,10 @@ To start your first container, try: lxc launch ubuntu:16.04
 {{< /output >}}
 
     {{< note >}}
-The first two columns for the alias and the fingerprint provide an identifier that can be used to specify the container image when launching it.
+The first two columns for the alias and fingerprint provide an identifier that can be used to specify the container image when launching it.
 {{< /note >}}
 
-3.  LKaunch a new container with the name `mycontainer`:
+3.  Launch a new container with the name `mycontainer`:
 
         lxc launch ubuntu:16.04 mycontainer
 
@@ -146,7 +152,7 @@ Starting mycontainer
 {{< /output >}}
 
 
-4.  Check the list of containers to make sure that the new container is running:
+4.  Check the list of containers to make sure the new container is running:
 
         lxc list
 
@@ -180,7 +186,9 @@ ubuntu@mycontainer:~$
 {{< /output >}}
 
     {{< note >}}
-The Ubuntu container images have by default a non-root account with username `ubuntu`. This account can use `sudo` to perform administrative tasks. It does not require any password to perform administrative tasks. The `sudo` command is instructed to provide a login shell under the existing account `ubuntu`.
+The Ubuntu container images have by default a non-root account with username `ubuntu`. This account can use `sudo`  and does not require a password to perform administrative tasks.
+
+The `sudo` command provides a login to the existing account `ubuntu`.
 {{< /note >}}
 
 7.  Stop the container:
@@ -192,34 +200,36 @@ The Ubuntu container images have by default a non-root account with username `ub
         lxc delete mycontainer
 
 
-## Example Web Server with LXD
+## Apache Web Server with LXD
 
 This section will create a container, install the Apache2 Web server, and then add the appropriate `iptables` rules in order to expose the Web server to the Internet.
 
-1. Launch a new container.
+1.  Launch a new container.
 
         lxc launch ubuntu:16.04 web
 
-2. Update the package list in the container.
+2.  Update the package list in the container.
 
         lxc exec web -- apt update
 
-3. Install the Apache2 Web server.
+3.  Install the Apache2 Web server.
 
         lxc exec web -- apt install apache2
 
-4. Add the `iptables` rule to expose the port 80 (www) to the Internet. When someone connects to port 80 on the server, this rule redirects them to port 80 of the container. You need to update in this command both your public IP address and the IP address of this container.
+4.  Add the `iptables` rule to expose the port 80. When someone connects to port 80 on the server, this rule redirects them to port 80 of the container.
+
+    You will need to replace `your_public_ip` and `your_container_ip` with your public IP and container IP respectively in this command.
 
         PORT=80 PUBLIC_IP=your_public_ip CONTAINER_IP=your_container_ip sudo -E bash -c 'iptables -t nat -I PREROUTING -i eth0 -p TCP -d $PUBLIC_IP --dport $PORT -j DNAT --to-destination $CONTAINER_IP:$PORT -m comment --comment "forward to the Apache2 container"'
 
-5. Make permanent this `iptables` rule by installing `iptables-persistent`. When prompted to save the IPv4 and IPv6 rules, click **Yes** in order to save them. Then, during a reboot, the above rules will be automatically reapplied.
+5.  Make the `iptables` rule persistent on reboot by installing `iptables-persistent`. When prompted to save the IPv4 and IPv6 rules, click **Yes** in order to save them.
 
         sudo apt install iptables-persistent
 
-6.  From your local computer, verify that the Web server is accessible from the Internet by navigating to your Linode's public IP address in a web browser. You should see the default Apache page:
+6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
 
-[![Web page of Apache server running in a container](/docs/assets/lxd/apache-server-running-in-lxd-container.png)](/docs/assets/lxd/apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
+    [![Web page of Apache server running in a container](/docs/assets/lxd/apache-server-running-in-lxd-container.png)](/docs/assets/lxd/apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
 ## Next Steps
 
-If you plan to use a single website, then a single `iptables` rule to the website container will suffice. However, if you plan to use multiple websites, you need to set up [a reverse proxy like nginx](https://linode.com/docs/web-servers/nginx/nginx-reverse-proxy/) in a container. The `iptables` rule would then redirect to this container.
+If you plan to use a single website, then a single `iptables` rule to the website container will suffice. However, if you plan to use multiple websites, you need to set up [a reverse proxy like NGINX](https://linode.com/docs/web-servers/nginx/nginx-reverse-proxy/) in a container. The `iptables` rule would then redirect to this container.
