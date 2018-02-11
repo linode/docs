@@ -348,7 +348,7 @@ include /etc/nginx/default.d/*.conf;
 
 {{< /file-excerpt >}}
 
-2.  estart nginx:
+2.  Restart nginx:
 
         sudo systemctl restart nginx
 

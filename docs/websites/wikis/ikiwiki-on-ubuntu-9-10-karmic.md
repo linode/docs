@@ -101,19 +101,17 @@ It's important to set up a git repository that will be the "origin" repository f
 
 Edit the `~/wiki/.git/config` file to create the remote repository so that it looks something like the following example:
 
-{{< file >}}
-\~/wiki/.git/config
-{{< /file >}}
+{{< file-excerpt "~/wiki/.git/config" >}}
+[core]
+:   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
 
-> [core]
-> :   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
->
-> [remote "origin"]
-> :   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki.git
->
-> [branch "master"]
-> :   remote = origin merge = refs/heads/master
->
+[remote "origin"]
+:   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki.git
+
+[branch "master"]
+:   remote = origin merge = refs/heads/master
+{{< /file-excerpt >}}
+
 Now perform the first push using the following sequence of commands. This will update the "origin" repository with the first commit created above:
 
     cd ~/wiki/
@@ -158,19 +156,17 @@ The process for creating a bare repository to push/pull the `wiki-admin` git rep
 
 Next, edit the `~/wiki-admin/.git/config` file to set up the remote repository. Use the following example as a guideline.
 
-{{< file >}}
-\~/wiki/.git/config
-{{< /file >}}
+{{< file-excerpt "~/wiki/.git/config" >}}
+[core]
+:   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
 
-> [core]
-> :   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
->
-> [remote "origin"]
-> :   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki-admin.git
->
-> [branch "master"]
-> :   remote = origin merge = refs/heads/master
->
+[remote "origin"]
+:   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki-admin.git
+
+[branch "master"]
+:   remote = origin merge = refs/heads/master
+{{< /file-excerpt >}}
+
 Now you can perform the first push for the `wiki-admin` repository by issuing the following commands:
 
     cd ~/wiki-admin/

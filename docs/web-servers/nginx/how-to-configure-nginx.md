@@ -350,7 +350,7 @@ server_name   localhost linode galloway;
 {{< /file-excerpt >}}
 
 
-nginx allows you to specify names for virtual hosts that are not valid domain names. nginx uses the name from the HTTP header to answer requests; it doesn't matter to nginx whether the domain name is valid or not. In this case, the hostames can be specified in the [/etc/hosts file](/docs/tools-reference/linux-system-administration-basics#configure-the-etchosts-file).
+nginx allows you to specify names for virtual hosts that are not valid domain names. nginx uses the name from the HTTP header to answer requests; it doesn't matter to nginx whether the domain name is valid or not. In this case, the hostnames can be specified in the [/etc/hosts file](/docs/tools-reference/linux-system-administration-basics#configure-the-etchosts-file).
 
 Using non-domain hostnames may be useful if your nginx server is deployed on a LAN, or if you already know all of the clients that will be making requests of the server. This includes front-end proxy servers that preconfigured `/etc/hosts` entries for the IP address on which nginx is listening.
 
