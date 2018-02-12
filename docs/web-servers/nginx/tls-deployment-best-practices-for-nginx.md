@@ -62,7 +62,6 @@ server {
 
 3.  Go to your site's domain or IP address in a web browser, specifying `http://`. You should be redirected to HTTPS.
 
-
 ## HTTP Strict Transport Security (HSTS)
 
 [HSTS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) is used to force browsers to only connect using HTTPS, but is a different animal from the return redirect method above. Some things to bear in mind if you're considering enabling HSTS:
@@ -110,7 +109,6 @@ According to the [OpenSSL manual](https://wiki.openssl.org/index.php/Manual:Open
 3.  Add this to the rest of your *ssl_* directives, be they in the `http` of `/etc/nginx/nginx.conf`, or an HTTPS site's `server` block:
 
         ssl_dhparam /root/certs/example.com/dhparam4096.pem;
-
 
 ## Enforce Server-Side Cipher Suite Preferences
 
@@ -165,7 +163,6 @@ To check your distribution's version of OpenSSL, run:
 
     ![HTTP2 Report](/docs/assets/keycdn-http2-test.jpg)
 
-
 ## OCSP Stapling
 
 When enabled, NGINX will make [OCSP](https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol) requests on behalf of connecting browsers. The response received from the OCSP server is added to NGINX's browser response, which eliminates the need for browsers to verify a certificate's revocation status by connecting directly to an OCSP server.
@@ -192,7 +189,6 @@ ssl_trusted_certificate /root/certs/example.com/cert.crt;
 
     The return response should show a field of OCPS response data. If instead the command returns *OCSP response: no response sent*, then recheck your configuration.
 
-
 ## Further Reading and Examples
 
 Above are some of the most significant ways you can harden TLS connections between NGINX and client devices. There is more which can be done, but beware of creating a configuration which goes against your use case. Remember, simplicity and safety is always better than a highly "tweaked", fragile, and untested configuration.
@@ -204,7 +200,6 @@ Here are a few sites with more information which you should consider recommended
 -  Strong SSL Security on nginx, [raymii.org](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html)
 
 - OWASP Secure Configuration Guide: [NGINX](https://www.owasp.org/index.php/SCG_WS_nginx)
-
 
 ## Full Configuration Example
 
