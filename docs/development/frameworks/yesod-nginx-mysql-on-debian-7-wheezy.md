@@ -46,7 +46,7 @@ Before you begin installing and configuring the components described below, plea
         apt-get update
         apt-get upgrade
 
-4. You also need Nginx and MySQL software. Please refer to [Websites with Nginx on Debian 7 (Wheezy)](/docs/websites/nginx/websites-with-nginx-on-debian-7-wheezy/) and [Using MySQL Relational Databases on Debian 7 (Wheezy)](/docs/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/) for their installation guides.
+4. You also need Nginx and MySQL software. Please refer to [Websites with Nginx on Debian 7 (Wheezy)](/docs/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/) and [How to Install MySQL on Debian 7](/docs/databases/mysql/how-to-install-mysql-on-debian-7/) for their installation guides.
 
 ## Install Required Packages
 
@@ -372,4 +372,3 @@ Link the above file into ``/etc/nginx/sites-enabled``, and restart ``nginx``:
 You can check it at *http://www.yoursite.com/* now.
 
 The installation and configuration of Yesod working with Nginx and MySQL are finished.
-
