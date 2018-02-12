@@ -5,11 +5,11 @@ author:
 description: 'Install a TLS certificate into NGINX for HTTPS access.'
 keywords: ["ssl", "tls", "nginx", "https", "certificate"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/']
-modified: 2018-01-23
+aliases: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/', 'security/ssl/enable-ssl-for-https-configuration-on-nginx/']
+modified: 2018-02-09
 modified_by:
   name: Linode
-published: 2018-01-09
+published: 2018-02-09
 title: 'Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections'
 ---
 
