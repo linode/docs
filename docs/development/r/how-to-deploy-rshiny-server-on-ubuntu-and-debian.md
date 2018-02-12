@@ -10,7 +10,7 @@ published: 2018-02-07
 modified: 2018-02-07
 modified_by:
   name: Linode
-title: 'How to Deploy Interactive R Apps with Shiny Server on Ubuntu and Debian'
+title: 'How to Deploy Interactive R Apps with Shiny Server'
 external_resources:
   - '[Shiny Server – Introduction](https://shiny.rstudio.com/articles/shiny-server.html)'
   - '[Gallery of Shiny Apps](https://shiny.rstudio.com/gallery/)'
