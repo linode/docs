@@ -6,8 +6,8 @@ description: 'Compile NGINX to use the PageSpeed module.'
 keywords: ["nginx","pagespeed","optimization"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604']
-published: 2018-02-08
-modified: 2018-02-08
+published: 2018-02-12
+modified: 2018-02-12
 modified_by:
   name: Linode
 title: 'Build NGINX with PageSpeed From Source'
@@ -26,7 +26,7 @@ This guide will show how to compile both NGINX and PageSpeed. If you would prefe
 
 ## Before You Begin
 
--  You should not have a pre-existing installation of NGINX. If you do, back up the configuration files if you want to retain their information, and then purge NGINX from the system.
+-  You should not have a pre-existing installation of NGINX. If you do, back up the configuration files if you want to retain their information, and then purge NGINX.
 
 -  You will need root access to the system, or a user account with `sudo` privileges.
 
