@@ -113,7 +113,7 @@ This portion of the guide will focus on how to load data into PySpark as an RDD.
 
 ### Read Data into PySpark
 
-Since PySpark is run from the shell, SparkContext is already binded to the variable `sc`. For standalone programs running outside of the shell, SparkContext needs to be imported. The SparkContext object represents the entry point for Spark's functionality.
+Since PySpark is run from the shell, SparkContext is already bound to the variable `sc`. For standalone programs running outside of the shell, SparkContext needs to be imported. The SparkContext object represents the entry point for Spark's functionality.
 
 1.  Read from the collection of text files from NLTK, taking care to specify the absolute path of the text files. Assuming the corpus was downloaded though the method described above, replace `linode` with your Unix username:
 
