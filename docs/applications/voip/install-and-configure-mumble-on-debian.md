@@ -88,7 +88,7 @@ For Debian 7 or earlier:
     | welcometext       | Set the text that shows in the text chat log when you login.                            |
     | port              | Set the port you wish to bind to and have your users connect to.                        |
     | serverpassword    | Set a password that users will have to use to login.  This is not the same as the SuperUser password and therefore, should be different. |
-    | bandwidth         | Set the maximum bandwith (in bits per second) each user can use.                        |
+    | bandwidth         | Set the maximum bandwidth (in bits per second) each user can use.                        |
     | users             | Set the maximum number of users that can connect to the server at once.                 |
 
 

@@ -22,7 +22,7 @@ Since `cron` is a standard component of modern Linux systems, this documentation
 
 Before we get started, there are a couple of terms associated with `cron` that are non-obvious. First, the job or **cronjob** refers to the task, script, or application that `cron` runs. Second, **crontab** refers to each user's list of cronjobs.
 
-![Title graphic](/docs/assets/schedule_tasks_with_cron_smg.png)
+![Schedule Tasks with Cron](/docs/assets/schedule_tasks_with_cron_smg.png)
 
 ## Using crontab
 

@@ -105,7 +105,7 @@ PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING 
 SaveConfig = true
 {{< /file >}}
 
-    **Address** defines the private IPv4 and IPv6 addresses for the WireGuard server. Each peer in the VPN network should have a unique value for this field. This guide will use the 192.168.2.0/24 address block for IPv4 and the fd86:ea04:1115::0/64 block for IPv6.
+    **Address** defines the private IPv4 and IPv6 addresses for the WireGuard server. Each peer in the VPN network should have a unique value for this field. This guide will use the 192.168.2.0/24 address block for IPv4 and the `fd86:ea04:1115::0/64` block for IPv6.
 
     **ListenPort** specifies the port that WireGuard will use for incoming connections.
 

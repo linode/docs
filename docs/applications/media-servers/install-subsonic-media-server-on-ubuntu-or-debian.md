@@ -117,7 +117,7 @@ If you have a firewall set up on your Linode, be sure to edit the permissions to
         mkdir /var/music
         chown subsonic:subsonic /var/music
 
-2.  Open Subsonic in your broswer by navigating to the Linode's IP address or domain name. Be sure to append a colon and the port number after the address. If you've configured subsonic to use SSL, be sure to prepend `https` to the address.
+2.  Open Subsonic in your browser by navigating to the Linode's IP address or domain name. Be sure to append a colon and the port number after the address. If you've configured subsonic to use SSL, be sure to prepend `https` to the address.
 
     If you’re using Subsonic’s default SSL certificate, you’ll see a message like the following. You can safely "proceed anyway":
 

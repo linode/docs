@@ -113,7 +113,7 @@ define('FS_METHOD', 'direct');
     Restart Apache.
 
     {{< note >}}
-If using permalinks to set your posts' URLs, Apache will need to be updated to allow individual sites to update the `.htaccess` file. To permit this, add the following to you WordPress website's *VirtualHosts* codeblock:
+If using permalinks to set your posts' URLs, Apache will need to be updated to allow individual sites to update the `.htaccess` file. To permit this, add the following to you WordPress website's *VirtualHosts* code block:
 
 {{< file-excerpt >}}
 <Directory /var/www/>
