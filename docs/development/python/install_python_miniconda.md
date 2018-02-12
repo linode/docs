@@ -22,7 +22,9 @@ show_on_rss_feed: false
 
 2.  You will be prompted several times during the installation process. Review the terms and conditions and select "yes" for each prompt.
 
+3.  Restart your shell session for the changes to your PATH to take effect.
 
-3.  Check your Python version:
+
+4.  Check your Python version:
 
         python --version
