@@ -5,7 +5,6 @@ adc
 addon
 addons
 addr
-addressfield
 adduser
 adminpack
 adodb
@@ -79,8 +78,6 @@ backtick
 backticks
 bak
 bampton
-bandwdith
-bandwith
 barcode
 baremetal
 base64
@@ -102,7 +99,6 @@ bootups
 bounceback
 brackley
 bram
-broswer
 bs4
 bugtracker
 bukkit
@@ -110,7 +106,6 @@ bundler
 bungeecord
 burndown
 byrequests
-bzip2
 bzip2
 bzrtools
 c2s
@@ -159,7 +154,6 @@ clickjacking
 client1
 client2
 clojure
-clonefrom
 clozure
 cls
 cluebringer
@@ -171,7 +165,6 @@ cmdmod
 cmusieve
 cnf
 codebase
-codeblock
 codec
 com2sec
 comodo
@@ -179,14 +172,12 @@ conda
 config
 configs
 configtest
-confluece
 convolutional
 coose
 copyfrom
 copyto
 coreutils
 corporateclean
-couldn
 cpanminus
 cpu
 cqlsh
@@ -216,8 +207,6 @@ cyberduck
 cyg
 cygwin
 cz
-d39a
-d693
 daemonization
 daemonize
 daemonized
@@ -259,7 +248,6 @@ df
 dhclient
 dialogs
 diavel
-didn
 diffie
 digium
 diplays
@@ -304,7 +292,6 @@ dshield
 dsn
 ducati
 dust2
-dust2
 dvcs
 e2fsck
 ea04
@@ -329,8 +316,6 @@ epel
 erb
 erlang
 esc
-essage
-estart
 etcd
 etcd0
 eth0
@@ -368,7 +353,6 @@ fb4c
 fcgi
 fcgiwrap
 fcrontab
-fd86
 fdisk
 fdriver
 fe70
@@ -376,7 +360,6 @@ fedf
 fetchmail
 fetchmailrc
 ff02
-fi
 fiiiile
 file1
 filebeat
@@ -461,7 +444,6 @@ guarisma
 gui
 gunicorn
 gz
-gzio
 gzip
 gzipped
 gzipping
@@ -490,7 +472,6 @@ hoc
 homebrew
 host1
 host2
-hostames
 hostname
 hostnames
 hotspots
@@ -854,11 +835,9 @@ oftc
 ohai
 ok
 oldstable
-ommand
 oneof
 onone
 ons
-ontinue
 opencart
 opendkim
 openfire
@@ -884,7 +863,6 @@ owncloud
 pacman
 pagent
 pagespeed
-pakages
 pandoc
 param
 paramiko
@@ -1024,7 +1002,6 @@ remotehost
 replset
 repo
 repos
-repositoryformatversion
 resharding
 resilvering
 resolv
@@ -1275,7 +1252,7 @@ ui
 uidl
 un
 unban
-Unbans
+unbans
 unbilled
 unbundle
 uncheck
@@ -1284,17 +1261,14 @@ uncomment
 uncommented
 uncommenting
 uncompress
-unecrypted
 unencrypted
 unformatted
-unforseen
 unicast
 unintuitive
 uniq
 unmerged
 unmount
 unmounting
-unncessary
 unoptimized
 unpatched
 unregister
