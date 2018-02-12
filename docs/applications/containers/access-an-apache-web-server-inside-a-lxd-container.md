@@ -9,7 +9,7 @@ published: 2018-02-12
 modified: 2018-02-12
 modified_by:
   name: Linode
-title: 'How to use LXD containers on Linode'
+title: 'Access an Apache Web Server Inside a LXD Container'
 contributor:
   name: Simos Xenitellis
   link: https://blog.simos.info/
