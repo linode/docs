@@ -6,10 +6,10 @@ description: 'Configure and optimize NGINX to best suit your web server needs. H
 keywords: ["nginx", "web server", "nginx configuration", "multiple sites", "configure caching"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/nginx/configure-nginx-for-optimized-performance/','web-servers/nginx/how-to-configure-nginx/']
-modified: 2018-01-25
+modified: 2018-02-09
 modified_by:
   name: Linode
-published: 2018-01-09
+published: 2018-02-09
 title: 'Getting Started with NGINX - Part 2: (Slightly More) Advanced Configurations'
 ---
 
