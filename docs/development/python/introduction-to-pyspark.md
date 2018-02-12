@@ -19,13 +19,13 @@ external_resources:
 
 ## What is PySpark?
 
-[Apache Spark](https://spark.apache.org/) is a big-data processing engine with several advantages over MapReduce. Spark offers greater simplicity by removing much of the boilerplate code seen in Hadoop. In addition, since Spark handles most operations in memory, it is often faster than MapReduce, where data is written to disk after each operation. PySpark is a Python API for Spark.
+[Apache Spark](https://spark.apache.org/) is a big-data processing engine with several advantages over MapReduce. Spark offers greater simplicity by removing much of the boilerplate code seen in Hadoop. In addition, since Spark handles most operations in memory, it is often faster than MapReduce, where data is written to disk after each operation.
 
-This guide will focus on installing PySpark on a single Linode. PySpark's API will be introduced through an analysis of text files by counting the top five most frequent words used in every Presidential inaugural address.
+PySpark is a Python API for Spark. This guide shows how to install PySpark on a single Linode. PySpark's API will be introduced through an analysis of text files by counting the top five most frequent words used in every Presidential inaugural address.
 
 ## Install Prerequisites
 
-The installation process will require the installation of Scala, which has Java JDK 8 as a dependency. Miniconda will be used to handle PySpark installation as well as downloading the data through NLTK.
+The installation process requires the installation of Scala, which has Java JDK 8 as a dependency. Miniconda will be used to handle PySpark installation as well as downloading the data through NLTK.
 
 ### Miniconda
 
