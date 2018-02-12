@@ -1,12 +1,12 @@
 ---
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
-description: 'LXD is a container hypervisor that manages Linux Containers. Compared to other uses of Linux Containers, LXD manages machine containers which each work just like typical servers. This guide covers how to install, configure and use LXD on Linode.'
-keywords: ["container", "lxd", "lxc"]
+description: 'LXD is a container hypervisor that manages Linux Containers. Compared to other uses of Linux Containers, LXD manages machine containers which each work just like typical servers. This guide will show how to run Apache inside LXD and direct traffic to the container.'
+keywords: ["container", "lxd", "lxc", "virtual machine"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-02-09
-modified: 2018-02-09
+published: 2018-02-12
+modified: 2018-02-12
 modified_by:
   name: Linode
 title: 'How to use LXD containers on Linode'
@@ -22,18 +22,15 @@ external_resources:
 
 ## What is LXD?
 
-[LXD](https://linuxcontainers.org/lxd/) (pronounced "Lex-Dee") is a container hypervisor that manages Linux Containers. Compared to other implementations of Linux Containers, the LXD containers are *machine containers*. A machine container works and feels just like a typical server. Compared to virtual machines, an installation with LXD can accommodate more than ten times the density of KVM on the same hardware.
+[LXD](https://linuxcontainers.org/lxd/) (pronounced "Lex-Dee") is a system container manager build on top of LXC (Linux Containers) that is currently supported by Canonical. The goal of LXD is to provide an experience similar to a virtual machine but through containerization rather than virtualization. Compared to Docker for delivering applications, LXD offers nearly full OS functionality with additional features such as snapshots, live migrations, storage management, and more.
 
-As virtual machines can consolidate physical servers, machine containers can consolidate virtual machines. In contrast to virtual machines, a machine container reuses the running Linux kernel of the host and when it boots up, it only runs the rest of the software of a Linux distribution.
+The main benefits of LXD are the high density of containers that it can support and the performance it delivers compared to virtual machines. A computer with 2GB RAM can adequately support half a dozen containers. In addition, LXD officially supports the [container images of major Linux distributions](https://us.images.linuxcontainers.org/). We can choose the Linux distribution and version to run in the container.
 
-The main benefits of LXD are the high density of containers that it can support and the performance it delivers. A computer with 2GB RAM can adequately support half a dozen containers. In addition, LXD officially supports the [container images of several major Linux distributions](https://us.images.linuxcontainers.org/). We can pick and choose the Linux distribution and exact version of that distribution to run in the container.
-
-This guide covers how to setup a Linode to work with LXD, how LXD works in practice and how to troubleshoot common issues.
+This guide covers how to setup a Linode to work with LXD, how LXD works in practice, and how to troubleshoot common issues.
 
 {{< note >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD containers.
 {{< /note >}}
-
 
 ## Before You Begin
 
@@ -81,7 +78,7 @@ If your Linode's distribution disk already has 100% of the available disk space 
 
 4.  Reboot your Linode from the Linode Manager.
 
-## Configure LXD
+## Initialize LXD
 
 1.  Install the packages `lxd` and `zfsutils-linux`:
 
@@ -99,7 +96,7 @@ If your Linode's distribution disk already has 100% of the available disk space 
 
     You will be prompted several times during the initialization process. Choose the defaults for all options **except** `Use existing block device?` For this option, select **yes** and then enter the path to the storage volume added in the previous section.
 
-## Using LXD
+## LXD Commands
 
 1.  List all containers:
 
@@ -191,20 +188,24 @@ The Ubuntu container images have by default a non-root account with username `ub
 The `sudo` command provides a login to the existing account `ubuntu`.
 {{< /note >}}
 
-7.  Stop the container:
+7.  View the container logs:
+
+        lxc info mycontainer --show-log
+
+8.  Stop the container:
 
         lxc stop mycontainer
 
-8.  Remove the container:
+9.  Remove the container:
 
         lxc delete mycontainer
 
 
 ## Apache Web Server with LXD
 
-This section will create a container, install the Apache2 Web server, and then add the appropriate `iptables` rules in order to expose the Web server to the Internet.
+This section will create a container, install the Apache web server, and add the appropriate `iptables` rules in order to expose post 80.
 
-1.  Launch a new container.
+1.  Launch a new container:
 
         lxc launch ubuntu:16.04 web
 
@@ -212,17 +213,17 @@ This section will create a container, install the Apache2 Web server, and then a
 
         lxc exec web -- apt update
 
-3.  Install the Apache2 Web server.
+3.  Install the Apache in the LXD container.
 
         lxc exec web -- apt install apache2
 
-4.  Add the `iptables` rule to expose the port 80. When someone connects to port 80 on the server, this rule redirects them to port 80 of the container.
+4.  Add the `iptables` rule to expose the port 80. When someone connects to port 80 through the public IP address, this rule redirects them to port 80 of the container.
 
     You will need to replace `your_public_ip` and `your_container_ip` with your public IP and container IP respectively in this command.
 
         PORT=80 PUBLIC_IP=your_public_ip CONTAINER_IP=your_container_ip sudo -E bash -c 'iptables -t nat -I PREROUTING -i eth0 -p TCP -d $PUBLIC_IP --dport $PORT -j DNAT --to-destination $CONTAINER_IP:$PORT -m comment --comment "forward to the Apache2 container"'
 
-5.  Make the `iptables` rule persistent on reboot by installing `iptables-persistent`. When prompted to save the IPv4 and IPv6 rules, click **Yes** in order to save them.
+5.  Make the `iptables` rule persist on reboot by installing `iptables-persistent`. When prompted to save the IPv4 and IPv6 rules, click **Yes** in order to save them.
 
         sudo apt install iptables-persistent
 
@@ -232,4 +233,4 @@ This section will create a container, install the Apache2 Web server, and then a
 
 ## Next Steps
 
-If you plan to use a single website, then a single `iptables` rule to the website container will suffice. However, if you plan to use multiple websites, you need to set up [a reverse proxy like NGINX](https://linode.com/docs/web-servers/nginx/nginx-reverse-proxy/) in a container. The `iptables` rule would then redirect to this container.
+If you plan to use a single website, then a single `iptables` rule to the website container will suffice. If you plan to use multiple websites, you need to set up [a reverse proxy like NGINX](https://linode.com/docs/web-servers/nginx/nginx-reverse-proxy/) in a container. The `iptables` rule would then redirect to this container.
