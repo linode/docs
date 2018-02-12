@@ -1146,6 +1146,8 @@ statusbar
 stderr
 steamlab
 stopwait
+stopword
+stopwords
 su
 subcommand
 subcommands
@@ -1226,7 +1228,9 @@ tmp
 tmux
 todo
 togami
+tokenize
 tokenized
+tokenizing
 tokyo2
 tomacat
 tomcat6
