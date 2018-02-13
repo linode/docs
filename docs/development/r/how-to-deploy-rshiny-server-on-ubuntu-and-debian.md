@@ -18,35 +18,35 @@ external_resources:
 
 ## What is Shiny?
 
-[Shiny](https://shiny.rstudio.com/) is a library for the R programming language that allows you to create interactive web apps in native R, without needing to use web technologies such as HTML, CSS, or JavaScript frameworks. There are many ways to deploy Shiny apps to the web; this guide will use Shiny Server to host an example Shiny app on a Linode.
+[Shiny](https://shiny.rstudio.com/) is a library for the R programming language that allows you to create interactive web apps in native R, without needing to use web technologies such as HTML, CSS, or JavaScript frameworks. There are many ways to deploy Shiny apps to the web. This guide uses Shiny Server to host an example Shiny app on a Linode.
 
 ## Before You Begin
 
-This guide uses RStudio to create an example Shiny app. If you do not have RStudio installed on your local computer, you can follow our [How to Deploy RStudio Using an NGINX Reverse Proxy](/docs/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) guide to set up a remote workstation on a Linode.
+This guide uses RStudio to create an example Shiny app. If you do not have RStudio installed on your local computer, follow our [How to Deploy RStudio Using an NGINX Reverse Proxy](/docs/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) guide to set up a remote workstation on a Linode.
 
-## Build a Test App
+## Build a Shiny Test App
 
-Shiny Server comes with pre-installed demo apps; however, in order to demonstrate the process of deploying an app, this guide will create an app locally and deploy it to a Shiny Server on a Linode.
+Shiny Server comes with pre-installed demo apps, however, in order to demonstrate the process of deploying an app, create an app locally and deploy it to a Shiny Server on a Linode.
 
 1.  Open RStudio and install the Shiny package:
 
         install.packages('shiny')
 
-2.  In the **File** menu, select **Shiny Web App...** under **New File**. When prompted, choose a name for your project. Also select **Multiple File** and choose a directory to store the new app's files.
+2.  In the **File** menu, under **New File**, select **Shiny Web App...**. When prompted, choose a name for your project. Select **Multiple File** and choose a directory to store the new app's files.
 
-    ![Create New Shiny App](/docs/assets/shiny/create-shiny-app.png)
+    ![Create New Shiny App](/docs/assets/shiny/create-shiny-app.png "Create New Shiny App")
 
-3.  Two new files, `ui.R` and `server.R`, should be automatically opened in RStudio. These files are pre-filled with a demo app that will create an interactive histogram of R's built-in Old Faithful data set. Edit `server.R` to adjust the formatting of the histogram according to your tastes. For example, to change the bars to red with a black border:
+3.  Rstudio automatically opens two new files: `ui.R` and `server.R`. These files are pre-filled with a demo app that will create an interactive histogram of R's built-in Old Faithful data set. Edit `server.R` to adjust the formatting of the histogram according to your tastes. For example, to change the bars to red with a black border:
 
         hist(x, breaks = bins, col = 'red', border = 'black')
 
-4.  Test the project locally by clicking **Run App** in the upper right corner of the text editor.
+4.  To test the project locally, click **Run App** in the upper right corner of the text editor.
 
-5.  Save the project and copy the files to your Linode. Replace `username` with your Unix account username and `linodeIP` with the public IP address or domain name of your Linode.
+5.  Save the project and copy the files to your Linode. Replace `username` with your Unix account username and `linodeIP` with the public IP address or domain name of your Linode:
 
         scp -r ~/shiny/Example username@linodeIP:/home/username
 
-## Deploy to Remote Server
+## Deploy a Shiny App to a Remote Server
 
 The steps in this section should be completed on your Linode.
 
@@ -79,9 +79,9 @@ Use `install.packages()` to add the Shiny package:
 
         sudo systemctl status shiny-server.service
 
-5.  In a browser, navigate to your Linode's public IP address or FQDN on port 3838 (e.g. `example.com:3838`). You should see the Shiny Server welcome page:
+5.  In a browser, navigate to your Linode's public IP address or FQDN on port `3838` (e.g. `example.com:3838`). You should see the Shiny Server welcome page:
 
-    ![Shiny Server Welcome Page](/docs/assets/shiny/shiny-welcome.png)
+    ![Shiny Server Welcome Page](/docs/assets/shiny/shiny-welcome.png "Shiny Server Welcome Page")
 
 ### Deploy Your App
 
@@ -91,15 +91,15 @@ By default, Shiny Server uses `/srv/shiny-server/` as its site directory. Any Sh
 
         sudo cp -r Example/ /srv/shiny-server/
 
-2.  In a web browser, navigate to the app's address. Replace `example.com` with your Linode's public IP address or FQDN.
+2.  In a web browser, navigate to the app's address. Replace `example.com` with your Linode's public IP address or FQDN:
 
         example.com:3838/Example
 
     You should see your app displayed:
 
-    ![Shiny Demo App](/docs/assets/shiny/shiny3.png)
+    ![Shiny Demo App](/docs/assets/shiny/shiny3.png "Shiny Demo App")
 
-### Configuration
+### Configure Shiny Server
 
 Shiny Server's configuration file is stored at `/etc/shiny-server/shiny-server.conf`:
 
@@ -129,10 +129,10 @@ server {
 
 You can edit the port that Shiny Server will listen on, or change the site directory from which apps are served. The `directory_index` option allows visitors to view the contents of a directory by navigating to that path (for example, visiting `example.com:3838/sample-apps` will show a list of the example apps included in the Shiny Server installation). You can disable this behavior and hide the contents of directories by setting this option to `off`. For more information about configuring Shiny Server, see the official [Administrator's Guide](http://docs.rstudio.com/shiny-server/).
 
-You will need to restart the `shiny-server` service after making changes to this file:
+After making changes to this file, restart the `shiny-server` service:
 
       sudo systemctl restart shiny-server.service
 
 ## Next Steps
 
-In order to keep the deployed app up to date with changes made in your local environment, you can consider using a more sophisticated deployment method such as Git or Rsync. Production deployments may also want to run Shiny Server behind a reverse proxy to make use of additional security and optimization features.
+In order to keep the deployed app up-to-date with changes made in your local environment, consider using a more sophisticated deployment method such as Git or Rsync. Production deployments may also want to run Shiny Server behind a reverse proxy to make use of additional security and optimization features.
