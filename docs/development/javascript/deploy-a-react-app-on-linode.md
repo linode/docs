@@ -23,7 +23,7 @@ external_resources:
 
 [React](https://reactjs.org/) is a popular JavaScript library for building user interfaces. While React is often used as a frontend for more complex applications, it's also powerful enough to be used for full client-side applications on its own.
 
-Since a basic React app is static (it consists of compiled HTML, CSS, and Javascript files), it is easy to deploy from a local computer to a Linode using [Rsync](https://rsync.samba.org/). This guide shows how to set up your Linode and local machine so that you can easily deploy your app whenever changes are made.
+Since a basic React app is static (it consists of compiled HTML, CSS, and JavaScript files), it is easy to deploy from a local computer to a Linode using [Rsync](https://rsync.samba.org/). This guide shows how to set up your Linode and local machine so that you can easily deploy your app whenever changes are made.
 
 ## Before You Begin
 
