@@ -10,7 +10,7 @@ published: 2018-01-31
 modified: 2018-01-31
 modified_by:
   name: Linode
-title: "Deploy a React App on Linode"
+title: "Deploy a React Application on Linode"
 contributor:
   name: Phil Zona
   link: https://twitter.com/philzona
