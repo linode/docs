@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Learn how to use Linux commands Killall and Kill to manage and kill processes on Linux distributions in this simple tutorial.
+description: Learn how to use Linux commands killall and kill to manage and kill processes on Linux distributions in this simple tutorial.
 keywords: ["kill", "killall", "linux", "common linux commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/common-commands/killall-kill/','tools-reference/tools/manage-processes-with-killall-and-kill/']
@@ -10,26 +10,28 @@ modified: 2018-01-18
 modified_by:
   name: Linode
 published: 2010-11-29
-title: Use Killall and Kill Commands to Stop Processes on Linux
+title: Use killall and kill Commands to Stop Processes on Linux
 ---
 
-`killall` is a tool for ending running processes on your system based on name. In contrast, `kill` terminates processes based on process ID number or "PID." `kill` and `killall` can also send specific system signals to processes. Use `killall` and `kill` in conjunction with tools including `ps` to manage processes and end processes that have become stuck or unresponsive when necessary.
+`killall` is a tool for ending running processes on your system based on name. In contrast, `kill` terminates processes based on Process ID number (PID). `kill` and `killall` can also send specific system signals to processes. Use `killall` and `kill` in conjunction with tools including Process Status, `ps`, to manage and end processes that have become stuck or unresponsive.
 
-![Use Killall and Kill Commands to Stop Processes on Linux](/docs/assets/use-killall-and-kill-commands-to-stop-processes-on-linux.png "Use Killall and Kill Commands to Stop Processes on Linux")
+![Use killall and kill Commands to Stop Processes on Linux](/docs/assets/use-killall-and-kill-commands-to-stop-processes-on-linux.png "Use killall and kill Commands to Stop Processes on Linux")
 
-## Usage
+Throughout this guide, replace `[process name]` in each example with the name of the process you wish to terminate.
 
-### killall
+## killall and kill Usage
+
+### How to Use killall
 
 The `killall` command takes the following form:
 
     killall [process name]
 
-Replace `[process name]` with the name of any process that you wish to terminate. `killall` will terminate all programs that match the name specified. Without arguments, `killall` sends `SIGTERM`, or signal number 15, which terminates running processes that match the name specified. You may specify a different signal using the `-s` option as follows:
+`killall` will terminate all programs that match the name specified. Without additional arguments, `killall` sends `SIGTERM`, or signal number 15, which terminates running processes that match the name specified. You may specify a different signal using the `-s` option as follows:
 
     killall -s 9 [process name]
 
-This sends the `SIGKILL` signal which is more successful at killing some particularly unruly processes. You may also specify signals in one of the following formats:
+This sends the `SIGKILL` signal which is more successful at ending some particularly unruly processes. You may also specify signals in one of the following formats:
 
     killall -KILL [process name]
     killall -SIGKILL [process name]
@@ -37,13 +39,15 @@ This sends the `SIGKILL` signal which is more successful at killing some particu
 
 The above group of commands are equivalent.
 
-### kill
+### How to Use kill
 
-The `kill` command terminates individual processes as specified by their process ID numbers or "PIDs." Commands take the following form:
+The `kill` command terminates individual processes as specified by their PID.
+
+Commands take the following form:
 
     kill [PID]
 
-This sends `SIGTERM` to the PID specified. You may specify multiple PIDs on the command line to terminate processes with `kill`. You may also send alternate system signals with kill. The following examples all send the `SIGKILL` signal to the PID specified:
+This sends `SIGTERM` to the PID specified. You may specify multiple PIDs on the command line to terminate processes with `kill`. You may also send alternate system signals with `kill`. The following examples all send the `SIGKILL` signal to the PID specified:
 
     kill -s KILL [PID]
     kill -KILL [PID]
@@ -105,7 +109,7 @@ If you need to convert a signal name into a signal number, or a signal number in
 
 ## Find Running Processes
 
-You may use a utility like [htop](/docs/tools-reference/linux-system-administration-basics/#monitor-processes-memory-and-cpu-usage-with-htop) or `top` to view a real time list of process and their consumption of system resources. You may also use the `ps` command to view processes that are currently running and their PIDs.
+You may use a utility like [htop](/docs/tools-reference/linux-system-administration-basics/#monitor-processes-memory-and-cpu-usage-with-htop) or `top` to view a real time list of process and their consumption of system resources. You may also use the `ps` command to view processes that are currently running and their PIDs:
 
     $ ps aux | grep "emacs"
     username  3896  0.0  2.2  56600 44468 ?        Ss   Sep30   4:29 emacs
@@ -131,4 +135,3 @@ This command issues the `SIGTERM` system signal to a background process with a n
 
     $ killall -w irssi
     irssi: no process found
-
