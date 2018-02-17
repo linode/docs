@@ -36,7 +36,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Ansible only needs to be installed on the *control machine*, or the machine from which you will be running commands. This will likely be your laptop or other computer from which you frequently access your server, or it may be a centralized server in more complicated setups.
 
-Make sure that you have Python 2.x available on the control machine. Ansible is not compatible with Python 3, nor can you use Windows as the control machine. You can [build Ansible from source](https://github.com/ansible/ansible), or install the latest stable packages using the proper command below.
+Make sure that you have Python 2.6 or 2.7 available on the control machine. Ansible 2.2 supports Python 3.5 and above. Moreover, Windows cannot be as the control machine. You can [build Ansible from source](https://github.com/ansible/ansible), or install the latest stable packages using the proper command below.
 
 ### MacOS
 
