@@ -17,29 +17,29 @@ title: 'Getting Started with NGINX - Part 2: (Slightly More) Advanced Configurat
 
 * This guide is Part 2 of our *Getting Started with NGINX* series, and you will need a working NGINX setup with a website accessible via HTTP. If you do not already have that, complete [Part 1: Basic Installation and Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).
 
-* You will need root access to the system, or a user account with `sudo` privileges.
+* You will need root access to the system, or a user account with `sudo` privilege.
 
-* You may want to make another backup of your `nginx.conf` so you have a snapshot of the work you've done up to this point://
+* You may want to make another backup of your `nginx.conf` so you have a snapshot of the work you've done up to this point:
 
         cp etc/nginx/nginx.conf etc/nginx/nginx.conf.backup-pt2
 
-## Configure NGINX to Your Needs
+## Configuration Notes
 
-The internet has no shortage of sites, posts, and other places listing endless methods of "tuning", "tweaking", or "optimizing" procedures for NGINX.
+The internet has no shortage of sites, posts, and other places listing "tuning", "tweaking", or "optimizing" procedures for NGINX.
 
 However, rarely are these configurations tested to deduce if there is in fact a performance increase. Of those that are, the author's use case may be completely different than yours, so there's no guarantee you'll experience the same benefit using their configuration.
 
-Favor simplicity and your own results; do not blindly follow tuning guides you find on the internet which haphazardly present their configuration as one-size-fits-all advice. There are some config options which are virtually universal, many of which are described in this series. Beyond that, you could actually be decreasing your server's performance and/or security.
+Favor simplicity and your own results; do not blindly follow tuning guides you find on the internet which haphazardly present their configuration as one-size-fits-all advice. There are some config options which are virtually universal, and we use many of them in this series. Beyond that, you could actually be decreasing your server's performance and/or security.
 
-Truly advanced system tuning for web services, such as adjusting Linux kernel parameters and TCP stack functionality, is out of the scope of this series. If you would like to explore the topic further, take a look at [this NGINX blog post](https://www.nginx.com/blog/tuning-nginx/) for more information.
+Truly advanced system tuning for web services, such as adjusting Linux kernel parameters and TCP stack functionality, is out of the scope of this series. If you would like to explore the topic further, a good place to start is [this NGINX blog post](https://www.nginx.com/blog/tuning-nginx/).
 
-## Host Multiple Websites from a Single Server
+## Host Multiple Websites
 
-In NGINX speak, a *server block* basically equates to a website (same as *virtual host* in Apache terminology). NGINX can host multiple websites, and **each site's configuration should be in its own file**, with the name formatted as `example.com.conf`. That file should be located at `/etc/nginx/conf.d/`.
+In NGINX speak, a *Server Block* basically equates to a website (same as *Virtual Host* in Apache terminology). NGINX can host multiple websites, and **each site's configuration should be in its own file**, with the name formatted as `example.com.conf`. That file should be located at `/etc/nginx/conf.d/`.
 
-If you then want to disable the site *example.com*, then rename `example.com.conf` to `example.com.conf.disabled`. When hosting multiple sites, be sure to separate their access and error logs with specific directives inside each site's server block. See [*Server Block Examples*](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/) in the NGINX docs for more info.
+If you then want to disable the site *example.com*, then rename `example.com.conf` to `example.com.conf.disabled`. When hosting multiple sites, be sure to separate their access and error logs with specific directives inside each site's server block. See [*Server Block Examples*](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/) in the NGINX docs for more information.
 
-1.  All the second site's configuration file needs is a server block inside:
+1.  Provided that you already have one site configuration running on NGINX, all the second site's configuration file needs is a server block inside:
 
     {{< file "/etc/nginx/conf.d/example2.com.conf" nginx >}}
 server {
@@ -60,9 +60,9 @@ server {
 
     Your second website should be visible at its domain and/or IP address.
 
-## NGINX Basic Caching
+## Basic NGINX Caching
 
-NGINX can cache files served by web applications and frameworks such as WordPress, Drupal and Ruby on Rails. Though covering caching at this point steps out of the basic workflow so far (we haven't set up any application with data to cache), it's worth mentioning here briefly.
+NGINX can cache files served by web applications and frameworks such as WordPress, Drupal and Ruby on Rails. Though covering caching at this point steps out of the basic workflow so far (we haven't set up any application with data to cache yet), it's worth mentioning here briefly.
 
 For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_proxy_module.html), [NGINX admin guide](https://www.nginx.com/resources/admin-guide/content-caching/), and the [NGINX blog](https://www.nginx.com/blog/nginx-caching-guide/).
 
@@ -70,7 +70,7 @@ For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_ht
 
         mkdir /var/www/example.com/cache/
 
-2.  Add the `proxy_cache_path` directive to NGINX's `http` block. Make sure the file path references the folder in Step 1:
+2.  Add the `proxy_cache_path` directive to NGINX's `http` block. Make sure the file path references the folder you just created in Step 1.
 
       {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
 proxy_cache_path /var/www/example.com/cache/ keys_zone=one:10m max_size=500m inactive=24h use_temp_path=off;
@@ -109,24 +109,21 @@ For this reason, you should include them in one of two different ways:
 
 * Put all `add_header` directives in the `http` block. This isn't practical unless you want every header directive to apply to every site in your configuration.
 
-* Add the desired `add_header` directives only to the `server` block (or an [include file](https://nginx.org/en/docs/ngx_core_module.html#include)) of the site for which those directives should apply. This is the best scenario if you have multiple websites and want some header directives applied to some sites, but not all sites you're hosting.
+* Add the desired `add_header` directives only to the `server` block (or an [include file](https://nginx.org/en/docs/ngx_core_module.html#include)) of the site you want those directives applied to. This is the best scenario if you have multiple websites and want some header directives applied to some sites, but not all sites you're hosting.
 
 Below are some of the more universally-applicable header modifications. There are many more available, and you should read through the [OWASP Secure Headers Project](https://www.owasp.org/index.php/OWASP_Secure_Headers_Project) for more information.
 
-### Disable Content Sniffing in nginx.conf
+### Disable Content Sniffing
 
-Content sniffing allows browsers to inspect a byte stream in order to determine the file format of its contents. It is generally used to help sites that do not correctly identify the MIME type of their web content, but it also presents a vulnerability to cross-site scripting and other attacks. To disable content sniffing, add the following line to your configuration's `http` block:
+Content sniffing allows browsers to inspect a byte stream in order to determine the file format of its contents. It is generally used to help sites that do not correctly identify the MIME type of their content, but it also presents a vector for cross-site scripting and other attacks. To disable content sniffing, add the following line to your configuration's `http` block:
 
-{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
-http {
     add_header X-Content-Type-Options nosniff;
-{{< /file-excerpt >}}
 
-### Use add_header to Limit or Disable Content Embedding
+### Limit or Disable Content Embedding
 
-Content embedding is when a website renders a 3rd party element (div, img, etc.), or even an entire page from a completely different website, in a  `<frame>`, `<iframe>`, or `<object>` HTML block on their own site.
+Content embedding is when a website renders a 3rd party element (div, img, etc.), or even an entire page from a completely different website, in a  `<frame>`, `<iframe>`, or `<object>` HTML block on its own site.
 
-The `X-Frame-Options` HTTP header stops content embedding so your site can't be presented from an embedded frame hosted on someone else's website, with a worst-case scenario being a clickjacking attack. See [*X-Frame-Options, Mozilla Developer Network*](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options) for more information.
+The `X-Frame-Options` HTTP header stops content embedding so your site can't be presented from an embedded frame hosted on someone else's website, one undesirable outcome being a clickjacking attack. See [*X-Frame-Options, Mozilla Developer Network*](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options) for more information.
 
 To disallow the embedding of your content from any domain other than your own, add the following line to your configuration:
 
@@ -171,7 +168,7 @@ server {
 }
 {{< /file >}}
 
-* Here's the server's `nginx.conf` file. Again, our additions are at the bottom of the block so we know what we added:
+* Here is the server's `nginx.conf` file. Again, our additions are at the bottom of the block so we know what we added:
 
     {{< file "/etc/nginx/nginx.conf" nginx >}}
 user  nginx;
