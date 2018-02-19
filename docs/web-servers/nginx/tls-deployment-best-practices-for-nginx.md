@@ -17,9 +17,9 @@ title: 'Getting Started with NGINX - Part 4: TLS Deployment Best Practices'
 
 - This guide is Part 4 of our *Getting Started with NGINX* series and you will need a working NGINX setup with a website accessible via HTTPS. If do not already have that, then complete at least [Part 1: Basic Installation and Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) and [Part 3: Enable TLS on NGINX for HTTPS Connections](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/) before going further.
 
-- You will need root access to the system, or a user account with `sudo` privileges.
+- You will need root access to the system, or a user account with `sudo` privilege.
 
-- You may want to make another backup of your `nginx.conf` and site configuration file(s) so you have a snapshot of the work you've done up to this point. The commands below are intended as quick examples. By now you've likely put a significant amount of work into this setup, so you should decide on a more resilient backup strategy to preserve your configuration and site data.
+- You may want to make another backup of your `nginx.conf` and site configuration files so you have a snapshot of the work you've done up to this point. The copy commands below are intended as quick examples. By now you've likely put a significant amount of work into this setup, so you should decide on a more resilient backup strategy to preserve your configuration and site data.
 
         cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup-pt4
         cp -r /etc/nginx/conf.d/ /etc/nginx/conf.d-backup-pt4
@@ -27,16 +27,16 @@ title: 'Getting Started with NGINX - Part 4: TLS Deployment Best Practices'
 - To enable any configuration changes you make, you need to run `nginx -s reload` as root.
 
 {{< caution >}}
-Most directives in this guide can be added either to NGINX's `http` block, or an individual site's `server` block. The exceptions are `add_header` directives, which are [not inherited](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/#http-response-header-fields). If you're only hosting one website, or if you want your sites to have the same NGINX parameters, then adding all your `add_header` directives the `http` block is fine. If you intend to use different header options for different site configurations, [see here](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/#http-response-header-fields) for a different approach.
+Most directives in this guide can be added either to NGINX's `http` block, or an individual site's `server` block. The exceptions are `add_header` directives, which are [not inherited](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/#http-response-header-fields). If you're only hosting one website, or if you want all your hosted sites to have the same NGINX parameters, then adding all your `add_header` directives the `http` block is fine. If you intend to use different header options for different site configurations, [see here](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/#http-response-header-fields) for a different approach.
 {{< /caution >}}
 
 ## Redirect Incoming HTTP Traffic HTTPS
 
-When someone types your site's domain into a browser, the usual behavior is that the site is loaded over HTTP, unencrypted. Redirecting HTTP requests to HTTPS means that a person can still type your site name into their browser's address bar without specifying `https://`, but NGINX will redirect their browser to your site using an HTTPS connection.
+When someone types your website's domain into a browser, the usual behavior is that the site is loaded over HTTP, unencrypted. Redirecting HTTP requests to HTTPS means that a person can still type your site name into their browser's address bar without specifying `https://`, but NGINX will redirect their browser to your site using an HTTPS connection.
 
 Search engine results rank HTTPS-capable websites higher than sites available only over HTTP, so redirecting HTTP requests to HTTPS is also useful to help increase your page rank.
 
-1.  Assuming you already have a working HTTPS connection with a site configuration file similar to the second `server` block below, add the HTTP `server` block above it as shown:
+1.  Assuming you already have a working HTTPS connection with a site configuration file similar to the SSL `server` block below (the second one), add the HTTP `server` block (the first one) above it as shown:
 
     {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
@@ -64,7 +64,7 @@ server {
 
 ## HTTP Strict Transport Security (HSTS)
 
-[HSTS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) is used to force browsers to only connect using HTTPS, but is a different animal from the return redirect method above. Some things to bear in mind if you're considering enabling HSTS:
+[HSTS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) is used to force browsers to only connect using HTTPS, but is a different concept from the return redirect method above. Some things to bear in mind if you're considering enabling HSTS:
 
 -  Your site will be inaccessible over HTTP.
 -  Your site will inaccessible if using a self-signed certificate certificate, or if your commercially signed certificate expires.
@@ -86,6 +86,8 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" alway
 
         curl -s -D- https://example.com | grep Strict
 
+    The output should be:
+    
     {{< output >}}
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 {{< /output >}}
@@ -94,7 +96,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 A Diffie-Hellman parameter is a set of randomly generated data used when establishing [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) during initiation of an HTTPS connection. The default size is usually 1024 or 2048 bits, depending on the server's OpenSSL version, but a 4096 bit key will provide greater security.
 
-1.  Change directories to where you maintain your site's TLS certificates:
+1.  Change directories to where you maintain your site's TLS certificates. [From Part 3](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/), we're maintaining the server's certificates out of `/root/certs/example.com/` so we'll continue with that here.
 
         cd /root/certs/example.com
 
@@ -112,7 +114,7 @@ According to the [OpenSSL manual](https://wiki.openssl.org/index.php/Manual:Open
 
 ## Enforce Server-Side Cipher Suite Preferences
 
-NGINX can impose its TLS cipher suite choices over those of a connecting browser, provided the browser supports them. Browsers support many OpenSSL cipher suites, some of which are weak or inefficient.
+Web browsers support many OpenSSL cipher suites, some of which are inefficient or weak. NGINX can impose its TLS cipher suite choices over those of a connecting browser, provided the browser supports them.
 
 If you have selected a good cipher suite combination with NGINX's `ssl_ciphers` directive, you are increasing the connection's security because NGINX is telling the browser it only wants to communicate through strong cipher and hashing algorithms.
 
@@ -124,7 +126,7 @@ ssl_prefer_server_ciphers on;
 
 ## Increase Keepalive Duration
 
-SSL/TLS handshakes use a non-negligible amount of CPU power, so minimizing the amount of handshakes which connecting clients need to perform will reduce your system's processor use. One way to do this is by increasing the duration of keepalive connections from 60 to 75 seconds. This is safe for HTTP and HTTPS, so can be added to the `http` block of `/etc/nginx/nginx.conf`, or edited if it is already present:
+SSL/TLS handshakes use a non-negligible amount of CPU power, so minimizing the amount of handshakes which connecting clients need to perform will reduce your system's processor use. One way to do this is by increasing the duration of keepalive connections from 60 to 75 seconds. This is safe for HTTP and HTTPS, so can be added to the `http` block of `/etc/nginx/nginx.conf` or edited if already present.
 
 {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
 keepalive_timeout 75;
@@ -167,11 +169,7 @@ To check your distribution's version of OpenSSL, run:
 
 When enabled, NGINX will make [OCSP](https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol) requests on behalf of connecting browsers. The response received from the OCSP server is added to NGINX's browser response, which eliminates the need for browsers to verify a certificate's revocation status by connecting directly to an OCSP server.
 
-{{< note >}}
-If you need to combine your CA's root and intermediate certificates, do that with: `cat example.com.crt ca-root.crt intermediate.crt > ocsp-combined.crt`.
-{{< /note >}}
-
-1.  Add the following directives to your `nginx.conf` file, or to the `server` block of your HTTPS site. If you have been following this series, your certificates are located in `/root/certs/example.com/`.
+1.  Add the following directives to your `nginx.conf` file, or to the `server` block of your HTTPS site. If you have been following this series, then your certificates are located at `/root/certs/example.com/`.
 
     {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
 ssl_stapling on;
@@ -193,7 +191,7 @@ ssl_trusted_certificate /root/certs/example.com/cert.crt;
 
 Above are some of the most significant ways you can harden TLS connections between NGINX and client devices. There is more which can be done, but beware of creating a configuration which goes against your use case. Remember, simplicity and safety is always better than a highly "tweaked", fragile, and untested configuration.
 
-Here are a few sites with more information which you should consider recommended reading. Linode does not guarantee their accuracy over time.
+Here are a few sites with more information which you should consider to be recommended reading. Linode does not guarantee their accuracy over time.
 
 -  NGINX Docs, [HTTPS configurations](https://nginx.org/en/docs/http/configuring_https_servers.html)
 
