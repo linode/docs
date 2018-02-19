@@ -87,7 +87,7 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" alway
         curl -s -D- https://example.com | grep Strict
 
     The output should be:
-    
+
     {{< output >}}
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 {{< /output >}}
