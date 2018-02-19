@@ -10,7 +10,7 @@ modified: 2018-02-19
 modified_by:
   name: Linode
 published: 2018-02-19
-title: Proxy PHP requests with NGINX and FastCGI using PHP-FPM
+title: Serve PHP with PHP-FPM and NGINX
 external_resources:
  - '[PHP Manual](https://secure.php.net/docs.php)'
 ---
@@ -115,7 +115,7 @@ server {
     - The location `~* \.php$` means that NGINX will apply this configuration to all `.php` files (file names are not case sensitive) in your site's root directory, including any subdirectories containing PHP files.
     - The `*` in the `~* \.php$` location directive indicates that PHP file names are not case sensitive. This can be removed if you prefer to enforce letter case.
     - The `fastcgi_pass` location must match the `listen =` value in `/etc/php/7.0/fpm/pool.d/www.conf`. It is preferable for performance reasons for PHP-FPM to listen on a UNIX socket instead of a TCP address. Only change this if you require PHP-FPM use network connections.
-    - Using `$document_root` in the `SCRIPT_FILENAME` parameter instead of an absolute path is preferred by [NGINX's documentation](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#fastcgi-path-in-script-filename). 
+    - Using `$document_root` in the `SCRIPT_FILENAME` parameter instead of an absolute path is preferred by [NGINX's documentation](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#fastcgi-path-in-script-filename).
 
     Here's a variation of the `location` block above. This includes an `if` statement which disallows the FPM to process files in the `/uploads/` directory. This is a security measure which prevents people from being able to upload `.php` files to your server or application which the FastCGI process manager would then execute.
 
