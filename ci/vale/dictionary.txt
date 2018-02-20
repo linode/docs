@@ -212,6 +212,7 @@ daemonize
 daemonized
 daemonizes
 daemonizing
+daemonset
 dahdi
 datadir
 dataset
@@ -772,6 +773,7 @@ nagiosadmin
 nameserver
 nameservers
 namespace
+namespaces
 nano
 natively
 ncurses
