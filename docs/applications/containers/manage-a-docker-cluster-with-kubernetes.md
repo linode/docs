@@ -307,7 +307,7 @@ Check that your service was created:
 
 As you can see a service is running and accepts connections to the port `31738`. Test your service:
 
-        curl <MASTER_LINODE_PUBLIC_IP_ADDRESS>:31738
+        curl <MASTER_LINODE_PUBLIC_IP_ADDRESS>:<PORT(S)>
 
 You could also obtain extra information about this service running the `describe` command:
 
