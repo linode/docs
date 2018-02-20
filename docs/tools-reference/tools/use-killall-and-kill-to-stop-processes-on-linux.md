@@ -6,49 +6,46 @@ description: Learn how to use Linux commands Killall and Kill to manage and kill
 keywords: ["kill", "killall", "linux", "common linux commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/common-commands/killall-kill/','tools-reference/tools/manage-processes-with-killall-and-kill/']
-modified: 2018-01-18
+modified: 2018-01-20
 modified_by:
   name: Linode
 published: 2010-11-29
 title: Use Killall and Kill Commands to Stop Processes on Linux
 ---
 
-`killall` is a tool for ending running processes on your system based on name. In contrast, `kill` terminates processes based on process ID number or "PID." `kill` and `killall` can also send specific system signals to processes. Use `killall` and `kill` in conjunction with tools including `ps` to manage processes and end processes that have become stuck or unresponsive when necessary.
-
 ![Use Killall and Kill Commands to Stop Processes on Linux](/docs/assets/use-killall-and-kill-commands-to-stop-processes-on-linux.png "Use Killall and Kill Commands to Stop Processes on Linux")
 
-## Usage
+`killall` is a tool for terminating running processes on your system based on name. In contrast, `kill` terminates processes based on process ID number or "PID." `kill` and `killall` can also send specific system signals to processes.
 
-### killall
+Use `killall` and `kill` in conjunction with tools including `ps` to manage processes and end processes that have become stuck or unresponsive when necessary.
+
+## Using killall
 
 The `killall` command takes the following form:
 
     killall [process name]
 
-Replace `[process name]` with the name of any process that you wish to terminate. `killall` will terminate all programs that match the name specified. Without arguments, `killall` sends `SIGTERM`, or signal number 15, which terminates running processes that match the name specified. You may specify a different signal using the `-s` option as follows:
+Replace `[process name]` with the name of any process that you wish to terminate. `killall` will terminate all processes that match the name specified. Without arguments, `killall` sends `SIGTERM` (signal number 15) which terminates running processes that match the name specified. You may specify a different signal using the `-s` option as follows:
 
     killall -s 9 [process name]
 
-This sends the `SIGKILL` signal which is more successful at killing some particularly unruly processes. You may also specify signals in one of the following formats:
+This sends the `SIGKILL` signal which is especially successful at killing a particularly unruly processes. You may also specify signals in one of the following formats:
 
     killall -KILL [process name]
     killall -SIGKILL [process name]
     killall -9 [process name]
 
-The above group of commands are equivalent.
+## Using kill
 
-### kill
-
-The `kill` command terminates individual processes as specified by their process ID numbers or "PIDs." Commands take the following form:
+The `kill` command terminates individual processes with a given process ID (PID). Commands take the following form:
 
     kill [PID]
-
-This sends `SIGTERM` to the PID specified. You may specify multiple PIDs on the command line to terminate processes with `kill`. You may also send alternate system signals with kill. The following examples all send the `SIGKILL` signal to the PID specified:
+Multiple PIDs can be specified in one `kill` and alternate system signals can also be sent. The following examples all send the `SIGKILL` signal to the PID specified:
 
     kill -s KILL [PID]
     kill -KILL [PID]
 
-### System Signals
+## System Signals
 
 The `kill` command does not terminate a process directly. Rather, a signal is sent to the process where the process will have instructions to follow if it receives a given signal. The best way to have a reference of all available signals is through the man pages:
 
@@ -90,12 +87,12 @@ Standard signals
     The signals SIGKILL and SIGSTOP cannot be caught, blocked, or ignored.
 {{< /output >}}
 
-Another method to get all of the available signals without descriptions:
+To simply list all available signals without their descriptions:
 
     kill -l
     killall -l
 
-If you need to convert a signal name into a signal number, or a signal number into a signal name consider the following examples:
+If you need to convert a signal name into a signal number, or a signal number into a signal name, use the following as examples:
 
     $ kill -l 9
     KILL
@@ -105,15 +102,19 @@ If you need to convert a signal name into a signal number, or a signal number in
 
 ## Find Running Processes
 
-You may use a utility like [htop](/docs/tools-reference/linux-system-administration-basics/#monitor-processes-memory-and-cpu-usage-with-htop) or `top` to view a real time list of process and their consumption of system resources. You may also use the `ps` command to view processes that are currently running and their PIDs.
+A utility like [htop](/docs/tools-reference/linux-system-administration-basics/#monitor-processes-memory-and-cpu-usage-with-htop) or `top` will show you a real time list of process and the amount of system resources consumed.
+
+The `ps` command will list all running processes and their PIDs. This command filters the list of all processes that are currently running for the string `emacs` using [grep](/docs/tools-reference/search-and-filter-text-with-grep).
 
     $ ps aux | grep "emacs"
     username  3896  0.0  2.2  56600 44468 ?        Ss   Sep30   4:29 emacs
     username 22843  0.0  0.0   3900   840 pts/11   S+   08:49   0:00 grep emacs
 
-This command filters the list of all processes that are currently running for the string `emacs` using [grep](/docs/tools-reference/search-and-filter-text-with-grep). The number listed in the second column is the PID, which is `3896` in the case of the `emacs` process. The `grep` process will always match itself for a simple search, as in the second result. To view a hierarchical tree of all running processes, issue the following command:
+The number listed in the second column from the left is the PID, which is `3896` in the case of the `emacs` process. The `grep` process will always match itself for a simple search, as in the second result.
 
-    ps auxf
+{{<note>}}
+You can use the command `ps auxf` to view a hierarchical tree of all running processes.
+{{</note>}}
 
 Once you have obtained the PID or process name, use `killall` or `kill` to terminate the process as above.
 
@@ -123,12 +124,8 @@ Another option to find the PID is though `pgrep`.
 
 ## Verify Process Termination
 
-The `-w` option to the `killall` command causes `killall` to wait until the process terminates before exiting. Consider the following command:
+Adding the `-w` option to a `killall` command causes `killall` to wait until the process terminates before exiting. Consider the following command:
 
     killall -w irssi
 
-This command issues the `SIGTERM` system signal to a background process with a name that matches `irssi`.`killall` will wait until the matched processes have ended. If no process matches the name specified, `killall` returns an error message, as below:
-
-    $ killall -w irssi
-    irssi: no process found
-
+This issues the `SIGTERM` system signal to a background process with a name that matches `irssi`.`killall` will wait until the matched processes end. If no process matches the name specified, `killall` will return a `no process found` message.
