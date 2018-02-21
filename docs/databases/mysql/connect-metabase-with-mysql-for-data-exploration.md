@@ -6,10 +6,10 @@ description: 'Metabase is a data exploration tool that makes analytics accessibl
 keywords: ["visualization", "database", "query"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: []
-modified: 2018-02-16
+modified: 2018-02-21
 modified_by:
   name: Linode
-published: 2018-02-16
+published: 2018-02-21
 title: 'Connect Metabase with MySQL for Data Exploration'
 external_resources:
  - '[The Official MySQL Web Site](http://www.mysql.com/)'
@@ -17,6 +17,7 @@ external_resources:
  - '[Employees Testing Database](https://github.com/datacharmer/test_db)'
 ---
 
+## What is Metabase?
 
 Metabase provides a clean interface to query data on your browser. In addition to supporting querying with SQL, Metabase offers functionality to analyze data without SQL, create dashboards, and track metrics. This guide shows how to connect MySQL to Metabase then deploy on NGINX through a reverse proxy.
 
@@ -26,21 +27,7 @@ There are a number of additional databases that are supported from SQLite to Pos
 
 ### Java Runtime Environment
 
-1.  Install tool to add PPAs slightly easier
-
-        sudo apt install software-properties-common
-
-2.  Add the web8 PPA:
-
-        sudo add-apt-repository ppa:webupd8team/java
-
-3.  Update the add the new PPA:
-
-        sudo apt update
-
-4.  Install Oracle JDK 8i and accept the license terms:
-
-        sudo apt-get install oracle-java8-installer
+{{< content "install-java-8-ppa" >}}
 
 ### MySQL Server
 
