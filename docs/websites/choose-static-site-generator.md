@@ -16,16 +16,11 @@ contributor:
 ---
 
 
-In this article we'll take an in-depth look at the three most popular *static site generators*: [Jekyll](https://jekyllrb.com/) (a Ruby generator built by Github for powering their Github pages), [Hugo](https://gohugo.io/) (an extremly fast static generator built on top of the Go programming language) and [Hexo](https://hexo.io/) (a fast website generator based on Node.js). We'll also look at more specialized options such as [Gatsby](https://www.gatsbyjs.org/) (a blazing fast static site/PWA generator built around modern web technologies such as React and GraphQL) and [Gitbook](https://www.gitbook.com/) (a CLI and Node.js library for building and hosting books using Git and Markdown).
+In this article we'll take an in-depth look at the three most popular static site generators: [Jekyll](https://jekyllrb.com/) (a Ruby generator built by Github for powering their Github pages), [Hugo](https://gohugo.io/) (an extremly fast static generator built on top of the Go programming language) and [Hexo](https://hexo.io/) (a fast website generator based on Node.js). We'll also look at more specialized options such as [Gatsby](https://www.gatsbyjs.org/) (a blazing fast static site/PWA generator built around modern web technologies such as React and GraphQL) and [Gitbook](https://www.gitbook.com/) (a CLI and Node.js library for building and hosting books using Git and Markdown).
 
 ## What's Static Website Generation?
 
 Static website generation refers to the process of statically generating a website i.e generate the HTML files, for example, in a local machine and then upload the website files to a server that serves them to users when they are requested. The server doesn't do any server side processing or database communication it only sends the plain HTML files once they are requested.
-
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Scheme_static_page_en.svg/1015px-Scheme_static_page_en.svg.png) [Wikipedia:  A static web page is delivered to the user exactly as stored.](https://en.wikipedia.org/wiki/Static_web_page)
-
-In fact the first website in the world wide web was static (the first web page went live on August 6, 1991 by Tim Berners-Lee) since servers back then were very primitive with no scipritng language such as PHP or databases like MySQL.
-![](https://screenshotscdn.firefoxusercontent.com/images/589177ab-c934-40fd-b3b6-d295395a9efe.png)
 
 ## Reasons for Choosing the Static Approach?
 
@@ -36,7 +31,7 @@ There are many reasons such as:
 * contents are stored as flat files so no need for a database
 * a static website doesn't need dynamic server side processing
 * static websites are super fast than dynamic websites since they require no server side processing or database access
-* static websites are more secure than any dynamic website since there are less security holes to exploit   
+* static websites are more secure than any dynamic website since there are less security holes to exploit
 * super scaling when used with CDN
 * caching static files is more effecive than caching dynamic pages
 
@@ -48,14 +43,14 @@ In this section we'll introduce three popular static site generators: Jekyll, Hu
 * community and popularity,
 * templating system and themes,
 * workflow and easiness of use,
-* markdown and multiple formats support, 
+* markdown and multiple formats support,
 * advanced content management,
-* assets handling, 
+* assets handling,
 * plugins support and extensibility
 
 ### An introduction to Jekyll
 
-[Jekyll](https://jekyllrb.com/) is a blog-aware static site generator designed for building personal, portfolio and orgnanization websites but also fully fledged blogs. 
+[Jekyll](https://jekyllrb.com/) is a blog-aware static site generator designed for building personal, portfolio and orgnanization websites but also fully fledged blogs.
 
 Jekyll is built in Ruby language by Github and you can use Github Pages for free to host your static website and easily link it with your custom top domain name using a *CNAME* file.
 
@@ -68,7 +63,7 @@ For the pros:
 * it's free and open source
 * you can build themes as gems and distribute them through RubyGems
 * easy and simple to use
-* you can easily migrate your content from popular platforms (e.g. WordPress) thanks to [Jekyll importers](https://import.jekyllrb.com/docs/home/) 
+* you can easily migrate your content from popular platforms (e.g. WordPress) thanks to [Jekyll importers](https://import.jekyllrb.com/docs/home/)
 * great Github Pages support
 * comes with default and decent minimal theme out of the box
 
@@ -76,9 +71,9 @@ Jekyll has also a few cons such as:
 
 * as you website content grows, the build process becomes significantly slower (this is the major weakness of Jekyll)
 * the incremental build is still experimental
-* no built-in post pagination as of Jekyll 3 
+* no built-in post pagination as of Jekyll 3
 * it doesn't support using variables in titles or YAML
-* many plugins becomes outdated 
+* many plugins becomes outdated
 * gem dependencies may introduce incompatibilities
 * Github Pages supports Jekyll out of the box but only a set of [Github-safe plugins](https://help.github.com/articles/using-jekyll-plugins-with-github-pages/) can be used
 * no built-in support for livereload
@@ -91,51 +86,13 @@ Jekyll has the largest community among other static generators that has provided
 
 It's seen as the contender of WordPress in the static world and many bloggers have migrated their blogs from WordPress to Jekyll.
 
-In StackOverflow, Jekyll has more related questions than both Hugo and Hexo 
+In StackOverflow, Jekyll has more related questions than both Hugo and Hexo
 
-![](https://screenshotscdn.firefoxusercontent.com/images/45ba2c16-e792-4c5f-b67a-ea4c66a324dd.png)
-
-### Workflow and Easiness of Use
-
-Using Jekyll you can get up and running in seconds with a few commands.
-Once you have a development machine with Ruby and gem installed you can run the following command:
-
-```bash
-gem install jekyll bundler 
-```
-
-This will install jekyll and bundler packages with gem.
-
-Next you can generate a new project with one simple command 
-
-```bash
-jekyll new new-site
-```
-
-The generated website uses a minimal theme called [Minima](https://github.com/jekyll/minima) which is a quite good theme for writers.
-
-![](https://github.com/jekyll/minima/blob/master/screenshot.png)
-
-You can then navigate inside your website folder 
-
-```bash
-cd new-site
-bundle exec jekyll serve
-```
-
-Next you can simply navigate with your browser to `http://localhost:4000` to see your static website up and running.
-
-Once you modify the content Jekyll will re-build your site but doesn't have livereload out of the box, you need to use a [plugin for supporting it](https://github.com/anomaly/jekyll-reload)
-
-{{< note >}}
-Jekyll is easy to install and use, the major problem you'll face at this point is the installation and configuration of Ruby and gem in your system but if you are comfortable working with the Ruby ecosystem the other steps should be easy to follow.   
-{{< /note >}}
+![Image](https://screenshotscdn.firefoxusercontent.com/images/45ba2c16-e792-4c5f-b67a-ea4c66a324dd.png)
 
 ### Templating System and Themes
 
 Jekyll uses the [Liquid](https://jekyllrb.com/docs/templates/) templating engine. Liquid was developed and used by Shopify.
-
-<iframe width="641" height="361" src="https://www.youtube.com/embed/-ihFPNcSkT4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 You can also use *Textile* which is supported through an [official plugin](https://github.com/jekyll/jekyll-textile-converter).
 
@@ -147,7 +104,7 @@ Jekyll allows you to use themes as gems that can be installed from RubyGems whic
 
 ### Markdown and Multiple Format Support
 
-Jekyll uses the popular [Markdown](https://daringfireball.net/projects/markdown/)) format with [YAML](https://jekyllrb.com/docs/frontmatter/) for front matter, CSS and HTML for formatting static content.
+Jekyll uses the popular [Markdown](https://daringfireball.net/projects/markdown/) format with [YAML](https://jekyllrb.com/docs/frontmatter/) for front matter, CSS and HTML for formatting static content.
 
 Jekyll supports Markdown and HTML by default but you can also support other formats by installing the required converters.
 
@@ -216,15 +173,15 @@ Hugo uses Markdown format with YAML Front Matter.
 Hugo has many pros:
 
 * open source and free project
-* blazing fast speed, enginnered and optimized for speed 
-* batteries included: built-in pagination, built-in redirection with aliases etc. 
+* blazing fast speed, enginnered and optimized for speed
+* batteries included: built-in pagination, built-in redirection with aliases etc.
 * built-in support for dynamic API driven content
-* built-in support for unlimited content types 
+* built-in support for unlimited content types
 * thanks to shortcodes, Hugo offers a flexible alternative to Markdown
-* pre-made templates and patterns 
+* pre-made templates and patterns
 * support for multiple and custom outputs
-* complete built-in support for i18n 
-* robust theming system 
+* complete built-in support for i18n
+* robust theming system
 * available free and open source [themes](http://themes.gohugo.io/)
 * easy to install
 * dependency free
@@ -233,55 +190,12 @@ Hugo has many pros:
 Hugo has also quite a few cons:
 
 * themes use Go templates so you'll need to be familiar with Go to create your theme
-* Hugo doesn't ship with a default theme 
+* Hugo doesn't ship with a default theme
 * luck for extensibility and plugins (major drawback)
 
-### Community and Popularity
+#### Community and Popularity
 
 Hugo is not as popular as Jekyll but it's now [among the most three popular static generators](https://www.staticgen.com/) in the web. It's seen as a blazing fast alternative to Jekyll.
-
-### Workflow and Easiness of Use
-
-You can download a pre-compiled binary for Hugo and start using it without installing Go and other dependencies.
-
->There is lots of talk about “Hugo being written in Go”, but you don’t need to install Go to enjoy Hugo. Just grab a precompiled binary! [Source](https://gohugo.io/getting-started/installing/)
-
-If you prefer package managers you can also install Hugo for the major operating systems with one command:
-
-```bash
-// Linux
-snap install hugo
-
-
-// MAC 
-brew install hugo
-
-
-// Windows
-choco install hugo -confirm 
-
-
-// Debian based systems
-sudo apt-get install hugo
-```
-
-Hugo is the simplest to download and install among the other static generators i.e Jekyll and Hexo.
-
-You can then generate a new site by simply running:
-
-```bash
-hugo new site mysite
-```
-
-Next you need to add a [theme](https://themes.gohugo.io/) by placing it inside the `themes` folder then reference it in `config.toml`
-
-Next add some content and run a local server then navigate to `http://localhost:1313/`.
-
-```bash
-hugo server
-```
-
-You can find more information [here](https://gohugo.io/getting-started/quick-start/).
 
 ### Speed
 
@@ -290,8 +204,6 @@ If you’re concerned about performance and speed, Hugo is the static generator 
 Hugo is super fast. You can build your website in terms of milliseconds (instead of seconds or even minutes in case of Jekyll)
 
 This benchmark on Youtube shows Hugo building *5000* pages in about *6* seconds
-
-<iframe width="640" height="360" src="https://www.youtube.com/embed/CdiDYZ51a2o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### Template Engine and Themes
 
@@ -360,25 +272,6 @@ There are less tutorials for Hexo compared to Jekyll but the [documentation](htt
 
 As the time of this writing Hexo has *20.336* stars in Github.
 
-### Workflow and Easiness of Use
-
-If you are comfortable with installing Node.js and managing npm packages you'll have no problem installing Hexo it's only one command away. Most of the time, most headache comes from installing the Node.js platform and npm on your local machine.
-
-Once you have a development machine ready with Node and npm installed you can install Hexo from npm by running one simple command:
-
-```bash
-npm install hexo-cli -g
-```
-
-You can then generate and serve your static website using:
-
-```bash
-hexo init mywebsite
-cd mywebsite
-npm install
-hexo server
-```
-
 ### Speed
 
 Hexo is based on Node.js, a platform known by its effiecency and performance, as a result it's very fast (Hundreds of files take only seconds to build) but not faster than Hugo.
@@ -390,8 +283,6 @@ Just like Hugo, Hexo doesn't have an asset pipeline out of the box for pre-proce
 Hexo allows you to have asset folders per post which have the same name as the post file. The content of the asset folder will be copied to the same folder where the post HTML file is located.
 
 You can have asset folders per posts by adding a simple configuration setting `post_asset_folder: true`
-
-<iframe width="640" height="360" src="https://www.youtube.com/embed/feIDVQ2tz0o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Hexo also allows you to have global assets folders inside the `source` folder.
 
@@ -429,41 +320,14 @@ As a recap, Hexo is easy to install and use, very fast, highly extensible. It ha
 
 Gatsby is also a Progressive Web App generator so your static website is a PWA out of the box. You'll have many best practicies of modern web development that make your app the fatest possible such as code splitting, critical CSS and JavaScript and resources prefetching etc.
 
-![](https://screenshotscdn.firefoxusercontent.com/images/8f1bc0a9-b908-4bed-83bc-50bcdbbb9af8.png)
+![Image](https://screenshotscdn.firefoxusercontent.com/images/8f1bc0a9-b908-4bed-83bc-50bcdbbb9af8.png)
 
 To start using Gatsby you'll need to have a development machine with Node and npm installed then run the following command:
-
-```bash
-npm install --global gatsby-cli
-```
-
-You can then create a new site using:
-
-```bash
-gatsby new mysite
-```
-
-next navigate inside your site root folder then start your development server with:
-
-```bash
-cd gatsby-site
-gatsby develop 
-```
-
-You'll have a hot-reloading server accessible at localhost:8000
-
-You can then start editing your pages at `src/pages`.
-
-Finally you can build an optimized production ready site by running:
-
-```bash
-gatsby build
-```
 
 Gatsby has many advantages such as:
 
 * cutting-edge technologies
-* automatic routing based on your directory structure. 
+* automatic routing based on your directory structure.
 * re-usable components thanks to React
 * Webpack-based system
 * extensible by plugins
@@ -471,36 +335,6 @@ Gatsby has many advantages such as:
 * Easy data pulling from sources like CMS systems, APIs, databases, file system and markdown.
 
 For working with Gatsby you'll need to be familiar with React since you use React components to create your pages
-
-### Gitbook
-
-Gitbook is a static generator tool for creating books and documentations. It's both a [host for books](https://www.gitbook.com/) and a set of Node tools for easily building books with Git.
-
-You'll need a Node environment then you can install the Gitbook CLI using npm:
-
-```bash
-npm install -g gitbook-cli
-```
-
-You can then create a boilerplate book using:
-
-```bash
-gitbook init
-```
-
-Next serve your book locally
-
-```bash
-gitbook serve
-```
-
-Gitbook has numerous advantages such as:
-
-* create books with powerful tools (content written in Markdown)
-* can generate ebooks in multiple formats: PDF, EPUB, etc.
-* books are managed by Git
-* you can distribute your books via a [self-publishing platform](https://www.gitbook.com/)
-* it supports plugins and has [hundreds of freely available plugins](https://plugins.gitbook.com/) for different purposes
 
 ## Conclusion
 
