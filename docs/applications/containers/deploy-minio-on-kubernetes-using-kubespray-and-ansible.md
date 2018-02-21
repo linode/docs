@@ -365,35 +365,3 @@ minio-service   LoadBalancer   10.233.28.163   <pending>     9000:30593/TCP   20
 5.  Minio has similar functionality to S3 such as file uploads, creating buckets, and storing other data.
 
     ![Minio Browser](/docs/assets/minio-browser.png)
-
-<!--
-Left for the technical editor to decide whether to keep
-
-### Expose Dashboard Publically (Don't do this)
-
-SSH into kubernetes master. Create file dashboard-admin.yaml
-
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: kubernetes-dashboard
-  labels:
-    k8s-app: kubernetes-dashboard
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: kubernetes-dashboard
-  namespace: kube-system
-```
-
-1.  kubectl create -f dashboard-admin.yaml
-
-2.  kubectl proxy --address 0.0.0.0 --accept-hosts '.*'
-
-3.  See dashboard from kubernetes master public IP via <publicIP>:8001/ui
-
--->
