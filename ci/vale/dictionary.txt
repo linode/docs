@@ -707,6 +707,7 @@ mediawiki
 memcached
 menuentry
 mesos
+metabase
 metacity
 metapackage
 metricbeat
