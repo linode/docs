@@ -21,7 +21,7 @@ Use `killall` and `kill` in conjunction with tools including Process Status, `ps
 
 Throughout this guide, replace `[process name]` in each example with the name of the process you wish to terminate.
 
-## killall and kill Usage
+## Usage
 
 ### How to Use killall
 
@@ -39,9 +39,7 @@ This sends the `SIGKILL` signal which is more successful at ending a particularl
     killall -SIGKILL [process name]
     killall -9 [process name]
 
-## Using kill
-
-### How to Use kill and its Options
+### How to Use kill
 
 The `kill` command terminates individual processes as specified by their PID.
 
