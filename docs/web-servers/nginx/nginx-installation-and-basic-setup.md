@@ -104,17 +104,11 @@ https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#usi
 
 This series will use `/var/www/example.com/` in its examples. Replace `example.com` where you see it with the IP address or domain name of your Linode.
 
-1.  The root directory for your site or sites should be added to the corresponding `server` block in your configuration:
+1.  The root directory for your site or sites should be added to the corresponding `server` block of `/etc/nginx/conf.d/example.com.conf`:
 
-      {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
-server {
-    listen         80;
-    server_name    example.com;
-    root           /var/www/example.com;
-}
-{{< /file-excerpt >}}
+    root /var/www/example.com;
 
-2.  Create the root directory:
+2.  Then create that directory:
 
         mkdir -p /var/www/example.com
 
@@ -122,15 +116,11 @@ server {
 
 Default NGINX configurations listen on port `80` and on all IPv4 addresses. Unless you intend your site to be inaccessible over IPv6 (or are unable to provide it for some reason), you should tell NGINX to also listen for incoming IPv6 traffic.
 
-Add a second `listen` directive for IPv6:
+Add a second `listen` directive for IPv6 tp the `server` block of `/etc/nginx/conf.d/example.com.conf`:
 
-{{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
-server {
-    listen  80;
     listen [::]:80;
-{{< /file-excerpt >}}
 
-If your site uses TLS or SSL, then you would add:
+If your site uses SSL/TLS, you would add:
 
     listen [::]:443 ssl;
 
@@ -170,7 +160,7 @@ server {
 }
 {{< /file >}}
 
-There are various other options available to NGINX's gzip module. See the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_gzip_module.html) for more information, and if you prefer to compile your NGINX build, you can include the [*ngx_http_gzip_static_module*](https://nginx.org/en/docs/http/ngx_http_gzip_static_module.html) which further suits static content compression
+There are various other options available to NGINX's gzip module. See the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_gzip_module.html) for more information, and if you prefer to compile your NGINX build, you can include the [*ngx_http_gzip_static_module*](https://nginx.org/en/docs/http/ngx_http_gzip_static_module.html) which further suits static content compression.
 
 ## Configuration Recap
 
