@@ -404,6 +404,7 @@ getmail
 getpwent
 gfx
 gfxmode
+gibibytes
 girocco
 gist
 github
