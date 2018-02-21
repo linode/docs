@@ -116,7 +116,7 @@ This series will use `/var/www/example.com/` in its examples. Replace `example.c
 
 Default NGINX configurations listen on port `80` and on all IPv4 addresses. Unless you intend your site to be inaccessible over IPv6 (or are unable to provide it for some reason), you should tell NGINX to also listen for incoming IPv6 traffic.
 
-Add a second `listen` directive for IPv6 tp the `server` block of `/etc/nginx/conf.d/example.com.conf`:
+Add a second `listen` directive for IPv6 to the `server` block of `/etc/nginx/conf.d/example.com.conf`:
 
     listen [::]:80;
 
