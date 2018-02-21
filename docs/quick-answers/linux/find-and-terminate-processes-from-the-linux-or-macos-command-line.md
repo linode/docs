@@ -41,4 +41,4 @@ There may be cases where there are multiple instances of the same program or pro
 
     killall process_name
 
-For a more information on using `kill` and `killall`, see our guide [Use Killall and Kill Commands to Stop Processes on Linux](/docs/tools-reference/tools/use-killall-and-kill-to-stop-processes-on-Linux/).
+For a more information on using `kill` and `killall`, see our guide [Use Killall and Kill Commands to Stop Processes on Linux](/docs/tools-reference/tools/use-killall-and-kill-to-stop-processes-on-linux/).
