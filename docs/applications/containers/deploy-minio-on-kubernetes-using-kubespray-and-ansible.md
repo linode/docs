@@ -6,10 +6,10 @@ description: 'Minio is an open source S3 compatible object store that can be ins
 og_description: 'Minio is an open source S3 compatible object store that can be installed on a Kubernetes cluster. Learn how to use a combination of Kubespray and Ansible to provision a cluster and deploy Minio as a private cloud storage.'
 keywords: ['ansible', 'kubernetes', 'cluster', 's3', 'aws']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-02-14
-modified: 2018-02-14
+published: 2018-02-21
+modified: 2018-02-21
 modified_by:
-  name: Sam Foo
+  name: Linode
 title: 'Deploy Minio on Kubernetes using Kubespray and Ansible'
 external_resources:
 - '[Kubernetes](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)'
@@ -17,17 +17,17 @@ external_resources:
 - '[Kubespray](https://github.com/kubernetes-incubator/kubespray)'
 ---
 
-Minio is an open source and S3 compatible object store that can be self hosted on a Linode. Deployment on a Kubernetes cluster is supported as both a standalone and distributed mode. This guide uses [Kubespray](https://github.com/kubernetes-incubator/kubespray) to deploy a Kubernetes cluster on three servers running Ubuntu 16.04. Kubespray comes packaged with Ansible playbooks that simplifies setup on the cluster. Then Minio is installed on standalone mode on the cluster to show how to create a service on the cluster.
+Minio is an open source and S3 compatible object store that can be self hosted on a Linode. Deployment on a Kubernetes cluster is supported as both a standalone and distributed mode. This guide uses [Kubespray](https://github.com/kubernetes-incubator/kubespray) to deploy a Kubernetes cluster on three servers running Ubuntu 16.04. Kubespray comes packaged with Ansible playbooks that simplify setup on the cluster. Minio is then installed on standalone mode on the cluster to show how to create a service on the cluster.
 
 ## Before You Begin
 
-1.  For demonstrative purposes, this guide installs etcd and the Kubernetes master on the same node. High availability clusters will require a different configuration and is beyond the scope of this guide.
+1.  For demonstration purposes, this guide installs `etcd` and the Kubernetes master on the same node. High availability clusters will require a different configuration, which is beyond the scope of this guide.
 
 2.  Each Linode to be used in the cluster should have a user with sudo privileges.
 
 3.  A cluster can be simulated locally using [Minikube](https://github.com/kubernetes/minikube) to get comfortable with Kubernetes clusters.
 
-4.  The IP addresses of each node in the cluster and their roles will be represented as `kubernetes-masteri-ip`, `etcd-ip`, and `slave-ip`
+4.  The IP addresses of each node in the cluster and their roles will be represented as `kubernetes-master-ip`, `etcd-ip`, and `slave-ip`
 
 {{< note >}}
 If you do not want to install Ansible and other software locally, consider using another Linode as a jumpbox that will be used to connect with the master node.
@@ -85,11 +85,11 @@ Kubespray comes with a lot more configuration options not shown in this guide. R
         git clone https://github.com/kubernetes-incubator/kubespray.git
         cd kubespray
 
-2.  Checkout a tag for the desired version of Kubespray. This guide is written for version 2.4.0.
+2.  Check out a tag for the desired version of Kubespray. This guide is written for version 2.4.0.
 
         git checkout -b tag/v.2.4.0
 
-3.  Modify `~/kubespray/ansible.cfg` to run Ansible playbooks on hosts as a given user. Add `remote_user=username` under `[defaults]` substituting username.
+3.  Modify `~/kubespray/ansible.cfg` to run Ansible playbooks on hosts as a given user. Replace `username` with your Unix account username in `remote_user=username` under `[defaults]`.
 
     {{< file "~/kubespray/ansible.cfg" cfg >}}
 [ssh_connection]
@@ -152,7 +152,7 @@ node2
 node3
 {{< /file >}}
 
-7.  Uncomment the line with `docker_dns_servers_strict: false` in `~/kubernetes/inventory/minio/group_vars/all.yml`
+7.  Uncomment the line `docker_dns_servers_strict: false` in `~/kubernetes/inventory/minio/group_vars/all.yml`
 
 ## Prepare Hosts for Ansible
 Before Ansible can properly run Kubespray's playbooks on the hosts, the hosts must have a passwordless sudo user enabled and swap disabled for Kubernetes. Make sure the specified user (with the same username for simplicity) exists on each Linode prior to starting these steps. This section shows how to copy SSH keys to each Linode and modify the sudoers file over SSH.
@@ -187,9 +187,10 @@ Below is a loop that adds the line `username ALL=(ALL:ALL) NOPASSWD: ALL` to the
 {{< /file-excerpt >}}
 
 ## Run Ansible Playbook
+
 Before running the Ansible playbook, make sure firewalls are turned off to avoid unexpected errors.
 
-1.  Run the Ansible playbook. If your private key is named differently or located elsewhere, add `--private-key=/path/to/id_rsa` to the end.
+1.  Run the `cluster.yml` Ansible playbook. If your private key is named differently or located elsewhere, add `--private-key=/path/to/id_rsa` to the end.
 
         ansible-playbook -i inventory/minio/hosts.ini cluster.yml -b -v
 
@@ -199,28 +200,31 @@ This could take up to 20 minutes.
 
 ### Add and Remove Nodes
 
-1.  Navigate into `~/kubespray/minio/hosts.ini` and add the IP address of the new node.
+1.  Navigate into `~/kubespray/inventory/minio/hosts.ini` and add the IP address of the new node.
 
-2.  Run the Ansible playbook again with `scale.yml`.
+2.  Run ssh-copy-id to copy your SSH key to the new node:
+
+        ssh-copy-id username@new-node-ip
+
+3.  Run the `scale.yml` Ansible playbook:
 
         ansible-playbook -i inventory/minio/hosts.ini scale.yml -b -v
 
-3.  SSH into the Kubernetes master node then see all the available nodes:
+4.  SSH into the Kubernetes master node to list all the available nodes:
 
         kubectl get nodes
 
-4.  To remove a node, simply turn off the server and clean up on the master node with:
+5.  To remove a node, simply turn off the server and clean up on the master node with:
 
         kubectl delete node <ip-of-node>
 
 ## Minio on Kubernetes
 
-1.  SSH into the master node on the Kubernetes cluster:
-
-        ssh username@kubernetes-master-ip
+The commands in this section should be executed from the `kubernetes-master` Linode.
 
 ### Create a Persistent Volume
-Persistent Volumes(PV) are an abstraction in Kubernetes that represents a unit of storage provisioned in the cluster. A `PersistentVolumeClaim`(PVC) will allow a pod to consume the storage set aside by a PV. This section creates a PV of 15Gi then allow Minio to claim 10Gi of space.
+
+Persistent Volumes(PV) are an abstraction in Kubernetes that represents a unit of storage provisioned in the cluster. A `PersistentVolumeClaim`(PVC) will allow a pod to consume the storage set aside by a PV. This section creates a PV of 15Gi ([gibibytes](https://en.wikipedia.org/wiki/Binary_prefix)) then allow Minio to claim 10Gi of space.
 
 1.  On the Kubernetes master node, create a file called `minio-volume.yaml` with the following YAML below. Replace `username` on the `hostPath` with the appropriate path.
 
@@ -245,7 +249,7 @@ spec:
 
         kubectl create -f minio-volume.yaml
 
-3.  Create a PersistentVolumeClaim with `minio-pvc.yaml`:
+3.  Create a PVC with `minio-pvc.yaml`:
 
     {{< file "minio-pvc.yaml" >}}
 apiVersion: v1
@@ -269,7 +273,7 @@ spec:
 
 ### Create a Deployment
 
-1.  Create a Deployment and substitute `username` on the last line. The access and secret key are in the YAML file.
+1.  Create a Deployment configuration in `minio-deployment.yam.` and substitute `username` on the last line. The access and secret key are in the YAML file.
 
     {{< file "minio-deployment.yaml" >}}
 apiVersion: apps/v1 #  for k8s versions before 1.9.0 use apps/v1beta2  and before 1.8.0 use extensions/v1beta1
@@ -319,7 +323,7 @@ spec:
 
 2.  Create the Deployment.
 
-        kubectl create -f minio-deploment.yaml
+        kubectl create -f minio-deployment.yaml
 
 ### Create a Service
 
@@ -354,7 +358,7 @@ kubernetes      ClusterIP      10.233.0.1      <none>        443/TCP          1d
 minio-service   LoadBalancer   10.233.28.163   <pending>     9000:30593/TCP   20m
 {{< /output >}}
 
-4.  On any of the IP addresses in the cluster, access Minio from your browser on the exposed port.
+4.  In a browser, navigate to the public IP address of any of the Linodes in the cluster, at the exposed port (30593 in the example above):
 
     ![Minio Login Screen](/docs/assets/minio-login-screen.png)
 
