@@ -6,10 +6,10 @@ description: 'Metabase is a data exploration tool that makes analytics accessibl
 keywords: ["visualization", "database", "query"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: []
-modified: 2018-02-21
+modified: 2018-02-22
 modified_by:
   name: Linode
-published: 2018-02-21
+published: 2018-02-22
 title: 'Connect Metabase with MySQL for Data Exploration'
 external_resources:
  - '[The Official MySQL Web Site](http://www.mysql.com/)'
@@ -27,11 +27,11 @@ There are a number of additional databases that are supported from SQLite to Pos
 
 ### Java Runtime Environment
 
-{{< content "install-java-8-ppa" >}}
+{{< content "install-java-8-ppa.md" >}}
 
 ### MySQL Server
 
-1.  Download MySQL Server. Enter in a root password when specified:
+1.  Download MySQL Server. Enter a root password when specified:
 
         sudo apt install mysql-server
 
@@ -54,7 +54,7 @@ There are a number of additional databases that are supported from SQLite to Pos
 
         wget http://downloads.metabase.com/v0.28.1/metabase.jar
 
-2.  Move this into `/var` so that it can start on reboot..
+2.  Move this into `/var` so that it can start on reboot:
 
         sudo mv metabase.jar /var/metabase.jar
 
@@ -92,7 +92,8 @@ server {
         sudo systemctl restart nginx
 
 ## Download Example MySQL Database
-An example database can be loaded into MySQL. This is a database has over 2.8 million entries with makes it useful for experimenting in a non-trivial way.
+
+An example database can be loaded into MySQL. The [Employees Testing Database](https://github.com/datacharmer/test_db) is a database of employee and salary data with over 2.8 million entries. This size makes it useful for experimenting in a non-trivial way.
 
 1.  Install git:
 
@@ -159,7 +160,7 @@ export MB_DB_HOST=localhost
 
     This should print a path such as `/usr/bin/java`.
 
-1.  Create the configuration file to ensure Metabase runs on start up. `ExecStart=` should set to the JDK path from above. Be sure to replace `User` for your username:
+1.  Create a systemd configuration file to ensure Metabase runs on start up. `ExecStart=` should set to the JDK path from above. Be sure to replace `User` with your Unix username:
 
     {{< file "/etc/systemd/system/metabase.service" conf >}}
 [Unit]
@@ -184,13 +185,13 @@ WantedBy=multi-user.target
 
         sudo systemctl start metabase
 
-3.  Check Metabase is active:
+3.  Check that Metabase is active:
 
         sudo systemctl status metabase
 
 ### Firewall Rules
 
-UFW is great for preventing unauthorized access to your database. A reasonable default is to allow port 80/443 and SSH is:
+UFW is great for preventing unauthorized access to your database. A reasonable default is to allow port 80/443 and SSH:
 
     sudo ufw allow http
     sudo ufw allow https
@@ -221,11 +222,11 @@ Metabase is now accessible on the browser on your Linode's public IP address.
 
     ![Metabase Data Model](/docs/assets/metabase/metabase-admin-panel.png)
 
-5.  On the left, select Salaries to see some information like foreign keys and columns in the table. Click Add a Segment:
+5.  On the left, select Salaries to see information about the table, such as foreign keys and column names. Click **Add a Segment**:
 
     ![Metabase Salaries](/docs/assets/metabase/metabase-salaries.png)
 
-6.  Create a filter without using any SQL to see results greater than 50,000:
+6.  Create a filter to view all employees with a salary greater than 50,000 (Metabase allows you to create this filter without writing SQL):
 
     ![Metabase Segment](/docs/assets/metabase/metabase-segment.png)
 
@@ -233,4 +234,4 @@ Metabase is now accessible on the browser on your Linode's public IP address.
 
     ![Metabase Results](/docs/assets/metabase/metabase-results.png)
 
-There are a lot more additional functionality to be explored. Refer to the [official documentation](https://metabase.com/docs/latest/) for other use cases with Metabase.
+Metabase has much more functionality you can explore. Refer to the [official documentation](https://metabase.com/docs/latest/) for other use cases with Metabase.
