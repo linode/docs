@@ -19,7 +19,7 @@ external_resources:
 
 ![How to Create an Email Server with Mail-in-a-Box](/docs/assets/Mail_in_a_box.jpg "How to Create an Email Server with Mail-in-a-Box")
 
-If you chose to host your own email server, but after reading through [Running a Mail Server](/docs/email/running-a-mail-server) you got discouraged by the complexity of this process, then there's another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:
+If you chose to host own email server, but after reading through [Running a Mail Server](/docs/email/running-a-mail-server) you got discouraged by the complexity of this process, then there's another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:
 
 * Postfix, as the Simple Mail Transfer Protocol (SMTP) server.
 * Dovecot, as the Internet Message Access Protocol (IMAP) server; it's what allows you to sync mail with your phone, read/send messages, delete them, etc.
