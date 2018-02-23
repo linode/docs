@@ -580,6 +580,7 @@ jpg
 jre
 js
 json
+jumpbox
 jupyter
 kakfa
 kbits
@@ -612,6 +613,7 @@ kubectl
 kubelet
 kubelets
 kubernetes
+kubespray
 labelled
 lambdabunker
 laravel
@@ -720,7 +722,9 @@ minecraft
 miniconda
 miniconda3
 minification
+minikube
 minimalistic
+minio
 misconfiguration
 misconfigurations
 misconfigured
