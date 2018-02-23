@@ -17,7 +17,7 @@ external_resources:
 - '[Kubespray](https://github.com/kubernetes-incubator/kubespray)'
 ---
 
-Minio is an open source, S3 compatible, object store that can be self hosted on a Linode. Deployment on a Kubernesetes cluster is supported as both a standalone and distributed mode. This guide uses [Kubespray](https://github.com/kubernetes-incubator/kubespray) to deploy a Kubernetes cluster on three servers running Ubuntu 16.04. Kubespray comes packaged with Ansible playbooks that simplify setup on the cluster. Minio is then installed on standalone mode on the cluster to show how to create a service on the cluster.
+Minio is an open source, S3 compatible, object store that can be self hosted on a Linode. Deployment on a Kubernetes cluster is supported as both a standalone and distributed mode. This guide uses [Kubespray](https://github.com/kubernetes-incubator/kubespray) to deploy a Kubernetes cluster on three servers running Ubuntu 16.04. Kubespray comes packaged with Ansible playbooks that simplify setup on the cluster. Minio is then installed on standalone mode on the cluster to show how to create a service on the cluster.
 
 ## Before You Begin
 
