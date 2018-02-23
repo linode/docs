@@ -6,7 +6,7 @@ description: 'Minio is an open source S3 compatible object store that can be ins
 og_description: 'Minio is an open source S3 compatible object store that can be installed on a Kubernetes cluster. Learn how to use a combination of Kubespray and Ansible to provision a cluster and deploy Minio as a private cloud storage.'
 keywords: ['ansible', 'kubernetes', 'cluster', 's3', 'aws']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-02-21
+published: 2018-02-23
 modified: 2018-02-23
 modified_by:
   name: Linode
@@ -16,8 +16,9 @@ external_resources:
 - '[Minio](https://www.minio.io/)'
 - '[Kubespray](https://github.com/kubernetes-incubator/kubespray)'
 ---
+## What is Minio?
 
-Minio is an open source, S3 compatible, object store that can be self hosted on a Linode. Deployment on a Kubernetes cluster is supported as both a standalone and distributed mode. This guide uses [Kubespray](https://github.com/kubernetes-incubator/kubespray) to deploy a Kubernetes cluster on three servers running Ubuntu 16.04. Kubespray comes packaged with Ansible playbooks that simplify setup on the cluster. Minio is then installed on standalone mode on the cluster to show how to create a service on the cluster.
+Minio is an open source, S3 compatible object store that can be hosted on a Linode. Deployment on a Kubernetes cluster is supported in both standalone and distributed modes. This guide uses [Kubespray](https://github.com/kubernetes-incubator/kubespray) to deploy a Kubernetes cluster on three servers running Ubuntu 16.04. Kubespray comes packaged with Ansible playbooks that simplify setup on the cluster. Minio is then installed in standalone mode on the cluster to demonstrate how to create a service.
 
 ## Before You Begin
 
@@ -348,7 +349,7 @@ spec:
 
         kubectl create -f minio-service.yaml
 
-3.  See a list of running services. Under the column `PORT(S)`, the Minio service is running internally on port 9000 with 30593 exposed externally by the LoadBalancer.
+3.  See a list of running services. Under the column `PORT(S)`, you can see that the Minio service is running internally on port 9000, with 30593 exposed externally by the LoadBalancer.
 
         kubectl get services
 
