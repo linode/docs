@@ -17,7 +17,7 @@ external_resources:
 - '[Kubespray](https://github.com/kubernetes-incubator/kubespray)'
 ---
 
-Minio is an open source and S3 compatible object store that can be self hosted on a Linode. Deployment on a Kubernetes cluster is supported as both a standalone and distributed mode. This guide uses [Kubespray](https://github.com/kubernetes-incubator/kubespray) to deploy a Kubernetes cluster on three servers running Ubuntu 16.04. Kubespray comes packaged with Ansible playbooks that simplify setup on the cluster. Minio is then installed on standalone mode on the cluster to show how to create a service on the cluster.
+Minio is an open source, S3 compatible, object store that can be self hosted on a Linode. Deployment on a Kubernesetes cluster is supported as both a standalone and distributed mode. This guide uses [Kubespray](https://github.com/kubernetes-incubator/kubespray) to deploy a Kubernetes cluster on three servers running Ubuntu 16.04. Kubespray comes packaged with Ansible playbooks that simplify setup on the cluster. Minio is then installed on standalone mode on the cluster to show how to create a service on the cluster.
 
 ## Before You Begin
 
@@ -45,7 +45,7 @@ If you do not want to install Ansible and other software locally, consider using
         sudo apt-add-repository ppa:ansible/ansible
 
     {{< output >}}
- Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy. Avoid writing scripts or custom code to deploy and update your applications— automate in a language that approaches plain English, using SSH, with no agents to install on remote systems.
+ Ansible is a simple IT automation platform that makes your applications and systems easier to deploy. Avoid writing scripts or custom code to deploy and update your applications— automate in a language that approaches plain English, using SSH, with no agents to install on remote systems.
 
 http://ansible.com/
  More info: https://launchpad.net/~ansible/+archive/ubuntu/ansible
@@ -78,7 +78,7 @@ Kubespray exists as a Git repository and requires `python-netaddr` for network a
         sudo apt install python-netaddr
 
 ## Modify Kubespray Configurations
-Kubespray comes with a lot more configuration options not shown in this guide. Refer to the [documentation](https://kubespray.io/documents/) for more information on topics such as networking with Flannel, Helm installation, and large scale deployments.
+Kubespray comes with several configuration options not shown in this guide. Refer to the [documentation](https://kubespray.io/documents/) for more information on topics such as networking with Flannel, Helm installation, and large scale deployments.
 
 1.  Clone the Kubespray repository from Github then navigate into the repository.
 
@@ -109,17 +109,17 @@ deprecation_warnings=False
 remote_user=username
 {{< /file >}}
 
-4.  Copy the example inventory directory and rename:
+4.  Copy the example inventory directory and rename it:
 
         cp -r inventory/sample inventory/minio
 
-5.  Use Kubespray's inventory generator to build the inventory of hosts for Ansible. Declare the list of IP addresses for each Linode.
+5.  Use Kubespray's inventory generator to build an inventory of hosts for Ansible. Declare the list of IP addresses for each Linode.
 
         declare -a IPS=(kubernetes-master-ip etcd-ip slave-ip)
         CONFIG_FILE=inventory/minio/hosts.ini python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
     {{< note >}}
-Do not use hostnames when declaring $IPS. Only IP addresses are supported by the inventory generator at this time.
+Do not use hostnames when declaring `$IPS`. Only IP addresses are supported by the inventory generator at this time.
 {{< /note >}}
 
 6.  Example configuration for the cluster in this guide.
@@ -155,17 +155,17 @@ node3
 7.  Uncomment the line `docker_dns_servers_strict: false` in `~/kubernetes/inventory/minio/group_vars/all.yml`
 
 ## Prepare Hosts for Ansible
-Before Ansible can properly run Kubespray's playbooks on the hosts, the hosts must have a passwordless sudo user enabled and swap disabled for Kubernetes. Make sure the specified user (with the same username for simplicity) exists on each Linode prior to starting these steps. This section shows how to copy SSH keys to each Linode and modify the sudoers file over SSH.
+Before Ansible can properly run Kubespray's playbooks, the hosts must have a passwordless sudo user enabled, and swap disabled for Kubernetes. Make sure the specified user exists on each Linode prior to starting these steps. This section shows how to copy SSH keys to each Linode and modify the sudoers file over SSH.
 
-1.  Create private key if you **do not** have one especially if using a jumpbox.
+1.  Create a private key if you **do not** have one:
 
         ssh-keygen -b 4096
 
-2.  Copy your SSH key to each IP listed in the inventory using the $IPS variable declared earlier and replace `username` with the username of each of the hosts.
+2.  Copy your SSH key to each IP listed in the inventory using the `$IPS` variable declared earlier and replace `username` with the username for each of the hosts.
 
         for IP in ${IPS[@]}; do ssh-copy-id username@$IP; done
 
-### Create Passwordless Sudo on Nodes including master and etcd
+### Create Passwordless Sudo on Nodes
 
 Below is a loop that adds the line `username ALL=(ALL:ALL) NOPASSWD: ALL` to the last line of the sudoers file. You will be prompted for the password for each server.
 
@@ -173,9 +173,9 @@ Below is a loop that adds the line `username ALL=(ALL:ALL) NOPASSWD: ALL` to the
 
 ### Disable swap
 
-1.  Add this snippet below at the end of `~/kubespray/roles/bootstrap-os/tasks/main.yml` to disable swap using Ansible.
+Add this snippet below at the end of `~/kubespray/roles/bootstrap-os/tasks/main.yml` to disable swap using Ansible.
 
-    {{< file-excerpt "~/kubespray/roles/bootstrap-os/tasks/main.yml" >}}
+{{< file-excerpt "~/kubespray/roles/bootstrap-os/tasks/main.yml" >}}
 - name: Remove swapfile from /etc/fstab
   mount:
     name: swap
@@ -190,15 +190,15 @@ Below is a loop that adds the line `username ALL=(ALL:ALL) NOPASSWD: ALL` to the
 
 Before running the Ansible playbook, make sure firewalls are turned off to avoid unexpected errors.
 
-1.  Run the `cluster.yml` Ansible playbook. If your private key is named differently or located elsewhere, add `--private-key=/path/to/id_rsa` to the end.
+Run the `cluster.yml` Ansible playbook. If your private key is named differently or located elsewhere, add `--private-key=/path/to/id_rsa` to the end.
 
-        ansible-playbook -i inventory/minio/hosts.ini cluster.yml -b -v
+    ansible-playbook -i inventory/minio/hosts.ini cluster.yml -b -v
 
-    {{< caution >}}
+{{< caution >}}
 This could take up to 20 minutes.
 {{< /caution >}}
 
-### Add and Remove Nodes
+### Add or Remove Nodes
 
 1.  Navigate into `~/kubespray/inventory/minio/hosts.ini` and add the IP address of the new node.
 
@@ -273,7 +273,7 @@ spec:
 
 ### Create a Deployment
 
-1.  Create a Deployment configuration in `minio-deployment.yam.` and substitute `username` on the last line. The access and secret key are in the YAML file.
+1.  Create a Deployment configuration in `minio-deployment.yaml` and substitute `username` on the last line. The access and secret key are in the YAML file.
 
     {{< file "minio-deployment.yaml" >}}
 apiVersion: apps/v1 #  for k8s versions before 1.9.0 use apps/v1beta2  and before 1.8.0 use extensions/v1beta1
@@ -362,6 +362,6 @@ minio-service   LoadBalancer   10.233.28.163   <pending>     9000:30593/TCP   20
 
     ![Minio Login Screen](/docs/assets/minio-login-screen.png)
 
-5.  Minio has similar functionality to S3 such as file uploads, creating buckets, and storing other data.
+5.  Minio has similar functionality to S3: file uploads, creating buckets, and storing other data.
 
     ![Minio Browser](/docs/assets/minio-browser.png)
