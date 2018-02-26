@@ -73,7 +73,7 @@ GlusterFS generates a UUID upon installation. Do not clone a single Linode to re
 1.  Add the `centos-release-gluster37` repository, which will allow you to install the GlusterFS server edition package:
 
         yum install epel-release
-        yum install centos-release-gluster37
+        yum install centos-release-gluster39
         yum install glusterfs-server
 
     {{< note >}}
