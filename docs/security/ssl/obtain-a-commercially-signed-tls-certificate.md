@@ -5,15 +5,13 @@ author:
 description: 'This guide shows how to create a commercially-signed TLS certificate with OpenSSL.'
 keywords: ["ssl", "tls", "https", "certificate", "commercial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/ssl/create-a-self-signed-certificate-on-centos-and-fedora/','security/ssl/create-a-self-signed-certificate-on-debian-and-ubuntu/','security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora/','security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu/','security/ssl/obtaining-a-commercially-signed-ssl-certificate/']
+aliases: ['security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora/','security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu/','security/ssl/obtaining-a-commercially-signed-ssl-certificate/','security/ssl/obtaining-a-commercial-ssl-certificate/']
 modified: 2018-01-23
 modified_by:
   name: Linode
 published: 2017-12-20
 title: 'Obtain a Commercially Signed TLS Certificate'
 ---
-
-## What is a Commercially Signed TLS Certificate?
 
 If you intend to host a publicly accessible website which will use HTTPS, then you will want to install a commercially signed TLS certificate so people visiting your site don't get warnings in their browser about an unsafe connection.
 
