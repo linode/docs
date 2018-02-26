@@ -145,14 +145,14 @@ UsePAM yes
 
 7.  Restart the sshd daemon to allow the changes to take effect:
 
-		sudo systemctl restart sshd 
+		sudo systemctl restart sshd
 
 ## Test the YubiKey
 
 Now that this process is done, you can test your login by logging out and back in:
 
-	exit	
-	ssh user@example.com 
+	exit
+	ssh user@example.com
 
 Depending on your setup, you may be prompted for your YubiKey. All you need to do is touch the button; it will enter the key for you. Then, type in your password if you are using multi-factor authentication. It will look something like the image below.
 
