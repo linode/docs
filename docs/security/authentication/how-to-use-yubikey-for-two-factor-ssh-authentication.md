@@ -8,7 +8,7 @@ aliases: ['security/how-to-use-yubikey-for-two-factor-ssh-authentication/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 title: 'How to use a YubiKey for Two-Factor Secure Shell Authentication'
 published: 2017-08-28
-modified: 2017-09-06
+modified: 2018-02-26
 modified_by:
   name: Linode
 contributor:
@@ -111,14 +111,14 @@ user4:vvddhfjjasui:vvfjidkflssd
 {{< /file >}}
 
 
-5. Add `auth required pam_yubico.so id=<client id> key=<secret key> authfile=/etc/ssh/yubikeys` to the start of `/etc/pam.d/sshd`. Replace `<client id>` with the ID you retrieved when applying for an API key, and `<secret key>` with the secret key. If you only want single-factor authentication (either a YubiKey or a password), change `required` to `sufficient` to tell the system that a valid YubiKey will be enough to log in.
+5. Add `auth required pam_yubico.so id=<client id> key=<secret key> authfile=/etc/ssh/authorized_yubikeys` to the start of `/etc/pam.d/sshd`. Replace `<client id>` with the ID you retrieved when applying for an API key, and `<secret key>` with the secret key. If you only want single-factor authentication (either a YubiKey or a password), change `required` to `sufficient` to tell the system that a valid YubiKey will be enough to log in.
 
     {{< file-excerpt "/etc/pam.d/sshd" >}}
 # PAM configuration for the Secure Shell service
 
 # Add your line below this one
 # v v v v v v
-auth required pam_yubico.so id=client id key=secret key authfile=/etc/ssh/yubikeys
+auth required pam_yubico.so id=client id key=secret key authfile=/etc/ssh/authorized_yubikeys
 # ^ ^ ^ ^ ^ ^
 # Add your line above this one
 
@@ -143,24 +143,31 @@ UsePAM yes
 
     If you want to only use a YubiKey for single-factor authentication, set `PasswordAuthentication no`.
 
-7. Since you've edited SSH settings, you will need to restart your Linode. You can do this from the Linode Manager or by typing `sudo reboot`.
+7.  Restart the sshd daemon to allow the changes to take effect:
 
-## Log Back In
+		sudo systemctl restart sshd
 
-Now that this process is done, you can test your login by typing `ssh user@example.com`. Depending on your setup, you may be prompted for your YubiKey. All you need to do is touch the button; it will enter the key for you. Then, type in your password if you are using multi-factor authentication. It will look something like the image below.
+## Test the YubiKey
+
+Now that this process is done, you can test your login by logging out and back in:
+
+	exit
+	ssh user@example.com
+
+Depending on your setup, you may be prompted for your YubiKey. All you need to do is touch the button; it will enter the key for you. Then, type in your password if you are using multi-factor authentication. It will look something like the image below.
 
 ![SSH window](/docs/assets/yubikey-ssh.png)
 
 You can now log into your server.
 
-## Troubleshoot Yubikey, If Needed
+## Troubleshoot YubiKey
 
 If you encounter any problems, make sure you've followed all of the steps in this guide and restarted your server. If these steps don't solve your issues, you can enable logging, by following these steps:
 
 1. Add the word `debug` to the end of the line you added in `/etc/pam.d/sshd`:
 
     {{< file-excerpt "/etc/pam.d/sshd" >}}
-auth required pam_yubico.so id=<client id> key=<secret key> authfile=/etc/ssh/yubikeys debug
+auth required pam_yubico.so id=<client id> key=<secret key> authfile=/etc/ssh/authorized_yubikeys debug
 
 {{< /file-excerpt >}}
 
