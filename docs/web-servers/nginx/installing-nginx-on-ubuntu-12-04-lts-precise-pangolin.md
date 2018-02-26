@@ -59,9 +59,9 @@ This method is the easiest and it ensures that Nginx has been tested to run at i
 
 ### Installing from NGINX
 
-Nginx's [downloads page](https://www.nginx.com/download-oss-information/) has two more ways to install the web server: Using pre-built packages from the official Nginx repository or by building from source code. Either method will give you a more current version than what's available in Trusty Tahr but with a slightly higher chance of encountering unforseen issues because of newly-introduced bugs, and that these releases are not tested exclusively for a specific Linux distribution.
+Nginx's [downloads page](https://www.nginx.com/download-oss-information/) has two more ways to install the web server: Using pre-built packages from the official Nginx repository or by building from source code. Either method will give you a more current version than what's available in Trusty Tahr but with a slightly higher chance of encountering unforeseen issues because of newly-introduced bugs, and that these releases are not tested exclusively for a specific Linux distribution.
 
-#### Installing from the Offcial Nginx Repository
+#### Installing from the Official Nginx Repository
 
 The binary packages from Nginx's repo will update you to new versions of the web server when available. You can choose the [stable](http://nginx.org/en/linux_packages.html#stable) or [mainline](http://nginx.org/en/linux_packages.html#mainline) versions. If unsure, choose stable, which will be the example used for the remainder of this guide.
 

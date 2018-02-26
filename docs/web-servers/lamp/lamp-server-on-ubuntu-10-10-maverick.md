@@ -106,7 +106,7 @@ After enabling, disabling, or modifying any part of your Apache configuration, y
 
 ## Install and Configure the MySQL Database Server
 
-MySQL is a relational database management system (RDBMS) and is a popular component of web development tool-chains. It is used to store data for many popular applications, including Wordpress and Drupal.
+MySQL is a relational database management system (RDBMS) and is a popular component of web development tool-chains. It is used to store data for many popular applications, including WordPress and Drupal.
 
 ### Install MySQL
 

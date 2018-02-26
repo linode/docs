@@ -142,7 +142,7 @@ This guide requires additional libraries which are not included in our standard 
 
         cd ~/Steam/L4D2-server/left4dead2/cfg
 
-	Choose one of the following example files:
+    Choose one of the following example files:
 
         wget https://www.gottnt.com/l4d2/basic-server.cfg
         wget https://www.gottnt.com/l4d2/detailed-server.cfg
@@ -168,7 +168,7 @@ The `+port 27020` parameter is not required but is recommended so that your serv
 {{< /note >}}
 
     You can change the map to whichever one you prefer.
-	This script, when run, will execute the L4D2 server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+    This script, when run, will execute the L4D2 server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
 5.  Make the script executable:
 
@@ -202,7 +202,7 @@ You can connect to the server in any one of three easy methods:
 3.  A third method is to install the following add-on: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=121088946) and then launch the game. Next, click on the new `Server Browser` option on the main menu and find your server in the long list of servers. This method only works if you have set the `hostname`, `sv_search_key`, and `sv_tags` options in the config file.
 
     {{< note >}}
-Your L4D2 server will only show up in the `Custom` list of servers. Therefore, we recomend that you add it to your favorites to avoid having to look for it again.
+Your L4D2 server will only show up in the `Custom` list of servers. Therefore, we recommend that you add it to your favorites to avoid having to look for it again.
 {{< /note >}}
 
 Finally, invite friends to the game using the Steam Overlay (`SHIFT + TAB`). Let the playing begin!

@@ -19,7 +19,7 @@ external_resources:
 
 Celery is a Python Task-Queue system that handle distribution of tasks on workers across threads or network nodes. It makes asynchronous task management easy. Your application just need to push messages to a broker, like RabbitMQ, and Celery workers will pop them and schedule task execution.
 
-Celery can be used in multiple configuration. Most frequent uses are horizontal application scalling by running ressource intensive tasks on Celery workers distributed accross a cluster, or to manage long asynchronous tasks in a web app, like thumbnail generation when a user post an image. This guide will take you through installation and usage of Celery with an example application that delegate file downloads to Celery workers, using Python 3, Celery 4.1.0, and RabbitMQ.
+Celery can be used in multiple configuration. Most frequent uses are horizontal application scaling by running resource intensive tasks on Celery workers distributed across a cluster, or to manage long asynchronous tasks in a web app, like thumbnail generation when a user post an image. This guide will take you through installation and usage of Celery with an example application that delegate file downloads to Celery workers, using Python 3, Celery 4.1.0, and RabbitMQ.
 
 ## Before You Begin
 
@@ -41,7 +41,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Celery
 
-Celery is available from PyPI. The easiest and recommand way is to install it with `pip`. You can go for a system wide installation for simplicity, or use a virtual environment if other Python applications runs on your system. This last method installs the libraries on a per project basis and prevent version conflicts with other applications.
+Celery is available from PyPI. The easiest and recommended way is to install it with `pip`. You can go for a system wide installation for simplicity, or use a virtual environment if other Python applications runs on your system. This last method installs the libraries on a per project basis and prevent version conflicts with other applications.
 
 ### System Wide Installation
 
@@ -264,7 +264,7 @@ CELERY_BIN=/home/celery/miniconda3/bin/celery
         r2 = list.delay()
         r2.get(timeout=1)
 
-    Depending on how quickly you enter the commands, the worker for `list` task may finish before the worker for `download` task and you may not see the linode logo in the list. Have a look at log files, like in step 7, and you will see which worker handled each task.
+    Depending on how quickly you enter the commands, the worker for `list` task may finish before the worker for `download` task and you may not see the Linode logo in the list. Have a look at log files, like in step 7, and you will see which worker handled each task.
 
 ## Monitor your Celery Cluster
 
@@ -293,7 +293,7 @@ celery@celery: OK
     - empty -
 {{< /output >}}
 
-3.  Use the **inspect stats** command to get statistics about the workers. It gives lot of informations, like worker ressource usage under `rusage` key, or the total tasks completed under `total` key.
+3.  Use the **inspect stats** command to get statistics about the workers. It gives lot of information, like worker resource usage under `rusage` key, or the total tasks completed under `total` key.
 
         celery -A downloaderApp inspect stats
 

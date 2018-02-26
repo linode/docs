@@ -132,7 +132,7 @@ Assuming that you have configured the DNS for your domain to point to your Linod
 
     Enter the root password. The MySQL prompt will appear.
 
-2.  Create a database and a user with permissions for it. In this example the databse is called `webdata`, the user `webuser` and password `password`:
+2.  Create a database and a user with permissions for it. In this example the database is called `webdata`, the user `webuser` and password `password`:
 
         create database webdata;
         grant all on webdata.* to 'webuser' identified by 'password';

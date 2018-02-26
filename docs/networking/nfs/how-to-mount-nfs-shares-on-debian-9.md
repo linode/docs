@@ -164,4 +164,4 @@ Now let's replace **root\_squash** with **no\_root\_squash** in `/etc/exports` o
 
     sudo echo "Hi everyone" > /mnt/remotenfs/testfile2.txt
 
-If you check the ownership of `testfile2.txt` either on the client or the server, you'll see that it is now owned by `root:root`. These simple examples illustrate the use and implications of **root\_squash** and **no\_root\_squash**. For your security, don't forget to remove the latter and readd the former in your `/etc/exports` as soon as possible.
+If you check the ownership of `testfile2.txt` either on the client or the server, you'll see that it is now owned by `root:root`. These simple examples illustrate the use and implications of **root\_squash** and **no\_root\_squash**. For your security, don't forget to remove the latter and re-add the former in your `/etc/exports` as soon as possible.

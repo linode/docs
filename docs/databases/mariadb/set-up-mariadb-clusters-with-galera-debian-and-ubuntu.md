@@ -18,7 +18,7 @@ external_resources:
 MariaDB replication with Galera adds redundancy for a site's database. With database replication, multiple servers act as a database cluster. Database clustering is particularly useful for high availability website configurations. This guide uses three separate Linodes to configure database replication, each with private IPv4 addresses on Debian and Ubuntu.
 
 {{< note >}}
-Communication between nodes are unecrypted. This guide assumes that your Linodes are each configured with a [Private IP Address](/docs/networking/remote-access#adding-private-ip-addresses) and located within the same data center.
+Communication between nodes are unencrypted. This guide assumes that your Linodes are each configured with a [Private IP Address](/docs/networking/remote-access#adding-private-ip-addresses) and located within the same data center.
 {{< /note >}}
 
 Additionally:
@@ -48,7 +48,7 @@ On Debian 9 and later, run `sudo apt install dirmngr` before importing the key.
     | Ubuntu 16.04 | 0xF1656F24C74CD1D8 |   10.1  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.1/ubuntu xenial main
     | Ubuntu 16.04 | 0xF1656F24C74CD1D8 |   10.0  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.1/ubuntu xenial main
 
-    There may not be a released version for each distribution. e.g. Debian 8 has version 10.0 and 10.1 whereas Debian 9 has only 10.1 available. To see all available distributions, visit the MariaDB reporsitory [download page](https://downloads.mariadb.org/mariadb/repositories/).
+    There may not be a released version for each distribution. e.g. Debian 8 has version 10.0 and 10.1 whereas Debian 9 has only 10.1 available. To see all available distributions, visit the MariaDB repository [download page](https://downloads.mariadb.org/mariadb/repositories/).
 
 3.  Install MariaDB, Galera, and Rsync:
 

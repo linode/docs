@@ -98,7 +98,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
     WordPress will test the credentials and if authentication is successful, prompt you to **Run the install**.
 
     {{< note >}}
-If Wordpress doesn't display when you visit your domain, try adding `/wp-admin` to the end of the URL. This sometimes happens if you previously created an index file in your site's home directory.
+If WordPress doesn't display when you visit your domain, try adding `/wp-admin` to the end of the URL. This sometimes happens if you previously created an index file in your site's home directory.
 {{< /note >}}
 
 2.  Fill out the administration information and click **Install WordPress**.
@@ -188,7 +188,7 @@ upload_max_filesize = 2M
 
 ## Install Optional PHP Extensions
 
-Wordpress, and many of its plugins, use PHP extensions that you'll need to install manually. This section is optional, but it will allow you to access some Wordpress features you may not have with a basic PHP installation.
+WordPress, and many of its plugins, use PHP extensions that you'll need to install manually. This section is optional, but it will allow you to access some WordPress features you may not have with a basic PHP installation.
 
 -   In order to modify photos or images in Wordpress, you'll need the PHP-GD extension. For example, when you upload an image to use as a header, you may need to crop the image to make it fit your page.
 
@@ -202,7 +202,7 @@ Wordpress, and many of its plugins, use PHP extensions that you'll need to insta
 
         sudo apt install php7.0-mbstring
 
--   To use XML-RPC to access Wordpress via the mobile app, or to use Jetpack, you'll need `php-xmlrpc`.  For more information on XML-RPC, visit the [WordPress guide on XML-RPC](https://codex.wordpress.org/XML-RPC_Support). For more information on Jetpack, visit [Jetpack for Wordpress](https://jetpack.com/).
+-   To use XML-RPC to access WordPress via the mobile app, or to use Jetpack, you'll need `php-xmlrpc`.  For more information on XML-RPC, visit the [WordPress guide on XML-RPC](https://codex.wordpress.org/XML-RPC_Support). For more information on Jetpack, visit [Jetpack for Wordpress](https://jetpack.com/).
 
     To install the XML-RPC extension:
 

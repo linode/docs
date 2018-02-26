@@ -43,14 +43,14 @@ We assume that your existing server has a single root partition. If you have mul
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Create a disk to hold the files from the existing server. Select **Create a new Disk**. The webpage shown below appears.
 
-	[![Creating a disk](/docs/assets/1039-migrate1.png)](/docs/assets/1039-migrate1.png)
+    [![Creating a disk](/docs/assets/1039-migrate1.png)](/docs/assets/1039-migrate1.png)
 
 5.  Enter a descriptive name for the disk in the **Label** field.
 6.  Enter a size for the disk in the **Size** field. You should make the disk large enough to hold the contents of your current server's root partition.
 7.  Click **Save Changes** to create the disk. The Linode's dashboard appears. You can monitor the disk creation process by watching the *Host Job Queue*.
 8.  Now create a swap disk for your existing server. Select **Create a new Disk**. The webpage shown below appears.
 
-	[![Creating a disk](/docs/assets/1040-migrate2.png)](/docs/assets/1040-migrate2.png)
+    [![Creating a disk](/docs/assets/1040-migrate2.png)](/docs/assets/1040-migrate2.png)
 
 9.  Enter a name for the swap disk in the **Label** field.
 10. From the **Type** menu, select **swap**.
@@ -66,12 +66,12 @@ You'll need a configuration profile to boot your existing server after you uploa
 1.  In the [Linode Manager](https://manager.linode.com), select the Linode's dashboard.
 2.  Select **Create a new Configuration Profile**. The webpage shown below appears.
 
-	[![Creating a configuration profile](/docs/assets/migrate-configuration-profile-small.png)](/docs/assets/migrate-configuration-profile.png)
+    [![Creating a configuration profile](/docs/assets/migrate-configuration-profile-small.png)](/docs/assets/migrate-configuration-profile.png)
 
 3.  Enter a name for the configuration profile in the **Label** field.
 4.  *Optional:* Enter notes for the configuration profile in the **Notes** field.
 
-	 {{< note >}}
+    {{< note >}}
 Make sure that you select the correct kernel for your existing server. There are 32-bit and 64-bit versions available. The 64-bit version has `x86_64` in the name.
 {{< /note >}}
 
@@ -137,7 +137,7 @@ After the network copy is complete and the files from the existing server have b
 
     The entire mounted filesystem will be recursively searched for any instances of your old IP address. Note that this replacement operation can take a while to complete.
 
-3.  You can find your IP information in the Linode Manger under the remote access tab.  You'll need your public IP, gateway, and dns server.  On the Linode, open the releveant network configuration files for your distribution and adjust them accordingly.
+3.  You can find your IP information in the Linode Manger under the remote access tab.  You'll need your public IP, gateway, and dns server.  On the Linode, open the relevant network configuration files for your distribution and adjust them accordingly.
 
 ### Configuring Mount Points
 
@@ -149,7 +149,7 @@ Now you should configure mount points for the new disks. Here's how:
 
 2.  Change the mount point for `root` to `/dev/sda`, and the mount and `swap` to `/dev/sdb`, as shown below:
 
-	{{< file-excerpt "/media/sda/etc/fstab" >}}
+    {{< file-excerpt "/media/sda/etc/fstab" >}}
 # /etc/fstab: static file system information.
 #
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
@@ -211,7 +211,7 @@ Here's how to fix persistent rules:
 
 3.  Modify the file to remove `eth*` from the beginning of the kernel whitelist so that it does not create persistent rules for `eth*`. In this case we simply removed `eth*` from the beginning of the kernel whitelist. The relevant section in the file should resemble the following:
 
-	{{< file-excerpt "udev network rules" >}}
+    {{< file-excerpt "udev network rules" >}}
 # device name whitelist
 KERNEL!="ath*|wlan*[0-9]|msh*|ra*|sta*|ctc*|lcs*|hsi*", \
 GOTO="persistent_net_generator_end"
@@ -239,7 +239,7 @@ Now it's time to boot your Linode from the new disks. All you have to do is sele
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the configuration profile you created earlier, as shown below.
 
-	[![Selecting the configuration profile](/docs/assets/1047-migrate6-small.png)](/docs/assets/1048-migrate6.png)
+    [![Selecting the configuration profile](/docs/assets/1047-migrate6-small.png)](/docs/assets/1048-migrate6.png)
 
 5.  Click **Reboot** to restart your Linode with the configuration profile and disks you just created.
 

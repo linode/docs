@@ -207,7 +207,7 @@ According to OpenSSL's man page, `genpkey -genparam` supersedes `dhparam`.
 
 ## VPN Certificate Authority
 
-Client certificates and keys should be not be managed directly on your VPN server. They should be created locally on a computer and stored offline. For the best quality entropy, they should be created on a computer which has a powerful CPU. You should avoid doing this on a virutal machine.
+Client certificates and keys should be not be managed directly on your VPN server. They should be created locally on a computer and stored offline. For the best quality entropy, they should be created on a computer which has a powerful CPU. You should avoid doing this on a virtual machine.
 
 You can generate certificates and keys two ways: by using [EasyRSA](https://github.com/OpenVPN/easy-rsa) scripts, or by creating your own public key infrastructure for your VPN, which includes customizations not included in the default OpenSSL configuration file.
 

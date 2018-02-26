@@ -21,7 +21,7 @@ title: 'How to Deploy RStudio Server Using an NGINX Reverse Proxy'
 
 This guide assumes an R installation version of R 3.0.1+ and will show how to install RStudio Server 1.1. See our guide on [installing R on Ubuntu and Debian](/docs/development/r/how-to-install-r-on-ubuntu-and-debian) for steps on installing the latest version of R.
 
-The steps in this guide are for Ubuntu 16.04 and should be adapted to your specfic distribution installation.
+The steps in this guide are for Ubuntu 16.04 and should be adapted to your specific distribution installation.
 
 ## Install RStudio Server
 
@@ -84,7 +84,7 @@ Running Rstudio server behind a reverse proxy offers benefits such as being able
 
         sudo apt install nginx
 
-2.  Open `nginx.conf` in a text edirot and add the following configuration:
+2.  Open `nginx.conf` in a text editor and add the following configuration:
 
     {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
 http {

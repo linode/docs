@@ -22,11 +22,11 @@ external_resources:
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.
 
-In this guide, we'll explain how to host a highly available website with Wordpress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability).
+In this guide, we'll explain how to host a highly available website with WordPress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability).
 
 ## Before You Begin
 
-1.  We will be using a total of nine nodes, or servers, all running CentOS 7, and all within the same datacenter. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone for each Linode you create.
+1.  We will be using a total of nine nodes, or servers, all running CentOS 7, and all within the same data center. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone for each Linode you create.
 
 2.  You should also be familiar with our [Securing Your Server](/docs/security/securing-your-server) guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we'll be handling that step in our guide.
 
@@ -617,10 +617,10 @@ The final step in creating a highly available website or application is to load 
 For instructions on how to install this component, follow our guide on [getting started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
 
 {{< note >}}
-Nodebalancers are an add-on service. Be aware that adding a Nodebalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/platform/billing-and-payments#additional-linode-services) guide for more information.
+NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/platform/billing-and-payments#additional-linode-services) guide for more information.
 {{< /note >}}
 
-## Wordpress (Optional)
+## WordPress (Optional)
 
 If you're installing WordPress to manage your new highly available website, we'll explain how to do so here. If you're using your cluster to serve a custom application, website, or for another purpose, you may skip this section.
 
@@ -643,13 +643,13 @@ If you're installing WordPress to manage your new highly available website, we'l
 
         systemctl restart httpd
 
-5.  On *just one* of your application servers, install the latest version of Wordpress into `/srv/www` and extract it:
+5.  On *just one* of your application servers, install the latest version of WordPress into `/srv/www` and extract it:
 
         cd /srv/www
         wget http://wordpress.org/latest.tar.gz
         tar -xvf latest.tar.gz
 
-    Optionally, you can create a backup of your original Wordpress archive in case you need to reinstall it at a later time:
+    Optionally, you can create a backup of your original WordPress archive in case you need to reinstall it at a later time:
 
         mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
@@ -661,9 +661,9 @@ If you're installing WordPress to manage your new highly available website, we'l
 
         systemctl restart httpd
 
-8.  In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the Wordpress admin panel. Use `wordpress` as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instruction, see our guide on [Installing and Configuring WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress#configure-wordpress).
+8.  In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the WordPress admin panel. Use `wordpress` as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instruction, see our guide on [Installing and Configuring WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress#configure-wordpress).
 
-Congratulations! You've successfully configured a highly available Wordpress site, and you're ready to start publishing content. For more information, feel free to reference our [Wordpress configuration guide](/docs/websites/cms/how-to-install-and-configure-wordpress).
+Congratulations! You've successfully configured a highly available WordPress site, and you're ready to start publishing content. For more information, feel free to reference our [WordPress configuration guide](/docs/websites/cms/how-to-install-and-configure-wordpress).
 
 ## DNS Records
 

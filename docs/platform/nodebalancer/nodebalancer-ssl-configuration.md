@@ -162,7 +162,7 @@ server {
 
     In the above configuration, be sure to replace the values of `server_name` and `root` with your actual domain and document root, respectively.
 
-2. Your configuration should now be complete. After reloading your web server, all requests made to your website that are not sent to port 443 should be redirected back to your Nodebalancer on a secure connection with SSL/TLS.
+2. Your configuration should now be complete. After reloading your web server, all requests made to your website that are not sent to port 443 should be redirected back to your NodeBalancer on a secure connection with SSL/TLS.
 
 ## Tips for Troubleshooting
 

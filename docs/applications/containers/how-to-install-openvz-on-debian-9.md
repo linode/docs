@@ -48,11 +48,11 @@ If you intend to dedicate an entire Linode VPS to running OpenVZ and no other se
 
 1. Log into your Linode Manager and select your Linode. Power down the machine, and verify the job completed by viewing the *Host Job Queue* section. Under the *Disks* tab, click *Create a new Disk*. Add a label of your choosing, select "ext4" in the *Type* drop-down menu, and allocate as much space as you can in the *Size* field. Click *Save Changes*; an optimal configuration will resemble the image below.
 
-     ![Linode Manager - Partition Scheme](/docs/assets/openvz/openvz_two.PNG)
+     ![Linode Manager - Partition Scheme](/docs/assets/openvz/openvz_two.png)
 
 2. Under the *Dashboard* tab, click your main Configuration Profile. Under the *Block Device Assignment* tab, assign your new partition to an open device. Click *Save Changes* when finished.
 
-    ![Linode Manager - Block Device Assignment](/docs/assets/openvz/openvz_three.PNG)
+    ![Linode Manager - Block Device Assignment](/docs/assets/openvz/openvz_three.png)
 
 3. Boot the Linode and log in via SSH. Issue the command below to verify that the new disk has been created properly. The output will display your newly created disk.
 
@@ -262,7 +262,7 @@ submenu 'Advanced options for Debian GNU/Linux' $menuentry_id_option 'gnulinux-a
 
 6. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
 
-     ![Linode Manager - Select Kernel](/docs/assets/openvz/openvz_one.PNG)
+     ![Linode Manager - Select Kernel](/docs/assets/openvz/openvz_one.png)
 
 7. Reboot your server and issue the command below to verify the OpenVZ kernel was loaded:
 
@@ -310,7 +310,7 @@ VE_LAYOUT=simfs
     - Provide a nameserver. Google's nameserver (8.8.8.8) should be sufficient.
     - If you have trouble booting into your virtual environment, you may try changing **VE_LAYOUT** back to "ploop" from "simfs."
 
-    You may also configure other options at your discrection, such as SWAP and RAM allocation. Save and close when finished.
+    You may also configure other options at your discretion, such as SWAP and RAM allocation. Save and close when finished.
 
     {{< file "/etc/vz/conf/101.conf" >}}
 . . .

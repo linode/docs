@@ -2,13 +2,14 @@
 author:
   name: Sam Foo
   email: docs@linode.com
-description: 'Learn to set up a Redis cluster using three Linode servers and promoting a slave to become a master node with this guide.'
+description: 'Learn to set up a Redis cluster using three Linode servers and promoting a slave to become a master node with this guide. Redis is an in-memory key/value store offering high performance for caching and more.'
+og_description: 'Learn to set up a Redis cluster using three Linode servers and promoting a slave to become a master node with this guide. Redis is an in-memory key/value store offering high performance for caching and more.'
 keywords: ["redis cluster installation", "data store", "cache", "sharding"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['applications/big-data/redis-cluster']
-modified: 2017-08-14
+modified: 2018-02-11
 modified_by:
-  name: Linode
+  name: Sam Foo
 published: 2017-08-14
 title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 external_resources:
@@ -16,9 +17,11 @@ external_resources:
  - '[Install and Configure Redis on CentOS 7](/docs/databases/redis/install-and-configure-redis-on-centos-7)'
 ---
 
-![Redis_banner](/docs/assets/Redis_Cluster.jpg)
+![How to Install and Configure a Redis Cluster on Ubuntu 16.04](/docs/assets/Redis_Cluster.jpg)
 
 Redis clusters have grown to be a popular tool for caches, queues, and more because of its potential for scalability and speed. This guide aims to create a cluster using three Linodes to demonstrate sharding. Then, you will promote a slave to a master - insurance, in the event of a failure.
+
+Redis as an in-memory store allows for extremely fast operations such as counting, caching, queuing, and more. A cluster setup greatly increases the reliability of Redis by reducing the point of failures.
 
 Prior to starting, we recommend you familiarize yourself with the following:
 

@@ -78,7 +78,7 @@ The next example will allow all requests from the IP address `11.22.33.44`. To s
 
 To summarize, there are four possible access control behaviors:
 
-1.  Unbound can `allow_snoop` traffic. This means that both recursive and nonrecusive requests will be filled when they originate from IP addresses belonging to specified netblocks. Nonrecursive request are needed to provide additional information for some tools, such as the `+trace` option of the `dig` utility.
+1.  Unbound can `allow_snoop` traffic. This means that both recursive and nonrecursive requests will be filled when they originate from IP addresses belonging to specified netblocks. Nonrecursive request are needed to provide additional information for some tools, such as the `+trace` option of the `dig` utility.
 2.  Unbound can `allow` traffic. This means that recursive requests will be filled when they originate from IP addresses belonging to specified netblocks.
 3.  Unbound can `deny` traffic. In this case, unbound will simply drop traffic and offer no error message.
 4.  Unbound can `refuse` traffic. This causes Unbound to send an error message in response to requests from disallowed sources.

@@ -19,7 +19,7 @@ external_resources:
 
 Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads, it is beneficial to tune MySQL to additional connections.
 
-![MySQL tuning title graphic](/docs/assets/optimize_mysql_using_mysql_tuner_title_graphic.png)
+![Optimize MySQL Performace Using MySQLTuner](/docs/assets/optimize_mysql_using_mysql_tuner_title_graphic.png)
 
 Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups.
 

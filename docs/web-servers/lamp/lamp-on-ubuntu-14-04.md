@@ -146,7 +146,7 @@ a2dissite example.com.conf
 
     Enter MySQL's root password, and you'll be presented with a MySQL prompt.
 
-4.  Create a database and a user with permissions for it. In this example the databse is called `webdata`, the user `webuser` and password `password`:
+4.  Create a database and a user with permissions for it. In this example the database is called `webdata`, the user `webuser` and password `password`:
 
         create database webdata;
         grant all on webdata.* to 'webuser' identified by 'password';

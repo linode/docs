@@ -19,14 +19,14 @@ external_resources:
  - '[Portainer](https://portainer.io/)'
 ---
 
-![WebDev_Title Graphic](/docs/assets/webdev-remote-devices/Linode_WebDev.jpg "WebDev_Title Graphic")
+![Use a Linode for Web Development on Remote Devices](/docs/assets/webdev-remote-devices/Linode_WebDev.jpg "WebDev_Title Graphic")
 
 This guide will walk you through the necessary steps to configure your Linode to be an efficient remote development environment. You will then connect to this environment using a tablet and edit a simple web application using `ssh` and a text editor.
 
 
 ## Development Environments
 
-### Local Development Enviroment
+### Local Development Environment
 
 A local development environment is usually faster, more powerful, and more comfortable than a remote environment. However, there some drawbacks associated with local development:
 
@@ -225,4 +225,4 @@ With everything set up it's time to work with your remote development environmen
 
 You now have a basic but powerful setup that allows you to work from any device with an internet connection.
 
-The main limitation of a tablet is its storage capacity. An efficient way to set up a centralized storage space is by using OwnCloud on a Linode with [block storage](/docs/platform/how-to-use-block-storage-with-your-linode/). This way you can host all your archives, dotfiles, scripts, images and more in a scalable Linode. An additional benefit is the possibility to connect external storages like Dropbox, Google Drive or OneDrive. OwnCloud has native applications for Android and iOS so managing your assets won't be a problem. You can install and configure ownCloud by following our [ownCloud guide](/docs/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04).
+The main limitation of a tablet is its storage capacity. An efficient way to set up a centralized storage space is by using OwnCloud on a Linode with [block storage](/docs/platform/how-to-use-block-storage-with-your-linode/). This way you can host all your archives, dotfiles, scripts, images and more in a scalable Linode. An additional benefit is the possibility to connect external storage services like Dropbox, Google Drive or OneDrive. OwnCloud has native applications for Android and iOS so managing your assets won't be a problem. You can install and configure ownCloud by following our [ownCloud guide](/docs/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04).

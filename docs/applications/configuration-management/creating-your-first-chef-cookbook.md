@@ -131,7 +131,7 @@ end
 
         knife cookbook upload lamp-stack
 
-5.  Add the recipe to a node's run-list, replaceing `nodename` with your chosen node's name:
+5.  Add the recipe to a node's run-list, replacing `nodename` with your chosen node's name:
 
         knife node run_list add nodename "recipe[lamp-stack::apache]"
 

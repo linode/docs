@@ -2,31 +2,35 @@
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'This guide will show how to track and visualize data from an Internet of Things device using Thingsboard.'
-og_description: 'This guide shows how to install the Thingsboard open source dashboard for Internet of Things devices. A Raspberry Pi is used to demonstrate sending data to the cloud dashboard.'
+description: 'This guide will show how to track and visualize data from an Internet of Things device using ThingsBoard.'
+og_description: 'This guide shows how to install the ThingsBoard open source dashboard for Internet of Things devices. A Raspberry Pi is used to demonstrate sending data to the cloud dashboard.'
 keywords: ["iot", "raspberry pi", "internet of things", "dashboard"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-30
 modified: 2018-01-30
 modified_by:
   name: Linode
-title: 'View IoT Data with Thingsboard'
+title: 'View IoT Data with ThingsBoard'
 external_resources:
-  - '[Getting Started – Thingsboard](https://thingsboard.io/docs/getting-started-guides/helloworld)'
-  - '[Thingsboard Github Repo](https://github.com/thingsboard/thingsboard)'
+  - '[Getting Started – ThingsBoard](https://thingsboard.io/docs/getting-started-guides/helloworld)'
+  - '[ThingsBoard Github Repo](https://github.com/thingsboard/thingsboard)'
 ---
 
-[Thingsboard](https://thingsboard.io/) is an open source platform for collecting and visualizing data from Internet of Things devices. Data from any number of devices can be sent to a cloud server where it can be viewed or shared through a highly customizable dashboard.
+![View IoT Data with ThingsBoard](/docs/assets/thingsboard/ThingsBoard.jpg)
 
-This guide will show how to install Thingsboard on a Linode and use a Raspberry Pi to send simple telemetry data to a cloud dashboard.
+## What is ThingsBoard?
+
+[ThingsBoard](https://thingsboard.io/) is an open source platform for collecting and visualizing data from Internet of Things devices. Data from any number of devices can be sent to a cloud server where it can be viewed or shared through a customizable dashboard.
+
+This guide will show how to install ThingsBoard on a Linode and use a Raspberry Pi to send simple telemetry data to a cloud dashboard.
 
 {{< note >}}
-This guide will use a Raspberry Pi 3 with a [Sense HAT](https://www.raspberrypi.org/products/sense-hat/). You can substitute any device capable of sending telemetry data, or use `curl` to experiment with Thingsboard without using any external devices.
+This guide will use a Raspberry Pi 3 with a [Sense HAT](https://www.raspberrypi.org/products/sense-hat/). You can substitute any device capable of sending telemetry data, or use `curl` to experiment with ThingsBoard without using any external devices.
 {{< /note >}}
 
-## Install Thingsboard
+## Install ThingsBoard
 
-Thingsboard runs on Java 8, and the Oracle JDK is recommended.
+ThingsBoard runs on Java 8, and the Oracle JDK is recommended.
 
 {{< content "install-java-jdk.md" >}}
 
@@ -36,7 +40,7 @@ Thingsboard runs on Java 8, and the Oracle JDK is recommended.
 
         sudo apt install postgresql postgresql-contrib
 
-2.  Create a database and database user for Thingsboard:
+2.  Create a database and database user for ThingsBoard:
 
         sudo -u postgres createdb thingsboard
         sudo -u postgres createuser thingsboard
@@ -48,13 +52,13 @@ Thingsboard runs on Java 8, and the Oracle JDK is recommended.
         GRANT ALL PRIVILEGES ON DATABASE thingsboard TO thingsboard;
         \q
 
-### Install Thingsboard
+### Install ThingsBoard
 
 1.  Download the installation package. Check the [releases](https://github.com/thingsboard/thingsboard/releases) page and replace the version numbers in the following command with the version tagged **Latest release**:
 
         wget https://github.com/thingsboard/thingsboard/releases/download/v1.3.1/thingsboard-1.3.1.deb
 
-2.  Install Thingsboard:
+2.  Install ThingsBoard:
 
         sudo dpkg -i thingsboard-1.3.1.deb
 
@@ -103,14 +107,14 @@ spring:
 
         sudo /usr/share/thingsboard/bin/install/install.sh --loadDemo
 
-6.  Start the Thingsboard service:
+6.  Start the ThingsBoard service:
 
         sudo systemctl enable thingsboard
         sudo systemctl start thingsboard
 
 ## NGINX Reverse Proxy
 
-Thingsboard listens on `localhost:8080`, by default. For security purposes, it's  better to serve the dashboard through a reverse proxy. This guide will use NGINX, but any webserver can be used.
+ThingsBoard listens on `localhost:8080`, by default. For security purposes, it's  better to serve the dashboard through a reverse proxy. This guide will use NGINX, but any webserver can be used.
 
 1.  Install NGINX:
 
@@ -140,11 +144,11 @@ server {
 
         sudo systemctl restart nginx
 
-## Set Up Thingsboard Device
+## Set Up ThingsBoard Device
 
-1.  Navigate to your Linode's IP address with a web browser. You should see the Thingsboard login page:
+1.  Navigate to your Linode's IP address with a web browser. You should see the ThingsBoard login page:
 
-    ![Thingsboard Login](/docs/assets/thingsboard/login.png)
+    ![ThingsBoard Login](/docs/assets/thingsboard/login.png)
 
     The demo account login `tenant@thingsboard.org` and the password is `tenant`. You should change this to a more secure password after you have signed in.
 
@@ -157,7 +161,7 @@ server {
 ## Configure Raspberry Pi
 
 {{< note >}}
-The following steps assume that you have terminal access to a Raspberry Pi, and that Sense HAT and its libraries are already configured. For more information on getting started with Sense HAT, see the Raspberry Pi [official documentation](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat). If you would prefer to use `curl` to send mock data to Thingsboard, you can skip this section.
+The following steps assume that you have terminal access to a Raspberry Pi, and that Sense HAT and its libraries are already configured. For more information on getting started with Sense HAT, see the Raspberry Pi [official documentation](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat). If you would prefer to use `curl` to send mock data to ThingsBoard, you can skip this section.
 {{< /note >}}
 
 ### Basic Python Script
@@ -174,7 +178,7 @@ from time import sleep
 
 # Constants
 
-API_KEY          = "<Thingsboard API Key>"
+API_KEY          = "<ThingsBoard API Key>"
 THINGSBOARD_HOST = "<Linode Public IP Address>"
 
 thingsboard_url  = "http://{0}/api/v1/{1}/telemetry".format(THINGSBOARD_HOST, API_KEY)
@@ -233,7 +237,7 @@ You should now be able to run the script from the command line to transmit tempe
 
     {{< file "/lib/systemd/system/thingsdata.service" conf >}}
 [Unit]
-Description=Push telemetry data from Sense HAT to Thingsboard.
+Description=Push telemetry data from Sense HAT to ThingsBoard.
 
 [Service]
 Type=simple
@@ -268,15 +272,15 @@ Skip this section if you are using a Raspberry Pi.
 }
 {{< /file >}}
 
-2.  Use `curl` to send a POST request to the Thingsboard server:
+2.  Use `curl` to send a POST request to the ThingsBoard server:
 
         curl -v -X POST -d @dummy_data.json http://$THINGSBOARD_HOST:$THINGSBOARD_PORT/api/v1/$ACCESS_TOKEN/telemetry --header "Content-Type:application/json"
 
-## View Data in Thingsboard
+## View Data in ThingsBoard
 
-If the service is running successfully, data should be transmitted to your Thingsboard server every 60 seconds.
+If the service is running successfully, data should be transmitted to your ThingsBoard server every 60 seconds.
 
-1.  Log back into the Thingsboard dashboard in your browser and click on your device's card in the **Devices** menu. Choose the **Latest Telemetry** tab from the resulting details page. You should see the temperature, humidity, and pressure data from your device:
+1.  Log back into the ThingsBoard dashboard in your browser and click on your device's card in the **Devices** menu. Choose the **Latest Telemetry** tab from the resulting details page. You should see the temperature, humidity, and pressure data from your device:
 
     ![View Latest Telemetry](/docs/assets/thingsboard/latest-telemetry.png)
 
@@ -288,6 +292,6 @@ If the service is running successfully, data should be transmitted to your Thing
 
 ## Next Steps
 
-The widgets provided by Thingsboard can be easily edited, and it is possible to create new ones as well. Multiple widgets, representing multiple datastreams from multiple devices, can be combined to produce customized dashboards. These dashboards can then be made public, or shared with customers.
+The widgets provided by ThingsBoard can be easily edited, and it is possible to create new ones as well. Multiple widgets, representing multiple data streams from multiple devices, can be combined to produce customized dashboards. These dashboards can then be made public, or shared with customers.
 
-For more information on how to customize and set up widgets and dashboards, see the Thingsboard [Widget Library](https://thingsboard.io/docs/user-guide/ui/widget-library/#time-series) and [Dashboard page](https://thingsboard.io/docs/user-guide/ui/dashboards/) The [Thingsboard Github repo](https://github.com/thingsboard/thingsboard) also has images of example dashboards.
+For more information on how to customize and set up widgets and dashboards, see the ThingsBoard [Widget Library](https://thingsboard.io/docs/user-guide/ui/widget-library/#time-series) and [Dashboard page](https://thingsboard.io/docs/user-guide/ui/dashboards/) The [ThingsBoard Github repo](https://github.com/thingsboard/thingsboard) also has images of example dashboards.

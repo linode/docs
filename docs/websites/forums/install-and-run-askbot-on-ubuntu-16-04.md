@@ -25,7 +25,7 @@ external_resources:
 
 [AskBot](https://askbot.com) is an open-source question-and-answer forum written in Django and Python. It provides features similar to StackOverflow, including a karma-based system, voting, and content moderation. It is used by many popular open source communities such as Ask-FedoraProject and Ask-OpenStack.
 
-In this guide, you'll install AskBot and deploy with **Nginx** as a web server, **MySQL** as a database server, **Gunicorn** as a Python WSGI HTTP Server and **LetsEncrypt** as a free SSL certificates provider on your Ubuntu 16.04 Linode.
+In this guide, you'll install AskBot and deploy with **NGINX** as a web server, **MySQL** as a database server, **Gunicorn** as a Python WSGI HTTP Server and **LetsEncrypt** as a free SSL certificates provider on your Ubuntu 16.04 Linode.
 
 ## Before You Begin
 
@@ -45,7 +45,7 @@ Throughout this guide, replace `example_user` with a non-root user with `sudo` a
 
 ## Install Dependencies and Create a Database
 
-1.  Install the required packages, including Nginx, MySQL, Python PIP, and LetsEncrypt:
+1.  Install the required packages, including NGINX, MySQL, Python PIP, and LetsEncrypt:
 
         sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
 
@@ -120,7 +120,7 @@ For more detailed information about the arguments to `askbot-setup`, user the `-
 
          sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /home/example_user/askbot/settings.py
 
-## Deploy AskBot with LetsEncrypt SSL
+## Deploy AskBot with Let's Encrypt SSL
 
 {{< note >}}
 This section requires that you have a Fully Qualified Domain Name (FQDN) that is configured to point to your Linode. In the examples below, replace `example.com` with your FQDN.
@@ -162,20 +162,20 @@ WantedBy=multi-user.target
         sudo systemctl start gunicorn
         sudo systemctl enable gunicorn
 
-4.  Restart nginx and reload the daemon:
+4.  Restart NGINX and reload the daemon:
 
         sudo systemctl daemon-reload
         sudo systemctl restart nginx
 
-5.  Use [Letsencrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
+5.  Use [Let's Encrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
 
         sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
-6.  Remove the default Nginx Server Blocks (Virtual Host) and the default Nginix index file to add new AskBot server blocks:
+6.  Remove the default NGINX Server Blocks (Virtual Host) and the default NGINX index file to add new AskBot server blocks:
 
         sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
 
-7.  Add new `askbot` Nginx Server Blocks (Virtual Host) to run AskBot in the production environment:
+7.  Add new `askbot` NGINX Server Blocks (Virtual Host) to run AskBot in the production environment:
 
     {{< file-excerpt "/etc/nginx/sites-available/askbot" conf >}}
 server {
@@ -188,12 +188,12 @@ server {
         listen 443;
         server_name example.com www.example.com;
 
-	 ssl on;
+    ssl on;
         ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
-	location ~ /.well-known {
+    location ~ /.well-known {
         allow all;
         root /var/www/html;
         }
@@ -216,16 +216,16 @@ server {
 {{< /file-excerpt >}}
 
 
-8.  Add a symbolic link between nginx server blocks:
+8.  Add a symbolic link between NGINX server blocks:
 
         sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
 
 
-9.  The **www-data** group must have access to AskBot installation directory so that nginx can serve static files, media files, and access the socket files. Add the `example_user` to **www-data** group so that it has the necessary permissions:
+9.  The **www-data** group must have access to AskBot installation directory so that NGINX can serve static files, media files, and access the socket files. Add the `example_user` to **www-data** group so that it has the necessary permissions:
 
         sudo usermod -aG www-data example_user
 
-10.  Restart nginx so that the changes take effect:
+10.  Restart NGINX so that the changes take effect:
 
         sudo systemctl restart nginx
 

@@ -15,9 +15,9 @@ show_on_rss_feed: false
 ---
 
 {{< topics >}}
-* Introduction to the Kubernetes Scheduler
+
 {{< /topics >}}
 
 {{< topics >}}
-* Build and Manage Applications with Dokku
+
 {{< /topics >}}

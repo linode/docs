@@ -18,7 +18,7 @@ external_resources:
 
 [Futon](http://docs.couchdb.org/en/1.6.1/intro/futon.html) is a web-based administrative interface for [Apache CouchDB](https://couchdb.apache.org/). You can use SSH to connect to your Linode's CouchDB server and then access Futon securely through your web browser. This quick answer assumes you already have CouchDB running on your Linode.
 
-![Futon title graphic.](/docs/assets/couchdb-with-futon-over-ssh-titlegraphic.png)
+![Access Futon Over SSH to Administer CouchDB with PuTTY](/docs/assets/couchdb-with-futon-over-ssh-titlegraphic.png)
 
 ## Establish an SSH connection
 

@@ -3,28 +3,29 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use GNU tools to compress and archive files.'
-keywords: ["tar", "gnu tar", "gzip", "gnu zip", "tar.gz. tgz", "file archive"]
+og_description: 'This guide will show you how to use GNU tar and Gzip to compress and archive files.'
+keywords: ["tar", "gnu tar", "gzip", "gnu zip", "tar.gz. tgz", "file archive", "compress", "tarball"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/common-commands/tar-gzip/']
-modified: 2011-08-22
+modified: 2018-01-29
 modified_by:
   name: Linode
-published: 2010-07-27
+published: 2010-01-30
 title: Archiving and Compressing files with GNU Tar and GNU Zip
 external_resources:
  - '[GNU tar](http://www.gnu.org/software/tar/)'
  - '[GNU gzip](http://www.gzip.org/)'
 ---
 
-`tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux-based systems. Fundamentally, the function of these utilities is to take a large number of files, save them together in an archive (i.e. as a single file), and compress the archive to save space. However, tar and gzip provide a multitude of features that may obfuscate even the most simple of operations.
+`tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux systems. Together, these utilities take a large number of files, save them together in an archive (i.e. as a single file), and compress the archive to save space. However, tar and gzip provide a multitude of features and options that can lead to hard-to-read commands and make even the simplest operations confusing.
 
 This document provides an overview of `tar` and `gzip` usage, accompanied by a number of practical applications of these utilities. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [Tools & Reference](/docs/tools-reference/) series.
 
-![Title graphic](/docs/assets/archiving_and_compressing_files_with_gnu_tar_and_gnu_zip_smg.png)
+![Archiving and Compressing files with GNU Tar and GNU Zip](/docs/assets/archiving_and_compressing_files_with_gnu_tar_and_gnu_zip_smg.png)
 
 ## Using Tar and Gzip
 
-In this guide, `tar` and `gzip` refer to recent versions of "GNU tar" and "GNU gzip" which are included by default in all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
+In this guide, `tar` and `gzip` refer to recent versions of "GNU tar" and "GNU gzip" which are included by default in all images provided by Linode.
 
 ### The tar Command
 
@@ -32,7 +33,7 @@ The complexity of `tar` does not derive from its basic form, but rather from the
 
     tar -xf ~/backup-archive.tar
 
-This will extract (`-x`) the archive specified by the file (`-f`) named on the prompt. This archive is not compressed. To create an archive of all the files in the directory `~/backup`, issue a command on the following form:
+This will extract (`-x`) the archive specified by the file (`-f`) named on the prompt. This archive is not compressed. To create an archive of all the files in the directory `~/backup`, use the following command:
 
     tar -c ~/backup > backup-archive.tar
 
@@ -48,7 +49,7 @@ The order of options is sometimes important. The `-f` option needs to be the las
 
 ### The gzip Command
 
-`gzip` and the accompanying `gunzip` command provide a simple and standard method of compressing individual files. Just as `tar` does not contain the ability to compress the files that it archives, the `gzip` tools are only able to act on single files. The following command takes the file `full-text.txt` and compresses it in the file `full-text.txt.gz` :
+`gzip` and the accompanying `gunzip` command provide a simple and standard method of compressing individual files. Just as `tar` does not contain the ability to compress the files that it archives, the `gzip` tools are only able to act on single files. The following command takes the file `full-text.txt` and compresses it in the file `full-text.txt.gz`:
 
     gzip full-text.txt
 
@@ -57,15 +58,15 @@ You can then use either of the following commands to decompress this file:
     gunzip full-text.txt.gz
     gzip -d full-text.txt.gz
 
-You can add the `-v` flag to increase verbosity and output statistics regarding the rate of compression. This command would resemble the following:
+You can add the `-v` flag to increase verbosity and output statistics regarding the rate of compression:
 
     gzip -v full-text.txt
 
-`gzip` accepts standard input and thus can be used to compress the output of a stream of text. Consider the following example:
+`gzip` accepts standard input and thus can be used to compress the output of a stream of text:
 
     cat full-text.txt | gzip > full-text.txt.gz
 
-The compression algorithm that gzip uses to compress files (e.g. `DEFLATE`), can be configured to compress content more severely and thus save space at the expense of time. This ratio is controlled by a numeric argument between `-1` and `-9`. The default configuration is `-6`. `gzip` also contains `--fast` (equivalent to `-1`) and `--best` (equivalent to `-9`) as helpful mnemonics. Consider the following examples and their output:
+The compression algorithm that `gzip` uses to compress files can be configured to use a higher amount of compression and thus save space at the expense of time. This ratio is controlled by a numeric argument between `-1` and `-9`. The default configuration is `-6`. `gzip` also contains `--fast` (equivalent to `-1`) and `--best` (equivalent to `-9`) as helpful mnemonics:
 
     gzip --best -v full-text.txt
     gzip --fast -v full-text.txt
@@ -74,11 +75,11 @@ The compression algorithm that gzip uses to compress files (e.g. `DEFLATE`), can
 
 ## Creating An Archive
 
-As stated above you can create a `tar` archive of the `~/backup` directory with the following command:
+You can create a `tar` archive of the `~/backup` directory with the following command:
 
     tar -c ~/backup > backup-archive.tar
 
-The archive, which is uncompressed, will end up in the `backup-archive.tar` file. To create a file without using the standard output redirection, you may consider the following equivalent form:
+To create a file without using the standard output redirection, you may consider the following equivalent form:
 
     tar -cf backup_archive.tar ~/backup
 
@@ -88,7 +89,7 @@ The order that options (e.g. the `-cf`) are invoked in is important, and the `-f
 
 ### Compress an Archive using Gzip
 
-In conventional usage, `tar` is combined with a compression utility to not only archive files for more efficient backup but also compress them. However, some alternate compression and archiving tools with which you may be familiar include both functions in a single procedure. However, modern versions of `tar` are able to interface with common compression libraries and tools like `gzip` to compress archives effectively. Consider the following command:
+In conventional usage, `tar` is combined with a compression utility to not only archive files for more efficient backup but also compress them. Some alternative compression and archiving tools with which you may be familiar include both functions in a single procedure. However, modern versions of `tar` are able to interface with common compression libraries and tools like `gzip` to create a compressed archive in a single step:
 
     tar -czf ~/backup-archive.tar.gz ~/backup/
 
@@ -123,7 +124,7 @@ As above, `tar` will auto detect for zip compression given the extensions `.tar.
 
 ## Discover the Contents of an Archive
 
-While you can always extract the contents of an archive to learn the manifest of files, this may prove inefficient or prohibitively inconvenient. `tar` provides the ability to view the manifest of files in an archive. Consider the following example:
+While you can always extract the contents of an archive to review the manifest of files, this can be inefficient. `tar` provides the ability to view the manifest of files in an archive without extracting them:
 
     tar -tf ~/backup-archive.tar
 
@@ -135,13 +136,13 @@ To extract files from a `tar` archive, issue the following command:
 
     tar -xf ~/backup-archive.tar
 
-This command simply extracts the content of an uncompressed `tar` archive into the current directory. Let's consider a more practical example of how `tar` may be used to extract files from a compressed archive:
+This command simply extracts the content of an uncompressed `tar` archive into the current directory. Here is a more practical example of how `tar` may be used to extract files from a compressed archive:
 
     tar -xzvf ~/backup-archive.tar.gz
 
 The options specified have the following effects: `-x` extracts the contents of the archive, `-z` filters the archive through the `gzip` compression tool, `-v` enables verbose output which prints a list of files as they are extracted from the archive, and `-f` specifies that `tar` will read input from the subsequently specified file `~/backup-archive.tar.gz`.
 
-When an archive is compressed with one of the other compatible compression tools, you will need to replace the `-z` option with the appropriate option flag for the compression type used. Therefore, to unpack an archive compressed with the `bzip2` tool you might issue a command in the following form:
+When an archive is compressed with one of the other compatible compression tools, you will need to replace the `-z` option with the appropriate option flag for the compression type used. For example, to unpack an archive compressed with the `bzip2` tool:
 
     tar -xcvi ~/backup-archive.tar.bz2
 
@@ -149,11 +150,11 @@ The `-a` option that automatically determines which compression tool to use base
 
 ## Compressing Log Files
 
-There are some files, particularly log files created by long running daemons like web and email servers, that can grow to a great size. While removing these files does not present a viable option, these files can grow unmanageably large in a short time. Since they are plain text, compression is very effective; however, because log files tend to be distinct and independent of each other, it doesn't make sense to use a tool like `tar`. In these cases it makes sense to use `gzip` directly as in the following example:
+There are some files, particularly log files created by long running daemons like web and email servers, that can grow to a great size. While removing these files does not present a viable option, these files can grow unmanageably large in a short time. Since they are plain text, compression is effective; however, because log files tend to be distinct and independent of each other, it doesn't make sense to use a tool like `tar`. In these cases it makes sense to use `gzip` directly:
 
     gzip /var/log/mail.log
 
-This will replace the original `/var/log/mail.log` with a file named `mail.log.gz`. If you need to access to the contents of this file you can issue the following command to uncompress the contents:
+This will replace the original `/var/log/mail.log` with a file named `mail.log.gz`. To access the contents of this file:
 
     gunzip /var/log/mail.log.gz
 

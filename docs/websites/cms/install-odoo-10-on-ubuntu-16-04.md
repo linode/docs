@@ -112,7 +112,7 @@ Install the required Python libraries:
 
 These commands use the `requirements.txt` files provided with your Odoo installation to ensure you're getting the correct versions of the packages your applications depend on.
 
-### Install Less CSS via nodejs and npm
+### Install Less CSS via Node.js and npm
 
 1.  Download and run the `nodejs` installation script from nodesource:
 
@@ -122,7 +122,7 @@ These commands use the `requirements.txt` files provided with your Odoo installa
 
         sudo apt install -y nodejs
 
-3.  Install a newer version of Less via `npm`, the NodeJS package manager.
+3.  Install a newer version of Less via `npm`, the Node.js package manager.
 
         sudo npm install -g less less-plugin-clean-css
 
@@ -331,7 +331,7 @@ Clone the updated Odoo source which is different from your older production inst
 
 The advantage of using the same server is that all dependencies have already been met. What is next is to configure the server accordingly.
 
-1.  Copy the original configuration file from the source to appropiate location:
+1.  Copy the original configuration file from the source to appropriate location:
 
         sudo cp /opt/odoo/debian/odoo.conf /etc/odoo-server-te.conf
 

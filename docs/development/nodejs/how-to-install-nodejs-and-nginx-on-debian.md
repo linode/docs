@@ -2,7 +2,8 @@
 author:
     name: Joe D.
     email: docs@linode.com
-description: 'How to install Nginx for static content and Node.js for dynamic requests.'
+description: 'How to install NGINX for static content and Node.js for dynamic requests.'
+og_description: 'How to install NGINX for static content and Node.js for dynamic requests.'
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", " debian", " front-end requests", " back-end requests"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/']
@@ -10,7 +11,7 @@ modified: 2017-04-11
 modified_by:
     name: Linode
 published: 2015-01-14
-title: 'How to Install Node.js and Nginx on Debian'
+title: 'How to Install Node.js and NGINX on Debian'
 aliases: ['websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/','websites/nodejs/nodejs-nginx-debian/','websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/index.cfm/']
 external_resources:
  - '[Node.js](http://nodejs.org)'
@@ -19,6 +20,8 @@ external_resources:
  - '[Node Version Manager](https://github.com/creationix/nvm)'
  - '[npm](https://www.npmjs.com/)'
 ---
+
+![Install Node.js and NGINX on Debian](/docs/assets/node-nginx/How_to_Install_Nodejs_and_Nginx_on_Debian_smg.jpg)
 
 Node.js is a JavaScript platform which can serve dynamic, responsive content. JavaScript is usually a client-side, browser language like HTML or CSS. However, Node.js is a server-side, JavaScript platform, comparable to PHP. Node.js often works with other popular server applications like NGINX or Apache. In this guide, NGINX is configured to handle front-end, static file requests, and Node.js is configured to handle back-end file requests.
 
@@ -217,7 +220,7 @@ Display the date and time.
 {{< /file >}}
 
 
-2.  Test the NGINX server at the IP address or domain. Use the "Go to test.js" button to test that the Node.js server is serving files. On the test page, the "Display the date and time" button will execute a client-side snippet of javascript to return the current time.
+2.  Test the NGINX server at the IP address or domain. Use the "Go to test.js" button to test that the Node.js server is serving files. On the test page, the "Display the date and time" button will execute a client-side snippet of JavaScript to return the current time.
 
 <br>
 [Node.js](http://nodejs.org) and [NGINX](http://nginx.com/) are now working together. Route requests to one server or the other depending on your needs. Node.js offers a large [API](http://nodejs.org/api) with many tools. With Node.js, a developer can stay within the JavaScript language while working client-side or server-side.

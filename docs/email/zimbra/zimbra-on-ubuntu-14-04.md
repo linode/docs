@@ -16,6 +16,7 @@ external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
 ---
 
+![Install Zimbra on Ubuntu](/docs/assets/zimbra/Install_Zimbra_Open_Source_Edition_on_Ubuntu_1404_smg.jpg)
 
 [Zimbra](https://www.zimbra.com/) is a complete mail server that provides a configured Postfix with OpenDKIM, Amavis, ClamAV, and Nginx, ready to handle mail for one or more domains. Zimbra on a Linode is one of the quickest paths to an up-and-running mail server that you will find. This guide will take you through the Zimbra installation procedure.
 
@@ -227,7 +228,7 @@ Your server was configured when you installed, and most of those settings will w
 
 4.  The **Protocol checks** can stop many spam messages before they enter your system. You may turn them all on, but at least _Sender address must be fully qualified_ should be checked.
 
-5.  **DNS checks** use realtime blacklists to reject mail coming from known spamming servers. zen.spamhuas.org is a good suggestion to start with. Enter the domain name into the **List of Client RBLs**.
+5.  **DNS checks** use realtime blacklists to reject mail coming from known spamming servers. `zen.spamhuas.org` is a good suggestion to start with. Enter the domain name into the **List of Client RBLs**.
 
 6.  Click the **AS/AV** page. Here you determine how "spammy" a message has to be to get tagged or rejected. Zimbra uses SpamAssassin to score every message. A score of zero or less than zero means the message is likely to be worth delivering. A score above zero means there are some indicators that this could be an unwanted email. The **Kill percent** is the score above which Zimbra will not deliver the message at all. The **Tag percent** is the score above which Zimbra will let the message through, but deliver it to the Junk folder.
 
