@@ -86,8 +86,8 @@ The following steps are adapted from the [Install WordPress](/docs/websites/cms/
         sudo wget http://wordpress.org/latest.tar.gz
         tar -zxvf latest.tar.gz
 
-3.  Repeat the procedure for `example2.com`: 
-		
+3.  Repeat the procedure for `example2.com`:
+
 		sudo mkdir /var/www/html/example2.com/src/
 		cd /var/www/html/example2.com/src/
 		sudo wget http://wordpress.org/latest.tar.gz
