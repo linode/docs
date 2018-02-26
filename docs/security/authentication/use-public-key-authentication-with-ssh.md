@@ -24,7 +24,7 @@ SSH keys come in pairs; a private and a public key. Usually the private key is s
 It might be easier to think of SSH keys in terms of a lock and key. The public part is the lock, which can be copied to multiple locations as long as the private component, or key, is not compromised. Since the private key is password-protected when encrypted, it is analogous to keeping a physical key in a lockbox. With this example in mind, using an SSH key works as follows. First, the lockbox/passphrase is opened to obtain the key/private key, which is then used to open the lock/public key and grant access to your Linode.
 
 {{< caution >}}
-You can have several different key-pairs, with varying names. If you are going through this tutorial and have an existing key pair, be sure to not overwrite your it.
+You can have several different key-pairs, with varying names. If you have an existing key pair, be sure to not overwrite it.
 {{</ caution >}}
 
 ### Intro to Local Encryption
