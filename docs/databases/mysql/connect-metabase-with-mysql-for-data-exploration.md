@@ -3,9 +3,9 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'Metabase is a data exploration tool that makes analytics accessible to everyone even without knowledge of SQL. Connect Metabase to a local MySQL server and deploy through a reverse proxy on NGINX using this guide.'
-keywords: ["visualization", "database", "query"]
+og_description: 'Metabase provides a clean interface to query data on your browser. Metabase offers functionality to analyze data without SQL, create dashboards, and track metrics. This guide shows how to connect MySQL to Metabase then deploy on NGINX through a reverse proxy'
+keywords: ["visualization", "database", "query", "What is Metabase", "metabase", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: []
 modified: 2018-02-22
 modified_by:
   name: Linode
@@ -17,13 +17,13 @@ external_resources:
  - '[Employees Testing Database](https://github.com/datacharmer/test_db)'
 ---
 
-## What is Metabase?
+## What is Metabase
 
-Metabase provides a clean interface to query data on your browser. In addition to supporting querying with SQL, Metabase offers functionality to analyze data without SQL, create dashboards, and track metrics. This guide shows how to connect MySQL to Metabase then deploy on NGINX through a reverse proxy.
+Metabase provides an interface to query data on your browser. In addition to supporting SQL querying, Metabase offers functionality to analyze data without SQL, create dashboards, and track metrics. This guide shows how to connect MySQL to Metabase then deploy on NGINX through a reverse proxy.
 
 There are a number of additional databases that are supported from SQLite to PostgreSQL. Visualizing results become very simple through an intuitive interface. This makes Metabase versatile for sharing data even among those without an analytical background.
 
-## Installation
+## Install Metabase
 
 ### Java Runtime Environment
 
@@ -54,7 +54,7 @@ There are a number of additional databases that are supported from SQLite to Pos
 
         wget http://downloads.metabase.com/v0.28.1/metabase.jar
 
-2.  Move this into `/var` so that it can start on reboot:
+2.  Move the file into `/var` so that it can start on reboot:
 
         sudo mv metabase.jar /var/metabase.jar
 
@@ -93,7 +93,7 @@ server {
 
 ## Download Example MySQL Database
 
-An example database can be loaded into MySQL. The [Employees Testing Database](https://github.com/datacharmer/test_db) is a database of employee and salary data with over 2.8 million entries. This size makes it useful for experimenting in a non-trivial way.
+The [Employees Testing Database](https://github.com/datacharmer/test_db) is an example database that can be loaded into MySQL. The database consits of employee and salary data with over 2.8 million entries, this size makes it useful for experimenting in a non-trivial way.
 
 1.  Install git:
 
@@ -152,7 +152,7 @@ export MB_DB_HOST=localhost
 
         source metabase-env
 
-## Set Metabase to Start of Reboot
+## Set Metabase to Start at Reboot
 
 1.  Check the path of your JDK binary:
 
@@ -206,7 +206,7 @@ Check the firewall rules:
 
 Metabase is now accessible on the browser on your Linode's public IP address.
 
-1.  The first access will take some time because the MySQL database needs to migrate:
+1.  The first time you try to access, it will take some time because the MySQL database needs to migrate:
 
     ![Metabase Load Screen](/docs/assets/metabase/metabase-load.png)
 
@@ -222,11 +222,11 @@ Metabase is now accessible on the browser on your Linode's public IP address.
 
     ![Metabase Data Model](/docs/assets/metabase/metabase-admin-panel.png)
 
-5.  On the left, select Salaries to see information about the table, such as foreign keys and column names. Click **Add a Segment**:
+5.  On the left, select salaries to see information about the table, such as foreign keys and column names. Click **Add a Segment**:
 
     ![Metabase Salaries](/docs/assets/metabase/metabase-salaries.png)
 
-6.  Create a filter to view all employees with a salary greater than 50,000 (Metabase allows you to create this filter without writing SQL):
+6.  Create a filter to view all employees with a salary greater than $50,000 (Metabase allows you to create this filter without writing SQL):
 
     ![Metabase Segment](/docs/assets/metabase/metabase-segment.png)
 
