@@ -74,7 +74,7 @@ By default, .htaccess isn't available. To enable it you will need to edit the co
 By default, someone visiting your website can view the directory and file structure, and gain access to files on the web server. It's best practice to restrict directory access, so that a visitor to example.com would have to be familiar with files on the server in order to see them. One way you can restrict this is through .htaccess.
 
 ### Create .htaccess
-1.  CMS systems such as Wordpress create .htaccess configurations by default. This guide assumes that no .htaccess file exists, so you will have to create one manually. Navigate to your site's root directory:
+1.  CMS systems such as WordPress create .htaccess configurations by default. This guide assumes that no .htaccess file exists, so you will have to create one manually. Navigate to your site's root directory:
 
         cd /var/www/html/example.com/public_html
 
@@ -174,7 +174,7 @@ The next parameter is the Unix path to the file that is requested in the URL. Th
 
 ###  Set the 404 Error Page
 
-When a visitor attempts to access a page or resource that doesn't exist (for example by following a broken link or typing an incorrect URL,) the server will respond with a 404 error code. It is important that users receive feedback explaning the error. By default, Apache will display an error page in the event of a 404 error.  However, most sites provide a customized error page. You can use .htaccess settings to let Apache know what error page you would like displayed whenever a user attempts to access a nonexistent page.
+When a visitor attempts to access a page or resource that doesn't exist (for example by following a broken link or typing an incorrect URL,) the server will respond with a 404 error code. It is important that users receive feedback explaining the error. By default, Apache will display an error page in the event of a 404 error.  However, most sites provide a customized error page. You can use .htaccess settings to let Apache know what error page you would like displayed whenever a user attempts to access a nonexistent page.
 
 1.  This will redirect all requests for nonexistent documents to a page in the project root directory called `404.html.  Open the .htaccess file and add the following line:
 

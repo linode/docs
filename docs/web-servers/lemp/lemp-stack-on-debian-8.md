@@ -43,7 +43,7 @@ Prior to installing your LEMP stack ensure that:
 
 ## Install the Nginx Web Server
 
-There are several ways to install Nginx. The method used here retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. For other options to install Nginx, you can read our [Installing Nginx on Debian 8](/docs/websites/nginx/nginx-web-server-debian-8/) guide.
+There are several ways to install Nginx. The method used here retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. For other options to install Nginx, you can read our [Installing Nginx on Debian 8](/docs/web-servers/nginx/install-nginx-web-server-on-debian-8/) guide.
 
 Install Nginx:
 

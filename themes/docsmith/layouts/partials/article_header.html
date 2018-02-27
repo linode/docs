@@ -1,21 +1,24 @@
-<h1 class="doc-title" itemprop="headline">{{ .Params.title }}</h1>
+<h1 class="doc-title" itemprop="headline">{{ .Params.h1_title | default (.Param "Title") }}</h1>
 <p markdown="0" class="doc-time doc-modified-time">
   <small class="updated">Updated <time itemprop="dateModified" datetime="{{ .Lastmod.Format .Site.Params.time_format_RFC3339 }}">{{ .Lastmod.Format .Site.Params.time_format_default }}</time> by {{ .Params.modified_by.name }}</small>
+  <small class="contributed-by">
   {{ if .Params.contributor }}
-  <small class="contributed-by">Contributed by
-  {{ if .Params.contributor.link }}
-  <a href="{{ .Params.contributor.link }}">{{ .Params.contributor.name }}
-    {{ if strings.Contains .Params.contributor.link "twitter.com" }}
-    <i class="fa fa-twitter"></i>
-    {{ else if strings.Contains .Params.contributor.link "github.com" }}
-    <i class="fa fa-github"></i>
-    {{ else if strings.Contains .Params.contributor.link "linkedin.com" }}
-    <i class="fa fa-linkedin"></i>
+    Contributed by
+    {{ if .Params.contributor.link }}
+    <a href="{{ .Params.contributor.link }}">{{ .Params.contributor.name }}
+      {{ if strings.Contains .Params.contributor.link "twitter.com" }}
+      <i class="fa fa-twitter"></i>
+      {{ else if strings.Contains .Params.contributor.link "github.com" }}
+      <i class="fa fa-github"></i>
+      {{ else if strings.Contains .Params.contributor.link "linkedin.com" }}
+      <i class="fa fa-linkedin"></i>
+      {{ end }}
+    </a>
+    {{ else }}
+    {{ .Params.contributor.name }}
     {{ end }}
-  </a>
   {{ else }}
-  {{ .Params.contributor.name }}
+  Written by {{ .Params.author.name }}
   {{ end }}
   </small>
-  {{ end }}
 </p>

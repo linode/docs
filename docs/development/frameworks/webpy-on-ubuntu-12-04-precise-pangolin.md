@@ -198,7 +198,7 @@ This program connects to the PostgreSQL database "webpy" and looks in the table 
 For more information about PostgreSQL, see our [PostgreSQL guides](/docs/databases/postgresql).
 {{< /note >}}
 
-At the PosgreSQL prompt, issue the following commands to the PostgreSQL shell statement to create the required database and tables. The "webpy" user for PostgreSQL must already exist:
+At the PostgreSQL prompt, issue the following commands to the PostgreSQL shell statement to create the required database and tables. The "webpy" user for PostgreSQL must already exist:
 
     CREATE DATABASE webpy;
     GRANT ALL ON notes TO webpy;

@@ -64,11 +64,11 @@ Before starting automating your entire workflow, it's necessary to understand th
 
 As you can see the most basic process consist of three phases: build - test - deploy. Each time you make changes on your distributed version control system you trigger an automation cycle on the Jenkins server. The entire set of instructions for running the process is on the `Jenkinsfile` located at the root of your source repository. That single file tells the server *what* to do, *when* to do it and *how* you want those tasks to be performed.
 
-## Write an Example NodeJS Application
+## Write an Example Node.js Application
 
 As mentioned in the previous section, the automation process starts by making a commit to a Version Control System.
 
-Create a new repository in GitHub. This guide will use a simple NodeJS application to showcase how Jenkins Pipelines works, select your `.gitignore` accordingly and don't forget to initialize it with a `README`:
+Create a new repository in GitHub. This guide will use a simple Node.js application to showcase how Jenkins Pipelines works, select your `.gitignore` accordingly and don't forget to initialize it with a `README`:
 
 ![New GitHub repository](/docs/assets/jenkins/jenkins-gh-new-repo.png)
 
@@ -145,7 +145,7 @@ This example will use two Docker containers, one to serve `app.js` using Express
 
 2.  Create the `Dockerfile` and `package.json` for the `express-image`.
 
-	{{< file "~/jenkins-guide/express-image/Dockerfile" >}}
+    {{< file "~/jenkins-guide/express-image/Dockerfile" >}}
 FROM node:6-alpine
 
 # Create server working directory
@@ -165,11 +165,11 @@ EXPOSE 9000
 CMD ["npm", "start"]
 {{< /file >}}
 
-	This image runs by default `app.js` when launched. You can think of it as the "dockerized" version of the web application.
+    This image runs by default `app.js` when launched. You can think of it as the "dockerized" version of the web application.
 
 3.  The Dockerfile copies a `package.json` file from the root of your project directory into the new image; create this file and add the following content:
 
-	{{< file "~/jenkins-guide/express-image/package.json" json >}}
+    {{< file "~/jenkins-guide/express-image/package.json" json >}}
 {
   "name": "express-image",
   "version": "1.0.0",
@@ -192,7 +192,7 @@ CMD ["npm", "start"]
 4.  Create the `Dockerfile` for the `test-image`.
 
 
-	{{< file "~/jenkins-guide/test-image/Dockerfile" conf >}}
+    {{< file "~/jenkins-guide/test-image/Dockerfile" conf >}}
 FROM node:6-alpine
 
 # Create Reports directory
@@ -214,11 +214,11 @@ EXPOSE 9000
 CMD ["npm", "test"]
 {{< /file >}}
 
-	This image creates a Report folder (which will be used later) and installs dependencies from `package.json`. On start, it executes the Mocha tests.
+    This image creates a Report folder (which will be used later) and installs dependencies from `package.json`. On start, it executes the Mocha tests.
 
 5.  Add a `package.json` file for your testing image:
 
-	{{< file "~/jenkins-guide/test-image/package.json" conf >}}
+    {{< file "~/jenkins-guide/test-image/package.json" conf >}}
 {
   "name": "test-image",
   "version": "1.0.0",
@@ -246,7 +246,7 @@ CMD ["npm", "test"]
 }
 {{< /file >}}
 
-	This JSON file contains all the necessary dependencies, including `mocha-junit-reporter` that will be needed by Jenkins for tests storage. Notice that the test script is configured with the `mochaFile` option that uses the image's report folder specified in the `Dockerfile`.
+    This JSON file contains all the necessary dependencies, including `mocha-junit-reporter` that will be needed by Jenkins for tests storage. Notice that the test script is configured with the `mochaFile` option that uses the image's report folder specified in the `Dockerfile`.
 
     Your final project distribution will be similar to this:
 
@@ -345,7 +345,7 @@ Using the package maintained by the Jenkins project allows you to use a more rec
 
 7.  Use the Linode Manager to reboot your server to apply these changes.
 
-	{{< caution >}}
+    {{< caution >}}
 It's out of the scope of this guide to establish security parameters for Jenkins remote installation. However, be aware of these critical points that need to be addressed in a production environment:
 
 - When you add `jenkins` user to the Docker group you are technically giving it `root` permissions.
@@ -442,7 +442,7 @@ Code blocks are delimited by curly brackets {} and no semicolons are used. Each 
 * Create Docker images, dockerize applications, pull images.
 * Almost any action you can think of is possible through steps.
 
-All this actions can be executed inside your `agent` or you can also instruct Jenkins to remotely perform any of them via SSH. As you can see there are endless automation possibilities. In a simple scenario, only one pipeline executing its stages sequentially is enough to achieve the desired final state, but you can define pipelines to run in parallel if needed. For detailed information about Jenkins Declarative Pipeline Syntax, see the official [documentation.](https://jenkins.io/doc/book/pipeline/syntax/)
+All these actions can be executed inside your `agent` or you can also instruct Jenkins to remotely perform any of them via SSH. As you can see there are endless automation possibilities. In a simple scenario, only one pipeline executing its stages sequentially is enough to achieve the desired final state, but you can define pipelines to run in parallel if needed. For detailed information about Jenkins Declarative Pipeline Syntax, see the official [documentation.](https://jenkins.io/doc/book/pipeline/syntax/)
 
 ## Start Working with Pipelines
 
@@ -511,7 +511,7 @@ From here you can obtain valuable information regarding: 1) your build number, 2
 
 ### Automate Your Entire Process with Jenkins
 
-The `Jenkinsfile` template uses a very basic pipeline structure with only three stages. You can customize it to accommodate as many stages as needed. The final Pipeline structure is dictated by the project complexity and the development guidelines you must follow. Since you've already walked through the NodeJS example, you know how to design a pipeline that automates each stage. For the purpose of this guide, the resulting pipeline should:
+The `Jenkinsfile` template uses a very basic pipeline structure with only three stages. You can customize it to accommodate as many stages as needed. The final Pipeline structure is dictated by the project complexity and the development guidelines you must follow. Since you've already walked through the Node.js example, you know how to design a pipeline that automates each stage. For the purpose of this guide, the resulting pipeline should:
 
 * Build Stage
     - Create both images and abort any further testing or deployment if an error is encountered.
@@ -792,7 +792,7 @@ It's time to commit the complete Jenkinsfile to your Jenkins server and trigger 
 
 ### Configure Automatic Triggers
 
-You can set Jenkins to scan your repository periodically. To do so just click again on the gear icon on the Pipeline view and then click the **Configure** link. There are many options available. Find **Scan Repository Triggers** and check the box **Periodically if not otherwise run**. You can chose any amount of time and for this example, one minute will be selected.
+You can set Jenkins to scan your repository periodically. To do so just click again on the gear icon on the Pipeline view and then click the **Configure** link. There are many options available. Find **Scan Repository Triggers** and check the box **Periodically if not otherwise run**. You can choose any amount of time and for this example, one minute will be selected.
 
 ![Repository Triggers](/docs/assets/jenkins/jenkins-bo-scan-gh.png)
 
@@ -831,7 +831,7 @@ Now, induce an error on the `BUILD` stage.
 
 1.  Edit your `express-image/package.json`. Change the express package name to `express-ERROR` to simulate a mistyping.
 
-	{{< file-excerpt "~/jenkins-guide/express-image/package.json" json >}}
+    {{< file-excerpt "~/jenkins-guide/express-image/package.json" json >}}
 "dependencies": {
     "express-ERROR": "^4.13.3"
   }

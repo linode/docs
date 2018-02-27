@@ -14,6 +14,12 @@
     "type": "dict",
     "description": "First and last names of the original guide author."
   },
+  "h1_title": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "This sets the H1, but leaves the title in the metadata"
+    },
   "comments": {
     "elements": false,
     "required": false,

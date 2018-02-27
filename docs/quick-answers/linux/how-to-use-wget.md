@@ -79,7 +79,7 @@ Picking the right location for your Linode is important, you have to decide what
         Continuing in background, pid 8764.
         Output will be written to ‘wget-log’.
 
-    If the file is too large, or you need to resume the download at a later time, you can use the `-c` option to `c`ontinue the download:
+    If the file is too large, or you need to resume the download at a later time, you can use the `-c` option to continue the download:
 
         wget -c http://speedtest.newark.linode.com/100MB-newark.bin
 

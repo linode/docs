@@ -68,7 +68,7 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 			file2.txt
 			file3.txt
 
-5. To commit the changes of `file.txt` to the version control system, use `git commit`. Git requires you to write a commit message, a message will help you remember the changes you have made to your files. In this example, use the `-am` options to commit `a`ll modified files, specifically the ones Git is tracking, and include a commit `m`essage:
+5. To commit the changes of `file.txt` to the version control system, use `git commit`. Git requires you to write a commit message, a message will help you remember the changes you have made to your files. In this example, use the `-am` options to commit `a`ll modified files, specifically the ones Git is tracking, and include a commit message:
 
 		git commit -am "Added Hello Linode to file.txt"
 

@@ -122,7 +122,7 @@ Next, set up a server to host a package index. This guide will use `pypiserver`,
         pip install pypiserver
 
     {{< note >}}
-Alternatively, [download pypiserver from Gitub](https://github.com/pypiserver/pypiserver), then navigate into the downloaded pypiserver directory and install with `python setup.py install`.
+Alternatively, [download pypiserver from Github](https://github.com/pypiserver/pypiserver), then navigate into the downloaded pypiserver directory and install with `python setup.py install`.
 {{< /note >}}
 
 4.  Move `linode_example-0.1.tar.gz` into `~/packages`:

@@ -200,7 +200,7 @@ To run the same application in cluster mode, replace `--deploy-mode client`with 
 
 When you submit a job, Spark Driver automatically starts a web UI on port `4040` that displays information about the application. However, when execution is finished, the Web UI is dismissed with the application driver and can no longer be accessed.
 
-Spark provides a History Server that collects application logs from HDFS and displays them in a persistent web UI. The following steps will enable log persistance in HDFS:
+Spark provides a History Server that collects application logs from HDFS and displays them in a persistent web UI. The following steps will enable log persistence in HDFS:
 
 1.  Edit `$SPARK_HOME/conf/spark-defaults.conf` and add the following lines to enable Spark jobs to log in HDFS:
 

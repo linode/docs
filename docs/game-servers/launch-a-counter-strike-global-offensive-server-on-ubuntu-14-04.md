@@ -79,7 +79,7 @@ CS:GO requires a server token unless you want to limit players to only clients c
 
 ## Configure the Server
 
-1.  Create a file called `server.cfg` using your prefered text editor. Choose a hostname and a unique RCON password that you don't use elsewhere.
+1.  Create a file called `server.cfg` using your preferred text editor. Choose a hostname and a unique RCON password that you don't use elsewhere.
 
     {{< file "~/Steam/csgo-ds/csgo/cfg/server.cfg" aconf >}}
 hostname "server_hostname"
@@ -163,4 +163,4 @@ These settings are changed in the launch command.
 
 ### RCON
 
-When logged into the server, you can open the RCON console with the backtic button (<code>`</code>), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/docs/game-servers/team-fortress2-on-debian-and-ubuntu/#rcon).
+When logged into the server, you can open the RCON console with the backtick button (<code>`</code>), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/docs/game-servers/team-fortress2-on-debian-and-ubuntu/#rcon).

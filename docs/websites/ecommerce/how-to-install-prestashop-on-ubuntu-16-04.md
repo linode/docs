@@ -16,7 +16,7 @@ contributor:
 ---
 
 
-![Prestashop_banner](/docs/assets/PrestaShop.jpg)
+![How to Install PrestaShop of Ubuntu 16.04 LTS](/docs/assets/PrestaShop.jpg)
 
 ## What is PrestaShop?
 
@@ -236,7 +236,7 @@ You can also use:
 
     ![SSL switches turned on in settings](/docs/assets/prestashop-ubuntu1604-SSL-switches.png)
 
-2. Go back to the left menu, and as your mouse pointer hovers on top of **Shop Parameters** you'll see a submenu pop up. Click on **Traffic and SEO**. Scroll down until you find the settings picured below:
+2. Go back to the left menu, and as your mouse pointer hovers on top of **Shop Parameters** you'll see a submenu pop up. Click on **Traffic and SEO**. Scroll down until you find the settings pictured below:
 
     ![PrestaShop SEO and URL settings](/docs/assets/prestashop-ubuntu1604-SEO-and-URL-switches.png)
 

@@ -20,7 +20,7 @@ Network Helper automatically deposits a static networking configuration in to yo
  - Add a public or private IPv4 address
  - Restore from a backup
  - Deploy from an Linode Images template
- - Migrate your Linode to a new datacenter
+ - Migrate your Linode to a new data center
  - Clone from another Linode
 
 

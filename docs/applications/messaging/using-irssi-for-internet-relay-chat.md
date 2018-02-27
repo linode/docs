@@ -243,7 +243,7 @@ The `hilight` command will highlight certain words used in the channels you have
 
     /hilight word
 
-To remove a hilight, use the command:
+To remove a `hilight`, use the command:
 
     /dehilight word
 

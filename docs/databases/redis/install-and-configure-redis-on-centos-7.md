@@ -133,7 +133,7 @@ The following steps will guide you through master/slave replication, with the sl
 For this section, you will use two Linodes, a master and a slave.
 
 {{< note >}}
-To communicate over the private network, your master and slave Linodes must reside in the same datacenter.
+To communicate over the private network, your master and slave Linodes must reside in the same data center.
 {{< /note >}}
 
 ###  Prepare Your Linodes

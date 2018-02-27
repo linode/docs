@@ -72,7 +72,7 @@ You may add an additional public IP address from the "Remote Access" tab in the 
 We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the "Support" tab of the Linode Manager explaining the reason for the new IP.
 {{< /note >}}
 
-If you'd like to take advantage of our private networking feature, you may add a private IP to your Linode from the "Remote Access" tab of the Linode Manager. Private IP addresses are not publicly accessible, although they are accessible from other Linodes in the same datacenter. Although we take measures to prevent others from intercepting your private IP traffic, you may still wish to configure a firewall to allow access from only the Linodes that you operate.
+If you'd like to take advantage of our private networking feature, you may add a private IP to your Linode from the "Remote Access" tab of the Linode Manager. Private IP addresses are not publicly accessible, although they are accessible from other Linodes in the same data center. Although we take measures to prevent others from intercepting your private IP traffic, you may still wish to configure a firewall to allow access from only the Linodes that you operate.
 
 ## How do I set the reverse DNS for an IP address?
 
@@ -90,13 +90,13 @@ First, check to be sure that the service (SSH, HTTP, etc.) you're trying to acce
 
 ## How can I upgrade or downgrade my Linode?
 
-Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pending availability for the plan you wish to move to in your datacenter. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For more information, refer to our guide on [resizing a Linode](/docs/migrate-to-linode/disk-images/resizing-a-linode)
+Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pending availability for the plan you wish to move to in your data center. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For more information, refer to our guide on [resizing a Linode](/docs/migrate-to-linode/disk-images/resizing-a-linode)
 
-## How can I test downloads speeds from different datacenters?
+## How can I test downloads speeds from different data centers?
 
-You may use our [speed test](http://www.linode.com/speedtest/) page to check latency and download speeds from your location to each of our datacenters. Many customers with a large Asia-Pacific presence find that our Singapore and Tokyo facilities work best, while those with a visitor base in Europe tend to prefer our London or Frankfurt datacenters.
+You may use our [speed test](http://www.linode.com/speedtest/) page to check latency and download speeds from your location to each of our data centers. Many customers with a large Asia-Pacific presence find that our Singapore and Tokyo facilities work best, while those with a visitor base in Europe tend to prefer our London or Frankfurt data centers.
 
-## Can I transfer my Linode to another datacenter?
+## Can I transfer my Linode to another data center?
 
 Yes! Any time you'd like to transfer your Linode, you may open a ticket via the "Support" tab in the Linode Manager to request a DC migration. Your disks and configuration profiles will move with your Linode, although your IP addresses will need to change. Once we stage your migration, you'll see a "migration pending" link in the Linode Manager, which you may use at your convenience to migrate your Linode.
 

@@ -84,7 +84,7 @@ First, install the utility:
 
     These are drop-down menus that can be accessed by pressing **F9** and then navigating with your arrow keys. Press **F9** and then the **DOWN** arrow key multiple times until **Tree** is highlighted. Press **ENTER**. The panel has now changed to tree view.
 
-4.  Once you hit the **F9** key, some letters get highlighted, e.g., **C** in **C**ommand. These are keys that you can press to navigate the menus faster. Let's return to your previous view: press **F9** then **l** (L) and then **g** to get back to **File listing**. When an input field is selected, hold **ALT** down before pressing on the highlighted letter.
+4.  Once you hit the **F9** key, some letters get highlighted, e.g., **C** in Command. These are keys that you can press to navigate the menus faster. Let's return to your previous view: press **F9** then **l** (L) and then **g** to get back to **File listing**. When an input field is selected, hold **ALT** down before pressing on the highlighted letter.
 
 5.  Shortcut keys are a combination of keys pressed together that allow you to quickly access specific actions. For example, try pressing **CTRL+O**. This lets you focus on the command line or see previous command output while Midnight Commander runs in the background. You can quickly return to its interface by hitting the same key combination.
 

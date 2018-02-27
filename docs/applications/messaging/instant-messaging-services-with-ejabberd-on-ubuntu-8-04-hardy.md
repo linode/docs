@@ -16,7 +16,7 @@ title: 'Instant Messaging Services with ejabberd on Ubuntu 8.04 (Hardy)'
 
 
 
-Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface, and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered "heavyweight" by critics, but mostly due to the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads: ebjabberd servers are believed to be the backbone for some of the largest Jabber servers running now.
+Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface, and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered "heavyweight" by critics, but mostly due to the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads: ejabberd servers are believed to be the backbone for some of the largest Jabber servers running now.
 
 This installation process assumes that you have a working installation of Ubuntu 8.04 (Hardy) and have followed the steps in the [getting started](/docs/getting-started/) guide, and now have an up to date instance of the Ubuntu Hardy operating system and are connected to your Linode via SSH and have root access. Once you've completed these requirements we can begin with the installation process.
 

@@ -17,7 +17,7 @@ title: 'How to Install a Turtl Server on Ubuntu'
 
 [Turtl](https://turtlapp.com/docs) is an open-source alternative to cloud-based storage services. With a focus on privacy, Turtl offers a place to store and access your passwords, bookmarks and pictures. Hosting your own Turtl server on a secure Linode allows you to monitor your own security.
 
-The Turtl server is written in Common Lisp, and the low-level encryption is derived from the Stanford Javascript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentation.
+The Turtl server is written in Common Lisp, and the low-level encryption is derived from the Stanford JavaScript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentation.
 
 
 ## Before You Begin
@@ -45,22 +45,22 @@ The Turtl server has to be built from source. Download all of the dependencies a
 
 Download the Libuv package from the official repository:
 
-	wget https://dist.libuv.org/dist/v1.13.0/libuv-v1.13.0.tar.gz
-	tar -xvf libuv-v1.13.0.tar.gz
+    wget https://dist.libuv.org/dist/v1.13.0/libuv-v1.13.0.tar.gz
+    tar -xvf libuv-v1.13.0.tar.gz
 
 Build the package from source:
 
     cd libuv-v1.13.0
     sudo sh autogen.sh
-	sudo ./configure
-	sudo make
-	sudo make install
+    sudo ./configure
+    sudo make
+    sudo make install
 
 After the package is built, run `sudo ldconfig` to maintain the shared libracy cache.
 
 #### RethinkDB
 
-[RethinkDB](https://rethinkdb.com/faq/) is a flexible JSON datbase. According to the Turtl [documentation](https://turtlapp.com/docs/server/), RethinkDB just needs to be installed; Turtl will take care of the rest.
+[RethinkDB](https://rethinkdb.com/faq/) is a flexible JSON database. According to the Turtl [documentation](https://turtlapp.com/docs/server/), RethinkDB just needs to be installed; Turtl will take care of the rest.
 
 RehinkDB has community-maintained packages on most distributions. On Ubuntu, you have to add the RethinkDB to your list of repositories:
 
@@ -98,13 +98,13 @@ According to the CCL [documentation](https://ccl.clozure.com/download.html), you
 Quickly check if CCL has been installed correctly by updating the sources:
 
     cd ccl
-	svn update
+    svn update
 
 Move `ccl` to `/usr/bin` so `ccl` can run from the command line:
 
     cd ..
     sudo cp -r ccl/ /usr/local/src
-	sudo cp /usr/local/src/ccl/scripts/ccl64 /usr/local/bin
+    sudo cp /usr/local/src/ccl/scripts/ccl64 /usr/local/bin
 
 Now, running `ccl64`, or `ccl` depending on your system, will launch a Lisp environment:
 
@@ -163,8 +163,8 @@ Download ASDF:
 Load and install `asdf.lisp` in your CCL environment:
 
     ccl64 --load quicklisp.lisp
-	(load (compile-file "asdf.lisp"))
-	(quit)
+    (load (compile-file "asdf.lisp"))
+    (quit)
 
 
 ### Install Turtl
@@ -191,7 +191,7 @@ Turtl does not ship with all of its dependencies. Instead, the Turtl community p
 Edit the `/home/turtl/.ccl-init.lisp` to include:
 
     (cwd "/home/turtl/api")
-	(load "/home/turtl/api/launch")
+    (load "/home/turtl/api/launch")
 
 The first line tells Lisp to use the `cl-cwd` package that you cloned to change the current working directory to `/home/turtl/api`. You can change this to anything, but your naming conventions should be consistent. The second line loads your `launch.lisp`, loading `asdf` so that Turtl can run.
 

@@ -36,7 +36,7 @@ external_resources:
 
 ## Install Taskwarrior
 
-Install Taskwarriror with the command:
+Install Taskwarrior with the command:
 
 	sudo apt install task
 

@@ -19,7 +19,7 @@ external_resources:
  - '[Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)'
 ---
 
-This document describes a compatible alternative to the **LAMP** (Linux,Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
+This document describes a compatible alternative to the **LAMP** (Linux, Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
 
 Prior to beginning this guide, please complete the [Getting Started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
@@ -36,7 +36,7 @@ The first command should show your short hostname, and the second should show yo
 
 ## Installation Prerequisites
 
-Before beginning with the installation of this web application stack,issue the following commands to ensure that your system's package database is up to date and that all installed software is running with the latest version:
+Before beginning with the installation of this web application stack, issue the following commands to ensure that your system's package database is up to date and that all installed software is running with the latest version:
 
     sudo apt-get update
     sudo apt-get upgrade
@@ -45,7 +45,7 @@ Before beginning with the installation of this web application stack,issue the f
 
 There are several viable and popular options for installing the Nginx software. The method used here retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. Another option would be to retrieve packages compiled by the Debian Backports project. Backports packages are more up to date than the stable packages provided by the Debian project. However, Backports do not necessarily receive the same updates, support, and maintenance that official packages receive.
 
-For more in-depth installation instructions consider our [guide to Installing Nginx](/docs/web-servers/nginx/installation/debian-7-wheezy).
+For more in-depth installation instructions consider our [guide to Installing Nginx](/docs/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/).
 
 To install Nginx from the Debian repository, issue the following command:
 

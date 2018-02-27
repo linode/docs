@@ -162,7 +162,7 @@ The final column, `StDev`, provides the standard deviation of the latencies to e
 
 In most circumstances, you may think of the MTR output in three major sections. Depending on configurations, the first 2 or 3 hops often represent the source host's ISP, while the last 2 or 3 hops represent the destination host's ISP. The hops in between are the routers the packet traverses to reach its destination.
 
-For example if MTR is run from your home PC to your Linode, the first 2 or 3 hops belong to **your** ISP. The last 3 hops belong to the datacenter where your Linode resides. Any hops in the middle are intermediate hops. When running MTR locally, if you see an abnormality in the first few hops near the source, contact your local service provider or investigate your local networking configuration. Conversely, if you see abnormalities near the destination you may want to contact the operator of the destination server or network support for that machine (e.g. Linode). Unfortunately, in cases where there are problems on the intermediate hops, both service providers will have limited ability to address those glitches.
+For example if MTR is run from your home PC to your Linode, the first 2 or 3 hops belong to **your** ISP. The last 3 hops belong to the data center where your Linode resides. Any hops in the middle are intermediate hops. When running MTR locally, if you see an abnormality in the first few hops near the source, contact your local service provider or investigate your local networking configuration. Conversely, if you see abnormalities near the destination you may want to contact the operator of the destination server or network support for that machine (e.g. Linode). Unfortunately, in cases where there are problems on the intermediate hops, both service providers will have limited ability to address those glitches.
 
 ## Analyzing MTR Reports
 
@@ -244,7 +244,7 @@ Some networking issues are novel and require escalation to the operators of the 
 
 ### Destination Host Networking Improperly Configured
 
-In the next example, it appears that there is 100% loss to a the destination host because of an incorrectly configured router. At first glance it appears that the packets are not reaching the host but this is not the case.
+In the next example, it appears that there is 100% loss to the destination host because of an incorrectly configured router. At first glance it appears that the packets are not reaching the host but this is not the case.
 
     root@localhost:~# mtr --report www.google.com
     HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev

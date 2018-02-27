@@ -29,7 +29,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Create a CentOS 7 Linode in your closest datacenter (barring Atlanta, which does not currently support SIP servers). A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
+1.  Create a CentOS 7 Linode in your closest data center (barring Atlanta, which does not currently support SIP servers). A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
 2.  Ensure you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides to prepare your server. **Do not** following the section to set up a firewall.
 

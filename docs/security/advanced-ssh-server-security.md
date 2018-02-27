@@ -89,7 +89,7 @@ There are four directives available executed in sequential order:
 `DenyGroups`: similar to `DenyUsers`, any user who belongs to this group(s) is blocked.
 `AllowGroups`: only users part of this group(s) can access the SSH service.
 
-The default behavior of SSH is to allow *any* user to log in to the server, but this can be changed by adding access control directives to your `/etc/ssh/sshd_config` file. The following examples shows how to filter who can access the service:
+The default behavior of SSH is to allow *any* user to log in to the server, but this can be changed by adding access control directives to your `/etc/ssh/sshd_config` file. The following examples show how to filter who can access the service:
 
 ### Selectively Deny Users
 
@@ -197,7 +197,7 @@ ChrootDirectory /home/chroot/restricted-user
 
         sudo systemctl restart sshd
 
-Keep in mind that our restricted user can't use any command or binary that is not manually installed in its jail environment. The complete process to setup a user for specific tasks is overwhelming but has the advantage that anything outside the jail is protected in the event that the user is compromised.
+Keep in mind that our restricted user can't use any command or binary that is not manually installed in its jail environment. The complete process to set up a user for specific tasks is overwhelming but has the advantage that anything outside the jail is protected in the event that the user is compromised.
 
 ## Regularly Update your Revoked Keys List
 

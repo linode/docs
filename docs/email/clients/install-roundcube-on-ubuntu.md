@@ -18,7 +18,7 @@ external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
 ---
 
-![Install Roundcube on Ubuntu 16](/docs/assets/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")
+![Install Roundcube on Ubuntu 16.04 LTS](/docs/assets/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")
 
 ## What is Roundcube?
 
@@ -58,7 +58,7 @@ This section will cover installing Apache, MySQL, PHP and SSL on your Linode fro
 
         sudo mysql_secure_installation
 
-4.  Specify your Linode's time zone in the `/etc/php5/apache2/php.ini` PHP configuration file. If your server is not using UTC, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
+4.  Specify your Linode's time zone in the `/etc/php/7.0/apache2/php.ini` PHP configuration file. If your server is not using UTC, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
 
         sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php/7.0/apache2/php.ini
 
@@ -82,7 +82,7 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
         sudo chmod 644 apache2-roundcube.sample.conf
 
-5.  Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. [Let's Encrypt](https://letsencrypt.org/) offers browser trusted, free SSL certificates, but does not support [Extended Validatation](https://en.wikipedia.org/wiki/Extended_Validation_Certificate) (EV) or multi-domain ([wildcard](https://en.wikipedia.org/wiki/Wildcard_certificate)) certificates. To gain those features, a [commercial SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) must be used.
+5.  Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. [Let's Encrypt](https://letsencrypt.org/) offers browser trusted, free SSL certificates, but does not support [Extended Validation](https://en.wikipedia.org/wiki/Extended_Validation_Certificate) (EV) or multi-domain ([wildcard](https://en.wikipedia.org/wiki/Wildcard_certificate)) certificates. To gain those features, a [commercial SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) must be used.
 
 6.  Once you have your SSL certificate, edit the following options in `apache2-roundcube.sample.conf` to match your desired configuration:
 
@@ -151,7 +151,7 @@ PEAR is an acronym for "PHP Extension and Application Repository". Common PHP co
 
     PEAR will print an **install ok** confirmation message for each package that it successfully installs. In this case, a complete installation will look similar to this:
 
-  	{{< output >}}
+    {{< output >}}
 install ok: channel://pear.php.net/Auth_SASL-1.1.0
 install ok: channel://pear.php.net/Net_IDNA2-0.1.1
 install ok: channel://pear.php.net/Mail_Mime-1.10.2

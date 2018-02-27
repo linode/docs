@@ -15,6 +15,8 @@ contributor:
     link: https://github.com/agottschling
 ---
 
+![Pritunl VPN Server and Management Panel on Ubuntu](/docs/assets/pritunl/Pritunl_VPN_Server_and_Management_Panel_on_Ubuntu_1404_smg.jpg)
+
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface. This tutorial will show you how to install, configure, and connect to Pritunl VPN.
 
 {{< note >}}
@@ -67,7 +69,7 @@ If you've configured the firewall according to the [Securing Your Server](/docs/
 
     [![Pritunl DB setup screen](/docs/assets/pritunl-db-setup-resized.png)](/docs/assets/pritunl-db-setup.png)
 
-3.  Connect to the database. The installer has already populated the mongoDB URI. If it looks correct, click **Save**.
+3.  Connect to the database. The installer has already populated the MongoDB URI. If it looks correct, click **Save**.
 
     Alternatively, you may enter any valid MongoDB URI to use as the database for Pritunl.
 
@@ -78,7 +80,7 @@ If you've configured the firewall according to the [Securing Your Server](/docs/
     - **Username:** *pritunl*
     - **Password:** *pritunl*
 
-2.  The Inital Setup form will appear:
+2.  The Initial Setup form will appear:
 
     ![Pritunl setup screen](/docs/assets/pritunl-setup.png)
 

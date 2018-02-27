@@ -138,9 +138,9 @@ You only need to run `source` on this file once in a single terminal session, un
 {{< /note >}}
 
     -  `DATACENTER`:
-        This specifies the Linode datacenter where the Cluster Manager Linode is created. Set it to the ID of the datacenter that is nearest to your location, to reduce network latency. It's also recommended to create the cluster manager node in the same datacenter where the images and cluster nodes will be created, so that it can communicate with them using low latency private IP addresses and reduce data transfer usage.
+        This specifies the Linode data center where the Cluster Manager Linode is created. Set it to the ID of the data center that is nearest to your location, to reduce network latency. It's also recommended to create the cluster manager node in the same data center where the images and cluster nodes will be created, so that it can communicate with them using low latency private IP addresses and reduce data transfer usage.
 
-        To view the list of datacenters and their IDs:
+        To view the list of data centers and their IDs:
 
             source ~/storm-linode/api_env_linode.conf
             ~/storm-linode/linode_api.py datacenters table
@@ -256,7 +256,7 @@ Creating a new Storm cluster involves four main steps, some of which are necessa
 
 ### Create a Zookeeper Image
 
-A *Zookeeper image* is a master disk image with all necessary Zookeeper softwares and libraries installed. We'll create our using [Linode Images](/docs/platform/linode-images) The benefits of using a Zookeeper image include:
+A *Zookeeper image* is a master disk image with all necessary Zookeeper software and libraries installed. We'll create our using [Linode Images](/docs/platform/linode-images) The benefits of using a Zookeeper image include:
 
 -  Quick creation of a Zookeeper cluster by simply cloning it to create as many nodes as required, each a perfect copy of the image
 -  Distribution packages and third party software packages are identical on all nodes, preventing version mismatch errors
@@ -315,9 +315,9 @@ The values represented in this guide are current as of publication, but are subj
 
     -  `DATACENTER_FOR_IMAGE`
 
-        The Linode datacenter where this image will be created. This can be any Linode datacenter, but cluster creation is faster if the image is created in the same datacenter where the cluster will be created. It's also recommended to create the image in the same datacenter as the Cluster Manager Linode. Select a datacenter that is geographically close to your premises, to reduce network latency. If left unchanged, the Linode will be created in the Newark data center.
+        The Linode data center where this image will be created. This can be any Linode data center, but cluster creation is faster if the image is created in the same data center where the cluster will be created. It's also recommended to create the image in the same data center as the Cluster Manager Linode. Select a data center that is geographically close to your premises, to reduce network latency. If left unchanged, the Linode will be created in the Newark data center.
 
-        This value can either be the datacenter's ID or location or abbreviation. To see a list of all datacenters:
+        This value can either be the data center's ID or location or abbreviation. To see a list of all data centers:
 
             ./zookeeper-cluster-linode.sh datacenters api_env_linode.conf
 
@@ -456,11 +456,11 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
     -  `DATACENTER_FOR_CLUSTER`
 
-        The Linode datacenter where the nodes of this cluster will be created. All nodes of a cluster have to be in the same datacenter; they cannot span multiple datacenters since they will use private network traffic to communicate.
+        The Linode data center where the nodes of this cluster will be created. All nodes of a cluster have to be in the same data center; they cannot span multiple data centers since they will use private network traffic to communicate.
 
-        This can be any Linode datacenter, but cluster creation may be faster if it is created in the same datacenter where the image and Cluster Manager Linode are created. It is recommended to select a datacenter that is geographically close to your premises to reduce network latency.
+        This can be any Linode data center, but cluster creation may be faster if it is created in the same data center where the image and Cluster Manager Linode are created. It is recommended to select a data center that is geographically close to your premises to reduce network latency.
 
-        This value can either be the datacenter's ID or location or abbreviation. To see a list of all datacenters:
+        This value can either be the data center's ID or location or abbreviation. To see a list of all data centers:
 
             ./zookeeper-cluster-linode.sh datacenters api_env_linode.conf
 
@@ -520,9 +520,9 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
     -  `PUBLIC_HOST_NAME_PREFIX`
 
-        Every Linode in the cluster has a *public IP address*, which can be reached from anywhere on the Internet, and a *private IP address*, which can be reached only from other nodes of the same user inside the same datacenter.
+        Every Linode in the cluster has a *public IP address*, which can be reached from anywhere on the Internet, and a *private IP address*, which can be reached only from other nodes of the same user inside the same data center.
 
-        Accordingly, every node is given a *public hostname* that resolves to its public IP address. Each node's public hostname will use this value followed by a number (for example, `public-host1`, `public-host2`, etc.) If the cluster manager node is in a different Linode datacenter from the cluster nodes, it uses the public hostnames and public IP addresses to communicate with cluster nodes.
+        Accordingly, every node is given a *public hostname* that resolves to its public IP address. Each node's public hostname will use this value followed by a number (for example, `public-host1`, `public-host2`, etc.) If the cluster manager node is in a different Linode data center from the cluster nodes, it uses the public hostnames and public IP addresses to communicate with cluster nodes.
 
         <br>
 
@@ -534,7 +534,7 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
     -  `CLUSTER_MANAGER_USES_PUBLIC_IP`
 
-        Set this value to `false` if the cluster manager node is located in the *same* Linode datacenter as the cluster nodes. This is the recommended value. Change to `true` **only** if the cluster manager node is located in a *different* Linode datacenter from the cluster nodes.
+        Set this value to `false` if the cluster manager node is located in the *same* Linode data center as the cluster nodes. This is the recommended value. Change to `true` **only** if the cluster manager node is located in a *different* Linode data center from the cluster nodes.
 
         {{< caution >}}
 It's important to set this correctly to avoid critical cluster creation failures.
@@ -642,9 +642,9 @@ The values represented in this guide are current as of publication, but are subj
 
     -  `DATACENTER_FOR_IMAGE`
 
-        The Linode datacenter where this image will be created. This can be any Linode datacenter, but cluster creation is faster if the image is created in the same datacenter where the cluster will be created. It's also recommended to create the image in the same datacenter as the Cluster Manager Linode. Select a datacenter that is geographically close to you to reduce network latency.
+        The Linode data center where this image will be created. This can be any Linode data center, but cluster creation is faster if the image is created in the same data center where the cluster will be created. It's also recommended to create the image in the same data center as the Cluster Manager Linode. Select a data center that is geographically close to you to reduce network latency.
 
-        This value can either be the datacenter's ID or location or abbreviation. To see a list of all datacenters:
+        This value can either be the data center's ID or location or abbreviation. To see a list of all data centers:
 
             ./zookeeper-cluster-linode.sh datacenters api_env_linode.conf
 
@@ -746,7 +746,7 @@ The values represented in this guide are current as of publication, but are subj
     If the process fails, ensure that you do not already have an existing Storm image with the same name in the Linode Manager. If you do, delete it and run the command again, or recreate this image with a different name.
 
     {{< note >}}
-During this process, a short-lived 2GB linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is expected behavior.
+During this process, a short-lived 2GB Linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is expected behavior.
 {{< /note >}}
 
 ### Create a Storm Cluster
@@ -772,11 +772,11 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
     -  `DATACENTER_FOR_CLUSTER`
 
-        The Linode datacenter where the nodes of this cluster will be created. All nodes of a cluster have to be in the same datacenter; they cannot span multiple datacenters since they will use private network traffic to communicate.
+        The Linode data center where the nodes of this cluster will be created. All nodes of a cluster have to be in the same data center; they cannot span multiple data centers since they will use private network traffic to communicate.
 
-        This can be any Linode datacenter, but cluster creation may be faster if it is created in the same datacenter where the image and Cluster Manager Linode are created. It is recommended to select a datacenter that is geographically close to your premises to reduce network latency.
+        This can be any Linode data center, but cluster creation may be faster if it is created in the same data center where the image and Cluster Manager Linode are created. It is recommended to select a data center that is geographically close to your premises to reduce network latency.
 
-        This value can either be the datacenter's ID or location or abbreviation. To see a list of all datacenters:
+        This value can either be the data center's ID or location or abbreviation. To see a list of all data centers:
 
             ./zookeeper-cluster-linode.sh datacenters api_env_linode.conf
 
@@ -850,9 +850,9 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
     -  `NIMBUS_NODE_PUBLIC_HOSTNAME`, `SUPERVISOR_NODES_PUBLIC_HOSTNAME_PREFIX` and  `CLIENT_NODES_PUBLIC_HOSTNAME_PREFIX`
 
-        Every Linode in the cluster has a *public IP address*, which can be reached from anywhere on the Internet, and a *private IP address*, which can be reached only from other nodes of the same user inside the same datacenter.
+        Every Linode in the cluster has a *public IP address*, which can be reached from anywhere on the Internet, and a *private IP address*, which can be reached only from other nodes of the same user inside the same data center.
 
-        Accordingly, every node is given a *public hostname* that resolves to its public IP address. Each node's public hostname will use this value followed by a number (for example, `public-host1`, `public-host2`, etc.) If the cluster manager node is in a different Linode datacenter from the cluster nodes, it uses the public hostnames and public IP addresses to communicate with cluster nodes.
+        Accordingly, every node is given a *public hostname* that resolves to its public IP address. Each node's public hostname will use this value followed by a number (for example, `public-host1`, `public-host2`, etc.) If the cluster manager node is in a different Linode data center from the cluster nodes, it uses the public hostnames and public IP addresses to communicate with cluster nodes.
 
         <br>
 
@@ -864,7 +864,7 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
     -  `CLUSTER_MANAGER_USES_PUBLIC_IP`
 
-        Set this value to `false` if the cluster manager node is located in the *same* Linode datacenter as the cluster nodes. This is the recommended value and is also the default. Change to `true` **only** if the cluster manager node is located in a *different* Linode datacenter from the cluster nodes.
+        Set this value to `false` if the cluster manager node is located in the *same* Linode data center as the cluster nodes. This is the recommended value and is also the default. Change to `true` **only** if the cluster manager node is located in a *different* Linode data center from the cluster nodes.
 
         {{< caution >}}
 It's important to set this correctly to avoid critical cluster creation failures.

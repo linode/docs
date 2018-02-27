@@ -24,7 +24,7 @@ external_resources:
 
 ## Before You Begin
 
-1.  Completing this guide will require at least two Linodes located in the same datacenter. The instructions in this guide were written for Ubuntu 16.04, but other distributions can be used; the Linodes do not need to use the same distribution.
+1.  Completing this guide will require at least two Linodes located in the same data center. The instructions in this guide were written for Ubuntu 16.04, but other distributions can be used; the Linodes do not need to use the same distribution.
 
 2.  For each Linode, complete the steps in our [Getting Started](/docs/getting-started) guide for setting your Linode's hostname and timezone. Follow the steps in our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account.
 

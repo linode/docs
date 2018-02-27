@@ -197,7 +197,7 @@ If you use OS X on a Mac, we have found that the [Tunnelblick](http://code.googl
 
 ### Connect Remote Networks Securely With the VPN
 
-Once configured, the OpenVPN server allows you to encrypt traffic between your local computer and your Linode's local network. While all other traffic is handled in the conventional manner, the VPN allows traffic on nonpublic interfaces to be securely passed through your Linode. This will also allow you to connect to the local area network in your Linode's datacenter if you are using the LAN to connect to multiple Linodes in the same datacenter. Using OpenVPN in this manner is supported by the default configuration. If you connect to the OpenVPN you have configured at this point, you will have access to this functionality.
+Once configured, the OpenVPN server allows you to encrypt traffic between your local computer and your Linode's local network. While all other traffic is handled in the conventional manner, the VPN allows traffic on nonpublic interfaces to be securely passed through your Linode. This will also allow you to connect to the local area network in your Linode's data center if you are using the LAN to connect to multiple Linodes in the same data center. Using OpenVPN in this manner is supported by the default configuration. If you connect to the OpenVPN you have configured at this point, you will have access to this functionality.
 
 ### Tunnel All Connections through the VPN
 
