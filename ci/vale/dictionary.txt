@@ -694,6 +694,7 @@ manyof
 mapreduce
 mariadb
 maskname
+masterdb
 mathjax
 maxconn
 maxdepth
@@ -1114,6 +1115,7 @@ simfs
 sintra
 sitename
 slackpkg
+slavedb
 smartcard
 smartcards
 smtp
