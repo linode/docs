@@ -9,7 +9,7 @@ published: 2018-01-21
 modified: 2018-01-21
 modified_by:
   name: Linode
-title: 'Install an Odoo 11 Stack on Ubuntu 16.04 Using Linode'
+title: 'Install an Odoo 11 Stack on Ubuntu 16.04'
 contributor:
   name: Damaso Sanoja
   link: https://twitter.com/damasosanoja
