@@ -69,7 +69,16 @@ Yes, but while rebooting with the new kernel will help prepare your Linode for t
 |----------------|----------|----------------------------|
 | **Meltdown**   | Deployed | Patching is complete.      |
 | **Spectre-V1** |    No    | No patch is available yet. |
-| **Spectre-V2** |    No    | No patch is available yet. |
+| **Spectre-V2** | Deployed    | Patching is complete. |
+
+
+### Update: Spectre-V2 Patch
+
+The patch for Spectre-V2 has been released for your Linode. You can deploy the Linode-level patch including the newly released [Retpoline](https://security.googleblog.com/2018/01/more-details-about-mitigations-for-cpu_4.html) fix by updating your Linode's kernel.
+
+If you use a Linode-supplied kernel follow [these steps](#how-to-reboot-into-an-updated-linode-kernel) to make sure your Linode has the latest fix. If you use a distribution-supplied kernel, please check your distribution's website for more information.
+
+Spectre-V2 mitigation is a two-stage process. The second stage is host-level fixes. We are currently waiting on host-level fixes to be released.
 
 ## What does this mean for Linode Customers?
 
@@ -124,8 +133,6 @@ If you boot your Linode using the **GRUB** or **Direct Disk** boot setting, your
 
 ## Spectre
 Where Meltdown is a specific attack implementation, Spectre targets the way modern CPUs work, regardless of speculative execution. Nearly all computing platforms manufactured since 1995 are vulnerable to Spectre, including non-x86 systems such as ARM, IBM PowerSystems, and other architectures.
-
-Intel is currently developing microcode updates to mitigate Spectre, and there is a Linux kernel patch ([IBRS](https://lwn.net/Articles/743019/)) also in development. When these are available, we’ll apply both to our hosts and notify customers of the updates.
 
 ## How does the Meltdown patch affect me?
 

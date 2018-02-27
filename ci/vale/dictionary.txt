@@ -1016,6 +1016,7 @@ resolv
 resolvconf
 resque
 restapi
+retpoline
 reutilize
 richlanguage
 rimap
