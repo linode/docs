@@ -74,9 +74,9 @@ Yes, but while rebooting with the new kernel will help prepare your Linode for t
 
 ### Update: Spectre-V2 Patch
 
-The patch for Spectre-V2 has been released for your Linode. You can deploy the Linode-level patch including the newly released [Retpoline](https://security.googleblog.com/2018/01/more-details-about-mitigations-for-cpu_4.html) fix by updating your Linode's kernel. 
+The patch for Spectre-V2 has been released for your Linode. You can deploy the Linode-level patch including the newly released [Retpoline](https://security.googleblog.com/2018/01/more-details-about-mitigations-for-cpu_4.html) fix by updating your Linode's kernel.
 
-If you use a Linode-supplied kernel follow [these steps](#how-to-reboot-into-an-updated-linode-kernel) to make sure your Linode has the latest fix. If you use a distribution-supplied kernel, please check your distribution's website for more information. 
+If you use a Linode-supplied kernel follow [these steps](#how-to-reboot-into-an-updated-linode-kernel) to make sure your Linode has the latest fix. If you use a distribution-supplied kernel, please check your distribution's website for more information.
 
 Spectre-V2 mitigation is a two-stage process. The second stage is host-level fixes. We are currently waiting on host-level fixes to be released.
 
