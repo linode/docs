@@ -3,30 +3,23 @@ author:
   name: 'Linode Community'
   email: 'docs@linode.com'
 description: "Let's Encrypt is an SSL certificate authority managed by the Internet Security Research Group. It utilizes the Automated Certificate Management Environment to automatically deploy browser-trusted SSL certificates to anyone for free."
-keywords: "ACME,HTTPS,Let's Encrypt,SSL,SSL certificates"
+keywords: ['ACME','HTTPS','Let\'s Encrypt','SSL','SSL certificates', 'renew certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25
-modified: 2018-02-26
+modified: 2018-02-27
 modified_by:
   name: 'Linode'
 title: "Install Let's Encrypt to Create SSL Certificates"
 contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
-  external_resources:
-    "[Let's Encrypt Homepage](https://letsencrypt.org/)"
+external_resources:
+  - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 ---
 
 ![Let's Encrypt](/docs/assets/Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)
 
 [Let's Encrypt](https://letsencrypt.org/) is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the [Automated Certificate Management Environment](https://github.com/ietf-wg-acme/acme/) (ACME) to automatically deploy free SSL certificates that are trusted by nearly all major browsers.
-
-This tutorial will cover the following:
-
-*   Installing the Let's Encrypt ACME client.
-*   Obtaining Let's Encrypt certificates.
-*   Required attention and maintenance.
-*   Technical details about Let's Encrypt and certificates issued by it.
 
 ## Before you Begin
 
@@ -42,7 +35,7 @@ This tutorial will cover the following:
 
     **Debian / Ubuntu**
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
     {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -181,7 +174,7 @@ Let's Encrypt certificates have a 90-day lifespan. [According to Let's Encrypt](
 
 ### Automatically Renew SSL Certificates (Optional)
 
-You can also automate your certificate renewal. This will prevent your certificates from expiring, and can be accomplished with `cron`.
+You can also automate certificate renewal. This will prevent your certificates from expiring, and can be accomplished with `cron`.
 
 1.  The output of the previous command shows how to non-interactively renew all of your certificates:
 
@@ -189,13 +182,13 @@ You can also automate your certificate renewal. This will prevent your certifica
 
 2.  Set this task to run automatically once per month using a cron job:
 
-        crontab -e
+        sudo crontab -e
 
     Add the following line to the end of the crontab file:
 
     {{< file-excerpt "crontab" >}}
 0 0 1 * * /opt/letsencrypt/letsencrypt-auto renew
-{{< /crontab >}}
+{{< /file-excerpt >}}
 
 ### Update Let's Encrypt
 
@@ -209,16 +202,10 @@ You can also automate your certificate renewal. This will prevent your certifica
 
 ### Automatically Update Let's Encrypt (Optional)
 
-You can also use `cron` to keep the `letsencrypt-auto` client up to date. The `@weekly` parameter will issue a `git pull` command in the `/opt/letsencrypt` directory every Sunday at midnight.
+You can also use `cron` to keep the `letsencrypt-auto` client up to date.
 
-    echo '@weekly root cd /opt/letsencrypt && git pull >> /var/log/letsencrypt/letsencrypt-auto-update.log' | sudo tee --append /etc/crontab
+    sudo crontab -e
 
-To change the update frequency, choose a different parameter, for example, `@hourly`, `@daily`, or `@monthly`.
-
-## Conclusion
-
-Now that you have installed Let's Encrypt and obtained your free SSL certificates, you can configure any package that supports commercial or self-signed SSL certificates to use them.
-
-- [Email with Postfix, Dovecot, and MySQL](https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql)
-- [How to Provide Encrypted Access to Resources Using SSL Certificates on Nginx](https://www.linode.com/docs/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx)
-- [SSL Certificates with Apache on Debian & Ubuntu](https://www.linode.com/docs/security/ssl/ssl-apache2-debian-ubuntu)
+  {{< file-excerpt "crontab" >}}
+0 0 1 * * cd /opt/letsencrypt && git pull
+{{< /file-excerpt >}}
