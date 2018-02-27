@@ -93,7 +93,7 @@ server {
 
 ## Download Example MySQL Database
 
-The [Employees Testing Database](https://github.com/datacharmer/test_db) is an example database that can be loaded into MySQL. The database consits of employee and salary data with over 2.8 million entries, this size makes it useful for experimenting in a non-trivial way.
+The [Employees Testing Database](https://github.com/datacharmer/test_db) is an example database that can be loaded into MySQL. The database consists of employee and salary data with over 2.8 million entries, this size makes it useful for experimenting in a non-trivial way.
 
 1.  Install git:
 
