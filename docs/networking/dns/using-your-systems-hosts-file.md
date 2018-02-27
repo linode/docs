@@ -9,21 +9,21 @@ modified: 2018-02-27
 modified_by:
   name: Linode
 published: 2017-09-14
-title: Using Your System's hosts File
+title: Using Your System's Hosts File
 ---
 
-The Linux [host file](http://man7.org/linux/man-pages/man5/hosts.5.html) lives at `/etc/hosts`, and creates static associations between IP addresses and hostnames, domains or machine aliases. Your Linode then gives those associations higher priority than hostnames or domains which must be resolved by DNS.
+The Linux [hosts file](http://man7.org/linux/man-pages/man5/hosts.5.html) lives at `/etc/hosts`, and creates static associations between IP addresses and hostnames, domains or machine aliases. Your Linode then gives those associations higher priority than hostnames or domains which must be resolved by DNS.
 
 
 ## Example Host Entries
 
 There are various ways to use entries in the hosts file and the types of associations you set would depend on your specific use case. Below are some examples.
 
-- Map the alias `mywebsite` to a given IP address. This is often done when previewing a site during development whose domain is not yet live.
+- Map the alias `mywebsite` to a given IP address. This is often done when previewing a site during development before the domain is live.
 
         203.0.113.10 mywebsite
 
-- Map the domain `example.com` to the given IP address. This is often done when hosting a web or mail server.
+- Map the domain `example.com` to the given IP address. This is useful when hosting a web or mail server.
 
         203.0.113.10 example.com
 
@@ -35,7 +35,7 @@ There are various ways to use entries in the hosts file and the types of associa
 
         fe80::f03c:91ff:fe24:3a2f backupserver
 
-- Block all traffic to and from the domain `example.com`. This often the method used when content filtering or blocking advertisements via a hosts file.
+- Block all traffic to and from the domain `example.com`. This is frequently used for content filtering or blocking advertisements via a hosts file.
 
         0.0.0.0 example.com
 
