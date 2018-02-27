@@ -17,6 +17,9 @@ external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/11.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/11.0)'
   - '[PostgreSQL 9.6 Documentation](https://www.postgresql.org/docs/9.6/static/index.html)'
+  - '[Install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates)'
+  - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/)'
+  - '[Using Terraform to Provision Linode Environments](/docs/platform/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 ---
 
 ![Install an Odoo 11 Stack on Ubuntu 16.04 using Linode](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode.png "Odoo 11 on Ubuntu 16.04 Title Graphic")
@@ -176,7 +179,7 @@ host    all             odoo             odoo.yourdomain.com            md5
 The settings in the `pg_hba.conf` file are:
 
 * `host`: Enables connections using Unix-domain sockets.
-* `replication`: Specifies a replication connection for the given user. No dabatase name is required for this type of connection.
+* `replication`: Specifies a replication connection for the given user. No database name is required for this type of connection.
 * `replicauser`: The user created in the previous section.
 * `md5`: Make use of client-supplied MD5-encrypted password for authentication.
 * `all`: Match all databases in the server. You could provide specific Odoo database names (separated by commas if more than one) if you know them beforehand.
@@ -389,7 +392,7 @@ Odoo 11 application now uses Python 3.x instead of Python 2.7. If you are using 
         sudo -H pip3 install -r /opt/odoo/doc/requirements.txt
         sudo -H pip3 install -r /opt/odoo/requirements.txt
 
-7. Install Less CSS via nodejs and npm:
+7. Install Less CSS via Node.js and npm:
 
         sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
         && sudo apt-get install -y nodejs \
@@ -542,7 +545,7 @@ You have two options to backup or transfer your production database:
 
 ### Update Odoo Modules
 
-Once you have restored, transfered, or synchronized your production database to the testing server you can update Odoo modules.
+Once you have restored, transferred, or synchronized your production database to the testing server you can update Odoo modules.
 
 From your test server restart the Odoo service using the following flags to instruct the system to search for updates and apply any changes to modules:
 
@@ -564,11 +567,3 @@ If all your tests pass, you can safely update your installation.
 {{< note >}}
 Do not confuse the Odoo system update with an Odoo **version** upgrade. With the method explained above, you are updating your Odoo application within the same version rather than **upgrading** to a newer Odoo version. Migrating from one version to another often requires several tests and manual modifications on the PostgreSQL database which are highly dependent on the version of Odoo you are upgrading from.
 {{< /note >}}
-
-## Next Steps
-
-For a full production deployment, consider expanding this implementation to include SSL/TLS encryption (most likely using a reverse proxy), VPN tunnels between nodes, and Terraform deployment automation. When updating or adding modules, having a separate deployment (the test servers referenced in previous sections) on which to test any changes before deploying to the production servers is also recommended.
-
-* [Install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates)
-* [How to Set up tinc, a Peer-to-Peer VPN](/docs/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/)
-* [Using Terraform to Provision Linode Environments](/docs/platform/how-to-build-your-infrastructure-using-terraform-and-linode/)
