@@ -73,11 +73,11 @@ Next, you'll need your Linode's IP address.
 3.  Select your Linode.
 4.  Click the **Remote Access** tab. The webpage shown below appears.
 
-	[![Select a data center.](/docs/assets/1534-linode-manager-6-1-small.png)](/docs/assets/1535-linode-manager-6-1.png)
+    [![Select a data center.](/docs/assets/1534-linode-manager-6-1-small.png)](/docs/assets/1535-linode-manager-6-1.png)
 
 5.  Copy the addresses in the Public IPs section.
 
-In this example, the Linode's IPv4 address is 96.126.108.183 and its IPv6 address is 2600:3c03::f03c:91ff:fedf:d693. Unless your Internet service provider supports IPv6, you'll want to the use the IPv4 address.
+In this example, the Linode's IPv4 address is 96.126.108.183 and its IPv6 address is `2600:3c03::f03c:91ff:fedf:d693`. Unless your Internet service provider supports IPv6, you'll want to the use the IPv4 address.
 
 ## Updating the Hosts File
 

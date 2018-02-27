@@ -23,7 +23,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
 1.  You will need at least three Linodes: One Salt master, and at least two Salt minions.
 
-2.  Ensure that each Linode's [hostname](https://www.linode.com/docs/getting-started#setting-the-hostname) has been set. As the Linode's hostname will be used to identify it within Salt, we recommend using descriptive hostnames. You should also designate one Linode as your Salt master and name it appropriately. If your Linodes are located within the same datacenter, we recommend that you configure [private IP addresses](https://www.linode.com/docs/networking/remote-access#adding-private-ip-addresses) for each system.
+2.  Ensure that each Linode's [hostname](https://www.linode.com/docs/getting-started#setting-the-hostname) has been set. As the Linode's hostname will be used to identify it within Salt, we recommend using descriptive hostnames. You should also designate one Linode as your Salt master and name it appropriately. If your Linodes are located within the same data center, we recommend that you configure [private IP addresses](https://www.linode.com/docs/networking/remote-access#adding-private-ip-addresses) for each system.
 
 ## Add the Salt Repository
 
@@ -57,7 +57,7 @@ The following steps will be run only on the Linode designated as your Salt maste
 
         apt-get install salt-master
 
-2.  Open `/etc/salt/master`. Uncomment the `#interface:` line and replace `<master's IP address>` below with the address of your Salt master Linode. If your Linodes are located in the same datacenter, you can utilize your private network address for this purpose.
+2.  Open `/etc/salt/master`. Uncomment the `#interface:` line and replace `<master's IP address>` below with the address of your Salt master Linode. If your Linodes are located in the same data center, you can utilize your private network address for this purpose.
 
     {{< file "/etc/salt/master" >}}
 # The address of the interface to bind to:

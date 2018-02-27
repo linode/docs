@@ -21,12 +21,11 @@ external_resources:
  - '[The Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)'
 ---
 
-
-![Vim_banner](/docs/assets/Vim_Customization.jpg)
+![Introduction to Vim Customization](/docs/assets/Vim_Customization.jpg)
 
 ## What Is Vim?
 
-Vim is one of a handful of text editors ubiquitous in nearly all Unix systems. While an initial learning curve is unavoidable, Vim aims to be a hyperefficient text editor and provides an extensive plug-in system which can be configured to user preferences. It also supports  hundreds of programming languages and file extentions.
+Vim is one of a handful of text editors ubiquitous in nearly all Unix systems. While an initial learning curve is unavoidable, Vim aims to be a hyperefficient text editor and provides an extensive plug-in system which can be configured to user preferences. It also supports  hundreds of programming languages and file extensions.
 
 This guide details the configuration of the Vim text editor and aims at those who are interested in taking the next step into customization. An array of methods for customizing Vim's execution of certain tasks and response to user input will be introduced, along with a plug-in management system.
 

@@ -296,6 +296,8 @@
                         $('html,body').animate({
                             scrollTop: target.offset().top - 50
                         }, 1000);
+                        /* Change the hash location in URL */
+                        window.location.hash = this.hash;
                         return false;
                     }
                 }

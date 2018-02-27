@@ -20,7 +20,7 @@ external_resources:
 ---
 
 
-![docker_banner](/docs/assets/install_docker.jpg)
+![How to Install Docker and Pull Images for Container Deployment](/docs/assets/install_docker.jpg)
 
 In this guide, you'll install Docker and pull down images that can be deployed as containers.
 

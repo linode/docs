@@ -78,7 +78,7 @@ PuTTY can securely run graphical applications hosted on a remote Linux server. Y
 1.  You wll need an X11 server for Windows. Download and install [Xming](http://sourceforge.net/projects/xming/), a free X server for Windows. Accept the defaults presented by the installer and you'll be running an X11 server when the install process completes.
 
     {{< note >}}
-You will need the `xauth` package installed on your remote server for X11 forwarding to work correctly. It is installed by default on Debian and ReHat based systems, but may not be for other Linux distributions.
+You will need the `xauth` package installed on your remote server for X11 forwarding to work correctly. It is installed by default on Debian and RedHat based systems, but may not be for other Linux distributions.
 {{< /note >}}
 
 2.  Next, you'll need to tell PuTTY to forward X11 connections to your desktop.

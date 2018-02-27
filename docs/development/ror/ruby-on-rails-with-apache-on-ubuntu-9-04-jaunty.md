@@ -39,7 +39,7 @@ Before we get started there are a number of system-level dependencies that you w
 
     apt-get install make build-essential
 
-We going to add a repository to our `/etc/apt/sources.list` to install pakages of Passenger from Ubuntu's "universe" repository. Add the following lines to your `sources.list` with the text editor of your choice:
+We going to add a repository to our `/etc/apt/sources.list` to install packages of Passenger from Ubuntu's "universe" repository. Add the following lines to your `sources.list` with the text editor of your choice:
 
 {{< file "/etc/apt/sources.list" >}}
 deb http://us.archive.ubuntu.com/ubuntu/ jaunty universe

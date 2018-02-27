@@ -85,7 +85,7 @@ The *Before You Begin* section is an area for basic prerequisites a reader shoul
 
 If using example variables which should be changed throughout the guide, declare them in the Before You Begin section.
 
-Variables that the reader will need to change for their system or preference should be formatted using backtics. This includes:
+Variables that the reader will need to change for their system or preference should be formatted using backticks. This includes:
 
 * [Example IPs](#example-ip-addresses)
 * User names
@@ -184,7 +184,7 @@ For example:
 >
 >     yum update
 
-Inline commands should be denoted by backtics.
+Inline commands should be denoted by backticks.
 
 | Formatting | Example |
 |:--------------|:------------|

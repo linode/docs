@@ -284,7 +284,7 @@ You can reimport it with the ever-handy `gpg2 --import key-file` command.
 ## Move Your Key to a Smartcard or YubiKey (Optional)
 
 {{< note >}}
-If you're using a brand new YubiKey, you'll need to enable OpenPGP Card / CCID Mode first. This can be done through the YubiKey Personlisation Tool, or by running `ykpersonalise -m82`. `ykpersonalise` can be installed through your package manager.
+If you're using a brand new YubiKey, you'll need to enable OpenPGP Card / CCID Mode first. This can be done through the YubiKey Personalization Tool, or by running `ykpersonalise -m82`. `ykpersonalise` can be installed through your package manager.
 {{< /note >}}
 
 ### Secure Your Card

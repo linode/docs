@@ -64,7 +64,7 @@ server:
 
 Unbound uses a CIDR notation to control access to the DNS resolver. This allows you to permit or refuse DNS traffic to large or small groups of IP addresses in a simple and clear syntax. In the above example, we see a number of different access control approaches.
 
-In the first example, we allow all requests from the `192.168.0.0/16` net block, or all IP addresses beginning with `192.168.`, which corresponds to the local "private" network. Specify this if you have private networking configured on your Linode and would like to allow multiple Linodes in the same datacenter to resolve domain addresses using your server.
+In the first example, we allow all requests from the `192.168.0.0/16` net block, or all IP addresses beginning with `192.168.`, which corresponds to the local "private" network. Specify this if you have private networking configured on your Linode and would like to allow multiple Linodes in the same data center to resolve domain addresses using your server.
 
 In the second example, we allow all requests from the IP address `11.22.33.44`. To specify specific IP addresses in CIDR notation, simply append `/32` to the desired IP address. The remaining examples force Unbound to block access from two netblocks, or all IP addresses that begin with `12.34.56.` and the entire `34.` prefix. Specifying `deny` causes Unbound to drop all traffic from this address or addresses. By contrast, the `refuse` option returns an error message in response to requests from blocked sources.
 

@@ -36,7 +36,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Ansible only needs to be installed on the *control machine*, or the machine from which you will be running commands. This will likely be your laptop or other computer from which you frequently access your server, or it may be a centralized server in more complicated setups.
 
-Make sure that you have Python 2.x available on the control machine. Ansible is not compatible with Python 3, nor can you use Windows as the control machine. You can [build Ansible from source](https://github.com/ansible/ansible), or install the latest stable packages using the proper command below.
+Make sure that you have Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) available on the control machine. Note that Windows is not supported as the control machine. You can [build Ansible from source](https://github.com/ansible/ansible), or install the latest stable packages using the proper command below.
 
 ### MacOS
 
@@ -250,7 +250,7 @@ The following playbooks are for learning purposes only, and will NOT result in a
 
 3.  Write a playbook that creates a new normal user, adds in our public key, and adds the new user to the `sudoers` file.
 
-    We're introducing a new aspect of Ansible here: *variables*. Note the `vars:` entry and the `NORMAL_USER_NAME` line. You'll notice that it is reused twice in the file so that we only have to change it once. Replace `yourusername` with your choosen username, `localusername` in the path for the `authorized_key`, and the password hash.
+    We're introducing a new aspect of Ansible here: *variables*. Note the `vars:` entry and the `NORMAL_USER_NAME` line. You'll notice that it is reused twice in the file so that we only have to change it once. Replace `yourusername` with your chosen username, `localusername` in the path for the `authorized_key`, and the password hash.
 
     {{< file "initialize_basic_user.yml" yaml >}}
 ---

@@ -6,7 +6,7 @@ description: 'This guide will show you how to install and configure Caddy and ru
 keywords: ["caddy", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
-modified: 2017-09-18
+modified: 2018-02-02
 modified_by:
   name: Linode
 title: 'Install and Configure Caddy on CentOS 7'
@@ -44,6 +44,9 @@ external_resources:
 
         sudo yum install caddy
 
+{{< caution >}}
+Caddy has recently changed their [license](https://caddyserver.com/products/licenses). Please read over the license agreement to ensure that you are not violating the license with your project. To use Caddy without a commercial license, you may need to [compile from source](/docs/web-servers/caddy/compile-caddy-from-source).
+{{</ caution >}}
 ## Add Web Content
 
 1.  Set up a home directory, **web root**, for your website:

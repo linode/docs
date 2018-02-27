@@ -136,7 +136,7 @@ local all all md5
 {{< /file-excerpt >}}
 
 
-If you changed the authentication method as shown above, restart Postgresql with the following command:
+If you changed the authentication method as shown above, restart PostgreSQL with the following command:
 
     /etc/init.d/postgresql-8.4 restart
 

@@ -146,12 +146,12 @@ The default Logwatch configuration will output the digest to your Linode's conso
 The Logwatch digest can be sent to local users or external email addresses, in plain text or HTML formats.
 
 {{< note >}}
-Prior to sending mail externally or locally ensure you have Sendmail installed on the Linode. If you choose to use a different MTA client, change the `mailer` line in the Logwatch configuration file to contain the directory of your choosen MTA, or alias `/usr/sbin/sendmail` to your MTA.
+Prior to sending mail externally or locally ensure you have Sendmail installed on the Linode. If you choose to use a different MTA client, change the `mailer` line in the Logwatch configuration file to contain the directory of your chosen MTA, or alias `/usr/sbin/sendmail` to your MTA.
 
 If using Arch, and you followed the above install instructions, Sendmail is already aliased to msmtp.
 {{< /note >}}
 
-1.  Change the `Output` value to `mail`. If you wish to recieve the messages in HTML format change the `Format` value to `html`.
+1.  Change the `Output` value to `mail`. If you wish to receive the messages in HTML format change the `Format` value to `html`.
 
 2.  Change the `MailTo` address to a valid email address, or local account user. For example, to send mail to the `root` user change the line to read:
 

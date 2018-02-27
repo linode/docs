@@ -3,30 +3,23 @@ author:
   name: 'Linode Community'
   email: 'docs@linode.com'
 description: "Let's Encrypt is an SSL certificate authority managed by the Internet Security Research Group. It utilizes the Automated Certificate Management Environment to automatically deploy browser-trusted SSL certificates to anyone for free."
-keywords: "ACME,HTTPS,Let's Encrypt,SSL,SSL certificates"
+keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25
-modified: 2016-09-29
+modified: 2018-02-27
 modified_by:
   name: 'Linode'
 title: "Install Let's Encrypt to Create SSL Certificates"
 contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
-  external_resources:
-    "[Let's Encrypt Homepage](https://letsencrypt.org/)"
+external_resources:
+  - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 ---
 
 ![Let's Encrypt](/docs/assets/Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)
 
 [Let's Encrypt](https://letsencrypt.org/) is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the [Automated Certificate Management Environment](https://github.com/ietf-wg-acme/acme/) (ACME) to automatically deploy free SSL certificates that are trusted by nearly all major browsers.
-
-This tutorial will cover the following:
-
-*   Installing the Let's Encrypt ACME client.
-*   Obtaining Let's Encrypt certificates.
-*   Required attention and maintenance.
-*   Technical details about Let's Encrypt and certificates issued by it.
 
 ## Before you Begin
 
@@ -42,7 +35,7 @@ This tutorial will cover the following:
 
     **Debian / Ubuntu**
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
     {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -80,70 +73,68 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
 Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires its own certificate.
 {{< /note >}}
 
-2.  Specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices if necessary. Press **TAB** followed by **ENTER** or **RETURN** to save.
+2.  When prompted, specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices if necessary. Press **ENTER** or **RETURN** to save.
 
-    ![Let's Encrypt admin email prompt](/docs/assets/lets-encrypt-recovery-email-prompt.png)
+3.  Agree to the Terms of Service and specify if you would like to share your email address with EFF:
 
-3.  Agree to the Terms of Service.
+    {{< output >}}
+-------------------------------------------------------------------------------
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
+agree in order to register with the ACME server at
+https://acme-v01.api.letsencrypt.org/directory
+-------------------------------------------------------------------------------
+(A)gree/(C)ancel: a
 
-    ![Let's Encrypt Terms of Service prompt](/docs/assets/lets-encrypt-agree-tos-prompt.png)
+-------------------------------------------------------------------------------
+Would you be willing to share your email address with the Electronic Frontier
+Foundation, a founding partner of the Let's Encrypt project and the non-profit
+organization that develops Certbot? We'd like to send you email about EFF and
+our work to encrypt the web, protect its users and defend digital rights.
+-------------------------------------------------------------------------------
+(Y)es/(N)o: n
+{{< /output >}}
 
 4.  If all goes well, a message similar to the one below will appear. Its appearance means Let's Encrypt has approved and issued your certificates.
 
-        IMPORTANT NOTES:
-        - If you lose your account credentials, you can recover them through
-          e-mails sent to somebody@example.com.
-        - Congratulations! Your certificate and chain have been saved at
-          /etc/letsencrypt/live/example.com/fullchain.pem. Your
-          cert will expire on 2016-03-31. To obtain a new version of the
-          certificate in the future, simply run Let's Encrypt again.
-        - Your account credentials have been saved in your Let's Encrypt
-          configuration directory at /etc/letsencrypt. You should make a
-          secure backup of this folder now. This configuration directory will
-          also contain certificates and private keys obtained by Let's
-          Encrypt, so making regular backups of this folder is ideal.
-        - If you like Let's Encrypt, please consider supporting our work by
+    {{< output >}}
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/example.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/example.com/privkey.pem
+   Your cert will expire on 2018-05-27. To obtain a new or tweaked
+   version of this certificate in the future, simply run
+   letsencrypt-auto again. To non-interactively renew *all* of your
+   certificates, run "letsencrypt-auto renew"
+ - If you like Certbot, please consider supporting our work by:
 
-          Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
-          Donating to EFF:                    https://eff.org/donate-le
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+{{< /output >}}
 
-### Let's Encrypt Certificate Directory Structure
+### Check Certificate Domains
 
-1.  List the `/etc/letsencrypt/live` directory:
+1.  The output of the Let's Encrypt script shows where your certificate is stored; in this case, `/etc/letsencrypt/live`:
 
         sudo ls /etc/letsencrypt/live
 
-2.  Each domain name you specified in [Step 1](#create-an-ssl-certificate) of the **Create an SSL Certificate** section has its own directory. List any of these domain name directories:
+    {{< output >}}
+example.com
+{{< /output >}}
 
-        sudo ls /etc/letsencrypt/live/example.com
+2.  All of the domains you specified above will be covered under this single certificate. This can be verified as follows:
 
-    Output:
+        ./certbot-auto certificates
 
-        cert.pem
-        chain.pem
-        fullchain.pem
-        privkey.pem
-
-3.  Each key (`.pem`) file serves a different purpose:
-
-    *   **cert.pem**: server certificate only.
-    *   **chain.pem**: root and intermediate certificates only.
-    *   **fullchain.pem**: combination of server, root and intermediate certificates (replaces `cert.pem` and `chain.pem`).
-    *   **privkey.pem**: private key (do **not** share this with anyone!).
-
-    Let's Encrypt issues certificates from intermediate certificate authorities. Intermediate certificates have been cross-signed by [Identrust](https://www.identrust.com/), which ensures compatibility between the end certificate and all major browsers. Refer to Let's Encrypt's [certificates](https://letsencrypt.org/certificates/) page for more information.
-
-4.  For good measure, display the file status of `fullchain.pem`:
-
-        sudo stat /etc/letsencrypt/live/example.com/fullchain.pem
-
-    Output excerpt:
-
-        File: ‘live/example.com/cert.pem’ -> ‘../../archive/example.com/cert1.pem’
-
-    Notice how this file points to a different file, as do all four of the files listed in Step 3. They are *symbolic links* to the actual certificate files located in the `/etc/letsencrypt/archive` directory.
-
-5.  If you forget to renew a domain name's certificate, Let's Encrypt will remove its directory (and symbolic links) from `/etc/letsencrypt/live`. However, the directory (and symbolic links) will be retained in the `/etc/letsencrypt/archive` and `/etc/letsencrypt/keys` directories for your future reference.
+    {{< output >}}
+Found the following certs:
+  Certificate Name: example.com
+    Domains: example.com www.example.com
+    Expiry Date: 2018-05-27 20:49:02+00:00 (VALID: 89 days)
+    Certificate Path: /etc/letsencrypt/live/example.com/fullchain.pem
+    Private Key Path: /etc/letsencrypt/live/example.com/privkey.pem
+{{< /output >}}
 
 ## Maintenance
 
@@ -160,48 +151,44 @@ Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires
 3.  After a few moments, a confirmation similar to the one below should appear:
 
     {{< output >}}
-    IMPORTANT NOTES:
-    - Congratulations! Your certificate and chain have been saved at
-      /etc/letsencrypt/live/example.com/fullchain.pem. Your
-      cert will expire on 2016-03-31. To obtain a new version of the
-      certificate in the future, simply run Let's Encrypt again.
-    - If you like Let's Encrypt, please consider supporting our work by:
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/example.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/example.com/privkey.pem
+   Your cert will expire on 2018-05-27. To obtain a new or tweaked
+   version of this certificate in the future, simply run
+   letsencrypt-auto again. To non-interactively renew *all* of your
+   certificates, run "letsencrypt-auto renew"
+ - If you like Certbot, please consider supporting our work by:
 
-      Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
-      Donating to EFF:                    https://eff.org/donate-le
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
     {{< /output >}}
 
     Let's Encrypt has refreshed the lifespan of your certificates; in this example, March 31st, 2016 is the new expiration date.
 
 {{< note >}}
-Let's Encrypt certificates have a 90-day lifespan before they expire. [According to Let's Encrypt](https://letsencrypt.org/2015/11/09/why-90-days.html), this encourages automation and minimizes damage from key compromises. You can renew your certificates anytime during their lifespan.
+Let's Encrypt certificates have a 90-day lifespan. [According to Let's Encrypt](https://letsencrypt.org/2015/11/09/why-90-days.html), this encourages automation and minimizes damage from key compromises. You can renew your certificates at any time during their lifespan.
 {{< /note >}}
 
 ### Automatically Renew SSL Certificates (Optional)
 
-We also recommend automating your certificate renewal since it can be easy to lose track of expiration dates, especially if you have them for several different domains. This will prevent your certificates from expiring, and can be accomplished with `cron`.
+You can also automate certificate renewal. This will prevent your certificates from expiring, and can be accomplished with `cron`.
 
-1.  Before we execute the following command, let's break it down and make some modifications:
+1.  The output of the previous command shows how to non-interactively renew all of your certificates:
 
-        echo '@monthly root /opt/letsencrypt/letsencrypt-auto certonly --quiet --standalone --renew-by-default -d example.com -d www.example.com >> /var/log/letsencrypt/letsencrypt-auto-update.log' | sudo tee --append /etc/crontab
+        ./letsencrypt-auto renew
 
-    *   **@monthly**: for simplicity, this command will execute at midnight on the first day of every month
-    *   **root**: run the command as the **root** user
-    *   **/opt/letsencrypt/letsencrypt-auto certonly --quiet --standalone --renew-by-default -d example.com -d www.example.com**: `letsencrypt-auto` renewal command. Again, add `-d example.com` for each domain name you need to renew
-    *   **>> /var/log/letsencrypt/letsencrypt-auto-update.log**: record the *standard output* and *standard error* to a log file named `letsencrypt-auto-update.log`
-    *   **tee --append /etc/crontab**: save the new cron job to the `/etc/crontab` file
+2.  Set this task to run automatically once per month using a cron job:
 
-    The above settings will be effective in most cases, but for more information about available cron job options, refer to the [Ubuntu Community Cron How-to](https://help.ubuntu.com/community/CronHowto) or the [CentOS Cron Documentation](https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s2-autotasks-cron-configuring.html).
+        sudo crontab -e
 
-    {{< note >}}
-The automatic renewal process requires access to port `443`, which would most likely be bound to your web server. You can configure your cron tasks to temporarily stop the web server, or use one of several methods documented [here](https://letsencrypt.readthedocs.io/en/latest/using.html#webroot).
-{{< /note >}}
+    Add the following line to the end of the crontab file:
 
-2.  Execute your modified command to add the cron job to your Linode.
-
-{{< caution >}}
-Once Let's Encrypt supports auto-renewal natively, open the `/etc/crontab` file and manually remove this entry to avoid future renewal conflicts.
-{{< /caution >}}
+    {{< file-excerpt "crontab" >}}
+0 0 1 * * /opt/letsencrypt/letsencrypt-auto renew
+{{< /file-excerpt >}}
 
 ### Update Let's Encrypt
 
@@ -215,16 +202,10 @@ Once Let's Encrypt supports auto-renewal natively, open the `/etc/crontab` file 
 
 ### Automatically Update Let's Encrypt (Optional)
 
-You can also use `cron` to keep the `letsencrypt-auto` client up to date. The `@weekly` parameter will issue a `git pull` command in the `/opt/letsencrypt` directory every Sunday at midnight.
+You can also use `cron` to keep the `letsencrypt-auto` client up to date.
 
-    echo '@weekly root cd /opt/letsencrypt && git pull >> /var/log/letsencrypt/letsencrypt-auto-update.log' | sudo tee --append /etc/crontab
+    sudo crontab -e
 
-To change the update frequency, choose a different parameter, for example, `@hourly`, `@daily`, or `@monthly`.
-
-## Conclusion
-
-Now that you have installed Let's Encrypt and obtained your free SSL certificates, you can configure any package that supports commercial or self-signed SSL certificates to use them.
-
-- [Email with Postfix, Dovecot, and MySQL](https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql)
-- [How to Provide Encrypted Access to Resources Using SSL Certificates on Nginx](https://www.linode.com/docs/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx)
-- [SSL Certificates with Apache on Debian & Ubuntu](https://www.linode.com/docs/security/ssl/ssl-apache2-debian-ubuntu)
+  {{< file-excerpt "crontab" >}}
+0 0 1 * * cd /opt/letsencrypt && git pull
+{{< /file-excerpt >}}

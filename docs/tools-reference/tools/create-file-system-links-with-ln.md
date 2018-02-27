@@ -15,7 +15,7 @@ title: Create File System Links with ln
 
 The `ln` command creates "meta objects" in the file system that link to other objects located on the file system. Links may point to files, directories, or other links. Although improper use can lead to disorganization and confusion, links are useful for providing access to files and file system organization.
 
-![Title graphic](/docs/assets/create_file_system_links_with_ln_smg.png)
+![Create File System Links with ln](/docs/assets/create_file_system_links_with_ln_smg.png)
 
 ## File System Linking
 

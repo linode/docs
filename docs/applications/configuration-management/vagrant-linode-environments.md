@@ -307,7 +307,7 @@ With the Vagrantfile configured, and scripts and files created, it's now time to
 
          * apache2 is running
 
-4.  To see that the environment is accesible online, check for the IP address:
+4.  To see that the environment is accessible online, check for the IP address:
 
         hostname -i
 

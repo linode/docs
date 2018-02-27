@@ -82,35 +82,39 @@ The following steps are adapted from the [Install WordPress](/docs/websites/cms/
 2.  Create a directory called `src` under `/var/www/html/example1.com/`. Download and extract the latest version of WordPress:
 
         sudo mkdir /var/www/html/example1.com/src/
-        sudo mkdir /var/www/html/example2.com/src/
         cd /var/www/html/example1.com/src/
         sudo wget http://wordpress.org/latest.tar.gz
         tar -zxvf latest.tar.gz
 
-3.  Rename `latest.tar.gz` as `wordpress` followed by the date to store a backup of the original source files. This will be useful if you install new versions in the future and need to revert back to a previous release:
+3.  Repeat the procedure for `example2.com`:
 
-        mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
+		sudo mkdir /var/www/html/example2.com/src/
+		cd /var/www/html/example2.com/src/
+		sudo wget http://wordpress.org/latest.tar.gz
+		sudo tar -zxvf latest.tar.gz
 
-4.  Set your web server's user, `www-data`, as the owner of your site's home directory:
+4.  Rename `latest.tar.gz` as `wordpress` followed by the date to store a backup of the original source files. This will be useful if you install new versions in the future and need to revert back to a previous release:
+
+        sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
+
+	Repeat this step in `/var/www/html/example2.com/src`.
+
+5.  Set your web server's user, `www-data`, as the owner of your site's home directory:
 
         sudo chown -R www-data:www-data /var/www/html/example1.com/
-        sudo chown -R www-date:www-date /var/www/html/example2.com/
+        sudo chown -R www-data:www-data /var/www/html/example2.com/
 
-5.  Copy the WordPress files to your `public_html` folder:
+6.  Copy the WordPress files to your `public_html` folder:
 
         sudo cp -R /var/www/html/example1.com/src/wordpress/* ../public_html/
         sudo cp -R /var/www/html/example2.com/src/wordpress/* ../public_html/
 
-6.  Give your web server ownership of the `public_html` folder:
+7.  Give your web server ownership of the `public_html` folder:
 
         sudo chown -R www-data:www-data /var/www/html/example1.com/public_html
         sudo chown -R www-data:www-data /var/www/html/example2.com/public_html
 
-7.  Repeat for each instance of WordPress that you want to run.
-
-## Configure WordPress
-
-Follow the steps from the [Configure WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04#configure-wordpress) section of the [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04) guide.
+8.  Repeat for each additional instance of WordPress that you want to run.
 
 ## Configure Apache Virtual Hosts
 
@@ -118,7 +122,7 @@ Up until this point, the steps have been fairly straightforward and similar to s
 
 1.  Go to the Apache `sites-available` directory:
 
-        cd /etc/apache2/sites-avilable
+        cd /etc/apache2/sites-available
 
 2.  Copy `000-default.conf` as needed:
 
@@ -163,10 +167,16 @@ Header always append X-Frame-Options SAMEORIGIN
 
 4.  Enable the site. This will create a symlink to the `example.com` Apache conf file in `/etc/apache2/sites-enabled/`:
 
-        sudo a2ensite example1.com
+        sudo a2ensite example1.conf
 
 5.  Restart Apache to enable the changes:
 
         sudo service restart apache2
 
 6.  Repeat Steps 2 through 5 for each WordPress site that you want to run.
+
+## Configure WordPress
+
+Follow the steps from the [Configure WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04#configure-wordpress) section of the [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04) guide.
+
+
