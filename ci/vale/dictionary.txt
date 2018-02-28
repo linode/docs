@@ -772,6 +772,7 @@ nagiosadmin
 nameserver
 nameservers
 namespace
+namespaces
 nano
 natively
 ncurses
@@ -1016,6 +1017,7 @@ rmem
 ro
 roadmap
 rocommunity
+rollout
 roundcube
 routable
 rpaf

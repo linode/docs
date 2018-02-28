@@ -2,9 +2,9 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide describes the methods to manage a Kubernetes Cluster'
+description: 'This guide shows how to manage Dockerized applications on multiple servers using a Kubernetes Cluster'
 og_description: 'Kubernetes makes it easy to manage containers across multiple servers. This guide shows how to manage Dockerized applications using Kubernetes.'
-keywords: ["Kubernetes", "Cluster", "container", "docker"]
+keywords: ["Kubernetes", "cluster", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-02-28
 modified: 2018-02-28
@@ -23,34 +23,35 @@ external_resources:
 
 ## What is a Kubernetes Cluster?
 
-A Kubernetes cluster consists of at least one master node that runs the API server, the scheduler and the controller manager and several worker nodes running the `kubelet`, `kube-proxy` and the Docker Engine.
-This guide shows you how to manage the basic Kubernetes objects in a Docker cluster.
+[Kubernetes](https://kubernetes.io/) is an open source platform for managing containerized applications. If you use Docker for an application deployed on multiple Linodes, a Kubernetes cluster can manage your servers and deployments, including tasks such as scaling, deployment, and rolling upgrades.
+
+A Kubernetes cluster consists of at least one master node and several worker nodes. The master node runs the API server, the scheduler and the controller manager, and the actual application is deployed dynamically across the cluster.
 
 ## System Requirements
 
-To complete this guide you will need three Linodes, each running Ubuntu 16.04 LTS. Each Linode should have at least 4GB of RAM. Before beginning this guide, you should also use the Linode Manager to generate a [private IP address](https://linode.com/docs/networking/remote-access#adding-private-ip-addresses) for each Linode.
+To complete this guide you will need three Linodes running Ubuntu 16.04 LTS, each with at least 4GB of RAM. Before beginning this guide, you should also use the Linode Manager to generate a [private IP address](https://linode.com/docs/networking/remote-access#adding-private-ip-addresses) for each Linode.
 
 ## Before You Begin
 
-This article requires that you first complete our guide [How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster](https://linode.com/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/) and follow the procedures described there to configure one master node and two worker nodes.
+This article requires that you first complete our [How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster](https://linode.com/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/) guide and follow the procedures described there to configure one master node and two worker nodes.
 
-For simplicity throughout this guide the following name conventions will be used:
+Set the hostnames of the three Linodes as follows:
 
-* Master Node hostname: `kube-master`
-* First Worker Node hostname: `kube-worker-1`
-* Second Worker Node hostname: `kube-worker-2`
+* Master node: `kube-master`
+* First worker node: `kube-worker-1`
+* Second worker node: `kube-worker-2`
 
-Unless otherwise stated, all commands will be executed from the cluster's master node.
+Unless otherwise stated, all commands will be executed from the `kube-master`.
 
 ## Kubernetes Pods
 
-A **Pod** is defined as a group of one or more tightly coupled containers that share resources such as storage and network. Containers inside a Pod are started, stopped, and replicated as a group.
+A [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) is a group of one or more tightly coupled containers that share resources such as storage and network. Containers inside a pod are started, stopped, and replicated as a group.
 
 ![Kubernetes Cluster](/docs/assets/manage-a-docker-cluster-with-kubernetes/kubernetes-cluster.png)
 
 ### Create a Deployment
 
-**Deployments** are high-level objects that can manage [ReplicaSets](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/). They orchestrate pod creation and allow the use of declarative scaling and rolling-upgrade features.
+[Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) are high-level objects that can manage pod creation and allow the use of features such as declarative scaling and rolling-upgrade.
 
 1.  In a text editor, create `nginx.yaml` and add the following content:
 
@@ -78,7 +79,7 @@ spec:
         - containerPort: 80
 {{< /file >}}
 
-    The file contains all the necessary information to specify a deployment, including: application/container labels, replicas, container image, and container port(s). For more information about deployment configuration read the [documentation.](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment)
+    The file contains all the necessary information to specify a deployment, including the Docker image to use, number of replicas, and the container port. For more information about deployment configuration, see the [documentation.](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment)
 
 2.  Create your first deployment:
 
@@ -102,22 +103,13 @@ spec:
     nginx-server-b9bc6c6b5-d2gqv   1/1       Running   0          58s
     ```
 
-5.  To find out which node the deployment was created on, add the `-o wide` flag:
+5.  To see which node the deployment was created on, add the `-o wide` flag:
 
         kubectl get pods -o wide
 
     ```
     NAME                           READY     STATUS    RESTARTS   AGE       IP                NODE
     nginx-server-b9bc6c6b5-d2gqv   1/1       Running   0          1m        192.168.255.197   kube-worker-02
-    ```
-
-6.  List your ReplicaSets:
-
-        kubectl get rs
-
-    ```
-    NAME                     DESIRED   CURRENT   READY     AGE
-    nginx-server-b9bc6c6b5   1         1         1         2m
     ```
 
 ### Scale Deployments
@@ -128,7 +120,7 @@ Kubernetes makes it easy to scale deployments to add or remove replicas.
 
         kubectl scale deployment nginx-server --replicas=8
 
-2.  Check the availability of your new replicas using `kubectl` to list your pods:
+2.  Check the availability of your new replicas:
 
         kubectl get pods -o wide
 
@@ -150,15 +142,15 @@ Kubernetes makes it easy to scale deployments to add or remove replicas.
 
 ### Rolling Upgrades
 
-As mentioned before using Deployments offers the benefit of **rolling upgrades**. A rolling upgrade is a mechanism that allows your cluster to update your application version without any downtime. This is possible due to the ReplicaSet controller, which ensures that at least 25% of your Pods are available all the time. It creates new Pods before deleting the old ones.
+Managing pods with a Deployment allows you to make use of **rolling upgrades**. A rolling upgrade is a mechanism that allows you to update your application version without any downtime. Kubernetes ensures that at least 25% of your Pods are available at all times and creates new pods before deleting the old ones.
 
-1.  For example, to upgrade your container's NGINX version from 1.13 to 1.13.8:
+1.  Upgrade your containers' NGINX version from 1.13 to 1.13.8:
 
         kubectl set image deployment/nginx-server nginx=nginx:1.13.8-alpine
 
-    Similar to the scaling process, the `set` command uses declarative approach where you decide the desired state and the controller manages all necessary tasks to accomplish that goal.
+    Similar to the scaling process, the `set` command uses declarative approach: you specify the desired state and the controller manages all necessary tasks to accomplish that goal.
 
-2.  You can check the update progress by either calling a `kubectl get deployments -o wide` or directly using:
+2.  Check the update status:
 
         kubectl rollout status deployment/nginx-server
 
@@ -174,61 +166,58 @@ Waiting for rollout to finish: 1 old replicas are pending termination...
 deployment "nginx-server" successfully rolled out
     ```
 
-3.  You can manually check the application version you with the `describe` command:
+3.  You can manually check the application version with the `describe` command:
 
         kubectl describe pod <pod-name>
 
-4.  In the event of an error, the rollout will hang and you will be forced to cancel by pressing **CTRL+C**.
-By the time of this writing 1.13.8 is the most up-to-date Nginx version, let's induce an error during the update process by setting version to 1.14:
+4.  In the event of an error, the rollout will hang and you will be forced to cancel by pressing **CTRL+C**. Test this by setting an invalid NGINX version:
 
-        kubectl set image deployment/nginx-server nginx=nginx:1.14
+        kubectl set image deployment/nginx-server nginx=nginx:1.18.
 
-If you run `kubectl rollout status deployment/nginx-server` you will notice that it won't be able to proceed, it hangs trying to complete the update. You will have to cancel pressing **CTRL+C**.
-
-Check your current pods:
+5.  Check your current pods:
 
         kubectl get pods -o wide
 
-```
-    NAME                            READY     STATUS             RESTARTS   AGE       IP               NODE
-    nginx-server-76976d4555-7nv6z   1/1       Running            0          3m        192.168.127.15   kube-worker-2
-    nginx-server-76976d4555-wg785   1/1       Running            0          3m        192.168.180.13   kube-worker-1
-    nginx-server-76976d4555-ws4vf   1/1       Running            0          3m        192.168.127.14   kube-worker-2
-    nginx-server-7ddd985dd6-mpn9h   0/1       ImagePullBackOff   0          2m        192.168.180.16   kube-worker-1
-```
+    ```
+NAME                            READY     STATUS             RESTARTS   AGE       IP               NODE
+nginx-server-76976d4555-7nv6z   1/1       Running            0          3m        192.168.127.15   kube-worker-2
+nginx-server-76976d4555-wg785   1/1       Running            0          3m        192.168.180.13   kube-worker-1
+nginx-server-76976d4555-ws4vf   1/1       Running            0          3m        192.168.127.14   kube-worker-2
+nginx-server-7ddd985dd6-mpn9h   0/1       ImagePullBackOff   0          2m        192.168.180.16   kube-worker-1
+    ```
 
-In this example the pod `nginx-server-7ddd985dd6-mpn9h` is trying to upgrade to an inexistent version of Nginx, you can also inspect the pod using:
+    In this example the pod `nginx-server-7ddd985dd6-mpn9h` is trying to upgrade to an nonexistent version of NGINX.
+
+6.  Get more details about the error by inspecting this pod:
 
         kubectl describe pod nginx-server-7ddd985dd6-mpn9h
 
-At the end of the description you can confirm the problem in the **Events** section where it should read *"Failed to pull image "nginx:1.14": rpc error: code = Unknown desc = Error response from daemon: manifest for nginx:1.14 not found".*
-
-In the previous section when you created the deployment the `--record` flag was used on purpose. This flag allows you to retrieve the updates history:
+7.  Since you used the `--record` flag when creating the deployment, you can retrieve the complete revision history:
 
         kubectl rollout history deployment/nginx-server
 
-```
+    ```
     REVISION  CHANGE-CAUSE
     1         kubectl scale deployment nginx-server --replicas=3
     2         kubectl set image deployment/nginx-server nginx=nginx:1.13.8-alpine
-    3         kubectl set image deployment/nginx-server nginx=nginx:1.14
-```
+    3         kubectl set image deployment/nginx-server nginx=nginx:1.18
+    ```
 
-Knowing that the issue is the new application version you can perform a "roll back" to a previous version. You can do it directly to the previous version (assuming your previous version had no issues):
+8.  You can then roll back to an earlier, working revision. To revert to the previous revision, use the `undo` command:
 
         kubectl rollout undo deployment/nginx-server
 
-You could also roll back to a specific revision, for example, rollout to the version used during the deployment creation using the command:
+9.  To roll back to a specific revision, specify the target revision with the `--to-revision` option:
 
         kubectl rollout undo deployment/nginx-server --to-revision=1
 
 ## Kubernetes Services
 
-Up to this point, you have a deployment running three pods of your Nginx application. In order to expose the pods to the Internet, you need to create a service. In Kubernetes a service is an abstraction that allows pods to be accessible all the time automatically reconciling IP changes, updates, scaling, etc. That means that you only need to set the service once, and your application will be available as far as a running pod remains active.
+You now have a deployment running three pods of an NGINX application. In order to expose the pods to the internet, you need to create a **service**. In Kubernetes a service is an abstraction that allows pods to be accessible at all times. Services automatically handle IP changes, updates, and scaling, so once the service is enabled your application will be available as long as a running pod remains active.
 
 1.  Configure a test service:
 
-    {{< file "~/nginx-service.yaml" yaml >}}
+    {{< file "~/nginx-service.yaml" conf >}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -250,7 +239,7 @@ spec:
 
         kubectl create -f nginx-service.yaml
 
-3.  Check that your service was created:
+3.  Check the status of the new service:
 
         kubectl get services
 
@@ -260,13 +249,13 @@ kubernetes      ClusterIP   10.96.0.1     <none>        443/TCP        2d
 nginx-service   NodePort    10.97.41.31   <none>        80:31738/TCP   38m
     ```
 
-    This shows that a service is running and accepting connections on port `31738`.
+    The service is running and accepting connections on port 31738.
 
-4.  Test your service:
+4.  Test the service:
 
         curl <MASTER_LINODE_PUBLIC_IP_ADDRESS>:<PORT(S)>
 
-5.  You can obtain extra information about this service with the `describe` command:
+5.  View additional information about this service with the `describe` command:
 
         kubectl describe service nginx-service
 
@@ -289,9 +278,9 @@ Events:                   <none>
 
 ## Kubernetes Namespaces
 
-Namespaces are logical environments that offers the flexibility to divide the Cluster resources between multiple teams or users.
+Namespaces are logical environments that offer the flexibility to divide Cluster resources between multiple teams or users.
 
-1.  List your available namespaces:
+1.  List the available namespaces:
 
         kubectl get namespaces
 
@@ -301,7 +290,7 @@ kube-public   Active        7h
 kube-system   Active        7h
     ```
 
-    As the name implies, the `default` namespace is where all your deployments will live if no other namespace is specified. The `kube-system` is reserved for objects created by Kubernetes and `kube-public` is available for all users hence is named public.  Namespaces can be created from a `.json` file or directly from the command line.
+    As the name implies, the `default` namespace is where your deployments will be placed if no other namespace is specified. `kube-system` is reserved for objects created by Kubernetes and `kube-public` is available for all users. Namespaces can be created from a `.json` file or directly from the command line.
 
 2.  Create a new file named `dev-namespace.json` for the **Development** environment:
 
@@ -318,7 +307,7 @@ kube-system   Active        7h
 }
 {{< /file >}}
 
-3.  Create the namespace in your cluster using the `create` command:
+3.  Create the namespace in your cluster:
 
         kubectl create -f dev-namespace.json
 
@@ -356,23 +345,19 @@ In order to use your namespaces you need to define the **context** where you wan
 
         kubectl config view
 
-### Labels
-
-As you can see creating namespaces/contexts is very easy, now you are able to separate your **Development** environment from the rest of the cluster. This is useful because objects from one namespace are not visible to other namespaces.
-
-1.  List your deployments:
-
-        kubectl get deployments
-
-2.  List your pods:
+7.  Pods within a namespace are not visible to other namespaces. Check this by listing your pods:
 
         kubectl get pods
 
-    The message "No resources found" appears because you have no pods or deployments created in this namespace. You still can check these objects using the `--all-namespaces` flag:
+    The message "No resources found" appears because you have no pods or deployments created in this namespace. You still can view these objects with the `--all-namespaces` flag:
 
         kubectl get services --all-namespaces
 
-3.  Create a test deployment for this namespace:
+### Labels
+
+Any object in Kubernetes can have a label attached to it. Labels are key value pairs that make it easier to organize, filter, and select objects based on common characteristics.
+
+1.  Create a test deployment for this namespace. This deployment will include the `nginx` label:
 
     {{< file "~/my-app.yaml" yaml >}}
 apiVersion: apps/v1
@@ -398,29 +383,19 @@ spec:
         - containerPort: 80
 {{< /file >}}
 
-4.  Create your deployment with the `--record` flag:
+2.  Create the deployment:
 
         kubectl create -f my-app.yaml --record
 
-5.  Check your deployment:
-
-        kubectl get deployments
-
-6.  If you need to find a particular pod within your cluster, you have two options. :
-
-        kubectl get pods --all-namespaces
-
-That command will list literally **all** pods on your cluster, a better solution could be to filter the results. Labels are useful for that reason. Let's try it again using `app=nginx` flag:
+3.  If you need to find a particular pod within your cluster, rather than listing all of the pods it is usually more efficient to search by label with the `-l` option:
 
         kubectl get pods --all-namespaces -l app=nginx
 
-Only the pods in the `default` and `development` namespace are listed because they have the label `nginx` included in their definition. Labels can be used for any object in Kubernetes.
-
-Labels are key value pairs that are extremely convenient to filter your deployments, pods, and services. You can use them to tag your application version, SLA, user, maintainer or any other value that fits your needs.
+    Only the pods in the `default` and `development` namespace are listed because they have the label `nginx` included in their definition.
 
 ## Kubernetes Nodes
 
-A node may be a physical machine or a virtual machine. In this guide **each Linode is a node**. Think of nodes as the uppermost level in the Kubernetes abstraction model.
+A node may be a physical machine or a virtual machine. In this guide each Linode is a node. Think of nodes as the uppermost level in the Kubernetes abstraction model.
 
 1.  List your current nodes:
 
@@ -437,15 +412,13 @@ kube-worker-2    Ready     <none>    17h       v1.9.2
 
         kubectl get nodes -o wide
 
-3.  The information displayed is mostly self-explanatory and useful for checking that all nodes are ready. You can also use the `describe` command for an inner look into your node:
+3.  The information displayed is mostly self-explanatory and useful for checking that all nodes are ready. You can also use the `describe` command for more detailed information about a specific node:
 
         kubectl describe node kube-worker-1
 
-    This will show a very detailed information about your node, including important aspects as CPU load and disk space status just to mention a few.
-
 ### Node Maintenance
 
-Kubernetes offers a very straightforward solution for taking nodes off-line safely.
+Kubernetes offers a very straightforward solution for taking nodes offline safely.
 
 1.  Return to the default namespace where you have a running service for NGINX:
 
