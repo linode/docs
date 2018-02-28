@@ -19,6 +19,8 @@ external_resources:
   - '[Calico Documentation](https://docs.projectcalico.org/v2.0/getting-started/kubernetes/)'
 ---
 
+![Manage a Docker Cluster with Kubernetes](/docs/assets/manage-a-docker-cluster-with-kubernetes/Docker_Cluster_Kubernetes.jpg)
+
 ## What is a Kubernetes Cluster?
 
 [Kubernetes](https://kubernetes.io/) is an open source platform for managing containerized applications. If you use Docker for an application deployed on multiple Linodes, a Kubernetes cluster can manage your servers and deployments, including tasks such as scaling, deployment, and rolling upgrades.

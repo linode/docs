@@ -13,6 +13,9 @@ published: 2016-11-02
 title: How to Use LUKS for Full Disk Encryption on Linux
 image: https://linode.com/docs/assets/full_disk_encryption.png
 ---
+
+![How to Use LUKS for Full Disk Encryption on Linux](/docs/assets/luks/How_to_Use_LUKS_for_Full_Disk_Encryption_on_Linux_smg.jpg)
+
 ## Using LUKS encryption to Create a Secure Disk on Debian 8
 Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files.
 

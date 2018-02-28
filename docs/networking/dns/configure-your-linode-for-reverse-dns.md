@@ -12,6 +12,7 @@ modified_by:
 published: 2015-07-09
 title: Configure Your Linode for Reverse DNS (rDNS)
 ---
+![Configure Your Linode for Reverse DNS (rDNS)](/docs/assets/reverse-dns/Configure_Your_Linode_for_Reverse_DNS_smg.jpg)
 
 Your desktop computer uses DNS to determine the IP address associated with a domain name. *Reverse* DNS lookup does the opposite by resolving an IP address to a designated domain name. You should always set the reverse DNS, even if your Linode hosts more than one domain name.
 

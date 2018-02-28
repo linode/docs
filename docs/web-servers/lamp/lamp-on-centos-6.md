@@ -18,6 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
+![LAMP on CentOS 6](/docs/assets/lamp-centos/LAMP_on_CentOS_6_smg.png)
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a CentOS 6 system.
 
