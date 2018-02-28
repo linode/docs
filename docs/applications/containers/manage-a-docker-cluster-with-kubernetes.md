@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows how to manage Dockerized applications on multiple servers using a Kubernetes Cluster'
+description: 'Kubernetes makes it easy to manage containers across multiple servers. This guide shows how to manage Dockerized applications using Kubernetes.'
 og_description: 'Kubernetes makes it easy to manage containers across multiple servers. This guide shows how to manage Dockerized applications using Kubernetes.'
 keywords: ["Kubernetes", "cluster", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -186,7 +186,7 @@ nginx-server-76976d4555-ws4vf   1/1       Running            0          3m      
 nginx-server-7ddd985dd6-mpn9h   0/1       ImagePullBackOff   0          2m        192.168.180.16   kube-worker-1
     ```
 
-    In this example the pod `nginx-server-7ddd985dd6-mpn9h` is trying to upgrade to an nonexistent version of NGINX.
+    The pod `nginx-server-7ddd985dd6-mpn9h` is trying to upgrade to an nonexistent version of NGINX.
 
 6.  Get more details about the error by inspecting this pod:
 
@@ -465,7 +465,7 @@ kube-worker-2    Ready,SchedulingDisabled   <none>    4h        v1.9.2
     nginx-server-b9bc6c6b5-ztgmr   1/1       Running   0          11s       192.168.188.147   kube-worker-1
     ```
 
-    As you can see there are ten pods in total but new pods were created only in the first node.
+    There are ten pods in total but new pods were created only in the first node.
 
 7.  Tell `kube-worker-2` to drain its running pods:
 
