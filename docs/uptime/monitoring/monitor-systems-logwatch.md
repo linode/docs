@@ -12,7 +12,7 @@ published: 2015-08-12
 title: Monitor System Logs with Logwatch
 ---
 
-![Monitor System Logs with Logwatch](/docs/assets/logwatch/Monitor_System_Logs_with_Logwatch_smg.jpg)
+![Monitor System Logs with Logwatch](/docs/assets/logwatch/monitor-system-logs-logwatch.jpg)
 
 *Logwatch* is a log parsing program that analyzes and generates daily reports on your system's log activity. Logwatch does not provide real time alerts, but instead will create a digest organized by systems for ease of review. More advanced users can also pair Logwatch with custom analysis scripts to fine-tune their reports.
 

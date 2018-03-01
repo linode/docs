@@ -19,7 +19,7 @@ published: 2014-06-16
 title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 ---
 
-![Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache](/docs/assets/mod-fastcgi/Running_mod_fastcgi_and_PHP-FPM_on_Debian_7_(Wheezy)_with_Apache.png)
+![Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache](/docs/assets/mod-fastcgi/running-mod-fastcgi-and-php-fpm-debian-7-apache.png)
 
 This article explains how to configure and install `mod_fastcgi` and `PHP-FPM` on a Debian 7 instance using Apache. Apache's default configuration, which uses `mod_php` instead of `mod_fastcgi`, uses a significant amount of system resources.
 

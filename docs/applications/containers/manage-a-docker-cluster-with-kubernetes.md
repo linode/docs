@@ -19,7 +19,7 @@ external_resources:
   - '[Calico Documentation](https://docs.projectcalico.org/v2.0/getting-started/kubernetes/)'
 ---
 
-![Manage a Docker Cluster with Kubernetes](/docs/assets/manage-a-docker-cluster-with-kubernetes/Docker_Cluster_Kubernetes.jpg)
+![Manage a Docker Cluster with Kubernetes](/docs/assets/manage-a-docker-cluster-with-kubernetes/docker-cluster-kubernetes.jpg)
 
 ## What is a Kubernetes Cluster?
 

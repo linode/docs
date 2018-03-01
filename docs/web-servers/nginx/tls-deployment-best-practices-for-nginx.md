@@ -13,7 +13,7 @@ modified_by:
 title: 'Getting Started with NGINX - Part 4: TLS Deployment Best Practices'
 ---
 
-![TLS Deployment Best Practices](/docs/assets/nginx-basics/Getting_Started_with_NGINX_Part_4_TLS_Deployment_Best_Practices_smg.jpg)
+![TLS Deployment Best Practices](/docs/assets/nginx-basics/getting-started-nginx-part-4-tls-deployment-best-practices.jpg)
 
 ## Before you Begin
 

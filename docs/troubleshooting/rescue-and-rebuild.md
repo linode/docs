@@ -13,7 +13,7 @@ published: 2012-05-31
 title: Rescue and Rebuild
 ---
 
-![Rescue and Rebuild](/docs/assets/rescue-rebuild/Rescue_and_Rebuild_smg.jpg)
+![Rescue and Rebuild](/docs/assets/rescue-rebuild/rescue-rebuild.jpg)
 
 Even the best system administrators have to deal with accidents and unplanned events. Fortunately, the Linode Manager has a number of tools to assist you in the unlikely event that catastrophe strikes your Linode. This guide shows you how to use the tools at your disposal. You can boot your Linode into *Rescue Mode* to perform system recovery tasks and transfer data off your disks, if necessary. And if all else fails, you can *rebuild* your Linode from a backup or start over with a fresh Linux distribution.
 
