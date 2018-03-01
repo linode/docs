@@ -13,6 +13,8 @@ published: 2014-09-25
 title: Linode Images
 ---
 
+![Linode Images](/docs/assets/linode-images/Linode_Images_smg.jpg)
+
 *Linode Images* allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future. Linode Images will be retained whether or not you have an active Linode on your account, which also makes them useful for long term storage of a private template that you may need in the future. There is no additional charge to store Images for Linode users, with a limit of 2GB per Image and 3 Images per account.
 
 {{< note >}}
@@ -35,7 +37,7 @@ While an image can be captured while your Linode is running, we would recommend 
 
 3.  On the Image page, you can provide a label for your image. You can also write short notes about the image being captured in the Description box.
 
-	[![Imagize Image](/docs/assets/imagize-image.png)](/docs/assets/imagize-image.png)
+	[![Capture Image](/docs/assets/imagize-image.png)](/docs/assets/imagize-image.png)
 
 4.  Once you click the Create Image button, your image will be frozen for later use. You can view the progress on the Dashboard under the Host Job Queue.
 

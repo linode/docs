@@ -210,12 +210,12 @@ Go to your home directory and run `ccl64`. This will automatically start the Tur
 
 On your local device, download a client app for Turtl from the [turtl website](https://turtlapp.com/download/) for supported devices and operating systems.
 
-![turtldownload](/docs/assets/turtl/turtl_download.png)
+![Turtl Download Screen](/docs/assets/turtl/turtl_download.png)
 
 
 Put your public facing IP address (or `http://localhost:8181` if running locally) when prompted and create a username.
 
-![turtlinfo](/docs/assets/turtl/enterip.png)
+![Username, Password, and IP Screen](/docs/assets/turtl/enterip.png)
 
 You now have a functioning Turtl server. Add files, store passwords, and save bookmarks in your own private Turtl instance.
 

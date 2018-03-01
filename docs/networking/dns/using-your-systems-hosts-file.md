@@ -9,8 +9,10 @@ modified: 2018-02-27
 modified_by:
   name: Linode
 published: 2017-09-14
-title: Using Your System's Hosts File
+title: Using Your System's hosts File
 ---
+
+![Using Your System's Hosts File](/docs/assets/hosts-file/using-your-systems-hosts-files.jpg)
 
 The Linux [hosts file](http://man7.org/linux/man-pages/man5/hosts.5.html) lives at `/etc/hosts`, and creates static associations between IP addresses and hostnames, domains or machine aliases. Your Linode then gives those associations higher priority than hostnames or domains which must be resolved by DNS.
 

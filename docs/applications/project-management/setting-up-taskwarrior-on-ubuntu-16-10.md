@@ -20,9 +20,9 @@ external_resources:
 ---
 
 
-![Tasklogo](/docs/assets/taskwarrior/Taskwarrior.png)
+![Task Warrior Title Graphic](/docs/assets/taskwarrior/Taskwarrior.png)
 
-[Taskwarrior](https://taskwarrior.org/) is an open-source tool that manages tasks from the command line. Taskwarrior is blazing fast, written in C, updated frequently and available on practically every platform. This guide shows you how to install Taskwarrior on a Linode running Ubuntu 16.10.
+[Taskwarrior](https://taskwarrior.org/) is an open source tool that manages tasks from the command line. Taskwarrior is blazing fast, written in C, updated frequently and available on practically every platform. This guide shows you how to install Taskwarrior on a Linode running Ubuntu 16.10.
 
 ## Before You Begin
 
@@ -38,7 +38,7 @@ external_resources:
 
 Install Taskwarrior with the command:
 
-	sudo apt install task
+    sudo apt install task
 
 After the packages are installed, run the command, `task`.
 
@@ -76,17 +76,17 @@ If you then run `task` again, you'll see the job information. Taskwarrior assign
 
 You can add as many tasks as you want.
 
-	task add Attend Linux Users Group
-	Created task 2.
+    task add Attend Linux Users Group
+    Created task 2.
 
-	task add buy groceries
-	Created task 3.
+    task add buy groceries
+    Created task 3.
 
 ### Complete a Task
 
 After you complete a task, you can mark it "done" using the [done] command (https://taskwarrior.org/docs/commands/done.html). The syntax is `task <task_number> done`.
 
-	taskwarrior@localhost:~$ task 1 done
+    taskwarrior@localhost:~$ task 1 done
     Completed task 1 'Add block storage volume to my Linode'.
     Completed 1 task.
 
@@ -94,10 +94,10 @@ After you complete a task, you can mark it "done" using the [done] command (http
 
 To remove a task you can run the `task <task_number> delete` command.
 
-	taskwarrior@localhost:~$ task 2 delete
-	Permanently delete task 2 'Attend Linux Users group'? (yes/no) yes
-	Deleting task 2 'Attend Linux Users group'.
-	Deleted 1 task.
+    taskwarrior@localhost:~$ task 2 delete
+    Permanently delete task 2 'Attend Linux Users group'? (yes/no) yes
+    Deleting task 2 'Attend Linux Users group'.
+    Deleted 1 task.
 
 ### Assign Tasks a Due Date
 
@@ -118,7 +118,7 @@ The `due` [argument](https://taskwarrior.org/docs/dates.html#due) allows a signi
 
 Taskwarrior supports [recurring tasks](https://taskwarrior.org/docs/recurrence.html) by using the `recur` argument. The example below creates a daily task, the first of which is due 23 hours from the time of creation:
 
-	task add update ubuntu recur:daily due:daily
+    task add update ubuntu recur:daily due:daily
 
     taskwarrior@localhost:~$ task
     [task next]
@@ -135,11 +135,10 @@ Taskwarrior supports [recurring tasks](https://taskwarrior.org/docs/recurrence.h
 
 Taskwarrior does much more than just list the tasks you've added on the command line. The [burndown](https://taskwarrior.org/docs/commands/burndown.html) feature outputs graphical representations of your Taskwarrior workflow.
 
-![taskwarburndown](/docs/assets/taskwarrior/tw-burndown.png)
+![Task Warrior Burndown](/docs/assets/taskwarrior/tw-burndown.png)
 
 The `calendar` feature shows a calendar that contains all your tasks and due dates.
-![taskcalendar](/docs/assets/taskwarrior/tw-calendar.png)
-
+![Task calendar](/docs/assets/taskwarrior/tw-calendar.png)
 
 ### Next Steps with Taskwarrior
 

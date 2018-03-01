@@ -13,6 +13,8 @@ modified_by:
 title: 'Getting Started with NGINX - Part 4: TLS Deployment Best Practices'
 ---
 
+![TLS Deployment Best Practices](/docs/assets/nginx-basics/getting-started-nginx-part-4-tls-deployment-best-practices.jpg)
+
 ## Before you Begin
 
 - This guide is Part 4 of our *Getting Started with NGINX* series and you will need a working NGINX setup with a website accessible via HTTPS. If do not already have that, then complete at least [Part 1: Basic Installation and Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) and [Part 3: Enable TLS on NGINX for HTTPS Connections](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/) before going further.

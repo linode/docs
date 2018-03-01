@@ -19,7 +19,7 @@ external_resources:
  - '[AskBot Official Website](https://askbot.com)'
 ---
 
-![AskBot with LetsEncrypt on Ubuntu](/docs/assets/AskBot.jpg)
+![AskBot with Let's Encrypt on Ubuntu](/docs/assets/AskBot.jpg)
 
 ## What is AskBot?
 

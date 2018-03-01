@@ -28,7 +28,7 @@ The Longview client is [open source](https://github.com/linode/longview) and can
 
 2.  Click the **Add Client** tile. This will bring up a modal window with a `curl` command at the center.
 
-    ![Linode Manager Longview install](/docs/assets/linode-manager-longview-install.png "Linode Manager longview install")
+    ![Linode Manager Longview install](/docs/assets/linode-manager-longview-install.png "Linode Manager Longview install")
 
 3.  Open a terminal on your local computer and log into your Linode over SSH. Change to the `root` user:
 
@@ -192,11 +192,11 @@ By changing the viewing history, you'll be able to see statistics for a longer p
 
 Longview allows you to zoom in on graphs to take a closer look at a specific time interval. For example, if you saw a major spike in CPU use that lasted 19 minutes, you could zoom in on that 19 minute interval for more detail. To zoom in, click and drag the pointer to select a specific portion of the graph.
 
-![Linode Manager Longview reset zoom](/docs/assets/linode-manager-longview-graph-zoom.png "Linode Manager Longivew reset zoom")
+![Linode Manager Longview reset zoom](/docs/assets/linode-manager-longview-graph-zoom.png "Linode Manager Longview reset zoom")
 
 All of the graphs will be updated to display data for the time interval you selected. To reset the zoom view and restore all of the graphs to the default 30 minute time interval, select the **Reset Zoom** link in the top-right corner.
 
-![Linode Manager Longview reset zoom](/docs/assets/linode-manager-longview-reset-zoom.png "Linode Manager Longivew reset zoom")
+![Linode Manager Longview reset zoom](/docs/assets/linode-manager-longview-reset-zoom.png "Linode Manager Longview reset zoom")
 
 
 ## Longview Pro
@@ -205,7 +205,7 @@ Longview Free updates every 5 minutes and provides only twelve hours of data his
 
 1.  At the bottom of the Longview overview page in the Linode Manager, click the **Upgrade to Longview Pro** tile.
 
-    ![Linode Manager Longview Pro tile](/docs/assets/linode-manager-longview-pro-tile.png "Linode Manager Longivew Pro tile")
+    ![Linode Manager Longview Pro tile](/docs/assets/linode-manager-longview-pro-tile.png "Linode Manager Longview Pro tile")
 
 2.  You'll be taken to the Longview subscriptions page. Select the radio dial of the plan you want to change to.
 

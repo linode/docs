@@ -72,7 +72,7 @@ If your Linode's distribution disk already has 100% of the available disk space 
 
 2.  Edit your Linode's Configuration Profile. Under **Block Device Assignment**, assign your new disk to `/dev/sdc`. Make a note of this path, which you will need when configuring LXD in the next section.
 
-    ![Block Device Assignement](/docs/assets/lxd/block-device-assignment.png "Block Device Assignment")
+    ![Block Device Assignment](/docs/assets/lxd/block-device-assignment.png "Block Device Assignment")
 
 3.  Under **Boot Settings** select **GRUB 2** as your kernel.
 

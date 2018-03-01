@@ -35,6 +35,7 @@ apxs
 aren
 argv
 arping
+askbot
 aske
 async
 authdaemonrc
@@ -554,6 +555,7 @@ ipv6
 ipwl
 irc
 ircname
+iredmail
 irssi
 isn
 iso
@@ -786,6 +788,7 @@ natively
 ncurses
 neo
 neomake
+neovim
 netblocks
 netboot
 netconfig
@@ -852,6 +855,7 @@ opendkim
 openfire
 openjdk
 openspf
+openssh
 openssl
 openvas
 openvasmd
@@ -900,6 +904,7 @@ pflogsumm
 pgpass
 phar
 pharo
+phonebook
 php
 php5
 php7
@@ -1068,6 +1073,7 @@ schemas
 scm
 scp
 scrapy
+screenrc
 scriptfilename
 scrum2b
 sda
@@ -1388,6 +1394,7 @@ wi
 widgits
 wildfly
 wimey
+winscp
 windowlist
 wireguard
 wkhtmltopdf
@@ -1408,6 +1415,7 @@ www
 wx
 xabbix
 xap
+xcalc
 xen
 xenial
 xerus

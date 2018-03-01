@@ -97,11 +97,11 @@ FarmOS will configure Drupal and itself at the same time:
 
 1. The first screen you will encounter asks you to choose a profile and a language:
 
-    ![firstscreen](/docs/assets/FarmOS/firstscreen.png)
+    ![FarmOS first screen](/docs/assets/FarmOS/firstscreen.png)
 
-2. Drupal checks if the install is correct in the **Verify requirements** section. Then, it will move to configuring the database. In this section you should input the information from the database built earlier in this tutorial:
+2. Drupal checks if the installation is correct in the **Verify requirements** section. Then, it will move to configuring the database. In this section you should input the information from the database built earlier in this tutorial:
 
-    ![DatabaseConfig](/docs/assets/FarmOS/second.png)
+    ![Database Configuration](/docs/assets/FarmOS/second.png)
 
 3. Once FarmOS hooks into the database, you will need to configure your FarmOS site. This is where you will define the name and the main user account:
 
@@ -120,22 +120,19 @@ FarmOS will configure Drupal and itself at the same time:
        sudo chmod 644 sites/default
        sudo chmod 644 ./sites/default/settings.php
 
-
 ## Add Users
 To add users to your FarmOS distribution, you can do so from the **People** tab under **Manage**.
 
-   ![adduser](/docs/assets/FarmOS/Adduser.png)
-
+   ![Add user](/docs/assets/FarmOS/Adduser.png)
 
 After each user is created, use the **people** tab, to verify success:
 
-![peoplescreen](/docs/assets/FarmOS/peoplescreen.png)
+![People screen](/docs/assets/FarmOS/peoplescreen.png)
 
 ## Next Steps
 
 ### Registering a Domain Name for FarmOS
 If you want to register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager-overview) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this step.
-
 
 ### Generate a Google API Key
 FarmOS can interface with GoogleMaps. You need a GoogleAPI key to use this feature. The FarmOS official documentation has a section about using GoogleMaps in its [docs](http://farmos.org/hosting/googlemaps/). Interfacing with GoogleMaps allows you to save certain geographical areas into FarmOS. When creating FarmOS projects and tasks, you can use the Google Maps API to pinpoint where the task takes place.

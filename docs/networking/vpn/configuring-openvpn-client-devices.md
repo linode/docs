@@ -167,7 +167,7 @@ Before connecting for the first time, it's a good idea to run `sudo journalctl -
 
 [Tunnelblick](https://tunnelblick.net/) is a free and open source application that lets you connect OS X and macOS to OpenVPN servers. Tunnelblick's website has an excellent [installation guide](https://www.tunnelblick.net/cInstall.html) so we won't repeat it here.
 
-![Tunnelblick spash](/docs/assets/1346-tunnelblick2.png)
+![Tunnelblick splash](/docs/assets/1346-tunnelblick2.png)
 
 
 ### Windows
