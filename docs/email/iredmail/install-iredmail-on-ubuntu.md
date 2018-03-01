@@ -112,8 +112,7 @@ The next few steps were taken directly from the iRedMail [Ubuntu installation st
 
 13. The installer then downloads and installs the appropriate files. After it completes, you will receive a prompt asking whether you would like to use iRedMail’s firewall rules at `/etc/default/iptables`, and identifies your SSHD port. Type "y" to accept, or "n" if you want to configure your firewall manually.
 
-    ![iredmail fw and ssh port](/docs/assets/iredmail-fw-and-ssh-port.png)
-
+    ![iredmail Firewall and SSH port](/docs/assets/iredmail-fw-and-ssh-port.png)
 
 14. After typing "y", the install screen will ask if you’d like to restart the firewall. Type "y".
 
@@ -135,15 +134,15 @@ iRedMail is packaged with a mail server account configuration called iRedAdmin. 
 
 1. To access iRedAdmin, navigate to `https://yourdomain.com/iredadmin` and log in with your postmaster@yourdomain.com user.
 
-    ![adduser1](/docs/assets/adduser1.png)
+    ![iRedAdmin login](/docs/assets/adduser1.png)
 
 2. Once the dashboard page loads, navigate to the `Add` dropdown and select `User`.
 
-    ![adduser2](/docs/assets/adduser2.png)
+    ![iRedAdmin Add User](/docs/assets/adduser2.png)
 
 3. Fill in the address, password, display name, and mailbox quota blocks then click **Add** will complete the process.
 
-    ![adduser3](/docs/assets/adduser3.png)
+    ![iRedAdmin Add User Information](/docs/assets/adduser3.png)
 
 ## Certificates, SPF, DKIM, and rDNS
 

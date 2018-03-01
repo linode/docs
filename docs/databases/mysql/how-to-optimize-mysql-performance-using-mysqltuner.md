@@ -19,9 +19,9 @@ external_resources:
 
 Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads, it is beneficial to tune MySQL to additional connections.
 
-![Optimize MySQL Performace Using MySQLTuner](/docs/assets/optimize_mysql_using_mysql_tuner_title_graphic.png)
+![Optimize MySQL Performance Using MySQLTuner](/docs/assets/optimize_mysql_using_mysql_tuner_title_graphic.png)
 
-Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups.
+Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](/pricing#high-memory) for such setups.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -133,4 +133,3 @@ This value should be kept higher than your `open_tables` value. To determine thi
 {{< highlight sql >}}
 SHOW STATUS LIKE 'open%';
 {{< /highlight >}}
-

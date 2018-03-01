@@ -118,7 +118,7 @@ Before using SquirrelMail for the first time, it needs to be configured to acces
 
     This will bring up the menu shown below:
 
-    [![The squirrelmail-conifg main menu.](/docs/assets/1490-squirrelmail-config_1.png)](/docs/assets/1490-squirrelmail-config_1.png)
+    [![The squirrelmail-config main menu.](/docs/assets/1490-squirrelmail-config_1.png)](/docs/assets/1490-squirrelmail-config_1.png)
 
 2.  There are many options to adjust here; too many for the scope of this guide. The only settings required to make SquirrelMail work are the `Server Settings`. Press `2` to bring up the Server Settings submenu:
 

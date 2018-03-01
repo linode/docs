@@ -125,7 +125,7 @@ With everything set up it's time to work with your remote development environmen
 
 6. Check your installation by pointing your browser to the assigned port `http://<Linode IP or FQDN> :32769`.
 
-    ![Ngix welcome page](/docs/assets/webdev-remote-devices/linode-on-remote-devices-10.png "Ngix welcome page")
+    ![NGINX welcome page](/docs/assets/webdev-remote-devices/linode-on-remote-devices-10.png "Ngix welcome page")
 
 ### Use Portainer to Manage your Containers
 

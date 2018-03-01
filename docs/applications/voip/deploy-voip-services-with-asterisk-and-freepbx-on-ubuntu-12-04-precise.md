@@ -164,7 +164,7 @@ It's very important that you follow the steps outlined above carefully or your s
 
 7.  Now go up to `Channel Drivers` and select `cham_motif`.
 
-    [![The chan\_motiff option.](/docs/assets/1678-asterisk-8.png)](/docs/assets/1678-asterisk-8.png)
+    [![Asterisk Module and Build Option selection](/docs/assets/1678-asterisk-8.png)](/docs/assets/1678-asterisk-8.png)
 
 8.  Finally, under `Compiler Flags` uncheck `BUILD_NATIVE`.
 
