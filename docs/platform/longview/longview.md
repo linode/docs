@@ -7,7 +7,7 @@ og_description: "Learn how to use Longiew, Linode's system data graphing service
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/', 'uptime/longview/']
-modified: 2017-12-19
+modified: 2018-03-01
 modified_by:
   name: Linode
 title: What is Longview and How to Use it
@@ -105,6 +105,7 @@ deb http://apt-longview.linode.com/ xenial main
     **Debian or Ubuntu**
 
         sudo apt-get update
+        sudo apt-get install linode-longview
 
 ### Longview Client Labels
 
