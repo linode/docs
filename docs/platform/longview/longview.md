@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: "This guide shows how to install and use Linode Longview."
-og_description: "Learn how to use Longiew, Linode's system data graphing service."
+og_description: "Learn how to use Longview, Linode's system data graphing service."
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/', 'uptime/longview/']
