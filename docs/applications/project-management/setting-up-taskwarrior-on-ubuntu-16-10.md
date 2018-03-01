@@ -20,7 +20,7 @@ external_resources:
 ---
 
 
-![Task Warror Title Graphic](/docs/assets/taskwarrior/Taskwarrior.png)
+![Task Warrior Title Graphic](/docs/assets/taskwarrior/Taskwarrior.png)
 
 [Taskwarrior](https://taskwarrior.org/) is an open source tool that manages tasks from the command line. Taskwarrior is blazing fast, written in C, updated frequently and available on practically every platform. This guide shows you how to install Taskwarrior on a Linode running Ubuntu 16.10.
 
