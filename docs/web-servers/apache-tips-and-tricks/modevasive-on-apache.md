@@ -2,67 +2,71 @@
 author:
   name: Chris Ciufo
   email: docs@linode.com
-description: 'mod_evasive'
-keywords: ["mod_evasive", " modevasive", " evasive", " apache"]
+description: 'mod_evasive is an Apache module that implements evasive action to mitigate the effects of a DoS attack.'
+og_description: "Configure your Apache web server to evade DoS attacks with mod_evasive."
+keywords: ["mod_evasive", "modevasive", "evasive", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/apache/mod-evasive/','websites/apache-tips-and-tricks/modevasive-on-apache/']
-modified: 2013-02-05
+modified: 2018-03-01
 modified_by:
   name: Linode
 published: 2011-11-14
 title: 'mod_evasive on Apache'
+h1_title: "Configure mod_evasive to Help Survive DoS/DDoS Attacks"
 external_resources:
- - '[mod_evasive Home Page](http://www.zdziarski.com/blog/?page_id=442)'
+ - '[mod_evasive on GitHub](https://github.com/jzdziarski/mod_evasive)'
 ---
 
-mod_evasive is an evasive maneuvers module for Apache that provides evasive action in the event of an HTTP DoS attack or brute force attack. It is also designed to be a detection and network management tool, and can be easily configured to talk to ipchains, firewalls, routers, and more. mod_evasive presently reports abuse via email and syslog facilities.
+## What is mod_evasive?
+
+mod_evasive is a module for Apache that provides evasive action in the event of an HTTP Distributed Denial of Service (DDoS/DoS) attack or brute force attack. It is also designed to be a detection and network management tool, and can be easily configured to talk to ipchains, firewalls, routers, and more. mod_evasive presently reports abuse via email and syslog facilities.
 
 ![mod_evasive on Apache](/docs/assets/mod_evasive.png "mod_evasive on Apache")
 
-This guide assumes you already have your LAMP server configured. Guides for setting up a LAMP stack can be found under our [LAMP guides](/docs/lamp-guides) section.
+This guide assumes you already have your LAMP server configured. Guides for setting up a LAMP stack can be found in our [LAMP guides](/docs/lamp-guides) section.
 
 ## Prerequisites
 
-mod_evasive has just one prerequisite beyond the standard LAMP install. To install this module, just run the following command as root in SSH:
+mod_evasive has just one prerequisite beyond the standard LAMP install. To install this module, run the following as root:
 
-Debian / Ubuntu:
+**Debian / Ubuntu:**
 
     apt-get install apache2-utils
 
-CentOS / Fedora:
+**CentOS / Fedora:**
 
     yum install httpd-devel
 
-## Installing mod_evasive
+## Install mod_evasive
 
-You'll first want to get the mod_evasive package, uncompress it, and install it using apxs:
+1.  Download the mod_evasive package, uncompress it, and install it using apxs:
 
-    cd /usr/src
-    wget http://www.zdziarski.com/blog/wp-content/uploads/2010/02/mod_evasive_1.10.1.tar.gz
-    tar xzf mod_evasive_1.10.1.tar.gz
-    cd mod_evasive
-    apxs2 -cia mod_evasive20.c
+        cd /usr/src
+        wget http://www.zdziarski.com/blog/wp-content/uploads/2010/02/mod_evasive_1.10.1.tar.gz
+        tar xzf mod_evasive_1.10.1.tar.gz
+        cd mod_evasive
+        apxs2 -cia mod_evasive20.c
 
-You'll then need to add the mod_evasive configuration to your Apache configuration file. First, find this section:
+2.  To add the mod_evasive configuration to your Apache configuration file, find the section appropriate to your Apache config:
 
-{{< file "/etc/apache2/apache2.conf (Debian / Ubuntu)" >}}
+    **Debian / Ubuntu:**
+
+    {{< file "/etc/apache2/apache2.conf" >}}
 # Include module configuration:
 Include mods-enabled/*.load
 Include mods-enabled/*.conf
-
 {{< /file >}}
 
+    **CentOS / Fedora:**
 
-{{< file "/etc/httpd/conf/httpd.conf (CentOS / Fedora)" >}}
+    {{< file "/etc/httpd/conf/httpd.conf" >}}
 LoadModule evasive20_module /usr/lib/httpd/modules/mod_evasive20.so
 #
-
 {{< /file >}}
 
+3.  Below that section, add the mod_evasive configuration:
 
-Below those sections, add the mod_evasive configuration:
-
-{{< file-excerpt "mod_evasive configuration" >}}
+    {{< file-excerpt "mod_evasive configuration" >}}
 <IfModule mod_evasive20.c>
     DOSHashTableSize 3097
     DOSPageCount 2
@@ -72,19 +76,17 @@ Below those sections, add the mod_evasive configuration:
     DOSBlockingPeriod 60
     DOSEmailNotify <someone@somewhere.com>
 </IfModule>
-
 {{< /file-excerpt >}}
 
+4.  Restart Apache for your changes to take effect:
 
-You'll then need to restart Apache for your changes to take effect:
+    **Debian / Ubuntu:**
 
-Debian / Ubuntu:
+        /etc/init.d/apache2 restart
 
-    /etc/init.d/apache2 restart
+    **CentOS / Fedora:**
 
-CentOS / Fedora:
-
-    /etc/init.d/httpd restart
+        /etc/init.d/httpd restart
 
 ## mod_evasive Configuration Options
 
@@ -145,3 +147,7 @@ DOSWhitelist 127.0.0.*
 {{< /file >}}
 
 Wildcards can be used on up to the last 3 octets if necessary. Multiple DOSWhitelist commands may be used in the configuration.
+
+## Test mod_evasive
+
+Refer to our guide on [Load Testing with Siege](/docs/tools-reference/tools/load-testing-with-siege/) to test your site's performance. Before you attempt to DDoS yourself, be aware that you risk banning your own IP. Linode does not recommend testing any server that isn't your own.
