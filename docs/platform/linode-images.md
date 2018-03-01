@@ -37,7 +37,7 @@ While an image can be captured while your Linode is running, we would recommend 
 
 3.  On the Image page, you can provide a label for your image. You can also write short notes about the image being captured in the Description box.
 
-	[![Imagize Image](/docs/assets/imagize-image.png)](/docs/assets/imagize-image.png)
+	[![Capture Image](/docs/assets/imagize-image.png)](/docs/assets/imagize-image.png)
 
 4.  Once you click the Create Image button, your image will be frozen for later use. You can view the progress on the Dashboard under the Host Job Queue.
 
