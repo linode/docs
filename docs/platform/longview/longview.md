@@ -205,7 +205,7 @@ Longview Free updates every 5 minutes and provides only twelve hours of data his
 
 1.  At the bottom of the Longview overview page in the Linode Manager, click the **Upgrade to Longview Pro** tile.
 
-    ![Linode Manager Longview Pro tile](/docs/assets/linode-manager-longview-pro-tile.png "Linode Manager Longivew Pro tile")
+    ![Linode Manager Longview Pro tile](/docs/assets/linode-manager-longview-pro-tile.png "Linode Manager Longview Pro tile")
 
 2.  You'll be taken to the Longview subscriptions page. Select the radio dial of the plan you want to change to.
 
