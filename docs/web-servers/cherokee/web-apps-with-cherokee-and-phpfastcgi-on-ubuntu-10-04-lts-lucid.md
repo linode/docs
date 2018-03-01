@@ -93,7 +93,7 @@ On the "Logging" tab, specify the location of your access and error logs:
 
 Navigate to the "Information Source" page. Specify a new information source with the following settings:
 
-[![PHP-FastCGI information source setttings in Cherokee admin panel on Ubuntu 10.04 LTS](/docs/assets/247-08-cherokee-ubuntu-10-04-information-sources.png)](/docs/assets/247-08-cherokee-ubuntu-10-04-information-sources.png)
+[![PHP-FastCGI information source settings in Cherokee admin panel on Ubuntu 10.04 LTS](/docs/assets/247-08-cherokee-ubuntu-10-04-information-sources.png)](/docs/assets/247-08-cherokee-ubuntu-10-04-information-sources.png)
 
 Navigate back to the "Virtual Servers" page. Create an extensions rule for PHP files on the "Behavior" tab of your virtual server's configuration page.
 
