@@ -92,7 +92,3 @@ OPTIONS="-l 127.0.0.1 -U 0"
     If your system uses SysV:
 
         sudo service memcached restart
-
-## I'm not running memcached. Does this affect me?
-
-We're experiencing high load on our network due to this vulnerability. While your system might not be affected, you might experience a temporary decrease in network performance.
