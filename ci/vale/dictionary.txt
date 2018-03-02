@@ -711,6 +711,7 @@ md5sum
 mdev
 mediawiki
 memcached
+memcrashed
 menuentry
 mesos
 metabase
