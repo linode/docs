@@ -17,6 +17,8 @@ external_resources:
 - '[PySpark Documentation](https://spark.apache.org/docs/latest/api/python/#)'
 ---
 
+![Introduction to Pyspark](/docs/assets/pyspark/PySpark.jpg)
+
 ## What is PySpark?
 
 [Apache Spark](https://spark.apache.org/) is a big-data processing engine with several advantages over MapReduce. Spark offers greater simplicity by removing much of the boilerplate code seen in Hadoop. In addition, since Spark handles most operations in memory, it is often faster than MapReduce, where data is written to disk after each operation.

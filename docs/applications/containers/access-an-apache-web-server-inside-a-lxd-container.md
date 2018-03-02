@@ -20,6 +20,8 @@ external_resources:
   - '[Try LXD Online](https://linuxcontainers.org/lxd/try-it/)'
 ---
 
+![Access an Apache Web Server Inside a LXD Container](/docs/assets/lxd/apache-lxd-banner-image.jpg)
+
 ## What is LXD?
 
 [LXD](https://linuxcontainers.org/lxd/) (pronounced "Lex-Dee") is a system container manager build on top of LXC (Linux Containers) that is currently supported by Canonical. The goal of LXD is to provide an experience similar to a virtual machine but through containerization rather than virtualization. Compared to Docker for delivering applications, LXD offers nearly full OS functionality with additional features such as snapshots, live migrations, storage management, and more.

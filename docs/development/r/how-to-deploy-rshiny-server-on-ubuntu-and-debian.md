@@ -16,6 +16,8 @@ external_resources:
   - '[Gallery of Shiny Apps](https://shiny.rstudio.com/gallery/)'
 ---
 
+![How to Deploy Interactive R Apps with Shiny Server](/docs/assets/shiny/shiny-server.jpg)
+
 ## What is Shiny?
 
 [Shiny](https://shiny.rstudio.com/) is a library for the R programming language that allows you to create interactive web apps in native R, without needing to use web technologies such as HTML, CSS, or JavaScript frameworks. There are many ways to deploy Shiny apps to the web. This guide uses Shiny Server to host an example Shiny app on a Linode.
