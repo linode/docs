@@ -32,7 +32,7 @@ Memcached should not be exposed to the internet. If your Linode is detected to b
 
     1.  Bind memcached to a specific IP address and port.
 
-    2.  Configure you Linode's firewall. If you need help configuring a firewall on your distribution, see [our firewall guides](/docs/security/firewalls/) for more information.
+    2.  Configure your Linode's firewall. If you need help configuring a firewall on your distribution, see [our firewall guides](/docs/security/firewalls/) for more information.
 
 * If you do not require memcached to communicate over any network connection, disable UDP for memcached and ensure it is only listening on `localhost`.
 
@@ -99,4 +99,4 @@ OPTIONS="-l 127.0.0.1 -U 0"
 
 ## I'm not running memcached. Does this affect me?
 
-Potentially, yes. We're experiencing a high load on our network due to this exploit. You may experience dropped packets and a temporary decrease in network performance, regardless of which data center your Linode resides in.
+We're experiencing high load on our network due to this exploit. While your system might not be affected, you might experience a temporary decrease in network performance or dropped packets.
