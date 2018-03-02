@@ -14,11 +14,11 @@ external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 ---
 
-Plex is a media server that allows you to store your media on a remote server and stream it from your devices. This guide will show how to attach a Block Storage Volume to an existing Linode in order to meet the demands of a growing media library.
+Plex is a media server that allows you to store your media on a remote server and stream it to your devices. This guide will show how to attach a Block Storage Volume to an existing Linode in order to meet the demands of a growing media library.
 
 ## Before You Begin
 
-Plex Server is assumed to be installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/) if it is not installed.
+Plex Server is assumed to be installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/) if it is not installed. After installation, follow the steps in the [Initial Setup](http://localhost:1313/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/#initial-setup) section to create an SSH tunnel to your Linode and configure the Plex server.
 
 This guide also assumes a Plex account is created since Plex Media Player will require login to a Plex account.
 
@@ -34,7 +34,7 @@ This guide also assumes a Plex account is created since Plex Media Player will r
 
     ![Mount Block Storage Volume](/docs/assets/plex/plex-mount-volume.png)
 
-2.  Check available disk space. Notice that there is some overhead with the Volume due to the file system.
+3.  Check available disk space. Notice that there is some overhead with the Volume due to the file system.
 
         df -BG
 
@@ -46,9 +46,13 @@ tmpfs                 1G    1G        1G   1% /dev/shm
 tmpfs                 1G    1G        1G   2% /run
 tmpfs                 1G    0G        1G   0% /run/lock
 tmpfs                 1G    0G        1G   0% /sys/fs/cgroup
-/dev/sdc             40G    1G       38G   1% /mnt/plex-volume
+/dev/sdc             20G    1G       38G   1% /mnt/plex-volume
 tmpfs                 1G    0G        1G   0% /run/user/1000
 {{< /output >}}
+
+4.  If you want to use `scp` to transfer your media files directly from a client machine to the Volume (see the next section), you will need to change the ownership of the mount point:
+
+        sudo chown username:username /mnt/plex-volume
 
 ## Plex Client
 
@@ -64,13 +68,13 @@ tmpfs                 1G    0G        1G   0% /run/user/1000
 
 4.  Click *Browse for Media Folder*.
 
-    ![Plex Browse Folder](/docs/assets/plex/plex-browser-folder.png)
+    ![Plex Browse Folder](/docs/assets/plex/plex-browse-folder.png)
 
 5.  A window will appear. Select the folder corresponding to the Block Storage Volume. In this example, the mountpoint is `/mnt/plex-volume`.
 
 ## Transfer Media to Volume via scp
 
-Moving media to the Volume can be done with `scp` with the following syntax:
+Moving media to the Volume can be done with `scp` using the following syntax:
 
     scp example_video.mp4 username@123.456.7.8:/mnt/plex-volume
 
@@ -87,4 +91,3 @@ After new media is added to the Block Storage Volume, scan for files in the Plex
 ![Plex Scan Media](/docs/assets/plex/plex-scan-media.png)
 
 The media should now be available through Plex Media Player.
-
