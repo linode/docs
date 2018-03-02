@@ -26,7 +26,7 @@ The vulnerability of memcached to aiding in massive Denial of Service attacks wa
 
 ## I'm running memcached. What do I do?
 
-Memcached should not be exposed to the internet. If your Linode is detected to be running a vulnerable memcached configuration, you will be alerted by our Support team. There are a few basic steps you can take to secure your memcachd instance.
+Memcached should not be exposed to the internet. If your Linode is detected to be running a vulnerable memcached configuration, you will be alerted by our Support team. There are a few basic steps you can take to secure your memcached instance.
 
 * If you require memcached to communicate over a private network:
 
