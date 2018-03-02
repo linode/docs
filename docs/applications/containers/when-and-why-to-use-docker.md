@@ -19,15 +19,17 @@ external_resources:
 - '[Your Software is Safer in Docker Containers](https://blog.docker.com/2016/08/software-security-docker-containers/)'
 ---
 
+![When and Why to Use Docker](/docs/assets/when-why-docker/when-why-docker.jpg "When and Why to Use Docker")
+
+## What is Docker?
+
 Since its release in 2012, [Docker](https://www.docker.com) has become one of the fastest-growing technologies in devops and web development. Like any new technology, however, it is still under development, has some limitations, and is not right for every project. This guide provides an overview of the pros and cons of Docker so that you can decide whether it would be a good addition to your project.
 
-{{< note >}}
 For a more basic introduction to Docker concepts and terminology, see our [An Introduction to Docker](/docs/applications/containers/introduction-to-docker) guide.
-{{< /note >}}
 
 ## Benefits of Docker
 
-1.  **Reproducibility**: Similar to a Java application, which will run exactly the same on any device capable of running a Java Virtual Machine, a Docker container is guaranteed to be identical on any computer or VPS that can run Docker. The exact specifications of a container are stored in a Dockerfile. By distributing this file among team members, an organization can guarantee that all images built from the same Dockerfile will function identically. In addition, having an environment that is constant and well-documented makes it easier to keep track of your application and identify problems.
+1.  **Reproducibility**: Similar to a Java application, which will run exactly the same on any device capable of running a Java Virtual Machine, a Docker container is guaranteed to be identical on any system that can run Docker. The exact specifications of a container are stored in a Dockerfile. By distributing this file among team members, an organization can guarantee that all images built from the same Dockerfile will function identically. In addition, having an environment that is constant and well-documented makes it easier to keep track of your application and identify problems.
 
 2.  **Isolation**: Dependencies or settings within a container will not affect any installations or configurations on your computer, or on any other containers that may be running. By using separate containers for each component of an application (for example a web server, front end, and database for hosting a web site), you can avoid conflicting dependencies. You can also have multiple projects on a single server without worrying about creating conflicts on your system.
 
@@ -69,7 +71,7 @@ There are also times when Docker isn't the best solution. Here are some examples
 
 6.  **Clusters.** Docker containers on separate servers can be combined to form a cluster with [Docker Swarm](https://docs.docker.com/engine/swarm/). However, Docker does not take the place of provisioning or automation tools such as Ansible, SaltStack, and Chef. In addition, Docker has recently announced support for Kubernetes, hinting that Docker Swarm may not be sufficient as a stand-alone cluster manager.
 
-## Conclusion
+## Should you use Docker Containers?
 
 Docker has become an extremely popular way to configure, save, and share server environments using containers. Because of this, installing an application or even a large stack can often be as simple as running `docker pull` or `docker run`. Separating application functions into different containers also offers advantages in security and dependency management.
 
