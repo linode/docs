@@ -974,6 +974,7 @@ py
 pyamqp
 pyinotify
 pypiserver
+pyspark
 python3
 pythonic
 qmail

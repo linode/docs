@@ -17,7 +17,7 @@ external_resources:
 - '[PySpark Documentation](https://spark.apache.org/docs/latest/api/python/#)'
 ---
 
-![Introduction to Pyspark](/docs/assets/pyspark/PySpark.jpg)
+![Introduction to PySpark](/docs/assets/pyspark/PySpark.jpg)
 
 ## What is PySpark?
 
