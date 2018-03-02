@@ -32,7 +32,7 @@ Memcached should not be exposed to the internet. If your Linode is detected to b
 
     1.  Bind memcached to a specific private IP address and port.
 
-    2.  Configure your Linode's firewall accordinly. If you need help setting up a firewall on your distribution, see [our firewall guides](/docs/security/firewalls/) for more information.
+    2.  Configure your Linode's firewall accordingly. If you need help setting up a firewall on your distribution, see [our firewall guides](/docs/security/firewalls/) for more information.
 
 * If you do not require memcached to communicate over any network connection, disable UDP for memcached and ensure it is only listening on `localhost`.
 
@@ -56,7 +56,7 @@ OPTIONS="-l 127.0.0.1 -U 0"
 
 ### Debian and Ubuntu
 
-1.  Memcached is configured to listen on `localhost` by default in Debian and Ubuntu. This configuration is not suceptible to the amplification exploit, but you should still verify you're not running a setup:
+1.  Memcached is configured to listen on `localhost` by default in Debian and Ubuntu. This configuration is not suceptible to the amplification exploit, but you should still verify you're not running a vulnerable setup:
 
         grep 127.0.0.1 /etc/memcached.conf
 
