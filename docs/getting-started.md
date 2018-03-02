@@ -2,8 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-keywords: ["getting started, intro, basics, first steps"]
+keywords: ["getting started", "intro", "basics", "first steps"]
 description: 'This guide will help you set up your first Linode.'
+og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-10-10
 modified_by:
@@ -17,7 +18,13 @@ icon: "book"
 show_on_rss_feed: false
 ---
 
+![Getting Started with Linode](/docs/assets/getting-started/getting-started.jpg "Getting Started with Linode")
+
+## Welcome to Linode!
+
 Thank you for choosing Linode as your cloud hosting provider! This guide will help you sign up for an account, set up a Linux distribution, boot your Linode, and perform some basic system administration tasks.
+
+If you've already created an account and your Linode is started, skip ahead to [Connect to Your Linode via SSH](#connect-to-your-linode-via-ssh).
 
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/35724r19mr?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div><script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
 
@@ -27,11 +34,11 @@ If you haven't already signed up for a Linode account, start here.
 
 1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
 2.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
-3.  Select a Linode plan and data center location
+3.  Select a Linode plan and datacenter location:
 
     ![Available Linode plans](/docs/assets/linode-manager-select-plan.png)
 
-If you're unsure of which data center to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
+If you're not sure which datacenter to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the datacenters to determine which of our facilities provides the best latency from your particular location.
 
 ## Provision Your Linode
 
