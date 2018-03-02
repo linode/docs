@@ -3,7 +3,7 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'Combine Plex and Block Storage to make the most out of your media server by adding an expandable storage to your server. This guide will show how to attach a Volume to a Plex Media Server and scan for files on the new storage.'
-keywords: ["plex", "streaming", "netflix", "roku"]
+keywords: ["plex", "streaming", "netflix", "roku", "block storage"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-01
 modified_by:
@@ -14,27 +14,29 @@ external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 ---
 
-Plex is a media server that allows you to store your media on a remote server and stream it to your devices. This guide will show how to attach a Block Storage Volume to an existing Linode in order to meet the demands of a growing media library.
+## What is Plex?
+
+Plex is a media server that allows you to store your media on a remote server and stream it to your devices. This guide shows how to attach a Block Storage Volume to an existing Linode in order to meet the demands of a growing media library.
 
 ## Before You Begin
 
-Plex Server is assumed to be installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/) if it is not installed. After installation, follow the steps in the [Initial Setup](http://localhost:1313/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/#initial-setup) section to create an SSH tunnel to your Linode and configure the Plex server.
+The examples in this guide assume the Plex Server is installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/) if it is not already installed. After installation, follow the steps in the [Initial Setup](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/#initial-setup) section to create an SSH tunnel to your Linode and configure the Plex server.
 
-This guide also assumes a Plex account is created since Plex Media Player will require login to a Plex account.
+This guide also assumes you already have a Plex account since Plex Media Player will require login.
 
-## Attach Volume to a Linode
+## Attach a Block Storage Volume to a Linode
 
-1.  Create a Block Storage Volume and attach it to the Linode running a Plex Media Server. See [How to Add a Block Storage Volume to a Linode](https://linode.com/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) for instructions on how to do this from the Linode Manager.
+1.  Create a Block Storage Volume and attach it to the Linode running the Plex Media Server. See [How to Add a Block Storage Volume to a Linode](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) for instructions on how to do this from the Linode Manager.
 
-    To use the Linode CLI, create a new Volume and attach it to a Linode. The command below will create a 20GB Volume with the label `plex-volume` and attach to a Linode labeled `plex-linode`.
+    To use the Linode CLI, create a new Volume and attach it to a Linode. The command below creates a 20GB Volume with the label `plex-volume` and attaches to a Linode labeled `plex-linode`. Adjust the command as needed:
 
         linode-cli volume create plex-volume -l plex-linode -s 20
 
-2.  Create a filesystem on the Block Storage Volume then create a mountpoint per the instructions from the Linode Manager.
+2.  Create a filesystem on the Block Storage Volume, then create a mountpoint per the instructions from the Linode Manager:
 
     ![Mount Block Storage Volume](/docs/assets/plex/plex-mount-volume.png)
 
-3.  Check available disk space. Notice that there is some overhead with the Volume due to the file system.
+3.  Check available disk space. Notice that there is some overhead with the Volume due to the file system:
 
         df -BG
 
@@ -54,25 +56,25 @@ tmpfs                 1G    0G        1G   0% /run/user/1000
 
         sudo chown username:username /mnt/plex-volume
 
-## Plex Client
+## Configure a Plex Client
 
 1.  Install Plex Media Player on your device for streaming. Navigate to the [Downloads section on the Plex website](https://www.plex.tv/downloads/) and follow the instructions for your device and operating system.
 
-2.  On the left menu, hover the mouse over *Libraries*. Click the *+* button.
+2.  In the left menu, hover the mouse over **Libraries**. Click the *+* button:
 
-    ![Plex Left Menu](/docs/assets/plex/plex-left-menu.png)
+    ![Plex Left Menu](/docs/assets/plex/plex-left-menu.png "Plex Left Menu")
 
-3.  Select the library type. **Movies** is selected in this example. Then click next.
+3.  Select the library type. **Movies** is selected in this example. Then click next:
 
-    ![Plex Add Library](/docs/assets/plex/plex-library-type.png)
+    ![Plex Add Library](/docs/assets/plex/plex-library-type.png "Plex Add Library")
 
-4.  Click *Browse for Media Folder*.
+4.  Click **Browse for Media Folder**.
 
-    ![Plex Browse Folder](/docs/assets/plex/plex-browse-folder.png)
+    ![Plex Browse Folder](/docs/assets/plex/plex-browse-folder.png "Plex Browse Folder")
 
 5.  A window will appear. Select the folder corresponding to the Block Storage Volume. In this example, the mountpoint is `/mnt/plex-volume`.
 
-## Transfer Media to Volume via scp
+## Transfer Media to the Volume via scp
 
 Moving media to the Volume can be done with `scp` using the following syntax:
 
@@ -86,8 +88,8 @@ There are other ways to upload files to a remote server. See our section in [Lin
 
 ## Scan for New Media on the Volume
 
-After new media is added to the Block Storage Volume, scan for files in the Plex Media Player. On the left menu, hover over the media type and expand the drop down menu. Select *Scan Library Files*.
+After new media is added to the Block Storage Volume, scan for files in the Plex Media Player. In the left menu, hover over the media type and expand the drop down menu. Select **Scan Library Files**.
 
-![Plex Scan Media](/docs/assets/plex/plex-scan-media.png)
+![Plex Scan Media](/docs/assets/plex/plex-scan-media.png "Plex Scan Media")
 
 The media should now be available through Plex Media Player.
