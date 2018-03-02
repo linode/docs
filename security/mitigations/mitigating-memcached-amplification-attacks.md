@@ -14,7 +14,7 @@ title: Mitigating memcached Amplification Attacks
 
 ## What is Memcrashed?
 
-Recently there has been a significant increase in large-scale UDP reflection and amplification attacks across the internet. These attacks were all using the [memcached](https://memcached.org/) protocol and originating from port 11211. Attackers send ordinary-sized UDP packets from a spoofed IP address to a server running memcached. These requests elicit extremely large packet responses from memcached, which quickly congests the victim's network and resulting in a Denial of Service scenario. 
+Recently there has been a significant increase in large-scale UDP reflection and amplification attacks across the internet. These attacks were all using the [memcached](https://memcached.org/) protocol and originating from port 11211. Attackers send ordinary-sized UDP packets from a spoofed IP address to a server running memcached. These requests elicit extremely large packet responses from memcached, which quickly congests the victim's network and resulting in a Denial of Service scenario.
 
 The vulnerability of memcached to aiding in massive Denial of Service attacks was presented at the POC 2017 security conference in Seoul, South Korea, in a paper titled [Deluge – How to generate 2TB/s reflection DDoS data flow via a family network](http://powerofcommunity.net/poc2017/shengbao.pdf). Dubbed [Memcrashed](https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/) by CloudFlare, these attacks are now being observed in the wild, reaching several hundred gigabits per second of inbound UDP memcached traffic.
 
