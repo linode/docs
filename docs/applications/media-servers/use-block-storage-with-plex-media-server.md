@@ -26,7 +26,7 @@ This guide also assumes you already have a Plex account since Plex Media Player 
 
 ## Attach a Block Storage Volume to a Linode
 
-1.  Create a Block Storage Volume and attach it to the Linode running the Plex Media Server. See [How to Add a Block Storage Volume to a Linode](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) for instructions on how to do this from the Linode Manager.
+1.  Create a Block Storage Volume and attach it to the Linode running Plex Media Server. See [How to Add a Block Storage Volume to a Linode](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) for instructions on how to do this from the Linode Manager.
 
     To use the Linode CLI, create a new Volume and attach it to a Linode. The command below creates a 20GB Volume with the label `plex-volume` and attaches to a Linode labeled `plex-linode`. Adjust the command as needed:
 
@@ -52,7 +52,7 @@ tmpfs                 1G    0G        1G   0% /sys/fs/cgroup
 tmpfs                 1G    0G        1G   0% /run/user/1000
 {{< /output >}}
 
-4.  If you want to use `scp` to transfer your media files directly from a client machine to the Volume (see the next section), you will need to change the ownership of the mount point:
+4.  If you want to use `scp` to transfer your media files directly from a client machine to the Volume (see next section), you will need to change the ownership of the mount point:
 
         sudo chown username:username /mnt/plex-volume
 
