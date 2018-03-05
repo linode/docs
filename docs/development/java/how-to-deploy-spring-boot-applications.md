@@ -5,10 +5,10 @@ author:
 description: 'Quickly create a Spring Boot application embedded on a Tomcat server through the command line. Deploy this application on a Linode through an NGINX reverse proxy.'
 keywords: ["spring", "tomcat", "maven", "Java", "gradle"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-02-26
+modified: 2018-03-05
 modified_by:
   name: Linode
-published: 2018-02-26
+published: 2018-03-05
 title: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04
 h1_title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
 external_resources:
@@ -21,16 +21,18 @@ Spring Boot enables quick development of the Spring framework by taking care of 
 
 ## Before You Begin
 
-1.  Java JDK 8 is assumed to be installed. If not, see [this guide](/docs/development/java/install-java-on-ubuntu-16-04/) for more information.
+You will need a Linode with both Java 8 and NGINX. If these are already installed on your Linode, skip to the next section.
 
-        java -version
+### Install Java JDK 8
 
-2.  NGINX should be installed otherwise run:
+{{< content "install-java-8-ppa.md" >}}
 
-        sudo apt install nginx
+### Install NGINX
+
+{{< content "install-nginx-ubuntu-ppa.md" >}}
 
 ## Install Spring Boot CLI
-The Spring Boot CLI allows creating a scaffold for a project much easier. SDKMAN! is a tool that simplifies installation of the Spring CLI as well as build tools such as Gradle or Maven. Using the Spring Boot CLI, a new project can be created directly from the command line.
+The Spring Boot CLI makes creating a scaffold for a project much easier. SDKMAN! is a tool that simplifies installation of the Spring CLI as well as build tools such as Gradle or Maven. Using the Spring Boot CLI, a new project can be created directly from the command line.
 
 1.  Install dependencies for SDKMAN!
 
@@ -42,19 +44,23 @@ The Spring Boot CLI allows creating a scaffold for a project much easier. SDKMAN
 
 3.  Follow the instructions printed on the console:
 
-        source "/home/sfoo/.sdkman/bin/sdkman-init.sh"
+        source "/home/username/.sdkman/bin/sdkman-init.sh"
 
-    Then verify SDKMAN! is installed.
+    Verify SDKMAN! is installed:
 
         sdk help
 
-4.  Verify Spring CLI is installed.
+4.  Install Spring CLI:
+
+        sdk install springboot
+
+    Verify the installation:
 
         spring version
 
-5.  Install Gradle
+5.  Install Gradle:
 
-        sdk install grade 4.5.1
+        sdk install gradle 4.5.1
 
     {{< output>}}
 Downloading: gradle 4.5.1
@@ -120,11 +126,21 @@ class Hello {
 
         gradle bootRun
 
+6.  Test that the application is running correctly on `localhost`:
+
+        curl localhost:8080
+
+    {{< output >}}
+Hello world
+{{< /output >}}
+
+7.  Stop the Tomcat server with `CTRL+C`.
+
 ## Create an Init Script
 
 1.  Set the Spring Boot application as a service to start on reboot.
 
-{{< file "/etc/systemd/system/helloworld.service" >}}
+    {{< file "/etc/systemd/system/helloworld.service" >}}
 [Unit]
 Description=Spring Boot HelloWorld
 After=syslog.target
@@ -154,7 +170,7 @@ WantedBy=multi-user.target
 ## Reverse Proxy
 Now that the Spring application is running as a service, an NGINX proxy allows opening the application to an unprivileged port and setting up SSL.
 
-1.  Create an NGINX configuration for the reverse proxy.
+1.  Create an NGINX configuration for the reverse proxy:
 
     {{< file "/etc/nginx/conf.d/helloworld.conf" >}}
 server {
@@ -180,4 +196,4 @@ server {
 
         sudo systemctl restart nginx
 
-4.  The application is accessible through the browser. Navigate to the public IP address of the Linode and the `Hello world` should appear.
+4.  The application is accessible through the browser. Navigate to the public IP address of the Linode and the "Hello world" message should appear.
