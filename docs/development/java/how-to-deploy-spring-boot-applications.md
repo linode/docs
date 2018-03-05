@@ -1,0 +1,183 @@
+---
+author:
+  name: Sam Foo
+  email: docs@linode.com
+description: 'Quickly create a Spring Boot application embedded on a Tomcat server through the command line. Deploy this application on a Linode through an NGINX reverse proxy.'
+keywords: ["spring", "tomcat", "maven", "Java", "gradle"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: 2018-02-26
+modified_by:
+  name: Linode
+published: 2018-02-26
+title: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04
+h1_title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
+external_resources:
+- '[Spring Boot](https://projects.spring.io/spring-boot/)'
+- '[SDKMAN!](http://sdkman.io/)'
+- '[Gradle](https://gradle.org/)'
+---
+
+Spring Boot enables quick development of the Spring framework by taking care of default configurations and allowing Java developers to focus on rapid prototyping. This guide shows how to create a simple Spring Boot application. Then the application is exposed through an NGINX reverse proxy.
+
+## Before You Begin
+
+1.  Java JDK 8 is assumed to be installed. If not, see [this guide](/docs/development/java/install-java-on-ubuntu-16-04/) for more information.
+
+        java -version
+
+2.  NGINX should be installed otherwise run:
+
+        sudo apt install nginx
+
+## Install Spring Boot CLI
+The Spring Boot CLI allows creating a scaffold for a project much easier. SDKMAN! is a tool that simplifies installation of the Spring CLI as well as build tools such as Gradle or Maven. Using the Spring Boot CLI, a new project can be created directly from the command line.
+
+1.  Install dependencies for SDKMAN!
+
+        sudo apt install unzip zip
+
+2.  Install SDKMAN!:
+
+        curl -s https://get.sdkman.io | bash
+
+3.  Follow the instructions printed on the console:
+
+        source "/home/sfoo/.sdkman/bin/sdkman-init.sh"
+
+    Then verify SDKMAN! is installed.
+
+        sdk help
+
+4.  Verify Spring CLI is installed.
+
+        spring version
+
+5.  Install Gradle
+
+        sdk install grade 4.5.1
+
+    {{< output>}}
+Downloading: gradle 4.5.1
+
+In progress...
+
+######################################################################## 100.0%
+
+Installing: gradle 4.5.1
+Done installing!
+{{< /output >}}
+
+## Build a jar File
+There are many build tools available; the Spring Boot CLI uses Maven by default. Gradle will be used in this guide instead. See [this comparison](https://gradle.org/maven-vs-gradle/) for a discussion about the differences between Maven and Gradle.
+
+1.  Create a new project with the Spring Boot CLI. This creates a new directory called `hello-world` with a project scaffold.
+
+        spring init --build=gradle --dependencies=web --name=hello hello-world
+
+    {{< note >}}
+To see a full list of possible parameters for the Spring Boot CLI, run:
+
+    spring init --list
+{{< /note >}}
+
+2.  Navigate into the project directory. This example creates an endpoint to return "Hello world" in a Spring application. Add two additional imports and a new class for this mapping.
+
+    {{< file "~/hello-world/src/main/java/com/example/helloworld/HelloApplication.java" >}}
+package com.example.helloworld;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@SpringBootApplication
+public class HelloApplication {
+
+        public static void main(String[] args) {
+                SpringApplication.run(HelloApplication.class, args);
+        }
+}
+
+@RestController
+class Hello {
+
+    @RequestMapping("/")
+    String index() {
+        return "Hello world";
+    }
+}
+{{< /file >}}
+
+3.  Build the application. There creates a new directory called `build` in the project.
+
+        ./gradlew build
+
+4.  Run the application embedded with the Tomcat Server. The application will run on a Tomcat servlet on `localhost:8080`. Press Ctrl + c to stop.
+
+        java -jar build/libs/hello-world-0.0.1-SNAPSHOT.jar
+
+5.  The application can run in-place without building a jar file first.
+
+        gradle bootRun
+
+## Create an Init Script
+
+1.  Set the Spring Boot application as a service to start on reboot.
+
+{{< file "/etc/systemd/system/helloworld.service" >}}
+[Unit]
+Description=Spring Boot HelloWorld
+After=syslog.target
+After=network.target[Service]
+User=username
+Type=simple
+
+[Service]
+ExecStart=/usr/bin/java -jar /home/linode/hello-world/build/libs/hello-world-0.0.1-SNAPSHOT.jar
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=helloworld
+
+[Install]
+WantedBy=multi-user.target
+{{< /file >}}
+
+2.  Start the service.
+
+        sudo systemctl start helloworld
+
+3.  Check the status is active.
+
+        sudo systemctl status helloworld
+
+## Reverse Proxy
+Now that the Spring application is running as a service, an NGINX proxy allows opening the application to an unprivileged port and setting up SSL.
+
+1.  Create an NGINX configuration for the reverse proxy.
+
+    {{< file "/etc/nginx/conf.d/helloworld.conf" >}}
+server {
+        listen 80;
+        listen [::]:80;
+
+        server_name example.com;
+
+        location / {
+             proxy_pass http://localhost:8080/;
+             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+             proxy_set_header X-Forwarded-Proto $scheme;
+             proxy_set_header X-Forwarded-Port $server_port;
+        }
+}
+{{< /file >}}
+
+2.  Test the configuration to make sure there are no errors.
+
+        sudo nginx -t
+
+3.  If there are no errors, restart NGINX so the changes take effect.
+
+        sudo systemctl restart nginx
+
+4.  The application is accessible through the browser. Navigate to the public IP address of the Linode and the `Hello world` should appear.
