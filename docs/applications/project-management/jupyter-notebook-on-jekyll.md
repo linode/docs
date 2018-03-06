@@ -6,6 +6,7 @@ description: 'Share data analysis and visualizations on Jupyter Notebooks with J
 og_description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
 keywords: ["Jupyter", " ruby", " python", " Jekyll"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['applications/project-management/jupyter-nobook-on-jekyll/']
 modified: 2017-11-06
 modified_by:
   name: Linode
@@ -17,7 +18,7 @@ external_resources:
  - '[Jupyter Notebook](https://jupyter.org/)'
 ---
 
-![Jupyter and Jekyll](/docs/assets/jupyter_jekyll.jpg)
+![Jupyter and Jekyll](/docs/assets/jupyter_jekyll.jpg "Jupyter and Jekyll")
 
 Jekyll is a static site generator written in Ruby with support for blogging and integration with Github pages. This setup makes sharing data analysis and visualizations simple because Github takes care of hosting. Jekyll comes with a variety of themes and plugins so the user does not have to worry about web development.
 
@@ -107,7 +108,7 @@ Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:
 
         bundle exec jekyll serve --host=0.0.0.0
 
-    ![First Jekyll Post](/docs/assets/jekyll_first_post.png "First Jekyll Post")
+    ![First Jekyll Post](/docs/assets/jekyll/jekyll_first_post.png "First Jekyll Post")
 
     {{< note >}}
 After starting the Jekyll server, there will be a new `_site` folder. Do not store files in this folder as it is rebuilt each time changes are made to the site.
@@ -141,7 +142,7 @@ This section demonstrates some common features of a Jupyter Notebook that can be
 
 1.  Open the notebook of interest, or use the code below to create an example notebook. Run all of the relevant cells so that the output you want to display on your Jekyll blog is visible on the page. Navigate to `File > Download As > Markdown (.md)`. The markdown file will save to the default `Downloads` folder of the browser.
 
-    ![Jupyter Menu](/docs/assets/jekyll/jupyter_menu.png "Jupyter Menu")
+    ![Jupyter Menu](/docs/assets/jupyter_menu.png "Jupyter Menu")
 
     Alternatively, this can be done directly from the command line. In addition to creating `example_notebook.md`, graphics are also saved in a separate `example_notebook_files` folder.
 
