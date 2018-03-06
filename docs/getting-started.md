@@ -38,7 +38,7 @@ If you haven't already signed up for a Linode account, start here.
 
     ![Available Linode plans](/docs/assets/linode-manager-select-plan.png)
 
-If you're not sure which datacenter to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the datacenters to determine which of our facilities provides the best latency from your particular location.
+If you're not sure which datacenter to select, use our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the datacenters to determine which of our facilities provides the best latency from your particular location.
 
 ## Provision Your Linode
 
