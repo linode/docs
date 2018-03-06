@@ -215,6 +215,8 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+datacenter
+datacenters
 datadir
 dataset
 datasets
