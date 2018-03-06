@@ -15,7 +15,7 @@ title: Introduction to NGINX
 
 ![Introduction to NGINX](/docs/assets/how_to_configure_nginx.png "Introduction to NGINX")
 
-[NGINX](https://www.nginx.com/) is a lightweight, high performance web server designed for high-traffic use cases. 
+[NGINX](https://www.nginx.com/) is a lightweight, high performance web server designed for high-traffic use cases.
 
 One of NGINX's strongest features is the ability to efficiently serve static content such as HTML and media files. NGINX uses an asynchronous event-driven model which provides more predictable performance under load.
 
