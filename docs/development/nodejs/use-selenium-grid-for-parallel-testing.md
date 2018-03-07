@@ -2,27 +2,28 @@
 author:
   name: Jared Kobos
   email: jaredkobos@gmail.com
-description: 'Automate browsing tasks with Nightmare.js, a high-level browser automation library.'
-og_description: 'Nightmare.js is an automated, headless browsing tool that can be configured to self-navigate websites, automate data scraping, and quicken QA.'
+description: 'This guide shows how to set up a Selenium grid that can be used to run tests against different browsers, browser versions, and operating systems. It can also be used to spread a large test suite across several servers for increased performance.'
+og_description: 'This guide shows how to set up a Selenium grid that can be used to run tests against different browsers, browser versions, and operating systems. It can also be used to spread a large test suite across several servers for increased performance.'
 keywords: ["selenium", "node.js", " headless browser", "automation", "webdriver"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-06
 modified: 2018-03-06
 modified_by:
   name: Linode
-title: 'Use Selenium Grid for Parallel Testing'
+title: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
+h1_title: 'Use Selenium Grid for Cross-Browser Testing'
 external_resources:
-  - '[Nightmare.js Homepage](http://www.nightmarejs.org/)'
-  - '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
+  - '[Selenium Project Home](https://www.seleniumhq.org/projects/webdriver/)'
+  - '[Selenium Node.js Documentation](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index.html)'
 ---
 
 ## What is Selenium Grid?
 
 [Selenium](https://seleniumhq.github.io/selenium/docs/api/javascript/index.html) is a browser automation library with bindings for most common programming languages. It is most often used for testing web applications, but can also be used to automate any task that a web browser can perform. In contrast to similar tools such as Nightmare.js, Selenium can run tasks or tests on any version of any major browser. This can make it more complicated to get running, but allows you to test your application's behavior on exactly the platforms that users are likely to need.
 
-For many applications, the Selenium standalone server is sufficient. However, Selenium can also be configured as a grid, with multiple nodes communicating with a central hub. The nodes and hub can be run on the same computer or server, or can be located on separate Linodes. This approach offers two main benefits:
+For many applications, the Selenium standalone server is sufficient. However, Selenium can also be configured as a grid, with multiple nodes communicating with a central hub. The nodes and hub can be run on the same computer or server, or can be located on separate Linodes. Selenium Grid offers two main benefits:
 
-- Selenium runs on Java and is compatible with all major operating systems. This makes it possible to set up a grid consisting of servers (or virtual machines) running Linux, OSX, and Windows. A test suite can then be run against the grid, with each test run on multiple browsers and operating systems. The hub will delegate each test to a node that has the requested capability (e.g. sending a Safari test to a grid with OSX and the Safari webdriver).
+- Selenium runs on Java and is compatible with all major operating systems. This makes it possible to set up a grid consisting of servers (or virtual machines) running Linux, OSX, and Windows. A test suite can then be run against the grid, with each test run on multiple browsers and operating systems. The hub will delegate each test to a node that has the requested capability (e.g. sending a Safari test to a node with OSX and the Safari webdriver).
 
 - For larger projects, running a lengthy test suite in series can be time consuming. By running the test suite across a grid consisting of multiple servers, it is possible to distribute the tests across multiple nodes and significantly increase the performance of the testing process.
 
@@ -49,9 +50,32 @@ When running tests with Selenium, each grid node can only run tests on browsers 
         tar -xvf geckodriver-v0.19.1-linux64.tar.gz
         sudo mv geckodriver /usr/local/bin/
 
-3.  On `node-1`, install the latest version of Firefox:
+3.  On `node-1`, install the latest stable version of Firefox:
 
         sudo apt install firefox
+
+4.  On `node-2`, install the Firefox developer edition:
+
+        sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
+        sudo apt update && sudo apt install firefox
+
+5.  Check and record the version numbers to use when running tests:
+
+    **node-1**
+
+        firefox --version
+
+    {{< output >}}
+Mozilla Firefox 58.0.2
+{{< /output >}}
+
+    **node-2**
+
+        firefox --version
+
+    {{< output >}}
+Mozilla Firefox 59.0
+{{< /output >}}
 
 
 
@@ -67,7 +91,7 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 
         java -jar selenium-server-standalone-3.10.0.jar -role hub
 
-2.  The resulting output will give you URLs to use for registering nodes and connecting to the hub. Copy these URLs for use in the next section.
+2.  The resulting output will give you URLs to use for registering nodes and connecting to the hub. Copy these URLs for later use.
 
     {{< output >}}
 21:27:51.470 INFO [GridLauncherV3.launch] - Selenium build info: version: '3.10.0', revision: '176b4a9'
@@ -80,11 +104,43 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 
 ### Configure Grid Nodes
 
-On `node-1` and `node-2`, use the registration URL to connect each node to the hub. If you are putting the grid and nodes on the same Linode, replace the IP address with `localhost`.
+1.  On `node-1` and `node-2`, create a node configuration file `config.json` and add the following content. Replace the `hub` address with the public IP of the `hub` Linode, and replace the `version` with the version of Firefox installed on the respective nodes. If you are putting the grid and nodes on the same Linode, replace the IP address with `http://localhost:4444`.
 
-      java -jar selenium-server-standalone-3.10.0.jar -role node -hub http://69.164.211.42:4444/grid/register/
+    {{< file "config.json" json >}}
+{
+  "capabilities":
+  [
+    {
+      "browserName": "firefox",
+      "marionette": true,
+      "maxInstances": 5,
+      "seleniumProtocol": "WebDriver",
+      "version": "58"
+    }
+  ],
+  "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+  "maxSession": 5,
+  "port": 5555,
+  "register": true,
+  "registerCycle": 5000,
+  "hub": "http://192.0.2.0:4444",
+  "nodeStatusCheckTimeout": 5000,
+  "nodePolling": 5000,
+  "role": "node",
+  "unregisterIfStillDownAfter": 60000,
+  "downPollingLimit": 2,
+  "debug": false,
+  "servlets" : [],
+  "withoutServlets": [],
+  "custom": {}
+}
+{{< /file >}}
 
-You should see output similar to the following, indicating that your nodes have been successfully registered to the hub:
+2.  Connect each node to the hub:
+
+        java -jar selenium-server-standalone-3.10.0.jar -role node -nodeConfig config.json
+
+2.  You should see output similar to the following, indicating that your nodes have been successfully registered to the hub:
 
   {{< output >}}
 21:33:22.856 INFO - Selenium Server is up and running on port 5555
@@ -95,7 +151,7 @@ You should see output similar to the following, indicating that your nodes have 
 21:33:23.178 INFO - The node is registered to the hub and ready to use
 {{< /output >}}
 
-You can also check the output from the hub itself:
+3.  You can also check the output from the hub itself:
 
   {{< output >}}
 21:27:53.849 INFO [DefaultGridRegistry.add] - Registered a node http://198.58.122.154:5555
@@ -103,6 +159,13 @@ You can also check the output from the hub itself:
 21:27:56.450 INFO [DefaultGridRegistry.add] - Registered a node http://50.116.22.93:5555
 21:27:56.743 WARN [BaseRemoteProxy.<init>] - Max instance not specified. Using default = 1 instance
 {{< /output >}}
+
+
+4.  Navigate to `http://192.0.2.0:4444:4444/wd/hub` in a web browser (replace `192.0.2.0` with the public IP address of your `hub` Linode) to see a console listing your available nodes.
+
+    ![Selenium Grid Console](/docs/assets/selenium/grid-console.png)
+
+    The console should show that each node is configured to use a different version of Firefox.
 
 ## Prepare Local Test Environment
 
@@ -136,18 +199,16 @@ This simple script will test the Linode docs home page.
 
     {{< file "~/test-selenium/test.js" js >}}
 const {Builder, By, Capabilities, Key, until} = require('selenium-webdriver');
-let chrome = require('selenium-webdriver/chrome');
 let firefox = require('selenium-webdriver/firefox');
 
 (async function example() {
   let driver = await new Builder().forBrowser('firefox')
-                                  .usingServer('http://69.164.211.42:4444/wd/hub')
+                                  .withCapabilities(Capabilities.firefox().setBrowserVersion("59"))
+                                  .usingServer('http://72.14.177.39:4444/wd/hub')
                                   .setFirefoxOptions(
                                         new firefox.Options().headless())
-                                  .setChromeOptions(
-                                        new chrome.Options().headless().setChromeBinaryPath("/usr/bin/xchromium-browser"))
-                                        .build();
-                                  .build()
+                                  .build();
+
   try {
     await driver.get('http://www.linode.com/docs');
     await driver.findElement(By.name('q')).sendKeys('nginx', Key.RETURN);
@@ -159,7 +220,18 @@ let firefox = require('selenium-webdriver/firefox');
   } finally {
     await driver.quit();
   }
-
-
 })();
 {{< /file >}}
+
+5.  Save the test script and run it:
+
+        node test.js
+
+    If successful, the script will search for NGINX in the Linode docs library, visit one of the resuls pages, and check that the page title matches the link text. It will print out the page title as well:
+   {{< output >}}
+How to Configure nginx
+{{< /output >}}
+
+6.  Because the driver requested a specific version of Firefox, Selenium delegated the task to the node running that version. You can examine the log output on the nodes to confirm this. Edit the driver definition to use the other node's version of Firefox and run the script again. This time, you should see that the test was run on the other node.
+
+By creating different drivers for each combination of platform, browser, and version you want to test, you can specify which node or nodes should be used to run each test. If more than one node has the requested capabilities, Selenium will choose one of the nodes at random. In this way it is possible to run a large, cross-browser test suite in much less time than it would take to run the tests one at a time.
