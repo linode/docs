@@ -183,3 +183,5 @@ gpgcheck=1
 Once you have successfully installed you Nextcloud environment, you may want to further integrate it into an owned domain name or make adjustments to your web server to serve SSL encrypted pages. See Nextcloud's [Enabling SSL](https://docs.nextcloud.com/server/12/admin_manual/installation/source_installation.html#enabling-ssl) guide to enable SSL.
 
 Although Apache was used as the web server in this guide, installing Nextcloud with nginx is possible as well. Navigate to the [Nextcloud nginx Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html) documentation to setup Nextcloud with nginx.
+
+[Nextcloud Talk](https://nextcloud.com/talk/), is an addon to Nextcloud that allows for secure text and video conferencing through Nextcloud's platform. The library has a short guide on installing the plug-in, check it out [here](/docs/applications/cloud-storage/install-nextcloud-13/)
