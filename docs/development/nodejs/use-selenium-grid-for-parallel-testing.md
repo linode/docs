@@ -227,7 +227,7 @@ let firefox = require('selenium-webdriver/firefox');
 
         node test.js
 
-    If successful, the script will search for NGINX in the Linode docs library, visit one of the resuls pages, and check that the page title matches the link text. It will print out the page title as well:
+    If successful, the script will search for NGINX in the Linode docs library, visit one of the results pages, and check that the page title matches the link text. It will print out the page title as well:
    {{< output >}}
 How to Configure nginx
 {{< /output >}}

@@ -396,6 +396,7 @@ gamemode
 gameplay
 gcc
 gcm
+geckodriver
 gem1
 gemfile
 genmask
@@ -1369,6 +1370,7 @@ webapp
 webapps
 webcit
 webdata1
+webdriver
 webmail
 webmin
 webpages
