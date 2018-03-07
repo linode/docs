@@ -39,7 +39,7 @@ There are three primary ways to install NGINX Open Source:
 
 ### Installation Instructions
 
-The [NGINX admin guide](hhttps://www.nginx.com/resources/admin-guide/installing-nginx-open-source/#prebuilt) gives clear and accurate instructions for any installation method and NGINX version you choose, so we won't mirror them here. When your installation completes, return here to continue the series.
+The [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package) gives clear and accurate instructions for any installation method and NGINX version you choose, so we won't mirror them here. When your installation completes, return here to continue the series.
 
 ## Configuration Notes
 
