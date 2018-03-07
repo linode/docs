@@ -5,10 +5,10 @@ author:
 description: 'Quickly create a Spring Boot application embedded on a Tomcat server through the command line. Deploy this application on a Linode through an NGINX reverse proxy.'
 keywords: ["spring", "tomcat", "maven", "Java", "gradle"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-05
+modified: 2018-03-07
 modified_by:
   name: Linode
-published: 2018-03-05
+published: 2018-03-07
 title: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04
 h1_title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
 external_resources:
@@ -17,7 +17,7 @@ external_resources:
 - '[Gradle](https://gradle.org/)'
 ---
 
-Spring Boot enables quick development of the Spring framework by taking care of default configurations and allowing Java developers to focus on rapid prototyping. This guide shows how to create a simple Spring Boot application. Then the application is exposed through an NGINX reverse proxy.
+[Spring Boot](https://projects.spring.io/spring-boot/) enables quick development of the [Spring Framework](https://projects.spring.io/spring-framework/) by taking care of default configurations and allowing Java developers to focus on rapid prototyping. This guide shows how to create a simple Spring Boot application which is then exposed through an NGINX reverse proxy.
 
 ## Before You Begin
 
@@ -32,9 +32,9 @@ You will need a Linode with both Java 8 and NGINX. If these are already installe
 {{< content "install-nginx-ubuntu-ppa.md" >}}
 
 ## Install Spring Boot CLI
-The Spring Boot CLI makes creating a scaffold for a project much easier. SDKMAN! is a tool that simplifies installation of the Spring CLI as well as build tools such as Gradle or Maven. Using the Spring Boot CLI, a new project can be created directly from the command line.
+The Spring Boot CLI makes creating a scaffold for a project much easier. [SDKMAN!](http://sdkman.io/) is a tool that simplifies installation of the Spring CLI and build tools such as Gradle or Maven. Using the Spring Boot CLI, a new project can be created directly from the command line.
 
-1.  Install dependencies for SDKMAN!
+1.  Install dependencies for SDKMAN!:
 
         sudo apt install unzip zip
 
@@ -74,7 +74,7 @@ Done installing!
 {{< /output >}}
 
 ## Build a jar File
-There are many build tools available; the Spring Boot CLI uses Maven by default. Gradle will be used in this guide instead. See [this comparison](https://gradle.org/maven-vs-gradle/) for a discussion about the differences between Maven and Gradle.
+There are many build tools available. The Spring Boot CLI uses Maven by default but this guide will use Gradle instead. See [this comparison](https://gradle.org/maven-vs-gradle/) for a discussion about the differences between Maven and Gradle.
 
 1.  Create a new project with the Spring Boot CLI. This creates a new directory called `hello-world` with a project scaffold.
 
@@ -118,7 +118,7 @@ class Hello {
 
         ./gradlew build
 
-4.  Run the application embedded with the Tomcat Server. The application will run on a Tomcat servlet on `localhost:8080`. Press Ctrl + c to stop.
+4.  Run the application embedded with the Tomcat Server. The application will run on a Tomcat servlet on `localhost:8080`. Press `Ctrl+C` to stop.
 
         java -jar build/libs/hello-world-0.0.1-SNAPSHOT.jar
 
@@ -138,7 +138,7 @@ Hello world
 
 ## Create an Init Script
 
-1.  Set the Spring Boot application as a service to start on reboot.
+1.  Set the Spring Boot application as a service to start on reboot:
 
     {{< file "/etc/systemd/system/helloworld.service" >}}
 [Unit]
@@ -159,11 +159,11 @@ SyslogIdentifier=helloworld
 WantedBy=multi-user.target
 {{< /file >}}
 
-2.  Start the service.
+2.  Start the service:
 
         sudo systemctl start helloworld
 
-3.  Check the status is active.
+3.  Check the status is active:
 
         sudo systemctl status helloworld
 
@@ -188,12 +188,12 @@ server {
 }
 {{< /file >}}
 
-2.  Test the configuration to make sure there are no errors.
+2.  Test the configuration to make sure there are no errors:
 
         sudo nginx -t
 
-3.  If there are no errors, restart NGINX so the changes take effect.
+3.  If there are no errors, restart NGINX so the changes take effect:
 
         sudo systemctl restart nginx
 
-4.  The application is accessible through the browser. Navigate to the public IP address of the Linode and the "Hello world" message should appear.
+4.  The application is now accessible through the browser. Navigate to the public IP address of the Linode and the "Hello world" message should appear.
