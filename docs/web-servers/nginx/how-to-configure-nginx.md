@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'NGINX is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic NGINX parameters and conventions.'
+og_description: 'NGINX is a high-performance web server that delivers large amounts of static content quickly. This tutorial will outline the basic NGINX parameters and conventions.'
 keywords: ["nginx", " web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/','websites/nginx/basic-nginx-configuration/','websites/nginx/how-to-configure-nginx/index.cfm/','websites/nginx/how-to-configure-nginx/']
@@ -10,7 +11,7 @@ modified: 2018-03-05
 modified_by:
   name: Linode
 published: 2010-01-18
-title: Introduction to NGINX
+title: How to Configure NGINX
 ---
 
 ![Introduction to NGINX](/docs/assets/how_to_configure_nginx.png "Introduction to NGINX")
@@ -24,11 +25,11 @@ NGINX hands off dynamic content to CGI, FastCGI, or even other web servers like 
 
 ## Directives, Blocks, and Contexts
 
-All nginx configuration files are located in the `/etc/nginx/` directory. The primary configuration file is `/etc/nginx/nginx.conf`.
+All NGINX configuration files are located in the `/etc/nginx/` directory. The primary configuration file is `/etc/nginx/nginx.conf`.
 
-Configuration options are called *[directives](http://nginx.org/en/docs/dirindex.html)* in NGINX terminology. There are different sets of directives throughout NGINX's configuration files which are called *blocks* or *contexts*. The two terms are synonymous, although *blocks* is generally used more often.
+NGINX calls configuration options *[directives](http://nginx.org/en/docs/dirindex.html)*. There are different sets of directives throughout the configuration files called *blocks* or *contexts*. The two terms are synonymous.
 
-Lines preceded by a `#` character are comments and not interpreted by NGINX. For example: The line `# user nginx;` is commented out, so will not be loaded into the configuration. Lines containing directives must end with a `;` or NGINX will fail to load the configuration and report an error.
+Lines preceded by a `#` character are comments and not interpreted by NGINX. For example: The line `# user nginx;` is commented out, so it won't be loaded into the configuration. Lines containing directives must end with a `;` or NGINX will fail to load the configuration and report an error.
 
 Below is a condensed copy of `/etc/nginx/nginx.conf` from NGINX installed from the NGINX repositories. The file starts with 5 directives: `user`, `worker_processes`, `error_log`, and `pid`. These are outside any specific block or context, so they're said to exist in the `main` context. The `events` and `http` blocks are areas for additional directives, and they also exist in the `main` context.
 
@@ -81,15 +82,15 @@ http {
 
 ### Server Blocks
 
-The `http` block above contains an `include` directive which tells NGINX where website configuration files are located. These locations differ depending on NGINX's installation source.
+The `http` block above contains an `include` directive which tells NGINX where website configuration files are located.
 
 -  If you installed from the official NGINX repository, this line will say `include /etc/nginx/conf.d/*.conf;` as it does in the `http` block above. Each website you host with NGINX should have its own configuration file in `/etc/nginx/conf.d/`, with the name formatted as `example.com.conf`. Sites which are disabled (not being served by NGINX) are named as `example.com.conf.disabled`.
 
 -  If you installed NGINX from the Debian or Ubuntu repositories, this line will say `include /etc/nginx/sites-enabled/*;`. The `../sites-enabled/` folder contains symlinks to the site configuration files stored in `/etc/nginx/sites-available/`. Sites which are enabled, are symlinked; sites which are disabled, are not.
 
-- Depending on your installation source, you'll find example an configuration file at `/etc/nginx/conf.d/default.conf` or `etc/nginx/sites-enabled/default`.
+- Depending on your installation source, you'll find an example configuration file at `/etc/nginx/conf.d/default.conf` or `etc/nginx/sites-enabled/default`.
 
-Regardless of installation source, server configuration files will contain a `server` block (or blocks) for a website. For example:
+Regardless of the installation source, server configuration files will contain a `server` block (or blocks) for a website. For example:
 
 {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
@@ -101,7 +102,7 @@ server {
     try_files $uri /index.html;
 }
 
-
+{{</ file-excerpt >}}
 #### Listening Ports
 
 The `listen` directive tells NGINX the hostname/IP and the TCP port where it should listen for HTTP connections. The argument `default_server` means this virtual host will answer requests on port 80 that don't specifically match another virtual host's listen statement. The second statement listens over IPv6 and behaves similarly.
@@ -137,7 +138,7 @@ NGINX allows you to specify server names that are not valid domain names. NGINX 
 
 Using non-domain hostnames is useful if your server is on a LAN, or if you already know all of the clients that will be making requests of the server. This includes front-end proxy servers with `/etc/hosts` entries configured for the IP address on which NGINX is listening.
 
-#### Location (File and Folder Configuration)
+#### File and Folder Configuration
 
 The `location` setting lets you configure how NGINX will respond to requests for resources within the server. Just like the `server_name` directive tells NGINX how to process requests for the domain, `location` directives cover requests for specific files and folders, such as **http://example.com/blog/**. Here are some examples:
 
