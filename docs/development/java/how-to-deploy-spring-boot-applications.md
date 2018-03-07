@@ -114,7 +114,7 @@ class Hello {
 }
 {{< /file >}}
 
-3.  Build the application. There creates a new directory called `build` in the project.
+3.  Build the application. This creates a new directory called `build` in the project.
 
         ./gradlew build
 
