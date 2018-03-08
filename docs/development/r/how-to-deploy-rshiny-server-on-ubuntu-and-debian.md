@@ -20,15 +20,15 @@ external_resources:
 
 ## What is Shiny?
 
-[Shiny](https://shiny.rstudio.com/) is a library for the R programming language that allows you to create interactive web apps in native R, without needing to use web technologies such as HTML, CSS, or JavaScript frameworks. There are many ways to deploy Shiny apps to the web. This guide uses Shiny Server to host an example Shiny app on a Linode.
+[Shiny](https://shiny.rstudio.com/) is a library for the R programming language that allows you to create interactive web apps in native R, without needing to use web technologies such as HTML, CSS, or JavaScript. There are many ways to deploy Shiny apps to the web; this guide uses Shiny Server to host an example Shiny app on a Linode.
 
 ## Before You Begin
 
-This guide uses RStudio to create an example Shiny app. If you do not have RStudio installed on your local computer, follow our [How to Deploy RStudio Using an NGINX Reverse Proxy](/docs/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) guide to set up a remote workstation on a Linode.
+If you do not have RStudio installed on your local computer, follow our [How to Deploy RStudio Using an NGINX Reverse Proxy](/docs/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) guide to set up a remote workstation on a Linode.
 
 ## Build a Shiny Test App
 
-Shiny Server comes with pre-installed demo apps, however, in order to demonstrate the process of deploying an app, create an app locally and deploy it to a Shiny Server on a Linode.
+Shiny Server comes with pre-installed demo apps. However, in order to demonstrate the process of deploying an app, you will create an app locally and deploy it to a Shiny Server on a Linode.
 
 1.  Open RStudio and install the Shiny package:
 
