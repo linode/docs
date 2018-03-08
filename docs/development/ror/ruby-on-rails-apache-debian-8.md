@@ -10,6 +10,8 @@ modified: 2017-09-13
 modified_by:
   name: Elle Krout
 published: 2013-07-13
+deprecated: true
+deprecated_link: 'development/ror/ruby-on-rails-apache-debian'
 title: 'Install Ruby on Rails with Apache on Debian 8'
 og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
 external_resources:

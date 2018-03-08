@@ -52,31 +52,17 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get install build-essential dirmngr gnupg ruby ruby-dev zlib1g-dev libruby libssl-dev libpcre3-dev libcurl4-openssl-dev rake ruby-rack
 
-### Install Ruby and Rails
+### Install Ruby
 
-Use the Ruby Version Manager (RVM) to install Ruby. Be sure to replace `2.4.2` in the commands below with a Ruby version that is compatible with the version of Rails in your Gemfile. This guide will use Rails 5.1.4 and Ruby 2.4.2.
+Use the Ruby Version Manager (RVM) to install Ruby. Be sure to install a Ruby version that is compatible with the version of Rails in your Gemfile. This guide will use Rails 5.1.4 and Ruby 2.4.2.
 
-1. Curl the latest version of RVM.
+{{< content "install-ruby-with-rvm.md" >}}
 
-        gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-        curl -sSL https://get.rvm.io | bash -s stable
-        source /home/username/.rvm/scripts/rvm
+### Install Rails
 
-2. Users of RVM must be in the `rvm` group. Create this group, add a user, log out, and log back in:
+Use the Rubygems package manager to install Rails. Replace the version below with the appropriate version for your app:
 
-        sudo groupadd rvm
-        sudo usermod -a -G rvm username
-        exit
-
-3. Check the requirements for the install, and install Ruby (version 2.4.2):
-
-        rvm requirements
-        rvm install 2.4.2
-        rvm use 2.4.2 --default
-
-4. Install Rails. Replace the version below with the appropriate version for your app:
-
-        gem install rails -v 5.1.4
+    gem install rails -v 5.1.4
 
 ### Install NGINX And Passenger
 
