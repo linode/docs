@@ -215,6 +215,8 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+datacenter
+datacenters
 datadir
 dataset
 datasets
@@ -430,6 +432,7 @@ golang
 goto
 gpc
 gpg
+gradle
 grafana
 graylog
 graylog2
