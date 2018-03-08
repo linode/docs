@@ -432,6 +432,7 @@ golang
 goto
 gpc
 gpg
+gradle
 grafana
 graylog
 graylog2
