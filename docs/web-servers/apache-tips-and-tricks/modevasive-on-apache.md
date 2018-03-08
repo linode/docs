@@ -42,7 +42,7 @@ mod_evasive has just one prerequisite beyond the standard LAMP install. To insta
 1.  Download the mod_evasive package, uncompress it, and install it using apxs:
 
         cd /usr/src
-        wget http://www.zdziarski.com/blog/wp-content/uploads/2010/02/mod_evasive_1.10.1.tar.gz
+        wget https://www.zdziarski.com/blog/wp-content/uploads/2010/02/mod_evasive_1.10.1.tar.gz
         tar xzf mod_evasive_1.10.1.tar.gz
         cd mod_evasive
         apxs2 -cia mod_evasive20.c
