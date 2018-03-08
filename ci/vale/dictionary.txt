@@ -1132,6 +1132,7 @@ smtpd
 smux
 snakeoil
 snapsnot
+snipcart
 snmp
 snmpd
 softlimit
@@ -1456,6 +1457,7 @@ yoursite
 yubico
 yubikey
 zabbix
+zapier
 zgrep
 zile
 zimbra
