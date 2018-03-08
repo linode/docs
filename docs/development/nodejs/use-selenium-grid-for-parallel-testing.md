@@ -115,7 +115,7 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
       "marionette": true,
       "maxInstances": 5,
       "seleniumProtocol": "WebDriver",
-      "version": "58"
+      "version": "58.0.2"
     }
   ],
   "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
@@ -140,9 +140,9 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 
         java -jar selenium-server-standalone-3.10.0.jar -role node -nodeConfig config.json
 
-2.  You should see output similar to the following, indicating that your nodes have been successfully registered to the hub:
+3.  You should see output similar to the following, indicating that your nodes have been successfully registered to the hub:
 
-  {{< output >}}
+    {{< output >}}
 21:33:22.856 INFO - Selenium Server is up and running on port 5555
 21:33:22.857 INFO - Selenium Grid node is up and ready to register to the hub
 21:33:22.895 INFO - Starting auto registration thread. Will try to register every 5000 ms.
@@ -151,9 +151,9 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 21:33:23.178 INFO - The node is registered to the hub and ready to use
 {{< /output >}}
 
-3.  You can also check the output from the hub itself:
+4.  You can also check the output from the hub itself:
 
-  {{< output >}}
+    {{< output >}}
 21:27:53.849 INFO [DefaultGridRegistry.add] - Registered a node http://198.58.122.154:5555
 21:27:56.445 WARN [BaseRemoteProxy.<init>] - Max instance not specified. Using default = 1 instance
 21:27:56.450 INFO [DefaultGridRegistry.add] - Registered a node http://50.116.22.93:5555
@@ -161,7 +161,7 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 {{< /output >}}
 
 
-4.  Navigate to `http://192.0.2.0:4444:4444/wd/hub` in a web browser (replace `192.0.2.0` with the public IP address of your `hub` Linode) to see a console listing your available nodes.
+5.  Navigate to `http://192.0.2.0:4444/grid/console` in a web browser (replace `192.0.2.0` with the public IP address of your `hub` Linode) to see a console listing your available nodes.
 
     ![Selenium Grid Console](/docs/assets/selenium/grid-console.png)
 
@@ -179,7 +179,7 @@ This guide will use the NPM `selenium-webdriver` package, which contains Node.js
 
 ### Create an Example Test Script
 
-This simple script will test the Linode docs home page.
+This script will test the Linode docs home page.
 
 1.  Create a directory for the test suite:
 
@@ -195,32 +195,52 @@ This simple script will test the Linode docs home page.
 
         npm install --save selenium-webdriver karma jasmine-node
 
-4.  In a text editor, create `test.js` and add the following script:
+4.  In a text editor, create `test.js`. Add the following script and replace `192.0.2.0` on line 11 with the IP address of `hub`:
 
     {{< file "~/test-selenium/test.js" js >}}
 const {Builder, By, Capabilities, Key, until} = require('selenium-webdriver');
 let firefox = require('selenium-webdriver/firefox');
 
-(async function example() {
-  let driver = await new Builder().forBrowser('firefox')
-                                  .withCapabilities(Capabilities.firefox().setBrowserVersion("59"))
-                                  .usingServer('http://72.14.177.39:4444/wd/hub')
-                                  .setFirefoxOptions(
-                                        new firefox.Options().headless())
-                                  .build();
+const VERSIONS = ['58.0.2','59.0'];
 
-  try {
-    await driver.get('http://www.linode.com/docs');
-    await driver.findElement(By.name('q')).sendKeys('nginx', Key.RETURN);
-    let el = driver.findElement(By.linkText('How to Configure nginx'));
-    await driver.wait(until.elementIsVisible(el),100);
-    await el.click();
-    const title = await driver.getTitle();
-    console.log(title);
-  } finally {
-    await driver.quit();
-  }
-})();
+function buildDrivers(versions) {
+    let drivers = [];
+    for (let version of versions) {
+        driver = new Builder().forBrowser('firefox')
+                                      .withCapabilities(Capabilities.firefox().setBrowserVersion(version))
+                                      .usingServer('http://192.0.2.0:4444/wd/hub')
+                                      .setFirefoxOptions(
+                                            new firefox.Options().headless())
+                                      .build();
+        drivers.push(driver);
+    }
+    console.log('built drivers for ' + versions);
+    return drivers;
+}
+
+async function example(driver) {
+       try {
+        await driver.get('http://www.linode.com/docs');
+        await driver.findElement(By.name('q')).sendKeys('nginx', Key.RETURN);
+        let el = driver.findElement(By.linkText('How to Configure nginx'));
+        await driver.wait(until.elementIsVisible(el), 1000);
+        await el.click();
+        title = await driver.getTitle();
+        console.log(title);
+      } finally {
+        await driver.quit();
+      }
+};
+
+async function main() {
+    const drivers = await buildDrivers(VERSIONS);
+
+    for (let driver of drivers) {
+    example(driver);
+  };
+}
+
+main();
 {{< /file >}}
 
 5.  Save the test script and run it:
@@ -229,9 +249,11 @@ let firefox = require('selenium-webdriver/firefox');
 
     If successful, the script will search for NGINX in the Linode docs library, visit one of the results pages, and check that the page title matches the link text. It will print out the page title as well:
    {{< output >}}
+built drivers for 58.0.2,59.0
+How to Configure nginx
 How to Configure nginx
 {{< /output >}}
 
-6.  Because the driver requested a specific version of Firefox, Selenium delegated the task to the node running that version. You can examine the log output on the nodes to confirm this. Edit the driver definition to use the other node's version of Firefox and run the script again. This time, you should see that the test was run on the other node.
+6.  The driver requested two versions of Firefox to run on the two nodes. `test.js` runs the driver asynchronously across two nodes in order to run the `getTitle` method across two browser versions.
 
 By creating different drivers for each combination of platform, browser, and version you want to test, you can specify which node or nodes should be used to run each test. If more than one node has the requested capabilities, Selenium will choose one of the nodes at random. In this way it is possible to run a large, cross-browser test suite in much less time than it would take to run the tests one at a time.
