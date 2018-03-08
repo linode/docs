@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Jonathan Chun
   email: docs@linode.com
