@@ -15,8 +15,7 @@ external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
 ---
 
-Nextcloud 13 is a cloud storage platform that also offers users the ability to self-host a video and text chat platform, featuring end-to-end encryption. This guide will walk you through setting up Nextcloud, and taking advantage of the video chat platform built into the latest release of Nextcloud.
-
+Nextcloud 13 is a cloud storage platform that also offers users the ability to self-host a video and text chat platform, featuring end-to-end encryption. This guide will walk you through setting up Nextcloud, and show how to use the video chat platform built into the latest release.
 
 ## Install Docker CE
 
@@ -112,8 +111,12 @@ The basic Nextcloud Docker image is already configured for persistent data in th
 
       docker-compose up -d
 
-    Nextcloud should be available at port 8080 on your Linode's public IP address. It can be set up by following the steps [above](#Nextcloud).
+    Nextcloud should be available at port 8080 on your Linode's public IP address.
+
+4.  When creating an admin account, open the **Storage & database** drop-down menu, fill in the information as shown below, and enter the MySQL password you used in the `docker-compose` file.
+
+    ![Nextcloud Database Connection](/docs/assets/docker_nextcloud/connect-mysql-container.png)
 
 {{< caution >}}
-The setup provided by Nextcloud does not include any SSL encryption. To secure your data and communications, the Nextcloud service should be placed behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/). A Docker Compose file using NGINX and Let's Encrypt is also [available](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache/docker-compose.yml).
+The setup provided by Nextcloud does not include any SSL encryption. To secure your data and communications, the Nextcloud service should be placed behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/). A Docker Compose file using a NGINX reverse proxy and Let's Encrypt is also [available](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache/docker-compose.yml).
 {{< /caution >}}
