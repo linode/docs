@@ -3,6 +3,7 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'Quickly create a Spring Boot application embedded on a Tomcat server through the command line. Deploy this application on a Linode through an NGINX reverse proxy.'
+og_description: "Spring Boot enables quick development of the Spring Framework. This guide shows how to create a simple Spring Boot application on Ubuntu, using an NGINX reverse proxy."
 keywords: ["spring", "tomcat", "maven", "Java", "gradle"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-07
@@ -16,6 +17,8 @@ external_resources:
 - '[SDKMAN!](http://sdkman.io/)'
 - '[Gradle](https://gradle.org/)'
 ---
+
+## What is Spring Boot?
 
 [Spring Boot](https://projects.spring.io/spring-boot/) enables quick development of the [Spring Framework](https://projects.spring.io/spring-framework/) by taking care of default configurations and allowing Java developers to focus on rapid prototyping. This guide shows how to create a simple Spring Boot application which is then exposed through an NGINX reverse proxy.
 
