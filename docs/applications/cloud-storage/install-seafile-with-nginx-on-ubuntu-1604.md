@@ -9,16 +9,16 @@ modified: 2017-06-21
 modified_by:
   name: Linode
 published: 2017-05-23
-title: Install Seafile with nginx on Ubuntu 16.04
+title: Install Seafile with NGINX on Ubuntu 16.04
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
 ---
 
-Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with nginx or Apache to enable connections over HTTPS.
+Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with NGINX or Apache to enable connections over HTTPS.
 
-Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with nginx serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with NGINX serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
-![Install Seafile with nginx on Ubuntu 16.04](/docs/assets/seafile-title-graphic.png)
+![Install Seafile with NGINX on Ubuntu 16.04](/docs/assets/seafile-title-graphic.png)
 
 
 ## Prepare Ubuntu
@@ -100,7 +100,7 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
     For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04)
 
-## Create a TLS Certificate for use with nginx
+## Create a TLS Certificate for use with NGINX
 
 If you don't already have an SSL/TLS certificate, you can create one. This certificate will be self-signed, and will cause web browsers to protest about a non-private connection. You should verify the SHA256 fingerprint of the certificate in the browser versus that on the server, and add a permanent exception to the browser to trust this certificate.
 
@@ -111,13 +111,13 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
         sudo openssl req -new -x509 -key privkey.pem -out cacert.pem
 
 
-## Install and Configure nginx
+## Install and Configure NGINX
 
-1.  Install nginx from Ubuntu's repository:
+1.  Install NGINX from Ubuntu's repository:
 
         sudo apt install nginx
 
-2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with nginx](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices).
+2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with NGINX](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices).
 
     {{< file "/etc/nginx/sites-available/seafile.conf" nginx >}}
 server{
@@ -189,7 +189,7 @@ server{
         sudo rm /etc/nginx/sites-enabled/default
         sudo ln -s /etc/nginx/sites-available/seafile.conf /etc/nginx/sites-enabled/seafile.conf
 
-4.  Run the nginx configuration test and restart the web server. If the test fails, it will give you a brief description of what's wrong so you can troubleshoot the problem.
+4.  Run the NGINX configuration test and restart the web server. If the test fails, it will give you a brief description of what's wrong so you can troubleshoot the problem.
 
         sudo nginx -t
         sudo systemctl restart nginx
@@ -229,7 +229,7 @@ server{
 
     [![First time starting Seafile](/docs/assets/seafile-firststart-small.png)](/docs/assets/seafile-firststart.png)
 
-7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in nginx's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
+7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
 
     [![Seafile login prompt](/docs/assets/seafile-login-small.png)](/docs/assets/seafile-login.png)
 

@@ -85,13 +85,13 @@ Where `TOKEN` is the long string of characters presented to you when you initial
 
 ## Deploy a Service with Docker Swarm
 
-To deploy a service with Docker Swarm, use the manager to prepare a single node, then *scale* the configuration to match your needs. In this example, you will install nginx on one node, then scale it to a cluster (swarm) of three nodes.
+To deploy a service with Docker Swarm, use the manager to prepare a single node, then *scale* the configuration to match your needs. In this example, you will install NGINX on one node, then scale it to a cluster (swarm) of three nodes.
 
 1.  From the Swarm Manager, use `service create` to deploy a service to a node. Change `nginxexample` to whatever you like:
 
         docker service create -p 80:80 --name nginxexample nginx
 
-2.  Scale the nginx service to three nodes:
+2.  Scale the NGINX service to three nodes:
 
         docker service scale nginxexample=3
 

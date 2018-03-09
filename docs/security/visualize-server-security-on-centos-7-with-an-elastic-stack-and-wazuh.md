@@ -47,16 +47,16 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 2. Your Linode should have at least [4GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
-3. Install nginx or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
+3. Install NGINX or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
 
       - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi)
       - [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7)
 
 4. Configure your webserver for virtual domain hosting:
 
-      **nginx**
+      **NGINX**
 
-      - [How to Configure nginx](/docs/web-servers/nginx/how-to-configure-nginx)
+      - [How to Configure NGINX](/docs/web-servers/nginx/how-to-configure-nginx)
 
       **Apache**
 
@@ -302,15 +302,15 @@ MAX_LOCKED_MEMORY=unlimited
 
 ## Configure a Reverse Proxy
 
-A reverse proxy server allows you to secure the Kibana web interface with SSL and limit access to others. Instructions are provided for nginx and Apache. The instructions assume you have your webserver configured to host virtual domains.
+A reverse proxy server allows you to secure the Kibana web interface with SSL and limit access to others. Instructions are provided for NGINX and Apache. The instructions assume you have your webserver configured to host virtual domains.
 
 ### Set up a Reverse Proxy Server to Host Kibana as a Subdomain
 
 If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended.
 
-#### nginx
+#### NGINX
 
-1. Navigate to your nginx virtual host config directory. Create a new virtual host config file and name it something similar to `kibana.conf`. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's external IP address:
+1. Navigate to your NGINX virtual host config directory. Create a new virtual host config file and name it something similar to `kibana.conf`. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's external IP address:
 
     **Non SSL**
 
@@ -384,7 +384,7 @@ server {
         htpasswd -c /etc/nginx/.htpasswd.users YourNewUsername
         chmod 644 /etc/nginx/.htpasswd.users
 
-3. Restart the nginx server to load the new configuration:
+3. Restart the NGINX server to load the new configuration:
 
         systemctl restart nginx
 
