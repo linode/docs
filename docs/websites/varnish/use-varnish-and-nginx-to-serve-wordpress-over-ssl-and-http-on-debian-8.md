@@ -9,7 +9,7 @@ published: 2016-11-23
 modified: 2016-11-23
 modified_by:
     name: Nick Brewer
-title: Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8
+title: Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8
 contributor:
   name: Frederick Jost Zweig
   link: https://github.com/Fred-Zweig
@@ -22,26 +22,26 @@ image: https://linode.com/docs/assets/varnish-nginx-ssl.png
 
 **Varnish** is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server to cache its contents, which will improve speed and reduce server load. When a client requests a webpage, Varnish first tries to send it from the cache. If the page is not cached, Varnish forwards the request to the backend server, fetches the response, stores it in the cache, and delivers it to the client.
 
-![Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/assets/use_varnish_nginx_to_serve_wordpress_over_ssl_http_on_debian_8.png "Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8")
+![Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8](/docs/assets/use_varnish_nginx_to_serve_wordpress_over_ssl_http_on_debian_8.png "Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8")
 
 When a cached resource is requested through Varnish, the request doesn't reach the web server or involve PHP or MySQL execution. Instead, Varnish reads it from memory, delivering the cached page in a matter of microseconds.
 
-One Varnish drawback is that it doesn't support SSL-encrypted traffic. You can circumvent this issue by using **nginx** for both SSL decryption and as a backend web server. Using nginx for both tasks reduces the complexity of the setup, leading to fewer potential points of failure, lower resource consumption, and fewer components to maintain.
+One Varnish drawback is that it doesn't support SSL-encrypted traffic. You can circumvent this issue by using **NGINX** for both SSL decryption and as a backend web server. Using NGINX for both tasks reduces the complexity of the setup, leading to fewer potential points of failure, lower resource consumption, and fewer components to maintain.
 
-Both Varnish and nginx are versatile tools with a variety of uses. This guide uses Varnish 4.0, which comes included in Debian 8 repositories, and presents a basic setup that you can refine to meet your specific needs.
+Both Varnish and NGINX are versatile tools with a variety of uses. This guide uses Varnish 4.0, which comes included in Debian 8 repositories, and presents a basic setup that you can refine to meet your specific needs.
 
-## How Varnish and nginx Work Together
+## How Varnish and NGINX Work Together
 
-In this guide, we will configure nginx and Varnish for two WordPress sites:
+In this guide, we will configure NGINX and Varnish for two WordPress sites:
 
   * `www.example-over-http.com` will be an unencrypted, HTTP-only site.
   * `www.example-over-https.com` will be a separate, HTTPS-encrypted site.
 
-For HTTP traffic, Varnish will listen on port `80`. If content is found in the cache, Varnish will serve it. If not, it will pass the request to nginx on port `8080`. In the second case, nginx will send the requested content back to Varnish on the same port, then Varnish will store the fetched content in the cache and deliver it to the client on port `80`.
+For HTTP traffic, Varnish will listen on port `80`. If content is found in the cache, Varnish will serve it. If not, it will pass the request to NGINX on port `8080`. In the second case, NGINX will send the requested content back to Varnish on the same port, then Varnish will store the fetched content in the cache and deliver it to the client on port `80`.
 
-For HTTPS traffic, nginx will listen on port `443` and send decrypted traffic to Varnish on port `80`. If content is found in the cache, Varnish will send the unencrypted content from the cache back to nginx, which will encrypt it and send it to the client. If content is not found in the cache, Varnish will request it from nginx on port `8080`, store it in the cache, and then send it unencrypted to frontend nginx, which will encrypt it and send it to the client's browser.
+For HTTPS traffic, NGINX will listen on port `443` and send decrypted traffic to Varnish on port `80`. If content is found in the cache, Varnish will send the unencrypted content from the cache back to NGINX, which will encrypt it and send it to the client. If content is not found in the cache, Varnish will request it from NGINX on port `8080`, store it in the cache, and then send it unencrypted to frontend NGINX, which will encrypt it and send it to the client's browser.
 
-Our setup is illustrated below. Please note that frontend nginx and backend nginx are one and the same server:
+Our setup is illustrated below. Please note that frontend NGINX and backend NGINX are one and the same server:
 
 [![Nginx-Varnish-Nginx server configuration diagram](/docs/assets/varnish-cache.png)](/docs/assets/varnish-cache.png "Nginx-Varnish-Nginx server configuration diagram")
 
@@ -51,9 +51,9 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 
 1.  Complete the steps in our [Getting Started](/docs/getting-started) and [Securing your Server](/docs/security/securing-your-server) guides. You'll need a standard user account with `sudo` privileges for many commands in this guide.
 
-2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/websites/lemp/lemp-server-on-debian-8) guide. Skip the nginx configuration section, since we'll address it later in this guide.
+2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/websites/lemp/lemp-server-on-debian-8) guide. Skip the NGINX configuration section, since we'll address it later in this guide.
 
-3.  After configuring nginx according to this guide, follow the steps in our [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress. We'll include a step in the instructions to let you know when it's time to do this.
+3.  After configuring NGINX according to this guide, follow the steps in our [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress. We'll include a step in the instructions to let you know when it's time to do this.
 
 ## Install and Configure Varnish
 
@@ -104,7 +104,7 @@ vcl 4.0;
 {{< /file-excerpt >}}
 
 
-3.  Specify that the backend (nginx) is listening on port `8080`, by adding the `backend default` directive:
+3.  Specify that the backend (NGINX) is listening on port `8080`, by adding the `backend default` directive:
 
     {{< file-excerpt "/etc/varnish/custom.vcl" conf >}}
 backend default {
@@ -252,7 +252,7 @@ sub vcl_purge {
 {{< /file-excerpt >}}
 
 
-8.  The `sub vcl_backend_response` directive is used to handle communication with the backend server, nginx. We use it to set the amount of time the content remains in the cache. We can also set a *grace period*, which determines how Varnish will serve content from the cache even if the backend server is down. Time can be set in seconds (s), minutes (m), hours (h) or days (d). Here, we've set the caching time to 24 hours, and the grace period to 1 hour, but you can adjust these settings based on your needs:
+8.  The `sub vcl_backend_response` directive is used to handle communication with the backend server, NGINX. We use it to set the amount of time the content remains in the cache. We can also set a *grace period*, which determines how Varnish will serve content from the cache even if the backend server is down. Time can be set in seconds (s), minutes (m), hours (h) or days (d). Here, we've set the caching time to 24 hours, and the grace period to 1 hour, but you can adjust these settings based on your needs:
 
     {{< file-excerpt "/etc/varnish/custom.vcl" conf >}}
 sub vcl_backend_response {
@@ -318,7 +318,7 @@ ExecStart=/usr/sbin/varnishd -a :80 -T localhost:6082 -f /etc/varnish/custom.vcl
 
 ## Install and Configure PHP
 
-Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI Process Manager, and it allows the web server to act as a proxy, passing all requests with the `.php` file extension to the PHP interpreter.
+Before configuring NGINX, we have to install *PHP-FPM*. FPM is short for FastCGI Process Manager, and it allows the web server to act as a proxy, passing all requests with the `.php` file extension to the PHP interpreter.
 
 1.  Install PHP-FPM:
 
@@ -334,7 +334,7 @@ cgi.fix_pathinfo=0
 
     After you've made this change, save and exit the file.
 
-3.  Open `/etc/php5/fpm/pool.d/www.conf` and confirm that the `listen =` directive, which specifies the socket used by nginx to pass requests to PHP-FPM, matches the following:
+3.  Open `/etc/php5/fpm/pool.d/www.conf` and confirm that the `listen =` directive, which specifies the socket used by NGINX to pass requests to PHP-FPM, matches the following:
 
     {{< file-excerpt "/etc/php5/fpm/pool.d/www.conf" conf >}}
 listen = /var/run/php5-fpm.sock
@@ -348,7 +348,7 @@ listen = /var/run/php5-fpm.sock
 
         sudo systemctl restart php5-fpm
 
-5.  Open `/etc/nginx/fastcgi_params` and find the `fastcgi_param  HTTPS` directive. Below it, add the following two lines, which are necessary for nginx to interact with the FastCGI service:
+5.  Open `/etc/nginx/fastcgi_params` and find the `fastcgi_param  HTTPS` directive. Below it, add the following two lines, which are necessary for NGINX to interact with the FastCGI service:
 
     {{< file-excerpt "/etc/nginx/fastcgi_params" nginx >}}
 fastcgi_param  SCRIPT_FILENAME    $request_filename;
@@ -359,7 +359,7 @@ fastcgi_param  PATH_INFO          $fastcgi_path_info;
 
     Once you're done, save and exit the file.
 
-## Configure nginx
+## Configure NGINX
 
 1.  Open `/etc/nginx/nginx.conf` and comment out the `ssl_protocols` and `ssl_prefer_server_ciphers` directives. We'll include these SSL settings in the server block within the `/etc/nginx/sites-enabled/default` file:
 
@@ -426,10 +426,10 @@ error_log /var/www/html/example-over-http.com/logs/error.log notice;
 
     *   The first server block is used to redirect all requests for `example-over-http.com` to `www.example-over-http.com`. This assumes you want to use the `www` subdomain and have added a DNS A record for it.
     *   `listen [::]:8080;` is needed if you want your site to be also accesible over IPv6.
-    *   `port_in_redirect off;` prevents nginx from appending the port number to the requested URL.
+    *   `port_in_redirect off;` prevents NGINX from appending the port number to the requested URL.
     *   `fastcgi` directives are used to proxy requests for PHP code execution to PHP-FPM, via the FastCGI protocol.
 
-5.  To configure nginx for the SSL-encrypted website (in our example we called it `www.example-over-https.com`), you need two more server blocks. Append the following server blocks to your `/etc/nginx/sites-available/default` file:
+5.  To configure NGINX for the SSL-encrypted website (in our example we called it `www.example-over-https.com`), you need two more server blocks. Append the following server blocks to your `/etc/nginx/sites-available/default` file:
 
     {{< file-excerpt "/etc/nginx/sites-available/default" nginx >}}
 server {
@@ -494,7 +494,7 @@ server {
     For an SSL-encrypted website, you need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and another server block to serve unencrypted traffic to Varnish on port `8080`, when Varnish asks for it.
 
     {{< caution >}}
-The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on nginx](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
+The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on NGINX](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
 {{< /caution >}}
 
     Alternately, if you don't have a commercially-signed SSL certificate (issued by a CA), you can issue a self-signed SSL certificate using *openssl*, but this should be done only for testing purposes. Self-signed sites will return a "This Connection is Untrusted" message when opened in a browser.
@@ -527,7 +527,7 @@ server {
 
     The `/var/www/html/index.html` file can contain a simple message like "Page not found!"
 
-7.  Restart nginx, then start Varnish:
+7.  Restart NGINX, then start Varnish:
 
         sudo systemctl restart nginx
         sudo systemctl start varnish
@@ -546,7 +546,7 @@ To install this plugin, log in to your WordPress website and click **Plugins** o
 
 ## Test Your Setup
 
-1.  To test whether Varnish and nginx are doing their jobs for the HTTP website, run:
+1.  To test whether Varnish and NGINX are doing their jobs for the HTTP website, run:
 
         wget -SS http://www.example-over-http.com
 
@@ -594,4 +594,4 @@ By using nginx in conjunction with Varnish, the speed of any WordPress website c
 
 You can strengthen the security of the SSL connection by generating a [custom Diffie-Hellman (DH) parameter](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/#create-a-custom-diffie-hellman-key-exchange), for a more secure cryptographic key exchange process.
 
-An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while nginx only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by nginx because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/security/using-fail2ban-for-security/), Awstats or Webalizer.
+An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while NGINX only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by NGINX because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/security/using-fail2ban-for-security/), Awstats or Webalizer.

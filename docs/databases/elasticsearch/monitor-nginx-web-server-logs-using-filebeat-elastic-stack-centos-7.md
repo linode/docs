@@ -6,7 +6,7 @@ contributor:
   name: Tyler Langlois
   link: https://tjll.net
 description: 'This guide will demonstrate how to use Elasticsearch, Filebeat, Metricbeat, and Kibana to monitor webserver logs and metrics.'
-og_description: 'The Elastic Stack provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install four components of the stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical nginx webserver.'
+og_description: 'The Elastic Stack provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install four components of the stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical NGINX webserver.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: 'nginx centos 7,linux web server,elasticsearch,filebeat,metricbeat,beats,kibana,elk stack,elastic stack'
@@ -15,7 +15,7 @@ published: 2017-12-13
 modified: 2017-12-13
 modified_by:
   name: Linode
-title: 'Monitor an nginx Web Server Using the Elastic Stack on Centos 7'
+title: 'Monitor an NGINX Web Server Using the Elastic Stack on Centos 7'
 ---
 
 ## What is the Elastic Stack?
@@ -32,7 +32,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Follow the steps in our [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi) guide to set up a web server stack with nginx on your CentOS host.
+2.  Follow the steps in our [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi) guide to set up a web server stack with NGINX on your CentOS host.
 
 3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
@@ -86,7 +86,7 @@ type=rpm-md
 
 This tutorial will use several parts of the Elastic Stack for log analysis and machine metrics. Before starting, it may be helpful to summarize how each piece will help form the final stack of software:
 
-- [**Filebeat**](https://www.elastic.co/products/beats/filebeat) will watch and collect web server access logs from nginx. Filebeat will also manage configuring Elasticsearch to ensure logs are parsed as expected and loaded into the correct indices.
+- [**Filebeat**](https://www.elastic.co/products/beats/filebeat) will watch and collect web server access logs from NGINX. Filebeat will also manage configuring Elasticsearch to ensure logs are parsed as expected and loaded into the correct indices.
 - [**Metricbeat**](https://www.elastic.co/products/beats/metricbeat) will collect system metrics such as CPU, memory, and disk usage, and store this as numerical data in Elasticsearch.
 - [**Elasticsearch**](https://www.elastic.co/) will store logs and metrics sent to it from each Beat. Documents are indexed for searching and available over the default Elasticsearch port (9200).
 - [**Kibana**](https://www.elastic.co/products/kibana) will connect to Elasticsearch to expose indexed documents in a searchable, browser-based visualization interface.
@@ -200,10 +200,10 @@ Replace `username` with your Linux user name and `<Linode public IP>` with the p
 
 ### Filebeat
 
-Filebeat version 6 ships with the ability to use [modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html) in order to automate how logs are collected, indexed, and visualized. This guide will use the nginx module in order to handle most of the necessary configuration in order to instruct the stack how to process system logs.
+Filebeat version 6 ships with the ability to use [modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html) in order to automate how logs are collected, indexed, and visualized. This guide will use the NGINX module in order to handle most of the necessary configuration in order to instruct the stack how to process system logs.
 
 {{< note >}}
-Your Linode should already have nginx configured following the [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi) guide.
+Your Linode should already have NGINX configured following the [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi) guide.
 {{< /note >}}
 
 1.  Using a text editor, create `/etc/filebeat/filebeat.yml` and add the following content:
@@ -221,7 +221,7 @@ output.elasticsearch:
 setup.dashboards.enabled: true
 {{< /file-excerpt >}}
 
-2.  You can enable Filebeat modules by removing `.disabled` from the file names. Enable the nginx module:
+2.  You can enable Filebeat modules by removing `.disabled` from the file names. Enable the NGINX module:
 
         sudo mv /etc/filebeat/modules.d/nginx.yml.disabled /etc/filebeat/modules.d/nginx.yml
 
@@ -250,7 +250,7 @@ setup.dashboards.enabled: true
 
 {{< /file-excerpt >}}
 
-2.  Rename the Elasticsearch, Kibana, and nginx module configuration files in order to enable them:
+2.  Rename the Elasticsearch, Kibana, and NGINX module configuration files in order to enable them:
 
         sudo mv /etc/metricbeat/modules.d/elasticsearch.yml.disabled /etc/metricbeat/modules.d/elasticsearch.yml
         sudo mv /etc/metricbeat/modules.d/kibana.yml.disabled /etc/metricbeat/modules.d/kibana.yml
@@ -265,7 +265,7 @@ setup.dashboards.enabled: true
 
 The rest of this guide will use Kibana's browser-based interface in order to view and search machine data.
 
-1.  Although Filebeat is now monitoring nginx access and error logs, traffic must be generated to create data to visualize in Kibana. Run the following command in another terminal window or tab in order to generate webserver requests in the background:
+1.  Although Filebeat is now monitoring NGINX access and error logs, traffic must be generated to create data to visualize in Kibana. Run the following command in another terminal window or tab in order to generate webserver requests in the background:
 
         while true ; do n=$(( RANDOM % 10 )) ; curl "localhost/?$n" ; sleep $n ; done
 
@@ -285,7 +285,7 @@ The rest of this guide will use Kibana's browser-based interface in order to vie
 
     ![Kibana 6 Discover](/docs/assets/elastic-stack-centos-7-kibana-discover.png "Kibana 6 Select Discover")
 
-5.  From this screen, logs can be easily searched and analyzed. For example, to search the nginx access logs for all requests for `/?5` that are being generated by the running shell loop in the background, enter the following into the search box and click the magnifying glass or hit **Enter**:
+5.  From this screen, logs can be easily searched and analyzed. For example, to search the NGINX access logs for all requests for `/?5` that are being generated by the running shell loop in the background, enter the following into the search box and click the magnifying glass or hit **Enter**:
 
         nginx.access.url:"/?5"
 
@@ -297,7 +297,7 @@ Throughout this guide, logs will be retrieved based upon a time window in the up
 
 ### Filebeat Dashboards
 
-In addition to collecting nginx access logs, Filebeat also installs several dashboards into Kibana in order to provide useful default visualizations for your data.
+In addition to collecting NGINX access logs, Filebeat also installs several dashboards into Kibana in order to provide useful default visualizations for your data.
 
 1.  From the "Discover" screen, select the "Dashboard" item from the sidebar menu.
 
@@ -307,11 +307,11 @@ In addition to collecting nginx access logs, Filebeat also installs several dash
 
     ![Kibana 6 Dashboard List](/docs/assets/elastic-stack-centos-7-kibana-dashboard-list.png "Kibana 6 Dashboard List")
 
-3.  In the search box, enter "nginx" to search for all nginx dashboards. In the list of results, select the dashboard titled "[Filebeat Nginx] Access and error logs". The following dashboard will load:
+3.  In the search box, enter "nginx" to search for all NGINX dashboards. In the list of results, select the dashboard titled "[Filebeat Nginx] Access and error logs". The following dashboard will load:
 
-    ![Kibana 6 Filebeat Nginx](/docs/assets/elastic-stack-centos-7-kibana-filebeat-nginx.png "Kibana 6 Filebeat Nginx")
+    ![Kibana 6 Filebeat NGINX](/docs/assets/elastic-stack-centos-7-kibana-filebeat-nginx.png "Kibana 6 Filebeat Nginx")
 
-4.  Scroll further down to view the visualizations available in this default dashboard. There are several virtualizations including a geolocation map, response codes by URL, and user-agent summaries. These dashboards can help summarize traffic to a webserver in addition to debugging issues. For example, when the Metricbeat nginx module was enabled, we did not enable the nginx server-status endpoint for use with Metricbeat. This dashboard can help find this misconfiguration.
+4.  Scroll further down to view the visualizations available in this default dashboard. There are several virtualizations including a geolocation map, response codes by URL, and user-agent summaries. These dashboards can help summarize traffic to a webserver in addition to debugging issues. For example, when the Metricbeat NGINX module was enabled, we did not enable the NGINX server-status endpoint for use with Metricbeat. This dashboard can help find this misconfiguration.
 
 5.  To begin, scroll to the "Response codes over time" visualization in this dashboard. Observe that there are many 404 responses and click on one of the color-coded 404 bars:
 
@@ -321,13 +321,13 @@ In addition to collecting nginx access logs, Filebeat also installs several dash
 
   ![Kibana 6 Apply Filter](/docs/assets/elastic-stack-centos-7-kibana-404-filter-apply.png "Kibana 6 Apply Filter")
 
-7.  After applying this filter, scroll down again to view the visualizations for all 404 logs. Observe that "Response codes by top URLs" visualization indicates that nginx is only returning 404 response codes for the `/server-status` url:
+7.  After applying this filter, scroll down again to view the visualizations for all 404 logs. Observe that "Response codes by top URLs" visualization indicates that NGINX is only returning 404 response codes for the `/server-status` url:
 
     ![Kibana 6 404 URL](/docs/assets/elastic-stack-centos-7-kibana-404-url.png "Kibana 6 404 URL")
 
-    We can now fix the nginx configuration to resolve this error.
+    We can now fix the NGINX configuration to resolve this error.
 
-#### Reconfiguring nginx
+#### Reconfiguring NGINX
 
 1.  Open the `/etc/nginx/nginx.conf` file and add the following `location` block in between the `include` and `location /` lines:
 
@@ -348,7 +348,7 @@ include /etc/nginx/default.d/*.conf;
 
 {{< /file-excerpt >}}
 
-2.  Restart nginx:
+2.  Restart NGINX:
 
         sudo systemctl restart nginx
 
