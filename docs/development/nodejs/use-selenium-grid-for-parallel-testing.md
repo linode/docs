@@ -1,17 +1,17 @@
 ---
 author:
   name: Jared Kobos
-  email: jaredkobos@gmail.com
-description: 'This guide shows how to set up a Selenium grid that can be used to run tests against different browsers, browser versions, and operating systems. It can also be used to spread a large test suite across several servers for increased performance.'
-og_description: 'This guide shows how to set up a Selenium grid that can be used to run tests against different browsers, browser versions, and operating systems. It can also be used to spread a large test suite across several servers for increased performance.'
+  email: docs@linode.com
+description: 'This guide shows how to set up a Selenium grid that can be used to test webpages and applications in different browsers, browser versions, and operating systems. It can also be used to spread a large test suite across several servers for increased performance.'
+og_description: 'This guide shows how to set up a Selenium grid that can be used to test webpages and applications in different browsers, browser versions, and operating systems. It can also be used to spread a large test suite across several servers for increased performance.'
 keywords: ["selenium", "node.js", " headless browser", "automation", "webdriver"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-03-06
-modified: 2018-03-06
+published: 2018-03-09
+modified: 2018-03-09
 modified_by:
   name: Linode
-title: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
-h1_title: 'Use Selenium Grid for Cross-Browser Testing'
+title: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Compatibility Testing'
+h1_title: 'Use Selenium Grid for Cross-Browser Compatibility Testing'
 external_resources:
   - '[Selenium Project Home](https://www.seleniumhq.org/projects/webdriver/)'
   - '[Selenium Node.js Documentation](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index.html)'
@@ -27,11 +27,11 @@ For many applications, the Selenium standalone server is sufficient. However, Se
 
 - For larger projects, running a lengthy test suite in series can be time consuming. By running the test suite across a grid consisting of multiple servers, it is possible to distribute the tests across multiple nodes and significantly increase the performance of the testing process.
 
-This guide will show how to set up a simple Selenium grid consisting of a hub and two nodes, all on separate Linodes. A simple test script will then be used to demonstrate running tests against different versions of Firefox.
+This guide shows how to set up a simple Selenium grid consisting of a hub and two nodes, all on  separate Linodes. A simple test script will then be used to demonstrate running tests against different versions of Firefox.
 
 ## Prepare Grid Linodes
 
-You will need to install Java and other dependencies on each Linode that will be part of the Selenium grid. This guide will use three Linodes for this purpose, but you can also run all of the nodes from the same Linode if you prefer. Throughout this guide, these Linodes will be referred to as `hub`, `node-1`, and `node-2`.
+Install Java and other dependencies on each Linode that will be part of the Selenium grid. This guide uses three Linodes for this purpose, but you can also run all of the nodes from the same Linode if you prefer. Throughout this guide, these Linodes will be referred to as `hub`, `node-1`, and `node-2`.
 
 ### Install Java
 
@@ -39,7 +39,7 @@ You will need to install Java and other dependencies on each Linode that will be
 
 ### Install Dependencies
 
-When running tests with Selenium, each grid node can only run tests on browsers that have been installed on that node. Each browser also requires a separate executable webdriver. For this example, you will install Geckodriver and different versions of Firefox on `node-1` and `node-2`.
+When running tests with Selenium, each grid node can only run tests on browsers that have been installed on that node. Each browser also requires a separate executable webdriver. For this example, install Geckodriver and different versions of Firefox on `node-1` and `node-2`.
 
 1.  Check the latest release of Geckodriver on the [releases](https://github.com/mozilla/geckodriver/releases) page and download it to `node-1` and `node-2`:
 
@@ -61,7 +61,7 @@ When running tests with Selenium, each grid node can only run tests on browsers 
 
 5.  Check and record the version numbers to use when running tests:
 
-    **node-1**
+    **node-1:**
 
         firefox --version
 
@@ -69,15 +69,13 @@ When running tests with Selenium, each grid node can only run tests on browsers 
 Mozilla Firefox 58.0.2
 {{< /output >}}
 
-    **node-2**
+    **node-2:**
 
         firefox --version
 
     {{< output >}}
 Mozilla Firefox 59.0
 {{< /output >}}
-
-
 
 ### Download Selenium
 
@@ -91,7 +89,7 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 
         java -jar selenium-server-standalone-3.10.0.jar -role hub
 
-2.  The resulting output will give you URLs to use for registering nodes and connecting to the hub. Copy these URLs for later use.
+2.  The resulting output will give you URLs to use for registering nodes and connecting to the hub. Copy these URLs for later use:
 
     {{< output >}}
 21:27:51.470 INFO [GridLauncherV3.launch] - Selenium build info: version: '3.10.0', revision: '176b4a9'
@@ -104,7 +102,7 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 
 ### Configure Grid Nodes
 
-1.  On `node-1` and `node-2`, create a node configuration file `config.json` and add the following content. Replace the `hub` address with the public IP of the `hub` Linode, and replace the `version` with the version of Firefox installed on the respective nodes. If you are putting the grid and nodes on the same Linode, replace the IP address with `http://localhost:4444`.
+1.  On `node-1` and `node-2`, create a node configuration file `config.json` and add the following content. Replace the `hub` address with the public IP of the `hub` Linode, and replace the `version` with the version of Firefox installed on the respective nodes. If you are putting the grid and nodes on the same Linode, replace the IP address with `http://localhost:4444`:
 
     {{< file "config.json" json >}}
 {
@@ -151,35 +149,34 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 21:33:23.178 INFO - The node is registered to the hub and ready to use
 {{< /output >}}
 
-4.  You can also check the output from the hub itself:
+    * You can also check the output from the hub itself:
 
-    {{< output >}}
+        {{< output >}}
 21:27:53.849 INFO [DefaultGridRegistry.add] - Registered a node http://198.58.122.154:5555
 21:27:56.445 WARN [BaseRemoteProxy.<init>] - Max instance not specified. Using default = 1 instance
 21:27:56.450 INFO [DefaultGridRegistry.add] - Registered a node http://50.116.22.93:5555
 21:27:56.743 WARN [BaseRemoteProxy.<init>] - Max instance not specified. Using default = 1 instance
 {{< /output >}}
 
+4.  Navigate to `http://192.0.2.0:4444/grid/console` in a web browser (replace `192.0.2.0` with the public IP address of your `hub` Linode) to see a console listing your available nodes.
 
-5.  Navigate to `http://192.0.2.0:4444/grid/console` in a web browser (replace `192.0.2.0` with the public IP address of your `hub` Linode) to see a console listing your available nodes.
-
-    ![Selenium Grid Console](/docs/assets/selenium/grid-console.png)
+    ![Selenium Grid Console](/docs/assets/selenium/grid-console.png "Selenium Grid Console")
 
     The console should show that each node is configured to use a different version of Firefox.
 
 ## Prepare Local Test Environment
 
-In this example, the test script will be run from your local development machine. It will connect to the remote grid and execute the tests from there. If you do not have an available development machine, an additional Linode can also be used.
+In this example, the test script will be run from your local development machine. It will connect to the remote grid and execute the tests from there. If you do not have an available development machine, use a separate Linode.
 
 ### Install Node.js and NPM
 
-This guide will use the NPM `selenium-webdriver` package, which contains Node.js bindings for Selenium.
+This guide uses the NPM `selenium-webdriver` package, which contains Node.js bindings for Selenium.
 
 {{< content "install-nodejs-ppa.md" >}}
 
 ### Create an Example Test Script
 
-This script will test the Linode docs home page.
+This script tests the Linode Docs home page.
 
 1.  Create a directory for the test suite:
 
@@ -195,7 +192,7 @@ This script will test the Linode docs home page.
 
         npm install --save selenium-webdriver karma jasmine-node
 
-4.  In a text editor, create `test.js`. Add the following script and replace `192.0.2.0` on line 11 with the IP address of `hub`:
+4.  Create `test.js` and add the following script. Replace `192.0.2.0` on Line 11 with the IP address of `hub`:
 
     {{< file "~/test-selenium/test.js" js >}}
 const {Builder, By, Capabilities, Key, until} = require('selenium-webdriver');
@@ -243,12 +240,13 @@ async function main() {
 main();
 {{< /file >}}
 
-5.  Save the test script and run it:
+5.  Save the test script, then run it:
 
         node test.js
 
     If successful, the script will search for NGINX in the Linode docs library, visit one of the results pages, and check that the page title matches the link text. It will print out the page title as well:
-   {{< output >}}
+
+    {{< output >}}
 built drivers for 58.0.2,59.0
 How to Configure nginx
 How to Configure nginx
