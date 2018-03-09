@@ -6,8 +6,8 @@ description: "Nextcloud is an open source solution to hosting your own content o
 og_description: "Nextcloud 13 brings improved UI, video and text chat, and end-to-end encryption wrapped into a cloud storage platform. This guide shows you how to install Nextcloud 13 using Docker."
 keywords: ["nextcloud", "cloud", "open source hosting", "video chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-03-14
-modified: 2018-03-07
+published: 2017-03-12
+modified: 2018-03-08
 modified_by:
   name: Angel
 title: 'Install NextCloud 13'
@@ -41,7 +41,7 @@ You will need a Linode with Docker CE installed to follow along with the steps i
 
 ### Talk
 
-Talk is the video chat platform add-on offered by Nextcloud. It's built on [Spreed](https://github.com/nextcloud/spreed).
+Talk works by allowing all the users that are registered to your Nextcloud instance to communicate with each other. Nextcloud Talk offers simple text and video chat, private or group password protected calls, and screen sharing. It's built on [Spreed](https://github.com/nextcloud/spreed).
 
 1. From the Nextcloud console main page, click the **Settings** icon on the right side of the navigation bar. Choose **+ Apps**.
 
@@ -49,11 +49,13 @@ Talk is the video chat platform add-on offered by Nextcloud. It's built on [Spre
 
 ![Talk addon](/docs/assets/docker_nextcloud/talk_addon.png "Talk addon")
 
-### How to Use Talk
+3.  Navigate to the **Users** section of the Nextcloud interface, and create logins for your team.
 
-Nextcloud 13 offers a full suite of addons. Talk works by allowing all the users that are registered to your Nextcloud instance to communicate with each other. Nextcloud Talk offers simple text chat, private or group password protected calls, and screen sharing. Nextcloud Talk is built using [WebRTC](https://simplewebrtc.com/), and works in your browser. Navigate to the **Users** section of the Nextcloud interface, and create logins for your team to use. After the logins are distributed to your team members, they will be able to communicate with each other.
+## How to Use Talk
 
-1.  Choose **Users** from the settings menu and add one or more additional users. Give the username and password combinations to each user and have them log in by accessing the web console from their browsers.
+Nextcloud Talk is built using [WebRTC](https://simplewebrtc.com/), and works in your browser.
+
+1.  Choose **Users** from the settings menu and add one or more additional users. Give the username and password combinations to each user and have them log in through the web console.
 
 2.  Once Talk is installed, an icon for the addon will appear on the nav menu:
 
@@ -65,7 +67,7 @@ The basic configuration here allows you to make video calls using Firefox. Googl
 
 ## Docker Compose
 
-The basic Nextcloud Docker image is already configured for persistent data in the event that your container crashes. However, Docker Compose makes it easy to launch a configuration using a separate database container and persistent data volume, which will keep your data consistent through upgrades and automatically handle all container restarts.
+The basic Nextcloud Docker image is already configured for persistent data in the event that your container crashes. However, Docker Compose makes it easy to launch a configuration using a separate database container and persistent data volume. This method keeps your data consistent through upgrades and automatically handles all container restarts.
 
 ### Install Docker Compose
 
@@ -105,7 +107,7 @@ The basic Nextcloud Docker image is already configured for persistent data in th
       restart: always
 {{< /file >}}
 
-2.  Stop the container from the previous section if it is still running using `docker stop` and the container name or ID.
+2.  If it is still running, stop the container from the previous section using `docker stop` and the container name or ID.
 
 3.  Launch the Docker Compose configuration:
 
@@ -113,9 +115,9 @@ The basic Nextcloud Docker image is already configured for persistent data in th
 
     Nextcloud should be available at port 8080 on your Linode's public IP address.
 
-4.  When creating an admin account, open the **Storage & database** drop-down menu, fill in the information as shown below, and enter the MySQL password you used in the `docker-compose` file.
+4.  When creating an admin account, open the **Storage & database** drop-down menu, fill in the information as shown below, and enter the MySQL password you used in the `docker-compose` file:
 
-    ![Nextcloud Database Connection](/docs/assets/docker_nextcloud/connect-mysql-container.png)
+    ![Nextcloud database connection](/docs/assets/docker_nextcloud/connect-mysql-container.png "Nextcloud database connection")
 
 {{< caution >}}
 The setup provided by Nextcloud does not include any SSL encryption. To secure your data and communications, the Nextcloud service should be placed behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/). A Docker Compose file using a NGINX reverse proxy and Let's Encrypt is also [available](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache/docker-compose.yml).
