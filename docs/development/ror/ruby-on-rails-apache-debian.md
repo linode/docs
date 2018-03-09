@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using the Apache web server with Debian to serve Ruby on Rails applications.'
 og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
-keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache"]
+keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache", "deploy rails"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/ror/ruby-on-rails-apache-debian-8/']
 modified: 2018-03-08
@@ -21,7 +21,7 @@ external_resources:
 
 ## What is Ruby on Rails?
 
-Ruby on Rails is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
+[Ruby on Rails](http://rubyonrails.org/) is a server-side web application framework. It maintains a curated set of components and a "convention over configuration" philosophy that makes it possible to develop applications quickly and without large amounts of boilerplate. This guide will show you how to deploy Rails applications on your Linode using Phusion Passenger. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
 
 
 ## Before You Begin
@@ -54,54 +54,52 @@ Ruby will be installed with the Ruby Version Manager (RVM), which makes it easy 
 
 {{< content "install-ruby-with-rvm.md" >}}
 
-## Install Ruby on Rails
-
-Use the Rubygems package manager to install Rails:
-
-        sudo gem install rails --version=5.1.4
-
 ## Install Passenger and Dependencies
 
-1.  Install the system packages required for using Ruby, building Ruby modules, and running Rails applications:
+1.  Install Passenger and other required packages:
 
         sudo apt-get install build-essential libapache2-mod-passenger ruby ruby-dev libruby zlib1g-dev libsqlite3-dev
 
 2.  Rails requires a working Javascript runtime on your system in order to run. If you do not already have one installed, use Node.js:
 
-        sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+        sudo curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
         sudo apt install nodejs
 
-3.  Add `rails` to your $PATH environment variable. Make sure to replace `VERSION` with the version of Ruby you are running:
+## Install Ruby on Rails
 
-        ls /var/lib/gems
-        PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/var/lib/gems/VERSION/bin"
+1.  Use the Rubygems package manager to install Rails:
 
-    {{< note >}}
-The step above will only add this PATH to your current session. To retain the change persistently, add the PATH to your local \~/.bashrc file:
+        gem install rails --version=5.1.4
 
-echo "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/var/lib/gems/VERSION/bin" >> ~/.bashrc
-{{< /note >}}
-
-4.  Move your Rails app to your Linode, or create a new app if you don't have one yet. Replace `example-app` with a descriptive name:
+2.  Move your Rails app to your Linode, or create a new app if you don't have one yet. Replace `example-app` with a descriptive name:
 
         rails new example-app
 
 ## Configure Apache to Work with Passenger
 
-1.  Open `/etc/apache2/sites-available/example.com.conf` in a text editor and edit it as follows:
+1.  Check the path that Passenger is using to access Ruby:
+
+        sudo passenger-config about ruby-command
+
+    {{< note >}}
+Make sure that Passenger reports the version of Ruby that you installed with RVM. Normally RVM uses paths similar to `~/.rvm/wrappers/ruby-X.X.X/ruby`.
+{{< /note >}}
+
+2.  Open `/etc/apache2/sites-available/example.com.conf` in a text editor and edit it as follows. Substitute the path to your Rails app, path to your Ruby interpreter (from the previous step), hostname or IP address, and any other information as necessary.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
 <VirtualHost *:80>
-    #ServerName www.example.com
+    ServerName www.example.com
 
     ServerAdmin webmaster@localhost
     DocumentRoot /home/username/example-app/public
     RailsEnv development
+    PassengerRuby /path-to-ruby
 
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 
-    <Directory "/var/www/html/example.com/public_html/application_testing/public">
+    <Directory "/home/username/example-app/public">
         Options FollowSymLinks
         Require all granted
     </Directory>
@@ -109,8 +107,12 @@ echo "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/gam
 {{< /file >}}
 
 
-2.  Restart Apache to ensure all settings have been loaded:
+2.  Activate the Rails site:
+
+        sudo a2ensite example.com.conf
+
+3.  Restart Apache:
 
         sudo systemctl restart apache2
 
-8.  Navigate to your Linode's public IP address in a browser. You should see the default Rails page displayed.
+4.  Navigate to your Linode's public IP address in a browser. You should see the default Rails page displayed.
