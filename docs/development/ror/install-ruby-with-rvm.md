@@ -5,10 +5,11 @@ author:
 description: 'Install Ruby on Linux using RVM.'
 keywords: ["ruby", "rvm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2018-03-08
 modified: 2018-03-08
 modified_by:
   name: Jared Kobos
-shorguide: true
+shortguide: true
 title: 'Install Ruby Using RVM'
 ---
 
@@ -22,9 +23,9 @@ title: 'Install Ruby Using RVM'
 
 2.  Run the official RVM installation script:
 
-		curl -sSL https://get.rvm.io | bash -s stable --ruby 
+		curl -sSL https://get.rvm.io | bash -s stable --ruby
 
-3.  The installation process will output a command that must be run before RVM can be used:  
+3.  The installation process will output a command that must be run before RVM can be used:
 
 		source /home/username/.rvm/scripts/rvm
 
