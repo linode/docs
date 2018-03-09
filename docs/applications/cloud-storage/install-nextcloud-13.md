@@ -3,7 +3,7 @@ author:
   name: Angel
   email: docs@linode.com
 description: "Nextcloud is an open source solution to hosting your own content online. In addition to the total control users gain over their own files, Nextcloud offers customizable security features that allow the user to take control of sharing and access privileges."
-og_description: "Nextcloud 13 Brings Improved UI, video and text chat, and end-to-end encryption wrapped into a cloud storage platform. This guide will walk you through installing Nextcloud 13 using Docker."
+og_description: "Nextcloud 13 brings improved UI, video and text chat, and end-to-end encryption wrapped into a cloud storage platform. This guide shows you how to install Nextcloud 13 using Docker."
 keywords: ["nextcloud", "cloud", "open source hosting", "video chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-03-14
@@ -15,7 +15,9 @@ external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
 ---
 
-Nextcloud 13 is a cloud storage platform that also offers users the ability to self-host a video and text chat platform, featuring end-to-end encryption. This guide will walk you through setting up Nextcloud, and show how to use the video chat platform built into the latest release.
+## What is Nextcloud 13?
+
+Nextcloud 13 is a cloud storage platform that offers users the ability to self-host a video and text chat platform called Talk, featuring end-to-end encryption. This guide will walk you through setting up Nextcloud, and show how to use the video chat platform built-into the latest release.
 
 ## Install Docker CE
 
@@ -31,21 +33,21 @@ You will need a Linode with Docker CE installed to follow along with the steps i
 
         docker run -d -p 8080:80 nextcloud
 
-2.  In a browser, navigate to port 8080 on your Linode (e.g. `192.0.2.0:8080`) to launch the Nextcloud console.
+2.  In a browser, navigate to port `8080` of your Linode (e.g. `192.0.2.0:8080`) to launch the Nextcloud console.
 
 3. Create an admin account when prompted:
 
-![Admin_account_creation](/docs/assets/docker_nextcloud/admin_creation.png)
+    ![Admin account creation](/docs/assets/docker_nextcloud/admin_creation.png "Admin account creation")
 
 ### Talk
 
-**Talk** is the video chat platform add-on offered by Nextcloud. It's built on [Spreed](https://github.com/nextcloud/spreed).
+Talk is the video chat platform add-on offered by Nextcloud. It's built on [Spreed](https://github.com/nextcloud/spreed).
 
 1. From the Nextcloud console main page, click the **Settings** icon on the right side of the navigation bar. Choose **+ Apps**.
 
-2.  Install the Talk add-on. It is located in the **Social & communication** section; select the app and click **Enable**.
+2.  Install the Talk add-on located in the **Social & communication** section. Select the app and click **Enable**.
 
-![talk_addon](/docs/assets/docker_nextcloud/talk_addon.png)
+![Talk addon](/docs/assets/docker_nextcloud/talk_addon.png "Talk addon")
 
 ### How to Use Talk
 
@@ -55,17 +57,15 @@ Nextcloud 13 offers a full suite of addons. Talk works by allowing all the users
 
 2.  Once Talk is installed, an icon for the addon will appear on the nav menu:
 
-    ![Talk Menu Icon](/docs/assets/docker_nextcloud/navbar-talk-icon.png)
+    ![Talk menu icon](/docs/assets/docker_nextcloud/navbar-talk-icon.png "Talk menu icon")
 
 3.  Click this icon to enter Talk and allow the use of your system's camera and microphone when prompted. Once this is done, you will be able to start a chat or video call with any of the users you have created.
 
-  {{< note >}}
-The basic configuration here will allow you to make video calls on Firefox. Google Chrome requires an HTTPS connection in order to allow access to the camera and microphone. To do this, you should place Nextcloud behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/.
-{{< /note >}}
+The basic configuration here allows you to make video calls using Firefox. Google Chrome requires an HTTPS connection in order to allow access to the camera and microphone. To do this, create an [SSL certificate](/docs/security/ssl/) or place Nextcloud behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/).
 
 ## Docker Compose
 
-The basic Nextcloud Docker image is already configured for persistent data in the event that your container crashes. However,  Docker Compose makes it easy to launch a configuration using a separate database container and persistent data volume, which will keep your data consistent through upgrades and automatically handle all container restarts.
+The basic Nextcloud Docker image is already configured for persistent data in the event that your container crashes. However, Docker Compose makes it easy to launch a configuration using a separate database container and persistent data volume, which will keep your data consistent through upgrades and automatically handle all container restarts.
 
 ### Install Docker Compose
 
