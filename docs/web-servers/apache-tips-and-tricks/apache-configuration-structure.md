@@ -18,7 +18,7 @@ external_resources:
  - '[Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)'
 ---
 
-Throughout our [Apache section](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/lamp-guides/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usuage *within* these sites.
+Throughout our [Apache section](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/lamp-guides/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usage *within* these sites.
 
 ![Apache configuration structure](/docs/assets/apache-configuration-structure-headerimg.jpg "Apache configuration structure")
 
@@ -28,7 +28,7 @@ This document addresses a number of ways to configure the behavior of your web s
 
 ## Directory and Options
 
-The `<Directory>` block refers to a directory within the filesystem and specifies Apache's behaviour in that directory. This block is enclosed in angle brackets and begins with the word "Directory" and a path to a directory within the file system. Options set in a directory block apply to the directory and its sub directories as specified. The following is an example of a directory block:
+The `<Directory>` block refers to a directory within the filesystem and specifies Apache's behavior in that directory. This block is enclosed in angle brackets and begins with the word "Directory" and a path to a directory within the file system. Options set in a directory block apply to the directory and its sub directories as specified. The following is an example of a directory block:
 
 {{< file-excerpt "Virtual Host Entry in an Apache Configuration file" apache >}}
 <Directory /srv/www/example.com/public_html/images>
