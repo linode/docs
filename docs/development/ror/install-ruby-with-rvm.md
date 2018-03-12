@@ -24,7 +24,6 @@ title: 'Install Ruby Using RVM'
 
 2.  Run the official RVM installation script:
 
-
         curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 3.  The installation process will output a command that must be run before RVM can be used:

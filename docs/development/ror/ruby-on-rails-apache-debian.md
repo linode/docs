@@ -6,9 +6,9 @@ description: 'Using the Apache web server with Debian to serve Ruby on Rails app
 og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache", "deploy rails"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/ror/ruby-on-rails-apache-debian-11/']
-published: 2018-03-08
-modified: 2018-03-08
+aliases: ['websites/ror/ruby-on-rails-apache-debian-9/']
+published: 2018-03-12
+modified: 2018-03-12
 modified_by:
   name: Jared Kobos
 title: 'Install Ruby on Rails with Apache on Debian 9'
